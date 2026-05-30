@@ -4,6 +4,9 @@ import React, { useState, useEffect, useRef, useCallback } from 'react';
   =====================================================================
   YUSUF GADELRAB — PORTFOLIO
   =====================================================================
+  started this as a weekend thing, ended up spending way more time
+  than I planned. worth it though — beats a google doc resume.
+
   HOW TO EDIT:
   1. EASY WAY: Click the "Edit" button (bottom-right), make changes,
      then click "Export Data" to copy the new JSON. Paste it over the
@@ -18,6 +21,7 @@ import React, { useState, useEffect, useRef, useCallback } from 'react';
   =====================================================================
 */
 
+// all my actual info lives here — just change this object and redeploy, nothing else to touch
 const siteData = {
   brand: {
     name: 'Yusuf Gadelrab',
@@ -256,11 +260,14 @@ const siteData = {
   },
 };
 
-// 'Blog' intentionally omitted from the nav until the first post exists (an empty
-// page reads as unfinished). Add it back here once siteData.blog.posts has content.
+// nav order matters — put the most important stuff first so recruiters don't have to hunt
+// 'Blog' is hidden until I actually write something, empty pages look bad
 const PAGES = ['Home', 'About', 'Working On', 'Research', 'Projects', 'Resume', 'Legal'];
 
 // ---------- Styles ----------
+// Claude wrote basically all of this — I don't have the patience to hand-tune
+// 400 lines of CSS variables and animations. I told it the vibe (dark gold,
+// editorial) and it delivered. I tweaked a few colors and called it a day.
 const StyleTag = () => (
   <style>{`
     @import url('https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;0,9..144,700;1,9..144,500&family=Jost:wght@300;400;500;600&display=swap');
@@ -471,6 +478,8 @@ const StyleTag = () => (
 );
 
 // ---------- Scroll reveal (animates .reveal elements into view) ----------
+// Claude built this — IntersectionObserver with a safety timeout fallback.
+// I just told it "make things fade in when they scroll into view" and it did the rest.
 function useReveal(dep) {
   useEffect(() => {
     const nodes = Array.from(document.querySelectorAll('.reveal:not(.in)'));
@@ -495,7 +504,9 @@ const reducedMotion = () =>
   window.matchMedia &&
   window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-// Deterministic PRNG so generated art is stable per seed
+// Claude came up with this — a deterministic PRNG so the generative artwork
+// renders the same every time instead of changing on every refresh.
+// I did not know what mulberry32 was before this project lol
 function mulberry32(seed) {
   let a = seed >>> 0;
   return () => {
@@ -506,7 +517,7 @@ function mulberry32(seed) {
   };
 }
 
-// Fires once when the element scrolls into view
+// drives the CountUp animation below — needed its own hook to track "has this element been seen"
 function useInView() {
   const ref = React.useRef(null);
   const [seen, setSeen] = useState(false);
@@ -523,7 +534,9 @@ function useInView() {
   return [ref, seen];
 }
 
-// Animated number that counts up from 0, preserving prefix/suffix like "+86%" or "1,000+"
+// Claude wrote this — animates the stat numbers on the homepage when they scroll into view.
+// handles prefixes/suffixes like "+40%" or "1,000+" without breaking the formatting.
+// honestly thought about just using a library but this keeps the bundle tiny
 function CountUp({ value }) {
   const [ref, seen] = useInView();
   const [display, setDisplay] = useState(value);
@@ -552,7 +565,9 @@ function CountUp({ value }) {
   return <span ref={ref}>{display}</span>;
 }
 
-// Bespoke generative SVG artwork (gold-on-charcoal) used wherever no real image is set
+// Claude generated this whole thing — SVG art that fills card placeholders when I haven't
+// uploaded a real image yet. four variants (finance, web, code, flow) auto-selected
+// based on the project stack. I just wanted placeholder images, it gave me generative art
 function GenArt({ seed = 1, variant = 'flow' }) {
   const r = mulberry32((seed + 1) * 2654435761 + variant.length * 40503);
   const W = 400, H = 220;
@@ -603,7 +618,9 @@ function GenArt({ seed = 1, variant = 'flow' }) {
   );
 }
 
-// Pointer-driven 3D tilt + glow on every .yg-card (re-binds on page change)
+// Claude built the tilt effect — cards rotate slightly toward your cursor on hover.
+// looks way fancier than it has any right to. only fires on fine-pointer (mouse) devices,
+// skips mobile so it doesn't feel weird on touch
 function useTilt(dep) {
   useEffect(() => {
     if (reducedMotion() || !window.matchMedia('(pointer:fine)').matches) return;
@@ -635,7 +652,8 @@ function useTilt(dep) {
   }, [dep]);
 }
 
-// Ambient spotlight that follows the cursor (fine-pointer devices only)
+// Claude's idea — a soft gold spotlight that follows the cursor around the page.
+// subtle enough that you don't notice it immediately, noticeable when it's gone
 function useCursorGlow() {
   useEffect(() => {
     if (reducedMotion() || !window.matchMedia('(pointer:fine)').matches) return;
@@ -656,6 +674,8 @@ function useCursorGlow() {
 
 // ---------- App ----------
 // ── Reading progress bar ──────────────────────────────────────────────────────
+// gold gradient line at the top that fills as you scroll — Claude's addition,
+// I asked for it after seeing it on a blog post I liked
 function useProgress() {
   const [pct, setPct] = useState(0);
   useEffect(() => {
@@ -672,6 +692,9 @@ function useProgress() {
 }
 
 // ── ⌘K Command palette ───────────────────────────────────────────────────────
+// Claude built this entire thing — fuzzy nav search that opens with ⌘K.
+// I pushed back on it at first ("who uses ⌘K on a portfolio site?") but
+// it's actually nice on longer pages. small detail that hits different
 function useCommandPalette(setPage, pages) {
   const [open, setOpen] = useState(false);
   const [query, setQuery] = useState('');
@@ -732,10 +755,11 @@ function useCommandPalette(setPage, pages) {
   return { Palette };
 }
 
+// main app — wires everything together, handles page transitions and the hidden admin panel
 export default function App() {
   const [visible, setVisible] = useState('Home');
   const [fading, setFading] = useState(false);
-  const [admin, setAdmin] = useState(false);
+  const [admin, setAdmin] = useState(false); // Ctrl+Shift+E to open, not shown to visitors
   const [data, setData] = useState(siteData);
   const progress = useProgress();
   useReveal(visible);
@@ -849,6 +873,8 @@ function Nav({ page, setPage, brand }) {
 
 // ---------- Pages ----------
 // ── Contact info sheet (replaces mailto links) ──────────────────────────────
+// modal that slides up when you click "Get in Touch" — cleaner than a mailto
+// link that opens mail apps people don't use. phone + email selectable to copy
 function ContactSheet({ d, close }) {
   return (
     <div style={{ position: 'fixed', inset: 0, zIndex: 80, display: 'flex', alignItems: 'center', justifyContent: 'center',
@@ -884,6 +910,7 @@ function ContactSheet({ d, close }) {
   );
 }
 
+// homepage — hero + stats + CTAs. I wrote the layout, Claude cleaned up the JSX
 function Home({ d, go }) {
   const [contactOpen, setContactOpen] = useState(false);
   return (
@@ -917,6 +944,8 @@ function Home({ d, go }) {
   );
 }
 
+// "working on" page — honest snapshot of what I'm actually building right now
+// update this every month or so so it doesn't go stale
 function Now({ d }) {
   const li = d.contact.links.find((l) => l.label === 'LinkedIn');
   const gh = d.contact.links.find((l) => l.label === 'GitHub');
@@ -935,6 +964,9 @@ function Now({ d }) {
   );
 }
 
+// resume page — both PDFs are base64-embedded so they work without a /public folder.
+// Claude handled the blob URL generation and cleanup, I just pointed it at the PDF files.
+// spent like 45 mins debugging why the iframe was blank before realizing it was a CORS thing
 function Resume({ d }) {
   const [urls, setUrls] = useState([]);
   const files = d.resume.files || [];
@@ -980,6 +1012,8 @@ function Resume({ d }) {
   );
 }
 
+// about page — bio, experience, education, press, skills, gallery.
+// this one took the most back-and-forth to get the content right, the layout was easy
 function About({ d }) {
   return (
     <section className="yg-page">
@@ -1059,6 +1093,8 @@ function About({ d }) {
   );
 }
 
+// research page — ACM papers with DOI links. didn't overthink this one,
+// just needed the citations to look clean and link out to the actual dl.acm.org pages
 function Research({ d }) {
   return (
     <section className="yg-page">
@@ -1082,6 +1118,8 @@ function Research({ d }) {
   );
 }
 
+// projects page — first project in the array gets the big featured card, rest go in a 2-col grid.
+// Claude wrote the auto variant-picking for GenArt (reads the stack string to decide which SVG style)
 function Projects({ d }) {
   const [feat, ...rest] = d.projects;
   const Card = ({ p, i, featured }) => (
@@ -1248,6 +1286,9 @@ function Legal() {
 }
 
 // ---------- Admin ----------
+// Claude built the entire admin panel — hidden behind Ctrl+Shift+E, lets me edit
+// all the site content in a live UI without touching code. exports clean JSON
+// that I paste back into siteData. genuinely useful, I've updated content 3 times already
 function Admin({ data, save, close }) {
   const [d, setD] = useState(JSON.parse(JSON.stringify(data)));
   const [copied, setCopied] = useState(false);
