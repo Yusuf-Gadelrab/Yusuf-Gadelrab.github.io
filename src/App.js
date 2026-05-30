@@ -951,7 +951,7 @@ function Resume({ d }) {
     });
     setUrls(created);
     return () => created.forEach((u) => { if (u?.startsWith('blob:')) URL.revokeObjectURL(u); });
-  }, []);
+  }, [files.length]); // eslint-disable-line react-hooks/exhaustive-deps
 
   const primary = urls[0]; // CS / AI résumé shown in preview
   return (
@@ -1177,30 +1177,6 @@ function Blog({ d }) {
           ))}
         </div>
       )}
-    </section>
-  );
-}
-
-function Contact({ d }) {
-  return (
-    <section className="yg-page">
-      <SectionTitle eyebrow="Let's Connect" title="Contact" />
-      <p className="yg-lead">{d.contact.blurb}</p>
-      <div className="grid-2" style={{ marginTop: 40 }}>
-        <div className="yg-card"><div className="yg-card-body">
-          <div className="tag">Direct</div>
-          <p style={{ marginBottom: 10, userSelect: 'all', color: 'var(--gold)' }}>{d.contact.email}</p>
-          <p className="muted" style={{ userSelect: 'all' }}>{d.contact.phone}</p>
-        </div></div>
-        <div className="yg-card"><div className="yg-card-body">
-          <div className="tag">Online</div>
-          <div style={{ display: 'flex', flexWrap: 'wrap', gap: 10, marginTop: 6 }}>
-            {d.contact.links.map((l, i) => (
-              <a key={i} className="ghost-btn" href={l.url} target="_blank" rel="noreferrer" style={{ padding: '9px 18px', fontSize: 14 }}>{l.label}</a>
-            ))}
-          </div>
-        </div></div>
-      </div>
     </section>
   );
 }
