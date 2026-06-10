@@ -31,6 +31,7 @@ const siteData = {
   home: {
     eyebrow: 'Computer Science · AI/ML · Quantitative Finance',
     headline: 'I build AI systems for markets and classrooms.',
+    highlight: 'AI systems',
     sub:
       'CS undergraduate at San José State University. I co-authored a peer-reviewed ACM SIGCSE 2026 paper, built an NLP equity-scoring model on IBM Watson, and trade equities, options, and futures on the side. I care about turning noisy data into signals you can actually defend.',
     availability: null,
@@ -45,11 +46,11 @@ const siteData = {
   now: {
     intro: 'A snapshot of what I’m focused on right now.',
     items: [
+      'Automating freight billing and AR at HwyHaul — AI load intake, POD verification, rate reconciliation, and LLM-drafted carrier emails.',
+      'Building Founder AI: an app that turns founders’ raw footage into ready-to-post clips with Whisper, ffmpeg, and a local LLM.',
       'Running technical operations and the web presence for the Silicon Valley Entrepreneurship Club.',
-      'Extending my IBM Watson NLP equity model — more sources, cleaner signals, tighter backtests.',
       'Continuing inclusive-computing research at the SJSU CSEd Research Lab.',
-      'Designing challenge-based Python and Java workshops for Coding Warriors.',
-      'Grinding fundamentals: Data Structures & Algorithms and Discrete Mathematics.',
+      'Sharpening swing-trading systems — setup logging, R-multiple journaling, and backtesting discipline.',
     ],
   },
   about: {
@@ -92,12 +93,24 @@ const siteData = {
       { group: 'AI / ML', items: ['LLMs', 'NLP', 'Machine Learning', 'IBM Watson Studio', 'Financial Sentiment Analysis', 'RAG'] },
       { group: 'Quant / Markets', items: ['Equities', 'Options', 'Futures', 'Backtesting', 'Quantitative Modeling', 'Signal Design'] },
       { group: 'Programming', items: ['Python', 'Java', 'JavaScript', 'SQL'] },
-      { group: 'Web & Tools', items: ['React', 'Full-Stack Dev', 'Git / GitHub', 'Hedy'] },
+      { group: 'Web & Tools', items: ['React', 'FastAPI', 'Ollama / Local LLMs', 'Full-Stack Dev', 'Git / GitHub', 'Hedy'] },
       { group: 'Research', items: ['Survey Design', 'Mixed-Methods Analysis', 'Statistical Analysis', 'IRB Protocol', 'Data Visualization', 'HCI'] },
       { group: 'Languages', items: ['Arabic (Native)', 'English (Fluent)'] },
     ],
   },
   experience: [
+    {
+      title: 'Software Engineering Intern',
+      org: 'HwyHaul (freight-tech startup)',
+      meta: 'Summer 2026 · Internship',
+      tag: 'AI / Backend',
+      image: '',
+      bullets: [
+        'Built an AI load-intake pipeline (FastAPI + local LLM) that turns carrier WhatsApp messages and emails into structured load requests with per-field confidence gating.',
+        'Automated the billing/AR back office: POD verification, portal-vs-TMS rate reconciliation, advance deductions, the 30-day payment clock, and weekly AR recovery runs — covered by 77 automated tests.',
+        'Shipped per-customer document packaging that normalizes POD/invoice PDFs to each TMS portal’s requirements, plus LLM-drafted carrier and customer emails reviewed by the billing team.',
+      ],
+    },
     {
       title: 'Technical Operations & Web Lead',
       org: 'Silicon Valley Entrepreneurship Club',
@@ -194,6 +207,24 @@ const siteData = {
     },
   ],
   projects: [
+    {
+      title: 'HwyHaul LoadLink — AI Freight Back Office',
+      stack: 'FastAPI · Local LLM (Ollama) · SQLAlchemy',
+      image: '',
+      link: '',
+      privateRepo: true,
+      desc:
+        'AI intake for carrier WhatsApp/email load requests plus a billing & AR automation suite: POD verification, rate reconciliation, payment-clock tracking, document packaging per customer TMS, and LLM-drafted carrier emails. 77 automated tests.',
+    },
+    {
+      title: 'Founder AI — Auto Video Editor for Founders',
+      stack: 'FastAPI · Expo / React Native · Whisper · ffmpeg',
+      image: '',
+      link: '',
+      privateRepo: true,
+      desc:
+        'Records a founder’s day and turns raw footage into ready-to-post clips: Whisper transcription, LLM highlight selection in the founder’s own voice, frame-accurate ffmpeg cuts, async job pipeline, per-user rate limits, and Stripe billing.',
+    },
     {
       title: 'NLP Equity-Scoring Model',
       stack: 'IBM Watson · NLP · Python',
@@ -304,6 +335,11 @@ const StyleTag = () => (
     @keyframes float2{0%,100%{transform:translate(0,0);}50%{transform:translate(38px,-28px);}}
     @keyframes spin{to{transform:rotate(360deg);}}
     .yg-serif{font-family:'Fraunces',serif;}
+    /* animated gold sheen on the hero keyword */
+    .shimmer{background:linear-gradient(110deg,var(--gold) 20%,var(--gold-bright) 38%,#FFF3D6 50%,var(--gold-bright) 62%,var(--gold) 80%);
+      background-size:220% 100%;-webkit-background-clip:text;background-clip:text;color:transparent;
+      animation:shimmer 5.5s ease-in-out infinite;}
+    @keyframes shimmer{0%,100%{background-position:110% 0;}50%{background-position:-10% 0;}}
     a{color:inherit;text-decoration:none;}
     ::selection{background:var(--gold);color:var(--char);}
 
@@ -568,6 +604,19 @@ function CountUp({ value }) {
 // Claude generated this whole thing — SVG art that fills card placeholders when I haven't
 // uploaded a real image yet. four variants (finance, web, code, flow) auto-selected
 // based on the project stack. I just wanted placeholder images, it gave me generative art
+// Wraps the first occurrence of `highlight` in the headline with the gold shimmer.
+function Headline({ text, highlight }) {
+  if (!highlight || !text.includes(highlight)) return text;
+  const i = text.indexOf(highlight);
+  return (
+    <>
+      {text.slice(0, i)}
+      <span className="shimmer">{highlight}</span>
+      {text.slice(i + highlight.length)}
+    </>
+  );
+}
+
 function GenArt({ seed = 1, variant = 'flow' }) {
   const r = mulberry32((seed + 1) * 2654435761 + variant.length * 40503);
   const W = 400, H = 220;
@@ -771,7 +820,21 @@ export default function App() {
     if (p === visible) return;
     setFading(true);
     setTimeout(() => { setVisible(p); setFading(false); window.scrollTo(0, 0); }, 220);
+    try { window.history.replaceState(null, '', `#${p.toLowerCase().replace(/\s+/g, '-')}`); } catch (e) {}
   }
+
+  // Deep links: #projects, #research, #working-on… land on the right page,
+  // and back/forward navigation follows the hash.
+  useEffect(() => {
+    const fromHash = () => {
+      const h = window.location.hash.replace('#', '').replace(/-/g, ' ').toLowerCase();
+      const match = PAGES.find((p) => p.toLowerCase() === h);
+      if (match) setVisible(match);
+    };
+    fromHash();
+    window.addEventListener('hashchange', fromHash);
+    return () => window.removeEventListener('hashchange', fromHash);
+  }, []);
 
   const { Palette } = useCommandPalette(goTo, PAGES);
 
@@ -919,7 +982,7 @@ function Home({ d, go }) {
       <div className="hero-row">
         <div className="hero-text">
           <div className="yg-eyebrow">{d.home.eyebrow}</div>
-          <h1 className="yg-h1">{d.home.headline}</h1>
+          <h1 className="yg-h1"><Headline text={d.home.headline} highlight={d.home.highlight} /></h1>
           <p className="yg-lead">{d.home.sub}</p>
           <div style={{ display: 'flex', gap: 14, marginTop: 34, flexWrap: 'wrap' }}>
             <button className="gold-btn" onClick={() => go('Projects')}>View My Work →</button>
