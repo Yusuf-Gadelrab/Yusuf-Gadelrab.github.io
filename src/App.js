@@ -208,6 +208,33 @@ const siteData = {
   ],
   projects: [
     {
+      title: 'EventReels — Your Night, Already Edited',
+      stack: 'Python · ffmpeg · FastAPI · Scene + Audio Analysis',
+      image: process.env.PUBLIC_URL + '/projects/eventreels.jpg',
+      link: 'https://github.com/Yusuf-Gadelrab/eventreels',
+      linkLabel: 'View on GitHub →',
+      desc:
+        'Drop in raw event footage, get back a finished 9:16 highlight reel. The pipeline watches (scene-change detection) and listens (per-half-second loudness) to find the best moments, then cuts a vertical reel normalized to -14 LUFS for IG/TikTok. 100% local, zero API keys, zero Python dependencies — just ffmpeg. CLI plus a gold/black web studio with a live four-stage pipeline view.',
+    },
+    {
+      title: 'EdgeLog — Your Edge as a Number, Not a Vibe',
+      stack: 'FastAPI · SQLite · SVG Charts · Quant Metrics',
+      image: process.env.PUBLIC_URL + '/projects/edgelog.jpg',
+      link: 'https://github.com/Yusuf-Gadelrab/edgelog',
+      linkLabel: 'View on GitHub →',
+      desc:
+        'A trade journal analyzer I run my own trades through: import a CSV, get expectancy in R, win rate, profit factor, max drawdown, an animated equity curve, R distribution, and a per-setup edge table with a plain-English verdict on whether you actually have an edge.',
+    },
+    {
+      title: 'EcoImpact — Fix the World, See the Proof',
+      stack: 'FastAPI · Leaflet · OpenStreetMap · SQLite',
+      image: process.env.PUBLIC_URL + '/projects/ecoimpact.jpg',
+      link: 'https://github.com/Yusuf-Gadelrab/ecoimpact',
+      linkLabel: 'View on GitHub →',
+      desc:
+        'A trash map with a "world fixed" meter: report litter, claim cleanups, log daily eco actions, and watch quantified impact (kg waste diverted, kg CO₂e avoided) climb — with streaks and a campus leaderboard. EPA/DOE-based impact factors; user GPS never collected.',
+    },
+    {
       title: 'HwyHaul LoadLink — AI Freight Back Office',
       stack: 'FastAPI · Local LLM (Ollama) · SQLAlchemy',
       image: '',
@@ -553,8 +580,11 @@ function useReveal(dep) {
       });
     }, { threshold: 0.12, rootMargin: '0px 0px -8% 0px' });
     nodes.forEach((n) => io.observe(n));
-    // safety: ensure anything still hidden after a beat becomes visible
-    const t = setTimeout(() => nodes.forEach((n) => n.classList.add('in')), 1200);
+    // safety: ensure anything still hidden after a beat becomes visible —
+    // re-query at fire time so nodes mounted after the effect ran are covered too
+    const t = setTimeout(() => {
+      document.querySelectorAll('.reveal:not(.in)').forEach((n) => n.classList.add('in'));
+    }, 1200);
     return () => { io.disconnect(); clearTimeout(t); };
   }, [dep]);
 }
@@ -1232,33 +1262,36 @@ function Research({ d }) {
 
 // projects page — first project in the array gets the big featured card, rest go in a 2-col grid.
 // Claude wrote the auto variant-picking for GenArt (reads the stack string to decide which SVG style)
+// ProjectCard must stay at module scope: defining it inside Projects gave it a new identity on
+// every App re-render (scroll progress sets state), remounting the cards and wiping `.reveal.in`.
+const ProjectCard = ({ p, i, featured }) => (
+  <div className={`yg-card reveal${featured ? ' project-feature' : ''}`} style={{ transitionDelay: `${i * 80}ms` }}>
+    <div className="yg-card-img" style={p.image ? { backgroundImage: `url(${p.image})` } : {}}>
+      {!p.image && <GenArt seed={i + 3} variant={/[Ww]atson|[Ff]inanc|NLP|equit/.test(p.stack + p.desc) ? 'finance' : /[Rr]eact|[Ww]eb|UI/.test(p.stack) ? 'web' : 'code'} />}
+    </div>
+    <div className="yg-card-body">
+      <div className="yg-h3">{p.title}</div>
+      <div className="tag" style={{ marginTop: 10 }}>{p.stack}</div>
+      <p className="muted" style={{ lineHeight: 1.7, marginTop: 8 }}>{p.desc}</p>
+      {p.link && <a className="ghost-btn" style={{ marginTop: 16 }} href={p.link} target="_blank" rel="noreferrer">{p.linkLabel || 'Visit site →'}</a>}
+      {!p.link && p.privateRepo && (
+        <div className="muted" style={{ marginTop: 16, fontSize: 13, display: 'inline-flex', alignItems: 'center', gap: 7 }}>
+          <span className="live-dot" style={{ background: 'var(--ivory-dim)', boxShadow: 'none' }} />
+          Private repository — walkthrough available on request
+        </div>
+      )}
+    </div>
+  </div>
+);
+
 function Projects({ d }) {
   const [feat, ...rest] = d.projects;
-  const Card = ({ p, i, featured }) => (
-    <div className={`yg-card reveal${featured ? ' project-feature' : ''}`} style={{ transitionDelay: `${i * 80}ms` }}>
-      <div className="yg-card-img" style={p.image ? { backgroundImage: `url(${p.image})` } : {}}>
-        {!p.image && <GenArt seed={i + 3} variant={/[Ww]atson|[Ff]inanc|NLP|equit/.test(p.stack + p.desc) ? 'finance' : /[Rr]eact|[Ww]eb|UI/.test(p.stack) ? 'web' : 'code'} />}
-      </div>
-      <div className="yg-card-body">
-        <div className="yg-h3">{p.title}</div>
-        <div className="tag" style={{ marginTop: 10 }}>{p.stack}</div>
-        <p className="muted" style={{ lineHeight: 1.7, marginTop: 8 }}>{p.desc}</p>
-        {p.link && <a className="ghost-btn" style={{ marginTop: 16 }} href={p.link} target="_blank" rel="noreferrer">Visit site →</a>}
-        {!p.link && p.privateRepo && (
-          <div className="muted" style={{ marginTop: 16, fontSize: 13, display: 'inline-flex', alignItems: 'center', gap: 7 }}>
-            <span className="live-dot" style={{ background: 'var(--ivory-dim)', boxShadow: 'none' }} />
-            Private repository — walkthrough available on request
-          </div>
-        )}
-      </div>
-    </div>
-  );
   return (
     <section className="yg-page">
       <SectionTitle eyebrow="Selected Work" title="Projects" />
-      {feat && <Card p={feat} i={0} featured />}
+      {feat && <ProjectCard p={feat} i={0} featured />}
       <div className="grid-2" style={{ marginTop: 22 }}>
-        {rest.map((p, i) => <Card key={i} p={p} i={i + 1} />)}
+        {rest.map((p, i) => <ProjectCard key={i} p={p} i={i + 1} />)}
       </div>
     </section>
   );
