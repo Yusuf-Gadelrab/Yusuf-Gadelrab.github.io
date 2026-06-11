@@ -470,6 +470,30 @@ const StyleTag = () => (
     @keyframes floatPhoto{0%,100%{transform:translateY(0);}50%{transform:translateY(-12px);}}
     @media(max-width:760px){.hero-photo{width:200px;height:240px;}.hero-photo.placeholder{font-size:56px;}}
 
+    /* headline cascades in word by word — each word re-declares the gradient clip because
+       background-clip:text on the h1 does not paint into inline-block children */
+    .hword{display:inline-block;opacity:0;
+      background:linear-gradient(100deg,var(--ivory) 30%,var(--gold-bright) 50%,var(--ivory) 70%);
+      background-size:200% auto;-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;
+      animation:wordRise .65s cubic-bezier(.22,.61,.36,1) both,sheen 7s ease-in-out infinite;}
+    @keyframes wordRise{from{opacity:0;transform:translateY(30px) rotate(1.5deg);}to{opacity:1;transform:none;}}
+
+    /* slow-rotating gold halo behind the hero photo */
+    .hero-photo-wrap{position:relative;}
+    .hero-photo-wrap::before{content:'';position:absolute;inset:-22px;border-radius:30px;z-index:-1;
+      background:conic-gradient(from 0deg,transparent 0%,rgba(201,161,74,0.35) 12%,transparent 30%,
+        transparent 55%,rgba(230,198,110,0.25) 70%,transparent 85%);
+      filter:blur(18px);animation:spin 14s linear infinite;}
+
+    /* skills ticker */
+    .yg-marquee{overflow:hidden;margin-top:54px;border-top:1px solid var(--line);border-bottom:1px solid var(--line);
+      padding:14px 0;-webkit-mask:linear-gradient(90deg,transparent,#000 12%,#000 88%,transparent);
+      mask:linear-gradient(90deg,transparent,#000 12%,#000 88%,transparent);}
+    .yg-marquee-track{display:inline-flex;white-space:nowrap;animation:tickerScroll 38s linear infinite;}
+    .yg-marquee-track span{font-size:13px;letter-spacing:.14em;text-transform:uppercase;color:var(--ivory-dim);}
+    .yg-marquee:hover .yg-marquee-track{animation-play-state:paused;}
+    @keyframes tickerScroll{to{transform:translateX(-50%);}}
+
     .live-dot{width:9px;height:9px;border-radius:50%;background:#7ED98A;box-shadow:0 0 10px #7ED98A;animation:pulse 2.2s ease-in-out infinite;}
     @keyframes pulse{0%,100%{box-shadow:0 0 0 0 rgba(126,217,138,0.5);}50%{box-shadow:0 0 0 7px rgba(126,217,138,0);}}
 
@@ -606,14 +630,38 @@ function CountUp({ value }) {
 // based on the project stack. I just wanted placeholder images, it gave me generative art
 // Wraps the first occurrence of `highlight` in the headline with the gold shimmer.
 function Headline({ text, highlight }) {
-  if (!highlight || !text.includes(highlight)) return text;
-  const i = text.indexOf(highlight);
+  // cascade in word by word; the highlight keeps its shimmer and rides the same wave
+  const parts = [];
+  if (highlight && text.includes(highlight)) {
+    const i = text.indexOf(highlight);
+    text.slice(0, i).split(' ').filter(Boolean).forEach((w) => parts.push({ w }));
+    parts.push({ w: highlight, hl: true });
+    text.slice(i + highlight.length).split(' ').filter(Boolean).forEach((w) => parts.push({ w }));
+  } else {
+    text.split(' ').filter(Boolean).forEach((w) => parts.push({ w }));
+  }
+  return parts.map((p, i) => (
+    <React.Fragment key={i}>
+      <span className="hword" style={{ animationDelay: `${0.12 + i * 0.08}s` }}>
+        {p.hl ? <span className="shimmer">{p.w}</span> : p.w}
+      </span>
+      {i < parts.length - 1 ? ' ' : ''}
+    </React.Fragment>
+  ));
+}
+
+// continuous skills ticker — the "markets" vibe, literally
+function Marquee({ groups }) {
+  const items = (groups || []).flatMap((g) => g.items);
+  if (!items.length) return null;
+  const row = items.join('  ·  ');
   return (
-    <>
-      {text.slice(0, i)}
-      <span className="shimmer">{highlight}</span>
-      {text.slice(i + highlight.length)}
-    </>
+    <div className="yg-marquee" aria-hidden="true">
+      <div className="yg-marquee-track">
+        <span>{row}&nbsp;&nbsp;·&nbsp;&nbsp;</span>
+        <span>{row}&nbsp;&nbsp;·&nbsp;&nbsp;</span>
+      </div>
+    </div>
   );
 }
 
@@ -1003,6 +1051,7 @@ function Home({ d, go }) {
           </div>
         ))}
       </div>
+      <Marquee groups={d.about?.skills} />
     </section>
   );
 }
