@@ -235,6 +235,15 @@ const siteData = {
         'A trash map with a "world fixed" meter: report litter, claim cleanups, log daily eco actions, and watch quantified impact (kg waste diverted, kg CO₂e avoided) climb — with streaks and a campus leaderboard. EPA/DOE-based impact factors; user GPS never collected.',
     },
     {
+      title: 'swing-screener — Setups as Numbers, Not Gut Feel',
+      stack: 'Python · pandas · uv · Backtest Harness',
+      image: '',
+      link: '',
+      privateRepo: true,
+      desc:
+        'A swing-trading screener that scans OHLC price history for three classic setups — anchored-VWAP reclaim, VCP contraction, and opening-range breakout — and flags candidates instead of me eyeballing charts. A built-in backtest harness replays each setup over historical data and reports hit-rate and expectancy in R, so a pattern earns its place by the numbers or gets cut. Finance-aware, stdlib-and-pandas light, packaged with uv.',
+    },
+    {
       title: 'HwyHaul LoadLink — AI Freight Back Office',
       stack: 'FastAPI · Local LLM (Ollama) · SQLAlchemy',
       image: '',
@@ -251,6 +260,15 @@ const siteData = {
       privateRepo: true,
       desc:
         'Records a founder’s day and turns raw footage into ready-to-post clips: Whisper transcription, LLM highlight selection in the founder’s own voice, frame-accurate ffmpeg cuts, async job pipeline, per-user rate limits, and Stripe billing.',
+    },
+    {
+      title: 'JobPilot — AI Job-Application Automation',
+      stack: 'Next.js · React · TypeScript · Prisma · .NET',
+      image: '',
+      link: '',
+      privateRepo: true,
+      desc:
+        'A full-stack app that takes the grind out of applying: it parses a job posting, matches it against a stored profile, and drafts a tailored application so the candidate edits instead of starting from a blank page. I contribute on a React 19 / Next.js front end with type-safe forms and validation, a Prisma data layer, and a .NET service tier — a real production-shaped codebase, not a toy.',
     },
     {
       title: 'NLP Equity-Scoring Model',
