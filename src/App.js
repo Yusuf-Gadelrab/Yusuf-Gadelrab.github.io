@@ -247,7 +247,8 @@ const siteData = {
       title: 'HwyHaul LoadLink — AI Freight Back Office',
       stack: 'FastAPI · Local LLM (Ollama) · SQLAlchemy',
       image: '',
-      link: '',
+      link: process.env.PUBLIC_URL + '/hwyhaul.html',
+      linkLabel: 'Explore the case study →',
       privateRepo: true,
       desc:
         'AI intake for carrier WhatsApp/email load requests plus a billing & AR automation suite: POD verification, rate reconciliation, payment-clock tracking, document packaging per customer TMS, and LLM-drafted carrier emails. 77 automated tests.',
