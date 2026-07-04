@@ -209,23 +209,23 @@ const siteData = {
   ],
   projects: [
     {
-      title: 'Digital Products Store — Tools I Built, Now For Sale',
-      stack: '6 Products · $19–$999 · Zelle / PayPal · Email to Buy',
+      title: 'Projects & Products — Tools I Built, Launching Later This Year',
+      stack: '6 Projects · Local LLM · Private Development',
       image: '',
       link: process.env.PUBLIC_URL + '/store.html',
-      linkLabel: 'Browse the store →',
+      linkLabel: 'Browse the projects →',
       desc:
-        'A black & gold storefront for the tools I actually use: FreightDesk (AI AR/billing assistant for freight brokers), a Python automation kit, a Next.js 16 SaaS boilerplate, a swing-trade screener, a local-AI cold outreach engine, and premium landing page templates. Solo builder, real products, no fluff — every buy button is just an email to me.',
+        'A black & gold showcase for the tools I actually use: FreightDesk (an AI AR/billing assistant for freight brokers), a Python automation kit, a Next.js 16 SaaS boilerplate, a swing-trade screener, a local-AI cold outreach engine, and premium landing page templates. Solo builder, real projects, no fluff — currently in private development.',
     },
     {
       title: 'FreightDesk AI — AR/Billing Copilot for Freight Brokers',
       stack: 'Local LLM (Ollama) · Python · Zero API Cost',
       image: '',
       link: process.env.PUBLIC_URL + '/freightdesk.html',
-      linkLabel: 'See the product →',
+      linkLabel: 'See the case study →',
       privateRepo: true,
       desc:
-        'What came out of my HwyHaul internship: a productized AR/billing assistant freight brokers install on their own machine. It drafts POD-chasing, payment-date, and late-payment emails with a local LLM — no per-seat SaaS fees, no metered API bills. Sold as a founding-client offer with 3-day installs.',
+        'An AR/billing assistant freight brokers could install on their own machine, currently in private development. It drafts POD-chasing, payment-date, and late-payment emails with a local LLM — no per-seat SaaS fees, no metered API bills.',
     },
     {
       title: 'HwyHaul LoadLink — AI Freight Back Office',
