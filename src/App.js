@@ -244,6 +244,16 @@ const siteData = {
         'A swing-trading screener that scans OHLC price history for three classic setups — anchored-VWAP reclaim, VCP contraction, and opening-range breakout — and flags candidates instead of me eyeballing charts. A built-in backtest harness replays each setup over historical data and reports hit-rate and expectancy in R, so a pattern earns its place by the numbers or gets cut. Finance-aware, stdlib-and-pandas light, packaged with uv.',
     },
     {
+      title: 'FreightDesk AI — AR/Billing Copilot for Freight Brokers',
+      stack: 'Local LLM (Ollama) · Python · Zero API Cost',
+      image: '',
+      link: process.env.PUBLIC_URL + '/freightdesk.html',
+      linkLabel: 'See the product →',
+      privateRepo: true,
+      desc:
+        'A productized AR/billing assistant freight brokers install on their own machine: drafts POD-chasing, payment-date, and late-payment emails with a local LLM — no per-seat SaaS fees, no metered API bills. Sold as a founding-client offer with 3-day installs.',
+    },
+    {
       title: 'HwyHaul LoadLink — AI Freight Back Office',
       stack: 'FastAPI · Local LLM (Ollama) · SQLAlchemy',
       image: '',
