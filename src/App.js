@@ -208,6 +208,15 @@ const siteData = {
   ],
   projects: [
     {
+      title: 'Digital Products Store — Tools I Built, Now For Sale',
+      stack: '6 Products · $19–$999 · Zelle / PayPal · Email to Buy',
+      image: '',
+      link: process.env.PUBLIC_URL + '/store.html',
+      linkLabel: 'Browse the store →',
+      desc:
+        'A black & gold storefront for the tools I actually use: FreightDesk (AI AR/billing assistant for freight brokers), a Python automation kit, a Next.js 16 SaaS boilerplate, a swing-trade screener, a local-AI cold outreach engine, and premium landing page templates. Solo builder, real products, no fluff — every buy button is just an email to me.',
+    },
+    {
       title: 'EventReels — Your Night, Already Edited',
       stack: 'Python · ffmpeg · FastAPI · Scene + Audio Analysis',
       image: process.env.PUBLIC_URL + '/projects/eventreels.jpg',
