@@ -4,72 +4,131 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>Everything I Do — Yusuf Gadelrab</title>
-<meta name="description" content="Research, engineering, clubs, trading, and products — the full map of what Yusuf Gadelrab builds and does." />
+<meta name="description" content="Research, engineering, leadership, trading, and products — the full black-and-gold map of what Yusuf Gadelrab builds and does." />
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='20' fill='%23060606'/%3E%3Ctext x='50' y='72' font-size='62' text-anchor='middle' fill='%23d4af37' font-family='Arial' font-weight='bold'%3EY%3C/text%3E%3C/svg%3E" />
 <style>
   :root{
-    --bg:#070707; --bg2:#0d0d0d; --card:#111111; --line:#232323;
-    --gold:#d4af37; --gold2:#f0c94f; --text:#eaeaea; --muted:#9a9a9a;
+    --bg:#060606; --bg2:#0b0b0b; --card:#101010; --line:#242424;
+    --gold:#d4af37; --gold2:#f0c94f; --gold3:#fff3c4; --text:#ececec; --muted:#9c9c9c;
   }
   *{margin:0;padding:0;box-sizing:border-box}
   html{scroll-behavior:smooth}
-  body{background:var(--bg);color:var(--text);font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;line-height:1.6;overflow-x:hidden}
+  body{background:var(--bg);color:var(--text);font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;line-height:1.65;overflow-x:hidden}
   a{color:var(--gold2);text-decoration:none}
-  .grad{background:linear-gradient(100deg,var(--gold) 0%,var(--gold2) 55%,#fff3c4 100%);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
-  .wrap{max-width:1080px;margin:0 auto;padding:0 24px}
+  ::selection{background:rgba(212,175,55,.35)}
+  .wrap{max-width:1100px;margin:0 auto;padding:0 24px}
 
-  nav{position:sticky;top:0;z-index:50;background:rgba(7,7,7,.85);backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
-  nav .wrap{display:flex;align-items:center;justify-content:space-between;height:62px}
-  .logo{font-weight:800;letter-spacing:.5px;color:#fff;font-size:1.02rem}
+  /* ---------- gold shimmer text ---------- */
+  .grad{background:linear-gradient(100deg,var(--gold) 0%,var(--gold2) 40%,var(--gold3) 50%,var(--gold2) 60%,var(--gold) 100%);background-size:200% auto;-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;animation:shimmer 5s linear infinite}
+  @keyframes shimmer{to{background-position:200% center}}
+
+  /* ---------- scroll progress ---------- */
+  #progress{position:fixed;top:0;left:0;height:3px;width:0;background:linear-gradient(90deg,var(--gold),var(--gold3));z-index:100;box-shadow:0 0 12px rgba(212,175,55,.8)}
+
+  /* ---------- nav ---------- */
+  nav{position:sticky;top:0;z-index:50;background:rgba(6,6,6,.78);backdrop-filter:blur(14px);border-bottom:1px solid transparent;transition:border-color .3s,background .3s}
+  nav.scrolled{border-color:var(--line);background:rgba(6,6,6,.92)}
+  nav .wrap{display:flex;align-items:center;justify-content:space-between;height:66px;transition:height .3s}
+  nav.scrolled .wrap{height:56px}
+  .logo{font-weight:800;letter-spacing:.5px;color:#fff;font-size:1.05rem}
   .logo span{color:var(--gold2)}
   .nav-links{display:flex;gap:22px;align-items:center;font-size:.9rem}
-  .nav-links a{color:var(--muted);transition:color .2s}
+  .nav-links a{color:var(--muted);transition:color .2s;position:relative}
+  .nav-links a:not(.nav-cta)::after{content:"";position:absolute;left:0;bottom:-4px;width:0;height:1px;background:var(--gold2);transition:width .25s}
   .nav-links a:hover{color:var(--gold2)}
-  .nav-cta{background:linear-gradient(100deg,var(--gold),var(--gold2));color:#0a0a0a!important;font-weight:700;padding:8px 16px;border-radius:8px;transition:transform .15s}
-  .nav-cta:hover{transform:translateY(-1px)}
+  .nav-links a:not(.nav-cta):hover::after{width:100%}
+  .nav-cta{background:linear-gradient(100deg,var(--gold),var(--gold2));color:#0a0a0a!important;font-weight:700;padding:8px 16px;border-radius:8px;transition:transform .15s,box-shadow .15s}
+  .nav-cta:hover{transform:translateY(-1px);box-shadow:0 6px 20px rgba(212,175,55,.35)}
 
-  header{padding:96px 0 72px;text-align:center;position:relative}
-  header::before{content:"";position:absolute;inset:0;background:radial-gradient(ellipse 60% 50% at 50% 0%,rgba(212,175,55,.10),transparent 70%);pointer-events:none}
-  .eyebrow{display:inline-block;border:1px solid rgba(212,175,55,.4);color:var(--gold2);font-size:.78rem;letter-spacing:2px;text-transform:uppercase;padding:6px 14px;border-radius:999px;margin-bottom:22px}
-  h1{font-size:clamp(2.1rem,5.5vw,3.6rem);line-height:1.12;font-weight:800;color:#fff;max-width:820px;margin:0 auto 18px}
-  .sub{color:var(--muted);max-width:640px;margin:0 auto 30px;font-size:1.05rem}
-  .btn{display:inline-block;padding:13px 26px;border-radius:10px;font-weight:700;font-size:.95rem;transition:transform .15s,box-shadow .15s}
-  .btn-gold{background:linear-gradient(100deg,var(--gold),var(--gold2));color:#0a0a0a}
-  .btn-gold:hover{transform:translateY(-2px);box-shadow:0 10px 30px rgba(212,175,55,.25)}
+  /* ---------- hero ---------- */
+  header{padding:110px 0 84px;text-align:center;position:relative;overflow:hidden}
+  #stars{position:absolute;inset:0;pointer-events:none}
+  .orb{position:absolute;border-radius:50%;filter:blur(90px);opacity:.16;pointer-events:none}
+  .orb1{width:520px;height:520px;background:var(--gold);top:-220px;left:50%;transform:translateX(-50%);animation:drift1 14s ease-in-out infinite alternate}
+  .orb2{width:340px;height:340px;background:#8a6d1f;bottom:-160px;left:-120px;animation:drift2 18s ease-in-out infinite alternate}
+  .orb3{width:300px;height:300px;background:#b8912a;bottom:-140px;right:-100px;animation:drift1 16s ease-in-out infinite alternate-reverse}
+  @keyframes drift1{to{transform:translate(-46%,40px) scale(1.12)}}
+  @keyframes drift2{to{transform:translate(60px,-40px) scale(1.08)}}
+  header .wrap{position:relative;z-index:2}
+  .eyebrow{display:inline-block;border:1px solid rgba(212,175,55,.45);color:var(--gold2);font-size:.78rem;letter-spacing:2px;text-transform:uppercase;padding:6px 16px;border-radius:999px;margin-bottom:24px;background:rgba(212,175,55,.06);box-shadow:0 0 24px rgba(212,175,55,.12) inset}
+  h1{font-size:clamp(2.2rem,5.8vw,3.9rem);line-height:1.1;font-weight:800;color:#fff;max-width:860px;margin:0 auto 14px}
+  .roles{color:var(--muted);font-size:1.08rem;margin-bottom:8px;min-height:1.7em}
+  .roles b{color:var(--gold2);font-weight:700;border-right:2px solid var(--gold2);padding-right:3px;animation:caret 1s step-end infinite}
+  @keyframes caret{50%{border-color:transparent}}
+  .sub{color:var(--muted);max-width:660px;margin:0 auto 34px;font-size:1.05rem}
+  .btn{display:inline-block;padding:14px 28px;border-radius:10px;font-weight:700;font-size:.96rem;transition:transform .15s,box-shadow .15s}
+  .btn-gold{background:linear-gradient(100deg,var(--gold),var(--gold2));color:#0a0a0a;box-shadow:0 0 0 rgba(212,175,55,0);animation:breathe 3.2s ease-in-out infinite}
+  @keyframes breathe{50%{box-shadow:0 0 28px rgba(212,175,55,.35)}}
+  .btn-gold:hover{transform:translateY(-2px);box-shadow:0 12px 34px rgba(212,175,55,.4)}
   .btn-ghost{border:1px solid var(--line);color:var(--text);margin-left:10px}
-  .btn-ghost:hover{border-color:var(--gold)}
-
-  section{padding:64px 0}
-  .sec-label{color:var(--gold2);font-size:.78rem;letter-spacing:2.5px;text-transform:uppercase;margin-bottom:10px}
-  h2{font-size:clamp(1.5rem,3vw,2.1rem);color:#fff;font-weight:800;margin-bottom:28px}
-
-  .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:18px}
-  .card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:26px;transition:transform .18s,border-color .18s;position:relative}
-  .card:hover{transform:translateY(-4px);border-color:rgba(212,175,55,.5)}
-  .card .tag{font-size:.72rem;letter-spacing:1.5px;text-transform:uppercase;color:var(--gold2);margin-bottom:10px;display:block}
-  .card h3{color:#fff;font-size:1.12rem;margin-bottom:8px}
-  .card p{color:var(--muted);font-size:.92rem;margin-bottom:14px}
-  .card .go{font-size:.88rem;font-weight:700}
-  .stat-row{display:flex;flex-wrap:wrap;gap:14px;justify-content:center;margin-top:38px}
-  .stat{background:var(--bg2);border:1px solid var(--line);border-radius:12px;padding:16px 26px;text-align:center;min-width:140px}
-  .stat b{display:block;font-size:1.5rem;color:var(--gold2)}
+  .btn-ghost:hover{border-color:var(--gold);box-shadow:0 0 18px rgba(212,175,55,.15)}
+  .stat-row{display:flex;flex-wrap:wrap;gap:14px;justify-content:center;margin-top:44px}
+  .stat{background:rgba(11,11,11,.7);border:1px solid var(--line);border-radius:14px;padding:18px 28px;text-align:center;min-width:150px;backdrop-filter:blur(6px);transition:border-color .25s,transform .25s}
+  .stat:hover{border-color:rgba(212,175,55,.6);transform:translateY(-3px)}
+  .stat b{display:block;font-size:1.7rem;color:var(--gold2);font-variant-numeric:tabular-nums}
   .stat span{font-size:.8rem;color:var(--muted)}
 
-  .banner{background:linear-gradient(135deg,rgba(212,175,55,.12),rgba(212,175,55,.04));border:1px solid rgba(212,175,55,.35);border-radius:16px;padding:40px;text-align:center;margin-top:8px}
-  .banner h2{margin-bottom:10px}
-  .banner p{color:var(--muted);max-width:560px;margin:0 auto 24px}
-  .pill{display:inline-block;background:rgba(212,175,55,.15);color:var(--gold2);font-size:.78rem;font-weight:700;padding:5px 14px;border-radius:999px;margin-bottom:16px;letter-spacing:1px}
+  /* ---------- marquee ---------- */
+  .marquee{border-top:1px solid var(--line);border-bottom:1px solid var(--line);background:var(--bg2);overflow:hidden;padding:14px 0;white-space:nowrap}
+  .marquee-track{display:inline-block;animation:scroll 30s linear infinite}
+  .marquee:hover .marquee-track{animation-play-state:paused}
+  @keyframes scroll{to{transform:translateX(-50%)}}
+  .marquee span{color:var(--muted);font-size:.86rem;letter-spacing:1.5px;text-transform:uppercase;margin:0 18px}
+  .marquee i{color:var(--gold);font-style:normal;margin:0 4px}
 
-  footer{border-top:1px solid var(--line);padding:44px 0;text-align:center;color:var(--muted);font-size:.9rem}
-  footer .links{display:flex;gap:22px;justify-content:center;margin-bottom:16px;flex-wrap:wrap}
+  /* ---------- sections ---------- */
+  section{padding:84px 0;position:relative}
+  section.alt{background:var(--bg2)}
+  .divider{height:1px;max-width:1100px;margin:0 auto;background:linear-gradient(90deg,transparent,rgba(212,175,55,.5),transparent);position:relative}
+  .divider::after{content:"◆";position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);color:var(--gold);font-size:.65rem;background:var(--bg);padding:0 12px}
+  section.alt + .divider::after,.divider.on-alt::after{background:var(--bg2)}
+  .sec-label{color:var(--gold2);font-size:.78rem;letter-spacing:3px;text-transform:uppercase;margin-bottom:10px;display:flex;align-items:center;gap:12px}
+  .sec-label::before{content:"";width:34px;height:1px;background:var(--gold)}
+  h2{font-size:clamp(1.6rem,3.2vw,2.3rem);color:#fff;font-weight:800;margin-bottom:12px}
+  .sec-desc{color:var(--muted);max-width:680px;margin-bottom:36px;font-size:.98rem}
 
-  .reveal{opacity:0;transform:translateY(18px);transition:opacity .6s ease,transform .6s ease}
+  /* ---------- cards ---------- */
+  .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(310px,1fr));gap:20px}
+  .card{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:28px;position:relative;overflow:hidden;transition:transform .22s,border-color .22s,box-shadow .22s}
+  .card::before{content:"";position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,transparent,var(--gold),transparent);opacity:0;transition:opacity .25s}
+  .card:hover{transform:translateY(-6px);border-color:rgba(212,175,55,.55);box-shadow:0 18px 44px rgba(0,0,0,.55),0 0 24px rgba(212,175,55,.08)}
+  .card:hover::before{opacity:1}
+  .card .icon{font-size:1.5rem;margin-bottom:12px;display:block;filter:drop-shadow(0 0 10px rgba(212,175,55,.35))}
+  .card .tag{font-size:.72rem;letter-spacing:1.6px;text-transform:uppercase;color:var(--gold2);margin-bottom:10px;display:block}
+  .card h3{color:#fff;font-size:1.15rem;margin-bottom:10px}
+  .card p{color:var(--muted);font-size:.93rem;margin-bottom:16px}
+  .card .go{font-size:.88rem;font-weight:700;display:inline-flex;align-items:center;gap:6px;transition:gap .2s}
+  .card .go:hover{gap:10px}
+
+  /* ---------- product banner ---------- */
+  .banner{background:linear-gradient(135deg,rgba(212,175,55,.14),rgba(212,175,55,.03));border:1px solid rgba(212,175,55,.4);border-radius:20px;padding:52px 44px;text-align:center;position:relative;overflow:hidden}
+  .banner::before{content:"";position:absolute;inset:-2px;border-radius:20px;background:conic-gradient(from var(--a,0deg),transparent 70%,rgba(212,175,55,.6),transparent 80%);animation:spin 6s linear infinite;z-index:0}
+  @property --a{syntax:'<angle>';initial-value:0deg;inherits:false}
+  @keyframes spin{to{--a:360deg}}
+  .banner-inner{position:relative;z-index:1;background:linear-gradient(135deg,#100e08,#0a0a0a);border-radius:18px;padding:44px 32px;margin:2px}
+  .banner h2{margin-bottom:12px}
+  .banner p{color:var(--muted);max-width:600px;margin:0 auto 28px}
+  .pill{display:inline-block;background:rgba(212,175,55,.15);color:var(--gold2);font-size:.78rem;font-weight:700;padding:6px 16px;border-radius:999px;margin-bottom:18px;letter-spacing:1.2px;animation:breathe 3.2s ease-in-out infinite}
+
+  /* ---------- footer ---------- */
+  footer{border-top:1px solid var(--line);padding:48px 0;text-align:center;color:var(--muted);font-size:.9rem}
+  footer .links{display:flex;gap:24px;justify-content:center;margin-bottom:18px;flex-wrap:wrap}
+  footer .links a{transition:text-shadow .2s}
+  footer .links a:hover{text-shadow:0 0 14px rgba(212,175,55,.7)}
+
+  /* ---------- reveal ---------- */
+  .reveal{opacity:0;transform:translateY(22px);transition:opacity .65s ease,transform .65s ease}
   .reveal.in{opacity:1;transform:none}
-  @media(max-width:640px){.nav-links a:not(.nav-cta){display:none}.btn-ghost{margin-left:0;margin-top:10px}}
+
+  @media(max-width:640px){.nav-links a:not(.nav-cta){display:none}.btn-ghost{margin-left:0;margin-top:12px}.banner-inner{padding:32px 18px}}
+  @media(prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important}.reveal{opacity:1;transform:none}}
 </style>
 </head>
 <body>
 
-<nav>
+<div id="progress"></div>
+
+<nav id="nav">
   <div class="wrap">
     <a class="logo" href="#top">YUSUF<span>.</span></a>
     <div class="nav-links">
@@ -83,132 +142,166 @@
 </nav>
 
 <header id="top">
+  <canvas id="stars"></canvas>
+  <div class="orb orb1"></div><div class="orb orb2"></div><div class="orb orb3"></div>
   <div class="wrap">
     <span class="eyebrow reveal">San Jose, CA · CS @ SJSU · Building in public</span>
     <h1 class="reveal">Everything I do, <span class="grad">one gold map.</span></h1>
-    <p class="sub reveal">Published researcher, full-stack builder, club lead, tutor, and trader — this page is the index of all of it. Deep dives live on my personal site.</p>
+    <p class="roles reveal">I'm a <b id="role">published researcher</b></p>
+    <p class="sub reveal">Most people know me for one thing. This page is the whole picture: peer-reviewed research, AI products, quant trading systems, club leadership, and the students I teach along the way. Deep dives live on my personal site.</p>
     <div class="reveal">
       <a class="btn btn-gold" href="https://yusuf-gadelrab.github.io/">Visit my personal website →</a>
       <a class="btn btn-ghost" href="#products">See what's launching</a>
     </div>
     <div class="stat-row reveal">
-      <div class="stat"><b>2×</b><span>SIGCSE 2026 papers</span></div>
-      <div class="stat"><b>78%</b><span>NLP model accuracy</span></div>
-      <div class="stat"><b>+40%</b><span>SVEC engagement</span></div>
-      <div class="stat"><b>50+</b><span>members as Treasurer</span></div>
+      <div class="stat"><b data-count="2" data-suffix="×">0</b><span>SIGCSE 2026 papers</span></div>
+      <div class="stat"><b data-count="78" data-suffix="%">0</b><span>NLP model accuracy</span></div>
+      <div class="stat"><b data-count="40" data-prefix="+" data-suffix="%">0</b><span>SVEC engagement</span></div>
+      <div class="stat"><b data-count="50" data-suffix="+">0</b><span>members as Treasurer</span></div>
     </div>
   </div>
 </header>
 
+<div class="marquee" aria-hidden="true">
+  <div class="marquee-track" id="mtrack">
+    <span>Python <i>◆</i></span><span>Java <i>◆</i></span><span>JavaScript <i>◆</i></span><span>React <i>◆</i></span><span>Next.js <i>◆</i></span><span>SQL <i>◆</i></span><span>IBM Watson <i>◆</i></span><span>NLP <i>◆</i></span><span>LLMs &amp; RAG <i>◆</i></span><span>Quant Trading <i>◆</i></span><span>Full-Stack <i>◆</i></span><span>CS Education Research <i>◆</i></span>
+  </div>
+</div>
+
 <section id="research">
   <div class="wrap">
-    <div class="sec-label reveal">Research & AI</div>
+    <div class="sec-label reveal">01 · Research &amp; AI</div>
     <h2 class="reveal">Published work</h2>
+    <p class="sec-desc reveal">I do CS education research at the SJSU CSEd Research Lab under Dr. Ethel Tshukudu — IRB-approved, mixed-methods studies that ended up peer-reviewed and published as a sophomore. On the applied side, I build AI systems that have to survive real data, not just demos.</p>
     <div class="grid">
       <div class="card reveal">
-        <span class="tag">SIGCSE TS 2026 · Paper</span>
+        <span class="icon">📄</span>
+        <span class="tag">SIGCSE TS 2026 · Published Paper</span>
         <h3>Bilingual Coding for Inclusive CS Learning</h3>
-        <p>Co-authored mixed-methods study (60 participants, IRB) on bilingual programming for CS education. DOI: 10.1145/3770761.3777339.</p>
-        <a class="go" href="https://doi.org/10.1145/3770761.3777339">Read the paper →</a>
+        <p>Co-authored a mixed-methods study with 60 participants exploring how bilingual programming environments lower the barrier for non-native English speakers learning CS. Ran the full IRB-approved pipeline: study design, data collection, and analysis. Published in the ACM Digital Library.</p>
+        <a class="go" href="https://doi.org/10.1145/3770761.3777339">Read the paper <span>→</span></a>
       </div>
       <div class="card reveal">
+        <span class="icon">🧠</span>
         <span class="tag">SIGCSE TS 2026 · Poster</span>
         <h3>Adaptive Curriculum Maps</h3>
-        <p>Graph-augmented retrieval-oriented LLMs for education — co-authored at the SJSU CSEd Research Lab under Dr. Ethel Tshukudu.</p>
-        <a class="go" href="https://yusuf-gadelrab.github.io/">More on my site →</a>
+        <p>Graph-augmented, retrieval-oriented LLMs that map a CS curriculum as a knowledge graph and adapt learning paths per student. Second accepted SIGCSE artifact from the same lab — this one sits right at the intersection of my research and my LLM engineering work.</p>
+        <a class="go" href="https://yusuf-gadelrab.github.io/">More on my site <span>→</span></a>
       </div>
       <div class="card reveal">
-        <span class="tag">IBM SkillsBuild</span>
+        <span class="icon">📈</span>
+        <span class="tag">IBM SkillsBuild · Applied AI</span>
         <h3>NLP Equity Scoring Platform</h3>
-        <p>IBM Watson–powered sentiment engine: 78% directional accuracy across 50+ live market sources a day, cutting manual research time 60%.</p>
-        <a class="go" href="https://yusuf-gadelrab.github.io/">Case details →</a>
+        <p>An IBM Watson–powered sentiment engine that scores equities from live market news: 78% directional accuracy across 50+ sources ingested daily, cutting manual research time by 60%. Built end-to-end — ingestion, NLP pipeline, scoring model, and the dashboard on top.</p>
+        <a class="go" href="https://yusuf-gadelrab.github.io/">Case details <span>→</span></a>
       </div>
     </div>
   </div>
 </section>
 
-<section id="builds">
+<div class="divider"></div>
+
+<section id="builds" class="alt">
   <div class="wrap">
-    <div class="sec-label reveal">Engineering</div>
+    <div class="sec-label reveal">02 · Engineering</div>
     <h2 class="reveal">Things I've built</h2>
+    <p class="sec-desc reveal">Shipped software across freight logistics, video, climate, careers, and markets. The common thread: local-first AI, zero-bloat stacks, and systems that keep running after I stop watching them.</p>
     <div class="grid">
       <div class="card reveal">
-        <span class="tag">Internship · Case Study</span>
+        <span class="icon">🚚</span>
+        <span class="tag">Freight AI · Case Study</span>
         <h3>HwyHaul — AI Freight Ops</h3>
-        <p>Built AI intake, billing, and AR automation for a freight brokerage: 77 tests, 18 workflow pain points covered, 100% local models, $0 API spend.</p>
-        <a class="go" href="https://yusuf-gadelrab.github.io/hwyhaul.html">Explore the case study →</a>
+        <p>Built AI intake, billing, and accounts-receivable automation for a real freight brokerage: 77 passing tests, 18 workflow pain points automated, 100% local models, $0 API spend. The deepest production AI work I've done — full case study on the site.</p>
+        <a class="go" href="https://yusuf-gadelrab.github.io/hwyhaul.html">Explore the case study <span>→</span></a>
       </div>
       <div class="card reveal">
+        <span class="icon">🎬</span>
         <span class="tag">Startup · Video</span>
         <h3>EventReels</h3>
-        <p>Auto-editing pipeline (ffmpeg) that turns raw event footage into polished reels, with a gold-and-black web studio on top.</p>
-        <a class="go" href="https://yusuf-gadelrab.github.io/">On the portfolio →</a>
+        <p>An auto-editing pipeline built on ffmpeg that turns hours of raw event footage into polished, shareable reels — beat detection, cut selection, and branding applied automatically, with a gold-and-black web studio for review and export.</p>
+        <a class="go" href="https://yusuf-gadelrab.github.io/">On the portfolio <span>→</span></a>
       </div>
       <div class="card reveal">
+        <span class="icon">🌍</span>
         <span class="tag">Startup · Climate</span>
         <h3>EcoImpact</h3>
-        <p>Community trash map with photo verification and a live impact meter — making cleanup visible and measurable.</p>
-        <a class="go" href="https://yusuf-gadelrab.github.io/">On the portfolio →</a>
+        <p>A community trash map with photo-verified cleanups and a live impact meter. Uploads are EXIF-checked and GPS-stripped for privacy, so every point on the map is real and every contributor stays safe. Making cleanup visible, measurable, and a little competitive.</p>
+        <a class="go" href="https://yusuf-gadelrab.github.io/">On the portfolio <span>→</span></a>
       </div>
       <div class="card reveal">
-        <span class="tag">AI Tooling</span>
+        <span class="icon">🎯</span>
+        <span class="tag">AI Tooling · Careers</span>
         <h3>JobPilot</h3>
-        <p>AI job-application automation on Next.js 16 / React 19 — parsing postings, tailoring materials, and tracking pipelines end to end.</p>
-        <a class="go" href="https://github.com/Yusuf-Gadelrab">GitHub →</a>
+        <p>AI job-application automation on Next.js 16 and React 19: parses postings, tailors materials to each role, and tracks every pipeline stage. Born from applying to internships the hard way and deciding the process deserved better tooling.</p>
+        <a class="go" href="https://github.com/Yusuf-Gadelrab">GitHub <span>→</span></a>
       </div>
       <div class="card reveal">
+        <span class="icon">📊</span>
         <span class="tag">Quant · Python</span>
         <h3>Swing Trading Systems</h3>
-        <p>OHLC breakout/reversal screeners and an Alpaca-API execution bot — TA, backtests, and automated swing entries.</p>
-        <a class="go" href="https://github.com/Yusuf-Gadelrab">GitHub →</a>
+        <p>OHLC breakout and reversal screeners plus an Alpaca-API execution bot — VCP setups, anchored VWAP, backtested entries, and automated order management. Where my markets education (TA, options, market profile) turns into running code.</p>
+        <a class="go" href="https://github.com/Yusuf-Gadelrab">GitHub <span>→</span></a>
       </div>
       <div class="card reveal">
+        <span class="icon">🌐</span>
         <span class="tag">Web · Club</span>
         <h3>SVEC Website</h3>
-        <p>Built and maintain sventclub.org for the Silicon Valley Entrepreneurship Club — the club's digital front door.</p>
-        <a class="go" href="https://sventclub.org">sventclub.org →</a>
+        <p>Built and maintain sventclub.org, the digital front door for the Silicon Valley Entrepreneurship Club — events, sponsors, and member funnel. Part of the same push that grew club engagement 40% and brought in four sponsors.</p>
+        <a class="go" href="https://sventclub.org">sventclub.org <span>→</span></a>
       </div>
     </div>
   </div>
 </section>
+
+<div class="divider on-alt"></div>
 
 <section id="leadership">
   <div class="wrap">
-    <div class="sec-label reveal">Leadership & Community</div>
+    <div class="sec-label reveal">03 · Leadership &amp; Community</div>
     <h2 class="reveal">Roles I hold</h2>
+    <p class="sec-desc reveal">Code is half of it. The other half is rooms full of people: running club operations, managing a chapter's money, and teaching CS to students who remind me why I started.</p>
     <div class="grid">
       <div class="card reveal">
+        <span class="icon">🚀</span>
         <span class="tag">SVEC</span>
-        <h3>Technical Ops & Web Lead</h3>
-        <p>Silicon Valley Entrepreneurship Club — drove +40% engagement, landed 4 sponsors, grew budget 35%.</p>
+        <h3>Technical Ops &amp; Web Lead</h3>
+        <p>Run the technical side of the Silicon Valley Entrepreneurship Club — site, tooling, and event ops. Drove a 40% jump in engagement, landed 4 sponsors, and grew the budget 35% in one year.</p>
       </div>
       <div class="card reveal">
+        <span class="icon">🏛</span>
         <span class="tag">Kappa Sigma · SJSU</span>
         <h3>Board Treasurer</h3>
-        <p>Managing finances for a 50+ member chapter across 10+ events a year.</p>
+        <p>Own the finances for a 50+ member chapter: budgeting, dues, and the books behind 10+ events a year. Real money, real accountability, real spreadsheets.</p>
       </div>
       <div class="card reveal">
+        <span class="icon">🎓</span>
         <span class="tag">SJSU CS Dept</span>
-        <h3>CS Tutor & Curriculum Lead</h3>
-        <p>Tutoring with Coding Warriors and leading curriculum for CS outreach programs at Bay Area high schools.</p>
+        <h3>CS Tutor &amp; Curriculum Lead</h3>
+        <p>Tutor with Coding Warriors and lead curriculum for CS outreach programs at Bay Area high schools — the same programs my research studies, so what I learn in the lab ships to actual classrooms.</p>
       </div>
       <div class="card reveal">
+        <span class="icon">➗</span>
         <span class="tag">Mathos AI</span>
         <h3>Campus Ambassador</h3>
-        <p>Representing an AI math-learning platform on campus since early 2025.</p>
+        <p>Represent an AI math-learning platform on campus since early 2025 — running demos, gathering student feedback, and feeding it back to the product team.</p>
       </div>
     </div>
   </div>
 </section>
 
-<section id="products">
+<div class="divider"></div>
+
+<section id="products" class="alt">
   <div class="wrap">
+    <div class="sec-label reveal">04 · Products</div>
     <div class="banner reveal">
-      <span class="pill">🚀 LAUNCHING SOON — JOIN THE WAITLIST</span>
-      <h2><span class="grad">FreightDesk AI</span> — an AI back office for freight brokers</h2>
-      <p>The AR/billing automation I built in the freight industry, productized: invoice chasing, POD prep, and inbox AI that runs 100% locally. Founding-client pricing locked for the waitlist. Plus developer tools and templates dropping in the store.</p>
-      <a class="btn btn-gold" href="https://yusuf-gadelrab.github.io/freightdesk.html">Join the FreightDesk waitlist →</a>
-      <a class="btn btn-ghost" href="https://yusuf-gadelrab.github.io/store.html">Browse the store →</a>
+      <div class="banner-inner">
+        <span class="pill">🚀 LAUNCHING SOON — JOIN THE WAITLIST</span>
+        <h2><span class="grad">FreightDesk AI</span> — an AI back office for freight brokers</h2>
+        <p>The AR and billing automation I built inside the freight industry, productized: invoice chasing, POD prep, and inbox AI that runs 100% locally — no data leaves your machine. Founding-client pricing is locked for everyone on the waitlist, and developer tools and templates are dropping in the store alongside it.</p>
+        <a class="btn btn-gold" href="https://yusuf-gadelrab.github.io/freightdesk.html">Join the FreightDesk waitlist →</a>
+        <a class="btn btn-ghost" href="https://yusuf-gadelrab.github.io/store.html">Browse the store →</a>
+      </div>
     </div>
   </div>
 </section>
@@ -221,13 +314,87 @@
       <a href="https://www.linkedin.com/in/yusuf-gadelrab-76246b221">LinkedIn</a>
       <a href="mailto:yusuf.gadelrab06@gmail.com">Email</a>
     </div>
-    <div>© 2026 Yusuf Gadelrab · Black & gold, always.</div>
+    <div>© 2026 Yusuf Gadelrab · Black &amp; gold, always.</div>
   </div>
 </footer>
 
 <script>
-  const io = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } }), { threshold: .12 });
-  document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+(function(){
+  var reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  // reveal on scroll (staggered per section)
+  var io = new IntersectionObserver(function(es){
+    es.forEach(function(e){
+      if(e.isIntersecting){
+        var i = e.target.dataset.stagger || 0;
+        e.target.style.transitionDelay = (i*90)+'ms';
+        e.target.classList.add('in');
+        io.unobserve(e.target);
+      }
+    });
+  },{threshold:.12});
+  document.querySelectorAll('section, header').forEach(function(sec){
+    sec.querySelectorAll('.reveal').forEach(function(el,i){ el.dataset.stagger = i%6; io.observe(el); });
+  });
+
+  // scroll progress + nav condense
+  var bar = document.getElementById('progress'), nav = document.getElementById('nav');
+  addEventListener('scroll', function(){
+    var h = document.documentElement;
+    bar.style.width = (h.scrollTop/(h.scrollHeight-h.clientHeight)*100)+'%';
+    nav.classList.toggle('scrolled', h.scrollTop > 40);
+  }, {passive:true});
+
+  // count-up stats
+  var cio = new IntersectionObserver(function(es){
+    es.forEach(function(e){
+      if(!e.isIntersecting) return;
+      var el = e.target, end = +el.dataset.count, pre = el.dataset.prefix||'', suf = el.dataset.suffix||'', t0 = null;
+      function step(t){
+        if(!t0) t0 = t;
+        var p = Math.min((t-t0)/1200, 1); p = 1-Math.pow(1-p,3);
+        el.textContent = pre + Math.round(end*p) + suf;
+        if(p<1) requestAnimationFrame(step);
+      }
+      reduced ? el.textContent = pre+end+suf : requestAnimationFrame(step);
+      cio.unobserve(el);
+    });
+  },{threshold:.6});
+  document.querySelectorAll('[data-count]').forEach(function(el){ cio.observe(el); });
+
+  // rotating role
+  var roles = ['published researcher','full-stack builder','quant trading nerd','club lead','CS tutor'];
+  var rEl = document.getElementById('role'), ri = 0;
+  if(!reduced) setInterval(function(){
+    ri = (ri+1)%roles.length;
+    rEl.style.opacity = 0;
+    setTimeout(function(){ rEl.textContent = roles[ri]; rEl.style.opacity = 1; }, 250);
+  }, 2600);
+  rEl.style.transition = 'opacity .25s';
+
+  // duplicate marquee content for seamless loop
+  var mt = document.getElementById('mtrack');
+  mt.innerHTML += mt.innerHTML;
+
+  // gold particle field in hero
+  var cv = document.getElementById('stars'), ctx = cv.getContext('2d'), ps = [];
+  function size(){ cv.width = cv.offsetWidth; cv.height = cv.offsetHeight; }
+  size(); addEventListener('resize', size);
+  for(var i=0;i<70;i++) ps.push({x:Math.random(),y:Math.random(),r:Math.random()*1.6+.4,s:Math.random()*.25+.05,o:Math.random()*.6+.2,ph:Math.random()*6.28});
+  function draw(t){
+    ctx.clearRect(0,0,cv.width,cv.height);
+    ps.forEach(function(p){
+      var tw = .5+.5*Math.sin(t/900+p.ph);
+      ctx.beginPath();
+      ctx.arc(p.x*cv.width, p.y*cv.height, p.r, 0, 6.28);
+      ctx.fillStyle = 'rgba(212,175,55,'+(p.o*tw)+')';
+      ctx.fill();
+      p.y -= p.s/1000; if(p.y < -0.02) p.y = 1.02;
+    });
+    requestAnimationFrame(draw);
+  }
+  if(!reduced) requestAnimationFrame(draw);
+})();
 </script>
 
 </body>
