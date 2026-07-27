@@ -455,10 +455,7 @@ const StyleTag = () => (
 
     .yg-eyebrow{display:inline-flex;align-items:center;gap:10px;color:var(--gold);font-size:13px;letter-spacing:3px;text-transform:uppercase;margin-bottom:18px;}
     .yg-eyebrow::before{content:'';width:26px;height:1px;background:var(--gold);display:inline-block;}
-    .yg-h1{font-family:'Fraunces',serif;font-weight:700;font-size:clamp(38px,6vw,68px);line-height:1.04;letter-spacing:-0.5px;
-      background:linear-gradient(100deg,var(--ivory) 30%,var(--gold-bright) 50%,var(--ivory) 70%);
-      background-size:200% auto;-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;
-      animation:sheen 7s ease-in-out infinite;}
+    .yg-h1{font-family:'Fraunces',serif;font-weight:700;font-size:clamp(38px,6vw,68px);line-height:1.04;letter-spacing:-0.5px;color:var(--ivory);}
     @keyframes sheen{0%,100%{background-position:0% center;}50%{background-position:160% center;}}
     .yg-h2{font-family:'Fraunces',serif;font-weight:600;font-size:clamp(28px,4vw,40px);margin-bottom:8px;}
     .yg-h3{font-family:'Fraunces',serif;font-weight:600;font-size:22px;}
