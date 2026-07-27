@@ -16,8 +16,8 @@ Every editable field lives inside an `<!-- ===== EDIT BELOW ===== -->` comment b
 | `Cascade Freight Brokers` | Your client's company name (appears in cover, footers, sig block) |
 | `Marcus Reyes, Director of Operations` | Your client contact's name & title |
 | `FreightDesk AI` / `Back-Office Automation Pilot` | Your project/product name |
-| `Yusuf Gadelrab` / `Automation Studio` | Your name / studio name |
-| `yusuf.gadelrab06@gmail.com`, `(669) 328-1148`, `yusuf-gadelrab.github.io/store.html` | Your contact details |
+| `Devin Marsh` / `Halloway Studio` | Your name / studio name |
+| `hello@hallowaystudio.com`, `(503) 555-0182`, `hallowaystudio.com` | Your contact details |
 | `July 31, 2026` | Proposal date |
 | `CFB-2026-0731` / `CFB-2026-0731-SOW` | Your proposal/SOW numbering scheme |
 | `Aug 4, 2026` … `Oct 19, 2026` | Every phase/milestone date — keep them chronologically consistent |
