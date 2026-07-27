@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Rate Confirmation — {{LOAD_NUMBER}}</title>
+<!-- SAMPLE CONTENT: Ridgeline Freight Partners (broker) tendering to Copper State Carriers, LLC. See README.md for the exact strings to find-and-replace. -->
+<style>
+:root{
+  --bg:#0a0a0b; --bg2:#111114; --panel:#141417; --panel2:#191920;
+  --gold:#d4af37; --gold-2:#f4d47a; --gold-dim:#8a7328;
+  --ink:#f5f2e8; --muted:#a39f94;
+  --line:rgba(212,175,55,.16); --glow:rgba(212,175,55,.35);
+  --paper:#fbfaf7; --paper-ink:#14140f; --paper-muted:#6b675c; --paper-line:rgba(20,20,15,.12);
+}
+*{box-sizing:border-box;}
+html,body{-webkit-print-color-adjust:exact;print-color-adjust:exact;}
+body{ margin:0; background:#e9e7e1; color:var(--paper-ink); font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Inter,system-ui,sans-serif; line-height:1.55; font-size:12.5px; }
+@page{ size:letter portrait; margin:0; }
+.page{ width:8.5in; min-height:11in; margin:24px auto; background:var(--paper); padding:52px 56px 74px; position:relative; box-shadow:0 8px 40px rgba(0,0,0,.18); }
+@media print{ body{ background:none; } .page{ margin:0; box-shadow:none; width:auto; min-height:auto; } }
+
+h1,h2,h3{ font-family:Georgia,"Times New Roman",serif; margin:0; }
+.gold-text{ background:linear-gradient(120deg,var(--gold-2),var(--gold) 40%,#c99b1e); -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text; }
+.eyebrow{ font-size:10.5px; letter-spacing:2px; text-transform:uppercase; color:var(--gold-dim); font-weight:700; }
+.hairline{ border:none; border-top:1px solid var(--paper-line); }
+
+.letterhead{ display:flex; justify-content:space-between; align-items:flex-start; margin-bottom:18px; }
+.mono{ width:28px; height:28px; flex:none; }
+.brand-block{ display:flex; gap:12px; align-items:center; }
+.brand-name{ font-family:Georgia,serif; font-size:19px; letter-spacing:-.3px; }
+.brand-sub{ font-size:10.5px; color:var(--paper-muted); margin-top:2px; }
+.doc-tag{ text-align:right; }
+.doc-tag h1{ font-size:26px; letter-spacing:-.5px; }
+hr.top-rule{ height:2px; border:none; background:linear-gradient(90deg,var(--gold-2),var(--gold),var(--gold-dim)); margin:0 0 22px; }
+
+.meta-bar{ display:grid; grid-template-columns:repeat(4,1fr); gap:14px; margin-bottom:22px; border:1px solid var(--paper-line); border-radius:8px; padding:12px 16px; }
+.meta-bar .cell .lbl{ font-size:9.5px; letter-spacing:1.5px; text-transform:uppercase; color:var(--gold-dim); font-weight:700; margin-bottom:2px; }
+.meta-bar .cell .val{ font-size:13.5px; font-weight:700; }
+
+.parties{ display:grid; grid-template-columns:1fr 1fr; gap:22px; margin-bottom:20px; }
+.party{ border:1px solid var(--paper-line); border-radius:8px; padding:14px 16px; break-inside:avoid; }
+.party h3{ font-size:10px; letter-spacing:2px; text-transform:uppercase; color:var(--gold-dim); margin-bottom:6px; font-weight:700; font-family:-apple-system,sans-serif; }
+.party p{ margin:0 0 2px; font-size:12px; }
+.party .name{ font-weight:700; font-size:13px; }
+
+.stops{ margin-bottom:20px; }
+.stop{ display:grid; grid-template-columns:70px 1fr; gap:12px; border:1px solid var(--paper-line); border-radius:8px; padding:12px 16px; margin-bottom:10px; break-inside:avoid; }
+.stop .tag{ font-size:10px; letter-spacing:1.5px; text-transform:uppercase; font-weight:700; color:var(--gold-dim); }
+.stop .addr{ font-weight:700; font-size:13px; }
+.stop .sub{ font-size:11.5px; color:var(--paper-muted); margin-top:2px; }
+.stop .window{ font-size:11.5px; margin-top:4px; }
+.stop .window .lbl{ color:var(--paper-muted); }
+
+.two-col{ display:grid; grid-template-columns:1fr 1fr; gap:22px; margin-bottom:20px; }
+
+table.rate{ width:100%; border-collapse:collapse; }
+table.rate td{ padding:8px 6px; font-size:12.5px; border-bottom:1px solid var(--paper-line); }
+table.rate td.num{ text-align:right; font-variant-numeric:tabular-nums; }
+table.rate tr.total td{ border-top:1.5px solid var(--gold); border-bottom:none; font-family:Georgia,serif; font-size:16px; font-weight:700; padding-top:12px; }
+
+.card{ border:1px solid var(--paper-line); border-radius:8px; padding:14px 16px; break-inside:avoid; }
+.card h3{ font-size:10px; letter-spacing:2px; text-transform:uppercase; color:var(--gold-dim); margin-bottom:8px; font-family:-apple-system,sans-serif; font-weight:700; }
+.card ul{ margin:0; padding-left:16px; }
+.card li{ font-size:11.5px; margin-bottom:4px; }
+
+.obligations{ border:1px solid var(--paper-line); border-radius:8px; padding:14px 16px; margin-bottom:20px; break-inside:avoid; }
+.obligations h3{ font-size:10px; letter-spacing:2px; text-transform:uppercase; color:var(--gold-dim); margin-bottom:8px; font-family:-apple-system,sans-serif; font-weight:700; }
+.obligations ol{ margin:0; padding-left:18px; }
+.obligations li{ font-size:11.5px; margin-bottom:5px; }
+
+.sig-grid{ display:grid; grid-template-columns:1fr 1fr; gap:36px; margin-top:22px; }
+.sig-line{ border-bottom:1px solid var(--paper-ink); height:38px; margin-bottom:6px; }
+.sig-label{ font-size:10.5px; color:var(--paper-muted); }
+
+.footer{ position:absolute; left:56px; right:56px; bottom:34px; display:flex; justify-content:space-between; align-items:center; padding-top:10px; border-top:1px solid var(--paper-line); font-size:10px; color:var(--paper-muted); letter-spacing:.3px; }
+.footer .pg{ color:var(--gold-dim); font-weight:700; }
+</style>
+</head>
+<body>
+
+<div class="page">
+  <!-- ===== EDIT BELOW: letterhead ===== -->
+  <div class="letterhead">
+    <div class="brand-block">
+      <svg class="mono" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M16 1 L31 16 L16 31 L1 16 Z" stroke="#d4af37" stroke-width="1.4"/>
+        <path d="M16 9 L23 16 L16 23 L9 16 Z" stroke="#d4af37" stroke-width="1.4"/>
+      </svg>
+      <div>
+        <div class="brand-name">Ridgeline Freight Partners</div>
+        <div class="brand-sub">Licensed Property Broker · MC-702841 · DOT-3388120</div>
+      </div>
+    </div>
+    <div class="doc-tag">
+      <h1><span class="gold-text">Rate Confirmation</span></h1>
+      <div class="brand-sub" style="margin-top:6px;">4400 Newport Ave, Suite 220, San Jose, CA 95118<br>dispatch@ridgelinefreight.com · (408) 555-0173</div>
+    </div>
+  </div>
+  <hr class="top-rule">
+
+  <div class="meta-bar">
+    <div class="cell"><div class="lbl">Load #</div><div class="val">RFP-58231</div></div>
+    <div class="cell"><div class="lbl">Booked</div><div class="val">Jul 24, 2026</div></div>
+    <div class="cell"><div class="lbl">Equipment</div><div class="val">53' Reefer</div></div>
+    <div class="cell"><div class="lbl">Mode</div><div class="val">Full / Solo</div></div>
+  </div>
+
+  <!-- ===== EDIT BELOW: parties ===== -->
+  <div class="parties">
+    <div class="party">
+      <h3>Broker</h3>
+      <p class="name">Ridgeline Freight Partners</p>
+      <p>4400 Newport Ave, Suite 220, San Jose, CA 95118</p>
+      <p>Dispatch: Elena Marsh · (408) 555-0173</p>
+      <p>dispatch@ridgelinefreight.com</p>
+    </div>
+    <div class="party">
+      <h3>Carrier</h3>
+      <p class="name">Copper State Carriers, LLC</p>
+      <p>MC-887210 · DOT-2203871</p>
+      <p>Driver: Marcus Webb · Truck #114 · Cell (623) 555-0142</p>
+      <p>Dispatcher: Renata Ford · ap@copperstatecarriers.com</p>
+    </div>
+  </div>
+
+  <!-- ===== EDIT BELOW: stops ===== -->
+  <div class="stops">
+    <div class="stop">
+      <div class="tag">Pickup</div>
+      <div>
+        <div class="addr">Valley Fresh Produce Co. — 2140 S Chestnut Ave, Fresno, CA 93706</div>
+        <div class="sub">Shipper ref #VF-40092 · Dock 6 · Reefer pre-cooled to 34°F</div>
+        <div class="window"><span class="lbl">Appointment window:</span> Tue, Jul 28, 2026 · 6:00 AM – 8:00 AM PT</div>
+      </div>
+    </div>
+    <div class="stop">
+      <div class="tag">Delivery</div>
+      <div>
+        <div class="addr">Midwest Grocery Distribution — 5510 Groveport Rd, Columbus, OH 43125</div>
+        <div class="sub">Consignee ref #MG-118824 · Dock 12 · Live unload, appt required</div>
+        <div class="window"><span class="lbl">Appointment window:</span> Fri, Jul 31, 2026 · 9:00 AM – 11:00 AM ET</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="two-col">
+    <div>
+      <table class="rate">
+        <tr><td>Linehaul</td><td class="num">$2,950.00</td></tr>
+        <tr><td>Fuel Surcharge</td><td class="num">$310.00</td></tr>
+        <tr><td>Lumper Accessorial (reimbursable w/ receipt)</td><td class="num">$75.00</td></tr>
+        <tr class="total"><td>Total Rate</td><td class="num gold-text">$3,335.00</td></tr>
+      </table>
+    </div>
+    <div class="card">
+      <h3>Payment Terms</h3>
+      <ul>
+        <li>Standard: Net 30 from receipt of clean paperwork</li>
+        <li>QuickPay: 2% fee, funded within 24 hrs of docs</li>
+        <li>Payable to Copper State Carriers, LLC only — no factoring override without NOA on file</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="card" style="margin-bottom:20px;">
+    <h3>Required Documents (submit within 24 hrs of delivery)</h3>
+    <ul>
+      <li>Signed, legible Bill of Lading with pickup and delivery time-stamps</li>
+      <li>Signed Proof of Delivery (POD) with consignee printed name</li>
+      <li>Original lumper/detention receipts, if applicable</li>
+      <li>This Rate Confirmation, signed by carrier, returned before dispatch</li>
+    </ul>
+  </div>
+
+  <!-- ===== EDIT BELOW: carrier obligations ===== -->
+  <div class="obligations">
+    <h3>Carrier Obligations</h3>
+    <ol>
+      <li>Carrier confirms possession of valid operating authority, cargo insurance ($100,000 min), and auto liability ($1,000,000 min) covering this shipment for its full duration.</li>
+      <li>No re-brokering, interlining, or double-brokering of this load without Broker's prior written consent. Violation voids payment and may be reported to FMCSA.</li>
+      <li>Carrier will notify Dispatch immediately of any delay, breakdown, temperature deviation, or appointment risk.</li>
+      <li>Detention accrues after 2 free hours at each stop, billed at $50/hr, capped at $400/stop — must be noted on the BOL and supported by time-stamps to be paid.</li>
+      <li>Rate is void if not signed and returned prior to pickup, or if load is not covered by the carrier named above.</li>
+    </ol>
+  </div>
+
+  <div class="sig-grid">
+    <div>
+      <div class="sig-line"></div>
+      <div class="sig-label">Carrier Signature &amp; Date — confirms acceptance of rate and terms above</div>
+    </div>
+    <div>
+      <div class="sig-line"></div>
+      <div class="sig-label">Broker Signature &amp; Date — Elena Marsh, Ridgeline Freight Partners</div>
+    </div>
+  </div>
+
+  <div class="footer">
+    <span>Ridgeline Freight Partners · CONFIDENTIAL</span>
+    <span class="pg">Page 1 of 1</span>
+  </div>
+</div>
+
+</body>
+</html>

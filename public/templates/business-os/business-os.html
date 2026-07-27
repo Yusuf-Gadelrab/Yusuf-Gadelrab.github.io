@@ -1,0 +1,1213 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Business OS — Freelance Command Center</title>
+<style>
+:root{
+  --bg:#0a0a0b; --bg2:#111114; --panel:#141417; --panel2:#191920;
+  --gold:#d4af37; --gold-2:#f4d47a; --gold-dim:#8a7328;
+  --ink:#f5f2e8; --muted:#a39f94;
+  --line:rgba(212,175,55,.16); --glow:rgba(212,175,55,.35);
+  --paper:#fbfaf7; --paper-ink:#14140f; --paper-muted:#6b675c; --paper-line:rgba(20,20,15,.12);
+  --good:#7fbf6a; --bad:#d46a4f; --warn:#e0b64a;
+}
+*{box-sizing:border-box;}
+html,body{-webkit-print-color-adjust:exact; print-color-adjust:exact;}
+body{
+  margin:0; background:var(--bg); color:var(--ink);
+  font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Inter,system-ui,sans-serif;
+  line-height:1.6;
+  background-image:radial-gradient(ellipse at top right, rgba(212,175,55,.06), transparent 60%),
+                    radial-gradient(ellipse at bottom left, rgba(212,175,55,.04), transparent 60%);
+  background-attachment:fixed;
+  min-height:100vh;
+}
+@media (prefers-reduced-motion: no-preference){
+  .panel{transition:opacity .15s ease;}
+  button, .tab, .card{transition:border-color .15s ease, background .15s ease, transform .1s ease;}
+}
+h1,h2,h3{font-family:Georgia,"Times New Roman",serif; letter-spacing:-.5px; margin:0 0 4px;}
+.eyebrow{font-size:11px; letter-spacing:2px; text-transform:uppercase; color:var(--gold-2); font-weight:600;}
+.gold-text{background:linear-gradient(120deg,var(--gold-2),var(--gold) 40%,#c99b1e); -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text;}
+a{color:var(--gold-2);}
+button{
+  font:inherit; cursor:pointer; color:var(--ink); background:var(--panel2);
+  border:1px solid var(--line); border-radius:6px; padding:8px 14px;
+}
+button:hover{border-color:var(--gold-dim);}
+button:focus-visible, input:focus-visible, select:focus-visible, [tabindex]:focus-visible{
+  outline:2px solid var(--gold); outline-offset:2px;
+}
+button.primary{background:linear-gradient(135deg,var(--gold-2),var(--gold-dim)); color:#141310; border:none; font-weight:600;}
+button.primary:hover{filter:brightness(1.08);}
+button.ghost{background:transparent;}
+button.danger{border-color:rgba(212,106,79,.5); color:#e8a591;}
+button.small{padding:4px 10px; font-size:12.5px;}
+input,select,textarea{
+  font:inherit; background:var(--bg2); color:var(--ink); border:1px solid var(--line);
+  border-radius:6px; padding:8px 10px; width:100%;
+}
+input[type=checkbox]{width:16px; height:16px; accent-color:var(--gold);}
+input[type=range]{accent-color:var(--gold);}
+label{font-size:12.5px; color:var(--muted); display:block; margin-bottom:4px;}
+.field{margin-bottom:12px;}
+.hairline{border:none; border-top:1px solid var(--line); margin:20px 0;}
+
+/* shell */
+.shell{max-width:1180px; margin:0 auto; padding:32px 24px 80px;}
+.topbar{display:flex; align-items:center; justify-content:space-between; gap:16px; flex-wrap:wrap; margin-bottom:28px;}
+.brand{display:flex; align-items:center; gap:12px;}
+.mark{width:30px; height:30px; flex:none;}
+.brand-name{font-family:Georgia,serif; font-size:20px; letter-spacing:-.3px;}
+.brand-sub{font-size:11px; letter-spacing:2px; text-transform:uppercase; color:var(--muted);}
+.topbar-actions{display:flex; gap:8px; flex-wrap:wrap;}
+
+.tabs{display:flex; gap:4px; flex-wrap:wrap; border-bottom:1px solid var(--line); margin-bottom:24px; padding-bottom:0;}
+.tab{background:transparent; border:1px solid transparent; border-bottom:none; border-radius:8px 8px 0 0; padding:10px 16px; color:var(--muted); font-size:14px;}
+.tab[aria-selected="true"]{color:var(--gold-2); border-color:var(--line); background:var(--panel); font-weight:600;}
+.tab:hover{color:var(--ink);}
+
+.panel{display:none;}
+.panel.active{display:block;}
+
+.card{background:var(--panel); border:1px solid var(--line); border-radius:10px; padding:20px; break-inside:avoid;}
+.card + .card{margin-top:16px;}
+.grid{display:grid; gap:16px;}
+.grid.kpis{grid-template-columns:repeat(auto-fit,minmax(200px,1fr)); margin-bottom:20px;}
+.kpi-tile{background:var(--panel); border:1px solid var(--line); border-radius:10px; padding:18px 20px; position:relative; overflow:hidden;}
+.kpi-tile::after{content:""; position:absolute; top:-30%; right:-20%; width:120px; height:120px; background:radial-gradient(circle, var(--glow), transparent 70%); opacity:.15; pointer-events:none;}
+.kpi-num{font-family:Georgia,serif; font-size:clamp(26px,3.4vw,38px); font-weight:700;}
+.kpi-label{font-size:11px; letter-spacing:1.5px; text-transform:uppercase; color:var(--muted); margin-top:6px;}
+
+/* chart */
+.chart-wrap{display:flex; align-items:flex-end; gap:6px; height:160px; padding:10px 6px 0; border-bottom:1px solid var(--line);}
+.bar-col{flex:1; display:flex; flex-direction:column; align-items:center; justify-content:flex-end; height:100%; gap:6px; min-width:0;}
+.bar{width:100%; max-width:26px; background:linear-gradient(180deg,var(--gold-2),var(--gold-dim)); border-radius:3px 3px 0 0; min-height:2px;}
+.bar-month{font-size:10px; color:var(--muted); white-space:nowrap;}
+.bar-val{font-size:9.5px; color:var(--gold-2);}
+
+.attn-list{list-style:none; margin:0; padding:0; display:flex; flex-direction:column; gap:8px;}
+.attn-item{display:flex; justify-content:space-between; gap:12px; padding:10px 12px; background:var(--bg2); border:1px solid var(--line); border-radius:8px; font-size:13.5px;}
+.tag{font-size:10.5px; letter-spacing:1px; text-transform:uppercase; padding:2px 8px; border-radius:20px; border:1px solid var(--line); white-space:nowrap;}
+.tag.bad{color:#e8a591; border-color:rgba(212,106,79,.5);}
+.tag.warn{color:var(--warn); border-color:rgba(224,182,74,.4);}
+.tag.good{color:var(--good); border-color:rgba(127,191,106,.4);}
+.tag.muted{color:var(--muted);}
+
+/* table */
+table{width:100%; border-collapse:collapse; font-size:13.5px;}
+th{text-align:left; font-size:10.5px; letter-spacing:1.5px; text-transform:uppercase; color:var(--muted); padding:8px 10px; border-bottom:1px solid var(--line); cursor:pointer; user-select:none; white-space:nowrap;}
+th.sortable:hover{color:var(--gold-2);}
+td{padding:10px; border-bottom:1px solid var(--line); vertical-align:middle;}
+tr:last-child td{border-bottom:none;}
+tr.total-row td{border-top:1px solid var(--gold-dim); font-weight:700; color:var(--gold-2);}
+.row-actions{display:flex; gap:6px; justify-content:flex-end;}
+.toolbar{display:flex; gap:10px; align-items:center; flex-wrap:wrap; margin-bottom:14px; justify-content:space-between;}
+.toolbar-left{display:flex; gap:10px; flex-wrap:wrap; align-items:center;}
+
+.form-card{background:var(--bg2); border:1px dashed var(--line); border-radius:10px; padding:16px; margin-bottom:16px; display:none;}
+.form-card.open{display:block;}
+.form-grid{display:grid; grid-template-columns:repeat(auto-fit,minmax(160px,1fr)); gap:12px;}
+.form-actions{display:flex; gap:8px; margin-top:12px;}
+
+/* kanban */
+.kanban{display:grid; grid-template-columns:repeat(4,1fr); gap:12px; overflow-x:auto;}
+.kcol{background:var(--bg2); border:1px solid var(--line); border-radius:10px; padding:10px; min-height:120px;}
+.kcol-head{display:flex; justify-content:space-between; align-items:baseline; margin-bottom:10px; padding:0 4px;}
+.kcol-title{font-size:11px; letter-spacing:1.5px; text-transform:uppercase; color:var(--gold-2);}
+.kcol-total{font-size:11px; color:var(--muted);}
+.kcard{background:var(--panel); border:1px solid var(--line); border-radius:8px; padding:10px; margin-bottom:8px;}
+.kcard-name{font-weight:600; font-size:13px;}
+.kcard-client{font-size:11.5px; color:var(--muted); margin:2px 0 6px;}
+.kcard-val{font-size:13px; color:var(--gold-2); margin-bottom:8px;}
+.kcard-actions{display:flex; gap:6px; flex-wrap:wrap;}
+
+/* progress meter (projects) */
+.meter{background:var(--bg); border:1px solid var(--line); border-radius:20px; height:10px; overflow:hidden; flex:1;}
+.meter-fill{height:100%; background:linear-gradient(90deg,var(--gold-dim),var(--gold-2));}
+.meter-row{display:flex; align-items:center; gap:10px;}
+
+/* progress ring */
+.ring-wrap{display:flex; align-items:center; gap:24px; flex-wrap:wrap;}
+.ring-num{font-family:Georgia,serif; font-size:22px; fill:var(--gold-2);}
+
+.empty{color:var(--muted); font-size:13.5px; padding:20px; text-align:center; border:1px dashed var(--line); border-radius:8px;}
+
+.confirm-inline{display:inline-flex; gap:6px; align-items:center; background:var(--bg2); border:1px solid rgba(212,106,79,.5); border-radius:6px; padding:4px 6px;}
+.confirm-inline span{font-size:12px; color:#e8a591;}
+
+.habit-list{list-style:none; margin:0; padding:0; display:flex; flex-direction:column; gap:8px;}
+.habit-item{display:flex; align-items:center; gap:10px; padding:8px 10px; background:var(--bg2); border:1px solid var(--line); border-radius:8px;}
+.habit-item.done label{color:var(--muted); text-decoration:line-through;}
+.habit-item label{margin:0; color:var(--ink); font-size:13.5px; flex:1;}
+
+.footer-note{margin-top:40px; padding-top:16px; border-top:1px solid var(--line); font-size:11.5px; color:var(--muted); display:flex; justify-content:space-between; flex-wrap:wrap; gap:8px;}
+
+.toast{position:fixed; bottom:20px; right:20px; background:var(--panel); border:1px solid var(--gold-dim); color:var(--ink); padding:10px 16px; border-radius:8px; font-size:13px; box-shadow:0 8px 24px rgba(0,0,0,.4); opacity:0; transform:translateY(8px); pointer-events:none; z-index:50;}
+@media (prefers-reduced-motion: no-preference){.toast{transition:opacity .2s ease, transform .2s ease;}}
+.toast.show{opacity:1; transform:translateY(0);}
+
+.sr-only{position:absolute; width:1px; height:1px; overflow:hidden; clip:rect(0,0,0,0); white-space:nowrap;}
+.billable-yes{color:var(--good);}
+.billable-no{color:var(--muted);}
+
+@media (max-width:720px){
+  .kanban{grid-template-columns:1fr;}
+  table{font-size:12.5px;}
+  th,td{padding:8px 6px;}
+}
+</style>
+</head>
+<body>
+<div class="shell">
+
+  <header class="topbar">
+    <div class="brand">
+      <svg class="mark" viewBox="0 0 28 28" aria-hidden="true"><rect x="1" y="1" width="26" height="26" rx="4" fill="none" stroke="#d4af37" stroke-width="1.2"/><path d="M14 5 L21 14 L14 23 L7 14 Z" fill="none" stroke="#f4d47a" stroke-width="1.2"/></svg>
+      <div>
+        <div class="brand-name gold-text">Business OS</div>
+        <div class="brand-sub">Freelance Command Center</div>
+      </div>
+    </div>
+    <div class="topbar-actions">
+      <button class="ghost small" id="btn-export-json" type="button">Export JSON</button>
+      <label class="ghost small" style="display:inline-flex;align-items:center;padding:4px 10px;border:1px solid var(--line);border-radius:6px;cursor:pointer;margin:0;">
+        Import JSON
+        <input type="file" id="input-import-json" accept="application/json" style="display:none;">
+      </label>
+      <button class="ghost small" id="btn-export-csv" type="button">Export Invoices CSV</button>
+      <span id="reset-zone"></span>
+    </div>
+  </header>
+
+  <nav class="tabs" role="tablist" aria-label="Business OS sections">
+    <button class="tab" role="tab" data-tab="dashboard" aria-selected="true">Dashboard</button>
+    <button class="tab" role="tab" data-tab="clients" aria-selected="false">Clients</button>
+    <button class="tab" role="tab" data-tab="pipeline" aria-selected="false">Pipeline</button>
+    <button class="tab" role="tab" data-tab="projects" aria-selected="false">Projects</button>
+    <button class="tab" role="tab" data-tab="invoices" aria-selected="false">Invoices</button>
+    <button class="tab" role="tab" data-tab="timelog" aria-selected="false">Time Log</button>
+    <button class="tab" role="tab" data-tab="goals" aria-selected="false">Goals</button>
+  </nav>
+
+  <main id="panels"></main>
+
+  <div class="footer-note">
+    <span>Your Business · CONFIDENTIAL · data stored only in this browser</span>
+    <span>Business OS by Yusuf Gadelrab</span>
+  </div>
+</div>
+
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+<script>
+(function(){
+"use strict";
+
+var STORAGE_KEY = "midnightGold_businessOS_v1";
+var SCHEMA_VERSION = 1;
+var STAGES = ["lead","proposal","negotiation","won"];
+var STAGE_LABEL = {lead:"Lead", proposal:"Proposal", negotiation:"Negotiation", won:"Won", lost:"Lost"};
+var STAGE_WEIGHT = {lead:0.1, proposal:0.4, negotiation:0.7, won:1, lost:0};
+var CLIENT_STATUSES = ["lead","proposal sent","active","dormant"];
+var INVOICE_STATUSES = ["draft","sent","paid"];
+var MONTHS = ["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"];
+
+function uid(){ return "id_" + Date.now().toString(36) + "_" + Math.random().toString(36).slice(2,9); }
+function escapeHtml(str){
+  return String(str==null?"":str).replace(/[&<>"']/g, function(c){
+    return {"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c];
+  });
+}
+function fmtMoney(n){
+  n = Number(n)||0;
+  return "$" + n.toLocaleString("en-US", {minimumFractionDigits:2, maximumFractionDigits:2});
+}
+function fmtMoneyShort(n){
+  n = Number(n)||0;
+  if (Math.abs(n) >= 1000) return "$" + (n/1000).toFixed(1).replace(/\.0$/,"") + "k";
+  return "$" + Math.round(n);
+}
+function fmtDate(iso){
+  if(!iso) return "—";
+  var d = new Date(iso + "T00:00:00");
+  if (isNaN(d.getTime())) return "—";
+  return d.toLocaleDateString("en-US", {month:"short", day:"numeric", year:"numeric"});
+}
+function todayISO(){
+  var d = new Date();
+  return d.getFullYear() + "-" + String(d.getMonth()+1).padStart(2,"0") + "-" + String(d.getDate()).padStart(2,"0");
+}
+function monthKey(iso){ return iso ? iso.slice(0,7) : ""; }
+function daysAgo(iso){
+  if(!iso) return Infinity;
+  var d = new Date(iso + "T00:00:00");
+  return Math.floor((Date.now() - d.getTime()) / 86400000);
+}
+function isPast(iso){
+  if(!iso) return false;
+  return iso < todayISO();
+}
+function clientName(id, state){
+  var c = state.clients.find(function(x){ return x.id === id; });
+  return c ? c.name : "(no client)";
+}
+function toast(msg){
+  var t = document.getElementById("toast");
+  t.textContent = msg;
+  t.classList.add("show");
+  clearTimeout(toast._t);
+  toast._t = setTimeout(function(){ t.classList.remove("show"); }, 2200);
+}
+
+/* ---------- demo data ---------- */
+function demoState(){
+  var today = new Date();
+  function isoOffset(days){
+    var d = new Date(today.getTime() + days*86400000);
+    return d.getFullYear() + "-" + String(d.getMonth()+1).padStart(2,"0") + "-" + String(d.getDate()).padStart(2,"0");
+  }
+  function isoMonthsAgo(months, day){
+    var d = new Date(today.getFullYear(), today.getMonth()-months, day||15);
+    return d.getFullYear() + "-" + String(d.getMonth()+1).padStart(2,"0") + "-" + String(d.getDate()).padStart(2,"0");
+  }
+
+  var clients = [
+    {id:"c1", name:"Harborline Logistics", contact:"dana@harborline.co", status:"active", value:14000, nextAction:"Send Q3 scope update", notes:"Long-term retainer, monthly ops dashboard.", lastActivity:isoOffset(-2)},
+    {id:"c2", name:"Ferrow & Vance Law", contact:"m.vance@ferrowlaw.com", status:"proposal sent", value:8500, nextAction:"Follow up on contract redline", notes:"Website rebuild + intake automation.", lastActivity:isoOffset(-6)},
+    {id:"c3", name:"Cobalt Peak Coffee", contact:"jules@cobaltpeak.coffee", status:"lead", value:3200, nextAction:"Schedule discovery call", notes:"Referral from Harborline. Wants POS + loyalty app.", lastActivity:isoOffset(-21)},
+    {id:"c4", name:"Nimbus Health Analytics", contact:"priya@nimbushealth.io", status:"active", value:22000, nextAction:"Deliver sprint 4 build", notes:"HIPAA-adjacent dashboard, careful with data handling.", lastActivity:isoOffset(-1)},
+    {id:"c5", name:"Wren & Co. Studio", contact:"hello@wrenstudio.design", status:"dormant", value:4500, nextAction:"Re-engage — check in", notes:"Paused project in spring, may restart Q4.", lastActivity:isoOffset(-70)},
+    {id:"c6", name:"Basalt Outdoor Supply", contact:"orders@basaltoutdoor.com", status:"lead", value:6000, nextAction:"Send proposal draft", notes:"Shopify to headless migration inquiry.", lastActivity:isoOffset(-18)}
+  ];
+
+  var deals = [
+    {id:"d1", clientId:"c1", title:"Ops Dashboard Retainer Renewal", value:14000, stage:"won"},
+    {id:"d2", clientId:"c2", title:"Website Rebuild + Intake Flow", value:8500, stage:"proposal"},
+    {id:"d3", clientId:"c3", title:"POS + Loyalty App", value:3200, stage:"lead"},
+    {id:"d4", clientId:"c4", title:"Analytics Sprint 4-6", value:22000, stage:"negotiation"},
+    {id:"d5", clientId:"c6", title:"Headless Commerce Migration", value:6000, stage:"proposal"},
+    {id:"d6", clientId:"c5", title:"Brand Refresh (paused)", value:4500, stage:"lost"},
+    {id:"d7", clientId:"c1", title:"Quarterly Reporting Add-on", value:2400, stage:"negotiation"}
+  ];
+
+  var projects = [
+    {id:"p1", clientId:"c1", name:"Ops Dashboard v3", deadline:isoOffset(18), percent:70, status:"in progress"},
+    {id:"p2", clientId:"c4", name:"Nimbus Analytics — Sprint 4", deadline:isoOffset(9), percent:45, status:"in progress"},
+    {id:"p3", clientId:"c2", name:"Ferrow Site Wireframes", deadline:isoOffset(-3), percent:90, status:"in progress"},
+    {id:"p4", clientId:"c1", name:"Q2 Reporting Cleanup", deadline:isoOffset(-30), percent:100, status:"complete"},
+    {id:"p5", clientId:"c5", name:"Brand Refresh Phase 1", deadline:isoOffset(40), percent:20, status:"on hold"}
+  ];
+
+  var invoices = [
+    {id:"i1", number:"INV-1042", clientId:"c1", amount:3500, issued:isoMonthsAgo(0,3), due:isoOffset(11), status:"sent"},
+    {id:"i2", number:"INV-1041", clientId:"c4", amount:8000, issued:isoMonthsAgo(0,1), due:isoOffset(-4), status:"sent"},
+    {id:"i3", number:"INV-1040", clientId:"c1", amount:3500, issued:isoMonthsAgo(1,3), due:isoMonthsAgo(1,17), status:"paid"},
+    {id:"i4", number:"INV-1039", clientId:"c2", amount:2200, issued:isoMonthsAgo(1,20), due:isoMonthsAgo(1,5), status:"paid"},
+    {id:"i5", number:"INV-1038", clientId:"c4", amount:8000, issued:isoMonthsAgo(2,2), due:isoMonthsAgo(1,2), status:"paid"},
+    {id:"i6", number:"INV-1037", clientId:"c1", amount:3500, issued:isoMonthsAgo(2,3), due:isoMonthsAgo(1,3), status:"paid"},
+    {id:"i7", number:"INV-1036", clientId:"c3", amount:900, issued:isoMonthsAgo(3,10), due:isoMonthsAgo(2,10), status:"paid"},
+    {id:"i8", number:"INV-1035", clientId:"c4", amount:7500, issued:isoMonthsAgo(3,1), due:isoMonthsAgo(2,1), status:"paid"},
+    {id:"i9", number:"INV-1034", clientId:"c1", amount:3200, issued:isoMonthsAgo(4,3), due:isoMonthsAgo(3,3), status:"paid"},
+    {id:"i10", number:"INV-1033", clientId:"c5", amount:4500, issued:isoMonthsAgo(5,15), due:isoMonthsAgo(4,15), status:"paid"},
+    {id:"i11", number:"INV-1032", clientId:"c4", amount:6000, issued:isoMonthsAgo(6,1), due:isoMonthsAgo(5,1), status:"paid"},
+    {id:"i12", number:"INV-1031", clientId:"c1", amount:2900, issued:isoMonthsAgo(7,3), due:isoMonthsAgo(6,3), status:"paid"},
+    {id:"i13", number:"INV-1030", clientId:"c2", amount:1800, issued:isoMonthsAgo(8,12), due:isoMonthsAgo(7,12), status:"paid"},
+    {id:"i14", number:"INV-1029", clientId:"c4", amount:5200, issued:isoMonthsAgo(9,5), due:isoMonthsAgo(8,5), status:"paid"},
+    {id:"i15", number:"INV-1028", clientId:"c1", amount:3100, issued:isoMonthsAgo(10,3), due:isoMonthsAgo(9,3), status:"paid"},
+    {id:"i16", number:"INV-1027", clientId:"c3", amount:750, issued:isoMonthsAgo(11,8), due:isoMonthsAgo(10,8), status:"paid"},
+    {id:"i17", number:"INV-1026", clientId:"c6", amount:600, issued:isoOffset(-2), due:isoOffset(-1), status:"draft"}
+  ];
+
+  var timeLogs = [
+    {id:"t1", date:isoOffset(-1), clientId:"c1", hours:3.5, rate:110, billable:true},
+    {id:"t2", date:isoOffset(-1), clientId:"c4", hours:5, rate:130, billable:true},
+    {id:"t3", date:isoOffset(-2), clientId:"c2", hours:2, rate:95, billable:true},
+    {id:"t4", date:isoOffset(-3), clientId:"c4", hours:4.5, rate:130, billable:true},
+    {id:"t5", date:isoOffset(-4), clientId:"c1", hours:1.5, rate:110, billable:false},
+    {id:"t6", date:isoOffset(-5), clientId:"c6", hours:2, rate:95, billable:true},
+    {id:"t7", date:isoOffset(-6), clientId:"c3", hours:1, rate:95, billable:false}
+  ];
+
+  return {
+    version: SCHEMA_VERSION,
+    clients: clients,
+    deals: deals,
+    projects: projects,
+    invoices: invoices,
+    timeLogs: timeLogs,
+    goal: { monthlyTarget: 18000, habits: [
+      {id:"h1", text:"Send 3 outreach emails", done:true},
+      {id:"h2", text:"Follow up on all leads older than 7 days", done:false},
+      {id:"h3", text:"Invoice all completed milestones", done:true},
+      {id:"h4", text:"Log time daily", done:false},
+      {id:"h5", text:"Review pipeline weighted total", done:false}
+    ]}
+  };
+}
+
+function emptyState(){
+  return {
+    version: SCHEMA_VERSION,
+    clients: [], deals: [], projects: [], invoices: [], timeLogs: [],
+    goal: { monthlyTarget: 10000, habits: [] }
+  };
+}
+
+/* ---------- storage ---------- */
+function migrate(state){
+  if (!state.version) state.version = 1;
+  if (!Array.isArray(state.clients)) state.clients = [];
+  if (!Array.isArray(state.deals)) state.deals = [];
+  if (!Array.isArray(state.projects)) state.projects = [];
+  if (!Array.isArray(state.invoices)) state.invoices = [];
+  if (!Array.isArray(state.timeLogs)) state.timeLogs = [];
+  if (!state.goal) state.goal = {monthlyTarget:10000, habits:[]};
+  if (typeof state.goal.monthlyTarget !== "number") state.goal.monthlyTarget = 10000;
+  if (!Array.isArray(state.goal.habits)) state.goal.habits = [];
+  state.clients.forEach(function(c){ if(!c.lastActivity) c.lastActivity = todayISO(); });
+  state.version = SCHEMA_VERSION;
+  return state;
+}
+
+var state;
+function loadState(){
+  try{
+    var raw = localStorage.getItem(STORAGE_KEY);
+    if (!raw) return demoState();
+    var parsed = JSON.parse(raw);
+    return migrate(parsed);
+  } catch(e){
+    console.error("Business OS: failed to load state, falling back to demo data", e);
+    return demoState();
+  }
+}
+function saveState(){
+  try{
+    localStorage.setItem(STORAGE_KEY, JSON.stringify(state));
+  } catch(e){
+    console.error("Business OS: failed to save state", e);
+    toast("Save failed — storage may be full or blocked.");
+  }
+}
+
+/* ---------- derived data ---------- */
+function activeClients(){ return state.clients.filter(function(c){ return c.status === "active"; }); }
+function openDeals(){ return state.deals.filter(function(d){ return d.stage !== "won" && d.stage !== "lost"; }); }
+function weightedPipelineTotal(){
+  return openDeals().reduce(function(sum,d){ return sum + (Number(d.value)||0) * STAGE_WEIGHT[d.stage]; }, 0);
+}
+function outstandingInvoices(){ return state.invoices.filter(function(i){ return i.status !== "paid"; }); }
+function invoiceDisplayStatus(inv){
+  if (inv.status === "paid") return "paid";
+  if (isPast(inv.due)) return "overdue";
+  return inv.status;
+}
+function revenueInMonth(ym){
+  return state.invoices.filter(function(i){ return i.status==="paid" && monthKey(i.issued)===ym; })
+    .reduce(function(s,i){ return s + (Number(i.amount)||0); }, 0);
+}
+function revenueYTD(){
+  var y = new Date().getFullYear();
+  return state.invoices.filter(function(i){
+    return i.status==="paid" && i.issued && new Date(i.issued+"T00:00:00").getFullYear() === y;
+  }).reduce(function(s,i){ return s + (Number(i.amount)||0); }, 0);
+}
+function last12Months(){
+  var out = [];
+  var now = new Date();
+  for (var i=11; i>=0; i--){
+    var d = new Date(now.getFullYear(), now.getMonth()-i, 1);
+    var ym = d.getFullYear() + "-" + String(d.getMonth()+1).padStart(2,"0");
+    out.push({ym:ym, label:MONTHS[d.getMonth()]});
+  }
+  return out;
+}
+function unbilledValue(){
+  return state.timeLogs.filter(function(t){ return t.billable; })
+    .reduce(function(s,t){ return s + (Number(t.hours)||0) * (Number(t.rate)||0); }, 0);
+}
+
+/* ---------- generic UI helpers ---------- */
+function inlineConfirm(container, label, onConfirm){
+  container.innerHTML = "";
+  var wrap = document.createElement("span");
+  wrap.className = "confirm-inline";
+  var span = document.createElement("span");
+  span.textContent = label;
+  var yes = document.createElement("button");
+  yes.type = "button"; yes.className = "small danger"; yes.textContent = "Confirm";
+  var no = document.createElement("button");
+  no.type = "button"; no.className = "small ghost"; no.textContent = "Cancel";
+  wrap.appendChild(span); wrap.appendChild(yes); wrap.appendChild(no);
+  container.appendChild(wrap);
+  function cleanup(){ container.innerHTML = ""; }
+  yes.addEventListener("click", function(){ cleanup(); onConfirm(); });
+  no.addEventListener("click", cleanup);
+  yes.focus();
+}
+
+/* ---------- render: shell/tabs ---------- */
+var panelsEl = document.getElementById("panels");
+var TAB_IDS = ["dashboard","clients","pipeline","projects","invoices","timelog","goals"];
+var activeTab = "dashboard";
+
+function switchTab(id){
+  activeTab = id;
+  document.querySelectorAll(".tab").forEach(function(t){
+    t.setAttribute("aria-selected", t.dataset.tab === id ? "true" : "false");
+  });
+  renderActivePanel();
+}
+document.querySelectorAll(".tab").forEach(function(t){
+  t.addEventListener("click", function(){ switchTab(t.dataset.tab); });
+});
+
+var renderers = {};
+
+function renderActivePanel(){
+  panelsEl.innerHTML = '<div class="panel active" id="panel-'+activeTab+'"></div>';
+  var el = document.getElementById("panel-"+activeTab);
+  renderers[activeTab](el);
+}
+
+/* ================= DASHBOARD ================= */
+renderers.dashboard = function(el){
+  var pipelineVal = weightedPipelineTotal();
+  var outstanding = outstandingInvoices().reduce(function(s,i){ return s + (Number(i.amount)||0); }, 0);
+  var thisMonthYm = todayISO().slice(0,7);
+  var revMonth = revenueInMonth(thisMonthYm);
+  var revYtd = revenueYTD();
+
+  var months = last12Months();
+  var maxVal = Math.max.apply(null, months.map(function(m){ return revenueInMonth(m.ym); }).concat([1]));
+  var bars = months.map(function(m){
+    var v = revenueInMonth(m.ym);
+    var h = maxVal > 0 ? Math.max(2, Math.round((v/maxVal)*130)) : 2;
+    return '<div class="bar-col"><div class="bar-val">'+ (v>0? fmtMoneyShort(v):"") +'</div><div class="bar" style="height:'+h+'px"></div><div class="bar-month">'+m.label+'</div></div>';
+  }).join("");
+
+  var overdueInv = state.invoices.filter(function(i){ return i.status!=="paid" && isPast(i.due); });
+  var staleLeads = state.clients.filter(function(c){ return c.status==="lead" && daysAgo(c.lastActivity) >= 14; });
+  var attnItems = [];
+  overdueInv.forEach(function(i){
+    attnItems.push({label: i.number + " — " + clientName(i.clientId,state) + " (" + fmtMoney(i.amount) + ")", tag:"OVERDUE", cls:"bad", days: daysAgo(i.due)});
+  });
+  staleLeads.forEach(function(c){
+    attnItems.push({label: c.name + " — no activity in " + daysAgo(c.lastActivity) + " days", tag:"STALE LEAD", cls:"warn", days: daysAgo(c.lastActivity)});
+  });
+  attnItems.sort(function(a,b){ return b.days - a.days; });
+
+  el.innerHTML =
+    '<div class="grid kpis">' +
+      kpiTile(activeClients().length, "Active Clients") +
+      kpiTile(fmtMoneyShort(pipelineVal), "Weighted Pipeline") +
+      kpiTile(fmtMoneyShort(outstanding), "Outstanding Invoices") +
+      kpiTile(fmtMoneyShort(revMonth), "Revenue This Month") +
+      kpiTile(fmtMoneyShort(revYtd), "Revenue YTD") +
+    '</div>' +
+    '<div class="card">' +
+      '<div class="eyebrow">Last 12 Months</div><h3>Revenue</h3>' +
+      (maxVal>0 ? '<div class="chart-wrap">'+bars+'</div>' : '<p class="empty">No paid invoices yet — the chart will populate as invoices are marked paid.</p>') +
+    '</div>' +
+    '<div class="card" style="margin-top:16px;">' +
+      '<div class="eyebrow">Needs Attention</div><h3>Follow Up</h3>' +
+      (attnItems.length ?
+        '<ul class="attn-list">' + attnItems.map(function(a){
+          return '<li class="attn-item"><span>'+escapeHtml(a.label)+'</span><span class="tag '+a.cls+'">'+a.tag+'</span></li>';
+        }).join("") + '</ul>'
+        : '<p class="empty">Nothing needs attention right now. Nice.</p>') +
+    '</div>';
+};
+function kpiTile(num, label){
+  return '<div class="kpi-tile"><div class="kpi-num gold-text">'+escapeHtml(String(num))+'</div><div class="kpi-label">'+escapeHtml(label)+'</div></div>';
+}
+
+/* ================= CLIENTS ================= */
+var clientSort = {col:"name", dir:1};
+var clientFilter = "all";
+var editingClientId = null;
+
+renderers.clients = function(el){
+  var rows = state.clients.slice();
+  if (clientFilter !== "all") rows = rows.filter(function(c){ return c.status === clientFilter; });
+  rows.sort(function(a,b){
+    var av = a[clientSort.col], bv = b[clientSort.col];
+    if (typeof av === "number") return (av-bv) * clientSort.dir;
+    return String(av||"").localeCompare(String(bv||"")) * clientSort.dir;
+  });
+
+  var editing = editingClientId ? state.clients.find(function(c){ return c.id===editingClientId; }) : null;
+
+  el.innerHTML =
+    '<div class="card">' +
+      '<div class="toolbar">' +
+        '<div class="toolbar-left">' +
+          '<h3 style="margin:0;">Clients / CRM</h3>' +
+          '<select id="client-filter">' +
+            '<option value="all">All statuses</option>' +
+            CLIENT_STATUSES.map(function(s){ return '<option value="'+s+'"'+(clientFilter===s?" selected":"")+'>'+cap(s)+'</option>'; }).join("") +
+          '</select>' +
+        '</div>' +
+        '<button class="primary small" id="btn-add-client" type="button">+ Add Client</button>' +
+      '</div>' +
+      clientForm(editing) +
+      (rows.length ? clientTable(rows) : '<p class="empty">No clients yet. Add your first client to get started.</p>') +
+    '</div>';
+
+  document.getElementById("client-filter").addEventListener("change", function(e){
+    clientFilter = e.target.value; renderActivePanel();
+  });
+  document.getElementById("btn-add-client").addEventListener("click", function(){
+    editingClientId = "__new__"; renderActivePanel();
+  });
+  wireClientForm(el);
+  wireClientTable(el);
+};
+
+function cap(s){ return s.charAt(0).toUpperCase() + s.slice(1); }
+
+function clientForm(editing){
+  var isNew = editingClientId === "__new__";
+  if (!editingClientId) return "";
+  var c = editing || {name:"",contact:"",status:"lead",value:0,nextAction:"",notes:""};
+  return '<div class="form-card open" id="client-form">' +
+    '<div class="form-grid">' +
+      field("Name", '<input id="cf-name" value="'+escapeHtml(c.name)+'" placeholder="Client or company name">') +
+      field("Contact", '<input id="cf-contact" value="'+escapeHtml(c.contact)+'" placeholder="email or phone">') +
+      field("Status", '<select id="cf-status">'+CLIENT_STATUSES.map(function(s){return '<option value="'+s+'"'+(c.status===s?" selected":"")+'>'+cap(s)+'</option>';}).join("")+'</select>') +
+      field("Value ($)", '<input id="cf-value" type="number" min="0" step="1" value="'+(c.value||0)+'">') +
+      field("Next Action", '<input id="cf-next" value="'+escapeHtml(c.nextAction)+'" placeholder="What happens next">') +
+    '</div>' +
+    field("Notes", '<textarea id="cf-notes" rows="2">'+escapeHtml(c.notes)+'</textarea>') +
+    '<div class="form-actions">' +
+      '<button class="primary small" id="cf-save" type="button">'+(isNew?"Add Client":"Save Changes")+'</button>' +
+      '<button class="ghost small" id="cf-cancel" type="button">Cancel</button>' +
+    '</div>' +
+  '</div>';
+}
+function field(label, inputHtml){
+  return '<div class="field"><label>'+escapeHtml(label)+'</label>'+inputHtml+'</div>';
+}
+
+function wireClientForm(el){
+  var form = document.getElementById("client-form");
+  if (!form) return;
+  document.getElementById("cf-cancel").addEventListener("click", function(){ editingClientId = null; renderActivePanel(); });
+  document.getElementById("cf-save").addEventListener("click", function(){
+    var name = document.getElementById("cf-name").value.trim();
+    if (!name) { toast("Client name is required."); return; }
+    var data = {
+      name: name,
+      contact: document.getElementById("cf-contact").value.trim(),
+      status: document.getElementById("cf-status").value,
+      value: Number(document.getElementById("cf-value").value)||0,
+      nextAction: document.getElementById("cf-next").value.trim(),
+      notes: document.getElementById("cf-notes").value.trim(),
+      lastActivity: todayISO()
+    };
+    if (editingClientId === "__new__"){
+      data.id = uid();
+      state.clients.push(data);
+      toast("Client added.");
+    } else {
+      var c = state.clients.find(function(x){ return x.id===editingClientId; });
+      Object.assign(c, data);
+      toast("Client updated.");
+    }
+    saveState();
+    editingClientId = null;
+    renderActivePanel();
+  });
+}
+
+function clientTable(rows){
+  var cols = [["name","Name"],["contact","Contact"],["status","Status"],["value","Value"],["nextAction","Next Action"]];
+  var head = cols.map(function(c){
+    var arrow = clientSort.col===c[0] ? (clientSort.dir===1?" ↑":" ↓") : "";
+    return '<th class="sortable" data-col="'+c[0]+'">'+c[1]+arrow+'</th>';
+  }).join("") + '<th></th>';
+  var body = rows.map(function(c){
+    return '<tr data-id="'+c.id+'">' +
+      '<td>'+escapeHtml(c.name)+'</td>' +
+      '<td>'+escapeHtml(c.contact)+'</td>' +
+      '<td><span class="tag '+statusTagClass(c.status)+'">'+cap(c.status)+'</span></td>' +
+      '<td>'+fmtMoney(c.value)+'</td>' +
+      '<td>'+escapeHtml(c.nextAction)+'</td>' +
+      '<td><div class="row-actions">' +
+        '<button class="small ghost" data-edit="'+c.id+'" type="button">Edit</button>' +
+        '<span class="del-zone" data-zone="'+c.id+'"><button class="small danger" data-del="'+c.id+'" type="button">Delete</button></span>' +
+      '</div></td>' +
+    '</tr>';
+  }).join("");
+  return '<div style="overflow-x:auto;"><table><thead><tr>'+head+'</tr></thead><tbody>'+body+'</tbody></table></div>';
+}
+function statusTagClass(s){
+  if (s==="active") return "good";
+  if (s==="dormant") return "muted";
+  if (s==="proposal sent") return "warn";
+  return "";
+}
+
+function wireClientTable(el){
+  el.querySelectorAll("th.sortable").forEach(function(th){
+    th.addEventListener("click", function(){
+      var col = th.dataset.col;
+      if (clientSort.col === col) clientSort.dir *= -1; else { clientSort.col = col; clientSort.dir = 1; }
+      renderActivePanel();
+    });
+  });
+  el.querySelectorAll("[data-edit]").forEach(function(b){
+    b.addEventListener("click", function(){ editingClientId = b.dataset.edit; renderActivePanel(); });
+  });
+  el.querySelectorAll("[data-del]").forEach(function(b){
+    b.addEventListener("click", function(){
+      var zone = el.querySelector('[data-zone="'+b.dataset.del+'"]');
+      inlineConfirm(zone, "Delete client?", function(){
+        state.clients = state.clients.filter(function(c){ return c.id !== b.dataset.del; });
+        saveState(); toast("Client deleted."); renderActivePanel();
+      });
+    });
+  });
+}
+
+/* ================= PIPELINE ================= */
+var editingDealId = null;
+
+renderers.pipeline = function(el){
+  var editing = editingDealId && editingDealId!=="__new__" ? state.deals.find(function(d){return d.id===editingDealId;}) : null;
+  el.innerHTML =
+    '<div class="card">' +
+      '<div class="toolbar"><h3 style="margin:0;">Pipeline</h3>' +
+        '<div class="toolbar-left"><span class="kpi-label" style="font-size:12px;">Weighted total: <b class="gold-text">'+fmtMoney(weightedPipelineTotal())+'</b></span>' +
+        '<button class="primary small" id="btn-add-deal" type="button">+ Add Deal</button></div>' +
+      '</div>' +
+      dealForm(editing) +
+      kanbanBoard() +
+    '</div>';
+  document.getElementById("btn-add-deal").addEventListener("click", function(){ editingDealId="__new__"; renderActivePanel(); });
+  wireDealForm(el);
+  wireKanban(el);
+};
+
+function dealForm(editing){
+  if (!editingDealId) return "";
+  var isNew = editingDealId === "__new__";
+  var d = editing || {title:"",clientId:state.clients[0]?state.clients[0].id:"",value:0,stage:"lead"};
+  if (!state.clients.length){
+    return '<div class="form-card open" id="deal-form-empty"><p class="empty">Add a client first, then deals can be linked to them.</p><button class="ghost small" id="cf-cancel-deal-empty" type="button">Close</button></div>';
+  }
+  return '<div class="form-card open" id="deal-form">' +
+    '<div class="form-grid">' +
+      field("Deal Title", '<input id="df-title" value="'+escapeHtml(d.title)+'" placeholder="e.g. Website Rebuild">') +
+      field("Client", '<select id="df-client">'+state.clients.map(function(c){return '<option value="'+c.id+'"'+(d.clientId===c.id?" selected":"")+'>'+escapeHtml(c.name)+'</option>';}).join("")+'</select>') +
+      field("Value ($)", '<input id="df-value" type="number" min="0" step="1" value="'+(d.value||0)+'">') +
+      field("Stage", '<select id="df-stage">'+STAGES.concat(["lost"]).map(function(s){return '<option value="'+s+'"'+(d.stage===s?" selected":"")+'>'+STAGE_LABEL[s]+'</option>';}).join("")+'</select>') +
+    '</div>' +
+    '<div class="form-actions">' +
+      '<button class="primary small" id="df-save" type="button">'+(isNew?"Add Deal":"Save Changes")+'</button>' +
+      '<button class="ghost small" id="df-cancel" type="button">Cancel</button>' +
+    '</div>' +
+  '</div>';
+}
+function wireDealForm(el){
+  var emptyClose = document.getElementById("cf-cancel-deal-empty");
+  if (emptyClose) emptyClose.addEventListener("click", function(){ editingDealId=null; renderActivePanel(); });
+  var form = document.getElementById("deal-form");
+  if (!form) return;
+  document.getElementById("df-cancel").addEventListener("click", function(){ editingDealId=null; renderActivePanel(); });
+  document.getElementById("df-save").addEventListener("click", function(){
+    var title = document.getElementById("df-title").value.trim();
+    if (!title){ toast("Deal title is required."); return; }
+    var data = {
+      title: title,
+      clientId: document.getElementById("df-client").value,
+      value: Number(document.getElementById("df-value").value)||0,
+      stage: document.getElementById("df-stage").value
+    };
+    if (editingDealId === "__new__"){
+      data.id = uid(); state.deals.push(data); toast("Deal added.");
+    } else {
+      Object.assign(state.deals.find(function(d){return d.id===editingDealId;}), data); toast("Deal updated.");
+    }
+    saveState(); editingDealId = null; renderActivePanel();
+  });
+}
+
+function kanbanBoard(){
+  var stages = STAGES.concat(["lost"]);
+  return '<div class="kanban">' + stages.map(function(stage){
+    var deals = state.deals.filter(function(d){ return d.stage===stage; });
+    var total = deals.reduce(function(s,d){ return s+(Number(d.value)||0); },0);
+    return '<div class="kcol">' +
+      '<div class="kcol-head"><span class="kcol-title">'+STAGE_LABEL[stage]+'</span><span class="kcol-total">'+fmtMoneyShort(total)+'</span></div>' +
+      (deals.length ? deals.map(function(d){ return dealCard(d, stage); }).join("") : '<p class="empty" style="padding:10px;font-size:12px;">Empty</p>') +
+    '</div>';
+  }).join("") + '</div>';
+}
+function dealCard(d, stage){
+  var idx = STAGES.indexOf(stage);
+  var nextStage = (idx>=0 && idx<STAGES.length-1) ? STAGES[idx+1] : null;
+  var actions = "";
+  if (stage !== "won" && stage !== "lost"){
+    if (nextStage) actions += '<button class="small ghost" data-advance="'+d.id+'" data-to="'+nextStage+'" type="button">Advance →</button>';
+    else actions += '<button class="small ghost" data-advance="'+d.id+'" data-to="won" type="button">Mark Won</button>';
+    actions += '<button class="small danger" data-advance="'+d.id+'" data-to="lost" type="button">Mark Lost</button>';
+  } else {
+    actions += '<button class="small ghost" data-advance="'+d.id+'" data-to="lead" type="button">Reopen</button>';
+  }
+  actions += '<button class="small ghost" data-edit-deal="'+d.id+'" type="button">Edit</button>';
+  return '<div class="kcard">' +
+    '<div class="kcard-name">'+escapeHtml(d.title)+'</div>' +
+    '<div class="kcard-client">'+escapeHtml(clientName(d.clientId,state))+'</div>' +
+    '<div class="kcard-val">'+fmtMoney(d.value)+'</div>' +
+    '<div class="kcard-actions">'+actions+'</div>' +
+  '</div>';
+}
+function wireKanban(el){
+  el.querySelectorAll("[data-advance]").forEach(function(b){
+    b.addEventListener("click", function(){
+      var deal = state.deals.find(function(d){ return d.id===b.dataset.advance; });
+      if (deal){ deal.stage = b.dataset.to; saveState(); renderActivePanel(); }
+    });
+  });
+  el.querySelectorAll("[data-edit-deal]").forEach(function(b){
+    b.addEventListener("click", function(){ editingDealId = b.dataset.editDeal; renderActivePanel(); });
+  });
+}
+
+/* ================= PROJECTS ================= */
+var editingProjectId = null;
+
+renderers.projects = function(el){
+  var editing = editingProjectId && editingProjectId!=="__new__" ? state.projects.find(function(p){return p.id===editingProjectId;}) : null;
+  el.innerHTML = '<div class="card">' +
+    '<div class="toolbar"><h3 style="margin:0;">Projects</h3><button class="primary small" id="btn-add-project" type="button">+ Add Project</button></div>' +
+    projectForm(editing) +
+    (state.projects.length ? projectTable() : '<p class="empty">No projects yet.</p>') +
+  '</div>';
+  document.getElementById("btn-add-project").addEventListener("click", function(){ editingProjectId="__new__"; renderActivePanel(); });
+  wireProjectForm(el);
+  wireProjectTable(el);
+};
+
+function projectForm(editing){
+  if (!editingProjectId) return "";
+  if (!state.clients.length) return '<div class="form-card open"><p class="empty">Add a client first.</p></div>';
+  var isNew = editingProjectId === "__new__";
+  var p = editing || {name:"",clientId:state.clients[0].id,deadline:todayISO(),percent:0,status:"in progress"};
+  return '<div class="form-card open" id="project-form">' +
+    '<div class="form-grid">' +
+      field("Project Name", '<input id="pf-name" value="'+escapeHtml(p.name)+'">') +
+      field("Client", '<select id="pf-client">'+state.clients.map(function(c){return '<option value="'+c.id+'"'+(p.clientId===c.id?" selected":"")+'>'+escapeHtml(c.name)+'</option>';}).join("")+'</select>') +
+      field("Deadline", '<input id="pf-deadline" type="date" value="'+p.deadline+'">') +
+      field("% Complete", '<input id="pf-percent" type="number" min="0" max="100" value="'+p.percent+'">') +
+      field("Status", '<select id="pf-status">'+["in progress","on hold","complete"].map(function(s){return '<option value="'+s+'"'+(p.status===s?" selected":"")+'>'+cap(s)+'</option>';}).join("")+'</select>') +
+    '</div>' +
+    '<div class="form-actions">' +
+      '<button class="primary small" id="pf-save" type="button">'+(isNew?"Add Project":"Save Changes")+'</button>' +
+      '<button class="ghost small" id="pf-cancel" type="button">Cancel</button>' +
+    '</div>' +
+  '</div>';
+}
+function wireProjectForm(el){
+  var form = document.getElementById("project-form");
+  if (!form) return;
+  document.getElementById("pf-cancel").addEventListener("click", function(){ editingProjectId=null; renderActivePanel(); });
+  document.getElementById("pf-save").addEventListener("click", function(){
+    var name = document.getElementById("pf-name").value.trim();
+    if (!name){ toast("Project name is required."); return; }
+    var data = {
+      name: name,
+      clientId: document.getElementById("pf-client").value,
+      deadline: document.getElementById("pf-deadline").value || todayISO(),
+      percent: Math.max(0, Math.min(100, Number(document.getElementById("pf-percent").value)||0)),
+      status: document.getElementById("pf-status").value
+    };
+    if (editingProjectId === "__new__"){ data.id = uid(); state.projects.push(data); toast("Project added."); }
+    else { Object.assign(state.projects.find(function(p){return p.id===editingProjectId;}), data); toast("Project updated."); }
+    saveState(); editingProjectId = null; renderActivePanel();
+  });
+}
+function projectTable(){
+  var rows = state.projects.map(function(p){
+    var overdue = p.status!=="complete" && isPast(p.deadline);
+    return '<tr data-id="'+p.id+'">' +
+      '<td>'+escapeHtml(p.name)+'</td>' +
+      '<td>'+escapeHtml(clientName(p.clientId,state))+'</td>' +
+      '<td>'+fmtDate(p.deadline)+(overdue?' <span class="tag bad">LATE</span>':'')+'</td>' +
+      '<td style="min-width:160px;"><div class="meter-row"><div class="meter"><div class="meter-fill" style="width:'+p.percent+'%"></div></div>' +
+        '<input type="range" min="0" max="100" value="'+p.percent+'" data-percent="'+p.id+'" style="width:70px;" aria-label="Percent complete for '+escapeHtml(p.name)+'"><span style="font-size:12px;color:var(--muted);min-width:34px;">'+p.percent+'%</span></div></td>' +
+      '<td><span class="tag '+(p.status==="complete"?"good":p.status==="on hold"?"warn":"")+'">'+cap(p.status)+'</span></td>' +
+      '<td><div class="row-actions"><button class="small ghost" data-edit="'+p.id+'" type="button">Edit</button>' +
+        '<span class="del-zone" data-zone="'+p.id+'"><button class="small danger" data-del="'+p.id+'" type="button">Delete</button></span></div></td>' +
+    '</tr>';
+  }).join("");
+  return '<div style="overflow-x:auto;"><table><thead><tr><th>Project</th><th>Client</th><th>Deadline</th><th>Progress</th><th>Status</th><th></th></tr></thead><tbody>'+rows+'</tbody></table></div>';
+}
+function wireProjectTable(el){
+  el.querySelectorAll("[data-percent]").forEach(function(r){
+    r.addEventListener("input", function(){
+      var p = state.projects.find(function(x){return x.id===r.dataset.percent;});
+      p.percent = Number(r.value);
+      var row = r.closest("tr");
+      row.querySelector(".meter-fill").style.width = p.percent+"%";
+      row.querySelector(".meter-row span:last-child").textContent = p.percent+"%";
+    });
+    r.addEventListener("change", function(){ saveState(); renderActivePanel(); });
+  });
+  el.querySelectorAll("[data-edit]").forEach(function(b){
+    b.addEventListener("click", function(){ editingProjectId = b.dataset.edit; renderActivePanel(); });
+  });
+  el.querySelectorAll("[data-del]").forEach(function(b){
+    b.addEventListener("click", function(){
+      var zone = el.querySelector('[data-zone="'+b.dataset.del+'"]');
+      inlineConfirm(zone, "Delete project?", function(){
+        state.projects = state.projects.filter(function(p){ return p.id !== b.dataset.del; });
+        saveState(); toast("Project deleted."); renderActivePanel();
+      });
+    });
+  });
+}
+
+/* ================= INVOICES ================= */
+var editingInvoiceId = null;
+
+renderers.invoices = function(el){
+  var editing = editingInvoiceId && editingInvoiceId!=="__new__" ? state.invoices.find(function(i){return i.id===editingInvoiceId;}) : null;
+  var totalAmount = state.invoices.reduce(function(s,i){return s+(Number(i.amount)||0);},0);
+  var totalPaid = state.invoices.filter(function(i){return i.status==="paid";}).reduce(function(s,i){return s+(Number(i.amount)||0);},0);
+  var totalOutstanding = totalAmount - totalPaid;
+
+  el.innerHTML = '<div class="card">' +
+    '<div class="toolbar"><h3 style="margin:0;">Invoices</h3><button class="primary small" id="btn-add-invoice" type="button">+ Add Invoice</button></div>' +
+    invoiceForm(editing) +
+    (state.invoices.length ? invoiceTable(totalAmount, totalPaid, totalOutstanding) : '<p class="empty">No invoices yet.</p>') +
+  '</div>';
+  document.getElementById("btn-add-invoice").addEventListener("click", function(){ editingInvoiceId="__new__"; renderActivePanel(); });
+  wireInvoiceForm(el);
+  wireInvoiceTable(el);
+};
+
+function invoiceForm(editing){
+  if (!editingInvoiceId) return "";
+  if (!state.clients.length) return '<div class="form-card open"><p class="empty">Add a client first.</p></div>';
+  var isNew = editingInvoiceId === "__new__";
+  var nextNum = "INV-" + (1000 + state.invoices.length + 1);
+  var i = editing || {number:nextNum, clientId:state.clients[0].id, amount:0, issued:todayISO(), due:todayISO(), status:"draft"};
+  return '<div class="form-card open" id="invoice-form">' +
+    '<div class="form-grid">' +
+      field("Invoice #", '<input id="if-number" value="'+escapeHtml(i.number)+'">') +
+      field("Client", '<select id="if-client">'+state.clients.map(function(c){return '<option value="'+c.id+'"'+(i.clientId===c.id?" selected":"")+'>'+escapeHtml(c.name)+'</option>';}).join("")+'</select>') +
+      field("Amount ($)", '<input id="if-amount" type="number" min="0" step="1" value="'+(i.amount||0)+'">') +
+      field("Issued", '<input id="if-issued" type="date" value="'+i.issued+'">') +
+      field("Due", '<input id="if-due" type="date" value="'+i.due+'">') +
+      field("Status", '<select id="if-status">'+INVOICE_STATUSES.map(function(s){return '<option value="'+s+'"'+(i.status===s?" selected":"")+'>'+cap(s)+'</option>';}).join("")+'</select>') +
+    '</div>' +
+    '<div class="form-actions">' +
+      '<button class="primary small" id="if-save" type="button">'+(isNew?"Add Invoice":"Save Changes")+'</button>' +
+      '<button class="ghost small" id="if-cancel" type="button">Cancel</button>' +
+    '</div>' +
+  '</div>';
+}
+function wireInvoiceForm(el){
+  var form = document.getElementById("invoice-form");
+  if (!form) return;
+  document.getElementById("if-cancel").addEventListener("click", function(){ editingInvoiceId=null; renderActivePanel(); });
+  document.getElementById("if-save").addEventListener("click", function(){
+    var number = document.getElementById("if-number").value.trim();
+    if (!number){ toast("Invoice number is required."); return; }
+    var data = {
+      number: number,
+      clientId: document.getElementById("if-client").value,
+      amount: Number(document.getElementById("if-amount").value)||0,
+      issued: document.getElementById("if-issued").value || todayISO(),
+      due: document.getElementById("if-due").value || todayISO(),
+      status: document.getElementById("if-status").value
+    };
+    if (editingInvoiceId === "__new__"){ data.id = uid(); state.invoices.push(data); toast("Invoice added."); }
+    else { Object.assign(state.invoices.find(function(i){return i.id===editingInvoiceId;}), data); toast("Invoice updated."); }
+    saveState(); editingInvoiceId = null; renderActivePanel();
+  });
+}
+function invoiceTable(totalAmount, totalPaid, totalOutstanding){
+  var rows = state.invoices.map(function(i){
+    var disp = invoiceDisplayStatus(i);
+    var cls = disp==="paid"?"good":disp==="overdue"?"bad":disp==="sent"?"warn":"muted";
+    return '<tr data-id="'+i.id+'">' +
+      '<td>'+escapeHtml(i.number)+'</td>' +
+      '<td>'+escapeHtml(clientName(i.clientId,state))+'</td>' +
+      '<td>'+fmtMoney(i.amount)+'</td>' +
+      '<td>'+fmtDate(i.issued)+'</td>' +
+      '<td>'+fmtDate(i.due)+'</td>' +
+      '<td><span class="tag '+cls+'">'+cap(disp)+'</span></td>' +
+      '<td><div class="row-actions">' +
+        (i.status!=="paid" ? '<button class="small ghost" data-markpaid="'+i.id+'" type="button">Mark Paid</button>' : "") +
+        '<button class="small ghost" data-edit="'+i.id+'" type="button">Edit</button>' +
+        '<span class="del-zone" data-zone="'+i.id+'"><button class="small danger" data-del="'+i.id+'" type="button">Delete</button></span>' +
+      '</div></td>' +
+    '</tr>';
+  }).join("");
+  return '<div style="overflow-x:auto;"><table><thead><tr><th>#</th><th>Client</th><th>Amount</th><th>Issued</th><th>Due</th><th>Status</th><th></th></tr></thead><tbody>'+rows+
+    '<tr class="total-row"><td colspan="2">Totals</td><td>'+fmtMoney(totalAmount)+'</td><td colspan="2"></td><td colspan="2">Paid '+fmtMoney(totalPaid)+' · Outstanding '+fmtMoney(totalOutstanding)+'</td></tr>' +
+    '</tbody></table></div>';
+}
+function wireInvoiceTable(el){
+  el.querySelectorAll("[data-markpaid]").forEach(function(b){
+    b.addEventListener("click", function(){
+      var inv = state.invoices.find(function(i){return i.id===b.dataset.markpaid;});
+      inv.status = "paid"; saveState(); toast("Invoice marked paid."); renderActivePanel();
+    });
+  });
+  el.querySelectorAll("[data-edit]").forEach(function(b){
+    b.addEventListener("click", function(){ editingInvoiceId = b.dataset.edit; renderActivePanel(); });
+  });
+  el.querySelectorAll("[data-del]").forEach(function(b){
+    b.addEventListener("click", function(){
+      var zone = el.querySelector('[data-zone="'+b.dataset.del+'"]');
+      inlineConfirm(zone, "Delete invoice?", function(){
+        state.invoices = state.invoices.filter(function(i){ return i.id !== b.dataset.del; });
+        saveState(); toast("Invoice deleted."); renderActivePanel();
+      });
+    });
+  });
+}
+
+/* ================= TIME LOG ================= */
+var editingTimeId = null;
+
+renderers.timelog = function(el){
+  var editing = editingTimeId && editingTimeId!=="__new__" ? state.timeLogs.find(function(t){return t.id===editingTimeId;}) : null;
+  el.innerHTML = '<div class="grid kpis" style="grid-template-columns:repeat(auto-fit,minmax(200px,1fr));">' +
+      kpiTile(fmtMoneyShort(unbilledValue()), "Unbilled Value") +
+      kpiTile(state.timeLogs.reduce(function(s,t){return s+(Number(t.hours)||0);},0).toFixed(1)+"h", "Total Hours Logged") +
+    '</div>' +
+    '<div class="card">' +
+    '<div class="toolbar"><h3 style="margin:0;">Time Log</h3><button class="primary small" id="btn-add-time" type="button">+ Add Entry</button></div>' +
+    timeForm(editing) +
+    (state.timeLogs.length ? timeTable() : '<p class="empty">No time entries yet.</p>') +
+    '</div>';
+  document.getElementById("btn-add-time").addEventListener("click", function(){ editingTimeId="__new__"; renderActivePanel(); });
+  wireTimeForm(el);
+  wireTimeTable(el);
+};
+function timeForm(editing){
+  if (!editingTimeId) return "";
+  if (!state.clients.length) return '<div class="form-card open"><p class="empty">Add a client first.</p></div>';
+  var isNew = editingTimeId === "__new__";
+  var t = editing || {date:todayISO(), clientId:state.clients[0].id, hours:1, rate:100, billable:true};
+  return '<div class="form-card open" id="time-form">' +
+    '<div class="form-grid">' +
+      field("Date", '<input id="tf-date" type="date" value="'+t.date+'">') +
+      field("Client", '<select id="tf-client">'+state.clients.map(function(c){return '<option value="'+c.id+'"'+(t.clientId===c.id?" selected":"")+'>'+escapeHtml(c.name)+'</option>';}).join("")+'</select>') +
+      field("Hours", '<input id="tf-hours" type="number" min="0" step="0.25" value="'+t.hours+'">') +
+      field("Rate ($/hr)", '<input id="tf-rate" type="number" min="0" step="1" value="'+t.rate+'">') +
+    '</div>' +
+    '<label style="display:flex;align-items:center;gap:8px;margin-top:8px;"><input type="checkbox" id="tf-billable" '+(t.billable?"checked":"")+'> <span style="color:var(--ink);">Billable</span></label>' +
+    '<div class="form-actions">' +
+      '<button class="primary small" id="tf-save" type="button">'+(isNew?"Add Entry":"Save Changes")+'</button>' +
+      '<button class="ghost small" id="tf-cancel" type="button">Cancel</button>' +
+    '</div>' +
+  '</div>';
+}
+function wireTimeForm(el){
+  var form = document.getElementById("time-form");
+  if (!form) return;
+  document.getElementById("tf-cancel").addEventListener("click", function(){ editingTimeId=null; renderActivePanel(); });
+  document.getElementById("tf-save").addEventListener("click", function(){
+    var data = {
+      date: document.getElementById("tf-date").value || todayISO(),
+      clientId: document.getElementById("tf-client").value,
+      hours: Number(document.getElementById("tf-hours").value)||0,
+      rate: Number(document.getElementById("tf-rate").value)||0,
+      billable: document.getElementById("tf-billable").checked
+    };
+    if (editingTimeId === "__new__"){ data.id = uid(); state.timeLogs.push(data); toast("Entry added."); }
+    else { Object.assign(state.timeLogs.find(function(t){return t.id===editingTimeId;}), data); toast("Entry updated."); }
+    saveState(); editingTimeId = null; renderActivePanel();
+  });
+}
+function timeTable(){
+  var rows = state.timeLogs.slice().sort(function(a,b){ return b.date.localeCompare(a.date); }).map(function(t){
+    return '<tr data-id="'+t.id+'">' +
+      '<td>'+fmtDate(t.date)+'</td>' +
+      '<td>'+escapeHtml(clientName(t.clientId,state))+'</td>' +
+      '<td>'+t.hours+'h</td>' +
+      '<td>'+fmtMoney(t.rate)+'/hr</td>' +
+      '<td>'+fmtMoney((Number(t.hours)||0)*(Number(t.rate)||0))+'</td>' +
+      '<td><span class="'+(t.billable?"billable-yes":"billable-no")+'">'+(t.billable?"Billable":"Non-billable")+'</span></td>' +
+      '<td><div class="row-actions"><button class="small ghost" data-edit="'+t.id+'" type="button">Edit</button>' +
+        '<span class="del-zone" data-zone="'+t.id+'"><button class="small danger" data-del="'+t.id+'" type="button">Delete</button></span></div></td>' +
+    '</tr>';
+  }).join("");
+  return '<div style="overflow-x:auto;"><table><thead><tr><th>Date</th><th>Client</th><th>Hours</th><th>Rate</th><th>Value</th><th>Billable</th><th></th></tr></thead><tbody>'+rows+'</tbody></table></div>';
+}
+function wireTimeTable(el){
+  el.querySelectorAll("[data-edit]").forEach(function(b){
+    b.addEventListener("click", function(){ editingTimeId = b.dataset.edit; renderActivePanel(); });
+  });
+  el.querySelectorAll("[data-del]").forEach(function(b){
+    b.addEventListener("click", function(){
+      var zone = el.querySelector('[data-zone="'+b.dataset.del+'"]');
+      inlineConfirm(zone, "Delete entry?", function(){
+        state.timeLogs = state.timeLogs.filter(function(t){ return t.id !== b.dataset.del; });
+        saveState(); toast("Entry deleted."); renderActivePanel();
+      });
+    });
+  });
+}
+
+/* ================= GOALS ================= */
+renderers.goals = function(el){
+  var thisMonthYm = todayISO().slice(0,7);
+  var rev = revenueInMonth(thisMonthYm);
+  var target = Number(state.goal.monthlyTarget)||0;
+  var pct = target > 0 ? Math.min(100, Math.round((rev/target)*100)) : 0;
+  var r = 54, c = 2*Math.PI*r;
+  var offset = c - (pct/100)*c;
+
+  el.innerHTML = '<div class="card">' +
+    '<div class="eyebrow">Monthly Target</div><h3>Revenue Goal</h3>' +
+    '<div class="ring-wrap">' +
+      '<svg width="140" height="140" viewBox="0 0 140 140" role="img" aria-label="'+pct+'% of monthly goal reached">' +
+        '<circle cx="70" cy="70" r="'+r+'" fill="none" stroke="var(--line)" stroke-width="12"/>' +
+        '<circle cx="70" cy="70" r="'+r+'" fill="none" stroke="url(#goldGrad)" stroke-width="12" stroke-linecap="round" ' +
+          'stroke-dasharray="'+c+'" stroke-dashoffset="'+offset+'" transform="rotate(-90 70 70)"/>' +
+        '<defs><linearGradient id="goldGrad" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#f4d47a"/><stop offset="100%" stop-color="#8a7328"/></linearGradient></defs>' +
+        '<text x="70" y="76" text-anchor="middle" class="ring-num">'+pct+'%</text>' +
+      '</svg>' +
+      '<div>' +
+        '<div style="font-size:14px;margin-bottom:6px;">'+fmtMoney(rev)+' of '+fmtMoney(target)+' this month</div>' +
+        '<div class="field" style="max-width:220px;"><label>Monthly Target ($)</label><input id="goal-target" type="number" min="0" step="100" value="'+target+'"></div>' +
+        '<button class="small primary" id="goal-save" type="button">Save Target</button>' +
+      '</div>' +
+    '</div>' +
+  '</div>' +
+  '<div class="card" style="margin-top:16px;">' +
+    '<div class="toolbar"><h3 style="margin:0;">Weekly Habit Checklist</h3><button class="primary small" id="btn-add-habit" type="button">+ Add Habit</button></div>' +
+    '<div class="form-card" id="habit-form"><div class="form-grid"><div class="field"><label>New habit</label><input id="hf-text" placeholder="e.g. Send weekly client update"></div></div>' +
+      '<div class="form-actions"><button class="primary small" id="hf-save" type="button">Add</button><button class="ghost small" id="hf-cancel" type="button">Cancel</button></div></div>' +
+    (state.goal.habits.length ? habitList() : '<p class="empty">No habits yet — add a few weekly actions to stay consistent.</p>') +
+  '</div>';
+
+  document.getElementById("goal-save").addEventListener("click", function(){
+    state.goal.monthlyTarget = Number(document.getElementById("goal-target").value)||0;
+    saveState(); toast("Target saved."); renderActivePanel();
+  });
+  document.getElementById("btn-add-habit").addEventListener("click", function(){
+    document.getElementById("habit-form").classList.add("open");
+  });
+  document.getElementById("hf-cancel").addEventListener("click", function(){
+    document.getElementById("habit-form").classList.remove("open");
+  });
+  document.getElementById("hf-save").addEventListener("click", function(){
+    var txt = document.getElementById("hf-text").value.trim();
+    if (!txt) return;
+    state.goal.habits.push({id:uid(), text:txt, done:false});
+    saveState(); renderActivePanel();
+  });
+  wireHabits(el);
+};
+function habitList(){
+  return '<ul class="habit-list">' + state.goal.habits.map(function(h){
+    return '<li class="habit-item'+(h.done?" done":"")+'"><input type="checkbox" id="habit-'+h.id+'" data-habit="'+h.id+'" '+(h.done?"checked":"")+'>' +
+      '<label for="habit-'+h.id+'">'+escapeHtml(h.text)+'</label>' +
+      '<span class="del-zone" data-zone="'+h.id+'"><button class="small danger" data-delhabit="'+h.id+'" type="button">Remove</button></span></li>';
+  }).join("") + '</ul>';
+}
+function wireHabits(el){
+  el.querySelectorAll("[data-habit]").forEach(function(cb){
+    cb.addEventListener("change", function(){
+      var h = state.goal.habits.find(function(x){return x.id===cb.dataset.habit;});
+      h.done = cb.checked; saveState(); renderActivePanel();
+    });
+  });
+  el.querySelectorAll("[data-delhabit]").forEach(function(b){
+    b.addEventListener("click", function(){
+      var zone = el.querySelector('[data-zone="'+b.dataset.delhabit+'"]');
+      inlineConfirm(zone, "Remove?", function(){
+        state.goal.habits = state.goal.habits.filter(function(h){ return h.id !== b.dataset.delhabit; });
+        saveState(); renderActivePanel();
+      });
+    });
+  });
+}
+
+/* ================= TOP-LEVEL ACTIONS ================= */
+document.getElementById("btn-export-json").addEventListener("click", function(){
+  var blob = new Blob([JSON.stringify(state, null, 2)], {type:"application/json"});
+  var url = URL.createObjectURL(blob);
+  var a = document.createElement("a");
+  a.href = url; a.download = "business-os-backup-"+todayISO()+".json";
+  document.body.appendChild(a); a.click(); document.body.removeChild(a);
+  URL.revokeObjectURL(url);
+  toast("Backup downloaded.");
+});
+
+document.getElementById("input-import-json").addEventListener("change", function(e){
+  var file = e.target.files[0];
+  if (!file) return;
+  var reader = new FileReader();
+  reader.onload = function(){
+    try{
+      var parsed = JSON.parse(reader.result);
+      if (!parsed || typeof parsed !== "object") throw new Error("not an object");
+      state = migrate(parsed);
+      saveState();
+      toast("Data imported.");
+      renderActivePanel();
+    } catch(err){
+      toast("Import failed — invalid JSON file.");
+      console.error(err);
+    }
+    e.target.value = "";
+  };
+  reader.readAsText(file);
+});
+
+document.getElementById("btn-export-csv").addEventListener("click", function(){
+  var header = ["Invoice #","Client","Amount","Issued","Due","Status"];
+  var lines = [header.join(",")];
+  state.invoices.forEach(function(i){
+    var row = [i.number, clientName(i.clientId,state), (Number(i.amount)||0).toFixed(2), i.issued, i.due, invoiceDisplayStatus(i)];
+    lines.push(row.map(function(v){
+      var s = String(v==null?"":v);
+      if (/[",\n]/.test(s)) s = '"' + s.replace(/"/g,'""') + '"';
+      return s;
+    }).join(","));
+  });
+  var blob = new Blob([lines.join("\n")], {type:"text/csv"});
+  var url = URL.createObjectURL(blob);
+  var a = document.createElement("a");
+  a.href = url; a.download = "invoices-"+todayISO()+".csv";
+  document.body.appendChild(a); a.click(); document.body.removeChild(a);
+  URL.revokeObjectURL(url);
+  toast("Invoices CSV downloaded.");
+});
+
+var resetZone = document.getElementById("reset-zone");
+function renderResetButton(){
+  resetZone.innerHTML = '<button class="ghost small" id="btn-reset" type="button">Reset to Empty</button>';
+  document.getElementById("btn-reset").addEventListener("click", function(){
+    inlineConfirm(resetZone, "Erase all data?", function(){
+      state = emptyState();
+      saveState();
+      toast("Data cleared. Starting fresh.");
+      renderActivePanel();
+      renderResetButton();
+    });
+  });
+}
+renderResetButton();
+
+/* ---------- init ---------- */
+state = loadState();
+saveState();
+renderActivePanel();
+
+})();
+</script>
+</body>
+</html>
