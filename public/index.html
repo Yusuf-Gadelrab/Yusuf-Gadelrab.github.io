@@ -67,5 +67,31 @@ d.readyState==='loading'?d.addEventListener('DOMContentLoaded',boot):boot();
 })();
 </script>
 
+<!-- photos:gold — hero sunset backdrop + About headshot -->
+<style id="yg-photos-css">
+.yg-page:has(.hero-row){isolation:isolate}
+.yg-page:has(.hero-row)::before{content:"";position:absolute;top:0;bottom:0;left:calc(50% - 50vw);right:calc(50% - 50vw);z-index:-1;pointer-events:none;background:linear-gradient(180deg,rgba(10,10,11,.87) 0%,rgba(10,10,11,.94) 55%,#0a0a0b 96%),url('img/sunset-hills.jpg') center 38%/cover no-repeat}
+#yg-about-photo{float:right;width:min(260px,42vw);margin:4px 0 18px 28px}
+#yg-about-photo img{display:block;width:100%;height:auto;aspect-ratio:700/749;object-fit:cover;border-radius:16px;border:1px solid rgba(212,175,55,.45);box-shadow:0 0 0 5px rgba(212,175,55,.08),0 18px 44px rgba(0,0,0,.55)}
+#yg-about-photo figcaption{font-size:12px;color:#9c9484;text-align:center;margin-top:8px;letter-spacing:.4px}
+@media(max-width:640px){#yg-about-photo{float:none;margin:0 auto 24px;width:min(240px,70vw)}}
+</style>
+<script id="yg-photos-js">
+(function(){var d=document;
+function inject(){
+  var h=[].filter.call(d.querySelectorAll('h2.yg-h2'),function(x){return x.textContent.trim()==='About'})[0];
+  if(!h)return;
+  var sec=h.closest('.yg-page');
+  if(!sec||sec.querySelector('#yg-about-photo'))return;
+  var f=d.createElement('figure');f.id='yg-about-photo';
+  f.innerHTML='<img src="img/yusuf-headshot.jpg" alt="Yusuf Gadelrab, professional headshot in a suit with a gold frame border" width="700" height="749" loading="lazy"><figcaption>Yusuf Gadelrab · San Jose, CA</figcaption>';
+  var head=sec.firstElementChild;
+  if(head)head.insertAdjacentElement('afterend',f);
+}
+function boot(){inject();var r=d.getElementById('root');if(r){var t,mo=new MutationObserver(function(){clearTimeout(t);t=setTimeout(inject,150)});mo.observe(r,{childList:true,subtree:true})}}
+d.readyState==='loading'?d.addEventListener('DOMContentLoaded',boot):boot();
+})();
+</script>
+
 </body>
 </html>
