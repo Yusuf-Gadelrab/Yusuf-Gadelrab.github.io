@@ -348,7 +348,10 @@
   /* CTA final */
   .final{
     text-align:center;border:1px solid var(--line);border-radius:28px;
-    background:radial-gradient(60% 110% at 50% 0%,rgba(212,175,55,.12),transparent),linear-gradient(180deg,var(--ivory),var(--ivory2));
+    background:
+      radial-gradient(60% 110% at 50% 0%,rgba(212,175,55,.12),transparent),
+      linear-gradient(180deg,rgba(16,15,13,.90),rgba(10,10,11,.96)),
+      url('img/fd/sunset-backdrop.jpg') center 38%/cover no-repeat var(--ivory2);
     padding:clamp(40px,5.5vw,68px) 26px; box-shadow:var(--shadow);
   }
   .final h2{margin-bottom:12px}
@@ -361,6 +364,72 @@
     color:var(--muted);font-size:14px;position:relative;z-index:1;background:var(--panel)}
   footer a{color:var(--gold-2);font-weight:600}
   footer a:hover{text-decoration:underline}
+
+  /* ---------- FOUR JOBS (alternating illustration rows) ---------- */
+  .jobrow{display:grid;grid-template-columns:1fr 1fr;gap:clamp(24px,4vw,56px);align-items:center;
+    padding:clamp(22px,3.2vw,38px) 0}
+  .jobrow + .jobrow{border-top:1px solid var(--line-soft)}
+  .jobrow.flip .jobviz{order:2}
+  .jobviz{border:1px solid var(--line-soft);border-radius:20px;padding:clamp(16px,2.4vw,28px);
+    background:radial-gradient(80% 120% at 50% 0%,rgba(212,175,55,.08),transparent 70%),linear-gradient(180deg,var(--ivory),var(--panel));
+    box-shadow:0 14px 34px -24px rgba(0,0,0,.75)}
+  .jobviz svg{display:block;width:100%;height:auto}
+  .jobnum{font-family:var(--serif);font-size:12.5px;color:var(--gold);letter-spacing:2.6px;text-transform:uppercase;font-weight:700}
+  .jobtxt h3{font-family:var(--serif);font-size:clamp(21px,2.6vw,27px);margin:8px 0 10px;letter-spacing:-.3px}
+  .jobtxt > p{color:var(--muted);font-size:15px;max-width:52ch}
+  .joblist{margin-top:14px;display:grid;gap:8px}
+  .joblist span{display:flex;gap:10px;font-size:13.5px;color:#ddd8ca;align-items:baseline}
+  .joblist i{font-style:normal;color:var(--gold);font-family:var(--serif);font-weight:800}
+
+  /* ---------- PRODUCT UI MOCK (triage inbox) ---------- */
+  .appmock{border:1px solid var(--line);border-radius:20px;overflow:hidden;background:var(--panel);
+    box-shadow:var(--shadow);font-size:13.5px}
+  .app-chrome{display:flex;align-items:center;gap:8px;padding:12px 18px;background:var(--ivory);
+    border-bottom:1px solid var(--line-soft)}
+  .dot{width:11px;height:11px;border-radius:50%;background:#2a2a30;flex:0 0 auto}
+  .dot.g{background:linear-gradient(135deg,var(--gold),var(--gold-2))}
+  .app-title{font-size:11.5px;color:var(--muted);letter-spacing:1.4px;text-transform:uppercase;font-weight:700;margin-left:8px}
+  .app-live{margin-left:auto;display:inline-flex;align-items:center;gap:7px;font-size:10.5px;color:var(--gold-2);
+    font-weight:800;letter-spacing:1.2px;text-transform:uppercase}
+  .mailrow{display:grid;grid-template-columns:auto 1fr auto;gap:4px 14px;padding:14px 18px;
+    border-bottom:1px solid var(--line-soft);align-items:center;transition:background .3s}
+  .mailrow:hover{background:rgba(212,175,55,.04)}
+  .avatar{width:34px;height:34px;border-radius:50%;display:grid;place-items:center;font-family:var(--serif);
+    font-weight:700;font-size:14px;color:#0a0a0a;background:linear-gradient(135deg,var(--gold),var(--gold-2));grid-row:span 2}
+  .mr-who{font-size:13px;font-weight:700;color:var(--ink)}
+  .mr-who small{color:var(--muted);font-weight:500;margin-left:8px;font-size:11.5px}
+  .mr-snip{grid-column:2;font-size:12.5px;color:var(--muted);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+  .mr-tag{grid-row:span 2;font-size:9.5px;font-weight:800;letter-spacing:1.1px;text-transform:uppercase;
+    padding:5px 11px;border-radius:100px;white-space:nowrap;justify-self:end}
+  .tag-gold{color:#0a0a0a;background:linear-gradient(135deg,var(--gold),var(--gold-2));box-shadow:0 6px 14px -8px var(--glow)}
+  .tag-line{color:var(--gold-2);border:1px solid var(--line);background:rgba(212,175,55,.07)}
+  .tag-dim{color:var(--muted);border:1px solid var(--line-soft);background:rgba(255,255,255,.02)}
+  .mailrow.openrow{background:linear-gradient(90deg,rgba(212,175,55,.07),transparent)}
+  .draftbox{grid-column:2/4;margin-top:6px;border:1px dashed var(--line);border-radius:12px;
+    padding:12px 14px;background:rgba(212,175,55,.05)}
+  .draftbox .ai-tag{margin-bottom:7px}
+  .draftbox p{font-size:12.5px;color:#ddd8ca;line-height:1.6}
+  .draftbox .mail-actions{margin-top:10px}
+  .app-foot{display:flex;flex-wrap:wrap;gap:8px 20px;justify-content:space-between;padding:11px 18px;
+    font-size:11.5px;color:var(--muted);background:var(--ivory)}
+  .app-foot b{color:var(--gold-2)}
+
+  /* ---------- FOUNDER ---------- */
+  .founder-grid{display:grid;grid-template-columns:.85fr 1.15fr;gap:clamp(26px,4vw,58px);align-items:center}
+  .founder-photo{position:relative;border-radius:22px;overflow:hidden;border:1px solid var(--line);
+    box-shadow:var(--shadow),0 0 0 6px rgba(212,175,55,.05);max-width:400px;justify-self:center;margin:0}
+  .founder-photo img{display:block;width:100%;height:auto;aspect-ratio:3/4;object-fit:cover;
+    filter:saturate(.94) contrast(1.04)}
+  .founder-photo::after{content:"";position:absolute;inset:0;pointer-events:none;
+    background:linear-gradient(180deg,rgba(10,10,10,0) 52%,rgba(10,10,10,.62))}
+  .founder-photo figcaption{position:absolute;left:0;right:0;bottom:0;z-index:1;padding:14px 18px;
+    font-size:12.5px;color:var(--gold-3);letter-spacing:.4px;line-height:1.5}
+  .founder-txt blockquote{font-family:var(--serif);font-size:clamp(18px,2.3vw,23px);line-height:1.55;
+    letter-spacing:-.2px;color:var(--ink);margin-top:6px}
+  .founder-txt blockquote b{
+    background:linear-gradient(115deg,var(--gold),var(--gold-2) 60%,var(--gold));
+    -webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;color:transparent}
+  .founder-txt .cred-sub{margin-top:14px;color:var(--muted);font-size:14px}
 
   /* reveal on scroll */
   .reveal{opacity:0;transform:translateY(28px);transition:opacity .8s cubic-bezier(.2,.7,.2,1),transform .8s cubic-bezier(.2,.7,.2,1)}
@@ -381,6 +450,13 @@
     .hero-grid{grid-template-columns:1fr}
     .trust{grid-template-columns:repeat(2,1fr);gap:22px 14px}
     .g2,.g3,.edge-grid,.price-wrap{grid-template-columns:1fr}
+    .jobrow{grid-template-columns:1fr;gap:18px}
+    .jobrow.flip .jobviz{order:0}
+    .founder-grid{grid-template-columns:1fr}
+    .founder-photo{max-width:340px}
+    .mr-snip{white-space:normal}
+    .mr-tag{grid-row:auto;grid-column:2;justify-self:start;margin-top:2px}
+    .avatar{grid-row:span 3}
   }
 
   @media (prefers-reduced-motion: reduce){
@@ -402,6 +478,14 @@
       <stop offset=".5" stop-color="#d4af37"/>
       <stop offset="1" stop-color="#8f6e1e"/>
     </linearGradient>
+    <linearGradient id="fdStroke" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#f4d47a"/>
+      <stop offset="1" stop-color="#b8912f"/>
+    </linearGradient>
+    <linearGradient id="fdFaint" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#d4af37" stop-opacity=".18"/>
+      <stop offset="1" stop-color="#d4af37" stop-opacity=".02"/>
+    </linearGradient>
   </defs>
 </svg>
 
@@ -414,6 +498,7 @@
   <div class="nav-links" id="navLinks">
     <a href="#problem">The Problem</a>
     <a href="#covers">What It Does</a>
+    <a href="#product">Inside</a>
     <a href="#edge">The Edge</a>
     <a href="#pricing">Pricing</a>
     <a href="mailto:yusuf.gadelrab06@gmail.com?subject=FreightDesk%20pilot%20slot" class="nav-cta">Book a Pilot</a>
@@ -553,6 +638,161 @@
 
   <div class="rule"></div>
 
+  <!-- FOUR JOBS -->
+  <section id="jobs">
+    <div class="sec-head reveal">
+      <div class="kicker">How It Works</div>
+      <h2>Four jobs, handled <span class="grad">before your first coffee.</span></h2>
+      <p>Triage, quoting, tracking, follow-up — the four email loops that eat a broker's day, drawn end to end.</p>
+    </div>
+
+    <div class="jobrow reveal">
+      <div class="jobviz">
+        <svg viewBox="0 0 340 210" role="img" aria-label="Illustration: incoming emails scanned and sorted into quotes, tracking, and follow-up lanes">
+          <rect x="24" y="88" width="62" height="42" rx="7" fill="url(#fdFaint)" stroke="url(#fdStroke)" stroke-width="2"/>
+          <path d="M24 96 l31 22 l31 -22" fill="none" stroke="url(#fdStroke)" stroke-width="2"/>
+          <rect x="32" y="80" width="62" height="42" rx="7" fill="#141417" stroke="url(#fdStroke)" stroke-width="2"/>
+          <path d="M32 88 l31 22 l31 -22" fill="none" stroke="url(#fdStroke)" stroke-width="2"/>
+          <line class="flow" x1="102" y1="101" x2="132" y2="101" stroke="#d4af37" stroke-width="2"/>
+          <circle cx="152" cy="101" r="17" fill="url(#fdFaint)" stroke="url(#fdStroke)" stroke-width="2"/>
+          <path d="M145 101 l5 5 l10 -11" fill="none" stroke="url(#fdStroke)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          <path class="flow" d="M169 94 C 200 94 200 45 228 45" fill="none" stroke="#d4af37" stroke-width="2"/>
+          <path class="flow" d="M169 101 L 228 101" fill="none" stroke="#d4af37" stroke-width="2"/>
+          <path class="flow" d="M169 108 C 200 108 200 157 228 157" fill="none" stroke="#d4af37" stroke-width="2"/>
+          <rect x="232" y="29" width="86" height="32" rx="9" fill="#141417" stroke="url(#fdStroke)" stroke-width="2"/>
+          <text x="275" y="49" text-anchor="middle" font-size="10.5" font-weight="700" letter-spacing="1.4" fill="#f4d47a">QUOTES</text>
+          <rect x="232" y="85" width="86" height="32" rx="9" fill="#141417" stroke="url(#fdStroke)" stroke-width="2"/>
+          <text x="275" y="105" text-anchor="middle" font-size="10.5" font-weight="700" letter-spacing="1.4" fill="#f4d47a">TRACKING</text>
+          <rect x="232" y="141" width="86" height="32" rx="9" fill="#141417" stroke="url(#fdStroke)" stroke-width="2"/>
+          <text x="275" y="161" text-anchor="middle" font-size="10.5" font-weight="700" letter-spacing="1.2" fill="#f4d47a">FOLLOW-UP</text>
+          <text x="63" y="150" text-anchor="middle" font-size="10.5" fill="#8b877b">every email, read on arrival</text>
+        </svg>
+      </div>
+      <div class="jobtxt">
+        <div class="jobnum">01 · Inbox Triage</div>
+        <h3>Every email lands pre-sorted.</h3>
+        <p>The moment a message hits your billing / AR / dispatch inbox, FreightDesk reads it, classifies it, and drops it into the right lane — no more skimming 200 emails to find the five that matter.</p>
+        <div class="joblist">
+          <span><i>✓</i>POD requests, disputes, rate questions — labeled instantly</span>
+          <span><i>✓</i>Urgent money items float to the top</span>
+          <span><i>✓</i>Junk and duplicates filtered before anyone reads them</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="jobrow flip reveal">
+      <div class="jobviz">
+        <svg viewBox="0 0 340 210" role="img" aria-label="Illustration: a quote document drafted with the rate filled in automatically">
+          <rect x="118" y="24" width="118" height="162" rx="10" fill="#141417" stroke="url(#fdStroke)" stroke-width="2"/>
+          <line x1="134" y1="50" x2="196" y2="50" stroke="#f4d47a" stroke-width="3" stroke-linecap="round"/>
+          <line x1="134" y1="68" x2="220" y2="68" stroke="#a39f94" stroke-width="2" stroke-linecap="round" opacity=".55"/>
+          <line x1="134" y1="82" x2="212" y2="82" stroke="#a39f94" stroke-width="2" stroke-linecap="round" opacity=".55"/>
+          <line x1="134" y1="96" x2="220" y2="96" stroke="#a39f94" stroke-width="2" stroke-linecap="round" opacity=".55"/>
+          <rect x="128" y="110" width="98" height="30" rx="7" fill="url(#fdFaint)" stroke="url(#fdStroke)" stroke-width="1.6"/>
+          <text x="177" y="130" text-anchor="middle" font-family="Georgia,serif" font-size="15" font-weight="bold" fill="#f4d47a">$1,850</text>
+          <line class="flow" x1="134" y1="156" x2="204" y2="156" stroke="#d4af37" stroke-width="2"/>
+          <rect x="206" y="150" width="3" height="12" fill="#f4d47a"/>
+          <rect x="34" y="58" width="70" height="26" rx="13" fill="#141417" stroke="url(#fdStroke)" stroke-width="1.6"/>
+          <text x="69" y="75" text-anchor="middle" font-size="9.5" font-weight="700" letter-spacing="1" fill="#f4d47a">LANE RATE</text>
+          <path class="flow" d="M104 71 C 114 71 112 84 122 88" fill="none" stroke="#d4af37" stroke-width="1.6"/>
+          <rect x="34" y="122" width="70" height="26" rx="13" fill="#141417" stroke="url(#fdStroke)" stroke-width="1.6"/>
+          <text x="69" y="139" text-anchor="middle" font-size="9.5" font-weight="700" letter-spacing="1" fill="#f4d47a">FUEL + ACC</text>
+          <path class="flow" d="M104 135 C 114 135 112 126 122 124" fill="none" stroke="#d4af37" stroke-width="1.6"/>
+          <path d="M252 78 l34 -12 l-12 34 l-8 -12 z" fill="url(#fdFaint)" stroke="url(#fdStroke)" stroke-width="2" stroke-linejoin="round"/>
+          <text x="270" y="126" text-anchor="middle" font-size="10.5" fill="#8b877b">ready to send</text>
+        </svg>
+      </div>
+      <div class="jobtxt">
+        <div class="jobnum">02 · Quote Drafting</div>
+        <h3>The rate reply, written for you.</h3>
+        <p>Quote and rate-con emails get a drafted reply with the right numbers already in it — lane rate, fuel surcharge, accessorials — pulled from your own data, never guessed.</p>
+        <div class="joblist">
+          <span><i>✓</i>Correct figures attached, formatted to each customer's rules</span>
+          <span><i>✓</i>Rate corrections routed for sales sign-off automatically</span>
+          <span><i>✓</i>Send as-is or edit first — your call, per email type</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="jobrow reveal">
+      <div class="jobviz">
+        <svg viewBox="0 0 340 210" role="img" aria-label="Illustration: a truck on a dashed route between pickup and delivery pins with status checkpoints">
+          <path class="flow" d="M34 158 C 100 70 240 190 306 76" fill="none" stroke="#d4af37" stroke-width="2"/>
+          <circle cx="34" cy="158" r="8" fill="url(#fdFaint)" stroke="url(#fdStroke)" stroke-width="2"/>
+          <circle cx="34" cy="158" r="2.6" fill="#f4d47a"/>
+          <path d="M306 62 a11 11 0 0 1 11 11 c0 8 -11 20 -11 20 s-11 -12 -11 -20 a11 11 0 0 1 11 -11 z" fill="#141417" stroke="url(#fdStroke)" stroke-width="2"/>
+          <circle cx="306" cy="73" r="3.6" fill="#f4d47a"/>
+          <g transform="translate(128,96) rotate(6)">
+            <rect x="0" y="0" width="52" height="30" rx="4" fill="#141417" stroke="url(#fdStroke)" stroke-width="2"/>
+            <path d="M52 8 h14 l8 10 v12 h-22 z" fill="#141417" stroke="url(#fdStroke)" stroke-width="2" stroke-linejoin="round"/>
+            <circle cx="14" cy="34" r="6" fill="#0a0a0a" stroke="url(#fdStroke)" stroke-width="2"/>
+            <circle cx="60" cy="34" r="6" fill="#0a0a0a" stroke="url(#fdStroke)" stroke-width="2"/>
+          </g>
+          <rect x="26" y="30" width="86" height="24" rx="12" fill="#141417" stroke="url(#fdStroke)" stroke-width="1.6"/>
+          <text x="69" y="46" text-anchor="middle" font-size="9.5" font-weight="700" letter-spacing=".8" fill="#f4d47a">PICKED UP ✓</text>
+          <rect x="226" y="160" width="88" height="24" rx="12" fill="#141417" stroke="url(#fdStroke)" stroke-width="1.6"/>
+          <text x="270" y="176" text-anchor="middle" font-size="9.5" font-weight="700" letter-spacing=".8" fill="#f4d47a">ETA 2:14 PM</text>
+          <text x="34" y="186" font-size="10.5" fill="#8b877b">origin</text>
+          <text x="306" y="112" text-anchor="middle" font-size="10.5" fill="#8b877b">delivery</text>
+        </svg>
+      </div>
+      <div class="jobtxt">
+        <div class="jobnum">03 · Load Tracking</div>
+        <h3>"Where's my load?" answers itself.</h3>
+        <p>Status checks are the most repetitive email in freight. FreightDesk pulls the load's current state and replies with pickup, position, and ETA — before your dispatcher even sees the question.</p>
+        <div class="joblist">
+          <span><i>✓</i>Tracking updates sent automatically, with the load number quoted back</span>
+          <span><i>✓</i>False "delayed" flags caught — ~40% turn out fine</span>
+          <span><i>✓</i>POD confirmed in hand the moment delivery closes</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="jobrow flip reveal">
+      <div class="jobviz">
+        <svg viewBox="0 0 340 210" role="img" aria-label="Illustration: a clock cycling follow-up emails at day 7, 14, and 30 until paid">
+          <circle cx="78" cy="96" r="36" fill="url(#fdFaint)" stroke="url(#fdStroke)" stroke-width="2"/>
+          <line x1="78" y1="96" x2="78" y2="74" stroke="#f4d47a" stroke-width="2.6" stroke-linecap="round"/>
+          <line x1="78" y1="96" x2="94" y2="104" stroke="#f4d47a" stroke-width="2.6" stroke-linecap="round"/>
+          <circle cx="78" cy="96" r="3" fill="#f4d47a"/>
+          <path d="M78 44 a52 52 0 0 1 49 36" fill="none" stroke="url(#fdStroke)" stroke-width="2" stroke-linecap="round"/>
+          <path d="M121 70 l8 11 l-13 2 z" fill="#d4af37"/>
+          <path d="M78 148 a52 52 0 0 1 -49 -36" fill="none" stroke="url(#fdStroke)" stroke-width="2" stroke-linecap="round"/>
+          <path d="M35 122 l-8 -11 l13 -2 z" fill="#d4af37"/>
+          <line class="flow" x1="132" y1="96" x2="308" y2="96" stroke="#d4af37" stroke-width="2"/>
+          <g transform="translate(158,80)">
+            <rect x="0" y="0" width="30" height="21" rx="4" fill="#141417" stroke="url(#fdStroke)" stroke-width="1.8"/>
+            <path d="M0 4 l15 11 l15 -11" fill="none" stroke="url(#fdStroke)" stroke-width="1.8"/>
+          </g>
+          <text x="173" y="126" text-anchor="middle" font-size="10" font-weight="700" fill="#f4d47a">DAY 7</text>
+          <g transform="translate(216,80)">
+            <rect x="0" y="0" width="30" height="21" rx="4" fill="#141417" stroke="url(#fdStroke)" stroke-width="1.8"/>
+            <path d="M0 4 l15 11 l15 -11" fill="none" stroke="url(#fdStroke)" stroke-width="1.8"/>
+          </g>
+          <text x="231" y="126" text-anchor="middle" font-size="10" font-weight="700" fill="#f4d47a">DAY 14</text>
+          <g transform="translate(274,78)">
+            <circle cx="16" cy="12" r="15" fill="url(#fdFaint)" stroke="url(#fdStroke)" stroke-width="2"/>
+            <path d="M9 12 l5 5 l10 -10" fill="none" stroke="#f4d47a" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
+          </g>
+          <text x="290" y="126" text-anchor="middle" font-size="10" font-weight="700" fill="#f4d47a">PAID</text>
+          <text x="78" y="162" text-anchor="middle" font-size="10.5" fill="#8b877b">never forgets, never nags twice</text>
+        </svg>
+      </div>
+      <div class="jobtxt">
+        <div class="jobnum">04 · Follow-Up Automation</div>
+        <h3>Aging invoices chase themselves.</h3>
+        <p>Past-due invoices, missing W9s, unanswered disputes — FreightDesk watches the clock and sends the polite, persistent nudge at day 7, 14, and 30, until the money lands.</p>
+        <div class="joblist">
+          <span><i>✓</i>30-day AR aging follow-ups that never slip</span>
+          <span><i>✓</i>W9 chasing — including the ~20% that bounce</span>
+          <span><i>✓</i>Escalates to a human only when a reply actually needs one</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="rule"></div>
+
   <!-- WHAT IT DOES -->
   <section id="covers">
     <div class="sec-head reveal">
@@ -644,6 +884,71 @@
 
   <div class="rule"></div>
 
+  <!-- PRODUCT VIEW -->
+  <section id="product">
+    <div class="sec-head reveal">
+      <div class="kicker">Inside the Product</div>
+      <h2>What your team sees at <span class="grad">9:00 AM.</span></h2>
+      <p>The morning inbox, already worked. Every email labeled, every reply drafted — your team reviews, clicks send, and moves on to real work.</p>
+    </div>
+
+    <div class="appmock reveal d1">
+      <div class="app-chrome">
+        <span class="dot"></span><span class="dot"></span><span class="dot g"></span>
+        <span class="app-title">FreightDesk · AR Inbox</span>
+        <span class="app-live"><span class="pulse"></span>Local model · live</span>
+      </div>
+
+      <div class="mailrow openrow">
+        <span class="avatar">M</span>
+        <span class="mr-who">Mike T. — Shipper Ops <small>8:57 AM · Load quote</small></span>
+        <span class="mr-tag tag-gold">Quote request — drafted reply ready</span>
+        <span class="mr-snip">"Need a rate: 2 pallets, Fresno → Reno, Thursday pickup — can you get me a number today?"</span>
+        <div class="draftbox">
+          <span class="ai-tag">AI draft · awaiting one click</span>
+          <p>Hi Mike — Fresno → Reno, 2 pallets (~1,100 lb), Thursday pickup: <b style="color:var(--gold-2)">$1,180 all-in</b>, next-day delivery. Rate confirmation attached — reply "book it" and the truck is locked in.</p>
+          <div class="mail-actions"><span class="send-pill">Send ✓</span><span class="edit-pill">Edit</span></div>
+        </div>
+      </div>
+
+      <div class="mailrow">
+        <span class="avatar">D</span>
+        <span class="mr-who">Dana R. — Carrier Billing <small>9:12 AM · POD</small></span>
+        <span class="mr-tag tag-line">POD request — auto-replied</span>
+        <span class="mr-snip">"Can you send the signed POD for load #4821? We need it to release payment."</span>
+      </div>
+
+      <div class="mailrow">
+        <span class="avatar">T</span>
+        <span class="mr-who">TQL Dispatch <small>9:26 AM · Status check</small></span>
+        <span class="mr-tag tag-line">Load status — tracking update sent</span>
+        <span class="mr-snip">"Where is load #4832 right now? Customer is asking for an ETA."</span>
+      </div>
+
+      <div class="mailrow">
+        <span class="avatar">R</span>
+        <span class="mr-who">Rosa V. — AP, regional shipper <small>9:31 AM · Dispute</small></span>
+        <span class="mr-tag tag-line">Invoice dispute — held for approval</span>
+        <span class="mr-snip">"Invoice INV-4790 doesn't match the rate con — we show $2,150, you billed $2,375."</span>
+      </div>
+
+      <div class="mailrow">
+        <span class="avatar">K</span>
+        <span class="mr-who">Kearny Foods — AR aging <small>9:40 AM · Day 31</small></span>
+        <span class="mr-tag tag-dim">Past due 30 days — follow-up scheduled</span>
+        <span class="mr-snip">Invoice INV-4711 unpaid 31 days — polite nudge #2 queued for 10:00 AM with statement attached.</span>
+      </div>
+
+      <div class="app-foot">
+        <span><b>5 emails</b> triaged · <b>1</b> awaiting approval · avg. draft time <b>9 seconds</b></span>
+        <span>$0 API fees · data never left the building</span>
+      </div>
+    </div>
+    <p class="mail-cap reveal d2">Illustrative morning — names and loads are sample data; live replies pull from your own TMS and inbox.</p>
+  </section>
+
+  <div class="rule"></div>
+
   <!-- UNFAIR EDGE -->
   <section id="edge">
     <div class="edge reveal">
@@ -707,12 +1012,21 @@
 
   <div class="rule"></div>
 
-  <!-- CREDIBILITY -->
-  <section>
-    <div class="cred reveal">
-      <div class="flourish">✦ ✦ ✦</div>
-      <blockquote>Built and battle-tested inside a <b>real freight brokerage</b> — against the live inbox of a working financial controller. Every one of the 18 workflows was validated on real back-office email before this page existed.</blockquote>
-      <p class="cred-sub">Client confidentiality is part of the product — which is why you'll never see a client named here, and yours never will be either.</p>
+  <!-- CREDIBILITY / FOUNDER -->
+  <section id="founder">
+    <div class="founder-grid">
+      <figure class="founder-photo reveal">
+        <img src="img/fd/founder-hwyhaul.jpg"
+             alt="Yusuf Gadelrab, founder of FreightDesk AI, holding a HwyHaul freight-tech shirt"
+             width="675" height="900" loading="lazy" decoding="async"/>
+        <figcaption>Yusuf Gadelrab — FreightDesk started inside HwyHaul, a real freight-tech brokerage.</figcaption>
+      </figure>
+      <div class="founder-txt reveal d1">
+        <div class="kicker">Who Built This</div>
+        <h2>Built by someone who <span class="grad">shipped this inside a real freight brokerage.</span></h2>
+        <blockquote>Built and battle-tested inside a <b>real freight brokerage</b> — against the live inbox of a working financial controller. Every one of the 18 workflows was validated on real back-office email before this page existed.</blockquote>
+        <p class="cred-sub">Client confidentiality is part of the product — which is why you'll never see a client named here, and yours never will be either.</p>
+      </div>
     </div>
   </section>
 

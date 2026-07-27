@@ -57,6 +57,13 @@
   .btn.ghost{background:transparent;color:var(--gold);border:1px solid var(--gold)}
   footer{padding:36px 0 60px;text-align:center;color:var(--dim);font-size:.85rem}
   footer a{margin:0 10px}
+  .portrait{display:block;width:148px;height:158px;object-fit:cover;border-radius:20px;margin:26px auto 6px;border:1px solid var(--line);box-shadow:0 0 0 5px rgba(212,175,55,.10),0 14px 40px rgba(0,0,0,.55)}
+  .story-row{display:flex;gap:32px;align-items:flex-start;flex-wrap:wrap}
+  .story-copy{flex:1 1 440px}
+  .story-photo{flex:0 0 210px;margin:0}
+  .story-photo img{display:block;width:100%;height:auto;aspect-ratio:3/4;object-fit:cover;border-radius:14px;border:1px solid var(--line);box-shadow:0 12px 34px rgba(0,0,0,.5)}
+  .story-photo figcaption{color:var(--dim);font-size:.8rem;text-align:center;margin-top:8px}
+  @media(max-width:560px){.story-photo{flex-basis:100%;max-width:230px;margin:0 auto}}
   .reveal{opacity:0;transform:translateY(18px);transition:all .6s ease}
   .reveal.in{opacity:1;transform:none}
   @media (prefers-reduced-motion: reduce){.reveal{opacity:1;transform:none;transition:none}}
@@ -68,6 +75,7 @@
 <header>
   <div class="wrap">
     <div class="eyebrow">Creator Media Kit</div>
+    <img class="portrait" src="img/yusuf-headshot.jpg" alt="Yusuf Gadelrab, professional headshot in a suit with a gold frame border" width="700" height="749">
     <h1>Yusuf Gadelrab</h1>
     <p class="tag">Fitness transformation × college life × tech builder — documented daily on camera. Set any challenge; I'll turn it into content.</p>
     <div class="stats">
@@ -85,8 +93,16 @@
 
 <section class="story reveal">
   <h2>The Story</h2>
-  <p>I'm Yusuf — 20, computer-science student at <strong>San Jose State</strong>, former football team captain (<strong>league MVP</strong>) and wrestler. I cut from <strong>260 lb to 200 lb</strong> while adding muscle, and documented every step on camera.</p>
-  <p>My content just crossed <strong>100,000+ views in 14 days</strong> and it's compounding — because I treat content like an engineering project: consistent, measurable, shipped on schedule. I'm also a published researcher and full-stack developer, so the "student athlete × builder" audience is genuinely mine.</p>
+  <div class="story-row">
+    <div class="story-copy">
+      <p>I'm Yusuf — 20, computer-science student at <strong>San Jose State</strong>, former football team captain (<strong>league MVP</strong>) and wrestler. I cut from <strong>260 lb to 200 lb</strong> while adding muscle, and documented every step on camera.</p>
+      <p>My content just crossed <strong>100,000+ views in 14 days</strong> and it's compounding — because I treat content like an engineering project: consistent, measurable, shipped on schedule. I'm also a published researcher and full-stack developer, so the "student athlete × builder" audience is genuinely mine.</p>
+    </div>
+    <figure class="story-photo">
+      <img src="img/yusuf-candid.jpg" alt="Yusuf Gadelrab, casual selfie in a plant-filled atrium" width="600" height="800" loading="lazy">
+      <figcaption>Off camera — San Jose</figcaption>
+    </figure>
+  </div>
 </section>
 
 <section class="reveal">

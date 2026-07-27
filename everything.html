@@ -139,6 +139,16 @@
   .reveal{opacity:0;transform:translateY(22px);transition:opacity .65s ease,transform .65s ease}
   .reveal.in{opacity:1;transform:none}
 
+  /* ---------- photos ---------- */
+  .hero-portrait{display:block;width:132px;height:141px;object-fit:cover;border-radius:22px;margin:0 auto 26px;border:1px solid rgba(212,175,55,.55);box-shadow:0 0 0 4px rgba(212,175,55,.12),0 12px 36px rgba(0,0,0,.6),0 0 30px rgba(212,175,55,.18)}
+  .card-thumb{display:block;width:calc(100% + 56px);height:auto;margin:-28px -28px 20px;aspect-ratio:16/9;object-fit:cover;border-bottom:1px solid var(--line)}
+  .sec-row{display:flex;gap:40px;align-items:flex-start;justify-content:space-between;flex-wrap:wrap}
+  .sec-row .sec-head{flex:1 1 480px}
+  .side-photo{flex:0 0 210px;margin:0}
+  .side-photo img{display:block;width:100%;height:auto;aspect-ratio:3/4;object-fit:cover;border-radius:16px;border:1px solid rgba(212,175,55,.35);box-shadow:0 12px 34px rgba(0,0,0,.55)}
+  .side-photo figcaption{font-size:.78rem;color:var(--muted);margin-top:8px;text-align:center}
+  @media(max-width:640px){.side-photo{flex-basis:100%;max-width:240px;margin:0 auto}}
+
   @media(max-width:640px){.nav-links a:not(.nav-cta){display:none}.btn-ghost{margin-left:0;margin-top:12px}.banner-inner{padding:32px 18px}}
   @media(prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important}.reveal{opacity:1;transform:none}}
 </style>
@@ -164,6 +174,7 @@
   <canvas id="stars"></canvas>
   <div class="orb orb1"></div><div class="orb orb2"></div><div class="orb orb3"></div>
   <div class="wrap">
+    <img class="hero-portrait reveal" src="img/yusuf-headshot.jpg" alt="Yusuf Gadelrab, professional headshot in a suit with a gold frame border" width="700" height="749">
     <span class="eyebrow reveal">San Jose, CA · CS @ SJSU · Building in public</span>
     <h1 class="reveal">Everything I do, <span class="grad">one gold map.</span></h1>
     <p class="roles reveal">I'm a <b id="role">published researcher</b></p>
@@ -234,6 +245,7 @@
         <a class="go" href="https://yusuf-gadelrab.github.io/hwyhaul.html">Explore the case study <span>→</span></a>
       </div>
       <div class="card reveal">
+        <img class="card-thumb" src="projects/eventreels.jpg" alt="EventReels studio interface — drag-and-drop footage uploader with reel-length slider and title card field" width="1600" height="833" loading="lazy">
         <span class="icon">🎬</span>
         <span class="tag">Startup · Video</span>
         <h3>EventReels</h3>
@@ -241,6 +253,7 @@
         <a class="go" href="https://yusuf-gadelrab.github.io/">On the portfolio <span>→</span></a>
       </div>
       <div class="card reveal">
+        <img class="card-thumb" src="projects/ecoimpact.jpg" alt="EcoImpact app — dark San Jose trash map with cleanup pins, impact meter, and community leaderboard" width="1600" height="1000" loading="lazy">
         <span class="icon">🌍</span>
         <span class="tag">Startup · Climate</span>
         <h3>EcoImpact</h3>
@@ -277,9 +290,17 @@
 <section id="leadership">
   <div class="wrap">
     <div class="sec-label reveal">03 · Leadership &amp; Community</div>
-    <h2 class="reveal">Roles I hold</h2>
-    <p class="sec-desc reveal">Code is half of it. The other half is rooms full of people: running club operations, managing a chapter's money, and teaching CS to students who remind me why I started.</p>
-    <div class="grid">
+    <div class="sec-row">
+      <div class="sec-head reveal" style="margin-bottom:0">
+        <h2>Roles I hold</h2>
+        <p class="sec-desc" style="margin-bottom:0">Code is half of it. The other half is rooms full of people: running club operations, managing a chapter's money, and teaching CS to students who remind me why I started.</p>
+      </div>
+      <figure class="side-photo reveal">
+        <img src="img/yusuf-candid.jpg" alt="Yusuf Gadelrab, casual selfie in a plant-filled atrium on campus" width="600" height="800" loading="lazy">
+        <figcaption>Off the laptop — San Jose, 2026</figcaption>
+      </figure>
+    </div>
+    <div class="grid" style="margin-top:36px">
       <div class="card reveal">
         <span class="icon">🚀</span>
         <span class="tag">SVEC</span>

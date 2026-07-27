@@ -222,10 +222,19 @@
   /* scroll progress */
   #progress{position:fixed;top:0;left:0;height:3px;width:0;z-index:60;background:linear-gradient(90deg,var(--gold-dim),var(--gold),var(--gold-2));box-shadow:0 0 12px var(--glow)}
 
+  /* hero photo */
+  .hero-grid{display:grid;grid-template-columns:minmax(0,1.4fr) minmax(240px,.6fr);gap:clamp(28px,5vw,64px);align-items:center}
+  .hero-shot{margin:0;max-width:360px;justify-self:end}
+  .hero-shot img{display:block;width:100%;height:auto;aspect-ratio:3/4;object-fit:cover;border-radius:20px;border:1px solid rgba(212,175,55,.35);box-shadow:0 0 0 6px rgba(212,175,55,.08),0 24px 60px -20px rgba(0,0,0,.8),0 0 40px rgba(212,175,55,.15)}
+  .hero-shot figcaption{margin-top:12px;font-size:13px;color:var(--muted);text-align:center;letter-spacing:.4px}
+  .hero-shot figcaption b{color:var(--gold-2);font-weight:600}
+
   @media(max-width:820px){
     .nav-links{display:none;position:absolute;top:100%;left:0;right:0;flex-direction:column;padding:12px;gap:4px;background:rgba(10,10,11,.96);border-bottom:1px solid var(--line)}
     .nav-links.open{display:flex}
     .menu-btn{display:block}
+    .hero-grid{grid-template-columns:1fr}
+    .hero-shot{justify-self:center;max-width:300px}
     .stats{grid-template-columns:repeat(2,1fr)}
     .g2,.g3{grid-template-columns:1fr}
     .pipe-arrow{transform:rotate(90deg);padding:6px 0}
@@ -258,13 +267,21 @@
 
   <!-- HERO -->
   <section class="hero">
-    <span class="eyebrow reveal"><span class="pulse"></span>HwyHaul · Freight Brokerage Internship · May – Jul 2026</span>
-    <h1 class="reveal d1">The freight back office, <span class="grad">run by AI</span> — not by hand.</h1>
-    <p class="lede reveal d2">At <b>HwyHaul</b>, a freight brokerage moving loads between shippers and carriers, I built an AI layer that reads incoming carrier messages, drafts the reply, and clears the billing &amp; AR back office — <b>100% on the laptop, zero API cost, and a human always clicks Send.</b></p>
-    <div class="hero-cta reveal d3">
-      <a href="#build" class="btn btn-gold">See what I built ↓</a>
-      <a href="https://www.linkedin.com/in/yusuf-gadelrab-76246b221" target="_blank" rel="noreferrer" class="btn btn-ghost">💼 LinkedIn</a>
-      <a href="https://github.com/Yusuf-Gadelrab" target="_blank" rel="noreferrer" class="btn btn-ghost">⌥ GitHub</a>
+    <div class="hero-grid">
+      <div class="hero-copy">
+        <span class="eyebrow reveal"><span class="pulse"></span>HwyHaul · Freight Brokerage Internship · May – Jul 2026</span>
+        <h1 class="reveal d1">The freight back office, <span class="grad">run by AI</span> — not by hand.</h1>
+        <p class="lede reveal d2">At <b>HwyHaul</b>, a freight brokerage moving loads between shippers and carriers, I built an AI layer that reads incoming carrier messages, drafts the reply, and clears the billing &amp; AR back office — <b>100% on the laptop, zero API cost, and a human always clicks Send.</b></p>
+        <div class="hero-cta reveal d3">
+          <a href="#build" class="btn btn-gold">See what I built ↓</a>
+          <a href="https://www.linkedin.com/in/yusuf-gadelrab-76246b221" target="_blank" rel="noreferrer" class="btn btn-ghost">💼 LinkedIn</a>
+          <a href="https://github.com/Yusuf-Gadelrab" target="_blank" rel="noreferrer" class="btn btn-ghost">⌥ GitHub</a>
+        </div>
+      </div>
+      <figure class="hero-shot reveal d2">
+        <img src="img/yusuf-hwyhaul.jpg" alt="Yusuf Gadelrab excitedly holding up a HwyHaul t-shirt" width="675" height="900">
+        <figcaption><b>Last day at HwyHaul</b> — July 2026</figcaption>
+      </figure>
     </div>
 
     <div class="stats">
