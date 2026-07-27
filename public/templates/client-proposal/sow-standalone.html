@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Statement of Work — Cascade Freight Brokers</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+  :root{
+    --bg:#0a0a0b; --bg2:#111114; --panel:#141417; --panel2:#191920;
+    --gold:#d4af37; --gold-2:#f4d47a; --gold-dim:#8a7328;
+    --ink:#f5f2e8; --muted:#a39f94;
+    --line:rgba(212,175,55,.16); --glow:rgba(212,175,55,.35);
+    --paper:#fbfaf7; --paper-ink:#14140f; --paper-muted:#6b675c; --paper-line:rgba(20,20,15,.12);
+  }
+  *{box-sizing:border-box;}
+  html,body{ margin:0; padding:0; background:#3a3a3c; -webkit-print-color-adjust:exact; print-color-adjust:exact; }
+  body{ font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Inter,system-ui,sans-serif; color:var(--paper-ink); line-height:1.6; }
+  h1,h2,h3,.serif{ font-family:Georgia,"Times New Roman",serif; }
+
+  .eyebrow{ font-size:11px; letter-spacing:2px; text-transform:uppercase; color:var(--gold-dim); font-weight:600; margin:0 0 8px; }
+  .gold-text{
+    background:linear-gradient(120deg,var(--gold-2),var(--gold) 40%,#c99b1e);
+    -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text;
+  }
+
+  @page{ size:letter; margin:0; }
+  .page{ width:8.5in; height:11in; margin:24px auto; position:relative; overflow:hidden;
+    padding:0 64px 88px; background:var(--paper); color:var(--paper-ink); break-after:page; }
+  .page:last-of-type{ break-after:auto; }
+  @media print{ html,body{ background:#fff; } .page{ margin:0; box-shadow:none; } }
+  @media screen{ .page{ box-shadow:0 20px 60px rgba(0,0,0,.35); } }
+
+  /* letterhead band — replaces full dark cover in the tighter SOW version */
+  .letterhead{
+    background:var(--bg); color:var(--ink); margin:0 -64px 40px; padding:36px 64px 28px;
+    position:relative;
+  }
+  .letterhead .glow{ position:absolute; top:-100px; right:-100px; width:260px; height:260px;
+    background:radial-gradient(circle,var(--glow) 0%,transparent 70%); opacity:.12; pointer-events:none; }
+  .monogram{ position:absolute; top:24px; right:56px; width:24px; height:24px; }
+  .monogram svg{ width:100%; height:100%; display:block; }
+  .letterhead .kicker{ font-size:10px; letter-spacing:2.5px; text-transform:uppercase; color:var(--gold-2); margin:0 0 10px; }
+  .letterhead h1{ font-size:26px; margin:0 0 12px; letter-spacing:-.4px; }
+  .lh-meta{ display:flex; gap:32px; font-size:11px; color:var(--muted); }
+  .lh-meta b{ color:var(--ink); }
+
+  .pagefoot{
+    position:absolute; left:64px; right:64px; bottom:40px; display:flex; justify-content:space-between;
+    align-items:center; padding-top:14px; border-top:1px solid var(--paper-line);
+    font-size:10px; letter-spacing:1px; text-transform:uppercase; color:var(--paper-muted);
+  }
+  .pagefoot .pnum{ color:var(--gold-dim); font-weight:700; }
+  .accent-bar{ width:56px; height:2px; background:var(--gold); border:none; margin:0 0 20px; }
+  h2.title{ font-size:22px; letter-spacing:-.3px; margin:0 0 6px; }
+  .lede{ font-size:13.5px; color:var(--paper-muted); max-width:520px; margin:0 0 24px; }
+
+  table{ width:100%; border-collapse:collapse; font-size:12px; }
+  th{ text-align:left; font-size:10px; letter-spacing:1.2px; text-transform:uppercase; color:var(--gold-dim);
+    padding:0 12px 9px 0; border-bottom:1px solid var(--paper-line); font-weight:700; }
+  td{ padding:10px 12px 10px 0; border-bottom:1px solid var(--paper-line); vertical-align:top; }
+  tr{ break-inside:avoid; }
+  .subhead{ display:flex; align-items:center; gap:10px; margin:26px 0 10px; }
+  .subhead:first-of-type{ margin-top:0; }
+  .subhead .dot{ width:8px; height:8px; border-radius:50%; }
+  .dot-in{ background:#3c8a5c; } .dot-out{ background:#a34b3f; }
+  .subhead h3{ font-size:14px; margin:0; }
+  .table-block{ margin:0 0 8px; }
+
+  .rail{ position:relative; margin:30px 0 14px; }
+  .rail::before{ content:""; position:absolute; top:16px; left:16px; right:16px; height:2px;
+    background:linear-gradient(90deg,var(--gold-dim),var(--gold),var(--gold-dim)); }
+  .rail-row{ display:flex; justify-content:space-between; gap:16px; }
+  .rail-node{ flex:1; }
+  .rail-dot{ width:12px; height:12px; border-radius:50%; background:var(--gold); border:3px solid var(--paper);
+    box-shadow:0 0 0 1px var(--gold); margin:10px 0 10px 16px; }
+  .rail-node h3{ font-size:14px; margin:0 0 2px; }
+  .rail-node .when{ font-size:10px; letter-spacing:1px; text-transform:uppercase; color:var(--gold-dim); margin:0 0 6px; }
+  .rail-node p{ font-size:11.5px; color:var(--paper-muted); margin:0; max-width:210px; }
+
+  .term-block{ margin:0 0 16px; break-inside:avoid; }
+  .term-block h3{ font-size:13px; margin:0 0 5px; display:flex; align-items:center; gap:8px; }
+  .term-block h3::before{ content:""; width:6px; height:6px; background:var(--gold); border-radius:50%; display:inline-block; }
+  .term-block p{ font-size:12px; color:var(--paper-muted); margin:0; }
+
+  .sig-grid{ display:flex; gap:36px; margin:30px 0 20px; }
+  .sig-block{ flex:1; }
+  .sig-line{ border:none; border-top:1px solid var(--paper-ink); margin:44px 0 6px; }
+  .sig-label{ font-size:10.5px; color:var(--paper-muted); }
+  .approve-box{ border:1px solid var(--gold); border-radius:10px; padding:18px 22px; margin:6px 0 4px;
+    background:linear-gradient(135deg,rgba(212,175,55,.08),transparent); }
+  .approve-box h3{ font-size:14px; margin:0 0 6px; }
+  .approve-box p{ font-size:11.5px; color:var(--paper-muted); margin:0 0 3px; }
+</style>
+</head>
+<body>
+
+<!-- ============================================================
+     EDIT BELOW — for a client who already agreed on price, this
+     3-page SOW skips the sell (Executive Summary / Problem /
+     Investment tiers) and goes straight to scope + delivery + sign.
+     ============================================================ -->
+
+<!-- ============ PAGE 1 — SCOPE OF WORK ============ -->
+<section class="page">
+  <div class="letterhead">
+    <div class="glow"></div>
+    <div class="monogram"><svg viewBox="0 0 28 28"><path d="M14 1 L27 14 L14 27 L1 14 Z" fill="none" stroke="#d4af37" stroke-width="1.4"/><path d="M14 8 L20 14 L14 20 L8 14 Z" fill="#d4af37" opacity=".85"/></svg></div>
+    <p class="kicker">Statement of Work</p>
+    <h1 class="gold-text">FreightDesk AI — Back-Office Automation Pilot</h1>
+    <div class="lh-meta">
+      <span>Client: <b>Cascade Freight Brokers</b></span>
+      <span>Provider: <b>Automation Studio</b></span>
+      <span>Date: <b>July 31, 2026</b></span>
+      <span>SOW No.: <b>CFB-2026-0731-SOW</b></span>
+    </div>
+  </div>
+
+  <p class="eyebrow">Scope of Work</p>
+  <hr class="accent-bar">
+  <h2 class="title">What's included — and what isn't</h2>
+  <p class="lede">Confirms the agreed Growth Partner tier ($999 setup + $249/mo). Boundaries below protect both sides from scope creep.</p>
+
+  <div class="table-block">
+    <div class="subhead"><span class="dot dot-in"></span><h3>In Scope</h3></div>
+    <table>
+      <tr><th style="width:34%;">Workstream</th><th>Description</th></tr>
+      <tr><td>Rate-con parsing</td><td>Automated extraction of rate, lane, reference #, and accessorials into the TMS.</td></tr>
+      <tr><td>Check-call unification</td><td>Single status feed combining carrier email, SMS, and phone check-ins.</td></tr>
+      <tr><td>Invoice matching</td><td>Automated 3-way match of rate-con, signed BOL, and carrier invoice.</td></tr>
+      <tr><td>TMS &amp; accounting integration</td><td>Read/write integration via the 3 APIs confirmed in Discovery.</td></tr>
+      <tr><td>Dispatcher training</td><td>One live walkthrough plus a written quick-reference guide.</td></tr>
+    </table>
+  </div>
+
+  <div class="table-block">
+    <div class="subhead"><span class="dot dot-out"></span><h3>Out of Scope</h3></div>
+    <table>
+      <tr><th style="width:34%;">Item</th><th>Why it's excluded</th></tr>
+      <tr><td>Custom TMS development</td><td>Pilot integrates with, but does not modify, the TMS platform.</td></tr>
+      <tr><td>Carrier integrations beyond 3 named APIs</td><td>Available as a change order once demand is confirmed.</td></tr>
+      <tr><td>After-hours live support</td><td>Business-hours (8am–6pm PT); 24/7 monitoring is a post-pilot add-on.</td></tr>
+    </table>
+  </div>
+
+  <div class="pagefoot"><span>Cascade Freight Brokers · Confidential</span><span class="pnum">01</span></div>
+</section>
+
+<!-- ============ PAGE 2 — DELIVERABLES & TIMELINE ============ -->
+<section class="page" style="padding-top:72px;">
+  <p class="eyebrow">Deliverables &amp; Milestones</p>
+  <hr class="accent-bar">
+  <h2 class="title">What ships, and when</h2>
+  <p class="lede">Dates assume kickoff on Aug 4, 2026.</p>
+
+  <table>
+    <tr><th style="width:20%;">Milestone</th><th style="width:26%;">Deliverable</th><th style="width:16%;">Target Date</th><th>Acceptance Criteria</th></tr>
+    <tr><td>Kickoff</td><td>Signed access &amp; document-format catalog</td><td>Aug 4, 2026</td><td>API credentials issued; 20 sample rate-cons collected</td></tr>
+    <tr><td>Discovery complete</td><td>Exception-case log &amp; metric sign-off</td><td>Aug 15, 2026</td><td>Client approves scope-of-automation document in writing</td></tr>
+    <tr><td>Sandbox build</td><td>Rate-con parser + check-call unifier</td><td>Aug 29, 2026</td><td>95%+ field accuracy on 50-document test set</td></tr>
+    <tr><td>UAT sign-off</td><td>Parallel-run report vs. manual process</td><td>Sep 12, 2026</td><td>Zero missed or misrouted loads across parallel-run window</td></tr>
+    <tr><td>Go-live</td><td>Production cutover</td><td>Sep 19, 2026</td><td>Live traffic routed through FreightDesk AI</td></tr>
+    <tr><td>30-day tuning review</td><td>Performance report &amp; adjustments</td><td>Oct 19, 2026</td><td>Metrics reviewed jointly; open items closed</td></tr>
+  </table>
+
+  <p class="eyebrow" style="margin-top:34px;">Rollout Phases</p>
+  <div class="rail">
+    <div class="rail-row">
+      <div class="rail-node"><div class="rail-dot"></div><h3>Discovery</h3><p class="when">Aug 4 – 15</p><p>Format mapping, API access, exception catalog.</p></div>
+      <div class="rail-node"><div class="rail-dot"></div><h3>Build</h3><p class="when">Aug 18 – Sep 5</p><p>Pipelines built against sandboxed TMS.</p></div>
+      <div class="rail-node"><div class="rail-dot"></div><h3>Launch</h3><p class="when">Sep 8 – 19</p><p>Parallel-run, walkthrough, staged cutover.</p></div>
+    </div>
+  </div>
+
+  <p class="eyebrow" style="margin-top:30px;">Payment Schedule</p>
+  <table>
+    <tr><th style="width:34%;">Milestone</th><th style="width:22%;">Amount</th><th>Due Date</th></tr>
+    <tr><td>Signing / Kickoff</td><td>$499.50 (50% of setup)</td><td>Aug 4, 2026</td></tr>
+    <tr><td>Go-live</td><td>$499.50 (50% of setup)</td><td>Sep 19, 2026</td></tr>
+    <tr><td>Monthly service fee</td><td>$249/mo</td><td>Billed monthly from Sep 19, 2026</td></tr>
+  </table>
+
+  <div class="pagefoot"><span>Cascade Freight Brokers · Confidential</span><span class="pnum">02</span></div>
+</section>
+
+<!-- ============ PAGE 3 — TERMS & SIGNATURE ============ -->
+<section class="page" style="padding-top:72px;">
+  <p class="eyebrow">Terms &amp; Approval</p>
+  <hr class="accent-bar">
+  <h2 class="title">The fine print, and the sign-off</h2>
+
+  <div class="term-block"><h3>Timeline assumptions</h3><p>Dates assume Cascade provides API access and sample documents within 3 business days of request, and reviews deliverables within 2 business days.</p></div>
+  <div class="term-block"><h3>Change orders</h3><p>Work outside this Scope is billed at $150/hr, or a fixed quote above $500, with written approval required before work begins.</p></div>
+  <div class="term-block"><h3>IP transfer</h3><p>Custom integration code and configuration built for Cascade transfers to Cascade upon final payment.</p></div>
+  <div class="term-block"><h3>Cancellation</h3><p>Either party may cancel with 14 days' written notice; work completed through that date is billed as above, and the setup deposit is non-refundable once Discovery has begun.</p></div>
+
+  <div class="approve-box">
+    <h3 class="gold-text">Approve &amp; Sign</h3>
+    <p>Growth Partner Tier — 90-day pilot · $999 setup (50/50 split) + $249/mo starting at launch</p>
+  </div>
+
+  <div class="sig-grid">
+    <div class="sig-block">
+      <p style="font-size:11px;color:var(--paper-muted);margin:0 0 2px;font-weight:600;">Client</p>
+      <hr class="sig-line"><p class="sig-label">Signature</p>
+      <hr class="sig-line"><p class="sig-label">Printed Name &amp; Title — Marcus Reyes, Director of Operations</p>
+      <hr class="sig-line"><p class="sig-label">Date</p>
+    </div>
+    <div class="sig-block">
+      <p style="font-size:11px;color:var(--paper-muted);margin:0 0 2px;font-weight:600;">Service Provider</p>
+      <hr class="sig-line"><p class="sig-label">Signature</p>
+      <hr class="sig-line"><p class="sig-label">Printed Name &amp; Title — Yusuf Gadelrab, Automation Studio</p>
+      <hr class="sig-line"><p class="sig-label">Date</p>
+    </div>
+  </div>
+
+  <p style="font-size:10.5px;color:var(--paper-muted);margin-top:18px;">Automation Studio · San Jose, CA · yusuf.gadelrab06@gmail.com · (669) 328-1148 · yusuf-gadelrab.github.io/store.html</p>
+
+  <div class="pagefoot"><span>Cascade Freight Brokers · Confidential</span><span class="pnum">03</span></div>
+</section>
+
+</body>
+</html>

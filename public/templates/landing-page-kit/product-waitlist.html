@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Outlay — {{WAITLIST_TAGLINE}}</title>
+<meta name="description" content="{{META_DESCRIPTION}}">
+<meta name="theme-color" content="#0a0a0b">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Outlay — {{WAITLIST_TAGLINE}}">
+<meta property="og:description" content="{{META_DESCRIPTION}}">
+<meta property="og:url" content="{{SITE_URL}}">
+<meta property="og:image" content="{{OG_IMAGE_URL}}">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Outlay — {{WAITLIST_TAGLINE}}">
+<meta name="twitter:description" content="{{META_DESCRIPTION}}">
+<meta name="twitter:image" content="{{OG_IMAGE_URL}}">
+<style>
+  :root{
+    --bg:#0a0a0b; --bg2:#111114; --panel:#141417; --panel2:#191920;
+    --gold:#d4af37; --gold-2:#f4d47a; --gold-dim:#8a7328;
+    --ink:#f5f2e8; --muted:#a39f94;
+    --line:rgba(212,175,55,.16); --glow:rgba(212,175,55,.35);
+    --paper:#fbfaf7; --paper-ink:#14140f; --paper-muted:#6b675c; --paper-line:rgba(20,20,15,.12);
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  html{-webkit-text-size-adjust:100%;}
+  body{
+    background:var(--bg); color:var(--ink);
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Inter,system-ui,sans-serif;
+    line-height:1.6; -webkit-font-smoothing:antialiased;
+  }
+  h1,h2,h3{font-family:Georgia,"Times New Roman",serif; letter-spacing:-.5px; line-height:1.15;}
+  a{color:inherit;}
+  .wrap{max-width:760px; margin:0 auto; padding:0 24px;}
+  .eyebrow{font-size:11px; letter-spacing:2px; text-transform:uppercase; color:var(--gold-2); font-weight:600;}
+  .gold-text{
+    background:linear-gradient(120deg,var(--gold-2),var(--gold) 40%,#c99b1e);
+    -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text;
+  }
+  .btn{
+    display:inline-flex; align-items:center; justify-content:center; gap:8px;
+    padding:15px 26px; border-radius:6px; font-weight:600; font-size:15px;
+    text-decoration:none; cursor:pointer; border:1px solid transparent;
+    transition:transform .15s ease, box-shadow .15s ease;
+  }
+  .btn-primary{background:linear-gradient(120deg,var(--gold-2),var(--gold) 60%,#c99b1e); color:#141210;}
+  .btn-primary:hover{transform:translateY(-1px); box-shadow:0 8px 24px var(--glow);}
+  input:focus-visible, button:focus-visible, summary:focus-visible{
+    outline:2px solid var(--gold-2); outline-offset:3px;
+  }
+
+  .monogram{position:fixed; top:20px; left:24px; width:26px; height:26px; z-index:10; opacity:.85;}
+
+  /* ===== FULL-VIEWPORT HERO ===== */
+  .hero{
+    min-height:100vh; display:flex; flex-direction:column; align-items:center; justify-content:center;
+    text-align:center; padding:96px 24px 64px; position:relative; overflow:hidden;
+    background:
+      radial-gradient(700px 360px at 20% 0%, var(--glow) 0%, transparent 55%),
+      radial-gradient(600px 320px at 85% 100%, rgba(212,175,55,.18) 0%, transparent 55%),
+      var(--bg);
+  }
+  .hero-inner{max-width:640px; margin:0 auto;}
+  .hero h1{font-size:clamp(32px,7vw,60px); margin:20px 0 20px;}
+  .hero p.lede{color:var(--muted); font-size:clamp(15px,2.2vw,18px); max-width:520px; margin:0 auto 36px;}
+
+  /* ===== EMAIL CAPTURE ===== */
+  .capture-form{max-width:440px; margin:0 auto;}
+  .capture-row{display:flex; gap:10px; flex-wrap:wrap;}
+  .capture-row input{
+    flex:1; min-width:200px; background:var(--panel); border:1px solid var(--line); border-radius:6px;
+    padding:14px 16px; color:var(--ink); font-size:15px; font-family:inherit;
+  }
+  .capture-row input::placeholder{color:#5c584d;}
+  .capture-row input:invalid:not(:placeholder-shown){border-color:#b5484f;}
+  .capture-row input:valid:not(:placeholder-shown){border-color:var(--gold-dim);}
+  .capture-row button{flex:0 0 auto;}
+  .field-msg{font-size:12.5px; color:var(--muted); margin-top:10px; min-height:16px;}
+  .field-msg.error{color:#e08a8f;}
+
+  .social-proof{margin-top:44px; display:flex; flex-direction:column; align-items:center; gap:6px;}
+  .count-num{font-family:Georgia,serif; font-size:clamp(30px,5vw,44px);}
+  .count-lbl{font-size:12.5px; color:var(--muted); letter-spacing:.5px; text-transform:uppercase;}
+  .avatars{display:flex; margin-top:2px;}
+  .avatars span{
+    width:30px; height:30px; border-radius:50%; background:var(--panel2); border:2px solid var(--bg);
+    margin-left:-8px; display:flex; align-items:center; justify-content:center;
+    font-family:Georgia,serif; font-size:11px; color:var(--gold-2);
+  }
+  .avatars span:first-child{margin-left:0;}
+
+  .scroll-cue{position:absolute; bottom:28px; left:50%; transform:translateX(-50%); opacity:.6;}
+  .scroll-cue svg{width:18px; height:18px; stroke:var(--gold-2); animation:bob 2s ease-in-out infinite;}
+  @keyframes bob{0%,100%{transform:translateY(0);} 50%{transform:translateY(6px);}}
+
+  section{padding:80px 24px;}
+  .section-head{max-width:600px; margin:0 auto 46px; text-align:center;}
+  .section-head h2{font-size:clamp(24px,3.8vw,34px); margin-top:10px;}
+  .section-head p{color:var(--muted); margin-top:12px;}
+
+  /* ===== BENEFIT CARDS ===== */
+  .benefits{display:grid; grid-template-columns:repeat(3,1fr); gap:24px; max-width:1000px; margin:0 auto;}
+  .benefit{background:var(--panel); border:1px solid var(--line); border-radius:12px; padding:28px 24px;}
+  .icon-chip{width:42px; height:42px; border-radius:10px; margin-bottom:16px; background:var(--panel2); border:1px solid var(--line); display:flex; align-items:center; justify-content:center;}
+  .icon-chip svg{width:20px; height:20px; stroke:var(--gold-2);}
+  .benefit h3{font-size:17px; margin-bottom:8px;}
+  .benefit p{color:var(--muted); font-size:14.5px;}
+
+  /* ===== ROADMAP TIMELINE ===== */
+  .roadmap{max-width:640px; margin:0 auto; position:relative;}
+  .roadmap::before{content:""; position:absolute; left:19px; top:6px; bottom:6px; width:1px; background:var(--line);}
+  .rm-item{position:relative; padding-left:56px; margin-bottom:32px;}
+  .rm-item:last-child{margin-bottom:0;}
+  .rm-dot{
+    position:absolute; left:8px; top:2px; width:24px; height:24px; border-radius:50%;
+    background:var(--bg); border:1px solid var(--gold-dim); display:flex; align-items:center; justify-content:center;
+  }
+  .rm-dot svg{width:12px; height:12px; stroke:var(--gold-2);}
+  .rm-item .when{font-size:11.5px; letter-spacing:1px; text-transform:uppercase; color:var(--gold-2); margin-bottom:4px;}
+  .rm-item h3{font-size:16px; margin-bottom:6px;}
+  .rm-item p{color:var(--muted); font-size:14px;}
+
+  /* ===== FAQ ===== */
+  .faq{max-width:680px; margin:0 auto;}
+  .faq details{border-bottom:1px solid var(--line); padding:18px 0;}
+  .faq summary{cursor:pointer; font-size:15.5px; font-weight:600; list-style:none; display:flex; justify-content:space-between; align-items:center; gap:16px;}
+  .faq summary::-webkit-details-marker{display:none;}
+  .faq summary .plus{flex:0 0 auto; width:20px; height:20px; position:relative;}
+  .faq summary .plus::before, .faq summary .plus::after{content:""; position:absolute; background:var(--gold-2); border-radius:2px;}
+  .faq summary .plus::before{width:14px; height:2px; top:9px; left:3px;}
+  .faq summary .plus::after{width:2px; height:14px; top:3px; left:9px; transition:transform .2s ease;}
+  .faq details[open] summary .plus::after{transform:rotate(90deg);}
+  .faq details p{color:var(--muted); font-size:14.5px; margin-top:12px;}
+
+  footer{padding:44px 24px 30px; border-top:1px solid var(--line); text-align:center;}
+  footer p{font-size:13px; color:var(--muted); margin-bottom:14px;}
+  .foot-links{display:flex; gap:20px; justify-content:center; list-style:none;}
+  .foot-links a{text-decoration:none; color:var(--muted); font-size:13px;}
+  .foot-links a:hover{color:var(--gold-2);}
+
+  @media (prefers-reduced-motion: reduce){
+    *{transition:none !important; animation:none !important;}
+  }
+
+  @media (max-width:900px){
+    .benefits{grid-template-columns:1fr 1fr;}
+  }
+  @media (max-width:640px){
+    .hero{min-height:auto; padding:88px 20px 56px;}
+    section{padding:60px 20px;}
+    .benefits{grid-template-columns:1fr;}
+    .capture-row{flex-direction:column;}
+    .capture-row button{width:100%;}
+    .monogram{top:14px; left:16px; width:20px; height:20px;}
+    .scroll-cue{display:none;}
+  }
+  @media (max-width:360px){
+    .hero h1{font-size:28px;}
+  }
+</style>
+</head>
+<body>
+
+<svg class="monogram" viewBox="0 0 28 28" fill="none" aria-hidden="true">
+  <path d="M14 1L26 14L14 27L2 14Z" stroke="url(#g4)" stroke-width="1.5"/>
+  <defs><linearGradient id="g4" x1="0" y1="0" x2="28" y2="28"><stop stop-color="#f4d47a"/><stop offset="1" stop-color="#c99b1e"/></linearGradient></defs>
+</svg>
+
+<main>
+  <section class="hero">
+    <div class="hero-inner">
+      <p class="eyebrow"><!-- EDIT -->Launching March 2026</p>
+      <h1><!-- EDIT -->The last <span class="gold-text">expense tracker</span> your team will ever need</h1>
+      <p class="lede"><!-- EDIT -->Outlay auto-categorizes spend, flags anomalies, and closes the monthly report before your coffee's cold. Join the waitlist for early access and 40% off at launch.</p>
+
+      <form class="capture-form" action="{{FORM_ACTION}}" method="POST" novalidate>
+        <div class="capture-row">
+          <label for="wl-email" style="position:absolute; width:1px; height:1px; overflow:hidden; clip:rect(0,0,0,0);">Email address</label>
+          <input id="wl-email" name="email" type="email" placeholder="you@company.com" required
+                 pattern="^[^\s@]+@[^\s@]+\.[^\s@]+$"
+                 aria-describedby="wl-msg">
+          <button type="submit" class="btn btn-primary">Join waitlist</button>
+        </div>
+        <p id="wl-msg" class="field-msg"><!-- EDIT -->No spam. One email when we launch.</p>
+      </form>
+
+      <div class="social-proof">
+        <!-- Static final value baked into HTML for crawlers/social previews — do not render "0" and animate via JS -->
+        <p class="count-num gold-text" data-count-final="2847">2,847</p>
+        <p class="count-lbl"><!-- EDIT -->People already on the list</p>
+        <div class="avatars" aria-hidden="true">
+          <span>JL</span><span>MR</span><span>DK</span><span>SP</span><span>+</span>
+        </div>
+      </div>
+    </div>
+    <div class="scroll-cue" aria-hidden="true">
+      <svg viewBox="0 0 24 24" fill="none" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M5 12l7 7 7-7"/></svg>
+    </div>
+  </section>
+
+  <section>
+    <div class="section-head">
+      <p class="eyebrow">Why join early</p>
+      <h2>What you get on day one</h2>
+    </div>
+    <div class="benefits">
+      <div class="benefit">
+        <div class="icon-chip" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2l3 6 6 1-4.5 4.5L18 20l-6-3-6 3 1.5-6.5L3 9l6-1z"/></svg></div>
+        <!-- EDIT -->
+        <h3>40% founding discount</h3>
+        <p>Locked in for the life of your subscription — the earlier you join, the more you save.</p>
+      </div>
+      <div class="benefit">
+        <div class="icon-chip" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2L3 14h8l-1 8 10-12h-8l1-8z"/></svg></div>
+        <!-- EDIT -->
+        <h3>First access</h3>
+        <p>Skip the public queue — waitlist members get invited a full two weeks before launch.</p>
+      </div>
+      <div class="benefit">
+        <div class="icon-chip" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg></div>
+        <!-- EDIT -->
+        <h3>Direct line to the team</h3>
+        <p>Early users shape the roadmap — your feedback ships in weeks, not quarters.</p>
+      </div>
+    </div>
+  </section>
+
+  <section style="background:var(--bg2); border-top:1px solid var(--line); border-bottom:1px solid var(--line);">
+    <div class="section-head">
+      <p class="eyebrow">Roadmap</p>
+      <h2>What's next</h2>
+    </div>
+    <div class="roadmap">
+      <!-- EDIT -->
+      <div class="rm-item">
+        <div class="rm-dot" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"><path d="M20 6L9 17l-5-5"/></svg></div>
+        <p class="when">Closed beta — now</p>
+        <h3>Core auto-categorization</h3>
+        <p>Testing with 40 early teams to tune accuracy before public launch.</p>
+      </div>
+      <div class="rm-item">
+        <div class="rm-dot" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="3"/></svg></div>
+        <p class="when">March 2026</p>
+        <h3>Public launch</h3>
+        <p>Waitlist members get their invite first, with founding pricing locked in.</p>
+      </div>
+      <div class="rm-item">
+        <div class="rm-dot" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="3"/></svg></div>
+        <p class="when">Q1 next</p>
+        <h3>Team &amp; approvals workflow</h3>
+        <p>Multi-approver spend rules for growing teams.</p>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="section-head">
+      <p class="eyebrow">FAQ</p>
+      <h2>Questions, answered</h2>
+    </div>
+    <div class="faq">
+      <!-- EDIT -->
+      <details>
+        <summary>When exactly does it launch? <span class="plus" aria-hidden="true"></span></summary>
+        <p>We're targeting March 2026. Waitlist members hear first, always at least two weeks before the public.</p>
+      </details>
+      <details>
+        <summary>Is the 40% discount really locked in? <span class="plus" aria-hidden="true"></span></summary>
+        <p>Yes — for as long as you keep an active subscription, no expiration and no fine print.</p>
+      </details>
+      <details>
+        <summary>Will you spam my inbox? <span class="plus" aria-hidden="true"></span></summary>
+        <p>No. You'll get a handful of build updates and one launch email. Unsubscribe anytime.</p>
+      </details>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <!-- EDIT -->
+  <p>&copy; 2026 Outlay. All rights reserved. · Built by <a href="{{SITE_URL}}" style="color:var(--gold-2); text-decoration:none;">Yusuf Gadelrab</a></p>
+  <ul class="foot-links">
+    <li><a href="{{PRIVACY_URL}}">Privacy</a></li>
+    <li><a href="mailto:{{CONTACT_EMAIL}}">Contact</a></li>
+  </ul>
+</footer>
+
+</body>
+</html>

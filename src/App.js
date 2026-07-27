@@ -209,23 +209,23 @@ const siteData = {
   ],
   projects: [
     {
-      title: 'Projects & Products — Tools I Built, Launching Later This Year',
-      stack: '6 Projects · Local LLM · Private Development',
+      title: 'Automation Studio — Software & Template Store',
+      stack: '6 Products · Local LLM · Live Now',
       image: '',
       link: process.env.PUBLIC_URL + '/store.html',
-      linkLabel: 'Browse the projects →',
+      linkLabel: 'Visit the store →',
       desc:
-        'A black & gold showcase for the tools I actually use: FreightDesk (an AI AR/billing assistant for freight brokers), a Python automation kit, a Next.js 16 SaaS boilerplate, a swing-trade screener, a local-AI cold outreach engine, and premium landing page templates. Solo builder, real projects, no fluff — currently in private development.',
+        'My product studio: FreightDesk (an AI AR/billing assistant for freight brokers), a Python automation kit, a Next.js 16 SaaS boilerplate, a swing-trade screener, a local-AI cold outreach engine, and the Midnight Gold template vault. Solo builder, real products, launch pricing live now.',
     },
     {
       title: 'FreightDesk AI — AR/Billing Copilot for Freight Brokers',
       stack: 'Local LLM (Ollama) · Python · Zero API Cost',
       image: '',
       link: process.env.PUBLIC_URL + '/freightdesk.html',
-      linkLabel: 'See the case study →',
+      linkLabel: 'Visit FreightDesk →',
       privateRepo: true,
       desc:
-        'An AR/billing assistant freight brokers could install on their own machine, currently in private development. It drafts POD-chasing, payment-date, and late-payment emails with a local LLM — no per-seat SaaS fees, no metered API bills.',
+        'My flagship product — an AI back-office clerk freight brokerages install on their own machine, now taking founding-client pilots ($999 setup + $249/mo). It drafts POD-chasing, dispute, reconciliation, and past-due emails with a local LLM — no per-seat SaaS fees, no metered API bills.',
     },
     {
       title: 'HwyHaul LoadLink — AI Freight Back Office',

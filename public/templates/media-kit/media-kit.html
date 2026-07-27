@@ -1,0 +1,405 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dara Whitfield — Creator Media Kit &amp; Rate Card</title>
+<style>
+:root{
+  --bg:#0a0a0b; --bg2:#111114; --panel:#141417; --panel2:#191920;
+  --gold:#d4af37; --gold-2:#f4d47a; --gold-dim:#8a7328;
+  --ink:#f5f2e8; --muted:#a39f94;
+  --line:rgba(212,175,55,.16); --glow:rgba(212,175,55,.35);
+  --paper:#fbfaf7; --paper-ink:#14140f; --paper-muted:#6b675c; --paper-line:rgba(20,20,15,.12);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{-webkit-print-color-adjust:exact;print-color-adjust:exact}
+body{
+  background:var(--bg);color:var(--ink);
+  font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Inter,system-ui,sans-serif;
+  line-height:1.6;
+  background-image:
+    radial-gradient(ellipse 700px 420px at 8% -6%, rgba(212,175,55,.07), transparent 60%),
+    radial-gradient(ellipse 700px 420px at 96% 104%, rgba(212,175,55,.06), transparent 60%);
+  background-attachment:fixed;
+}
+h1,h2,h3,.serif{font-family:Georgia,"Times New Roman",serif}
+.wrap{max-width:980px;margin:0 auto;padding:0 32px}
+.eyebrow{font-size:11px;letter-spacing:2px;text-transform:uppercase;color:var(--gold-2);font-weight:600}
+.gold-text{background:linear-gradient(120deg,var(--gold-2),var(--gold) 40%,#c99b1e);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
+.hairline{border-top:1px solid var(--line)}
+.accent-bar{height:2px;width:64px;background:linear-gradient(90deg,var(--gold),var(--gold-2));border-radius:2px}
+
+/* corner monogram */
+.monogram{position:absolute;top:28px;right:32px;width:28px;height:28px;opacity:.85}
+
+/* page furniture */
+.page-furniture{display:flex;justify-content:space-between;align-items:center;padding:18px 0 14px;font-size:10.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+.page-furniture .pg-num{color:var(--gold)}
+
+header.hero{position:relative;padding:64px 0 40px;overflow:hidden}
+.hero-inner{display:flex;gap:40px;align-items:center;flex-wrap:wrap}
+.portrait-frame{
+  flex:0 0 168px;width:168px;height:168px;border-radius:20px;
+  background:linear-gradient(160deg,var(--panel2),var(--panel));
+  border:1px solid var(--line);
+  box-shadow:0 0 0 6px rgba(212,175,55,.07),0 20px 50px rgba(0,0,0,.55);
+  display:flex;align-items:center;justify-content:center;flex-direction:column;gap:6px;
+  color:var(--gold-dim);text-align:center;
+}
+.portrait-frame .initials{font-family:Georgia,serif;font-size:40px;color:var(--gold-2);opacity:.9}
+.portrait-frame .ph-label{font-size:9px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
+/* swap portrait: {{PHOTO_URL}} — replace .portrait-frame div with <img src="{{PHOTO_URL}}"> at 168x168, object-fit:cover, same border-radius/border/shadow */
+.hero-copy{flex:1 1 420px}
+.hero-copy h1{font-size:clamp(2.1rem,5vw,3.2rem);letter-spacing:-.5px;margin:.3rem 0 .5rem}
+.hero-copy .position{color:var(--muted);font-size:1.02rem;max-width:560px}
+.chips{display:flex;gap:10px;flex-wrap:wrap;margin-top:20px}
+.chip{border:1px solid var(--line);background:var(--panel);border-radius:999px;padding:8px 16px;font-size:12.5px;letter-spacing:.03em;color:var(--ink);display:flex;align-items:center;gap:8px}
+.chip .dot{width:6px;height:6px;border-radius:50%;background:var(--gold)}
+
+section{padding:44px 0}
+.section-head{margin-bottom:26px}
+.section-head h2{font-size:1.5rem;letter-spacing:-.3px;margin-top:10px}
+
+/* stat tiles */
+.stat-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+.stat-tile{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:26px 18px;text-align:center;break-inside:avoid}
+.stat-tile .num{font-family:Georgia,serif;font-size:clamp(30px,4.2vw,44px);font-weight:700}
+.stat-tile .lbl{margin-top:8px;font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
+
+/* demographics */
+.demo-grid{display:grid;grid-template-columns:1fr 1fr;gap:24px}
+.demo-card{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:24px;break-inside:avoid}
+.demo-card h3{font-size:13px;letter-spacing:.1em;text-transform:uppercase;color:var(--gold-2);margin-bottom:16px}
+.bar-row{margin-bottom:12px}
+.bar-row:last-child{margin-bottom:0}
+.bar-row .bar-label{display:flex;justify-content:space-between;font-size:12.5px;color:var(--muted);margin-bottom:5px}
+.bar-row .bar-label b{color:var(--ink);font-weight:600}
+.bar-track{height:8px;border-radius:6px;background:rgba(255,255,255,.06);overflow:hidden}
+.bar-fill{height:100%;border-radius:6px;background:linear-gradient(90deg,var(--gold-dim),var(--gold))}
+.geo-card{grid-column:1 / -1}
+
+/* pillars */
+.pillar-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.pillar-card{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:24px;break-inside:avoid}
+.pillar-card .num-mark{font-family:Georgia,serif;color:var(--gold-dim);font-size:13px;letter-spacing:.1em}
+.pillar-card h3{margin:10px 0 8px;font-size:1.05rem}
+.pillar-card p{color:var(--muted);font-size:.92rem}
+
+/* collabs */
+.logo-strip{display:grid;grid-template-columns:repeat(6,1fr);gap:12px}
+.logo-box{border:1px solid var(--line);border-radius:10px;background:var(--panel);height:64px;display:flex;align-items:center;justify-content:center;color:var(--gold-dim);font-size:12px;letter-spacing:.05em}
+
+/* case study */
+.case-card{background:var(--panel);border:1px solid var(--line);border-radius:16px;padding:30px;break-inside:avoid}
+.case-card .case-title{font-size:1.1rem;margin-bottom:4px}
+.case-card .case-sub{color:var(--muted);font-size:.88rem;margin-bottom:22px}
+.case-metrics{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+.case-metric{text-align:center}
+.case-metric .before{color:var(--muted);font-size:12.5px;text-decoration:line-through;opacity:.8}
+.case-metric .after{font-family:Georgia,serif;font-size:1.5rem;color:var(--gold-2);margin:4px 0}
+.case-metric .lbl{font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
+
+/* rate card */
+table.rates{width:100%;border-collapse:collapse}
+table.rates th{text-align:left;font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--gold-2);padding:0 14px 12px;border-bottom:1px solid var(--line)}
+table.rates td{padding:16px 14px;border-bottom:1px solid var(--line);font-size:.95rem;break-inside:avoid}
+table.rates td.price{font-family:Georgia,serif;font-size:1.15rem;color:var(--gold-2);text-align:right;white-space:nowrap}
+table.rates tr.bundle td{background:linear-gradient(90deg,rgba(212,175,55,.1),rgba(212,175,55,.02));position:relative}
+table.rates tr.bundle td:first-child{border-radius:10px 0 0 10px}
+table.rates tr.bundle td:last-child{border-radius:0 10px 10px 0}
+.badge{display:inline-block;font-size:9.5px;letter-spacing:.1em;text-transform:uppercase;background:var(--gold);color:#171205;padding:3px 8px;border-radius:999px;margin-left:8px;font-weight:700}
+table.rates .deliv-name{font-weight:600}
+table.rates .deliv-note{display:block;color:var(--muted);font-size:.82rem;margin-top:2px}
+
+/* process */
+.process-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}
+.process-step{text-align:left;break-inside:avoid}
+.process-step .step-num{font-family:Georgia,serif;font-size:2rem;color:var(--gold-dim);line-height:1}
+.process-step h3{font-size:.98rem;margin:10px 0 6px}
+.process-step p{color:var(--muted);font-size:.86rem}
+
+/* testimonial */
+.testimonial{background:var(--panel2);border:1px solid var(--line);border-radius:16px;padding:40px;position:relative;break-inside:avoid}
+.testimonial .quote-mark{position:absolute;top:14px;left:26px;font-family:Georgia,serif;font-size:80px;line-height:1;color:var(--gold);opacity:.35}
+.testimonial p.quote{font-family:Georgia,serif;font-size:1.25rem;line-height:1.5;max-width:720px;padding-left:8px}
+.testimonial .attribution{margin-top:20px;color:var(--muted);font-size:.88rem}
+.testimonial .attribution b{color:var(--gold-2)}
+
+/* CTA */
+.cta{background:linear-gradient(135deg,rgba(212,175,55,.12),rgba(212,175,55,.02));border:1px solid var(--line);border-radius:18px;padding:40px;text-align:center}
+.cta h2{margin-bottom:10px}
+.cta p{color:var(--muted);margin-bottom:22px}
+.btn{display:inline-block;background:var(--gold);color:#171205;font-weight:700;padding:13px 28px;border-radius:10px;margin:6px;font-size:.92rem}
+.btn.ghost{background:transparent;color:var(--gold-2);border:1px solid var(--gold-dim)}
+
+footer.doc-footer{padding:20px 0 48px}
+
+@media print{
+  @page{ size: Letter; margin: 0.6in; }
+  body{background:var(--bg) !important}
+  section{padding:22px 0}
+  .stat-grid,.demo-grid,.pillar-grid,.process-grid,.logo-strip,.case-metrics{break-inside:avoid}
+  .stat-tile,.demo-card,.pillar-card,.case-card,.testimonial,table.rates tr{break-inside:avoid}
+  header.hero{break-after:page}
+}
+@media (max-width:820px){
+  .hero-inner{flex-direction:column;text-align:center}
+  .stat-grid{grid-template-columns:repeat(2,1fr)}
+  .demo-grid{grid-template-columns:1fr}
+  .pillar-grid{grid-template-columns:1fr}
+  .process-grid{grid-template-columns:repeat(2,1fr)}
+  .logo-strip{grid-template-columns:repeat(3,1fr)}
+  .case-metrics{grid-template-columns:repeat(2,1fr)}
+}
+</style>
+</head>
+<body>
+
+<!-- =====================================================================
+     EDIT BELOW — everything a non-coder needs to swap is between the
+     "EDIT BELOW" markers in each section. See README.md for the full
+     token list and PDF export instructions.
+     ===================================================================== -->
+
+<div class="wrap">
+
+<header class="hero">
+  <svg class="monogram" viewBox="0 0 28 28" fill="none">
+    <path d="M14 1L27 14L14 27L1 14Z" stroke="#d4af37" stroke-width="1.2"/>
+    <path d="M14 8L20 14L14 20L8 14Z" fill="#d4af37" opacity=".85"/>
+  </svg>
+  <div class="hero-inner">
+    <!-- ===== EDIT BELOW: portrait ===== -->
+    <div class="portrait-frame">
+      <div class="initials">DW</div>
+      <div class="ph-label">Portrait photo</div>
+    </div>
+    <!-- ===== EDIT ABOVE ===== -->
+    <div class="hero-copy">
+      <div class="eyebrow">Creator Media Kit &amp; Rate Card</div>
+      <!-- ===== EDIT BELOW: name + positioning ===== -->
+      <h1 class="gold-text">Dara Whitfield</h1>
+      <p class="position">Fitness &amp; recovery creator helping 135K+ followers train hard without breaking down — evidence-based strength programming, mobility work, and honest product reviews.</p>
+      <!-- ===== EDIT ABOVE ===== -->
+      <div class="chips">
+        <span class="chip"><span class="dot"></span>Instagram · 84K</span>
+        <span class="chip"><span class="dot"></span>TikTok · 51K</span>
+        <span class="chip"><span class="dot"></span>Email List · 6.4K</span>
+      </div>
+    </div>
+  </div>
+</header>
+
+<div class="hairline"></div>
+
+<section>
+  <div class="section-head">
+    <div class="accent-bar"></div>
+    <h2>Audience at a Glance</h2>
+  </div>
+  <!-- ===== EDIT BELOW: stats ===== -->
+  <div class="stat-grid">
+    <div class="stat-tile"><div class="num gold-text">135K</div><div class="lbl">Total Followers</div></div>
+    <div class="stat-tile"><div class="num gold-text">62K</div><div class="lbl">Avg. Reach / Post</div></div>
+    <div class="stat-tile"><div class="num gold-text">6.8%</div><div class="lbl">Engagement Rate</div></div>
+    <div class="stat-tile"><div class="num gold-text">210K</div><div class="lbl">Avg. Video Views</div></div>
+  </div>
+  <!-- ===== EDIT ABOVE ===== -->
+</section>
+
+<div class="hairline"></div>
+
+<section>
+  <div class="section-head">
+    <div class="accent-bar"></div>
+    <h2>Audience Demographics</h2>
+  </div>
+  <!-- ===== EDIT BELOW: demographics ===== -->
+  <div class="demo-grid">
+    <div class="demo-card">
+      <h3>Age Split</h3>
+      <div class="bar-row"><div class="bar-label"><span>18–24</span><b>22%</b></div><div class="bar-track"><div class="bar-fill" style="width:22%"></div></div></div>
+      <div class="bar-row"><div class="bar-label"><span>25–34</span><b>41%</b></div><div class="bar-track"><div class="bar-fill" style="width:41%"></div></div></div>
+      <div class="bar-row"><div class="bar-label"><span>35–44</span><b>24%</b></div><div class="bar-track"><div class="bar-fill" style="width:24%"></div></div></div>
+      <div class="bar-row"><div class="bar-label"><span>45+</span><b>13%</b></div><div class="bar-track"><div class="bar-fill" style="width:13%"></div></div></div>
+    </div>
+    <div class="demo-card">
+      <h3>Gender Split</h3>
+      <div class="bar-row"><div class="bar-label"><span>Women</span><b>58%</b></div><div class="bar-track"><div class="bar-fill" style="width:58%"></div></div></div>
+      <div class="bar-row"><div class="bar-label"><span>Men</span><b>40%</b></div><div class="bar-track"><div class="bar-fill" style="width:40%"></div></div></div>
+      <div class="bar-row"><div class="bar-label"><span>Other / undisclosed</span><b>2%</b></div><div class="bar-track"><div class="bar-fill" style="width:2%"></div></div></div>
+    </div>
+    <div class="demo-card geo-card">
+      <h3>Top 5 Geographies</h3>
+      <div class="bar-row"><div class="bar-label"><span>United States</span><b>64%</b></div><div class="bar-track"><div class="bar-fill" style="width:64%"></div></div></div>
+      <div class="bar-row"><div class="bar-label"><span>United Kingdom</span><b>9%</b></div><div class="bar-track"><div class="bar-fill" style="width:9%"></div></div></div>
+      <div class="bar-row"><div class="bar-label"><span>Canada</span><b>7%</b></div><div class="bar-track"><div class="bar-fill" style="width:7%"></div></div></div>
+      <div class="bar-row"><div class="bar-label"><span>Australia</span><b>6%</b></div><div class="bar-track"><div class="bar-fill" style="width:6%"></div></div></div>
+      <div class="bar-row"><div class="bar-label"><span>Germany</span><b>4%</b></div><div class="bar-track"><div class="bar-fill" style="width:4%"></div></div></div>
+    </div>
+  </div>
+  <!-- ===== EDIT ABOVE ===== -->
+</section>
+
+<div class="hairline"></div>
+
+<section>
+  <div class="section-head">
+    <div class="accent-bar"></div>
+    <h2>Content Pillars</h2>
+  </div>
+  <!-- ===== EDIT BELOW: content pillars ===== -->
+  <div class="pillar-grid">
+    <div class="pillar-card">
+      <div class="num-mark">01</div>
+      <h3>Injury-Proof Training</h3>
+      <p>Strength programming built around joint health and long-term durability — for lifters who've been burned by "no days off" content before.</p>
+    </div>
+    <div class="pillar-card">
+      <div class="num-mark">02</div>
+      <h3>Mobility &amp; Recovery</h3>
+      <p>Daily mobility flows, sleep and soft-tissue protocols, and gear breakdowns that keep a training audience showing up week after week.</p>
+    </div>
+    <div class="pillar-card">
+      <div class="num-mark">03</div>
+      <h3>Real Talk Fitness</h3>
+      <p>Myth-busting and honest product reviews — the reason this audience trusts recommendations enough to act on them.</p>
+    </div>
+  </div>
+  <!-- ===== EDIT ABOVE ===== -->
+</section>
+
+<div class="hairline"></div>
+
+<section>
+  <div class="section-head">
+    <div class="accent-bar"></div>
+    <h2>Past Collaborations</h2>
+  </div>
+  <!-- ===== EDIT BELOW: brand logos — replace each box with an <img> or leave as text mark ===== -->
+  <div class="logo-strip">
+    <div class="logo-box">Recover Well Co.</div>
+    <div class="logo-box">Fernhollow Athletics</div>
+    <div class="logo-box">Cairn Supplements</div>
+    <div class="logo-box">Baseline Recovery</div>
+    <div class="logo-box">Anchorpoint Gear</div>
+    <div class="logo-box">Wildgrain Nutrition</div>
+  </div>
+  <!-- ===== EDIT ABOVE ===== -->
+</section>
+
+<div class="hairline"></div>
+
+<section>
+  <div class="section-head">
+    <div class="accent-bar"></div>
+    <h2>Case Study</h2>
+  </div>
+  <!-- ===== EDIT BELOW: case study ===== -->
+  <div class="case-card">
+    <div class="case-title">Recover Well Co. — Recovery Sleeve Launch</div>
+    <div class="case-sub">4-week campaign · 1 IG Reel, 2 TikToks, 1 Story Set · promo-code tracked</div>
+    <div class="case-metrics">
+      <div class="case-metric"><div class="before">38K baseline</div><div class="after">96K</div><div class="lbl">Monthly Reach</div></div>
+      <div class="case-metric"><div class="before">4.1% baseline</div><div class="after">7.9%</div><div class="lbl">Engagement Rate</div></div>
+      <div class="case-metric"><div class="before">1,240 baseline</div><div class="after">5,860</div><div class="lbl">Link Clicks</div></div>
+      <div class="case-metric"><div class="before">82 baseline</div><div class="after">410</div><div class="lbl">Promo Redemptions</div></div>
+    </div>
+  </div>
+  <!-- ===== EDIT ABOVE ===== -->
+</section>
+
+<div class="hairline"></div>
+
+<section>
+  <div class="section-head">
+    <div class="accent-bar"></div>
+    <h2>Rate Card</h2>
+  </div>
+  <!-- ===== EDIT BELOW: rates ===== -->
+  <table class="rates">
+    <thead>
+      <tr><th>Deliverable</th><th style="text-align:right">Rate</th></tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="deliv-name">Instagram Reel</span><span class="deliv-note">1 concept, filmed, edited, 1 round of revisions</span></td>
+        <td class="price">$850</td>
+      </tr>
+      <tr>
+        <td><span class="deliv-name">Story Set (3 frames)</span><span class="deliv-note">Product feature across 3 sequential stories</span></td>
+        <td class="price">$350</td>
+      </tr>
+      <tr>
+        <td><span class="deliv-name">TikTok Video</span><span class="deliv-note">Native concept, filmed, edited, 1 round of revisions</span></td>
+        <td class="price">$700</td>
+      </tr>
+      <tr>
+        <td><span class="deliv-name">UGC Content Pack</span><span class="deliv-note">3 raw assets, usage rights, no organic posting</span></td>
+        <td class="price">$600</td>
+      </tr>
+      <tr class="bundle">
+        <td><span class="deliv-name">Full Bundle<span class="badge">Most Booked</span></span><span class="deliv-note">1 Reel + 1 TikTok + Story Set — save $300 vs. à la carte</span></td>
+        <td class="price">$1,600</td>
+      </tr>
+    </tbody>
+  </table>
+  <!-- ===== EDIT ABOVE ===== -->
+</section>
+
+<div class="hairline"></div>
+
+<section>
+  <div class="section-head">
+    <div class="accent-bar"></div>
+    <h2>How We Work Together</h2>
+  </div>
+  <!-- ===== EDIT BELOW: process ===== -->
+  <div class="process-grid">
+    <div class="process-step"><div class="step-num">01</div><h3>Discovery Call</h3><p>15 minutes to align on goals, timeline, and deliverables.</p></div>
+    <div class="process-step"><div class="step-num">02</div><h3>Concept &amp; Script</h3><p>You approve the concept and key talking points before filming.</p></div>
+    <div class="process-step"><div class="step-num">03</div><h3>Film &amp; Edit</h3><p>Content shot and edited within 5 business days.</p></div>
+    <div class="process-step"><div class="step-num">04</div><h3>Deliver &amp; Report</h3><p>Final assets plus a performance recap after publish.</p></div>
+  </div>
+  <!-- ===== EDIT ABOVE ===== -->
+</section>
+
+<div class="hairline"></div>
+
+<section>
+  <!-- ===== EDIT BELOW: testimonial ===== -->
+  <div class="testimonial">
+    <div class="quote-mark">&ldquo;</div>
+    <p class="quote">Dara's reels didn't just hit numbers — they moved product. Our promo code sold out inside 48 hours, and the content still felt like her, not an ad.</p>
+    <div class="attribution"><b>Maya Lindqvist</b> · Brand Partnerships Lead, Recover Well Co.</div>
+  </div>
+  <!-- ===== EDIT ABOVE ===== -->
+</section>
+
+<div class="hairline"></div>
+
+<section>
+  <!-- ===== EDIT BELOW: contact ===== -->
+  <div class="cta">
+    <h2 class="gold-text">Let's Build Your Next Campaign</h2>
+    <p>Open for Q3 partnerships — 2 collaboration slots left this month.</p>
+    <a class="btn" href="mailto:hello@darawhitfield.com?subject=Collab%20Inquiry">hello@darawhitfield.com</a>
+    <a class="btn ghost" href="{{INSTAGRAM_URL}}">Instagram</a>
+    <a class="btn ghost" href="{{TIKTOK_URL}}">TikTok</a>
+  </div>
+  <!-- ===== EDIT ABOVE ===== -->
+</section>
+
+<footer class="doc-footer">
+  <div class="hairline"></div>
+  <div class="page-furniture">
+    <span>Dara Whitfield · CONFIDENTIAL</span>
+    <span class="pg-num">1</span>
+  </div>
+</footer>
+
+</div>
+
+</body>
+</html>
