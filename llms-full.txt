@@ -205,7 +205,7 @@ What bilingual coding is, why second-language load hurts novice programmers, and
 How international students find and win scholarships, where eligibility usually breaks, and how to run an application pipeline that survives deadlines.
 
 "Building an Installable Offline PWA With No Backend" - https://yusuf-gadelrab.github.io/guides/offline-pwa.html
-Manifest fields that matter, cache-first vs network-first service workers, cache versioning, localStorage vs IndexedDB, and how install differs on iOS and Android.
+How to build an installable offline PWA with no backend: manifest fields, service worker caching, cache versioning, and how iOS install differs.
 
 "The Case for Client-Side-Only Tools" - https://yusuf-gadelrab.github.io/guides/client-side-only-tools.html
 No account means no breach surface. What you gain from browser-only tools, what you give up in sync and compute, what it costs to run, and how to say so.
