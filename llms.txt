@@ -14,6 +14,7 @@ Full plain-text profile for retrieval: https://yusuf-gadelrab.github.io/llms-ful
 - [Home / portfolio](https://yusuf-gadelrab.github.io/): Selected work, research, and current focus.
 - [Resume](https://yusuf-gadelrab.github.io/resume.html): Education, experience, skills, and publications.
 - [Everything index](https://yusuf-gadelrab.github.io/everything.html): One page listing every project, product, and app.
+- [Writing](https://yusuf-gadelrab.github.io/writing.html): Essays and build logs.
 
 ## Guides (long-form answers, every formula shown)
 
@@ -61,12 +62,18 @@ Full plain-text profile for retrieval: https://yusuf-gadelrab.github.io/llms-ful
 - [KXNG SEF](https://yusuf-gadelrab.github.io/kxngsef.html): Bilingual Arabic-English streetwear label built in public.
 - [KXNG SEF lookbook](https://yusuf-gadelrab.github.io/kxngsef-lookbook.html): Every print in the line.
 - [HEFT](https://yusuf-gadelrab.github.io/heft.html): Heavyweight 450+ GSM hoodies, one product done properly.
+- [DHAHAB brand — the lion mark](https://yusuf-gadelrab.github.io/brand.html): The studio identity: why the mark is a lion, how the geometry is generated from one program, the colourways, the usage rules, and downloadable SVG files.
 
 ## Creator and media
 
 - [Media kit](https://yusuf-gadelrab.github.io/media-kit.html): Audience stats, brand-partnership formats, and past work.
 - [Model portfolio and digitals](https://yusuf-gadelrab.github.io/modeling.html): Athletic/commercial modeling portfolio.
 - [My stack](https://yusuf-gadelrab.github.io/stack.html): The tools actually used daily for trading, code, and training.
+
+## Community and security tooling
+
+- [DHAHAB Circle](https://yusuf-gadelrab.github.io/circle.html): A community for people who build software, trade markets and run a brand. Free to join.
+- [DIRA](https://yusuf-gadelrab.github.io/dira.html): One-command security audit for startup codebases — secrets, dependency CVEs, misconfigurations, license risk, git-history leaks, and a readiness score.
 
 ## Optional
 
