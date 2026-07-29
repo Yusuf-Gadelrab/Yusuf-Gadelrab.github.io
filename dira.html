@@ -283,6 +283,17 @@
       <a class="btn btn-gold" href="https://github.com/Yusuf-Gadelrab/dira">View on GitHub</a>
       <a class="btn btn-ghost" href="mailto:yusuf.gadelrab06@gmail.com?subject=DIRA%20security%20audit">Ask me to run it for you</a>
     </p>
+
+    <div style="margin-top:38px;padding-top:30px;border-top:1px solid var(--line-soft)">
+      <p style="margin:0 0 6px;font-family:var(--display-pro);letter-spacing:.4px">Not on GitHub yet?</p>
+      <p style="margin:0 0 16px;color:var(--muted);font-size:var(--t-small)">Leave your email and you'll hear the day DIRA lands on PyPI and npm. One message, nothing else.</p>
+      <form id="f-dira" novalidate style="display:flex;gap:8px;flex-wrap:wrap;justify-content:center;max-width:420px;margin:0 auto">
+        <input type="email" id="e-dira" placeholder="you@email.com" autocomplete="email" aria-label="Email for the DIRA release list" required
+          style="flex:1 1 190px;min-width:0;background:var(--panel2);border:1px solid var(--line);border-radius:var(--radius);color:var(--bone);padding:10px 12px;font-family:var(--body-font);font-size:13px">
+        <button class="btn btn-gold btn-sm" type="submit">Tell me at launch</button>
+      </form>
+      <p id="n-dira" style="margin-top:10px;font-size:11px;color:var(--faint)">Used for this one announcement. <a href="/privacy.html">Privacy</a> · <a href="/waitlist.html">all waitlists</a></p>
+    </div>
   </div>
 </section>
 
@@ -326,6 +337,12 @@
   var menuBtn=document.getElementById('menuBtn'), navLinks=document.getElementById('navLinks');
   menuBtn.addEventListener('click',function(){navLinks.classList.toggle('open')});
   navLinks.querySelectorAll('a').forEach(function(a){a.addEventListener('click',function(){navLinks.classList.remove('open')})});
+</script>
+<script src="/js/waitlist.js" defer></script>
+<script>
+addEventListener("DOMContentLoaded", function () {
+  if (window.YGWaitlist) YGWaitlist.attach("f-dira", "e-dira", "n-dira", "DIRA Release");
+});
 </script>
 </body>
 </html>
