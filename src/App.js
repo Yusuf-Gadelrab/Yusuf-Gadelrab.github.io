@@ -366,269 +366,109 @@ const siteData = {
   },
 };
 
+
 // nav order matters — put the most important stuff first so recruiters don't have to hunt
 // 'Blog' is hidden until I actually write something, empty pages look bad
 const PAGES = ['Home', 'About', 'Working On', 'Research', 'Projects', 'Resume', 'Legal'];
 
+// in-app section tabs read better with an accent on the résumé page, which is the
+// PDF viewer — /resume.html in the site nav is the separate services page.
+const TAB_LABEL = { Resume: 'Résumé' };
+
+// Canonical cross-site nav — plain anchors to the static pages, identical on every
+// page in /public. "Work" is this SPA, so it stays client-side instead of reloading.
+const SITE_LINKS = [
+  { label: 'Resume', href: '/resume.html' },
+  { label: 'Store', href: '/store.html' },
+  { label: 'KXNG SEF', href: '/kxngsef.html' },
+  { label: 'Media Kit', href: '/media-kit.html' },
+];
+
 // ---------- Styles ----------
-// Claude wrote basically all of this — I don't have the patience to hand-tune
-// 400 lines of CSS variables and animations. I told it the vibe (dark gold,
-// editorial) and it delivered. I tweaked a few colors and called it a day.
+// Tokens, reset, nav, footer, buttons, cards, badges, stat tiles, grid, type scale,
+// reveal and print rules all come from /css/site.css. Everything below is genuinely
+// homepage-only (the SPA tab strip, list/gallery/marquee bits, hidden admin panel)
+// and is written entirely with var(--*) tokens so it can never drift from the system.
+// The hero, stat-grid and section-tab layout lives in index.html's <style id="yg-boot-css">
+// because the pre-hydration snapshot and this app share it — one definition, no swap on load.
 const StyleTag = () => (
   <style>{`
-    @import url('https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;0,9..144,700;1,9..144,500&family=Jost:wght@300;400;500;600&display=swap');
+    /* gold-dot bullet list — used for "working on" and experience achievements */
+    .bullets{list-style:none;margin-top:var(--s4)}
+    .bullets li{position:relative;padding-left:var(--s5);margin-bottom:var(--s3);
+      color:var(--muted);font-size:var(--t-small)}
+    .bullets li::before{content:"";position:absolute;left:0;top:.62em;
+      width:6px;height:6px;background:var(--gold);border-radius:1px}
 
-    :root{
-      --gold:#C9A14A; --gold-bright:#E6C66E; --gold-deep:#9A7B2E;
-      --char:#14110D; --char-2:#1C1813; --char-3:#272018;
-      --ivory:#F4EEE2; --ivory-dim:#C9C1B2; --line:rgba(201,161,74,0.22);
-    }
-    *{box-sizing:border-box;margin:0;padding:0;}
-    html{scroll-behavior:smooth;}
-    .yg-root{background:var(--char);color:var(--ivory);font-family:'Jost',sans-serif;min-height:100vh;-webkit-font-smoothing:antialiased;position:relative;overflow-x:hidden;}
+    /* skill chips */
+    .chips{display:flex;flex-wrap:wrap;gap:var(--s2);margin-top:var(--s3)}
+    .chip{border:1px solid var(--line-soft);border-radius:var(--radius);
+      padding:5px 11px;font-size:var(--t-small);color:var(--muted);background:var(--bg2)}
 
-    /* layered atmospheric background */
-    .yg-bg{position:fixed;inset:0;z-index:0;pointer-events:none;overflow:hidden;}
-    .yg-bg .blob{position:absolute;border-radius:50%;filter:blur(90px);will-change:transform;}
-    .blob-1{width:560px;height:560px;top:-120px;right:-80px;background:radial-gradient(circle,rgba(201,161,74,0.50),transparent 70%);animation:float1 18s ease-in-out infinite;}
-    .blob-2{width:520px;height:520px;bottom:-140px;left:-110px;background:radial-gradient(circle,rgba(154,123,46,0.45),transparent 70%);animation:float2 22s ease-in-out infinite;}
-    .blob-3{width:360px;height:360px;top:42%;left:38%;background:radial-gradient(circle,rgba(230,198,110,0.16),transparent 70%);animation:float1 26s ease-in-out infinite;}
-    .ring{position:absolute;border:1px solid var(--line);border-radius:50%;opacity:.55;will-change:transform;}
-    .ring-1{width:620px;height:620px;top:24%;left:58%;animation:float1 24s ease-in-out infinite,spin 90s linear infinite;}
-    .ring-2{width:300px;height:300px;top:8%;left:6%;opacity:.3;animation:spin 70s linear infinite reverse;}
-    .grid-lines{position:absolute;inset:0;opacity:.07;
-      background-image:linear-gradient(var(--gold) 1px,transparent 1px),linear-gradient(90deg,var(--gold) 1px,transparent 1px);
-      background-size:64px 64px;
-      -webkit-mask-image:radial-gradient(ellipse 80% 70% at 50% 30%,#000 35%,transparent 80%);
-      mask-image:radial-gradient(ellipse 80% 70% at 50% 30%,#000 35%,transparent 80%);}
-    /* fine grain overlay for depth */
-    .grain{position:fixed;inset:0;z-index:50;pointer-events:none;opacity:.035;mix-blend-mode:overlay;
-      background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");}
-    .cursor-glow{position:fixed;top:0;left:0;width:520px;height:520px;margin:-260px 0 0 -260px;z-index:0;pointer-events:none;border-radius:50%;
-      background:radial-gradient(circle,rgba(201,161,74,0.10),transparent 65%);opacity:0;transition:opacity .4s;will-change:transform;}
-    @keyframes float1{0%,100%{transform:translate(0,0);}50%{transform:translate(-28px,38px);}}
-    @keyframes float2{0%,100%{transform:translate(0,0);}50%{transform:translate(38px,-28px);}}
-    @keyframes spin{to{transform:rotate(360deg);}}
-    .yg-serif{font-family:'Fraunces',serif;}
-    /* animated gold sheen on the hero keyword */
-    .shimmer{background:linear-gradient(110deg,var(--gold) 20%,var(--gold-bright) 38%,#FFF3D6 50%,var(--gold-bright) 62%,var(--gold) 80%);
-      background-size:220% 100%;-webkit-background-clip:text;background-clip:text;color:transparent;
-      animation:shimmer 5.5s ease-in-out infinite;}
-    @keyframes shimmer{0%,100%{background-position:110% 0;}50%{background-position:-10% 0;}}
-    a{color:inherit;text-decoration:none;}
-    ::selection{background:var(--gold);color:var(--char);}
+    /* card artwork strip (real photo or generated SVG placeholder) */
+    .card-art{height:180px;background:var(--panel2) center/cover;position:relative;overflow:hidden;
+      border-radius:var(--radius-lg) var(--radius-lg) 0 0;margin:calc(var(--s6) * -1) calc(var(--s6) * -1) var(--s5)}
+    .genart{position:absolute;inset:0;width:100%;height:100%;display:block}
+    .card-ic{display:inline-flex;align-items:center;justify-content:center;
+      width:34px;height:34px;border-radius:var(--radius);color:var(--gold-2);
+      background:var(--bg2);border:1px solid var(--line);flex-shrink:0}
 
-    /* custom scrollbar */
-    ::-webkit-scrollbar{width:11px;}
-    ::-webkit-scrollbar-track{background:var(--char);}
-    ::-webkit-scrollbar-thumb{background:var(--gold-deep);border-radius:99px;border:3px solid var(--char);}
-    ::-webkit-scrollbar-thumb:hover{background:var(--gold);}
-
-    /* scroll-reveal */
-    .reveal{opacity:0;transform:translateY(26px);transition:opacity .7s cubic-bezier(.22,.61,.36,1),transform .7s cubic-bezier(.22,.61,.36,1);}
-    .reveal.in{opacity:1;transform:none;}
-    /* cards manage their own transform (3D tilt), so reveal them via opacity + focus-in instead */
-    .yg-card.reveal{transition:opacity .7s cubic-bezier(.22,.61,.36,1);}
-    .yg-card.reveal.in{}
-
-    @media(prefers-reduced-motion:reduce){
-      *{animation:none!important;transition:none!important;}
-      .reveal{opacity:1;transform:none;}
-      html{scroll-behavior:auto;}
-    }
-
-    .yg-nav{position:fixed;top:0;left:0;right:0;z-index:40;display:flex;align-items:center;justify-content:space-between;
-      padding:18px 6vw;background:rgba(20,17,13,0.72);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border-bottom:1px solid var(--line);
-      animation:navdrop .6s cubic-bezier(.22,.61,.36,1) both;}
-    @keyframes navdrop{from{transform:translateY(-100%);}to{transform:translateY(0);}}
-    .yg-logo{font-family:'Fraunces',serif;font-weight:700;font-size:22px;letter-spacing:0.5px;transition:.25s;}
-    .yg-logo:hover{letter-spacing:1.2px;}
-    .yg-logo span{color:var(--gold);}
-    .yg-navlinks{display:flex;gap:6px;flex-wrap:wrap;}
-    .yg-navlink{position:relative;padding:8px 14px;font-size:14px;letter-spacing:0.4px;color:var(--ivory-dim);border-radius:999px;cursor:pointer;transition:color .25s,background .25s,border-color .25s;border:1px solid transparent;}
-    .yg-navlink:hover{color:var(--ivory);}
-    .yg-navlink.active{color:var(--gold);border-color:var(--line);background:rgba(201,161,74,0.06);}
-    .yg-navlink.active::after{content:'';position:absolute;left:50%;bottom:2px;width:5px;height:5px;border-radius:50%;background:var(--gold);transform:translateX(-50%);box-shadow:0 0 8px var(--gold);}
-
-    .yg-page{max-width:1080px;margin:0 auto;padding:130px 6vw 100px;position:relative;z-index:1;}
-    /* staggered entrance for direct children of a page */
-    .yg-page > *{animation:rise .7s cubic-bezier(.22,.61,.36,1) both;}
-    .yg-page > *:nth-child(1){animation-delay:.05s;}
-    .yg-page > *:nth-child(2){animation-delay:.13s;}
-    .yg-page > *:nth-child(3){animation-delay:.21s;}
-    .yg-page > *:nth-child(4){animation-delay:.29s;}
-    .yg-page > *:nth-child(5){animation-delay:.37s;}
-    .yg-page > *:nth-child(n+6){animation-delay:.45s;}
-    @keyframes rise{from{opacity:0;transform:translateY(20px);}to{opacity:1;transform:none;}}
-    @keyframes fade{from{opacity:0;}to{opacity:1;}}
-
-    .yg-eyebrow{display:inline-flex;align-items:center;gap:10px;color:var(--gold);font-size:13px;letter-spacing:3px;text-transform:uppercase;margin-bottom:18px;}
-    .yg-eyebrow::before{content:'';width:26px;height:1px;background:var(--gold);display:inline-block;}
-    .yg-h1{font-family:'Fraunces',serif;font-weight:700;font-size:clamp(38px,6vw,68px);line-height:1.04;letter-spacing:-0.5px;color:var(--ivory);}
-    @keyframes sheen{0%,100%{background-position:0% center;}50%{background-position:160% center;}}
-    .yg-h2{font-family:'Fraunces',serif;font-weight:600;font-size:clamp(28px,4vw,40px);margin-bottom:8px;}
-    .yg-h3{font-family:'Fraunces',serif;font-weight:600;font-size:22px;}
-    .yg-lead{color:var(--ivory-dim);font-size:18px;line-height:1.7;max-width:640px;margin-top:22px;}
-    .yg-sectiontitle{display:flex;align-items:center;gap:16px;margin-bottom:40px;}
-    .yg-sectiontitle .bar{height:1px;flex:1;background:linear-gradient(90deg,var(--gold-deep),transparent);}
-
-    .gold-btn{position:relative;overflow:hidden;display:inline-flex;align-items:center;gap:8px;background:linear-gradient(135deg,var(--gold-bright),var(--gold));
-      color:var(--char);font-weight:600;padding:13px 26px;border-radius:999px;cursor:pointer;border:none;transition:.25s;font-size:15px;}
-    .gold-btn::after{content:'';position:absolute;top:0;left:-120%;width:60%;height:100%;
-      background:linear-gradient(120deg,transparent,rgba(255,255,255,0.45),transparent);transform:skewX(-20deg);transition:.6s;}
-    .gold-btn:hover{transform:translateY(-2px);box-shadow:0 12px 34px rgba(201,161,74,0.30);}
-    .gold-btn:hover::after{left:130%;}
-    .ghost-btn{display:inline-flex;align-items:center;gap:8px;border:1px solid var(--gold);color:var(--gold);
-      padding:13px 26px;border-radius:999px;cursor:pointer;background:transparent;transition:.25s;font-size:15px;}
-    .ghost-btn:hover{background:rgba(201,161,74,0.08);transform:translateY(-2px);}
-
-    .yg-stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:18px;margin-top:60px;}
-    .yg-stat{position:relative;border:1px solid var(--line);border-radius:14px;padding:22px;background:var(--char-2);overflow:hidden;transition:transform .3s,border-color .3s,box-shadow .3s;}
-    .yg-stat::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,transparent,var(--gold),transparent);opacity:0;transition:.3s;}
-    .yg-stat:hover{transform:translateY(-4px);border-color:var(--gold);box-shadow:0 14px 34px rgba(0,0,0,0.4);}
-    .yg-stat:hover::before{opacity:1;}
-    .yg-stat .v{font-family:'Fraunces',serif;color:var(--gold);font-size:34px;font-weight:700;}
-    .yg-stat .l{color:var(--ivory-dim);font-size:13px;margin-top:6px;line-height:1.4;}
-
-    .yg-card{position:relative;background:var(--char-2);border:1px solid var(--line);border-radius:16px;overflow:hidden;
-      transform:perspective(900px) rotateX(var(--rx,0deg)) rotateY(var(--ry,0deg)) translateY(var(--lift,0));
-      transition:transform .25s cubic-bezier(.22,.61,.36,1),border-color .3s,box-shadow .3s;}
-    .yg-card::before{content:'';position:absolute;inset:0;border-radius:16px;padding:1px;pointer-events:none;opacity:0;transition:.3s;z-index:2;
-      background:linear-gradient(135deg,var(--gold-bright),transparent 45%);
-      -webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);-webkit-mask-composite:xor;mask-composite:exclude;}
-    .yg-card::after{content:'';position:absolute;inset:0;pointer-events:none;opacity:0;transition:opacity .3s;z-index:1;
-      background:radial-gradient(380px circle at var(--mx,50%) var(--my,50%),rgba(201,161,74,0.16),transparent 60%);}
-    .yg-card:hover{--lift:-5px;border-color:var(--gold);box-shadow:0 22px 50px rgba(0,0,0,0.5);}
-    .yg-card:hover::before{opacity:.85;}
-    .yg-card:hover::after{opacity:1;}
-    .yg-card-img{position:relative;height:180px;background:var(--char-3) center/cover;display:flex;align-items:center;justify-content:center;color:var(--gold-deep);font-size:13px;overflow:hidden;}
-    .genart{position:absolute;inset:0;width:100%;height:100%;display:block;}
-    .yg-card-body{padding:24px;}
-    .tag{display:inline-block;font-size:11px;letter-spacing:1.5px;text-transform:uppercase;color:var(--gold);
-      border:1px solid var(--line);border-radius:999px;padding:4px 12px;margin-bottom:14px;}
-    .muted{color:var(--ivory-dim);}
-    .yg-bullets{list-style:none;margin-top:14px;}
-    .yg-bullets li{position:relative;padding-left:22px;margin-bottom:12px;color:var(--ivory-dim);line-height:1.6;font-size:15px;}
-    .yg-bullets li:before{content:'';position:absolute;left:0;top:9px;width:7px;height:7px;background:var(--gold);border-radius:50%;}
-
-    .grid-2{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:24px;}
-    .grid-3{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:24px;}
-    .grid-gallery{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:16px;}
-
-    .skill-chip{display:inline-block;border:1px solid var(--line);border-radius:8px;padding:7px 13px;margin:5px 6px 0 0;font-size:14px;color:var(--ivory);background:var(--char-3);transition:.2s;cursor:default;}
-    .skill-chip:hover{border-color:var(--gold);color:var(--gold);transform:translateY(-2px);}
-
-    .gallery-tile{position:relative;border-radius:14px;overflow:hidden;aspect-ratio:1;background:var(--char-3);border:1px solid var(--line);}
-    .gallery-tile img{width:100%;height:100%;object-fit:cover;transition:.4s;}
-    .gallery-tile:hover img{transform:scale(1.07);}
-    .gallery-cap{position:absolute;inset:auto 0 0 0;padding:14px;background:linear-gradient(transparent,rgba(20,17,13,0.92));font-size:14px;}
-    .gallery-empty{position:relative;display:flex;align-items:flex-end;text-align:left;color:var(--ivory);padding:0;font-size:13px;height:100%;width:100%;overflow:hidden;}
-    .gallery-empty-label{position:relative;z-index:1;width:100%;padding:14px;background:linear-gradient(transparent,rgba(20,17,13,0.92));line-height:1.4;}
-    .gallery-empty-label em{color:var(--gold);font-style:normal;letter-spacing:1px;text-transform:uppercase;font-size:11px;}
-
-    .empty-state{border:1px dashed var(--line);border-radius:16px;padding:60px 30px;text-align:center;color:var(--ivory-dim);}
-
-    .hero-row{display:flex;align-items:center;gap:50px;flex-wrap:wrap;}
-    .hero-text{flex:1 1 360px;min-width:300px;}
-    .hero-photo-wrap{flex:0 0 auto;}
-    .hero-photo{width:280px;height:340px;object-fit:cover;border-radius:20px;border:1px solid var(--line);
-      box-shadow:0 24px 60px rgba(0,0,0,0.5);animation:floatPhoto 7s ease-in-out infinite;}
-    .hero-photo.placeholder{display:flex;align-items:center;justify-content:center;font-family:'Fraunces',serif;
-      font-size:84px;color:var(--gold);position:relative;background:
-        radial-gradient(circle at 30% 25%,rgba(201,161,74,0.18),transparent 60%),var(--char-3);}
-    .hero-photo.placeholder::after{content:'';position:absolute;inset:-1px;border-radius:20px;border:1px solid transparent;
-      background:linear-gradient(140deg,var(--gold-bright),transparent 55%) border-box;
-      -webkit-mask:linear-gradient(#000 0 0) padding-box,linear-gradient(#000 0 0);-webkit-mask-composite:xor;mask-composite:exclude;opacity:.6;}
-    @keyframes floatPhoto{0%,100%{transform:translateY(0);}50%{transform:translateY(-12px);}}
-    @media(max-width:760px){.hero-photo{width:200px;height:240px;}.hero-photo.placeholder{font-size:56px;}}
-
-    /* headline cascades in word by word — each word re-declares the gradient clip because
-       background-clip:text on the h1 does not paint into inline-block children */
-    .hword{display:inline-block;opacity:0;
-      background:linear-gradient(100deg,var(--ivory) 30%,var(--gold-bright) 50%,var(--ivory) 70%);
-      background-size:200% auto;-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;
-      animation:wordRise .65s cubic-bezier(.22,.61,.36,1) both,sheen 7s ease-in-out infinite;}
-    @keyframes wordRise{from{opacity:0;transform:translateY(30px) rotate(1.5deg);}to{opacity:1;transform:none;}}
-
-    /* slow-rotating gold halo behind the hero photo */
-    .hero-photo-wrap{position:relative;}
-    .hero-photo-wrap::before{content:'';position:absolute;inset:-22px;border-radius:30px;z-index:-1;
-      background:conic-gradient(from 0deg,transparent 0%,rgba(201,161,74,0.35) 12%,transparent 30%,
-        transparent 55%,rgba(230,198,110,0.25) 70%,transparent 85%);
-      filter:blur(18px);animation:spin 14s linear infinite;}
+    /* photo gallery (About) */
+    .gallery{display:grid;gap:var(--s4);grid-template-columns:repeat(auto-fit,minmax(min(220px,100%),1fr))}
+    .gallery-tile{position:relative;aspect-ratio:1;overflow:hidden;background:var(--panel2);
+      border:1px solid var(--line-soft);border-radius:var(--radius-lg)}
+    .gallery-tile img{width:100%;height:100%;object-fit:cover;transition:transform .4s var(--ease)}
+    .gallery-tile:hover img{transform:scale(1.06)}
+    .gallery-cap{position:absolute;inset:auto 0 0 0;padding:var(--s3);font-size:var(--t-small);
+      background:linear-gradient(transparent,var(--bg))}
 
     /* skills ticker */
-    .yg-marquee{overflow:hidden;margin-top:54px;border-top:1px solid var(--line);border-bottom:1px solid var(--line);
-      padding:14px 0;-webkit-mask:linear-gradient(90deg,transparent,#000 12%,#000 88%,transparent);
-      mask:linear-gradient(90deg,transparent,#000 12%,#000 88%,transparent);}
-    .yg-marquee-track{display:inline-flex;white-space:nowrap;animation:tickerScroll 38s linear infinite;}
-    .yg-marquee-track span{font-size:13px;letter-spacing:.14em;text-transform:uppercase;color:var(--ivory-dim);}
-    .yg-marquee:hover .yg-marquee-track{animation-play-state:paused;}
-    @keyframes tickerScroll{to{transform:translateX(-50%);}}
+    .marquee{overflow:hidden;margin-top:var(--s8);padding:var(--s3) 0;
+      border-top:1px solid var(--line);border-bottom:1px solid var(--line);
+      -webkit-mask:linear-gradient(90deg,transparent,#000 12%,#000 88%,transparent);
+      mask:linear-gradient(90deg,transparent,#000 12%,#000 88%,transparent)}
+    .marquee-track{display:inline-flex;white-space:nowrap;animation:tickerScroll 38s linear infinite}
+    .marquee-track span{font-size:var(--t-micro);letter-spacing:.14em;
+      text-transform:uppercase;color:var(--muted)}
+    .marquee:hover .marquee-track{animation-play-state:paused}
+    @keyframes tickerScroll{to{transform:translateX(-50%)}}
 
-    .live-dot{width:9px;height:9px;border-radius:50%;background:#7ED98A;box-shadow:0 0 10px #7ED98A;animation:pulse 2.2s ease-in-out infinite;}
-    @keyframes pulse{0%,100%{box-shadow:0 0 0 0 rgba(126,217,138,0.5);}50%{box-shadow:0 0 0 7px rgba(126,217,138,0);}}
-
-    .card-ic{display:inline-flex;align-items:center;justify-content:center;width:38px;height:38px;border-radius:10px;
-      color:var(--gold);background:rgba(201,161,74,0.10);border:1px solid var(--line);flex-shrink:0;}
-    .card-ic.big{width:64px;height:64px;border-radius:16px;}
-
-    .yg-foot{border-top:1px solid var(--line);padding:50px 6vw;text-align:center;color:var(--ivory-dim);font-size:14px;position:relative;z-index:1;background:var(--char);}
-    .social-ic{display:inline-flex;align-items:center;justify-content:center;width:42px;height:42px;border-radius:50%;
-      border:1px solid var(--line);color:var(--ivory-dim);transition:.25s;}
-    .social-ic:hover{color:var(--char);background:var(--gold);border-color:var(--gold);transform:translateY(-3px);}
-
-    /* Admin */
-    .admin-fab{position:fixed;bottom:24px;right:24px;z-index:60;}
-    .admin-wrap{position:fixed;inset:0;z-index:55;background:rgba(10,8,6,0.96);overflow-y:auto;padding:40px 5vw;animation:fade .3s ease;}
-    .admin-box{max-width:820px;margin:0 auto;}
-    .admin-card{background:var(--char-2);border:1px solid var(--line);border-radius:14px;padding:22px;margin-bottom:18px;}
-    .admin-label{display:block;font-size:13px;color:var(--gold);letter-spacing:0.5px;margin:12px 0 6px;}
-    .admin-input,.admin-text{width:100%;background:var(--char-3);border:1px solid var(--line);border-radius:8px;
-      padding:10px 12px;color:var(--ivory);font-family:'Jost',sans-serif;font-size:14px;}
-    .admin-text{min-height:80px;resize:vertical;}
-    .row-tools{display:flex;justify-content:space-between;align-items:center;margin-bottom:8px;}
-    .mini{font-size:12px;border:1px solid var(--line);background:transparent;color:var(--ivory-dim);border-radius:7px;padding:5px 10px;cursor:pointer;}
-    .mini:hover{color:var(--gold);border-color:var(--gold);}
-    .mini.danger:hover{color:#e06a6a;border-color:#e06a6a;}
-
-    /* featured project — intentional grid-break */
-    .project-feature{display:grid;grid-template-columns:1.15fr 1fr;align-items:stretch;}
-    .project-feature .yg-card-img{height:100%;min-height:260px;}
-    .project-feature .yg-card-body{display:flex;flex-direction:column;justify-content:center;padding:34px 34px;}
-    .project-feature .yg-h3{font-size:26px;}
-    @media(max-width:760px){.project-feature{grid-template-columns:1fr;}.project-feature .yg-card-img{min-height:200px;}}
-
-    /* accessibility: visible keyboard focus */
-    a:focus-visible,button:focus-visible,.yg-navlink:focus-visible,.gold-btn:focus-visible,.ghost-btn:focus-visible{
-      outline:2px solid var(--gold-bright);outline-offset:3px;border-radius:6px;}
-    .yg-navlink{outline:none;}
-
-    /* gallery images sit flush and cover their tile */
-    .gallery-tile img{width:100%;height:100%;object-fit:cover;display:block;}
+    /* hidden admin panel — Ctrl+Shift+E, never shown to visitors */
+    .admin-wrap{position:fixed;inset:0;z-index:90;background:var(--bg);
+      overflow-y:auto;padding:var(--s7) var(--section-x)}
+    .admin-box{max-width:820px;margin:0 auto}
+    .admin-card{background:var(--panel);border:1px solid var(--line-soft);
+      border-radius:var(--radius-lg);padding:var(--s5);margin-bottom:var(--s4)}
+    .admin-label{display:block;font-size:var(--t-small);color:var(--gold-2);margin:var(--s3) 0 var(--s1)}
+    .admin-text{min-height:80px;resize:vertical}
+    .row-tools{display:flex;justify-content:space-between;align-items:center;
+      gap:var(--s3);margin-bottom:var(--s2)}
+    .mini{font-size:var(--t-micro);border:1px solid var(--line-soft);background:none;
+      color:var(--muted);border-radius:var(--radius);padding:5px 10px;cursor:pointer;font-family:inherit}
+    .mini:hover{color:var(--gold-2);border-color:var(--line)}
+    .mini.danger:hover{color:var(--bad);border-color:var(--bad)}
   `}</style>
 );
 
 // ---------- Scroll reveal (animates .reveal elements into view) ----------
-// Claude built this — IntersectionObserver with a safety timeout fallback.
-// I just told it "make things fade in when they scroll into view" and it did the rest.
+// site.css owns the .reveal / .reveal.is-in transition; this only flips the class.
 function useReveal(dep) {
   useEffect(() => {
-    const nodes = Array.from(document.querySelectorAll('.reveal:not(.in)'));
+    const nodes = Array.from(document.querySelectorAll('.reveal:not(.is-in)'));
     if (!('IntersectionObserver' in window)) {
-      nodes.forEach((n) => n.classList.add('in')); // safe fallback
+      nodes.forEach((n) => n.classList.add('is-in')); // safe fallback
       return;
     }
     const io = new IntersectionObserver((entries) => {
       entries.forEach((e) => {
-        if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); }
+        if (e.isIntersecting) { e.target.classList.add('is-in'); io.unobserve(e.target); }
       });
     }, { threshold: 0.12, rootMargin: '0px 0px -8% 0px' });
     nodes.forEach((n) => io.observe(n));
     // safety: ensure anything still hidden after a beat becomes visible —
     // re-query at fire time so nodes mounted after the effect ran are covered too
     const t = setTimeout(() => {
-      document.querySelectorAll('.reveal:not(.in)').forEach((n) => n.classList.add('in'));
+      document.querySelectorAll('.reveal:not(.is-in)').forEach((n) => n.classList.add('is-in'));
     }, 1200);
     return () => { io.disconnect(); clearTimeout(t); };
   }, [dep]);
@@ -639,9 +479,7 @@ const reducedMotion = () =>
   window.matchMedia &&
   window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-// Claude came up with this — a deterministic PRNG so the generative artwork
-// renders the same every time instead of changing on every refresh.
-// I did not know what mulberry32 was before this project lol
+// deterministic PRNG so the generative artwork renders the same every time
 function mulberry32(seed) {
   let a = seed >>> 0;
   return () => {
@@ -652,7 +490,7 @@ function mulberry32(seed) {
   };
 }
 
-// drives the CountUp animation below — needed its own hook to track "has this element been seen"
+// drives the CountUp animation below — tracks "has this element been seen"
 function useInView() {
   const ref = React.useRef(null);
   const [seen, setSeen] = useState(false);
@@ -669,9 +507,7 @@ function useInView() {
   return [ref, seen];
 }
 
-// Claude wrote this — animates the stat numbers on the homepage when they scroll into view.
-// handles prefixes/suffixes like "+40%" or "1,000+" without breaking the formatting.
-// honestly thought about just using a library but this keeps the bundle tiny
+// animates the stat numbers when they scroll into view; keeps prefixes/suffixes intact
 function CountUp({ value }) {
   const [ref, seen] = useInView();
   const [display, setDisplay] = useState(value);
@@ -700,29 +536,18 @@ function CountUp({ value }) {
   return <span ref={ref}>{display}</span>;
 }
 
-// Claude generated this whole thing — SVG art that fills card placeholders when I haven't
-// uploaded a real image yet. four variants (finance, web, code, flow) auto-selected
-// based on the project stack. I just wanted placeholder images, it gave me generative art
-// Wraps the first occurrence of `highlight` in the headline with the gold shimmer.
+// Wraps the highlighted phrase of the headline in the shared .gold-fill treatment,
+// exactly like the pre-hydration snapshot in index.html — so nothing shifts on mount.
 function Headline({ text, highlight }) {
-  // cascade in word by word; the highlight keeps its shimmer and rides the same wave
-  const parts = [];
-  if (highlight && text.includes(highlight)) {
-    const i = text.indexOf(highlight);
-    text.slice(0, i).split(' ').filter(Boolean).forEach((w) => parts.push({ w }));
-    parts.push({ w: highlight, hl: true });
-    text.slice(i + highlight.length).split(' ').filter(Boolean).forEach((w) => parts.push({ w }));
-  } else {
-    text.split(' ').filter(Boolean).forEach((w) => parts.push({ w }));
-  }
-  return parts.map((p, i) => (
-    <React.Fragment key={i}>
-      <span className="hword" style={{ animationDelay: `${0.12 + i * 0.08}s` }}>
-        {p.hl ? <span className="shimmer">{p.w}</span> : p.w}
-      </span>
-      {i < parts.length - 1 ? ' ' : ''}
-    </React.Fragment>
-  ));
+  if (!highlight || !text.includes(highlight)) return text;
+  const i = text.indexOf(highlight);
+  return (
+    <>
+      {text.slice(0, i)}
+      <span className="gold-fill">{highlight}</span>
+      {text.slice(i + highlight.length)}
+    </>
+  );
 }
 
 // continuous skills ticker — the "markets" vibe, literally
@@ -731,8 +556,8 @@ function Marquee({ groups }) {
   if (!items.length) return null;
   const row = items.join('  ·  ');
   return (
-    <div className="yg-marquee" aria-hidden="true">
-      <div className="yg-marquee-track">
+    <div className="marquee" aria-hidden="true">
+      <div className="marquee-track">
         <span>{row}&nbsp;&nbsp;·&nbsp;&nbsp;</span>
         <span>{row}&nbsp;&nbsp;·&nbsp;&nbsp;</span>
       </div>
@@ -766,7 +591,7 @@ function GenArt({ seed = 1, variant = 'flow' }) {
     shapes = <>
       {nodes.flatMap((a, i) => nodes.slice(i + 1).map((b, j) =>
         (Math.hypot(a[0] - b[0], a[1] - b[1]) < 150)
-          ? <line key={`e${i}-${j}`} x1={a[0]} y1={a[1]} x2={b[0]} y2={b[1]} stroke="var(--gold-deep)" strokeWidth="0.7" opacity="0.5" /> : null))}
+          ? <line key={`e${i}-${j}`} x1={a[0]} y1={a[1]} x2={b[0]} y2={b[1]} stroke="var(--gold-dim)" strokeWidth="0.7" opacity="0.5" /> : null))}
       {nodes.map((n, i) => <circle key={`n${i}`} cx={n[0]} cy={n[1]} r={2.5 + r() * 4} fill={`url(#${gid})`} />)}
     </>;
   } else { // 'flow' — concentric arcs, default
@@ -780,93 +605,17 @@ function GenArt({ seed = 1, variant = 'flow' }) {
     <svg className="genart" viewBox={`0 0 ${W} ${H}`} preserveAspectRatio="xMidYMid slice" aria-hidden="true">
       <defs>
         <linearGradient id={gid} x1="0" y1="0" x2="1" y2="1">
-          <stop offset="0" stopColor="var(--gold-bright)" />
-          <stop offset="1" stopColor="var(--gold-deep)" />
+          <stop offset="0" stopColor="var(--gold-2)" />
+          <stop offset="1" stopColor="var(--gold-dim)" />
         </linearGradient>
       </defs>
-      <rect width={W} height={H} fill="var(--char-3)" />
+      <rect width={W} height={H} fill="var(--panel2)" />
       {shapes}
     </svg>
   );
 }
 
-// Claude built the tilt effect — cards rotate slightly toward your cursor on hover.
-// looks way fancier than it has any right to. only fires on fine-pointer (mouse) devices,
-// skips mobile so it doesn't feel weird on touch
-function useTilt(dep) {
-  useEffect(() => {
-    if (reducedMotion() || !window.matchMedia('(pointer:fine)').matches) return;
-    const cards = Array.from(document.querySelectorAll('.yg-card'));
-    const cleanups = cards.map((card) => {
-      let raf = 0;
-      const onMove = (e) => {
-        const rect = card.getBoundingClientRect();
-        const px = (e.clientX - rect.left) / rect.width;
-        const py = (e.clientY - rect.top) / rect.height;
-        cancelAnimationFrame(raf);
-        raf = requestAnimationFrame(() => {
-          card.style.setProperty('--ry', `${(px - 0.5) * 7}deg`);
-          card.style.setProperty('--rx', `${(0.5 - py) * 7}deg`);
-          card.style.setProperty('--mx', `${px * 100}%`);
-          card.style.setProperty('--my', `${py * 100}%`);
-        });
-      };
-      const onLeave = () => {
-        cancelAnimationFrame(raf);
-        card.style.setProperty('--ry', '0deg');
-        card.style.setProperty('--rx', '0deg');
-      };
-      card.addEventListener('pointermove', onMove);
-      card.addEventListener('pointerleave', onLeave);
-      return () => { card.removeEventListener('pointermove', onMove); card.removeEventListener('pointerleave', onLeave); cancelAnimationFrame(raf); };
-    });
-    return () => cleanups.forEach((fn) => fn());
-  }, [dep]);
-}
-
-// Claude's idea — a soft gold spotlight that follows the cursor around the page.
-// subtle enough that you don't notice it immediately, noticeable when it's gone
-function useCursorGlow() {
-  useEffect(() => {
-    if (reducedMotion() || !window.matchMedia('(pointer:fine)').matches) return;
-    const el = document.querySelector('.cursor-glow');
-    if (!el) return;
-    let raf = 0;
-    const onMove = (e) => {
-      cancelAnimationFrame(raf);
-      raf = requestAnimationFrame(() => {
-        el.style.transform = `translate(${e.clientX}px, ${e.clientY}px)`;
-        el.style.opacity = '1';
-      });
-    };
-    window.addEventListener('pointermove', onMove);
-    return () => { window.removeEventListener('pointermove', onMove); cancelAnimationFrame(raf); };
-  }, []);
-}
-
-// ---------- App ----------
-// ── Reading progress bar ──────────────────────────────────────────────────────
-// gold gradient line at the top that fills as you scroll — Claude's addition,
-// I asked for it after seeing it on a blog post I liked
-function useProgress() {
-  const [pct, setPct] = useState(0);
-  useEffect(() => {
-    const onScroll = () => {
-      const el = document.documentElement;
-      const scrolled = el.scrollTop || document.body.scrollTop;
-      const total = el.scrollHeight - el.clientHeight;
-      setPct(total > 0 ? Math.min(100, (scrolled / total) * 100) : 0);
-    };
-    window.addEventListener('scroll', onScroll, { passive: true });
-    return () => window.removeEventListener('scroll', onScroll);
-  }, []);
-  return pct;
-}
-
 // ── ⌘K Command palette ───────────────────────────────────────────────────────
-// Claude built this entire thing — fuzzy nav search that opens with ⌘K.
-// I pushed back on it at first ("who uses ⌘K on a portfolio site?") but
-// it's actually nice on longer pages. small detail that hits different
 function useCommandPalette(setPage, pages) {
   const [open, setOpen] = useState(false);
   const [query, setQuery] = useState('');
@@ -891,34 +640,29 @@ function useCommandPalette(setPage, pages) {
 
   const Palette = open ? (
     <div style={{ position: 'fixed', inset: 0, zIndex: 80, display: 'flex', alignItems: 'flex-start', justifyContent: 'center', paddingTop: '18vh',
-      background: 'rgba(10,8,6,0.78)', backdropFilter: 'blur(10px)' }}
+      background: 'rgba(11,11,13,.82)', backdropFilter: 'blur(10px)' }}
       onClick={() => setOpen(false)}>
-      <div style={{ width: '100%', maxWidth: 520, background: 'var(--char-2)', border: '1px solid var(--line)', borderRadius: 18,
-        boxShadow: '0 32px 80px rgba(0,0,0,0.6)', overflow: 'hidden' }}
+      <div className="panel" style={{ width: '100%', maxWidth: 520, padding: 0, overflow: 'hidden', boxShadow: 'var(--shadow)' }}
         onClick={(e) => e.stopPropagation()}>
-        <div style={{ display: 'flex', alignItems: 'center', gap: 12, padding: '16px 20px', borderBottom: '1px solid var(--line)' }}>
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--gold)" strokeWidth="2" strokeLinecap="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+        <div style={{ display: 'flex', alignItems: 'center', gap: 'var(--s3)', padding: 'var(--s4)', borderBottom: '1px solid var(--line-soft)' }}>
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--gold-2)" strokeWidth="2" strokeLinecap="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
           <input ref={inputRef} value={query} onChange={(e) => setQuery(e.target.value)}
-            placeholder="Go to page…"
-            style={{ flex: 1, background: 'transparent', border: 'none', outline: 'none', color: 'var(--ivory)', fontSize: 16, fontFamily: "'Jost',sans-serif" }} />
-          <kbd style={{ fontSize: 11, color: 'var(--ivory-dim)', background: 'var(--char-3)', border: '1px solid var(--line)', borderRadius: 5, padding: '2px 7px' }}>esc</kbd>
+            placeholder="Go to section…" aria-label="Go to section"
+            style={{ background: 'transparent', border: 'none', padding: 0 }} />
+          <kbd className="mono faint" style={{ fontSize: 'var(--t-micro)' }}>esc</kbd>
         </div>
-        <div style={{ padding: '8px 0', maxHeight: 280, overflowY: 'auto' }}>
+        <div style={{ padding: 'var(--s2) 0', maxHeight: 280, overflowY: 'auto' }}>
           {results.length === 0
-            ? <div style={{ padding: '16px 20px', color: 'var(--ivory-dim)', fontSize: 14 }}>No pages match "{query}"</div>
+            ? <div className="muted" style={{ padding: 'var(--s3) var(--s4)', fontSize: 'var(--t-small)' }}>No sections match "{query}"</div>
             : results.map((p) => (
-                <div key={p} onClick={() => select(p)} style={{ padding: '12px 20px', cursor: 'pointer', display: 'flex', alignItems: 'center', gap: 12,
-                  transition: 'background .15s' }}
-                  onMouseEnter={(e) => e.currentTarget.style.background = 'rgba(201,161,74,0.08)'}
-                  onMouseLeave={(e) => e.currentTarget.style.background = 'transparent'}>
-                  <span style={{ color: 'var(--gold)', fontFamily: "'Fraunces',serif", fontWeight: 600 }}>{p}</span>
-                </div>
+                <button key={p} className="page-tab" onClick={() => select(p)}
+                  style={{ display: 'block', width: '100%', textAlign: 'left', padding: 'var(--s3) var(--s4)', borderRadius: 0 }}>
+                  {TAB_LABEL[p] || p}
+                </button>
               ))}
         </div>
-        <div style={{ padding: '10px 20px', borderTop: '1px solid var(--line)', display: 'flex', gap: 14, fontSize: 12, color: 'var(--ivory-dim)' }}>
-          <span><kbd style={{ background:'var(--char-3)',border:'1px solid var(--line)',borderRadius:4,padding:'1px 5px'}}>↵</kbd> select</span>
-          <span><kbd style={{ background:'var(--char-3)',border:'1px solid var(--line)',borderRadius:4,padding:'1px 5px'}}>esc</kbd> close</span>
-          <span style={{ marginLeft: 'auto' }}>⌘K anywhere</span>
+        <div className="faint" style={{ padding: 'var(--s3) var(--s4)', borderTop: '1px solid var(--line-soft)', display: 'flex', gap: 'var(--s4)', fontSize: 'var(--t-micro)' }}>
+          <span>↵ select</span><span>esc close</span><span style={{ marginLeft: 'auto' }}>⌘K anywhere</span>
         </div>
       </div>
     </div>
@@ -927,16 +671,17 @@ function useCommandPalette(setPage, pages) {
   return { Palette };
 }
 
-// main app — wires everything together, handles page transitions and the hidden admin panel
+// ---------- App ----------
+// `pro` (the calmer, recruiter-facing register of the design system) is set on
+// <body class="pro"> in public/index.html rather than from a useEffect here: the
+// class then applies to the very first paint, so the boot snapshot and the hydrated
+// app share one typeface and there is no flash of the streetwear display font.
 export default function App() {
   const [visible, setVisible] = useState('Home');
   const [fading, setFading] = useState(false);
   const [admin, setAdmin] = useState(false); // Ctrl+Shift+E to open, not shown to visitors
   const [data, setData] = useState(siteData);
-  const progress = useProgress();
   useReveal(visible);
-  useTilt(visible);
-  useCursorGlow();
 
   // goTo must be declared before useCommandPalette call; function hoisting handles it
   function goTo(p) {
@@ -972,59 +717,19 @@ export default function App() {
     return () => window.removeEventListener('keydown', onKey);
   }, []);
 
-  // Tab title, monogram favicon, and link-preview meta — keeps the single-file build self-contained.
-  useEffect(() => {
-    document.title = `${siteData.brand.name} — ${siteData.brand.role}`;
-    const favicon =
-      "data:image/svg+xml," +
-      encodeURIComponent(
-        `<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'><rect width='64' height='64' rx='14' fill='#14110D'/><text x='50%' y='52%' dominant-baseline='central' text-anchor='middle' font-family='Georgia,serif' font-weight='700' font-size='30' fill='#C9A14A'>YG</text></svg>`
-      );
-    const setLink = (rel, href) => {
-      let el = document.querySelector(`link[rel='${rel}']`);
-      if (!el) { el = document.createElement('link'); el.rel = rel; document.head.appendChild(el); }
-      el.href = href;
-    };
-    setLink('icon', favicon);
-    setLink('apple-touch-icon', favicon);
-    const meta = (key, val, useProperty) => {
-      const attr = useProperty ? 'property' : 'name';
-      let el = document.querySelector(`meta[${attr}='${key}']`);
-      if (!el) { el = document.createElement('meta'); el.setAttribute(attr, key); document.head.appendChild(el); }
-      el.setAttribute('content', val);
-    };
-    const desc = siteData.home.sub;
-    meta('description', desc);
-    meta('og:title', `${siteData.brand.name} — ${siteData.brand.role}`, true);
-    meta('og:description', desc, true);
-    meta('og:type', 'website', true);
-    meta('twitter:card', 'summary');
-  }, []);
-
   const save = (next) => {
     setData(next);
     try { localStorage.setItem('yg_portfolio', JSON.stringify(next)); } catch (e) {}
   };
 
   return (
-    <div className="yg-root">
-      <StyleTag />
-      {/* Reading progress bar */}
-      <div style={{ position: 'fixed', top: 0, left: 0, height: 3, width: `${progress}%`,
-        background: 'linear-gradient(90deg,var(--gold-deep),var(--gold),var(--gold-bright))',
-        zIndex: 60, transition: 'width .1s linear', pointerEvents: 'none' }} />
-      <div className="yg-bg" aria-hidden="true">
-        <span className="blob blob-1" />
-        <span className="blob blob-2" />
-        <span className="ring ring-1" />
-        <span className="grid-lines" />
-      </div>
-      <div className="grain" aria-hidden="true" />
-      <div className="cursor-glow" aria-hidden="true" />
-      <Nav page={visible} setPage={goTo} brand={data.brand} />
+    <>
+      <a className="skip-link" href="#main">Skip to content</a>
+      <SiteNav page={visible} go={goTo} brand={data.brand} />
+      <PageTabs page={visible} go={goTo} />
       {Palette}
-      <main style={{ opacity: fading ? 0 : 1, transition: 'opacity .22s ease' }}>
-        {visible === 'Home' && <Home d={data} go={goTo} />}
+      <main id="main" style={{ opacity: fading ? 0 : 1, transition: 'opacity .22s ease' }}>
+        {visible === 'Home' && <Home d={data} />}
         {visible === 'About' && <About d={data} />}
         {visible === 'Working On' && <Now d={data} />}
         {visible === 'Research' && <Research d={data} />}
@@ -1033,102 +738,109 @@ export default function App() {
         {visible === 'Blog' && <Blog d={data} />}
         {visible === 'Legal' && <Legal />}
       </main>
-      <Footer brand={data.brand} contact={data.contact} />
+      <SiteFooter contact={data.contact} brand={data.brand} />
+      <StyleTag />
 
       {admin && <Admin data={data} save={save} close={() => setAdmin(false)} />}
-    </div>
+    </>
   );
 }
 
-function Nav({ page, setPage, brand }) {
+// Canonical site nav — same markup and links as every static page in /public.
+// "Work" points at "/" (a real href, so it works without JS and looks right to
+// crawlers) but is intercepted so the SPA switches sections instead of reloading.
+function SiteNav({ page, go, brand }) {
+  const home = (e) => { e.preventDefault(); go('Home'); };
   return (
-    <nav className="yg-nav">
-      <div className="yg-logo" onClick={() => setPage('Home')} style={{ cursor: 'pointer' }}>
-        {brand.name.split(' ')[0]} <span>{brand.name.split(' ')[1]}</span>
-      </div>
-      <div className="yg-navlinks">
-        {PAGES.map((p) => (
-          <span key={p} className={`yg-navlink ${page === p ? 'active' : ''}`} onClick={() => setPage(p)}>{p}</span>
-        ))}
-        <span className="yg-navlink" style={{ opacity: 0.45, fontSize: 12, letterSpacing: 0, cursor: 'default' }}
-          title="Press ⌘K or Ctrl+K to open command palette">⌘K</span>
+    <nav className="site-nav">
+      <a className="site-nav__brand" href="/" onClick={home}>{brand.name.toUpperCase()}</a>
+      <div className="site-nav__links">
+        <a href="/" onClick={home} aria-current={page === 'Home' ? 'page' : undefined}>Work</a>
+        {SITE_LINKS.map((l) => <a key={l.href} href={l.href}>{l.label}</a>)}
       </div>
     </nav>
   );
 }
 
-// ---------- Pages ----------
-// ── Contact info sheet (replaces mailto links) ──────────────────────────────
-// modal that slides up when you click "Get in Touch" — cleaner than a mailto
-// link that opens mail apps people don't use. phone + email selectable to copy
-function ContactSheet({ d, close }) {
+// Client-side section switcher for this page only (state + hash routing, no router lib)
+function PageTabs({ page, go }) {
   return (
-    <div style={{ position: 'fixed', inset: 0, zIndex: 80, display: 'flex', alignItems: 'center', justifyContent: 'center',
-      background: 'rgba(10,8,6,0.82)', backdropFilter: 'blur(10px)' }}
-      onClick={close}>
-      <div style={{ width: '100%', maxWidth: 420, background: 'var(--char-2)', border: '1px solid var(--line)',
-        borderRadius: 20, overflow: 'hidden', boxShadow: '0 32px 80px rgba(0,0,0,0.6)' }}
-        onClick={(e) => e.stopPropagation()}>
-        <div style={{ padding: '24px 28px 0', display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
-          <span style={{ fontFamily: "'Fraunces',serif", fontWeight: 700, fontSize: 22, color: 'var(--ivory)' }}>Get in Touch</span>
-          <button onClick={close} style={{ background: 'none', border: '1px solid var(--line)', color: 'var(--ivory-dim)',
-            borderRadius: 8, cursor: 'pointer', padding: '4px 10px', fontSize: 16, lineHeight: 1 }}>✕</button>
-        </div>
-        <div style={{ padding: '22px 28px 28px', display: 'grid', gap: 16 }}>
-          <div style={{ background: 'var(--char-3)', borderRadius: 12, padding: '14px 18px', border: '1px solid var(--line)' }}>
-            <div style={{ fontSize: 11, letterSpacing: 2, textTransform: 'uppercase', color: 'var(--gold)', marginBottom: 6 }}>Email</div>
-            <div style={{ fontSize: 16, color: 'var(--ivory)', userSelect: 'all', fontFamily: "'Jost',sans-serif" }}>{d.contact.email}</div>
-          </div>
-          <div style={{ background: 'var(--char-3)', borderRadius: 12, padding: '14px 18px', border: '1px solid var(--line)' }}>
-            <div style={{ fontSize: 11, letterSpacing: 2, textTransform: 'uppercase', color: 'var(--gold)', marginBottom: 6 }}>Phone</div>
-            <div style={{ fontSize: 16, color: 'var(--ivory)', userSelect: 'all', fontFamily: "'Jost',sans-serif" }}>{d.contact.phone}</div>
-          </div>
-          <div style={{ display: 'flex', flexWrap: 'wrap', gap: 10 }}>
-            {d.contact.links.filter(l => ['LinkedIn','GitHub'].includes(l.label)).map((l, i) => (
-              <a key={i} className="ghost-btn" href={l.url} target="_blank" rel="noreferrer"
-                style={{ flex: 1, textAlign: 'center', padding: '10px 16px', fontSize: 14 }}>{l.label}</a>
-            ))}
-          </div>
-          <p style={{ fontSize: 12, color: 'var(--ivory-dim)', margin: 0 }}>Tap the email or phone to select and copy.</p>
-        </div>
-      </div>
+    <div className="page-tabs" aria-label="Sections">
+      {PAGES.map((p) => (
+        <button key={p} type="button" className="page-tab"
+          aria-current={page === p ? 'page' : undefined} onClick={() => go(p)}>
+          {TAB_LABEL[p] || p}
+        </button>
+      ))}
     </div>
   );
 }
 
-// homepage — hero + stats + CTAs. I wrote the layout, Claude cleaned up the JSX
-function Home({ d, go }) {
-  const [contactOpen, setContactOpen] = useState(false);
+function SiteFooter({ contact, brand }) {
   return (
-    <section className="yg-page">
-      {contactOpen && <ContactSheet d={d} close={() => setContactOpen(false)} />}
+    <footer className="site-footer">
+      <div>
+        <div>{brand.name} — San Jose, CA</div>
+        <div><a href={`mailto:${contact.email}`}>{contact.email}</a> · {contact.phone}</div>
+      </div>
+      <div className="site-footer__links">
+        <a href="/">Work</a>
+        <a href="/resume.html">Resume</a>
+        <a href="/store.html">Store</a>
+        <a href="/kxngsef.html">KXNG SEF</a>
+        <a href="/media-kit.html">Media Kit</a>
+        <a href="https://github.com/Yusuf-Gadelrab" target="_blank" rel="noopener noreferrer">GitHub</a>
+        <a href="https://www.linkedin.com/in/yusuf-gadelrab-76246b221" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+      </div>
+    </footer>
+  );
+}
+
+// ---------- Pages ----------
+// homepage — mirrors the pre-hydration snapshot in index.html one-for-one so the
+// swap to React is invisible. `.yg-page`/`.hero-row` are kept as hooks: the sunset
+// backdrop and the injected-content scripts in index.html key off them, and
+// #yg-hero-cta below tells that script the CTA already exists (no duplicate).
+function Home({ d }) {
+  return (
+    <section className="section yg-page">
       <div className="hero-row">
         <div className="hero-text">
-          <div className="yg-eyebrow">{d.home.eyebrow}</div>
-          <h1 className="yg-h1"><Headline text={d.home.headline} highlight={d.home.highlight} /></h1>
-          <p className="yg-lead">{d.home.sub}</p>
+          <p className="eyebrow">{d.home.eyebrow}</p>
+          <h1 className="hero-type" style={{ margin: 'var(--s4) 0 var(--s5)', maxWidth: '16ch' }}>
+            <Headline text={d.home.headline} highlight={d.home.highlight} />
+          </h1>
+          <p className="lead">{d.home.sub}</p>
           {d.home.availability && (
-            <div style={{ display: 'inline-flex', alignItems: 'center', gap: 9, marginTop: 22, padding: '7px 15px', border: '1px solid rgba(212,175,55,.45)', borderRadius: 999, fontSize: 13, letterSpacing: '.03em', color: '#d4af37', background: 'rgba(212,175,55,.06)' }}>
-              <span style={{ width: 7, height: 7, borderRadius: '50%', background: '#3ddc84', boxShadow: '0 0 8px rgba(61,220,132,.8)', flexShrink: 0 }} />
-              {d.home.availability}
-            </div>
+            <p className="badge" style={{ marginTop: 'var(--s5)' }}>
+              <span className="dot" aria-hidden="true" />{d.home.availability}
+            </p>
           )}
-          <div style={{ display: 'flex', gap: 14, marginTop: 34, flexWrap: 'wrap' }}>
-            <button className="gold-btn" onClick={() => go('Projects')}>View My Work →</button>
-            <button className="ghost-btn" onClick={() => setContactOpen(true)}>Get in Touch</button>
+          <div className="row" id="yg-hero-cta" style={{ marginTop: 'var(--s6)' }}>
+            <a className="btn btn-gold" href="/store.html">See what I'm shipping →</a>
+            <a className="btn btn-ghost" href="/resume.html">Resume services</a>
           </div>
+          <p className="muted" style={{ fontSize: 'var(--t-micro)', marginTop: 'var(--s3)' }}>
+            Launch pricing ends Aug 15 · 12 template packs · 273 template assets
+          </p>
+          <p className="hero-links">
+            <a href="https://doi.org/10.1145/3770761.3777339">Co-author, SIGCSE TS 2026 — DOI: 10.1145/3770761.3777339</a> ·{' '}
+            <a href="hwyhaul.html">ex-HwyHaul — case study</a> ·{' '}
+            <a href="https://github.com/Yusuf-Gadelrab">GitHub</a> ·{' '}
+            <a href="https://www.linkedin.com/in/yusuf-gadelrab-76246b221">LinkedIn</a>
+          </p>
         </div>
-        <div className="hero-photo-wrap">
-          {d.home.heroImage
-            ? <img className="hero-photo" src={d.home.heroImage} alt={d.brand.name} />
-            : <div className="hero-photo placeholder">{d.brand.initials}</div>}
-        </div>
+        {d.home.heroImage && (
+          <img className="hero-photo" src={d.home.heroImage} alt={d.brand.name}
+            width="620" height="618" />
+        )}
       </div>
-      <div className="yg-stats">
+
+      <div className="stat-grid">
         {d.home.stats.map((s, i) => (
-          <div className="yg-stat reveal" key={i} style={{ transitionDelay: `${i * 90}ms` }}>
-            <div className="v"><CountUp value={s.value} /></div>
-            <div className="l">{s.label}</div>
+          <div className="card stat reveal" key={i} style={{ transitionDelay: `${i * 90}ms` }}>
+            <span className="stat__value"><CountUp value={s.value} /></span>
+            <span className="stat__label">{s.label}</span>
           </div>
         ))}
       </div>
@@ -1138,28 +850,25 @@ function Home({ d, go }) {
 }
 
 // "working on" page — honest snapshot of what I'm actually building right now
-// update this every month or so so it doesn't go stale
 function Now({ d }) {
   const li = d.contact.links.find((l) => l.label === 'LinkedIn');
   const gh = d.contact.links.find((l) => l.label === 'GitHub');
   return (
-    <section className="yg-page">
+    <section className="section">
       <SectionTitle eyebrow="Now & Next" title="What I'm Working On" />
-      <p className="yg-lead" style={{ marginTop: 0 }}>{d.now.intro}</p>
-      <ul className="yg-bullets" style={{ marginTop: 30 }}>
-        {d.now.items.map((it, i) => <li key={i} style={{ fontSize: 16 }}>{it}</li>)}
+      <p className="lead">{d.now.intro}</p>
+      <ul className="bullets" style={{ marginTop: 'var(--s5)' }}>
+        {d.now.items.map((it, i) => <li key={i}>{it}</li>)}
       </ul>
-      <div style={{ display: 'flex', gap: 14, marginTop: 40, flexWrap: 'wrap' }}>
-        {li && <a className="gold-btn" href={li.url} target="_blank" rel="noreferrer">Connect on LinkedIn →</a>}
-        {gh && <a className="ghost-btn" href={gh.url} target="_blank" rel="noreferrer">See my GitHub →</a>}
+      <div className="row" style={{ marginTop: 'var(--s6)' }}>
+        {li && <a className="btn btn-gold" href={li.url} target="_blank" rel="noreferrer">Connect on LinkedIn →</a>}
+        {gh && <a className="btn btn-ghost" href={gh.url} target="_blank" rel="noreferrer">See my GitHub →</a>}
       </div>
     </section>
   );
 }
 
-// resume page — both PDFs are base64-embedded so they work without a /public folder.
-// Claude handled the blob URL generation and cleanup, I just pointed it at the PDF files.
-// spent like 45 mins debugging why the iframe was blank before realizing it was a CORS thing
+// resume page — both PDFs are base64-embedded so they work without a /public folder
 function Resume({ d }) {
   const [urls, setUrls] = useState([]);
   const files = d.resume.files || [];
@@ -1180,23 +889,23 @@ function Resume({ d }) {
 
   const primary = urls[0]; // CS / AI résumé shown in preview
   return (
-    <section className="yg-page">
+    <section className="section">
       <SectionTitle eyebrow="The One-Pager" title="Résumé" />
-      <p className="yg-lead" style={{ marginTop: 0 }}>{d.resume.summary}</p>
-      <div style={{ display: 'flex', gap: 14, margin: '30px 0 36px', flexWrap: 'wrap' }}>
+      <p className="lead">{d.resume.summary}</p>
+      <div className="row" style={{ margin: 'var(--s6) 0' }}>
         {urls.length > 0
           ? files.map((f, i) => urls[i] ? (
-              <a key={i} className={i === 0 ? 'gold-btn' : 'ghost-btn'}
+              <a key={i} className={`btn ${i === 0 ? 'btn-gold' : 'btn-ghost'}`}
                 href={urls[i]} download={`${f.label}.pdf`}>⬇ {f.label}</a>
             ) : null)
-          : <span className="muted" style={{ fontSize: 14 }}>Loading…</span>}
+          : <span className="muted">Loading…</span>}
       </div>
       {primary && (
-        <div style={{ border: '1px solid var(--line)', borderRadius: 16, overflow: 'hidden', background: 'var(--char-2)', boxShadow: '0 4px 32px rgba(0,0,0,0.4)' }}>
-          <div style={{ display: 'flex', alignItems: 'center', padding: '12px 20px', borderBottom: '1px solid var(--line)', gap: 12 }}>
-            <span style={{ fontSize: 13, color: 'var(--ivory-dim)' }}>Software / AI résumé</span>
-            <a href={primary} target="_blank" rel="noreferrer" className="ghost-btn"
-              style={{ marginLeft: 'auto', fontSize: 12, padding: '6px 14px', lineHeight: 1.4 }}>Open full screen ↗</a>
+        <div className="panel" style={{ padding: 0, overflow: 'hidden' }}>
+          <div className="row" style={{ padding: 'var(--s3) var(--s4)', borderBottom: '1px solid var(--line-soft)' }}>
+            <span className="muted" style={{ fontSize: 'var(--t-small)' }}>Software / AI résumé</span>
+            <a href={primary} target="_blank" rel="noreferrer" className="btn btn-ghost btn-sm"
+              style={{ marginLeft: 'auto' }}>Open full screen ↗</a>
           </div>
           <embed src={primary} type="application/pdf" style={{ width: '100%', height: 840, display: 'block' }} />
         </div>
@@ -1205,80 +914,94 @@ function Resume({ d }) {
   );
 }
 
-// about page — bio, experience, education, press, skills, gallery.
-// this one took the most back-and-forth to get the content right, the layout was easy
+// about page — bio, experience, education, press, skills, gallery
 function About({ d }) {
   return (
-    <section className="yg-page">
+    <section className="section">
       <SectionTitle eyebrow="Background" title="About" />
-      {d.about.bio.map((p, i) => <p className="yg-lead" key={i} style={{ marginTop: i ? 18 : 4 }}>{p}</p>)}
+      {/* #yg-about-photo is the hook index.html's photo script styles (and skips
+          injecting into, because it is already here) */}
+      <figure id="yg-about-photo">
+        <img src={`${process.env.PUBLIC_URL}/img/yusuf-headshot.jpg`}
+          alt="Yusuf Gadelrab, professional headshot in a suit with a gold frame border"
+          width="700" height="749" loading="lazy" />
+        <figcaption>Yusuf Gadelrab · San Jose, CA</figcaption>
+      </figure>
+      <div className="row" style={{ marginBottom: 'var(--s5)' }}>
+        <a className="badge" href="https://doi.org/10.1145/3770761.3777339" target="_blank" rel="noreferrer">
+          Co-author, SIGCSE TS 2026 — DOI: 10.1145/3770761.3777339
+        </a>
+        <span className="badge">IBM SkillsBuild</span>
+        <a className="badge" href="hwyhaul.html">ex-HwyHaul — case study →</a>
+      </div>
+      {d.about.bio.map((p, i) => <p className="lead" key={i} style={{ marginTop: 'var(--s4)' }}>{p}</p>)}
 
-      <h3 className="yg-h3" style={{ marginTop: 60, marginBottom: 22, color: 'var(--gold)' }}>Experience</h3>
-      <div style={{ display: 'grid', gap: 22 }}>
+      <hr className="divider" />
+      <h2>Experience</h2>
+      <div className="stack-lg" style={{ marginTop: 'var(--s5)' }}>
         {d.experience.map((x, i) => (
-          <div className="yg-card reveal" key={i} style={{ transitionDelay: `${i * 80}ms` }}><div className="yg-card-body">
-            <div style={{ display: 'flex', alignItems: 'center', gap: 12, marginBottom: 8 }}>
+          <article className="card reveal" key={i} style={{ transitionDelay: `${i * 80}ms` }}>
+            <div className="row" style={{ gap: 'var(--s3)' }}>
               <CardIcon kind={x.tag} />
-              <span className="tag" style={{ margin: 0 }}>{x.tag}</span>
+              <span className="badge">{x.tag}</span>
             </div>
-            <div className="yg-h3">{x.title}</div>
-            <div style={{ color: 'var(--gold)', margin: '4px 0' }}>{x.org}</div>
-            <div className="muted" style={{ fontSize: 14 }}>{x.meta}</div>
-            <ul className="yg-bullets">{x.bullets.map((b, j) => <li key={j}>{b}</li>)}</ul>
-          </div></div>
+            <h3 style={{ marginTop: 'var(--s4)' }}>{x.title}</h3>
+            <div className="gold">{x.org}</div>
+            <div className="muted" style={{ fontSize: 'var(--t-small)' }}>{x.meta}</div>
+            <ul className="bullets">{x.bullets.map((b, j) => <li key={j}>{b}</li>)}</ul>
+          </article>
         ))}
       </div>
 
-      <h3 className="yg-h3" style={{ marginTop: 60, marginBottom: 20, color: 'var(--gold)' }}>Education</h3>
-      <div className="grid-2">
+      <hr className="divider" />
+      <h2>Education</h2>
+      <div className="grid grid--2" style={{ marginTop: 'var(--s5)' }}>
         {d.about.education.map((e, i) => (
-          <div className="yg-card reveal" key={i} style={{ transitionDelay: `${i * 80}ms` }}>
-            <div className="yg-card-body">
-              <div className="yg-h3">{e.school}</div>
-              <div className="muted" style={{ margin: '6px 0' }}>{e.detail} · {e.meta}</div>
-              <div style={{ fontSize: 14, lineHeight: 1.6 }} className="muted">{e.note}</div>
-            </div>
-          </div>
+          <article className="card reveal" key={i} style={{ transitionDelay: `${i * 80}ms` }}>
+            <h3>{e.school}</h3>
+            <div className="muted" style={{ margin: 'var(--s2) 0' }}>{e.detail} · {e.meta}</div>
+            <div className="muted" style={{ fontSize: 'var(--t-small)' }}>{e.note}</div>
+          </article>
         ))}
       </div>
 
       {d.about.recognition && d.about.recognition.length > 0 && (
         <>
-          <h3 className="yg-h3" style={{ marginTop: 60, marginBottom: 8, color: 'var(--gold)' }}>Press & Recognition</h3>
-          <p className="muted" style={{ marginBottom: 22, fontSize: 15 }}>Third-party coverage — before the research and the IBM work, this is where it started.</p>
-          <div style={{ display: 'grid', gap: 18 }}>
+          <hr className="divider" />
+          <h2>Press &amp; Recognition</h2>
+          <p className="muted" style={{ margin: 'var(--s3) 0 var(--s5)' }}>
+            Third-party coverage — before the research and the IBM work, this is where it started.
+          </p>
+          <div className="stack-lg">
             {d.about.recognition.map((r, i) => (
-              <div className="yg-card reveal" key={i} style={{ transitionDelay: `${i * 80}ms` }}>
-                <div className="yg-card-body">
-                  <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: 12, flexWrap: 'wrap' }}>
-                    <span className="tag" style={{ margin: 0 }}>{r.outlet} · {r.year}</span>
-                  </div>
-                  <div className="yg-h3" style={{ marginTop: 10, fontSize: 17 }}>{r.title}</div>
-                  <p className="muted" style={{ marginTop: 10, lineHeight: 1.7, fontStyle: 'italic', fontSize: 14 }}>{r.quote}</p>
-                  {r.link && (
-                    <a className="ghost-btn" style={{ marginTop: 14 }} href={r.link} target="_blank" rel="noreferrer">
-                      Read article →
-                    </a>
-                  )}
-                </div>
-              </div>
+              <article className="card reveal" key={i} style={{ transitionDelay: `${i * 80}ms` }}>
+                <span className="badge">{r.outlet} · {r.year}</span>
+                <h3 style={{ marginTop: 'var(--s3)' }}>{r.title}</h3>
+                <p className="muted" style={{ marginTop: 'var(--s3)', fontStyle: 'italic', fontSize: 'var(--t-small)' }}>{r.quote}</p>
+                {r.link && (
+                  <a className="btn btn-ghost btn-sm" style={{ marginTop: 'var(--s4)' }}
+                    href={r.link} target="_blank" rel="noreferrer">Read article →</a>
+                )}
+              </article>
             ))}
           </div>
         </>
       )}
 
-      <h3 className="yg-h3" style={{ marginTop: 60, marginBottom: 20, color: 'var(--gold)' }}>Skills</h3>
-      <div className="grid-2">
+      <hr className="divider" />
+      <h2>Skills</h2>
+      <div className="grid grid--2" style={{ marginTop: 'var(--s5)' }}>
         {d.about.skills.map((s, i) => (
-          <div className="yg-card reveal" key={i} style={{ transitionDelay: `${i * 80}ms` }}><div className="yg-card-body">
-            <div className="tag">{s.group}</div>
-            <div>{s.items.map((it, j) => <span className="skill-chip" key={j}>{it}</span>)}</div>
-          </div></div>
+          <article className="card reveal" key={i} style={{ transitionDelay: `${i * 80}ms` }}>
+            <span className="badge">{s.group}</span>
+            <div className="chips">{s.items.map((it, j) => <span className="chip" key={j}>{it}</span>)}</div>
+          </article>
         ))}
       </div>
 
-      <h3 className="yg-h3" style={{ marginTop: 60, marginBottom: 10, color: 'var(--gold)' }}>Off the clock</h3>
-      <p className="muted" style={{ marginBottom: 24, maxWidth: 600, fontSize: 15 }}>
+      <hr className="divider" />
+      <h2>Off the clock</h2>
+      <p className="muted" style={{ margin: 'var(--s3) 0 var(--s5)', maxWidth: 'var(--maxw-prose)' }}>
         A little recognition, and the California I get out into when I close the laptop.
       </p>
       <GalleryGrid items={d.gallery} />
@@ -1286,25 +1009,24 @@ function About({ d }) {
   );
 }
 
-// research page — ACM papers with DOI links. didn't overthink this one,
-// just needed the citations to look clean and link out to the actual dl.acm.org pages
+// research page — ACM papers with DOI links
 function Research({ d }) {
   return (
-    <section className="yg-page">
+    <section className="section">
       <SectionTitle eyebrow="Publications & Presentations" title="Research" />
-      <div style={{ display: 'grid', gap: 22 }}>
+      <div className="stack-lg" style={{ marginTop: 'var(--s5)' }}>
         {d.research.map((r, i) => (
-          <div className="yg-card reveal" key={i} style={{ transitionDelay: `${i * 80}ms` }}><div className="yg-card-body">
-            <div style={{ display: 'flex', alignItems: 'center', gap: 12, marginBottom: 8 }}>
+          <article className="card reveal" key={i} style={{ transitionDelay: `${i * 80}ms` }}>
+            <div className="row" style={{ gap: 'var(--s3)' }}>
               <CardIcon kind="Publication" />
-              <span className="tag" style={{ margin: 0 }}>{r.role}</span>
+              <span className="badge">{r.role}</span>
             </div>
-            <div className="yg-h3">{r.title}</div>
-            <div style={{ color: 'var(--gold)', margin: '6px 0', fontSize: 14 }}>{r.venue}</div>
-            <p className="muted" style={{ lineHeight: 1.7, marginTop: 10 }}>{r.abstract}</p>
-            <p style={{ fontSize: 13, marginTop: 14, color: 'var(--ivory-dim)', fontStyle: 'italic' }}>{r.citation}</p>
-            {r.link && <a className="ghost-btn" style={{ marginTop: 16 }} href={r.link} target="_blank" rel="noreferrer">Read on ACM →</a>}
-          </div></div>
+            <h3 style={{ marginTop: 'var(--s4)' }}>{r.title}</h3>
+            <div className="gold" style={{ fontSize: 'var(--t-small)' }}>{r.venue}</div>
+            <p className="muted" style={{ marginTop: 'var(--s3)' }}>{r.abstract}</p>
+            <p className="faint" style={{ fontSize: 'var(--t-small)', marginTop: 'var(--s3)', fontStyle: 'italic' }}>{r.citation}</p>
+            {r.link && <a className="btn btn-ghost btn-sm" style={{ marginTop: 'var(--s4)' }} href={r.link} target="_blank" rel="noreferrer">Read on ACM →</a>}
+          </article>
         ))}
       </div>
     </section>
@@ -1312,37 +1034,31 @@ function Research({ d }) {
 }
 
 // projects page — first project in the array gets the big featured card, rest go in a 2-col grid.
-// Claude wrote the auto variant-picking for GenArt (reads the stack string to decide which SVG style)
 // ProjectCard must stay at module scope: defining it inside Projects gave it a new identity on
-// every App re-render (scroll progress sets state), remounting the cards and wiping `.reveal.in`.
-const ProjectCard = ({ p, i, featured }) => (
-  <div className={`yg-card reveal${featured ? ' project-feature' : ''}`} style={{ transitionDelay: `${i * 80}ms` }}>
-    <div className="yg-card-img" style={p.image ? { backgroundImage: `url(${p.image})` } : {}}>
+// every App re-render, remounting the cards and wiping the reveal state.
+const ProjectCard = ({ p, i }) => (
+  <article className="card reveal" style={{ transitionDelay: `${i * 80}ms` }}>
+    <div className="card-art" style={p.image ? { backgroundImage: `url(${p.image})` } : {}}>
       {!p.image && <GenArt seed={i + 3} variant={/[Ww]atson|[Ff]inanc|NLP|equit/.test(p.stack + p.desc) ? 'finance' : /[Rr]eact|[Ww]eb|UI/.test(p.stack) ? 'web' : 'code'} />}
     </div>
-    <div className="yg-card-body">
-      <div className="yg-h3">{p.title}</div>
-      <div className="tag" style={{ marginTop: 10 }}>{p.stack}</div>
-      <p className="muted" style={{ lineHeight: 1.7, marginTop: 8 }}>{p.desc}</p>
-      {p.link && <a className="ghost-btn" style={{ marginTop: 16 }} href={p.link} target="_blank" rel="noreferrer">{p.linkLabel || 'Visit site →'}</a>}
-      {!p.link && p.privateRepo && (
-        <div className="muted" style={{ marginTop: 16, fontSize: 13, display: 'inline-flex', alignItems: 'center', gap: 7 }}>
-          <span className="live-dot" style={{ background: 'var(--ivory-dim)', boxShadow: 'none' }} />
-          Private repository — walkthrough available on request
-        </div>
-      )}
-    </div>
-  </div>
+    <h3>{p.title}</h3>
+    <div className="badge" style={{ marginTop: 'var(--s3)' }}>{p.stack}</div>
+    <p className="muted" style={{ marginTop: 'var(--s3)' }}>{p.desc}</p>
+    {p.link && <a className="btn btn-ghost btn-sm" style={{ marginTop: 'var(--s4)' }} href={p.link} target="_blank" rel="noreferrer">{p.linkLabel || 'Visit site →'}</a>}
+    {!p.link && p.privateRepo && (
+      <p className="faint" style={{ marginTop: 'var(--s4)', fontSize: 'var(--t-small)' }}>
+        Private repository — walkthrough available on request
+      </p>
+    )}
+  </article>
 );
 
 function Projects({ d }) {
-  const [feat, ...rest] = d.projects;
   return (
-    <section className="yg-page">
+    <section className="section">
       <SectionTitle eyebrow="Selected Work" title="Projects" />
-      {feat && <ProjectCard p={feat} i={0} featured />}
-      <div className="grid-2" style={{ marginTop: 22 }}>
-        {rest.map((p, i) => <ProjectCard key={i} p={p} i={i + 1} />)}
+      <div className="grid grid--2" style={{ marginTop: 'var(--s5)' }}>
+        {d.projects.map((p, i) => <ProjectCard key={i} p={p} i={i} />)}
       </div>
     </section>
   );
@@ -1350,16 +1066,13 @@ function Projects({ d }) {
 
 function GalleryGrid({ items }) {
   return (
-    <div className="grid-gallery">
+    <div className="gallery">
       {items.map((g, i) => (
         <div className="gallery-tile reveal" key={i} style={{ transitionDelay: `${i * 70}ms` }}>
           {g.image
-            ? <img src={g.image} alt={g.caption} />
-            : <div className="gallery-empty">
-                <GenArt seed={i + 11} variant={['flow', 'code', 'web', 'finance'][i % 4]} />
-                <span className="gallery-empty-label">{g.caption || 'Add a photo'}<br /><em>{g.category}</em></span>
-              </div>}
-          {g.image && g.caption && <div className="gallery-cap">{g.caption}</div>}
+            ? <img src={g.image} alt={g.caption || ''} loading="lazy" />
+            : <GenArt seed={i + 11} variant={['flow', 'code', 'web', 'finance'][i % 4]} />}
+          {g.caption && <div className="gallery-cap">{g.caption}</div>}
         </div>
       ))}
     </div>
@@ -1381,7 +1094,7 @@ function CardIcon({ kind }) {
   const path = ICONS[kind] || ICONS['Project'];
   return (
     <span className="card-ic" aria-hidden="true">
-      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"><path d={path} /></svg>
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"><path d={path} /></svg>
     </span>
   );
 }
@@ -1389,25 +1102,18 @@ function CardIcon({ kind }) {
 function Blog({ d }) {
   const posts = d.blog.posts || [];
   return (
-    <section className="yg-page">
+    <section className="section">
       <SectionTitle eyebrow="Writing" title="Blog" />
-      <p className="muted" style={{ marginBottom: 36, maxWidth: 600 }}>{d.blog.intro}</p>
-      {posts.length === 0 ? (
-        <div className="empty-state">
-          <div className="yg-h3" style={{ color: 'var(--gold)', marginBottom: 8 }}>No posts yet</div>
-          <div>When you're ready to write, open the Edit panel → Blog → Add Post. Your essays will appear here automatically.</div>
-        </div>
-      ) : (
-        <div className="grid-2">
+      <p className="lead">{d.blog.intro}</p>
+      {posts.length > 0 && (
+        <div className="grid grid--2" style={{ marginTop: 'var(--s6)' }}>
           {posts.map((post, i) => (
-            <div className="yg-card reveal" key={i} style={{ transitionDelay: `${i * 80}ms` }}>
-              {post.image && <div className="yg-card-img" style={{ backgroundImage: `url(${post.image})` }} />}
-              <div className="yg-card-body">
-                <div className="yg-h3">{post.title}</div>
-                <div className="muted" style={{ fontSize: 13, margin: '6px 0 12px' }}>{post.date}</div>
-                <p className="muted" style={{ lineHeight: 1.7 }}>{post.summary}</p>
-              </div>
-            </div>
+            <article className="card reveal" key={i} style={{ transitionDelay: `${i * 80}ms` }}>
+              {post.image && <div className="card-art" style={{ backgroundImage: `url(${post.image})` }} />}
+              <h3>{post.title}</h3>
+              <div className="muted" style={{ fontSize: 'var(--t-small)', margin: 'var(--s2) 0' }}>{post.date}</div>
+              <p className="muted">{post.summary}</p>
+            </article>
           ))}
         </div>
       )}
@@ -1417,74 +1123,40 @@ function Blog({ d }) {
 
 function SectionTitle({ eyebrow, title }) {
   return (
-    <div>
-      <div className="yg-eyebrow">{eyebrow}</div>
-      <div className="yg-sectiontitle">
-        <h2 className="yg-h2">{title}</h2>
-        <span className="bar" />
-      </div>
-    </div>
-  );
-}
-
-function Footer({ brand, contact }) {
-  const [open, setOpen] = useState(false);
-  const li = contact.links.find((l) => l.label === 'LinkedIn');
-  const gh = contact.links.find((l) => l.label === 'GitHub');
-  return (
-    <footer className="yg-foot">
-      {open && <ContactSheet d={{ contact }} close={() => setOpen(false)} />}
-      <div style={{ marginBottom: 18 }}>
-        <button onClick={() => setOpen(true)}
-          style={{ background: 'none', border: 'none', cursor: 'pointer',
-            color: 'var(--gold)', fontFamily: "'Fraunces',serif", fontSize: 18 }}>
-          {contact.email}
-        </button>
-      </div>
-      <div style={{ display: 'flex', justifyContent: 'center', gap: 16, marginBottom: 24 }}>
-        {li && (
-          <a className="social-ic" href={li.url} target="_blank" rel="noreferrer" aria-label="LinkedIn">
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M19 3a2 2 0 012 2v14a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h14zM8.34 18.34V9.94H5.56v8.4h2.78zM6.95 8.7a1.61 1.61 0 100-3.22 1.61 1.61 0 000 3.22zm11.39 9.64v-4.6c0-2.46-1.31-3.6-3.06-3.6a2.64 2.64 0 00-2.39 1.31v-1.11H10.1c.04.78 0 8.4 0 8.4h2.79v-4.69c0-.25.02-.5.09-.68a1.53 1.53 0 011.43-1.02c1.01 0 1.41.77 1.41 1.9v4.49h2.52z"/></svg>
-          </a>
-        )}
-        {gh && (
-          <a className="social-ic" href={gh.url} target="_blank" rel="noreferrer" aria-label="GitHub">
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.58 2 12.25c0 4.53 2.87 8.37 6.84 9.73.5.1.68-.22.68-.49l-.01-1.9c-2.78.62-3.37-1.22-3.37-1.22-.45-1.18-1.11-1.5-1.11-1.5-.91-.64.07-.62.07-.62 1 .07 1.53 1.06 1.53 1.06.9 1.57 2.36 1.12 2.94.85.09-.66.35-1.12.63-1.38-2.22-.26-4.56-1.14-4.56-5.07 0-1.12.39-2.03 1.03-2.75-.1-.26-.45-1.3.1-2.7 0 0 .84-.28 2.75 1.05a9.36 9.36 0 015 0c1.91-1.33 2.75-1.05 2.75-1.05.55 1.4.2 2.44.1 2.7.64.72 1.03 1.63 1.03 2.75 0 3.94-2.34 4.81-4.57 5.06.36.32.68.94.68 1.9l-.01 2.81c0 .27.18.59.69.49A10.02 10.02 0 0022 12.25C22 6.58 17.52 2 12 2z"/></svg>
-          </a>
-        )}
-      </div>
-      <div style={{ fontSize: 13 }}>© {new Date().getFullYear()} {brand.name} · Built with React · GitHub Pages</div>
-    </footer>
+    <header style={{ marginBottom: 'var(--s5)' }}>
+      <p className="eyebrow">{eyebrow}</p>
+      <h1 style={{ marginTop: 'var(--s3)' }}>{title}</h1>
+    </header>
   );
 }
 
 // ---------- Legal page ----------
 function Legal() {
-  const item = (title, body, accent) => (
-    <div style={{ marginTop: 32 }}>
-      <div className="yg-h3" style={{ fontSize: 16 }}>{title}</div>
-      <p style={{ fontSize: 14, lineHeight: 1.75, marginTop: 8, color: accent ? 'var(--gold)' : 'var(--ivory-dim)' }}>{body}</p>
+  const item = (title, body) => (
+    <div style={{ marginTop: 'var(--s6)' }}>
+      <h3>{title}</h3>
+      <p className="muted" style={{ marginTop: 'var(--s2)', maxWidth: 'var(--maxw-prose)' }}>{body}</p>
     </div>
   );
   return (
-    <div className="yg-page">
+    <section className="section">
       <SectionTitle eyebrow="Legal & Privacy" title="The fine print" />
-      <p className="yg-lead" style={{ marginTop: 4 }}>Short version: I don't collect your data, and nothing here is financial advice.</p>
+      <p className="lead">Short version: I don't collect your data, and nothing here is financial advice.</p>
       {item('Privacy', 'This site has no backend, analytics, or ads. The Edit panel saves to your browser\'s localStorage only — I never see it. GitHub Pages may log IPs for security; see github.com/privacy.')}
-      {item('Financial disclaimer', 'Return figures reflect my personal results for informational purposes only. I\'m not a licensed financial advisor. Past performance is not indicative of future results. Consult a professional before investing.', true)}
+      {item('Financial disclaimer', 'Return figures reflect my personal results for informational purposes only. I\'m not a licensed financial advisor. Past performance is not indicative of future results. Consult a professional before investing.')}
       {item('Copyright & IP', 'All content is mine. You can link to it freely; you can\'t copy or republish it without permission. Code follows the license in each individual repo.')}
       {item('Everything else', 'Opinions here are my own and don\'t represent any employer or school. The site is provided as-is, with no warranties. External links go places I don\'t control. Terms may change.')}
-      <div style={{ marginTop: 48, paddingTop: 32, borderTop: '1px solid var(--line)', fontSize: 12, color: 'var(--ivory-dim)' }}>
+      <hr className="divider" />
+      <p className="faint" style={{ fontSize: 'var(--t-micro)' }}>
         © {new Date().getFullYear()} Yusuf Gadelrab. Not legal advice.
-      </div>
-    </div>
+      </p>
+    </section>
   );
 }
 
 // ---------- Admin ----------
-// Claude built the entire admin panel — hidden behind Ctrl+Shift+E, lets me edit
-// all the site content in a live UI without touching code. exports clean JSON
-// that I paste back into siteData. genuinely useful, I've updated content 3 times already
+// Hidden behind Ctrl+Shift+E — live content editing that exports clean JSON
+// to paste back over siteData.
 function Admin({ data, save, close }) {
   const [d, setD] = useState(JSON.parse(JSON.stringify(data)));
   const [copied, setCopied] = useState(false);
@@ -1518,27 +1190,27 @@ function Admin({ data, save, close }) {
       <span className="admin-label">{label}</span>
       {area
         ? <textarea className="admin-text" defaultValue={val} onBlur={(e) => onChange(e.target.value)} />
-        : <input className="admin-input" defaultValue={val} onBlur={(e) => onChange(e.target.value)} />}
+        : <input defaultValue={val} onBlur={(e) => onChange(e.target.value)} />}
     </>
   );
 
   return (
     <div className="admin-wrap">
       <div className="admin-box">
-        <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 24 }}>
-          <h2 className="yg-h2" style={{ fontSize: 30 }}>Edit Site</h2>
-          <div style={{ display: 'flex', gap: 10 }}>
-            <button className="gold-btn" onClick={exportData}>{copied ? '✓ Copied!' : '⬇ Export Data'}</button>
-            <button className="ghost-btn" onClick={close}>Done</button>
+        <div className="row-tools" style={{ marginBottom: 'var(--s5)' }}>
+          <h2>Edit Site</h2>
+          <div className="row">
+            <button className="btn btn-gold btn-sm" onClick={exportData}>{copied ? '✓ Copied!' : '⬇ Export Data'}</button>
+            <button className="btn btn-ghost btn-sm" onClick={close}>Done</button>
           </div>
         </div>
-        <p className="muted" style={{ fontSize: 13, marginBottom: 20 }}>
+        <p className="muted" style={{ fontSize: 'var(--t-small)', marginBottom: 'var(--s5)' }}>
           Edits preview live & save to this browser. To make them <b>permanent for visitors</b>, click <b>Export Data</b>, paste over the <code>siteData</code> object in your code, and redeploy.
         </p>
 
         {/* HOME */}
         <div className="admin-card">
-          <h3 className="yg-h3" style={{ color: 'var(--gold)' }}>Home</h3>
+          <h3 className="gold">Home</h3>
           <F label="Eyebrow" val={d.home.eyebrow} onChange={(v) => setField('home.eyebrow', v)} />
           <F label="Headline" val={d.home.headline} onChange={(v) => setField('home.headline', v)} area />
           <F label="Availability badge" val={d.home.availability} onChange={(v) => setField('home.availability', v)} />
@@ -1548,11 +1220,11 @@ function Admin({ data, save, close }) {
 
         {/* GALLERY */}
         <div className="admin-card">
-          <div className="row-tools"><h3 className="yg-h3" style={{ color: 'var(--gold)' }}>Gallery (shown in About)</h3>
+          <div className="row-tools"><h3 className="gold">Gallery (shown in About)</h3>
             <button className="mini" onClick={addGallery}>+ Add Photo</button></div>
           {d.gallery.map((g, i) => (
-            <div key={i} style={{ borderTop: '1px solid var(--line)', paddingTop: 12, marginTop: 12 }}>
-              <div className="row-tools"><span className="muted" style={{ fontSize: 13 }}>Photo {i + 1}</span>
+            <div key={i} style={{ borderTop: '1px solid var(--line-soft)', paddingTop: 'var(--s3)', marginTop: 'var(--s3)' }}>
+              <div className="row-tools"><span className="muted" style={{ fontSize: 'var(--t-small)' }}>Photo {i + 1}</span>
                 <button className="mini danger" onClick={() => removeFrom('gallery', i)}>Delete</button></div>
               <F label="Image URL" val={g.image} onChange={(v) => { const n = JSON.parse(JSON.stringify(d)); n.gallery[i].image = v; commit(n); }} />
               <F label="Caption" val={g.caption} onChange={(v) => { const n = JSON.parse(JSON.stringify(d)); n.gallery[i].caption = v; commit(n); }} />
@@ -1563,7 +1235,7 @@ function Admin({ data, save, close }) {
 
         {/* ABOUT */}
         <div className="admin-card">
-          <h3 className="yg-h3" style={{ color: 'var(--gold)' }}>About — Bio</h3>
+          <h3 className="gold">About — Bio</h3>
           {d.about.bio.map((p, i) => (
             <F key={i} label={`Paragraph ${i + 1}`} val={p} area
               onChange={(v) => { const n = JSON.parse(JSON.stringify(d)); n.about.bio[i] = v; commit(n); }} />
@@ -1590,13 +1262,13 @@ function Admin({ data, save, close }) {
 
         {/* BLOG */}
         <div className="admin-card">
-          <div className="row-tools"><h3 className="yg-h3" style={{ color: 'var(--gold)' }}>Blog</h3>
+          <div className="row-tools"><h3 className="gold">Blog</h3>
             <button className="mini" onClick={addPost}>+ Add Post</button></div>
           <F label="Blog intro" val={d.blog.intro} onChange={(v) => setField('blog.intro', v)} area />
-          {d.blog.posts.length === 0 && <p className="muted" style={{ fontSize: 13, marginTop: 10 }}>No posts yet. Click “Add Post” when you’re ready to write.</p>}
+          {d.blog.posts.length === 0 && <p className="muted" style={{ fontSize: 'var(--t-small)', marginTop: 'var(--s3)' }}>No posts yet. Click “Add Post” when you’re ready to write.</p>}
           {d.blog.posts.map((post, i) => (
-            <div key={i} style={{ borderTop: '1px solid var(--line)', paddingTop: 12, marginTop: 12 }}>
-              <div className="row-tools"><span className="muted" style={{ fontSize: 13 }}>Post {i + 1}</span>
+            <div key={i} style={{ borderTop: '1px solid var(--line-soft)', paddingTop: 'var(--s3)', marginTop: 'var(--s3)' }}>
+              <div className="row-tools"><span className="muted" style={{ fontSize: 'var(--t-small)' }}>Post {i + 1}</span>
                 <button className="mini danger" onClick={() => removePost(i)}>Delete</button></div>
               <F label="Title" val={post.title} onChange={(v) => { const n = JSON.parse(JSON.stringify(d)); n.blog.posts[i].title = v; commit(n); }} />
               <F label="Date" val={post.date} onChange={(v) => { const n = JSON.parse(JSON.stringify(d)); n.blog.posts[i].date = v; commit(n); }} />
@@ -1609,21 +1281,21 @@ function Admin({ data, save, close }) {
 
         {/* RESUME */}
         <div className="admin-card">
-          <h3 className="yg-h3" style={{ color: 'var(--gold)' }}>Résumé</h3>
+          <h3 className="gold">Résumé</h3>
           <F label="Résumé PDF URL (e.g. /yusuf-portfolio/resume.pdf)" val={d.resume.url} onChange={(v) => setField('resume.url', v)} />
           <F label="Résumé summary" val={d.resume.summary} onChange={(v) => setField('resume.summary', v)} area />
         </div>
 
         {/* CONTACT */}
         <div className="admin-card">
-          <h3 className="yg-h3" style={{ color: 'var(--gold)' }}>Contact (shown in footer)</h3>
+          <h3 className="gold">Contact (shown in footer)</h3>
           <F label="Blurb" val={d.contact.blurb} onChange={(v) => setField('contact.blurb', v)} area />
           <F label="Email" val={d.contact.email} onChange={(v) => setField('contact.email', v)} />
           <F label="Phone" val={d.contact.phone} onChange={(v) => setField('contact.phone', v)} />
         </div>
 
-        <div style={{ textAlign: 'center', padding: '20px 0 40px' }}>
-          <button className="gold-btn" onClick={exportData}>{copied ? '✓ Copied to clipboard!' : '⬇ Export Data (to save permanently)'}</button>
+        <div className="center" style={{ padding: 'var(--s5) 0 var(--s7)' }}>
+          <button className="btn btn-gold" onClick={exportData}>{copied ? '✓ Copied to clipboard!' : '⬇ Export Data (to save permanently)'}</button>
         </div>
       </div>
     </div>
@@ -1633,18 +1305,18 @@ function Admin({ data, save, close }) {
 function ListEditor({ title, items, onAdd, onRemove, fields, d, commit, arrKey, hasBullets }) {
   return (
     <div className="admin-card">
-      <div className="row-tools"><h3 className="yg-h3" style={{ color: 'var(--gold)' }}>{title}</h3>
+      <div className="row-tools"><h3 className="gold">{title}</h3>
         <button className="mini" onClick={onAdd}>+ Add</button></div>
       {items.map((item, i) => (
-        <div key={i} style={{ borderTop: '1px solid var(--line)', paddingTop: 12, marginTop: 12 }}>
-          <div className="row-tools"><span className="muted" style={{ fontSize: 13 }}>{title} {i + 1}</span>
+        <div key={i} style={{ borderTop: '1px solid var(--line-soft)', paddingTop: 'var(--s3)', marginTop: 'var(--s3)' }}>
+          <div className="row-tools"><span className="muted" style={{ fontSize: 'var(--t-small)' }}>{title} {i + 1}</span>
             <button className="mini danger" onClick={() => onRemove(i)}>Delete</button></div>
           {fields.map(([k, lbl]) => (
             <React.Fragment key={k}>
               <span className="admin-label">{lbl}</span>
               {['abstract', 'citation', 'desc'].includes(k)
                 ? <textarea className="admin-text" defaultValue={item[k]} onBlur={(e) => { const n = JSON.parse(JSON.stringify(d)); n[arrKey][i][k] = e.target.value; commit(n); }} />
-                : <input className="admin-input" defaultValue={item[k]} onBlur={(e) => { const n = JSON.parse(JSON.stringify(d)); n[arrKey][i][k] = e.target.value; commit(n); }} />}
+                : <input defaultValue={item[k]} onBlur={(e) => { const n = JSON.parse(JSON.stringify(d)); n[arrKey][i][k] = e.target.value; commit(n); }} />}
             </React.Fragment>
           ))}
           {hasBullets && (

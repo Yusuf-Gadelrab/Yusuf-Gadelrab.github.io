@@ -21,18 +21,31 @@
    and a couple of layout tweaks are page-specific. */
 /* Deliberately NOT a flex column: auto side-margins on .section/.site-footer would
    opt them out of cross-axis stretch and let fit-content sizing overflow a phone. */
-#yg-boot{min-height:100vh;min-height:100dvh;overflow-x:hidden;
-  background:linear-gradient(180deg,rgba(11,11,13,.87) 0%,rgba(11,11,13,.94) 55%,var(--bg) 96%),
-             url('img/sunset-hills.jpg') center 38%/cover no-repeat var(--bg)}
+#yg-boot{min-height:100vh;min-height:100dvh;overflow-x:hidden}
 #yg-boot .site-nav{background:rgba(11,11,13,.72)}
-.yg-boot-links{margin-top:var(--s5);font-size:var(--t-small);color:var(--muted);line-height:2.1}
-.yg-boot-links a{color:var(--ink);text-decoration:underline;
+/* in-app section tabs — the React app owns the routing, the snapshot just paints
+   the same strip so the row does not appear out of nowhere on hydration */
+.page-tabs{display:flex;flex-wrap:wrap;gap:var(--s2);
+  max-width:var(--maxw);margin:0 auto;padding:var(--s4) var(--section-x) 0}
+.page-tab{background:none;border:1px solid transparent;border-radius:var(--radius);
+  color:var(--muted);font-family:inherit;font-size:var(--t-small);
+  padding:6px 12px;cursor:pointer;transition:color .2s var(--ease),border-color .2s var(--ease)}
+.page-tab:hover{color:var(--ink)}
+.page-tab[aria-current="page"]{color:var(--gold-2);border-color:var(--line);background:var(--bg2)}
+/* Homepage layout shared by this snapshot AND the React app (src/App.js renders the
+   same class names), so hydration swaps the DOM without moving a single pixel.
+   Defined once here rather than in App.js precisely so the two cannot drift. */
+.hero-row{display:flex;flex-wrap:wrap;align-items:center;gap:var(--s7)}
+.hero-text{flex:1 1 380px;min-width:min(100%,280px)}
+.hero-photo{flex:0 0 auto;width:min(260px,54vw);aspect-ratio:1/1;object-fit:cover;
+  border:1px solid var(--line);border-radius:var(--radius-lg);box-shadow:var(--shadow)}
+.hero-links{margin-top:var(--s5);font-size:var(--t-small);color:var(--muted);line-height:2.1}
+.hero-links a{color:var(--ink);text-decoration:underline;
   text-decoration-color:var(--line);text-underline-offset:3px}
-.yg-boot-links a:hover{color:var(--gold-2)}
-.yg-boot-stats{display:grid;gap:var(--s5);margin-top:var(--s8);max-width:960px;
+.hero-links a:hover{color:var(--gold-2)}
+.stat-grid{display:grid;gap:var(--s5);margin-top:var(--s8);max-width:960px;
   grid-template-columns:repeat(auto-fit,minmax(min(180px,100%),1fr))}
-.yg-boot-stats .stat{background:linear-gradient(180deg,var(--panel),var(--panel2));
-  border:1px solid var(--line-soft);border-radius:var(--radius-lg);padding:var(--s5)}
+.stat-grid .stat{padding:var(--s5)}
 </style>
 
 <meta name="author" content="Yusuf Gadelrab">
@@ -67,32 +80,49 @@
           <a href="/media-kit.html">Media Kit</a>
         </div>
       </nav>
-      <main id="main" class="section yg-boot-in">
-        <p class="eyebrow">Computer Science · AI/ML · Quantitative Finance</p>
-        <h1 class="hero-type" style="margin:var(--s4) 0 var(--s5);max-width:16ch">I build <span class="gold-fill">AI systems</span> for markets and classrooms.</h1>
-        <p class="lead">CS undergraduate at San José State University. I co-authored a peer-reviewed ACM SIGCSE 2026 paper, built an NLP equity-scoring model on IBM Watson, and trade equities, options, and futures on the side.</p>
-        <div class="row" style="margin-top:var(--s6)">
-          <a class="btn btn-gold" href="/store.html">See what I'm shipping →</a>
-          <a class="btn btn-ghost" href="/resume.html">Resume services</a>
+      <div class="page-tabs" aria-label="Sections">
+        <span class="page-tab" aria-current="page">Home</span>
+        <span class="page-tab">About</span>
+        <span class="page-tab">Working On</span>
+        <span class="page-tab">Research</span>
+        <span class="page-tab">Projects</span>
+        <span class="page-tab">Résumé</span>
+        <span class="page-tab">Legal</span>
+      </div>
+      <main id="main">
+       <section class="section yg-page">
+        <div class="hero-row">
+          <div class="hero-text">
+            <p class="eyebrow">Computer Science · AI/ML · Quantitative Finance</p>
+            <h1 class="hero-type" style="margin:var(--s4) 0 var(--s5);max-width:16ch">I build <span class="gold-fill">AI systems</span> for markets and classrooms.</h1>
+            <p class="lead">CS undergraduate at San José State University. I co-authored a peer-reviewed ACM SIGCSE 2026 paper, built an NLP equity-scoring model on IBM Watson, and trade equities, options, and futures on the side.</p>
+            <p class="badge" style="margin-top:var(--s5)"><span class="dot" aria-hidden="true"></span>Wrapped my HwyHaul internship · July 2026 — building in public &amp; open to what’s next</p>
+            <div class="row" style="margin-top:var(--s6)">
+              <a class="btn btn-gold" href="/store.html">See what I'm shipping →</a>
+              <a class="btn btn-ghost" href="/resume.html">Resume services</a>
+            </div>
+            <p class="muted" style="font-size:var(--t-micro);margin-top:var(--s3)">Launch pricing ends Aug 15 · 12 template packs · 273 template assets</p>
+            <p class="hero-links">
+              <a href="https://doi.org/10.1145/3770761.3777339">Co-author, SIGCSE TS 2026 — DOI: 10.1145/3770761.3777339</a> ·
+              <a href="hwyhaul.html">ex-HwyHaul — case study</a> ·
+              <a href="https://github.com/Yusuf-Gadelrab">GitHub</a> ·
+              <a href="https://www.linkedin.com/in/yusuf-gadelrab-76246b221">LinkedIn</a>
+            </p>
+          </div>
+          <img class="hero-photo" src="img/yusuf-headshot.jpg" alt="Yusuf Gadelrab" width="700" height="749" fetchpriority="high">
         </div>
-        <p class="muted" style="font-size:var(--t-micro);margin-top:var(--s3)">Launch pricing ends Aug 15 · 12 template packs · 273 template assets</p>
-        <p class="yg-boot-links">
-          <a href="https://doi.org/10.1145/3770761.3777339">Co-author, SIGCSE TS 2026 — DOI: 10.1145/3770761.3777339</a> ·
-          <a href="hwyhaul.html">ex-HwyHaul — case study</a> ·
-          <a href="https://github.com/Yusuf-Gadelrab">GitHub</a> ·
-          <a href="https://www.linkedin.com/in/yusuf-gadelrab-76246b221">LinkedIn</a>
-        </p>
-        <div class="yg-boot-stats">
-          <div class="stat"><span class="stat__value">78%</span><span class="stat__label">Model directional accuracy · 6-mo backtest</span></div>
-          <div class="stat"><span class="stat__value">60</span><span class="stat__label">Research study participants</span></div>
-          <div class="stat"><span class="stat__value">40%</span><span class="stat__label">Web engagement lift · SVEC</span></div>
-          <div class="stat"><span class="stat__value">+86%</span><span class="stat__label">Personal trading return</span></div>
+        <div class="stat-grid">
+          <div class="card stat"><span class="stat__value">78%</span><span class="stat__label">Model directional accuracy · 6-mo backtest</span></div>
+          <div class="card stat"><span class="stat__value">60</span><span class="stat__label">Research study participants</span></div>
+          <div class="card stat"><span class="stat__value">40%</span><span class="stat__label">Web engagement lift · SVEC</span></div>
+          <div class="card stat"><span class="stat__value">+86%</span><span class="stat__label">Personal trading return</span></div>
         </div>
+       </section>
       </main>
       <footer class="site-footer">
         <div>
           <div>Yusuf Gadelrab — San Jose, CA</div>
-          <div><a href="mailto:yusuf.gadelrab06@gmail.com">yusuf.gadelrab06@gmail.com</a></div>
+          <div><a href="mailto:yusuf.gadelrab06@gmail.com">yusuf.gadelrab06@gmail.com</a> · (669) 328-1148</div>
         </div>
         <div class="site-footer__links">
           <a href="/">Work</a>

@@ -9,7 +9,7 @@
 <link rel="canonical" href="https://yusuf-gadelrab.github.io/templates.html">
 <link rel="icon" type="image/svg+xml" href="https://yusuf-gadelrab.github.io/favicon-automation.svg">
 <link rel="apple-touch-icon" sizes="180x180" href="https://yusuf-gadelrab.github.io/apple-touch-icon.png">
-<meta name="theme-color" content="#0a0a0b">
+<meta name="theme-color" content="#0B0B0D">
 <meta name="author" content="Yusuf Gadelrab">
 <meta name="robots" content="index,follow">
 <meta property="og:type" content="website">
@@ -59,217 +59,147 @@
     'tpl-vault':     'https://yusufgadelrab.lemonsqueezy.com/buy/midnight-gold-vault'
   };
 </script>
+<link rel="stylesheet" href="/css/site.css">
 <style>
-:root{
-  --bg:#0a0a0b; --bg2:#111114; --panel:#141417; --panel2:#191920;
-  --gold:#d4af37; --gold-2:#f4d47a; --gold-dim:#8a7328;
-  --ink:#f5f2e8; --muted:#a39f94;
-  --line:rgba(212,175,55,.16); --glow:rgba(212,175,55,.35);
-}
-*{box-sizing:border-box;margin:0;padding:0}
-html{scroll-behavior:smooth}
-body{background:var(--bg);color:var(--ink);
-  font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Inter,system-ui,sans-serif;
-  line-height:1.65;-webkit-font-smoothing:antialiased;overflow-x:hidden}
-a{color:inherit;text-decoration:none}
-::selection{background:var(--gold);color:#0a0a0b}
-body::before{content:"";position:fixed;inset:0;z-index:0;pointer-events:none;
-  background:
-    radial-gradient(60vw 40vw at 82% -10%, rgba(212,175,55,.10), transparent 60%),
-    radial-gradient(50vw 40vw at -10% 35%, rgba(212,175,55,.06), transparent 60%),
-    radial-gradient(40vw 30vw at 50% 118%, rgba(212,175,55,.05), transparent 60%)}
-:focus-visible{outline:2px solid var(--gold-2);outline-offset:3px;border-radius:6px}
+  /* ---- page-specific only ---- */
 
-/* nav */
-nav{position:fixed;top:0;left:0;right:0;z-index:50;display:flex;align-items:center;
-  justify-content:space-between;padding:16px clamp(18px,5vw,60px);
-  background:rgba(10,10,11,.55);-webkit-backdrop-filter:blur(14px);backdrop-filter:blur(14px);
-  border-bottom:1px solid transparent;transition:border-color .4s,background .4s,padding .3s}
-nav.scrolled{border-bottom-color:var(--line);background:rgba(10,10,11,.85);padding-top:12px;padding-bottom:12px}
-.brand{display:flex;align-items:center;gap:11px;font-weight:700;letter-spacing:.3px}
-.brand .mark{width:30px;height:30px;border-radius:8px;display:grid;place-items:center;
-  background:linear-gradient(135deg,var(--gold),var(--gold-dim));color:#0a0a0b;
-  font-weight:900;font-size:15px;box-shadow:0 0 18px var(--glow)}
-.brand small{display:block;font-size:11px;color:var(--muted);font-weight:500;letter-spacing:.5px}
-.nav-links{display:flex;align-items:center;gap:6px}
-.nav-links a{padding:8px 14px;border-radius:9px;font-size:14px;color:var(--muted);transition:color .25s,background .25s}
-.nav-links a:hover{color:var(--ink);background:rgba(212,175,55,.08)}
-.nav-cta{color:#0a0a0b!important;font-weight:700;background:linear-gradient(135deg,var(--gold),var(--gold-2));box-shadow:0 0 16px var(--glow)}
-.menu-btn{display:none;background:none;border:1px solid var(--line);color:var(--ink);border-radius:9px;padding:8px 12px;font-size:18px;cursor:pointer}
+  /* hero fact strip */
+  .facts{display:flex;flex-wrap:wrap;border-top:1px solid var(--line);
+    border-bottom:1px solid var(--line)}
+  .facts .stat{flex:1 1 160px;padding:var(--s5) var(--s5) var(--s5) 0;
+    border-right:1px solid var(--line)}
+  .facts .stat:last-child{border-right:0}
 
-main{position:relative;z-index:1}
-section{padding:clamp(48px,7vw,86px) clamp(18px,5vw,60px);max-width:1180px;margin:0 auto}
+  .chooser{display:flex;flex-wrap:wrap;align-items:center;gap:var(--s2)}
+  .chooser .cl{font-family:var(--display-pro);font-size:var(--t-micro);letter-spacing:2px;
+    text-transform:uppercase;color:var(--muted)}
+  .chooser a{padding:8px 14px;border:1px solid var(--line-soft);border-radius:var(--radius);
+    font-size:var(--t-small);color:var(--muted);
+    transition:border-color .25s var(--ease),color .25s var(--ease)}
+  .chooser a b{color:var(--gold-2);font-weight:600}
+  .chooser a:hover{border-color:var(--line);color:var(--ink)}
 
-.eyebrow{display:inline-flex;align-items:center;gap:9px;padding:7px 15px;border:1px solid var(--line);
-  border-radius:100px;background:rgba(212,175,55,.05);font-size:11.5px;letter-spacing:1.8px;
-  text-transform:uppercase;color:var(--gold-2)}
-.eyebrow.pop{background:linear-gradient(135deg,var(--gold),var(--gold-2));color:#0a0a0b;border-color:transparent;font-weight:800;letter-spacing:1.4px}
-.pulse{width:8px;height:8px;border-radius:50%;background:var(--gold);box-shadow:0 0 10px var(--glow)}
+  /* ---------- live preview frames ---------- */
+  .pv{position:relative;overflow:hidden;border:1px solid var(--line-soft);
+    border-radius:var(--radius-lg);background:var(--bg2);box-shadow:var(--shadow)}
+  .pv iframe{position:absolute;top:0;left:0;border:0;transform-origin:0 0;pointer-events:none}
+  .pv.deck{aspect-ratio:16/9}
+  .pv.doc{aspect-ratio:8.5/11}
+  .pv.web{aspect-ratio:16/10}
+  .pvcap{display:flex;align-items:center;justify-content:space-between;gap:var(--s2);
+    margin-top:var(--s3);font-size:var(--t-micro);color:var(--muted)}
+  .pvcap .num{color:var(--gold-2)}
+  .pvlink{color:var(--gold-2);border-bottom:1px solid transparent}
+  .pvlink:hover{border-bottom-color:var(--gold-2)}
+  .deckgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(300px,100%),1fr));gap:var(--s5)}
+  .docgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(220px,100%),1fr));gap:var(--s5)}
 
-.hero{padding-top:132px;padding-bottom:clamp(24px,4vw,40px)}
-h1{font-family:Georgia,"Times New Roman",serif;font-weight:400;
-  font-size:clamp(38px,6.4vw,70px);line-height:1.05;letter-spacing:-1.3px;margin:24px 0 18px;max-width:17ch}
-h1 .grad{background:linear-gradient(120deg,var(--gold-2),var(--gold) 40%,#c99b1e);
-  -webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
-.lede{font-size:clamp(16px,2vw,20px);color:var(--muted);max-width:64ch}
-.lede b{color:var(--ink);font-weight:600}
-.hero-cta{display:flex;flex-wrap:wrap;gap:14px;margin-top:30px}
-.btn{display:inline-flex;align-items:center;gap:8px;padding:13px 24px;border-radius:11px;
-  font-size:14.5px;font-weight:700;border:1px solid var(--line);color:var(--ink);
-  transition:background .25s,border-color .25s,transform .25s}
-.btn:hover{background:rgba(212,175,55,.09);border-color:rgba(212,175,55,.42);transform:translateY(-1px)}
-.btn.solid{background:linear-gradient(135deg,var(--gold),var(--gold-2));color:#0a0a0b;border-color:transparent;box-shadow:0 0 18px var(--glow)}
-.btn.solid:hover{background:linear-gradient(135deg,var(--gold-2),var(--gold))}
-.btn:active{transform:translateY(0) scale(.985)}
+  /* ---------- pack blocks ---------- */
+  .pack{border-top:1px solid var(--line-soft);padding-top:var(--s7);margin-top:var(--s7)}
+  .pack:first-of-type{border-top:0;margin-top:0;padding-top:0}
+  .packhead{display:flex;flex-wrap:wrap;align-items:flex-end;justify-content:space-between;
+    gap:var(--s5);margin-bottom:var(--s6)}
+  .packhead p{color:var(--muted);font-size:var(--t-small);max-width:56ch;margin-top:var(--s2)}
+  .buybox{display:flex;flex-direction:column;align-items:flex-end;gap:var(--s2);flex-shrink:0}
+  .buyrow{display:flex;flex-wrap:wrap;align-items:center;gap:var(--s4)}
+  .buynote,.buyalt{font-size:var(--t-micro);color:var(--muted)}
+  .buyalt a{color:var(--gold-2);border-bottom:1px solid var(--line)}
+  .price{font-family:var(--display-pro);font-weight:800;letter-spacing:-.03em;
+    font-size:28px;color:var(--gold-2);line-height:1}
+  .packbody{display:grid;grid-template-columns:1fr;gap:var(--s5)}
+  @media(min-width:960px){.packbody.split{grid-template-columns:1.35fr .85fr;align-items:start}}
+  @media(max-width:760px){.buybox{width:100%;align-items:flex-start}.buyrow{width:100%}}
 
-.chooser{display:flex;flex-wrap:wrap;align-items:center;gap:10px;margin-top:30px}
-.chooser .cl{font-size:11px;letter-spacing:2px;text-transform:uppercase;color:var(--muted)}
-.chooser a{display:inline-flex;align-items:center;gap:6px;padding:9px 15px;border:1px solid var(--line);border-radius:100px;
-  font-size:13px;color:var(--muted);transition:border-color .25s,color .25s,background .25s,transform .25s}
-.chooser a b{color:var(--gold-2);font-weight:600}
-.chooser a:hover{border-color:rgba(212,175,55,.45);color:var(--ink);background:rgba(212,175,55,.06);transform:translateY(-1px)}
+  ul.feat{list-style:none}
+  ul.feat li{font-size:var(--t-small);color:var(--muted);padding:9px 0 9px 20px;
+    position:relative;border-bottom:1px solid var(--line-soft)}
+  ul.feat li:last-child{border-bottom:0}
+  ul.feat li::before{content:"";position:absolute;left:2px;top:17px;width:6px;height:6px;
+    background:linear-gradient(135deg,var(--gold-2),var(--gold-dim));transform:rotate(45deg)}
+  ul.feat li b{color:var(--ink);font-weight:600}
 
-.facts{display:flex;flex-wrap:wrap;margin-top:42px;border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
-.fact{flex:1 1 160px;padding:20px 24px 20px 0;border-right:1px solid var(--line)}
-.fact:last-child{border-right:0}
-.fact .n{font-family:Georgia,serif;font-size:clamp(28px,4vw,42px);line-height:1;
-  background:linear-gradient(120deg,var(--gold-2),var(--gold) 50%,#c99b1e);
-  -webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
-.fact .l{font-size:11px;letter-spacing:2px;text-transform:uppercase;color:var(--muted);margin-top:8px}
+  /* ---------- bundle ---------- */
+  .bundle{text-align:center;padding:clamp(28px,4.5vw,52px)}
+  .bundle .big{font-family:var(--display-pro);font-weight:800;letter-spacing:-.03em;
+    font-size:clamp(46px,7.5vw,72px);line-height:1;margin:var(--s4) 0 var(--s1)}
+  .bundle .was{color:var(--muted);font-size:var(--t-small);margin-bottom:var(--s5)}
+  .ledger{max-width:560px;margin:var(--s5) auto var(--s1);text-align:left;
+    border:1px solid var(--line-soft);border-radius:var(--radius-lg);
+    background:var(--bg2);padding:var(--s4) var(--s5)}
+  .ledger>div{display:flex;justify-content:space-between;gap:var(--s3);
+    font-size:var(--t-small);color:var(--muted);padding:6px 0;
+    border-bottom:1px solid var(--line-soft)}
+  .ledger s{font-variant-numeric:tabular-nums}
+  .ledger .ledger-total{font-weight:700;color:var(--ink);border-bottom:0;
+    border-top:1px solid var(--line);margin-top:var(--s1);padding-top:11px}
+  .ledger .ledger-total s{color:var(--gold-2)}
+  @media(min-width:640px){
+    .ledger{display:grid;grid-template-columns:1fr 1fr;column-gap:var(--s6)}
+    .ledger .ledger-total{grid-column:1/-1}
+  }
+  .deadline{display:block;width:fit-content;margin:var(--s1) auto var(--s5);
+    padding:8px 16px;border:1px solid var(--line);border-radius:var(--radius);
+    font-size:var(--t-small);color:var(--ink);background:rgba(212,175,55,.07)}
+  .deadline b{color:var(--gold-2)}
+  .guarantee{font-size:var(--t-micro);color:var(--muted);margin-top:var(--s4)}
 
-h2{font-family:Georgia,serif;font-weight:400;font-size:clamp(26px,3.6vw,40px);letter-spacing:-.5px;margin-bottom:10px}
-.sub{color:var(--muted);max-width:62ch;margin-bottom:34px}
-.sub b{color:var(--ink);font-weight:600}
+  /* ---------- why grid ---------- */
+  .why{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(230px,100%),1fr));
+    gap:1px;background:var(--line-soft);border:1px solid var(--line-soft);
+    border-radius:var(--radius-lg);overflow:hidden}
+  .why>div{background:var(--bg2);padding:var(--s5)}
+  .why h4{color:var(--gold-2);margin-bottom:var(--s2)}
+  .why p{color:var(--muted);font-size:var(--t-small)}
 
-/* ---------- live preview frames ---------- */
-.pv{position:relative;overflow:hidden;border:1px solid var(--line);border-radius:12px;
-  background:var(--bg2);box-shadow:0 24px 60px rgba(0,0,0,.5)}
-.pv iframe{position:absolute;top:0;left:0;border:0;transform-origin:0 0;pointer-events:none}
-.pv::after{content:"";position:absolute;inset:0;border-radius:12px;pointer-events:none;
-  box-shadow:inset 0 0 0 1px rgba(212,175,55,.09)}
-.pv.deck{aspect-ratio:16/9}
-.pv.doc{aspect-ratio:8.5/11}
-.pv.web{aspect-ratio:16/10}
-.pvcap{display:flex;align-items:center;justify-content:space-between;gap:10px;
-  margin-top:11px;font-size:12px;color:var(--muted)}
-.pvcap .num{font-family:Georgia,serif;color:var(--gold-2);font-size:13px}
-.pvlink{font-size:12px;color:var(--gold-2);border-bottom:1px solid transparent;transition:border-color .2s}
-.pvlink:hover{border-bottom-color:var(--gold-2)}
-.deckgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:22px}
-.docgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:20px}
+  /* sticky vault bar */
+  .vaultbar{position:fixed;left:12px;right:12px;bottom:12px;z-index:49;
+    display:flex;align-items:center;justify-content:center;gap:var(--s2);
+    min-height:48px;padding:13px 20px;border-radius:var(--radius);text-align:center;
+    background:linear-gradient(135deg,var(--gold),var(--gold-2));color:var(--bg);
+    font-family:var(--display-pro);font-weight:700;font-size:var(--t-small);
+    box-shadow:var(--shadow),0 0 22px var(--glow);
+    transform:translateY(calc(100% + 24px));opacity:0;pointer-events:none;
+    transition:transform .35s var(--ease),opacity .35s var(--ease)}
+  .vaultbar.show{transform:none;opacity:1;pointer-events:auto}
+  @media(min-width:761px){.vaultbar{left:auto;right:26px;bottom:22px}}
 
-/* ---------- pack blocks ---------- */
-.pack{border-top:1px solid var(--line);padding-top:40px;margin-top:44px}
-.pack:first-of-type{border-top:0;margin-top:0;padding-top:0}
-.packhead{display:flex;flex-wrap:wrap;align-items:flex-end;justify-content:space-between;gap:18px;margin-bottom:26px}
-.packhead h3{font-family:Georgia,serif;font-weight:400;font-size:clamp(22px,3vw,30px);letter-spacing:-.4px}
-.packhead .tag{display:block;font-size:10.5px;letter-spacing:2px;text-transform:uppercase;color:var(--gold-2);margin-bottom:8px}
-.packhead p{color:var(--muted);font-size:15px;max-width:56ch;margin-top:8px}
-.buybox{display:flex;flex-direction:column;align-items:flex-end;gap:7px;flex-shrink:0}
-.buyrow{display:flex;align-items:center;gap:16px}
-.buynote{font-size:11.5px;color:var(--muted)}
-.buyalt{font-size:12px;color:var(--muted)}
-.buyalt a{color:var(--gold-2);border-bottom:1px solid rgba(212,175,55,.3);transition:border-color .2s}
-.buyalt a:hover{border-bottom-color:var(--gold-2)}
-.price{font-family:Georgia,serif;font-size:30px;color:var(--gold-2);line-height:1}
-.packbody{display:grid;grid-template-columns:1fr;gap:26px}
-@media(min-width:960px){.packbody.split{grid-template-columns:1.35fr .85fr;align-items:start}}
-ul.feat{list-style:none}
-ul.feat li{font-size:14px;color:var(--muted);padding:9px 0 9px 20px;position:relative;border-bottom:1px solid rgba(212,175,55,.07)}
-ul.feat li:last-child{border-bottom:0}
-ul.feat li::before{content:"";position:absolute;left:2px;top:17px;width:6px;height:6px;
-  background:linear-gradient(135deg,var(--gold-2),var(--gold-dim));transform:rotate(45deg)}
-ul.feat li b{color:var(--ink);font-weight:600}
-
-/* ---------- bundle ---------- */
-.bundle{margin-top:20px;border:1px solid rgba(212,175,55,.4);border-radius:18px;
-  background:linear-gradient(160deg,rgba(212,175,55,.10),rgba(20,20,23,.92) 55%);
-  padding:clamp(28px,4.5vw,52px);text-align:center}
-.bundle h3{font-family:Georgia,serif;font-weight:400;font-size:clamp(26px,3.6vw,38px);margin:14px 0 10px}
-.bundle .big{font-family:Georgia,serif;font-size:clamp(46px,7.5vw,72px);line-height:1;margin:14px 0 4px;
-  background:linear-gradient(120deg,var(--gold-2),var(--gold) 45%,#c99b1e);
-  -webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
-.bundle .was{color:var(--muted);font-size:15px;margin-bottom:20px}
-.bundle .was s{opacity:.7}
-.stack{max-width:560px;margin:20px auto 4px;text-align:left;border:1px solid var(--line);border-radius:14px;
-  background:rgba(10,10,11,.45);padding:16px 22px}
-.stack>div{display:flex;justify-content:space-between;gap:14px;font-size:13.5px;color:var(--muted);
-  padding:6px 0;border-bottom:1px solid rgba(212,175,55,.08)}
-.stack s{opacity:.75;font-variant-numeric:tabular-nums}
-.stack .stack-total{font-weight:700;color:var(--ink);border-bottom:0;border-top:1px solid var(--line);margin-top:4px;padding-top:11px}
-.stack .stack-total s{color:var(--gold-2);opacity:1;font-size:15px;text-decoration:line-through}
-@media(min-width:640px){.stack{display:grid;grid-template-columns:1fr 1fr;column-gap:36px}.stack .stack-total{grid-column:1/-1}}
-.deadline{display:block;width:fit-content;margin:2px auto 20px;padding:8px 16px;border:1px solid rgba(212,175,55,.35);
-  border-radius:100px;font-size:13px;color:var(--ink);background:rgba(212,175,55,.07)}
-.deadline b{color:var(--gold-2)}
-.guarantee{font-size:12.5px;color:var(--muted);margin-top:16px}
-
-/* ---------- why grid ---------- */
-.why{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:1px;
-  background:var(--line);border:1px solid var(--line);border-radius:14px;overflow:hidden}
-.why>div{background:var(--bg2);padding:26px}
-.why h4{font-family:Georgia,serif;font-weight:400;font-size:18px;margin-bottom:8px;color:var(--gold-2)}
-.why p{color:var(--muted);font-size:14px}
-
-.vaultbar{position:fixed;left:12px;right:12px;bottom:12px;z-index:49;display:flex;align-items:center;justify-content:center;gap:8px;
-  min-height:48px;padding:13px 20px;border-radius:13px;text-align:center;
-  background:linear-gradient(135deg,var(--gold),var(--gold-2));color:#0a0a0b;font-weight:700;font-size:14.5px;
-  box-shadow:0 10px 34px rgba(0,0,0,.55),0 0 22px var(--glow);
-  transform:translateY(calc(100% + 24px));opacity:0;pointer-events:none;transition:transform .35s,opacity .35s}
-.vaultbar.show{transform:none;opacity:1;pointer-events:auto}
-.vaultbar.show:active{transform:scale(.985)}
-@media(min-width:761px){.vaultbar{left:auto;right:26px;bottom:22px}}
-section[id],.pack[id]{scroll-margin-top:88px}
-
-footer{border-top:1px solid var(--line);padding:38px clamp(18px,5vw,60px) 60px;color:var(--muted);
-  font-size:13.5px;max-width:1180px;margin:0 auto;position:relative;z-index:1}
-footer a{color:var(--gold-2)}
-
-@media(max-width:760px){
-  .nav-links{position:absolute;top:100%;right:0;left:0;flex-direction:column;align-items:stretch;
-    gap:2px;padding:10px 18px 16px;background:rgba(10,10,11,.97);border-bottom:1px solid var(--line);display:none}
-  .nav-links.open{display:flex}
-  .menu-btn{display:block}
-  .buybox{width:100%;align-items:flex-start}
-  .buyrow{width:100%;justify-content:space-between}
-}
-@media(prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}}
+  section[id],.pack[id]{scroll-margin-top:88px}
 </style>
 </head>
-<body>
+<body class="pro">
 
-<nav id="nav">
-  <a href="#top" class="brand">
-    <span class="mark">$</span>
-    <span>Automation&nbsp;Studio<small>Templates &amp; tools by Yusuf Gadelrab</small></span>
-  </a>
-  <button class="menu-btn" id="menuBtn" aria-label="Toggle menu" aria-expanded="false">☰</button>
-  <div class="nav-links" id="navLinks">
-    <a href="#decks">Pitch Decks</a>
-    <a href="#packs">All Packs</a>
-    <a href="#vault">The Vault</a>
-    <a href="store.html">← Software Store</a>
-    <a href="#vault" class="nav-cta">Get the Vault</a>
+<a class="skip-link" href="#main">Skip to content</a>
+
+<nav class="site-nav">
+  <a class="site-nav__brand" href="/">YUSUF GADELRAB</a>
+  <div class="site-nav__links">
+    <a href="/">Work</a>
+    <a href="/resume.html">Resume</a>
+    <a href="/store.html">Store</a>
+    <a href="/kxngsef.html">KXNG SEF</a>
+    <a href="/media-kit.html">Media Kit</a>
   </div>
 </nav>
 
-<main id="top">
+<main id="main">
 
-<section class="hero">
-  <span class="eyebrow"><span class="pulse"></span>12 packs · 32 documents · one system</span>
-  <h1>The <span class="grad">Midnight Gold</span> Vault</h1>
-  <p class="lede">Business documents that look like they cost five figures to design — pitch decks, proposals, contracts, resumes, landing pages, and a CRM you actually own. <b>Nothing to install, nothing to subscribe to.</b> Every file opens in a browser, edits like a text document, and prints to a pixel-perfect PDF.</p>
-  <div class="hero-cta">
-    <a class="btn solid" href="#decks">See the real slides ↓</a>
-    <a class="btn" href="templates/index.html">Open the full showcase</a>
+<section class="section">
+  <span class="badge"><span class="dot"></span>12 packs · 32 documents · one system</span>
+  <h1 class="hero-type" style="margin:var(--s5) 0">The <span class="gold-fill">Midnight Gold</span> Vault</h1>
+  <p class="lead">Business documents that look like they cost five figures to design — pitch decks, proposals, contracts, resumes, landing pages, and a CRM you actually own. <b>Nothing to install, nothing to subscribe to.</b> Every file opens in a browser, edits like a text document, and prints to a pixel-perfect PDF.</p>
+  <div class="row" style="margin-top:var(--s6)">
+    <a class="btn btn-gold" href="#decks">See the real slides ↓</a>
+    <a class="btn btn-ghost" href="templates/index.html">Open the full showcase</a>
   </div>
-  <div class="facts">
-    <div class="fact"><div class="n">32</div><div class="l">Documents</div></div>
-    <div class="fact"><div class="n">60</div><div class="l">Slide layouts</div></div>
-    <div class="fact"><div class="n">150</div><div class="l">AI prompts</div></div>
-    <div class="fact"><div class="n">$0</div><div class="l">Ongoing cost</div></div>
+
+  <div class="facts" style="margin-top:var(--s7)">
+    <div class="stat"><span class="stat__value">32</span><span class="stat__label">Documents</span></div>
+    <div class="stat"><span class="stat__value">60</span><span class="stat__label">Slide layouts</span></div>
+    <div class="stat"><span class="stat__value">150</span><span class="stat__label">AI prompts</span></div>
+    <div class="stat"><span class="stat__value">$0</span><span class="stat__label">Ongoing cost</span></div>
   </div>
-  <div class="chooser" aria-label="Start here — jump to the pack for your situation">
+
+  <div class="chooser" style="margin-top:var(--s6)" aria-label="Start here — jump to the pack for your situation">
     <span class="cl">Start here</span>
     <a href="#pack-os">Freelancing? <b>Business OS →</b></a>
     <a href="#decks">Raising? <b>Investor Deck →</b></a>
@@ -278,10 +208,12 @@ footer a{color:var(--gold-2)}
   </div>
 </section>
 
-<section id="decks">
-  <span class="eyebrow pop">★ Most popular · Flagship · $59</span>
-  <h2 style="margin-top:16px">Six real slides from the Investor Deck</h2>
-  <p class="sub">These aren't screenshots — they're the <b>actual template files</b> rendering live in your browser right now. Every chart below is hand-drawn in CSS and SVG: no chart library, nothing to license, nothing that breaks in two years.</p>
+<hr class="divider">
+
+<section id="decks" class="section section--tight">
+  <span class="badge">★ Most popular · Flagship · $59</span>
+  <h2 style="margin-top:var(--s4)">Six real slides from the Investor Deck</h2>
+  <p class="lead" style="margin:var(--s3) 0 var(--s6)">These aren't screenshots — they're the <b>actual template files</b> rendering live in your browser right now. Every chart below is hand-drawn in CSS and SVG: no chart library, nothing to license, nothing that breaks in two years.</p>
 
   <div class="deckgrid">
     <figure>
@@ -310,15 +242,15 @@ footer a{color:var(--gold-2)}
     </figure>
   </div>
 
-  <div class="packhead" style="margin-top:34px">
+  <div class="packhead" style="margin-top:var(--s7)">
     <div>
-      <p style="color:var(--muted);font-size:15px;max-width:56ch">Sixteen slides total, at true 1280×720. Problem, cost, solution, how it works, product, why now, market, business model, traction, GTM, competition, team, financials, the ask, close.</p>
+      <p>Sixteen slides total, at true 1280×720. Problem, cost, solution, how it works, product, why now, market, business model, traction, GTM, competition, team, financials, the ask, close.</p>
     </div>
     <div class="buybox">
       <div class="buyrow">
         <span class="price">$59</span>
-        <a class="btn" href="templates/investor-deck/investor-deck.html" target="_blank" rel="noopener">Open all 16 →</a>
-        <a class="btn solid" data-buy="tpl-deck" href="#">Get the deck</a>
+        <a class="btn btn-ghost btn-sm" href="templates/investor-deck/investor-deck.html" target="_blank" rel="noopener">Open all 16 →</a>
+        <a class="btn btn-gold btn-sm" data-buy="tpl-deck" href="#vault">Get the deck</a>
       </div>
       <p class="buynote">Instant download · 14-day money-back guarantee</p>
       <p class="buyalt">or the whole Vault — <a href="#vault">$199, saves $275</a></p>
@@ -326,20 +258,23 @@ footer a{color:var(--gold-2)}
   </div>
 </section>
 
-<section id="packs">
+<hr class="divider">
+
+<section id="packs" class="section section--tight">
+  <p class="eyebrow">All 12 packs</p>
   <h2>Every pack, previewed live</h2>
-  <p class="sub">Every preview below is the <b>real file rendering live</b> — not a screenshot. Inspect anything before you buy: click a preview to open the full document in a new tab.</p>
+  <p class="lead" style="margin:var(--s3) 0 var(--s7)">Every preview below is the <b>real file rendering live</b> — not a screenshot. Inspect anything before you buy: click a preview to open the full document in a new tab.</p>
 
   <!-- PROPOSAL -->
   <div class="pack">
     <div class="packhead">
       <div>
-        <span class="tag">Win the work</span>
-        <h3>Client Proposal &amp; SOW</h3>
+        <p class="eyebrow">Win the work</p>
+        <h3 style="margin-top:var(--s2)">Client Proposal &amp; SOW</h3>
         <p>Nine pages: dark cover, paper-white interior. Includes the out-of-scope table that kills scope creep before the project starts.</p>
       </div>
       <div class="buybox">
-        <div class="buyrow"><span class="price">$49</span><a class="btn solid" data-buy="tpl-proposal" href="#">Get this pack</a></div>
+        <div class="buyrow"><span class="price">$49</span><a class="btn btn-gold btn-sm" data-buy="tpl-proposal" href="#vault">Get this pack</a></div>
         <p class="buynote">Instant download · 14-day guarantee</p>
         <p class="buyalt">or the whole Vault — <a href="#vault">$199, saves $275</a></p>
       </div>
@@ -372,12 +307,12 @@ footer a{color:var(--gold-2)}
   <div class="pack">
     <div class="packhead">
       <div>
-        <span class="tag">Get paid</span>
-        <h3>Freelance Paperwork Pack</h3>
+        <p class="eyebrow">Get paid</p>
+        <h3 style="margin-top:var(--s2)">Freelance Paperwork Pack</h3>
         <p>Every document between "yes" and money in the bank — including the three letters most freelancers are too awkward to write.</p>
       </div>
       <div class="buybox">
-        <div class="buyrow"><span class="price">$39</span><a class="btn solid" data-buy="tpl-paperwork" href="#">Get this pack</a></div>
+        <div class="buyrow"><span class="price">$39</span><a class="btn btn-gold btn-sm" data-buy="tpl-paperwork" href="#vault">Get this pack</a></div>
         <p class="buynote">Instant download · 14-day guarantee</p>
         <p class="buyalt">or the whole Vault — <a href="#vault">$199, saves $275</a></p>
       </div>
@@ -412,12 +347,12 @@ footer a{color:var(--gold-2)}
   <div class="pack">
     <div class="packhead">
       <div>
-        <span class="tag">Look established</span>
-        <h3>Brand Guide &amp; Case Study</h3>
+        <p class="eyebrow">Look established</p>
+        <h3 style="margin-top:var(--s2)">Brand Guide &amp; Case Study</h3>
         <p>A nine-page brand book, plus the results report that turns one happy client into your next three.</p>
       </div>
       <div class="buybox">
-        <div class="buyrow"><span class="price">$45</span><a class="btn solid" data-buy="tpl-brand" href="#">Get this pack</a></div>
+        <div class="buyrow"><span class="price">$45</span><a class="btn btn-gold btn-sm" data-buy="tpl-brand" href="#vault">Get this pack</a></div>
         <p class="buynote">Instant download · 14-day guarantee</p>
         <p class="buyalt">or the whole Vault — <a href="#vault">$199, saves $275</a></p>
       </div>
@@ -448,12 +383,12 @@ footer a{color:var(--gold-2)}
   <div class="pack" id="pack-mediakit">
     <div class="packhead">
       <div>
-        <span class="tag">Get booked</span>
-        <h3>Creator Media Kit &amp; Rate Card</h3>
+        <p class="eyebrow">Get booked</p>
+        <h3 style="margin-top:var(--s2)">Creator Media Kit &amp; Rate Card</h3>
         <p>The document brands ask for right after they reply. It anchors your price before they get to name theirs.</p>
       </div>
       <div class="buybox">
-        <div class="buyrow"><span class="price">$39</span><a class="btn solid" data-buy="tpl-mediakit" href="#">Get this pack</a></div>
+        <div class="buyrow"><span class="price">$39</span><a class="btn btn-gold btn-sm" data-buy="tpl-mediakit" href="#vault">Get this pack</a></div>
         <p class="buynote">Instant download · 14-day guarantee</p>
         <p class="buyalt">or the whole Vault — <a href="#vault">$199, saves $275</a></p>
       </div>
@@ -484,12 +419,12 @@ footer a{color:var(--gold-2)}
   <div class="pack" id="pack-resume">
     <div class="packhead">
       <div>
-        <span class="tag">Get hired</span>
-        <h3>Executive Resume Pack</h3>
+        <p class="eyebrow">Get hired</p>
+        <h3 style="margin-top:var(--s2)">Executive Resume Pack</h3>
         <p>Three resumes, because one file physically cannot be both machine-readable and beautiful. The README says exactly which to send where.</p>
       </div>
       <div class="buybox">
-        <div class="buyrow"><span class="price">$29</span><a class="btn solid" data-buy="tpl-resume" href="#">Get this pack</a></div>
+        <div class="buyrow"><span class="price">$29</span><a class="btn btn-gold btn-sm" data-buy="tpl-resume" href="#vault">Get this pack</a></div>
         <p class="buynote">Instant download · 14-day guarantee</p>
         <p class="buyalt">or the whole Vault — <a href="#vault">$199, saves $275</a></p>
       </div>
@@ -523,12 +458,12 @@ footer a{color:var(--gold-2)}
   <div class="pack" id="pack-os">
     <div class="packhead">
       <div>
-        <span class="tag">Run the business</span>
-        <h3>Freelance Business OS</h3>
+        <p class="eyebrow">Run the business</p>
+        <h3 style="margin-top:var(--s2)">Freelance Business OS</h3>
         <p>The "Notion template" category, except you own the file. A working CRM, pipeline, invoice log, and time tracker in a single page — no account, no subscription, no vendor who can raise the price.</p>
       </div>
       <div class="buybox">
-        <div class="buyrow"><span class="price">$59</span><a class="btn solid" data-buy="tpl-os" href="#">Get this pack</a></div>
+        <div class="buyrow"><span class="price">$59</span><a class="btn btn-gold btn-sm" data-buy="tpl-os" href="#vault">Get this pack</a></div>
         <p class="buynote">Instant download · 14-day guarantee</p>
         <p class="buyalt">or the whole Vault — <a href="#vault">$199, saves $275</a></p>
       </div>
@@ -555,12 +490,12 @@ footer a{color:var(--gold-2)}
   <div class="pack">
     <div class="packhead">
       <div>
-        <span class="tag">Freight brokerage</span>
-        <h3>Freight Broker Ops Pack</h3>
+        <p class="eyebrow">Freight brokerage</p>
+        <h3 style="margin-top:var(--s2)">Freight Broker Ops Pack</h3>
         <p>The paperwork a brokerage actually runs on, from tender to cash. Written against a real freight back office — not a generic template shop's guess at one.</p>
       </div>
       <div class="buybox">
-        <div class="buyrow"><span class="price">$49</span><a class="btn solid" data-buy="tpl-freight" href="#">Get this pack</a></div>
+        <div class="buyrow"><span class="price">$49</span><a class="btn btn-gold btn-sm" data-buy="tpl-freight" href="#vault">Get this pack</a></div>
         <p class="buynote">Instant download · 14-day guarantee</p>
         <p class="buyalt">or the whole Vault — <a href="#vault">$199, saves $275</a></p>
       </div>
@@ -595,12 +530,12 @@ footer a{color:var(--gold-2)}
   <div class="pack">
     <div class="packhead">
       <div>
-        <span class="tag">Fill the pipeline</span>
-        <h3>Cold Email Swipe File</h3>
+        <p class="eyebrow">Fill the pipeline</p>
+        <h3 style="margin-top:var(--s2)">Cold Email Swipe File</h3>
         <p>Fifty templates and forty subject lines, pulled from the structure of a cold-email engine that actually runs — including the deliverability rules most swipe files never mention.</p>
       </div>
       <div class="buybox">
-        <div class="buyrow"><span class="price">$39</span><a class="btn solid" data-buy="tpl-swipe" href="#">Get this pack</a></div>
+        <div class="buyrow"><span class="price">$39</span><a class="btn btn-gold btn-sm" data-buy="tpl-swipe" href="#vault">Get this pack</a></div>
         <p class="buynote">Instant download · 14-day guarantee</p>
         <p class="buyalt">or the whole Vault — <a href="#vault">$199, saves $275</a></p>
       </div>
@@ -627,12 +562,12 @@ footer a{color:var(--gold-2)}
   <div class="pack">
     <div class="packhead">
       <div>
-        <span class="tag">Build any deck</span>
-        <h3>Slide Library — 60 layouts</h3>
+        <p class="eyebrow">Build any deck</p>
+        <h3 style="margin-top:var(--s2)">Slide Library — 60 layouts</h3>
         <p>Sixty mix-and-match slides in the same system as the investor deck, so you can assemble a sales deck, QBR, or board update instead of forcing your story into someone else's narrative.</p>
       </div>
       <div class="buybox">
-        <div class="buyrow"><span class="price">$29</span><a class="btn solid" data-buy="tpl-slides" href="#">Get this pack</a></div>
+        <div class="buyrow"><span class="price">$29</span><a class="btn btn-gold btn-sm" data-buy="tpl-slides" href="#vault">Get this pack</a></div>
         <p class="buynote">Instant download · 14-day guarantee</p>
         <p class="buyalt">or the whole Vault — <a href="#vault">$199, saves $275</a></p>
       </div>
@@ -652,7 +587,7 @@ footer a{color:var(--gold-2)}
           <figcaption class="pvcap"><span>47 · Timeline</span></figcaption>
         </figure>
       </div>
-      <p class="tpl-note" style="color:var(--muted);font-size:14px;margin-top:14px">14 data layouts · 8 comparison · 8 process &amp; time · 10 text · 6 title · 5 people · 9 structure. All hand-built in CSS and SVG — <a class="pvlink" href="templates/slide-library/slide-library.html" target="_blank" rel="noopener">browse all 60 →</a></p>
+      <p class="muted" style="font-size:var(--t-small);margin-top:var(--s4)">14 data layouts · 8 comparison · 8 process &amp; time · 10 text · 6 title · 5 people · 9 structure. All hand-built in CSS and SVG — <a class="pvlink" href="templates/slide-library/slide-library.html" target="_blank" rel="noopener">browse all 60 →</a></p>
     </div>
   </div>
 
@@ -660,12 +595,12 @@ footer a{color:var(--gold-2)}
   <div class="pack">
     <div class="packhead">
       <div>
-        <span class="tag">Work faster</span>
-        <h3>AI Prompt Vault — 150 prompts</h3>
+        <p class="eyebrow">Work faster</p>
+        <h3 style="margin-top:var(--s2)">AI Prompt Vault — 150 prompts</h3>
         <p>Structured prompts for running a business, with click-to-copy on every one. Includes the section most prompt packs won't write: when <em>not</em> to use AI.</p>
       </div>
       <div class="buybox">
-        <div class="buyrow"><span class="price">$19</span><a class="btn solid" data-buy="tpl-prompts" href="#">Get this pack</a></div>
+        <div class="buyrow"><span class="price">$19</span><a class="btn btn-gold btn-sm" data-buy="tpl-prompts" href="#vault">Get this pack</a></div>
         <p class="buynote">Instant download · 14-day guarantee</p>
         <p class="buyalt">or the whole Vault — <a href="#vault">$199, saves $275</a></p>
       </div>
@@ -692,12 +627,12 @@ footer a{color:var(--gold-2)}
   <div class="pack">
     <div class="packhead">
       <div>
-        <span class="tag">Go live</span>
-        <h3>Landing Page Kit</h3>
+        <p class="eyebrow">Go live</p>
+        <h3 style="margin-top:var(--s2)">Landing Page Kit</h3>
         <p>Four responsive pages, each a single file you can drop onto free hosting in about a minute. Recolor the entire thing by editing one variable.</p>
       </div>
       <div class="buybox">
-        <div class="buyrow"><span class="price">$19</span><a class="btn solid" data-buy="tpl-landing" href="#">Get this pack</a></div>
+        <div class="buyrow"><span class="price">$19</span><a class="btn btn-gold btn-sm" data-buy="tpl-landing" href="#vault">Get this pack</a></div>
         <p class="buynote">Instant download · 14-day guarantee</p>
         <p class="buyalt">or the whole Vault — <a href="#vault">$199, saves $275</a></p>
       </div>
@@ -726,11 +661,13 @@ footer a{color:var(--gold-2)}
 
 </section>
 
-<section id="vault">
-  <div class="bundle">
-    <span class="eyebrow"><span class="pulse"></span>Best value</span>
-    <h3>The Complete Vault</h3>
-    <div class="stack" aria-label="All 12 packs and what each costs on its own">
+<hr class="divider">
+
+<section id="vault" class="section section--tight">
+  <div class="card card--flat bundle">
+    <span class="badge"><span class="dot"></span>Best value</span>
+    <h3 style="margin-top:var(--s4)">The Complete Vault</h3>
+    <div class="ledger" aria-label="All 12 packs and what each costs on its own">
       <div><span>Investor Pitch Deck</span><s>$59</s></div>
       <div><span>Freelance Business OS</span><s>$59</s></div>
       <div><span>Client Proposal &amp; SOW</span><s>$49</s></div>
@@ -743,20 +680,23 @@ footer a{color:var(--gold-2)}
       <div><span>Slide Library — 60 layouts</span><s>$29</s></div>
       <div><span>Landing Page Kit</span><s>$19</s></div>
       <div><span>AI Prompt Vault — 150 prompts</span><s>$19</s></div>
-      <div class="stack-total"><span>All 12 bought separately</span><s>$474</s></div>
+      <div class="ledger-total"><span>All 12 bought separately</span><s>$474</s></div>
     </div>
-    <div class="big">$199</div>
+    <div class="big gold-fill">$199</div>
     <p class="was">One checkout — save $275 (58% off)</p>
-    <p class="lede" style="margin:0 auto 20px;text-align:center;max-width:56ch">All twelve packs — <b>273 template assets</b>: 32 documents, 60 slide layouts, 150 prompts, the landing pages, and the Business OS. Every future addition to the suite, free, forever.</p>
+    <p class="lead" style="margin:0 auto var(--s5);text-align:center;max-width:56ch">All twelve packs — <b>273 template assets</b>: 32 documents, 60 slide layouts, 150 prompts, the landing pages, and the Business OS. Every future addition to the suite, free, forever.</p>
     <p class="deadline">Launch pricing: <b>$199 until Aug 15</b> — then $249.</p>
-    <a class="btn solid" data-buy="tpl-vault" href="#">Get the Vault — $199</a>
+    <a class="btn btn-gold" data-buy="tpl-vault" href="mailto:yusuf.gadelrab06@gmail.com?subject=Midnight%20Gold%20Vault%20%E2%80%94%20%24199">Get the Vault — $199</a>
     <p class="guarantee">14-day money-back guarantee, no questions asked · instant download · secure checkout</p>
   </div>
 </section>
 
-<section>
+<hr class="divider">
+
+<section class="section section--tight">
+  <p class="eyebrow">The difference</p>
   <h2>Why these are different</h2>
-  <p class="sub">Most template packs are a Canva link you can't own, or an InDesign file you can't open without a subscription.</p>
+  <p class="lead" style="margin:var(--s3) 0 var(--s6)">Most template packs are a Canva link you can't own, or an InDesign file you can't open without a subscription.</p>
   <div class="why">
     <div><h4>You own the file</h4><p>Plain HTML on your disk. No account, no export limits, no platform that can raise its price or disappear on you.</p></div>
     <div><h4>Nothing to install</h4><p>No Adobe, no Figma, no Canva Pro. Double-click, edit the text, print to PDF. That's the entire workflow.</p></div>
@@ -769,10 +709,21 @@ footer a{color:var(--gold-2)}
 
 <a class="vaultbar" id="vaultBar" href="#vault" aria-hidden="true">The Complete Vault — all 12 packs · $199 →</a>
 
-<footer>
-  <strong style="color:var(--ink)">Midnight Gold Vault</strong> — an Automation Studio collection · San Jose, CA<br>
-  <a href="mailto:yusuf.gadelrab06@gmail.com">yusuf.gadelrab06@gmail.com</a> · <a href="store.html">Software store</a><br>
-  <span style="opacity:.7;display:inline-block;margin-top:10px">Templates are provided as-is. Contract and agreement templates are not legal advice — have a lawyer review before use in your jurisdiction.</span>
+<footer class="site-footer">
+  <div>
+    <strong>Midnight Gold Vault</strong> — an Automation Studio collection · San Jose, CA<br>
+    <span class="faint">Templates are provided as-is. Contract and agreement templates are not legal advice — have a lawyer review before use in your jurisdiction.</span>
+  </div>
+  <div class="site-footer__links">
+    <a href="/">Work</a>
+    <a href="/resume.html">Resume</a>
+    <a href="/store.html">Store</a>
+    <a href="/kxngsef.html">KXNG SEF</a>
+    <a href="/media-kit.html">Media Kit</a>
+    <a href="mailto:yusuf.gadelrab06@gmail.com">yusuf.gadelrab06@gmail.com</a>
+    <a href="https://github.com/Yusuf-Gadelrab" target="_blank" rel="noopener">GitHub</a>
+    <a href="https://www.linkedin.com/in/yusuf-gadelrab-76246b221" target="_blank" rel="noopener">LinkedIn</a>
+  </div>
 </footer>
 
 <script>
@@ -803,8 +754,7 @@ footer a{color:var(--gold-2)}
     if(CHECKOUT[k]){ a.href = CHECKOUT[k]; a.target = '_blank'; a.rel = 'noopener'; }
   });
 
-  // Nav scroll state + sticky Vault bar (appears past the flagship, hides while #vault is on screen)
-  var nav = document.getElementById('nav');
+  // Sticky Vault bar (appears past the flagship, hides while #vault is on screen)
   var vb = document.getElementById('vaultBar'), vsec = document.getElementById('vault'), vVis = false;
   function vbar(){
     if(!vb) return;
@@ -815,18 +765,7 @@ footer a{color:var(--gold-2)}
   if(vsec && window.IntersectionObserver){
     new IntersectionObserver(function(en){ vVis = en[0].isIntersecting; vbar(); }, {threshold:.15}).observe(vsec);
   }
-  function onScroll(){ nav.classList.toggle('scrolled', (window.scrollY||0) > 20); vbar(); }
-  window.addEventListener('scroll', onScroll, {passive:true}); onScroll();
-
-  // Mobile menu
-  var mb = document.getElementById('menuBtn'), nl = document.getElementById('navLinks');
-  mb.addEventListener('click', function(){
-    var open = nl.classList.toggle('open');
-    mb.setAttribute('aria-expanded', open ? 'true' : 'false');
-  });
-  nl.querySelectorAll('a').forEach(function(a){
-    a.addEventListener('click', function(){ nl.classList.remove('open'); mb.setAttribute('aria-expanded','false'); });
-  });
+  window.addEventListener('scroll', vbar, {passive:true}); vbar();
 })();
 </script>
 </body>
