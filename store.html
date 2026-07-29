@@ -296,6 +296,31 @@
 
   #progress{position:fixed;top:0;left:0;height:3px;width:0;z-index:60;background:linear-gradient(90deg,var(--gold-dim),var(--gold),var(--gold-2));box-shadow:0 0 12px var(--glow)}
 
+  /* ---------- CONVERSION LAYER ---------- */
+  .chip{display:inline-flex;align-items:center;gap:6px;margin-top:8px;padding:3px 10px;border:1px solid rgba(212,175,55,.3);border-radius:999px;font-size:11.5px;font-weight:700;letter-spacing:.3px;color:var(--gold-2);background:rgba(212,175,55,.07);white-space:nowrap}
+  .also{font-size:12.5px;color:var(--muted);margin-top:9px}
+  .also a{color:var(--gold-2);border-bottom:1px dotted rgba(212,175,55,.5);transition:color .25s,border-color .25s}
+  .also a:hover{color:var(--gold);border-bottom-color:var(--gold)}
+  .stack-list{list-style:none;margin:16px 0 4px;display:grid;gap:7px;max-width:440px}
+  .stack-list li{display:flex;justify-content:space-between;align-items:baseline;gap:14px;font-size:14px;color:var(--muted);border-bottom:1px dashed rgba(212,175,55,.15);padding-bottom:7px}
+  .stack-list li b{color:var(--ink);font-weight:600}
+  .stack-list li em{font-style:normal;color:var(--gold-2);font-weight:700;white-space:nowrap}
+  .stack-list li.sum{border-bottom:none;padding-top:2px}
+  .stack-list li.sum b{color:var(--gold-2)}
+  .why{margin-top:26px;padding:26px 28px;border:1px solid var(--line);border-radius:18px;background:linear-gradient(180deg,var(--panel),var(--bg2))}
+  .why h3{font-size:18px;letter-spacing:-.2px;margin-bottom:8px}
+  .why p{color:var(--muted);font-size:14.5px;max-width:80ch}
+  .why p+p{margin-top:12px}
+  .why b{color:var(--ink)}
+  .notfor{border-left:3px solid var(--gold);padding-left:14px}
+  .sticky-cta{display:none}
+  .buy:active,.btn:active,.more:active{transform:translateY(0) scale(.97)}
+  .buy:focus-visible,.btn:focus-visible,.more:focus-visible{outline:2px solid var(--gold-2);outline-offset:3px}
+  .final-links{margin-top:18px;font-size:14px;color:var(--muted)}
+  .final-links a{color:var(--gold-2)}
+  .final-links a:hover{text-decoration:underline}
+  .prod[id]{scroll-margin-top:90px}
+
   @media(max-width:820px){
     .nav-links{display:none;position:absolute;top:100%;left:0;right:0;flex-direction:column;padding:12px;gap:4px;background:rgba(10,10,11,.96);border-bottom:1px solid var(--line)}
     .nav-links.open{display:flex}
@@ -304,7 +329,17 @@
     .stats{grid-template-columns:repeat(2,1fr)}
     .prod-grid{grid-template-columns:1fr}
     .steps{grid-template-columns:1fr}
-    .price{text-align:left}
+    /* value-before-price reflow: title → proof → price → buy */
+    .prod-top{display:contents}
+    .prod-top>div:first-child{order:0}
+    .stack-list{order:1}
+    .feats{order:1}
+    .price{order:2;text-align:left;margin:4px 0 16px}
+    .buy-row{order:3}
+    .payline{order:4}
+    .also{order:5}
+    .sticky-cta{position:fixed;left:12px;right:12px;bottom:10px;z-index:70;display:flex;align-items:center;justify-content:center;gap:8px;min-height:52px;border-radius:14px;font-weight:800;font-size:15.5px;letter-spacing:.2px;color:#0a0a0b;background:linear-gradient(135deg,var(--gold),var(--gold-2));box-shadow:0 10px 30px -6px rgba(0,0,0,.7),0 0 24px var(--glow);padding:12px 18px calc(12px + env(safe-area-inset-bottom)*.5)}
+    body{padding-bottom:92px}
   }
 
   /* ---------- TEMPLATES SECTION ---------- */
@@ -380,7 +415,6 @@
   </a>
   <button class="menu-btn" id="menuBtn" aria-label="Menu">☰</button>
   <div class="nav-links" id="navLinks">
-    <a href="#can-do">What We Automate</a>
     <a href="#products">Software</a>
     <a href="#templates">Templates</a>
     <a href="#how">How Buying Works</a>
@@ -396,9 +430,8 @@
     <h1 class="reveal d1">We automate what you want. <span class="grad">Then we automate what you need.</span></h1>
     <p class="lede reveal d2">Every tool here started as automation I needed myself — a freight back office answering its own email, outreach personalizing itself, charts screening themselves. <b>Eleven of them are packaged and on sale below, from $19 — including the 205-page Trading Master Playbook.</b> All the AI tools run on local models — zero API fees, your data never leaves your machine.</p>
     <div class="hero-cta reveal d3">
-      <a href="#products" class="btn btn-gold">Browse the store ↓</a>
+      <a href="#products" class="btn btn-gold">Show me the store ↓</a>
       <a href="./freightdesk.html" class="btn btn-ghost">🚚 FreightDesk for brokers</a>
-      <a href="https://github.com/Yusuf-Gadelrab" target="_blank" rel="noreferrer" class="btn btn-ghost">⌥ GitHub</a>
     </div>
 
     <div class="deadline reveal d3">⏳ Launch pricing ends August 15 — then prices go to standard.</div>
@@ -466,6 +499,7 @@
           <div class="price">
             <div class="amt">$999 setup + $249/mo</div>
             <div class="per">$249/mo ≈ $8/day — less than one hour<br/>of AR clerk time per week</div>
+            <div><span class="chip">✓ 77 automated tests passing</span></div>
           </div>
         </div>
         <ul class="feats">
@@ -475,10 +509,10 @@
           <li><b>3-day install</b> — live on your inbox by Friday.</li>
         </ul>
         <div class="buy-row">
-          <a class="buy" href="mailto:yusuf.gadelrab06@gmail.com?subject=FreightDesk%20pilot%20slot">Book a pilot slot ✉</a>
+          <a class="buy" href="mailto:yusuf.gadelrab06@gmail.com?subject=FreightDesk%20pilot%20slot">Book my pilot walkthrough ✉</a>
           <a class="more" href="./freightdesk.html">Full case study &amp; pricing →</a>
         </div>
-        <div class="payline"><b>Pilot guarantee:</b> if it isn't drafting real replies on your real inbox by day 14, the setup fee comes back in full.</div>
+        <div class="payline"><b>15 minutes · watch it draft a real reply · no commitment.</b> Pilot guarantee: if it isn't drafting real replies on your real inbox by day 14, the setup fee comes back in full.</div>
       </div>
 
       <!-- Trading Master Playbook — #1 BEST VALUE flagship download -->
@@ -503,10 +537,10 @@
           <li><b>Educational only</b> — mental models and discipline, not signals, alerts, or financial advice.</li>
         </ul>
         <div class="buy-row">
-          <a class="buy" data-buy="trading-playbook" href="#">Get the playbook — $39</a>
+          <a class="buy" data-buy="trading-playbook" href="#">Get my playbook — $39</a>
           <a class="more" href="downloads/trading-playbook-sample.pdf" target="_blank" rel="noopener">Read the free sample — Part I →</a>
         </div>
-        <div class="payline"><b>14-day money-back guarantee, no questions</b> · instant PDF download · launch price ends August 15</div>
+        <div class="payline"><b>Instant PDF · 14-day refund, no questions</b> · no account needed · launch price ends August 15</div>
       </div>
 
       <!-- Cold Outreach Engine — MOST POPULAR -->
@@ -531,10 +565,11 @@
           <li><b>Tested end-to-end</b> — single stdlib-only Python file you can read in ten minutes.</li>
         </ul>
         <div class="buy-row">
-          <a class="buy" data-buy="outreach-solo" href="#">Get Solo — $49</a>
+          <a class="buy" data-buy="outreach-solo" href="#">Get my Solo license — $49</a>
           <a class="more" data-buy="outreach-agency" href="#">Agency license — $99</a>
         </div>
-        <div class="payline"><b>14-day money-back guarantee, no questions</b> · instant download · secure checkout</div>
+        <div class="payline"><b>Instant zip · 14-day refund, no questions</b> · no account needed</div>
+        <div class="also">or <a href="#bundle">get all 5 core tools — $99</a> · saves $56 even at launch prices</div>
       </div>
 
       <!-- Local-LLM Automation Kit -->
@@ -548,6 +583,7 @@
           <div class="price">
             <div class="amt"><span class="was">$79</span>$29</div>
             <div><span class="off">63% OFF LAUNCH</span></div>
+            <div><span class="chip">✓ 6/6 offline tests passing</span></div>
           </div>
         </div>
         <ul class="feats">
@@ -557,9 +593,10 @@
           <li><b>Safety rails</b> — draft-only default, opt-outs never auto-replied, every integration point marked <code># SWAP</code>.</li>
         </ul>
         <div class="buy-row">
-          <a class="buy" data-buy="automation-kit" href="#">Get it — $29</a>
+          <a class="buy" data-buy="automation-kit" href="#">Get my kit — $29</a>
         </div>
-        <div class="payline"><b>14-day money-back guarantee, no questions</b> · first 25 buyers at $29</div>
+        <div class="payline"><b>Instant zip · 14-day refund, no questions</b> · no account needed</div>
+        <div class="also">or <a href="#bundle">get all 5 core tools — $99</a> · saves $56 even at launch prices</div>
       </div>
 
       <!-- AI Ops Bundle — Claude playbook + Local-LLM Automation Kit -->
@@ -583,10 +620,10 @@
           <li><b>Independent guide</b> — not affiliated with Anthropic; the kit runs on any local Ollama model.</li>
         </ul>
         <div class="buy-row">
-          <a class="buy" data-buy="ai-ops-bundle" href="#">Get the bundle — $34</a>
+          <a class="buy" data-buy="ai-ops-bundle" href="#">Get my bundle — $34</a>
           <a class="more" data-buy="claude-playbook" href="#">Playbook alone — $19</a>
         </div>
-        <div class="payline"><b>14-day money-back guarantee, no questions</b> · instant download</div>
+        <div class="payline"><b>Instant download — PDF + kit</b> · 14-day refund, no questions · no account needed</div>
       </div>
 
       <!-- Swing Setup Screener -->
@@ -600,6 +637,7 @@
           <div class="price">
             <div class="amt"><span class="was">$49</span>$19</div>
             <div><span class="off">61% OFF LAUNCH</span></div>
+            <div><span class="chip">✓ 29/29 tests passing</span></div>
           </div>
         </div>
         <ul class="feats">
@@ -609,9 +647,10 @@
           <li><b>Backtest harness included</b> — replay setups bar-by-bar before trusting them. Educational tool, not financial advice.</li>
         </ul>
         <div class="buy-row">
-          <a class="buy" data-buy="swing-screener" href="#">Get it — $19</a>
+          <a class="buy" data-buy="swing-screener" href="#">Get my screener — $19</a>
         </div>
-        <div class="payline"><b>14-day money-back guarantee, no questions</b> · first 25 buyers at $19</div>
+        <div class="payline"><b>Instant zip · 14-day refund, no questions</b> · no account needed</div>
+        <div class="also">or <a href="#bundle">get all 5 core tools — $99</a> · saves $56 even at launch prices</div>
       </div>
 
       <!-- Next.js Boilerplate -->
@@ -635,9 +674,10 @@
           <li><b>Production <code>next build</code> verified</b> before packaging.</li>
         </ul>
         <div class="buy-row">
-          <a class="buy" data-buy="nextjs-boilerplate" href="#">Get it — $39</a>
+          <a class="buy" data-buy="nextjs-boilerplate" href="#">Get my boilerplate — $39</a>
         </div>
-        <div class="payline"><b>14-day money-back guarantee, no questions</b> · instant download</div>
+        <div class="payline"><b>Instant zip · 14-day refund, no questions</b> · no account needed</div>
+        <div class="also">or <a href="#bundle">get all 5 core tools — $99</a> · saves $56 even at launch prices</div>
       </div>
 
       <!-- Midnight Gold Landing Kit -->
@@ -660,9 +700,10 @@
           <li><b>Re-theme in seconds</b> — every color is a CSS variable in one block per file.</li>
         </ul>
         <div class="buy-row">
-          <a class="buy" data-buy="landing-kit" href="#">Get it — $19</a>
+          <a class="buy" data-buy="landing-kit" href="#">Get my 4 pages — $19</a>
         </div>
-        <div class="payline"><b>14-day money-back guarantee, no questions</b> · instant download</div>
+        <div class="payline"><b>Instant zip · 14-day refund, no questions</b> · no account needed</div>
+        <div class="also">or <a href="#bundle">get all 5 core tools — $99</a> · saves $56 even at launch prices</div>
       </div>
 
       <!-- Inbox Autopilot -->
@@ -686,9 +727,10 @@
           <li><b>No send path exists</b> — draft-only by design. Stdlib-only Python.</li>
         </ul>
         <div class="buy-row">
-          <a class="buy" data-buy="inbox-autopilot" href="#">Get it — $19</a>
+          <a class="buy" data-buy="inbox-autopilot" href="#">Get my copy — $19</a>
         </div>
-        <div class="payline"><b>14-day money-back guarantee, no questions</b> · instant download</div>
+        <div class="payline"><b>Instant zip · 14-day refund, no questions</b> · no account needed</div>
+        <div class="also">or <a href="#stack">get all 4 micro-tools — $49</a> · saves $27 at launch prices</div>
       </div>
 
       <!-- Invoice Chaser -->
@@ -712,9 +754,10 @@
           <li><b>Draft-only, always</b> — you review and send; it never does.</li>
         </ul>
         <div class="buy-row">
-          <a class="buy" data-buy="invoice-chaser" href="#">Get it — $19</a>
+          <a class="buy" data-buy="invoice-chaser" href="#">Get my copy — $19</a>
         </div>
-        <div class="payline"><b>14-day money-back guarantee, no questions</b> · instant download</div>
+        <div class="payline"><b>Instant zip · 14-day refund, no questions</b> · no account needed</div>
+        <div class="also">or <a href="#stack">get all 4 micro-tools — $49</a> · saves $27 at launch prices</div>
       </div>
 
       <!-- Report Bot -->
@@ -738,9 +781,10 @@
           <li><b>Sample launchd plist included</b> — make it a true weekly cron in minutes.</li>
         </ul>
         <div class="buy-row">
-          <a class="buy" data-buy="report-bot" href="#">Get it — $19</a>
+          <a class="buy" data-buy="report-bot" href="#">Get my copy — $19</a>
         </div>
-        <div class="payline"><b>14-day money-back guarantee, no questions</b> · instant download</div>
+        <div class="payline"><b>Instant zip · 14-day refund, no questions</b> · no account needed</div>
+        <div class="also">or <a href="#stack">get all 4 micro-tools — $49</a> · saves $27 at launch prices</div>
       </div>
 
       <!-- Content Repurposer -->
@@ -763,13 +807,14 @@
           <li><b>Nothing auto-posts</b> — output is markdown files you paste where you want.</li>
         </ul>
         <div class="buy-row">
-          <a class="buy" data-buy="content-repurposer" href="#">Get it — $19</a>
+          <a class="buy" data-buy="content-repurposer" href="#">Get my copy — $19</a>
         </div>
-        <div class="payline"><b>14-day money-back guarantee, no questions</b> · instant download</div>
+        <div class="payline"><b>Instant zip · 14-day refund, no questions</b> · no account needed</div>
+        <div class="also">or <a href="#stack">get all 4 micro-tools — $49</a> · saves $27 at launch prices</div>
       </div>
 
       <!-- Automation Stack Bundle -->
-      <div class="prod pop reveal">
+      <div class="prod pop reveal" id="stack">
         <span class="badge">New · All 4 micro-tools</span>
         <div class="prod-top">
           <div>
@@ -788,14 +833,14 @@
           <li><b>Every tool works with Ollama off</b> — documented fallbacks throughout.</li>
         </ul>
         <div class="buy-row">
-          <a class="buy" data-buy="automation-stack" href="#">Get all 4 — $49</a>
+          <a class="buy" data-buy="automation-stack" href="#">Send me all 4 — $49</a>
         </div>
-        <div class="payline"><b>14-day money-back guarantee, no questions</b> · instant download of all four zips</div>
+        <div class="payline"><b>Instant download — all 4 zips</b> · 14-day refund, no questions · no account needed</div>
       </div>
 
       <!-- Everything Bundle -->
-      <div class="prod featured reveal">
-        <span class="badge">Bundle · Save $186 vs standard</span>
+      <div class="prod featured reveal" id="bundle">
+        <span class="badge">Bundle · $235 of tools for $99</span>
         <div class="prod-top">
           <div>
             <span class="picon" aria-hidden="true"><svg viewBox="0 0 48 48" fill="none" stroke="#d4af37" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M8 21l16-8 16 8-16 8-16-8z"/><path d="M8 21v11l16 8 16-8V21" stroke="url(#glg)"/><path d="M24 29v11"/><circle cx="38" cy="10.5" r="5.5" stroke="url(#glg)"/><path d="M38 7.8v5.4M35.6 9.2h4.8"/></svg></span>
@@ -803,21 +848,37 @@
             <div class="sub">Cold Outreach Engine + Local-LLM Automation Kit + Swing Setup Screener + Next.js 16 Boilerplate + Midnight Gold Landing Kit. One checkout, five zips.</div>
           </div>
           <div class="price">
-            <div class="amt"><span class="was">$285</span>$99</div>
-            <div class="per">$155 at launch prices · $285 standard — you pay $99</div>
+            <div class="amt"><span class="was">$155</span>$99</div>
+            <div class="per">$155 bought separately today · $235 at standard prices</div>
           </div>
         </div>
+        <ul class="stack-list" aria-label="Everything Bundle contents, priced individually at launch">
+          <li><b>Cold Outreach Engine</b><em>$49</em></li>
+          <li><b>Local-LLM Automation Kit</b><em>$29</em></li>
+          <li><b>Swing Setup Screener</b><em>$19</em></li>
+          <li><b>Next.js 16 / React 19 Boilerplate</b><em>$39</em></li>
+          <li><b>Midnight Gold Landing Kit</b><em>$19</em></li>
+          <li class="sum"><b>Bought one by one</b><em><span class="was">$155</span></em></li>
+          <li class="sum"><b>One checkout</b><em>$99</em></li>
+        </ul>
         <ul class="feats">
-          <li><b>The five core software tools in one checkout</b> — $155 bought separately at launch prices, $285 at standard.</li>
-          <li><b>65% off standard</b> — the single best deal on this page, and it ends with launch pricing on August 15.</li>
+          <li><b>Saves $56 even at launch prices</b> — and $136 once standard pricing ($235 total) returns on August 15.</li>
           <li><b>All test suites and READMEs included</b> — 6/6 + 29/29 passing, production builds verified.</li>
+          <li><b>Five zips, one receipt</b> — everything above, delivered instantly in one checkout.</li>
         </ul>
         <div class="buy-row">
-          <a class="buy" data-buy="bundle" href="#">Get all 5 — $99</a>
+          <a class="buy" data-buy="bundle" href="#">Send me all 5 — $99</a>
         </div>
-        <div class="payline"><b>14-day money-back guarantee, no questions</b> · instant download of all five zips</div>
+        <div class="payline"><b>Instant download — all 5 zips</b> · 14-day refund, no questions · no account needed</div>
       </div>
 
+    </div>
+
+    <div class="why reveal">
+      <h3>Why launch prices are this low</h3>
+      <p><b>These aren't thin PDFs priced to move volume — they're the production code I run myself,</b> shipped with the same test suites I rely on: 29/29 passing on the Screener, 6/6 on the Automation Kit, 77 on FreightDesk. FreightDesk installs as a done-for-you service at $999 — the kits are the same engineering, self-serve.</p>
+      <p><b>So why $19–49?</b> The store is new. Launch pricing exists for one named reason: the first wave of buyers seeds the review base. On <b>August 15</b> that reason expires and every struck price above becomes the real one.</p>
+      <p class="notfor"><b>Who this is NOT for:</b> these are code kits you run yourself — a terminal and basic Python is enough, but if you want a hosted no-code SaaS with a support SLA, this store isn't it. (That's what <a href="./freightdesk.html" style="color:var(--gold-2)">FreightDesk</a> is for.)</p>
     </div>
   </section>
 
@@ -887,23 +948,26 @@
       <img class="final-img" src="img/sunset-hills.jpg" alt="" loading="lazy" decoding="async" width="1600" height="900" aria-hidden="true">
       <div class="final-shade" aria-hidden="true"></div>
       <div class="kicker">Something custom?</div>
-      <h2>Tell me what you're trying to automate.</h2>
+      <h2>Tell me what you're still doing by hand.</h2>
       <p>The store covers the common cases. If your busywork is weirder than that, one email starts the conversation — I'll tell you straight whether it's automatable.</p>
       <div class="hero-cta" style="justify-content:center;margin-top:0">
-        <a href="mailto:yusuf.gadelrab06@gmail.com?subject=Custom%20automation" class="btn btn-gold">✉ Email me →</a>
-        <a href="https://www.linkedin.com/in/yusuf-gadelrab-76246b221" target="_blank" rel="noreferrer" class="btn btn-ghost">💼 LinkedIn</a>
-        <a href="https://github.com/Yusuf-Gadelrab" target="_blank" rel="noreferrer" class="btn btn-ghost">⌥ GitHub</a>
+        <a href="mailto:yusuf.gadelrab06@gmail.com?subject=Custom%20automation" class="btn btn-gold">✉ Scope my automation →</a>
       </div>
+      <p class="payline" style="margin-top:14px">One email · a straight answer on whether it's automatable · no retainer pitch</p>
+      <p class="final-links"><a href="https://www.linkedin.com/in/yusuf-gadelrab-76246b221" target="_blank" rel="noreferrer">LinkedIn</a> · <a href="https://github.com/Yusuf-Gadelrab" target="_blank" rel="noreferrer">GitHub</a></p>
     </div>
   </section>
 
 </main>
+
+<a class="sticky-cta" href="#bundle" aria-label="Jump to the Everything Bundle — all five tools for $99">Everything Bundle — $99 →</a>
 
 <footer>
   <p><b style="color:var(--ink)">Automation Studio</b> · San Jose, CA<br/>
   14-day money-back guarantee on all downloads · Launch pricing ends August 15<br/>
   <a href="freightdesk.html">FreightDesk for brokers</a> &nbsp;·&nbsp;
   <a href="templates.html">Template vault</a> &nbsp;·&nbsp;
+  <a href="kxngsef.html">KXNG SEF ✦ clothing</a> &nbsp;·&nbsp;
   <a href="mailto:yusuf.gadelrab06@gmail.com?subject=Store%20question">Email</a> &nbsp;·&nbsp;
   <a href="https://www.linkedin.com/in/yusuf-gadelrab-76246b221" target="_blank" rel="noreferrer">LinkedIn</a> &nbsp;·&nbsp;
   <a href="https://github.com/Yusuf-Gadelrab" target="_blank" rel="noreferrer">GitHub</a></p>
@@ -999,21 +1063,15 @@ a{transition:color .25s,opacity .25s,border-color .25s,text-shadow .25s}
 a:hover{text-shadow:0 0 14px rgba(212,175,55,.45)}
 .pv2-lift{transition:transform .35s var(--pv2e),box-shadow .35s var(--pv2e),border-color .35s}
 .pv2-lift:hover{transform:translateY(-5px);box-shadow:0 14px 44px rgba(212,175,55,.13);border-color:rgba(212,175,55,.45)}
-#pv2-bar{position:fixed;top:0;left:0;height:2px;width:0;z-index:99999;background:linear-gradient(90deg,#9a7b2e,#d4af37,#ffe9a8);box-shadow:0 0 12px rgba(212,175,55,.65);pointer-events:none}
 #pv2-glow{position:fixed;left:-999px;top:-999px;width:560px;height:560px;border-radius:50%;pointer-events:none;z-index:1;background:radial-gradient(circle,rgba(212,175,55,.065),transparent 62%);transform:translate(-50%,-50%);transition:left .16s ease-out,top .16s ease-out;mix-blend-mode:screen}
-#pv2-line{position:fixed;bottom:0;left:0;right:0;height:1px;z-index:99998;pointer-events:none;background:linear-gradient(90deg,transparent,rgba(212,175,55,.55),transparent);background-size:200% 100%;animation:pv2sweep 6s linear infinite}
-@keyframes pv2sweep{0%{background-position:200% 0}100%{background-position:-200% 0}}
-@media (prefers-reduced-motion:reduce){#pv2-bar,#pv2-glow,#pv2-line{display:none!important}}
+@media (prefers-reduced-motion:reduce){#pv2-glow{display:none!important}}
 @media (max-width:768px){#pv2-glow{display:none}}
 </style>
 <script id="pv2-js">
 (function(){var d=document,H=d.documentElement;
 if(matchMedia('(prefers-reduced-motion: reduce)').matches){H.classList.add('pv2-red');return}
-var bar=d.createElement('div');bar.id='pv2-bar';d.body.appendChild(bar);
-addEventListener('scroll',function(){var m=H.scrollHeight-H.clientHeight;bar.style.width=(m>0?(H.scrollTop||d.body.scrollTop)/m*100:0)+'%'},{passive:true});
 var g=d.createElement('div');g.id='pv2-glow';d.body.appendChild(g);
 addEventListener('pointermove',function(e){g.style.left=e.clientX+'px';g.style.top=e.clientY+'px'},{passive:true});
-var ln=d.createElement('div');ln.id='pv2-line';d.body.appendChild(ln);
 var io=new IntersectionObserver(function(es){es.forEach(function(en){if(en.isIntersecting){var el=en.target,sibs=el.parentElement?[].slice.call(el.parentElement.children):[],i=sibs.indexOf(el);el.style.transitionDelay=Math.min(i>0?i*60:0,360)+'ms';el.classList.add('pv2-in');io.unobserve(el)}})},{threshold:.12,rootMargin:'0px 0px -8% 0px'});
 var SEL='section,h1,h2,h3,figure,blockquote,[class*="card"],[class*="tile"],[class*="stat"],[class*="grid"]>div,[class*="grid"]>a,main>p,section>p';
 function scan(root){[].forEach.call((root||d).querySelectorAll(SEL),function(el){if(el.classList.contains('pv2-r'))return;if(el.closest('nav,#pv2-glow,[data-pv2-skip]'))return;var cs=getComputedStyle(el);if(cs.position==='fixed'||cs.position==='sticky')return;el.classList.add('pv2-r');if(/card|tile/.test(el.className))el.classList.add('pv2-lift');io.observe(el)})}
