@@ -123,7 +123,7 @@
     background:linear-gradient(100deg,var(--gold) 20%,var(--gold-2) 38%,#f8ecc0 50%,var(--gold-2) 62%,var(--gold) 80%);
     background-size:220% 100%;
     -webkit-background-clip:text; background-clip:text; -webkit-text-fill-color:transparent; color:transparent;
-    animation:shimmer 5.5s ease-in-out infinite;
+    animation:shimmer 5.5s ease-in-out 2 forwards;
   }
   @keyframes shimmer{0%{background-position:120% 0}55%{background-position:-80% 0}100%{background-position:-80% 0}}
   .lede{font-size:clamp(15.5px,1.7vw,17.5px); color:var(--muted); max-width:62ch}
@@ -168,7 +168,7 @@
   .btn-gold::after{
     content:""; position:absolute; top:0; left:-80%; width:45%; height:100%;
     background:linear-gradient(105deg,transparent,rgba(255,255,255,.55),transparent);
-    transform:skewX(-20deg); animation:sheen 4.2s ease-in-out infinite;
+    transform:skewX(-20deg); animation:sheen 4.2s ease-in-out 2 forwards;
   }
   @keyframes sheen{0%{left:-80%}42%{left:130%}100%{left:130%}}
   .btn-ghost{border-color:var(--line); color:var(--ink); background:rgba(255,255,255,.02)}
@@ -203,18 +203,21 @@
   .edit-pill{font-size:12.5px;font-weight:700;color:var(--muted);padding:7px 18px;border-radius:100px;border:1px solid var(--line)}
   .mail-cap{font-size:11.5px;color:var(--muted);text-align:center;margin-top:10px;font-style:italic}
 
-  /* ---------- TRUST SEALS ---------- */
+  /* ---------- PROOF CHIPS ---------- */
   .trust{
     max-width:1180px; margin:0 auto;
-    padding:clamp(20px,3vw,34px) clamp(18px,5vw,64px) clamp(28px,3.6vw,44px);
-    display:grid; grid-template-columns:repeat(4,1fr); gap:18px;
+    padding:clamp(14px,2.2vw,24px) clamp(18px,5vw,64px) clamp(22px,2.8vw,36px);
+    display:flex; flex-wrap:wrap; justify-content:center; gap:12px 14px;
   }
-  .trust-item{display:flex; flex-direction:column; align-items:center; text-align:center; gap:10px}
+  .proof-chip{
+    display:inline-flex; align-items:center; gap:9px; padding:10px 18px;
+    border:1px solid var(--line-soft); border-radius:100px;
+    background:linear-gradient(180deg,var(--ivory),var(--panel));
+    font-size:13px; color:#ddd8ca; font-weight:600; letter-spacing:.2px;
+  }
+  .proof-chip i{font-style:normal; color:var(--gold-2); font-family:var(--serif); font-weight:800}
   .seal{width:clamp(76px,8vw,94px); height:auto; flex:0 0 auto;
-    filter:drop-shadow(0 10px 18px rgba(212,175,55,.22)); transition:transform .35s}
-  .trust-item:hover .seal{transform:translateY(-4px) rotate(-4deg)}
-  .trust-label{font-size:12px; font-weight:800; letter-spacing:1px; text-transform:uppercase;
-    color:var(--gold-2); line-height:1.5; max-width:22ch}
+    filter:drop-shadow(0 10px 18px rgba(212,175,55,.22))}
 
   /* section headings */
   .sec-head{max-width:72ch; margin-bottom:30px}
@@ -249,7 +252,8 @@
     background:linear-gradient(180deg,var(--ivory),var(--panel)); padding:clamp(14px,2.4vw,26px);
     box-shadow:0 10px 28px -20px rgba(0,0,0,.6); overflow-x:auto}
   .pipeline svg{display:block; width:100%; min-width:560px; height:auto}
-  .flow{stroke-dasharray:6 6; animation:dashflow 1.3s linear infinite}
+  .flow{stroke-dasharray:6 6}
+  .reveal.in .flow{animation:dashflow 1.3s linear 6}
   @keyframes dashflow{to{stroke-dashoffset:-12}}
 
   /* tabs */
@@ -304,7 +308,7 @@
   .sale-banner::after{
     content:""; position:absolute; top:0; left:-80%; width:40%; height:100%;
     background:linear-gradient(105deg,transparent,rgba(255,255,255,.5),transparent);
-    transform:skewX(-20deg); animation:sheen 3.6s ease-in-out infinite;
+    transform:skewX(-20deg); animation:sheen 3.6s ease-in-out 2 forwards;
   }
   .price-wrap{display:grid;grid-template-columns:1.15fr .85fr;gap:20px;align-items:stretch}
   .price-card{
@@ -433,6 +437,51 @@
     -webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;color:transparent}
   .founder-txt .cred-sub{margin-top:14px;color:var(--muted);font-size:14px}
 
+  /* click-triggers, ROI calc, pilot timeline, booking form, sticky mobile CTA */
+  section{scroll-margin-top:76px}
+  .btn:active{transform:translateY(-1px) scale(.985)}
+  p.click-trigger{font-size:12.5px;color:var(--muted);margin:10px auto 0;letter-spacing:.3px;max-width:none}
+  .allin{margin-top:14px;padding-top:12px;border-top:1px dashed var(--line);font-size:13.5px;color:var(--muted)}
+  .allin b{color:var(--gold-2);font-family:var(--serif);font-size:15.5px}
+  .roi{border:1px solid var(--line-soft);border-radius:18px;padding:clamp(18px,2.6vw,26px);
+    background:linear-gradient(180deg,var(--ivory),var(--panel));margin-bottom:26px;
+    box-shadow:0 10px 28px -20px rgba(0,0,0,.6)}
+  .roi h3{font-family:var(--serif);font-size:19px;margin-bottom:4px}
+  .roi .roi-sub{font-size:13px;color:var(--muted);margin-bottom:14px}
+  .roi-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+  .roi-grid label{display:grid;gap:6px;font-size:11.5px;color:var(--muted);letter-spacing:.8px;text-transform:uppercase;font-weight:700}
+  .roi-grid input{padding:11px 14px;border:1px solid var(--line);border-radius:11px;background:rgba(255,255,255,.03);
+    color:var(--gold-2);font-size:17px;font-weight:700;font-family:var(--serif);width:100%}
+  .roi-grid input:focus{outline:none;border-color:var(--gold);box-shadow:0 0 0 3px rgba(212,175,55,.18)}
+  .roi-out{margin-top:16px;padding:14px 18px;border:1px dashed var(--line);border-radius:13px;
+    background:rgba(212,175,55,.06);font-size:15px;color:#ddd8ca;transition:background .3s}
+  .roi-out b{font-family:var(--serif);font-size:21px;color:var(--gold-2)}
+  .roi-note{font-size:11.5px;color:var(--muted);margin-top:8px}
+  .timeline{display:flex;flex-wrap:wrap;justify-content:center;align-items:center;gap:8px;margin:0 auto 24px;max-width:780px}
+  .tl-step{display:inline-flex;align-items:center;gap:7px;padding:8px 14px;border-radius:100px;
+    font-size:12.5px;font-weight:700;border:1px solid var(--line-soft);color:var(--muted);background:rgba(255,255,255,.02)}
+  .tl-step.done{color:#0a0a0a;background:linear-gradient(135deg,var(--gold),var(--gold-2));border-color:transparent}
+  .tl-arrow{color:var(--gold);font-size:13px}
+  .pilot-form{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;max-width:760px;margin:0 auto;text-align:left}
+  .pilot-form input{padding:13px 15px;border:1px solid var(--line);border-radius:12px;
+    background:rgba(255,255,255,.04);color:var(--ink);font-size:16px;font-family:var(--sans);width:100%}
+  .pilot-form input::placeholder{color:#8b877b}
+  .pilot-form input:focus{outline:none;border-color:var(--gold);box-shadow:0 0 0 3px rgba(212,175,55,.18)}
+  .pilot-form .btn{grid-column:1/-1;justify-content:center;margin-top:2px}
+  p.form-sent{display:none;margin:12px auto 0;font-size:13.5px;color:var(--gold-2);max-width:none}
+  p.form-sent b{color:var(--gold-3)}
+  .mcta{display:none}
+  @media(max-width:880px){
+    .mcta{position:fixed;left:0;right:0;bottom:0;z-index:70;display:flex;flex-direction:column;align-items:center;justify-content:center;
+      gap:1px;min-height:52px;padding:10px 16px calc(10px + env(safe-area-inset-bottom));
+      background:linear-gradient(135deg,var(--gold),var(--gold-2));color:#0a0a0a;font-weight:800;font-size:15.5px;
+      box-shadow:0 -10px 30px -12px rgba(0,0,0,.7)}
+    .mcta small{font-size:11px;font-weight:600;opacity:.82}
+    body{padding-bottom:78px}
+    .roi-grid{grid-template-columns:1fr}
+    .pilot-form{grid-template-columns:1fr}
+  }
+
   /* reveal on scroll */
   .reveal{opacity:0;transform:translateY(28px);transition:opacity .8s cubic-bezier(.2,.7,.2,1),transform .8s cubic-bezier(.2,.7,.2,1)}
   .reveal.in{opacity:1;transform:none}
@@ -450,7 +499,6 @@
     .nav-links a{text-align:center}
     .menu-btn{display:block}
     .hero-grid{grid-template-columns:1fr}
-    .trust{grid-template-columns:repeat(2,1fr);gap:22px 14px}
     .g2,.g3,.edge-grid,.price-wrap{grid-template-columns:1fr}
     .jobrow{grid-template-columns:1fr;gap:18px}
     .jobrow.flip .jobviz{order:0}
@@ -500,11 +548,9 @@
   <div class="nav-links" id="navLinks">
     <a href="#problem">The Problem</a>
     <a href="#covers">What It Does</a>
-    <a href="#product">Inside</a>
-    <a href="#edge">The Edge</a>
     <a href="#pricing">Pricing</a>
     <a href="#faq">FAQ</a>
-    <a href="mailto:yusuf.gadelrab06@gmail.com?subject=FreightDesk%20pilot%20slot" class="nav-cta">Book a Pilot</a>
+    <a href="#book" class="nav-cta">Book my pilot</a>
   </div>
 </nav>
 
@@ -534,9 +580,10 @@
         </div>
 
         <div class="hero-cta reveal d3">
-          <a href="mailto:yusuf.gadelrab06@gmail.com?subject=FreightDesk%20pilot%20slot" class="btn btn-gold">✉ Book a pilot slot →</a>
+          <a href="#book" class="btn btn-gold">Book my pilot walkthrough →</a>
           <a href="#covers" class="btn btn-ghost">See exactly what it automates ↓</a>
         </div>
+        <p class="click-trigger reveal d3">15 minutes · watch it draft a real reply from your inbox · no commitment</p>
       </div>
 
       <div class="mailwrap reveal d2">
@@ -559,53 +606,10 @@
     </div>
   </section>
 
-  <!-- TRUST SEALS -->
+  <!-- PROOF CHIPS -->
   <div class="trust">
-    <div class="trust-item reveal">
-      <svg class="seal" viewBox="0 0 100 100" role="img" aria-label="Private development seal">
-        <circle cx="50" cy="50" r="46.5" fill="none" stroke="url(#sealGrad)" stroke-width="3" stroke-dasharray="2.4 3.68" stroke-linecap="round"/>
-        <circle cx="50" cy="50" r="40" fill="url(#sealGrad)"/>
-        <circle cx="50" cy="50" r="40" fill="none" stroke="#8f6e1e" stroke-width=".8" opacity=".6"/>
-        <circle cx="50" cy="50" r="33.5" fill="none" stroke="rgba(255,255,255,.6)" stroke-width=".9" stroke-dasharray="1.2 2.4"/>
-        <text x="50" y="57" text-anchor="middle" font-family="Georgia,serif" font-size="15" font-weight="bold" fill="#fff">OPEN</text>
-      </svg>
-      <div class="trust-label">Founding-Client Pilots Open Now</div>
-    </div>
-    <div class="trust-item reveal d1">
-      <svg class="seal" viewBox="0 0 100 100" role="img" aria-label="100% on-premises seal">
-        <circle cx="50" cy="50" r="46.5" fill="none" stroke="url(#sealGrad)" stroke-width="3" stroke-dasharray="2.4 3.68" stroke-linecap="round"/>
-        <circle cx="50" cy="50" r="40" fill="url(#sealGrad)"/>
-        <circle cx="50" cy="50" r="40" fill="none" stroke="#8f6e1e" stroke-width=".8" opacity=".6"/>
-        <circle cx="50" cy="50" r="33.5" fill="none" stroke="rgba(255,255,255,.6)" stroke-width=".9" stroke-dasharray="1.2 2.4"/>
-        <rect x="39" y="46.5" width="22" height="17.5" rx="3" fill="#fff"/>
-        <path d="M43.5 46.5 v-5 a6.5 6.5 0 0 1 13 0 v5" fill="none" stroke="#fff" stroke-width="3.4"/>
-        <circle cx="50" cy="54" r="2.5" fill="#b8912f"/>
-        <rect x="48.9" y="55" width="2.2" height="5" rx="1.1" fill="#b8912f"/>
-      </svg>
-      <div class="trust-label">100% On-Prem — Data Never Leaves Your Building</div>
-    </div>
-    <div class="trust-item reveal d2">
-      <svg class="seal" viewBox="0 0 100 100" role="img" aria-label="77 automated tests passing seal">
-        <circle cx="50" cy="50" r="46.5" fill="none" stroke="url(#sealGrad)" stroke-width="3" stroke-dasharray="2.4 3.68" stroke-linecap="round"/>
-        <circle cx="50" cy="50" r="40" fill="url(#sealGrad)"/>
-        <circle cx="50" cy="50" r="40" fill="none" stroke="#8f6e1e" stroke-width=".8" opacity=".6"/>
-        <circle cx="50" cy="50" r="33.5" fill="none" stroke="rgba(255,255,255,.6)" stroke-width=".9" stroke-dasharray="1.2 2.4"/>
-        <text x="50" y="51" text-anchor="middle" font-family="Georgia,serif" font-size="22" font-weight="bold" fill="#fff">77</text>
-        <path d="M42.5 60 l5 5 L58.5 54.5" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
-      </svg>
-      <div class="trust-label">77 Automated Tests Passing</div>
-    </div>
-    <div class="trust-item reveal d3">
-      <svg class="seal" viewBox="0 0 100 100" role="img" aria-label="Built by an ACM-published engineer seal">
-        <circle cx="50" cy="50" r="46.5" fill="none" stroke="url(#sealGrad)" stroke-width="3" stroke-dasharray="2.4 3.68" stroke-linecap="round"/>
-        <circle cx="50" cy="50" r="40" fill="url(#sealGrad)"/>
-        <circle cx="50" cy="50" r="40" fill="none" stroke="#8f6e1e" stroke-width=".8" opacity=".6"/>
-        <circle cx="50" cy="50" r="33.5" fill="none" stroke="rgba(255,255,255,.6)" stroke-width=".9" stroke-dasharray="1.2 2.4"/>
-        <path d="M50 39 c-5 -3.6 -12.5 -3.6 -16.5 -1 v24 c4 -2.6 11.5 -2.6 16.5 1 c5 -3.6 12.5 -3.6 16.5 -1 v-24 c-4 -2.6 -11.5 -2.6 -16.5 1 z" fill="#fff"/>
-        <line x1="50" y1="39" x2="50" y2="63" stroke="#b8912f" stroke-width="1.6"/>
-      </svg>
-      <div class="trust-label">Built by an ACM-Published Engineer</div>
-    </div>
+    <span class="proof-chip reveal"><i>✓</i> 77 automated tests passing on this pipeline</span>
+    <span class="proof-chip reveal d1"><i>⌂</i> 100% on-prem — your data never leaves your building</span>
   </div>
 
   <div class="rule"></div>
@@ -883,6 +887,10 @@
         <div class="feat reveal d3"><span class="fic">✓</span><span><b>Sends it</b> — fully automatic, or held for one-click approval. Your call, per email type.</span></div>
       </div>
     </div>
+
+    <div class="callout reveal" style="margin-top:24px">
+      <b>Not a fit if:</b> you run 500+ loads a month with a full AR department, need deep TMS API integration on day one, or want a cloud SaaS. FreightDesk is an on-prem clerk for small brokerages — that's the point.
+    </div>
   </section>
 
   <div class="rule"></div>
@@ -976,6 +984,18 @@
       <p>A part-time AR clerk runs $1,800–2,200 a month — and the repetitive 60% of that job is exactly what FreightDesk does. Launch pricing holds until August 15.</p>
     </div>
 
+    <div class="roi reveal" id="roi">
+      <h3>What's your inbox costing you?</h3>
+      <p class="roi-sub">Rough math, your numbers — adjust the three fields.</p>
+      <div class="roi-grid">
+        <label>AR emails / day<input id="roiEmails" type="number" inputmode="numeric" min="1" max="500" value="40"></label>
+        <label>Minutes per email<input id="roiMins" type="number" inputmode="numeric" min="1" max="30" value="4"></label>
+        <label>Clerk cost $ / hour<input id="roiRate" type="number" inputmode="numeric" min="10" max="80" value="22"></label>
+      </div>
+      <div class="roi-out" id="roiOut">That's ~<b>$1,291</b>/mo of clerk time going to repeat emails — you keep ~<b>$1,042</b>/mo after FreightDesk's $249.</div>
+      <p class="roi-note">Estimate: emails × minutes × 22 working days ÷ 60 × hourly cost, minus the $249/mo. Your walkthrough runs the real numbers.</p>
+    </div>
+
     <div class="sale-banner reveal">⏳ Launch pricing ends August 15</div>
 
     <div class="grid g3" style="margin-bottom:28px">
@@ -1011,14 +1031,16 @@
           <div class="inc"><i>✓</i> Tuned to your customers' document rules during setup</div>
           <div class="inc"><i>✓</i> Cancel the monthly any time — the install stays yours</div>
         </div>
-        <div class="hero-cta" style="margin-top:22px">
-          <a href="mailto:yusuf.gadelrab06@gmail.com?subject=FreightDesk%20pilot%20slot" class="btn btn-gold">✉ Book a pilot slot →</a>
+        <div class="allin">Year-one all-in: $999 + 12 × $249 = <b>$3,987</b> — vs <b>$21,600–26,400</b> for a part-time AR clerk.</div>
+        <div class="hero-cta" style="margin-top:18px">
+          <a href="#book" class="btn btn-gold">Book my pilot walkthrough →</a>
         </div>
+        <p class="click-trigger">15 minutes · watch it draft a real reply · no commitment</p>
       </div>
       <div class="price-note reveal d1">
         <h3>The 14-day guarantee</h3>
         <p>If FreightDesk isn't drafting real replies on your real inbox by day 14, the $999 setup fee comes back in full — no questions, no forms.</p>
-        <p class="spots">Pilots are onboarded one brokerage at a time — first come, first installed.</p>
+        <p class="spots">Installs run one brokerage at a time — each one is tuned by hand to your customers' document rules. First come, first installed.</p>
         <div class="guarantee-echo">
           <svg class="seal" viewBox="0 0 100 100" role="img" aria-label="Guarantee seal">
             <circle cx="50" cy="50" r="46.5" fill="none" stroke="url(#sealGrad)" stroke-width="3" stroke-dasharray="2.4 3.68" stroke-linecap="round"/>
@@ -1047,6 +1069,7 @@
         <h2>Built by someone who <span class="grad">shipped this inside a real freight brokerage.</span></h2>
         <blockquote>Built and battle-tested inside a <b>real freight brokerage</b> — against the live inbox of a working financial controller. Every one of the 18 workflows was validated on real back-office email before this page existed.</blockquote>
         <p class="cred-sub">Client confidentiality is part of the product — which is why you'll never see a client named here, and yours never will be either.</p>
+        <p class="cred-sub">Checkable, not claimed: co-author, SIGCSE TS 2026 (ACM) — <a href="https://doi.org/10.1145/3770761.3777339" target="_blank" rel="noreferrer" style="color:var(--gold-2);font-weight:600">DOI: 10.1145/3770761.3777339</a> · 77 automated tests on this pipeline.</p>
         <div class="hero-cta" style="margin-top:18px">
           <a href="hwyhaul.html" class="btn btn-ghost">📄 Read the freight-tech case study →</a>
         </div>
@@ -1090,15 +1113,27 @@
     </div>
   </section>
 
-  <!-- FINAL CTA -->
-  <section>
+  <!-- FINAL CTA / BOOKING -->
+  <section id="book">
     <div class="final reveal">
       <div class="kicker">Get Started</div>
       <h2>Watch it <span class="grad">classify a real billing email.</span></h2>
-      <p>One email books a 15-minute walkthrough: FreightDesk reads a live message from your inbox and drafts the correct reply in front of you. If it fits, your pilot installs in 3 days.</p>
-      <div class="hero-cta" style="justify-content:center;margin-top:0">
-        <a href="mailto:yusuf.gadelrab06@gmail.com?subject=FreightDesk%20pilot%20slot" class="btn btn-gold">✉ Book a pilot slot →</a>
+      <p>A 15-minute walkthrough: FreightDesk reads a live message from your inbox and drafts the correct reply in front of you. If it fits, your pilot installs in 3 days.</p>
+      <div class="timeline" aria-label="Your pilot timeline">
+        <span class="tl-step done">✓ Found FreightDesk</span><span class="tl-arrow">→</span>
+        <span class="tl-step done">✓ Seen all 18 workflows</span><span class="tl-arrow">→</span>
+        <span class="tl-step">15-min walkthrough</span><span class="tl-arrow">→</span>
+        <span class="tl-step">3-day install</span><span class="tl-arrow">→</span>
+        <span class="tl-step">Live by Friday</span>
       </div>
+      <form class="pilot-form" id="pilotForm">
+        <input type="text" id="pfName" name="name" placeholder="Your name" required autocomplete="name">
+        <input type="text" id="pfBrokerage" name="brokerage" placeholder="Brokerage name" required autocomplete="organization">
+        <input type="text" id="pfVolume" name="volume" placeholder="AR emails / day (rough)" inputmode="numeric">
+        <button type="submit" class="btn btn-gold">Book my pilot walkthrough →</button>
+      </form>
+      <p class="click-trigger">15 minutes · watch it draft a real reply · no commitment · three fields, nothing more</p>
+      <p class="form-sent" id="formSent">Opening your mail app… nothing happened? Email <b>yusuf.gadelrab06@gmail.com</b> directly — your details were copied to your clipboard.</p>
       <div class="contact-line">
         <a href="mailto:yusuf.gadelrab06@gmail.com?subject=FreightDesk%20pilot%20slot">yusuf.gadelrab06@gmail.com</a>
         <a href="tel:+16693281148">(669) 328-1148</a>
@@ -1108,6 +1143,8 @@
   </section>
 
 </main>
+
+<a href="#book" class="mcta" aria-label="Book my pilot walkthrough">Book my pilot walkthrough →<small>15 min · $999 setup · 14-day setup-fee-back</small></a>
 
 <footer>
   <p><b style="color:var(--ink);font-family:var(--serif)">FreightDesk AI</b> · by Yusuf Gadelrab · San Jose, CA<br/>
@@ -1174,6 +1211,33 @@
     entries.forEach(function(e){ if(e.isIntersecting){ animate(e.target); sio.unobserve(e.target);} });
   },{threshold:.5});
   document.querySelectorAll('.num[data-count]').forEach(function(el){sio.observe(el)});
+
+  // ROI mini-calculator
+  var roiE=document.getElementById('roiEmails'),roiM=document.getElementById('roiMins'),
+      roiR=document.getElementById('roiRate'),roiOut=document.getElementById('roiOut');
+  function fmtUsd(n){return '$'+Math.round(n).toLocaleString('en-US')}
+  function roiCalc(){
+    if(!roiOut)return;
+    var e=+roiE.value||0,m=+roiM.value||0,r=+roiR.value||0;
+    var gross=e*m*22/60*r, net=gross-249;
+    roiOut.innerHTML = net>0
+      ? "That's ~<b>"+fmtUsd(gross)+"</b>/mo of clerk time going to repeat emails — you keep ~<b>"+fmtUsd(net)+"</b>/mo after FreightDesk's $249."
+      : "That's ~<b>"+fmtUsd(gross)+"</b>/mo of clerk time on repeat emails — at this volume, book the walkthrough and we'll check whether the math works for you.";
+  }
+  [roiE,roiM,roiR].forEach(function(el){ if(el) el.addEventListener('input',roiCalc) });
+
+  // pilot booking form → prefilled email (with clipboard fallback for missing mail clients)
+  var pf=document.getElementById('pilotForm');
+  if(pf){ pf.addEventListener('submit',function(ev){
+    ev.preventDefault();
+    var n=document.getElementById('pfName').value.trim(),
+        b=document.getElementById('pfBrokerage').value.trim(),
+        v=document.getElementById('pfVolume').value.trim();
+    var body='Name: '+n+'\nBrokerage: '+b+'\nAR emails/day: '+(v||'—')+"\n\nI'd like the 15-minute pilot walkthrough.";
+    try{ if(navigator.clipboard&&navigator.clipboard.writeText) navigator.clipboard.writeText('To: yusuf.gadelrab06@gmail.com\n'+body); }catch(err){}
+    document.getElementById('formSent').style.display='block';
+    location.href='mailto:yusuf.gadelrab06@gmail.com?subject='+encodeURIComponent('FreightDesk pilot walkthrough — '+b)+'&body='+encodeURIComponent(body);
+  }); }
 </script>
 <!-- polish2:minimal-gold -->
 <style id="pv2-css">
@@ -1190,9 +1254,7 @@ a:hover{text-shadow:0 0 14px rgba(212,175,55,.45)}
 .pv2-lift:hover{transform:translateY(-5px);box-shadow:0 14px 44px rgba(212,175,55,.13);border-color:rgba(212,175,55,.45)}
 #pv2-bar{position:fixed;top:0;left:0;height:2px;width:0;z-index:99999;background:linear-gradient(90deg,#9a7b2e,#d4af37,#ffe9a8);box-shadow:0 0 12px rgba(212,175,55,.65);pointer-events:none}
 #pv2-glow{position:fixed;left:-999px;top:-999px;width:560px;height:560px;border-radius:50%;pointer-events:none;z-index:1;background:radial-gradient(circle,rgba(212,175,55,.065),transparent 62%);transform:translate(-50%,-50%);transition:left .16s ease-out,top .16s ease-out;mix-blend-mode:screen}
-#pv2-line{position:fixed;bottom:0;left:0;right:0;height:1px;z-index:99998;pointer-events:none;background:linear-gradient(90deg,transparent,rgba(212,175,55,.55),transparent);background-size:200% 100%;animation:pv2sweep 6s linear infinite}
-@keyframes pv2sweep{0%{background-position:200% 0}100%{background-position:-200% 0}}
-@media (prefers-reduced-motion:reduce){#pv2-bar,#pv2-glow,#pv2-line{display:none!important}}
+@media (prefers-reduced-motion:reduce){#pv2-bar,#pv2-glow{display:none!important}}
 @media (max-width:768px){#pv2-glow{display:none}}
 </style>
 <script id="pv2-js">
@@ -1202,7 +1264,6 @@ var bar=d.createElement('div');bar.id='pv2-bar';d.body.appendChild(bar);
 addEventListener('scroll',function(){var m=H.scrollHeight-H.clientHeight;bar.style.width=(m>0?(H.scrollTop||d.body.scrollTop)/m*100:0)+'%'},{passive:true});
 var g=d.createElement('div');g.id='pv2-glow';d.body.appendChild(g);
 addEventListener('pointermove',function(e){g.style.left=e.clientX+'px';g.style.top=e.clientY+'px'},{passive:true});
-var ln=d.createElement('div');ln.id='pv2-line';d.body.appendChild(ln);
 var io=new IntersectionObserver(function(es){es.forEach(function(en){if(en.isIntersecting){var el=en.target,sibs=el.parentElement?[].slice.call(el.parentElement.children):[],i=sibs.indexOf(el);el.style.transitionDelay=Math.min(i>0?i*60:0,360)+'ms';el.classList.add('pv2-in');io.unobserve(el)}})},{threshold:.12,rootMargin:'0px 0px -8% 0px'});
 var SEL='section,h1,h2,h3,figure,blockquote,[class*="card"],[class*="tile"],[class*="stat"],[class*="grid"]>div,[class*="grid"]>a,main>p,section>p';
 function scan(root){[].forEach.call((root||d).querySelectorAll(SEL),function(el){if(el.classList.contains('pv2-r'))return;if(el.closest('nav,#pv2-glow,[data-pv2-skip]'))return;var cs=getComputedStyle(el);if(cs.position==='fixed'||cs.position==='sticky')return;el.classList.add('pv2-r');if(/card|tile/.test(el.className))el.classList.add('pv2-lift');io.observe(el)})}

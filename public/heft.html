@@ -29,24 +29,31 @@
   .wrap{max-width:1100px;margin:0 auto;padding:0 24px}
 
   nav{position:fixed;top:0;left:0;right:0;z-index:10;background:rgba(13,13,13,.85);backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
-  nav .wrap{display:flex;justify-content:space-between;align-items:center;height:64px}
+  nav .wrap{display:flex;align-items:center;gap:28px;height:64px}
   .logo{font-weight:800;letter-spacing:.35em;font-size:18px}
-  nav ul{display:flex;gap:32px;list-style:none;font-size:12px;letter-spacing:.15em;text-transform:uppercase;color:var(--mut)}
+  nav ul{display:flex;gap:32px;list-style:none;font-size:12px;letter-spacing:.15em;text-transform:uppercase;color:var(--mut);margin-left:auto}
   nav ul a:hover{color:var(--ink)}
 
   header{min-height:100svh;display:flex;flex-direction:column;justify-content:center;position:relative}
-  .hero-kicker{font-size:12px;letter-spacing:.4em;text-transform:uppercase;color:var(--acc);margin-bottom:24px}
+  .hero-kicker{font-size:12px;letter-spacing:.4em;text-transform:uppercase;color:var(--mut);margin-bottom:24px}
   h1{font-size:clamp(56px,12vw,160px);font-weight:800;letter-spacing:-.02em;line-height:.95;text-transform:uppercase}
   .hero-sub{margin-top:28px;max-width:460px;color:var(--mut);font-size:17px}
+  .hero-after{margin-top:18px;max-width:460px;font-size:18px;font-weight:600;color:var(--ink)}
+  .hero-note{margin-top:18px;font-size:12px;letter-spacing:.08em;color:var(--mut)}
   .hero-cta{margin-top:40px;display:flex;gap:16px;flex-wrap:wrap}
-  .btn{display:inline-block;padding:16px 36px;border:1px solid var(--ink);font-size:12px;letter-spacing:.2em;text-transform:uppercase;transition:.2s}
-  .btn:hover{background:var(--ink);color:var(--bg)}
+  .btn{display:inline-block;padding:16px 36px;border:1px solid var(--ink);font-size:12px;letter-spacing:.2em;text-transform:uppercase;transition:background .2s,color .2s,border-color .2s,transform .18s ease}
+  .btn:hover{background:var(--ink);color:var(--bg);transform:translateY(-2px)}
   .btn.solid{background:var(--ink);color:var(--bg)}
   .btn.solid:hover{background:transparent;color:var(--ink)}
+  .btn.gold{background:var(--acc);border-color:var(--acc);color:var(--bg);font-weight:700}
+  .btn.gold:hover{background:transparent;color:var(--acc)}
+  .nav-cta{display:inline-block;background:var(--acc);color:var(--bg);padding:10px 20px;font-size:11px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;transition:opacity .2s,transform .18s ease}
+  .nav-cta:hover{opacity:.85;transform:translateY(-1px)}
+  a:focus-visible,button:focus-visible{outline:2px solid var(--acc);outline-offset:3px}
   .scroll-hint{position:absolute;bottom:32px;left:50%;transform:translateX(-50%);color:var(--mut);font-size:11px;letter-spacing:.3em;text-transform:uppercase}
 
   section{padding:120px 0;border-top:1px solid var(--line)}
-  .sec-label{font-size:11px;letter-spacing:.4em;text-transform:uppercase;color:var(--acc);margin-bottom:16px}
+  .sec-label{font-size:11px;letter-spacing:.4em;text-transform:uppercase;color:var(--mut);margin-bottom:16px}
   h2{font-size:clamp(32px,5vw,56px);font-weight:800;text-transform:uppercase;letter-spacing:-.01em;margin-bottom:24px}
   .lede{max-width:560px;color:var(--mut);font-size:17px}
 
@@ -55,12 +62,27 @@
   .spec b{display:block;font-size:34px;font-weight:800;margin-bottom:8px}
   .spec span{font-size:13px;color:var(--mut);letter-spacing:.05em}
 
+  .gsmbars{margin-top:48px;max-width:640px}
+  .gsmbar{margin-bottom:20px}
+  .gsmbar .lbl{display:flex;justify-content:space-between;gap:12px;font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--mut);margin-bottom:8px}
+  .gsmbar .lbl b{color:var(--ink);font-weight:700;white-space:nowrap}
+  .gsmbar .track{height:14px;border:1px solid var(--line);background:#141414}
+  .gsmbar .fill{height:100%;background:#3a3a3a;transform-origin:left;animation:grow .9s ease-out both}
+  .gsmbar.heft .fill{background:var(--ink)}
+  @keyframes grow{from{transform:scaleX(0)}to{transform:scaleX(1)}}
+  .price-anchor{margin-top:36px;max-width:640px;border-left:2px solid var(--acc);padding:14px 20px;font-size:16px;color:var(--mut)}
+  .price-anchor b{color:var(--ink)}
+
   .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:24px;margin-top:56px}
-  .card{border:1px solid var(--line);aspect-ratio:4/5;display:flex;flex-direction:column;justify-content:flex-end;padding:28px;position:relative;overflow:hidden;background:linear-gradient(160deg,#161616,#0d0d0d)}
-  .card .tag{font-size:11px;letter-spacing:.3em;text-transform:uppercase;color:var(--acc)}
+  .card{border:1px solid var(--line);aspect-ratio:4/5;display:flex;flex-direction:column;justify-content:flex-end;padding:28px;position:relative;overflow:hidden;background:linear-gradient(160deg,#161616,#0d0d0d);transition:border-color .25s}
+  .card:hover{border-color:#3d3d3d}
+  .card .tag{font-size:11px;letter-spacing:.3em;text-transform:uppercase;color:var(--mut)}
   .card h3{font-size:22px;font-weight:700;text-transform:uppercase;margin-top:6px}
   .card p{color:var(--mut);font-size:14px;margin-top:6px}
-  .card .ghost{position:absolute;top:-10px;right:-6px;font-size:120px;font-weight:800;color:#181818;line-height:1;user-select:none}
+  .card .ghost{position:absolute;top:-10px;right:-6px;font-size:120px;font-weight:800;color:#181818;line-height:1;user-select:none;transition:transform .35s ease}
+  .card:hover .ghost{transform:translateY(-6px)}
+  .not-for{margin-top:40px;max-width:640px;border:1px solid var(--line);padding:18px 22px;color:var(--mut);font-size:14.5px}
+  .not-for b{display:block;color:var(--ink);letter-spacing:.12em;text-transform:uppercase;font-size:11px;margin-bottom:6px}
 
   .story p{max-width:640px;color:var(--mut);font-size:18px;margin-bottom:20px}
   .story strong{color:var(--ink)}
@@ -68,15 +90,14 @@
   .drop{background:#111;border:1px solid var(--line);padding:64px 40px;text-align:center;margin-top:16px}
   .drop h2{margin-bottom:12px}
   .drop p{color:var(--mut);max-width:440px;margin:0 auto 32px}
-  form{display:flex;gap:0;max-width:440px;margin:0 auto}
-  input[type=email]{flex:1;background:transparent;border:1px solid var(--ink);border-right:0;color:var(--ink);padding:16px 20px;font-size:14px;outline:none}
-  input[type=email]::placeholder{color:var(--mut)}
-  form .btn{border-left:0}
+  .drop .btn{padding:18px 48px;font-size:13px}
+  .click-trigger{margin-top:16px;font-size:12.5px;letter-spacing:.05em;color:var(--mut)}
+  @media(prefers-reduced-motion:reduce){.gsmbar .fill{animation:none}.btn:hover,.nav-cta:hover,.card:hover .ghost{transform:none}}
 
   footer{border-top:1px solid var(--line);padding:48px 0;color:var(--mut);font-size:12px;letter-spacing:.1em}
   footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:16px}
 
-  @media(max-width:640px){nav ul{display:none}form{flex-direction:column}input[type=email]{border-right:1px solid var(--ink);border-bottom:0}form .btn{border-left:1px solid var(--ink)}}
+  @media(max-width:640px){nav ul{display:none}.nav-cta{margin-left:auto;padding:9px 16px}}
 </style>
 </head>
 <body>
@@ -87,18 +108,20 @@
     <li><a href="#weight">The Weight</a></li>
     <li><a href="#pieces">Pieces</a></li>
     <li><a href="#story">Story</a></li>
-    <li><a href="#drop">First Drop</a></li>
   </ul>
+  <a class="nav-cta" href="#drop">Join First Drop</a>
 </div></nav>
 
 <header id="top"><div class="wrap">
   <div class="hero-kicker">Heavyweight · Minimal · Built to outlast</div>
   <h1>Weight<br>is the<br>design.</h1>
-  <p class="hero-sub">One hoodie, done right. 450+ GSM cotton fleece. No graphics, no noise, no planned obsolescence. You'll feel the difference the second you pick it up.</p>
+  <p class="hero-sub">One hoodie, done right. 450+ GSM cotton fleece. No graphics, no noise, no planned obsolescence.</p>
+  <p class="hero-after">The hoodie you reach for every cold morning — for the next ten years.</p>
   <div class="hero-cta">
-    <a class="btn solid" href="#drop">Join First Drop</a>
+    <a class="btn gold" href="#drop">Join First Drop</a>
     <a class="btn" href="#weight">Why Heavy</a>
   </div>
+  <p class="hero-note">First 100 sign-ups lock founding pricing for good.</p>
 </div>
 <div class="scroll-hint">Scroll</div>
 </header>
@@ -107,12 +130,17 @@
   <div class="sec-label">The Weight</div>
   <h2>Most hoodies are 280 GSM. Ours start at 450.</h2>
   <p class="lede">GSM — grams per square meter — is the honest measure of a hoodie. Fast fashion hides behind prints because the fabric can't speak for itself. We went the other way: heavier fabric, tighter knit, cleaner lines.</p>
+  <div class="gsmbars" aria-label="Fabric weight comparison: typical hoodie 280 GSM versus HEFT 450 GSM">
+    <div class="gsmbar"><div class="lbl"><span>Typical hoodie</span><b>280 GSM</b></div><div class="track"><div class="fill" style="width:62%"></div></div></div>
+    <div class="gsmbar heft"><div class="lbl"><span>HEFT — The Standard</span><b>450 GSM</b></div><div class="track"><div class="fill" style="width:100%;animation-delay:.15s"></div></div></div>
+  </div>
   <div class="specs">
     <div class="spec"><b>450+</b><span>GSM heavyweight cotton fleece</span></div>
     <div class="spec"><b>100%</b><span>ring-spun cotton face, pre-shrunk</span></div>
     <div class="spec"><b>0</b><span>logos on the front. A single tonal stitch mark.</span></div>
     <div class="spec"><b>10 yr</b><span>the lifespan we design for — repair, not replace</span></div>
   </div>
+  <p class="price-anchor">Hoodies at this weight retail for <b>$150–180</b> — with someone else's logo on the chest. The Standard targets <b>$100 flat</b>. Cost plus honesty, nothing hidden.</p>
 </div></section>
 
 <section id="pieces"><div class="wrap">
@@ -124,6 +152,7 @@
     <div class="card"><div class="ghost">02</div><div><div class="tag">Oversized</div><h3>The Slab</h3><p>Dropped shoulder, boxy cut, 500 GSM. The heaviest thing in your closet.</p></div></div>
     <div class="card"><div class="ghost">03</div><div><div class="tag">Zip</div><h3>The Utility</h3><p>Full-zip, matte hardware, hidden phone pocket. Same weight, more range.</p></div></div>
   </div>
+  <p class="not-for"><b>Fair warning</b>Not for you if you want a light summer hoodie or a big front graphic. HEFT is heavy, plain, and warm — on purpose.</p>
 </div></section>
 
 <section id="story" class="story"><div class="wrap">
@@ -138,11 +167,10 @@
   <div class="drop">
     <div class="sec-label">First Drop</div>
     <h2>Get in before it exists.</h2>
-    <p>First run is limited and priced at cost + honesty. Drop your email — first 100 people get founding pricing forever.</p>
-    <form action="mailto:yusuf.gadelrab06@gmail.com" method="post" enctype="text/plain">
-      <input type="email" name="email" placeholder="your@email.com" required>
-      <button class="btn solid" type="submit">Notify Me</button>
-    </form>
+    <p>First run is limited and priced at cost + honesty. The first 100 names on the list lock founding pricing — forever.</p>
+    <a class="btn gold" href="mailto:yusuf.gadelrab06@gmail.com?subject=HEFT%20First%20Drop&body=Add%20me%20to%20the%20Founding%20100.">Join First Drop</a>
+    <p class="click-trigger">One email when the drop opens — founding price locked for you.</p>
+    <!-- Founding-100 counter: add "Founding 100 — N claimed" + thin progress bar here ONLY once real signups exist (N > 0). Never display an invented number. -->
   </div>
 </div></section>
 

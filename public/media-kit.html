@@ -69,6 +69,45 @@
   @media (prefers-reduced-motion: reduce){.reveal{opacity:1;transform:none;transition:none}}
 </style>
 <style>/* polish:css */::selection{background:#d4af37;color:#0a0a0b}html{scroll-behavior:smooth}</style>
+<style>/* neuro:css — rate card, before/after pair, CTA row, micro-interactions */
+.btn{transition:transform .28s cubic-bezier(.22,.61,.36,1),box-shadow .28s,background .28s}
+.btn:hover{transform:translateY(-2px);box-shadow:0 12px 30px rgba(212,175,55,.32)}
+.btn:active{transform:translateY(0) scale(.97)}
+.btn:focus-visible,a:focus-visible{outline:2px solid var(--gold-soft);outline-offset:3px}
+.micro{display:block;color:var(--dim);font-size:.8rem;margin-top:10px;letter-spacing:.02em}
+.story-ba{flex:0 0 300px}
+.ba{display:flex;gap:10px;align-items:stretch}
+.ba-card{flex:1;background:var(--card);border:1px solid rgba(255,255,255,.08);border-radius:14px;padding:18px 10px;text-align:center}
+.ba-card b{display:block;font-size:1.45rem;color:var(--dim)}
+.ba-card.after{border-color:var(--line);background:linear-gradient(160deg,rgba(212,175,55,.12),var(--card))}
+.ba-card.after b{color:var(--gold)}
+.ba-card span{color:var(--dim);font-size:.72rem;text-transform:uppercase;letter-spacing:.08em}
+.ba-arrow{align-self:center;color:var(--gold);font-size:1.3rem}
+.ba-cap{color:var(--dim);font-size:.8rem;text-align:center;margin-top:10px}
+.lock-line{margin-top:18px;padding:12px 16px;border-left:2px solid var(--gold);background:rgba(212,175,55,.05);color:#d8d8d8;font-size:.92rem;border-radius:0 10px 10px 0;max-width:760px}
+.rates-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:14px;align-items:stretch;padding-top:14px}
+.rate-card{position:relative;background:var(--card);border:1px solid rgba(255,255,255,.08);border-radius:16px;padding:26px 22px;display:flex;flex-direction:column;text-align:center}
+.rate-card.featured{border-color:var(--gold);background:linear-gradient(180deg,rgba(212,175,55,.08),var(--card))}
+.badge{position:absolute;top:-11px;left:50%;transform:translateX(-50%);background:var(--gold);color:#000;font-size:.68rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;padding:4px 12px;border-radius:99px;white-space:nowrap}
+.rate-card h3{font-size:1rem}
+.price{font-size:2.1rem;color:var(--gold);font-weight:700;margin:6px 0 2px}
+.price s{color:var(--dim);font-size:1rem;font-weight:400;margin-right:8px}
+.rate-card ul{list-style:none;margin:12px 0 18px;text-align:left}
+.rate-card li{padding:4px 0 4px 24px;position:relative;color:#d8d8d8;font-size:.9rem}
+.rate-card li::before{content:"✓";position:absolute;left:0;color:var(--gold);font-weight:700}
+.rate-card .btn{margin-top:auto}
+.rate-note{color:var(--dim);font-size:.85rem;text-align:center;margin-top:16px}
+.cta-row{display:flex;gap:28px;align-items:center;justify-content:center;flex-wrap:wrap;text-align:left}
+.cta-photo{flex:0 0 150px;margin:0}
+.cta-photo img{display:block;width:150px;height:190px;object-fit:cover;border-radius:14px;border:1px solid var(--line);box-shadow:0 12px 30px rgba(0,0,0,.5)}
+.cta-photo figcaption{color:var(--dim);font-size:.75rem;text-align:center;margin-top:8px}
+.cta-copy{flex:1 1 300px;max-width:520px}
+.cta-copy p{margin-bottom:16px}
+.cta-links{margin-top:14px}
+.cta-links a{margin-right:16px;font-size:.9rem}
+@media(max-width:560px){.story-ba{flex-basis:100%;max-width:320px;margin:0 auto}.cta-row{text-align:center}.cta-photo{margin:0 auto}}
+@media (prefers-reduced-motion:reduce){.btn,.btn:hover{transition:none;transform:none}}
+</style>
 </head>
 <body>
 
@@ -84,8 +123,9 @@
       <div class="stat"><b><span data-count="700" data-suffix="+">700+</span></b><span>LinkedIn followers · active weekly</span></div>
       <div class="stat"><b><span data-count="7" data-suffix="/wk">7/wk</span></b><span>Posting cadence</span></div>
     </div>
-    <a class="btn" href="mailto:yusuf.gadelrab06@gmail.com?subject=Collab%20with%20Yusuf">Email me</a>
+    <a class="btn" href="#rates">See rates &amp; book ↓</a>
     <a class="btn ghost" href="https://www.instagram.com/_kxng_sef" target="_blank" rel="noopener">@_kxng_sef</a>
+    <span class="micro">Three packages · booked by email, no call required · replies within 24 hours</span>
   </div>
 </header>
 
@@ -96,12 +136,16 @@
   <div class="story-row">
     <div class="story-copy">
       <p>I'm Yusuf — 20, computer-science student at <strong>San Jose State</strong>, former football team captain (<strong>league MVP</strong>) and wrestler. I cut from <strong>260 lb to 200 lb</strong> while adding muscle, and documented every step on camera.</p>
-      <p>My content just crossed <strong>650,000+ views in the last 30 days</strong> and it's compounding — because I treat content like an engineering project: consistent, measurable, shipped on schedule. I'm also a published researcher and full-stack developer, so the "student athlete × builder" audience is genuinely mine.</p>
+      <p>My content just crossed <strong>650,000+ views in the last 30 days</strong> and it's compounding — because I treat content like an engineering project: consistent, measurable, shipped on schedule. I'm also a <a href="https://doi.org/10.1145/3770761.3777339" target="_blank" rel="noopener">published researcher (SIGCSE 2026)</a> and full-stack developer, so the "student athlete × builder" audience is genuinely mine.</p>
     </div>
-    <figure class="story-photo">
-      <img src="img/yusuf-candid.jpg" alt="Yusuf Gadelrab, casual selfie in a plant-filled atrium" width="600" height="800" loading="lazy">
-      <figcaption>Off camera — San Jose</figcaption>
-    </figure>
+    <div class="story-photo story-ba" role="img" aria-label="Weight transformation: 260 pounds before, 200 pounds after">
+      <div class="ba">
+        <div class="ba-card"><b>260 lb</b><span>Before</span></div>
+        <div class="ba-arrow" aria-hidden="true">→</div>
+        <div class="ba-card after"><b>200 lb</b><span>After · on camera</span></div>
+      </div>
+      <p class="ba-cap">60 lb cut, documented daily — receipts on the grid.</p>
+    </div>
   </div>
 </section>
 
@@ -133,15 +177,75 @@
     <li>Cross-platform: every piece echoes to LinkedIn and my site</li>
     <li>Authentic fit only — I pitch brands I'd actually use</li>
   </ul>
+  <p class="lock-line">Reach here is compounding month over month, and rates re-price as it grows — a deal signed now locks today's rates for your full campaign.</p>
+</section>
+
+<section class="reveal" id="rates">
+  <h2>Rates — Three Ways In</h2>
+  <div class="rates-grid">
+    <div class="rate-card">
+      <h3>Concept Reel</h3>
+      <div class="price">$150</div>
+      <ul>
+        <li>1 scripted, filmed &amp; edited reel</li>
+        <li>Your product inside a real routine</li>
+        <li>Organic usage rights included</li>
+      </ul>
+      <a class="btn" href="mailto:yusuf.gadelrab06@gmail.com?subject=Booking%20-%20Concept%20Reel">Book this reel →</a>
+      <span class="micro">Booked by email · no call required</span>
+    </div>
+    <div class="rate-card featured">
+      <span class="badge">★ Best value</span>
+      <h3>3-Reel Series</h3>
+      <div class="price"><s>$450</s>$400</div>
+      <ul>
+        <li>Multi-week story arc across 3 reels</li>
+        <li>Before/after receipts included</li>
+        <li>Every piece echoed to LinkedIn</li>
+      </ul>
+      <a class="btn" href="mailto:yusuf.gadelrab06@gmail.com?subject=Booking%20-%203-Reel%20Series">Book the series →</a>
+      <span class="micro">Saves $50 vs three single reels</span>
+    </div>
+    <div class="rate-card">
+      <h3>30-Day Ambassador</h3>
+      <div class="price">$1,000</div>
+      <ul>
+        <li>8 reels across 30 days</li>
+        <li>Daily-routine integration + stories</li>
+        <li>Link in bio for the full month</li>
+      </ul>
+      <a class="btn" href="mailto:yusuf.gadelrab06@gmail.com?subject=Booking%20-%2030-Day%20Ambassador">Book 30 days →</a>
+      <span class="micro">One ambassador slot at a time</span>
+    </div>
+  </div>
+  <p class="rate-note">Custom challenge? Name it — fitness test, 30-day protocol, product torture test. Pricing scales with scope.</p>
+  <p class="rate-note">I take a maximum of 2 brand collabs per month alongside a full-time CS degree — quality over volume.</p>
 </section>
 
 <div class="cta reveal">
-  <h2>Let's Build Something</h2>
-  <p>Currently open to product collaborations and ambassador programs. Fast replies, faster turnarounds.</p>
-  <a class="btn" href="mailto:yusuf.gadelrab06@gmail.com?subject=Collab%20with%20Yusuf">yusuf.gadelrab06@gmail.com</a>
-  <a class="btn ghost" href="https://www.instagram.com/_kxng_sef" target="_blank" rel="noopener">Instagram</a>
-  <a class="btn ghost" href="https://www.linkedin.com/in/yusuf-gadelrab-76246b221" target="_blank" rel="noopener">LinkedIn</a>
+  <div class="cta-row">
+    <figure class="cta-photo">
+      <img src="img/yusuf-candid.jpg" alt="Yusuf Gadelrab, casual selfie in a plant-filled atrium" width="600" height="800" loading="lazy">
+      <figcaption>Off camera — San Jose</figcaption>
+    </figure>
+    <div class="cta-copy">
+      <h2>Let's Build Something</h2>
+      <p>650K+ Instagram views in the last 30 days — your product in the next 30.</p>
+      <a class="btn" href="mailto:yusuf.gadelrab06@gmail.com?subject=Collab%20-%20%5BYour%20Brand%5D&amp;body=Brand%3A%20%0AProduct%3A%20%0APackage%20(reel%20%2F%20series%20%2F%20ambassador)%3A%20%0ATimeline%3A%20">Start my collab →</a>
+      <span class="micro">Replies within 24 hours · you deal with me directly — no agency</span>
+      <div class="cta-links">
+        <a href="https://www.instagram.com/_kxng_sef" target="_blank" rel="noopener">Instagram</a>
+        <a href="https://www.linkedin.com/in/yusuf-gadelrab-76246b221" target="_blank" rel="noopener">LinkedIn</a>
+        <a href="#rates">Rates ↑</a>
+      </div>
+    </div>
+  </div>
 </div>
+
+<!-- TODO(data): add ONLY when real numbers are exported from IG Insights — do NOT invent:
+     1) "Top recent reels" strip: 3 reel links + exact view counts + post dates.
+     2) Audience-fit bars beside CTA: engagement rate %, avg watch-through, age/geo split.
+     3) "Current month: N slots open" live counter on the capacity line. -->
 
 </div>
 
@@ -180,9 +284,7 @@ a:hover{text-shadow:0 0 14px rgba(212,175,55,.45)}
 .pv2-lift:hover{transform:translateY(-5px);box-shadow:0 14px 44px rgba(212,175,55,.13);border-color:rgba(212,175,55,.45)}
 #pv2-bar{position:fixed;top:0;left:0;height:2px;width:0;z-index:99999;background:linear-gradient(90deg,#9a7b2e,#d4af37,#ffe9a8);box-shadow:0 0 12px rgba(212,175,55,.65);pointer-events:none}
 #pv2-glow{position:fixed;left:-999px;top:-999px;width:560px;height:560px;border-radius:50%;pointer-events:none;z-index:1;background:radial-gradient(circle,rgba(212,175,55,.065),transparent 62%);transform:translate(-50%,-50%);transition:left .16s ease-out,top .16s ease-out;mix-blend-mode:screen}
-#pv2-line{position:fixed;bottom:0;left:0;right:0;height:1px;z-index:99998;pointer-events:none;background:linear-gradient(90deg,transparent,rgba(212,175,55,.55),transparent);background-size:200% 100%;animation:pv2sweep 6s linear infinite}
-@keyframes pv2sweep{0%{background-position:200% 0}100%{background-position:-200% 0}}
-@media (prefers-reduced-motion:reduce){#pv2-bar,#pv2-glow,#pv2-line{display:none!important}}
+@media (prefers-reduced-motion:reduce){#pv2-bar,#pv2-glow{display:none!important}}
 @media (max-width:768px){#pv2-glow{display:none}}
 </style>
 <script id="pv2-js">
@@ -192,7 +294,6 @@ var bar=d.createElement('div');bar.id='pv2-bar';d.body.appendChild(bar);
 addEventListener('scroll',function(){var m=H.scrollHeight-H.clientHeight;bar.style.width=(m>0?(H.scrollTop||d.body.scrollTop)/m*100:0)+'%'},{passive:true});
 var g=d.createElement('div');g.id='pv2-glow';d.body.appendChild(g);
 addEventListener('pointermove',function(e){g.style.left=e.clientX+'px';g.style.top=e.clientY+'px'},{passive:true});
-var ln=d.createElement('div');ln.id='pv2-line';d.body.appendChild(ln);
 var io=new IntersectionObserver(function(es){es.forEach(function(en){if(en.isIntersecting){var el=en.target,sibs=el.parentElement?[].slice.call(el.parentElement.children):[],i=sibs.indexOf(el);el.style.transitionDelay=Math.min(i>0?i*60:0,360)+'ms';el.classList.add('pv2-in');io.unobserve(el)}})},{threshold:.12,rootMargin:'0px 0px -8% 0px'});
 var SEL='section,h1,h2,h3,figure,blockquote,[class*="card"],[class*="tile"],[class*="stat"],[class*="grid"]>div,[class*="grid"]>a,main>p,section>p';
 function scan(root){[].forEach.call((root||d).querySelectorAll(SEL),function(el){if(el.classList.contains('pv2-r'))return;if(el.closest('nav,#pv2-glow,[data-pv2-skip]'))return;var cs=getComputedStyle(el);if(cs.position==='fixed'||cs.position==='sticky')return;el.classList.add('pv2-r');if(/card|tile/.test(el.className))el.classList.add('pv2-lift');io.observe(el)})}

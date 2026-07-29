@@ -37,9 +37,8 @@
   ::selection{background:rgba(212,175,55,.35)}
   .wrap{max-width:1100px;margin:0 auto;padding:0 24px}
 
-  /* ---------- gold shimmer text ---------- */
-  .grad{background:linear-gradient(100deg,var(--gold) 0%,var(--gold2) 40%,var(--gold3) 50%,var(--gold2) 60%,var(--gold) 100%);background-size:200% auto;-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;animation:shimmer 5s linear infinite}
-  @keyframes shimmer{to{background-position:200% center}}
+  /* ---------- gold gradient text (static) ---------- */
+  .grad{background:linear-gradient(100deg,var(--gold) 0%,var(--gold2) 40%,var(--gold3) 50%,var(--gold2) 60%,var(--gold) 100%);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
 
   /* ---------- scroll progress ---------- */
   #progress{position:fixed;top:0;left:0;height:3px;width:0;background:linear-gradient(90deg,var(--gold),var(--gold3));z-index:100;box-shadow:0 0 12px rgba(212,175,55,.8)}
@@ -63,37 +62,33 @@
   header{padding:110px 0 84px;text-align:center;position:relative;overflow:hidden}
   #stars{position:absolute;inset:0;pointer-events:none}
   .orb{position:absolute;border-radius:50%;filter:blur(90px);opacity:.16;pointer-events:none}
-  .orb1{width:520px;height:520px;background:var(--gold);top:-220px;left:50%;transform:translateX(-50%);animation:drift1 14s ease-in-out infinite alternate}
-  .orb2{width:340px;height:340px;background:#8a6d1f;bottom:-160px;left:-120px;animation:drift2 18s ease-in-out infinite alternate}
-  .orb3{width:300px;height:300px;background:#b8912a;bottom:-140px;right:-100px;animation:drift1 16s ease-in-out infinite alternate-reverse}
-  @keyframes drift1{to{transform:translate(-46%,40px) scale(1.12)}}
-  @keyframes drift2{to{transform:translate(60px,-40px) scale(1.08)}}
+  .orb1{width:520px;height:520px;background:var(--gold);top:-220px;left:50%;transform:translateX(-50%)}
+  .orb2{width:340px;height:340px;background:#8a6d1f;bottom:-160px;left:-120px}
+  .orb3{width:300px;height:300px;background:#b8912a;bottom:-140px;right:-100px}
   header .wrap{position:relative;z-index:2}
   .eyebrow{display:inline-block;border:1px solid rgba(212,175,55,.45);color:var(--gold2);font-size:.78rem;letter-spacing:2px;text-transform:uppercase;padding:6px 16px;border-radius:999px;margin-bottom:24px;background:rgba(212,175,55,.06);box-shadow:0 0 24px rgba(212,175,55,.12) inset}
   h1{font-size:clamp(2.2rem,5.8vw,3.9rem);line-height:1.1;font-weight:800;color:#fff;max-width:860px;margin:0 auto 14px}
   .roles{color:var(--muted);font-size:1.08rem;margin-bottom:8px;min-height:1.7em}
-  .roles b{color:var(--gold2);font-weight:700;border-right:2px solid var(--gold2);padding-right:3px;animation:caret 1s step-end infinite}
-  @keyframes caret{50%{border-color:transparent}}
+  .roles b{color:var(--gold2);font-weight:700}
   .sub{color:var(--muted);max-width:660px;margin:0 auto 34px;font-size:1.05rem}
   .btn{display:inline-block;padding:14px 28px;border-radius:10px;font-weight:700;font-size:.96rem;transition:transform .15s,box-shadow .15s}
-  .btn-gold{background:linear-gradient(100deg,var(--gold),var(--gold2));color:#0a0a0a;box-shadow:0 0 0 rgba(212,175,55,0);animation:breathe 3.2s ease-in-out infinite}
-  @keyframes breathe{50%{box-shadow:0 0 28px rgba(212,175,55,.35)}}
+  .btn-gold{background:linear-gradient(100deg,var(--gold),var(--gold2));color:#0a0a0a;box-shadow:0 6px 22px rgba(212,175,55,.18)}
   .btn-gold:hover{transform:translateY(-2px);box-shadow:0 12px 34px rgba(212,175,55,.4)}
   .btn-ghost{border:1px solid var(--line);color:var(--text);margin-left:10px}
   .btn-ghost:hover{border-color:var(--gold);box-shadow:0 0 18px rgba(212,175,55,.15)}
+  .btn:active{transform:translateY(1px) scale(.99)}
+  a:focus-visible{outline:2px solid var(--gold2);outline-offset:3px;border-radius:8px}
+  .micro{color:var(--muted);font-size:.82rem;margin-top:12px}
   .stat-row{display:flex;flex-wrap:wrap;gap:14px;justify-content:center;margin-top:44px}
   .stat{background:rgba(11,11,11,.7);border:1px solid var(--line);border-radius:14px;padding:18px 28px;text-align:center;min-width:150px;backdrop-filter:blur(6px);transition:border-color .25s,transform .25s}
   .stat:hover{border-color:rgba(212,175,55,.6);transform:translateY(-3px)}
   .stat b{display:block;font-size:1.7rem;color:var(--gold2);font-variant-numeric:tabular-nums}
   .stat span{font-size:.8rem;color:var(--muted)}
 
-  /* ---------- marquee ---------- */
-  .marquee{border-top:1px solid var(--line);border-bottom:1px solid var(--line);background:var(--bg2);overflow:hidden;padding:14px 0;white-space:nowrap}
-  .marquee-track{display:inline-block;animation:scroll 30s linear infinite}
-  .marquee:hover .marquee-track{animation-play-state:paused}
-  @keyframes scroll{to{transform:translateX(-50%)}}
-  .marquee span{color:var(--muted);font-size:.86rem;letter-spacing:1.5px;text-transform:uppercase;margin:0 18px}
-  .marquee i{color:var(--gold);font-style:normal;margin:0 4px}
+  /* ---------- skills strip (static) ---------- */
+  .chips{border-top:1px solid var(--line);border-bottom:1px solid var(--line);background:var(--bg2);padding:16px 24px;display:flex;flex-wrap:wrap;gap:10px;justify-content:center}
+  .chips span{color:var(--muted);font-size:.78rem;letter-spacing:1.4px;text-transform:uppercase;border:1px solid var(--line);border-radius:999px;padding:5px 14px;transition:color .2s,border-color .2s}
+  .chips span:hover{color:var(--gold2);border-color:rgba(212,175,55,.5)}
 
   /* ---------- sections ---------- */
   section{padding:84px 0;position:relative}
@@ -121,13 +116,10 @@
 
   /* ---------- product banner ---------- */
   .banner{background:linear-gradient(135deg,rgba(212,175,55,.14),rgba(212,175,55,.03));border:1px solid rgba(212,175,55,.4);border-radius:20px;padding:52px 44px;text-align:center;position:relative;overflow:hidden}
-  .banner::before{content:"";position:absolute;inset:-2px;border-radius:20px;background:conic-gradient(from var(--a,0deg),transparent 70%,rgba(212,175,55,.6),transparent 80%);animation:spin 6s linear infinite;z-index:0}
-  @property --a{syntax:'<angle>';initial-value:0deg;inherits:false}
-  @keyframes spin{to{--a:360deg}}
   .banner-inner{position:relative;z-index:1;background:linear-gradient(135deg,#100e08,#0a0a0a);border-radius:18px;padding:44px 32px;margin:2px}
   .banner h2{margin-bottom:12px}
   .banner p{color:var(--muted);max-width:600px;margin:0 auto 28px}
-  .pill{display:inline-block;background:rgba(212,175,55,.15);color:var(--gold2);font-size:.78rem;font-weight:700;padding:6px 16px;border-radius:999px;margin-bottom:18px;letter-spacing:1.2px;animation:breathe 3.2s ease-in-out infinite}
+  .pill{display:inline-block;background:rgba(212,175,55,.15);color:var(--gold2);font-size:.78rem;font-weight:700;padding:6px 16px;border-radius:999px;margin-bottom:18px;letter-spacing:1.2px}
 
   /* ---------- footer ---------- */
   footer{border-top:1px solid var(--line);padding:48px 0;text-align:center;color:var(--muted);font-size:.9rem}
@@ -174,28 +166,26 @@
   <canvas id="stars"></canvas>
   <div class="orb orb1"></div><div class="orb orb2"></div><div class="orb orb3"></div>
   <div class="wrap">
-    <img class="hero-portrait reveal" src="img/yusuf-headshot.jpg" alt="Yusuf Gadelrab, professional headshot in a suit with a gold frame border" width="700" height="749">
+    <img class="hero-portrait reveal" fetchpriority="high" src="img/yusuf-headshot.jpg" alt="Yusuf Gadelrab, professional headshot in a suit with a gold frame border" width="700" height="749">
     <span class="eyebrow reveal">San Jose, CA · CS @ SJSU · Building in public</span>
     <h1 class="reveal">Everything I do, <span class="grad">one gold map.</span></h1>
-    <p class="roles reveal">I'm a <b id="role">published researcher</b></p>
+    <p class="roles reveal">I'm a <b id="role">published researcher &amp; builder</b></p>
     <p class="sub reveal">Most people know me for one thing. This page is the whole picture: peer-reviewed research, AI products, quant trading systems, club leadership, and the students I teach along the way. Deep dives live on my personal site.</p>
     <div class="reveal">
-      <a class="btn btn-gold" href="https://yusuf-gadelrab.github.io/">Visit my personal website →</a>
-      <a class="btn btn-ghost" href="#products">See what's launching</a>
+      <a class="btn btn-gold" href="#products">See what's launching ↓</a>
+      <a class="btn btn-ghost" href="https://yusuf-gadelrab.github.io/">Visit my personal site →</a>
     </div>
     <div class="stat-row reveal">
       <div class="stat"><b data-count="2" data-suffix="×">2×</b><span>SIGCSE 2026 papers</span></div>
-      <div class="stat"><b data-count="78" data-suffix="%">78%</b><span>NLP model accuracy</span></div>
+      <div class="stat"><b data-count="78" data-suffix="%">78%</b><span>directional accuracy (NLP)</span></div>
       <div class="stat"><b data-count="40" data-prefix="+" data-suffix="%">+40%</b><span>SVEC engagement</span></div>
-      <div class="stat"><b data-count="50" data-suffix="+">50+</b><span>members as Treasurer</span></div>
+      <div class="stat"><b data-count="77">77</b><span>passing tests (HwyHaul)</span></div>
     </div>
   </div>
 </header>
 
-<div class="marquee" aria-hidden="true">
-  <div class="marquee-track" id="mtrack">
-    <span>Python <i>◆</i></span><span>Java <i>◆</i></span><span>JavaScript <i>◆</i></span><span>React <i>◆</i></span><span>Next.js <i>◆</i></span><span>SQL <i>◆</i></span><span>IBM Watson <i>◆</i></span><span>NLP <i>◆</i></span><span>LLMs &amp; RAG <i>◆</i></span><span>Quant Trading <i>◆</i></span><span>Full-Stack <i>◆</i></span><span>CS Education Research <i>◆</i></span>
-  </div>
+<div class="chips">
+  <span>Python</span><span>Java</span><span>JavaScript</span><span>React</span><span>Next.js</span><span>SQL</span><span>IBM Watson</span><span>NLP</span><span>LLMs &amp; RAG</span><span>Quant Trading</span><span>Full-Stack</span><span>CS Education Research</span>
 </div>
 
 <section id="research">
@@ -209,7 +199,7 @@
         <span class="tag">SIGCSE TS 2026 · Published Paper</span>
         <h3>Bilingual Coding for Inclusive CS Learning</h3>
         <p>Co-authored a mixed-methods study with 60 participants exploring how bilingual programming environments lower the barrier for non-native English speakers learning CS. Ran the full IRB-approved pipeline: study design, data collection, and analysis. Published in the ACM Digital Library.</p>
-        <a class="go" href="https://doi.org/10.1145/3770761.3777339">Read the paper <span>→</span></a>
+        <a class="go" href="https://doi.org/10.1145/3770761.3777339">DOI: 10.1145/3770761.3777339 <span>→</span></a>
       </div>
       <div class="card reveal">
         <span class="icon">🧠</span>
@@ -289,7 +279,7 @@
         <span class="icon">🌐</span>
         <span class="tag">Web · Club</span>
         <h3>SVEC Website</h3>
-        <p>Built and maintain sventclub.org, the digital front door for the Silicon Valley Entrepreneurship Club — events, sponsors, and member funnel. Part of the same push that grew club engagement 40% and brought in four sponsors.</p>
+        <p>Built and maintain sventclub.org, the digital front door for the Silicon Valley Entrepreneurship Club — events, sponsors, and member funnel. Part of the same push that drove +40% engagement and landed 4 sponsors.</p>
         <a class="go" href="https://sventclub.org">sventclub.org <span>→</span></a>
       </div>
     </div>
@@ -316,7 +306,7 @@
         <span class="icon">🚀</span>
         <span class="tag">SVEC</span>
         <h3>Technical Ops &amp; Web Lead</h3>
-        <p>Run the technical side of the Silicon Valley Entrepreneurship Club — site, tooling, and event ops. Drove a 40% jump in engagement, landed 4 sponsors, and grew the budget 35% in one year.</p>
+        <p>Run the technical side of the Silicon Valley Entrepreneurship Club — site, tooling, and event ops. Drove +40% engagement, landed 4 sponsors, and grew the budget +35% in one year.</p>
       </div>
       <div class="card reveal">
         <span class="icon">🏛</span>
@@ -347,13 +337,24 @@
     <div class="sec-label reveal">04 · Products</div>
     <div class="banner reveal">
       <div class="banner-inner">
-        <span class="pill">🚀 LAUNCHING SOON — JOIN THE WAITLIST</span>
+        <span class="pill">🟢 NOW INSTALLING — FOUNDING-CLIENT PILOTS OPEN</span>
         <h2><span class="grad">FreightDesk AI</span> — an AI back office for freight brokers</h2>
-        <p>The AR and billing automation I built inside the freight industry, productized: invoice chasing, POD prep, and inbox AI that runs 100% locally — no data leaves your machine. Founding-client pricing is locked for everyone on the waitlist, and developer tools and templates are dropping in the store alongside it.</p>
-        <a class="btn btn-gold" href="https://yusuf-gadelrab.github.io/freightdesk.html">See FreightDesk founding-client pilots →</a>
+        <p>The AR and billing automation I built inside a real freight brokerage, productized: invoice chasing, POD prep, and inbox AI that runs 100% locally — no data leaves your machine. Founding-client pilots are $999 one-time setup + $249/mo — a part-time AR clerk runs $1,800–2,200 a month. Launch pricing ends August 15.</p>
+        <a class="btn btn-gold" href="https://yusuf-gadelrab.github.io/freightdesk.html">Book a founding pilot →</a>
         <a class="btn btn-ghost" href="https://yusuf-gadelrab.github.io/store.html">Browse the store →</a>
       </div>
     </div>
+  </div>
+</section>
+
+<div class="divider on-alt"></div>
+
+<section id="final-cta">
+  <div class="wrap" style="text-align:center;max-width:760px">
+    <h2 class="reveal">If you only click one thing</h2>
+    <p class="sec-desc reveal" style="margin:10px auto 30px">2× SIGCSE 2026 · 78% directional accuracy · 77 passing tests — everything above is real and running. The newest door: FreightDesk founding-client pilots, installing now.</p>
+    <a class="btn btn-gold reveal" href="https://yusuf-gadelrab.github.io/freightdesk.html">Book a founding pilot →</a>
+    <p class="micro reveal">$999 one-time setup + $249/mo · launch pricing ends August 15</p>
   </div>
 </section>
 
@@ -413,24 +414,9 @@
   },{threshold:.6});
   document.querySelectorAll('[data-count]').forEach(function(el){ cio.observe(el); });
 
-  // rotating role
-  var roles = ['published researcher','full-stack builder','quant trading nerd','club lead','CS tutor'];
-  var rEl = document.getElementById('role'), ri = 0;
-  if(!reduced) setInterval(function(){
-    ri = (ri+1)%roles.length;
-    rEl.style.opacity = 0;
-    setTimeout(function(){ rEl.textContent = roles[ri]; rEl.style.opacity = 1; }, 250);
-  }, 2600);
-  rEl.style.transition = 'opacity .25s';
-
-  // duplicate marquee content for seamless loop
-  var mt = document.getElementById('mtrack');
-  mt.innerHTML += mt.innerHTML;
-
-  // gold particle field in hero
+  // gold particle field in hero (desktop only, starts after first paint)
   var cv = document.getElementById('stars'), ctx = cv.getContext('2d'), ps = [];
   function size(){ cv.width = cv.offsetWidth; cv.height = cv.offsetHeight; }
-  size(); addEventListener('resize', size);
   for(var i=0;i<70;i++) ps.push({x:Math.random(),y:Math.random(),r:Math.random()*1.6+.4,s:Math.random()*.25+.05,o:Math.random()*.6+.2,ph:Math.random()*6.28});
   function draw(t){
     ctx.clearRect(0,0,cv.width,cv.height);
@@ -444,7 +430,10 @@
     });
     requestAnimationFrame(draw);
   }
-  if(!reduced) requestAnimationFrame(draw);
+  if(!reduced && matchMedia('(min-width:769px)').matches){
+    var startStars = function(){ size(); addEventListener('resize', size); requestAnimationFrame(draw); };
+    document.readyState === 'complete' ? startStars() : addEventListener('load', startStars, {once:true});
+  }
 })();
 </script>
 
@@ -461,21 +450,10 @@ a{transition:color .25s,opacity .25s,border-color .25s,text-shadow .25s}
 a:hover{text-shadow:0 0 14px rgba(212,175,55,.45)}
 .pv2-lift{transition:transform .35s var(--pv2e),box-shadow .35s var(--pv2e),border-color .35s}
 .pv2-lift:hover{transform:translateY(-5px);box-shadow:0 14px 44px rgba(212,175,55,.13);border-color:rgba(212,175,55,.45)}
-#pv2-bar{position:fixed;top:0;left:0;height:2px;width:0;z-index:99999;background:linear-gradient(90deg,#9a7b2e,#d4af37,#ffe9a8);box-shadow:0 0 12px rgba(212,175,55,.65);pointer-events:none}
-#pv2-glow{position:fixed;left:-999px;top:-999px;width:560px;height:560px;border-radius:50%;pointer-events:none;z-index:1;background:radial-gradient(circle,rgba(212,175,55,.065),transparent 62%);transform:translate(-50%,-50%);transition:left .16s ease-out,top .16s ease-out;mix-blend-mode:screen}
-#pv2-line{position:fixed;bottom:0;left:0;right:0;height:1px;z-index:99998;pointer-events:none;background:linear-gradient(90deg,transparent,rgba(212,175,55,.55),transparent);background-size:200% 100%;animation:pv2sweep 6s linear infinite}
-@keyframes pv2sweep{0%{background-position:200% 0}100%{background-position:-200% 0}}
-@media (prefers-reduced-motion:reduce){#pv2-bar,#pv2-glow,#pv2-line{display:none!important}}
-@media (max-width:768px){#pv2-glow{display:none}}
 </style>
 <script id="pv2-js">
 (function(){var d=document,H=d.documentElement;
 if(matchMedia('(prefers-reduced-motion: reduce)').matches){H.classList.add('pv2-red');return}
-var bar=d.createElement('div');bar.id='pv2-bar';d.body.appendChild(bar);
-addEventListener('scroll',function(){var m=H.scrollHeight-H.clientHeight;bar.style.width=(m>0?(H.scrollTop||d.body.scrollTop)/m*100:0)+'%'},{passive:true});
-var g=d.createElement('div');g.id='pv2-glow';d.body.appendChild(g);
-addEventListener('pointermove',function(e){g.style.left=e.clientX+'px';g.style.top=e.clientY+'px'},{passive:true});
-var ln=d.createElement('div');ln.id='pv2-line';d.body.appendChild(ln);
 var io=new IntersectionObserver(function(es){es.forEach(function(en){if(en.isIntersecting){var el=en.target,sibs=el.parentElement?[].slice.call(el.parentElement.children):[],i=sibs.indexOf(el);el.style.transitionDelay=Math.min(i>0?i*60:0,360)+'ms';el.classList.add('pv2-in');io.unobserve(el)}})},{threshold:.12,rootMargin:'0px 0px -8% 0px'});
 var SEL='section,h1,h2,h3,figure,blockquote,[class*="card"],[class*="tile"],[class*="stat"],[class*="grid"]>div,[class*="grid"]>a,main>p,section>p';
 function scan(root){[].forEach.call((root||d).querySelectorAll(SEL),function(el){if(el.classList.contains('pv2-r'))return;if(el.closest('nav,#pv2-glow,[data-pv2-skip]'))return;var cs=getComputedStyle(el);if(cs.position==='fixed'||cs.position==='sticky')return;el.classList.add('pv2-r');if(/card|tile/.test(el.className))el.classList.add('pv2-lift');io.observe(el)})}
