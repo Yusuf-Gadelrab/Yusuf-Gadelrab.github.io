@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="preload" href="/css/site.css" as="style">
+<meta name="robots" content="index,follow,max-image-preview:large,max-snippet:-1">
+<meta property="og:locale" content="en_US">
+<title>The Kelly Criterion, and Why Nobody Bets Full Kelly</title>
+<meta name="description" content="How the Kelly criterion works, the formula for trading with an R-multiple edge, why full Kelly is unusable in practice, and how half and quarter Kelly compare.">
+<link rel="canonical" href="https://yusuf-gadelrab.github.io/guides/kelly-criterion.html">
+<link rel="icon" type="image/svg+xml" href="https://yusuf-gadelrab.github.io/favicon.svg">
+<link rel="apple-touch-icon" sizes="180x180" href="https://yusuf-gadelrab.github.io/apple-touch-icon.png">
+<meta name="theme-color" content="#0B0B0D">
+<meta name="author" content="Yusuf Gadelrab">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="Yusuf Gadelrab">
+<meta property="og:title" content="The Kelly Criterion, and Why Nobody Bets Full Kelly">
+<meta property="og:description" content="The formula, the worked example, and the reason practitioners cut it in half or worse.">
+<meta property="og:url" content="https://yusuf-gadelrab.github.io/guides/kelly-criterion.html">
+<meta property="og:image" content="https://yusuf-gadelrab.github.io/og-card.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="The Kelly Criterion, and Why Nobody Bets Full Kelly">
+<meta name="twitter:description" content="The formula, the worked example, and the reason practitioners cut it in half or worse.">
+<meta name="twitter:image" content="https://yusuf-gadelrab.github.io/og-card.png">
+<link rel="alternate" type="text/plain" href="https://yusuf-gadelrab.github.io/llms-full.txt" title="Plain-text profile for language models">
+
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"TechArticle","@id":"https://yusuf-gadelrab.github.io/guides/kelly-criterion.html#article","headline":"The Kelly Criterion, and Why Nobody Bets Full Kelly","name":"The Kelly Criterion, and Why Nobody Bets Full Kelly","description":"How the Kelly criterion works, the formula for trading with an R-multiple edge, why full Kelly is unusable in practice, and how half and quarter Kelly compare.","datePublished":"2026-07-29","dateModified":"2026-07-29","inLanguage":"en","author":{"@id":"https://yusuf-gadelrab.github.io/#person"},"publisher":{"@id":"https://yusuf-gadelrab.github.io/#person"},"about":["Kelly criterion","Position sizing","Risk management"],"mainEntityOfPage":"https://yusuf-gadelrab.github.io/guides/kelly-criterion.html","isAccessibleForFree":true,"proficiencyLevel":"Beginner"},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://yusuf-gadelrab.github.io/"},{"@type":"ListItem","position":2,"name":"Guides","item":"https://yusuf-gadelrab.github.io/guides.html"},{"@type":"ListItem","position":3,"name":"Kelly Criterion"}]}]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","@id":"https://yusuf-gadelrab.github.io/guides/kelly-criterion.html#faq","mainEntity":[{"@type":"Question","name":"What is the Kelly criterion?","acceptedAnswer":{"@type":"Answer","text":"The Kelly criterion gives the fraction of capital that maximises the long-run growth rate of a repeated bet. For a bet winning with probability p and paying b to 1, the optimal fraction is f* = p - (1 - p) / b."}},{"@type":"Question","name":"How do you calculate Kelly for trading?","acceptedAnswer":{"@type":"Answer","text":"Use your measured win rate as p and your reward-to-risk ratio as b. A setup winning 45% of the time at 2R gives f* = 0.45 - 0.55/2 = 0.175, or 17.5% of capital — a number that is mathematically correct and far too aggressive to trade."}},{"@type":"Question","name":"Why do traders use half or quarter Kelly?","acceptedAnswer":{"@type":"Answer","text":"Because the growth curve is flat just below the Kelly peak and steep just above it. Half Kelly captures roughly three quarters of the growth with far lower drawdowns, and fractional sizing protects against the near-certainty that your win rate and reward-to-risk estimates are wrong."}},{"@type":"Question","name":"What happens if you bet more than full Kelly?","acceptedAnswer":{"@type":"Answer","text":"Growth rate falls rapidly and drawdowns compound; overbetting past the optimum is much more damaging than underbetting by the same amount. Since edge estimates come from finite samples, overbetting is the more likely error."}},{"@type":"Question","name":"What if the Kelly fraction is negative?","acceptedAnswer":{"@type":"Answer","text":"A negative Kelly fraction means the bet has negative expectancy — there is no size at which it makes money. The correct position size is zero, which is arguably the most useful thing the formula tells you."}},{"@type":"Question","name":"Should beginners use Kelly to size positions?","acceptedAnswer":{"@type":"Answer","text":"Generally no. A fixed small risk per trade, typically around 1% of the account, is more robust because it does not depend on an accurate edge estimate. Kelly is more useful as a ceiling and a diagnostic than as a day-to-day sizing rule."}}]}</script>
+
+<link rel="stylesheet" href="/css/site.css">
+<style>
+  .prose{max-width:68ch}
+  .prose h2{margin:var(--s7) 0 var(--s4);font-size:var(--t-h2)}
+  .prose h3{margin:var(--s6) 0 var(--s3);font-size:var(--t-h3)}
+  .prose p{color:var(--muted);margin:0 0 var(--s4)}
+  .prose ul,.prose ol{color:var(--muted);padding-left:1.2em;margin:0 0 var(--s4)}
+  .prose li{margin-bottom:var(--s2)}
+  .prose a{color:var(--gold-2)}
+  .prose strong{color:var(--fg)}
+  .formula{display:block;padding:var(--s4);margin:0 0 var(--s4);border:1px solid var(--line-soft);
+    border-radius:var(--radius);font-family:ui-monospace,SFMono-Regular,Menlo,monospace;
+    font-size:var(--t-small);color:var(--gold-2);overflow-x:auto;white-space:pre-wrap}
+  .tblwrap{overflow-x:auto;margin:0 0 var(--s4)}
+  .tbl{width:100%;border-collapse:collapse;font-size:var(--t-small)}
+  .tbl th,.tbl td{text-align:left;padding:var(--s3);border-bottom:1px solid var(--line-soft);
+    color:var(--muted);vertical-align:top}
+  .tbl th{font-family:var(--display-pro);color:var(--gold-2);font-weight:600}
+  .callout{padding:var(--s4);border:1px solid var(--line-soft);border-radius:var(--radius);
+    color:var(--muted);font-size:var(--t-small);margin:0 0 var(--s5)}
+  .callout--warn{border-color:var(--gold-2)}
+  .faq-card{padding:var(--s5)}
+  .faq-card h3{font-size:var(--t-h3);margin:0}
+  .faq-card p{color:var(--muted);font-size:var(--t-small);margin:var(--s3) 0 0}
+</style>
+</head>
+<body class="pro">
+
+<a class="skip-link" href="#main">Skip to content</a>
+
+<nav class="site-nav">
+  <a class="site-nav__brand" href="/"><img class="site-nav__lion" src="/img/brand/lion-mark.svg" alt="" width="34" height="34"><span>YUSUF GADELRAB</span></a>
+  <div class="site-nav__links">
+    <a href="/">Work</a>
+    <a href="/guides.html">Guides</a>
+    <a href="/risk-tools.html">Calculators</a>
+    <a href="/apps.html">Apps</a>
+  </div>
+</nav>
+
+<main id="main">
+
+  <header class="section">
+    <p class="eyebrow">Guide · Risk</p>
+    <h1 style="margin:var(--s4) 0">Kelly, fractional Kelly, and the gap between them</h1>
+    <p class="lead">Kelly answers a precise question: what fraction of capital maximises the long-run growth rate of a repeated bet. It answers it optimally, and the answer is usually too aggressive to trade.</p>
+  </header>
+
+  <hr class="divider">
+
+  <section class="section section--tight">
+    <div class="prose">
+      <h2>The formula</h2>
+      <p>For a bet that wins with probability <em>p</em> and pays <em>b</em> to 1:</p>
+      <span class="formula">f* = p − (1 − p) ÷ b
+
+where f* is the fraction of capital to risk,
+      p is the win probability,
+      b is the reward-to-risk ratio</span>
+      <p>A setup that wins 45% of the time at 2R:</p>
+      <span class="formula">f* = 0.45 − 0.55 ÷ 2 = 0.45 − 0.275 = 0.175 → 17.5% of capital</span>
+      <p>Risking 17.5% of the account on one trade is not a plan, it is a countdown. That number is correct and unusable, and understanding why is the whole point of the guide.</p>
+      <h2>Why full Kelly is unusable</h2>
+      <ul>
+        <li><strong>Your inputs are estimates.</strong> Kelly assumes you know p and b exactly. You know them from a finite sample, and overestimating the edge overshoots the optimum badly — the growth curve falls off much faster above full Kelly than below it.</li>
+        <li><strong>The drawdowns are brutal.</strong> At full Kelly, drawdowns of 50% or more are routine, not tail events. Mathematically survivable, behaviourally not.</li>
+        <li><strong>Trades are not independent or sequential.</strong> Kelly assumes one bet resolves before the next. Real positions overlap and correlate, which stacks risk the formula never accounted for.</li>
+        <li><strong>Edges decay.</strong> The p you measured last year is not the p in force today.</li>
+      </ul>
+      <h2>Fractional Kelly</h2>
+      <p>Because the growth curve is flat near its peak but steep past it, taking a fraction of Kelly gives up little expected growth and removes most of the variance.</p>
+      <div class="tblwrap"><table class="tbl">
+        <thead><tr><th>Sizing</th><th>Fraction of f*</th><th>Trade-off</th></tr></thead>
+        <tbody>
+          <tr><td>Full Kelly</td><td>100%</td><td>Maximum theoretical growth, ruinous variance, extremely sensitive to estimation error</td></tr>
+          <tr><td>Half Kelly</td><td>50%</td><td>Roughly three quarters of the growth with dramatically lower drawdown — the common practitioner choice</td></tr>
+          <tr><td>Quarter Kelly</td><td>25%</td><td>Modest growth, mild drawdowns, very tolerant of a wrong edge estimate</td></tr>
+          <tr><td>Fixed 1% risk</td><td>usually well under 25%</td><td>Ignores the edge estimate entirely; robust, simple, and what most retail traders should start with</td></tr>
+        </tbody>
+      </table></div>
+      <p>The practical reading: <strong>if your Kelly fraction says 17.5% and your rule says 1%, the rule is not being timid — it is pricing in the fact that you do not really know p.</strong></p>
+      <h2>When Kelly is genuinely useful</h2>
+      <p>Not usually as a sizing rule. It is most useful as a <em>ceiling</em> and as a diagnostic. If your fixed risk per trade is above quarter Kelly for your measured edge, you are oversized for the edge you can actually demonstrate. And if Kelly comes out negative, the formula is telling you the setup has no edge and should not be traded at all — which is the most valuable output it produces.</p>
+      <p>The <a href="/risk-tools.html">free risk toolkit</a> computes the Kelly fraction alongside expectancy, break-even win rate, and a Monte Carlo risk-of-ruin simulation, so you can see all four move together when you change the inputs.</p>
+      <p class="callout">Educational content, not financial advice. No live profit-and-loss figures are claimed anywhere on this site; backtest and walk-forward results are always labelled as such. Full terms: <a href="/terms.html">/terms.html</a></p>
+
+      <h2>Tools referenced in this guide</h2>
+      <ul>
+        <li><a href="/risk-tools.html">Trader's risk toolkit</a> — Kelly fraction, expectancy, break-even win rate, risk of ruin, position sizer.</li>
+        <li><a href="/guides/r-multiple-expectancy.html">R-multiple &amp; expectancy guide</a> — where p and b come from in the first place.</li>
+        <li><a href="/apps/tradelog/">TradeLog</a> — measures your real p and b per setup instead of guessing them.</li>
+      </ul>
+    </div>
+  </section>
+
+  <hr class="divider">
+
+  <section class="section section--tight" id="faq">
+    <div class="grp-head">
+      <p class="eyebrow">FAQ</p>
+      <h2>Quick answers</h2>
+    </div>
+    <div class="grid" style="margin-top:var(--s6)">
+      <article class="card faq-card"><h3>What is Kelly?</h3><p>The bet fraction that maximises long-run growth: f* = p − (1 − p) ÷ b, using win probability p and reward-to-risk b.</p></article>
+      <article class="card faq-card"><h3>What does it give for trading?</h3><p>45% win rate at 2R gives 17.5% of capital per trade — correct arithmetic, unusable in practice.</p></article>
+      <article class="card faq-card"><h3>Why fractional Kelly?</h3><p>The growth curve is flat below the peak and steep above it. Half Kelly keeps most of the growth and sheds most of the variance.</p></article>
+      <article class="card faq-card"><h3>What if you overbet?</h3><p>Growth collapses fast past the optimum. Since edges are estimated from small samples, overbetting is the likely error.</p></article>
+      <article class="card faq-card"><h3>Negative Kelly?</h3><p>The setup has negative expectancy. Correct size is zero — the most useful answer the formula gives.</p></article>
+      <article class="card faq-card"><h3>Should beginners use it?</h3><p>Mostly no. A fixed ~1% risk is more robust because it does not depend on knowing your edge precisely.</p></article>
+    </div>
+  </section>
+
+</main>
+
+<footer class="site-footer">
+  <div class="site-footer__links">
+    <a href="/">Work</a>
+    <a href="/about.html">About</a>
+    <a href="/guides.html">Guides</a>
+    <a href="/apps.html">Apps</a>
+    <a href="/store.html">Store</a>
+    <a href="/legal.html">Legal</a>
+    <a href="/privacy.html">Privacy</a>
+    <a href="/terms.html">Terms</a>
+    <a href="mailto:yusuf.gadelrab06@gmail.com">yusuf.gadelrab06@gmail.com</a>
+  </div>
+</footer>
+
+<script src="/js/site.js" defer></script>
+</body>
+</html>

@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="preload" href="/css/site.css" as="style">
+<meta name="robots" content="index,follow,max-image-preview:large,max-snippet:-1">
+<meta property="og:locale" content="en_US">
+<title>ATS Resume Rules That Actually Matter (and Myths)</title>
+<meta name="description" content="What applicant tracking systems really do to a resume, the formatting rules that matter, how to mirror a job description honestly, and the myths that waste students&#x27; time.">
+<link rel="canonical" href="https://yusuf-gadelrab.github.io/guides/ats-resume.html">
+<link rel="icon" type="image/svg+xml" href="https://yusuf-gadelrab.github.io/favicon.svg">
+<link rel="apple-touch-icon" sizes="180x180" href="https://yusuf-gadelrab.github.io/apple-touch-icon.png">
+<meta name="theme-color" content="#0B0B0D">
+<meta name="author" content="Yusuf Gadelrab">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="Yusuf Gadelrab">
+<meta property="og:title" content="ATS Resume Rules That Actually Matter">
+<meta property="og:description" content="What ATS software really does, what breaks parsing, and which rules are folklore.">
+<meta property="og:url" content="https://yusuf-gadelrab.github.io/guides/ats-resume.html">
+<meta property="og:image" content="https://yusuf-gadelrab.github.io/og-card.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="ATS Resume Rules That Actually Matter">
+<meta name="twitter:description" content="What ATS software really does, what breaks parsing, and which rules are folklore.">
+<meta name="twitter:image" content="https://yusuf-gadelrab.github.io/og-card.png">
+<link rel="alternate" type="text/plain" href="https://yusuf-gadelrab.github.io/llms-full.txt" title="Plain-text profile for language models">
+
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"TechArticle","@id":"https://yusuf-gadelrab.github.io/guides/ats-resume.html#article","headline":"ATS Resume Rules That Actually Matter, and the Myths That Do Not","name":"ATS Resume Rules That Actually Matter, and the Myths That Do Not","description":"What applicant tracking systems really do to a resume, the formatting rules that matter, how to mirror a job description honestly, and the myths that waste students' time.","datePublished":"2026-07-29","dateModified":"2026-07-29","inLanguage":"en","author":{"@id":"https://yusuf-gadelrab.github.io/#person"},"publisher":{"@id":"https://yusuf-gadelrab.github.io/#person"},"about":["Resume writing","Applicant tracking systems","Job search"],"mainEntityOfPage":"https://yusuf-gadelrab.github.io/guides/ats-resume.html","isAccessibleForFree":true,"proficiencyLevel":"Beginner"},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://yusuf-gadelrab.github.io/"},{"@type":"ListItem","position":2,"name":"Guides","item":"https://yusuf-gadelrab.github.io/guides.html"},{"@type":"ListItem","position":3,"name":"ATS Resumes"}]}]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","@id":"https://yusuf-gadelrab.github.io/guides/ats-resume.html#faq","mainEntity":[{"@type":"Question","name":"What does an ATS actually do to a resume?","acceptedAnswer":{"@type":"Answer","text":"An applicant tracking system parses your resume into structured database fields — name, contact details, employers, titles, dates, education, skills — and makes them searchable for recruiters. The real risk is a bad parse that files your information incorrectly, not a hidden score that rejects you."}},{"@type":"Question","name":"What resume format is safest for an ATS?","acceptedAnswer":{"@type":"Answer","text":"A single-column layout with standard section headings, real selectable text, consistent date formats, standard fonts, and no tables or text boxes used for layout. A text-based PDF or DOCX is fine; image-based exports are not."}},{"@type":"Question","name":"Do ATS systems reject resumes automatically?","acceptedAnswer":{"@type":"Answer","text":"Generally no. Most systems filter and rank rather than auto-reject, and recruiters do the rejecting. The common cause of an application vanishing is that the parse failed or the resume did not contain the terms the recruiter searched for."}},{"@type":"Question","name":"Should you copy keywords from the job description?","acceptedAnswer":{"@type":"Answer","text":"Use the posting's exact terminology for skills you genuinely have, placed in the bullets describing where you used them. Do not list skills you cannot defend in an interview, and never hide keywords in white text — it is detected and it is disqualifying."}},{"@type":"Question","name":"Is a PDF bad for ATS?","acceptedAnswer":{"@type":"Answer","text":"Text-based PDFs parse fine in modern systems. The problem is PDFs exported from design tools with outlined type, or scanned images, because there is no extractable text at all."}},{"@type":"Question","name":"Should a student resume be one page?","acceptedAnswer":{"@type":"Answer","text":"One page is good advice for students because it forces ruthless editing, not because a parser counts pages. Projects with links belong on it and count as experience."}}]}</script>
+
+<link rel="stylesheet" href="/css/site.css">
+<style>
+  .prose{max-width:68ch}
+  .prose h2{margin:var(--s7) 0 var(--s4);font-size:var(--t-h2)}
+  .prose h3{margin:var(--s6) 0 var(--s3);font-size:var(--t-h3)}
+  .prose p{color:var(--muted);margin:0 0 var(--s4)}
+  .prose ul,.prose ol{color:var(--muted);padding-left:1.2em;margin:0 0 var(--s4)}
+  .prose li{margin-bottom:var(--s2)}
+  .prose a{color:var(--gold-2)}
+  .prose strong{color:var(--fg)}
+  .formula{display:block;padding:var(--s4);margin:0 0 var(--s4);border:1px solid var(--line-soft);
+    border-radius:var(--radius);font-family:ui-monospace,SFMono-Regular,Menlo,monospace;
+    font-size:var(--t-small);color:var(--gold-2);overflow-x:auto;white-space:pre-wrap}
+  .tblwrap{overflow-x:auto;margin:0 0 var(--s4)}
+  .tbl{width:100%;border-collapse:collapse;font-size:var(--t-small)}
+  .tbl th,.tbl td{text-align:left;padding:var(--s3);border-bottom:1px solid var(--line-soft);
+    color:var(--muted);vertical-align:top}
+  .tbl th{font-family:var(--display-pro);color:var(--gold-2);font-weight:600}
+  .callout{padding:var(--s4);border:1px solid var(--line-soft);border-radius:var(--radius);
+    color:var(--muted);font-size:var(--t-small);margin:0 0 var(--s5)}
+  .callout--warn{border-color:var(--gold-2)}
+  .faq-card{padding:var(--s5)}
+  .faq-card h3{font-size:var(--t-h3);margin:0}
+  .faq-card p{color:var(--muted);font-size:var(--t-small);margin:var(--s3) 0 0}
+</style>
+</head>
+<body class="pro">
+
+<a class="skip-link" href="#main">Skip to content</a>
+
+<nav class="site-nav">
+  <a class="site-nav__brand" href="/"><img class="site-nav__lion" src="/img/brand/lion-mark.svg" alt="" width="34" height="34"><span>YUSUF GADELRAB</span></a>
+  <div class="site-nav__links">
+    <a href="/">Work</a>
+    <a href="/guides.html">Guides</a>
+    <a href="/resume.html">Resume</a>
+    <a href="/apply.html">Apply OS</a>
+  </div>
+</nav>
+
+<main id="main">
+
+  <header class="section">
+    <p class="eyebrow">Guide · Career</p>
+    <h1 style="margin:var(--s4) 0">What an ATS actually does to your resume</h1>
+    <p class="lead">Applicant tracking systems are databases with a parser attached, not gatekeeping robots that score your personality. Most advice about beating them is folklore. A few rules are real, and they are boring.</p>
+  </header>
+
+  <hr class="divider">
+
+  <section class="section section--tight">
+    <div class="prose">
+      <h2>What an ATS really is</h2>
+      <p>An applicant tracking system stores applications and makes them searchable. When you upload a resume, a parser tries to extract structured fields — name, contact details, employers, dates, titles, education, skills — into a database record. A recruiter then searches and filters that database.</p>
+      <p><strong>The failure mode you should fear is a bad parse, not a low score.</strong> If the parser reads your two-column layout in the wrong order and files your job titles as skills, you are searchable for nothing, and no human ever sees the document.</p>
+      <h2>The rules that are real</h2>
+      <ul>
+        <li><strong>Single column.</strong> Multi-column layouts and text boxes are the single most reliable way to scramble a parse.</li>
+        <li><strong>Standard section headings.</strong> Experience, Education, Skills, Projects. Not "My Journey" or "What I Bring".</li>
+        <li><strong>Real text, not images.</strong> A resume exported as an image, or with contact details inside a graphic, parses as an empty document.</li>
+        <li><strong>Dates in a consistent format</strong>, with month and year, in one place per role.</li>
+        <li><strong>Standard fonts and no tables for layout.</strong> Tables often parse cell-by-cell into nonsense.</li>
+        <li><strong>A .pdf or .docx generated from a text document</strong> — not a scan, not a screenshot, not a design-tool export with outlined type.</li>
+        <li><strong>Terminology that matches the posting.</strong> If the job says "Python" and you wrote "Py", a keyword filter misses you. This is not gaming the system; it is speaking its language.</li>
+      </ul>
+      <h2>The myths</h2>
+      <div class="tblwrap"><table class="tbl">
+        <thead><tr><th>Myth</th><th>Reality</th></tr></thead>
+        <tbody>
+          <tr><td>"White-text keyword stuffing beats the ATS"</td><td>Trivially detected, and it is grounds for rejection when a human sees the document. Do not.</td></tr>
+          <tr><td>"The ATS gives you a match score out of 100"</td><td>Some products compute a match score, most recruiters ignore it, and none of them reject solely on it.</td></tr>
+          <tr><td>"Never use a PDF"</td><td>Modern parsers handle text-based PDFs fine. The problem is image-based or design-tool PDFs with outlined text.</td></tr>
+          <tr><td>"One page or you are rejected"</td><td>One page is good advice for students because it forces editing, not because a parser counts pages.</td></tr>
+          <tr><td>"Fancy templates get filtered out"</td><td>They get parsed badly, which is worse than filtered. The template is not judged; it is misread.</td></tr>
+        </tbody>
+      </table></div>
+      <h2>How to mirror a job description honestly</h2>
+      <ol>
+        <li>Pull the 8–12 concrete nouns from the posting: languages, frameworks, tools, domains, methods.</li>
+        <li>Delete any you cannot defend in an interview. That is the whole ethics of this exercise.</li>
+        <li>For the rest, make sure the exact term appears where you genuinely used it — in the bullet describing the work, not in a keyword dump.</li>
+        <li>Match the posting's vocabulary for the same concept: if they say "CI/CD" and you wrote "build pipelines", include both.</li>
+        <li>Keep a base resume and a per-role variant. Rewriting from scratch each time is how people stop applying.</li>
+      </ol>
+      <h2>Bullets that survive a six-second read</h2>
+      <p>A parser gets your bullets into the database; a human decides in seconds. The structure that works: <strong>action, object, method, result</strong> — and the result is a number wherever one honestly exists.</p>
+      <span class="formula">Weak:  Responsible for the team's data pipeline
+Better: Built an NLP scoring pipeline over 50+ market sources per day,
+        cutting manual research time 60%</span>
+      <p>If there is no number, use scope: how many users, how many records, how many workflows, over what period. "Improved performance" is unreadable; "cut page load from 4.2s to 1.1s" is a fact.</p>
+      <h2>For students specifically</h2>
+      <ul>
+        <li>Projects count as experience. Put them in their own section with links, and describe them like work.</li>
+        <li>Coursework is only worth listing if it is relevant and specific. "Data Structures, Algorithms, Machine Learning" is fine; a list of fifteen course codes is not.</li>
+        <li>Include the graduation month and year. Recruiters filter on it constantly.</li>
+        <li>Put GitHub and portfolio links in the text, not only in a header graphic — headers are the most commonly dropped region in parsing.</li>
+        <li>If you need sponsorship, say so plainly somewhere in the process. Discovering it at offer stage wastes everyone's time, including yours.</li>
+      </ul>
+      <p>I do this as a service if you want it done for you: <a href="/resume.html">an ATS-safe resume rebuild</a>, optionally with tailored applications. And <a href="/apply.html">Apply OS</a> is the free tracker for keeping the applications themselves straight.</p>
+
+      <h2>Tools referenced in this guide</h2>
+      <ul>
+        <li><a href="/resume.html">Resume rebuild</a> — ATS-safe rebuild, optionally with tailored applications.</li>
+        <li><a href="/apply.html">Apply OS</a> — free deadline radar and application pipeline, browser-only.</li>
+        <li><a href="/guides/swe-internship-international-student.html">Internship guide</a> — the full search process for international students.</li>
+      </ul>
+    </div>
+  </section>
+
+  <hr class="divider">
+
+  <section class="section section--tight" id="faq">
+    <div class="grp-head">
+      <p class="eyebrow">FAQ</p>
+      <h2>Quick answers</h2>
+    </div>
+    <div class="grid" style="margin-top:var(--s6)">
+      <article class="card faq-card"><h3>What does an ATS do?</h3><p>Parses your resume into database fields recruiters search. The danger is a scrambled parse, not a secret rejection score.</p></article>
+      <article class="card faq-card"><h3>Safest format?</h3><p>Single column, standard headings, real text, consistent dates, no tables or text boxes for layout.</p></article>
+      <article class="card faq-card"><h3>Do they auto-reject?</h3><p>Mostly no — they filter and rank. Applications vanish because the parse failed or the search terms were missing.</p></article>
+      <article class="card faq-card"><h3>Copy keywords?</h3><p>Use the posting&#x27;s exact words for skills you actually have, inside real bullets. Never white-text stuffing — it is detected and disqualifying.</p></article>
+      <article class="card faq-card"><h3>Is PDF bad?</h3><p>Text-based PDFs are fine. Design-tool exports with outlined type and scans are not, because there is no text to extract.</p></article>
+      <article class="card faq-card"><h3>One page?</h3><p>For students, yes — because it forces editing. Projects with links belong on it and count as experience.</p></article>
+    </div>
+  </section>
+
+</main>
+
+<footer class="site-footer">
+  <div class="site-footer__links">
+    <a href="/">Work</a>
+    <a href="/about.html">About</a>
+    <a href="/guides.html">Guides</a>
+    <a href="/apps.html">Apps</a>
+    <a href="/store.html">Store</a>
+    <a href="/legal.html">Legal</a>
+    <a href="/privacy.html">Privacy</a>
+    <a href="/terms.html">Terms</a>
+    <a href="mailto:yusuf.gadelrab06@gmail.com">yusuf.gadelrab06@gmail.com</a>
+  </div>
+</footer>
+
+<script src="/js/site.js" defer></script>
+</body>
+</html>

@@ -230,6 +230,7 @@
   </url>
   <url>
     <loc>https://yusuf-gadelrab.github.io/aurum/</loc>
+    <lastmod>2026-07-29</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
@@ -258,4 +259,14 @@
   <url><loc>https://yusuf-gadelrab.github.io/writing/how-an-undergrad-with-no-connections-gets-into-a-research-lab-specific.html</loc><lastmod>2026-07-29</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
   <url><loc>https://yusuf-gadelrab.github.io/writing/i-spent-months-building-trading-strategies-and-then-published-the-resu.html</loc><lastmod>2026-07-29</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
   <url><loc>https://yusuf-gadelrab.github.io/writing/zero-dependency-security-scanner-secrets-osv-cves-iac-rules-git-histor.html</loc><lastmod>2026-07-29</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url>
+    <loc>https://yusuf-gadelrab.github.io/codeswitch.html</loc>
+    <lastmod>2026-07-29</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url><loc>https://yusuf-gadelrab.github.io/refunds.html</loc><lastmod>2026-07-29</lastmod><changefreq>yearly</changefreq><priority>0.4</priority></url>
+  <url><loc>https://yusuf-gadelrab.github.io/dmca.html</loc><lastmod>2026-07-29</lastmod><changefreq>yearly</changefreq><priority>0.4</priority></url>
+  <url><loc>https://yusuf-gadelrab.github.io/accessibility.html</loc><lastmod>2026-07-29</lastmod><changefreq>yearly</changefreq><priority>0.4</priority></url>
+  <url><loc>https://yusuf-gadelrab.github.io/legal.html</loc><lastmod>2026-07-29</lastmod><changefreq>yearly</changefreq><priority>0.4</priority></url>
 </urlset>

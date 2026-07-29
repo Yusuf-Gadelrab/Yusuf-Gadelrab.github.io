@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<!-- tech:seo — managed block (SEO / social / structured data / perf / PWA) -->
+<link rel="preload" href="/css/site.css" as="style">
+<meta name="robots" content="index,follow,max-image-preview:large">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://yusuf-gadelrab.github.io/og/codeswitch-card.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="CODESWITCH — Learn to code in the language you think in">
+<meta name="twitter:image" content="https://yusuf-gadelrab.github.io/og/codeswitch-card.png">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://yusuf-gadelrab.github.io/"},{"@type":"ListItem","position":2,"name":"CODESWITCH","item":"https://yusuf-gadelrab.github.io/codeswitch.html"}]}</script>
+<link rel="manifest" href="/manifest.webmanifest">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<script>addEventListener("load",function(){if("serviceWorker" in navigator)navigator.serviceWorker.register("/sw.js").catch(function(){})});</script>
+<!-- /tech:seo -->
+<title>CODESWITCH — Bilingual Computer Science for English Learners</title>
+<meta name="description" content="A free 8-week intro CS program for high schoolers still learning English, taught bilingually by trained near-peer tutors who speak the language they think in.">
+<link rel="canonical" href="https://yusuf-gadelrab.github.io/codeswitch.html">
+<link rel="icon" type="image/svg+xml" href="https://yusuf-gadelrab.github.io/favicon.svg">
+<link rel="apple-touch-icon" sizes="180x180" href="https://yusuf-gadelrab.github.io/apple-touch-icon.png">
+<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#d4af37">
+<meta name="theme-color" content="#0B0B0D">
+<meta name="author" content="Yusuf Gadelrab">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Yusuf Gadelrab">
+<meta property="og:title" content="CODESWITCH — Learn to code in the language you think in">
+<meta property="og:description" content="Every programming language is written in English. Students still learning English are asked to learn two languages at once. CODESWITCH teaches CS bilingually.">
+<meta property="og:url" content="https://yusuf-gadelrab.github.io/codeswitch.html">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="CODESWITCH — Learn to code in the language you think in">
+<meta name="twitter:description" content="Free bilingual intro CS for high schoolers still learning English. First cohort fall 2026.">
+
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"EducationalOrganization","name":"CODESWITCH","alternateName":"Codeswitch CS","url":"https://yusuf-gadelrab.github.io/codeswitch.html","description":"A free bilingual introductory computer science program for high school students who are English learners, taught by trained near-peer tutors who share the students' home languages.","founder":{"@id":"https://yusuf-gadelrab.github.io/#person"},"areaServed":{"@type":"City","name":"San Jose, California"},"knowsLanguage":["en","es","vi","ar"]}</script>
+<link rel="stylesheet" href="/css/site.css">
+<style>
+  .wordmark{font-family:var(--display-pro);font-weight:700;letter-spacing:.22em;font-size:13px;
+    color:var(--gold-2);text-transform:uppercase}
+  .switch{display:inline-block;position:relative}
+  .switch::after{content:"";position:absolute;left:0;right:0;bottom:-4px;height:2px;
+    background:linear-gradient(90deg,var(--gold),transparent)}
+  .kw{font-family:var(--mono);font-size:.92em;color:var(--gold-2);
+    background:rgba(212,175,55,.08);border:1px solid rgba(212,175,55,.18);
+    padding:2px 7px;border-radius:6px;white-space:nowrap}
+  .prog{display:flex;flex-direction:column;padding:var(--s5)}
+  .prog .num{font-family:var(--mono);font-size:11px;letter-spacing:1.4px;color:var(--gold-2)}
+  .prog h3{margin:var(--s3) 0 var(--s2);font-size:var(--t-h3)}
+  .prog p{color:var(--muted);font-size:var(--t-small);margin:0;flex:1}
+  .prog .tag{margin-top:var(--s4);font-family:var(--mono);font-size:11px;color:var(--faint)}
+  .weeks{list-style:none;margin:var(--s6) 0 0;padding:0;counter-reset:w}
+  .weeks li{counter-increment:w;display:flex;gap:var(--s4);align-items:flex-start;
+    padding:var(--s4) 0;border-bottom:1px solid var(--line-soft)}
+  .weeks li:last-child{border-bottom:0}
+  .weeks li::before{content:"WK " counter(w,decimal-leading-zero);font-family:var(--mono);
+    font-size:11px;color:var(--gold-2);letter-spacing:1px;min-width:58px;padding-top:4px;flex:0 0 auto}
+  .weeks b{font-family:var(--display-pro);letter-spacing:.3px}
+  .weeks p{color:var(--muted);font-size:var(--t-small);margin:4px 0 0}
+  .rulebox{display:grid;gap:var(--s4);margin-top:var(--s6)}
+  .rulebox > div{padding-left:var(--s5);border-left:2px solid var(--gold-dim)}
+  .rulebox b{display:block;font-family:var(--display-pro);letter-spacing:.3px;margin-bottom:4px}
+  .rulebox p{color:var(--muted);font-size:var(--t-small);margin:0}
+  form.mini{display:flex;gap:8px;margin-top:var(--s4);flex-wrap:wrap}
+  form.mini input{flex:1 1 170px;min-width:0;background:var(--panel2);border:1px solid var(--line);
+    border-radius:var(--radius);color:var(--bone);padding:11px 13px;font-family:var(--body-font);font-size:13px}
+  form.mini input:focus{outline:none;border-color:var(--gold-dim)}
+  .note{margin-top:8px;font-size:11px;color:var(--faint)}
+  .geo-qa{padding:var(--s5)}
+  .geo-qa h3{font-size:var(--t-h3);margin:0 0 var(--s3)}
+  .geo-qa p{color:var(--muted);font-size:var(--t-small);margin:0}
+  .stat-row{display:flex;flex-wrap:wrap;gap:var(--s6);margin-top:var(--s6)}
+  .stat-row > div{min-width:150px}
+  .stat-row b{display:block;font-family:var(--display);font-size:34px;color:var(--gold-2);line-height:1.1}
+  .stat-row span{font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--faint)}
+</style>
+<!-- geo:entity — canonical Person node, one entity across every page -->
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Person","@id":"https://yusuf-gadelrab.github.io/#person","name":"Yusuf Gadelrab","url":"https://yusuf-gadelrab.github.io/","mainEntityOfPage":"https://yusuf-gadelrab.github.io/about.html","jobTitle":"Computer Science Student, AI Builder & Researcher","email":"mailto:yusuf.gadelrab06@gmail.com","sameAs":["https://github.com/Yusuf-Gadelrab","https://www.linkedin.com/in/yusuf-gadelrab-76246b221","https://www.instagram.com/_kxng_sef/","https://doi.org/10.1145/3770761.3777339"],"affiliation":{"@type":"CollegeOrUniversity","name":"San José State University","url":"https://www.sjsu.edu/"},"address":{"@type":"PostalAddress","addressLocality":"San Jose","addressRegion":"CA","addressCountry":"US"}}</script>
+<link rel="alternate" type="text/plain" href="https://yusuf-gadelrab.github.io/llms-full.txt" title="Plain-text profile for language models">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","@id":"https://yusuf-gadelrab.github.io/codeswitch.html#faq","mainEntity":[{"@type":"Question","name":"What is CODESWITCH?","acceptedAnswer":{"@type":"Answer","text":"A free eight-week introductory computer science program for high school students who are still learning English. Sessions are taught bilingually by trained near-peer tutors who speak the students' home languages — concepts are introduced in the home language first, and English keywords are attached to ideas the student already holds."}},{"@type":"Question","name":"Why teach computer science bilingually instead of just translating the materials?","acceptedAnswer":{"@type":"Answer","text":"Translating an English curriculum produces a translated curriculum with English-language pedagogy underneath it. Bilingual teaching changes the instruction itself: the concept is explained in the language the student thinks in, English keywords are treated as symbols to recognise rather than vocabulary to master, and students may ask and answer in whichever language they choose."}},{"@type":"Question","name":"What does it cost, and who pays?","acceptedAnswer":{"@type":"Answer","text":"It is free for students and for partner schools. Delivering one cohort costs roughly two hundred dollars, or about ninety-two dollars per student across a full year, because the tutors are trained volunteers rather than paid staff."}},{"@type":"Question","name":"How do volunteers work with students safely?","acceptedAnswer":{"@type":"Answer","text":"Every tutor completes the partner district's volunteer clearance, background check, TB screening where required, and mandated-reporter training before their first session. Two adults are present at all times, sessions happen only in school spaces, and there is no private contact between tutors and students."}},{"@type":"Question","name":"Which languages does CODESWITCH support?","acceptedAnswer":{"@type":"Answer","text":"The first cohorts are planned in Spanish and Vietnamese, the largest English-learner populations in the target San Jose schools, with Arabic following. Language coverage is set by which bilingual tutors are trained and cleared."}},{"@type":"Question","name":"How will you know whether it worked?","acceptedAnswer":{"@type":"Answer","text":"Three measures: persistence, meaning whether students enrol in a computer science course afterwards; self-efficacy, measured with a short pre and post survey administered in the student's home language; and conceptual understanding, assessed through a bilingual concept check and a final project the student can explain. Results are published whether or not they support the hypothesis."}}]}</script>
+</head>
+<body class="pro">
+
+<a class="skip-link" href="#main">Skip to content</a>
+
+<nav class="site-nav">
+  <a class="site-nav__brand" href="/"><img class="site-nav__lion" src="/img/brand/lion-mark.svg" alt="" width="34" height="34"><span>YUSUF GADELRAB</span></a>
+  <div class="site-nav__links">
+    <a href="/">Work</a>
+    <a href="/codeswitch.html" aria-current="page">CODESWITCH</a>
+    <a href="/circle.html">Circle</a>
+    <a href="/apps.html">Apps</a>
+    <a href="/resume.html">Resume</a>
+  </div>
+</nav>
+
+<main id="main">
+
+  <header class="section">
+    <p class="wordmark">CODESWITCH · A nonprofit CS education program</p>
+    <h1 style="margin:var(--s5) 0">Learn to code in the <span class="gold-fill">language you think in.</span></h1>
+    <p class="lead">Every programming language is written in English. <span class="kw">if</span> <span class="kw">while</span> <span class="kw">return</span> <span class="kw">class</span> — the keywords are English words and every error message is an English sentence. So a student who's still learning English is asked to learn two languages at once, and then graded as though they were only learning one.</p>
+    <p class="lead" style="margin-top:var(--s4)">They aren't less capable. They're being tested on vocabulary while we tell them we're testing them on logic. <b class="gold">CODESWITCH fixes the room, not the student.</b></p>
+    <div class="row" style="margin-top:var(--s6)">
+      <a class="btn btn-gold" href="#help">Volunteer as a tutor →</a>
+      <a class="btn btn-ghost" href="#help">I teach at a school</a>
+      <a class="btn btn-ghost" href="https://doi.org/10.1145/3770761.3777339" target="_blank" rel="noopener">The research</a>
+    </div>
+  </header>
+
+  <hr class="divider">
+
+  <!-- ===== THE BILINGUAL RULE ===== -->
+  <section class="section section--tight">
+    <p class="eyebrow">01 · The method</p>
+    <h2>Bilingual isn't the same as translated.</h2>
+    <p class="lead" style="margin-top:var(--s3)">Translating an English curriculum gives you a translated curriculum with English pedagogy still underneath it. Four rules change the teaching itself.</p>
+
+    <div class="rulebox">
+      <div>
+        <b>Concepts come first, in the home language.</b>
+        <p>A loop is explained in Spanish or Vietnamese, in plain words, before any English keyword appears on a screen.</p>
+      </div>
+      <div>
+        <b>Keywords stay in English — and we say why.</b>
+        <p><span class="kw">for</span>, <span class="kw">if</span>, <span class="kw">return</span> aren't translated. They're treated as proper nouns, the way you don't translate a person's name. Students are told outright: this isn't English you need to understand, it's a symbol you need to recognise. That single reframe removes an enormous amount of anxiety.</p>
+      </div>
+      <div>
+        <b>Error messages get taken apart, out loud.</b>
+        <p>Every session decodes one real error message word by word, in both languages. Reading errors is the most transferable skill in the entire course, and it's the one monolingual teaching skips.</p>
+      </div>
+      <div>
+        <b>Students think, ask, and answer in whichever language they want.</b>
+        <p>Including mid-sentence. The tutor follows them. Nobody's English gets corrected during a CS explanation — do that and you teach a student that speaking is risky, and they stop asking.</p>
+      </div>
+    </div>
+  </section>
+
+  <hr class="divider">
+
+  <!-- ===== PROGRAMS ===== -->
+  <section class="section section--tight">
+    <p class="eyebrow">02 · Three programs</p>
+    <h2>What CODESWITCH actually runs</h2>
+
+    <div class="grid" style="margin-top:var(--s6)">
+      <article class="card prog">
+        <span class="num">01</span>
+        <h3>The Bridge</h3>
+        <p>Eight weeks, 90 minutes a week, after school. Eight to twelve students, two bilingual tutors. Everyone finishes having built one working thing they chose themselves — and demos it to their family in week eight, in whichever language they want.</p>
+        <span class="tag">First cohort · fall 2026</span>
+      </article>
+
+      <article class="card prog">
+        <span class="num">02</span>
+        <h3>Mirror Docs</h3>
+        <p>A free, open library of bilingual CS materials: terminology mapped across languages with real explanations instead of dictionary glosses, error-message decoders, and side-by-side lesson materials. Spanish and Vietnamese first, Arabic next.</p>
+        <span class="tag">The part that outlives us</span>
+      </article>
+
+      <article class="card prog">
+        <span class="num">03</span>
+        <h3>Near-Peer Corps</h3>
+        <p>Bilingual undergraduates trained as tutors. Near-peer is the pedagogy, not a budget compromise — someone two years ahead still remembers what was confusing, and the social distance is small enough that a student will admit being lost.</p>
+        <span class="tag">Recruiting now</span>
+      </article>
+    </div>
+  </section>
+
+  <hr class="divider">
+
+  <!-- ===== CURRICULUM ===== -->
+  <section class="section section--tight">
+    <p class="eyebrow">03 · The Bridge, week by week</p>
+    <h2>Eight weeks, in Python</h2>
+    <p class="lead" style="margin-top:var(--s3)">Python because its keywords are close to plain words, its error messages are short, and it does something on the very first line — no boilerplate standing between a student and their first result.</p>
+
+    <ol class="weeks">
+      <li><div><b>You already know how to give instructions</b><p>Students write instructions in their home language; a tutor follows them literally and wrongly. Then: their own name printed in a terminal, in their own script, diacritics intact.</p></div></li>
+      <li><div><b>Memory — variables</b><p>A variable is a labelled box, and the label is theirs to name. Students discover they can name variables <span class="kw">edad</span>, <span class="kw">tuổi</span>, <span class="kw">عمر</span> — legal Python that almost none of them knew about. Ownership of the code changes right there.</p></div></li>
+      <li><div><b>Choice — conditionals</b><p>Decisions drawn on paper before any code. Then <span class="kw">if</span>/<span class="kw">elif</span>/<span class="kw">else</span>, and the <span class="kw">=</span> versus <span class="kw">==</span> trap named early.</p></div></li>
+      <li><div><b>Repetition — loops</b><p>Physical demo first: clap until I say stop. Then <span class="kw">for</span>, <span class="kw">while</span>, and one deliberate infinite loop so they learn that Ctrl-C exists and nothing is unrecoverable.</p></div></li>
+      <li><div><b>Collections — lists and dictionaries</b><p>They build a real two-language dictionary inside a Python <span class="kw">dict</span>. The data structure and the metaphor turn out to be the same object.</p></div></li>
+      <li><div><b>Reuse — functions</b><p><span class="kw">def</span>, parameters, <span class="kw">return</span> — and a full segment on printing versus returning, because it's the most common conceptual break at this level. Students choose their final project here.</p></div></li>
+      <li><div><b>Build</b><p>No new concepts. Tutors circulate with hands off the keyboard, because a student whose tutor fixed their bug hasn't learned to fix bugs. Debugging taught as a procedure: read the last line first.</p></div></li>
+      <li><div><b>Demo day</b><p>Every student presents to the room and to invited family, in their language of choice. Certificates, next steps into the school's AP CS pathway, and an open invitation to come back as a tutor in two years.</p></div></li>
+    </ol>
+  </section>
+
+  <hr class="divider">
+
+  <!-- ===== NUMBERS ===== -->
+  <section class="section section--tight">
+    <p class="eyebrow">04 · The economics</p>
+    <h2>It costs about $92 a student.</h2>
+    <p class="lead" style="margin-top:var(--s3)">Cheap because the expensive part — the tutors — are trained volunteers who are two years ahead of the students instead of twenty. Everything below is a plan, not a result. No outcome numbers appear on this page until a cohort has finished and been measured.</p>
+
+    <div class="stat-row">
+      <div><b>~$200</b><span>Cost per cohort</span></div>
+      <div><b>8</b><span>Weeks per cohort</span></div>
+      <div><b>8–12</b><span>Students per cohort</span></div>
+      <div><b>3</b><span>Languages at launch</span></div>
+    </div>
+
+    <div class="panel" style="margin-top:var(--s7);border-left:3px solid var(--gold)">
+      <p class="muted" style="font-size:var(--t-small)"><b class="gold">What we measure — and publish.</b> Not attendance and not satisfaction; both are easy to collect and nearly meaningless. We measure <b>persistence</b> (does the student enrol in a CS course afterwards), <b>self-efficacy</b> (a six-item pre/post survey given in the student's home language), and <b>conceptual understanding</b> (a bilingual concept check, plus a project the student can explain). Every cohort gets a two-page report — the school sees it first, then it's published here. Including the cohorts where it doesn't work.</p>
+    </div>
+  </section>
+
+  <hr class="divider">
+
+  <!-- ===== SAFEGUARDING ===== -->
+  <section class="section section--tight">
+    <p class="eyebrow">05 · Working with minors</p>
+    <h2>The part we don't improvise</h2>
+    <p class="lead" style="margin-top:var(--s3)">These are hard gates. No tutor runs a session until every one of them is complete, and they're listed here rather than buried because they're the first thing any school needs answered.</p>
+    <div class="rulebox">
+      <div><b>Cleared before the first session</b><p>District volunteer application, background check, TB screening where the district requires it, and mandated-reporter training — all completed and verified before a tutor is in a room.</p></div>
+      <div><b>Two adults, always</b><p>Never one tutor alone with a student. Sessions happen in the school's classroom or library, never anywhere else, and never in a vehicle.</p></div>
+      <div><b>No private contact</b><p>No personal numbers, no DMs, no private social media between tutors and students. All communication routes through the school's named staff contact.</p></div>
+      <div><b>No photographs without a signed release</b><p>Held by the school. No student data with identifiers ever leaves the campus — evaluation results are aggregate only.</p></div>
+    </div>
+  </section>
+
+  <hr class="divider">
+
+  <!-- ===== GET INVOLVED ===== -->
+  <section class="section section--tight" id="help">
+    <p class="eyebrow">06 · Two things we need</p>
+    <h2>A classroom, and people who speak the language.</h2>
+
+    <div class="grid grid--2" style="margin-top:var(--s6)">
+
+      <article class="card prog">
+        <span class="num">FOR TUTORS</span>
+        <h3>Join the Near-Peer Corps</h3>
+        <p>You need conversational Spanish, Vietnamese, or Arabic, and to be comfortable with loops and functions. You don't need to be an expert — we specifically want people who learned this recently and still remember what was confusing. It's unpaid, it requires a district background check, and it asks for all eight weeks.</p>
+        <form class="mini" id="f-tutor" novalidate>
+          <input type="email" id="e-tutor" placeholder="you@email.com" autocomplete="email" aria-label="Email to volunteer as a CODESWITCH tutor" required>
+          <button class="btn btn-gold btn-sm" type="submit">I'll tutor</button>
+        </form>
+        <p class="note" id="n-tutor">We'll send the handbook and the clearance steps. <a href="/legal.html">Legal</a>
+    <a href="/privacy.html">Privacy</a></p>
+      </article>
+
+      <article class="card prog">
+        <span class="num">FOR SCHOOLS</span>
+        <h3>Host a cohort</h3>
+        <p>What we need from you: a room, one afternoon a week, and access to laptops you already own. What we don't need: any curriculum work, any budget, or any of your teaching time. What you get back is 8–12 more students who've built something real, plus the pre/post data on whether it worked.</p>
+        <form class="mini" id="f-school" novalidate>
+          <input type="email" id="e-school" placeholder="you@school.edu" autocomplete="email" aria-label="Email to host a CODESWITCH cohort at your school" required>
+          <button class="btn btn-gold btn-sm" type="submit">Let's talk</button>
+        </form>
+        <p class="note" id="n-school">Or email directly: <a href="mailto:yusuf.gadelrab06@gmail.com?subject=CODESWITCH%20—%20school%20partnership">yusuf.gadelrab06@gmail.com</a></p>
+      </article>
+
+    </div>
+
+    <div class="panel" style="margin-top:var(--s7)">
+      <p class="muted" style="font-size:var(--t-small)"><b class="gold">Status, stated honestly.</b> CODESWITCH is a program in launch, not an established organisation. The curriculum, volunteer handbook, safeguarding requirements, partnership kit and evaluation design are written and public. What doesn't exist yet: a signed school partner, a cleared tutor corps, and a single completed cohort. Those are the next three things, in that order. Nothing on this page claims otherwise.</p>
+    </div>
+  </section>
+
+  <hr class="divider">
+
+  <!-- ===== WHY ME ===== -->
+  <section class="section section--tight">
+    <p class="eyebrow">07 · Why this, from me</p>
+    <h2>I co-wrote the paper, then realised I hadn't done anything about it.</h2>
+    <p class="lead" style="margin-top:var(--s3)">I'm Yusuf Gadelrab — CS at San José State, and an undergraduate researcher in Dr. Ethel Tshukudu's CS education lab. This year I co-authored a mixed-methods study on bilingual programming environments and inclusive CS learning, accepted at SIGCSE TS 2026. I already tutor CS at SJSU and help run CS programming at a San Jose high school with a large English-learner population. I'm bilingual myself — Arabic and English.</p>
+    <p class="lead" style="margin-top:var(--s4)">The finding was clear and the paper is published. A published finding that changes nothing in a classroom isn't worth much. This is the attempt to change something.</p>
+    <div class="row" style="margin-top:var(--s6)">
+      <a class="btn btn-ghost" href="https://doi.org/10.1145/3770761.3777339" target="_blank" rel="noopener">Read the study →</a>
+      <a class="btn btn-ghost" href="/about.html">About me</a>
+    </div>
+  </section>
+
+  <hr class="divider">
+
+  <!-- geo:faq-visible -->
+  <section class="section section--tight" id="faq">
+    <p class="eyebrow">FAQ</p>
+    <h2>Common questions</h2>
+    <div class="grid" style="margin-top:var(--s6)">
+      <article class="card geo-qa">
+        <h3>What is CODESWITCH?</h3>
+        <p>A free eight-week introductory computer science program for high school students who are still learning English. Sessions are taught bilingually by trained near-peer tutors who speak the students' home languages — concepts are introduced in the home language first, and English keywords are attached to ideas the student already holds.</p>
+      </article>
+      <article class="card geo-qa">
+        <h3>Why bilingual instead of just translating the materials?</h3>
+        <p>Translating an English curriculum produces a translated curriculum with English-language pedagogy underneath it. Bilingual teaching changes the instruction itself: the concept is explained in the language the student thinks in, English keywords are treated as symbols to recognise rather than vocabulary to master, and students may ask and answer in whichever language they choose.</p>
+      </article>
+      <article class="card geo-qa">
+        <h3>What does it cost, and who pays?</h3>
+        <p>It is free for students and for partner schools. Delivering one cohort costs roughly two hundred dollars, or about ninety-two dollars per student across a full year, because the tutors are trained volunteers rather than paid staff.</p>
+      </article>
+      <article class="card geo-qa">
+        <h3>How do volunteers work with students safely?</h3>
+        <p>Every tutor completes the partner district's volunteer clearance, background check, TB screening where required, and mandated-reporter training before their first session. Two adults are present at all times, sessions happen only in school spaces, and there is no private contact between tutors and students.</p>
+      </article>
+      <article class="card geo-qa">
+        <h3>Which languages does CODESWITCH support?</h3>
+        <p>The first cohorts are planned in Spanish and Vietnamese, the largest English-learner populations in the target San Jose schools, with Arabic following. Language coverage is set by which bilingual tutors are trained and cleared.</p>
+      </article>
+      <article class="card geo-qa">
+        <h3>How will you know whether it worked?</h3>
+        <p>Three measures: persistence, meaning whether students enrol in a computer science course afterwards; self-efficacy, measured with a short pre and post survey administered in the student's home language; and conceptual understanding, assessed through a bilingual concept check and a final project the student can explain. Results are published whether or not they support the hypothesis.</p>
+      </article>
+    </div>
+  </section>
+
+</main>
+
+<footer class="site-footer">
+  <div>CODESWITCH · a program by Yusuf Gadelrab · San Jose, CA · not yet an incorporated nonprofit</div>
+  <div class="site-footer__links">
+    <a href="/">Work</a>
+    <a href="/codeswitch.html">CODESWITCH</a>
+    <a href="/resume.html">Resume</a>
+    <a href="/store.html">Store</a>
+    <a href="/apps.html">Apps</a>
+    <a href="/circle.html">Circle</a>
+    <a href="/waitlist.html">Waitlists</a>
+    <a href="/privacy.html">Privacy</a>
+    <a href="/terms.html">Terms</a>
+    <a href="mailto:yusuf.gadelrab06@gmail.com">yusuf.gadelrab06@gmail.com</a>
+  </div>
+</footer>
+
+<script src="/js/waitlist.js" defer></script>
+<script src="/js/site.js" defer></script>
+<script>
+addEventListener("DOMContentLoaded", function () {
+  if (!window.YGWaitlist) return;
+  YGWaitlist.attach("f-tutor", "e-tutor", "n-tutor", "CODESWITCH Tutor Corps");
+  YGWaitlist.attach("f-school", "e-school", "n-school", "CODESWITCH School Partner");
+});
+</script>
+</body>
+</html>

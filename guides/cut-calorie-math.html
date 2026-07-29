@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="preload" href="/css/site.css" as="style">
+<meta name="robots" content="index,follow,max-image-preview:large,max-snippet:-1">
+<meta property="og:locale" content="en_US">
+<title>The Arithmetic Behind a 60-Pound Cut</title>
+<meta name="description" content="How a calorie deficit actually works: maintenance estimation, deficit size, protein, why the scale lies week to week, and how to track it without obsessing.">
+<link rel="canonical" href="https://yusuf-gadelrab.github.io/guides/cut-calorie-math.html">
+<link rel="icon" type="image/svg+xml" href="https://yusuf-gadelrab.github.io/favicon.svg">
+<link rel="apple-touch-icon" sizes="180x180" href="https://yusuf-gadelrab.github.io/apple-touch-icon.png">
+<meta name="theme-color" content="#0B0B0D">
+<meta name="author" content="Yusuf Gadelrab">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="Yusuf Gadelrab">
+<meta property="og:title" content="The Arithmetic Behind a 60-Pound Cut">
+<meta property="og:description" content="Maintenance, deficit size, protein, and why the scale lies for ten days at a time.">
+<meta property="og:url" content="https://yusuf-gadelrab.github.io/guides/cut-calorie-math.html">
+<meta property="og:image" content="https://yusuf-gadelrab.github.io/og-card.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="The Arithmetic Behind a 60-Pound Cut">
+<meta name="twitter:description" content="Maintenance, deficit size, protein, and why the scale lies for ten days at a time.">
+<meta name="twitter:image" content="https://yusuf-gadelrab.github.io/og-card.png">
+<link rel="alternate" type="text/plain" href="https://yusuf-gadelrab.github.io/llms-full.txt" title="Plain-text profile for language models">
+
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"TechArticle","@id":"https://yusuf-gadelrab.github.io/guides/cut-calorie-math.html#article","headline":"The Arithmetic Behind a 60-Pound Cut","name":"The Arithmetic Behind a 60-Pound Cut","description":"How a calorie deficit actually works: maintenance estimation, deficit size, protein, why the scale lies week to week, and how to track it without obsessing.","datePublished":"2026-07-29","dateModified":"2026-07-29","inLanguage":"en","author":{"@id":"https://yusuf-gadelrab.github.io/#person"},"publisher":{"@id":"https://yusuf-gadelrab.github.io/#person"},"about":["Body composition","Calorie deficit","Habit tracking"],"mainEntityOfPage":"https://yusuf-gadelrab.github.io/guides/cut-calorie-math.html","isAccessibleForFree":true,"proficiencyLevel":"Beginner"},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://yusuf-gadelrab.github.io/"},{"@type":"ListItem","position":2,"name":"Guides","item":"https://yusuf-gadelrab.github.io/guides.html"},{"@type":"ListItem","position":3,"name":"Calorie Arithmetic"}]}]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","@id":"https://yusuf-gadelrab.github.io/guides/cut-calorie-math.html#faq","mainEntity":[{"@type":"Question","name":"How do you calculate maintenance calories?","acceptedAnswer":{"@type":"Answer","text":"Start with a rough estimate of bodyweight in pounds multiplied by 14 to 16, eat at that level for 10 to 14 days while weighing daily, then adjust based on the actual weight trend. Your own two-week data is more accurate than any formula, which only needs to get you within a few hundred calories."}},{"@type":"Question","name":"How big should a calorie deficit be?","acceptedAnswer":{"@type":"Answer","text":"A deficit of about 500 calories a day corresponds to roughly a pound a week using the common 3,500-calories-per-pound approximation, and is the usual recommendation. Larger deficits lose weight faster but cost adherence, training quality, and more lean mass. The deficit you actually sustain beats the theoretically optimal one you abandon."}},{"@type":"Question","name":"How much protein do you need when cutting?","acceptedAnswer":{"@type":"Answer","text":"Common practical guidance is roughly 0.7 to 1.0 grams per pound of target bodyweight. Adequate protein combined with resistance training shifts the composition of the loss toward fat rather than lean mass, and protein is also the most satiating macronutrient per calorie."}},{"@type":"Question","name":"Why does the scale stall for weeks?","acceptedAnswer":{"@type":"Answer","text":"Daily weight is dominated by water, glycogen, sodium, digestion, and sleep, which can mask steady fat loss for a week or more. Compare weekly averages to previous weekly averages rather than individual days, and only conclude the deficit is not working if the four-week trend is flat."}},{"@type":"Question","name":"Do carbohydrate and fat ratios matter for fat loss?","acceptedAnswer":{"@type":"Answer","text":"Far less than total calories and the protein floor. Once calories and protein are set, split the remainder between carbohydrate and fat in whichever way you personally adhere to best."}},{"@type":"Question","name":"Is losing 60 pounds fast possible?","acceptedAnswer":{"@type":"Answer","text":"Speed is the wrong target. At a sustainable pace of roughly a pound a week, a 60-pound loss is a project measured in many months, and the approaches that go faster tend to cost more lean mass and have far higher rebound rates. This is general information, not medical advice."}}]}</script>
+
+<link rel="stylesheet" href="/css/site.css">
+<style>
+  .prose{max-width:68ch}
+  .prose h2{margin:var(--s7) 0 var(--s4);font-size:var(--t-h2)}
+  .prose h3{margin:var(--s6) 0 var(--s3);font-size:var(--t-h3)}
+  .prose p{color:var(--muted);margin:0 0 var(--s4)}
+  .prose ul,.prose ol{color:var(--muted);padding-left:1.2em;margin:0 0 var(--s4)}
+  .prose li{margin-bottom:var(--s2)}
+  .prose a{color:var(--gold-2)}
+  .prose strong{color:var(--fg)}
+  .formula{display:block;padding:var(--s4);margin:0 0 var(--s4);border:1px solid var(--line-soft);
+    border-radius:var(--radius);font-family:ui-monospace,SFMono-Regular,Menlo,monospace;
+    font-size:var(--t-small);color:var(--gold-2);overflow-x:auto;white-space:pre-wrap}
+  .tblwrap{overflow-x:auto;margin:0 0 var(--s4)}
+  .tbl{width:100%;border-collapse:collapse;font-size:var(--t-small)}
+  .tbl th,.tbl td{text-align:left;padding:var(--s3);border-bottom:1px solid var(--line-soft);
+    color:var(--muted);vertical-align:top}
+  .tbl th{font-family:var(--display-pro);color:var(--gold-2);font-weight:600}
+  .callout{padding:var(--s4);border:1px solid var(--line-soft);border-radius:var(--radius);
+    color:var(--muted);font-size:var(--t-small);margin:0 0 var(--s5)}
+  .callout--warn{border-color:var(--gold-2)}
+  .faq-card{padding:var(--s5)}
+  .faq-card h3{font-size:var(--t-h3);margin:0}
+  .faq-card p{color:var(--muted);font-size:var(--t-small);margin:var(--s3) 0 0}
+</style>
+</head>
+<body class="pro">
+
+<a class="skip-link" href="#main">Skip to content</a>
+
+<nav class="site-nav">
+  <a class="site-nav__brand" href="/"><img class="site-nav__lion" src="/img/brand/lion-mark.svg" alt="" width="34" height="34"><span>YUSUF GADELRAB</span></a>
+  <div class="site-nav__links">
+    <a href="/">Work</a>
+    <a href="/guides.html">Guides</a>
+    <a href="/apps.html">Apps</a>
+    <a href="/media-kit.html">Media Kit</a>
+  </div>
+</nav>
+
+<main id="main">
+
+  <header class="section">
+    <p class="eyebrow">Guide · Body</p>
+    <h1 style="margin:var(--s4) 0">260 to 200, and the arithmetic that got there</h1>
+    <p class="lead">There is no clever part. There is an estimate, a deficit, a protein floor, and a tracking method that survives the weeks when the scale refuses to move.</p>
+  </header>
+
+  <hr class="divider">
+
+  <section class="section section--tight">
+    <div class="prose">
+      <p class="callout callout--warn">Educational only — not medical or nutritional advice. Talk to a doctor or registered dietitian before changing how you eat, especially with any medical condition, medication, or history of disordered eating.</p>
+      <h2>Start with maintenance, not a diet</h2>
+      <p>Maintenance is the intake at which weight is stable. Every formula for it is an estimate, and estimates are wrong for individuals — so use one to start, then correct it with real data.</p>
+      <span class="formula">Rough start:  maintenance ≈ bodyweight (lb) × 14–16
+Then:         eat that for 10–14 days, track weight daily,
+              and adjust based on the trend, not the formula</span>
+      <p><strong>Your own two-week trend beats any calculator.</strong> The formula gets you within a few hundred calories; the data closes the gap.</p>
+      <h2>Deficit size</h2>
+      <p>A pound of body fat is commonly approximated at around 3,500 calories, which makes a 500-per-day deficit roughly a pound a week. It is an approximation — adaptive changes and water shifts blur it — but it is a workable planning number.</p>
+      <div class="tblwrap"><table class="tbl">
+        <thead><tr><th>Daily deficit</th><th>Rough weekly loss</th><th>Trade-off</th></tr></thead>
+        <tbody>
+          <tr><td>250</td><td>≈ 0.5 lb</td><td>Easy to sustain, slow enough to feel like nothing is happening</td></tr>
+          <tr><td>500</td><td>≈ 1 lb</td><td>The usual recommendation — meaningful and liveable</td></tr>
+          <tr><td>750–1000</td><td>≈ 1.5–2 lb</td><td>Faster, but hunger, training quality, and adherence all suffer</td></tr>
+          <tr><td>Aggressive crash</td><td>varies</td><td>Higher muscle loss, poor adherence, near-universal rebound</td></tr>
+        </tbody>
+      </table></div>
+      <p>The deficit you actually follow beats the optimal one you abandon in three weeks. That is the entire lesson and most people learn it the slow way, twice.</p>
+      <h2>Protein is the one macro worth defending</h2>
+      <p>In a deficit the body will take some of the weight from lean mass. Adequate protein plus resistance training is what shifts the balance toward fat. Common practical guidance is roughly <strong>0.7–1.0 g per pound of target bodyweight</strong>, which is generous but simple to hit and hard to overshoot in a deficit.</p>
+      <p>Protein also has the highest satiety per calorie of the three macros, so the floor makes the deficit easier to live with. Fill the remaining calories with carbohydrate and fat in whatever split you personally adhere to best — that ratio matters far less than the total and the protein floor.</p>
+      <h2>Why the scale lies</h2>
+      <p>Daily weight moves with water, glycogen, sodium, digestion, and sleep — swings of several pounds that have nothing to do with fat. It is entirely normal for the scale to stall for ten days and then drop three pounds overnight while the underlying loss was perfectly steady.</p>
+      <ul>
+        <li>Weigh daily, at the same time, under the same conditions.</li>
+        <li>Judge only the <strong>weekly average against the previous weekly average</strong>. Never compare two individual days.</li>
+        <li>Expect a stall after high sodium, hard training, or poor sleep.</li>
+        <li>If the four-week trend is flat, the deficit is not real — recheck portions and untracked intake before touching the plan.</li>
+      </ul>
+      <h2>The tracking method that survives</h2>
+      <ol>
+        <li>Track weight daily, look at it weekly.</li>
+        <li>Track intake honestly for two weeks to calibrate, then loosely once the portions are known.</li>
+        <li>Keep a protein floor as a hard rule; treat everything else as a target.</li>
+        <li>Lift, and keep a record of the lifts. Strength holding steady in a deficit is the best available evidence that the weight leaving is mostly fat.</li>
+        <li>Take a photo monthly. It is the only measure that captures what the scale cannot.</li>
+      </ol>
+      <h2>The part nobody writes down</h2>
+      <p>Sixty pounds took a long time, and most of that time was unremarkable. The weeks that felt like failure were mostly water. The thing that made it work was not discipline in any heroic sense — it was reducing the number of decisions: same breakfast, known portions, one number to check per week.</p>
+      <p>I built <a href="/apps/cut/">Cut</a> for that shape of tracking: weight in, trend out, no account, no server, nothing leaves your device.</p>
+
+      <h2>Tools referenced in this guide</h2>
+      <ul>
+        <li><a href="/apps/cut/">Cut</a> — weight and body-recomposition tracker — offline, local-only, no signup.</li>
+        <li><a href="/apps/fire/">Fire</a> — daily ritual checklist for the habits underneath it.</li>
+        <li><a href="/media-kit.html">Media kit</a> — the full transformation story and creator work.</li>
+      </ul>
+    </div>
+  </section>
+
+  <hr class="divider">
+
+  <section class="section section--tight" id="faq">
+    <div class="grp-head">
+      <p class="eyebrow">FAQ</p>
+      <h2>Quick answers</h2>
+    </div>
+    <div class="grid" style="margin-top:var(--s6)">
+      <article class="card faq-card"><h3>How do I find maintenance?</h3><p>Bodyweight × 14–16 as a start, then eat there for two weeks and correct using your own weight trend. Data beats the formula.</p></article>
+      <article class="card faq-card"><h3>How big a deficit?</h3><p>About 500/day for roughly a pound a week. Bigger is faster and costs adherence, training quality, and lean mass.</p></article>
+      <article class="card faq-card"><h3>How much protein?</h3><p>Roughly 0.7–1.0 g per pound of target bodyweight. It protects lean mass in a deficit and keeps you full.</p></article>
+      <article class="card faq-card"><h3>Why is the scale stuck?</h3><p>Water, glycogen, sodium, digestion, sleep. Compare weekly averages, not days, and only worry if four weeks are flat.</p></article>
+      <article class="card faq-card"><h3>Do macros matter?</h3><p>Much less than total calories and the protein floor. Split the rest however you actually adhere to.</p></article>
+      <article class="card faq-card"><h3>Can I do it fast?</h3><p>Speed is the wrong target — faster costs lean mass and rebounds. This is general information, not medical advice.</p></article>
+    </div>
+  </section>
+
+</main>
+
+<footer class="site-footer">
+  <div class="site-footer__links">
+    <a href="/">Work</a>
+    <a href="/about.html">About</a>
+    <a href="/guides.html">Guides</a>
+    <a href="/apps.html">Apps</a>
+    <a href="/store.html">Store</a>
+    <a href="/legal.html">Legal</a>
+    <a href="/privacy.html">Privacy</a>
+    <a href="/terms.html">Terms</a>
+    <a href="mailto:yusuf.gadelrab06@gmail.com">yusuf.gadelrab06@gmail.com</a>
+  </div>
+</footer>
+
+<script src="/js/site.js" defer></script>
+</body>
+</html>

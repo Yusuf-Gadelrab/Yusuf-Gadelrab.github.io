@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="preload" href="/css/site.css" as="style">
+<meta name="robots" content="index,follow,max-image-preview:large,max-snippet:-1">
+<meta property="og:locale" content="en_US">
+<title>Where AI Automation Actually Pays Off in a Small Business</title>
+<meta name="description" content="A practical filter for which small-business tasks are worth automating with AI, the two-tier local plus frontier model pattern, quality gates, and what to keep human.">
+<link rel="canonical" href="https://yusuf-gadelrab.github.io/guides/ai-automation-small-business.html">
+<link rel="icon" type="image/svg+xml" href="https://yusuf-gadelrab.github.io/favicon.svg">
+<link rel="apple-touch-icon" sizes="180x180" href="https://yusuf-gadelrab.github.io/apple-touch-icon.png">
+<meta name="theme-color" content="#0B0B0D">
+<meta name="author" content="Yusuf Gadelrab">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="Yusuf Gadelrab">
+<meta property="og:title" content="Where AI Automation Actually Pays Off">
+<meta property="og:description" content="A filter for what to automate, the two-tier model pattern, and why the quality gate is the product.">
+<meta property="og:url" content="https://yusuf-gadelrab.github.io/guides/ai-automation-small-business.html">
+<meta property="og:image" content="https://yusuf-gadelrab.github.io/og-card.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Where AI Automation Actually Pays Off">
+<meta name="twitter:description" content="A filter for what to automate, the two-tier model pattern, and why the quality gate is the product.">
+<meta name="twitter:image" content="https://yusuf-gadelrab.github.io/og-card.png">
+<link rel="alternate" type="text/plain" href="https://yusuf-gadelrab.github.io/llms-full.txt" title="Plain-text profile for language models">
+
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"TechArticle","@id":"https://yusuf-gadelrab.github.io/guides/ai-automation-small-business.html#article","headline":"Where AI Automation Actually Pays Off in a Small Business","name":"Where AI Automation Actually Pays Off in a Small Business","description":"A practical filter for which small-business tasks are worth automating with AI, the two-tier local plus frontier model pattern, quality gates, and what to keep human.","datePublished":"2026-07-29","dateModified":"2026-07-29","inLanguage":"en","author":{"@id":"https://yusuf-gadelrab.github.io/#person"},"publisher":{"@id":"https://yusuf-gadelrab.github.io/#person"},"about":["Business automation","Applied AI","Operations"],"mainEntityOfPage":"https://yusuf-gadelrab.github.io/guides/ai-automation-small-business.html","isAccessibleForFree":true,"proficiencyLevel":"Beginner"},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://yusuf-gadelrab.github.io/"},{"@type":"ListItem","position":2,"name":"Guides","item":"https://yusuf-gadelrab.github.io/guides.html"},{"@type":"ListItem","position":3,"name":"AI Automation"}]}]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","@id":"https://yusuf-gadelrab.github.io/guides/ai-automation-small-business.html#faq","mainEntity":[{"@type":"Question","name":"Which business tasks are worth automating with AI?","acceptedAnswer":{"@type":"Answer","text":"Tasks that are repetitive, structured, deadline-driven, and cheap to verify — drafting first versions, extracting fields from documents, classifying and routing messages, chasing paperwork on a schedule, summarising threads, and monitoring expiry dates. If verifying the output costs as much as doing the work, automation has moved the work rather than removed it."}},{"@type":"Question","name":"What should stay human in an automated workflow?","acceptedAnswer":{"@type":"Answer","text":"Anything that commits you or depends on a relationship: sending final communications, negotiating price, handling complaints or claims, and deciding what to do when something the system flagged actually happens."}},{"@type":"Question","name":"What is the two-tier model pattern?","acceptedAnswer":{"@type":"Answer","text":"A cheap local model handles high-volume, low-difficulty work such as drafting, tagging, and extraction at zero marginal cost, while a frontier model handles judgement, hard reasoning, and anything customer-facing. An automated quality gate sits between them."}},{"@type":"Question","name":"Why does an automation pipeline need a quality gate?","acceptedAnswer":{"@type":"Answer","text":"Because generation at volume always has a non-zero failure rate, and one bad artefact reaching a customer can cost more than the entire batch saved. A gate checks hard invariants in code — required fields, no placeholder text, exact matches for names and amounts, deduplication — and quarantines anything that fails."}},{"@type":"Question","name":"How should you sequence an AI automation build?","acceptedAnswer":{"@type":"Answer","text":"Instrument the task first to confirm the volume justifies it, write the quality gate before the generator, run in shadow mode without sending to measure the pass rate, ship one high-volume workflow end to end, and keep a human at the irreversible step until the pass rate is proven stable."}},{"@type":"Question","name":"What does AI automation actually cost?","acceptedAnswer":{"@type":"Answer","text":"Less than expected on model inference, especially with a local model on hardware you already own, and more than expected on integration — connecting data sources, defining invariants, handling exceptions, and maintaining it when an upstream format changes. The model is the cheap part."}}]}</script>
+
+<link rel="stylesheet" href="/css/site.css">
+<style>
+  .prose{max-width:68ch}
+  .prose h2{margin:var(--s7) 0 var(--s4);font-size:var(--t-h2)}
+  .prose h3{margin:var(--s6) 0 var(--s3);font-size:var(--t-h3)}
+  .prose p{color:var(--muted);margin:0 0 var(--s4)}
+  .prose ul,.prose ol{color:var(--muted);padding-left:1.2em;margin:0 0 var(--s4)}
+  .prose li{margin-bottom:var(--s2)}
+  .prose a{color:var(--gold-2)}
+  .prose strong{color:var(--fg)}
+  .formula{display:block;padding:var(--s4);margin:0 0 var(--s4);border:1px solid var(--line-soft);
+    border-radius:var(--radius);font-family:ui-monospace,SFMono-Regular,Menlo,monospace;
+    font-size:var(--t-small);color:var(--gold-2);overflow-x:auto;white-space:pre-wrap}
+  .tblwrap{overflow-x:auto;margin:0 0 var(--s4)}
+  .tbl{width:100%;border-collapse:collapse;font-size:var(--t-small)}
+  .tbl th,.tbl td{text-align:left;padding:var(--s3);border-bottom:1px solid var(--line-soft);
+    color:var(--muted);vertical-align:top}
+  .tbl th{font-family:var(--display-pro);color:var(--gold-2);font-weight:600}
+  .callout{padding:var(--s4);border:1px solid var(--line-soft);border-radius:var(--radius);
+    color:var(--muted);font-size:var(--t-small);margin:0 0 var(--s5)}
+  .callout--warn{border-color:var(--gold-2)}
+  .faq-card{padding:var(--s5)}
+  .faq-card h3{font-size:var(--t-h3);margin:0}
+  .faq-card p{color:var(--muted);font-size:var(--t-small);margin:var(--s3) 0 0}
+</style>
+</head>
+<body class="pro">
+
+<a class="skip-link" href="#main">Skip to content</a>
+
+<nav class="site-nav">
+  <a class="site-nav__brand" href="/"><img class="site-nav__lion" src="/img/brand/lion-mark.svg" alt="" width="34" height="34"><span>YUSUF GADELRAB</span></a>
+  <div class="site-nav__links">
+    <a href="/">Work</a>
+    <a href="/guides.html">Guides</a>
+    <a href="/stack.html">Stack</a>
+    <a href="/store.html">Store</a>
+  </div>
+</nav>
+
+<main id="main">
+
+  <header class="section">
+    <p class="eyebrow">Guide · AI</p>
+    <h1 style="margin:var(--s4) 0">Automate the deadline work, not the thinking</h1>
+    <p class="lead">Most AI automation projects fail on selection, not technology. The tasks worth automating share a specific shape, and the ones that burn money share a different one.</p>
+  </header>
+
+  <hr class="divider">
+
+  <section class="section section--tight">
+    <div class="prose">
+      <h2>The filter</h2>
+      <p>A task is a good automation candidate when it is <strong>repetitive, structured, deadline-driven, and cheap to verify</strong>. That last one carries most of the weight: if checking the output takes as long as producing it, automation has moved the work rather than removed it.</p>
+      <div class="tblwrap"><table class="tbl">
+        <thead><tr><th>Automate</th><th>Keep human</th></tr></thead>
+        <tbody>
+          <tr><td>Drafting a first version</td><td>Sending anything that commits you</td></tr>
+          <tr><td>Extracting fields from documents</td><td>Deciding what the fields mean for the relationship</td></tr>
+          <tr><td>Classifying and routing inbound messages</td><td>Handling the angry one</td></tr>
+          <tr><td>Chasing missing paperwork on a schedule</td><td>Negotiating price</td></tr>
+          <tr><td>Summarising a long thread</td><td>Making the call the thread was about</td></tr>
+          <tr><td>Monitoring dates and flagging expiry</td><td>Deciding what to do when something expires</td></tr>
+        </tbody>
+      </table></div>
+      <h2>The two-tier pattern</h2>
+      <p>The architecture that consistently works is two-tier. A cheap local model does the volume — drafting, tagging, extraction, overnight batches — at zero marginal cost. A frontier model does the judgement: the final pass, the hard reasoning, anything customer-facing. Between them sits the piece most people skip.</p>
+      <h2>The quality gate is the product</h2>
+      <p>Generated output at volume is worthless without an automated check, because the failure rate is never zero and one bad artefact reaching a customer costs more than the whole batch saved. A gate is a set of hard invariants, checked in code, that quarantines anything failing them.</p>
+      <ul>
+        <li>Required fields present and non-empty.</li>
+        <li>No placeholder text — no unfilled template variables, no leftover brackets.</li>
+        <li>Names, amounts, and dates match the source record exactly, checked by string comparison rather than by vibes.</li>
+        <li>Length and format within bounds.</li>
+        <li>Banned-phrase list for anything that would embarrass you.</li>
+        <li>Deduplication against what has already been sent, so nobody gets the same message twice.</li>
+      </ul>
+      <p>Everything failing the gate goes to a quarantine folder rather than out the door. <strong>Volume without a gate is not throughput, it is liability at scale.</strong></p>
+      <h2>Sequencing a real build</h2>
+      <ol>
+        <li><strong>Instrument first.</strong> Count how often the task happens and how long it takes. Automating something that occurs twice a month is a hobby.</li>
+        <li><strong>Write the gate before the generator.</strong> If you cannot specify what correct output looks like in code, you are not ready to generate it.</li>
+        <li><strong>Run it in shadow mode.</strong> Generate, gate, and inspect — but do not send. Measure the pass rate.</li>
+        <li><strong>Ship the highest-volume slice only.</strong> One workflow, end to end, beats five half-built ones.</li>
+        <li><strong>Keep a human at the point of irreversibility</strong> until the pass rate has been stable for long enough that you would bet on it.</li>
+      </ol>
+      <h2>What it actually costs</h2>
+      <p>Less than people expect on tokens and more than they expect on plumbing. A local model on hardware you already own is free per call, so the recurring cost of a high-volume drafting pipeline can be genuinely near zero. The real expense is the boring part: connecting the data sources, defining the invariants, handling the exceptions, and maintaining it when a format changes upstream.</p>
+      <p>Which is the honest summary of this whole field right now — <strong>the model is the cheap part.</strong></p>
+      <p>A worked example of all of this in production is <a href="/freightdesk.html">FreightDesk AI</a>: local model drafts overnight, an automated audit quarantines anything failing its checks, a human sees only exceptions. The generation half is covered in the <a href="/guides/local-llm-ollama.html">local LLM guide</a>, and the retrieval half in the <a href="/guides/rag-explained.html">RAG guide</a>.</p>
+
+      <h2>Tools referenced in this guide</h2>
+      <ul>
+        <li><a href="/freightdesk.html">FreightDesk AI</a> — the pattern in production for freight brokerages.</li>
+        <li><a href="/guides/local-llm-ollama.html">Local LLM guide</a> — how to run the cheap tier on your own hardware.</li>
+        <li><a href="/store.html">Automation Studio &amp; store</a> — playbooks and templates for building this yourself.</li>
+      </ul>
+    </div>
+  </section>
+
+  <hr class="divider">
+
+  <section class="section section--tight" id="faq">
+    <div class="grp-head">
+      <p class="eyebrow">FAQ</p>
+      <h2>Quick answers</h2>
+    </div>
+    <div class="grid" style="margin-top:var(--s6)">
+      <article class="card faq-card"><h3>What is worth automating?</h3><p>Repetitive, structured, deadline-driven work that is cheap to verify. If checking costs as much as doing, you moved the work rather than removed it.</p></article>
+      <article class="card faq-card"><h3>What stays human?</h3><p>Anything that commits you: final sends, price negotiation, complaints, and deciding what to do when a flag fires.</p></article>
+      <article class="card faq-card"><h3>What is the two-tier pattern?</h3><p>Cheap local model for volume drafting and extraction, frontier model for judgement and anything customer-facing, gate in between.</p></article>
+      <article class="card faq-card"><h3>Why a quality gate?</h3><p>Failure rate is never zero, and one bad artefact costs more than the batch saved. Volume without a gate is liability at scale.</p></article>
+      <article class="card faq-card"><h3>How do I sequence a build?</h3><p>Instrument, write the gate first, run in shadow mode, ship one workflow end to end, keep a human at the irreversible step.</p></article>
+      <article class="card faq-card"><h3>What does it cost?</h3><p>Little on inference, a lot on plumbing — integration, invariants, exceptions, maintenance. The model is the cheap part.</p></article>
+    </div>
+  </section>
+
+</main>
+
+<footer class="site-footer">
+  <div class="site-footer__links">
+    <a href="/">Work</a>
+    <a href="/about.html">About</a>
+    <a href="/guides.html">Guides</a>
+    <a href="/apps.html">Apps</a>
+    <a href="/store.html">Store</a>
+    <a href="/legal.html">Legal</a>
+    <a href="/privacy.html">Privacy</a>
+    <a href="/terms.html">Terms</a>
+    <a href="mailto:yusuf.gadelrab06@gmail.com">yusuf.gadelrab06@gmail.com</a>
+  </div>
+</footer>
+
+<script src="/js/site.js" defer></script>
+</body>
+</html>

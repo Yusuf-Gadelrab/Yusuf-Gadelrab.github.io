@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="preload" href="/css/site.css" as="style">
+<meta name="robots" content="index,follow,max-image-preview:large,max-snippet:-1">
+<meta property="og:locale" content="en_US">
+<title>Running a Local LLM With Ollama — A Practical Setup</title>
+<meta name="description" content="How to run a local large language model with Ollama: picking a model for your RAM, using the HTTP API instead of the CLI, context limits, quantisation, and when local beats an API.">
+<link rel="canonical" href="https://yusuf-gadelrab.github.io/guides/local-llm-ollama.html">
+<link rel="icon" type="image/svg+xml" href="https://yusuf-gadelrab.github.io/favicon.svg">
+<link rel="apple-touch-icon" sizes="180x180" href="https://yusuf-gadelrab.github.io/apple-touch-icon.png">
+<meta name="theme-color" content="#0B0B0D">
+<meta name="author" content="Yusuf Gadelrab">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="Yusuf Gadelrab">
+<meta property="og:title" content="Running a Local LLM With Ollama">
+<meta property="og:description" content="Model choice, the HTTP API, quantisation, context limits, and when local actually beats a cloud API.">
+<meta property="og:url" content="https://yusuf-gadelrab.github.io/guides/local-llm-ollama.html">
+<meta property="og:image" content="https://yusuf-gadelrab.github.io/og-card.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Running a Local LLM With Ollama">
+<meta name="twitter:description" content="Model choice, the HTTP API, quantisation, context limits, and when local actually beats a cloud API.">
+<meta name="twitter:image" content="https://yusuf-gadelrab.github.io/og-card.png">
+<link rel="alternate" type="text/plain" href="https://yusuf-gadelrab.github.io/llms-full.txt" title="Plain-text profile for language models">
+
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"TechArticle","@id":"https://yusuf-gadelrab.github.io/guides/local-llm-ollama.html#article","headline":"Running a Local LLM With Ollama: A Practical Setup","name":"Running a Local LLM With Ollama: A Practical Setup","description":"How to run a local large language model with Ollama: picking a model for your RAM, using the HTTP API instead of the CLI, context limits, quantisation, and when local beats an API.","datePublished":"2026-07-29","dateModified":"2026-07-29","inLanguage":"en","author":{"@id":"https://yusuf-gadelrab.github.io/#person"},"publisher":{"@id":"https://yusuf-gadelrab.github.io/#person"},"about":["Ollama","Local large language models","Developer tooling"],"mainEntityOfPage":"https://yusuf-gadelrab.github.io/guides/local-llm-ollama.html","isAccessibleForFree":true,"proficiencyLevel":"Beginner"},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://yusuf-gadelrab.github.io/"},{"@type":"ListItem","position":2,"name":"Guides","item":"https://yusuf-gadelrab.github.io/guides.html"},{"@type":"ListItem","position":3,"name":"Local LLM With Ollama"}]}]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","@id":"https://yusuf-gadelrab.github.io/guides/local-llm-ollama.html#faq","mainEntity":[{"@type":"Question","name":"What is Ollama?","acceptedAnswer":{"@type":"Answer","text":"Ollama is a tool for running large language models locally on your own machine. It manages model downloads and serves them behind a local HTTP API on port 11434, so applications can call a local model the same way they would call a cloud API."}},{"@type":"Question","name":"How much RAM do you need to run a local LLM?","acceptedAnswer":{"@type":"Answer","text":"Roughly: 8 GB handles 3B-7B quantised models for classification and short rewrites, 16 GB handles 7B-14B for drafting and extraction, 32 GB handles 14B-32B or a small mixture-of-experts model, and 64 GB or more is where local models start feeling genuinely capable."}},{"@type":"Question","name":"Should you call Ollama from the CLI or the HTTP API?","acceptedAnswer":{"@type":"Answer","text":"Always the HTTP API for anything automated. The interactive CLI writes progress and control characters to stdout, so capturing its output from a script produces subtly corrupted text. Scripts should POST to http://localhost:11434 instead."}},{"@type":"Question","name":"What is quantisation?","acceptedAnswer":{"@type":"Answer","text":"Quantisation stores model weights at lower numeric precision, most commonly 4-bit or 5-bit, cutting memory use several-fold for a modest quality loss. At a fixed memory budget, a larger model at 4-bit usually outperforms a smaller model at 8-bit."}},{"@type":"Question","name":"When is a local LLM better than a cloud API?","acceptedAnswer":{"@type":"Answer","text":"When the work is high-volume and low-difficulty, when the data cannot leave the machine, when jobs run unattended overnight, or when there is no connection. Frontier APIs remain better for long multi-step reasoning, large contexts, and complex code generation."}},{"@type":"Question","name":"Why does a local model sometimes seem to hang?","acceptedAnswer":{"@type":"Answer","text":"Usually an extended reasoning or thinking mode is enabled, so the model spends a long time deliberating on a task that did not need it. Disabling thinking for mechanical high-volume work typically returns response times to seconds."}}]}</script>
+
+<link rel="stylesheet" href="/css/site.css">
+<style>
+  .prose{max-width:68ch}
+  .prose h2{margin:var(--s7) 0 var(--s4);font-size:var(--t-h2)}
+  .prose h3{margin:var(--s6) 0 var(--s3);font-size:var(--t-h3)}
+  .prose p{color:var(--muted);margin:0 0 var(--s4)}
+  .prose ul,.prose ol{color:var(--muted);padding-left:1.2em;margin:0 0 var(--s4)}
+  .prose li{margin-bottom:var(--s2)}
+  .prose a{color:var(--gold-2)}
+  .prose strong{color:var(--fg)}
+  .formula{display:block;padding:var(--s4);margin:0 0 var(--s4);border:1px solid var(--line-soft);
+    border-radius:var(--radius);font-family:ui-monospace,SFMono-Regular,Menlo,monospace;
+    font-size:var(--t-small);color:var(--gold-2);overflow-x:auto;white-space:pre-wrap}
+  .tblwrap{overflow-x:auto;margin:0 0 var(--s4)}
+  .tbl{width:100%;border-collapse:collapse;font-size:var(--t-small)}
+  .tbl th,.tbl td{text-align:left;padding:var(--s3);border-bottom:1px solid var(--line-soft);
+    color:var(--muted);vertical-align:top}
+  .tbl th{font-family:var(--display-pro);color:var(--gold-2);font-weight:600}
+  .callout{padding:var(--s4);border:1px solid var(--line-soft);border-radius:var(--radius);
+    color:var(--muted);font-size:var(--t-small);margin:0 0 var(--s5)}
+  .callout--warn{border-color:var(--gold-2)}
+  .faq-card{padding:var(--s5)}
+  .faq-card h3{font-size:var(--t-h3);margin:0}
+  .faq-card p{color:var(--muted);font-size:var(--t-small);margin:var(--s3) 0 0}
+</style>
+</head>
+<body class="pro">
+
+<a class="skip-link" href="#main">Skip to content</a>
+
+<nav class="site-nav">
+  <a class="site-nav__brand" href="/"><img class="site-nav__lion" src="/img/brand/lion-mark.svg" alt="" width="34" height="34"><span>YUSUF GADELRAB</span></a>
+  <div class="site-nav__links">
+    <a href="/">Work</a>
+    <a href="/guides.html">Guides</a>
+    <a href="/stack.html">Stack</a>
+    <a href="/store.html">Store</a>
+  </div>
+</nav>
+
+<main id="main">
+
+  <header class="section">
+    <p class="eyebrow">Guide · AI</p>
+    <h1 style="margin:var(--s4) 0">Running a local LLM, and when it is actually the right call</h1>
+    <p class="lead">A local model is free per token, private by construction, and works offline. It is also slower and weaker than a frontier API. Knowing which jobs fall on which side of that trade is most of the skill.</p>
+  </header>
+
+  <hr class="divider">
+
+  <section class="section section--tight">
+    <div class="prose">
+      <h2>When local wins</h2>
+      <ul>
+        <li><strong>High-volume, low-difficulty work</strong> — drafting, classifying, tagging, extracting fields, first-pass summarising. Thousands of calls a night cost nothing.</li>
+        <li><strong>Data that must not leave the machine</strong> — anything under an NDA, personal records, or client material.</li>
+        <li><strong>Batch jobs that run unattended</strong> — no rate limits, no API outage, no bill that scales with a runaway loop.</li>
+        <li><strong>Offline environments</strong> — flights, bad connections, air-gapped work.</li>
+      </ul>
+      <p>When local loses: long multi-step reasoning, large-context work, anything where a subtle mistake is expensive, and code generation of any real complexity. Use the frontier API there and stop being precious about it.</p>
+      <h2>Picking a model for your hardware</h2>
+      <p>The binding constraint is memory. A rough guide for quantised weights:</p>
+      <div class="tblwrap"><table class="tbl">
+        <thead><tr><th>RAM / VRAM</th><th>Realistic model size</th><th>What it is good for</th></tr></thead>
+        <tbody>
+          <tr><td>8 GB</td><td>3B–7B quantised</td><td>Classification, tagging, short rewrites</td></tr>
+          <tr><td>16 GB</td><td>7B–14B quantised</td><td>Drafting, summarising, structured extraction</td></tr>
+          <tr><td>32 GB</td><td>14B–32B, or a small MoE</td><td>Solid general drafting, light code assistance</td></tr>
+          <tr><td>64 GB+</td><td>30B+ or mixture-of-experts models</td><td>The point where local starts feeling genuinely useful</td></tr>
+        </tbody>
+      </table></div>
+      <p>Mixture-of-experts models are worth knowing about: they hold a large parameter count in memory but only activate a fraction per token, so throughput feels much closer to a small model than the parameter count suggests. That is the sweet spot on a well-specced laptop.</p>
+      <h2>Quantisation, briefly</h2>
+      <p>Quantisation stores weights at lower precision — 4-bit and 5-bit variants being the common choices — which shrinks memory use several-fold for a modest quality loss. Practical rule: <strong>a larger model at 4-bit usually beats a smaller model at 8-bit</strong> at the same memory budget. Below 4-bit, quality degrades quickly.</p>
+      <h2>Use the HTTP API, not the CLI</h2>
+      <p>Ollama exposes a local HTTP endpoint on port 11434. Scripts should call that, not shell out to the interactive command.</p>
+      <span class="formula">curl http://localhost:11434/api/generate -d '{
+  "model": "your-model",
+  "prompt": "Summarise this in one sentence: ...",
+  "stream": false,
+  "options": {"temperature": 0.2}
+}'</span>
+      <p>This matters more than it sounds. The interactive CLI writes progress and control characters to stdout; capturing that from a script produces output that is subtly corrupted in ways that only show up in production. <strong>Automations should always talk to the HTTP API.</strong> I learned that the annoying way, and it is now a standing rule in my own tooling.</p>
+      <h2>Settings that actually matter</h2>
+      <ul>
+        <li><strong>temperature</strong> — 0.1–0.3 for extraction and classification, higher only when you want variety.</li>
+        <li><strong>context length</strong> — bigger contexts cost memory and speed. Set it to what the job needs, not to the maximum.</li>
+        <li><strong>reasoning / thinking modes</strong> — if the model supports an extended-thinking mode, it will happily spend a long time on a job that did not need it. Disable it for high-volume mechanical work; a request that used to take seconds can otherwise appear to hang.</li>
+        <li><strong>keep-alive</strong> — reloading weights per call dominates latency in batch jobs. Keep the model resident.</li>
+        <li><strong>structured output</strong> — ask for JSON and validate it. Local models drift from a schema more than frontier models do, so parse defensively and retry.</li>
+      </ul>
+      <h2>A realistic architecture</h2>
+      <p>The pattern that works is a two-tier one. A local model does the volume: drafting, tagging, first-pass extraction, overnight batches. A frontier model does the judgement: the final pass, the hard reasoning, anything that ships to a customer. A quality gate sits in between and rejects bad local output before it reaches the expensive step.</p>
+      <p>That is how my own outreach and automation pipelines run — local model drafts overnight, an automated quality audit quarantines anything that fails its checks, and only the passing output moves forward. <a href="/stack.html">The rest of the stack is here →</a></p>
+
+      <h2>Tools referenced in this guide</h2>
+      <ul>
+        <li><a href="/stack.html">My stack</a> — the actual tools behind the trading, the code, and the automation.</li>
+        <li><a href="/freightdesk.html">FreightDesk AI</a> — a production example of local-model drafting with a human-grade quality gate.</li>
+        <li><a href="/guides/rag-explained.html">RAG explained</a> — how to give a local model access to your own documents.</li>
+      </ul>
+    </div>
+  </section>
+
+  <hr class="divider">
+
+  <section class="section section--tight" id="faq">
+    <div class="grp-head">
+      <p class="eyebrow">FAQ</p>
+      <h2>Quick answers</h2>
+    </div>
+    <div class="grid" style="margin-top:var(--s6)">
+      <article class="card faq-card"><h3>What is Ollama?</h3><p>A local model runner that serves LLMs behind an HTTP API on port 11434, so your code calls a local model like a cloud one.</p></article>
+      <article class="card faq-card"><h3>How much RAM?</h3><p>8 GB for 3–7B, 16 GB for 7–14B, 32 GB for 14–32B or a small MoE, 64 GB+ before local really feels capable.</p></article>
+      <article class="card faq-card"><h3>CLI or HTTP API?</h3><p>HTTP API, always, for automation. The interactive CLI emits control characters that quietly corrupt captured output.</p></article>
+      <article class="card faq-card"><h3>What is quantisation?</h3><p>Lower-precision weights — usually 4-bit or 5-bit. At the same memory, a bigger 4-bit model usually beats a smaller 8-bit one.</p></article>
+      <article class="card faq-card"><h3>When does local win?</h3><p>High-volume simple work, private data, unattended batches, offline. Frontier APIs still win on hard reasoning and complex code.</p></article>
+      <article class="card faq-card"><h3>Why does it hang?</h3><p>Extended thinking mode left on for a mechanical task. Turn it off for batch work and responses drop back to seconds.</p></article>
+    </div>
+  </section>
+
+</main>
+
+<footer class="site-footer">
+  <div class="site-footer__links">
+    <a href="/">Work</a>
+    <a href="/about.html">About</a>
+    <a href="/guides.html">Guides</a>
+    <a href="/apps.html">Apps</a>
+    <a href="/store.html">Store</a>
+    <a href="/legal.html">Legal</a>
+    <a href="/privacy.html">Privacy</a>
+    <a href="/terms.html">Terms</a>
+    <a href="mailto:yusuf.gadelrab06@gmail.com">yusuf.gadelrab06@gmail.com</a>
+  </div>
+</footer>
+
+<script src="/js/site.js" defer></script>
+</body>
+</html>
