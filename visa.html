@@ -30,16 +30,19 @@
     background:rgba(224,179,65,.08);
     border-radius:var(--radius-lg);
     padding:var(--s5);
-    margin:var(--s5) auto 0;
-    max-width:var(--maxw);
+    margin:var(--s5) 0 0;
+    max-width:860px;
   }
   .disclaimer h2{font-size:var(--t-h3);color:var(--warn);margin-bottom:var(--s2)}
   .disclaimer p{font-size:var(--t-small);color:var(--ink);max-width:var(--maxw-prose)}
   .disclaimer p+p{margin-top:var(--s3)}
-  .disclaimer-wrap{padding:0 var(--section-x)}
+  .disclaimer-wrap{padding:0 var(--section-x);max-width:var(--maxw);margin:0 auto}
 
   /* ---------- step scaffolding ---------- */
-  .step{margin-top:var(--s7)}
+  /* Sections sit close together: this is one continuous form, not twelve
+     unrelated marketing sections, so the default 110px section rhythm reads as
+     a broken page here. */
+  .step{margin-top:0;padding-top:var(--s6);padding-bottom:var(--s6)}
   .step__num{
     display:inline-flex;align-items:center;justify-content:center;
     width:26px;height:26px;border:1px solid var(--line);border-radius:var(--radius);
@@ -122,9 +125,9 @@
   /* ---------- CPT explainer ---------- */
   .cptgrid{display:grid;gap:var(--s4);grid-template-columns:repeat(auto-fit,minmax(min(220px,100%),1fr));margin-top:var(--s5)}
   .gate{border:1px solid var(--line-soft);border-radius:var(--radius-lg);padding:var(--s4);background:var(--bg2)}
-  .gate__k{font-size:var(--t-micro);letter-spacing:1.5px;text-transform:uppercase;color:var(--muted)}
-  .gate__v{font-family:var(--mono);font-size:16px;color:var(--gold-2);margin-top:6px;word-break:break-word}
-  .gate__d{font-size:var(--t-micro);color:var(--faint);margin-top:6px;line-height:1.5}
+  .gate__k{display:block;font-size:var(--t-micro);letter-spacing:1.5px;text-transform:uppercase;color:var(--muted)}
+  .gate__v{display:block;font-family:var(--mono);font-size:16px;color:var(--gold-2);margin-top:6px;word-break:break-word}
+  .gate__d{display:block;font-size:var(--t-micro);color:var(--faint);margin-top:6px;line-height:1.5}
   .gate[data-tone="bad"]{border-color:rgba(224,104,95,.5)}
   .gate[data-tone="bad"] .gate__v{color:var(--bad)}
   .gate[data-tone="ok"] .gate__v{color:var(--ok)}
@@ -411,6 +414,8 @@
     <a href="mailto:yusuf.gadelrab06@gmail.com?subject=Visa%20Navigator">yusuf.gadelrab06@gmail.com</a>
     <a href="https://github.com/Yusuf-Gadelrab" target="_blank" rel="noreferrer">GitHub</a>
     <a href="https://www.linkedin.com/in/yusuf-gadelrab-76246b221" target="_blank" rel="noreferrer">LinkedIn</a>
+    <a href="/privacy.html">Privacy</a>
+    <a href="/terms.html">Terms</a>
   </div>
 </footer>
 

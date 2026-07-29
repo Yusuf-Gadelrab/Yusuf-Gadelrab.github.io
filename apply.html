@@ -468,6 +468,8 @@
     <a href="/media-kit.html">Media Kit</a>
     <a href="https://github.com/Yusuf-Gadelrab" target="_blank" rel="noopener">GitHub</a>
     <a href="https://www.linkedin.com/in/yusuf-gadelrab-76246b221" target="_blank" rel="noopener">LinkedIn</a>
+    <a href="/privacy.html">Privacy</a>
+    <a href="/terms.html">Terms</a>
   </div>
 </footer>
 
@@ -633,7 +635,7 @@
         materials: { resume: true, cover: true, transcript: false, essays: true, recs: false },
         recommenders: [], submittedOn: isoPlusDays(-3), example: true },
       { id: 'ex4', type: 'Fellowship', org: 'EXAMPLE — Lakeside Research Fellowship', role: 'Summer Research Fellow',
-        deadline: isoPlusDays(-4), status: 'Withdrawn', amount: 4000, link: '',
+        deadline: isoPlusDays(-4), status: 'Drafting', amount: 4000, link: '',
         notes: 'Fictional placeholder showing how a past-due entry appears.',
         materials: { resume: true, cover: false, transcript: false, essays: false, recs: true },
         recommenders: [{ name: 'Dr. B. Sample', askedOn: isoPlusDays(-30), submitted: true }],
@@ -742,8 +744,11 @@
       .sort(function (a, b) { return a.d - b.d; });
 
     var bands = [
-      { key: 'past', cls: 'past', title: 'Past due', test: function (d) { return d < 0; },
-        empty: 'Nothing overdue.' },
+      { key: 'past', cls: 'past', title: 'Past due', test: function (d, e) {
+          // Only unsent work counts as overdue — a passed deadline on something
+          // already submitted is history, not an alarm.
+          return d < 0 && ['Researching', 'Drafting'].indexOf(e.status) > -1;
+        }, empty: 'Nothing overdue.' },
       { key: '7', cls: '7', title: 'Next 7 days', test: function (d) { return d >= 0 && d <= 7; },
         empty: 'Clear for the next week.' },
       { key: '14', cls: '14', title: '8–14 days', test: function (d) { return d > 7 && d <= 14; },
@@ -757,7 +762,7 @@
     var counts = {};
 
     bands.forEach(function (b) {
-      var items = live.filter(function (x) { return b.test(x.d); });
+      var items = live.filter(function (x) { return b.test(x.d, x.e); });
       counts[b.key] = items.length;
       var box = el('div', { class: 'radar-band radar-band--' + b.cls });
       box.appendChild(el('h3', {}, [

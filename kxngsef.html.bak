@@ -36,6 +36,7 @@
     scholar: ''
   };
 </script>
+<!-- BUILD:LD -->
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -428,6 +429,7 @@
       <p>Print-on-demand, one drop at a time. Join the waitlist on any piece below and you're first in line the moment the store connects — no payment today.</p>
     </div>
     <div class="grid">
+<!-- BUILD:GRID -->
 
       <article class="card piece reveal">
         <div class="swatch">
@@ -536,6 +538,7 @@
           <a class="btn btn-gold btn-sm" data-buy="scholar" href="mailto:yusuf.gadelrab06@gmail.com?subject=KXNG%20SEF%20Drop%20001%20Waitlist&amp;body=Size%3A%20%0APiece%3A%20SCHOLAR%20ATHLETE%20CLUB%20Hoodie%20-%20%2458">Waitlist →</a>
         </div>
       </article>
+<!-- /BUILD:GRID -->
 
     </div>
 
@@ -708,6 +711,7 @@
   }, {threshold:.12});
   document.querySelectorAll('.reveal').forEach(function(el){ io.observe(el); });
 </script>
+<!-- /BUILD:LD -->
 
 </body>
 </html>
