@@ -119,9 +119,11 @@
   .post__body code{font-family:var(--mono);font-size:.9em;background:var(--bg2);
     border:1px solid var(--line-soft);border-radius:2px;padding:1px 5px}
   .artifacts{display:flex;flex-wrap:wrap;gap:var(--s2);margin-top:var(--s3)}
-  .chip{display:inline-flex;align-items:center;gap:6px;max-width:100%;
+  /* inline-block, not inline-flex: a flex box will not ellipsize its own text,
+     and a long URL on a 375px screen has to truncate rather than clip. */
+  .chip{display:inline-block;max-width:100%;vertical-align:top;
     padding:5px 11px;border:1px solid var(--line-soft);border-radius:var(--radius);
-    font-family:var(--mono);font-size:var(--t-micro);color:var(--muted);
+    font-family:var(--mono);font-size:var(--t-micro);color:var(--muted);line-height:1.5;
     overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
   a.chip:hover{border-color:var(--gold);color:var(--gold-2)}
   .chip--metric{color:var(--gold-2);border-color:var(--line);background:rgba(212,175,55,.06)}
@@ -249,10 +251,10 @@
 
         <div class="toolbar">
           <div class="tabs" role="tablist" aria-label="Filter the feed">
-            <button class="tab" role="tab" id="tab-all" aria-selected="true" data-filter="all">All</button>
-            <button class="tab" role="tab" id="tab-ship" aria-selected="false" data-filter="ship" tabindex="-1">Ship logs</button>
-            <button class="tab" role="tab" id="tab-question" aria-selected="false" data-filter="question" tabindex="-1">Questions</button>
-            <button class="tab" role="tab" id="tab-following" aria-selected="false" data-filter="following" tabindex="-1">Following</button>
+            <button class="tab" role="tab" id="tab-all" aria-selected="true" aria-controls="feed" data-filter="all">All</button>
+            <button class="tab" role="tab" id="tab-ship" aria-selected="false" aria-controls="feed" data-filter="ship" tabindex="-1">Ship logs</button>
+            <button class="tab" role="tab" id="tab-question" aria-selected="false" aria-controls="feed" data-filter="question" tabindex="-1">Questions</button>
+            <button class="tab" role="tab" id="tab-following" aria-selected="false" aria-controls="feed" data-filter="following" tabindex="-1">Following</button>
           </div>
           <div class="search">
             <label class="sr-only" for="search">Search posts</label>
@@ -397,7 +399,7 @@
                   R('lint_witch','Ruth Ó Baoill', 1.6*h, 'Same experience. Semantic naming is where systems go to argue.') ] }),
 
       P({ handle:'yusuf', name:'Yusuf Gadelrab', kind:'ship', ago: 3.2*h,
-        text:'Finished the walk-forward on the swing screener. Only one setup survived out of sample: the anchored-VWAP reclaim, +0.23R average over 101 trades. VCP came out roughly breakeven. The gap/ORB daily proxy was negative at -0.28R, so I am cutting it instead of tuning it into looking good.',
+        text:'Finished the walk-forward on the swing screener. Only one setup survived out of sample: the anchored VWAP reclaim (AVWAP), +0.23R average over 101 trades. VCP came out roughly breakeven. The gap/ORB daily proxy was negative at -0.28R, so I am cutting it instead of tuning it into looking good.',
         metric:'+0.23R over 101 trades' }),
 
       P({ handle:'tapedeck', name:'Ilse Kruger', kind:'ship', ago: 4.5*h,

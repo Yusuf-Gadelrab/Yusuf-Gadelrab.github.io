@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Yusuf Gadelrab — Apps</title>
-<meta name="description" content="Free installable DHAHAB apps: TradeLog (R-multiple trade journal), Cut (weight tracker), Fire (daily checklist). Offline, private, no App Store needed.">
+<title>Apps &amp; Projects — Everything I've Built · Yusuf Gadelrab</title>
+<meta name="description" content="The complete index of what Yusuf Gadelrab has built: AI freight tooling, trading systems, startup prototypes, installable web apps, and a streetwear brand — each with an honest status.">
 <link rel="canonical" href="https://yusuf-gadelrab.github.io/apps.html">
 <link rel="icon" type="image/svg+xml" href="https://yusuf-gadelrab.github.io/favicon.svg">
 <link rel="apple-touch-icon" sizes="180x180" href="https://yusuf-gadelrab.github.io/apple-touch-icon.png">
@@ -12,20 +12,52 @@
 <meta name="author" content="Yusuf Gadelrab">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Yusuf Gadelrab">
-<meta property="og:title" content="Yusuf Gadelrab — Apps">
-<meta property="og:description" content="Free installable apps: TradeLog, Cut, and Fire. Built solo, work offline, install straight from the browser.">
+<meta property="og:title" content="Apps & Projects — Everything I've Built">
+<meta property="og:description" content="The complete index of what I've built — AI freight tooling, trading systems, startup prototypes, installable web apps — each with an honest status.">
 <meta property="og:url" content="https://yusuf-gadelrab.github.io/apps.html">
-<meta name="twitter:card" content="summary">
+<meta property="og:image" content="https://yusuf-gadelrab.github.io/og-card.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Apps & Projects — Everything I've Built">
+<meta name="twitter:description" content="The complete index of what I've built, each with an honest status.">
+<meta name="twitter:image" content="https://yusuf-gadelrab.github.io/og-card.png">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "CollectionPage", "name": "Apps & Projects — Yusuf Gadelrab", "url": "https://yusuf-gadelrab.github.io/apps.html", "author": {"@type": "Person", "name": "Yusuf Gadelrab", "url": "https://yusuf-gadelrab.github.io"}}</script>
 <link rel="stylesheet" href="/css/site.css">
 <style>
-  .app-card h3{font-size:1.05rem;margin-bottom:6px}
-  .app-card .glyph{font-size:1.9rem;display:block;margin-bottom:10px}
-  .install{max-width:var(--maxw-prose,720px)}
-  .install ol{margin:12px 0 0 20px}
-  .install li{padding:4px 0}
+  /* ---- page-specific only ---- */
+  .proj{display:flex;flex-direction:column;padding:var(--s5)}
+  .proj h3{margin:var(--s2) 0 var(--s3);font-size:var(--t-h3)}
+  .proj>p{color:var(--muted);font-size:var(--t-small);flex:1;margin:0}
+  .proj .go{margin-top:var(--s4);font-family:var(--display-pro);font-weight:600;
+    font-size:var(--t-small);color:var(--gold-2)}
+  a.proj:hover .go{color:var(--gold)}
+
+  .chips{display:flex;flex-wrap:wrap;gap:6px;margin-top:var(--s4)}
+  .chips span{font-family:var(--mono);font-size:11px;letter-spacing:.3px;
+    color:var(--muted);border:1px solid var(--line-soft);border-radius:var(--radius);
+    padding:3px 8px;white-space:nowrap}
+
+  .st{display:inline-flex;align-items:center;gap:7px;font-family:var(--display-pro);
+    font-weight:600;font-size:11px;letter-spacing:1px;text-transform:uppercase;
+    padding:4px 10px;border-radius:var(--radius);border:1px solid var(--line-soft);
+    color:var(--muted);background:rgba(255,255,255,.02);align-self:flex-start}
+  .st i{width:6px;height:6px;border-radius:50%;display:block;background:currentColor;flex:0 0 auto}
+  .st--live{color:var(--ok);border-color:rgba(95,191,127,.3)}
+  .st--proto{color:var(--warn);border-color:rgba(224,179,65,.3)}
+  .st--local{color:var(--gold-2);border-color:var(--line)}
+  .st--paused{color:var(--faint)}
+
+  .key{display:flex;flex-wrap:wrap;gap:var(--s4);margin-top:var(--s6)}
+  .key div{display:flex;align-items:center;gap:var(--s2);font-size:var(--t-small);color:var(--muted)}
+
+  .grp-head{display:flex;flex-wrap:wrap;gap:var(--s3);align-items:baseline;
+    justify-content:space-between}
+  .grp-head p{color:var(--muted);font-size:var(--t-small);max-width:56ch}
+
+  .install ol{margin:var(--s3) 0 0 20px;color:var(--muted)}
+  .install li{padding:3px 0}
 </style>
-<script type="application/ld+json">{"@context": "https://schema.org", "@type": "CollectionPage", "name": "DHAHAB Apps", "url": "https://yusuf-gadelrab.github.io/apps.html", "publisher": {"@type": "Organization", "name": "DHAHAB", "alternateName": "ذهب", "founder": {"@type": "Person", "name": "Yusuf Gadelrab"}, "url": "https://yusuf-gadelrab.github.io"}}</script>
-<meta property="og:image" content="https://yusuf-gadelrab.github.io/img/yusuf-headshot.jpg">
 </head>
 <body class="pro">
 
@@ -38,63 +70,351 @@
     <a href="/resume.html">Resume</a>
     <a href="/store.html">Store</a>
     <a href="/apps.html" aria-current="page">Apps</a>
+    <a href="/kxngsef.html">KXNG SEF</a>
     <a href="/media-kit.html">Media Kit</a>
   </div>
 </nav>
 
 <main id="main">
 
-  <header class="section hero">
-    <p class="eyebrow">DHAHAB · ذهب · The Golden Standard</p>
-    <h1>DHAHAB Apps</h1>
-    <p class="lead">Gold-standard tools I built for my own daily systems — trading, the cut, and execution. Free, offline-capable, installed straight from the browser. Your data never leaves your device.</p>
+  <header class="section">
+    <p class="eyebrow">The Index</p>
+    <h1 style="margin:var(--s4) 0">Everything I've built, <span class="gold-fill">with an honest label on each one.</span></h1>
+    <p class="lead">Shipped products, working prototypes, tools I run on my own machine, and one research artifact that concluded against me. Nothing here is inflated — if something has no users, it says so.</p>
+    <div class="key">
+      <div><span class="st st--live"><i></i>Live</span> shipped, publicly reachable</div>
+      <div><span class="st st--proto"><i></i>Prototype</span> works end-to-end, not launched</div>
+      <div><span class="st st--local"><i></i>Local tool</span> runs on my machine, by me</div>
+      <div><span class="st st--paused"><i></i>Concept</span> designed, not in production</div>
+    </div>
   </header>
 
+  <hr class="divider">
+
+  <!-- ============ SHIPPING / AI ============ -->
   <section class="section section--tight">
-    <div class="grid">
-      <a class="card app-card" href="/apps/tradelog/">
-        <span class="glyph">📈</span>
-        <h3>TradeLog</h3>
-        <p class="muted">R-multiple trade journal: expectancy, win rate, profit factor, and an equity curve. The same R-math I run my swing system on.</p>
-        <p class="gold">Open TradeLog →</p>
+    <div class="grp-head">
+      <div>
+        <p class="eyebrow">01 · Freight &amp; AI Automation</p>
+        <h2>Shipping software</h2>
+      </div>
+      <p>Local-first AI that runs inside a real operations team — no cloud, no per-token bill, a human always clicks send.</p>
+    </div>
+
+    <div class="grid" style="margin-top:var(--s6)">
+
+      <a class="card proj" href="/hwyhaul.html">
+        <span class="st st--live"><i></i>Live case study</span>
+        <h3>HwyHaul LoadLink</h3>
+        <p>AI intake, billing and accounts-receivable automation built during my internship at a freight brokerage. Reads carrier messages, drafts the reply, and clears the back office — 18 finance workflows, 77 passing tests, entirely on local models.</p>
+        <div class="chips"><span>Python</span><span>FastAPI</span><span>SQLAlchemy</span><span>Ollama</span><span>pytest</span></div>
+        <span class="go">Read the case study →</span>
       </a>
-      <a class="card app-card" href="/apps/cut/">
-        <span class="glyph">⚖️</span>
-        <h3>Cut</h3>
-        <p class="muted">Daily weight tracker with a 7-day trend line, goal line, and streaks. The tool behind my documented 260→200 lb cut.</p>
-        <p class="gold">Open Cut →</p>
+
+      <a class="card proj" href="/freightdesk.html">
+        <span class="st st--live"><i></i>Live · pilots open</span>
+        <h3>FreightDesk AI</h3>
+        <p>The HwyHaul systems productized for small brokerages: an AI back-office clerk that reads the billing and AR inbox and drafts every reply on a local model. No API fees, and the data never leaves the building. Founding-client pilots are open.</p>
+        <div class="chips"><span>Python</span><span>FastAPI</span><span>Local LLM</span><span>SQLite</span></div>
+        <span class="go">See the product →</span>
       </a>
-      <a class="card app-card" href="/apps/fire/">
-        <span class="glyph">🔥</span>
-        <h3>Fire</h3>
-        <p class="muted">A daily execution checklist that resets every morning and tracks your 100% streak. Ship the list, every day.</p>
-        <p class="gold">Open Fire →</p>
+
+      <a class="card proj" href="/spartaneats.html">
+        <span class="st st--paused"><i></i>Concept</span>
+        <h3>SpartanEats</h3>
+        <p>A flat-fee, student-run campus food delivery concept for SJSU: nearby restaurants on one dark map, delivered by fellow students, with a courier jobs board. Designed and prototyped as an interactive demo, never operated.</p>
+        <div class="chips"><span>HTML/CSS/JS</span><span>Product design</span><span>Interactive demo</span></div>
+        <span class="go">Open the demo →</span>
       </a>
+
     </div>
   </section>
 
-  <section class="section install">
-    <p class="eyebrow">Install on iPhone</p>
-    <h2>No App Store needed</h2>
-    <ol class="muted">
-      <li>Open any app above in Safari</li>
-      <li>Tap <b>Share</b> → <b>Add to Home Screen</b></li>
-      <li>It launches full-screen, works offline, and keeps your data on-device</li>
-    </ol>
-    <p class="muted" style="margin-top:14px">Android/desktop: use your browser's <b>Install app</b> option. Everything is local — no accounts, no tracking, no server.</p>
+  <hr class="divider">
+
+  <!-- ============ TRADING ============ -->
+  <section class="section section--tight">
+    <div class="grp-head">
+      <div>
+        <p class="eyebrow">02 · Markets &amp; Quant</p>
+        <h2>Trading systems</h2>
+      </div>
+      <p>Built with real engineering discipline and validated adversarially. None of it is trading real money, and I explain exactly why.</p>
+    </div>
+
+    <div class="grid" style="margin-top:var(--s6)">
+
+      <a class="card proj" href="/swing-screener.html">
+        <span class="st st--local"><i></i>Local tool + research</span>
+        <h3>Swing Screener &amp; Validation Harness</h3>
+        <p>A CLI that scans a watchlist for anchored-VWAP, VCP and gap setups, plus a no-lookahead backtest engine — and then the adversarial audit I ran to break my own <span class="mono">+0.23R</span> headline result. It broke. Verdict: marginal, don't size up.</p>
+        <div class="chips"><span>Python</span><span>pandas</span><span>yfinance</span><span>Bootstrap stats</span><span>pytest</span></div>
+        <span class="go">Read how I killed my own edge →</span>
+      </a>
+
+      <a class="card proj" href="/trading-bot.html">
+        <span class="st st--proto"><i></i>Built &amp; tested · paper only</span>
+        <h3>Broker-Agnostic Trading Bot</h3>
+        <p>An execution engine where the strategy is forty lines and everything else is crash-safety: deterministic order IDs, a SQLite journal claimed before every broker call, linked exits, ownership boundaries, and idempotent reconciliation. 48 tests. No live capital.</p>
+        <div class="chips"><span>Python</span><span>SQLite</span><span>Alpaca API</span><span>uv</span><span>pytest</span></div>
+        <span class="go">See the safety design →</span>
+      </a>
+
+      <a class="card proj" href="/apps/tradelog/">
+        <span class="st st--live"><i></i>Live · installable</span>
+        <h3>TradeLog</h3>
+        <p>An R-multiple trade journal that runs in the browser: expectancy, win rate, profit factor and an equity curve, computed on-device. No account, no server, no data leaving your phone. Install it straight from Safari.</p>
+        <div class="chips"><span>Vanilla JS</span><span>PWA</span><span>Offline-first</span></div>
+        <span class="go">Open TradeLog →</span>
+      </a>
+
+      <a class="card proj" href="/store.html">
+        <span class="st st--proto"><i></i>Prototype · private repo</span>
+        <h3>EdgeLog</h3>
+        <p>Trade-journal analytics as a web app: import an R-multiple journal CSV and get expectancy, drawdown, per-setup edge and a plain-English verdict. Analytics on your own history only — no broker credentials, no advice.</p>
+        <div class="chips"><span>Python</span><span>FastAPI</span><span>SQLite</span></div>
+        <span class="go">Related: the trading store →</span>
+      </a>
+
+    </div>
+  </section>
+
+  <hr class="divider">
+
+  <!-- ============ STARTUP PROTOTYPES ============ -->
+  <section class="section section--tight">
+    <div class="grp-head">
+      <div>
+        <p class="eyebrow">03 · Startup Prototypes</p>
+        <h2>Products in the early phase</h2>
+      </div>
+      <p>Working end-to-end on my machine with tests green in CI. No users, no revenue, no public launch yet — that's the honest state.</p>
+    </div>
+
+    <div class="grid" style="margin-top:var(--s6)">
+
+      <a class="card proj" href="/eventreels.html">
+        <span class="st st--proto"><i></i>Prototype</span>
+        <h3>EventReels</h3>
+        <p>Raw event footage in, finished 9:16 highlight reel out. Scene detection finds the moments, audio-energy analysis confirms them, ffmpeg renders vertical at social loudness. Zero API keys, zero Python dependencies, plus a local web studio.</p>
+        <div class="chips"><span>Python</span><span>ffmpeg</span><span>FastAPI</span><span>SQLite</span><span>CI</span></div>
+        <span class="go">Read the case study →</span>
+      </a>
+
+      <a class="card proj" href="/ecoimpact.html">
+        <span class="st st--proto"><i></i>Prototype</span>
+        <h3>EcoImpact</h3>
+        <p>A map of reported trash plus a quantified "world fixed" meter — clean a pin, log an eco action, watch kg of waste and CO₂e climb. Privacy designed in at the schema: no user GPS stored, coordinates rounded, hazards are report-only.</p>
+        <div class="chips"><span>Python</span><span>FastAPI</span><span>SQLite</span><span>Leaflet</span><span>OSM</span></div>
+        <span class="go">Read the case study →</span>
+      </a>
+
+      <a class="card proj" href="/au.html">
+        <span class="st st--proto"><i></i>Prototype</span>
+        <h3>AU</h3>
+        <p>A Twitter alternative with the outrage machinery removed: chronological only, no vanity metrics, no quote-posts, no verification hierarchy. Posts are proof of work. Working single-player prototype.</p>
+        <div class="chips"><span>Web app</span><span>Product design</span><span>Prototype</span></div>
+        <span class="go">See the concept →</span>
+      </a>
+
+    </div>
+  </section>
+
+  <hr class="divider">
+
+  <!-- ============ TOOLS ============ -->
+  <section class="section section--tight">
+    <div class="grp-head">
+      <div>
+        <p class="eyebrow">04 · Personal Tools</p>
+        <h2>Things I built for my own systems</h2>
+      </div>
+      <p>Small, offline, installable. Built because I needed them daily — free for anyone who wants them.</p>
+    </div>
+
+    <div class="grid" style="margin-top:var(--s6)">
+
+      <a class="card proj" href="/apps/cut/">
+        <span class="st st--live"><i></i>Live · installable</span>
+        <h3>Cut</h3>
+        <p>A daily weight tracker with a 7-day trend line, a goal line and streaks. The tool behind my documented 260→200 lb cut. Everything stays on-device.</p>
+        <div class="chips"><span>Vanilla JS</span><span>PWA</span><span>Offline-first</span></div>
+        <span class="go">Open Cut →</span>
+      </a>
+
+      <a class="card proj" href="/apps/fire/">
+        <span class="st st--live"><i></i>Live · installable</span>
+        <h3>Fire</h3>
+        <p>A daily execution checklist that resets every morning and tracks a 100% streak. Ship the list, every day. No accounts, no sync, no tracking.</p>
+        <div class="chips"><span>Vanilla JS</span><span>PWA</span><span>Offline-first</span></div>
+        <span class="go">Open Fire →</span>
+      </a>
+
+      <a class="card proj" href="https://github.com/Yusuf-Gadelrab" target="_blank" rel="noopener">
+        <span class="st st--local"><i></i>Local tool</span>
+        <h3>SummerOS</h3>
+        <p>My personal operations dashboard: a local Next.js app over SQLite that keeps internship applications, deadlines, trackers and daily execution in one place. Runs on localhost, for an audience of one.</p>
+        <div class="chips"><span>Next.js</span><span>TypeScript</span><span>Prisma</span><span>SQLite</span><span>Bun</span></div>
+        <span class="go">GitHub profile →</span>
+      </a>
+
+      <a class="card proj" href="https://sventclub.org" target="_blank" rel="noopener">
+        <span class="st st--live"><i></i>Live</span>
+        <h3>SVEC Website</h3>
+        <p>Built and maintain sventclub.org, the front door for the Silicon Valley Entrepreneurship Club — events, sponsors and the member funnel. Part of the push that drove +40% engagement and landed 4 sponsors.</p>
+        <div class="chips"><span>Full-stack</span><span>Web</span><span>Ops</span></div>
+        <span class="go">sventclub.org →</span>
+      </a>
+
+    </div>
+
+    <div class="panel install" style="margin-top:var(--s6)">
+      <p class="eyebrow">Install the web apps on your phone</p>
+      <ol>
+        <li>Open TradeLog, Cut or Fire in Safari</li>
+        <li>Tap <b>Share</b> → <b>Add to Home Screen</b></li>
+        <li>It launches full-screen, works offline, and keeps your data on-device</li>
+      </ol>
+      <p class="muted" style="margin-top:var(--s3);font-size:var(--t-small)">Android or desktop: use your browser's <b>Install app</b> option. Everything is local — no accounts, no tracking, no server.</p>
+    </div>
+  </section>
+
+  <hr class="divider">
+
+  <!-- ============ BRAND & COMMERCE ============ -->
+  <section class="section section--tight">
+    <div class="grp-head">
+      <div>
+        <p class="eyebrow">05 · Brand &amp; Commerce</p>
+        <h2>Things I design and sell</h2>
+      </div>
+      <p>The commercial side: a streetwear label, digital products, and services — all designed, built and shipped solo.</p>
+    </div>
+
+    <div class="grid" style="margin-top:var(--s6)">
+
+      <a class="card proj" href="/kxngsef.html">
+        <span class="st st--live"><i></i>Live · waitlist</span>
+        <h3>KXNG SEF</h3>
+        <p>A bilingual Arabic–English streetwear label built in public. Drop 001 is six pieces with a full brand kit and print-ready artwork; the storefront is live and taking waitlist signups ahead of fulfilment going online.</p>
+        <div class="chips"><span>Brand design</span><span>SVG artwork</span><span>Storefront</span></div>
+        <span class="go">Enter the shop →</span>
+      </a>
+
+      <a class="card proj" href="/store.html">
+        <span class="st st--live"><i></i>Live</span>
+        <h3>The Store</h3>
+        <p>Automation software, playbooks and premium template packs from $19 — including the Swing Trading Operating System course and the FreightDesk install. Six products, all written and designed by me.</p>
+        <div class="chips"><span>Digital products</span><span>Course</span><span>Copywriting</span></div>
+        <span class="go">Browse the store →</span>
+      </a>
+
+      <a class="card proj" href="/heft.html">
+        <span class="st st--paused"><i></i>Concept</span>
+        <h3>HEFT</h3>
+        <p>A single-product apparel concept: 450+ GSM heavyweight hoodies, minimal design, no loud logos. A full brand and landing-page build exploring how far one product can carry a label.</p>
+        <div class="chips"><span>Brand design</span><span>Landing page</span></div>
+        <span class="go">See the brand →</span>
+      </a>
+
+      <a class="card proj" href="/templates.html">
+        <span class="st st--live"><i></i>Live</span>
+        <h3>Template Packs</h3>
+        <p>Twelve black-and-gold template packs: investor pitch deck, a 60-layout slide library, client proposal and SOW, a freight-broker ops pack, and brand guidelines. Designed to be used, not admired.</p>
+        <div class="chips"><span>Design systems</span><span>Slide libraries</span></div>
+        <span class="go">See the packs →</span>
+      </a>
+
+      <a class="card proj" href="/sprint.html">
+        <span class="st st--live"><i></i>Live · service</span>
+        <h3>LinkedIn Sprint</h3>
+        <p>A productized service: a complete LinkedIn profile rewrite in 48 hours — recruiter-stopping headline, rebuilt About section, metric-first bullets and keyword mapping.</p>
+        <div class="chips"><span>Service design</span><span>Copywriting</span></div>
+        <span class="go">See the offer →</span>
+      </a>
+
+      <a class="card proj" href="/media-kit.html">
+        <span class="st st--live"><i></i>Live</span>
+        <h3>Creator Media Kit</h3>
+        <p>My brand-collaboration one-pager: audience stats, the 260→200 lb transformation story, and the partnership options I offer. The page I send instead of a PDF.</p>
+        <div class="chips"><span>Web</span><span>Brand</span></div>
+        <span class="go">Open the media kit →</span>
+      </a>
+
+    </div>
+  </section>
+
+  <hr class="divider">
+
+  <!-- ============ RESEARCH ============ -->
+  <section class="section section--tight">
+    <div class="grp-head">
+      <div>
+        <p class="eyebrow">06 · Research</p>
+        <h2>Peer-reviewed work</h2>
+      </div>
+      <p>CS education research at the SJSU CSEd Research Lab under Dr. Ethel Tshukudu — IRB-approved, mixed-methods, published as a sophomore.</p>
+    </div>
+
+    <div class="grid" style="margin-top:var(--s6)">
+
+      <a class="card proj" href="https://doi.org/10.1145/3770761.3777339" target="_blank" rel="noopener">
+        <span class="st st--live"><i></i>Published</span>
+        <h3>Bilingual Coding for Inclusive CS Learning</h3>
+        <p>Co-authored a mixed-methods study with 60 participants on how bilingual programming environments lower the barrier for non-native English speakers learning CS. SIGCSE TS 2026, ACM Digital Library.</p>
+        <div class="chips"><span>Mixed methods</span><span>IRB</span><span>CS education</span></div>
+        <span class="go">DOI: 10.1145/3770761.3777339 →</span>
+      </a>
+
+      <a class="card proj" href="/everything.html">
+        <span class="st st--live"><i></i>Published · poster</span>
+        <h3>Adaptive Curriculum Maps</h3>
+        <p>Graph-augmented, retrieval-oriented LLMs that model a CS curriculum as a knowledge graph and adapt the learning path per student. Second accepted SIGCSE TS 2026 artifact from the same lab.</p>
+        <div class="chips"><span>LLMs</span><span>RAG</span><span>Knowledge graphs</span></div>
+        <span class="go">More context →</span>
+      </a>
+
+      <a class="card proj" href="/everything.html">
+        <span class="st st--live"><i></i>Completed</span>
+        <h3>NLP Equity Scoring Platform</h3>
+        <p>Built through IBM SkillsBuild: an IBM Watson–powered sentiment engine scoring equities from live market news — 78% directional accuracy across 50+ sources ingested daily, cutting manual research time by 60%.</p>
+        <div class="chips"><span>IBM Watson</span><span>NLP</span><span>Python</span><span>ML</span></div>
+        <span class="go">More context →</span>
+      </a>
+
+    </div>
+  </section>
+
+  <hr class="divider">
+
+  <section class="section section--tight">
+    <div class="panel" style="border-left:3px solid var(--gold)">
+      <p class="muted" style="font-size:var(--t-small)"><b class="gold">A note on repos.</b> Several of these live in private repositories — the trading work, the startup prototypes, and my personal ops dashboard. I'm happy to walk through any of them on a call or share access on request. Client and employer work is not published at all.</p>
+    </div>
+    <div class="row" style="margin-top:var(--s6)">
+      <a class="btn btn-gold" href="/resume.html">See the resume →</a>
+      <a class="btn btn-ghost" href="mailto:yusuf.gadelrab06@gmail.com">Email me</a>
+      <a class="btn btn-ghost" href="https://github.com/Yusuf-Gadelrab" target="_blank" rel="noopener">GitHub</a>
+    </div>
   </section>
 
 </main>
 
 <footer class="site-footer">
+  <div>© 2026 Yusuf Gadelrab · CS @ SJSU · San Jose, CA</div>
   <div class="site-footer__links">
-    <a href="/">Portfolio</a>
+    <a href="/">Work</a>
+    <a href="/resume.html">Resume</a>
     <a href="/store.html">Store</a>
+    <a href="/apps.html">Apps</a>
+    <a href="/kxngsef.html">KXNG SEF</a>
+    <a href="/media-kit.html">Media Kit</a>
     <a href="/privacy.html">Privacy</a>
     <a href="/terms.html">Terms</a>
-    <a href="mailto:yusuf.gadelrab06@gmail.com">Email</a>
+    <a href="mailto:yusuf.gadelrab06@gmail.com">yusuf.gadelrab06@gmail.com</a>
+    <a href="https://github.com/Yusuf-Gadelrab" target="_blank" rel="noopener">GitHub</a>
+    <a href="https://www.linkedin.com/in/yusuf-gadelrab-76246b221" target="_blank" rel="noopener">LinkedIn</a>
   </div>
-  <p class="muted">© 2026 Yusuf Gadelrab · DHAHAB · San Jose, CA</p>
 </footer>
 
 </body>
