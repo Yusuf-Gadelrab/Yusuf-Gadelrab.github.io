@@ -4,11 +4,11 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>Everything I Do — Yusuf Gadelrab</title>
-<!-- polish:head -->
 <meta name="description" content="One page for everything: projects, research, trading, and content — built in public by Yusuf Gadelrab.">
 <link rel="canonical" href="https://yusuf-gadelrab.github.io/everything.html">
 <link rel="icon" type="image/svg+xml" href="https://yusuf-gadelrab.github.io/favicon.svg">
-<meta name="theme-color" content="#0a0a0b">
+<link rel="apple-touch-icon" sizes="180x180" href="https://yusuf-gadelrab.github.io/apple-touch-icon.png">
+<meta name="theme-color" content="#0B0B0D">
 <meta name="author" content="Yusuf Gadelrab">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Yusuf Gadelrab">
@@ -22,165 +22,90 @@
 <meta name="twitter:title" content="Everything I Do — Yusuf Gadelrab">
 <meta name="twitter:description" content="One page for everything: projects, research, trading, and content — built in public by Yusuf Gadelrab.">
 <meta name="twitter:image" content="https://yusuf-gadelrab.github.io/og-card.png">
-
-
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='20' fill='%23060606'/%3E%3Ctext x='50' y='72' font-size='62' text-anchor='middle' fill='%23d4af37' font-family='Arial' font-weight='bold'%3EY%3C/text%3E%3C/svg%3E" />
+<link rel="stylesheet" href="/css/site.css">
 <style>
-  :root{
-    --bg:#060606; --bg2:#0b0b0b; --card:#101010; --line:#242424;
-    --gold:#d4af37; --gold2:#f0c94f; --gold3:#fff3c4; --text:#ececec; --muted:#9c9c9c;
-  }
-  *{margin:0;padding:0;box-sizing:border-box}
-  html{scroll-behavior:smooth}
-  body{background:var(--bg);color:var(--text);font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;line-height:1.65;overflow-x:hidden}
-  a{color:var(--gold2);text-decoration:none}
-  ::selection{background:rgba(212,175,55,.35)}
-  .wrap{max-width:1100px;margin:0 auto;padding:0 24px}
+  /* ---- page-specific only ---- */
+  #progress{position:fixed;top:0;left:0;height:2px;width:0;z-index:60;
+    background:linear-gradient(90deg,var(--gold-dim),var(--gold),var(--gold-2));
+    box-shadow:0 0 12px var(--glow);pointer-events:none}
 
-  /* ---------- gold gradient text (static) ---------- */
-  .grad{background:linear-gradient(100deg,var(--gold) 0%,var(--gold2) 40%,var(--gold3) 50%,var(--gold2) 60%,var(--gold) 100%);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
+  .hero-all{text-align:center}
+  .hero-all h1{margin:var(--s4) auto;max-width:18ch}
+  .hero-all .lead{margin-inline:auto}
+  .hero-all .row{justify-content:center}
+  .portrait{width:132px;height:141px;object-fit:cover;border-radius:var(--radius-lg);
+    margin:0 auto var(--s5);border:1px solid var(--line);box-shadow:var(--shadow)}
 
-  /* ---------- scroll progress ---------- */
-  #progress{position:fixed;top:0;left:0;height:3px;width:0;background:linear-gradient(90deg,var(--gold),var(--gold3));z-index:100;box-shadow:0 0 12px rgba(212,175,55,.8)}
+  /* skills strip */
+  .chips{display:flex;flex-wrap:wrap;gap:var(--s2);justify-content:center;
+    padding:var(--s4) var(--section-x);border-top:1px solid var(--line-soft);
+    border-bottom:1px solid var(--line-soft);background:var(--bg2)}
+  .chips span{font-family:var(--display);font-size:var(--t-micro);letter-spacing:2px;
+    text-transform:uppercase;color:var(--muted);border:1px solid var(--line-soft);
+    border-radius:var(--radius);padding:5px 12px}
 
-  /* ---------- nav ---------- */
-  nav{position:sticky;top:0;z-index:50;background:rgba(6,6,6,.78);backdrop-filter:blur(14px);border-bottom:1px solid transparent;transition:border-color .3s,background .3s}
-  nav.scrolled{border-color:var(--line);background:rgba(6,6,6,.92)}
-  nav .wrap{display:flex;align-items:center;justify-content:space-between;height:66px;transition:height .3s}
-  nav.scrolled .wrap{height:56px}
-  .logo{font-weight:800;letter-spacing:.5px;color:#fff;font-size:1.05rem}
-  .logo span{color:var(--gold2)}
-  .nav-links{display:flex;gap:22px;align-items:center;font-size:.9rem}
-  .nav-links a{color:var(--muted);transition:color .2s;position:relative}
-  .nav-links a:not(.nav-cta)::after{content:"";position:absolute;left:0;bottom:-4px;width:0;height:1px;background:var(--gold2);transition:width .25s}
-  .nav-links a:hover{color:var(--gold2)}
-  .nav-links a:not(.nav-cta):hover::after{width:100%}
-  .nav-cta{background:linear-gradient(100deg,var(--gold),var(--gold2));color:#0a0a0a!important;font-weight:700;padding:8px 16px;border-radius:8px;transition:transform .15s,box-shadow .15s}
-  .nav-cta:hover{transform:translateY(-1px);box-shadow:0 6px 20px rgba(212,175,55,.35)}
+  /* project cards carry a 16:9 thumbnail that bleeds to the card edge */
+  .proj{display:flex;flex-direction:column;padding:0;overflow:hidden}
+  .proj__thumb{width:100%;aspect-ratio:16/9;object-fit:cover;
+    border-bottom:1px solid var(--line-soft)}
+  .proj__body{padding:var(--s6);display:flex;flex-direction:column;flex:1}
+  .proj__tag{font-family:var(--display);font-size:var(--t-micro);letter-spacing:2.5px;
+    text-transform:uppercase;color:var(--gold-2)}
+  .proj h3{margin:var(--s2) 0 var(--s3)}
+  .proj p{color:var(--muted);font-size:var(--t-small);flex:1}
+  .proj .go{margin-top:var(--s4);font-family:var(--display);font-size:var(--t-small);
+    letter-spacing:1.5px;text-transform:uppercase;color:var(--gold-2)}
+  .proj .go:hover{color:var(--gold)}
 
-  /* ---------- hero ---------- */
-  header{padding:110px 0 84px;text-align:center;position:relative;overflow:hidden}
-  #stars{position:absolute;inset:0;pointer-events:none}
-  .orb{position:absolute;border-radius:50%;filter:blur(90px);opacity:.16;pointer-events:none}
-  .orb1{width:520px;height:520px;background:var(--gold);top:-220px;left:50%;transform:translateX(-50%)}
-  .orb2{width:340px;height:340px;background:#8a6d1f;bottom:-160px;left:-120px}
-  .orb3{width:300px;height:300px;background:#b8912a;bottom:-140px;right:-100px}
-  header .wrap{position:relative;z-index:2}
-  .eyebrow{display:inline-block;border:1px solid rgba(212,175,55,.45);color:var(--gold2);font-size:.78rem;letter-spacing:2px;text-transform:uppercase;padding:6px 16px;border-radius:999px;margin-bottom:24px;background:rgba(212,175,55,.06);box-shadow:0 0 24px rgba(212,175,55,.12) inset}
-  h1{font-size:clamp(2.2rem,5.8vw,3.9rem);line-height:1.1;font-weight:800;color:#fff;max-width:860px;margin:0 auto 14px}
-  .roles{color:var(--muted);font-size:1.08rem;margin-bottom:8px;min-height:1.7em}
-  .roles b{color:var(--gold2);font-weight:700}
-  .sub{color:var(--muted);max-width:660px;margin:0 auto 34px;font-size:1.05rem}
-  .btn{display:inline-block;padding:14px 28px;border-radius:10px;font-weight:700;font-size:.96rem;transition:transform .15s,box-shadow .15s}
-  .btn-gold{background:linear-gradient(100deg,var(--gold),var(--gold2));color:#0a0a0a;box-shadow:0 6px 22px rgba(212,175,55,.18)}
-  .btn-gold:hover{transform:translateY(-2px);box-shadow:0 12px 34px rgba(212,175,55,.4)}
-  .btn-ghost{border:1px solid var(--line);color:var(--text);margin-left:10px}
-  .btn-ghost:hover{border-color:var(--gold);box-shadow:0 0 18px rgba(212,175,55,.15)}
-  .btn:active{transform:translateY(1px) scale(.99)}
-  a:focus-visible{outline:2px solid var(--gold2);outline-offset:3px;border-radius:8px}
-  .micro{color:var(--muted);font-size:.82rem;margin-top:12px}
-  .stat-row{display:flex;flex-wrap:wrap;gap:14px;justify-content:center;margin-top:44px}
-  .stat{background:rgba(11,11,11,.7);border:1px solid var(--line);border-radius:14px;padding:18px 28px;text-align:center;min-width:150px;backdrop-filter:blur(6px);transition:border-color .25s,transform .25s}
-  .stat:hover{border-color:rgba(212,175,55,.6);transform:translateY(-3px)}
-  .stat b{display:block;font-size:1.7rem;color:var(--gold2);font-variant-numeric:tabular-nums}
-  .stat span{font-size:.8rem;color:var(--muted)}
-
-  /* ---------- skills strip (static) ---------- */
-  .chips{border-top:1px solid var(--line);border-bottom:1px solid var(--line);background:var(--bg2);padding:16px 24px;display:flex;flex-wrap:wrap;gap:10px;justify-content:center}
-  .chips span{color:var(--muted);font-size:.78rem;letter-spacing:1.4px;text-transform:uppercase;border:1px solid var(--line);border-radius:999px;padding:5px 14px;transition:color .2s,border-color .2s}
-  .chips span:hover{color:var(--gold2);border-color:rgba(212,175,55,.5)}
-
-  /* ---------- sections ---------- */
-  section{padding:84px 0;position:relative}
-  section.alt{background:var(--bg2)}
-  .divider{height:1px;max-width:1100px;margin:0 auto;background:linear-gradient(90deg,transparent,rgba(212,175,55,.5),transparent);position:relative}
-  .divider::after{content:"◆";position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);color:var(--gold);font-size:.65rem;background:var(--bg);padding:0 12px}
-  section.alt + .divider::after,.divider.on-alt::after{background:var(--bg2)}
-  .sec-label{color:var(--gold2);font-size:.78rem;letter-spacing:3px;text-transform:uppercase;margin-bottom:10px;display:flex;align-items:center;gap:12px}
-  .sec-label::before{content:"";width:34px;height:1px;background:var(--gold)}
-  h2{font-size:clamp(1.6rem,3.2vw,2.3rem);color:#fff;font-weight:800;margin-bottom:12px}
-  .sec-desc{color:var(--muted);max-width:680px;margin-bottom:36px;font-size:.98rem}
-
-  /* ---------- cards ---------- */
-  .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(310px,1fr));gap:20px}
-  .card{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:28px;position:relative;overflow:hidden;transition:transform .22s,border-color .22s,box-shadow .22s}
-  .card::before{content:"";position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,transparent,var(--gold),transparent);opacity:0;transition:opacity .25s}
-  .card:hover{transform:translateY(-6px);border-color:rgba(212,175,55,.55);box-shadow:0 18px 44px rgba(0,0,0,.55),0 0 24px rgba(212,175,55,.08)}
-  .card:hover::before{opacity:1}
-  .card .icon{font-size:1.5rem;margin-bottom:12px;display:block;filter:drop-shadow(0 0 10px rgba(212,175,55,.35))}
-  .card .tag{font-size:.72rem;letter-spacing:1.6px;text-transform:uppercase;color:var(--gold2);margin-bottom:10px;display:block}
-  .card h3{color:#fff;font-size:1.15rem;margin-bottom:10px}
-  .card p{color:var(--muted);font-size:.93rem;margin-bottom:16px}
-  .card .go{font-size:.88rem;font-weight:700;display:inline-flex;align-items:center;gap:6px;transition:gap .2s}
-  .card .go:hover{gap:10px}
-
-  /* ---------- product banner ---------- */
-  .banner{background:linear-gradient(135deg,rgba(212,175,55,.14),rgba(212,175,55,.03));border:1px solid rgba(212,175,55,.4);border-radius:20px;padding:52px 44px;text-align:center;position:relative;overflow:hidden}
-  .banner-inner{position:relative;z-index:1;background:linear-gradient(135deg,#100e08,#0a0a0a);border-radius:18px;padding:44px 32px;margin:2px}
-  .banner h2{margin-bottom:12px}
-  .banner p{color:var(--muted);max-width:600px;margin:0 auto 28px}
-  .pill{display:inline-block;background:rgba(212,175,55,.15);color:var(--gold2);font-size:.78rem;font-weight:700;padding:6px 16px;border-radius:999px;margin-bottom:18px;letter-spacing:1.2px}
-
-  /* ---------- footer ---------- */
-  footer{border-top:1px solid var(--line);padding:48px 0;text-align:center;color:var(--muted);font-size:.9rem}
-  footer .links{display:flex;gap:24px;justify-content:center;margin-bottom:18px;flex-wrap:wrap}
-  footer .links a{transition:text-shadow .2s}
-  footer .links a:hover{text-shadow:0 0 14px rgba(212,175,55,.7)}
-
-  /* ---------- reveal ---------- */
-  .reveal{opacity:0;transform:translateY(22px);transition:opacity .65s ease,transform .65s ease}
-  .reveal.in{opacity:1;transform:none}
-
-  /* ---------- photos ---------- */
-  .hero-portrait{display:block;width:132px;height:141px;object-fit:cover;border-radius:22px;margin:0 auto 26px;border:1px solid rgba(212,175,55,.55);box-shadow:0 0 0 4px rgba(212,175,55,.12),0 12px 36px rgba(0,0,0,.6),0 0 30px rgba(212,175,55,.18)}
-  .card-thumb{display:block;width:calc(100% + 56px);height:auto;margin:-28px -28px 20px;aspect-ratio:16/9;object-fit:cover;border-bottom:1px solid var(--line)}
-  .sec-row{display:flex;gap:40px;align-items:flex-start;justify-content:space-between;flex-wrap:wrap}
-  .sec-row .sec-head{flex:1 1 480px}
+  .sec-row{display:flex;gap:var(--s7);align-items:flex-start;flex-wrap:wrap}
+  .sec-row>div{flex:1 1 460px}
   .side-photo{flex:0 0 210px;margin:0}
-  .side-photo img{display:block;width:100%;height:auto;aspect-ratio:3/4;object-fit:cover;border-radius:16px;border:1px solid rgba(212,175,55,.35);box-shadow:0 12px 34px rgba(0,0,0,.55)}
-  .side-photo figcaption{font-size:.78rem;color:var(--muted);margin-top:8px;text-align:center}
+  .side-photo img{width:100%;aspect-ratio:3/4;object-fit:cover;
+    border-radius:var(--radius-lg);border:1px solid var(--line)}
+  .side-photo figcaption{font-size:var(--t-micro);color:var(--muted);
+    margin-top:var(--s2);text-align:center}
   @media(max-width:640px){.side-photo{flex-basis:100%;max-width:240px;margin:0 auto}}
 
-  @media(max-width:640px){.nav-links a:not(.nav-cta){display:none}.btn-ghost{margin-left:0;margin-top:12px}.banner-inner{padding:32px 18px}}
-  @media(prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important}.reveal{opacity:1;transform:none}}
+  .banner{text-align:center;padding:clamp(36px,6vw,72px) var(--s5);
+    background:radial-gradient(60% 100% at 50% 0%,rgba(212,175,55,.10),transparent),
+               linear-gradient(180deg,var(--panel),var(--panel2))}
+  .banner p{color:var(--muted);max-width:62ch;margin:var(--s4) auto var(--s6)}
+  .banner .row{justify-content:center}
 </style>
 </head>
 <body>
 
 <div id="progress"></div>
 
-<nav id="nav">
-  <div class="wrap">
-    <a class="logo" href="#top">YUSUF<span>.</span></a>
-    <div class="nav-links">
-      <a href="#research">Research</a>
-      <a href="#builds">Builds</a>
-      <a href="#leadership">Leadership</a>
-      <a href="#products">Products</a>
-      <a class="nav-cta" href="https://yusuf-gadelrab.github.io/">Full Portfolio →</a>
-    </div>
+<a class="skip-link" href="#main">Skip to content</a>
+
+<nav class="site-nav">
+  <a class="site-nav__brand" href="/">YUSUF GADELRAB</a>
+  <div class="site-nav__links">
+    <a href="/">Work</a>
+    <a href="/resume.html">Resume</a>
+    <a href="/store.html">Store</a>
+    <a href="/kxngsef.html">KXNG SEF</a>
+    <a href="/media-kit.html">Media Kit</a>
   </div>
 </nav>
 
-<header id="top">
-  <canvas id="stars"></canvas>
-  <div class="orb orb1"></div><div class="orb orb2"></div><div class="orb orb3"></div>
-  <div class="wrap">
-    <img class="hero-portrait reveal" fetchpriority="high" src="img/yusuf-headshot.jpg" alt="Yusuf Gadelrab, professional headshot in a suit with a gold frame border" width="700" height="749">
-    <span class="eyebrow reveal">San Jose, CA · CS @ SJSU · Building in public</span>
-    <h1 class="reveal">Everything I do, <span class="grad">one gold map.</span></h1>
-    <p class="roles reveal">I'm a <b id="role">published researcher &amp; builder</b></p>
-    <p class="sub reveal">Most people know me for one thing. This page is the whole picture: peer-reviewed research, AI products, quant trading systems, club leadership, and the students I teach along the way. Deep dives live on my personal site.</p>
-    <div class="reveal">
-      <a class="btn btn-gold" href="#products">See what's launching ↓</a>
-      <a class="btn btn-ghost" href="https://yusuf-gadelrab.github.io/">Visit my personal site →</a>
-    </div>
-    <div class="stat-row reveal">
-      <div class="stat"><b data-count="2" data-suffix="×">2×</b><span>SIGCSE 2026 papers</span></div>
-      <div class="stat"><b data-count="78" data-suffix="%">78%</b><span>directional accuracy (NLP)</span></div>
-      <div class="stat"><b data-count="40" data-prefix="+" data-suffix="%">+40%</b><span>SVEC engagement</span></div>
-      <div class="stat"><b data-count="77">77</b><span>passing tests (HwyHaul)</span></div>
-    </div>
+<main id="main">
+
+<header class="section hero-all">
+  <img class="portrait reveal" fetchpriority="high" src="img/yusuf-headshot.jpg" alt="Yusuf Gadelrab, professional headshot in a suit with a gold frame border" width="700" height="749">
+  <p class="eyebrow reveal">San Jose, CA · CS @ SJSU · Building in public</p>
+  <h1 class="reveal">Everything I do, <span class="gold-fill">one gold map.</span></h1>
+  <p class="lead reveal">Most people know me for one thing. This page is the whole picture: peer-reviewed research, AI products, quant trading systems, club leadership, and the students I teach along the way. Deep dives live on my personal site.</p>
+  <div class="row reveal" style="margin-top:var(--s6)">
+    <a class="btn btn-gold" href="#products">See what's launching ↓</a>
+    <a class="btn btn-ghost" href="https://yusuf-gadelrab.github.io/">Visit my personal site →</a>
+  </div>
+  <div class="grid reveal" style="margin-top:var(--s8)">
+    <div class="stat"><span class="stat__value" data-count="2" data-suffix="×">2×</span><span class="stat__label">SIGCSE 2026 papers</span></div>
+    <div class="stat"><span class="stat__value" data-count="78" data-suffix="%">78%</span><span class="stat__label">directional accuracy (NLP)</span></div>
+    <div class="stat"><span class="stat__value" data-count="40" data-prefix="+" data-suffix="%">+40%</span><span class="stat__label">SVEC engagement</span></div>
+    <div class="stat"><span class="stat__value" data-count="77">77</span><span class="stat__label">passing tests (HwyHaul)</span></div>
   </div>
 </header>
 
@@ -188,185 +113,201 @@
   <span>Python</span><span>Java</span><span>JavaScript</span><span>React</span><span>Next.js</span><span>SQL</span><span>IBM Watson</span><span>NLP</span><span>LLMs &amp; RAG</span><span>Quant Trading</span><span>Full-Stack</span><span>CS Education Research</span>
 </div>
 
-<section id="research">
-  <div class="wrap">
-    <div class="sec-label reveal">01 · Research &amp; AI</div>
-    <h2 class="reveal">Published work</h2>
-    <p class="sec-desc reveal">I do CS education research at the SJSU CSEd Research Lab under Dr. Ethel Tshukudu — IRB-approved, mixed-methods studies that ended up peer-reviewed and published as a sophomore. On the applied side, I build AI systems that have to survive real data, not just demos.</p>
-    <div class="grid">
-      <div class="card reveal">
-        <span class="icon">📄</span>
-        <span class="tag">SIGCSE TS 2026 · Published Paper</span>
+<section id="research" class="section">
+  <p class="eyebrow reveal">01 · Research &amp; AI</p>
+  <h2 class="reveal">Published work</h2>
+  <p class="lead reveal" style="margin-top:var(--s3)">I do CS education research at the SJSU CSEd Research Lab under Dr. Ethel Tshukudu — IRB-approved, mixed-methods studies that ended up peer-reviewed and published as a sophomore. On the applied side, I build AI systems that have to survive real data, not just demos.</p>
+  <div class="grid" style="margin-top:var(--s7)">
+    <article class="card proj reveal">
+      <div class="proj__body">
+        <span class="proj__tag">SIGCSE TS 2026 · Published Paper</span>
         <h3>Bilingual Coding for Inclusive CS Learning</h3>
         <p>Co-authored a mixed-methods study with 60 participants exploring how bilingual programming environments lower the barrier for non-native English speakers learning CS. Ran the full IRB-approved pipeline: study design, data collection, and analysis. Published in the ACM Digital Library.</p>
-        <a class="go" href="https://doi.org/10.1145/3770761.3777339">DOI: 10.1145/3770761.3777339 <span>→</span></a>
+        <a class="go" href="https://doi.org/10.1145/3770761.3777339">DOI: 10.1145/3770761.3777339 →</a>
       </div>
-      <div class="card reveal">
-        <span class="icon">🧠</span>
-        <span class="tag">SIGCSE TS 2026 · Poster</span>
+    </article>
+    <article class="card proj reveal">
+      <div class="proj__body">
+        <span class="proj__tag">SIGCSE TS 2026 · Poster</span>
         <h3>Adaptive Curriculum Maps</h3>
         <p>Graph-augmented, retrieval-oriented LLMs that map a CS curriculum as a knowledge graph and adapt learning paths per student. Second accepted SIGCSE artifact from the same lab — this one sits right at the intersection of my research and my LLM engineering work.</p>
-        <a class="go" href="https://yusuf-gadelrab.github.io/">More on my site <span>→</span></a>
+        <a class="go" href="https://yusuf-gadelrab.github.io/">More on my site →</a>
       </div>
-      <div class="card reveal">
-        <span class="icon">📈</span>
-        <span class="tag">IBM SkillsBuild · Applied AI</span>
+    </article>
+    <article class="card proj reveal">
+      <div class="proj__body">
+        <span class="proj__tag">IBM SkillsBuild · Applied AI</span>
         <h3>NLP Equity Scoring Platform</h3>
         <p>An IBM Watson–powered sentiment engine that scores equities from live market news: 78% directional accuracy across 50+ sources ingested daily, cutting manual research time by 60%. Built end-to-end — ingestion, NLP pipeline, scoring model, and the dashboard on top.</p>
-        <a class="go" href="https://yusuf-gadelrab.github.io/">Case details <span>→</span></a>
+        <a class="go" href="https://yusuf-gadelrab.github.io/">Case details →</a>
       </div>
-    </div>
+    </article>
   </div>
 </section>
 
-<div class="divider"></div>
+<hr class="divider">
 
-<section id="builds" class="alt">
-  <div class="wrap">
-    <div class="sec-label reveal">02 · Engineering</div>
-    <h2 class="reveal">Things I've built</h2>
-    <p class="sec-desc reveal">Shipped software across freight logistics, video, climate, careers, and markets. The common thread: local-first AI, zero-bloat stacks, and systems that keep running after I stop watching them.</p>
-    <div class="grid">
-      <div class="card reveal">
-        <img class="card-thumb" src="projects/hwyhaul-case.jpg" alt="HwyHaul LoadLink case study — 'The freight back office, run by AI' hero with Yusuf holding a HwyHaul shirt" width="1600" height="900" loading="lazy">
-        <span class="icon">🚚</span>
-        <span class="tag">Freight AI · Case Study</span>
+<section id="builds" class="section">
+  <p class="eyebrow reveal">02 · Engineering</p>
+  <h2 class="reveal">Things I've built</h2>
+  <p class="lead reveal" style="margin-top:var(--s3)">Shipped software across freight logistics, video, climate, careers, and markets. The common thread: local-first AI, zero-bloat stacks, and systems that keep running after I stop watching them.</p>
+  <div class="grid" style="margin-top:var(--s7)">
+
+    <article class="card proj reveal">
+      <img class="proj__thumb" src="projects/hwyhaul-case.jpg" alt="HwyHaul LoadLink case study — 'The freight back office, run by AI' hero with Yusuf holding a HwyHaul shirt" width="1600" height="900" loading="lazy">
+      <div class="proj__body">
+        <span class="proj__tag">Freight AI · Case Study</span>
         <h3>HwyHaul — AI Freight Ops</h3>
         <p>Built AI intake, billing, and accounts-receivable automation for a real freight brokerage: 77 passing tests, 18 workflow pain points automated, 100% local models, $0 API spend. The deepest production AI work I've done — full case study on the site.</p>
-        <a class="go" href="https://yusuf-gadelrab.github.io/hwyhaul.html">Explore the case study <span>→</span></a>
+        <a class="go" href="hwyhaul.html">Explore the case study →</a>
       </div>
-      <div class="card reveal">
-        <img class="card-thumb" src="projects/eventreels.jpg" alt="EventReels studio interface — drag-and-drop footage uploader with reel-length slider and title card field" width="1600" height="833" loading="lazy">
-        <span class="icon">🎬</span>
-        <span class="tag">Startup · Video</span>
+    </article>
+
+    <article class="card proj reveal">
+      <img class="proj__thumb" src="projects/eventreels.jpg" alt="EventReels studio interface — drag-and-drop footage uploader with reel-length slider and title card field" width="1600" height="833" loading="lazy">
+      <div class="proj__body">
+        <span class="proj__tag">Startup · Video</span>
         <h3>EventReels</h3>
         <p>An auto-editing pipeline built on ffmpeg that turns hours of raw event footage into polished, shareable reels — beat detection, cut selection, and branding applied automatically, with a gold-and-black web studio for review and export.</p>
-        <a class="go" href="https://yusuf-gadelrab.github.io/">On the portfolio <span>→</span></a>
+        <a class="go" href="https://yusuf-gadelrab.github.io/">On the portfolio →</a>
       </div>
-      <div class="card reveal">
-        <img class="card-thumb" src="projects/ecoimpact.jpg" alt="EcoImpact app — dark San Jose trash map with cleanup pins, impact meter, and community leaderboard" width="1600" height="1000" loading="lazy">
-        <span class="icon">🌍</span>
-        <span class="tag">Startup · Climate</span>
+    </article>
+
+    <article class="card proj reveal">
+      <img class="proj__thumb" src="projects/ecoimpact.jpg" alt="EcoImpact app — dark San Jose trash map with cleanup pins, impact meter, and community leaderboard" width="1600" height="1000" loading="lazy">
+      <div class="proj__body">
+        <span class="proj__tag">Startup · Climate</span>
         <h3>EcoImpact</h3>
         <p>A community trash map with photo-verified cleanups and a live impact meter. Uploads are EXIF-checked and GPS-stripped for privacy, so every point on the map is real and every contributor stays safe. Making cleanup visible, measurable, and a little competitive.</p>
-        <a class="go" href="https://yusuf-gadelrab.github.io/">On the portfolio <span>→</span></a>
+        <a class="go" href="https://yusuf-gadelrab.github.io/">On the portfolio →</a>
       </div>
-      <div class="card reveal">
-        <img class="card-thumb" src="projects/spartaneats.jpg" alt="SpartanEats app — $1.99 flat-fee campus food delivery home screen and student courier jobs board, side by side" width="1600" height="900" loading="lazy">
-        <span class="icon">🍕</span>
-        <span class="tag">Startup · Campus</span>
+    </article>
+
+    <article class="card proj reveal">
+      <img class="proj__thumb" src="projects/spartaneats.jpg" alt="SpartanEats app — $1.99 flat-fee campus food delivery home screen and student courier jobs board, side by side" width="1600" height="900" loading="lazy">
+      <div class="proj__body">
+        <span class="proj__tag">Startup · Campus</span>
         <h3>SpartanEats</h3>
         <p>$1.99 flat-fee food delivery built for the SJSU campus: nearby restaurants on one dark-mode map of cravings, delivered by fellow students. The courier jobs board even supports food-barter payouts — accept three slices and a Gatorade as your fee.</p>
-        <a class="go" href="https://github.com/Yusuf-Gadelrab">GitHub <span>→</span></a>
+        <a class="go" href="spartaneats.html">Open the demo →</a>
       </div>
-      <div class="card reveal">
-        <span class="icon">🎯</span>
-        <span class="tag">AI Tooling · Careers</span>
+    </article>
+
+    <article class="card proj reveal">
+      <div class="proj__body">
+        <span class="proj__tag">AI Tooling · Careers</span>
         <h3>JobPilot</h3>
         <p>AI job-application automation on Next.js 16 and React 19: parses postings, tailors materials to each role, and tracks every pipeline stage. Born from applying to internships the hard way and deciding the process deserved better tooling.</p>
-        <a class="go" href="https://github.com/Yusuf-Gadelrab">GitHub <span>→</span></a>
+        <a class="go" href="https://github.com/Yusuf-Gadelrab">GitHub →</a>
       </div>
-      <div class="card reveal">
-        <img class="card-thumb" src="projects/edgelog.jpg" alt="EdgeLog trade journal dashboard — expectancy, win rate, profit factor, equity curve, and R distribution over 36 trades" width="1600" height="867" loading="lazy">
-        <span class="icon">📊</span>
-        <span class="tag">Quant · Python</span>
+    </article>
+
+    <article class="card proj reveal">
+      <img class="proj__thumb" src="projects/edgelog.jpg" alt="EdgeLog trade journal dashboard — expectancy, win rate, profit factor, equity curve, and R distribution over 36 trades" width="1600" height="867" loading="lazy">
+      <div class="proj__body">
+        <span class="proj__tag">Quant · Python</span>
         <h3>Swing Trading Systems</h3>
         <p>OHLC breakout and reversal screeners plus an Alpaca-API execution bot — VCP setups, anchored VWAP, backtested entries, and automated order management. Where my markets education (TA, options, market profile) turns into running code.</p>
-        <a class="go" href="https://github.com/Yusuf-Gadelrab">GitHub <span>→</span></a>
+        <a class="go" href="https://github.com/Yusuf-Gadelrab">GitHub →</a>
       </div>
-      <div class="card reveal">
-        <img class="card-thumb" src="projects/svec.jpg" alt="sventclub.org homepage — 'Build the future. Stay grounded.' hero for the Silicon Valley Entrepreneurship Club" width="1600" height="900" loading="lazy">
-        <span class="icon">🌐</span>
-        <span class="tag">Web · Club</span>
+    </article>
+
+    <article class="card proj reveal">
+      <img class="proj__thumb" src="projects/svec.jpg" alt="sventclub.org homepage — 'Build the future. Stay grounded.' hero for the Silicon Valley Entrepreneurship Club" width="1600" height="900" loading="lazy">
+      <div class="proj__body">
+        <span class="proj__tag">Web · Club</span>
         <h3>SVEC Website</h3>
         <p>Built and maintain sventclub.org, the digital front door for the Silicon Valley Entrepreneurship Club — events, sponsors, and member funnel. Part of the same push that drove +40% engagement and landed 4 sponsors.</p>
-        <a class="go" href="https://sventclub.org">sventclub.org <span>→</span></a>
+        <a class="go" href="https://sventclub.org">sventclub.org →</a>
       </div>
-    </div>
+    </article>
+
   </div>
 </section>
 
-<div class="divider on-alt"></div>
+<hr class="divider">
 
-<section id="leadership">
-  <div class="wrap">
-    <div class="sec-label reveal">03 · Leadership &amp; Community</div>
-    <div class="sec-row">
-      <div class="sec-head reveal" style="margin-bottom:0">
-        <h2>Roles I hold</h2>
-        <p class="sec-desc" style="margin-bottom:0">Code is half of it. The other half is rooms full of people: running club operations, managing a chapter's money, and teaching CS to students who remind me why I started.</p>
-      </div>
-      <figure class="side-photo reveal">
-        <img src="img/yusuf-candid.jpg" alt="Yusuf Gadelrab, casual selfie in a plant-filled atrium on campus" width="600" height="800" loading="lazy">
-        <figcaption>Off the laptop — San Jose, 2026</figcaption>
-      </figure>
+<section id="leadership" class="section">
+  <p class="eyebrow reveal">03 · Leadership &amp; Community</p>
+  <div class="sec-row" style="margin-top:var(--s3)">
+    <div class="reveal">
+      <h2>Roles I hold</h2>
+      <p class="lead" style="margin-top:var(--s3)">Code is half of it. The other half is rooms full of people: running club operations, managing a chapter's money, and teaching CS to students who remind me why I started.</p>
     </div>
-    <div class="grid" style="margin-top:36px">
-      <div class="card reveal">
-        <span class="icon">🚀</span>
-        <span class="tag">SVEC</span>
+    <figure class="side-photo reveal">
+      <img src="img/yusuf-candid.jpg" alt="Yusuf Gadelrab, casual selfie in a plant-filled atrium on campus" width="600" height="800" loading="lazy">
+      <figcaption>Off the laptop — San Jose, 2026</figcaption>
+    </figure>
+  </div>
+  <div class="grid" style="margin-top:var(--s7)">
+    <article class="card proj reveal">
+      <div class="proj__body">
+        <span class="proj__tag">SVEC</span>
         <h3>Technical Ops &amp; Web Lead</h3>
         <p>Run the technical side of the Silicon Valley Entrepreneurship Club — site, tooling, and event ops. Drove +40% engagement, landed 4 sponsors, and grew the budget +35% in one year.</p>
       </div>
-      <div class="card reveal">
-        <span class="icon">🏛</span>
-        <span class="tag">Kappa Sigma · SJSU</span>
+    </article>
+    <article class="card proj reveal">
+      <div class="proj__body">
+        <span class="proj__tag">Kappa Sigma · SJSU</span>
         <h3>Board Treasurer</h3>
         <p>Own the finances for a 50+ member chapter: budgeting, dues, and the books behind 10+ events a year. Real money, real accountability, real spreadsheets.</p>
       </div>
-      <div class="card reveal">
-        <span class="icon">🎓</span>
-        <span class="tag">SJSU CS Dept</span>
+    </article>
+    <article class="card proj reveal">
+      <div class="proj__body">
+        <span class="proj__tag">SJSU CS Dept</span>
         <h3>CS Tutor &amp; Curriculum Lead</h3>
         <p>Tutor with Coding Warriors and lead curriculum for CS outreach programs at Bay Area high schools — the same programs my research studies, so what I learn in the lab ships to actual classrooms.</p>
       </div>
-      <div class="card reveal">
-        <span class="icon">➗</span>
-        <span class="tag">Mathos AI</span>
+    </article>
+    <article class="card proj reveal">
+      <div class="proj__body">
+        <span class="proj__tag">Mathos AI</span>
         <h3>Campus Ambassador</h3>
         <p>Represent an AI math-learning platform on campus since early 2025 — running demos, gathering student feedback, and feeding it back to the product team.</p>
       </div>
+    </article>
+  </div>
+</section>
+
+<hr class="divider">
+
+<section id="products" class="section">
+  <p class="eyebrow reveal">04 · Products</p>
+  <div class="card card--flat banner reveal" style="margin-top:var(--s5)">
+    <span class="badge"><span class="dot"></span>Now installing — founding-client pilots open</span>
+    <h2 style="margin-top:var(--s4)"><span class="gold-fill">FreightDesk AI</span> — an AI back office for freight brokers</h2>
+    <p>The AR and billing automation I built inside a real freight brokerage, productized: invoice chasing, POD prep, and inbox AI that runs 100% locally — no data leaves your machine. Founding-client pilots are $999 one-time setup + $249/mo — a part-time AR clerk runs $1,800–2,200 a month. Launch pricing ends August 15.</p>
+    <div class="row">
+      <a class="btn btn-gold" href="freightdesk.html">Book a founding pilot →</a>
+      <a class="btn btn-ghost" href="store.html">Browse the store →</a>
     </div>
   </div>
 </section>
 
-<div class="divider"></div>
+<hr class="divider">
 
-<section id="products" class="alt">
-  <div class="wrap">
-    <div class="sec-label reveal">04 · Products</div>
-    <div class="banner reveal">
-      <div class="banner-inner">
-        <span class="pill">🟢 NOW INSTALLING — FOUNDING-CLIENT PILOTS OPEN</span>
-        <h2><span class="grad">FreightDesk AI</span> — an AI back office for freight brokers</h2>
-        <p>The AR and billing automation I built inside a real freight brokerage, productized: invoice chasing, POD prep, and inbox AI that runs 100% locally — no data leaves your machine. Founding-client pilots are $999 one-time setup + $249/mo — a part-time AR clerk runs $1,800–2,200 a month. Launch pricing ends August 15.</p>
-        <a class="btn btn-gold" href="https://yusuf-gadelrab.github.io/freightdesk.html">Book a founding pilot →</a>
-        <a class="btn btn-ghost" href="https://yusuf-gadelrab.github.io/store.html">Browse the store →</a>
-      </div>
-    </div>
-  </div>
+<section id="final-cta" class="section section--tight center">
+  <h2 class="reveal">If you only click one thing</h2>
+  <p class="lead reveal" style="margin:var(--s4) auto var(--s6)">2× SIGCSE 2026 · 78% directional accuracy · 77 passing tests — everything above is real and running. The newest door: FreightDesk founding-client pilots, installing now.</p>
+  <a class="btn btn-gold reveal" href="freightdesk.html">Book a founding pilot →</a>
+  <p class="faint reveal" style="margin-top:var(--s4);font-size:var(--t-small)">$999 one-time setup + $249/mo · launch pricing ends August 15</p>
 </section>
 
-<div class="divider on-alt"></div>
+</main>
 
-<section id="final-cta">
-  <div class="wrap" style="text-align:center;max-width:760px">
-    <h2 class="reveal">If you only click one thing</h2>
-    <p class="sec-desc reveal" style="margin:10px auto 30px">2× SIGCSE 2026 · 78% directional accuracy · 77 passing tests — everything above is real and running. The newest door: FreightDesk founding-client pilots, installing now.</p>
-    <a class="btn btn-gold reveal" href="https://yusuf-gadelrab.github.io/freightdesk.html">Book a founding pilot →</a>
-    <p class="micro reveal">$999 one-time setup + $249/mo · launch pricing ends August 15</p>
-  </div>
-</section>
-
-<footer>
-  <div class="wrap">
-    <div class="links">
-      <a href="https://yusuf-gadelrab.github.io/">Personal Website</a>
-      <a href="https://github.com/Yusuf-Gadelrab">GitHub</a>
-      <a href="https://www.linkedin.com/in/yusuf-gadelrab-76246b221">LinkedIn</a>
-      <a href="mailto:yusuf.gadelrab06@gmail.com">Email</a>
-    </div>
-    <div>© 2026 Yusuf Gadelrab · Black &amp; gold, always.</div>
+<footer class="site-footer">
+  <div>© 2026 Yusuf Gadelrab · San Jose, CA · Black &amp; gold, always.</div>
+  <div class="site-footer__links">
+    <a href="/">Work</a>
+    <a href="/resume.html">Resume</a>
+    <a href="/store.html">Store</a>
+    <a href="/kxngsef.html">KXNG SEF</a>
+    <a href="/media-kit.html">Media Kit</a>
+    <a href="mailto:yusuf.gadelrab06@gmail.com">yusuf.gadelrab06@gmail.com</a>
+    <a href="https://github.com/Yusuf-Gadelrab" target="_blank" rel="noopener">GitHub</a>
+    <a href="https://www.linkedin.com/in/yusuf-gadelrab-76246b221" target="_blank" rel="noopener">LinkedIn</a>
   </div>
 </footer>
 
@@ -374,27 +315,19 @@
 (function(){
   var reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-  // reveal on scroll (staggered per section)
+  // reveal on scroll
   var io = new IntersectionObserver(function(es){
     es.forEach(function(e){
-      if(e.isIntersecting){
-        var i = e.target.dataset.stagger || 0;
-        e.target.style.transitionDelay = (i*90)+'ms';
-        e.target.classList.add('in');
-        io.unobserve(e.target);
-      }
+      if(e.isIntersecting){ e.target.classList.add('is-in'); io.unobserve(e.target); }
     });
   },{threshold:.12});
-  document.querySelectorAll('section, header').forEach(function(sec){
-    sec.querySelectorAll('.reveal').forEach(function(el,i){ el.dataset.stagger = i%6; io.observe(el); });
-  });
+  document.querySelectorAll('.reveal').forEach(function(el){ io.observe(el); });
 
-  // scroll progress + nav condense
-  var bar = document.getElementById('progress'), nav = document.getElementById('nav');
+  // scroll progress
+  var bar = document.getElementById('progress');
   addEventListener('scroll', function(){
     var h = document.documentElement;
     bar.style.width = (h.scrollTop/(h.scrollHeight-h.clientHeight)*100)+'%';
-    nav.classList.toggle('scrolled', h.scrollTop > 40);
   }, {passive:true});
 
   // count-up stats
@@ -413,52 +346,6 @@
     });
   },{threshold:.6});
   document.querySelectorAll('[data-count]').forEach(function(el){ cio.observe(el); });
-
-  // gold particle field in hero (desktop only, starts after first paint)
-  var cv = document.getElementById('stars'), ctx = cv.getContext('2d'), ps = [];
-  function size(){ cv.width = cv.offsetWidth; cv.height = cv.offsetHeight; }
-  for(var i=0;i<70;i++) ps.push({x:Math.random(),y:Math.random(),r:Math.random()*1.6+.4,s:Math.random()*.25+.05,o:Math.random()*.6+.2,ph:Math.random()*6.28});
-  function draw(t){
-    ctx.clearRect(0,0,cv.width,cv.height);
-    ps.forEach(function(p){
-      var tw = .5+.5*Math.sin(t/900+p.ph);
-      ctx.beginPath();
-      ctx.arc(p.x*cv.width, p.y*cv.height, p.r, 0, 6.28);
-      ctx.fillStyle = 'rgba(212,175,55,'+(p.o*tw)+')';
-      ctx.fill();
-      p.y -= p.s/1000; if(p.y < -0.02) p.y = 1.02;
-    });
-    requestAnimationFrame(draw);
-  }
-  if(!reduced && matchMedia('(min-width:769px)').matches){
-    var startStars = function(){ size(); addEventListener('resize', size); requestAnimationFrame(draw); };
-    document.readyState === 'complete' ? startStars() : addEventListener('load', startStars, {once:true});
-  }
-})();
-</script>
-
-<!-- polish2:minimal-gold -->
-<style id="pv2-css">
-:root{--pv2g:#d4af37;--pv2e:cubic-bezier(.22,.61,.36,1)}
-body{-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility}
-h1,h2,h3{letter-spacing:-.015em}
-p,li{line-height:1.75}
-.pv2-r{opacity:0;transform:translateY(24px);transition:opacity .7s var(--pv2e),transform .7s var(--pv2e)}
-.pv2-r.pv2-in{opacity:1;transform:none}
-html.pv2-nojs .pv2-r,html.pv2-red .pv2-r{opacity:1!important;transform:none!important}
-a{transition:color .25s,opacity .25s,border-color .25s,text-shadow .25s}
-a:hover{text-shadow:0 0 14px rgba(212,175,55,.45)}
-.pv2-lift{transition:transform .35s var(--pv2e),box-shadow .35s var(--pv2e),border-color .35s}
-.pv2-lift:hover{transform:translateY(-5px);box-shadow:0 14px 44px rgba(212,175,55,.13);border-color:rgba(212,175,55,.45)}
-</style>
-<script id="pv2-js">
-(function(){var d=document,H=d.documentElement;
-if(matchMedia('(prefers-reduced-motion: reduce)').matches){H.classList.add('pv2-red');return}
-var io=new IntersectionObserver(function(es){es.forEach(function(en){if(en.isIntersecting){var el=en.target,sibs=el.parentElement?[].slice.call(el.parentElement.children):[],i=sibs.indexOf(el);el.style.transitionDelay=Math.min(i>0?i*60:0,360)+'ms';el.classList.add('pv2-in');io.unobserve(el)}})},{threshold:.12,rootMargin:'0px 0px -8% 0px'});
-var SEL='section,h1,h2,h3,figure,blockquote,[class*="card"],[class*="tile"],[class*="stat"],[class*="grid"]>div,[class*="grid"]>a,main>p,section>p';
-function scan(root){[].forEach.call((root||d).querySelectorAll(SEL),function(el){if(el.classList.contains('pv2-r'))return;if(el.closest('nav,#pv2-glow,[data-pv2-skip]'))return;var cs=getComputedStyle(el);if(cs.position==='fixed'||cs.position==='sticky')return;el.classList.add('pv2-r');if(/card|tile/.test(el.className))el.classList.add('pv2-lift');io.observe(el)})}
-function boot(){scan(d);var r=d.getElementById('root');if(r){var t,mo=new MutationObserver(function(){clearTimeout(t);t=setTimeout(function(){scan(r)},120)});mo.observe(r,{childList:true,subtree:true})}}
-d.readyState==='loading'?d.addEventListener('DOMContentLoaded',boot):boot();
 })();
 </script>
 

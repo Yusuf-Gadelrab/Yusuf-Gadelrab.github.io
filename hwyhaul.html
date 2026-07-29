@@ -8,6 +8,7 @@
 <meta name="description" content="Case study: an AI freight back office covering 18 AR/billing workflows, built and tested 100% on local models with $0 API cost.">
 <link rel="canonical" href="https://yusuf-gadelrab.github.io/hwyhaul.html">
 <link rel="icon" type="image/svg+xml" href="https://yusuf-gadelrab.github.io/favicon.svg">
+<link rel="apple-touch-icon" sizes="180x180" href="https://yusuf-gadelrab.github.io/apple-touch-icon.png">
 <meta name="theme-color" content="#0a0a0b">
 <meta name="author" content="Yusuf Gadelrab">
 <meta property="og:type" content="website">
@@ -55,7 +56,7 @@
     position:fixed; top:0; left:0; right:0; z-index:50;
     display:flex; align-items:center; justify-content:space-between;
     padding:16px clamp(18px,5vw,60px);
-    background:rgba(10,10,11,.55); backdrop-filter:blur(14px);
+    background:rgba(10,10,11,.55); -webkit-backdrop-filter:blur(14px);backdrop-filter:blur(14px);
     border-bottom:1px solid transparent; transition:border-color .4s,background .4s,padding .3s;
   }
   nav.scrolled{border-bottom-color:var(--line); background:rgba(10,10,11,.82); padding-top:12px; padding-bottom:12px}
@@ -85,7 +86,7 @@
   section{padding:clamp(60px,9vw,120px) clamp(18px,5vw,60px); max-width:1180px; margin:0 auto}
 
   /* ---------- HERO ---------- */
-  .hero{min-height:100vh; display:flex; flex-direction:column; justify-content:center; padding-top:120px}
+  .hero{min-height:100vh;min-height:100dvh; display:flex; flex-direction:column; justify-content:center; padding-top:120px}
   .eyebrow{
     display:inline-flex; align-items:center; gap:9px; align-self:flex-start;
     padding:7px 15px; border:1px solid var(--line); border-radius:100px;
