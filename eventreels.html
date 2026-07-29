@@ -3,6 +3,17 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<!-- tech:seo — managed block (SEO / social / structured data / perf / PWA) -->
+<link rel="preload" href="/css/site.css" as="style">
+<meta name="robots" content="index,follow,max-image-preview:large">
+<meta property="og:locale" content="en_US">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"TechArticle","headline":"EventReels — a local-first ffmpeg pipeline for auto-edited highlight reels","url":"https://yusuf-gadelrab.github.io/eventreels.html","description":"Case study: a local-first ffmpeg pipeline that turns raw event footage into a finished 9:16 highlight reel, plus a browser studio to drive it.","author":{"@type":"Person","name":"Yusuf Gadelrab","url":"https://yusuf-gadelrab.github.io/"},"publisher":{"@type":"Person","name":"Yusuf Gadelrab","url":"https://yusuf-gadelrab.github.io/"},"datePublished":"2026-07-29","dateModified":"2026-07-29","mainEntityOfPage":{"@type":"WebPage","@id":"https://yusuf-gadelrab.github.io/eventreels.html"}}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://yusuf-gadelrab.github.io/"},{"@type":"ListItem","position":2,"name":"Case studies","item":"https://yusuf-gadelrab.github.io/apps.html"},{"@type":"ListItem","position":3,"name":"EventReels","item":"https://yusuf-gadelrab.github.io/eventreels.html"}]}</script>
+<link rel="manifest" href="/manifest.webmanifest">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<script>addEventListener("load",function(){if("serviceWorker" in navigator)navigator.serviceWorker.register("/sw.js").catch(function(){})});</script>
+<!-- /tech:seo -->
 <title>EventReels — Auto-Edited Highlight Reels · Yusuf Gadelrab</title>
 <meta name="description" content="Case study: a local-first ffmpeg pipeline that turns raw event footage into a finished 9:16 highlight reel, plus a browser studio to drive it.">
 <link rel="canonical" href="https://yusuf-gadelrab.github.io/eventreels.html">
@@ -61,7 +72,7 @@
     <h1 style="margin:var(--s5) 0">EventReels — <span class="gold-fill">your night, already edited.</span></h1>
     <p class="lead">Drop in raw event footage, get back a finished 9:16 highlight reel. No timeline, no editor, no editing skill. The whole pipeline runs on your own machine: <b>zero API keys, zero Python dependencies — just ffmpeg.</b></p>
     <figure style="margin-top:var(--s7)">
-      <img class="shot" src="projects/eventreels.jpg" alt="EventReels web studio — drag-and-drop footage uploader with reel length slider and title card field" width="1600" height="833" loading="lazy">
+      <img class="shot" src="projects/eventreels.jpg" alt="EventReels web studio — drag-and-drop footage uploader with reel length slider and title card field" width="1600" height="833" loading="lazy" decoding="async">
     </figure>
   </section>
 
@@ -169,5 +180,6 @@
   </div>
 </footer>
 
+<script src="/js/site.js" defer></script>
 </body>
 </html>

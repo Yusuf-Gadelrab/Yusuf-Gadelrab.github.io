@@ -1,0 +1,26 @@
+{
+  "name": "Yusuf Gadelrab — AI tools, built in public",
+  "short_name": "Yusuf G",
+  "description": "Portfolio, free browser tools and the store: FreightDesk AI, trading systems, application and visa planners, and the Midnight Gold Vault templates.",
+  "id": "/",
+  "start_url": "/?src=pwa",
+  "scope": "/",
+  "display": "standalone",
+  "orientation": "portrait-primary",
+  "background_color": "#0B0B0D",
+  "theme_color": "#0B0B0D",
+  "lang": "en-US",
+  "dir": "ltr",
+  "categories": ["productivity", "business", "finance"],
+  "icons": [
+    { "src": "/icon-192.png", "sizes": "192x192", "type": "image/png", "purpose": "any" },
+    { "src": "/icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any" },
+    { "src": "/icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable" },
+    { "src": "/apple-touch-icon.png", "sizes": "180x180", "type": "image/png", "purpose": "any" }
+  ],
+  "shortcuts": [
+    { "name": "Store", "url": "/store.html" },
+    { "name": "Apps & projects", "url": "/apps.html" },
+    { "name": "Resume", "url": "/resume.html" }
+  ]
+}

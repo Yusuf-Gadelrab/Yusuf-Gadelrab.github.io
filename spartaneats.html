@@ -3,6 +3,17 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<!-- tech:seo — managed block (SEO / social / structured data / perf / PWA) -->
+<link rel="preload" href="/css/site.css" as="style">
+<meta name="author" content="Yusuf Gadelrab">
+<meta name="robots" content="index,follow,max-image-preview:large">
+<meta property="og:locale" content="en_US">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://yusuf-gadelrab.github.io/"},{"@type":"ListItem","position":2,"name":"Case studies","item":"https://yusuf-gadelrab.github.io/apps.html"},{"@type":"ListItem","position":3,"name":"SpartanEats","item":"https://yusuf-gadelrab.github.io/spartaneats.html"}]}</script>
+<link rel="manifest" href="/manifest.webmanifest">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<script>addEventListener("load",function(){if("serviceWorker" in navigator)navigator.serviceWorker.register("/sw.js").catch(function(){})});</script>
+<!-- /tech:seo -->
 <title>SpartanEats — SJSU Student Food Delivery App Concept</title>
 <meta name="description" content="SpartanEats: a student-run food delivery app concept for San José State University. Campus-priced delivery from local spots, built by SJSU students for Spartans.">
 <link rel="canonical" href="https://yusuf-gadelrab.github.io/spartaneats.html">
@@ -631,5 +642,6 @@ function switchRole(){
 function wireView(){ if(view.name==='checkout'){coPay='cash';coTip=0;} }
 render();
 </script>
+<script src="/js/site.js" defer></script>
 </body>
 </html>

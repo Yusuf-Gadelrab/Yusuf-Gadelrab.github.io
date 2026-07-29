@@ -1,3 +1,15 @@
+# yusuf-gadelrab.github.io
+# Everything public is crawlable. The only disallows are utility endpoints that
+# would waste crawl budget or surface a non-page in search results.
+
 User-agent: *
 Allow: /
+Disallow: /offline.html
+Disallow: /404.html
+Disallow: /*?src=pwa
+
+# Template pack files are live previews of paid deliverables — reachable by link
+# on purpose, but they must not out-rank /templates.html in search.
+Disallow: /templates/
+
 Sitemap: https://yusuf-gadelrab.github.io/sitemap.xml
