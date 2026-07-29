@@ -9,9 +9,9 @@
                              offline reload of an already-visited page still works.
      Hashed CRA bundles   -> CACHE FIRST. /static/**.<hash>.<ext> is immutable by
                              construction; a new build emits a new filename.
-     /css/site.css        -> NETWORK FIRST. It is the one critical asset that is
-                             NOT content-hashed and changes often, so it must
-                             never be served stale while online.
+     /css/*.css, /js/*.js -> NETWORK FIRST. These are the only first-party code
+                             assets NOT content-hashed, so they must never be
+                             served stale while a network is available.
      Other static assets  -> STALE-WHILE-REVALIDATE (images, og cards, icons,
                              downloads). Instant paint, refreshed in background.
      /apps/**             -> BYPASSED ENTIRELY. Those PWAs ship their own,
@@ -32,6 +32,7 @@ var OFFLINE_URL = "/offline.html";
 var PRECACHE = [
   OFFLINE_URL,
   "/css/site.css",
+  "/js/site.js",
   "/manifest.webmanifest",
   "/favicon.svg",
   "/icon-192.png",
@@ -120,8 +121,10 @@ self.addEventListener("fetch", function (event) {
     return;
   }
 
-  // ---- the one unhashed critical stylesheet: never serve it stale while online
-  if (url.pathname === "/css/site.css") {
+  // ---- unhashed shared css/js: never serve stale while online. These are the
+  // only first-party code assets without a content hash in the filename, so a
+  // cache-first strategy here would pin users to an old build's behaviour.
+  if (/^\/(css|js)\/[^/]+\.(css|js)$/.test(url.pathname)) {
     event.respondWith(
       fetch(req).then(function (res) { return putIn(SHELL, req, res); })
         .catch(function () { return caches.match(req); })
