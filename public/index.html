@@ -3,7 +3,17 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="theme-color" content="#0B0B0D" />
+    <!-- tech:seo — managed block (SEO / social / structured data / perf / PWA) -->
+<link rel="preload" href="/css/site.css" as="style">
+<meta name="robots" content="index,follow,max-image-preview:large">
+<meta property="og:locale" content="en_US">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"ProfilePage","url":"https://yusuf-gadelrab.github.io/","mainEntity":{"@id":"https://yusuf-gadelrab.github.io/#person"}}</script>
+<link rel="manifest" href="/manifest.webmanifest">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<script>addEventListener("load",function(){if("serviceWorker" in navigator)navigator.serviceWorker.register("/sw.js").catch(function(){})});</script>
+<!-- /tech:seo -->
+<meta name="theme-color" content="#0B0B0D" />
     <title>Yusuf Gadelrab — CS @ SJSU · AI Builder & Researcher</title>
 <!-- polish:head -->
 <meta name="description" content="CS @ SJSU building AI tools in public: FreightDesk AI, trading systems, and CS-education research. Projects, case studies, and the journey.">
@@ -63,7 +73,7 @@
 <meta name="twitter:image" content="https://yusuf-gadelrab.github.io/og-card.png">
 
   <style>/* polish:css */@media (prefers-reduced-motion: reduce){*,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important;scroll-behavior:auto!important}}::selection{background:#d4af37;color:#0a0a0b}html{scroll-behavior:smooth}</style>
-<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Person", "name": "Yusuf Gadelrab", "url": "https://yusuf-gadelrab.github.io/", "image": "https://yusuf-gadelrab.github.io/og-card.png", "jobTitle": "Computer Science Student & Builder", "affiliation": {"@type": "CollegeOrUniversity", "name": "San Jos\u00e9 State University"}, "sameAs": ["https://github.com/Yusuf-Gadelrab", "https://www.linkedin.com/in/yusuf-gadelrab-76246b221"], "knowsAbout": ["Artificial Intelligence", "Machine Learning", "Quantitative Finance", "Full-Stack Development", "CS Education Research"]}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Person", "@id": "https://yusuf-gadelrab.github.io/#person", "name": "Yusuf Gadelrab", "url": "https://yusuf-gadelrab.github.io/", "image": "https://yusuf-gadelrab.github.io/og-card.png", "jobTitle": "Computer Science Student & Builder", "affiliation": {"@type": "CollegeOrUniversity", "name": "San Jos\u00e9 State University"}, "sameAs": ["https://github.com/Yusuf-Gadelrab", "https://www.linkedin.com/in/yusuf-gadelrab-76246b221"], "knowsAbout": ["Artificial Intelligence", "Machine Learning", "Quantitative Finance", "Full-Stack Development", "CS Education Research"]}</script>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "WebSite", "name": "Yusuf Gadelrab", "url": "https://yusuf-gadelrab.github.io/"}</script>
 </head>
   <body class="pro">
@@ -134,6 +144,8 @@
           <a href="/media-kit.html">Media Kit</a>
           <a href="https://github.com/Yusuf-Gadelrab" target="_blank" rel="noopener">GitHub</a>
           <a href="https://www.linkedin.com/in/yusuf-gadelrab-76246b221" target="_blank" rel="noopener">LinkedIn</a>
+          <a href="/privacy.html">Privacy</a>
+          <a href="/terms.html">Terms</a>
         </div>
       </footer>
     </div></div>
@@ -206,7 +218,7 @@ function injectAbout(){
   if(!sec)return;
   if(!sec.querySelector('#yg-about-photo')){
     var f=d.createElement('figure');f.id='yg-about-photo';
-    f.innerHTML='<img src="img/yusuf-headshot.jpg" alt="Yusuf Gadelrab, professional headshot in a suit with a gold frame border" width="700" height="749" loading="lazy"><figcaption>Yusuf Gadelrab · San Jose, CA</figcaption>';
+    f.innerHTML='<img src="img/yusuf-headshot.jpg" alt="Yusuf Gadelrab, professional headshot in a suit with a gold frame border" width="700" height="749" loading="lazy" decoding="async"><figcaption>Yusuf Gadelrab · San Jose, CA</figcaption>';
     var head=sec.firstElementChild;
     if(head)head.insertAdjacentElement('afterend',f);
   }
@@ -236,5 +248,6 @@ d.readyState==='loading'?d.addEventListener('DOMContentLoaded',boot):boot();
 })();
 </script>
 
+<script src="/js/site.js" defer></script>
 </body>
 </html>

@@ -3,6 +3,24 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<!-- tech:seo — managed block (SEO / social / structured data / perf / PWA) -->
+<link rel="preload" href="/css/site.css" as="style">
+<meta property="og:locale" content="en_US">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Visa Navigator — free change-of-status &amp; CPT/OPT timeline planner">
+<meta name="twitter:description" content="A free, private, browser-only planning aid for international students changing US nonimmigrant status: backward-planned I-539 timeline, conflict flags, document checklist, and a CPT/OPT eligibility explainer. Not legal advice.">
+<meta property="og:image" content="https://yusuf-gadelrab.github.io/og/visa-card.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Visa Navigator — free change-of-status &amp; CPT/OPT timeline planner">
+<meta name="twitter:image" content="https://yusuf-gadelrab.github.io/og/visa-card.png">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"Visa Navigator","url":"https://yusuf-gadelrab.github.io/visa.html","applicationCategory":"BusinessApplication","operatingSystem":"Any (browser)","browserRequirements":"Requires JavaScript","description":"Browser-only planning aid for international students changing US nonimmigrant status: backward-planned I-539 timeline, CPT/OPT eligibility dates and conflict flags. Not legal advice.","author":{"@type":"Person","name":"Yusuf Gadelrab","url":"https://yusuf-gadelrab.github.io/"},"isAccessibleForFree":true,"offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://yusuf-gadelrab.github.io/"},{"@type":"ListItem","position":2,"name":"Apps & projects","item":"https://yusuf-gadelrab.github.io/apps.html"},{"@type":"ListItem","position":3,"name":"Visa Navigator","item":"https://yusuf-gadelrab.github.io/visa.html"}]}</script>
+<link rel="manifest" href="/manifest.webmanifest">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<script>addEventListener("load",function(){if("serviceWorker" in navigator)navigator.serviceWorker.register("/sw.js").catch(function(){})});</script>
+<!-- /tech:seo -->
 <title>Visa Navigator — free change-of-status &amp; CPT/OPT timeline planner</title>
 <meta name="description" content="A free, private, browser-only planning aid for international students changing US nonimmigrant status: backward-planned I-539 timeline, conflict flags, document checklist, and a CPT/OPT eligibility explainer. Not legal advice.">
 <link rel="canonical" href="https://yusuf-gadelrab.github.io/visa.html">
@@ -30,16 +48,19 @@
     background:rgba(224,179,65,.08);
     border-radius:var(--radius-lg);
     padding:var(--s5);
-    margin:var(--s5) auto 0;
-    max-width:var(--maxw);
+    margin:var(--s5) 0 0;
+    max-width:860px;
   }
   .disclaimer h2{font-size:var(--t-h3);color:var(--warn);margin-bottom:var(--s2)}
   .disclaimer p{font-size:var(--t-small);color:var(--ink);max-width:var(--maxw-prose)}
   .disclaimer p+p{margin-top:var(--s3)}
-  .disclaimer-wrap{padding:0 var(--section-x)}
+  .disclaimer-wrap{padding:0 var(--section-x);max-width:var(--maxw);margin:0 auto}
 
   /* ---------- step scaffolding ---------- */
-  .step{margin-top:var(--s7)}
+  /* Sections sit close together: this is one continuous form, not twelve
+     unrelated marketing sections, so the default 110px section rhythm reads as
+     a broken page here. */
+  .step{margin-top:0;padding-top:var(--s6);padding-bottom:var(--s6)}
   .step__num{
     display:inline-flex;align-items:center;justify-content:center;
     width:26px;height:26px;border:1px solid var(--line);border-radius:var(--radius);
@@ -122,9 +143,9 @@
   /* ---------- CPT explainer ---------- */
   .cptgrid{display:grid;gap:var(--s4);grid-template-columns:repeat(auto-fit,minmax(min(220px,100%),1fr));margin-top:var(--s5)}
   .gate{border:1px solid var(--line-soft);border-radius:var(--radius-lg);padding:var(--s4);background:var(--bg2)}
-  .gate__k{font-size:var(--t-micro);letter-spacing:1.5px;text-transform:uppercase;color:var(--muted)}
-  .gate__v{font-family:var(--mono);font-size:16px;color:var(--gold-2);margin-top:6px;word-break:break-word}
-  .gate__d{font-size:var(--t-micro);color:var(--faint);margin-top:6px;line-height:1.5}
+  .gate__k{display:block;font-size:var(--t-micro);letter-spacing:1.5px;text-transform:uppercase;color:var(--muted)}
+  .gate__v{display:block;font-family:var(--mono);font-size:16px;color:var(--gold-2);margin-top:6px;word-break:break-word}
+  .gate__d{display:block;font-size:var(--t-micro);color:var(--faint);margin-top:6px;line-height:1.5}
   .gate[data-tone="bad"]{border-color:rgba(224,104,95,.5)}
   .gate[data-tone="bad"] .gate__v{color:var(--bad)}
   .gate[data-tone="ok"] .gate__v{color:var(--ok)}
@@ -169,6 +190,7 @@
     <a href="/">Work</a>
     <a href="/resume.html">Resume</a>
     <a href="/store.html">Store</a>
+    <a href="/apps.html">Apps</a>
     <a href="/kxngsef.html">KXNG SEF</a>
     <a href="/media-kit.html">Media Kit</a>
   </div>
@@ -406,11 +428,14 @@
     <a href="/">Work</a>
     <a href="/resume.html">Resume</a>
     <a href="/store.html">Store</a>
+    <a href="/apps.html">Apps</a>
     <a href="/kxngsef.html">KXNG SEF</a>
     <a href="/media-kit.html">Media Kit</a>
     <a href="mailto:yusuf.gadelrab06@gmail.com?subject=Visa%20Navigator">yusuf.gadelrab06@gmail.com</a>
     <a href="https://github.com/Yusuf-Gadelrab" target="_blank" rel="noreferrer">GitHub</a>
     <a href="https://www.linkedin.com/in/yusuf-gadelrab-76246b221" target="_blank" rel="noreferrer">LinkedIn</a>
+    <a href="/privacy.html">Privacy</a>
+    <a href="/terms.html">Terms</a>
   </div>
 </footer>
 
@@ -1149,5 +1174,6 @@
   if(hasAny) compute();
 })();
 </script>
+<script src="/js/site.js" defer></script>
 </body>
 </html>
