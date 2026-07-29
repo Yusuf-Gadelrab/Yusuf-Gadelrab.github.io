@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Swing Screener — I Built the Harness That Killed My Own Strategy · Yusuf Gadelrab</title>
+<meta name="description" content="Case study: a swing-setup screener, a backtest engine, and the adversarial validation audit that took my own headline result apart.">
+<link rel="canonical" href="https://yusuf-gadelrab.github.io/swing-screener.html">
+<link rel="icon" type="image/svg+xml" href="https://yusuf-gadelrab.github.io/favicon.svg">
+<link rel="apple-touch-icon" sizes="180x180" href="https://yusuf-gadelrab.github.io/apple-touch-icon.png">
+<meta name="theme-color" content="#0B0B0D">
+<meta name="author" content="Yusuf Gadelrab">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Yusuf Gadelrab">
+<meta property="og:title" content="Swing Screener — the harness that killed my own strategy">
+<meta property="og:description" content="A swing-setup screener, a backtest engine, and the adversarial audit that took my own headline result apart.">
+<meta property="og:url" content="https://yusuf-gadelrab.github.io/swing-screener.html">
+<meta property="og:image" content="https://yusuf-gadelrab.github.io/og-card.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Swing Screener — the harness that killed my own strategy">
+<meta name="twitter:description" content="A swing-setup screener, a backtest engine, and the adversarial audit that took my own headline result apart.">
+<meta name="twitter:image" content="https://yusuf-gadelrab.github.io/og-card.png">
+<link rel="stylesheet" href="/css/site.css">
+<style>
+  .pills{display:flex;flex-wrap:wrap;gap:var(--s2)}
+  .pill{padding:8px 14px;border:1px solid var(--line-soft);border-radius:var(--radius);
+    font-size:var(--t-small);color:var(--ink);background:var(--panel)}
+  .callout{border-left:3px solid var(--gold)}
+  .callout b{color:var(--gold-2)}
+  .card p{color:var(--muted);font-size:var(--t-small);margin-top:var(--s3)}
+  .verdict{border-left:3px solid var(--bad)}
+  .verdict b{color:var(--bad)}
+  .num{font-family:var(--mono);color:var(--gold-2)}
+</style>
+</head>
+<body class="pro">
+
+<a class="skip-link" href="#main">Skip to content</a>
+
+<nav class="site-nav">
+  <a class="site-nav__brand" href="/">YUSUF GADELRAB</a>
+  <div class="site-nav__links">
+    <a href="/">Work</a>
+    <a href="/resume.html">Resume</a>
+    <a href="/store.html">Store</a>
+    <a href="/apps.html">Apps</a>
+    <a href="/kxngsef.html">KXNG SEF</a>
+    <a href="/media-kit.html">Media Kit</a>
+  </div>
+</nav>
+
+<main id="main">
+
+  <section class="section">
+    <span class="badge"><span class="dot"></span>Local tool + research · private repo · audit dated Jul 2026</span>
+    <h1 style="margin:var(--s5) 0">I built the validation harness that <span class="gold-fill">killed my own strategy.</span></h1>
+    <p class="lead">Swing Screener started as a CLI that scans a watchlist for the setups I trade. Then I built a backtest engine on top of it. Then I spent a week trying to <b>destroy</b> my own headline result — and largely succeeded. This page is about that second part, because it is the more useful engineering story.</p>
+    <div class="grid" style="margin-top:var(--s8);grid-template-columns:repeat(auto-fit,minmax(min(180px,100%),1fr))">
+      <div class="card card--flat stat"><span class="stat__value">129</span><span class="stat__label">symbols, 11 sectors, 10 years</span></div>
+      <div class="card card--flat stat"><span class="stat__value">4,933</span><span class="stat__label">trades in the broad re-test</span></div>
+      <div class="card card--flat stat"><span class="stat__value">150</span><span class="stat__label">parameter cells swept</span></div>
+      <div class="card card--flat stat"><span class="stat__value">0</span><span class="stat__label">strategy lines changed to get there</span></div>
+    </div>
+  </section>
+
+  <hr class="divider">
+
+  <section class="section section--tight">
+    <p class="eyebrow">The Problem</p>
+    <h2>A backtest that confirms you is worth nothing.</h2>
+    <p class="lead" style="margin-top:var(--s3)">My walk-forward said the anchored-VWAP-reclaim setup earned <span class="num">+0.23R</span> over 101 trades. That is exactly the kind of number people put in a bio and then trade on. It came from eight correlated large-cap tech names I picked with hindsight, over one arbitrary window alignment. Before putting money behind it, the honest move is to build the test designed to <em>kill</em> it, not the one designed to confirm it.</p>
+  </section>
+
+  <hr class="divider">
+
+  <section class="section section--tight">
+    <p class="eyebrow">What I Built</p>
+    <h2>Three layers: screener, backtester, audit.</h2>
+    <div class="grid" style="margin-top:var(--s6)">
+      <div class="card">
+        <h3>The screener</h3>
+        <p>A terminal CLI over free yfinance data. Scans a watchlist for three setups — anchored-VWAP reclaim, Minervini-style volatility contraction with volume dry-up, and gap/opening-range levels — and prints a table of what triggered with the key levels. Saves a markdown report for the day.</p>
+      </div>
+      <div class="card">
+        <h3>The backtester</h3>
+        <p>Replays the same detectors bar-by-bar with no lookahead: at each bar it only sees data up to that bar. When a setup fires it opens a trade using that setup's own entry and stop levels, targets a configurable R multiple, and walks forward to stop, target, or timeout. Reports hit rate, average R and expectancy per setup.</p>
+      </div>
+      <div class="card">
+        <h3>The audit harness</h3>
+        <p>Universe expansion, survivorship bucketing, a 150-cell parameter sweep, regime splits, correlation-adjusted significance, block bootstraps, and — the one that mattered — signal-free control benchmarks. Six scripts, all reproducible from the repo.</p>
+      </div>
+    </div>
+    <div class="panel callout" style="margin-top:var(--s6)">
+      <b>The bit I'm proudest of.</b> The repo's own backtest loop is O(n²) with pandas overhead — far too slow for a 150-cell sweep across 129 symbols. So I wrote a prefix-sum re-implementation and then <b>asserted it bit-exact against the real repo code path across 160 windows and 16 symbols, zero mismatches</b>. Speed came from a proof of equivalence, not from quietly changing the strategy under the test. No strategy source was modified during the audit.
+    </div>
+  </section>
+
+  <hr class="divider">
+
+  <section class="section section--tight">
+    <p class="eyebrow">What The Audit Found</p>
+    <h2>The headline number did not survive.</h2>
+
+    <div class="panel verdict" style="margin-top:var(--s6)">
+      <b>VERDICT: MARGINAL — do not size up.</b>
+      <p class="muted" style="margin-top:var(--s3);font-size:var(--t-small)">Reproduced verbatim from my own report. The recommendation to myself: cap risk at 0.25% of equity, run a 60-trade forward test with a −10R kill switch, and do not scale until forward expectancy clears +0.10R. Trade it small or not at all.</p>
+    </div>
+
+    <div class="grid grid--2" style="margin-top:var(--s6)">
+      <div class="card">
+        <h3>1. It wasn't reproducible</h3>
+        <p>The 126-bar window grid start is arbitrary. Sliding it across 21 alignments on the same eight names gives a median of <span class="num">+0.004R</span>, ranging −0.045R to +0.287R. The <span class="num">+0.23R</span> headline sat near the top of that distribution — a coin flip that landed well.</p>
+      </div>
+      <div class="card">
+        <h3>2. It's mostly long drift</h3>
+        <p>Bucketing symbols by their own 10-year buy-and-hold return, expectancy is a clean monotonic function of it: <span class="num">+0.159R</span> on winners, <span class="num">+0.038R</span> (t = 1.22, not significant) on names that actually went down. That is the signature of harvesting market drift, not of a pattern edge.</p>
+      </div>
+      <div class="card">
+        <h3>3. The signal carries no information</h3>
+        <p>The killer control: entries taken when price is <em>above</em> the anchored VWAP earn <span class="num">+0.100R</span>; entries taken when price is <em>below</em> it earn <span class="num">+0.098R</span>. Identical. The setup's entire premise — that reclaiming the anchored cost basis means something — tests as pure noise.</p>
+      </div>
+      <div class="card">
+        <h3>4. What's left, costs eat</h3>
+        <p>Against a benchmark matched decile-by-decile on risk-as-%-of-price, the signal's incremental contribution is <span class="num">+0.030R</span>, 95% CI [−0.014, +0.077] — crossing zero. Round-trip slippage of 5–10 bps costs 0.018–0.036R, i.e. 60–120% of it.</p>
+      </div>
+    </div>
+
+    <div class="panel callout" style="margin-top:var(--s6)">
+      <b>What did survive, in fairness.</b> The strategy is not fake and it is not curve-fit. Expanded to 129 symbols over 10 years it still returns <span class="num">+0.117R</span> over 4,933 trades with a block-bootstrap 95% CI of [+0.057, +0.174] and a correlation-adjusted t of +3.4. All 150 parameter cells came back positive with a smooth, monotone surface — and the shipped parameterisation sits mid-pack rather than on the peak, which is the strongest evidence against curve-fitting. The raw expectancy is real. It just isn't <em>the signal's</em>.
+    </div>
+  </section>
+
+  <hr class="divider">
+
+  <section class="section section--tight">
+    <p class="eyebrow">The Stack</p>
+    <h2>Free data, no black boxes.</h2>
+    <div class="pills" style="margin-top:var(--s5)">
+      <span class="pill">Python</span>
+      <span class="pill">uv</span>
+      <span class="pill">pandas · numpy</span>
+      <span class="pill">yfinance</span>
+      <span class="pill">Rich (terminal UI)</span>
+      <span class="pill">Walk-forward backtest</span>
+      <span class="pill">Moving-block bootstrap</span>
+      <span class="pill">ICC / design-effect adjustment</span>
+      <span class="pill">Risk-matched control benchmarks</span>
+      <span class="pill">pytest (no-network fixtures)</span>
+    </div>
+    <p class="muted" style="margin-top:var(--s5);max-width:var(--maxw-prose);font-size:var(--t-small)">Indicator math — anchored VWAP, VCP contraction and volume dry-up, gap arithmetic — is unit-tested against small synthetic OHLCV fixtures with no network calls, so the tests are deterministic and fast.</p>
+  </section>
+
+  <hr class="divider">
+
+  <section class="section section--tight">
+    <p class="eyebrow">Honest Status</p>
+    <h2>A local tool and a research artifact.</h2>
+    <div class="grid grid--2" style="margin-top:var(--s6)">
+      <div class="card">
+        <h3>What it is</h3>
+        <p>A CLI I run on my own watchlist, plus a validation harness and a full written audit. Both work. The audit is reproducible from scripts in the repo.</p>
+      </div>
+      <div class="card">
+        <h3>What it is not</h3>
+        <p>Not a profitable trading system, and I'm not claiming one. There is no live money behind it. The <a class="gold" href="/trading-bot.html">execution engine</a> that would trade this setup exists and is tested, but it stays in paper mode precisely because of what this audit found.</p>
+      </div>
+    </div>
+    <div class="panel callout" style="margin-top:var(--s6)">
+      <b>Why this is on my portfolio at all.</b> Anyone can produce a backtest with a good number in it. The transferable skill is building the adversarial test that finds out whether the number means anything — controls, correlation adjustment, survivorship checks, bit-exactness proofs — and then writing down the answer when it goes against you. Educational tooling, not financial advice.
+    </div>
+    <div class="row" style="margin-top:var(--s6)">
+      <a href="/apps.html" class="btn btn-gold">← All projects</a>
+      <a href="/trading-bot.html" class="btn btn-ghost">The execution engine →</a>
+    </div>
+  </section>
+
+</main>
+
+<footer class="site-footer">
+  <div>Yusuf Gadelrab · CS @ SJSU · Swing Screener project page · Not financial advice</div>
+  <div class="site-footer__links">
+    <a href="/">Work</a>
+    <a href="/resume.html">Resume</a>
+    <a href="/store.html">Store</a>
+    <a href="/apps.html">Apps</a>
+    <a href="/kxngsef.html">KXNG SEF</a>
+    <a href="/media-kit.html">Media Kit</a>
+    <a href="mailto:yusuf.gadelrab06@gmail.com">yusuf.gadelrab06@gmail.com</a>
+    <a href="https://github.com/Yusuf-Gadelrab" target="_blank" rel="noopener">GitHub</a>
+    <a href="https://www.linkedin.com/in/yusuf-gadelrab-76246b221" target="_blank" rel="noopener">LinkedIn</a>
+  </div>
+</footer>
+
+</body>
+</html>

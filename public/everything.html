@@ -33,6 +33,8 @@
   .hero-all h1{margin:var(--s4) auto;max-width:18ch}
   .hero-all .lead{margin-inline:auto}
   .hero-all .row{justify-content:center}
+  /* four metric tiles stay on one line until the phone breakpoint */
+  .hero-all .grid{grid-template-columns:repeat(auto-fit,minmax(min(170px,100%),1fr))}
   .portrait{width:132px;height:141px;object-fit:cover;border-radius:var(--radius-lg);
     margin:0 auto var(--s5);border:1px solid var(--line);box-shadow:var(--shadow)}
 
@@ -85,6 +87,7 @@
     <a href="/">Work</a>
     <a href="/resume.html">Resume</a>
     <a href="/store.html">Store</a>
+    <a href="/apps.html">Apps</a>
     <a href="/kxngsef.html">KXNG SEF</a>
     <a href="/media-kit.html">Media Kit</a>
   </div>
@@ -150,7 +153,7 @@
 <section id="builds" class="section">
   <p class="eyebrow reveal">02 · Engineering</p>
   <h2 class="reveal">Things I've built</h2>
-  <p class="lead reveal" style="margin-top:var(--s3)">Shipped software across freight logistics, video, climate, careers, and markets. The common thread: local-first AI, zero-bloat stacks, and systems that keep running after I stop watching them.</p>
+  <p class="lead reveal" style="margin-top:var(--s3)">Shipped software across freight logistics, video, climate, and markets. The common thread: local-first AI, zero-bloat stacks, and systems that keep running after I stop watching them. Below are the highlights — <a class="gold" href="apps.html">the full index, with an honest status on every project, lives on the Apps page</a>.</p>
   <div class="grid" style="margin-top:var(--s7)">
 
     <article class="card proj reveal">
@@ -166,20 +169,20 @@
     <article class="card proj reveal">
       <img class="proj__thumb" src="projects/eventreels.jpg" alt="EventReels studio interface — drag-and-drop footage uploader with reel-length slider and title card field" width="1600" height="833" loading="lazy">
       <div class="proj__body">
-        <span class="proj__tag">Startup · Video</span>
+        <span class="proj__tag">Startup Prototype · Video</span>
         <h3>EventReels</h3>
-        <p>An auto-editing pipeline built on ffmpeg that turns hours of raw event footage into polished, shareable reels — beat detection, cut selection, and branding applied automatically, with a gold-and-black web studio for review and export.</p>
-        <a class="go" href="https://yusuf-gadelrab.github.io/">On the portfolio →</a>
+        <p>An ffmpeg pipeline that turns raw event footage into a finished 9:16 highlight reel — scene detection and audio-energy scoring pick the moments, no editing skill required — plus a gold-and-black local web studio to drive it. Working prototype, not launched.</p>
+        <a class="go" href="eventreels.html">Read the case study →</a>
       </div>
     </article>
 
     <article class="card proj reveal">
       <img class="proj__thumb" src="projects/ecoimpact.jpg" alt="EcoImpact app — dark San Jose trash map with cleanup pins, impact meter, and community leaderboard" width="1600" height="1000" loading="lazy">
       <div class="proj__body">
-        <span class="proj__tag">Startup · Climate</span>
+        <span class="proj__tag">Startup Prototype · Climate</span>
         <h3>EcoImpact</h3>
-        <p>A community trash map with photo-verified cleanups and a live impact meter. Uploads are EXIF-checked and GPS-stripped for privacy, so every point on the map is real and every contributor stays safe. Making cleanup visible, measurable, and a little competitive.</p>
-        <a class="go" href="https://yusuf-gadelrab.github.io/">On the portfolio →</a>
+        <p>A community trash map with a quantified "world fixed" impact meter — report a pin, clean it, log an eco action, watch kg of waste and CO₂e climb. Privacy is designed in at the schema: no user GPS stored and coordinates rounded. Working local MVP.</p>
+        <a class="go" href="ecoimpact.html">Read the case study →</a>
       </div>
     </article>
 
@@ -194,21 +197,21 @@
     </article>
 
     <article class="card proj reveal">
+      <img class="proj__thumb" src="projects/edgelog.jpg" alt="EdgeLog trade journal dashboard — expectancy, win rate, profit factor, equity curve, and R distribution over 36 trades" width="1600" height="867" loading="lazy">
       <div class="proj__body">
-        <span class="proj__tag">AI Tooling · Careers</span>
-        <h3>JobPilot</h3>
-        <p>AI job-application automation on Next.js 16 and React 19: parses postings, tailors materials to each role, and tracks every pipeline stage. Born from applying to internships the hard way and deciding the process deserved better tooling.</p>
-        <a class="go" href="https://github.com/Yusuf-Gadelrab">GitHub →</a>
+        <span class="proj__tag">Quant · Research</span>
+        <h3>Swing Screener &amp; Validation Harness</h3>
+        <p>A setup screener and no-lookahead backtest engine — then the adversarial audit I ran against my own +0.23R headline result across 129 symbols and 10 years. It came back marginal. Building the test that kills your own idea is the actual skill.</p>
+        <a class="go" href="swing-screener.html">Read the audit →</a>
       </div>
     </article>
 
     <article class="card proj reveal">
-      <img class="proj__thumb" src="projects/edgelog.jpg" alt="EdgeLog trade journal dashboard — expectancy, win rate, profit factor, equity curve, and R distribution over 36 trades" width="1600" height="867" loading="lazy">
       <div class="proj__body">
         <span class="proj__tag">Quant · Python</span>
-        <h3>Swing Trading Systems</h3>
-        <p>OHLC breakout and reversal screeners plus an Alpaca-API execution bot — VCP setups, anchored VWAP, backtested entries, and automated order management. Where my markets education (TA, options, market profile) turns into running code.</p>
-        <a class="go" href="https://github.com/Yusuf-Gadelrab">GitHub →</a>
+        <h3>Broker-Agnostic Trading Bot</h3>
+        <p>An execution engine where the strategy is forty lines and everything else is crash-safety: deterministic order IDs, a journal claimed before every broker call, linked exits, and idempotent reconciliation. 48 passing tests. Paper mode only — no live capital.</p>
+        <a class="go" href="trading-bot.html">See the safety design →</a>
       </div>
     </article>
 
@@ -222,6 +225,10 @@
       </div>
     </article>
 
+  </div>
+
+  <div class="row reveal" style="margin-top:var(--s7)">
+    <a class="btn btn-gold" href="apps.html">See all projects &amp; apps →</a>
   </div>
 </section>
 
@@ -303,6 +310,7 @@
     <a href="/">Work</a>
     <a href="/resume.html">Resume</a>
     <a href="/store.html">Store</a>
+    <a href="/apps.html">Apps</a>
     <a href="/kxngsef.html">KXNG SEF</a>
     <a href="/media-kit.html">Media Kit</a>
     <a href="mailto:yusuf.gadelrab06@gmail.com">yusuf.gadelrab06@gmail.com</a>

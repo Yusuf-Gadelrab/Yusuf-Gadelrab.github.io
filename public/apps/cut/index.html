@@ -1,0 +1,408 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Cut — Weight Tracker</title>
+<meta name="theme-color" content="#0a0a0b">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<style>
+:root{
+  --bg:#0a0a0a; --text:#f2f2f2; --dim:#9a9a9a;
+  --gold:#d4af37; --gold-soft:#e8c96a; --border:rgba(212,175,55,.22);
+  --radius:16px;
+  --serif:ui-serif,"New York",Georgia,"Times New Roman",serif;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{
+  background:radial-gradient(ellipse at 50% -10%, rgba(212,175,55,.10), transparent 55%), #0a0a0a;
+  color:var(--text);
+  font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+  min-height:100vh; padding:1.25rem 1rem 2rem;
+  padding-top:calc(1.25rem + env(safe-area-inset-top));
+}
+body::before{
+  content:""; position:fixed; top:0; left:0; right:0; height:2px; z-index:10;
+  background:linear-gradient(90deg,transparent,#d4af37,transparent);
+}
+.wrap{max-width:640px;margin:0 auto;display:flex;flex-direction:column;gap:1.25rem}
+header{text-align:center;padding:.75rem 0 .25rem}
+.eyebrow{color:var(--gold);letter-spacing:.3em;text-transform:uppercase;font-size:.72rem;font-weight:600}
+h1,h2,h3{font-family:var(--serif);letter-spacing:-0.02em}
+h1{
+  font-size:clamp(2rem,6vw,2.6rem);margin-top:.4rem;font-weight:600;
+  background:linear-gradient(90deg,#fff,#e8c96a,#fff);
+  -webkit-background-clip:text;background-clip:text;
+  -webkit-text-fill-color:transparent;color:transparent;
+}
+.origin{color:var(--dim);font-size:.85rem;margin-top:.4rem;letter-spacing:.02em}
+.card{
+  background:linear-gradient(180deg,#181818,#141414);
+  border:1px solid var(--border);border-radius:var(--radius);
+  padding:1.25rem;box-shadow:0 10px 34px rgba(0,0,0,.5);
+}
+.logrow{display:flex;gap:.75rem;align-items:stretch}
+#weightInput{
+  flex:1;min-width:0;background:var(--bg);color:var(--text);
+  border:1px solid var(--border);border-radius:10px;
+  font-size:2rem;font-weight:700;text-align:center;padding:.5rem;
+}
+#weightInput:focus{outline:none;border-color:var(--gold)}
+button{
+  background:linear-gradient(135deg,#d4af37,#e8c96a);color:#000;font-weight:700;border:none;border-radius:10px;
+  padding:.85rem 1.25rem;font-size:1rem;cursor:pointer;min-height:48px;
+  font-family:inherit;
+  transition:transform .15s ease, box-shadow .15s ease;
+}
+button:hover{transform:translateY(-1px);box-shadow:0 4px 18px rgba(212,175,55,.35)}
+button:active{transform:translateY(0);box-shadow:0 2px 10px rgba(212,175,55,.25)}
+button.ghost{background:transparent;color:var(--gold);border:1px solid var(--border)}
+button.ghost:hover{box-shadow:0 4px 18px rgba(212,175,55,.18)}
+.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(96px,1fr));gap:.6rem}
+.stat{
+  background:linear-gradient(180deg,#181818,#141414);
+  border:1px solid var(--border);border-radius:var(--radius);
+  padding:.85rem .5rem;text-align:center;box-shadow:0 10px 34px rgba(0,0,0,.5);
+}
+.stat .label{color:var(--dim);font-size:.62rem;text-transform:uppercase;letter-spacing:.14em}
+.stat .value{font-size:1.15rem;font-weight:700;margin-top:.3rem}
+.stat:first-child .value{font-family:var(--serif);letter-spacing:-0.02em;color:var(--gold-soft);font-size:1.35rem}
+.up{color:#e05c5c}.down{color:#57c979}
+canvas{width:100%;height:240px;display:block;touch-action:pan-y}
+.goalrow{display:flex;align-items:center;gap:.75rem;flex-wrap:wrap}
+.goalrow label{color:var(--dim);font-size:.85rem}
+#goalInput{
+  width:5.5rem;background:var(--bg);color:var(--gold);border:1px solid var(--border);
+  border-radius:10px;font-size:1.1rem;font-weight:700;text-align:center;padding:.5rem;
+}
+#goalInput:focus{outline:none;border-color:var(--gold)}
+.startw{color:var(--dim);font-size:.85rem;margin-left:auto}
+.iorow{display:flex;gap:.75rem}
+.iorow button{flex:1}
+.empty{color:var(--dim);text-align:center;padding:1.5rem 1rem;font-size:.95rem}
+.empty b{color:var(--gold)}
+#msg{color:var(--gold-soft);font-size:.85rem;min-height:1.2em;margin-top:.5rem;text-align:center}
+.divider{border:none;height:1px;background:rgba(255,255,255,.06);margin:.25rem 0}
+footer{
+  text-align:center;color:var(--dim);font-size:.75rem;line-height:1.9;
+  padding:1.5rem 0 .5rem;border-top:1px solid rgba(255,255,255,.06);margin-top:.5rem;
+}
+footer a{color:var(--gold);text-decoration:none}
+footer a:hover{color:var(--gold-soft)}
+</style>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "WebApplication", "name": "Cut — Weight Tracker", "url": "https://yusuf-gadelrab.github.io/apps/cut/", "applicationCategory": "ProductivityApplication", "operatingSystem": "Any", "browserRequirements": "Requires JavaScript", "offers": {"@type": "Offer", "price": "0", "priceCurrency": "USD"}, "description": "Free offline daily weight tracker with a 7-day trend line, goal line, and streaks. Data stays on your device.", "author": {"@type": "Person", "name": "Yusuf Gadelrab", "url": "https://yusuf-gadelrab.github.io"}, "publisher": {"@type": "Organization", "name": "DHAHAB"}}</script>
+<meta name="description" content="Free daily weight tracker app with a 7-day trend line, goal line, and streaks. Works offline, data stays on your device, no account needed.">
+<link rel="canonical" href="https://yusuf-gadelrab.github.io/apps/cut/">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Cut — Free Weight Tracker App">
+<meta property="og:description" content="Free daily weight tracker app with a 7-day trend line, goal line, and streaks. Works offline, data stays on your device, no account needed.">
+<meta property="og:url" content="https://yusuf-gadelrab.github.io/apps/cut/">
+<meta property="og:image" content="https://yusuf-gadelrab.github.io/apple-touch-icon.png">
+<meta name="twitter:card" content="summary">
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <div class="eyebrow">DHAHAB · ذهب</div>
+    <h1>Cut</h1>
+    <div class="origin">The Golden Standard · 260 → 200, documented</div>
+  </header>
+
+  <div class="card">
+    <div class="logrow">
+      <input id="weightInput" type="number" inputmode="decimal" step="0.1" min="80" max="500" placeholder="200.0" aria-label="Weight in pounds">
+      <button id="logBtn">Log</button>
+    </div>
+    <div id="msg"></div>
+  </div>
+
+  <div class="stats" id="statsBar"></div>
+
+  <div class="card">
+    <div id="emptyState" class="empty" hidden>No entries yet. <b>Log today's weight</b> to start the grid.</div>
+    <canvas id="chart" height="240"></canvas>
+  </div>
+
+  <div class="card goalrow">
+    <label for="goalInput">Goal (lb)</label>
+    <input id="goalInput" type="number" inputmode="decimal" step="0.5" min="80" max="500">
+    <span class="startw">Start: 260 lb</span>
+  </div>
+
+  <div class="card iorow">
+    <button id="exportBtn" class="ghost">Export CSV</button>
+    <button id="importBtn" class="ghost">Import CSV</button>
+    <input id="fileInput" type="file" accept=".csv,text/csv" hidden>
+  </div>
+
+  <footer>
+    <div>Personal-journey tool — not medical advice.</div>
+    <div><a href="/privacy.html">Privacy</a> · <a href="/terms.html">Terms</a></div>
+    <div>© 2026 DHAHAB · Yusuf Gadelrab</div>
+  </footer>
+</div>
+
+<script>
+(function(){
+  "use strict";
+  var START_WEIGHT = 260;
+  var K_ENTRIES = "cut_entries", K_GOAL = "cut_goal";
+
+  function loadEntries(){
+    try{ return JSON.parse(localStorage.getItem(K_ENTRIES)) || {}; }
+    catch(e){ return {}; }
+  }
+  function saveEntries(e){ localStorage.setItem(K_ENTRIES, JSON.stringify(e)); }
+  function loadGoal(){
+    var g = parseFloat(localStorage.getItem(K_GOAL));
+    return isFinite(g) ? g : 195;
+  }
+
+  function todayKey(){
+    var d = new Date();
+    return d.getFullYear() + "-" + String(d.getMonth()+1).padStart(2,"0") + "-" + String(d.getDate()).padStart(2,"0");
+  }
+  function keyToDate(k){
+    var p = k.split("-");
+    return new Date(+p[0], +p[1]-1, +p[2]);
+  }
+  function addDays(k, n){
+    var d = keyToDate(k);
+    d.setDate(d.getDate()+n);
+    return d.getFullYear() + "-" + String(d.getMonth()+1).padStart(2,"0") + "-" + String(d.getDate()).padStart(2,"0");
+  }
+
+  var entries = loadEntries();
+  var goal = loadGoal();
+
+  var weightInput = document.getElementById("weightInput");
+  var goalInput = document.getElementById("goalInput");
+  var msg = document.getElementById("msg");
+  var canvas = document.getElementById("chart");
+  goalInput.value = goal;
+
+  function sortedKeys(){ return Object.keys(entries).sort(); }
+
+  function movingAvg(keys, endIdx){
+    // 7-day window by calendar date, not by entry count
+    var endKey = keys[endIdx];
+    var startKey = addDays(endKey, -6);
+    var sum = 0, n = 0;
+    for(var i = endIdx; i >= 0; i--){
+      if(keys[i] < startKey) break;
+      sum += entries[keys[i]]; n++;
+    }
+    return n ? sum/n : null;
+  }
+
+  function computeStreak(keys){
+    if(!keys.length) return 0;
+    var t = todayKey();
+    var last = keys[keys.length-1];
+    if(last !== t && last !== addDays(t,-1)) return 0;
+    var streak = 1, cur = last;
+    var set = {};
+    keys.forEach(function(k){ set[k] = 1; });
+    while(set[addDays(cur,-1)]){ cur = addDays(cur,-1); streak++; }
+    return streak;
+  }
+
+  function fmt(n){ return (Math.round(n*10)/10).toFixed(1); }
+
+  function renderStats(){
+    var keys = sortedKeys();
+    var bar = document.getElementById("statsBar");
+    if(!keys.length){ bar.innerHTML = ""; return; }
+    var lastIdx = keys.length-1;
+    var current = entries[keys[lastIdx]];
+    var avg7 = movingAvg(keys, lastIdx);
+
+    var weekAgoCut = addDays(keys[lastIdx], -7);
+    var refKey = null;
+    for(var i = lastIdx; i >= 0; i--){
+      if(keys[i] <= weekAgoCut){ refKey = keys[i]; break; }
+    }
+    var change7 = refKey !== null ? current - entries[refKey] : null;
+
+    var bulking = goal > current;
+    var cls = "", arrow = "";
+    if(change7 !== null && Math.abs(change7) >= 0.05){
+      var losing = change7 < 0;
+      arrow = losing ? "▼" : "▲";
+      // toward goal = green; bulking flips which direction counts as progress
+      var good = bulking ? !losing : losing;
+      cls = good ? "down" : "up";
+    }
+
+    var total = current - entries[keys[0]];
+    var streak = computeStreak(keys);
+
+    function tile(label, value, vcls){
+      return '<div class="stat"><div class="label">'+label+'</div><div class="value '+(vcls||"")+'">'+value+'</div></div>';
+    }
+    bar.innerHTML =
+      tile("Current", fmt(current)) +
+      tile("7-day avg", avg7 !== null ? fmt(avg7) : "—") +
+      tile("vs 7d ago", change7 !== null ? arrow+" "+fmt(Math.abs(change7)) : "—", cls) +
+      tile("Total", (total<=0?"":"+")+fmt(total)) +
+      tile("Streak", streak + "d");
+  }
+
+  function renderChart(){
+    var keys = sortedKeys();
+    var empty = document.getElementById("emptyState");
+    empty.hidden = keys.length > 0;
+    canvas.style.display = keys.length ? "block" : "none";
+    if(!keys.length) return;
+
+    var dpr = window.devicePixelRatio || 1;
+    var cssW = canvas.clientWidth || canvas.parentElement.clientWidth - 32;
+    var cssH = 240;
+    canvas.width = cssW * dpr;
+    canvas.height = cssH * dpr;
+    var ctx = canvas.getContext("2d");
+    ctx.scale(dpr, dpr);
+    ctx.clearRect(0, 0, cssW, cssH);
+
+    var t = todayKey();
+    var firstKey = addDays(t, -89);
+    var padL = 36, padR = 10, padT = 12, padB = 22;
+    var plotW = cssW - padL - padR, plotH = cssH - padT - padB;
+
+    var visible = keys.filter(function(k){ return k >= firstKey; });
+    var vals = visible.map(function(k){ return entries[k]; });
+    var lo = Math.min.apply(null, vals.concat([goal]));
+    var hi = Math.max.apply(null, vals.concat([goal]));
+    if(hi - lo < 4){ var mid = (hi+lo)/2; lo = mid-2; hi = mid+2; }
+    var span = hi - lo;
+    lo -= span*0.08; hi += span*0.08;
+
+    function x(k){
+      var days = Math.round((keyToDate(k) - keyToDate(firstKey)) / 86400000);
+      return padL + (days/89) * plotW;
+    }
+    function y(v){ return padT + (1 - (v-lo)/(hi-lo)) * plotH; }
+
+    ctx.strokeStyle = "rgba(212,175,55,.12)";
+    ctx.fillStyle = "#9a9a9a";
+    ctx.font = "10px -apple-system, sans-serif";
+    ctx.lineWidth = 1;
+    var step = (hi-lo) > 20 ? 10 : 5;
+    for(var g = Math.ceil(lo/step)*step; g <= hi; g += step){
+      var gy = y(g);
+      ctx.beginPath(); ctx.moveTo(padL, gy); ctx.lineTo(cssW-padR, gy); ctx.stroke();
+      ctx.fillText(String(g), 4, gy+3);
+    }
+    ctx.textAlign = "center";
+    [60,30,0].forEach(function(back){
+      var k = addDays(t, -back);
+      var d = keyToDate(k);
+      ctx.fillText((d.getMonth()+1)+"/"+d.getDate(), x(k), cssH-6);
+    });
+    ctx.textAlign = "left";
+
+    var gy2 = y(goal);
+    ctx.strokeStyle = "rgba(212,175,55,.55)";
+    ctx.setLineDash([6,4]);
+    ctx.beginPath(); ctx.moveTo(padL, gy2); ctx.lineTo(cssW-padR, gy2); ctx.stroke();
+    ctx.setLineDash([]);
+
+    ctx.fillStyle = "rgba(255,255,255,.28)";
+    visible.forEach(function(k){
+      ctx.beginPath();
+      ctx.arc(x(k), y(entries[k]), 2.5, 0, Math.PI*2);
+      ctx.fill();
+    });
+
+    ctx.strokeStyle = "#e8c96a";
+    ctx.lineWidth = 2;
+    ctx.beginPath();
+    var started = false;
+    keys.forEach(function(k, i){
+      if(k < firstKey) return;
+      var ma = movingAvg(keys, i);
+      if(ma === null) return;
+      if(!started){ ctx.moveTo(x(k), y(ma)); started = true; }
+      else ctx.lineTo(x(k), y(ma));
+    });
+    ctx.stroke();
+  }
+
+  function renderAll(){ renderStats(); renderChart(); }
+
+  function flash(text){
+    msg.textContent = text;
+    setTimeout(function(){ if(msg.textContent === text) msg.textContent = ""; }, 3000);
+  }
+
+  document.getElementById("logBtn").addEventListener("click", function(){
+    var w = parseFloat(weightInput.value);
+    if(!isFinite(w) || w < 80 || w > 500){ flash("Enter a weight between 80 and 500."); return; }
+    w = Math.round(w*10)/10;
+    var k = todayKey();
+    if(entries[k] !== undefined && !confirm("Already logged " + fmt(entries[k]) + " today. Overwrite with " + fmt(w) + "?")) return;
+    entries[k] = w;
+    saveEntries(entries);
+    weightInput.value = "";
+    flash("Logged " + fmt(w) + " lb.");
+    renderAll();
+  });
+
+  goalInput.addEventListener("change", function(){
+    var g = parseFloat(goalInput.value);
+    if(!isFinite(g) || g < 80 || g > 500){ goalInput.value = goal; return; }
+    goal = Math.round(g*10)/10;
+    localStorage.setItem(K_GOAL, String(goal));
+    renderAll();
+  });
+
+  document.getElementById("exportBtn").addEventListener("click", function(){
+    var keys = sortedKeys();
+    if(!keys.length){ flash("Nothing to export yet."); return; }
+    var csv = "date,weight\n" + keys.map(function(k){ return k + "," + entries[k]; }).join("\n");
+    var blob = new Blob([csv], {type:"text/csv"});
+    var a = document.createElement("a");
+    a.href = URL.createObjectURL(blob);
+    a.download = "cut-" + todayKey() + ".csv";
+    a.click();
+    URL.revokeObjectURL(a.href);
+  });
+
+  var fileInput = document.getElementById("fileInput");
+  document.getElementById("importBtn").addEventListener("click", function(){ fileInput.click(); });
+  fileInput.addEventListener("change", function(){
+    var f = fileInput.files[0];
+    if(!f) return;
+    var reader = new FileReader();
+    reader.onload = function(){
+      var added = 0, updated = 0;
+      String(reader.result).split(/\r?\n/).forEach(function(line){
+        var parts = line.trim().split(",");
+        if(parts.length < 2) return;
+        var k = parts[0].trim(), w = parseFloat(parts[1]);
+        if(!/^\d{4}-\d{2}-\d{2}$/.test(k) || !isFinite(w) || w < 80 || w > 500) return;
+        if(entries[k] === undefined) added++;
+        else if(entries[k] !== w) updated++;
+        entries[k] = Math.round(w*10)/10;
+      });
+      saveEntries(entries);
+      flash("Imported: " + added + " new, " + updated + " updated.");
+      renderAll();
+    };
+    reader.readAsText(f);
+    fileInput.value = "";
+  });
+
+  window.addEventListener("resize", renderChart);
+  renderAll();
+
+  try{
+    if("serviceWorker" in navigator) navigator.serviceWorker.register("sw.js");
+  }catch(e){}
+})();
+</script>
+</body>
+</html>

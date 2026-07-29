@@ -1,0 +1,1153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Visa Navigator — free change-of-status &amp; CPT/OPT timeline planner</title>
+<meta name="description" content="A free, private, browser-only planning aid for international students changing US nonimmigrant status: backward-planned I-539 timeline, conflict flags, document checklist, and a CPT/OPT eligibility explainer. Not legal advice.">
+<link rel="canonical" href="https://yusuf-gadelrab.github.io/visa.html">
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<meta name="theme-color" content="#0B0B0D">
+<meta name="author" content="Yusuf Gadelrab">
+<meta name="robots" content="index,follow">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Yusuf Gadelrab">
+<meta property="og:title" content="Visa Navigator — change-of-status &amp; CPT/OPT timeline planner">
+<meta property="og:description" content="Free, client-side planning aid for international students: I-539 backward timeline, conflict flags, document checklist, CPT/OPT explainer. Informational only — not legal advice.">
+<meta property="og:url" content="https://yusuf-gadelrab.github.io/visa.html">
+<link rel="stylesheet" href="/css/site.css">
+<style>
+  /* Page-specific only. Tokens, reset, nav, footer, buttons, cards, forms and
+     print rules all come from /css/site.css. */
+
+  section{scroll-margin-top:var(--s8)}
+
+  /* ---------- disclaimer: deliberately loud, deliberately not dismissable ---- */
+  .disclaimer{
+    border:1px solid var(--warn);
+    border-left:4px solid var(--warn);
+    background:rgba(224,179,65,.08);
+    border-radius:var(--radius-lg);
+    padding:var(--s5);
+    margin:var(--s5) auto 0;
+    max-width:var(--maxw);
+  }
+  .disclaimer h2{font-size:var(--t-h3);color:var(--warn);margin-bottom:var(--s2)}
+  .disclaimer p{font-size:var(--t-small);color:var(--ink);max-width:var(--maxw-prose)}
+  .disclaimer p+p{margin-top:var(--s3)}
+  .disclaimer-wrap{padding:0 var(--section-x)}
+
+  /* ---------- step scaffolding ---------- */
+  .step{margin-top:var(--s7)}
+  .step__num{
+    display:inline-flex;align-items:center;justify-content:center;
+    width:26px;height:26px;border:1px solid var(--line);border-radius:var(--radius);
+    color:var(--gold-2);font-family:var(--mono);font-size:13px;flex:none;
+  }
+  .step__head{display:flex;gap:var(--s3);align-items:center;margin-bottom:var(--s3)}
+  .step__head h2{font-size:var(--t-h3)}
+
+  /* ---------- path picker ---------- */
+  fieldset{border:0;padding:0;margin:0;min-width:0}
+  legend{padding:0;font-size:var(--t-small);color:var(--muted);margin-bottom:var(--s3)}
+  .paths{display:grid;gap:var(--s3);grid-template-columns:repeat(auto-fit,minmax(min(240px,100%),1fr))}
+  .path{
+    display:block;position:relative;
+    border:1px solid var(--line-soft);border-radius:var(--radius-lg);
+    padding:var(--s4);cursor:pointer;background:var(--panel);
+    transition:border-color .2s var(--ease),background .2s var(--ease);
+  }
+  .path:hover{border-color:var(--line)}
+  .path input{position:absolute;opacity:0;width:1px;height:1px}
+  .path input:focus-visible+.path__body{outline:2px solid var(--gold);outline-offset:4px}
+  .path__t{display:block;font-weight:600;color:var(--ink);font-size:15px}
+  .path__d{display:block;font-size:var(--t-micro);color:var(--muted);margin-top:4px;line-height:1.5}
+  .path input:checked+.path__body .path__t{color:var(--gold-2)}
+  .path:has(input:checked){border-color:var(--gold);background:rgba(212,175,55,.06)}
+
+  /* ---------- inputs ---------- */
+  .fields{display:grid;gap:var(--s4);grid-template-columns:repeat(auto-fit,minmax(min(250px,100%),1fr))}
+  .field label{margin-bottom:var(--s2)}
+  .field .hint{display:block;font-size:var(--t-micro);color:var(--faint);margin-top:6px;line-height:1.5}
+  .field .hint a{color:var(--gold-2);text-decoration:underline}
+  .checkline{display:flex;gap:var(--s3);align-items:flex-start}
+  .checkline input[type=checkbox]{width:18px;height:18px;flex:none;margin-top:2px;accent-color:var(--gold)}
+  .checkline label{margin:0}
+
+  /* ---------- results ---------- */
+  .verdict{
+    border:1px solid var(--line-soft);border-left:4px solid var(--faint);
+    border-radius:var(--radius-lg);padding:var(--s5);background:var(--panel);
+  }
+  .verdict[data-tone="ok"]{border-left-color:var(--ok)}
+  .verdict[data-tone="warn"]{border-left-color:var(--warn)}
+  .verdict[data-tone="bad"]{border-left-color:var(--bad)}
+  .verdict h3{font-size:var(--t-h3);margin-bottom:var(--s2)}
+  .verdict[data-tone="ok"] h3{color:var(--ok)}
+  .verdict[data-tone="warn"] h3{color:var(--warn)}
+  .verdict[data-tone="bad"] h3{color:var(--bad)}
+
+  .flags{list-style:none;display:grid;gap:var(--s3);margin-top:var(--s5)}
+  .flag{
+    border:1px solid var(--line-soft);border-left:3px solid var(--faint);
+    border-radius:var(--radius);padding:var(--s3) var(--s4);background:var(--bg2);
+  }
+  .flag[data-tone="ok"]{border-left-color:var(--ok)}
+  .flag[data-tone="warn"]{border-left-color:var(--warn)}
+  .flag[data-tone="bad"]{border-left-color:var(--bad)}
+  .flag__t{font-weight:600;font-size:15px}
+  .flag[data-tone="ok"] .flag__t{color:var(--ok)}
+  .flag[data-tone="warn"] .flag__t{color:var(--warn)}
+  .flag[data-tone="bad"] .flag__t{color:var(--bad)}
+  .flag__d{font-size:var(--t-small);color:var(--muted);margin-top:4px}
+  .cite{display:inline-block;font-size:var(--t-micro);margin-top:6px}
+  .cite a{color:var(--gold-2);text-decoration:underline;word-break:break-word}
+
+  /* ---------- timeline ---------- */
+  .tl{list-style:none;margin-top:var(--s4);border-left:1px solid var(--line);padding-left:var(--s5)}
+  .tl li{position:relative;padding-bottom:var(--s5)}
+  .tl li:last-child{padding-bottom:0}
+  .tl li::before{
+    content:"";position:absolute;left:calc(-1 * var(--s5) - 4px);top:8px;
+    width:7px;height:7px;background:var(--gold);border-radius:1px;
+  }
+  .tl li[data-tone="bad"]::before{background:var(--bad)}
+  .tl li[data-tone="warn"]::before{background:var(--warn)}
+  .tl li[data-tone="ok"]::before{background:var(--ok)}
+  .tl__date{font-family:var(--mono);font-size:13px;color:var(--gold-2)}
+  .tl__t{font-weight:600;display:block;margin-top:2px}
+  .tl__d{font-size:var(--t-small);color:var(--muted);margin-top:4px}
+
+  /* ---------- CPT explainer ---------- */
+  .cptgrid{display:grid;gap:var(--s4);grid-template-columns:repeat(auto-fit,minmax(min(220px,100%),1fr));margin-top:var(--s5)}
+  .gate{border:1px solid var(--line-soft);border-radius:var(--radius-lg);padding:var(--s4);background:var(--bg2)}
+  .gate__k{font-size:var(--t-micro);letter-spacing:1.5px;text-transform:uppercase;color:var(--muted)}
+  .gate__v{font-family:var(--mono);font-size:16px;color:var(--gold-2);margin-top:6px;word-break:break-word}
+  .gate__d{font-size:var(--t-micro);color:var(--faint);margin-top:6px;line-height:1.5}
+  .gate[data-tone="bad"]{border-color:rgba(224,104,95,.5)}
+  .gate[data-tone="bad"] .gate__v{color:var(--bad)}
+  .gate[data-tone="ok"] .gate__v{color:var(--ok)}
+
+  /* ---------- checklist ---------- */
+  .checklist{list-style:none;display:grid;gap:var(--s2);margin-top:var(--s4)}
+  .checklist li{
+    display:flex;gap:var(--s3);align-items:flex-start;
+    border:1px solid var(--line-soft);border-radius:var(--radius);
+    padding:var(--s3) var(--s4);background:var(--bg2);
+  }
+  .checklist input[type=checkbox]{width:18px;height:18px;flex:none;margin-top:3px;accent-color:var(--gold)}
+  .checklist label{margin:0;color:var(--ink);font-size:15px;cursor:pointer}
+  .checklist .sub{display:block;font-size:var(--t-micro);color:var(--muted);margin-top:4px;line-height:1.55}
+  .checklist .sub a{color:var(--gold-2);text-decoration:underline;word-break:break-word}
+  .checklist li:has(input:checked) label{color:var(--faint);text-decoration:line-through}
+  .checklist li:has(input:checked) .sub{text-decoration:none}
+  .progress{height:6px;background:var(--bg2);border:1px solid var(--line-soft);border-radius:var(--radius);overflow:hidden;margin-top:var(--s3)}
+  .progress span{display:block;height:100%;background:linear-gradient(90deg,var(--gold),var(--gold-2));width:0;transition:width .3s var(--ease)}
+
+  /* ---------- sources ---------- */
+  .sources{list-style:none;display:grid;gap:var(--s3)}
+  .sources li{font-size:var(--t-small);color:var(--muted);line-height:1.6}
+  .sources a{color:var(--gold-2);text-decoration:underline;word-break:break-word}
+  .sources code{font-family:var(--mono);font-size:.9em;color:var(--ink)}
+
+  .toolbar{display:flex;flex-wrap:wrap;gap:var(--s3);margin-top:var(--s5)}
+  .savenote{font-size:var(--t-micro);color:var(--faint);margin-top:var(--s3)}
+
+  @media(max-width:520px){
+    .toolbar .btn{width:100%}
+  }
+</style>
+</head>
+<body class="pro">
+
+<a class="skip-link" href="#main">Skip to content</a>
+
+<nav class="site-nav">
+  <a class="site-nav__brand" href="/">YUSUF GADELRAB</a>
+  <div class="site-nav__links">
+    <a href="/">Work</a>
+    <a href="/resume.html">Resume</a>
+    <a href="/store.html">Store</a>
+    <a href="/kxngsef.html">KXNG SEF</a>
+    <a href="/media-kit.html">Media Kit</a>
+  </div>
+</nav>
+
+<main id="main">
+
+  <header class="section" style="padding-bottom:0">
+    <p class="eyebrow">Free tool · runs entirely in your browser</p>
+    <h1 style="margin-top:var(--s3)">Visa Navigator</h1>
+    <p class="lead" style="margin-top:var(--s4)">
+      A planning aid for international students changing US nonimmigrant status. Enter your dates,
+      get a backward-planned schedule, conflict flags, a document checklist, and a plain-English
+      CPT/OPT eligibility read-out. Nothing you type leaves your device.
+    </p>
+  </header>
+
+  <div class="disclaimer-wrap">
+    <aside class="disclaimer" role="note" aria-labelledby="disclaimer-h">
+      <h2 id="disclaimer-h">This is not legal advice</h2>
+      <p>
+        Visa Navigator is an <strong>informational planning aid</strong>, not legal advice and not a
+        substitute for a Designated School Official (DSO) or a licensed immigration attorney.
+        Immigration rules, fees and processing times change, and individual cases turn on facts this
+        tool never sees. <strong>Confirm every date and requirement with your DSO or an immigration
+        attorney before you act on it.</strong>
+      </p>
+      <p>
+        Every rule this tool applies is cited inline to a government source (uscis.gov, ice.gov,
+        ecfr.gov) and listed under <a href="#sources" style="color:var(--gold-2);text-decoration:underline">Sources</a>
+        with the date it was checked. Where a number is variable — processing times, filing fees,
+        your school's internal deadlines — the tool asks you for it rather than guessing. This
+        disclaimer is reproduced in every file you export.
+      </p>
+    </aside>
+  </div>
+
+  <!-- ============================ STEP 1 · PATH ============================ -->
+  <section class="section step" aria-labelledby="s1">
+    <div class="step__head"><span class="step__num" aria-hidden="true">1</span><h2 id="s1">Pick your path</h2></div>
+    <fieldset>
+      <legend>Which change are you planning? This selects the checklist and the rules that apply.</legend>
+      <div class="paths" id="paths"></div>
+    </fieldset>
+  </section>
+
+  <!-- ============================ STEP 2 · DATES =========================== -->
+  <section class="section step" aria-labelledby="s2">
+    <div class="step__head"><span class="step__num" aria-hidden="true">2</span><h2 id="s2">Your dates</h2></div>
+    <p class="muted" style="font-size:var(--t-small);max-width:var(--maxw-prose)">
+      Leave anything blank that you do not know yet — the planner works with partial input and tells
+      you what is missing. Dates are stored only in this browser.
+    </p>
+
+    <div class="fields" style="margin-top:var(--s5)">
+      <div class="field">
+        <label for="f_expiry">Current status / I-94 expiry</label>
+        <input type="date" id="f_expiry" data-k="expiry">
+        <span class="hint">The end date on your I-94, or the date a dependent status ends (for example a child aging out). Check your I-94 at <a href="https://i94.cbp.dhs.gov/" target="_blank" rel="noreferrer">i94.cbp.dhs.gov</a>.</span>
+      </div>
+
+      <div class="field">
+        <label for="f_i20">I-20 / DS-2019 received (or expected)</label>
+        <input type="date" id="f_i20" data-k="i20">
+        <span class="hint">You need the school's initial Form I-20 <em>before</em> you can file — the DSO should mark "change of status" as the issue reason.</span>
+      </div>
+
+      <div class="field">
+        <label for="f_file">Intended filing date (Form I-539)</label>
+        <input type="date" id="f_file" data-k="filing">
+        <span class="hint">Must be while your current status is still valid. USCIS suggests filing at least 45 days before your stay expires.</span>
+      </div>
+
+      <div class="field">
+        <label for="f_start">Program start date on the I-20</label>
+        <input type="date" id="f_start" data-k="programStart">
+        <span class="hint">The 30-day employment rule and the DSO deferral checkpoint are both measured from this date.</span>
+      </div>
+
+      <div class="field">
+        <label for="f_proc">Processing estimate you were quoted (months)</label>
+        <input type="number" id="f_proc" data-k="procMonths" min="0" max="36" step="0.5" inputmode="decimal" placeholder="e.g. 8">
+        <span class="hint">Do not guess. Look up your form and office at <a href="https://egov.uscis.gov/processing-times/" target="_blank" rel="noreferrer">egov.uscis.gov/processing-times</a> and type what you see.</span>
+      </div>
+
+      <div class="field">
+        <label for="f_approved">Actual approval date (if already approved)</label>
+        <input type="date" id="f_approved" data-k="approved">
+        <span class="hint">Fill this in once you have the approval notice — it overrides the projection.</span>
+      </div>
+
+      <div class="field">
+        <label for="f_enroll">Date you began full-time study at an SEVP-certified school</label>
+        <input type="date" id="f_enroll" data-k="enrollStart">
+        <span class="hint">Used for the practical-training "one full academic year" clock. Your school's academic calendar defines the year — confirm the exact completion date with your DSO.</span>
+      </div>
+
+      <div class="field">
+        <label for="f_year">Date your school says one full academic year completes</label>
+        <input type="date" id="f_year" data-k="acadYearDone">
+        <span class="hint">Optional but strongly recommended. If blank, the planner shows the gate as unconfirmed rather than inventing a date.</span>
+      </div>
+
+      <div class="field">
+        <label for="f_intern">Target internship / employment start date</label>
+        <input type="date" id="f_intern" data-k="internStart">
+        <span class="hint">The date you would need work authorization in hand by.</span>
+      </div>
+
+      <div class="field">
+        <label for="f_dsodays">Days your school needs to process a CPT request</label>
+        <input type="number" id="f_dsodays" data-k="dsoDays" min="0" max="180" step="1" inputmode="numeric" placeholder="ask your DSO">
+        <span class="hint">School-specific, so the tool will not guess. Ask your international student office and enter their number.</span>
+      </div>
+    </div>
+
+    <div class="checkline" style="margin-top:var(--s5)">
+      <input type="checkbox" id="f_premium" data-k="premium">
+      <label for="f_premium">
+        I am filing (or will upgrade to) <strong>premium processing</strong>
+        <span class="hint" style="display:block">USCIS guarantees adjudicative action within <strong>30 business days</strong> for a Form I-539 requesting a change of status to F-1, F-2, M-1, M-2, J-1 or J-2 — <em>once all prerequisites, including biometrics, have been met</em>. That clock does not start at filing.
+        <span class="cite"><a href="https://www.uscis.gov/forms/all-forms/how-do-i-request-premium-processing" target="_blank" rel="noreferrer">uscis.gov · premium processing</a></span></span>
+      </label>
+    </div>
+
+    <div class="toolbar">
+      <button type="button" class="btn btn-gold" id="btn_calc">Build my plan</button>
+      <button type="button" class="btn btn-ghost btn-sm" id="btn_reset">Reset everything</button>
+    </div>
+    <p class="savenote">Saved automatically to this browser only (localStorage). No server, no account, no analytics on your dates.</p>
+  </section>
+
+  <!-- ============================ STEP 3 · PLAN ============================ -->
+  <section class="section step" aria-labelledby="s3">
+    <div class="step__head"><span class="step__num" aria-hidden="true">3</span><h2 id="s3">Your backward-planned timeline</h2></div>
+    <div id="results" aria-live="polite" aria-atomic="false">
+      <div class="verdict" data-tone=""><h3>Nothing computed yet</h3><p class="muted">Fill in the dates above and press <strong>Build my plan</strong>.</p></div>
+    </div>
+  </section>
+
+  <!-- ============================ STEP 4 · CPT ============================= -->
+  <section class="section step" aria-labelledby="s4">
+    <div class="step__head"><span class="step__num" aria-hidden="true">4</span><h2 id="s4">CPT / OPT eligibility explainer</h2></div>
+    <p class="muted" style="font-size:var(--t-small);max-width:var(--maxw-prose)">
+      Practical training is what makes an internship legal. Four independent gates must <em>all</em>
+      be open on your start date — this panel shows each one separately so you can see which is
+      actually binding.
+    </p>
+    <div id="cpt" aria-live="polite" aria-atomic="false" style="margin-top:var(--s4)">
+      <div class="panel"><p class="muted">Fill in the dates above and press <strong>Build my plan</strong>.</p></div>
+    </div>
+
+    <div class="panel" style="margin-top:var(--s5)">
+      <h3 style="font-size:var(--t-h3)">The rules behind this panel, verbatim</h3>
+      <ul class="sources" style="margin-top:var(--s4)">
+        <li><strong>The one-academic-year gate.</strong> "Practical training may be authorized to an F-1 student who has been <em>lawfully enrolled on a full-time basis</em>, in an approved SEVP-certified college, university, conservatory, or seminary <em>for one full academic year</em>." Note the words <em>lawfully enrolled</em> — the regulation does not say "enrolled in F-1 status," and schools differ on whether full-time study in a prior status counts. <strong>This is the single most important question to put to your DSO in writing.</strong> <br><a href="https://www.ecfr.gov/current/title-8/section-214.2#p-214.2(f)(10)" target="_blank" rel="noreferrer">8 CFR 214.2(f)(10) · ecfr.gov</a></li>
+        <li><strong>CPT needs an endorsed I-20 first.</strong> "A student may begin curricular practical training only after receiving their Form I-20 or successor form with the DSO endorsement." The DSO — not USCIS — authorizes CPT. <br><a href="https://www.ecfr.gov/current/title-8/section-214.2#p-214.2(f)(10)(i)" target="_blank" rel="noreferrer">8 CFR 214.2(f)(10)(i) · ecfr.gov</a></li>
+        <li><strong>12 months of full-time CPT kills post-completion OPT.</strong> "Students who have received one year or more of full time curricular practical training are ineligible for post-completion academic training." Part-time CPT does not carry this penalty. <br><a href="https://www.ecfr.gov/current/title-8/section-214.2#p-214.2(f)(10)(i)" target="_blank" rel="noreferrer">8 CFR 214.2(f)(10)(i) · ecfr.gov</a></li>
+        <li><strong>OPT needs an EAD in hand.</strong> "The student may not begin optional practical training until the date indicated on his or her employment authorization document, Form I-766." Pre-completion OPT may be filed up to 90 days before you complete one full academic year, but employment may not start before that year is complete. Post-completion OPT may be filed up to 90 days before your program end date and no later than 60 days after it. <br><a href="https://www.ecfr.gov/current/title-8/section-214.2#p-214.2(f)(11)" target="_blank" rel="noreferrer">8 CFR 214.2(f)(10)(ii), (f)(11) · ecfr.gov</a></li>
+        <li><strong>You are capped at 12 months of practical training per education level.</strong> "A student may be authorized 12 months of practical training, and becomes eligible for another 12 months of practical training when they change to a higher educational level." <br><a href="https://www.ecfr.gov/current/title-8/section-214.2#p-214.2(f)(10)" target="_blank" rel="noreferrer">8 CFR 214.2(f)(10) · ecfr.gov</a></li>
+        <li><strong>No work more than 30 days before your program starts.</strong> If USCIS approves a change of status more than 30 days before your program start date, "an example of a violation would be engaging in employment, including on-campus employment and practical training, more than 30 days before the program start date as listed on your Form I-20." <br><a href="https://www.uscis.gov/working-in-the-united-states/students-and-exchange-visitors/students-and-employment/changing-to-a-nonimmigrant-f-or-m-student-status" target="_blank" rel="noreferrer">uscis.gov · Changing to F or M student status</a></li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- ============================ STEP 5 · CHECKLIST ======================= -->
+  <section class="section step" aria-labelledby="s5">
+    <div class="step__head"><span class="step__num" aria-hidden="true">5</span><h2 id="s5">Document checklist</h2></div>
+    <p class="muted" style="font-size:var(--t-small);max-width:var(--maxw-prose)" id="checklist-note">
+      Tailored to the path you picked in step 1. Progress is saved in this browser.
+    </p>
+    <div class="progress" role="progressbar" aria-labelledby="s5" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0" id="prog"><span></span></div>
+    <p class="savenote" id="prog_label" aria-live="polite">0 of 0 complete</p>
+    <ul class="checklist" id="checklist"></ul>
+  </section>
+
+  <!-- ============================ STEP 6 · EXPORT ========================= -->
+  <section class="section step" aria-labelledby="s6">
+    <div class="step__head"><span class="step__num" aria-hidden="true">6</span><h2 id="s6">Export your plan</h2></div>
+    <p class="muted" style="font-size:var(--t-small);max-width:var(--maxw-prose)">
+      Both files are generated in your browser and downloaded directly — nothing is uploaded. The
+      Markdown file carries the full disclaimer and every source URL, so it is safe to hand to a DSO
+      or attorney as a starting point for questions.
+    </p>
+    <div class="toolbar">
+      <button type="button" class="btn btn-ghost" id="btn_md">Download plan (.md)</button>
+      <button type="button" class="btn btn-ghost" id="btn_ics">Download milestones (.ics)</button>
+    </div>
+    <p class="savenote" id="export_note" role="status" aria-live="polite"></p>
+  </section>
+
+  <!-- ============================ SOURCES ================================= -->
+  <section class="section step" id="sources" aria-labelledby="s7">
+    <div class="step__head"><span class="step__num" aria-hidden="true">7</span><h2 id="s7">Sources</h2></div>
+    <p class="muted" style="font-size:var(--t-small);max-width:var(--maxw-prose)">
+      Every rule encoded in this tool traces to one of these. All checked <strong>29 July 2026</strong>.
+      Regulations and agency guidance change without notice — re-check before relying on any of it.
+    </p>
+    <ul class="sources" style="margin-top:var(--s5)">
+      <li><a href="https://www.ecfr.gov/current/title-8/section-214.2" target="_blank" rel="noreferrer">8 CFR 214.2(f) — F-1 student status, employment and practical training (eCFR)</a><br>
+        One-academic-year practical-training prerequisite; 12-month practical training allowance per education level; CPT definition and DSO-endorsed I-20 requirement; the 12-months-full-time-CPT bar on post-completion OPT; OPT EAD requirement and filing windows; on-campus employment no earlier than 30 days before classes start.</li>
+      <li><a href="https://www.ecfr.gov/current/title-8/part-248" target="_blank" rel="noreferrer">8 CFR part 248 — Change of nonimmigrant classification (eCFR)</a><br>
+        Change of status requires that you are maintaining status and that your status has not expired before filing; the narrow excuse for late filing; the bar on change of status for a J-1 subject to the INA 212(e) two-year foreign residence requirement without a waiver.</li>
+      <li><a href="https://www.uscis.gov/working-in-the-united-states/students-and-exchange-visitors/students-and-employment/changing-to-a-nonimmigrant-f-or-m-student-status" target="_blank" rel="noreferrer">USCIS — Changing to a Nonimmigrant F or M Student Status</a> <span class="faint">(page last reviewed 25 Nov 2024)</span><br>
+        Required steps before USCIS can approve (school acceptance, initial I-20 marked change of status, I-901 SEVIS fee, Form I-539); do not enroll or begin studies before approval if your current status does not permit study; contact your DSO if the case is not adjudicated at least 15 days before the program start date; approval is effective on the approval date; no "bridge the gap" filing required for F-1 if your status was unexpired at filing; no employment or practical training more than 30 days before the program start date; the consular / port-of-entry alternative, including that nationals of visa-exempt countries such as Canada may apply for admission directly at a port of entry or pre-clearance station.</li>
+      <li><a href="https://www.uscis.gov/i-539" target="_blank" rel="noreferrer">USCIS — Form I-539, Application to Extend/Change Nonimmigrant Status</a><br>
+        File at least 45 days before your stay expires; your passport must be valid for the entire requested period of stay; consequences of falling out of status. Filing fee is published separately on the <a href="https://www.uscis.gov/g-1055" target="_blank" rel="noreferrer">USCIS fee schedule (G-1055)</a> — this tool does not hardcode it.</li>
+      <li><a href="https://www.uscis.gov/forms/all-forms/how-do-i-request-premium-processing" target="_blank" rel="noreferrer">USCIS — How do I request premium processing?</a><br>
+        30 business days for Form I-539 applicants requesting a change of status to F-1, F-2, M-1, M-2, J-1 or J-2 nonimmigrant status, once all prerequisites have been met. The current premium fee is published on that page and is not hardcoded here.</li>
+      <li><a href="https://www.uscis.gov/working-in-the-united-states/students-and-exchange-visitors/students-and-employment" target="_blank" rel="noreferrer">USCIS — Students and Employment</a> <span class="faint">(page last reviewed 20 Nov 2025)</span><br>
+        "F-1 students may not work off-campus during the first academic year"; the three off-campus categories after the first academic year (CPT, OPT, STEM OPT); off-campus training must be related to your area of study and authorized before you start work.</li>
+      <li><a href="https://www.ice.gov/sevis/i901" target="_blank" rel="noreferrer">ICE SEVP — I-901 SEVIS Fee</a><br>
+        I-901 SEVIS fee: <strong>$350</strong> for F or M applicants, <strong>$220</strong> for J applicants (as published on that page, checked 29 July 2026). Pay at <a href="https://www.fmjfee.com/" target="_blank" rel="noreferrer">fmjfee.com</a>.</li>
+      <li><a href="https://www.ecfr.gov/current/title-8/section-214.6" target="_blank" rel="noreferrer">8 CFR 214.6(j) — TD dependents of TN nonimmigrants (eCFR)</a><br>
+        TD status is for the "spouse or unmarried minor children" of a TN nonimmigrant, admitted for the same period as the principal — which is why dependent status can end before the principal's does.</li>
+      <li><a href="https://egov.uscis.gov/processing-times/" target="_blank" rel="noreferrer">USCIS — Check case processing times</a><br>
+        Processing times are variable by form, category and office, so this tool asks you to enter what you see there rather than encoding a number.</li>
+      <li><a href="https://i94.cbp.dhs.gov/" target="_blank" rel="noreferrer">CBP — I-94 lookup</a> · <a href="https://studyinthestates.dhs.gov/" target="_blank" rel="noreferrer">DHS Study in the States</a><br>
+        Use your I-94 record, not your visa stamp, for your actual admitted-until date.</li>
+    </ul>
+    <p class="savenote" style="margin-top:var(--s5)">
+      Deliberately <strong>not</strong> encoded, because no authoritative source defines it: the number of
+      months in "one full academic year" (your school's calendar controls it), typical I-539 processing
+      duration, current filing and premium-processing fee amounts, and whether full-time study in a
+      prior nonimmigrant status counts toward the practical-training year. Those are DSO and attorney
+      questions, and the tool asks you for them instead of asserting an answer.
+    </p>
+  </section>
+
+</main>
+
+<footer class="site-footer">
+  <div>Visa Navigator · a free tool by Yusuf Gadelrab · San Jose, CA · informational only, not legal advice</div>
+  <div class="site-footer__links">
+    <a href="/">Work</a>
+    <a href="/resume.html">Resume</a>
+    <a href="/store.html">Store</a>
+    <a href="/kxngsef.html">KXNG SEF</a>
+    <a href="/media-kit.html">Media Kit</a>
+    <a href="mailto:yusuf.gadelrab06@gmail.com?subject=Visa%20Navigator">yusuf.gadelrab06@gmail.com</a>
+    <a href="https://github.com/Yusuf-Gadelrab" target="_blank" rel="noreferrer">GitHub</a>
+    <a href="https://www.linkedin.com/in/yusuf-gadelrab-76246b221" target="_blank" rel="noreferrer">LinkedIn</a>
+  </div>
+</footer>
+
+<script>
+(function(){
+  "use strict";
+
+  var KEY = "visaNavigator.v1";
+  var CHECKED_AT = "29 July 2026";
+
+  /* ---------------------------------------------------------------- sources */
+  var SRC = {
+    cfr10:   "https://www.ecfr.gov/current/title-8/section-214.2#p-214.2(f)(10)",
+    cfr11:   "https://www.ecfr.gov/current/title-8/section-214.2#p-214.2(f)(11)",
+    cfr9:    "https://www.ecfr.gov/current/title-8/section-214.2#p-214.2(f)(9)",
+    p248:    "https://www.ecfr.gov/current/title-8/part-248",
+    cos:     "https://www.uscis.gov/working-in-the-united-states/students-and-exchange-visitors/students-and-employment/changing-to-a-nonimmigrant-f-or-m-student-status",
+    i539:    "https://www.uscis.gov/i-539",
+    prem:    "https://www.uscis.gov/forms/all-forms/how-do-i-request-premium-processing",
+    emp:     "https://www.uscis.gov/working-in-the-united-states/students-and-exchange-visitors/students-and-employment",
+    sevis:   "https://www.ice.gov/sevis/i901",
+    fees:    "https://www.uscis.gov/g-1055",
+    times:   "https://egov.uscis.gov/processing-times/",
+    td:      "https://www.ecfr.gov/current/title-8/section-214.6",
+    i94:     "https://i94.cbp.dhs.gov/"
+  };
+  function srcLabel(u){
+    if(u.indexOf("ecfr.gov")>-1) return "8 CFR · ecfr.gov";
+    if(u.indexOf("ice.gov")>-1)  return "ice.gov/sevis";
+    return "uscis.gov";
+  }
+
+  /* ------------------------------------------------------------------ paths */
+  var PATHS = [
+    { id:"td",    t:"TD or TN dependent \u2192 F-1",
+      d:"Dependent of a TN professional, changing to student status in the US on Form I-539.", cos:true },
+    { id:"h4",    t:"H-4 \u2192 F-1",
+      d:"Dependent of an H-1B worker, changing to student status in the US on Form I-539.", cos:true },
+    { id:"j1",    t:"J-1 or J-2 \u2192 F-1",
+      d:"Exchange visitor changing to student status. The 212(e) two-year requirement can block this entirely.", cos:true },
+    { id:"other", t:"Other status \u2192 F-1",
+      d:"Any other nonimmigrant status (L-2, E-2 dependent, B-2, and so on). Check Form I-539 eligibility first.", cos:true },
+    { id:"f1",    t:"Already in F-1 status",
+      d:"No change of status needed \u2014 you are here for the CPT/OPT timing, not the I-539 timeline.", cos:false }
+  ];
+
+  /* -------------------------------------------------------------- checklists */
+  var BASE_COS = [
+    { id:"accept", t:"Acceptance from an SEVP-certified school",
+      s:"USCIS cannot approve the change of status until you have been accepted by an SEVP-certified school.", u:SRC.cos },
+    { id:"i20", t:"Initial Form I-20, issue reason \u201cchange of status\u201d",
+      s:"Ask the DSO to mark change of status in the Issue Reason section \u2014 an I-20 issued for the wrong reason is a common rejection cause.", u:SRC.cos },
+    { id:"sevis", t:"I-901 SEVIS fee paid \u2014 $350 (F/M), $220 (J) \u2014 keep the receipt",
+      s:"Amounts published by ICE SEVP, checked "+CHECKED_AT+". Pay at fmjfee.com and file the receipt with your application.", u:SRC.sevis },
+    { id:"i539", t:"Form I-539 completed (plus I-539A for each co-applicant)",
+      s:"Read the form instructions: not every nonimmigrant classification is eligible to change to student status.", u:SRC.i539 },
+    { id:"fee", t:"Correct filing fee (check the current fee schedule)",
+      s:"USCIS publishes the fee separately and it changes \u2014 verify on the G-1055 fee schedule the week you file. This tool does not hardcode it.", u:SRC.fees },
+    { id:"passport", t:"Passport valid for the entire requested period of stay",
+      s:"USCIS states your passport must be valid for your entire requested period of stay in the new classification.", u:SRC.i539 },
+    { id:"status", t:"Proof you are in valid status right now (I-94, approval notices)",
+      s:"Change of status may not be approved if you failed to maintain status or your status expired before filing.", u:SRC.p248 },
+    { id:"finance", t:"Financial evidence supporting the I-20 funding figure",
+      s:"Your school requires proof of funds to issue the I-20; keep the same evidence with your I-539 packet.", u:SRC.cos },
+    { id:"nowork", t:"Confirmed you have not engaged in unauthorized employment",
+      s:"Violating the conditions of your status makes you ineligible for a change of status \u2014 raise any doubt with an attorney before filing, not after.", u:SRC.cos }
+  ];
+  var EXTRA = {
+    td:[{ id:"tn", t:"Copy of the principal TN holder\u2019s status documents and I-94",
+          s:"TD status is granted for the same period as the TN principal, and covers only a spouse or unmarried minor children \u2014 so your end date can arrive before theirs.", u:SRC.td }],
+    h4:[{ id:"h1b", t:"Copy of the principal H-1B approval notice (I-797) and I-94",
+          s:"Evidence that you were lawfully admitted and are maintaining derivative status at the time of filing.", u:SRC.p248 }],
+    j1:[{ id:"212e", t:"INA 212(e) determination \u2014 are you subject to the two-year foreign residence requirement?",
+          s:"A J-1 subject to the 212(e) requirement who has not received a waiver cannot change status inside the US (except to A or G). Settle this before anything else.", u:SRC.p248 },
+        { id:"ds2019", t:"All prior Forms DS-2019 and your program sponsor\u2019s written position", s:"Bring the full J record to your DSO and attorney.", u:SRC.p248 }],
+    other:[{ id:"elig", t:"Confirm your classification may change to F-1 at all",
+          s:"Some classifications (for example C, D, K, S, and most visa-waiver admissions) may not change status inside the US.", u:SRC.p248 }],
+    f1:[{ id:"cptdoc", t:"CPT: DSO-endorsed Form I-20 in hand before day one",
+          s:"You may begin CPT only after receiving your Form I-20 with the DSO endorsement.", u:SRC.cfr10 },
+        { id:"optdoc", t:"OPT: Form I-766 EAD in hand before day one",
+          s:"You may not begin OPT until the start date printed on the EAD.", u:SRC.cfr11 },
+        { id:"course", t:"Enrolled in the course or program that makes the training \u201can integral part of an established curriculum\u201d",
+          s:"That is the regulatory definition of CPT \u2014 your school decides how it is satisfied.", u:SRC.cfr10 }]
+  };
+  function checklistFor(path){
+    var base = (path==="f1") ? [] : BASE_COS.slice();
+    var extra = EXTRA[path] || [];
+    var tail = (path==="f1") ? [] : (EXTRA.f1);
+    return base.concat(extra, tail);
+  }
+
+  /* -------------------------------------------------------------- date utils */
+  function parse(v){
+    if(!v) return null;
+    var p = v.split("-");
+    if(p.length!==3) return null;
+    var d = new Date(Date.UTC(+p[0], +p[1]-1, +p[2]));
+    return isNaN(d.getTime()) ? null : d;
+  }
+  function iso(d){ return d ? d.toISOString().slice(0,10) : ""; }
+  function fmt(d){
+    if(!d) return "\u2014";
+    return d.toLocaleDateString("en-US",{year:"numeric",month:"short",day:"numeric",timeZone:"UTC"});
+  }
+  function addDays(d,n){ var x=new Date(d.getTime()); x.setUTCDate(x.getUTCDate()+n); return x; }
+  function addMonths(d,n){
+    var whole = Math.trunc(n), frac = n - whole;
+    var x = new Date(d.getTime());
+    x.setUTCMonth(x.getUTCMonth()+whole);
+    if(frac) x = addDays(x, Math.round(frac*30.44));
+    return x;
+  }
+  function addBusinessDays(d,n){
+    var x = new Date(d.getTime()), left = n;
+    while(left > 0){
+      x = addDays(x,1);
+      var w = x.getUTCDay();
+      if(w!==0 && w!==6) left--;
+    }
+    return x;
+  }
+  function diffDays(a,b){ return Math.round((b-a)/86400000); }
+  function maxDate(){
+    var best=null, why=null;
+    for(var i=0;i<arguments.length;i++){
+      var pair=arguments[i];
+      if(!pair || !pair[0]) continue;
+      if(!best || pair[0] > best){ best=pair[0]; why=pair[1]; }
+    }
+    return {d:best, why:why};
+  }
+  function today(){ var n=new Date(); return new Date(Date.UTC(n.getFullYear(),n.getMonth(),n.getDate())); }
+
+  /* ------------------------------------------------------------------ state */
+  var state = { path:"td", checks:{} };
+  var FIELDS = ["expiry","i20","filing","programStart","procMonths","approved","enrollStart","acadYearDone","internStart","dsoDays"];
+
+  function load(){
+    try{
+      var raw = localStorage.getItem(KEY);
+      if(!raw) return;
+      var o = JSON.parse(raw);
+      if(o && typeof o === "object"){
+        state.path = o.path || "td";
+        state.checks = o.checks || {};
+        FIELDS.forEach(function(k){ if(o[k]!=null) state[k]=o[k]; });
+        state.premium = !!o.premium;
+      }
+    }catch(e){ /* corrupted or unavailable storage — start clean */ }
+  }
+  function save(){
+    try{ localStorage.setItem(KEY, JSON.stringify(state)); }catch(e){}
+  }
+
+  /* ------------------------------------------------------------------- DOM */
+  var $ = function(id){ return document.getElementById(id); };
+  var results = $("results"), cptBox = $("cpt"), listEl = $("checklist");
+
+  function el(tag, cls, txt){
+    var n = document.createElement(tag);
+    if(cls) n.className = cls;
+    if(txt!=null) n.textContent = txt;
+    return n;
+  }
+  function citeNode(url){
+    var w = el("span","cite");
+    var a = el("a", null, srcLabel(url));
+    a.href = url; a.target="_blank"; a.rel="noreferrer";
+    w.appendChild(a);
+    return w;
+  }
+
+  /* -------------------------------------------------------- path radio group */
+  function renderPaths(){
+    var box = $("paths");
+    box.textContent = "";
+    PATHS.forEach(function(p){
+      var lab = el("label","path");
+      var inp = document.createElement("input");
+      inp.type="radio"; inp.name="path"; inp.value=p.id;
+      inp.checked = (state.path===p.id);
+      var body = el("span","path__body");
+      body.appendChild(el("span","path__t",p.t));
+      body.appendChild(el("span","path__d",p.d));
+      lab.appendChild(inp); lab.appendChild(body);
+      inp.addEventListener("change", function(){
+        state.path = p.id; save(); renderChecklist(); compute();
+      });
+      box.appendChild(lab);
+    });
+  }
+
+  /* ------------------------------------------------------------- checklist */
+  function renderChecklist(){
+    var items = checklistFor(state.path);
+    listEl.textContent = "";
+    items.forEach(function(it){
+      var key = state.path + ":" + it.id;
+      var li = document.createElement("li");
+      var cb = document.createElement("input");
+      cb.type="checkbox"; cb.id="chk_"+it.id; cb.checked = !!state.checks[key];
+      cb.addEventListener("change", function(){
+        state.checks[key] = cb.checked; save(); updateProgress();
+      });
+      var lab = document.createElement("label");
+      lab.setAttribute("for", cb.id);
+      lab.appendChild(document.createTextNode(it.t));
+      var sub = el("span","sub");
+      sub.appendChild(document.createTextNode(it.s + " "));
+      var a = el("a",null,srcLabel(it.u)); a.href=it.u; a.target="_blank"; a.rel="noreferrer";
+      sub.appendChild(a);
+      lab.appendChild(sub);
+      li.appendChild(cb); li.appendChild(lab);
+      listEl.appendChild(li);
+    });
+    updateProgress();
+  }
+  function updateProgress(){
+    var items = checklistFor(state.path);
+    var done = items.filter(function(it){ return !!state.checks[state.path+":"+it.id]; }).length;
+    var pct = items.length ? Math.round(done/items.length*100) : 0;
+    var bar = $("prog");
+    bar.firstElementChild.style.width = pct+"%";
+    bar.setAttribute("aria-valuenow", String(pct));
+    $("prog_label").textContent = done + " of " + items.length + " complete";
+  }
+
+  /* ------------------------------------------------------------ read inputs */
+  function readInputs(){
+    FIELDS.forEach(function(k){
+      var input = document.querySelector('[data-k="'+k+'"]');
+      if(input) state[k] = input.value;
+    });
+    state.premium = $("f_premium").checked;
+  }
+  function fillInputs(){
+    FIELDS.forEach(function(k){
+      var input = document.querySelector('[data-k="'+k+'"]');
+      if(input && state[k]!=null) input.value = state[k];
+    });
+    $("f_premium").checked = !!state.premium;
+  }
+
+  /* =========================== THE TIMELINE ENGINE ========================= */
+  function engine(){
+    var needsCOS = (state.path !== "f1");
+    var d = {
+      expiry: parse(state.expiry),
+      i20: parse(state.i20),
+      filing: parse(state.filing),
+      start: parse(state.programStart),
+      approved: parse(state.approved),
+      enroll: parse(state.enrollStart),
+      yearDone: parse(state.acadYearDone),
+      intern: parse(state.internStart)
+    };
+    var procMonths = state.procMonths ? parseFloat(state.procMonths) : null;
+    var dsoDays = state.dsoDays ? parseInt(state.dsoDays,10) : null;
+    var premium = !!state.premium;
+
+    var flags = [], milestones = [];
+    function flag(tone,t,desc,url){ flags.push({tone:tone,t:t,d:desc,u:url}); }
+    function ms(date,tone,t,desc,url){ if(date) milestones.push({date:date,tone:tone,t:t,d:desc,u:url}); }
+
+    /* ---- decision projection ------------------------------------------- */
+    var decision = null, decisionBasis = null, decisionIsEstimate = false;
+    if(d.approved){
+      decision = d.approved; decisionBasis = "your entered approval date";
+    } else if(d.filing && premium){
+      decision = addBusinessDays(d.filing, 30);
+      decisionBasis = "30 business days of premium processing, counted from the filing date";
+      decisionIsEstimate = true;
+      flag("warn","Premium 30-day clock does not start at filing",
+        "USCIS guarantees action within 30 business days for an I-539 change of status to F/M/J status only \u201conce all prerequisites have been met,\u201d which includes biometrics. Treat the projected date below as the earliest plausible outcome and add your own buffer for the biometrics appointment.", SRC.prem);
+    } else if(d.filing && procMonths!=null && !isNaN(procMonths)){
+      decision = addMonths(d.filing, procMonths);
+      decisionBasis = "the " + procMonths + "-month processing estimate you entered";
+      decisionIsEstimate = true;
+    }
+
+    /* ---- filing validity ------------------------------------------------ */
+    if(needsCOS){
+      if(d.filing && d.expiry && d.filing > d.expiry){
+        flag("bad","You would be filing after your status expires",
+          "A change of status may not be approved for someone whose status expired before the application was filed. There is a narrow discretionary excuse for late filing (extraordinary circumstances beyond your control, a reasonable delay, no other status violation, still a bona fide nonimmigrant, not in removal proceedings) \u2014 but do not plan around it. Move the filing date earlier or speak to an attorney now.", SRC.p248);
+      } else if(d.filing && d.expiry){
+        var lead = diffDays(d.filing, d.expiry);
+        if(lead < 45){
+          flag("warn","Filing less than 45 days before your status expires",
+            "USCIS suggests filing at least 45 days before your authorized stay expires, or as soon as you know you need the change. You have "+lead+" day"+(lead===1?"":"s")+" of margin.", SRC.i539);
+        } else {
+          flag("ok","Filing window looks healthy",
+            "You are filing "+lead+" days before your current status expires, which clears the 45-day cushion USCIS suggests.", SRC.i539);
+        }
+      }
+      if(d.filing && d.i20 && d.i20 > d.filing){
+        flag("bad","Your I-20 arrives after your filing date",
+          "USCIS requires you to obtain the initial Form I-20 (issue reason: change of status) and pay the I-901 SEVIS fee before it can approve the application. Request the I-20 earlier or move the filing date.", SRC.cos);
+      }
+      if(!d.i20){
+        flag("warn","No I-20 date entered",
+          "The initial I-20 and the paid I-901 SEVIS fee are prerequisites for the filing. Ask the DSO how long issuance takes at your school and work backward from that.", SRC.cos);
+      }
+    }
+
+    /* ---- status gap while pending -------------------------------------- */
+    if(needsCOS && d.expiry && decision && d.expiry < decision){
+      if(d.filing && d.expiry >= d.filing){
+        flag("warn","Your current status will lapse while the case is pending",
+          "For a change to F-1, USCIS states you are not required to hold status all the way up to 30 days before your program start date (\u201cbridge the gap\u201d) provided your nonimmigrant status was unexpired when you filed and you otherwise remain eligible. You still cannot work, and a denial after your I-94 expires has serious consequences \u2014 confirm your specific exposure with an attorney.", SRC.cos);
+      }
+    }
+
+    /* ---- program start conflicts ---------------------------------------- */
+    if(needsCOS && d.start){
+      var dsoCheckpoint = addDays(d.start, -15);
+      ms(dsoCheckpoint, "warn", "Checkpoint: contact your DSO if still pending",
+        "USCIS: if your change of status has not been adjudicated at least 15 days before the program start date on your Form I-20, contact the DSO at your new school \u2014 they may need to defer your start date to the following term.", SRC.cos);
+
+      if(decision && decision > d.start){
+        flag("bad","Decision projected after your program start date",
+          "Projected decision "+fmt(decision)+", program start "+fmt(d.start)+". Expect to ask your DSO to defer the program start date to the next term, which pushes every downstream date including practical training. If your current status does not permit study, do not enroll or begin classes before approval.", SRC.cos);
+      } else if(decision && decision > dsoCheckpoint){
+        flag("warn","Decision lands inside the 15-day DSO checkpoint",
+          "Projected decision "+fmt(decision)+" is less than 15 days before your program start date. Brief your DSO now so a deferral can be prepared rather than improvised.", SRC.cos);
+      } else if(decision){
+        flag("ok","Decision projected comfortably before your program start",
+          "Projected decision "+fmt(decision)+", which is "+diffDays(decision,d.start)+" days before the program start date on your I-20.", SRC.cos);
+      }
+
+      if(decision && decision < addDays(d.start,-30)){
+        flag("warn","Approved more than 30 days before your program starts",
+          "USCIS treats engaging in employment \u2014 including on-campus employment and practical training \u2014 more than 30 days before the program start date on your I-20 as a status violation. Earliest permissible employment date on these numbers: "+fmt(addDays(d.start,-30))+".", SRC.cos);
+      }
+    }
+
+    if(needsCOS && !d.filing) flag("warn","No filing date entered","Enter an intended Form I-539 filing date to project a decision and the rest of the schedule.", SRC.i539);
+    if(needsCOS && d.filing && !decision) flag("warn","No processing estimate entered",
+      "Enter the processing time USCIS currently publishes for your form and office, or tick premium processing, so the tool can project a decision date. This tool will not invent a processing time.", SRC.times);
+
+    /* ---- practical training gates --------------------------------------- */
+    var gates = [];
+    var g_status = { k:"Gate 1 \u2014 F-1 status", url:SRC.cos };
+    if(!needsCOS){ g_status.v = "Already met"; g_status.tone="ok"; g_status.d="You are already in F-1 status."; }
+    else if(d.approved){ g_status.v = fmt(d.approved); g_status.tone="ok"; g_status.d="Change of status takes effect on the approval date."; }
+    else if(decision){ g_status.v = fmt(decision)+" (projected)"; g_status.tone=""; g_status.d="Based on "+decisionBasis+". Not a guarantee."; }
+    else { g_status.v="Unknown"; g_status.tone="bad"; g_status.d="No approval date and no processing estimate entered."; }
+    gates.push(g_status);
+
+    var g_year = { k:"Gate 2 \u2014 one full academic year", url:SRC.cfr10 };
+    if(d.yearDone){
+      g_year.v = fmt(d.yearDone); g_year.tone="ok";
+      g_year.d = "As confirmed by your school. The regulation requires having been \u201clawfully enrolled on a full-time basis\u201d at an SEVP-certified school for one full academic year.";
+    } else if(d.enroll){
+      g_year.v = "Unconfirmed"; g_year.tone="bad";
+      g_year.d = "You began full-time study "+fmt(d.enroll)+", but no source defines \u201cone full academic year\u201d in months \u2014 your school's academic calendar controls it. Ask your DSO for the exact completion date and enter it. If that study was in a status other than F-1, ask in the same email whether your school counts it.";
+    } else {
+      g_year.v = "Not entered"; g_year.tone="bad";
+      g_year.d = "Enter when you began full-time study, and ideally the completion date your school confirms.";
+    }
+    gates.push(g_year);
+
+    var g_30 = { k:"Gate 3 \u2014 the 30-day rule", url:SRC.cos };
+    if(!needsCOS){
+      g_30.v = "Not applicable"; g_30.tone="ok";
+      g_30.d = "This rule bites when a change of status is approved before a new program starts. You are already in F-1 status in an ongoing program.";
+    } else if(d.start){
+      g_30.v = fmt(addDays(d.start,-30)); g_30.tone="";
+      g_30.d = "No employment, including practical training, more than 30 days before the program start date on your I-20.";
+    } else { g_30.v="Not entered"; g_30.tone=""; g_30.d="Enter your I-20 program start date."; }
+    gates.push(g_30);
+
+    var g_auth = { k:"Gate 4 \u2014 authorization in hand", url:SRC.cfr10 };
+    if(dsoDays!=null && !isNaN(dsoDays) && d.intern){
+      g_auth.v = fmt(addDays(d.intern, -dsoDays)); g_auth.tone="";
+      g_auth.d = "Submit your CPT request to the DSO by this date, using the "+dsoDays+"-day turnaround you entered. CPT may begin only after you receive the I-20 carrying the DSO endorsement. For OPT instead, you may not begin before the start date on your Form I-766 EAD.";
+    } else {
+      g_auth.v = "Ask your DSO"; g_auth.tone="";
+      g_auth.d = "Enter your school's CPT processing turnaround to get a submission deadline. CPT may begin only after you receive the DSO-endorsed I-20; OPT only on the EAD start date.";
+    }
+    gates.push(g_auth);
+
+    /* ---- earliest work date = the binding gate -------------------------- */
+    var statusDate = (!needsCOS) ? (d.enroll || null) : (d.approved || decision);
+    var earliest = maxDate(
+      [statusDate, "F-1 status taking effect"],
+      [d.yearDone, "completing one full academic year"],
+      [(needsCOS && d.start) ? addDays(d.start,-30) : null, "the 30-day-before-program-start rule"]
+    );
+
+    var verdict = { tone:"", h:"Plan built", p:"" };
+    if(!d.intern){
+      verdict.h = "Plan built \u2014 add a target internship date for a go/no-go read";
+      verdict.p = "Enter the date you would need to start work and the tool will tell you which gate is binding.";
+    } else if(!earliest.d){
+      verdict.tone = "warn";
+      verdict.h = "Not enough information for a go/no-go";
+      verdict.p = "At minimum the tool needs a projected or actual status date, the academic-year completion date your school confirms, and the program start date on your I-20.";
+    } else if(!d.yearDone){
+      verdict.tone = "warn";
+      verdict.h = "Blocked on one unverified fact";
+      verdict.p = "On the dates entered, the earliest work date would be "+fmt(earliest.d)+" \u2014 driven by "+earliest.why+
+        " \u2014 but the one-full-academic-year gate is still unconfirmed, and it can move everything. Get that date from your DSO in writing before you commit to anything.";
+    } else if(earliest.d <= d.intern){
+      verdict.tone = "ok";
+      verdict.h = "On track \u2014 with " + diffDays(earliest.d, d.intern) + " days of margin";
+      verdict.p = "Earliest work date "+fmt(earliest.d)+", set by "+earliest.why+". Your target start is "+fmt(d.intern)+
+        ". Margin is not the same as approval: every date above is an estimate until USCIS and your DSO say otherwise.";
+    } else {
+      verdict.tone = "bad";
+      verdict.h = "Conflict \u2014 short by " + diffDays(d.intern, earliest.d) + " days";
+      verdict.p = "Earliest work date "+fmt(earliest.d)+", set by "+earliest.why+", but your target start is "+fmt(d.intern)+
+        ". Realistic levers: file earlier, add premium processing, ask the employer for a later start date, or ask your DSO whether a different term start changes the arithmetic. Discuss all of them with an attorney.";
+    }
+    if(d.intern && earliest.d){
+      flags.unshift({ tone: (earliest.d<=d.intern?"ok":"bad"),
+        t:"Binding constraint: "+earliest.why,
+        d:"Of the four gates, this one is last to open. Everything else has slack.", u:SRC.cfr10 });
+    }
+
+    /* ---- milestones ------------------------------------------------------ */
+    if(needsCOS){
+      ms(d.i20, "", "Receive initial Form I-20 (issue reason: change of status)",
+        "Prerequisite for filing. Ask the DSO how long issuance takes and add that lead time.", SRC.cos);
+      ms(d.i20, "", "Pay the I-901 SEVIS fee",
+        "$350 for F or M applicants, $220 for J applicants as published by ICE SEVP, checked "+CHECKED_AT+". Keep the receipt with your packet.", SRC.sevis);
+      // Only meaningful as a deadline marker if you have not already filed earlier than it.
+      if(d.expiry && (!d.filing || d.filing > addDays(d.expiry,-45)))
+        ms(addDays(d.expiry,-45), "warn", "USCIS-suggested filing deadline (45 days before expiry)",
+          "USCIS suggests filing at least 45 days before your authorized stay expires, or as soon as you know you need the change.", SRC.i539);
+      ms(d.filing, "", "File Form I-539", "Must be while your current status is still valid. Verify the current fee on the USCIS fee schedule the week you file.", SRC.fees);
+      ms(d.expiry, (decision && d.expiry && d.expiry<decision) ? "warn":"", "Current status / I-94 expires",
+        "Check your admitted-until date on the CBP I-94 site, not on your visa stamp.", SRC.i94);
+      if(decision) ms(decision, decisionIsEstimate?"warn":"ok",
+        decisionIsEstimate ? "Decision projected (estimate, not a promise)" : "Change of status approved",
+        "Based on "+decisionBasis+". Re-check the published processing times monthly.", SRC.times);
+      ms(d.start, "", "Program start date on the I-20",
+        "If your current status does not permit study, do not enroll or begin studies before approval.", SRC.cos);
+      if(d.start) ms(addDays(d.start,-30), "", "Earliest permissible employment date",
+        "No employment, including on-campus work and practical training, more than 30 days before this program start date.", SRC.cos);
+    }
+    ms(d.yearDone, "", "One full academic year complete (per your school)",
+      "Practical training prerequisite under 8 CFR 214.2(f)(10).", SRC.cfr10);
+    if(dsoDays!=null && !isNaN(dsoDays) && d.intern)
+      ms(addDays(d.intern,-dsoDays), "warn", "Submit CPT request to your DSO",
+        "Using the "+dsoDays+"-day school turnaround you entered.", SRC.cfr10);
+    ms(d.intern, "", "Target internship / employment start",
+      "You must physically hold the DSO-endorsed I-20 (CPT) or the EAD (OPT) before day one.", SRC.cfr10);
+
+    /* A green verdict must never sit on top of a blocking conflict. */
+    var hasBad  = flags.some(function(f){ return f.tone==="bad"; });
+    var hasWarn = flags.some(function(f){ return f.tone==="warn"; });
+    if(hasBad && verdict.tone==="ok"){
+      verdict.tone = "bad";
+      verdict.h = "Dates line up — but there are blocking conflicts below";
+      verdict.p = verdict.p + " At least one blocking conflict was found; the arithmetic above only holds if you resolve it.";
+    } else if(hasWarn && verdict.tone==="ok"){
+      verdict.tone = "warn";
+      verdict.p = verdict.p + " Note the warnings below before treating this as settled.";
+    }
+
+    milestones.sort(function(a,b){ return a.date - b.date; });
+
+    return { verdict:verdict, flags:flags, milestones:milestones, gates:gates,
+             earliest:earliest, decision:decision, decisionBasis:decisionBasis, needsCOS:needsCOS };
+  }
+
+  /* ------------------------------------------------------------- rendering */
+  var lastPlan = null;
+
+  function compute(){
+    readInputs(); save();
+    var plan = engine();
+    lastPlan = plan;
+
+    results.textContent = "";
+    var v = el("div","verdict");
+    v.setAttribute("data-tone", plan.verdict.tone);
+    v.appendChild(el("h3", null, plan.verdict.h));
+    if(plan.verdict.p) v.appendChild(el("p","muted", plan.verdict.p));
+    results.appendChild(v);
+
+    if(plan.milestones.length){
+      var tl = el("ol","tl");
+      plan.milestones.forEach(function(m){
+        var li = document.createElement("li");
+        li.setAttribute("data-tone", m.tone||"");
+        li.appendChild(el("span","tl__date", fmt(m.date)));
+        li.appendChild(el("strong","tl__t", m.t));
+        li.appendChild(el("p","tl__d", m.d));
+        li.appendChild(citeNode(m.u));
+        tl.appendChild(li);
+      });
+      results.appendChild(tl);
+    }
+
+    if(plan.flags.length){
+      var ul = el("ul","flags");
+      plan.flags.forEach(function(f){
+        var li = document.createElement("li");
+        li.className="flag"; li.setAttribute("data-tone", f.tone);
+        li.appendChild(el("span","flag__t", f.t));
+        li.appendChild(el("p","flag__d", f.d));
+        li.appendChild(citeNode(f.u));
+        ul.appendChild(li);
+      });
+      results.appendChild(ul);
+    }
+
+    /* CPT panel */
+    cptBox.textContent = "";
+    var head = el("div","verdict");
+    head.setAttribute("data-tone", plan.verdict.tone);
+    head.appendChild(el("h3", null, plan.earliest.d ? ("Earliest date you could legally start work: " + fmt(plan.earliest.d)) : "Earliest work date: not computable yet"));
+    head.appendChild(el("p","muted", plan.earliest.d
+      ? ("Set by " + plan.earliest.why + ". This is the latest of the four gates below \u2014 open all four and the date moves earlier.")
+      : "Enter a status date, the academic-year completion date, and your program start date."));
+    cptBox.appendChild(head);
+
+    var grid = el("div","cptgrid");
+    plan.gates.forEach(function(g){
+      var c = el("div","gate");
+      if(g.tone) c.setAttribute("data-tone", g.tone);
+      c.appendChild(el("span","gate__k", g.k));
+      c.appendChild(el("span","gate__v", g.v));
+      c.appendChild(el("span","gate__d", g.d));
+      c.appendChild(citeNode(g.url));
+      grid.appendChild(c);
+    });
+    cptBox.appendChild(grid);
+
+    var note = el("div","panel");
+    note.style.marginTop = "var(--s5)";
+    note.appendChild(el("h3", null, "Two traps worth knowing before you accept CPT"));
+    var ul2 = el("ul","sources");
+    ul2.style.marginTop = "var(--s4)";
+    [["Twelve months of full-time CPT destroys post-completion OPT.",
+      "\u201cStudents who have received one year or more of full time curricular practical training are ineligible for post-completion academic training.\u201d Part-time CPT (20 hours a week or less) does not carry that penalty. If you are stacking multiple full-time CPT internships, count the months before the last one.", SRC.cfr10],
+     ["Practical training is capped at 12 months per education level.",
+      "\u201cA student may be authorized 12 months of practical training, and becomes eligible for another 12 months of practical training when they change to a higher educational level.\u201d Moving from bachelor's to master's resets it; a second bachelor's does not.", SRC.cfr10]
+    ].forEach(function(row){
+      var li = document.createElement("li");
+      li.appendChild(el("strong",null,row[0]));
+      li.appendChild(document.createTextNode(" "+row[1]+" "));
+      var a = el("a",null,srcLabel(row[2])); a.href=row[2]; a.target="_blank"; a.rel="noreferrer";
+      li.appendChild(a);
+      ul2.appendChild(li);
+    });
+    note.appendChild(ul2);
+    cptBox.appendChild(note);
+  }
+
+  /* --------------------------------------------------------------- exports */
+  var DISCLAIMER_MD = [
+    "> **NOT LEGAL ADVICE.** This file was generated by Visa Navigator, a free browser-based",
+    "> planning aid. It is informational only and is not a substitute for a Designated School",
+    "> Official (DSO) or a licensed immigration attorney. Immigration rules, fees and processing",
+    "> times change, and individual cases turn on facts this tool never sees. Confirm every date",
+    "> and requirement below with your DSO or an immigration attorney before acting on it.",
+    ">",
+    "> Government sources were checked " + CHECKED_AT + " and are cited throughout."
+  ].join("\n");
+
+  function pathTitle(id){
+    for(var i=0;i<PATHS.length;i++) if(PATHS[i].id===id) return PATHS[i].t;
+    return id;
+  }
+
+  function buildMD(){
+    var p = lastPlan || engine();
+    var L = [];
+    L.push("# Visa Navigator plan");
+    L.push("");
+    L.push("Generated " + fmt(today()) + " · path: **" + pathTitle(state.path) + "**");
+    L.push("");
+    L.push(DISCLAIMER_MD);
+    L.push("");
+    L.push("## Verdict");
+    L.push("");
+    L.push("**" + p.verdict.h + "**");
+    if(p.verdict.p){ L.push(""); L.push(p.verdict.p); }
+    L.push("");
+    L.push("## Timeline");
+    L.push("");
+    if(!p.milestones.length){ L.push("_No dates entered yet._"); }
+    p.milestones.forEach(function(m){
+      L.push("- **" + fmt(m.date) + " — " + m.t + "**");
+      L.push("  - " + m.d);
+      L.push("  - Source: " + m.u);
+    });
+    L.push("");
+    L.push("## Flags");
+    L.push("");
+    if(!p.flags.length){ L.push("_None._"); }
+    p.flags.forEach(function(f){
+      L.push("- **[" + (f.tone||"info").toUpperCase() + "] " + f.t + "**");
+      L.push("  - " + f.d);
+      L.push("  - Source: " + f.u);
+    });
+    L.push("");
+    L.push("## CPT / OPT gates");
+    L.push("");
+    L.push("Earliest possible work date: **" + (p.earliest.d ? fmt(p.earliest.d) : "not computable") + "**" +
+           (p.earliest.why ? " — set by " + p.earliest.why : ""));
+    L.push("");
+    p.gates.forEach(function(g){
+      L.push("- **" + g.k + ": " + g.v + "**");
+      L.push("  - " + g.d);
+      L.push("  - Source: " + g.url);
+    });
+    L.push("");
+    L.push("## Document checklist");
+    L.push("");
+    checklistFor(state.path).forEach(function(it){
+      var done = !!state.checks[state.path+":"+it.id];
+      L.push("- [" + (done?"x":" ") + "] " + it.t);
+      L.push("  - " + it.s);
+      L.push("  - Source: " + it.u);
+    });
+    L.push("");
+    L.push("## Questions to put to your DSO or attorney in writing");
+    L.push("");
+    [ "Does full-time study I completed in my previous nonimmigrant status count toward the \"one full academic year\" practical-training requirement in 8 CFR 214.2(f)(10) at this school?",
+      "What exact date does this school consider my one full academic year complete?",
+      "How many days do you need to process a CPT request, and what are the term deadlines?",
+      "If my change of status is still pending 15 days before my program start date, what does deferral to the next term do to my practical-training eligibility?",
+      "What is my exposure if my current status expires while the I-539 is pending, and what may I not do during that window?",
+      "Does travel outside the US while my change of status is pending affect the application?"
+    ].forEach(function(q,i){ L.push((i+1) + ". " + q); });
+    L.push("");
+    L.push("## Sources checked " + CHECKED_AT);
+    L.push("");
+    [ ["8 CFR 214.2(f) — F-1 employment and practical training", "https://www.ecfr.gov/current/title-8/section-214.2"],
+      ["8 CFR part 248 — change of nonimmigrant classification", SRC.p248],
+      ["USCIS — Changing to a Nonimmigrant F or M Student Status", SRC.cos],
+      ["USCIS — Form I-539", SRC.i539],
+      ["USCIS — Premium processing", SRC.prem],
+      ["USCIS — Students and Employment", SRC.emp],
+      ["ICE SEVP — I-901 SEVIS fee", SRC.sevis],
+      ["USCIS — fee schedule (G-1055)", SRC.fees],
+      ["USCIS — processing times", SRC.times],
+      ["8 CFR 214.6(j) — TD dependents", SRC.td],
+      ["CBP — I-94 lookup", SRC.i94]
+    ].forEach(function(s){ L.push("- " + s[0] + " — " + s[1]); });
+    L.push("");
+    return L.join("\n");
+  }
+
+  function icsEscape(s){
+    return String(s).replace(/\\/g,"\\\\").replace(/;/g,"\\;").replace(/,/g,"\\,").replace(/\r?\n/g,"\\n");
+  }
+  function fold(line){
+    // RFC 5545 caps content lines at 75 octets; fold conservatively at 72 chars.
+    if(line.length <= 72) return line;
+    var out = [line.slice(0,72)], rest = line.slice(72);
+    while(rest.length > 71){ out.push(" " + rest.slice(0,71)); rest = rest.slice(71); }
+    if(rest.length) out.push(" " + rest);
+    return out.join("\r\n");
+  }
+  function buildICS(){
+    var p = lastPlan || engine();
+    var stamp = new Date().toISOString().replace(/[-:]/g,"").split(".")[0] + "Z";
+    var L = ["BEGIN:VCALENDAR","VERSION:2.0","PRODID:-//Visa Navigator//Planning aid//EN","CALSCALE:GREGORIAN","METHOD:PUBLISH"];
+    p.milestones.forEach(function(m,i){
+      var ds = iso(m.date).replace(/-/g,"");
+      L.push("BEGIN:VEVENT");
+      L.push("UID:vn-" + ds + "-" + i + "@visa-navigator.local");
+      L.push("DTSTAMP:" + stamp);
+      L.push("DTSTART;VALUE=DATE:" + ds);
+      L.push("DTEND;VALUE=DATE:" + iso(addDays(m.date,1)).replace(/-/g,""));
+      L.push(fold("SUMMARY:" + icsEscape(m.t)));
+      L.push(fold("DESCRIPTION:" + icsEscape(
+        m.d + "\n\nSource: " + m.u +
+        "\n\nNOT LEGAL ADVICE. Generated by Visa Navigator, an informational planning aid. Confirm with your DSO or an immigration attorney. Sources checked " + CHECKED_AT + "."
+      )));
+      L.push("END:VEVENT");
+    });
+    L.push("END:VCALENDAR");
+    return L.join("\r\n");
+  }
+
+  function download(name, mime, text){
+    try{
+      var blob = new Blob([text], {type:mime});
+      var url = URL.createObjectURL(blob);
+      var a = document.createElement("a");
+      a.href = url; a.download = name;
+      document.body.appendChild(a); a.click(); document.body.removeChild(a);
+      setTimeout(function(){ URL.revokeObjectURL(url); }, 4000);
+      $("export_note").textContent = "Downloaded " + name + ".";
+    }catch(e){
+      $("export_note").textContent = "Your browser blocked the download. Try a different browser or copy the page instead.";
+    }
+  }
+
+  /* ------------------------------------------------------------------ wire */
+  load();
+  renderPaths();
+  fillInputs();
+  renderChecklist();
+
+  FIELDS.forEach(function(k){
+    var input = document.querySelector('[data-k="'+k+'"]');
+    if(input) input.addEventListener("change", function(){ readInputs(); save(); });
+  });
+  $("f_premium").addEventListener("change", function(){ readInputs(); save(); });
+
+  $("btn_calc").addEventListener("click", compute);
+  $("btn_md").addEventListener("click", function(){ readInputs(); save(); download("visa-plan.md","text/markdown;charset=utf-8", buildMD()); });
+  $("btn_ics").addEventListener("click", function(){ readInputs(); save(); download("visa-milestones.ics","text/calendar;charset=utf-8", buildICS()); });
+
+  $("btn_reset").addEventListener("click", function(){
+    if(!window.confirm("Clear every date and checklist item saved in this browser?")) return;
+    try{ localStorage.removeItem(KEY); }catch(e){}
+    state = { path:"td", checks:{} };
+    FIELDS.forEach(function(k){
+      var input = document.querySelector('[data-k="'+k+'"]');
+      if(input) input.value = "";
+    });
+    $("f_premium").checked = false;
+    renderPaths(); renderChecklist();
+    results.textContent = "";
+    var v = el("div","verdict");
+    v.appendChild(el("h3",null,"Reset \u2014 nothing computed"));
+    v.appendChild(el("p","muted","Fill in the dates above and press Build my plan."));
+    results.appendChild(v);
+    cptBox.textContent = "";
+    var pn = el("div","panel");
+    pn.appendChild(el("p","muted","Fill in the dates above and press Build my plan."));
+    cptBox.appendChild(pn);
+    $("export_note").textContent = "";
+  });
+
+  // Compute on load if the user already has saved dates.
+  var hasAny = FIELDS.some(function(k){ return state[k]; });
+  if(hasAny) compute();
+})();
+</script>
+</body>
+</html>

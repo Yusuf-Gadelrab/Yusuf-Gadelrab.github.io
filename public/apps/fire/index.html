@@ -1,0 +1,268 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#0a0a0b">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<title>Fire — Daily Ritual</title>
+<style>
+:root{--bg:#0a0a0a;--text:#f2f2f2;--dim:#9a9a9a;--gold:#d4af37;--gold-soft:#e8c96a;--border:rgba(212,175,55,.22);--serif:ui-serif,"New York",Georgia,"Times New Roman",serif;--divider:rgba(255,255,255,.06)}
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:radial-gradient(ellipse at 50% -10%, rgba(212,175,55,.10), transparent 55%), #0a0a0a;color:var(--text);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;padding:1.75rem 1rem calc(2.5rem + env(safe-area-inset-bottom));-webkit-font-smoothing:antialiased;min-height:100vh}
+body::before{content:"";position:fixed;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,transparent,var(--gold),transparent);z-index:10}
+.wrap{max-width:640px;margin:0 auto}
+header{text-align:center;margin-bottom:1.75rem}
+.eyebrow{color:var(--gold);letter-spacing:.3em;text-transform:uppercase;font-size:.72rem;font-weight:600}
+h1{font-family:var(--serif);letter-spacing:-.02em;font-size:clamp(2rem,6vw,2.6rem);margin:.45rem 0 .35rem;background:linear-gradient(90deg,#fff,#e8c96a,#fff);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
+h1 .flame{-webkit-text-fill-color:initial;font-size:.7em;vertical-align:.08em}
+.subtitle{color:var(--dim);font-size:.9rem;letter-spacing:.02em}
+.card{background:linear-gradient(180deg,#181818,#141414);border:1px solid var(--border);border-radius:16px;padding:1.25rem;margin-bottom:1.1rem;box-shadow:0 10px 34px rgba(0,0,0,.5)}
+.progress-row{display:flex;align-items:center;gap:1.25rem}
+.ring{flex:0 0 84px}
+.ring text{fill:var(--gold-soft);font-family:var(--serif);font-size:1.15rem;font-weight:700;letter-spacing:-.02em}
+.stats{flex:1}
+.stats .big{font-size:1.05rem;font-weight:700}
+.stats .sub{color:var(--dim);font-size:.85rem;margin-top:.35rem;padding-top:.35rem;border-top:1px solid var(--divider)}
+.streak-num{color:var(--gold-soft);font-family:var(--serif);font-weight:700;font-size:1rem}
+ul#tasks{list-style:none}
+#tasks li{display:flex;align-items:center;gap:.6rem;min-height:52px;background:linear-gradient(180deg,#181818,#141414);border:1px solid var(--border);border-radius:16px;padding:.5rem .75rem;margin-bottom:.65rem;box-shadow:0 10px 34px rgba(0,0,0,.5)}
+#tasks li.done{background:linear-gradient(160deg,rgba(212,175,55,.10),#161616)}
+.toggle{flex:1;display:flex;align-items:center;gap:.75rem;min-height:48px;background:none;border:none;color:var(--text);font-size:1rem;text-align:left;cursor:pointer;padding:0}
+.box{flex:0 0 28px;height:28px;border:2px solid var(--border);border-radius:9px;display:flex;align-items:center;justify-content:center;font-size:1.05rem;font-weight:700;color:#000;transition:background .15s,box-shadow .15s}
+li.done .box{background:linear-gradient(135deg,var(--gold),var(--gold-soft));border-color:var(--gold);box-shadow:0 0 12px rgba(212,175,55,.35)}
+li.done .name{color:var(--dim);text-decoration:line-through}
+.mini{background:none;border:none;color:var(--dim);font-size:1rem;width:34px;height:34px;border-radius:9px;cursor:pointer;transition:color .15s}
+.mini:hover{color:var(--gold-soft)}
+.mini:active{background:rgba(212,175,55,.15);color:var(--gold-soft)}
+.btn{background:linear-gradient(135deg,var(--gold),var(--gold-soft));color:#000;font-weight:700;border:none;border-radius:11px;padding:.7rem 1.1rem;font-size:.95rem;cursor:pointer;transition:transform .15s,box-shadow .15s}
+.btn:hover{transform:translateY(-1px);box-shadow:0 6px 20px rgba(212,175,55,.35)}
+.btn.ghost{background:transparent;color:var(--gold-soft);border:1px solid var(--border)}
+.btn.ghost:hover{box-shadow:0 6px 20px rgba(212,175,55,.18);border-color:rgba(212,175,55,.45)}
+.row{display:flex;gap:.6rem;flex-wrap:wrap;margin-top:.85rem}
+input#newTask{flex:1;min-width:0;background:#0f0f0f;border:1px solid var(--border);border-radius:11px;color:var(--text);padding:.7rem .85rem;font-size:1rem}
+input#newTask:focus{outline:none;border-color:var(--gold);box-shadow:0 0 0 3px rgba(212,175,55,.15)}
+h2{font-size:.72rem;color:var(--dim);text-transform:uppercase;letter-spacing:.18em;margin-bottom:.7rem}
+.hist{display:flex;gap:5px}
+.hist span{flex:1;aspect-ratio:1;border-radius:4px;background:#161616;border:1px solid rgba(212,175,55,.12)}
+.hist span.part{background:rgba(212,175,55,.35)}
+.hist span.full{background:linear-gradient(135deg,#d4af37,#e8c96a)}
+.dimtxt{color:var(--dim);font-size:.8rem;margin-top:.85rem;padding-top:.85rem;border-top:1px solid var(--divider)}
+footer{text-align:center;color:var(--dim);font-size:.75rem;margin-top:2.25rem;padding-top:1.1rem;border-top:1px solid var(--divider);letter-spacing:.02em}
+footer a{color:var(--gold-soft);text-decoration:none}
+footer a:hover{text-decoration:underline}
+</style>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "WebApplication", "name": "Fire — Daily Execution Checklist", "url": "https://yusuf-gadelrab.github.io/apps/fire/", "applicationCategory": "ProductivityApplication", "operatingSystem": "Any", "browserRequirements": "Requires JavaScript", "offers": {"@type": "Offer", "price": "0", "priceCurrency": "USD"}, "description": "Free offline daily checklist that resets each morning and tracks 100%-day streaks. Data stays on your device.", "author": {"@type": "Person", "name": "Yusuf Gadelrab", "url": "https://yusuf-gadelrab.github.io"}, "publisher": {"@type": "Organization", "name": "DHAHAB"}}</script>
+<meta name="description" content="Free daily execution checklist app that resets every morning and tracks your 100%-day streaks. Works offline, private, no account needed.">
+<link rel="canonical" href="https://yusuf-gadelrab.github.io/apps/fire/">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Fire — Free Daily Checklist App">
+<meta property="og:description" content="Free daily execution checklist app that resets every morning and tracks your 100%-day streaks. Works offline, private, no account needed.">
+<meta property="og:url" content="https://yusuf-gadelrab.github.io/apps/fire/">
+<meta property="og:image" content="https://yusuf-gadelrab.github.io/apple-touch-icon.png">
+<meta name="twitter:card" content="summary">
+</head>
+<body>
+<div class="wrap">
+<header>
+<div class="eyebrow">DHAHAB · ذهب</div>
+<h1>Fire <span class="flame">🔥</span></h1>
+<div class="subtitle">The Golden Standard · ship the list, every day</div>
+</header>
+
+<div class="card">
+  <div class="progress-row">
+    <svg class="ring" viewBox="0 0 84 84" width="84" height="84">
+      <defs>
+        <linearGradient id="goldGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+          <stop offset="0%" stop-color="#d4af37"/>
+          <stop offset="100%" stop-color="#e8c96a"/>
+        </linearGradient>
+      </defs>
+      <circle cx="42" cy="42" r="36" fill="none" stroke="rgba(212,175,55,.15)" stroke-width="8"/>
+      <circle id="ringFill" cx="42" cy="42" r="36" fill="none" stroke="url(#goldGrad)" stroke-width="8" stroke-linecap="round" stroke-dasharray="226.2" stroke-dashoffset="226.2" transform="rotate(-90 42 42)"/>
+      <text id="pctText" x="42" y="48" text-anchor="middle">0%</text>
+    </svg>
+    <div class="stats">
+      <div class="big"><span id="doneCount">0</span>/<span id="totalCount">0</span> done today</div>
+      <div class="sub">Streak: <span class="streak-num" id="curStreak">0</span> · Best: <span class="streak-num" id="bestStreak">0</span></div>
+    </div>
+  </div>
+</div>
+
+<ul id="tasks"></ul>
+
+<div class="card">
+  <div class="row" style="margin-top:0">
+    <input id="newTask" placeholder="Add task…" enterkeyhint="done">
+    <button class="btn" id="addBtn">Add</button>
+  </div>
+</div>
+
+<div class="card">
+  <h2>Last 14 days</h2>
+  <div class="hist" id="hist"></div>
+  <div class="row">
+    <button class="btn ghost" id="exportBtn">Export JSON</button>
+    <button class="btn ghost" id="importBtn">Import JSON</button>
+    <input type="file" id="importFile" accept="application/json" hidden>
+  </div>
+  <div class="dimtxt">All data stays on this device (localStorage).</div>
+</div>
+
+<footer>
+  <a href="/privacy.html">Privacy</a> · <a href="/terms.html">Terms</a> · © 2026 DHAHAB · Yusuf Gadelrab
+</footer>
+</div>
+
+<script>
+const K = {tasks:'fire_tasks',checks:'fire_checks',date:'fire_date',hist:'fire_history',best:'fire_best'};
+const SEED = ['Broker batch (fire_batch.py cap 20)','NukonAI batch','1 sponsor/scholarship form','LinkedIn touch (post or comment)','Green commit','Check replies manually'];
+const load = (k,d)=>{try{const v=JSON.parse(localStorage.getItem(k));return v==null?d:v}catch{return d}};
+const save = (k,v)=>localStorage.setItem(k,JSON.stringify(v));
+const todayStr = ()=>{const d=new Date();return d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0')+'-'+String(d.getDate()).padStart(2,'0')};
+
+let tasks = load(K.tasks,null);
+if(!tasks){tasks = SEED.map((n,i)=>({id:'t'+Date.now()+'_'+i,name:n}));save(K.tasks,tasks)}
+let checks = load(K.checks,{});
+let history = load(K.hist,{});
+
+function pctOf(ch,ts){if(!ts.length)return 0;const d=ts.filter(t=>ch[t.id]).length;return Math.round(d/ts.length*100)}
+
+function rollover(){
+  const today = todayStr();
+  const last = load(K.date,null);
+  if(last && last !== today){
+    history[last] = pctOf(checks,tasks);
+    save(K.hist,history);
+    checks = {};
+    save(K.checks,checks);
+  }
+  if(last !== today) save(K.date,today);
+}
+
+function streaks(){
+  const today = todayStr();
+  const pctFor = ds => ds===today ? pctOf(checks,tasks) : (history[ds] ?? 0);
+  let cur = 0;
+  const d = new Date();
+  if(pctFor(todayStr()) < 100) d.setDate(d.getDate()-1);
+  for(;;){
+    const ds = d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0')+'-'+String(d.getDate()).padStart(2,'0');
+    if(pctFor(ds) === 100){cur++;d.setDate(d.getDate()-1)}else break;
+  }
+  let best = load(K.best,0);
+  if(cur > best){best = cur;save(K.best,best)}
+  return {cur,best};
+}
+
+function render(){
+  const ul = document.getElementById('tasks');
+  ul.innerHTML = '';
+  tasks.forEach((t,i)=>{
+    const li = document.createElement('li');
+    if(checks[t.id]) li.className = 'done';
+    const tg = document.createElement('button');
+    tg.className = 'toggle';
+    const box = document.createElement('span');
+    box.className = 'box';
+    box.textContent = checks[t.id] ? '✓' : '';
+    const nm = document.createElement('span');
+    nm.className = 'name';
+    nm.textContent = t.name;
+    tg.append(box,nm);
+    tg.onclick = ()=>{checks[t.id]=!checks[t.id];if(!checks[t.id])delete checks[t.id];save(K.checks,checks);render()};
+    li.appendChild(tg);
+    const mk = (label,title,fn)=>{const b=document.createElement('button');b.className='mini';b.textContent=label;b.title=title;b.onclick=fn;return b};
+    li.appendChild(mk('↑','Move up',()=>{if(i>0){[tasks[i-1],tasks[i]]=[tasks[i],tasks[i-1]];save(K.tasks,tasks);render()}}));
+    li.appendChild(mk('↓','Move down',()=>{if(i<tasks.length-1){[tasks[i+1],tasks[i]]=[tasks[i],tasks[i+1]];save(K.tasks,tasks);render()}}));
+    li.appendChild(mk('✎','Rename',()=>{const n=prompt('Rename task:',t.name);if(n&&n.trim()){t.name=n.trim();save(K.tasks,tasks);render()}}));
+    li.appendChild(mk('✕','Delete',()=>{if(confirm('Delete "'+t.name+'"?')){tasks.splice(i,1);delete checks[t.id];save(K.tasks,tasks);save(K.checks,checks);render()}}));
+    ul.appendChild(li);
+  });
+
+  const pct = pctOf(checks,tasks);
+  document.getElementById('doneCount').textContent = tasks.filter(t=>checks[t.id]).length;
+  document.getElementById('totalCount').textContent = tasks.length;
+  document.getElementById('pctText').textContent = pct+'%';
+  const C = 2*Math.PI*36;
+  document.getElementById('ringFill').setAttribute('stroke-dashoffset', C*(1-pct/100));
+
+  const s = streaks();
+  document.getElementById('curStreak').textContent = s.cur;
+  document.getElementById('bestStreak').textContent = s.best;
+
+  const h = document.getElementById('hist');
+  h.innerHTML = '';
+  const today = todayStr();
+  for(let i=13;i>=0;i--){
+    const d = new Date();
+    d.setDate(d.getDate()-i);
+    const ds = d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0')+'-'+String(d.getDate()).padStart(2,'0');
+    const p = ds===today ? pct : (history[ds] ?? 0);
+    const sq = document.createElement('span');
+    if(p>=100) sq.className = 'full';
+    else if(p>0) sq.className = 'part';
+    sq.title = ds+' · '+p+'%';
+    h.appendChild(sq);
+  }
+}
+
+function addTask(){
+  const inp = document.getElementById('newTask');
+  const n = inp.value.trim();
+  if(!n) return;
+  tasks.push({id:'t'+Date.now(),name:n});
+  save(K.tasks,tasks);
+  inp.value = '';
+  render();
+}
+document.getElementById('addBtn').onclick = addTask;
+document.getElementById('newTask').addEventListener('keydown',e=>{if(e.key==='Enter')addTask()});
+
+document.getElementById('exportBtn').onclick = ()=>{
+  const data = {fire_tasks:tasks,fire_checks:checks,fire_history:history,fire_date:load(K.date,todayStr()),fire_best:load(K.best,0)};
+  const blob = new Blob([JSON.stringify(data,null,2)],{type:'application/json'});
+  const a = document.createElement('a');
+  a.href = URL.createObjectURL(blob);
+  a.download = 'fire-backup-'+todayStr()+'.json';
+  a.click();
+  URL.revokeObjectURL(a.href);
+};
+document.getElementById('importBtn').onclick = ()=>document.getElementById('importFile').click();
+document.getElementById('importFile').addEventListener('change',e=>{
+  const f = e.target.files[0];
+  if(!f) return;
+  const r = new FileReader();
+  r.onload = ()=>{
+    try{
+      const d = JSON.parse(r.result);
+      if(!Array.isArray(d.fire_tasks)) throw new Error('bad file');
+      tasks = d.fire_tasks;
+      checks = d.fire_checks || {};
+      history = d.fire_history || {};
+      save(K.tasks,tasks);save(K.checks,checks);save(K.hist,history);
+      if(d.fire_date) save(K.date,d.fire_date);
+      if(d.fire_best != null) save(K.best,d.fire_best);
+      rollover();
+      render();
+    }catch{alert('Invalid backup file')}
+  };
+  r.readAsText(f);
+  e.target.value = '';
+});
+
+document.addEventListener('visibilitychange',()=>{if(!document.hidden){rollover();render()}});
+
+rollover();
+render();
+
+try{
+  if('serviceWorker' in navigator) navigator.serviceWorker.register('sw.js');
+}catch(e){}
+</script>
+</body>
+</html>

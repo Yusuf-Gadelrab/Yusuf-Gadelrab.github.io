@@ -1,0 +1,781 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Free Freight Broker Calculators — Rate/Mile, Deadhead, Margin, Detention, FSC</title>
+<meta name="description" content="Six free calculators for freight brokers and carriers: rate per mile, deadhead cost, broker margin, detention and accessorials, fuel surcharge, and break-even rate. Every formula shown so you can check the math.">
+<link rel="canonical" href="https://yusuf-gadelrab.github.io/freight-tools.html">
+<link rel="icon" type="image/svg+xml" href="https://yusuf-gadelrab.github.io/favicon-automation.svg">
+<link rel="apple-touch-icon" sizes="180x180" href="https://yusuf-gadelrab.github.io/apple-touch-icon.png">
+<meta name="theme-color" content="#0B0B0D">
+<meta name="author" content="Yusuf Gadelrab">
+<meta name="robots" content="index,follow">
+<meta name="keywords" content="freight rate per mile calculator, deadhead cost calculator, broker margin calculator, detention calculator, fuel surcharge calculator, break even rate per mile, freight broker tools">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Yusuf Gadelrab">
+<meta property="og:title" content="Free Freight Broker Calculators">
+<meta property="og:description" content="Rate per mile, deadhead cost, margin, detention, fuel surcharge and break-even — six free calculators with every formula shown.">
+<meta property="og:url" content="https://yusuf-gadelrab.github.io/freight-tools.html">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Free Freight Broker Calculators">
+<meta name="twitter:description" content="Rate per mile, deadhead cost, margin, detention, fuel surcharge and break-even — six free calculators with every formula shown.">
+<link rel="stylesheet" href="/css/site.css">
+<style>
+  /* Page-specific only — tokens, reset, nav, buttons, cards, forms, footer
+     and print rules all come from /css/site.css. */
+  section{scroll-margin-top:110px}
+  .rule{height:1px;max-width:var(--maxw);margin:0 auto;
+    background:linear-gradient(90deg,transparent,var(--line) 30%,var(--line) 70%,transparent)}
+
+  .hero{padding-bottom:var(--s6)}
+  .hero h1{margin:var(--s4) 0 var(--s4)}
+  .note{border:1px solid var(--line-soft);border-left:3px solid var(--gold);
+    border-radius:var(--radius);background:rgba(212,175,55,.05);
+    padding:var(--s4) var(--s5);font-size:var(--t-small);color:var(--muted);max-width:72ch}
+  .note b{color:var(--ink)}
+
+  /* jump list */
+  .toc{display:flex;flex-wrap:wrap;gap:var(--s2);margin-top:var(--s5);padding:0;list-style:none}
+  .toc a{display:inline-block;padding:8px 15px;border:1px solid var(--line-soft);
+    border-radius:var(--radius);font-size:13.5px;color:var(--muted);
+    background:rgba(255,255,255,.02);transition:border-color .3s var(--ease),color .3s var(--ease)}
+  .toc a:hover{border-color:var(--gold);color:var(--gold-2)}
+
+  /* calculator card */
+  .calc{padding:clamp(20px,3vw,34px);margin-bottom:var(--s6)}
+  .calc__num{font-family:var(--display-pro);font-weight:600;font-size:var(--t-micro);
+    letter-spacing:2px;text-transform:uppercase;color:var(--gold-2)}
+  .calc h2{font-size:clamp(22px,2.6vw,30px);margin:var(--s2) 0 var(--s2)}
+  .calc__sub{color:var(--muted);font-size:var(--t-small);max-width:64ch}
+
+  .fields{display:grid;gap:var(--s4);margin-top:var(--s5);
+    grid-template-columns:repeat(auto-fit,minmax(min(200px,100%),1fr))}
+  .field label{font-size:var(--t-micro);letter-spacing:1px;text-transform:uppercase;
+    color:var(--muted);margin-bottom:6px}
+  .field input{font-size:16px;color:var(--gold-2);font-weight:700}
+  .field .hint{display:block;margin-top:5px;font-size:11.5px;color:var(--faint);
+    letter-spacing:0;text-transform:none;line-height:1.45}
+  .field input[aria-invalid="true"]{border-color:var(--bad)}
+  .field .err{display:none;margin-top:5px;font-size:11.5px;color:var(--bad)}
+  .field input[aria-invalid="true"] ~ .err{display:block}
+
+  .formula{margin-top:var(--s5);padding:var(--s3) var(--s4);
+    border:1px dashed var(--line);border-radius:var(--radius);
+    background:rgba(255,255,255,.02);color:var(--muted);
+    font-family:var(--mono);font-size:12.5px;line-height:1.85;
+    overflow-x:auto;-webkit-overflow-scrolling:touch;white-space:pre-wrap;word-break:break-word}
+  .formula b{color:var(--gold-2);font-weight:400}
+
+  .out{margin-top:var(--s5);border:1px solid var(--line);border-radius:var(--radius-lg);
+    background:linear-gradient(180deg,rgba(212,175,55,.07),rgba(212,175,55,.02));
+    padding:var(--s4) var(--s5)}
+  .outgrid{display:grid;gap:var(--s3);
+    grid-template-columns:repeat(auto-fit,minmax(min(170px,100%),1fr))}
+  .o__label{font-size:var(--t-micro);letter-spacing:1px;text-transform:uppercase;color:var(--muted)}
+  .o__value{font-family:var(--display-pro);font-weight:800;letter-spacing:-.02em;
+    font-size:clamp(24px,3vw,32px);line-height:1.1;color:var(--gold-2);
+    overflow-wrap:anywhere}
+  .o__value.is-bad{color:var(--bad)}
+  .interp{margin-top:var(--s4);padding-top:var(--s3);border-top:1px dashed var(--line);
+    font-size:var(--t-small);color:var(--ink)}
+  .interp b{color:var(--gold-2)}
+
+  .actions{display:flex;flex-wrap:wrap;gap:var(--s3);align-items:center;margin-top:var(--s4)}
+  .copied{font-size:12.5px;color:var(--gold-2)}
+
+  .cta{border:1px solid var(--line);border-radius:var(--radius-lg);
+    background:radial-gradient(70% 130% at 50% 0%,rgba(212,175,55,.10),transparent),
+      linear-gradient(180deg,var(--panel),var(--panel2));
+    padding:clamp(28px,4.5vw,52px) clamp(20px,4vw,44px);box-shadow:var(--shadow)}
+  .cta h2{margin:var(--s3) 0}
+  .cta p{color:var(--muted);max-width:62ch}
+  .cta ul{margin:var(--s4) 0 0;padding-left:1.15em;color:var(--muted);font-size:var(--t-small)}
+  .cta li+li{margin-top:6px}
+  .cta .btnrow{display:flex;flex-wrap:wrap;gap:var(--s3);margin-top:var(--s5)}
+
+  .faq h3{font-size:var(--t-h3);margin-bottom:var(--s2)}
+  .faq p{color:var(--muted);font-size:var(--t-small);max-width:70ch}
+  .faq > div + div{margin-top:var(--s5)}
+
+  /* iOS Safari zooms the page when a focused field is under 16px */
+  input,select,textarea{font-size:16px}
+</style>
+</head>
+<body class="pro">
+<a class="skip-link" href="#main">Skip to content</a>
+<nav class="site-nav"><a class="site-nav__brand" href="/">YUSUF GADELRAB</a><div class="site-nav__links"><a href="/">Work</a><a href="/resume.html">Resume</a><a href="/store.html">Store</a><a href="/apps.html">Apps</a><a href="/kxngsef.html">KXNG SEF</a><a href="/media-kit.html">Media Kit</a></div></nav>
+
+<main id="main">
+
+  <section class="section hero">
+    <div class="eyebrow">Free tools · no signup · nothing stored on a server</div>
+    <h1>Freight broker calculators</h1>
+    <p class="lead">Six calculators for the numbers a broker runs all day: rate per mile, deadhead cost, margin, detention, fuel surcharge, and break-even. Every formula is printed on the page so you can check the math instead of trusting it.</p>
+    <div class="note" style="margin-top:var(--s5)">
+      <b>About the pre-filled numbers:</b> every field starts with a round, made-up placeholder so the page has something to calculate. They are <b>not</b> market rates, benchmarks, or industry averages — overwrite them with your own figures. Nothing here is sent anywhere; your last-used inputs are saved only in this browser.
+    </div>
+    <ul class="toc">
+      <li><a href="#rpm">1 · Rate per mile</a></li>
+      <li><a href="#deadhead">2 · Deadhead cost</a></li>
+      <li><a href="#margin">3 · Margin / spread</a></li>
+      <li><a href="#detention">4 · Detention &amp; accessorials</a></li>
+      <li><a href="#fsc">5 · Fuel surcharge</a></li>
+      <li><a href="#breakeven">6 · Break-even load</a></li>
+    </ul>
+  </section>
+
+  <div class="rule"></div>
+
+  <div class="section" style="padding-top:var(--s7)">
+
+    <!-- 1 — RATE PER MILE -->
+    <section class="calc card card--flat" id="rpm">
+      <div class="calc__num">Calculator 01</div>
+      <h2>Rate per mile</h2>
+      <p class="calc__sub">What the load actually pays per mile once you count the miles run empty to get to it — and what you keep if you already know the carrier's buy rate.</p>
+
+      <div class="fields">
+        <div class="field">
+          <label for="rpm_lh">Linehaul revenue ($)</label>
+          <input type="number" id="rpm_lh" inputmode="decimal" min="0" step="1" value="2000">
+          <span class="hint">Customer rate, excluding accessorials.</span>
+          <span class="err">Enter a number of 0 or more.</span>
+        </div>
+        <div class="field">
+          <label for="rpm_loaded">Loaded miles</label>
+          <input type="number" id="rpm_loaded" inputmode="decimal" min="0" step="1" value="800">
+          <span class="hint">Pickup to delivery.</span>
+          <span class="err">Miles cannot be negative.</span>
+        </div>
+        <div class="field">
+          <label for="rpm_dh">Deadhead miles</label>
+          <input type="number" id="rpm_dh" inputmode="decimal" min="0" step="1" value="100">
+          <span class="hint">Empty miles to the pickup.</span>
+          <span class="err">Miles cannot be negative.</span>
+        </div>
+        <div class="field">
+          <label for="rpm_buy">Carrier buy rate ($, optional)</label>
+          <input type="number" id="rpm_buy" inputmode="decimal" min="0" step="1" value="1600">
+          <span class="hint">Leave 0 to skip the margin lines.</span>
+          <span class="err">Enter a number of 0 or more.</span>
+        </div>
+      </div>
+
+      <p class="formula"><b>Loaded RPM</b>   = linehaul ÷ loaded miles
+<b>All-in RPM</b>   = linehaul ÷ (loaded miles + deadhead miles)
+<b>Margin $</b>     = linehaul − carrier buy rate
+<b>Margin %</b>     = margin $ ÷ linehaul × 100</p>
+
+      <div class="out" role="status" aria-live="polite" aria-atomic="true">
+        <div class="outgrid" id="rpm_out"></div>
+        <p class="interp" id="rpm_interp"></p>
+      </div>
+      <div class="actions">
+        <button type="button" class="btn btn-ghost btn-sm" data-copy="rpm">Copy result</button>
+        <span class="copied" id="rpm_copied" role="status" aria-live="polite"></span>
+      </div>
+    </section>
+
+    <!-- 2 — DEADHEAD -->
+    <section class="calc card card--flat" id="deadhead">
+      <div class="calc__num">Calculator 02</div>
+      <h2>Deadhead cost</h2>
+      <p class="calc__sub">What it really costs to reposition a truck empty, and how much extra the loaded rate has to carry to pay for it.</p>
+
+      <div class="fields">
+        <div class="field">
+          <label for="dh_miles">Deadhead miles</label>
+          <input type="number" id="dh_miles" inputmode="decimal" min="0" step="1" value="100">
+          <span class="hint">Empty miles to the pickup.</span>
+          <span class="err">Miles cannot be negative.</span>
+        </div>
+        <div class="field">
+          <label for="dh_fuel">Fuel price ($/gal)</label>
+          <input type="number" id="dh_fuel" inputmode="decimal" min="0" step="0.01" value="3.80">
+          <span class="hint">Your pump price — placeholder only. <a href="https://www.eia.gov/petroleum/gasdiesel/" target="_blank" rel="noopener">EIA weekly diesel →</a></span>
+          <span class="err">Enter a price of 0 or more.</span>
+        </div>
+        <div class="field">
+          <label for="dh_mpg">Truck MPG</label>
+          <input type="number" id="dh_mpg" inputmode="decimal" min="0.1" step="0.1" value="6.5">
+          <span class="hint">Must be greater than 0.</span>
+          <span class="err">MPG must be greater than 0.</span>
+        </div>
+        <div class="field">
+          <label for="dh_cpm">Driver + fixed cost ($/mile)</label>
+          <input type="number" id="dh_cpm" inputmode="decimal" min="0" step="0.01" value="0.65">
+          <span class="hint">Pay, tires, maintenance — everything except fuel.</span>
+          <span class="err">Enter a cost of 0 or more.</span>
+        </div>
+        <div class="field">
+          <label for="dh_loaded">Loaded miles (optional)</label>
+          <input type="number" id="dh_loaded" inputmode="decimal" min="0" step="1" value="800">
+          <span class="hint">Used only to spread the cost per loaded mile.</span>
+          <span class="err">Miles cannot be negative.</span>
+        </div>
+      </div>
+
+      <p class="formula"><b>Fuel cost</b>          = (deadhead miles ÷ MPG) × fuel price
+<b>Driver/fixed cost</b>  = deadhead miles × cost per mile
+<b>True deadhead cost</b> = fuel cost + driver/fixed cost
+<b>Break-even add-on</b>  = true deadhead cost ÷ loaded miles  ($ per loaded mile the rate must gain)</p>
+
+      <div class="out" role="status" aria-live="polite" aria-atomic="true">
+        <div class="outgrid" id="dh_out"></div>
+        <p class="interp" id="dh_interp"></p>
+      </div>
+      <div class="actions">
+        <button type="button" class="btn btn-ghost btn-sm" data-copy="dh">Copy result</button>
+        <span class="copied" id="dh_copied" role="status" aria-live="polite"></span>
+      </div>
+    </section>
+
+    <!-- 3 — MARGIN -->
+    <section class="calc card card--flat" id="margin">
+      <div class="calc__num">Calculator 03</div>
+      <h2>Margin / broker spread</h2>
+      <p class="calc__sub">Gross margin in dollars and percent, plus the carrier rate you would have to book to hit a target margin on the same customer rate.</p>
+
+      <div class="fields">
+        <div class="field">
+          <label for="mg_cust">Customer rate ($)</label>
+          <input type="number" id="mg_cust" inputmode="decimal" min="0" step="1" value="2000">
+          <span class="hint">What you bill the shipper, all-in.</span>
+          <span class="err">Enter a number of 0 or more.</span>
+        </div>
+        <div class="field">
+          <label for="mg_carr">Carrier rate ($)</label>
+          <input type="number" id="mg_carr" inputmode="decimal" min="0" step="1" value="1600">
+          <span class="hint">What you pay the truck, all-in.</span>
+          <span class="err">Enter a number of 0 or more.</span>
+        </div>
+        <div class="field">
+          <label for="mg_target">Target margin (%)</label>
+          <input type="number" id="mg_target" inputmode="decimal" min="0" max="99" step="0.5" value="18">
+          <span class="hint">Your own goal — editable placeholder, not a benchmark.</span>
+          <span class="err">Enter 0–99.</span>
+        </div>
+      </div>
+
+      <p class="formula"><b>Gross margin $</b>   = customer rate − carrier rate
+<b>Gross margin %</b>   = gross margin $ ÷ customer rate × 100
+<b>Carrier rate to hit target %</b> = customer rate × (1 − target % ÷ 100)</p>
+
+      <div class="out" role="status" aria-live="polite" aria-atomic="true">
+        <div class="outgrid" id="mg_out"></div>
+        <p class="interp" id="mg_interp"></p>
+      </div>
+      <div class="actions">
+        <button type="button" class="btn btn-ghost btn-sm" data-copy="mg">Copy result</button>
+        <span class="copied" id="mg_copied" role="status" aria-live="polite"></span>
+      </div>
+    </section>
+
+    <!-- 4 — DETENTION -->
+    <section class="calc card card--flat" id="detention">
+      <div class="calc__num">Calculator 04</div>
+      <h2>Detention &amp; accessorials</h2>
+      <p class="calc__sub">Billable detention after free time, plus the usual add-ons, totalled into one number you can paste into an invoice dispute.</p>
+
+      <div class="fields">
+        <div class="field">
+          <label for="dt_free">Free time (hours)</label>
+          <input type="number" id="dt_free" inputmode="decimal" min="0" step="0.25" value="2">
+          <span class="hint">Per your rate confirmation.</span>
+          <span class="err">Hours cannot be negative.</span>
+        </div>
+        <div class="field">
+          <label for="dt_actual">Time on site (hours)</label>
+          <input type="number" id="dt_actual" inputmode="decimal" min="0" step="0.25" value="5.5">
+          <span class="hint">Check-in to departure.</span>
+          <span class="err">Hours cannot be negative.</span>
+        </div>
+        <div class="field">
+          <label for="dt_rate">Detention rate ($/hr)</label>
+          <input type="number" id="dt_rate" inputmode="decimal" min="0" step="1" value="50">
+          <span class="hint">Contracted rate — editable placeholder.</span>
+          <span class="err">Enter a rate of 0 or more.</span>
+        </div>
+        <div class="field">
+          <label for="dt_cap">Detention cap ($, 0 = none)</label>
+          <input type="number" id="dt_cap" inputmode="decimal" min="0" step="1" value="0">
+          <span class="hint">Many contracts cap detention per stop.</span>
+          <span class="err">Enter a number of 0 or more.</span>
+        </div>
+        <div class="field">
+          <label for="dt_lumper">Lumper ($)</label>
+          <input type="number" id="dt_lumper" inputmode="decimal" min="0" step="1" value="0">
+          <span class="err">Enter a number of 0 or more.</span>
+        </div>
+        <div class="field">
+          <label for="dt_layover">Layover ($)</label>
+          <input type="number" id="dt_layover" inputmode="decimal" min="0" step="1" value="0">
+          <span class="err">Enter a number of 0 or more.</span>
+        </div>
+        <div class="field">
+          <label for="dt_tonu">TONU ($)</label>
+          <input type="number" id="dt_tonu" inputmode="decimal" min="0" step="1" value="0">
+          <span class="hint">Truck ordered, not used.</span>
+          <span class="err">Enter a number of 0 or more.</span>
+        </div>
+        <div class="field">
+          <label for="dt_stops">Extra stops (count)</label>
+          <input type="number" id="dt_stops" inputmode="decimal" min="0" step="1" value="0">
+          <span class="err">Count cannot be negative.</span>
+        </div>
+        <div class="field">
+          <label for="dt_stoprate">Rate per extra stop ($)</label>
+          <input type="number" id="dt_stoprate" inputmode="decimal" min="0" step="1" value="50">
+          <span class="hint">Editable placeholder.</span>
+          <span class="err">Enter a number of 0 or more.</span>
+        </div>
+      </div>
+
+      <p class="formula"><b>Billable hours</b>  = max(0, time on site − free time)
+<b>Detention $</b>     = billable hours × detention rate   (capped if a cap is set)
+<b>Accessorials $</b>  = lumper + layover + TONU + (extra stops × rate per stop)
+<b>Total billable</b>  = detention $ + accessorials $</p>
+
+      <div class="out" role="status" aria-live="polite" aria-atomic="true">
+        <div class="outgrid" id="dt_out"></div>
+        <p class="interp" id="dt_interp"></p>
+      </div>
+      <div class="actions">
+        <button type="button" class="btn btn-ghost btn-sm" data-copy="dt">Copy result</button>
+        <span class="copied" id="dt_copied" role="status" aria-live="polite"></span>
+      </div>
+    </section>
+
+    <!-- 5 — FSC -->
+    <section class="calc card card--flat" id="fsc">
+      <div class="calc__num">Calculator 05</div>
+      <h2>Fuel surcharge (FSC)</h2>
+      <p class="calc__sub">The standard peg-and-divide FSC: everything the current diesel price sits above your contract's base price, divided by the truck's MPG.</p>
+
+      <div class="fields">
+        <div class="field">
+          <label for="fs_base">Base / peg price ($/gal)</label>
+          <input type="number" id="fs_base" inputmode="decimal" min="0" step="0.01" value="2.50">
+          <span class="hint">The price written into your FSC schedule.</span>
+          <span class="err">Enter a price of 0 or more.</span>
+        </div>
+        <div class="field">
+          <label for="fs_doe">Current DOE average ($/gal)</label>
+          <input type="number" id="fs_doe" inputmode="decimal" min="0" step="0.001" value="3.900">
+          <span class="hint">Type this week's figure. <a href="https://www.eia.gov/petroleum/gasdiesel/" target="_blank" rel="noopener">EIA weekly on-highway diesel →</a></span>
+          <span class="err">Enter a price of 0 or more.</span>
+        </div>
+        <div class="field">
+          <label for="fs_mpg">Truck MPG</label>
+          <input type="number" id="fs_mpg" inputmode="decimal" min="0.1" step="0.1" value="6.0">
+          <span class="hint">The MPG your schedule assumes.</span>
+          <span class="err">MPG must be greater than 0.</span>
+        </div>
+        <div class="field">
+          <label for="fs_miles">Billable miles</label>
+          <input type="number" id="fs_miles" inputmode="decimal" min="0" step="1" value="800">
+          <span class="hint">Miles the FSC applies to.</span>
+          <span class="err">Miles cannot be negative.</span>
+        </div>
+      </div>
+
+      <p class="formula"><b>FSC per mile</b> = max(0, DOE price − base price) ÷ MPG
+<b>FSC per load</b> = FSC per mile × billable miles
+Below the base price the surcharge is zero (unless your contract runs a negative FSC).</p>
+
+      <div class="out" role="status" aria-live="polite" aria-atomic="true">
+        <div class="outgrid" id="fs_out"></div>
+        <p class="interp" id="fs_interp"></p>
+      </div>
+      <div class="actions">
+        <button type="button" class="btn btn-ghost btn-sm" data-copy="fs">Copy result</button>
+        <span class="copied" id="fs_copied" role="status" aria-live="polite"></span>
+      </div>
+    </section>
+
+    <!-- 6 — BREAK-EVEN -->
+    <section class="calc card card--flat" id="breakeven">
+      <div class="calc__num">Calculator 06</div>
+      <h2>Break-even load</h2>
+      <p class="calc__sub">The lowest rate that still covers the load, and the rate you need for the trip to actually earn your target margin.</p>
+
+      <div class="fields">
+        <div class="field">
+          <label for="be_fixed">Fixed cost for the trip ($)</label>
+          <input type="number" id="be_fixed" inputmode="decimal" min="0" step="1" value="400">
+          <span class="hint">Insurance, truck payment, overhead allocated to this load.</span>
+          <span class="err">Enter a number of 0 or more.</span>
+        </div>
+        <div class="field">
+          <label for="be_var">Variable cost ($/mile)</label>
+          <input type="number" id="be_var" inputmode="decimal" min="0" step="0.01" value="1.45">
+          <span class="hint">Fuel, driver pay, tires, maintenance.</span>
+          <span class="err">Enter a number of 0 or more.</span>
+        </div>
+        <div class="field">
+          <label for="be_miles">Total miles (loaded + deadhead)</label>
+          <input type="number" id="be_miles" inputmode="decimal" min="0" step="1" value="900">
+          <span class="hint">Every mile the truck turns for this load.</span>
+          <span class="err">Miles cannot be negative.</span>
+        </div>
+        <div class="field">
+          <label for="be_target">Target margin (%)</label>
+          <input type="number" id="be_target" inputmode="decimal" min="0" max="99" step="0.5" value="15">
+          <span class="hint">Margin on revenue. Editable placeholder.</span>
+          <span class="err">Enter 0–99.</span>
+        </div>
+      </div>
+
+      <p class="formula"><b>Total cost</b>      = fixed cost + (variable cost per mile × total miles)
+<b>Break-even rate</b> = total cost                    (margin = 0)
+<b>Minimum rate</b>    = total cost ÷ (1 − target % ÷ 100)
+<b>Minimum RPM</b>     = minimum rate ÷ total miles
+Dividing by (1 − margin) is deliberate: margin is measured against revenue, not cost.</p>
+
+      <div class="out" role="status" aria-live="polite" aria-atomic="true">
+        <div class="outgrid" id="be_out"></div>
+        <p class="interp" id="be_interp"></p>
+      </div>
+      <div class="actions">
+        <button type="button" class="btn btn-ghost btn-sm" data-copy="be">Copy result</button>
+        <span class="copied" id="be_copied" role="status" aria-live="polite"></span>
+      </div>
+    </section>
+
+  </div>
+
+  <div class="rule"></div>
+
+  <!-- CTA -->
+  <section class="section" id="freightdesk">
+    <div class="cta">
+      <div class="eyebrow">Built by the same person who built FreightDesk</div>
+      <h2>Get the numbers, then get the hours back.</h2>
+      <p>These six calculators cover the math. They don't touch the part that actually eats the day — the POD requests, the invoice disputes, the rate reconciliations and the 30-day past-due chases sitting in your billing inbox right now.</p>
+      <p style="margin-top:var(--s3)">That's what <b style="color:var(--ink)">FreightDesk AI</b> is: an AI back-office clerk that reads the AR inbox, classifies each email, and drafts the reply with the right numbers attached — running on a local model on your own machine, so rates and margins never leave the building.</p>
+      <ul>
+        <li>It is new. There are <b>no clients yet</b> — the first pilots are being taken now, which is exactly why founding-client pricing exists ($999 setup + $249/mo).</li>
+        <li>No usage figures, time savings, or ROI numbers are claimed here, because none have been measured in production yet.</li>
+        <li>If it isn't a fit, the calculators above stay free and unchanged. No email required to use them.</li>
+      </ul>
+      <div class="btnrow">
+        <a href="/freightdesk.html" class="btn btn-gold">See what FreightDesk does →</a>
+        <a href="mailto:yusuf.gadelrab06@gmail.com?subject=FreightDesk%20—%20question%20from%20the%20calculators%20page" class="btn btn-ghost">Email me a question</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- NOTES -->
+  <section class="section faq" style="padding-top:0">
+    <h2 style="margin-bottom:var(--s5)">Notes on the math</h2>
+    <div>
+      <h3>Why "all-in" rate per mile matters</h3>
+      <p>Loaded RPM flatters every load. A 400-mile run at $2.50 loaded that needed 150 empty miles to reach is really paying $1.82 across the miles the truck actually turned. Deadhead is the difference between a lane looking good and being good.</p>
+    </div>
+    <div>
+      <h3>Margin on revenue vs. markup on cost</h3>
+      <p>A $400 spread on a $2,000 customer rate is a 20% margin, but a 25% markup on the $1,600 carrier rate. Both numbers are correct and they are not the same number. Every margin figure on this page is measured against the customer rate, which is the convention on a brokerage P&amp;L.</p>
+    </div>
+    <div>
+      <h3>Fuel surcharge is a formula, not a price</h3>
+      <p>The common FSC method pegs a base diesel price, takes the amount current diesel exceeds it, and divides by an assumed MPG to get cents per mile. Nothing on this page hardcodes a diesel price — enter the current figure from the <a href="https://www.eia.gov/petroleum/gasdiesel/" target="_blank" rel="noopener" style="color:var(--gold-2)">EIA weekly on-highway diesel report</a>, which is the source most FSC schedules reference. Contracts vary: some use a regional average, some step in half-cent brackets rather than a straight divide.</p>
+    </div>
+    <div>
+      <h3>These are estimators, not your contract</h3>
+      <p>Detention rules, caps, free time, and accessorial definitions live in your rate confirmation and customer contract. When the calculator and the contract disagree, the contract wins.</p>
+    </div>
+  </section>
+
+</main>
+
+<footer class="site-footer">
+  <div>
+    <div>© 2026 Yusuf Gadelrab · San Jose, CA</div>
+    <div><a href="mailto:yusuf.gadelrab06@gmail.com">yusuf.gadelrab06@gmail.com</a></div>
+  </div>
+  <div class="site-footer__links">
+    <a href="/">Work</a>
+    <a href="/resume.html">Resume</a>
+    <a href="/store.html">Store</a>
+    <a href="/apps.html">Apps</a>
+    <a href="/kxngsef.html">KXNG SEF</a>
+    <a href="/media-kit.html">Media Kit</a>
+    <a href="/freightdesk.html">FreightDesk</a>
+    <a href="https://github.com/Yusuf-Gadelrab" target="_blank" rel="noopener">GitHub</a>
+    <a href="https://www.linkedin.com/in/yusuf-gadelrab-76246b221" target="_blank" rel="noopener">LinkedIn</a>
+  </div>
+</footer>
+
+<script>
+(function(){
+  'use strict';
+  var STORE='fdcalc.v1';
+
+  var usd=function(n){
+    return '$'+n.toLocaleString('en-US',{minimumFractionDigits:2,maximumFractionDigits:2});
+  };
+  var per=function(n,d){ return '$'+n.toLocaleString('en-US',{minimumFractionDigits:d,maximumFractionDigits:d}); };
+  var pct=function(n){ return n.toLocaleString('en-US',{minimumFractionDigits:1,maximumFractionDigits:1})+'%'; };
+
+  function $(id){ return document.getElementById(id); }
+
+  /* Reads a field, flags it invalid when it breaks the rule, and always
+     returns a usable number so nothing downstream can produce NaN. */
+  function val(id,opts){
+    opts=opts||{};
+    var el=$(id);
+    if(!el) return 0;
+    var raw=el.value.trim();
+    var n=raw===''?(opts.blank!==undefined?opts.blank:0):Number(raw);
+    var bad=!isFinite(n)||(opts.min!==undefined&&n<opts.min)||(opts.max!==undefined&&n>opts.max)
+            ||(opts.positive&&n<=0);
+    el.setAttribute('aria-invalid',bad?'true':'false');
+    if(bad) return opts.fallback!==undefined?opts.fallback:0;
+    return n;
+  }
+
+  function render(prefix,rows,interp){
+    var box=$(prefix+'_out');
+    box.textContent='';
+    rows.forEach(function(r){
+      var d=document.createElement('div');
+      var l=document.createElement('div'); l.className='o__label'; l.textContent=r[0];
+      var v=document.createElement('div'); v.className='o__value'+(r[2]?' is-bad':''); v.textContent=r[1];
+      d.appendChild(l); d.appendChild(v); box.appendChild(d);
+    });
+    $(prefix+'_interp').textContent=interp;
+    LAST[prefix]={rows:rows,interp:interp};
+  }
+
+  var LAST={};
+
+  /* ---------- 1 · rate per mile ---------- */
+  function calcRpm(){
+    var lh=val('rpm_lh',{min:0}), loaded=val('rpm_loaded',{min:0}),
+        dh=val('rpm_dh',{min:0}), buy=val('rpm_buy',{min:0});
+    var total=loaded+dh;
+    var rows=[
+      ['Loaded RPM', loaded>0?per(lh/loaded,3):'—'],
+      ['All-in RPM', (loaded>0&&total>0)?per(lh/total,3):'—']
+    ];
+    var msg;
+    if(loaded<=0){
+      msg='Enter loaded miles above zero to get a rate per mile.';
+    }else{
+      var lrpm=lh/loaded, arpm=lh/total;
+      msg='This load pays '+per(lrpm,3)+' across the '+loaded.toLocaleString('en-US')+' loaded miles, but '
+        +per(arpm,3)+' across all '+total.toLocaleString('en-US')+' miles the truck turns. '
+        +(dh>0?'Deadhead costs you '+per(lrpm-arpm,3)+' per mile of apparent rate.'
+              :'With no deadhead, the two figures are the same.');
+    }
+    if(buy>0&&lh>0){
+      var m=lh-buy;
+      rows.push(['Gross margin', usd(m), m<0]);
+      rows.push(['Margin %', pct(m/lh*100), m<0]);
+      msg+=' At a '+usd(buy)+' buy rate you keep '+usd(m)+' ('+pct(m/lh*100)+')'
+        +(m<0?' — you are underwater on this load.':'.');
+    }
+    render('rpm',rows,msg);
+  }
+
+  /* ---------- 2 · deadhead ---------- */
+  function calcDh(){
+    var miles=val('dh_miles',{min:0}), fuel=val('dh_fuel',{min:0}),
+        mpg=val('dh_mpg',{positive:true,fallback:0}), cpm=val('dh_cpm',{min:0}),
+        loaded=val('dh_loaded',{min:0});
+    var fuelCost=mpg>0?(miles/mpg)*fuel:0;
+    var driver=miles*cpm;
+    var total=fuelCost+driver;
+    var rows=[
+      ['Fuel cost', mpg>0?usd(fuelCost):'—'],
+      ['Driver + fixed', usd(driver)],
+      ['True deadhead cost', mpg>0?usd(total):'—'],
+      ['Break-even add-on', (mpg>0&&loaded>0)?per(total/loaded,3)+'/mi':'—']
+    ];
+    var msg;
+    if(mpg<=0){
+      msg='Enter an MPG above zero — the fuel half of the cost cannot be divided by zero.';
+    }else if(loaded>0){
+      msg='Running '+miles.toLocaleString('en-US')+' empty miles costs about '+usd(total)
+        +'. Spread over '+loaded.toLocaleString('en-US')+' loaded miles, the rate needs to be '
+        +per(total/loaded,3)+' per mile higher than a no-deadhead load to end up in the same place.';
+    }else{
+      msg='Running '+miles.toLocaleString('en-US')+' empty miles costs about '+usd(total)
+        +' before the load pays anything. Add loaded miles to see the per-mile add-on.';
+    }
+    render('dh',rows,msg);
+  }
+
+  /* ---------- 3 · margin ---------- */
+  function calcMg(){
+    var cust=val('mg_cust',{min:0}), carr=val('mg_carr',{min:0}),
+        tgt=val('mg_target',{min:0,max:99});
+    var m=cust-carr;
+    var mpctv=cust>0?m/cust*100:0;
+    var need=cust*(1-tgt/100);
+    var rows=[
+      ['Gross margin', usd(m), m<0],
+      ['Margin %', cust>0?pct(mpctv):'—', m<0],
+      ['Carrier rate for '+pct(tgt), cust>0?usd(need):'—']
+    ];
+    var msg;
+    if(cust<=0){
+      msg='Enter a customer rate above zero — margin percent needs something to divide by.';
+    }else if(m<0){
+      msg='You are paying the carrier '+usd(-m)+' more than the customer is paying you. To hit '
+        +pct(tgt)+' on this customer rate the carrier would have to come down to '+usd(need)+'.';
+    }else{
+      var delta=carr-need;
+      msg='You keep '+usd(m)+' of the '+usd(cust)+' customer rate, a '+pct(mpctv)+' margin. To hit '
+        +pct(tgt)+' you would need the carrier at '+usd(need)+' — '
+        +(delta>0?usd(delta)+' below where you are now.':'which you are already beating by '+usd(-delta)+'.');
+    }
+    render('mg',rows,msg);
+  }
+
+  /* ---------- 4 · detention ---------- */
+  function calcDt(){
+    var free=val('dt_free',{min:0}), actual=val('dt_actual',{min:0}), rate=val('dt_rate',{min:0}),
+        cap=val('dt_cap',{min:0}), lump=val('dt_lumper',{min:0}), lay=val('dt_layover',{min:0}),
+        tonu=val('dt_tonu',{min:0}), stops=val('dt_stops',{min:0}), stopRate=val('dt_stoprate',{min:0});
+    var hrs=Math.max(0,actual-free);
+    var det=hrs*rate;
+    var capped=cap>0&&det>cap;
+    if(capped) det=cap;
+    var acc=lump+lay+tonu+(stops*stopRate);
+    var total=det+acc;
+    var rows=[
+      ['Billable hours', hrs.toLocaleString('en-US',{maximumFractionDigits:2})+' hr'],
+      ['Detention', usd(det)],
+      ['Accessorials', usd(acc)],
+      ['Total billable', usd(total)]
+    ];
+    var msg;
+    if(hrs<=0){
+      msg='The truck was inside free time, so no detention is billable'
+        +(acc>0?' — but '+usd(acc)+' of accessorials still is.':'.');
+    }else{
+      msg='After '+free.toLocaleString('en-US')+' hr of free time, '
+        +hrs.toLocaleString('en-US',{maximumFractionDigits:2})+' hr are billable at '+usd(rate)
+        +'/hr = '+usd(hrs*rate)+(capped?', capped at '+usd(cap)+' by your contract':'')
+        +(acc>0?', plus '+usd(acc)+' in accessorials':'')+'. Invoice '+usd(total)+'.';
+    }
+    render('dt',rows,msg);
+  }
+
+  /* ---------- 5 · fuel surcharge ---------- */
+  function calcFs(){
+    var base=val('fs_base',{min:0}), doe=val('fs_doe',{min:0}),
+        mpg=val('fs_mpg',{positive:true,fallback:0}), miles=val('fs_miles',{min:0});
+    var spread=Math.max(0,doe-base);
+    var fscMile=mpg>0?spread/mpg:0;
+    var rows=[
+      ['Diesel above base', per(spread,3)+'/gal'],
+      ['FSC per mile', mpg>0?per(fscMile,3):'—'],
+      ['FSC per load', mpg>0?usd(fscMile*miles):'—']
+    ];
+    var msg;
+    if(mpg<=0){
+      msg='Enter an MPG above zero — the surcharge is the fuel spread divided by MPG.';
+    }else if(spread<=0){
+      msg='Current diesel is at or below your '+per(base,2)+' base price, so this schedule pays no surcharge.';
+    }else{
+      msg='Diesel is '+per(spread,3)+' a gallon over your base, which at '+mpg+' MPG is '
+        +per(fscMile,3)+' per mile — '+usd(fscMile*miles)+' on a '
+        +miles.toLocaleString('en-US')+'-mile load.';
+    }
+    render('fs',rows,msg);
+  }
+
+  /* ---------- 6 · break-even ---------- */
+  function calcBe(){
+    var fixed=val('be_fixed',{min:0}), varc=val('be_var',{min:0}),
+        miles=val('be_miles',{min:0}), tgt=val('be_target',{min:0,max:99});
+    var cost=fixed+varc*miles;
+    var minRate=tgt<100?cost/(1-tgt/100):0;
+    var rows=[
+      ['Total cost', usd(cost)],
+      ['Break-even rate', usd(cost)],
+      ['Minimum rate at '+pct(tgt), usd(minRate)],
+      ['Minimum RPM', miles>0?per(minRate/miles,3):'—']
+    ];
+    var msg;
+    if(miles<=0){
+      msg='Enter total miles above zero to get a per-mile figure; the rate below still has to cover '+usd(cost)+'.';
+    }else{
+      msg='This trip costs '+usd(cost)+' to run, or '+per(cost/miles,3)+' per mile just to break even. '
+        +'To clear '+pct(tgt)+' margin you need '+usd(minRate)+' — '+per(minRate/miles,3)
+        +' per mile. Anything below '+usd(cost)+' loses money.';
+    }
+    render('be',rows,msg);
+  }
+
+  var CALCS={rpm:calcRpm,dh:calcDh,mg:calcMg,dt:calcDt,fs:calcFs,be:calcBe};
+  var TITLES={rpm:'Rate per mile',dh:'Deadhead cost',mg:'Margin / broker spread',
+              dt:'Detention & accessorials',fs:'Fuel surcharge',be:'Break-even load'};
+
+  function runAll(){ for(var k in CALCS) CALCS[k](); }
+
+  /* ---------- persistence ---------- */
+  var inputs=[].slice.call(document.querySelectorAll('.calc input'));
+
+  function save(){
+    try{
+      var o={};
+      inputs.forEach(function(el){ o[el.id]=el.value; });
+      localStorage.setItem(STORE,JSON.stringify(o));
+    }catch(e){}
+  }
+  function restore(){
+    try{
+      var raw=localStorage.getItem(STORE);
+      if(!raw) return;
+      var o=JSON.parse(raw);
+      inputs.forEach(function(el){ if(typeof o[el.id]==='string') el.value=o[el.id]; });
+    }catch(e){}
+  }
+
+  inputs.forEach(function(el){
+    var prefix=el.id.split('_')[0];
+    el.addEventListener('input',function(){
+      (CALCS[prefix]||runAll)();
+      save();
+    });
+  });
+
+  /* ---------- copy ---------- */
+  document.querySelectorAll('[data-copy]').forEach(function(btn){
+    btn.addEventListener('click',function(){
+      var p=btn.getAttribute('data-copy');
+      var d=LAST[p];
+      if(!d) return;
+      var lines=[TITLES[p]];
+      d.rows.forEach(function(r){ lines.push('  '+r[0]+': '+r[1]); });
+      lines.push('');
+      lines.push(d.interp);
+      lines.push('');
+      lines.push('Calculated at yusuf-gadelrab.github.io/freight-tools.html');
+      var text=lines.join('\n');
+      var note=$(p+'_copied');
+      function ok(){ note.textContent='Copied'; setTimeout(function(){note.textContent='';},2200); }
+      function fail(){ note.textContent='Copy failed — select the result and copy manually.'; }
+      if(navigator.clipboard&&navigator.clipboard.writeText){
+        navigator.clipboard.writeText(text).then(ok,fail);
+      }else{
+        var ta=document.createElement('textarea');
+        ta.value=text; ta.setAttribute('readonly','');
+        ta.style.position='fixed'; ta.style.top='-1000px';
+        document.body.appendChild(ta); ta.select();
+        try{ document.execCommand('copy'); ok(); }catch(e){ fail(); }
+        document.body.removeChild(ta);
+      }
+    });
+  });
+
+  restore();
+  runAll();
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Trading Bot — Broker-Agnostic Execution Engine · Yusuf Gadelrab</title>
+<meta name="description" content="Case study: a broker-agnostic trading execution engine with a crash-safe order journal, a fail-closed risk layer, and 48 passing tests. Not trading real money.">
+<link rel="canonical" href="https://yusuf-gadelrab.github.io/trading-bot.html">
+<link rel="icon" type="image/svg+xml" href="https://yusuf-gadelrab.github.io/favicon.svg">
+<link rel="apple-touch-icon" sizes="180x180" href="https://yusuf-gadelrab.github.io/apple-touch-icon.png">
+<meta name="theme-color" content="#0B0B0D">
+<meta name="author" content="Yusuf Gadelrab">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Yusuf Gadelrab">
+<meta property="og:title" content="Trading Bot — Broker-Agnostic Execution Engine">
+<meta property="og:description" content="A crash-safe, fail-closed trading execution engine with 48 passing tests. Paper mode only — not trading real money.">
+<meta property="og:url" content="https://yusuf-gadelrab.github.io/trading-bot.html">
+<meta property="og:image" content="https://yusuf-gadelrab.github.io/og-card.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Trading Bot — Broker-Agnostic Execution Engine">
+<meta name="twitter:description" content="A crash-safe, fail-closed trading execution engine with 48 passing tests. Paper mode only.">
+<meta name="twitter:image" content="https://yusuf-gadelrab.github.io/og-card.png">
+<link rel="stylesheet" href="/css/site.css">
+<style>
+  .pills{display:flex;flex-wrap:wrap;gap:var(--s2)}
+  .pill{padding:8px 14px;border:1px solid var(--line-soft);border-radius:var(--radius);
+    font-size:var(--t-small);color:var(--ink);background:var(--panel)}
+  .callout{border-left:3px solid var(--gold)}
+  .callout b{color:var(--gold-2)}
+  .card p{color:var(--muted);font-size:var(--t-small);margin-top:var(--s3)}
+  .code{border:1px solid var(--line-soft);border-radius:var(--radius-lg);
+    background:var(--bg2);overflow:hidden}
+  .code .bar{display:flex;gap:7px;padding:var(--s3) var(--s4);
+    border-bottom:1px solid var(--line-soft);align-items:center}
+  .code .bar i{width:10px;height:10px;border-radius:50%;display:block;background:var(--faint)}
+  .code .bar span{margin-left:var(--s2);color:var(--muted);font-family:var(--mono);font-size:var(--t-micro)}
+  .code pre{padding:var(--s5);overflow-x:auto;font-family:var(--mono);
+    font-size:13px;line-height:1.85;color:var(--muted)}
+  .code pre .c{color:var(--faint)}
+  .code pre .g{color:var(--gold-2)}
+</style>
+</head>
+<body class="pro">
+
+<a class="skip-link" href="#main">Skip to content</a>
+
+<nav class="site-nav">
+  <a class="site-nav__brand" href="/">YUSUF GADELRAB</a>
+  <div class="site-nav__links">
+    <a href="/">Work</a>
+    <a href="/resume.html">Resume</a>
+    <a href="/store.html">Store</a>
+    <a href="/apps.html">Apps</a>
+    <a href="/kxngsef.html">KXNG SEF</a>
+    <a href="/media-kit.html">Media Kit</a>
+  </div>
+</nav>
+
+<main id="main">
+
+  <section class="section">
+    <span class="badge"><span class="dot"></span>Built &amp; tested · paper mode only · not trading real money</span>
+    <h1 style="margin:var(--s5) 0">A trading bot where <span class="gold-fill">the interesting part isn't the strategy.</span></h1>
+    <p class="lead">A broker-agnostic execution engine for a single daily-bar setup. The strategy is about forty lines. The other 95% of the codebase exists to answer one question: <b>what happens when the process dies halfway through placing an order?</b></p>
+    <div class="grid" style="margin-top:var(--s8);grid-template-columns:repeat(auto-fit,minmax(min(180px,100%),1fr))">
+      <div class="card card--flat stat"><span class="stat__value">48</span><span class="stat__label">passing tests</span></div>
+      <div class="card card--flat stat"><span class="stat__value">4</span><span class="stat__label">broker adapters, one interface</span></div>
+      <div class="card card--flat stat"><span class="stat__value">$0</span><span class="stat__label">real capital deployed</span></div>
+    </div>
+  </section>
+
+  <hr class="divider">
+
+  <section class="section section--tight">
+    <p class="eyebrow">The Problem</p>
+    <h2>Automated trading fails at the plumbing, not the signal.</h2>
+    <p class="lead" style="margin-top:var(--s3)">Every hobby trading bot has the same failure modes, and none of them are about picking the wrong stock. It crashes between sending an order and recording it, restarts, and sends the order again. It fills an entry and never gets a stop in. It sells a position twice because two exit orders were live against one lot. It quietly manages a position you opened by hand. Each of those loses real money in a way a backtest will never show you.</p>
+  </section>
+
+  <hr class="divider">
+
+  <section class="section section--tight">
+    <p class="eyebrow">What I Built</p>
+    <h2>Six invariants, enforced structurally.</h2>
+    <div class="grid" style="margin-top:var(--s6)">
+      <div class="card">
+        <h3>Duplicate orders are impossible</h3>
+        <p>Every signal maps to a deterministic <code class="mono">client_order_id</code>, and a SQLite journal claims that id <em>before</em> the broker call. Crash and restart, the same id is re-derived and the order is skipped rather than re-sent.</p>
+      </div>
+      <div class="card">
+        <h3>It fails closed</h3>
+        <p><code class="mono">DRY_RUN=true</code> and <code class="mono">ALLOW_LIVE=false</code> are the defaults. A live-capable broker adapter refuses to start unless you explicitly opt in. There is also a <code class="mono">halt</code> kill switch that blocks all new entries.</p>
+      </div>
+      <div class="card">
+        <h3>Nothing sits unprotected</h3>
+        <p>A stop goes in immediately after a fill. Failing to place one is logged as an error, never swallowed. The stop and the 2R target are linked, so one filling cancels the other — otherwise the stale leg eventually sells shares you no longer own.</p>
+      </div>
+      <div class="card">
+        <h3>It only touches what it opened</h3>
+        <p>Bot-owned positions are recorded in a <code class="mono">bot_positions</code> table at fill time, keyed by strategy, symbol and entry bar. Any position without a journal row is assumed to be mine and is never managed or exited.</p>
+      </div>
+      <div class="card">
+        <h3>Strategy code never imports a broker</h3>
+        <p>Everything goes through one <code class="mono">Broker</code> interface, so paper and live run identical code paths. You are never testing something different from what you run.</p>
+      </div>
+      <div class="card">
+        <h3>Repair is a first-class command</h3>
+        <p><code class="mono">reconcile</code> rebuilds the journal against the broker after a crash, and <code class="mono">manage</code> is fully idempotent — safe to run on a cron as often as you like, because it never places a second copy of an order.</p>
+      </div>
+    </div>
+  </section>
+
+  <hr class="divider">
+
+  <section class="section section--tight">
+    <p class="eyebrow">How It Works</p>
+    <h2>Scan, size, place, protect, repair.</h2>
+    <div class="code" style="margin-top:var(--s6)">
+      <div class="bar"><i></i><i></i><i></i><span>cli.py</span></div>
+<pre><span class="g">scan</span>        <span class="c"># signals only — never places an order, no API keys needed</span>
+<span class="g">status</span>      <span class="c"># account, guards, open positions</span>
+<span class="g">run</span>         <span class="c"># scan + trade + manage (DRY_RUN=true just logs the intent)</span>
+<span class="g">manage</span>      <span class="c"># maintain exits on bot-owned positions — idempotent</span>
+<span class="g">halt</span> / <span class="g">resume</span>  <span class="c"># kill switch</span>
+<span class="g">reconcile</span>   <span class="c"># repair the journal against the broker after a crash</span></pre>
+    </div>
+    <div class="panel callout" style="margin-top:var(--s6)">
+      <b>The OCO problem, handled per broker.</b> On Alpaca the two exit legs are a single broker-native OCO order, so the losing leg is cancelled server-side even if my process is dead — there is no window where both are live. The other adapters can't express that, so they get a software OCO: two GTC orders linked in the journal, with the sibling cancelled on the next <code class="mono">manage</code> pass. That is <em>strictly weaker</em>, and the code and docs say so rather than pretending the two are equivalent. The cancel itself is crash-safe: the leg is marked <code class="mono">cancel_pending</code> in the journal before the broker call, so a crash in that gap gets repaired instead of leaving a live sell order against shares that are already gone.
+    </div>
+  </section>
+
+  <hr class="divider">
+
+  <section class="section section--tight">
+    <p class="eyebrow">The Stack</p>
+    <h2>Small surface, deliberately.</h2>
+    <div class="pills" style="margin-top:var(--s5)">
+      <span class="pill">Python</span>
+      <span class="pill">uv</span>
+      <span class="pill">SQLite journal</span>
+      <span class="pill">Alpaca API</span>
+      <span class="pill">Robinhood Crypto API</span>
+      <span class="pill">Local paper simulator</span>
+      <span class="pill">Deterministic client order IDs</span>
+      <span class="pill">Idempotent reconciliation</span>
+      <span class="pill">pytest · 48 tests</span>
+    </div>
+    <p class="muted" style="margin-top:var(--s5);max-width:var(--maxw-prose);font-size:var(--t-small)">Four adapters implement the same interface: a local paper simulator (no network, no keys — the default), Alpaca for equities, official Robinhood Crypto, and an unofficial Robinhood equities adapter. That last one is documented in the README as a bad idea — it impersonates the mobile app, violates Robinhood's terms, has no paper mode, and requires storing credentials locally. It exists, it is labelled, and Alpaca is what's recommended.</p>
+  </section>
+
+  <hr class="divider">
+
+  <section class="section section--tight">
+    <p class="eyebrow">Honest Status</p>
+    <h2>It is not making money, and I won't pretend otherwise.</h2>
+    <div class="grid grid--2" style="margin-top:var(--s6)">
+      <div class="card">
+        <h3>Built and tested</h3>
+        <p>48 tests cover the safety properties directly — duplicate suppression, unprotected-position detection, ownership boundaries, closed-bar-only signals. The engine runs against the paper simulator today.</p>
+      </div>
+      <div class="card">
+        <h3>No real capital</h3>
+        <p>It has never traded live money. And the setup it executes — AVWAP-reclaim — <a class="gold" href="/swing-screener.html">did not survive my own adversarial re-test</a>. So the honest framing is: this is a well-engineered execution engine wrapped around a strategy I do not currently believe in enough to fund.</p>
+      </div>
+    </div>
+    <div class="panel callout" style="margin-top:var(--s6)">
+      ⚠ <b>Known gaps, from the README:</b> positions opened before the ownership table existed are unmanaged by design; the software-OCO brokers have a real cancel-latency window; partial fills are handled conservatively rather than precisely; and market-hours checks on the non-Alpaca adapters use a simple clock that doesn't know about holidays. Nothing here is financial advice, and none of it is an invitation to run this with your money.
+    </div>
+    <div class="panel callout" style="margin-top:var(--s3)">
+      🔒 <b>Repo access:</b> the repository is private. Happy to walk through the journal design or the reconciliation logic on a call.
+    </div>
+    <div class="row" style="margin-top:var(--s6)">
+      <a href="/apps.html" class="btn btn-gold">← All projects</a>
+      <a href="/swing-screener.html" class="btn btn-ghost">The validation story →</a>
+    </div>
+  </section>
+
+</main>
+
+<footer class="site-footer">
+  <div>Yusuf Gadelrab · CS @ SJSU · Trading bot project page · Not financial advice</div>
+  <div class="site-footer__links">
+    <a href="/">Work</a>
+    <a href="/resume.html">Resume</a>
+    <a href="/store.html">Store</a>
+    <a href="/apps.html">Apps</a>
+    <a href="/kxngsef.html">KXNG SEF</a>
+    <a href="/media-kit.html">Media Kit</a>
+    <a href="mailto:yusuf.gadelrab06@gmail.com">yusuf.gadelrab06@gmail.com</a>
+    <a href="https://github.com/Yusuf-Gadelrab" target="_blank" rel="noopener">GitHub</a>
+    <a href="https://www.linkedin.com/in/yusuf-gadelrab-76246b221" target="_blank" rel="noopener">LinkedIn</a>
+  </div>
+</footer>
+
+</body>
+</html>
