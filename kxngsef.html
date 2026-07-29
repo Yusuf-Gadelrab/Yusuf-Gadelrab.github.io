@@ -33,160 +33,109 @@
     scholar: ''
   };
 </script>
+<link rel="stylesheet" href="/css/site.css">
 <style>
-  :root{
-    --bg:#0B0B0D; --bg2:#141416; --panel:#17171a; --panel2:#1c1c20;
-    --bone:#F2EDE4; --ink:#F2EDE4; --muted:#a29c8e;
-    --gold:#D4AF37; --gold-2:#e9c96a; --gold-dim:#8a7328;
-    --line:rgba(212,175,55,.18); --glow:rgba(212,175,55,.35);
-    --display:Impact,Haettenschweiler,"Arial Narrow Bold",sans-serif;
-    --body-font:-apple-system,BlinkMacSystemFont,"Segoe UI",Inter,system-ui,sans-serif;
-    --mono:"SF Mono",ui-monospace,Menlo,Consolas,monospace;
-  }
-  *{box-sizing:border-box;margin:0;padding:0}
-  html{scroll-behavior:smooth}
-  body{background:var(--bg);color:var(--ink);font-family:var(--body-font);line-height:1.65;-webkit-font-smoothing:antialiased;overflow-x:hidden}
-  a{color:inherit;text-decoration:none}
-  ::selection{background:var(--gold);color:#0B0B0D}
-  img,svg{max-width:100%}
-
-  body::before{content:"";position:fixed;inset:0;z-index:0;pointer-events:none;
-    background:radial-gradient(55vw 38vw at 85% -8%,rgba(212,175,55,.07),transparent 60%),
-                radial-gradient(45vw 36vw at -8% 40%,rgba(212,175,55,.05),transparent 60%);}
-
-  main,header,footer{position:relative;z-index:1}
-  section{padding:clamp(56px,8vw,110px) clamp(18px,5vw,60px);max-width:1180px;margin:0 auto}
+  /* Page-specific only — tokens, reset, buttons, cards, nav, footer live in /css/site.css */
 
   /* ---------- HERO ---------- */
-  .hero{position:relative;min-height:94vh;display:flex;flex-direction:column;align-items:center;justify-content:center;
-    text-align:center;padding:120px clamp(18px,6vw,60px) 60px;overflow:hidden}
+  .hero{position:relative;min-height:80vh;display:flex;flex-direction:column;align-items:center;
+    justify-content:center;text-align:center;padding:var(--s9) var(--section-x) var(--s8);overflow:hidden}
   .ar-watermark{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);
-    font-size:clamp(220px,42vw,560px);color:var(--bone);opacity:.05;line-height:1;pointer-events:none;user-select:none;z-index:0;
-    font-family:"Geeza Pro","Damascus","Al Bayan",Tahoma,Arial,sans-serif}
-  .drop-badge{position:relative;z-index:1;display:inline-flex;align-items:center;gap:8px;padding:8px 18px;
-    border:1px solid var(--line);border-radius:2px;font-family:var(--display);font-size:13px;letter-spacing:3px;
-    text-transform:uppercase;color:var(--gold-2);background:rgba(212,175,55,.06)}
-  .drop-badge .dot{width:7px;height:7px;background:var(--gold);box-shadow:0 0 10px var(--glow);border-radius:1px}
-  .wordmark{position:relative;z-index:1;font-family:var(--display);text-transform:uppercase;line-height:.86;
-    margin:26px 0 10px;display:flex;flex-direction:column;align-items:center}
+    font-size:clamp(220px,42vw,560px);color:var(--bone);opacity:.05;line-height:1;pointer-events:none;
+    user-select:none;z-index:0;font-family:"Geeza Pro","Damascus","Al Bayan",Tahoma,Arial,sans-serif}
+  .hero>*{position:relative;z-index:1}
+  .wordmark{font-family:var(--display);text-transform:uppercase;line-height:.86;
+    margin:var(--s5) 0 var(--s3);display:flex;flex-direction:column;align-items:center}
   .wordmark span{display:block}
   .wordmark .w1{font-size:clamp(64px,15vw,180px);color:var(--bone);letter-spacing:2px}
-  .wordmark .w2{font-size:clamp(72px,17vw,210px);letter-spacing:4px;
-    background:linear-gradient(120deg,var(--gold-2),var(--gold) 45%,var(--gold-dim));
-    -webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
-  .tagline{position:relative;z-index:1;font-family:var(--display);text-transform:uppercase;
-    font-size:clamp(18px,2.6vw,28px);letter-spacing:3px;color:var(--ink);margin-bottom:10px}
+  .wordmark .w2{font-size:clamp(72px,17vw,210px);letter-spacing:4px}
+  .tagline{font-family:var(--display);text-transform:uppercase;font-size:clamp(18px,2.6vw,28px);
+    letter-spacing:3px;margin-bottom:var(--s2)}
   .tagline b{color:var(--gold-2);font-weight:400}
-  .hero-note{position:relative;z-index:1;color:var(--muted);font-size:15px;max-width:48ch;margin:8px 0 34px}
-  .hero-cta{position:relative;z-index:1;display:flex;flex-wrap:wrap;gap:14px;justify-content:center}
-
-  .btn{padding:15px 30px;border-radius:2px;font-family:var(--display);letter-spacing:1.5px;text-transform:uppercase;
-    font-size:15px;cursor:pointer;display:inline-flex;align-items:center;gap:9px;border:1px solid transparent;
-    transition:transform .25s,box-shadow .3s,background .3s,border-color .3s}
-  .btn:hover{transform:translateY(-3px)}
-  .btn-gold{background:linear-gradient(135deg,var(--gold),var(--gold-2));color:#0B0B0D;box-shadow:0 8px 30px -8px var(--glow)}
-  .btn-gold:hover{box-shadow:0 14px 40px -8px var(--glow)}
-  .btn-ghost{border-color:var(--line);color:var(--ink);background:rgba(255,255,255,.02)}
-  .btn-ghost:hover{border-color:var(--gold);background:rgba(212,175,55,.07)}
+  .hero-note{color:var(--muted);font-size:var(--t-small);max-width:48ch;margin:var(--s2) 0 var(--s6)}
+  .hero-cta{display:flex;flex-wrap:wrap;gap:var(--s3);justify-content:center}
 
   /* ---------- SECTION HEADS ---------- */
-  .sec-head{max-width:64ch;margin-bottom:40px}
-  .kicker{font-family:var(--display);color:var(--gold);font-size:13px;letter-spacing:4px;text-transform:uppercase}
-  h2{font-family:var(--display);text-transform:uppercase;font-size:clamp(30px,5vw,52px);letter-spacing:1px;margin:10px 0 14px;line-height:1.05}
-  .sec-head p{color:var(--muted);font-size:clamp(15px,1.8vw,17px)}
+  .sec-head{max-width:64ch;margin-bottom:var(--s7)}
+  .sec-head h2{margin:var(--s3) 0 var(--s3)}
+  .sec-head p{color:var(--muted)}
 
   /* ---------- DROP GRID ---------- */
-  .drop-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:20px}
-  .piece{display:flex;flex-direction:column;border:1px solid var(--line);border-radius:6px;padding:20px;
-    background:linear-gradient(180deg,var(--panel),var(--bg2));transition:transform .35s,border-color .35s,box-shadow .35s}
-  .piece:hover{transform:translateY(-6px);border-color:rgba(212,175,55,.45);box-shadow:0 24px 54px -24px rgba(0,0,0,.85)}
+  .piece{display:flex;flex-direction:column;padding:var(--s5)}
   .swatch{background:radial-gradient(120% 120% at 30% 12%,rgba(212,175,55,.10),rgba(212,175,55,.02) 60%),var(--panel2);
-    border:1px solid var(--line);border-radius:4px;padding:14px;display:flex;align-items:center;justify-content:center}
-  .swatch svg{width:100%;height:auto;max-width:230px;display:block}
-  .piece h3{font-family:var(--display);text-transform:uppercase;letter-spacing:1.5px;font-size:23px;margin:18px 0 6px}
-  .piece .desc{color:var(--muted);font-size:14px;flex:1}
-  .piece-foot{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-top:16px;padding-top:14px;
-    border-top:1px dashed rgba(212,175,55,.2)}
+    border:1px solid var(--line);border-radius:var(--radius);padding:var(--s4);
+    display:flex;align-items:center;justify-content:center}
+  .swatch svg{width:100%;height:auto;max-width:230px}
+  .piece h3{margin:var(--s4) 0 var(--s1)}
+  .piece .desc{color:var(--muted);font-size:var(--t-small);flex:1}
+  .piece-foot{display:flex;align-items:center;justify-content:space-between;gap:var(--s3);
+    margin-top:var(--s4);padding-top:var(--s3);border-top:1px dashed var(--line)}
   .piece-foot .price{font-family:var(--display);font-size:21px;letter-spacing:1px;color:var(--gold-2)}
-  .waitlist-btn{padding:10px 16px;border-radius:2px;font-family:var(--display);font-size:13px;letter-spacing:1px;
-    text-transform:uppercase;background:linear-gradient(135deg,var(--gold),var(--gold-2));color:#0B0B0D;
-    transition:transform .25s,box-shadow .3s}
-  .waitlist-btn:hover{transform:translateY(-2px);box-shadow:0 10px 26px -8px var(--glow)}
   .dtext{font-family:var(--display)}
   .mtext{font-family:var(--mono)}
   .kxng-cursor{animation:kxngBlink 1.1s steps(1) infinite}
   @keyframes kxngBlink{50%{opacity:0}}
 
   /* ---------- STORY ---------- */
-  .story p{color:#cfcac0;max-width:72ch;font-size:16.5px;margin-bottom:18px}
+  .story p{color:var(--ink);max-width:var(--maxw-prose);margin-bottom:var(--s4)}
   .story p b{color:var(--gold-2);font-weight:600}
   .story p:last-child{margin-bottom:0}
 
   /* ---------- DETAILS STRIP ---------- */
-  .details-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:16px}
-  .detail{padding:24px 22px;border:1px solid var(--line);border-radius:6px;background:linear-gradient(180deg,var(--panel),var(--bg2));
-    transition:transform .3s,border-color .3s}
-  .detail:hover{transform:translateY(-4px);border-color:rgba(212,175,55,.4)}
-  .detail .lbl{font-family:var(--display);color:var(--gold);font-size:12px;letter-spacing:2.5px;text-transform:uppercase}
-  .detail p{margin-top:8px;font-size:14.5px;color:var(--muted)}
+  .detail{padding:var(--s5)}
+  .detail .lbl{font-family:var(--display);color:var(--gold-2);font-size:var(--t-micro);
+    letter-spacing:2.5px;text-transform:uppercase}
+  .detail p{margin-top:var(--s2);font-size:var(--t-small);color:var(--muted)}
 
   /* ---------- CTA BAND ---------- */
-  .final{text-align:center;border:1px solid var(--line);border-radius:8px;
-    background:radial-gradient(60% 100% at 50% 0%,rgba(212,175,55,.09),transparent),linear-gradient(180deg,var(--panel),var(--bg2));
-    padding:clamp(46px,7vw,80px) 24px}
-  .final h2{margin-bottom:12px}
-  .final p{color:var(--muted);max-width:52ch;margin:0 auto 30px;font-size:16.5px}
-  .final .alt{margin-top:18px;font-size:14px;color:var(--muted)}
-  .final .alt a{color:var(--gold-2);border-bottom:1px dotted rgba(212,175,55,.5)}
+  .final{text-align:center;border:1px solid var(--line);border-radius:var(--radius-lg);
+    background:radial-gradient(60% 100% at 50% 0%,rgba(212,175,55,.09),transparent),
+               linear-gradient(180deg,var(--panel),var(--panel2));
+    padding:clamp(46px,7vw,80px) var(--s5)}
+  .final p{color:var(--muted);max-width:52ch;margin:var(--s3) auto var(--s6)}
+  .final .alt{margin-top:var(--s4);font-size:var(--t-small);color:var(--muted)}
+  .final .alt a{color:var(--gold-2);border-bottom:1px dotted var(--line)}
   .final .alt a:hover{border-bottom-color:var(--gold)}
 
-  /* ---------- FOOTER ---------- */
-  footer{border-top:1px solid var(--line);padding:40px clamp(18px,5vw,60px);text-align:center;color:var(--muted);font-size:14px}
-  footer a{color:var(--gold-2)}
-  footer a:hover{text-decoration:underline}
-  footer .fmark{font-family:var(--display);color:var(--ink);letter-spacing:1px}
-
-  /* ---------- REVEAL ---------- */
-  .reveal{opacity:0;transform:translateY(28px);transition:opacity .8s cubic-bezier(.2,.7,.2,1),transform .8s cubic-bezier(.2,.7,.2,1)}
+  /* reveal — the page script toggles .in (site.css ships .is-in) */
   .reveal.in{opacity:1;transform:none}
   .reveal.d1{transition-delay:.08s}.reveal.d2{transition-delay:.16s}.reveal.d3{transition-delay:.24s}
 
   @media(max-width:620px){
-    .hero{min-height:auto;padding-top:100px}
-    .wordmark{margin:20px 0 8px}
-  }
-  @media (prefers-reduced-motion: reduce){
-    html{scroll-behavior:auto}
-    *,*::before,*::after{animation:none!important;transition:none!important}
-    .reveal{opacity:1;transform:none}
+    .hero{min-height:auto;padding-top:var(--s8)}
+    .wordmark{margin:var(--s4) 0 var(--s2)}
   }
 </style>
 </head>
 <body>
 
+<a class="skip-link" href="#main">Skip to content</a>
+<nav class="site-nav"><a class="site-nav__brand" href="/">YUSUF GADELRAB</a><div class="site-nav__links"><a href="/">Work</a><a href="/resume.html">Resume</a><a href="/store.html">Store</a><a href="/kxngsef.html" aria-current="page">KXNG SEF</a><a href="/media-kit.html">Media Kit</a></div></nav>
+
 <header class="hero">
   <span class="ar-watermark" aria-hidden="true" dir="rtl" lang="ar">سيف</span>
-  <span class="drop-badge reveal"><span class="dot"></span>Drop 001 — First Run</span>
-  <h1 class="wordmark reveal d1"><span class="w1">KXNG</span><span class="w2">SEF</span></h1>
+  <span class="badge reveal"><span class="dot"></span>Drop 001 — First Run</span>
+  <h1 class="wordmark reveal d1"><span class="w1">KXNG</span><span class="w2 gold-fill">SEF</span></h1>
   <p class="tagline reveal d2">Earned. <b>Never given.</b></p>
   <p class="hero-note reveal d2">"Sef" — <span dir="rtl" lang="ar">سيف</span>, <i>sayf</i>, Arabic for sword. Streetwear built in public by a CS student who earns everything on the rack.</p>
   <div class="hero-cta reveal d3">
     <a class="btn btn-gold" href="mailto:yusuf.gadelrab06@gmail.com?subject=KXNG%20SEF%20Drop%20001%20Waitlist&amp;body=Size%3A%20%0APiece%3A%20">Join the Waitlist</a>
     <a class="btn btn-ghost" href="https://instagram.com/_kxng_sef" target="_blank" rel="noopener">@_kxng_sef ↗</a>
   </div>
+  <p class="hero-note reveal d3" style="margin-bottom:0">No payment today · tees $32 · hoodie $58 · sizes S–2XL</p>
 </header>
 
-<main>
+<main id="main">
 
-  <section id="drop">
+  <section class="section" id="drop">
     <div class="sec-head reveal">
-      <div class="kicker">Drop 001</div>
+      <div class="eyebrow">Drop 001</div>
       <h2>Six pieces. First run.</h2>
       <p>Print-on-demand, one drop at a time. Join the waitlist on any piece below and you're first in line the moment the store connects — no payment today.</p>
     </div>
-    <div class="drop-grid">
+    <div class="grid">
 
-      <article class="piece reveal">
+      <article class="card piece reveal">
         <div class="swatch">
           <svg viewBox="0 0 240 280" role="img" aria-label="Bone t-shirt with a stacked KXNG SEF wordmark and a minimal three-point crown on the chest">
             <path d="M96,42 L44,76 L70,112 L96,94 L96,236 L164,236 L164,94 L190,112 L216,76 L164,42 L146,58 L114,58 Z" fill="#F2EDE4" stroke="#c9c3b4" stroke-width="2"/>
@@ -200,11 +149,11 @@
         <p class="desc">Front chest hit — stacked wordmark under a minimal three-point crown.</p>
         <div class="piece-foot">
           <span class="price">$32</span>
-          <a class="waitlist-btn" data-buy="crown" href="mailto:yusuf.gadelrab06@gmail.com?subject=KXNG%20SEF%20Drop%20001%20Waitlist&amp;body=Size%3A%20%0APiece%3A%20CROWN%20HIT%20Tee%20-%20%2432">Waitlist →</a>
+          <a class="btn btn-gold btn-sm" data-buy="crown" href="mailto:yusuf.gadelrab06@gmail.com?subject=KXNG%20SEF%20Drop%20001%20Waitlist&amp;body=Size%3A%20%0APiece%3A%20CROWN%20HIT%20Tee%20-%20%2432">Waitlist →</a>
         </div>
       </article>
 
-      <article class="piece reveal">
+      <article class="card piece reveal">
         <div class="swatch">
           <svg viewBox="0 0 240 280" role="img" aria-label="Black t-shirt with a large Arabic sword back print and the caption Sef, Arabic for sword">
             <path d="M96,42 L44,76 L70,112 L96,94 L96,236 L164,236 L164,94 L190,112 L216,76 L164,42 L146,58 L114,58 Z" fill="#202024" stroke="rgba(242,237,228,.28)" stroke-width="2"/>
@@ -216,11 +165,11 @@
         <p class="desc">Back print — سيف, huge. The word the whole name is built on.</p>
         <div class="piece-foot">
           <span class="price">$32</span>
-          <a class="waitlist-btn" data-buy="sword" href="mailto:yusuf.gadelrab06@gmail.com?subject=KXNG%20SEF%20Drop%20001%20Waitlist&amp;body=Size%3A%20%0APiece%3A%20SEF%20SWORD%20Tee%20-%20%2432">Waitlist →</a>
+          <a class="btn btn-gold btn-sm" data-buy="sword" href="mailto:yusuf.gadelrab06@gmail.com?subject=KXNG%20SEF%20Drop%20001%20Waitlist&amp;body=Size%3A%20%0APiece%3A%20SEF%20SWORD%20Tee%20-%20%2432">Waitlist →</a>
         </div>
       </article>
 
-      <article class="piece reveal">
+      <article class="card piece reveal">
         <div class="swatch">
           <svg viewBox="0 0 240 280" role="img" aria-label="Bone t-shirt with a large two-line back print reading Earned. Never given.">
             <path d="M96,42 L44,76 L70,112 L96,94 L96,236 L164,236 L164,94 L190,112 L216,76 L164,42 L146,58 L114,58 Z" fill="#F2EDE4" stroke="#c9c3b4" stroke-width="2"/>
@@ -232,11 +181,11 @@
         <p class="desc">Back statement piece. Two lines, no explanation needed.</p>
         <div class="piece-foot">
           <span class="price">$32</span>
-          <a class="waitlist-btn" data-buy="earned" href="mailto:yusuf.gadelrab06@gmail.com?subject=KXNG%20SEF%20Drop%20001%20Waitlist&amp;body=Size%3A%20%0APiece%3A%20EARNED.%20NEVER%20GIVEN.%20Tee%20-%20%2432">Waitlist →</a>
+          <a class="btn btn-gold btn-sm" data-buy="earned" href="mailto:yusuf.gadelrab06@gmail.com?subject=KXNG%20SEF%20Drop%20001%20Waitlist&amp;body=Size%3A%20%0APiece%3A%20EARNED.%20NEVER%20GIVEN.%20Tee%20-%20%2432">Waitlist →</a>
         </div>
       </article>
 
-      <article class="piece reveal">
+      <article class="card piece reveal">
         <div class="swatch">
           <svg viewBox="0 0 240 280" role="img" aria-label="Black t-shirt with a terminal-style back print reading dollar sign built in public, with a blinking cursor">
             <path d="M96,42 L44,76 L70,112 L96,94 L96,236 L164,236 L164,94 L190,112 L216,76 L164,42 L146,58 L114,58 Z" fill="#202024" stroke="rgba(242,237,228,.28)" stroke-width="2"/>
@@ -251,11 +200,11 @@
         <p class="desc">Terminal-style back hit — <span class="mtext" style="font-size:.85em">$ built in public</span>, cursor and all.</p>
         <div class="piece-foot">
           <span class="price">$32</span>
-          <a class="waitlist-btn" data-buy="built" href="mailto:yusuf.gadelrab06@gmail.com?subject=KXNG%20SEF%20Drop%20001%20Waitlist&amp;body=Size%3A%20%0APiece%3A%20BUILT%20IN%20PUBLIC%20Tee%20-%20%2432">Waitlist →</a>
+          <a class="btn btn-gold btn-sm" data-buy="built" href="mailto:yusuf.gadelrab06@gmail.com?subject=KXNG%20SEF%20Drop%20001%20Waitlist&amp;body=Size%3A%20%0APiece%3A%20BUILT%20IN%20PUBLIC%20Tee%20-%20%2432">Waitlist →</a>
         </div>
       </article>
 
-      <article class="piece reveal">
+      <article class="card piece reveal">
         <div class="swatch">
           <svg viewBox="0 0 240 280" role="img" aria-label="Bone t-shirt with San Jose lettered above a giant 408 and a small crown below">
             <path d="M96,42 L44,76 L70,112 L96,94 L96,236 L164,236 L164,94 L190,112 L216,76 L164,42 L146,58 L114,58 Z" fill="#F2EDE4" stroke="#c9c3b4" stroke-width="2"/>
@@ -268,11 +217,11 @@
         <p class="desc">San José on the chest, giant 408 below it. Where it started.</p>
         <div class="piece-foot">
           <span class="price">$32</span>
-          <a class="waitlist-btn" data-buy="kxng408" href="mailto:yusuf.gadelrab06@gmail.com?subject=KXNG%20SEF%20Drop%20001%20Waitlist&amp;body=Size%3A%20%0APiece%3A%20408%20KXNG%20Tee%20-%20%2432">Waitlist →</a>
+          <a class="btn btn-gold btn-sm" data-buy="kxng408" href="mailto:yusuf.gadelrab06@gmail.com?subject=KXNG%20SEF%20Drop%20001%20Waitlist&amp;body=Size%3A%20%0APiece%3A%20408%20KXNG%20Tee%20-%20%2432">Waitlist →</a>
         </div>
       </article>
 
-      <article class="piece reveal">
+      <article class="card piece reveal">
         <div class="swatch">
           <svg viewBox="0 0 240 280" role="img" aria-label="Charcoal hoodie with a varsity crest: arched Scholar Athlete Club text, a center crown, and Est. 2026 below">
             <path d="M96,42 L44,76 L70,112 L96,94 L96,236 L164,236 L164,94 L190,112 L216,76 L164,42 L176,18 L130,8 L84,18 Z" fill="#202024" stroke="rgba(242,237,228,.28)" stroke-width="2"/>
@@ -288,16 +237,16 @@
         <p class="desc">Varsity crest hoodie — arched lockup, center crown, Est. 2026.</p>
         <div class="piece-foot">
           <span class="price">$58</span>
-          <a class="waitlist-btn" data-buy="scholar" href="mailto:yusuf.gadelrab06@gmail.com?subject=KXNG%20SEF%20Drop%20001%20Waitlist&amp;body=Size%3A%20%0APiece%3A%20SCHOLAR%20ATHLETE%20CLUB%20Hoodie%20-%20%2458">Waitlist →</a>
+          <a class="btn btn-gold btn-sm" data-buy="scholar" href="mailto:yusuf.gadelrab06@gmail.com?subject=KXNG%20SEF%20Drop%20001%20Waitlist&amp;body=Size%3A%20%0APiece%3A%20SCHOLAR%20ATHLETE%20CLUB%20Hoodie%20-%20%2458">Waitlist →</a>
         </div>
       </article>
 
     </div>
   </section>
 
-  <section id="story" class="story">
+  <section class="section story" id="story">
     <div class="sec-head reveal">
-      <div class="kicker">The Story</div>
+      <div class="eyebrow">The Story</div>
       <h2>Why "earned."</h2>
     </div>
     <p class="reveal">I graduated valedictorian. Same year, I was walking off the football field as league MVP — receiver, running back, linebacker, whatever the team needed — and wrestling in the off-season. Two completely different rooms, the classroom and the huddle, but the same rule ran both: nothing gets handed to you, you put the work in first and let the result speak.</p>
@@ -305,38 +254,43 @@
     <p class="reveal d2">I'm building KXNG SEF the same way I build everything else — <b>in public</b>, one drop at a time, no funding, no hype cycle. Just a CS student at SJSU shipping things and telling you exactly how it's going. Drop 001 is six pieces, first run, print-on-demand. Every piece on this rack is earned.</p>
   </section>
 
-  <section id="details">
+  <section class="section" id="details">
     <div class="sec-head reveal">
-      <div class="kicker">The Details</div>
+      <div class="eyebrow">The Details</div>
       <h2>What you're actually getting.</h2>
     </div>
-    <div class="details-grid">
-      <div class="detail reveal"><div class="lbl">Print-on-Demand</div><p>First run ships in ~2 weeks once the store goes live — no warehouse sitting on stock.</p></div>
-      <div class="detail reveal d1"><div class="lbl">Sizes</div><p>S through 2XL on every piece, tees and hoodie alike.</p></div>
-      <div class="detail reveal d2"><div class="lbl">Launch Pricing</div><p>Tees $32 · Hoodie $58 — locked in for everyone on the waitlist.</p></div>
-      <div class="detail reveal d3"><div class="lbl">No Fake Urgency</div><p>Real waitlist, real first run. Nothing here is marked "sold out" — it isn't out yet.</p></div>
+    <div class="grid">
+      <div class="card detail reveal"><div class="lbl">Print-on-Demand</div><p>First run ships in ~2 weeks once the store goes live — no warehouse sitting on stock.</p></div>
+      <div class="card detail reveal d1"><div class="lbl">Sizes</div><p>S through 2XL on every piece, tees and hoodie alike.</p></div>
+      <div class="card detail reveal d2"><div class="lbl">Launch Pricing</div><p>Tees $32 · Hoodie $58 — locked in for everyone on the waitlist.</p></div>
+      <div class="card detail reveal d3"><div class="lbl">No Fake Urgency</div><p>Real waitlist, real first run. Nothing here is marked "sold out" — it isn't out yet.</p></div>
     </div>
   </section>
 
-  <section id="waitlist">
+  <section class="section" id="waitlist">
     <div class="final reveal">
       <h2>Get on the list.</h2>
       <p>Drop 001 hasn't opened yet — join now and you'll get first access the moment KXNG SEF goes live.</p>
       <a class="btn btn-gold" href="mailto:yusuf.gadelrab06@gmail.com?subject=KXNG%20SEF%20Drop%20001%20Waitlist&amp;body=Size%3A%20%0APiece%3A%20">Join the Waitlist</a>
-      <div class="alt">or DM "<b style="color:var(--gold-2)">SEF</b>" on <a href="https://instagram.com/_kxng_sef" target="_blank" rel="noopener">@_kxng_sef</a> on Instagram</div>
+      <div class="alt">or DM "<b class="gold">SEF</b>" on <a href="https://instagram.com/_kxng_sef" target="_blank" rel="noopener">@_kxng_sef</a> on Instagram</div>
     </div>
   </section>
 
 </main>
 
-<footer>
-  <p><span class="fmark">KXNG SEF</span> · founded by Yusuf Gadelrab · San Jose, CA<br/>
-  <a href="index.html">Portfolio</a> &nbsp;·&nbsp;
-  <a href="store.html">Store</a> &nbsp;·&nbsp;
-  <a href="media-kit.html">Media Kit</a> &nbsp;·&nbsp;
-  <a href="https://instagram.com/_kxng_sef" target="_blank" rel="noopener">@_kxng_sef</a> &nbsp;·&nbsp;
-  <a href="mailto:yusuf.gadelrab06@gmail.com">Email</a></p>
-  <p style="margin-top:10px">© 2026 KXNG SEF · Earned. Never given.</p>
+<footer class="site-footer">
+  <div>KXNG SEF · founded by Yusuf Gadelrab · San Jose, CA · © 2026 · Earned. Never given.</div>
+  <div class="site-footer__links">
+    <a href="/">Work</a>
+    <a href="/resume.html">Resume</a>
+    <a href="/store.html">Store</a>
+    <a href="/kxngsef.html">KXNG SEF</a>
+    <a href="/media-kit.html">Media Kit</a>
+    <a href="https://instagram.com/_kxng_sef" target="_blank" rel="noopener">@_kxng_sef</a>
+    <a href="mailto:yusuf.gadelrab06@gmail.com">yusuf.gadelrab06@gmail.com</a>
+    <a href="https://github.com/Yusuf-Gadelrab" target="_blank" rel="noopener">GitHub</a>
+    <a href="https://www.linkedin.com/in/yusuf-gadelrab-76246b221" target="_blank" rel="noopener">LinkedIn</a>
+  </div>
 </footer>
 
 <script>
