@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<!-- tech:seo — managed block (SEO / social / structured data / perf / PWA) -->
+<link rel="preload" href="/css/site.css" as="style">
+<meta name="robots" content="index,follow,max-image-preview:large">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://yusuf-gadelrab.github.io/og-card.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="DHAHAB CIRCLE — The Golden Standard">
+<meta name="twitter:image" content="https://yusuf-gadelrab.github.io/og-card.png">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://yusuf-gadelrab.github.io/"},{"@type":"ListItem","position":2,"name":"DHAHAB Circle","item":"https://yusuf-gadelrab.github.io/circle.html"}]}</script>
+<link rel="manifest" href="/manifest.webmanifest">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<script>addEventListener("load",function(){if("serviceWorker" in navigator)navigator.serviceWorker.register("/sw.js").catch(function(){})});</script>
+<!-- /tech:seo -->
+<title>DHAHAB Circle — A Community for Builders, Traders &amp; Climbers</title>
+<meta name="description" content="A private community for people who build software, trade markets, chase internships, and run a brand. One rule: receipts over opinions. Free to join.">
+<link rel="canonical" href="https://yusuf-gadelrab.github.io/circle.html">
+<link rel="icon" type="image/svg+xml" href="https://yusuf-gadelrab.github.io/favicon.svg">
+<link rel="apple-touch-icon" sizes="180x180" href="https://yusuf-gadelrab.github.io/apple-touch-icon.png">
+<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#d4af37">
+<meta name="theme-color" content="#0B0B0D">
+<meta name="author" content="Yusuf Gadelrab">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Yusuf Gadelrab">
+<meta property="og:title" content="DHAHAB Circle — The Golden Standard">
+<meta property="og:description" content="Four lanes — build, trade, climb, look. One rule: receipts over opinions. Free to join.">
+<meta property="og:url" content="https://yusuf-gadelrab.github.io/circle.html">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="DHAHAB Circle — The Golden Standard">
+<meta name="twitter:description" content="Four lanes — build, trade, climb, look. One rule: receipts over opinions.">
+
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Organization","name":"DHAHAB Circle","alternateName":"The Golden Standard","url":"https://yusuf-gadelrab.github.io/circle.html","description":"A free community for people who build software, trade markets, pursue internships, and run creative brands. Members post proof of work rather than opinions.","founder":{"@id":"https://yusuf-gadelrab.github.io/#person"},"logo":"https://yusuf-gadelrab.github.io/img/brand/lion-mark.svg"}</script>
+<link rel="stylesheet" href="/css/site.css">
+<style>
+  .lane{display:flex;flex-direction:column;padding:var(--s5)}
+  .lane h3{margin:var(--s3) 0 var(--s3);font-size:var(--t-h3)}
+  .lane p{color:var(--muted);font-size:var(--t-small);margin:0;flex:1}
+  .lane .glyph{font-size:26px;line-height:1}
+  .chips{display:flex;flex-wrap:wrap;gap:6px;margin-top:var(--s4)}
+  .chips span{font-family:var(--mono);font-size:11px;letter-spacing:.3px;color:var(--muted);
+    border:1px solid var(--line-soft);border-radius:var(--radius);padding:3px 8px;white-space:nowrap}
+  .rule-list{counter-reset:r;list-style:none;margin:var(--s6) 0 0;padding:0}
+  .rule-list li{counter-increment:r;position:relative;padding:var(--s4) 0 var(--s4) 48px;
+    border-bottom:1px solid var(--line-soft);color:var(--muted);font-size:var(--t-small)}
+  .rule-list li:last-child{border-bottom:0}
+  .rule-list li::before{content:counter(r,decimal-leading-zero);position:absolute;left:0;top:var(--s4);
+    font-family:var(--mono);font-size:12px;color:var(--gold-2);letter-spacing:1px}
+  .rule-list b{color:var(--bone);display:block;margin-bottom:4px;font-family:var(--display-pro);
+    letter-spacing:.4px;text-transform:uppercase;font-size:12px}
+  .ritual{display:flex;gap:var(--s4);align-items:flex-start;padding:var(--s4) 0;border-bottom:1px solid var(--line-soft)}
+  .ritual:last-child{border-bottom:0}
+  .ritual time{font-family:var(--mono);font-size:11px;color:var(--gold-2);letter-spacing:.6px;
+    white-space:nowrap;min-width:112px;padding-top:3px}
+  .ritual div p{color:var(--muted);font-size:var(--t-small);margin:4px 0 0}
+  .ritual div b{font-family:var(--display-pro);letter-spacing:.3px}
+  .joinbox{display:flex;flex-wrap:wrap;gap:var(--s3);margin-top:var(--s5)}
+  .joinbox input{flex:1 1 240px;background:var(--panel2);border:1px solid var(--line);
+    border-radius:var(--radius);color:var(--bone);padding:12px 14px;font-family:var(--body-font);
+    font-size:var(--t-small)}
+  .joinbox input:focus{outline:none;border-color:var(--gold-dim)}
+  .formnote{margin-top:var(--s3);font-size:12px;color:var(--faint)}
+  .geo-qa{padding:var(--s5)}
+  .geo-qa h3{font-size:var(--t-h3);margin:0 0 var(--s3)}
+  .geo-qa p{color:var(--muted);font-size:var(--t-small);margin:0}
+</style>
+<!-- geo:entity — canonical Person node, one entity across every page -->
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Person","@id":"https://yusuf-gadelrab.github.io/#person","name":"Yusuf Gadelrab","url":"https://yusuf-gadelrab.github.io/","mainEntityOfPage":"https://yusuf-gadelrab.github.io/about.html","jobTitle":"Computer Science Student, AI Builder & Researcher","email":"mailto:yusuf.gadelrab06@gmail.com","sameAs":["https://github.com/Yusuf-Gadelrab","https://www.linkedin.com/in/yusuf-gadelrab-76246b221","https://www.instagram.com/_kxng_sef/","https://doi.org/10.1145/3770761.3777339"],"affiliation":{"@type":"CollegeOrUniversity","name":"San José State University","url":"https://www.sjsu.edu/"},"address":{"@type":"PostalAddress","addressLocality":"San Jose","addressRegion":"CA","addressCountry":"US"}}</script>
+<link rel="alternate" type="text/plain" href="https://yusuf-gadelrab.github.io/llms-full.txt" title="Plain-text profile for language models">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","@id":"https://yusuf-gadelrab.github.io/circle.html#faq","mainEntity":[{"@type":"Question","name":"What is DHAHAB Circle?","acceptedAnswer":{"@type":"Answer","text":"A free private community founded by Yusuf Gadelrab for people working across four lanes at once: building software and AI, trading markets, pursuing internships, and running a creative brand. The defining rule is that members post proof of work — a commit, a closed trade, an application sent — rather than opinions."}},{"@type":"Question","name":"How much does it cost to join?","acceptedAnswer":{"@type":"Answer","text":"Nothing. There is no paid tier, no course at the end, and no upsell. The first 50 members keep a permanent founding role."}},{"@type":"Question","name":"Does the community sell trading signals?","acceptedAnswer":{"@type":"Answer","text":"No, and it never will. Selling signals, paid picks, or copy-trading is grounds for immediate removal. Members share journals and closed-trade reviews as education. Nothing shared is financial advice."}},{"@type":"Question","name":"Who is it for?","acceptedAnswer":{"@type":"Answer","text":"Students and early-career builders who ship things: developers learning AI, traders who journal their results, international students navigating internships and visas, and creators building a brand. It suits people doing several of those at once."}},{"@type":"Question","name":"What do I have to do after joining?","acceptedAnswer":{"@type":"Answer","text":"Two things: post an introduction and pick your lanes. That unlocks the rest of the server. After that, the only expectation is that you post receipts of real work rather than opinions."}}]}</script>
+</head>
+<body class="pro">
+
+<a class="skip-link" href="#main">Skip to content</a>
+
+<nav class="site-nav">
+  <a class="site-nav__brand" href="/"><img class="site-nav__lion" src="/img/brand/lion-mark.svg" alt="" width="34" height="34"><span>YUSUF GADELRAB</span></a>
+  <div class="site-nav__links">
+    <a href="/">Work</a>
+    <a href="/resume.html">Resume</a>
+    <a href="/store.html">Store</a>
+    <a href="/apps.html">Apps</a>
+    <a href="/circle.html" aria-current="page">Circle</a>
+    <a href="/kxngsef.html">KXNG SEF</a>
+  </div>
+</nav>
+
+<main id="main">
+
+  <header class="section">
+    <img class="page-lion" src="/img/brand/lion-mark.svg" alt="" width="46" height="46">
+    <p class="eyebrow">DHAHAB Circle · ذهب</p>
+    <h1 style="margin:var(--s4) 0">Receipts over opinions. <span class="gold-fill">That's the whole rule.</span></h1>
+    <p class="lead">A private room for people who build software, trade markets, chase internships, and run a brand — usually all at once. Four lanes, one house. You post what you actually did, not what you think about it.</p>
+    <div class="row" style="margin-top:var(--s6)">
+      <a class="btn btn-gold" id="joinBtn" href="#join">Join the Circle →</a>
+      <a class="btn btn-ghost" href="#lanes">See the four lanes</a>
+    </div>
+    <p class="formnote">Free. No course at the end. The first 50 members keep a founding role permanently.</p>
+  </header>
+
+  <hr class="divider">
+
+  <!-- ============ LANES ============ -->
+  <section class="section section--tight" id="lanes">
+    <p class="eyebrow">01 · The four lanes</p>
+    <h2>Pick one. Or pick all four.</h2>
+    <p class="lead" style="margin-top:var(--s3)">Most communities make you choose an identity. This one assumes you're doing several things at once, because that's what actually happens when you're in school and building at the same time.</p>
+
+    <div class="grid" style="margin-top:var(--s6)">
+
+      <article class="card lane">
+        <span class="glyph">🔨</span>
+        <h3>Build</h3>
+        <p>Shipping software and AI. The proof channel takes commits, demos, and repos — including the broken version. The help channel takes real questions with real error messages.</p>
+        <div class="chips"><span>#shipped</span><span>#build-help</span><span>#the-stack</span></div>
+      </article>
+
+      <article class="card lane">
+        <span class="glyph">📈</span>
+        <h3>Trade</h3>
+        <p>Setups posted with a thesis and an invalidation, or not posted. Weekly R-multiple journals. Closed-trade reviews where the loss gets the same attention as the win.</p>
+        <div class="chips"><span>#setups</span><span>#journals</span><span>#trade-review</span></div>
+      </article>
+
+      <article class="card lane">
+        <span class="glyph">🎓</span>
+        <h3>Climb</h3>
+        <p>Live internship drops with deadlines. Resume reviews on a give-two-take-one basis. Visa and international-student notes from people actually in it — peer notes, never legal advice.</p>
+        <div class="chips"><span>#internship-drops</span><span>#resume-review</span><span>#visa-and-intl</span></div>
+      </article>
+
+      <article class="card lane">
+        <span class="glyph">👑</span>
+        <h3>Look</h3>
+        <p>Training logs, cut numbers, fits, and early access to KXNG SEF drops before they go public. The lane for people who think how you show up is part of the work.</p>
+        <div class="chips"><span>#fits</span><span>#cut-log</span><span>#kxngsef</span></div>
+      </article>
+
+    </div>
+  </section>
+
+  <hr class="divider">
+
+  <!-- ============ RULES ============ -->
+  <section class="section section--tight">
+    <p class="eyebrow">02 · The seven</p>
+    <h2>What this place is, stated plainly</h2>
+
+    <ol class="rule-list">
+      <li><b>Receipts over opinions</b>In the proof channels, show the work. Takes without receipts go in the discussion channels. Small receipts count — "I wrote twenty lines and they work" counts.</li>
+      <li><b>Nobody sells signals here</b>No paid picks, no "DM me for entries", no copy-trading, no affiliate dumps. First offence is a ban, not a warning.</li>
+      <li><b>None of it is advice</b>Nothing posted is financial, legal, immigration, or medical advice. Traders share journals. Students share notes. You own your decisions.</li>
+      <li><b>Give two, take one</b>Want a resume review, a code review, or trade feedback? Give two others the same first. That ratio is the entire economy of the room.</li>
+      <li><b>No private pitching</b>Don't cold-DM members to sell, recruit, or promote. Post it in the open or don't post it.</li>
+      <li><b>Failure ranks equal to wins</b>Rejections, blown stops, dead projects — post them. A room where only wins are visible teaches nothing and makes people lie.</li>
+      <li><b>Be someone people want in the room</b>No slurs, no harassment, no doxxing, no NSFW. One strike.</li>
+    </ol>
+  </section>
+
+  <hr class="divider">
+
+  <!-- ============ RITUALS ============ -->
+  <section class="section section--tight">
+    <p class="eyebrow">03 · The rituals</p>
+    <h2>The reason it stays alive</h2>
+    <p class="lead" style="margin-top:var(--s3)">Communities don't die from lack of members. They die from having nothing that happens on a schedule.</p>
+
+    <div class="panel" style="margin-top:var(--s6)">
+      <div class="ritual">
+        <time>DAILY · 08:00 PT</time>
+        <div><b>Daily Fire</b><p>One line: what are you shipping today? Next morning, you report whether you did it. No goals, no plans — one shippable thing.</p></div>
+      </div>
+      <div class="ritual">
+        <time>FRIDAY · 16:00 PT</time>
+        <div><b>The Floor</b><p>Open voice call, no agenda. Screenshare something broken, ask about a trade, or just work quietly with the call on. Ten minutes counts.</p></div>
+      </div>
+      <div class="ritual">
+        <time>SUNDAY · 10:00 PT</time>
+        <div><b>Weekly Wins</b><p>One win, one lesson, one ask. The asks get answered — that's the actual point of the thread.</p></div>
+      </div>
+      <div class="ritual">
+        <time>MONTHLY</time>
+        <div><b>Build Sprint</b><p>48 hours, any lane, ship something that works end to end. Demo call on Sunday, five minutes each, screenshare, no slides.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <hr class="divider">
+
+  <!-- ============ JOIN ============ -->
+  <section class="section section--tight" id="join">
+    <div class="panel" style="border-left:3px solid var(--gold)">
+      <p class="eyebrow">04 · Get in</p>
+      <h2 style="margin:var(--s3) 0">Two moves and you're in the house.</h2>
+      <p class="muted" style="font-size:var(--t-small);max-width:60ch">Post an intro, pick your lanes. That unlocks everything. If the doors aren't open yet, leave your email below and you'll get the invite the hour they are — plus the founding role while the first fifty spots last.</p>
+
+      <div class="row" style="margin-top:var(--s5)">
+        <a class="btn btn-gold" id="inviteBtn" href="#join">Open the invite →</a>
+        <a class="btn btn-ghost" href="/waitlist.html">All waitlists</a>
+      </div>
+
+      <form class="joinbox" id="wlForm" novalidate>
+        <input type="email" id="wlEmail" name="email" placeholder="you@email.com" autocomplete="email" aria-label="Your email address" required>
+        <button class="btn btn-gold" type="submit">Save my spot</button>
+      </form>
+      <p class="formnote" id="wlNote">Your email is used for one thing: telling you when the doors open. No list rental, no spam, unsubscribe by replying once. <a href="/privacy.html">Privacy</a>.</p>
+    </div>
+  </section>
+
+  <hr class="divider">
+
+  <!-- geo:faq-visible -->
+  <section class="section section--tight" id="faq">
+    <p class="eyebrow">FAQ</p>
+    <h2>Common questions</h2>
+    <div class="grid" style="margin-top:var(--s6)">
+      <article class="card geo-qa">
+        <h3>What is DHAHAB Circle?</h3>
+        <p>A free private community for people working across four lanes at once: building software and AI, trading markets, pursuing internships, and running a creative brand. The defining rule is that members post proof of work rather than opinions.</p>
+      </article>
+      <article class="card geo-qa">
+        <h3>How much does it cost to join?</h3>
+        <p>Nothing. There is no paid tier, no course at the end, and no upsell. The first 50 members keep a permanent founding role.</p>
+      </article>
+      <article class="card geo-qa">
+        <h3>Does the community sell trading signals?</h3>
+        <p>No, and it never will. Selling signals, paid picks, or copy-trading is grounds for immediate removal. Members share journals and closed-trade reviews as education. Nothing shared is financial advice.</p>
+      </article>
+      <article class="card geo-qa">
+        <h3>Who is it for?</h3>
+        <p>Students and early-career builders who ship things: developers learning AI, traders who journal their results, international students navigating internships and visas, and creators building a brand. It suits people doing several of those at once.</p>
+      </article>
+      <article class="card geo-qa">
+        <h3>What do I have to do after joining?</h3>
+        <p>Two things: post an introduction and pick your lanes. That unlocks the rest of the server. After that, the only expectation is that you post receipts of real work rather than opinions.</p>
+      </article>
+    </div>
+  </section>
+
+</main>
+
+<footer class="site-footer">
+  <div>© 2026 Yusuf Gadelrab · CS @ SJSU · San Jose, CA</div>
+  <div class="site-footer__links">
+    <a href="/">Work</a>
+    <a href="/resume.html">Resume</a>
+    <a href="/store.html">Store</a>
+    <a href="/apps.html">Apps</a>
+    <a href="/circle.html">Circle</a>
+    <a href="/waitlist.html">Waitlists</a>
+    <a href="/kxngsef.html">KXNG SEF</a>
+    <a href="/media-kit.html">Media Kit</a>
+    <a href="/brand.html">Brand</a>
+    <a href="/privacy.html">Privacy</a>
+    <a href="/terms.html">Terms</a>
+    <a href="mailto:yusuf.gadelrab06@gmail.com">yusuf.gadelrab06@gmail.com</a>
+  </div>
+</footer>
+
+<script>
+/* ── PASTE THE REAL DISCORD INVITE HERE WHEN THE SERVER IS LIVE ──
+   Leave it empty and the page gracefully falls back to the email waitlist. */
+var CIRCLE_INVITE = "";
+</script>
+<script src="/js/waitlist.js" defer></script>
+<script src="/js/site.js" defer></script>
+<script>
+addEventListener("DOMContentLoaded", function () {
+  var btns = [document.getElementById("joinBtn"), document.getElementById("inviteBtn")];
+  if (CIRCLE_INVITE) {
+    btns.forEach(function (b) {
+      if (!b) return;
+      b.href = CIRCLE_INVITE;
+      b.target = "_blank";
+      b.rel = "noopener";
+    });
+    var f = document.getElementById("wlForm");
+    if (f) f.style.display = "none";
+    var n = document.getElementById("wlNote");
+    if (n) n.textContent = "The doors are open — the invite link never expires.";
+  }
+  if (window.YGWaitlist) YGWaitlist.attach("wlForm", "wlEmail", "wlNote", "DHAHAB Circle");
+});
+</script>
+</body>
+</html>
