@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>EventReels — Auto-Edited Highlight Reels · Yusuf Gadelrab</title>
+<meta name="description" content="Case study: a local-first ffmpeg pipeline that turns raw event footage into a finished 9:16 highlight reel, plus a browser studio to drive it.">
+<link rel="canonical" href="https://yusuf-gadelrab.github.io/eventreels.html">
+<link rel="icon" type="image/svg+xml" href="https://yusuf-gadelrab.github.io/favicon.svg">
+<link rel="apple-touch-icon" sizes="180x180" href="https://yusuf-gadelrab.github.io/apple-touch-icon.png">
+<meta name="theme-color" content="#0B0B0D">
+<meta name="author" content="Yusuf Gadelrab">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Yusuf Gadelrab">
+<meta property="og:title" content="EventReels — Auto-Edited Highlight Reels">
+<meta property="og:description" content="A local-first ffmpeg pipeline that turns raw event footage into a finished 9:16 highlight reel.">
+<meta property="og:url" content="https://yusuf-gadelrab.github.io/eventreels.html">
+<meta property="og:image" content="https://yusuf-gadelrab.github.io/projects/eventreels.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="EventReels — Auto-Edited Highlight Reels">
+<meta name="twitter:description" content="A local-first ffmpeg pipeline that turns raw event footage into a finished 9:16 highlight reel.">
+<meta name="twitter:image" content="https://yusuf-gadelrab.github.io/projects/eventreels.jpg">
+<link rel="stylesheet" href="/css/site.css">
+<style>
+  .shot{width:100%;aspect-ratio:16/9;object-fit:cover;border-radius:var(--radius-lg);
+    border:1px solid var(--line);box-shadow:var(--shadow)}
+  .pipe{display:flex;flex-wrap:wrap;gap:var(--s3)}
+  .pipe-step{flex:1 1 190px;min-width:0}
+  .pipe-step .step-n{font-family:var(--display-pro);font-size:var(--t-micro);
+    letter-spacing:2px;color:var(--gold-2);font-weight:700}
+  .pipe-step h3{margin:var(--s2) 0}
+  .pipe-step p{color:var(--muted);font-size:var(--t-small)}
+  .pills{display:flex;flex-wrap:wrap;gap:var(--s2)}
+  .pill{padding:8px 14px;border:1px solid var(--line-soft);border-radius:var(--radius);
+    font-size:var(--t-small);color:var(--ink);background:var(--panel)}
+  .callout{border-left:3px solid var(--gold)}
+  .callout b{color:var(--gold-2)}
+  .card p{color:var(--muted);font-size:var(--t-small);margin-top:var(--s3)}
+</style>
+</head>
+<body class="pro">
+
+<a class="skip-link" href="#main">Skip to content</a>
+
+<nav class="site-nav">
+  <a class="site-nav__brand" href="/">YUSUF GADELRAB</a>
+  <div class="site-nav__links">
+    <a href="/">Work</a>
+    <a href="/resume.html">Resume</a>
+    <a href="/store.html">Store</a>
+    <a href="/apps.html">Apps</a>
+    <a href="/kxngsef.html">KXNG SEF</a>
+    <a href="/media-kit.html">Media Kit</a>
+  </div>
+</nav>
+
+<main id="main">
+
+  <section class="section">
+    <span class="badge"><span class="dot"></span>Prototype · private repo · built 2026</span>
+    <h1 style="margin:var(--s5) 0">EventReels — <span class="gold-fill">your night, already edited.</span></h1>
+    <p class="lead">Drop in raw event footage, get back a finished 9:16 highlight reel. No timeline, no editor, no editing skill. The whole pipeline runs on your own machine: <b>zero API keys, zero Python dependencies — just ffmpeg.</b></p>
+    <figure style="margin-top:var(--s7)">
+      <img class="shot" src="projects/eventreels.jpg" alt="EventReels web studio — drag-and-drop footage uploader with reel length slider and title card field" width="1600" height="833" loading="lazy">
+    </figure>
+  </section>
+
+  <hr class="divider">
+
+  <section class="section section--tight">
+    <p class="eyebrow">The Problem</p>
+    <h2>Nobody edits the footage.</h2>
+    <p class="lead" style="margin-top:var(--s3)">Every event — a rush week, a game, a formal — generates hours of phone video that nobody has the patience or the software skill to cut. The clip that would actually get posted never gets made, because making it means learning a timeline editor and spending an evening scrubbing.</p>
+  </section>
+
+  <hr class="divider">
+
+  <section class="section section--tight">
+    <p class="eyebrow">What I Built</p>
+    <h2>An editing brain, and a studio to drive it.</h2>
+    <div class="grid grid--2" style="margin-top:var(--s6)">
+      <div class="card">
+        <h3>reelsmith — the pipeline</h3>
+        <p>A dependency-free Python CLI wrapping ffmpeg. Scene-change detection finds the visual moments, per-half-second loudness analysis finds the crowd energy, and a scoring pass picks the clips. Renders 1080×1920 @30fps with cover-crop, per-clip fades and −14 LUFS loudness normalization — the level Instagram, TikTok and YouTube all target.</p>
+      </div>
+      <div class="card">
+        <h3>The studio — the interface</h3>
+        <p>A black-and-gold local web app: drag footage in, watch the four-stage pipeline run, preview the result in a phone frame, download it. Finished reels persist to SQLite with a thumbnail library and shareable watch pages, so a reel has a URL instead of living in a downloads folder.</p>
+      </div>
+    </div>
+  </section>
+
+  <hr class="divider">
+
+  <section class="section section--tight">
+    <p class="eyebrow">How It Works</p>
+    <h2>Watch → listen → pick → cut.</h2>
+    <p class="lead" style="margin:var(--s3) 0 var(--s6)">The pipeline cuts the way an editor would: find the moments visually, confirm them with the audio, then order them so the reel tells the night in sequence rather than as a shuffled montage.</p>
+    <div class="pipe">
+      <div class="card pipe-step"><div class="step-n">STEP 1</div><h3>Watch</h3><p>Frame-level scene-change detection in ffmpeg marks every visual cut point in the source footage.</p></div>
+      <div class="card pipe-step"><div class="step-n">STEP 2</div><h3>Listen</h3><p>Per-half-second loudness analysis finds the crowd noise, the music drops, the moments people reacted to.</p></div>
+      <div class="card pipe-step"><div class="step-n">STEP 3</div><h3>Pick</h3><p>Moments are scored and greedy-selected to the target runtime, then re-sorted chronologically.</p></div>
+      <div class="card pipe-step"><div class="step-n">STEP 4</div><h3>Cut</h3><p>Renders vertical 1080×1920 with fades and −14 LUFS normalization. Optional title cards, beat-sync, captions and a music bed.</p></div>
+    </div>
+    <div class="panel callout" style="margin-top:var(--s6)">
+      <b>The test that keeps it honest.</b> The suite generates synthetic quiet→loud→quiet footage with ffmpeg and asserts the selector picks the loud window and the render is a valid vertical video — so the "it finds the good part" claim is checked by a machine, not by my taste.
+    </div>
+  </section>
+
+  <hr class="divider">
+
+  <section class="section section--tight">
+    <p class="eyebrow">The Stack</p>
+    <h2>Local-first on purpose.</h2>
+    <p class="lead" style="margin:var(--s3) 0 var(--s6)">Video is the one workload where cloud processing gets expensive immediately. Doing the whole thing on-device means the cost per reel is zero and the footage never leaves the laptop — which also sidesteps the privacy problem of uploading other people's faces to a server.</p>
+    <div class="pills">
+      <span class="pill">Python</span>
+      <span class="pill">ffmpeg</span>
+      <span class="pill">FastAPI</span>
+      <span class="pill">SQLite</span>
+      <span class="pill">Scene detection</span>
+      <span class="pill">Audio-energy scoring</span>
+      <span class="pill">−14 LUFS loudnorm</span>
+      <span class="pill">unittest · pytest</span>
+      <span class="pill">GitHub Actions CI</span>
+    </div>
+  </section>
+
+  <hr class="divider">
+
+  <section class="section section--tight">
+    <p class="eyebrow">Honest Status</p>
+    <h2>Working prototype. Not a launched product.</h2>
+    <div class="grid grid--2" style="margin-top:var(--s6)">
+      <div class="card">
+        <h3>What's real</h3>
+        <p>The pipeline and the studio both run end-to-end, with a test suite green in CI on every push. Real-footage runs work: four minutes of handheld video in, a clean 30-second vertical reel out.</p>
+      </div>
+      <div class="card">
+        <h3>What isn't</h3>
+        <p>No public launch, no users, no revenue. It runs locally on my machine, the repo is private, and music licensing is an unsolved prerequisite before anything with a licensed audio bed could ship publicly.</p>
+      </div>
+    </div>
+    <div class="panel callout" style="margin-top:var(--s6)">
+      🔒 <b>Repo access:</b> EventReels lives in a private monorepo. Happy to walk through the code or demo the studio live — just ask.
+    </div>
+    <div class="row" style="margin-top:var(--s6)">
+      <a href="/apps.html" class="btn btn-gold">← All projects</a>
+      <a href="mailto:yusuf.gadelrab06@gmail.com" class="btn btn-ghost">Ask for a demo</a>
+    </div>
+  </section>
+
+</main>
+
+<footer class="site-footer">
+  <div>Yusuf Gadelrab · CS @ SJSU · EventReels project page</div>
+  <div class="site-footer__links">
+    <a href="/">Work</a>
+    <a href="/resume.html">Resume</a>
+    <a href="/store.html">Store</a>
+    <a href="/apps.html">Apps</a>
+    <a href="/kxngsef.html">KXNG SEF</a>
+    <a href="/media-kit.html">Media Kit</a>
+    <a href="mailto:yusuf.gadelrab06@gmail.com">yusuf.gadelrab06@gmail.com</a>
+    <a href="https://github.com/Yusuf-Gadelrab" target="_blank" rel="noopener">GitHub</a>
+    <a href="https://www.linkedin.com/in/yusuf-gadelrab-76246b221" target="_blank" rel="noopener">LinkedIn</a>
+  </div>
+</footer>
+
+</body>
+</html>

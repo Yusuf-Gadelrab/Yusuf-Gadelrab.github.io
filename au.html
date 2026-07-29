@@ -1,0 +1,940 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AU — a chronological, no-vanity feed</title>
+<meta name="description" content="AU is a Twitter alternative with the outrage machinery removed: chronological only, no vanity metrics, no quote-posts, no blue-check hierarchy. Posts are proof of work. Working single-player prototype by Yusuf Gadelrab.">
+<link rel="canonical" href="https://yusuf-gadelrab.github.io/au.html">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.85em' font-size='84'>🜚</text></svg>">
+<meta name="theme-color" content="#0B0B0D">
+<meta name="author" content="Yusuf Gadelrab">
+<meta name="robots" content="index,follow">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="AU">
+<meta property="og:title" content="AU — a chronological, no-vanity feed">
+<meta property="og:description" content="Twitter without the pile-on machinery. Chronological only. No like counts. No quote-dunks. Posts must carry an artifact.">
+<meta property="og:url" content="https://yusuf-gadelrab.github.io/au.html">
+<meta property="og:locale" content="en_US">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="stylesheet" href="/css/site.css">
+<style>
+  /* ------------------------------------------------------------------
+     AU — page-local styles. Everything below either composes site.css
+     tokens or adds structure site.css has no opinion about (feed, cards,
+     threads). No new colours, no new spacing units.
+     ------------------------------------------------------------------ */
+
+  /* hero */
+  .au-hero{padding:clamp(48px,7vw,90px) var(--section-x) var(--s7);max-width:var(--maxw);margin:0 auto}
+  .au-mark{font-family:var(--display);font-size:clamp(64px,13vw,150px);line-height:.82;
+    letter-spacing:2px;text-transform:uppercase}
+  .au-sub{font-size:clamp(17px,1.6vw,22px);color:var(--muted);max-width:56ch;margin-top:var(--s4)}
+  .au-sub b{color:var(--ink);font-weight:600}
+  .au-hero .row{margin-top:var(--s5)}
+
+  .notice{
+    border:1px solid var(--line);border-left:3px solid var(--gold);
+    background:rgba(212,175,55,.05);border-radius:var(--radius);
+    padding:var(--s4);font-size:var(--t-small);color:var(--muted);
+    max-width:var(--maxw-prose);margin-top:var(--s5);
+  }
+  .notice b{color:var(--ink)}
+
+  /* manifesto */
+  .rules{list-style:none;display:grid;gap:var(--s4);
+    grid-template-columns:repeat(auto-fit,minmax(min(280px,100%),1fr))}
+  .rule{background:var(--panel);border:1px solid var(--line-soft);border-radius:var(--radius-lg);
+    padding:var(--s5)}
+  .rule__no{font-family:var(--display);font-size:var(--t-micro);letter-spacing:3px;color:var(--gold-2)}
+  .rule__h{font-family:var(--display);text-transform:uppercase;letter-spacing:1px;
+    font-size:19px;margin:var(--s2) 0 var(--s2)}
+  .rule p{font-size:var(--t-small);color:var(--muted);margin:0}
+
+  /* app shell */
+  .app{display:grid;gap:var(--s5);grid-template-columns:1fr;align-items:start}
+  @media(min-width:1000px){ .app{grid-template-columns:minmax(0,1fr) 300px} }
+  .col{min-width:0}
+  .side{display:flex;flex-direction:column;gap:var(--s4)}
+  @media(min-width:1000px){ .side{position:sticky;top:96px} }
+
+  /* composer */
+  .composer{background:linear-gradient(180deg,var(--panel),var(--panel2));
+    border:1px solid var(--line);border-radius:var(--radius-lg);padding:var(--s5)}
+  .seg{display:inline-flex;border:1px solid var(--line-soft);border-radius:var(--radius);overflow:hidden}
+  .seg button{
+    background:transparent;border:0;color:var(--muted);cursor:pointer;
+    font-family:var(--display);text-transform:uppercase;letter-spacing:1.5px;font-size:var(--t-micro);
+    padding:9px 16px;transition:background .2s var(--ease),color .2s var(--ease);
+  }
+  .seg button+button{border-left:1px solid var(--line-soft)}
+  .seg button[aria-pressed="true"]{background:rgba(212,175,55,.14);color:var(--gold-2)}
+  .seg button:hover{color:var(--ink)}
+
+  .composer textarea{min-height:104px;resize:vertical;line-height:1.55;margin-top:var(--s4)}
+  .field-grid{display:grid;gap:var(--s3);grid-template-columns:repeat(auto-fit,minmax(min(220px,100%),1fr));
+    margin-top:var(--s3)}
+  .field label{margin-bottom:var(--s1)}
+  .composer__foot{display:flex;flex-wrap:wrap;gap:var(--s3);align-items:center;
+    justify-content:space-between;margin-top:var(--s4)}
+  .count{font-family:var(--mono);font-size:var(--t-micro);color:var(--faint)}
+  .count.warn{color:var(--warn)} .count.over{color:var(--bad)}
+  .hint{font-size:var(--t-micro);color:var(--faint);margin-top:var(--s3);line-height:1.5}
+  .err{font-size:var(--t-small);color:var(--bad);margin-top:var(--s3)}
+  .err:empty{display:none}
+
+  /* toolbar */
+  .toolbar{display:flex;flex-wrap:wrap;gap:var(--s3);align-items:center;
+    justify-content:space-between;margin:var(--s5) 0 var(--s4)}
+  .tabs{display:flex;flex-wrap:wrap;gap:var(--s2)}
+  .tab{background:transparent;border:1px solid var(--line-soft);color:var(--muted);
+    border-radius:var(--radius);cursor:pointer;padding:8px 14px;font-size:var(--t-small);
+    font-family:inherit;transition:border-color .2s var(--ease),color .2s var(--ease),background .2s var(--ease)}
+  .tab:hover{color:var(--ink);border-color:var(--line)}
+  .tab[aria-selected="true"]{background:rgba(212,175,55,.12);border-color:var(--line);color:var(--gold-2)}
+  .search{max-width:260px;flex:1 1 180px}
+  .search input{padding:9px var(--s3);font-size:var(--t-small)}
+
+  .feed-meta{font-size:var(--t-micro);color:var(--faint);font-family:var(--mono);
+    letter-spacing:.5px;margin-bottom:var(--s3)}
+
+  /* posts */
+  .feed{list-style:none;display:flex;flex-direction:column;gap:var(--s4)}
+  .post{background:var(--panel);border:1px solid var(--line-soft);border-radius:var(--radius-lg);
+    padding:var(--s5)}
+  .post:focus-visible{outline:2px solid var(--gold);outline-offset:2px}
+  .post--mine{border-color:var(--line)}
+  .post__head{display:flex;flex-wrap:wrap;gap:var(--s2) var(--s3);align-items:baseline}
+  .who{font-weight:600;font-size:var(--t-small)}
+  .handle{font-family:var(--mono);font-size:var(--t-micro);color:var(--muted)}
+  .dotsep{color:var(--faint);font-size:var(--t-micro)}
+  .time{font-size:var(--t-micro);color:var(--faint);font-family:var(--mono)}
+  .kind{display:inline-flex;align-items:center;gap:6px;padding:3px 9px;border-radius:var(--radius);
+    border:1px solid var(--line-soft);font-family:var(--display);font-size:11px;letter-spacing:2px;
+    text-transform:uppercase;color:var(--muted)}
+  .kind--ship{color:var(--gold-2);border-color:var(--line);background:rgba(212,175,55,.07)}
+  .kind--q{color:var(--muted)}
+
+  .post__body{margin-top:var(--s3);white-space:pre-wrap;overflow-wrap:anywhere;font-size:var(--t-body)}
+  .post__body code{font-family:var(--mono);font-size:.9em;background:var(--bg2);
+    border:1px solid var(--line-soft);border-radius:2px;padding:1px 5px}
+  .artifacts{display:flex;flex-wrap:wrap;gap:var(--s2);margin-top:var(--s3)}
+  .chip{display:inline-flex;align-items:center;gap:6px;max-width:100%;
+    padding:5px 11px;border:1px solid var(--line-soft);border-radius:var(--radius);
+    font-family:var(--mono);font-size:var(--t-micro);color:var(--muted);
+    overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+  a.chip:hover{border-color:var(--gold);color:var(--gold-2)}
+  .chip--metric{color:var(--gold-2);border-color:var(--line);background:rgba(212,175,55,.06)}
+
+  .acts{display:flex;flex-wrap:wrap;gap:var(--s2);margin-top:var(--s4);align-items:center}
+  .act{background:transparent;border:1px solid transparent;color:var(--muted);cursor:pointer;
+    font-family:inherit;font-size:var(--t-micro);padding:6px 10px;border-radius:var(--radius);
+    transition:color .2s var(--ease),border-color .2s var(--ease),background .2s var(--ease)}
+  .act:hover{color:var(--ink);border-color:var(--line-soft);background:rgba(255,255,255,.02)}
+  .act[aria-pressed="true"]{color:var(--gold-2);border-color:var(--line)}
+  .act--danger:hover{color:var(--bad)}
+  .privacy-note{font-size:11px;color:var(--faint);font-family:var(--mono);margin-left:auto}
+
+  /* threads */
+  .thread{list-style:none;margin-top:var(--s4);border-left:1px solid var(--line-soft);
+    padding-left:var(--s4);display:flex;flex-direction:column;gap:var(--s4)}
+  .thread .thread{margin-top:var(--s3)}
+  .reply__body{margin-top:var(--s2);white-space:pre-wrap;overflow-wrap:anywhere;
+    font-size:var(--t-small);color:var(--ink)}
+  .reply-form{margin-top:var(--s3);display:flex;flex-wrap:wrap;gap:var(--s2);align-items:flex-start}
+  .reply-form textarea{min-height:64px;flex:1 1 220px;font-size:var(--t-small)}
+  .reply-form[hidden]{display:none}
+
+  .empty{border:1px dashed var(--line-soft);border-radius:var(--radius-lg);
+    padding:var(--s7) var(--s5);text-align:center;color:var(--muted)}
+
+  /* sidebar panels */
+  .side .panel h3{font-family:var(--display);font-size:15px;letter-spacing:1.5px;margin-bottom:var(--s3)}
+  .kv{display:flex;justify-content:space-between;gap:var(--s3);font-size:var(--t-small);
+    color:var(--muted);padding:5px 0;border-bottom:1px solid var(--line-soft)}
+  .kv:last-child{border-bottom:0}
+  .kv b{color:var(--ink);font-family:var(--mono);font-size:var(--t-small);font-weight:400}
+  .muted-list{display:flex;flex-wrap:wrap;gap:var(--s2)}
+  .unmute{background:transparent;border:1px solid var(--line-soft);color:var(--muted);
+    font-family:var(--mono);font-size:var(--t-micro);padding:5px 10px;border-radius:var(--radius);
+    cursor:pointer}
+  .unmute:hover{border-color:var(--gold);color:var(--gold-2)}
+  kbd{font-family:var(--mono);font-size:11px;background:var(--bg2);border:1px solid var(--line-soft);
+    border-bottom-width:2px;border-radius:3px;padding:1px 6px;color:var(--ink)}
+
+  /* shortcuts overlay */
+  .overlay{position:fixed;inset:0;z-index:200;display:grid;place-items:center;
+    background:rgba(6,6,8,.78);padding:var(--s4)}
+  .overlay[hidden]{display:none}
+  .sheet{background:var(--panel);border:1px solid var(--line);border-radius:var(--radius-lg);
+    padding:var(--s6);max-width:460px;width:100%;box-shadow:var(--shadow);
+    max-height:85vh;overflow-y:auto}
+  .sheet h2{font-size:24px;margin-bottom:var(--s4)}
+  .sheet .kv b{min-width:70px;text-align:right}
+
+  .toast{position:fixed;left:50%;transform:translateX(-50%);bottom:var(--s5);z-index:210;
+    background:var(--panel2);border:1px solid var(--line);border-radius:var(--radius);
+    padding:10px 18px;font-size:var(--t-small);color:var(--ink);box-shadow:var(--shadow);
+    max-width:calc(100vw - 32px)}
+  .toast[hidden]{display:none}
+</style>
+</head>
+<body>
+<a class="skip-link" href="#main">Skip to content</a>
+<nav class="site-nav"><a class="site-nav__brand" href="/">YUSUF GADELRAB</a><div class="site-nav__links"><a href="/">Work</a><a href="/resume.html">Resume</a><a href="/store.html">Store</a><a href="/kxngsef.html">KXNG SEF</a><a href="/media-kit.html">Media Kit</a><a href="/au.html" aria-current="page">AU</a></div></nav>
+
+<main id="main">
+
+  <header class="au-hero">
+    <span class="badge"><span class="dot"></span>Working prototype</span>
+    <h1 class="au-mark gold-fill" style="margin-top:16px">AU</h1>
+    <p class="au-sub">A timeline for people who <b>ship things</b>. Chronological only. No like counts, no follower counts, no quote-dunks, no checkmarks, no ads. Posts have to carry <b>an artifact</b> — a link, a number, or code — or be marked honestly as a question.</p>
+    <div class="row">
+      <a class="btn btn-gold" href="#app">Open the feed</a>
+      <button class="btn btn-ghost" type="button" data-open-shortcuts>Keyboard shortcuts</button>
+    </div>
+    <p class="notice"><b>Be clear about what this is:</b> AU is a single-player prototype. Everything you post is stored in <b>this browser only</b> — there is no server, no account, no other users, and nothing you write here is sent anywhere. The other handles in the feed are invented demo personas, not real accounts. Clear your browser data or hit <b>Reset demo</b> and it all goes away.</p>
+  </header>
+
+  <section class="section section--tight" aria-labelledby="manifesto-h">
+    <p class="eyebrow">The whole point</p>
+    <h2 id="manifesto-h" style="margin:8px 0 8px">Six things AU refuses to do</h2>
+    <p class="lead" style="margin-bottom:32px">Every one of these is enforced in the code on this page, not in a policy document.</p>
+    <ul class="rules">
+      <li class="rule"><div class="rule__no">01</div><h3 class="rule__h">Chronological, forever</h3><p>Newest first. That is the entire ranking function. There is no "For You", no engagement score, no reordering by anything except the clock. Nobody gets to decide what you should have seen.</p></li>
+      <li class="rule"><div class="rule__no">02</div><h3 class="rule__h">No vanity metrics</h3><p>No follower counts, no like counts, no view counts anywhere in the interface. You can like a post — it is saved privately for you, as a bookmark, and shown to nobody. There is no scoreboard to climb.</p></li>
+      <li class="rule"><div class="rule__no">03</div><h3 class="rule__h">No quote-posts</h3><p>You can reply. You cannot lift someone's post onto your own stage to perform at them. The quote-tweet is the pile-on engine, and removing it is the product.</p></li>
+      <li class="rule"><div class="rule__no">04</div><h3 class="rule__h">Posts are proof of work</h3><p>The default post is a ship log: what you built. It must carry an artifact — a link, a number, or a code snippet. If you have no artifact, mark it a question. Posturing has nowhere to sit.</p></li>
+      <li class="rule"><div class="rule__no">05</div><h3 class="rule__h">No hierarchy for sale</h3><p>No blue checks, no tiers, no promoted posts, no ads, no boosted reach. Every account renders identically. Nothing on this page can be bought.</p></li>
+      <li class="rule"><div class="rule__no">06</div><h3 class="rule__h">Mute is one click</h3><p>You control your own feed. Mute an author and they are gone from it immediately, no explanation owed, reversible any time. No appeals process, no management.</p></li>
+    </ul>
+  </section>
+
+  <section class="section section--tight" id="app" aria-labelledby="feed-h">
+    <p class="eyebrow">Live prototype</p>
+    <h2 id="feed-h" style="margin:8px 0 24px">The feed</h2>
+
+    <div class="app">
+      <div class="col">
+
+        <form class="composer" id="composer" novalidate aria-labelledby="composer-h">
+          <h3 id="composer-h" class="sr-only">Write a post</h3>
+          <div class="seg" role="group" aria-label="Post type">
+            <button type="button" id="kind-ship" data-kind="ship" aria-pressed="true">Ship log</button>
+            <button type="button" id="kind-q" data-kind="question" aria-pressed="false">Question</button>
+          </div>
+
+          <label class="sr-only" for="post-text">Post text</label>
+          <textarea id="post-text" placeholder="What did you ship? Wrap code in `backticks`." maxlength="600" aria-describedby="artifact-hint post-error"></textarea>
+
+          <div class="field-grid" id="artifact-fields">
+            <div class="field">
+              <label for="post-link">Link (optional)</label>
+              <input id="post-link" type="url" inputmode="url" placeholder="https://…" autocomplete="off">
+            </div>
+            <div class="field">
+              <label for="post-metric">Metric (optional)</label>
+              <input id="post-metric" type="text" placeholder="e.g. 101 trades, +0.23R" autocomplete="off">
+            </div>
+          </div>
+
+          <p class="hint" id="artifact-hint">Ship logs need one concrete artifact: a link, a metric, or <code>`code`</code> in the text. No artifact? Switch to Question — that is what it is for.</p>
+          <p class="err" id="post-error" role="alert"></p>
+
+          <div class="composer__foot">
+            <span class="count" id="count" aria-live="off">0 / 320</span>
+            <button class="btn btn-gold btn-sm" type="submit">Post</button>
+          </div>
+        </form>
+
+        <div class="toolbar">
+          <div class="tabs" role="tablist" aria-label="Filter the feed">
+            <button class="tab" role="tab" id="tab-all" aria-selected="true" data-filter="all">All</button>
+            <button class="tab" role="tab" id="tab-ship" aria-selected="false" data-filter="ship" tabindex="-1">Ship logs</button>
+            <button class="tab" role="tab" id="tab-question" aria-selected="false" data-filter="question" tabindex="-1">Questions</button>
+            <button class="tab" role="tab" id="tab-following" aria-selected="false" data-filter="following" tabindex="-1">Following</button>
+          </div>
+          <div class="search">
+            <label class="sr-only" for="search">Search posts</label>
+            <input id="search" type="search" placeholder="Search posts…  ( / )" autocomplete="off">
+          </div>
+        </div>
+
+        <p class="feed-meta" id="feed-meta">Sorted newest first. Always.</p>
+        <p class="sr-only" role="status" aria-live="polite" id="live"></p>
+
+        <ul class="feed" id="feed" aria-labelledby="feed-h"></ul>
+      </div>
+
+      <aside class="side" aria-label="Feed controls">
+        <div class="panel">
+          <h3>This browser</h3>
+          <div class="kv"><span>Posts stored</span><b id="stat-posts">0</b></div>
+          <div class="kv"><span>Replies</span><b id="stat-replies">0</b></div>
+          <div class="kv"><span>Following</span><b id="stat-following">0</b></div>
+          <div class="kv"><span>Muted</span><b id="stat-muted">0</b></div>
+          <p class="hint" style="margin-top:12px">Saved to localStorage on this device. Never uploaded — there is nowhere to upload it to.</p>
+          <button class="btn btn-ghost btn-sm" type="button" id="reset" style="width:100%;margin-top:12px">Reset demo</button>
+        </div>
+
+        <div class="panel">
+          <h3>Muted</h3>
+          <div class="muted-list" id="muted-list"></div>
+        </div>
+
+        <div class="panel">
+          <h3>Shortcuts</h3>
+          <div class="kv"><span>New post</span><b><kbd>n</kbd></b></div>
+          <div class="kv"><span>Search</span><b><kbd>/</kbd></b></div>
+          <div class="kv"><span>Next / prev</span><b><kbd>j</kbd> <kbd>k</kbd></b></div>
+          <div class="kv"><span>Help</span><b><kbd>?</kbd></b></div>
+        </div>
+      </aside>
+    </div>
+  </section>
+
+</main>
+
+<div class="overlay" id="overlay" hidden>
+  <div class="sheet" role="dialog" aria-modal="true" aria-labelledby="sheet-h" id="sheet">
+    <h2 id="sheet-h">Keyboard shortcuts</h2>
+    <div class="kv"><span>New post (focus composer)</span><b><kbd>n</kbd></b></div>
+    <div class="kv"><span>Focus search</span><b><kbd>/</kbd></b></div>
+    <div class="kv"><span>Next post</span><b><kbd>j</kbd></b></div>
+    <div class="kv"><span>Previous post</span><b><kbd>k</kbd></b></div>
+    <div class="kv"><span>Like focused post (private)</span><b><kbd>l</kbd></b></div>
+    <div class="kv"><span>Reply to focused post</span><b><kbd>r</kbd></b></div>
+    <div class="kv"><span>Open this help</span><b><kbd>?</kbd></b></div>
+    <div class="kv"><span>Close / blur</span><b><kbd>Esc</kbd></b></div>
+    <p class="hint" style="margin-top:16px">Every action here is also reachable with <kbd>Tab</kbd> and a real button. Shortcuts are a shortcut, not the only door.</p>
+    <button class="btn btn-ghost btn-sm" type="button" id="sheet-close" style="margin-top:16px">Close</button>
+  </div>
+</div>
+
+<div class="toast" id="toast" hidden role="status" aria-live="polite"></div>
+
+<footer class="site-footer">
+  <div>AU · a prototype by Yusuf Gadelrab · San Jose, CA · © 2026 · No algorithm, no scoreboard.</div>
+  <div class="site-footer__links">
+    <a href="/">Work</a>
+    <a href="/resume.html">Resume</a>
+    <a href="/store.html">Store</a>
+    <a href="/kxngsef.html">KXNG SEF</a>
+    <a href="/media-kit.html">Media Kit</a>
+    <a href="mailto:yusuf.gadelrab06@gmail.com">yusuf.gadelrab06@gmail.com</a>
+    <a href="https://github.com/Yusuf-Gadelrab" target="_blank" rel="noopener">GitHub</a>
+    <a href="https://www.linkedin.com/in/yusuf-gadelrab-76246b221" target="_blank" rel="noopener">LinkedIn</a>
+  </div>
+</footer>
+
+<script>
+(function(){
+  'use strict';
+
+  var KEY = 'au.state.v1';
+  var LIMIT = 320;
+  var ME = { handle: 'yusuf', name: 'Yusuf Gadelrab' };
+
+  /* ---------- helpers ---------- */
+  function esc(s){
+    return String(s).replace(/[&<>"']/g, function(c){
+      return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c];
+    });
+  }
+  // inline `code` only — the artifact rule treats backticks as a real artifact,
+  // so they have to render as one.
+  function body(text){
+    return esc(text).replace(/`([^`\n]+)`/g, function(_, c){ return '<code>' + c + '</code>'; });
+  }
+  function hasCode(text){ return /`[^`\n]+`/.test(text); }
+  function safeUrl(u){
+    var s = String(u || '').trim();
+    return /^https?:\/\/[^\s]+$/i.test(s) ? s : '';
+  }
+  function shortUrl(u){
+    try { var x = new URL(u); return (x.hostname + x.pathname).replace(/\/$/, '').replace(/^www\./,''); }
+    catch(e){ return u; }
+  }
+  function uid(){ return 'p' + Date.now().toString(36) + Math.random().toString(36).slice(2,7); }
+  var MIN=60000, HR=3600000, DAY=86400000;
+  function rel(ts){
+    var d = Date.now() - ts;
+    if (d < 45000) return 'just now';
+    if (d < HR) return Math.round(d/MIN) + 'm ago';
+    if (d < DAY) return Math.round(d/HR) + 'h ago';
+    if (d < 7*DAY) return Math.round(d/DAY) + 'd ago';
+    return new Date(ts).toLocaleDateString(undefined, {month:'short', day:'numeric'});
+  }
+  function abs(ts){ return new Date(ts).toLocaleString(); }
+
+  /* ---------- seed ---------- */
+  function seed(){
+    var m = MIN, h = HR, d = DAY, now = Date.now();
+    function P(o){
+      o.id = uid(); o.ts = now - o.ago; delete o.ago;
+      o.liked = false; o.replies = o.replies || [];
+      return o;
+    }
+    function R(handle, name, ago, text, replies){
+      return { id: uid(), handle: handle, name: name, ts: now - ago, text: text,
+               liked: false, replies: replies || [] };
+    }
+
+    return [
+      P({ handle:'yusuf', name:'Yusuf Gadelrab', kind:'ship', ago: 40*m,
+        text:'KXNG SEF storefront is live. Drop 001 is six pieces — tees at $32, hoodie at $58, sizes S through 2XL, print-on-demand so there is zero inventory risk. Bilingual Arabic/English marks. Checkout is not wired yet, it is a waitlist until fulfillment is connected.',
+        link:'https://yusuf-gadelrab.github.io/kxngsef.html', metric:'6 pieces, S–2XL',
+        replies:[ R('lint_witch','Ruth Ó Baoill', 34*m, 'POD first is the right call. Inventory is where clothing brands go to die.', [
+                    R('yusuf','Yusuf Gadelrab', 28*m, 'Yeah. If nothing sells I am out design time, not rent.') ]) ] }),
+
+      P({ handle:'half_kelvin', name:'Dara Onwuka', kind:'ship', ago: 1.4*h,
+        text:'Killed our custom retry wrapper and went back to plain exponential backoff with jitter. 240 lines deleted. The wrapper had three bugs, two of which were mine, and the third one I still do not understand.',
+        metric:'-240 LOC' }),
+
+      P({ handle:'plainsight', name:'Marta Vellón', kind:'question', ago: 2.1*h,
+        text:'Genuine question and not a subtweet: has anyone actually shipped a design system where the token layer survived two brand refreshes? Every one I have worked on got bypassed by month nine.',
+        replies:[ R('ferrous_dev','Ben Achterberg', 1.8*h, 'Once. It survived because the tokens were boring — spacing, radius, type scale. The moment we added semantic colour names it started rotting.'),
+                  R('lint_witch','Ruth Ó Baoill', 1.6*h, 'Same experience. Semantic naming is where systems go to argue.') ] }),
+
+      P({ handle:'yusuf', name:'Yusuf Gadelrab', kind:'ship', ago: 3.2*h,
+        text:'Finished the walk-forward on the swing screener. Only one setup survived out of sample: the anchored-VWAP reclaim, +0.23R average over 101 trades. VCP came out roughly breakeven. The gap/ORB daily proxy was negative at -0.28R, so I am cutting it instead of tuning it into looking good.',
+        metric:'+0.23R over 101 trades' }),
+
+      P({ handle:'tapedeck', name:'Ilse Kruger', kind:'ship', ago: 4.5*h,
+        text:'Reflowed the whole PCB to get the crystal off the switching regulator. Jitter dropped enough that the ADC finally reads clean at 200kHz. Four revisions. I have a drawer of expensive coasters.',
+        metric:'200kHz clean' }),
+
+      P({ handle:'noamlab', name:'Noam Sassoon', kind:'ship', ago: 6*h,
+        text:'Swapped `JSON.parse` on the hot path for a streaming parser and the p99 came down hard. Two-line change, one week of being certain the problem was somewhere else.',
+        metric:'p99 1.9s → 380ms' }),
+
+      P({ handle:'bitrot_annie', name:'Annie Ferreira', kind:'question', ago: 8*h,
+        text:'Does anyone have a workflow for reviewing dependency updates that is not "read the changelog and hope"? I keep merging bumps I do not understand and I would like to stop.' }),
+
+      P({ handle:'yusuf', name:'Yusuf Gadelrab', kind:'ship', ago: 11*h,
+        text:'FreightDesk is live and founding-client pilots are open — $999 setup plus $249/month. Built it after seeing how much of a broker\'s day is retyping the same load details into four systems.',
+        link:'https://yusuf-gadelrab.github.io/freightdesk.html', metric:'$999 + $249/mo' }),
+
+      P({ handle:'dot_matrix', name:'Sunil Ekanayake', kind:'ship', ago: 14*h,
+        text:'Rewrote the onboarding flow from five screens to two. Nothing clever — I just deleted the questions we never used the answers to. Turns out most of the form existed because someone asked for it in 2023 and left.',
+        metric:'5 screens → 2' }),
+
+      P({ handle:'kettlebell_ops', name:'Priya Raghunathan', kind:'ship', ago: 19*h,
+        text:'Migrated the nightly batch off cron on a single box to a proper queue. It is the least interesting work I have done this year and it has already saved me two 3am pages.',
+        link:'https://example.org/notes/queue-migration' }),
+
+      P({ handle:'ferrous_dev', name:'Ben Achterberg', kind:'ship', ago: 26*h,
+        text:'Ported the parser to a state machine. Same tests, half the code, and the error messages now tell you which byte broke instead of shrugging. `expected ident, got 0x7b at 412`.',
+        metric:'1,100 → 540 LOC' }),
+
+      P({ handle:'lowpass_liv', name:'Liv Marchetti', kind:'question', ago: 31*h,
+        text:'How are people handling colour contrast when the brand palette is genuinely non-compliant and the founder will not budge on it? Asking for a friend who is me, at 11pm.' }),
+
+      P({ handle:'mnemo', name:'Tomás Bergqvist', kind:'ship', ago: 38*h,
+        text:'Shipped offline mode. Everything is local-first now, sync is a background reconciliation instead of the critical path. The demo that sold it internally was flipping the wifi off mid-typing and nothing happening.',
+        link:'https://example.org/mnemo/offline' }),
+
+      P({ handle:'yusuf', name:'Yusuf Gadelrab', kind:'ship', ago: 46*h,
+        text:'Our paper "Exploring Bilingual Coding for Inclusive CS Learning" is in SIGCSE TS 2026. Mixed-methods study out of Dr. Tshukudu\'s CSEd lab at SJSU, 60 participants, IRB approved. Second paper, on graph-augmented retrieval for curriculum maps, is a poster in the same track.',
+        link:'https://doi.org/10.1145/3770761.3777339', metric:'60 participants',
+        replies:[ R('plainsight','Marta Vellón', 44*h, 'Bilingual CS ed is so under-researched. Congrats.') ] }),
+
+      P({ handle:'sol_ferro', name:'Solveig Ferro', kind:'ship', ago: 55*h,
+        text:'Backtested the mean-reversion book across 2015-2025 instead of the 3 years I had been using. Edge mostly disappears before 2019. Better to find that out now than with money on.',
+        metric:'10y sample' }),
+
+      P({ handle:'quietcompiler', name:'Hana Okabe', kind:'ship', ago: 68*h,
+        text:'Spent the day writing a script that regenerates all our fixture data from one schema file. Boring. Deleted 31 hand-maintained JSON files that had been quietly disagreeing with each other since spring.',
+        metric:'31 files deleted' }),
+
+      P({ handle:'greyplate', name:'Emeka Duruji', kind:'ship', ago: 80*h,
+        text:'Finally got the CNC jig repeatable to a tenth of a mil. The fix was not the code or the stepper — it was a $4 clamp. Three weekends.',
+        metric:'±0.1mm' }),
+
+      P({ handle:'lint_witch', name:'Ruth Ó Baoill', kind:'question', ago: 96*h,
+        text:'What is the smallest amount of process that has actually worked for a two-person team? Every template I find is built for thirty people and I am not thirty people.' })
+    ];
+  }
+
+  function freshState(){
+    return { posts: seed(), following: ['half_kelvin','ferrous_dev'], muted: [] };
+  }
+
+  /* ---------- state ---------- */
+  var state;
+  try {
+    var raw = localStorage.getItem(KEY);
+    state = raw ? JSON.parse(raw) : freshState();
+    if (!state || !Array.isArray(state.posts)) state = freshState();
+    state.following = state.following || [];
+    state.muted = state.muted || [];
+  } catch(e){ state = freshState(); }
+
+  function save(){
+    try { localStorage.setItem(KEY, JSON.stringify(state)); }
+    catch(e){ toast('Could not save — this browser is blocking local storage.'); }
+  }
+
+  /* ---------- dom ---------- */
+  var $ = function(s){ return document.querySelector(s); };
+  var feedEl = $('#feed'), liveEl = $('#live'), metaEl = $('#feed-meta');
+  var form = $('#composer'), textEl = $('#post-text'), linkEl = $('#post-link'),
+      metricEl = $('#post-metric'), countEl = $('#count'), errEl = $('#post-error');
+  var searchEl = $('#search'), overlay = $('#overlay'), sheet = $('#sheet');
+  var toastEl = $('#toast'), toastTimer = null;
+
+  var kind = 'ship', filter = 'all', query = '';
+  var lastFocus = null;
+
+  function toast(msg){
+    toastEl.textContent = msg;
+    toastEl.hidden = false;
+    clearTimeout(toastTimer);
+    toastTimer = setTimeout(function(){ toastEl.hidden = true; }, 3200);
+  }
+
+  /* ---------- rendering ---------- */
+  // THESIS: this is the ONLY ordering function in the file. Newest first, by
+  // timestamp, unconditionally. Nothing else is ever consulted.
+  function chronological(list){
+    return list.slice().sort(function(a,b){ return b.ts - a.ts; });
+  }
+
+  function matches(p){
+    if (state.muted.indexOf(p.handle) !== -1) return false;
+    if (filter === 'ship' && p.kind !== 'ship') return false;
+    if (filter === 'question' && p.kind !== 'question') return false;
+    if (filter === 'following' && state.following.indexOf(p.handle) === -1) return false;
+    if (query){
+      var hay = (p.text + ' ' + p.handle + ' ' + p.name + ' ' + (p.link||'') + ' ' + (p.metric||''))
+        .toLowerCase();
+      var inReplies = (p.replies||[]).some(function(r){
+        return (r.text + ' ' + r.handle).toLowerCase().indexOf(query) !== -1 ||
+          (r.replies||[]).some(function(rr){
+            return (rr.text + ' ' + rr.handle).toLowerCase().indexOf(query) !== -1;
+          });
+      });
+      if (hay.indexOf(query) === -1 && !inReplies) return false;
+    }
+    return true;
+  }
+
+  function artifactsHtml(p){
+    var out = '';
+    var u = safeUrl(p.link);
+    if (u) out += '<a class="chip" href="' + esc(u) + '" target="_blank" rel="noopener nofollow">↗ ' + esc(shortUrl(u)) + '</a>';
+    if (p.metric) out += '<span class="chip chip--metric">' + esc(p.metric) + '</span>';
+    if (!u && !p.metric && hasCode(p.text)) out += '<span class="chip">code</span>';
+    return out ? '<div class="artifacts">' + out + '</div>' : '';
+  }
+
+  function replyHtml(r, postId, depth){
+    var kids = '';
+    if (depth === 1 && r.replies && r.replies.length){
+      kids = '<ul class="thread">' + chronological(r.replies).slice().reverse().map(function(rr){
+        return replyHtml(rr, postId, 2);
+      }).join('') + '</ul>';
+    }
+    // depth 2 is the floor — matching how real threads flatten, and keeping
+    // arguments from nesting forever.
+    var replyBtn = depth === 1
+      ? '<button class="act" type="button" data-reply-to="' + esc(r.id) + '" data-post="' + esc(postId) + '">Reply</button>'
+      : '';
+    var formHtml = depth === 1
+      ? '<form class="reply-form" data-reply-form="' + esc(r.id) + '" hidden>' +
+          '<label class="sr-only" for="rf-' + esc(r.id) + '">Reply to @' + esc(r.handle) + '</label>' +
+          '<textarea id="rf-' + esc(r.id) + '" maxlength="320" placeholder="Reply…"></textarea>' +
+          '<button class="btn btn-ghost btn-sm" type="submit">Send</button>' +
+        '</form>'
+      : '';
+
+    return '<li class="reply">' +
+      '<div class="post__head">' +
+        '<span class="who">' + esc(r.name) + '</span>' +
+        '<span class="handle">@' + esc(r.handle) + '</span>' +
+        '<span class="dotsep">·</span>' +
+        '<time class="time" datetime="' + new Date(r.ts).toISOString() + '" title="' + esc(abs(r.ts)) + '">' + esc(rel(r.ts)) + '</time>' +
+      '</div>' +
+      '<div class="reply__body">' + body(r.text) + '</div>' +
+      '<div class="acts">' +
+        '<button class="act" type="button" data-like-reply="' + esc(r.id) + '" aria-pressed="' + (r.liked ? 'true':'false') + '">' +
+          (r.liked ? '★ Liked' : '☆ Like') + '</button>' +
+        replyBtn +
+      '</div>' + formHtml + kids +
+    '</li>';
+  }
+
+  function postHtml(p, i){
+    var mine = p.handle === ME.handle;
+    var following = state.following.indexOf(p.handle) !== -1;
+    var replies = (p.replies || []);
+    var threadHtml = replies.length
+      ? '<ul class="thread">' + chronological(replies).slice().reverse().map(function(r){
+          return replyHtml(r, p.id, 1);
+        }).join('') + '</ul>'
+      : '';
+
+    // Private-like disclosure: only ever rendered on the reader's OWN posts,
+    // and only as their own bookmark state. No public count exists anywhere.
+    var privateNote = (mine && p.liked)
+      ? '<span class="privacy-note">saved privately</span>' : '';
+
+    return '<li class="post' + (mine ? ' post--mine' : '') + '" tabindex="-1" data-id="' + esc(p.id) + '" data-i="' + i + '">' +
+      '<article aria-labelledby="h-' + esc(p.id) + '">' +
+        '<div class="post__head">' +
+          '<span class="who" id="h-' + esc(p.id) + '">' + esc(p.name) + '</span>' +
+          '<span class="handle">@' + esc(p.handle) + '</span>' +
+          '<span class="dotsep">·</span>' +
+          '<time class="time" datetime="' + new Date(p.ts).toISOString() + '" title="' + esc(abs(p.ts)) + '">' + esc(rel(p.ts)) + '</time>' +
+          '<span class="kind ' + (p.kind === 'ship' ? 'kind--ship' : 'kind--q') + '">' +
+            (p.kind === 'ship' ? 'Ship log' : 'Question') + '</span>' +
+        '</div>' +
+        '<div class="post__body">' + body(p.text) + '</div>' +
+        artifactsHtml(p) +
+        '<div class="acts">' +
+          '<button class="act" type="button" data-like="' + esc(p.id) + '" aria-pressed="' + (p.liked ? 'true':'false') + '">' +
+            (p.liked ? '★ Liked' : '☆ Like') + '<span class="sr-only"> (private, not shown to anyone)</span></button>' +
+          '<button class="act" type="button" data-reply-to-post="' + esc(p.id) + '">Reply' +
+            (replies.length ? ' <span class="sr-only">(' + replies.length + ' in thread)</span>' : '') + '</button>' +
+          (mine ? '' :
+            '<button class="act" type="button" data-follow="' + esc(p.handle) + '" aria-pressed="' + (following ? 'true':'false') + '">' +
+              (following ? '✓ Following' : '+ Follow') + '</button>' +
+            '<button class="act act--danger" type="button" data-mute="' + esc(p.handle) + '">Mute @' + esc(p.handle) + '</button>') +
+          privateNote +
+        '</div>' +
+        '<form class="reply-form" data-reply-form-post="' + esc(p.id) + '" hidden>' +
+          '<label class="sr-only" for="pf-' + esc(p.id) + '">Reply to @' + esc(p.handle) + '</label>' +
+          '<textarea id="pf-' + esc(p.id) + '" maxlength="320" placeholder="Reply…"></textarea>' +
+          '<button class="btn btn-ghost btn-sm" type="submit">Send</button>' +
+        '</form>' +
+        threadHtml +
+      '</article>' +
+    '</li>';
+  }
+
+  function countReplies(){
+    var n = 0;
+    state.posts.forEach(function(p){
+      (p.replies||[]).forEach(function(r){ n += 1 + (r.replies ? r.replies.length : 0); });
+    });
+    return n;
+  }
+
+  function render(){
+    var visible = chronological(state.posts).filter(matches);
+    feedEl.innerHTML = visible.length
+      ? visible.map(postHtml).join('')
+      : '<li class="empty">Nothing matches. ' +
+        (state.muted.length ? 'You have muted ' + state.muted.length + ' account' + (state.muted.length>1?'s':'') + '. ' : '') +
+        'Try a different filter, or clear the search.</li>';
+
+    metaEl.textContent = 'Sorted newest first. Always. Showing ' + visible.length + ' of ' +
+      state.posts.length + ' post' + (state.posts.length === 1 ? '' : 's') + '.';
+
+    $('#stat-posts').textContent = state.posts.length;
+    $('#stat-replies').textContent = countReplies();
+    $('#stat-following').textContent = state.following.length;
+    $('#stat-muted').textContent = state.muted.length;
+
+    var ml = $('#muted-list');
+    ml.innerHTML = state.muted.length
+      ? state.muted.map(function(h){
+          return '<button class="unmute" type="button" data-unmute="' + esc(h) + '">@' + esc(h) + ' ✕</button>';
+        }).join('')
+      : '<p class="hint" style="margin:0">Nobody muted. Mute is one click on any post, and reversible from here.</p>';
+  }
+
+  /* ---------- composer ---------- */
+  function setKind(k){
+    kind = k;
+    $('#kind-ship').setAttribute('aria-pressed', String(k === 'ship'));
+    $('#kind-q').setAttribute('aria-pressed', String(k === 'question'));
+    textEl.placeholder = k === 'ship'
+      ? 'What did you ship? Wrap code in `backticks`.'
+      : 'Ask something you actually want answered.';
+    errEl.textContent = '';
+  }
+
+  function updateCount(){
+    var n = textEl.value.length;
+    countEl.textContent = n + ' / ' + LIMIT;
+    countEl.className = 'count' + (n > LIMIT ? ' over' : n > LIMIT - 60 ? ' warn' : '');
+  }
+
+  $('#kind-ship').addEventListener('click', function(){ setKind('ship'); });
+  $('#kind-q').addEventListener('click', function(){ setKind('question'); });
+  textEl.addEventListener('input', updateCount);
+
+  form.addEventListener('submit', function(e){
+    e.preventDefault();
+    var text = textEl.value.trim();
+    var link = linkEl.value.trim();
+    var metric = metricEl.value.trim();
+    errEl.textContent = '';
+
+    if (!text){ errEl.textContent = 'Write something first.'; textEl.focus(); return; }
+    if (text.length > LIMIT){
+      errEl.textContent = 'Too long by ' + (text.length - LIMIT) + ' characters.'; textEl.focus(); return;
+    }
+    if (link && !safeUrl(link)){
+      errEl.textContent = 'That link needs to be a full http:// or https:// URL.'; linkEl.focus(); return;
+    }
+    // THE ARTIFACT RULE — the structural core of the product. A ship log with
+    // no link, no metric and no code is thought-leadership, and it is rejected.
+    if (kind === 'ship' && !link && !metric && !hasCode(text)){
+      errEl.textContent = 'A ship log needs a concrete artifact: a link, a metric, or `code` in the text. If you do not have one, switch to Question.';
+      linkEl.focus();
+      return;
+    }
+
+    var post = {
+      id: uid(), handle: ME.handle, name: ME.name, kind: kind, text: text,
+      link: safeUrl(link), metric: metric, ts: Date.now(), liked: false, replies: []
+    };
+    state.posts.push(post);
+    save();
+
+    textEl.value = ''; linkEl.value = ''; metricEl.value = '';
+    updateCount();
+
+    // Reset filters that would hide the thing you just wrote — silently
+    // swallowing a new post is the worst possible feedback.
+    if (filter === 'following' || (filter === 'ship' && kind !== 'ship') || (filter === 'question' && kind !== 'question')){
+      setFilter('all');
+    } else { render(); }
+
+    liveEl.textContent = 'Posted. Your ' + (kind === 'ship' ? 'ship log' : 'question') +
+      ' is now at the top of the timeline.';
+    var el = feedEl.querySelector('[data-id="' + post.id + '"]');
+    if (el){ el.focus(); }
+    toast('Posted — stored in this browser only.');
+  });
+
+  /* ---------- filters + search ---------- */
+  function setFilter(f){
+    filter = f;
+    Array.prototype.forEach.call(document.querySelectorAll('.tab'), function(t){
+      var on = t.dataset.filter === f;
+      t.setAttribute('aria-selected', String(on));
+      t.tabIndex = on ? 0 : -1;
+    });
+    render();
+  }
+  Array.prototype.forEach.call(document.querySelectorAll('.tab'), function(t){
+    t.addEventListener('click', function(){ setFilter(t.dataset.filter); });
+    t.addEventListener('keydown', function(e){
+      var tabs = Array.prototype.slice.call(document.querySelectorAll('.tab'));
+      var i = tabs.indexOf(t), n = null;
+      if (e.key === 'ArrowRight') n = tabs[(i+1) % tabs.length];
+      if (e.key === 'ArrowLeft') n = tabs[(i-1+tabs.length) % tabs.length];
+      if (e.key === 'Home') n = tabs[0];
+      if (e.key === 'End') n = tabs[tabs.length-1];
+      if (n){ e.preventDefault(); n.focus(); setFilter(n.dataset.filter); }
+    });
+  });
+
+  var searchTimer = null;
+  searchEl.addEventListener('input', function(){
+    clearTimeout(searchTimer);
+    searchTimer = setTimeout(function(){
+      query = searchEl.value.trim().toLowerCase();
+      render();
+      liveEl.textContent = query ? metaEl.textContent : '';
+    }, 140);
+  });
+
+  /* ---------- feed interactions (delegated) ---------- */
+  function findPost(id){
+    for (var i=0;i<state.posts.length;i++) if (state.posts[i].id === id) return state.posts[i];
+    return null;
+  }
+  function findReply(id){
+    for (var i=0;i<state.posts.length;i++){
+      var rs = state.posts[i].replies || [];
+      for (var j=0;j<rs.length;j++){
+        if (rs[j].id === id) return rs[j];
+        var rr = rs[j].replies || [];
+        for (var k=0;k<rr.length;k++) if (rr[k].id === id) return rr[k];
+      }
+    }
+    return null;
+  }
+
+  feedEl.addEventListener('click', function(e){
+    var b = e.target.closest('button');
+    if (!b) return;
+
+    if (b.dataset.like){
+      var p = findPost(b.dataset.like);
+      if (p){ p.liked = !p.liked; save(); render();
+        liveEl.textContent = p.liked ? 'Liked, privately. Nobody is shown this.' : 'Like removed.'; }
+      return;
+    }
+    if (b.dataset.likeReply){
+      var r = findReply(b.dataset.likeReply);
+      if (r){ r.liked = !r.liked; save(); render(); }
+      return;
+    }
+    if (b.dataset.follow){
+      var h = b.dataset.follow, ix = state.following.indexOf(h);
+      if (ix === -1) state.following.push(h); else state.following.splice(ix,1);
+      save(); render();
+      liveEl.textContent = (ix === -1 ? 'Following @' : 'Unfollowed @') + h + '.';
+      return;
+    }
+    if (b.dataset.mute){
+      var mh = b.dataset.mute;
+      if (state.muted.indexOf(mh) === -1) state.muted.push(mh);
+      var fi = state.following.indexOf(mh); if (fi !== -1) state.following.splice(fi,1);
+      save(); render();
+      liveEl.textContent = '@' + mh + ' muted and removed from your feed.';
+      toast('@' + mh + ' muted. Unmute any time from the sidebar.');
+      return;
+    }
+    if (b.dataset.replyToPost){
+      openReplyForm(feedEl.querySelector('[data-reply-form-post="' + b.dataset.replyToPost + '"]'));
+      return;
+    }
+    if (b.dataset.replyTo){
+      openReplyForm(feedEl.querySelector('[data-reply-form="' + b.dataset.replyTo + '"]'));
+      return;
+    }
+  });
+
+  function openReplyForm(f){
+    if (!f) return;
+    var wasHidden = f.hidden;
+    f.hidden = !wasHidden;
+    if (!f.hidden) f.querySelector('textarea').focus();
+  }
+
+  feedEl.addEventListener('submit', function(e){
+    var f = e.target.closest('form');
+    if (!f) return;
+    e.preventDefault();
+    var ta = f.querySelector('textarea');
+    var text = ta.value.trim();
+    if (!text){ ta.focus(); return; }
+
+    var reply = { id: uid(), handle: ME.handle, name: ME.name, ts: Date.now(),
+                  text: text, liked: false, replies: [] };
+
+    if (f.dataset.replyFormPost){
+      var p = findPost(f.dataset.replyFormPost);
+      if (p){ p.replies = p.replies || []; p.replies.push(reply); }
+    } else if (f.dataset.replyForm){
+      var parent = findReply(f.dataset.replyForm);
+      if (parent){ parent.replies = parent.replies || []; parent.replies.push(reply); }
+    }
+    save(); render();
+    liveEl.textContent = 'Reply added to the thread.';
+    var el = feedEl.querySelector('[data-id]');
+    var added = document.getElementById('h-' + reply.id);
+    if (added) added.focus();
+  });
+
+  /* ---------- sidebar ---------- */
+  $('#muted-list').addEventListener('click', function(e){
+    var b = e.target.closest('[data-unmute]');
+    if (!b) return;
+    var h = b.dataset.unmute, i = state.muted.indexOf(h);
+    if (i !== -1) state.muted.splice(i,1);
+    save(); render();
+    liveEl.textContent = '@' + h + ' unmuted.';
+  });
+
+  $('#reset').addEventListener('click', function(){
+    if (!confirm('Reset the demo? Everything you have posted in this browser will be deleted and the seeded feed comes back.')) return;
+    state = freshState(); save();
+    query = ''; searchEl.value = '';
+    setKind('ship'); setFilter('all');
+    toast('Demo reset.');
+  });
+
+  /* ---------- overlay ---------- */
+  function openSheet(){
+    lastFocus = document.activeElement;
+    overlay.hidden = false;
+    $('#sheet-close').focus();
+  }
+  function closeSheet(){
+    overlay.hidden = true;
+    if (lastFocus && lastFocus.focus) lastFocus.focus();
+  }
+  Array.prototype.forEach.call(document.querySelectorAll('[data-open-shortcuts]'), function(b){
+    b.addEventListener('click', openSheet);
+  });
+  $('#sheet-close').addEventListener('click', closeSheet);
+  overlay.addEventListener('mousedown', function(e){ if (e.target === overlay) closeSheet(); });
+  sheet.addEventListener('keydown', function(e){
+    if (e.key !== 'Tab') return;
+    var f = sheet.querySelectorAll('button, a[href], [tabindex]:not([tabindex="-1"])');
+    if (!f.length) return;
+    var first = f[0], last = f[f.length-1];
+    if (e.shiftKey && document.activeElement === first){ e.preventDefault(); last.focus(); }
+    else if (!e.shiftKey && document.activeElement === last){ e.preventDefault(); first.focus(); }
+  });
+
+  /* ---------- keyboard ---------- */
+  var cursor = -1;
+  function focusPost(delta){
+    var items = feedEl.querySelectorAll('.post');
+    if (!items.length) return;
+    var active = document.activeElement.closest ? document.activeElement.closest('.post') : null;
+    if (active) cursor = parseInt(active.dataset.i, 10);
+    cursor = Math.max(0, Math.min(items.length - 1, cursor + delta));
+    items[cursor].focus();
+    items[cursor].scrollIntoView({ block: 'nearest' });
+  }
+
+  document.addEventListener('keydown', function(e){
+    if (!overlay.hidden){
+      if (e.key === 'Escape'){ e.preventDefault(); closeSheet(); }
+      return;
+    }
+    var t = e.target;
+    var typing = t && (t.tagName === 'INPUT' || t.tagName === 'TEXTAREA' || t.isContentEditable);
+    if (e.metaKey || e.ctrlKey || e.altKey) return;
+
+    if (typing){
+      if (e.key === 'Escape') t.blur();
+      return;
+    }
+
+    switch (e.key){
+      case 'n': e.preventDefault(); textEl.focus(); textEl.scrollIntoView({block:'center'}); break;
+      case '/': e.preventDefault(); searchEl.focus(); searchEl.select(); break;
+      case 'j': e.preventDefault(); focusPost(cursor === -1 ? 0 : 1); break;
+      case 'k': e.preventDefault(); focusPost(-1); break;
+      case '?': e.preventDefault(); openSheet(); break;
+      case 'l': {
+        var pe = t.closest ? t.closest('.post') : null;
+        if (pe){ e.preventDefault(); pe.querySelector('[data-like]').click(); }
+        break;
+      }
+      case 'r': {
+        var pr = t.closest ? t.closest('.post') : null;
+        if (pr){ e.preventDefault(); pr.querySelector('[data-reply-to-post]').click(); }
+        break;
+      }
+    }
+  });
+
+  /* ---------- go ---------- */
+  setKind('ship');
+  updateCount();
+  render();
+
+  // Relative timestamps go stale on a page left open. Cheap enough to refresh.
+  setInterval(function(){
+    if (document.activeElement && document.activeElement.closest &&
+        document.activeElement.closest('.reply-form')) return;
+    Array.prototype.forEach.call(document.querySelectorAll('time'), function(el){
+      var ts = Date.parse(el.getAttribute('datetime'));
+      if (!isNaN(ts)) el.textContent = rel(ts);
+    });
+  }, 60000);
+})();
+</script>
+</body>
+</html>

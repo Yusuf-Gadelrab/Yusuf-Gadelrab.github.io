@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>EcoImpact — Trash Map &amp; Impact Meter · Yusuf Gadelrab</title>
+<meta name="description" content="Case study: a community trash map with a quantified impact meter — FastAPI, SQLite and Leaflet, designed privacy-first from the schema up.">
+<link rel="canonical" href="https://yusuf-gadelrab.github.io/ecoimpact.html">
+<link rel="icon" type="image/svg+xml" href="https://yusuf-gadelrab.github.io/favicon.svg">
+<link rel="apple-touch-icon" sizes="180x180" href="https://yusuf-gadelrab.github.io/apple-touch-icon.png">
+<meta name="theme-color" content="#0B0B0D">
+<meta name="author" content="Yusuf Gadelrab">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Yusuf Gadelrab">
+<meta property="og:title" content="EcoImpact — Trash Map & Impact Meter">
+<meta property="og:description" content="A community trash map with a quantified impact meter, designed privacy-first from the schema up.">
+<meta property="og:url" content="https://yusuf-gadelrab.github.io/ecoimpact.html">
+<meta property="og:image" content="https://yusuf-gadelrab.github.io/projects/ecoimpact.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="EcoImpact — Trash Map & Impact Meter">
+<meta name="twitter:description" content="A community trash map with a quantified impact meter, designed privacy-first from the schema up.">
+<meta name="twitter:image" content="https://yusuf-gadelrab.github.io/projects/ecoimpact.jpg">
+<link rel="stylesheet" href="/css/site.css">
+<style>
+  .shot{width:100%;aspect-ratio:16/10;object-fit:cover;border-radius:var(--radius-lg);
+    border:1px solid var(--line);box-shadow:var(--shadow)}
+  .pipe{display:flex;flex-wrap:wrap;gap:var(--s3)}
+  .pipe-step{flex:1 1 190px;min-width:0}
+  .pipe-step .step-n{font-family:var(--display-pro);font-size:var(--t-micro);
+    letter-spacing:2px;color:var(--gold-2);font-weight:700}
+  .pipe-step h3{margin:var(--s2) 0}
+  .pipe-step p{color:var(--muted);font-size:var(--t-small)}
+  .pills{display:flex;flex-wrap:wrap;gap:var(--s2)}
+  .pill{padding:8px 14px;border:1px solid var(--line-soft);border-radius:var(--radius);
+    font-size:var(--t-small);color:var(--ink);background:var(--panel)}
+  .callout{border-left:3px solid var(--gold)}
+  .callout b{color:var(--gold-2)}
+  .card p{color:var(--muted);font-size:var(--t-small);margin-top:var(--s3)}
+</style>
+</head>
+<body class="pro">
+
+<a class="skip-link" href="#main">Skip to content</a>
+
+<nav class="site-nav">
+  <a class="site-nav__brand" href="/">YUSUF GADELRAB</a>
+  <div class="site-nav__links">
+    <a href="/">Work</a>
+    <a href="/resume.html">Resume</a>
+    <a href="/store.html">Store</a>
+    <a href="/apps.html">Apps</a>
+    <a href="/kxngsef.html">KXNG SEF</a>
+    <a href="/media-kit.html">Media Kit</a>
+  </div>
+</nav>
+
+<main id="main">
+
+  <section class="section">
+    <span class="badge"><span class="dot"></span>Prototype · private repo · built 2026</span>
+    <h1 style="margin:var(--s5) 0">EcoImpact — <span class="gold-fill">fix the world, see the proof.</span></h1>
+    <p class="lead">A map of reported trash near you, plus a meter that quantifies how much you've actually fixed. Report a pin, clean it, log an eco action — watch kilograms of waste diverted and CO₂e avoided climb, with streaks and a leaderboard on top.</p>
+    <figure style="margin-top:var(--s7)">
+      <img class="shot" src="projects/ecoimpact.jpg" alt="EcoImpact app — dark city trash map with cleanup pins, an impact meter, and a community leaderboard" width="1600" height="1000" loading="lazy">
+    </figure>
+  </section>
+
+  <hr class="divider">
+
+  <section class="section section--tight">
+    <p class="eyebrow">The Problem</p>
+    <h2>Litter apps map the mess. None of them close the loop.</h2>
+    <p class="lead" style="margin-top:var(--s3)">Reporting apps already exist. What they don't give you is the payoff — a personal, quantified score that says what your cleanup was actually worth. Without that, a cleanup is a photo and nothing else, and there's no reason to come back tomorrow. The hook here is the meter, not the map.</p>
+  </section>
+
+  <hr class="divider">
+
+  <section class="section section--tight">
+    <p class="eyebrow">What I Built</p>
+    <h2>A full local MVP: report → clean → credit.</h2>
+    <div class="grid grid--2" style="margin-top:var(--s6)">
+      <div class="card">
+        <h3>The map</h3>
+        <p>Leaflet over OpenStreetMap, dark-treated to match the app. Tap anywhere to report trash with a category and note; the pin shows as open. Anyone can tap an open pin and mark it cleaned — it turns green and the impact is credited.</p>
+      </div>
+      <div class="card">
+        <h3>The meter</h3>
+        <p>An animated "world fixed" ring totalling kg of waste diverted and kg CO₂e avoided, fed by sourced estimate factors (EPA waste averages, eGRID grid intensity, DOE water-heating figures) rather than made-up numbers. Streaks and a ranked leaderboard drive the return visit.</p>
+      </div>
+    </div>
+    <div class="panel callout" style="margin-top:var(--s6)">
+      <b>Daily actions, not just litter.</b> Lights off, bike instead of drive, shorter shower, reusable bottle — each carries its own sourced impact factor, so engagement doesn't depend on finding trash that day.
+    </div>
+  </section>
+
+  <hr class="divider">
+
+  <section class="section section--tight">
+    <p class="eyebrow">How It Works</p>
+    <h2>Four moves, one loop.</h2>
+    <div class="pipe" style="margin-top:var(--s6)">
+      <div class="card pipe-step"><div class="step-n">STEP 1</div><h3>Report</h3><p>Tap the map, pick a category, drop an open pin. Coordinates are rounded before they're stored.</p></div>
+      <div class="card pipe-step"><div class="step-n">STEP 2</div><h3>Claim</h3><p>Someone nearby taps the pin and marks it cleaned. The pin flips green; confetti fires.</p></div>
+      <div class="card pipe-step"><div class="step-n">STEP 3</div><h3>Score</h3><p>The backend applies the versioned impact factor and updates the world-fixed meter live.</p></div>
+      <div class="card pipe-step"><div class="step-n">STEP 4</div><h3>Return</h3><p>Streak endpoint, leaderboard rank, and daily eco actions keep the loop running between cleanups.</p></div>
+    </div>
+  </section>
+
+  <hr class="divider">
+
+  <section class="section section--tight">
+    <p class="eyebrow">The Engineering Decision That Mattered</p>
+    <h2>Privacy designed in at the schema, not bolted on later.</h2>
+    <p class="lead" style="margin:var(--s3) 0 var(--s6)">A map app collecting location from students is a liability if you get it wrong, so the constraints went in before the features.</p>
+    <div class="grid" style="margin-top:var(--s6)">
+      <div class="card"><h3>No user GPS, ever</h3><p>User locations are not stored at all. Report coordinates are rounded to roughly 11 metres, so a pin marks a spot without marking a person.</p></div>
+      <div class="card"><h3>Report, don't touch</h3><p>Hazardous categories — needles, chemicals — are report-only by design and route to city services instead of asking a volunteer to pick them up.</p></div>
+      <div class="card"><h3>Estimates labelled as estimates</h3><p>Impact factors are versioned and sourced in code, and shown as estimates. Never marketed as offsets or credits — that's a regulated claim.</p></div>
+    </div>
+    <div class="pills" style="margin-top:var(--s6)">
+      <span class="pill">Python</span>
+      <span class="pill">FastAPI</span>
+      <span class="pill">SQLite</span>
+      <span class="pill">Leaflet</span>
+      <span class="pill">OpenStreetMap</span>
+      <span class="pill">Vanilla JS</span>
+      <span class="pill">pytest</span>
+      <span class="pill">GitHub Actions CI</span>
+    </div>
+  </section>
+
+  <hr class="divider">
+
+  <section class="section section--tight">
+    <p class="eyebrow">Honest Status</p>
+    <h2>Local MVP. Early.</h2>
+    <div class="grid grid--2" style="margin-top:var(--s6)">
+      <div class="card">
+        <h3>What's real</h3>
+        <p>The whole report → clean → impact loop works and is smoke-tested end-to-end, with a passing test suite running in CI. It runs on my machine on demand.</p>
+      </div>
+      <div class="card">
+        <h3>What isn't</h3>
+        <p>Not deployed publicly, no users, no revenue. Photo verification, moderation, PostGIS geo queries and a mobile wrapper are all planned, not built — and public launch is gated on the moderation and minors questions being answered properly first.</p>
+      </div>
+    </div>
+    <div class="row" style="margin-top:var(--s6)">
+      <a href="/apps.html" class="btn btn-gold">← All projects</a>
+      <a href="mailto:yusuf.gadelrab06@gmail.com" class="btn btn-ghost">Ask for a demo</a>
+    </div>
+  </section>
+
+</main>
+
+<footer class="site-footer">
+  <div>Yusuf Gadelrab · CS @ SJSU · EcoImpact project page</div>
+  <div class="site-footer__links">
+    <a href="/">Work</a>
+    <a href="/resume.html">Resume</a>
+    <a href="/store.html">Store</a>
+    <a href="/apps.html">Apps</a>
+    <a href="/kxngsef.html">KXNG SEF</a>
+    <a href="/media-kit.html">Media Kit</a>
+    <a href="mailto:yusuf.gadelrab06@gmail.com">yusuf.gadelrab06@gmail.com</a>
+    <a href="https://github.com/Yusuf-Gadelrab" target="_blank" rel="noopener">GitHub</a>
+    <a href="https://www.linkedin.com/in/yusuf-gadelrab-76246b221" target="_blank" rel="noopener">LinkedIn</a>
+  </div>
+</footer>
+
+</body>
+</html>
