@@ -1,0 +1,24 @@
+<!doctype html><meta charset=utf-8><body style="font:14px monospace;background:#fff;color:#000">
+<div id=out>running…</div>
+<script>
+const pages=['kxngsef','store','freightdesk','resume','media-kit','index'];
+const out=document.getElementById('out'); let lines=[];
+(async()=>{
+ for(const p of pages){
+  await new Promise(res=>{
+   const f=document.createElement('iframe');
+   f.style.cssText='width:375px;height:800px;border:0;position:absolute;left:-9999px';
+   f.src='/'+p+'.html';
+   f.onload=()=>{try{
+     const d=f.contentDocument, de=d.documentElement;
+     const over=[...d.querySelectorAll('*')].filter(e=>e.getBoundingClientRect().right>376.5)
+        .map(e=>e.tagName.toLowerCase()+(e.className&&typeof e.className==='string'?'.'+e.className.trim().split(/\s+/).slice(0,2).join('.'):'')+'@'+Math.round(e.getBoundingClientRect().right));
+     lines.push(p+': scrollW='+de.scrollWidth+' clientW='+de.clientWidth+' over='+over.length+' :: '+[...new Set(over)].slice(0,6).join(' | '));
+   }catch(e){lines.push(p+': ERR '+e.message)} f.remove(); res()};
+   f.onerror=()=>{lines.push(p+': LOAD FAIL'); res()};
+   document.body.appendChild(f);
+  });
+ }
+ out.textContent=lines.join('\n'); out.style.whiteSpace='pre';
+})();
+</script></body>
