@@ -266,6 +266,15 @@
   .tpl-item.vault{background:linear-gradient(135deg,rgba(212,175,55,.14),var(--panel2))}
   .tpl-item.vault b{font-size:24px}
   .tpl-cta{display:flex;flex-wrap:wrap;align-items:center;gap:var(--s4)}
+
+  /* risk disclosure — required on a page that sells trading education */
+  .risk-note{max-width:74ch;margin:0 auto;padding:clamp(24px,4vw,44px);
+    border:1px solid var(--line);border-left:3px solid var(--gold);
+    border-radius:var(--radius-lg);background:var(--panel2)}
+  .risk-note p{color:var(--muted);font-size:var(--t-small);line-height:1.7;margin:0 0 var(--s4)}
+  .risk-note p:last-child{margin-bottom:0}
+  .risk-note b{color:var(--ink);font-weight:600}
+  .risk-note a.gold{color:var(--gold-2)}
 </style>
 <script>
   // swap with live LS checkout URLs — paste the real Lemon Squeezy buy links here and every button updates (30-second job)
@@ -881,6 +890,18 @@
       </div>
       <p class="payline" style="margin-top:14px">One email · a straight answer on whether it's automatable · no retainer pitch</p>
       <p class="final-links"><a href="https://www.linkedin.com/in/yusuf-gadelrab-76246b221" target="_blank" rel="noreferrer">LinkedIn</a> · <a href="https://github.com/Yusuf-Gadelrab" target="_blank" rel="noreferrer">GitHub</a></p>
+    </div>
+  </section>
+
+  <!-- RISK DISCLAIMER -->
+  <section class="section" aria-labelledby="risk-h">
+    <div class="risk-note reveal">
+      <div class="eyebrow" style="color:var(--gold)">Risk Disclosure</div>
+      <h2 id="risk-h" style="font-size:clamp(20px,2.4vw,28px);margin:var(--s3) 0 var(--s4)">Educational material. Not financial advice.</h2>
+      <p>Everything sold here — the swing-trading course, the playbook, the screener and journal kits — is <b>educational and informational only</b>. Nothing on this site is financial, investment, tax or legal advice, and nothing is a recommendation to buy or sell any security.</p>
+      <p>Trading and investing carry <b>substantial risk of loss</b>, including the loss of your entire capital. Leveraged instruments and options can lose more than the amount deposited. Most retail traders lose money.</p>
+      <p>Backtested, walk-forward and simulated results are <b>hypothetical</b> — they do not represent live trading, do not account for real slippage, fees or the psychological cost of drawdown, and <b>past performance does not guarantee future results</b>. No live profit-and-loss figures are claimed anywhere on this site. Where a result is published, the method and window are published with it.</p>
+      <p>You are solely responsible for your own decisions. Consult a licensed financial professional before risking capital. Full terms: <a class="gold" href="/terms.html">Terms of Use</a> · <a class="gold" href="/refunds.html">Refund Policy</a> · <a class="gold" href="/privacy.html">Privacy</a>.</p>
     </div>
   </section>
 

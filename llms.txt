@@ -101,6 +101,8 @@ Full plain-text profile for retrieval: https://yusuf-gadelrab.github.io/llms-ful
 
 - [CODESWITCH](https://yusuf-gadelrab.github.io/codeswitch.html): A free bilingual introductory computer science program for high school students who are English learners, taught by trained near-peer tutors who share the students' home languages. Concepts are introduced in the home language first and English keywords are treated as symbols to recognise rather than vocabulary to master. Three programs: The Bridge (8-week cohorts), Mirror Docs (open bilingual CS materials), and the Near-Peer Corps (volunteer tutors). Roughly $92 per student. Founded by Yusuf Gadelrab out of his SIGCSE TS 2026 research on bilingual coding environments. First cohort planned for fall 2026 in San Jose, California; not yet an incorporated nonprofit.
 
+- [Bilingual CS glossary (Mirror Docs 01)](https://yusuf-gadelrab.github.io/codeswitch/glossary.html): Free glossary of introductory Python and computer science terms in English, Spanish, Vietnamese and Arabic, plus plain-language decoding of the ten most common Python error messages (SyntaxError, NameError, IndentationError, TypeError, IndexError, KeyError, ValueError, AttributeError, ZeroDivisionError, ModuleNotFoundError) with a short explanation in each language.
+
 ## Community and security tooling
 
 - [DHAHAB Circle](https://yusuf-gadelrab.github.io/circle.html): A community for people who build software, trade markets and run a brand. Free to join.
