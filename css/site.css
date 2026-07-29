@@ -24,7 +24,9 @@
   --bone:#F2EDE4;
   --ink:#F2EDE4;
   --muted:#a29c8e;
-  --faint:#6f6a61;
+  /* --faint was #6f6a61 = 3.66:1 on --bg, under the 4.5:1 AA floor for the
+     12-14px text it is used on. #8C8677 reads the same weight at 5.4:1. */
+  --faint:#8C8677;
 
   /* --- accent (exactly one hero element per view — see BRAND.md) --- */
   --gold:#D4AF37;
@@ -81,6 +83,10 @@ body{
   line-height:1.65;
   -webkit-font-smoothing:antialiased;
   overflow-x:hidden;
+  /* A single unbreakable token (long email, URL, DOI) must never be able to
+     widen a 375px viewport. break-word only kicks in when the word alone
+     overflows, so normal copy still wraps on spaces. */
+  overflow-wrap:break-word;
 }
 a{color:inherit;text-decoration:none}
 img,svg,video{max-width:100%;height:auto;display:block}
