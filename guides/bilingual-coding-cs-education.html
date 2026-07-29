@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="preload" href="/css/site.css" as="style">
+<meta name="robots" content="index,follow,max-image-preview:large,max-snippet:-1">
+<meta property="og:locale" content="en_US">
+<title>Bilingual Coding and Inclusive CS Learning</title>
+<meta name="description" content="What bilingual coding is, why second-language load hurts novice programmers, and what a 60-participant SIGCSE 2026 study found about confidence.">
+<link rel="canonical" href="https://yusuf-gadelrab.github.io/guides/bilingual-coding-cs-education.html">
+<link rel="icon" type="image/svg+xml" href="https://yusuf-gadelrab.github.io/favicon.svg">
+<link rel="apple-touch-icon" sizes="180x180" href="https://yusuf-gadelrab.github.io/apple-touch-icon.png">
+<meta name="theme-color" content="#0B0B0D">
+<meta name="author" content="Yusuf Gadelrab">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="Yusuf Gadelrab">
+<meta property="og:title" content="Bilingual Coding and Inclusive CS Learning">
+<meta property="og:description" content="Learning to program in a second language, and what a SIGCSE 2026 study found.">
+<meta property="og:url" content="https://yusuf-gadelrab.github.io/guides/bilingual-coding-cs-education.html">
+<meta property="og:image" content="https://yusuf-gadelrab.github.io/og-card.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Bilingual Coding and Inclusive CS Learning">
+<meta name="twitter:description" content="Learning to program in a second language, and what a SIGCSE 2026 study found.">
+<meta name="twitter:image" content="https://yusuf-gadelrab.github.io/og-card.png">
+<link rel="alternate" type="text/plain" href="https://yusuf-gadelrab.github.io/llms-full.txt" title="Plain-text profile for language models">
+
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"Article","@id":"https://yusuf-gadelrab.github.io/guides/bilingual-coding-cs-education.html#article","headline":"Bilingual Coding for Inclusive CS Learning","name":"Bilingual Coding for Inclusive CS Learning","description":"What bilingual coding is, why second-language load hurts novice programmers, and what a 60-participant SIGCSE 2026 study found about confidence.","datePublished":"2026-07-29","dateModified":"2026-07-29","inLanguage":"en","author":{"@id":"https://yusuf-gadelrab.github.io/#person"},"publisher":{"@id":"https://yusuf-gadelrab.github.io/#person"},"about":["Computer science education","Bilingual learners","Inclusive pedagogy"],"mainEntityOfPage":"https://yusuf-gadelrab.github.io/guides/bilingual-coding-cs-education.html","isAccessibleForFree":true,"citation":["https://doi.org/10.1145/3770761.3777339"]},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://yusuf-gadelrab.github.io/"},{"@type":"ListItem","position":2,"name":"Guides","item":"https://yusuf-gadelrab.github.io/guides.html"},{"@type":"ListItem","position":3,"name":"Bilingual Coding"}]}]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","@id":"https://yusuf-gadelrab.github.io/guides/bilingual-coding-cs-education.html#faq","mainEntity":[{"@type":"Question","name":"What is bilingual coding in CS education?","acceptedAnswer":{"@type":"Answer","text":"It refers to learning and practising programming while working across two languages — typically reasoning in a first language while the instruction, keywords, error messages, and documentation are all in English. It is studied because that translation layer adds cognitive load on top of an already demanding introductory course."}},{"@type":"Question","name":"Why is learning to program harder in a second language?","acceptedAnswer":{"@type":"Answer","text":"Introductory programming already asks novices to hold syntax, an execution model, and a problem-solving method at once. A second-language learner adds continuous translation of lectures, problem statements, and terse English error messages, and pays a language cost every time they try to articulate a half-formed question. The overhead is invisible from outside and is easily misread as lack of aptitude."}},{"@type":"Question","name":"What did the SIGCSE 2026 bilingual coding study examine?","acceptedAnswer":{"@type":"Answer","text":"The paper \"Exploring Bilingual Coding for Inclusive CS Learning\", presented at the SIGCSE Technical Symposium 2026 (DOI 10.1145/3770761.3777339), used a mixed-methods, IRB-approved design with 60 participants to examine bilingual learners in introductory programming contexts and how bilingual support affected their experience."}},{"@type":"Question","name":"What did the study find?","acceptedAnswer":{"@type":"Answer","text":"It reported a 24% improvement in learner confidence when bilingual support was present. The measured construct is confidence rather than raw programming ability, which matters because confidence is a strong predictor of whether students persist in computing at all."}},{"@type":"Question","name":"Why use a mixed-methods design for this?","acceptedAnswer":{"@type":"Answer","text":"Confidence is self-reported, so quantitative measures establish that it changed and by how much, while qualitative analysis of learners describing their own experience indicates why and surfaces factors no pre-written scale would have asked about. Each side covers the other's blind spot."}},{"@type":"Question","name":"What can instructors do about it?","acceptedAnswer":{"@type":"Answer","text":"Allow learners to reason and plan in their first language, provide a glossary of informal vocabulary rather than only keywords, teach error messages explicitly as a text genre, write problem statements in short unidiomatic sentences, offer a written or anonymous route to ask questions, and avoid reading hesitation as inability. None of it requires a new curriculum or a budget."}}]}</script>
+
+<link rel="stylesheet" href="/css/site.css">
+<style>
+  .prose{max-width:68ch}
+  .prose h2{margin:var(--s7) 0 var(--s4);font-size:var(--t-h2)}
+  .prose h3{margin:var(--s6) 0 var(--s3);font-size:var(--t-h3)}
+  .prose p{color:var(--muted);margin:0 0 var(--s4)}
+  .prose ul,.prose ol{color:var(--muted);padding-left:1.2em;margin:0 0 var(--s4)}
+  .prose li{margin-bottom:var(--s2)}
+  .prose a{color:var(--gold-2)}
+  .prose strong{color:var(--fg)}
+  .formula{display:block;padding:var(--s4);margin:0 0 var(--s4);border:1px solid var(--line-soft);
+    border-radius:var(--radius);font-family:ui-monospace,SFMono-Regular,Menlo,monospace;
+    font-size:var(--t-small);color:var(--gold-2);overflow-x:auto;white-space:pre-wrap}
+  .tblwrap{overflow-x:auto;margin:0 0 var(--s4)}
+  .tbl{width:100%;border-collapse:collapse;font-size:var(--t-small)}
+  .tbl th,.tbl td{text-align:left;padding:var(--s3);border-bottom:1px solid var(--line-soft);
+    color:var(--muted);vertical-align:top}
+  .tbl th{font-family:var(--display-pro);color:var(--gold-2);font-weight:600}
+  .callout{padding:var(--s4);border:1px solid var(--line-soft);border-radius:var(--radius);
+    color:var(--muted);font-size:var(--t-small);margin:0 0 var(--s5)}
+  .callout--warn{border-color:var(--gold-2)}
+  .faq-card{padding:var(--s5)}
+  .faq-card h3{font-size:var(--t-h3);margin:0}
+  .faq-card p{color:var(--muted);font-size:var(--t-small);margin:var(--s3) 0 0}
+</style>
+</head>
+<body class="pro">
+
+<a class="skip-link" href="#main">Skip to content</a>
+
+<nav class="site-nav">
+  <a class="site-nav__brand" href="/"><img class="site-nav__lion" src="/img/brand/lion-mark.svg" alt="" width="34" height="34"><span>YUSUF GADELRAB</span></a>
+  <div class="site-nav__links">
+    <a href="/">Work</a>
+    <a href="/guides.html">Guides</a>
+    <a href="/about.html">About</a>
+    <a href="/apps.html">Apps</a>
+  </div>
+</nav>
+
+<main id="main">
+
+  <header class="section">
+    <p class="eyebrow">Guide · Research</p>
+    <h1 style="margin:var(--s4) 0">Learning to program in your second language</h1>
+    <p class="lead">Programming is already hard. Doing it while translating the instructions, the error messages, and your own reasoning out of a second language is a different task entirely — and it is the task a large share of CS students are actually performing.</p>
+  </header>
+
+  <hr class="divider">
+
+  <section class="section section--tight">
+    <div class="prose">
+      <h2>The problem, stated plainly</h2>
+      <p>Introductory programming asks a novice to hold several new things at once: the syntax of a language, a mental model of how a machine executes it, and a problem-solving method. Cognitive load in that first course is high for everyone.</p>
+      <p><strong>For a bilingual learner, an additional layer sits on top of all of it.</strong> The lecture is in a second language. The textbook is in a second language. Keywords, error messages, documentation, and the informal vocabulary instructors use to explain concepts are all in a second language — while the reasoning itself, the internal narration of "if this is empty then I need to…", often still happens in the first.</p>
+      <p>The result is that a learner can be translating and programming simultaneously, and the cost of the translation is invisible from the outside. It looks like slowness, or hesitation to speak in class, or reluctance to ask questions — and it is frequently misread by everyone involved, including the learner, as lack of aptitude for programming.</p>
+      <h2>Why the language layer matters more than it seems</h2>
+      <ul>
+        <li><strong>Error messages are the primary feedback channel</strong> in early programming, and they are terse, idiomatic, and entirely in English.</li>
+        <li><strong>Keywords carry semantic hints</strong> — <em>while</em>, <em>return</em>, <em>continue</em> — that help a native speaker guess behaviour and do nothing for a learner who parses them as arbitrary tokens.</li>
+        <li><strong>Problem statements are natural-language comprehension tasks</strong> before they are programming tasks. A misread word produces a correct solution to the wrong problem.</li>
+        <li><strong>Asking for help has a language cost.</strong> Articulating a half-formed technical confusion is hard in a first language and considerably harder in a second, so questions go unasked.</li>
+        <li><strong>Confidence is the thing that erodes first,</strong> and in introductory CS confidence predicts persistence — whether a student stays in the major at all.</li>
+      </ul>
+      <h2>What the study examined</h2>
+      <p>That last point is what our study went after. The paper — <strong>"Exploring Bilingual Coding for Inclusive CS Learning"</strong>, presented at the <strong>SIGCSE Technical Symposium 2026</strong> (<a href="https://doi.org/10.1145/3770761.3777339">DOI 10.1145/3770761.3777339</a>) — was conducted in Dr. Ethel Tshukudu's CS Education Research Lab at San José State University.</p>
+      <div class="tblwrap"><table class="tbl">
+        <thead><tr><th>Element</th><th>Detail</th></tr></thead>
+        <tbody>
+          <tr><td>Venue</td><td>SIGCSE Technical Symposium 2026</td></tr>
+          <tr><td>Design</td><td>Mixed methods — quantitative measures plus qualitative analysis</td></tr>
+          <tr><td>Participants</td><td>60</td></tr>
+          <tr><td>Ethics</td><td>IRB-approved protocol</td></tr>
+          <tr><td>Focus</td><td>Bilingual learners in introductory programming contexts</td></tr>
+          <tr><td>Reported outcome</td><td>24% improvement in learner confidence</td></tr>
+        </tbody>
+      </table></div>
+      <p>The mixed-methods design was not decoration. Confidence is a self-reported construct, so the quantitative side establishes <em>that</em> it moved and by how much, while the qualitative side — learners describing their own experience in their own words — is what indicates <em>why</em>, and surfaces the parts of the experience that no pre-written scale asks about.</p>
+      <h2>The finding</h2>
+      <p>The study reported a <strong>24% improvement in learner confidence</strong> when bilingual support was present in the learning context. That is the headline number, and it is worth being precise about what it does and does not claim.</p>
+      <p class="callout">The measured outcome is confidence, not a claim that bilingual support makes anyone a better programmer in the abstract. In introductory CS that distinction matters less than it sounds, because confidence is one of the stronger predictors of whether a student continues in computing at all — the students lost to CS are frequently lost before their capability was ever the binding constraint.</p>
+      <p>The mechanism the qualitative side points at is unsurprising once stated: reducing the translation overhead frees attention for the actual computational thinking, and being permitted to reason in your stronger language removes a barrier that had nothing to do with programming ability in the first place.</p>
+      <h2>What this implies for teaching</h2>
+      <p>The practical implications are cheap to act on, which is the useful property of this line of work — none of it requires a new curriculum or a budget.</p>
+      <ol>
+        <li><strong>Let learners reason in their first language.</strong> Pair work, comments, notes, and planning do not have to happen in English for the code to be correct.</li>
+        <li><strong>Provide a glossary of terms, not just of keywords.</strong> The informal vocabulary — "loop through", "pass in", "call", "return" — is the part that quietly excludes.</li>
+        <li><strong>Explain error messages explicitly</strong> as a teachable text genre rather than assuming they are self-evident.</li>
+        <li><strong>Separate language comprehension from problem difficulty</strong> in problem statements: short sentences, no idiom, no culturally specific framing.</li>
+        <li><strong>Give a low-stakes route to ask questions</strong> — written, asynchronous, or anonymous — because the spoken channel carries the highest language cost.</li>
+        <li><strong>Do not read hesitation as inability.</strong> It is the single most consequential misreading in an introductory classroom.</li>
+      </ol>
+      <h2>Why this is a research area at all</h2>
+      <p>Global CS enrolment is substantially bilingual, and the field's introductory materials are overwhelmingly English-language. Any factor that pushes capable students out of computing before their capability is the constraint is a retention problem worth measuring, and language is one of the few such factors that is both large and inexpensive to address.</p>
+      <p>The full paper is at <a href="https://doi.org/10.1145/3770761.3777339">doi.org/10.1145/3770761.3777339</a>. How undergraduates get into work like this in the first place is covered in the <a href="/guides/undergraduate-research.html">undergraduate research guide</a>.</p>
+
+      <h2>Tools referenced in this guide</h2>
+      <ul>
+        <li><a href="/guides/undergraduate-research.html">Undergraduate research guide</a> — how to find a lab, email a professor, and reach authorship.</li>
+        <li><a href="/about.html">About</a> — the lab, the papers, and current projects.</li>
+        <li><a href="/apps.html">Apps</a> — the tools I build outside the research work.</li>
+      </ul>
+    </div>
+  </section>
+
+  <hr class="divider">
+
+  <section class="section section--tight" id="faq">
+    <div class="grp-head">
+      <p class="eyebrow">FAQ</p>
+      <h2>Quick answers</h2>
+    </div>
+    <div class="grid" style="margin-top:var(--s6)">
+      <article class="card faq-card"><h3>What is bilingual coding?</h3><p>Programming while working across two languages — reasoning in a first language while instruction, keywords, and errors are all in English.</p></article>
+      <article class="card faq-card"><h3>Why is it harder?</h3><p>Continuous translation sits on top of already-high cognitive load, and asking questions costs language effort. It looks like slowness, not overhead.</p></article>
+      <article class="card faq-card"><h3>What did the study do?</h3><p>SIGCSE TS 2026 paper, DOI 10.1145/3770761.3777339: mixed methods, IRB-approved, 60 participants, bilingual learners in intro programming.</p></article>
+      <article class="card faq-card"><h3>What was the finding?</h3><p>A 24% improvement in learner confidence with bilingual support present. Confidence, not raw ability — and it predicts persistence in CS.</p></article>
+      <article class="card faq-card"><h3>Why mixed methods?</h3><p>Numbers show that confidence moved and by how much; interviews show why, including factors no pre-written scale would ask about.</p></article>
+      <article class="card faq-card"><h3>What should instructors change?</h3><p>Allow first-language reasoning, glossary the informal vocabulary, teach error messages, simplify problem prose, offer written question routes.</p></article>
+    </div>
+  </section>
+
+</main>
+
+<footer class="site-footer">
+  <div class="site-footer__links">
+    <a href="/">Work</a>
+    <a href="/about.html">About</a>
+    <a href="/guides.html">Guides</a>
+    <a href="/apps.html">Apps</a>
+    <a href="/store.html">Store</a>
+    <a href="/privacy.html">Privacy</a>
+    <a href="/terms.html">Terms</a>
+    <a href="mailto:yusuf.gadelrab06@gmail.com">yusuf.gadelrab06@gmail.com</a>
+  </div>
+</footer>
+
+<script src="/js/site.js" defer></script>
+</body>
+</html>

@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="preload" href="/css/site.css" as="style">
+<meta name="robots" content="index,follow,max-image-preview:large,max-snippet:-1">
+<meta property="og:locale" content="en_US">
+<title>How to Get Cited by AI Answer Engines (GEO/AEO)</title>
+<meta name="description" content="Entity consolidation, llms.txt, robots.txt rules for named AI crawlers, FAQPage that mirrors visible text, answer-first writing, and IndexNow for fast recrawl.">
+<link rel="canonical" href="https://yusuf-gadelrab.github.io/guides/ai-search-optimization.html">
+<link rel="icon" type="image/svg+xml" href="https://yusuf-gadelrab.github.io/favicon.svg">
+<link rel="apple-touch-icon" sizes="180x180" href="https://yusuf-gadelrab.github.io/apple-touch-icon.png">
+<meta name="theme-color" content="#0B0B0D">
+<meta name="author" content="Yusuf Gadelrab">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="Yusuf Gadelrab">
+<meta property="og:title" content="How to Get Cited by AI Answer Engines">
+<meta property="og:description" content="Entity consolidation, llms.txt, AI crawler rules, mirrored FAQPage schema, and answer-first structure.">
+<meta property="og:url" content="https://yusuf-gadelrab.github.io/guides/ai-search-optimization.html">
+<meta property="og:image" content="https://yusuf-gadelrab.github.io/og-card.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="How to Get Cited by AI Answer Engines">
+<meta name="twitter:description" content="Entity consolidation, llms.txt, AI crawler rules, mirrored FAQPage schema, and answer-first structure.">
+<meta name="twitter:image" content="https://yusuf-gadelrab.github.io/og-card.png">
+<link rel="alternate" type="text/plain" href="https://yusuf-gadelrab.github.io/llms-full.txt" title="Plain-text profile for language models">
+
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"TechArticle","@id":"https://yusuf-gadelrab.github.io/guides/ai-search-optimization.html#article","headline":"How to Get Cited by AI Answer Engines: Entities, llms.txt, and Structure","name":"How to Get Cited by AI Answer Engines: Entities, llms.txt, and Structure","description":"Entity consolidation, llms.txt, robots.txt rules for named AI crawlers, FAQPage that mirrors visible text, answer-first writing, and IndexNow for fast recrawl.","datePublished":"2026-07-29","dateModified":"2026-07-29","inLanguage":"en","author":{"@id":"https://yusuf-gadelrab.github.io/#person"},"publisher":{"@id":"https://yusuf-gadelrab.github.io/#person"},"about":["Generative engine optimization","Structured data","Technical SEO"],"mainEntityOfPage":"https://yusuf-gadelrab.github.io/guides/ai-search-optimization.html","isAccessibleForFree":true,"proficiencyLevel":"Intermediate"},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://yusuf-gadelrab.github.io/"},{"@type":"ListItem","position":2,"name":"Guides","item":"https://yusuf-gadelrab.github.io/guides.html"},{"@type":"ListItem","position":3,"name":"AI Search Optimization"}]}]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","@id":"https://yusuf-gadelrab.github.io/guides/ai-search-optimization.html#faq","mainEntity":[{"@type":"Question","name":"What is generative engine optimization (GEO)?","acceptedAnswer":{"@type":"Answer","text":"GEO, also called answer engine optimization or AEO, is the practice of structuring a site so AI answer engines can retrieve, understand, and cite it. It shifts the goal from ranking in a list of links to being the passage a model can lift verbatim and attribute with confidence."}},{"@type":"Question","name":"Why does entity consolidation matter for AI search?","acceptedAnswer":{"@type":"Answer","text":"Because a retrieval system needs to be certain who a site is about. Defining one canonical schema.org Person or Organization node with a stable @id, and referencing that @id from every other page rather than redefining it, turns ten weakly-connected entities into one entity with ten pieces of supporting evidence. A sameAs list linking authoritative profiles ties it to the wider graph."}},{"@type":"Question","name":"What is llms.txt?","acceptedAnswer":{"@type":"Answer","text":"llms.txt is a proposed convention: a markdown file at the site root giving language models a clean, navigable summary of the site without HTML or navigation, with llms-full.txt holding the expanded content. Adoption is not universal, so treat it as cheap insurance, and never let it say anything that contradicts the rendered pages."}},{"@type":"Question","name":"Which AI crawlers should robots.txt address?","acceptedAnswer":{"@type":"Answer","text":"At minimum GPTBot and OAI-SearchBot from OpenAI, ClaudeBot and Claude-SearchBot from Anthropic, PerplexityBot, Google-Extended, Applebot-Extended, Bingbot, and CCBot. Training crawlers and live-retrieval crawlers are separate agents, so decide them independently — blocking Google-Extended does not affect Google Search ranking, and blocking retrieval bots guarantees you will not be cited."}},{"@type":"Question","name":"Does FAQPage schema have to match the visible page?","acceptedAnswer":{"@type":"Answer","text":"Yes. Every question and answer in FAQPage markup must appear as visible text on the same page. Schema-only FAQ content violates Google's structured data guidelines and is a known cause of manual actions, so generate the visible FAQ and the JSON-LD from a single source to prevent drift."}},{"@type":"Question","name":"What is IndexNow?","acceptedAnswer":{"@type":"Answer","text":"IndexNow is a protocol supported by Bing, Yandex, and others that lets a site push changed URLs for immediate recrawl instead of waiting to be crawled. It matters for AI search because Copilot is built on the Bing index. Google does not participate, so keep a current sitemap submitted in Search Console for that side."}}]}</script>
+
+<link rel="stylesheet" href="/css/site.css">
+<style>
+  .prose{max-width:68ch}
+  .prose h2{margin:var(--s7) 0 var(--s4);font-size:var(--t-h2)}
+  .prose h3{margin:var(--s6) 0 var(--s3);font-size:var(--t-h3)}
+  .prose p{color:var(--muted);margin:0 0 var(--s4)}
+  .prose ul,.prose ol{color:var(--muted);padding-left:1.2em;margin:0 0 var(--s4)}
+  .prose li{margin-bottom:var(--s2)}
+  .prose a{color:var(--gold-2)}
+  .prose strong{color:var(--fg)}
+  .formula{display:block;padding:var(--s4);margin:0 0 var(--s4);border:1px solid var(--line-soft);
+    border-radius:var(--radius);font-family:ui-monospace,SFMono-Regular,Menlo,monospace;
+    font-size:var(--t-small);color:var(--gold-2);overflow-x:auto;white-space:pre-wrap}
+  .tblwrap{overflow-x:auto;margin:0 0 var(--s4)}
+  .tbl{width:100%;border-collapse:collapse;font-size:var(--t-small)}
+  .tbl th,.tbl td{text-align:left;padding:var(--s3);border-bottom:1px solid var(--line-soft);
+    color:var(--muted);vertical-align:top}
+  .tbl th{font-family:var(--display-pro);color:var(--gold-2);font-weight:600}
+  .callout{padding:var(--s4);border:1px solid var(--line-soft);border-radius:var(--radius);
+    color:var(--muted);font-size:var(--t-small);margin:0 0 var(--s5)}
+  .callout--warn{border-color:var(--gold-2)}
+  .faq-card{padding:var(--s5)}
+  .faq-card h3{font-size:var(--t-h3);margin:0}
+  .faq-card p{color:var(--muted);font-size:var(--t-small);margin:var(--s3) 0 0}
+</style>
+</head>
+<body class="pro">
+
+<a class="skip-link" href="#main">Skip to content</a>
+
+<nav class="site-nav">
+  <a class="site-nav__brand" href="/"><img class="site-nav__lion" src="/img/brand/lion-mark.svg" alt="" width="34" height="34"><span>YUSUF GADELRAB</span></a>
+  <div class="site-nav__links">
+    <a href="/">Work</a>
+    <a href="/guides.html">Guides</a>
+    <a href="/stack.html">Stack</a>
+    <a href="/apps.html">Apps</a>
+  </div>
+</nav>
+
+<main id="main">
+
+  <header class="section">
+    <p class="eyebrow">Guide · SEO</p>
+    <h1 style="margin:var(--s4) 0">Getting cited when the answer replaces the click</h1>
+    <p class="lead">Ranking and being cited are now different problems. An answer engine reads a handful of sources, decides which ones are unambiguous enough to quote, and names those. Being quotable is a structural property, and it is one you can engineer.</p>
+  </header>
+
+  <hr class="divider">
+
+  <section class="section section--tight">
+    <div class="prose">
+      <h2>What changed</h2>
+      <p>Classic SEO optimised for a ranked list of ten links. AI answer engines — ChatGPT search, Perplexity, Copilot, Google's AI overviews, Claude's web search — synthesise a single answer from a few retrieved sources and cite some of them. That shifts the target from <em>rank higher</em> to <strong>be the passage a model can lift verbatim and attribute confidently.</strong></p>
+      <p>The practices go by two names: <strong>GEO</strong> (generative engine optimization) and <strong>AEO</strong> (answer engine optimization). They overlap almost entirely, and neither requires abandoning normal SEO — a page that is crawlable, fast, and structured still wins both. What changes is the emphasis: unambiguous entities, self-contained passages, and machine-readable facts.</p>
+      <h2>Entity consolidation: one @id, referenced everywhere</h2>
+      <p>The single highest-leverage technical move is making a retrieval system certain <em>who</em> the site is about. If ten pages each declare a separate Person node, a model sees ten weakly-connected entities. If ten pages reference one canonical <code>@id</code>, it sees one entity with ten pieces of evidence.</p>
+      <span class="formula">// on the homepage only — the canonical definition
+{
+  "@context": "https://schema.org",
+  "@type": "Person",
+  "@id": "https://example.com/#person",
+  "name": "Full Name",
+  "url": "https://example.com/",
+  "jobTitle": "...",
+  "knowsAbout": ["...", "..."],
+  "sameAs": [
+    "https://github.com/handle",
+    "https://www.linkedin.com/in/handle",
+    "https://orcid.org/0000-..."
+  ]
+}
+
+// on every other page — reference, never redefine
+"author":    {"@id": "https://example.com/#person"},
+"publisher": {"@id": "https://example.com/#person"}</span>
+      <ul>
+        <li><strong>Define once, reference everywhere.</strong> Re-stating the full Person object on every page invites contradictions, and contradictions are what make a model hedge instead of cite.</li>
+        <li><strong><code>sameAs</code> is the disambiguation lever.</strong> Link the profiles that already have independent authority — GitHub, LinkedIn, ORCID, a publisher DOI page. This is how an entity gets tied to an existing graph rather than floating alone.</li>
+        <li><strong>Keep names byte-identical</strong> across schema, page text, and external profiles. 'J. Smith' in one place and 'John Smith' in another is two entities as far as a matcher is concerned.</li>
+        <li><strong>Use <code>knowsAbout</code> deliberately.</strong> It is a direct statement of topical scope, and it is one of the few places you get to declare it rather than have it inferred.</li>
+        <li><strong>Validate every deploy.</strong> A JSON-LD syntax error means the block is skipped entirely and silently.</li>
+      </ul>
+      <h2>llms.txt and llms-full.txt</h2>
+      <p><code>llms.txt</code> is a proposed convention: a markdown file at the site root that gives a language model a clean, navigable summary of the site without HTML, navigation, or scripts. <code>llms-full.txt</code> is the expanded version containing the actual content.</p>
+      <span class="formula"># Site Name
+
+&gt; One-sentence description of who this is and what the site covers.
+
+## Guides
+- [Offline PWA](https://example.com/guides/offline-pwa.html): building an
+  installable offline app with no backend.
+- [RAG explained](https://example.com/guides/rag-explained.html): chunking,
+  embeddings, reranking, and where pipelines fail.
+
+## Projects
+- [Project name](https://example.com/project.html): what it does, in one line.
+
+## Contact
+- email@example.com</span>
+      <p>Two honest caveats. First, adoption is not universal — no major crawler has committed to it as a requirement, so treat it as cheap insurance rather than a guaranteed channel. Second, it is <strong>not a place to say something different from the site.</strong> Contradiction between llms.txt and the rendered pages is worse than having no file, because it introduces exactly the ambiguity you are trying to eliminate.</p>
+      <p>The reason to ship it anyway: it costs an hour, it is trivially machine-parseable, and it forces you to write a clean one-line description of every page — which is useful regardless of who reads it.</p>
+      <h2>robots.txt and the named AI crawlers</h2>
+      <p>AI companies operate separately-named agents, often splitting training crawlers from live-retrieval crawlers. Those are different decisions: blocking training while allowing retrieval is a coherent position, and so is the reverse.</p>
+      <div class="tblwrap"><table class="tbl">
+        <thead><tr><th>Agent</th><th>Operator</th><th>Primary purpose</th></tr></thead>
+        <tbody>
+          <tr><td>GPTBot</td><td>OpenAI</td><td>Training data collection</td></tr>
+          <tr><td>OAI-SearchBot</td><td>OpenAI</td><td>Live search retrieval and citation</td></tr>
+          <tr><td>ChatGPT-User</td><td>OpenAI</td><td>Fetches a page a user asked about</td></tr>
+          <tr><td>ClaudeBot</td><td>Anthropic</td><td>Crawling for model training</td></tr>
+          <tr><td>Claude-User / Claude-SearchBot</td><td>Anthropic</td><td>User-initiated fetch and search indexing</td></tr>
+          <tr><td>PerplexityBot</td><td>Perplexity</td><td>Search index used for cited answers</td></tr>
+          <tr><td>Google-Extended</td><td>Google</td><td>Controls Gemini training use; does not affect Search ranking</td></tr>
+          <tr><td>Applebot-Extended</td><td>Apple</td><td>Controls Apple Intelligence training use</td></tr>
+          <tr><td>Bingbot</td><td>Microsoft</td><td>Bing index, which also feeds Copilot</td></tr>
+          <tr><td>CCBot</td><td>Common Crawl</td><td>Open crawl corpus used by many trainers</td></tr>
+        </tbody>
+      </table></div>
+      <span class="formula">User-agent: GPTBot
+Allow: /
+
+User-agent: OAI-SearchBot
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: Google-Extended
+Allow: /
+
+User-agent: Applebot-Extended
+Allow: /
+
+Sitemap: https://example.com/sitemap.xml</span>
+      <p class="callout callout--warn">Blocking <code>Google-Extended</code> does not remove you from Google Search, and blocking a training crawler does not remove you from that company's live search results — the agents are separate. Equally, if you want to be cited, blocking the retrieval bots guarantees you will not be. Decide training and retrieval independently, and know which name controls which.</p>
+      <p><code>robots.txt</code> is a request, not enforcement. Crawlers that ignore it will ignore it. If content genuinely must not be read, it needs authentication, not a directive.</p>
+      <h2>FAQPage schema — and the rule that breaks sites</h2>
+      <p>FAQPage markup is well-suited to answer engines: it is a list of question-answer pairs in exactly the shape a retrieval system wants. There is one hard rule.</p>
+      <p class="callout callout--warn"><strong>Every question and answer in FAQPage markup must appear as visible text on the same page.</strong> Schema-only FAQ content — questions that exist in the JSON-LD but not on screen — violates Google's structured data guidelines and is a well-known cause of manual actions. Generate the visible FAQ and the schema from the same source so they cannot drift.</p>
+      <ul>
+        <li>Write answers that stand alone. 'It depends on the above' is unquotable; a model lifting that sentence out of context produces nothing useful.</li>
+        <li>Two to four sentences per answer. Long enough to be complete, short enough to be lifted whole.</li>
+        <li>Answer in the first sentence, then qualify. Never build to the answer.</li>
+        <li>Use the question form a person would actually type or say, not a keyword-stuffed variant.</li>
+        <li>Do not mark up promotional copy as an FAQ. It is the most common misuse and it does not survive review.</li>
+      </ul>
+      <h2>Answer-first writing and question-shaped headings</h2>
+      <p>Retrieval works on passages, not pages. A model chunks your page, embeds the chunks, and pulls the ones that match the query. That has direct consequences for structure.</p>
+      <ol>
+        <li><strong>Make headings questions</strong> where it is natural — 'How do you detect scene changes?' rather than 'Detection'. The heading is often the strongest signal for what the chunk beneath it answers.</li>
+        <li><strong>Answer in the first sentence under the heading.</strong> A paragraph that spends three sentences setting up context gets chunked away from its own conclusion.</li>
+        <li><strong>Make each section self-contained.</strong> Assume the reader has only that chunk, because the model might.</li>
+        <li><strong>Use tables and lists for comparisons.</strong> They survive chunking better than prose and are easier to extract cleanly.</li>
+        <li><strong>Put specifics in the text.</strong> Numbers, versions, exact command names, and dates are what makes a passage worth citing over a generic competitor.</li>
+        <li><strong>State facts plainly and once.</strong> Hedged, repetitive prose gives a model nothing crisp to quote.</li>
+      </ol>
+      <p>The underlying test is simple: <strong>if someone pasted one section of your page into a chat with no other context, would it answer the question?</strong> If not, that section will not get cited.</p>
+      <h2>IndexNow for fast recrawl</h2>
+      <p>IndexNow is a protocol supported by Bing, Yandex, Seznam and others that lets you push URLs the moment they change instead of waiting for a crawl. That matters for AI search because Copilot is built on the Bing index — faster Bing recrawl means faster Copilot freshness.</p>
+      <span class="formula"># 1. host a key file at the site root
+#    https://example.com/&lt;key&gt;.txt  containing exactly &lt;key&gt;
+
+# 2. ping on publish
+curl "https://api.indexnow.org/indexnow?url=https://example.com/guides/new.html&amp;key=&lt;key&gt;"
+
+# or submit a batch
+curl -X POST https://api.indexnow.org/indexnow \
+  -H "Content-Type: application/json" -d '{
+    "host": "example.com",
+    "key": "&lt;key&gt;",
+    "keyList": ["https://example.com/guides/new.html"]
+  }'</span>
+      <p>Google does not participate in IndexNow; for Google, keep the sitemap current and submit it in Search Console. Do not spam either — pinging unchanged URLs repeatedly is the fastest way to have the signal ignored.</p>
+      <h2>A checklist that fits on one screen</h2>
+      <ol>
+        <li>One canonical Person or Organization node with a stable <code>@id</code> and a full <code>sameAs</code> list, defined once and referenced from every page.</li>
+        <li>Article or TechArticle schema on every content page, with <code>author</code> and <code>publisher</code> pointing at that <code>@id</code>.</li>
+        <li>BreadcrumbList on every page below the root.</li>
+        <li>FAQPage that mirrors visible on-page text exactly, generated from the same source.</li>
+        <li><code>llms.txt</code> and <code>llms-full.txt</code> at the root, consistent with the site.</li>
+        <li><code>robots.txt</code> with an explicit, deliberate decision for each named AI agent, plus a sitemap line.</li>
+        <li>Question-shaped headings, answer-first paragraphs, self-contained sections.</li>
+        <li>A current <code>sitemap.xml</code> listing every real page, submitted to Search Console.</li>
+        <li>IndexNow ping wired into the publish step.</li>
+        <li>Validate JSON-LD on every deploy — one syntax error silently discards the whole block.</li>
+      </ol>
+      <p>This site implements the full list, which is the only reason I can describe it concretely: the canonical Person node lives on the homepage and every page references it, <a href="/llms.txt">/llms.txt</a> and <a href="/llms-full.txt">/llms-full.txt</a> are generated alongside the pages, <a href="/ai.txt">/ai.txt</a> and robots.txt state the crawler policy explicitly, and every guide including this one carries TechArticle plus BreadcrumbList plus an FAQPage that mirrors the visible FAQ below. <a href="/about.html">The entity page is here →</a></p>
+
+      <h2>Tools referenced in this guide</h2>
+      <ul>
+        <li><a href="/about.html">About</a> — the canonical entity page every schema node on this site points at.</li>
+        <li><a href="/guides/rag-explained.html">RAG explained</a> — how retrieval actually chunks and ranks your pages — useful context for all of this.</li>
+        <li><a href="/stack.html">My stack</a> — the generator and tooling behind the structured data here.</li>
+        <li><a href="/apps.html">Apps hub</a> — an example of the same schema pattern applied to product pages.</li>
+      </ul>
+    </div>
+  </section>
+
+  <hr class="divider">
+
+  <section class="section section--tight" id="faq">
+    <div class="grp-head">
+      <p class="eyebrow">FAQ</p>
+      <h2>Quick answers</h2>
+    </div>
+    <div class="grid" style="margin-top:var(--s6)">
+      <article class="card faq-card"><h3>What is GEO/AEO?</h3><p>Structuring a site so answer engines can retrieve and cite it. The goal moves from ranking in a list to being the quotable, attributable passage.</p></article>
+      <article class="card faq-card"><h3>Why consolidate entities?</h3><p>One canonical Person or Organization @id, referenced from every page, plus a sameAs list. Ten references to one entity beat ten separate ones.</p></article>
+      <article class="card faq-card"><h3>What is llms.txt?</h3><p>A markdown summary of the site at the root, with llms-full.txt for full content. Cheap insurance — and it must never contradict the pages.</p></article>
+      <article class="card faq-card"><h3>Which AI crawlers matter?</h3><p>GPTBot, OAI-SearchBot, ClaudeBot, Claude-SearchBot, PerplexityBot, Google-Extended, Applebot-Extended, Bingbot, CCBot. Training and retrieval are separate calls.</p></article>
+      <article class="card faq-card"><h3>Must FAQ schema match the page?</h3><p>Yes. Every Q and A must be visible on-page. Schema-only FAQ breaks Google&#x27;s guidelines and draws manual actions. Generate both from one source.</p></article>
+      <article class="card faq-card"><h3>What is IndexNow?</h3><p>A push protocol for instant recrawl on Bing and others, which feeds Copilot. Google does not participate — use a current sitemap there.</p></article>
+    </div>
+  </section>
+
+</main>
+
+<footer class="site-footer">
+  <div class="site-footer__links">
+    <a href="/">Work</a>
+    <a href="/about.html">About</a>
+    <a href="/guides.html">Guides</a>
+    <a href="/apps.html">Apps</a>
+    <a href="/store.html">Store</a>
+    <a href="/privacy.html">Privacy</a>
+    <a href="/terms.html">Terms</a>
+    <a href="mailto:yusuf.gadelrab06@gmail.com">yusuf.gadelrab06@gmail.com</a>
+  </div>
+</footer>
+
+<script src="/js/site.js" defer></script>
+</body>
+</html>

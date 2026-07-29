@@ -92,7 +92,7 @@
 
   <section class="section section--tight">
     <p class="eyebrow">Open lists</p>
-    <h2>Six things launching next</h2>
+    <h2>Seven things launching next</h2>
 
     <div class="grid" style="margin-top:var(--s6)">
 
@@ -154,6 +154,18 @@
           <button class="btn btn-gold btn-sm" type="submit">Tell me at launch</button>
         </form>
         <p class="note" id="n-dira"><a href="/dira.html">What it scans →</a></p>
+      </article>
+
+      <article class="card wl">
+        <span class="st st--soon"><i></i>Cohort 1 forming</span>
+        <h3>CODESWITCH — Tutor Corps</h3>
+        <p>The nonprofit side: free bilingual intro CS for high schoolers still learning English. We need tutors who speak Spanish, Vietnamese, or Arabic and are comfortable with loops and functions. Unpaid, eight weeks, district background check required.</p>
+        <p class="perk">→ Handbook and clearance steps sent on signup</p>
+        <form class="mini" id="f-cs" novalidate>
+          <input type="email" id="e-cs" placeholder="you@email.com" autocomplete="email" aria-label="Email to volunteer as a CODESWITCH tutor" required>
+          <button class="btn btn-gold btn-sm" type="submit">I'll tutor</button>
+        </form>
+        <p class="note" id="n-cs"><a href="/codeswitch.html">What CODESWITCH is →</a></p>
       </article>
 
       <article class="card wl">
@@ -240,7 +252,7 @@
 addEventListener("DOMContentLoaded", function () {
   if (!window.YGWaitlist) return;
   [["circle","DHAHAB Circle"],["sef","KXNG SEF Drop 01"],["fd","FreightDesk Pilot"],
-   ["swing","Swing OS Cohort"],["dira","DIRA Release"],["apps","New Apps"]]
+   ["swing","Swing OS Cohort"],["dira","DIRA Release"],["cs","CODESWITCH Tutor Corps"],["apps","New Apps"]]
   .forEach(function (p) {
     YGWaitlist.attach("f-" + p[0], "e-" + p[0], "n-" + p[0], p[1]);
   });
