@@ -80,6 +80,7 @@
   #phone h1{font-size:22px;font-weight:700}
   #phone h2{font-size:18px;font-weight:700}
   #phone h3{font-size:15px;font-weight:700}
+  #phone .apptitle{font-size:22px;font-weight:700}
   #phone .hero{background:linear-gradient(135deg,var(--se-blue-d),var(--se-blue));
     padding:18px 18px 16px;border-bottom:3px solid var(--se-gold)}
   #phone .hero .logo{font-weight:800;font-size:20px}
@@ -386,7 +387,7 @@ function vMenu(rid){
   const r=rest(rid), cc=cartCount();
   return `<button class="back" onclick="go('home')">← Back</button>
   <div class="pad">
-    <div class="emoji-big">${r.em}</div><h1>${r.name}</h1><div class="mut">${r.cui} · ${r.dist} · ${r.eta}</div>
+    <div class="emoji-big">${r.em}</div><h2 class="apptitle">${r.name}</h2><div class="mut">${r.cui} · ${r.dist} · ${r.eta}</div>
     <div style="height:14px"></div>
     ${r.items.map(i=>{const q=(S.cart&&S.cart.restId===rid&&S.cart.items[i.id])||0;return `
       <div class="card"><div class="row"><div><b>${i.name}</b><div class="mut">${money(i.price)}</div></div>
@@ -408,7 +409,7 @@ function vCheckout(){
   const r=rest(S.cart.restId), sub=cartSubtotal(), dd=ddEstimate(sub);
   return `<button class="back" onclick="go('menu','${r.id}')">← Back to menu</button>
   <div class="pad">
-    <h1>Checkout</h1>
+    <h2 class="apptitle">Checkout</h2>
     <div class="card" style="margin-top:12px">
       <b>${r.em} ${r.name}</b>
       ${Object.entries(S.cart.items).map(([iid,q])=>{const i=item(S.cart.restId,iid);return `<div class="row" style="margin-top:8px"><span class="mut">${q}× ${i.name}</span><span>${money(i.price*q)}</span></div>`;}).join('')}
@@ -483,7 +484,7 @@ function vTrack(oid){
   const idx=steps.findIndex(s=>s[0]===o.status);
   return `<button class="back" onclick="go('orders')">← Orders</button>
   <div class="pad">
-    <h1>${rest(o.restId).em} Order #${o.id}</h1>
+    <h2 class="apptitle">${rest(o.restId).em} Order #${o.id}</h2>
     <div class="mut" style="margin-top:4px">${statusLabel(o)}${o.deliverer?' · 🛵 '+esc(o.deliverer):''}</div>
     <div class="steps" style="margin-top:18px">
       ${steps.map((s,i)=>`<div class="step ${i<idx?'done':i===idx?'now':''}"><div class="dot">${i<idx?'✓':''}</div><div><div class="st">${s[1]}</div></div></div>`).join('')}
