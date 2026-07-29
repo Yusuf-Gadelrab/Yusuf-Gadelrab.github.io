@@ -30,6 +30,9 @@
     background:linear-gradient(90deg,var(--gold-dim),var(--gold),var(--gold-2));
     box-shadow:0 0 12px var(--glow);pointer-events:none}
 
+  /* four metric tiles stay on one line until the phone breakpoint */
+  .grid.stats-4{grid-template-columns:repeat(auto-fit,minmax(min(180px,100%),1fr))}
+
   .hero-grid{display:grid;grid-template-columns:minmax(0,1.4fr) minmax(240px,.6fr);
     gap:clamp(28px,5vw,64px);align-items:center}
   .hero-shot{margin:0;max-width:360px;justify-self:end}
@@ -119,7 +122,7 @@
     <div class="hero-grid">
       <div>
         <span class="badge reveal"><span class="dot"></span>HwyHaul · Freight Brokerage Internship · May – Jul 2026</span>
-        <h1 class="hero-type reveal" style="margin:var(--s5) 0">The freight back office, <span class="gold-fill">run by AI</span> — not by hand.</h1>
+        <h1 class="reveal" style="margin:var(--s5) 0">The freight back office, <span class="gold-fill">run by AI</span> — not by hand.</h1>
         <p class="lead reveal">At <b>HwyHaul</b>, a freight brokerage moving loads between shippers and carriers, I built an AI layer that reads incoming carrier messages, drafts the reply, and clears the billing &amp; AR back office — <b>100% on the laptop, zero API cost, and a human always clicks Send.</b></p>
         <div class="row reveal" style="margin-top:var(--s6)">
           <a href="#build" class="btn btn-gold">See what I built ↓</a>
@@ -133,7 +136,7 @@
       </figure>
     </div>
 
-    <div class="grid" style="margin-top:var(--s8)">
+    <div class="grid stats-4" style="margin-top:var(--s8)">
       <div class="card card--flat stat reveal"><span class="stat__value" data-count="77">77</span><span class="stat__label">automated tests passing</span></div>
       <div class="card card--flat stat reveal"><span class="stat__value" data-count="18">18</span><span class="stat__label">finance pain-points solved</span></div>
       <div class="card card--flat stat reveal"><span class="stat__value" data-count="100" data-suffix="%">100%</span><span class="stat__label">local · no third-party API</span></div>

@@ -8,6 +8,7 @@
 <link rel="canonical" href="https://yusuf-gadelrab.github.io/spartaneats.html">
 <link rel="icon" type="image/svg+xml" href="https://yusuf-gadelrab.github.io/favicon.svg">
 <link rel="apple-touch-icon" sizes="180x180" href="https://yusuf-gadelrab.github.io/apple-touch-icon.png">
+<meta name="theme-color" content="#0B0B0D">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="SpartanEats">
 <meta property="og:title" content="SpartanEats — SJSU Student Food Delivery">
@@ -18,164 +19,223 @@
 <meta name="twitter:title" content="SpartanEats — SJSU Student Food Delivery">
 <meta name="twitter:description" content="A student-run food delivery app concept for SJSU. Campus-priced delivery, built by Spartans for Spartans.">
 <meta name="twitter:image" content="https://yusuf-gadelrab.github.io/projects/spartaneats.jpg">
+<link rel="stylesheet" href="/css/site.css">
 <style>
+  /* ============================================================================
+     Page-specific CSS only.
+
+     The phone demo below is a self-contained app UI in SJSU blue/gold. Its
+     tokens are namespaced --se-* and every one of its component selectors is
+     scoped under #phone, so it keeps its own look without colliding with the
+     shared design system (.card/.btn/.row/.stat exist in both).
+     ========================================================================= */
   :root{
-    --blue:#0055A2; --blue-d:#003b70; --gold:#E5A823; --gold-d:#c78d0f;
-    --bg:#0e1320; --card:#171e2f; --card2:#1e2740; --line:#2a3552;
-    --txt:#eef2fa; --mut:#93a0bd; --grn:#34d399; --red:#f87171;
-  }
-  *{margin:0;padding:0;box-sizing:border-box;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif}
-  body{background:radial-gradient(1100px 560px at 85% -10%,rgba(0,85,162,.22),transparent 60%),radial-gradient(800px 480px at 8% 108%,rgba(229,168,35,.06),transparent 60%),#070a12;min-height:100vh;min-height:100dvh;color:var(--txt)}
-
-  /* ---------- Landing frame ---------- */
-  .landing{max-width:1060px;margin:0 auto;padding:56px 22px 28px;display:grid;grid-template-columns:minmax(0,1fr) 420px;gap:56px;align-items:center}
-  .eyebrow{font-size:11.5px;letter-spacing:.18em;font-weight:700;color:var(--gold);opacity:.9;margin-bottom:14px}
-  .pitch h1{font-size:clamp(30px,4.4vw,44px);line-height:1.08;font-weight:800;letter-spacing:-.5px}
-  .pitch h1 .g{color:var(--gold)}
-  .lede{color:var(--mut);font-size:16px;line-height:1.6;margin-top:14px;max-width:52ch}
-  .mathcard{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:16px 18px;margin-top:22px}
-  .mrow{display:flex;justify-content:space-between;align-items:baseline;gap:12px;font-size:14.5px}
-  .mrow .strike{color:var(--mut);text-decoration:line-through;font-size:15px;white-space:nowrap}
-  .msub{color:#5b6785;font-size:11.5px;margin-top:3px}
-  .mrow.main{margin-top:12px;padding-top:12px;border-top:1px dashed var(--line);font-weight:700;font-size:15.5px}
-  .mrow.main .goldn{color:var(--gold);font-size:22px;font-weight:800;white-space:nowrap}
-  .mkeep{margin-top:10px;font-size:13px;color:var(--grn);font-weight:600}
-  .aftercard{background:rgba(52,211,153,.06);border:1px solid rgba(52,211,153,.35);border-radius:16px;padding:14px 16px;margin-top:12px}
-  .ac-sub{color:var(--mut);font-size:13px;margin-top:7px}
-  .ac-sub b{color:var(--txt)}
-  .ac-note{font-size:11.5px;color:#5b6785;margin-top:8px}
-  .cta-block{margin-top:24px;display:flex;flex-direction:column;gap:10px;max-width:380px}
-  .gold-btn{display:block;text-align:center;background:var(--gold);color:#1a1200;font-weight:800;font-size:15.5px;border-radius:13px;padding:15px 20px;text-decoration:none;box-shadow:0 8px 26px rgba(229,168,35,.22);transition:transform .12s ease,box-shadow .12s ease}
-  .gold-btn:hover{transform:translateY(-1px);box-shadow:0 12px 32px rgba(229,168,35,.32)}
-  .gold-btn:active{transform:none;background:var(--gold-d)}
-  .trigger{font-size:11.5px;color:#5b6785;text-align:center;margin-top:-3px}
-  .ghost-btn{display:block;text-align:center;background:transparent;border:1.5px solid var(--line);color:var(--txt);font-weight:700;font-size:14px;border-radius:13px;padding:12px 20px;text-decoration:none;transition:border-color .12s,color .12s}
-  .ghost-btn:hover{border-color:var(--gold);color:var(--gold)}
-  a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible,textarea:focus-visible{outline:2px solid var(--gold);outline-offset:2px}
-  .device{display:flex;flex-direction:column;align-items:center;gap:12px}
-  .demo-chip{font-size:11.5px;letter-spacing:.06em;font-weight:700;color:var(--grn);background:rgba(52,211,153,.08);border:1px solid rgba(52,211,153,.35);border-radius:999px;padding:6px 14px;text-align:center}
-  .demo-chip .dim{color:var(--mut);font-weight:600;letter-spacing:0}
-  .site-foot{max-width:1060px;margin:0 auto;padding:8px 22px 48px;text-align:center}
-  .site-foot .gold-btn{display:inline-block;min-width:280px}
-  .site-foot .fline{color:#5b6785;font-size:12px;margin-top:16px;line-height:1.6}
-  .site-foot a.plain{color:var(--mut)}
-  @keyframes rise{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:none}}
-  .pitch>*{animation:rise .55s ease both}
-  .pitch>*:nth-child(2){animation-delay:.06s}
-  .pitch>*:nth-child(3){animation-delay:.12s}
-  .pitch>*:nth-child(4){animation-delay:.18s}
-  .pitch>*:nth-child(5){animation-delay:.24s}
-  .pitch>*:nth-child(6){animation-delay:.3s}
-  .device{animation:rise .6s .2s ease both}
-  @media (prefers-reduced-motion:reduce){.pitch>*,.device{animation:none}}
-  @media (max-width:920px){
-    .landing{grid-template-columns:1fr;gap:34px;padding:40px 18px 20px}
-    .cta-block{max-width:none}
-  }
-  @media (max-width:480px){
-    .landing{padding:28px 14px 14px}
-    #phone{border-radius:22px}
+    --se-blue:#0055A2; --se-blue-d:#003b70; --se-gold:#E5A823; --se-gold-d:#c78d0f;
+    --se-bg:#0e1320; --se-card:#171e2f; --se-card2:#1e2740; --se-line:#2a3552;
+    --se-txt:#eef2fa; --se-mut:#93a0bd; --se-grn:#34d399; --se-red:#f87171;
   }
 
-  /* ---------- App (demo device) ---------- */
-  #phone{width:100%;max-width:420px;height:min(780px,82vh);background:var(--bg);display:flex;flex-direction:column;position:relative;border-radius:30px;border:1px solid var(--line);overflow:hidden;margin:0 auto;box-shadow:0 0 60px rgba(0,85,162,.25),0 30px 70px rgba(0,0,0,.55)}
+  /* ---------- landing frame ---------- */
+  .landing{display:grid;grid-template-columns:minmax(0,1fr) 420px;
+    gap:clamp(28px,5vw,56px);align-items:center}
+  @media(max-width:920px){.landing{grid-template-columns:1fr}}
+
+  .mathrow{display:flex;justify-content:space-between;align-items:baseline;
+    gap:var(--s3);font-size:var(--t-small)}
+  .mathrow .strike{color:var(--muted);text-decoration:line-through;white-space:nowrap}
+  .mathsub{color:var(--faint);font-size:var(--t-micro);margin-top:3px}
+  .mathrow.total{margin-top:var(--s3);padding-top:var(--s3);
+    border-top:1px dashed var(--line);font-weight:700}
+  .mathrow.total .goldn{font-family:var(--display-pro);font-weight:800;
+    letter-spacing:-.02em;color:var(--gold-2);font-size:22px;white-space:nowrap}
+  .mkeep{margin-top:var(--s3);font-size:var(--t-small);color:var(--ok);font-weight:600}
+
+  .aftercard{border-color:rgba(52,211,153,.35);background:rgba(52,211,153,.06)}
+  .ac-row{display:flex;justify-content:space-between;align-items:center;gap:var(--s3)}
+  .ac-sub{color:var(--muted);font-size:var(--t-small);margin-top:7px}
+  .ac-sub b{color:var(--ink)}
+  .ac-note{font-size:var(--t-micro);color:var(--faint);margin-top:var(--s2)}
+  .tag-ok{display:inline-flex;align-items:center;padding:4px 12px;border-radius:var(--radius);
+    font-size:var(--t-micro);color:var(--ok);border:1px solid rgba(52,211,153,.4);
+    background:rgba(52,211,153,.10);white-space:nowrap}
+
+  .cta-block{display:flex;flex-direction:column;gap:var(--s3);max-width:380px}
+  @media(max-width:920px){.cta-block{max-width:none}}
+  .trigger{font-size:var(--t-micro);color:var(--faint);text-align:center}
+
+  .device{display:flex;flex-direction:column;align-items:center;gap:var(--s3)}
+  .demo-chip{font-size:var(--t-micro);font-weight:700;color:var(--ok);
+    background:rgba(52,211,153,.08);border:1px solid rgba(52,211,153,.35);
+    border-radius:var(--radius);padding:6px 14px;text-align:center}
+  .demo-chip .dim{color:var(--muted);font-weight:600}
+
+  /* ============================ THE PHONE DEMO ============================ */
+  #phone{width:100%;max-width:420px;height:min(780px,82vh);background:var(--se-bg);
+    display:flex;flex-direction:column;position:relative;border-radius:30px;
+    border:1px solid var(--se-line);overflow:hidden;margin:0 auto;color:var(--se-txt);
+    box-shadow:0 0 60px rgba(0,85,162,.25),0 30px 70px rgba(0,0,0,.55)}
+  @media(max-width:480px){#phone{border-radius:22px}}
+  #phone *{font-family:var(--body-font);letter-spacing:normal;text-transform:none}
   #app{flex:1;overflow-y:auto;overscroll-behavior:contain;padding-bottom:84px}
-  h1{font-size:22px}h2{font-size:18px}h3{font-size:15px}
-  .hero{background:linear-gradient(135deg,var(--blue-d),var(--blue));padding:18px 18px 16px;border-bottom:3px solid var(--gold)}
-  .hero .logo{font-weight:800;font-size:20px;letter-spacing:.3px}
-  .hero .logo span{color:var(--gold)}
-  .hero .tag{font-size:12px;color:#cfe3ff;margin-top:2px}
-  .pad{padding:16px 18px}
-  .card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:14px;margin-bottom:12px}
-  .card.tap{cursor:pointer;transition:transform .08s}
-  .card.tap:active{transform:scale(.98)}
-  .row{display:flex;align-items:center;justify-content:space-between;gap:10px}
-  .mut{color:var(--mut);font-size:12.5px}
-  .pill{display:inline-block;background:var(--card2);border:1px solid var(--line);border-radius:999px;padding:3px 10px;font-size:11.5px;color:var(--mut)}
-  .pill.gold{background:rgba(229,168,35,.15);border-color:var(--gold);color:var(--gold)}
-  .pill.grn{background:rgba(52,211,153,.12);border-color:var(--grn);color:var(--grn)}
-  .btn{display:block;width:100%;background:var(--gold);color:#1a1200;border:none;border-radius:12px;padding:14px;font-size:15px;font-weight:700;cursor:pointer;text-align:center}
-  .btn:active{background:var(--gold-d)}
-  .btn.blue{background:var(--blue);color:#fff}
-  .btn.ghost{background:transparent;border:1.5px solid var(--line);color:var(--txt)}
-  .btn.sm{padding:9px;font-size:13px;border-radius:10px;width:auto;padding-inline:14px;display:inline-block}
-  .btn:disabled{opacity:.45;cursor:not-allowed}
-  input,select,textarea{width:100%;background:var(--card2);border:1.5px solid var(--line);border-radius:11px;padding:12px;color:var(--txt);font-size:14.5px;margin-top:6px}
-  input:focus,select:focus,textarea:focus{outline:none;border-color:var(--gold)}
-  label{font-size:13px;color:var(--mut);font-weight:600;display:block;margin-top:14px}
-  .err{color:var(--red);font-size:12.5px;margin-top:6px;display:none}
-  #nav{position:absolute;bottom:0;left:0;width:100%;background:#10162a;border-top:1px solid var(--line);display:flex;z-index:50}
-  #nav button{flex:1;background:none;border:none;color:var(--mut);padding:10px 0 14px;font-size:10.5px;cursor:pointer;display:flex;flex-direction:column;align-items:center;gap:3px}
-  #nav button .ico{font-size:20px}
-  #nav button.on{color:var(--gold)}
-  .qty{display:flex;align-items:center;gap:12px}
-  .qty button{width:30px;height:30px;border-radius:9px;border:1.5px solid var(--line);background:var(--card2);color:var(--gold);font-size:17px;font-weight:700;cursor:pointer}
-  .cartbar{position:absolute;bottom:70px;width:calc(100% - 24px);left:50%;transform:translateX(-50%);background:var(--blue);border-radius:13px;padding:13px 16px;display:flex;justify-content:space-between;align-items:center;cursor:pointer;font-weight:700;box-shadow:0 8px 24px rgba(0,0,0,.5);z-index:40}
-  .steps{margin:14px 0}
-  .step{display:flex;gap:12px;align-items:flex-start;padding-bottom:18px;position:relative}
-  .step:before{content:"";position:absolute;left:10px;top:24px;bottom:0;width:2px;background:var(--line)}
-  .step:last-child:before{display:none}
-  .dot{width:22px;height:22px;border-radius:50%;background:var(--card2);border:2px solid var(--line);flex-shrink:0;display:flex;align-items:center;justify-content:center;font-size:11px}
-  .step.done .dot{background:var(--grn);border-color:var(--grn);color:#03170d}
-  .step.now .dot{background:var(--gold);border-color:var(--gold)}
-  .step.now .st{color:var(--gold);font-weight:700}
-  .banner{background:rgba(52,211,153,.1);border:1px solid rgba(52,211,153,.4);border-radius:11px;padding:10px 12px;font-size:12.5px;color:var(--grn);margin:12px 0}
-  .warn{background:rgba(229,168,35,.09);border:1px solid rgba(229,168,35,.45);border-radius:11px;padding:10px 12px;font-size:12.5px;color:var(--gold);margin:12px 0;line-height:1.45}
-  .food-tag{background:rgba(229,168,35,.15);border:1px dashed var(--gold);border-radius:10px;padding:9px 11px;font-size:13px;color:var(--gold);margin-top:8px}
-  #toast{position:absolute;top:14px;left:50%;transform:translateX(-50%);background:var(--gold);color:#1a1200;padding:10px 18px;border-radius:999px;font-size:13.5px;font-weight:700;z-index:99;display:none;box-shadow:0 6px 20px rgba(0,0,0,.5);width:max-content;max-width:calc(100% - 28px);text-align:center}
-  .back{background:none;border:none;color:var(--gold);font-size:14px;font-weight:700;cursor:pointer;padding:14px 18px 0}
-  .emoji-big{font-size:34px}
-  .split{display:flex;gap:10px}
-  .split>*{flex:1}
-  .radio{display:flex;gap:10px;align-items:center;background:var(--card2);border:1.5px solid var(--line);border-radius:11px;padding:12px;margin-top:8px;cursor:pointer;font-size:14px}
-  .radio.on{border-color:var(--gold);background:rgba(229,168,35,.08)}
-  .chk{display:flex;gap:10px;align-items:flex-start;font-size:12.5px;color:var(--mut);margin-top:12px;cursor:pointer;line-height:1.45}
-  .chk input{width:auto;margin-top:2px}
-  .stat{background:var(--card);border:1px solid var(--line);border-radius:13px;padding:14px;text-align:center;flex:1}
-  .stat .n{font-size:22px;font-weight:800;color:var(--gold)}
-  .stat .l{font-size:11px;color:var(--mut);margin-top:2px}
-  .foot{font-size:10.5px;color:#5b6785;line-height:1.5;padding:18px;text-align:center}
+  #phone h1{font-size:22px;font-weight:700}
+  #phone h2{font-size:18px;font-weight:700}
+  #phone h3{font-size:15px;font-weight:700}
+  #phone .hero{background:linear-gradient(135deg,var(--se-blue-d),var(--se-blue));
+    padding:18px 18px 16px;border-bottom:3px solid var(--se-gold)}
+  #phone .hero .logo{font-weight:800;font-size:20px}
+  #phone .hero .logo span{color:var(--se-gold)}
+  #phone .hero .tag{font-size:12px;color:#cfe3ff;margin-top:2px}
+  #phone .pad{padding:16px 18px}
+  #phone .card{background:var(--se-card);border:1px solid var(--se-line);border-radius:14px;
+    padding:14px;margin-bottom:12px;box-shadow:none;transform:none}
+  #phone .card.tap{cursor:pointer;transition:transform .08s}
+  #phone .card.tap:active{transform:scale(.98)}
+  #phone .row{display:flex;align-items:center;justify-content:space-between;gap:10px}
+  #phone .mut{color:var(--se-mut);font-size:12.5px}
+  #phone .pill{display:inline-block;background:var(--se-card2);border:1px solid var(--se-line);
+    border-radius:999px;padding:3px 10px;font-size:11.5px;color:var(--se-mut)}
+  #phone .pill.gold{background:rgba(229,168,35,.15);border-color:var(--se-gold);color:var(--se-gold)}
+  #phone .pill.grn{background:rgba(52,211,153,.12);border-color:var(--se-grn);color:var(--se-grn)}
+  #phone .btn{display:block;width:100%;background:var(--se-gold);color:#1a1200;border:none;
+    border-radius:12px;padding:14px;font-size:15px;font-weight:700;cursor:pointer;
+    text-align:center;box-shadow:none;transform:none}
+  #phone .btn:active{background:var(--se-gold-d)}
+  #phone .btn.blue{background:var(--se-blue);color:#fff}
+  #phone .btn.ghost{background:transparent;border:1.5px solid var(--se-line);color:var(--se-txt)}
+  #phone .btn.sm{padding:9px 14px;font-size:13px;border-radius:10px;width:auto;display:inline-block}
+  #phone .btn:disabled{opacity:.45;cursor:not-allowed}
+  #phone input,#phone select,#phone textarea{width:100%;background:var(--se-card2);
+    border:1.5px solid var(--se-line);border-radius:11px;padding:12px;color:var(--se-txt);
+    font-size:14.5px;margin-top:6px}
+  #phone input:focus,#phone select:focus,#phone textarea:focus{outline:none;border-color:var(--se-gold)}
+  #phone label{font-size:13px;color:var(--se-mut);font-weight:600;display:block;margin:14px 0 0}
+  #phone .err{color:var(--se-red);font-size:12.5px;margin-top:6px;display:none}
+  #phone #nav{position:absolute;bottom:0;left:0;width:100%;background:#10162a;
+    border-top:1px solid var(--se-line);display:flex;z-index:50}
+  #phone #nav button{flex:1;background:none;border:none;color:var(--se-mut);
+    padding:10px 0 14px;font-size:10.5px;cursor:pointer;display:flex;
+    flex-direction:column;align-items:center;gap:3px}
+  #phone #nav button .ico{font-size:20px}
+  #phone #nav button.on{color:var(--se-gold)}
+  #phone .qty{display:flex;align-items:center;gap:12px}
+  #phone .qty button{width:30px;height:30px;border-radius:9px;border:1.5px solid var(--se-line);
+    background:var(--se-card2);color:var(--se-gold);font-size:17px;font-weight:700;cursor:pointer}
+  #phone .cartbar{position:absolute;bottom:70px;width:calc(100% - 24px);left:50%;
+    transform:translateX(-50%);background:var(--se-blue);border-radius:13px;padding:13px 16px;
+    display:flex;justify-content:space-between;align-items:center;cursor:pointer;
+    font-weight:700;box-shadow:0 8px 24px rgba(0,0,0,.5);z-index:40}
+  #phone .steps{margin:14px 0}
+  #phone .step{display:flex;gap:12px;align-items:flex-start;padding-bottom:18px;position:relative}
+  #phone .step:before{content:"";position:absolute;left:10px;top:24px;bottom:0;width:2px;
+    background:var(--se-line)}
+  #phone .step:last-child:before{display:none}
+  #phone .dot{width:22px;height:22px;border-radius:50%;background:var(--se-card2);
+    border:2px solid var(--se-line);flex-shrink:0;display:flex;align-items:center;
+    justify-content:center;font-size:11px;box-shadow:none}
+  #phone .step.done .dot{background:var(--se-grn);border-color:var(--se-grn);color:#03170d}
+  #phone .step.now .dot{background:var(--se-gold);border-color:var(--se-gold)}
+  #phone .step.now .st{color:var(--se-gold);font-weight:700}
+  #phone .banner{background:rgba(52,211,153,.1);border:1px solid rgba(52,211,153,.4);
+    border-radius:11px;padding:10px 12px;font-size:12.5px;color:var(--se-grn);margin:12px 0}
+  #phone .warn{background:rgba(229,168,35,.09);border:1px solid rgba(229,168,35,.45);
+    border-radius:11px;padding:10px 12px;font-size:12.5px;color:var(--se-gold);
+    margin:12px 0;line-height:1.45}
+  #phone .food-tag{background:rgba(229,168,35,.15);border:1px dashed var(--se-gold);
+    border-radius:10px;padding:9px 11px;font-size:13px;color:var(--se-gold);margin-top:8px}
+  #toast{position:absolute;top:14px;left:50%;transform:translateX(-50%);
+    background:var(--se-gold);color:#1a1200;padding:10px 18px;border-radius:999px;
+    font-size:13.5px;font-weight:700;z-index:99;display:none;
+    box-shadow:0 6px 20px rgba(0,0,0,.5);width:max-content;
+    max-width:calc(100% - 28px);text-align:center}
+  #phone .back{background:none;border:none;color:var(--se-gold);font-size:14px;
+    font-weight:700;cursor:pointer;padding:14px 18px 0}
+  #phone .emoji-big{font-size:34px}
+  #phone .split{display:flex;gap:10px}
+  #phone .split>*{flex:1}
+  #phone .radio{display:flex;gap:10px;align-items:center;background:var(--se-card2);
+    border:1.5px solid var(--se-line);border-radius:11px;padding:12px;margin-top:8px;
+    cursor:pointer;font-size:14px}
+  #phone .radio.on{border-color:var(--se-gold);background:rgba(229,168,35,.08)}
+  #phone .chk{display:flex;gap:10px;align-items:flex-start;font-size:12.5px;
+    color:var(--se-mut);margin-top:12px;cursor:pointer;line-height:1.45}
+  #phone .chk input{width:auto;margin-top:2px}
+  #phone .stat{background:var(--se-card);border:1px solid var(--se-line);border-radius:13px;
+    padding:14px;text-align:center;flex:1;display:block}
+  #phone .stat .n{font-size:22px;font-weight:800;color:var(--se-gold)}
+  #phone .stat .l{font-size:11px;color:var(--se-mut);margin-top:2px}
+  #phone .foot{font-size:10.5px;color:var(--se-mut);line-height:1.5;padding:18px;text-align:center}
 </style>
-<meta name="theme-color" content="#0a0a0b">
-<style>/* iOS Safari zooms the page when a focused field is under 16px */
-input,select,textarea{font-size:16px}</style>
 </head>
-<body>
-<main class="landing">
+<body class="pro">
+
+<a class="skip-link" href="#main">Skip to content</a>
+
+<nav class="site-nav">
+  <a class="site-nav__brand" href="/">YUSUF GADELRAB</a>
+  <div class="site-nav__links">
+    <a href="/">Work</a>
+    <a href="/resume.html">Resume</a>
+    <a href="/store.html">Store</a>
+    <a href="/kxngsef.html">KXNG SEF</a>
+    <a href="/media-kit.html">Media Kit</a>
+  </div>
+</nav>
+
+<main id="main" class="section landing">
+
   <section class="pitch">
-    <div class="eyebrow">SJSU · STUDENT-RUN DELIVERY · CONCEPT DEMO</div>
-    <h1>$1.99 flat-fee campus delivery. <span class="g">By Spartans, for Spartans.</span></h1>
-    <p class="lede">SJSU students deliver, everyone eats: $0 service fees, no surge pricing, .edu-verified deliverers — and you can even pay your Spartan in food.</p>
-    <div class="mathcard">
-      <div class="mrow"><span>DoorDash-style fees on a $25 order</span><b class="strike">~$10.74</b></div>
-      <div class="msub">15% service fee + $4.99 delivery + ~$2 in misc fees</div>
-      <div class="mrow main"><span>SpartanEats delivery fee</span><span class="goldn">$1.99 flat</span></div>
+    <p class="eyebrow">SJSU · Student-run delivery · Concept demo</p>
+    <h1 style="margin:var(--s4) 0">$1.99 flat-fee campus delivery. <span class="gold-fill">By Spartans, for Spartans.</span></h1>
+    <p class="lead">SJSU students deliver, everyone eats: $0 service fees, no surge pricing, .edu-verified deliverers — and you can even pay your Spartan in food.</p>
+
+    <div class="panel" style="margin-top:var(--s5)">
+      <div class="mathrow"><span>DoorDash-style fees on a $25 order</span><b class="strike">~$10.74</b></div>
+      <div class="mathsub">15% service fee + $4.99 delivery + ~$2 in misc fees</div>
+      <div class="mathrow total"><span>SpartanEats delivery fee</span><span class="goldn">$1.99 flat</span></div>
       <div class="mkeep">You keep ~$8.75 of every $25 order. That's a burrito.</div>
     </div>
-    <div class="aftercard">
-      <div class="row"><b>🌯 La Victoria → MLK Library</b><span class="pill grn">Delivered ✅</span></div>
+
+    <div class="panel aftercard" style="margin-top:var(--s3)">
+      <div class="ac-row"><b>🌯 La Victoria → MLK Library</b><span class="tag-ok">Delivered ✅</span></div>
       <div class="ac-sub">Super Burrito · fees paid: <b>$1.99</b> · saved <b>~$6.73</b> vs DoorDash-style fees</div>
       <div class="ac-note">Sample order — it's waiting in the demo's Orders tab below.</div>
     </div>
-    <div class="cta-block">
-      <a class="gold-btn" href="mailto:yusuf.gadelrab06@gmail.com?subject=SpartanEats%20SJSU%20launch%20list&amp;body=Put%20me%20on%20the%20SpartanEats%20launch%20list!">Get notified when it launches at SJSU →</a>
+
+    <div class="cta-block" style="margin-top:var(--s6)">
+      <a class="btn btn-gold" href="mailto:yusuf.gadelrab06@gmail.com?subject=SpartanEats%20SJSU%20launch%20list&amp;body=Put%20me%20on%20the%20SpartanEats%20launch%20list!">Get notified when it launches at SJSU →</a>
       <div class="trigger">One email when it goes live — that's it.</div>
-      <a class="ghost-btn" href="#demo">Try the live demo ↓</a>
+      <a class="btn btn-ghost" href="#demo">Try the live demo ↓</a>
     </div>
   </section>
+
   <section class="device" id="demo" aria-label="SpartanEats live demo">
     <div class="demo-chip">● LIVE DEMO — tap around · <span class="dim">sample data, orders don't really send</span></div>
     <div id="phone">
       <div id="app"></div>
-      <nav id="nav"></nav>
+      <nav id="nav" aria-label="SpartanEats demo app navigation"></nav>
       <div id="toast"></div>
     </div>
   </section>
+
 </main>
-<footer class="site-foot">
-  <a class="gold-btn" href="mailto:yusuf.gadelrab06@gmail.com?subject=SpartanEats%20SJSU%20launch%20list&amp;body=Put%20me%20on%20the%20SpartanEats%20launch%20list!">Get notified when it launches at SJSU →</a>
-  <div class="fline">A student concept build by <a class="plain" href="https://yusuf-gadelrab.github.io/">Yusuf Gadelrab</a> · Not affiliated with San José State University.</div>
+
+<footer class="site-footer">
+  <div>
+    A student concept build by Yusuf Gadelrab · San Jose, CA<br>
+    <span class="faint">Not affiliated with San José State University.</span>
+  </div>
+  <div class="site-footer__links">
+    <a href="/">Work</a>
+    <a href="/resume.html">Resume</a>
+    <a href="/store.html">Store</a>
+    <a href="/kxngsef.html">KXNG SEF</a>
+    <a href="/media-kit.html">Media Kit</a>
+    <a href="mailto:yusuf.gadelrab06@gmail.com">yusuf.gadelrab06@gmail.com</a>
+    <a href="https://github.com/Yusuf-Gadelrab" target="_blank" rel="noopener">GitHub</a>
+    <a href="https://www.linkedin.com/in/yusuf-gadelrab-76246b221" target="_blank" rel="noopener">LinkedIn</a>
+  </div>
 </footer>
+
 <script>
 // ---------- DATA ----------
 const REST = [
@@ -375,7 +435,7 @@ function vCheckout(){
     <div class="card" style="margin-top:18px">
       <div class="row"><span class="mut">Subtotal</span><span>${money(sub)}</span></div>
       <div class="row" style="margin-top:6px"><span class="mut">Delivery fee (flat)</span><span>${money(FEE)}</span></div>
-      <div class="row" style="margin-top:6px"><span class="mut">Service fee</span><span style="color:var(--grn)">$0.00</span></div>
+      <div class="row" style="margin-top:6px"><span class="mut">Service fee</span><span style="color:var(--se-grn)">$0.00</span></div>
       <div class="row" style="margin-top:6px" id="tiprow"><span class="mut">Tip</span><span id="tipval">$0.00</span></div>
       <div class="row" style="margin-top:10px;font-weight:800;font-size:16px"><span>Total</span><span id="totalval">${money(sub+FEE)}</span></div>
     </div>
@@ -473,7 +533,7 @@ function vJobs(){
       <div class="row"><b>${rest(o.restId).em} ${rest(o.restId).name}</b><span class="pill">${rest(o.restId).dist}</span></div>
       <div class="mut" style="margin-top:6px">Drop-off: ${esc(o.dropoff)} · ${Object.values(o.items).reduce((a,b)=>a+b,0)} items · placed ${o.placedAt}</div>
       ${o.pay==='food'
-        ?`<div class="food-tag">🍕 <b>Food payment offer:</b> “${esc(o.foodOffer)}”<br><span class="mut" style="color:var(--gold)">Accepting = agreeing to this exact barter. No cash payout.</span></div>
+        ?`<div class="food-tag">🍕 <b>Food payment offer:</b> “${esc(o.foodOffer)}”<br><span class="mut" style="color:var(--se-gold)">Accepting = agreeing to this exact barter. No cash payout.</span></div>
           <div style="height:10px"></div><button class="btn sm" onclick="acceptJob(${o.id})">Accept food offer 🤝</button>`
         :`<div class="row" style="margin-top:10px"><span class="pill grn">You earn ${money(payout(o))} (${payLabel(o)})</span><button class="btn sm" onclick="acceptJob(${o.id})">Accept 🛵</button></div>`}
     </div>`).join(''):'<div class="mut" style="text-align:center;padding:40px">No open jobs right now.<br>Orders placed by students show up here instantly.</div>'}

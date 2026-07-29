@@ -33,6 +33,8 @@
   .hero-all h1{margin:var(--s4) auto;max-width:18ch}
   .hero-all .lead{margin-inline:auto}
   .hero-all .row{justify-content:center}
+  /* four metric tiles stay on one line until the phone breakpoint */
+  .hero-all .grid{grid-template-columns:repeat(auto-fit,minmax(min(170px,100%),1fr))}
   .portrait{width:132px;height:141px;object-fit:cover;border-radius:var(--radius-lg);
     margin:0 auto var(--s5);border:1px solid var(--line);box-shadow:var(--shadow)}
 
