@@ -238,6 +238,10 @@ input,textarea,select{
   font-family:inherit;font-size:var(--t-body);
 }
 input:focus,textarea:focus,select:focus{border-color:var(--gold);outline:none}
+/* iOS Safari zooms the whole viewport when a focused field is under 16px, and
+   --t-body is 15px. Floor form fields at 16px without touching body copy. */
+input,textarea,select{font-size:max(16px,var(--t-body))}
+
 label{display:block;font-size:var(--t-small);color:var(--muted);margin-bottom:var(--s2)}
 
 /* ---------- footer ---------- */

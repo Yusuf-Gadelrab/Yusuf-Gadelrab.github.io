@@ -14,11 +14,23 @@
 <style>
   /* page-specific: the 404 needs to sit centred in the viewport, nothing else */
   .notfound{
-    min-height:58vh;display:flex;flex-direction:column;align-items:center;
+    min-height:58vh;min-height:58dvh;display:flex;flex-direction:column;align-items:center;
     justify-content:center;text-align:center;gap:var(--s4);
   }
   .notfound__code{font-size:var(--t-hero);line-height:1}
   .notfound .lead{margin-inline:auto}
+  /* the goose is the point */
+  .goose{width:min(230px,62vw);height:auto;cursor:pointer;
+    transition:transform .35s cubic-bezier(.2,1.5,.3,1)}
+  .goose:hover{transform:translateY(-4px) rotate(-2deg)}
+  .goose.honk{animation:lunge .4s cubic-bezier(.3,1.6,.4,1)}
+  @keyframes lunge{50%{transform:translateX(14px) rotate(6deg) scale(1.06)}}
+  .honkline{min-height:1.5em;font-family:ui-monospace,Menlo,monospace;font-size:13px;
+    color:var(--gold-2,#f4d47a);letter-spacing:.04em}
+  .sorries{font-family:ui-monospace,Menlo,monospace;font-size:12px;color:var(--muted,#a39f94)}
+  .sorries b{color:var(--gold,#d4af37);font-variant-numeric:tabular-nums}
+  .metric{font-size:12.5px;color:var(--muted,#a39f94);max-width:44ch;margin-inline:auto}
+  @media (prefers-reduced-motion:reduce){.goose,.goose.honk{animation:none;transition:none}}
 </style>
 </head>
 <body>
