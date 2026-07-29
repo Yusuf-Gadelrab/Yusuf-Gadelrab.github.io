@@ -111,6 +111,30 @@
   function slug(s) {
     return String(s).toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '').slice(0, 48);
   }
+
+  var SKIP_HEADINGS = 'nav, .site-footer, #yg-palette, .yg-cta-bar, [hidden], template';
+  /* Resolve (or mint) a deep-link id for a heading. A wrapping section id is
+     only reused when it belongs to that heading alone — otherwise every h3 in
+     a section would link to the same anchor, and generic wrappers like
+     <main id="main"> would silently send people back to the top of the page. */
+  function headingId(h) {
+    var label = (h.textContent || '').replace(/\s+/g, ' ').trim();
+    if (!label || label.length > 90) return null;
+    if (h.id) return h.id;
+    var host = h.closest('section[id], article[id]');
+    if (host && host.id && host.id !== 'main' && host.id !== 'top' &&
+        host.querySelectorAll('h2, h3').length === 1) return host.id;
+    var id = 'yg-s-' + slug(label);
+    if (id === 'yg-s-' || d.getElementById(id)) return null;
+    h.id = id;
+    return id;
+  }
+  function headingLabel(h) {
+    var c = h.cloneNode(true);
+    var b = c.querySelectorAll('.yg-anchor');
+    for (var i = 0; i < b.length; i++) b[i].remove();
+    return (c.textContent || '').replace(/\s+/g, ' ').trim();
+  }
   /* rAF-throttled scroll handler — keeps the progress bar and the sticky bits
      off the main thread's critical path. */
   var scrollSubs = [];
@@ -171,13 +195,15 @@
       var heads = scope.querySelectorAll('h2, h3');
       for (var i = 0; i < heads.length && out.length < 60; i++) {
         var h = heads[i];
-        if (h.closest('nav, .site-footer, #yg-palette, [hidden]')) continue;
-        var label = (h.textContent || '').replace(/\s+/g, ' ').trim();
-        if (!label || label.length > 80) continue;
-        var target = h.id ? h : (h.closest('section[id]') || h.closest('[id]'));
-        var id = target && target.id;
-        if (!id) { id = 'yg-s-' + slug(label); if (!id || d.getElementById(id)) continue; h.id = id; }
-        out.push({ t: label, u: '#' + id, g: 'On this page', k: '', jump: 1 });
+        if (h.closest(SKIP_HEADINGS)) continue;
+        var label = headingLabel(h);
+        if (!label) continue;
+        var id = headingId(h);
+        if (!id) continue;
+        /* The id doubles as search vocabulary so short hand-authored anchors
+           ("faq", "pricing", "roi") stay findable even when the visible
+           heading is a full sentence. */
+        out.push({ t: label, u: '#' + id, g: 'On this page', k: id.replace(/^yg-s-/, '').replace(/-/g, ' '), jump: 1 });
       }
       return out;
     }
@@ -466,16 +492,11 @@
     for (var i = 0; i < heads.length; i++) {
       var h = heads[i];
       if (h.querySelector('.yg-anchor')) continue;
-      if (h.closest('nav, .site-footer, #yg-palette, .yg-cta-bar')) continue;
-      var label = (h.textContent || '').replace(/\s+/g, ' ').trim();
+      if (h.closest(SKIP_HEADINGS)) continue;
+      var label = headingLabel(h);
       if (!label) continue;
-      var host = h.id ? h : (h.closest('section[id]') || h.closest('[id]'));
-      var id = host && host.id;
-      if (!id) {
-        id = 'yg-s-' + slug(label);
-        if (!id || d.getElementById(id)) continue;
-        h.id = id;
-      }
+      var id = headingId(h);
+      if (!id) continue;
       var btn = el('button', {
         class: 'yg-anchor', type: 'button', 'data-target': id, 'data-pv2-skip': '',
         'aria-label': 'Copy link to section: ' + label, title: 'Copy link to this section'
