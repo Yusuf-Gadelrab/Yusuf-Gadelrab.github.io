@@ -765,7 +765,7 @@ function SiteNav({ page, go, brand }) {
 // Client-side section switcher for this page only (state + hash routing, no router lib)
 function PageTabs({ page, go }) {
   return (
-    <div className="page-tabs" aria-label="Sections">
+    <div className="page-tabs" role="navigation" aria-label="Sections">
       {PAGES.map((p) => (
         <button key={p} type="button" className="page-tab"
           aria-current={page === p ? 'page' : undefined} onClick={() => go(p)}>
