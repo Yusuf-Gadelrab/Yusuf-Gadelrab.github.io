@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="preload" href="/css/site.css" as="style">
+<meta name="robots" content="index,follow,max-image-preview:large,max-snippet:-1">
+<meta property="og:locale" content="en_US">
+<title>VCP and Base Patterns Explained, With Test Results</title>
+<meta name="description" content="What a base is, how contractions are counted, why volume dry-up matters, where the pivot sits, and the walk-forward result that came out breakeven.">
+<link rel="canonical" href="https://yusuf-gadelrab.github.io/guides/vcp-base-patterns.html">
+<link rel="icon" type="image/svg+xml" href="https://yusuf-gadelrab.github.io/favicon.svg">
+<link rel="apple-touch-icon" sizes="180x180" href="https://yusuf-gadelrab.github.io/apple-touch-icon.png">
+<meta name="theme-color" content="#0B0B0D">
+<meta name="author" content="Yusuf Gadelrab">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="Yusuf Gadelrab">
+<meta property="og:title" content="VCP and Base Patterns Explained">
+<meta property="og:description" content="Contraction counts, volume dry-up, pivots, failure modes — and the walk-forward test that came out breakeven.">
+<meta property="og:url" content="https://yusuf-gadelrab.github.io/guides/vcp-base-patterns.html">
+<meta property="og:image" content="https://yusuf-gadelrab.github.io/og-card.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="VCP and Base Patterns Explained">
+<meta name="twitter:description" content="Contraction counts, volume dry-up, pivots, failure modes — and the walk-forward test that came out breakeven.">
+<meta name="twitter:image" content="https://yusuf-gadelrab.github.io/og-card.png">
+<link rel="alternate" type="text/plain" href="https://yusuf-gadelrab.github.io/llms-full.txt" title="Plain-text profile for language models">
+
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"TechArticle","@id":"https://yusuf-gadelrab.github.io/guides/vcp-base-patterns.html#article","headline":"VCP and Base Patterns: Structure, Pivots, and What Testing Showed","name":"VCP and Base Patterns: Structure, Pivots, and What Testing Showed","description":"What a base is, how contractions are counted, why volume dry-up matters, where the pivot sits, and the walk-forward result that came out breakeven.","datePublished":"2026-07-29","dateModified":"2026-07-29","inLanguage":"en","author":{"@id":"https://yusuf-gadelrab.github.io/#person"},"publisher":{"@id":"https://yusuf-gadelrab.github.io/#person"},"about":["Volatility contraction pattern","Chart patterns","Swing trading"],"mainEntityOfPage":"https://yusuf-gadelrab.github.io/guides/vcp-base-patterns.html","isAccessibleForFree":true,"proficiencyLevel":"Beginner"},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://yusuf-gadelrab.github.io/"},{"@type":"ListItem","position":2,"name":"Guides","item":"https://yusuf-gadelrab.github.io/guides.html"},{"@type":"ListItem","position":3,"name":"VCP and Base Patterns"}]}]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","@id":"https://yusuf-gadelrab.github.io/guides/vcp-base-patterns.html#faq","mainEntity":[{"@type":"Question","name":"What is a VCP in trading?","acceptedAnswer":{"@type":"Answer","text":"A volatility contraction pattern is a consolidation in which each successive pullback is shallower than the one before it, typically two to four contractions with each roughly half the depth of the previous. The idea is that supply is being exhausted in measurable steps, so fewer sellers appear at each dip."}},{"@type":"Question","name":"How do you count contractions in a base?","acceptedAnswer":{"@type":"Answer","text":"Measure each pullback from its local high to its local low as a percentage. A base going 18%, then 9%, then 4.5% is a three-contraction base, usually written 3T. Two to four contractions is normal; if you are counting six, you are almost certainly drawing what you want to see."}},{"@type":"Question","name":"What is volume dry-up?","acceptedAnswer":{"@type":"Answer","text":"Volume dry-up is the drop in traded volume toward the right edge of a base, often 30% to 50% below the 50-day average during the final contraction. A shallow pullback on very light volume suggests little supply remains, whereas a shallow pullback on heavy volume means sellers are still active and merely being absorbed."}},{"@type":"Question","name":"Where is the buy point in a VCP?","acceptedAnswer":{"@type":"Answer","text":"The pivot is the high of the final contraction, and the mechanical entry is a break above it on volume expanding above average. The stop belongs below the low of that final contraction, which makes the structure define the risk and therefore the position size."}},{"@type":"Question","name":"Does the VCP pattern actually work?","acceptedAnswer":{"@type":"Answer","text":"In my own walk-forward testing a VCP-style contraction setup came out roughly breakeven, meaning no edge worth sizing after costs. The anchored-VWAP reclaim was the only setup that survived, at +0.23R over 101 trades, and a gap/opening-range-breakout proxy came out at -0.28R and was dropped. These are backtest results, not live trading claims."}},{"@type":"Question","name":"Why do base breakouts fail?","acceptedAnswer":{"@type":"Answer","text":"The common failures are an undercut of the final low that stops out obvious holders before reversing, a breakout on below-average volume that rolls back into the base, and late-stage bases forming after an extended advance. The largest failure mode is retrospective drawing, since contractions are easy to find on any chart that already went up."}}]}</script>
+
+<link rel="stylesheet" href="/css/site.css">
+<style>
+  .prose{max-width:68ch}
+  .prose h2{margin:var(--s7) 0 var(--s4);font-size:var(--t-h2)}
+  .prose h3{margin:var(--s6) 0 var(--s3);font-size:var(--t-h3)}
+  .prose p{color:var(--muted);margin:0 0 var(--s4)}
+  .prose ul,.prose ol{color:var(--muted);padding-left:1.2em;margin:0 0 var(--s4)}
+  .prose li{margin-bottom:var(--s2)}
+  .prose a{color:var(--gold-2)}
+  .prose strong{color:var(--fg)}
+  .formula{display:block;padding:var(--s4);margin:0 0 var(--s4);border:1px solid var(--line-soft);
+    border-radius:var(--radius);font-family:ui-monospace,SFMono-Regular,Menlo,monospace;
+    font-size:var(--t-small);color:var(--gold-2);overflow-x:auto;white-space:pre-wrap}
+  .tblwrap{overflow-x:auto;margin:0 0 var(--s4)}
+  .tbl{width:100%;border-collapse:collapse;font-size:var(--t-small)}
+  .tbl th,.tbl td{text-align:left;padding:var(--s3);border-bottom:1px solid var(--line-soft);
+    color:var(--muted);vertical-align:top}
+  .tbl th{font-family:var(--display-pro);color:var(--gold-2);font-weight:600}
+  .callout{padding:var(--s4);border:1px solid var(--line-soft);border-radius:var(--radius);
+    color:var(--muted);font-size:var(--t-small);margin:0 0 var(--s5)}
+  .callout--warn{border-color:var(--gold-2)}
+  .faq-card{padding:var(--s5)}
+  .faq-card h3{font-size:var(--t-h3);margin:0}
+  .faq-card p{color:var(--muted);font-size:var(--t-small);margin:var(--s3) 0 0}
+</style>
+</head>
+<body class="pro">
+
+<a class="skip-link" href="#main">Skip to content</a>
+
+<nav class="site-nav">
+  <a class="site-nav__brand" href="/"><img class="site-nav__lion" src="/img/brand/lion-mark.svg" alt="" width="34" height="34"><span>YUSUF GADELRAB</span></a>
+  <div class="site-nav__links">
+    <a href="/">Work</a>
+    <a href="/guides.html">Guides</a>
+    <a href="/risk-tools.html">Calculators</a>
+    <a href="/apps.html">Apps</a>
+  </div>
+</nav>
+
+<main id="main">
+
+  <header class="section">
+    <p class="eyebrow">Guide · Trading</p>
+    <h1 style="margin:var(--s4) 0">VCP and bases, described honestly</h1>
+    <p class="lead">A base is a pause in a trend where shares change hands. A volatility contraction pattern is a base whose swings get progressively smaller. The structure is real and easy to see. Whether it pays is a separate question, and my own testing says it roughly did not.</p>
+  </header>
+
+  <hr class="divider">
+
+  <section class="section section--tight">
+    <div class="prose">
+      <h2>What is a base?</h2>
+      <p>A base is a sideways or corrective range that interrupts a prior advance. Mechanically it is a transfer: holders who bought lower and want out sell into buyers who are willing to pay today's price. The range persists until one side runs out of inventory or patience.</p>
+      <p>Three things describe any base and you should be able to state all three before calling something a base:</p>
+      <ul>
+        <li><strong>Depth</strong> — the percentage from the high of the base to its lowest low. A 12% base and a 45% base are not the same object.</li>
+        <li><strong>Duration</strong> — how many bars or weeks the range has lasted. Short bases after a long advance are usually late-stage.</li>
+        <li><strong>Prior trend</strong> — a base only means anything after an advance. A sideways range after a nine-month decline is a downtrend resting.</li>
+      </ul>
+      <h2>What makes it a VCP</h2>
+      <p>The volatility contraction pattern, popularised by Mark Minervini, is a base in which each successive pullback is <strong>smaller than the one before it</strong>. The idea is that supply is being exhausted in measurable steps: fewer sellers appear at each pullback, so each dip gets shallower.</p>
+      <p>A worked count on a hypothetical base:</p>
+      <div class="tblwrap"><table class="tbl">
+        <thead><tr><th>Contraction</th><th>High</th><th>Low</th><th>Depth</th><th>Reading</th></tr></thead>
+        <tbody>
+          <tr><td>T1</td><td>100.00</td><td>82.00</td><td>18.0%</td><td>First shakeout, widest</td></tr>
+          <tr><td>T2</td><td>97.00</td><td>88.30</td><td>9.0%</td><td>Roughly half of T1</td></tr>
+          <tr><td>T3</td><td>96.00</td><td>91.70</td><td>4.5%</td><td>Roughly half of T2</td></tr>
+          <tr><td>Pivot</td><td>96.00</td><td>—</td><td>—</td><td>Break above the T3 high</td></tr>
+        </tbody>
+      </table></div>
+      <p>That is a <strong>3T base</strong>: three contractions, each about half the previous depth. Two to four contractions is the usual count. More than five and you are almost certainly drawing the ones you want to see.</p>
+      <h2>Volume dry-up</h2>
+      <p>The volume side of the pattern matters as much as the price side. Through a genuine contraction, volume should fall away toward the right edge of the base. The shorthand is <strong>VDU</strong>, volume dry-up: the final contraction trades on notably below-average volume, often 30% to 50% under the 50-day average.</p>
+      <p>The reasoning is straightforward. If the last pullback is shallow <em>and</em> almost nobody traded it, there is very little supply left at that price. A shallow pullback on heavy volume says the opposite: plenty of people are still selling, they are just being absorbed for now.</p>
+      <h2>The pivot and the buy point</h2>
+      <p>The pivot is the high of the final contraction. The mechanical entry is a break above it, ideally on volume expanding well above average, because a breakout without volume is a price move without participation.</p>
+      <span class="formula">Entry  = pivot + small buffer
+Stop   = below the low of the final contraction
+1R     = entry − stop
+Size   = (account × risk %) ÷ 1R</span>
+      <p>Note the ordering. The structure defines the stop, the stop defines 1R, and 1R defines the size. Tight final contractions are attractive precisely because they make 1R small, which lets you take a normal-sized position without oversizing risk. The arithmetic is in the <a href="/guides/r-multiple-expectancy.html">R-multiple guide</a>.</p>
+      <h2>Failure modes</h2>
+      <ul>
+        <li><strong>Undercut and rally</strong> — price breaks the final low, stops out the obvious holders, then reverses back up. Painful and common.</li>
+        <li><strong>Breakout on no volume</strong> — the pivot clears on below-average volume, drifts a few percent, and rolls back into the base.</li>
+        <li><strong>Late-stage base</strong> — a third or fourth base after a long advance fails far more often than the first one out of a correction.</li>
+        <li><strong>Wide, loose contractions</strong> — if T2 is not meaningfully tighter than T1, the pattern is a range, not a contraction.</li>
+        <li><strong>Drawn to fit</strong> — the biggest failure mode is the analyst. Contractions are easy to find retrospectively on any chart that later went up.</li>
+      </ul>
+      <h2>What my own testing said</h2>
+      <p>This is the part most write-ups omit. I built a screener and a no-lookahead backtest engine, then ran my swing setups through walk-forward testing rather than an in-sample fit. <strong>The VCP-style contraction setup came out roughly breakeven.</strong> Not a disaster, not an edge — after costs there was nothing there worth sizing.</p>
+      <div class="tblwrap"><table class="tbl">
+        <thead><tr><th>Setup</th><th>Walk-forward result</th><th>Verdict</th></tr></thead>
+        <tbody>
+          <tr><td>AVWAP reclaim</td><td>+0.23R over 101 trades</td><td>Kept — the only validated one</td></tr>
+          <tr><td>VCP-style contraction</td><td>roughly breakeven</td><td>Not traded mechanically</td></tr>
+          <tr><td>Gap / opening-range-breakout proxy</td><td>−0.28R</td><td>Dropped</td></tr>
+        </tbody>
+      </table></div>
+      <p class="callout callout--warn">Breakeven does not mean the pattern is fake. It means my mechanical encoding of it, on my universe, over my test window, did not produce an edge. Discretionary traders who read context, liquidity, and market environment may do better. But if you cannot express a setup mechanically, you also cannot prove it works, and the honest position is to say so.</p>
+      <p>Two filters I expected to rescue it — a market-regime filter and a normalised-momentum-lag filter — were tested on the same data and <strong>cut expectancy</strong>, so both were rejected. <a href="/guides/walk-forward-backtest.html">How the testing was run →</a></p>
+      <h2>How to use bases anyway</h2>
+      <ol>
+        <li>Use the structure for <em>risk definition</em>, which it is genuinely good at. The final contraction gives you a tight, non-arbitrary stop.</li>
+        <li>Do not use the structure as a standalone edge claim until you have tested your version of it on your universe.</li>
+        <li>Tag every base trade in your journal with the contraction count and whether VDU was present, then compute expectancy per tag after 30-plus trades.</li>
+        <li>Treat late-stage bases as a smaller size category, not a normal one.</li>
+        <li>Keep the negative results. A pattern that tests breakeven is information, and it stops you paying for it twice.</li>
+      </ol>
+      <p class="callout">Educational content, not financial advice. No live profit-and-loss figures are claimed anywhere on this site; backtest and walk-forward results are always labelled as such. Full terms: <a href="/terms.html">/terms.html</a></p>
+
+      <h2>Tools referenced in this guide</h2>
+      <ul>
+        <li><a href="/swing-screener.html">Swing Screener</a> — the screener and no-lookahead backtest engine behind the walk-forward results.</li>
+        <li><a href="/apps/tradelog/">TradeLog</a> — tag base trades by contraction count and get expectancy per tag, offline and local.</li>
+        <li><a href="/guides/walk-forward-backtest.html">Walk-forward testing guide</a> — why in-sample pattern studies flatter every chart pattern.</li>
+      </ul>
+    </div>
+  </section>
+
+  <hr class="divider">
+
+  <section class="section section--tight" id="faq">
+    <div class="grp-head">
+      <p class="eyebrow">FAQ</p>
+      <h2>Quick answers</h2>
+    </div>
+    <div class="grid" style="margin-top:var(--s6)">
+      <article class="card faq-card"><h3>What is a VCP?</h3><p>A base where each pullback is shallower than the last, usually two to four contractions with each about half the previous depth.</p></article>
+      <article class="card faq-card"><h3>How do you count contractions?</h3><p>Measure each high-to-low pullback as a percentage. 18%, then 9%, then 4.5% is a 3T base. Counting six means you are drawing what you want.</p></article>
+      <article class="card faq-card"><h3>What is volume dry-up?</h3><p>Volume falling 30-50% under the 50-day average in the final contraction. Shallow dip plus light volume means little supply left.</p></article>
+      <article class="card faq-card"><h3>Where is the buy point?</h3><p>The high of the final contraction, taken on expanding volume. The stop goes under that contraction&#x27;s low, and that defines your size.</p></article>
+      <article class="card faq-card"><h3>Does VCP work?</h3><p>In my walk-forward test it came out roughly breakeven — no edge worth sizing. Only the AVWAP reclaim survived, at +0.23R over 101 trades.</p></article>
+      <article class="card faq-card"><h3>Why do breakouts fail?</h3><p>Undercut-and-rally, breakouts on thin volume, and late-stage bases. Plus the analyst drawing contractions onto charts that already worked.</p></article>
+    </div>
+  </section>
+
+</main>
+
+<footer class="site-footer">
+  <div class="site-footer__links">
+    <a href="/">Work</a>
+    <a href="/about.html">About</a>
+    <a href="/guides.html">Guides</a>
+    <a href="/apps.html">Apps</a>
+    <a href="/store.html">Store</a>
+    <a href="/privacy.html">Privacy</a>
+    <a href="/terms.html">Terms</a>
+    <a href="mailto:yusuf.gadelrab06@gmail.com">yusuf.gadelrab06@gmail.com</a>
+  </div>
+</footer>
+
+<script src="/js/site.js" defer></script>
+</body>
+</html>

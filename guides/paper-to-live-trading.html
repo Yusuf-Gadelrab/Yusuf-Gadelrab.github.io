@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="preload" href="/css/site.css" as="style">
+<meta name="robots" content="index,follow,max-image-preview:large,max-snippet:-1">
+<meta property="og:locale" content="en_US">
+<title>Paper Trading to Real Money — Building a Promotion Gate</title>
+<meta name="description" content="What paper does not simulate: slippage, partial fills, borrow, emotion. Why a promotion gate matters, and the 60-trade rule my engine enforces in code.">
+<link rel="canonical" href="https://yusuf-gadelrab.github.io/guides/paper-to-live-trading.html">
+<link rel="icon" type="image/svg+xml" href="https://yusuf-gadelrab.github.io/favicon.svg">
+<link rel="apple-touch-icon" sizes="180x180" href="https://yusuf-gadelrab.github.io/apple-touch-icon.png">
+<meta name="theme-color" content="#0B0B0D">
+<meta name="author" content="Yusuf Gadelrab">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="Yusuf Gadelrab">
+<meta property="og:title" content="Paper Trading to Real Money">
+<meta property="og:description" content="What paper does not simulate, and the 60-trade promotion gate my execution engine enforces in code.">
+<meta property="og:url" content="https://yusuf-gadelrab.github.io/guides/paper-to-live-trading.html">
+<meta property="og:image" content="https://yusuf-gadelrab.github.io/og-card.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Paper Trading to Real Money">
+<meta name="twitter:description" content="What paper does not simulate, and the 60-trade promotion gate my execution engine enforces in code.">
+<meta name="twitter:image" content="https://yusuf-gadelrab.github.io/og-card.png">
+<link rel="alternate" type="text/plain" href="https://yusuf-gadelrab.github.io/llms-full.txt" title="Plain-text profile for language models">
+
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"TechArticle","@id":"https://yusuf-gadelrab.github.io/guides/paper-to-live-trading.html#article","headline":"From Paper Trading to Real Money: What Changes and What Gates It","name":"From Paper Trading to Real Money: What Changes and What Gates It","description":"What paper does not simulate: slippage, partial fills, borrow, emotion. Why a promotion gate matters, and the 60-trade rule my engine enforces in code.","datePublished":"2026-07-29","dateModified":"2026-07-29","inLanguage":"en","author":{"@id":"https://yusuf-gadelrab.github.io/#person"},"publisher":{"@id":"https://yusuf-gadelrab.github.io/#person"},"about":["Paper trading","Trading systems","Risk management"],"mainEntityOfPage":"https://yusuf-gadelrab.github.io/guides/paper-to-live-trading.html","isAccessibleForFree":true,"proficiencyLevel":"Beginner"},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://yusuf-gadelrab.github.io/"},{"@type":"ListItem","position":2,"name":"Guides","item":"https://yusuf-gadelrab.github.io/guides.html"},{"@type":"ListItem","position":3,"name":"Paper to Live Trading"}]}]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","@id":"https://yusuf-gadelrab.github.io/guides/paper-to-live-trading.html#faq","mainEntity":[{"@type":"Question","name":"What does paper trading fail to simulate?","acceptedAnswer":{"@type":"Answer","text":"Slippage, partial fills, market impact, short-borrow availability, halts and gap fills, commissions and financing, and above all emotion. Paper accounts and backtests take 100% of signals, while a real trader hesitates after losses and takes discretionary exits, so realised expectancy is always lower than modelled expectancy."}},{"@type":"Question","name":"Is paper trading worth doing at all?","acceptedAnswer":{"@type":"Answer","text":"Yes, but for engineering reasons rather than for proof of profitability. It verifies that orders route correctly, brackets attach, positions reconcile, and signal frequency matches the backtest, and it catches bugs such as duplicate orders and timezone errors that a backtest cannot expose."}},{"@type":"Question","name":"What is a promotion gate in trading?","acceptedAnswer":{"@type":"Answer","text":"A promotion gate is a written, pre-committed rule that decides when a strategy or system may trade real money. To be useful it must be defined before the paper run begins, measured in closed trades rather than elapsed time, and enforced by code or a third party rather than by the trader's own judgement."}},{"@type":"Question","name":"How many paper trades before going live?","acceptedAnswer":{"@type":"Answer","text":"My own execution engine refuses to connect a live broker until there are 60 closed paper trades showing positive realised expectancy. Sixty is not statistically conclusive, which needs several hundred trades, but it is enough to expose engines that double-fire orders, mishandle halts, or lose quietly to fees."}},{"@type":"Question","name":"How much does slippage cost a small edge?","acceptedAnswer":{"@type":"Answer","text":"Enough to matter. A validated edge of +0.23R gives $69 per trade at a $300 risk unit, and a few ticks of slippage plus commission leaves roughly $63. But slippage of 0.05R per side removes 0.10R, which is more than 40% of the entire edge, so execution quality is often larger than signal quality."}},{"@type":"Question","name":"How should you scale from paper to full size?","acceptedAnswer":{"@type":"Answer","text":"In stages rather than with a switch. Pass the gate on paper, then trade the minimum size for about 20 trades to test fills and behaviour, then quarter risk for another 30 trades while comparing realised R against paper R per setup, and only then full risk. Pair it with a coded drawdown halt, such as stopping at 10%."}}]}</script>
+
+<link rel="stylesheet" href="/css/site.css">
+<style>
+  .prose{max-width:68ch}
+  .prose h2{margin:var(--s7) 0 var(--s4);font-size:var(--t-h2)}
+  .prose h3{margin:var(--s6) 0 var(--s3);font-size:var(--t-h3)}
+  .prose p{color:var(--muted);margin:0 0 var(--s4)}
+  .prose ul,.prose ol{color:var(--muted);padding-left:1.2em;margin:0 0 var(--s4)}
+  .prose li{margin-bottom:var(--s2)}
+  .prose a{color:var(--gold-2)}
+  .prose strong{color:var(--fg)}
+  .formula{display:block;padding:var(--s4);margin:0 0 var(--s4);border:1px solid var(--line-soft);
+    border-radius:var(--radius);font-family:ui-monospace,SFMono-Regular,Menlo,monospace;
+    font-size:var(--t-small);color:var(--gold-2);overflow-x:auto;white-space:pre-wrap}
+  .tblwrap{overflow-x:auto;margin:0 0 var(--s4)}
+  .tbl{width:100%;border-collapse:collapse;font-size:var(--t-small)}
+  .tbl th,.tbl td{text-align:left;padding:var(--s3);border-bottom:1px solid var(--line-soft);
+    color:var(--muted);vertical-align:top}
+  .tbl th{font-family:var(--display-pro);color:var(--gold-2);font-weight:600}
+  .callout{padding:var(--s4);border:1px solid var(--line-soft);border-radius:var(--radius);
+    color:var(--muted);font-size:var(--t-small);margin:0 0 var(--s5)}
+  .callout--warn{border-color:var(--gold-2)}
+  .faq-card{padding:var(--s5)}
+  .faq-card h3{font-size:var(--t-h3);margin:0}
+  .faq-card p{color:var(--muted);font-size:var(--t-small);margin:var(--s3) 0 0}
+</style>
+</head>
+<body class="pro">
+
+<a class="skip-link" href="#main">Skip to content</a>
+
+<nav class="site-nav">
+  <a class="site-nav__brand" href="/"><img class="site-nav__lion" src="/img/brand/lion-mark.svg" alt="" width="34" height="34"><span>YUSUF GADELRAB</span></a>
+  <div class="site-nav__links">
+    <a href="/">Work</a>
+    <a href="/guides.html">Guides</a>
+    <a href="/risk-tools.html">Calculators</a>
+    <a href="/apps.html">Apps</a>
+  </div>
+</nav>
+
+<main id="main">
+
+  <header class="section">
+    <p class="eyebrow">Guide · Process</p>
+    <h1 style="margin:var(--s4) 0">The gap between paper and real money</h1>
+    <p class="lead">Paper trading is a useful mechanical rehearsal and a terrible predictor of results. It gets the arithmetic right and omits every friction that decides whether a small edge survives.</p>
+  </header>
+
+  <hr class="divider">
+
+  <section class="section section--tight">
+    <div class="prose">
+      <h2>What paper trading is genuinely good for</h2>
+      <ul>
+        <li>Proving the plumbing works — orders route, brackets attach, positions reconcile, the journal populates.</li>
+        <li>Catching bugs that a backtest hides, such as duplicate orders, timezone errors, and stale quotes.</li>
+        <li>Rehearsing the routine so the mechanical steps are automatic before money is involved.</li>
+        <li>Sanity-checking that live signal frequency roughly matches what the backtest predicted.</li>
+      </ul>
+      <p>That is a real list and it is worth doing. What it is not is evidence that the strategy makes money.</p>
+      <h2>What paper does not simulate</h2>
+      <div class="tblwrap"><table class="tbl">
+        <thead><tr><th>Friction</th><th>What paper assumes</th><th>What real money does</th></tr></thead>
+        <tbody>
+          <tr><td>Slippage</td><td>Fills at the quoted price</td><td>Fills a few ticks worse, much worse on gaps and thin names</td></tr>
+          <tr><td>Partial fills</td><td>The whole order fills</td><td>Limit orders fill partially or not at all, changing the risk you actually took</td></tr>
+          <tr><td>Market impact</td><td>Your order does not exist</td><td>Size moves the book in illiquid names, and you trade against your own footprint</td></tr>
+          <tr><td>Short borrow</td><td>Shorts are always available</td><td>Locate may be unavailable, expensive, or recalled mid-trade</td></tr>
+          <tr><td>Halts and gaps</td><td>Orders behave normally</td><td>A stop through a gap fills far below the stop price, so the loss exceeds 1R</td></tr>
+          <tr><td>Fees and financing</td><td>Often ignored entirely</td><td>Commission, regulatory fees, and margin interest apply to every round trip</td></tr>
+          <tr><td>Emotion</td><td>Every signal is taken</td><td>You skip the uncomfortable ones, which are frequently the good ones</td></tr>
+        </tbody>
+      </table></div>
+      <p>The last row is the largest by a distance. A backtest and a paper account both take 100% of signals. In real money you will hesitate after two losses, size down after a drawdown, and take a discretionary exit at the worst moment. <strong>A strategy's realised expectancy is the strategy's expectancy multiplied by your compliance with it</strong>, and compliance is never 100%.</p>
+      <h2>How much does friction cost?</h2>
+      <p>Run the arithmetic on the edge I actually validated. The anchored-VWAP reclaim came out at +0.23R over 101 trades in walk-forward testing. Assume a 1R risk of $300 per trade, so the modelled edge is $69 per trade.</p>
+      <span class="formula">modelled edge    = 0.23R × $300 = $69.00 per trade
+slippage 2 ticks × 2 sides on 100 shares ≈ $4.00
+commission + fees                        ≈ $2.00
+net edge                                  ≈ $63.00 per trade</span>
+      <p>That version survives. Now assume slippage of 0.05R per side rather than a few ticks, which is realistic on gappy names, and you lose 0.10R of a 0.23R edge — <strong>more than 40% of the entire result, gone to execution quality alone.</strong> A small edge is not robust to sloppy fills, which is the practical reason execution discipline matters more than signal hunting.</p>
+      <h2>Why a promotion gate</h2>
+      <p>A promotion gate is a pre-committed, written rule that decides when a system is allowed to trade real money, evaluated by something other than your enthusiasm. Without one, the promotion decision gets made on a good week, which is precisely the wrong sample.</p>
+      <p>A gate needs three properties to be worth anything:</p>
+      <ol>
+        <li><strong>Written before the paper run starts.</strong> A threshold invented afterwards is a rationalisation with a number attached.</li>
+        <li><strong>Sample-size based, not time based.</strong> "Two months of paper" can mean four trades. Trades are the unit that carries information.</li>
+        <li><strong>Enforced by something that is not you.</strong> A rule you can quietly waive at 9:28am is not a rule.</li>
+      </ol>
+      <h2>The gate I actually enforce</h2>
+      <p>My execution engine refuses to connect a live broker until the paper record shows <strong>60 closed paper trades with positive realised expectancy</strong>. It is a hard check in the promotion path, not a note in a document, and the current record against it is zero closed paper trades, so the live path stays shut.</p>
+      <p>The two numbers are chosen for different reasons. Sixty closed trades is a compromise: it is not enough for statistical confidence, which needs a few hundred, but it is enough to expose an engine that double-fires orders, mishandles a halt, or quietly loses on fees. Requiring <em>realised</em> expectancy rather than modelled expectancy is the important half, because realised includes the fills you actually got.</p>
+      <p class="callout callout--warn">An override exists in the code because a gate with no escape hatch gets bypassed by editing the source, which is worse. It is named to be uncomfortable to type, and it logs a warning when used. That is the design intent: make the unsafe path possible, obvious, and recorded, rather than impossible and therefore routed around.</p>
+      <h2>Broker choice is part of the gate</h2>
+      <ul>
+        <li>Prefer a broker with a <strong>real paper environment on the same API</strong>, so promotion is a credential change rather than a rewrite.</li>
+        <li>Avoid reverse-engineered private APIs. They violate the platform's terms, get accounts restricted, usually offer no paper mode at all, and often require storing a password and second factor locally.</li>
+        <li>Verify the system <strong>fails closed</strong>: if configuration is missing or ambiguous, it should place no orders rather than default to live.</li>
+        <li>Test concurrency explicitly. Twelve simultaneous signal evaluations must produce exactly one order, not twelve.</li>
+      </ul>
+      <h2>A staged promotion, not a switch</h2>
+      <ol>
+        <li>Paper until the gate passes on closed trades, with the journal reconciled against broker fills.</li>
+        <li>Live at minimum size — one share, or the smallest tradeable unit — for 20 trades. This tests fills, fees, and your own behaviour, not profitability.</li>
+        <li>Live at quarter risk for another 30 trades, comparing realised R against paper R per setup.</li>
+        <li>Full risk only after realised and paper expectancy agree within a reasonable margin.</li>
+        <li>Demote automatically on a pre-defined drawdown. My engine halts at a 10% drawdown, which is a rule that only works because it is coded rather than intended.</li>
+      </ol>
+      <p>The measurement layer has to exist before any of this is meaningful, which means logging planned 1R, realised R, and setup tag on every trade from the first paper fill onward. <a href="/guides/trading-journal.html">Journal fields that make this work →</a></p>
+      <p class="callout">Educational content, not financial advice. No live profit-and-loss figures are claimed anywhere on this site; backtest and walk-forward results are always labelled as such. Full terms: <a href="/terms.html">/terms.html</a></p>
+
+      <h2>Tools referenced in this guide</h2>
+      <ul>
+        <li><a href="/trading-bot.html">Trading bot</a> — the execution engine with the 60-closed-paper-trade promotion gate enforced in code.</li>
+        <li><a href="/apps/tradelog/">TradeLog</a> — logs planned and realised R per setup so paper and live can be compared directly.</li>
+        <li><a href="/guides/walk-forward-backtest.html">Walk-forward testing guide</a> — the stage before paper, and the costs a backtest leaves out.</li>
+      </ul>
+    </div>
+  </section>
+
+  <hr class="divider">
+
+  <section class="section section--tight" id="faq">
+    <div class="grp-head">
+      <p class="eyebrow">FAQ</p>
+      <h2>Quick answers</h2>
+    </div>
+    <div class="grid" style="margin-top:var(--s6)">
+      <article class="card faq-card"><h3>What does paper miss?</h3><p>Slippage, partial fills, borrow, gap fills, fees — and emotion. Paper takes every signal; you will not.</p></article>
+      <article class="card faq-card"><h3>Is paper trading useful?</h3><p>For engineering, yes: it proves orders route, brackets attach, and books reconcile. It is not evidence the strategy makes money.</p></article>
+      <article class="card faq-card"><h3>What is a promotion gate?</h3><p>A pre-written rule deciding when a system may trade real money, counted in closed trades and enforced by code rather than by mood.</p></article>
+      <article class="card faq-card"><h3>How many paper trades first?</h3><p>My engine requires 60 closed paper trades with positive realised expectancy before it will connect a live broker. Currently the record is zero.</p></article>
+      <article class="card faq-card"><h3>Does slippage matter that much?</h3><p>Yes. Slippage of 0.05R per side removes 0.10R from a 0.23R edge — over 40% of it, lost purely to execution quality.</p></article>
+      <article class="card faq-card"><h3>How do you scale up?</h3><p>Stages: pass the gate, 20 trades at minimum size, 30 at quarter risk, then full risk — with a coded drawdown halt at 10%.</p></article>
+    </div>
+  </section>
+
+</main>
+
+<footer class="site-footer">
+  <div class="site-footer__links">
+    <a href="/">Work</a>
+    <a href="/about.html">About</a>
+    <a href="/guides.html">Guides</a>
+    <a href="/apps.html">Apps</a>
+    <a href="/store.html">Store</a>
+    <a href="/privacy.html">Privacy</a>
+    <a href="/terms.html">Terms</a>
+    <a href="mailto:yusuf.gadelrab06@gmail.com">yusuf.gadelrab06@gmail.com</a>
+  </div>
+</footer>
+
+<script src="/js/site.js" defer></script>
+</body>
+</html>
