@@ -58,15 +58,20 @@
 <script>
 (function () {
   var state = document.getElementById('state');
-  function sync() {
-    var on = navigator.onLine;
-    state.textContent = on ? 'Back online' : 'No connection';
-    state.style.color = on ? '#5FBF7F' : '';
-  }
-  addEventListener('online', function () { sync(); location.reload(); });
-  addEventListener('offline', sync);
+  // Deliberately does NOT trust navigator.onLine on first paint: this page is only
+  // ever served because a fetch already failed, and navigator.onLine happily
+  // reports true on a captive portal or a dead upstream. Only a real 'online'
+  // event is allowed to change the label.
+  addEventListener('online', function () {
+    state.textContent = 'Back online';
+    state.style.color = '#5FBF7F';
+    location.reload();
+  });
+  addEventListener('offline', function () {
+    state.textContent = 'No connection';
+    state.style.color = '';
+  });
   document.getElementById('retry').addEventListener('click', function () { location.reload(); });
-  sync();
 })();
 </script>
 </body>

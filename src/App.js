@@ -729,7 +729,7 @@ export default function App() {
       <PageTabs page={visible} go={goTo} />
       {Palette}
       <main id="main" style={{ opacity: fading ? 0 : 1, transition: 'opacity .22s ease' }}>
-        {visible === 'Home' && <Home d={data} />}
+        {visible === 'Home' && <Home d={data} go={goTo} />}
         {visible === 'About' && <About d={data} />}
         {visible === 'Working On' && <Now d={data} />}
         {visible === 'Research' && <Research d={data} />}
@@ -801,7 +801,7 @@ function SiteFooter({ contact, brand }) {
 // swap to React is invisible. `.yg-page`/`.hero-row` are kept as hooks: the sunset
 // backdrop and the injected-content scripts in index.html key off them, and
 // #yg-hero-cta below tells that script the CTA already exists (no duplicate).
-function Home({ d }) {
+function Home({ d, go }) {
   return (
     <section className="section yg-page">
       <div className="hero-row">
@@ -845,7 +845,117 @@ function Home({ d }) {
         ))}
       </div>
       <Marquee groups={d.about?.skills} />
+
+      <HomeWork d={d} go={go} />
+      <HomeResearch d={d} go={go} />
+      <HomeNow d={d} go={go} />
+      <HomeClose d={d} go={go} />
     </section>
+  );
+}
+
+// The homepage used to stop at the stat grid, so everything below the fold was a
+// dead scroll. These blocks reuse the same data the inner pages render, then hand
+// off to the full page rather than duplicating it.
+function HomeBand({ eyebrow, title, intro, children }) {
+  return (
+    <div className="home-band" style={{ marginTop: 'var(--s7)' }}>
+      <p className="eyebrow">{eyebrow}</p>
+      <h2 style={{ marginTop: 'var(--s3)' }}>{title}</h2>
+      {intro && <p className="lead" style={{ marginTop: 'var(--s3)' }}>{intro}</p>}
+      {children}
+    </div>
+  );
+}
+
+function HomeWork({ d, go }) {
+  const picks = (d.projects || []).slice(0, 3);
+  if (!picks.length) return null;
+  return (
+    <HomeBand
+      eyebrow="Selected Work"
+      title="Things I've actually shipped"
+      intro="Products with users, a paid internship build, and research that went through peer review — not coursework."
+    >
+      <div className="grid grid--2" style={{ marginTop: 'var(--s5)' }}>
+        {picks.map((p, i) => (
+          <article className="card reveal" key={i} style={{ transitionDelay: `${i * 90}ms` }}>
+            <p className="eyebrow">{p.stack}</p>
+            <h3 style={{ marginTop: 'var(--s2)' }}>{p.title}</h3>
+            <p className="muted" style={{ marginTop: 'var(--s3)' }}>{p.desc}</p>
+            {p.link && (
+              <p style={{ marginTop: 'var(--s4)' }}>
+                <a href={p.link}>{p.linkLabel || 'Read more →'}</a>
+              </p>
+            )}
+          </article>
+        ))}
+      </div>
+      <div className="row" style={{ marginTop: 'var(--s5)' }}>
+        <button className="btn btn-ghost" onClick={() => go('Projects')}>See every project →</button>
+      </div>
+    </HomeBand>
+  );
+}
+
+function HomeResearch({ d, go }) {
+  const papers = d.research || [];
+  if (!papers.length) return null;
+  return (
+    <HomeBand
+      eyebrow="Peer-Reviewed Research"
+      title="Two papers at ACM SIGCSE 2026"
+      intro="Written as an undergraduate in Dr. Ethel Tshukudu's CS-education lab at SJSU, under IRB protocol."
+    >
+      <div className="grid grid--2" style={{ marginTop: 'var(--s5)' }}>
+        {papers.map((p, i) => (
+          <article className="card reveal" key={i} style={{ transitionDelay: `${i * 90}ms` }}>
+            <p className="eyebrow">{p.venue}</p>
+            <h3 style={{ marginTop: 'var(--s2)' }}>{p.title}</h3>
+            <p className="muted" style={{ marginTop: 'var(--s3)' }}>{p.abstract}</p>
+            {p.link && (
+              <p style={{ marginTop: 'var(--s4)' }}>
+                <a href={p.link} target="_blank" rel="noreferrer">Read the paper →</a>
+              </p>
+            )}
+          </article>
+        ))}
+      </div>
+      <div className="row" style={{ marginTop: 'var(--s5)' }}>
+        <button className="btn btn-ghost" onClick={() => go('Research')}>Full research page →</button>
+      </div>
+    </HomeBand>
+  );
+}
+
+function HomeNow({ d, go }) {
+  const items = (d.now?.items || []).slice(0, 4);
+  if (!items.length) return null;
+  return (
+    <HomeBand eyebrow="Now & Next" title="What I'm building this month" intro={d.now?.intro}>
+      <ul className="bullets" style={{ marginTop: 'var(--s5)' }}>
+        {items.map((it, i) => <li key={i}>{it}</li>)}
+      </ul>
+      <div className="row" style={{ marginTop: 'var(--s5)' }}>
+        <button className="btn btn-ghost" onClick={() => go('Working On')}>The full picture →</button>
+      </div>
+    </HomeBand>
+  );
+}
+
+function HomeClose({ d, go }) {
+  const email = d.contact?.email;
+  return (
+    <HomeBand
+      eyebrow="How I work"
+      title="Measured, or it didn't happen"
+      intro="Every number on this page has a method behind it — a backtest window, a participant count, a before-and-after. If I can't tell you how it was measured, I don't put it up."
+    >
+      <div className="row" style={{ marginTop: 'var(--s5)' }}>
+        {email && <a className="btn btn-gold" href={`mailto:${email}`}>Get in touch →</a>}
+        <button className="btn btn-ghost" onClick={() => go('Resume')}>See my resume →</button>
+      </div>
+    </HomeBand>
   );
 }
 

@@ -111,6 +111,30 @@
   function slug(s) {
     return String(s).toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '').slice(0, 48);
   }
+
+  var SKIP_HEADINGS = 'nav, .site-footer, #yg-palette, .yg-cta-bar, [hidden], template';
+  /* Resolve (or mint) a deep-link id for a heading. A wrapping section id is
+     only reused when it belongs to that heading alone — otherwise every h3 in
+     a section would link to the same anchor, and generic wrappers like
+     <main id="main"> would silently send people back to the top of the page. */
+  function headingId(h) {
+    var label = (h.textContent || '').replace(/\s+/g, ' ').trim();
+    if (!label || label.length > 90) return null;
+    if (h.id) return h.id;
+    var host = h.closest('section[id], article[id]');
+    if (host && host.id && host.id !== 'main' && host.id !== 'top' &&
+        host.querySelectorAll('h2, h3').length === 1) return host.id;
+    var id = 'yg-s-' + slug(label);
+    if (id === 'yg-s-' || d.getElementById(id)) return null;
+    h.id = id;
+    return id;
+  }
+  function headingLabel(h) {
+    var c = h.cloneNode(true);
+    var b = c.querySelectorAll('.yg-anchor');
+    for (var i = 0; i < b.length; i++) b[i].remove();
+    return (c.textContent || '').replace(/\s+/g, ' ').trim();
+  }
   /* rAF-throttled scroll handler — keeps the progress bar and the sticky bits
      off the main thread's critical path. */
   var scrollSubs = [];
@@ -171,13 +195,15 @@
       var heads = scope.querySelectorAll('h2, h3');
       for (var i = 0; i < heads.length && out.length < 60; i++) {
         var h = heads[i];
-        if (h.closest('nav, .site-footer, #yg-palette, [hidden]')) continue;
-        var label = (h.textContent || '').replace(/\s+/g, ' ').trim();
-        if (!label || label.length > 80) continue;
-        var target = h.id ? h : (h.closest('section[id]') || h.closest('[id]'));
-        var id = target && target.id;
-        if (!id) { id = 'yg-s-' + slug(label); if (!id || d.getElementById(id)) continue; h.id = id; }
-        out.push({ t: label, u: '#' + id, g: 'On this page', k: '', jump: 1 });
+        if (h.closest(SKIP_HEADINGS)) continue;
+        var label = headingLabel(h);
+        if (!label) continue;
+        var id = headingId(h);
+        if (!id) continue;
+        /* The id doubles as search vocabulary so short hand-authored anchors
+           ("faq", "pricing", "roi") stay findable even when the visible
+           heading is a full sentence. */
+        out.push({ t: label, u: '#' + id, g: 'On this page', k: id.replace(/^yg-s-/, '').replace(/-/g, ' '), jump: 1 });
       }
       return out;
     }
@@ -319,6 +345,8 @@
       root.hidden = false;
       d.documentElement.classList.add('yg-pal-open');
       input.value = '';
+      /* The long placeholder truncates below ~420px, so trade detail for fit. */
+      input.placeholder = w.innerWidth < 480 ? 'Search the site…' : 'Jump to a page, section or action…';
       render('');
       input.focus();
       var trig = d.querySelector('.yg-cmd');
@@ -445,16 +473,53 @@
       var h = hero ? hero.getBoundingClientRect().height : 0;
       return Math.max(320, Math.min(h * 0.8, 900));
     }
-    var shown = false;
+    /* Some pages ship their own bottom bar (store.html has a mobile-only
+       .sticky-cta). Two stacked bars is worse than none, so ours stands down
+       whenever a foreign fixed bottom bar is actually rendered — re-checked on
+       every show because those bars are often media-query gated. */
+    /* Throttled to once a second: page-owned bars are often revealed by the
+       page's own scroll handler, so a single boot-time answer would be wrong. */
+    var foreignCache = { w: -1, t: 0, v: false };
+    function foreignBar() {
+      var now = Date.now();
+      if (foreignCache.w === w.innerWidth && now - foreignCache.t < 1000) return foreignCache.v;
+      var found = false;
+      var all = d.body.getElementsByTagName('*');
+      for (var i = 0; i < all.length; i++) {
+        var e = all[i];
+        if (e === bar || e.id === 'yg-top' || e.id === 'yg-progress' || (e.closest && e.closest('#yg-cta, #yg-palette'))) continue;
+        var r = e.getBoundingClientRect();
+        /* Geometry first — it is far cheaper than a computed-style read. */
+        if (r.height < 12 || r.height > 220 || r.width < w.innerWidth * 0.4) continue;
+        if (r.bottom < w.innerHeight - 170 || r.top > w.innerHeight) continue;
+        var cs = getComputedStyle(e);
+        if (cs.position !== 'fixed' || cs.visibility === 'hidden' || +cs.opacity === 0) continue;
+        found = true;
+        break;
+      }
+      foreignCache = { w: w.innerWidth, t: Date.now(), v: found };
+      return found;
+    }
+
+    var shown = false, lastW = -1;
     onScrollSub(function (y, max) {
+      var resized = w.innerWidth !== lastW;
+      lastW = w.innerWidth;
       var footer = d.querySelector('.site-footer');
       var nearEnd = footer ? footer.getBoundingClientRect().top < w.innerHeight + 40 : (max - y) < 200;
       var want = y > threshold() && !nearEnd;
-      if (want === shown) return;
+      if (want) want = !foreignBar();
+      if (want === shown && !resized) return;
       shown = want;
       if (want) { bar.hidden = false; requestAnimationFrame(function () { bar.classList.add('is-in'); }); d.body.classList.add('yg-has-cta'); }
       else { bar.classList.remove('is-in'); d.body.classList.remove('yg-has-cta'); }
     });
+
+    /* Page-owned bars can appear while the user is standing still (their own
+       scroll handler flips a class once, then no further scroll events fire),
+       so poll slowly enough to be free and fast enough that two bars are never
+       both on screen for more than a second. */
+    setInterval(onScroll, 900);
   }
 
   /* =======================================================================
@@ -466,16 +531,11 @@
     for (var i = 0; i < heads.length; i++) {
       var h = heads[i];
       if (h.querySelector('.yg-anchor')) continue;
-      if (h.closest('nav, .site-footer, #yg-palette, .yg-cta-bar')) continue;
-      var label = (h.textContent || '').replace(/\s+/g, ' ').trim();
+      if (h.closest(SKIP_HEADINGS)) continue;
+      var label = headingLabel(h);
       if (!label) continue;
-      var host = h.id ? h : (h.closest('section[id]') || h.closest('[id]'));
-      var id = host && host.id;
-      if (!id) {
-        id = 'yg-s-' + slug(label);
-        if (!id || d.getElementById(id)) continue;
-        h.id = id;
-      }
+      var id = headingId(h);
+      if (!id) continue;
       var btn = el('button', {
         class: 'yg-anchor', type: 'button', 'data-target': id, 'data-pv2-skip': '',
         'aria-label': 'Copy link to section: ' + label, title: 'Copy link to this section'

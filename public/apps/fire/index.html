@@ -98,6 +98,14 @@ footer a:hover{text-decoration:underline}
 @media (prefers-reduced-motion:reduce){
   *,*::before,*::after{animation:none!important;transition:none!important}
 }
+
+.studio{margin:34px 0 6px;padding:22px;border-radius:16px;text-align:center;
+ background:linear-gradient(135deg,rgba(212,175,55,.12),rgba(212,175,55,.03));
+ border:1px solid rgba(212,175,55,.25)}
+.studio .eyebrow2{color:#d4af37;letter-spacing:.28em;text-transform:uppercase;font-size:.68rem;font-weight:600}
+.studio p{color:#cfcfcf;font-size:.92rem;margin:8px 0 12px;line-height:1.55}
+.studio a.golink{display:inline-block;background:linear-gradient(135deg,#d4af37,#e8c96a);color:#000;
+ font-weight:700;padding:11px 24px;border-radius:10px;text-decoration:none;font-size:.92rem}
 </style>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "WebApplication", "name": "Fire — Daily Execution Checklist", "url": "https://yusuf-gadelrab.github.io/apps/fire/", "applicationCategory": "ProductivityApplication", "operatingSystem": "Any", "browserRequirements": "Requires JavaScript", "offers": {"@type": "Offer", "price": "0", "priceCurrency": "USD"}, "description": "Free offline daily checklist that resets each morning and tracks 100%-day streaks. Data stays on your device.", "author": {"@type": "Person", "name": "Yusuf Gadelrab", "url": "https://yusuf-gadelrab.github.io"}, "publisher": {"@type": "Organization", "name": "DHAHAB"}}</script>
 <meta name="description" content="Free daily execution checklist app that resets every morning and tracks your 100%-day streaks. Works offline, private, no account needed.">
@@ -177,6 +185,11 @@ footer a:hover{text-decoration:underline}
   <div class="dimtxt">All data stays on this device (localStorage).</div>
 </div>
 
+<div class="studio">
+  <div class="eyebrow2">From the Studio</div>
+  <p>This list runs my whole operation. The tools that automate the rest of it live in the studio.</p>
+  <a class="golink" href="https://yusuf-gadelrab.github.io/store.html">Automation Studio &rarr;</a>
+</div>
 <footer>
   <a href="/privacy.html">Privacy</a> · <a href="/terms.html">Terms</a> · © 2026 DHAHAB · Yusuf Gadelrab
 </footer>
@@ -282,7 +295,7 @@ function render(){
     li.appendChild(tg);
     const mk = (label,title,fn)=>{const b=document.createElement('button');b.className='mini';b.textContent=label;b.title=title;b.onclick=fn;return b};
     li.appendChild(mk('↑','Move up',()=>{if(i>0){[tasks[i-1],tasks[i]]=[tasks[i],tasks[i-1]];save(K.tasks,tasks);render()}}));
-    li.appendChild(mk('↓','Move down',()=>{if(i<tasks.length-1){[tasks[i+1],tasks[i]]=[tasks[i+1],tasks[i]]=[tasks[i],tasks[i+1]];save(K.tasks,tasks);render()}}));
+    li.appendChild(mk('↓','Move down',()=>{if(i<tasks.length-1){[tasks[i+1],tasks[i]]=[tasks[i],tasks[i+1]];save(K.tasks,tasks);render()}}));
     li.appendChild(mk('✎','Rename',()=>{const n=prompt('Rename task:',t.name);if(n&&n.trim()){t.name=n.trim();save(K.tasks,tasks);render()}}));
     li.appendChild(mk('✕','Delete',()=>{if(confirm('Delete "'+t.name+'"?')){tasks.splice(i,1);delete checks[t.id];save(K.tasks,tasks);save(K.checks,checks);render()}}));
     ul.appendChild(li);
