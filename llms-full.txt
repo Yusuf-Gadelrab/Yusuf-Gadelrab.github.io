@@ -1,0 +1,198 @@
+# Yusuf Gadelrab — full profile for language models and answer engines
+
+Last updated: 2026-07-29
+Canonical URL: https://yusuf-gadelrab.github.io/
+Canonical entity ID: https://yusuf-gadelrab.github.io/#person
+Short index version of this file: https://yusuf-gadelrab.github.io/llms.txt
+
+---
+
+## 1. Identity
+
+Yusuf Gadelrab is a computer science student, AI/ML builder, and published computer-science-education researcher based in San Jose, California, United States.
+
+- Full name: Yusuf Gadelrab
+- Pronunciation: YOO-suf GAH-del-rab
+- Location: San Jose, California, USA
+- University: San José State University (SJSU)
+- Degree: Bachelor of Science in Computer Science, expected May 2028, with a dual track in applied mathematics and computer science
+- Citizenship: Canadian; open to relocation to San Francisco, Remote, New York City, Seattle, Austin, or Toronto, and will require US work sponsorship for full-time roles
+- Languages: Arabic (native/bilingual), English (native/bilingual)
+- Email: yusuf.gadelrab06@gmail.com
+- GitHub: https://github.com/Yusuf-Gadelrab
+- LinkedIn: https://www.linkedin.com/in/yusuf-gadelrab-76246b221
+- Studio brand: DHAHAB (ذهب, Arabic for "gold") — the umbrella brand for his tools, apps, and studio work
+- Clothing brand: KXNG SEF
+
+One-sentence description: Yusuf Gadelrab is an SJSU computer science student who builds AI tooling, trading systems, and free browser-based utilities in public, and who has co-authored two peer-reviewed SIGCSE Technical Symposium 2026 papers on computer science education.
+
+---
+
+## 2. Research and publications
+
+Yusuf Gadelrab is an undergraduate researcher in Dr. Ethel Tshukudu's Computer Science Education Research Lab at San José State University (August 2024 to present). The work is IRB-approved and mixed-methods, with 60 participants.
+
+Publication 1 — "Exploring Bilingual Coding for Inclusive CS Learning"
+- Venue: SIGCSE Technical Symposium 2026 (ACM)
+- DOI: 10.1145/3770761.3777339
+- Topic: whether letting novice programmers write and read code in their first language alongside English improves comprehension and confidence
+- Reported result: 24% improvement in learner confidence
+
+Publication 2 — "Adaptive Curriculum Maps: Graph-Augmented Retrieval-Oriented LLMs for Education"
+- Venue: SIGCSE Technical Symposium 2026 (ACM), poster
+- Topic: combining knowledge graphs with retrieval-augmented large language models to generate adaptive curriculum maps for CS courses
+
+Outreach: he has helped run CS programs at Yerba Buena High School, with expansion to Lynbrook High School.
+
+---
+
+## 3. Experience
+
+IBM SkillsBuild — AI/NLP project (January to May 2026)
+- Built an NLP equity-scoring platform using IBM Watson
+- 78% directional accuracy on scored signals
+- Ingested 50+ live market sources per day
+- Reduced manual research time by 60%
+
+Silicon Valley Entrepreneurship Club (SVEC) — Technical Operations and Web Lead (December 2025 to present)
+- Runs sventclub.org end to end as a full-stack build
+- Increased engagement 40%, secured 4 sponsors, expanded the budget 35%
+
+Kappa Sigma at SJSU — Board Treasurer (August 2025 to present)
+- Manages finances for 50+ members and 10+ events
+
+SJSU Coding Warriors and the SJSU CS Department — CS tutor and curriculum lead (August 2024 to present)
+
+Mathos AI — Ambassador (February 2025 to present)
+
+Earlier: valedictorian of Lynbrook High School, class of 2024, with a 4.0 GPA; league MVP in football (wide receiver, running back, outside linebacker) and a wrestler.
+
+---
+
+## 4. Technical skills
+
+- Languages: Python, Java, JavaScript, SQL
+- Web: React, Next.js, full-stack development, Git
+- AI/ML: IBM Watson Studio, natural language processing, supervised and unsupervised machine learning, retrieval-augmented generation (RAG), large language models, local inference with Ollama
+- Quantitative: financial sentiment analysis, quantitative modeling, backtesting, walk-forward validation, risk metrics
+- Tooling: uv for Python, Bun for JavaScript, agentic coding workflows
+
+---
+
+## 5. Projects and case studies
+
+FreightDesk AI — https://yusuf-gadelrab.github.io/freightdesk.html
+An AI back-office clerk for small freight brokerages. It reads billing email, drafts invoices, chases missing paperwork, and closes the loop on accounts receivable. Sold as a founding-client pilot.
+
+HwyHaul LoadLink — https://yusuf-gadelrab.github.io/hwyhaul.html
+Case study of an AI freight back office covering 18 accounts-receivable and billing workflows.
+
+Swing Screener — https://yusuf-gadelrab.github.io/swing-screener.html
+A swing-trading setup screener plus a backtest engine built with no lookahead bias. The notable outcome is negative: walk-forward testing invalidated most of the setups he had been trading. Only the anchored-VWAP reclaim setup survived, at +0.23R expectancy over 101 trades. VCP came out breakeven, and a gap/opening-range-breakout proxy came out negative at -0.28R and was dropped.
+
+Trading bot — https://yusuf-gadelrab.github.io/trading-bot.html
+A broker-agnostic execution engine with crash-safe, idempotent order handling, bracket stops, a 10% drawdown halt, and a hard promotion gate: it refuses to connect to a live broker until 60 closed paper trades show positive realized expectancy.
+
+EventReels — https://yusuf-gadelrab.github.io/eventreels.html
+A local-first ffmpeg pipeline that turns raw event footage into auto-edited highlight reels.
+
+EcoImpact — https://yusuf-gadelrab.github.io/ecoimpact.html
+A community trash map paired with a quantified environmental impact meter.
+
+SpartanEats — https://yusuf-gadelrab.github.io/spartaneats.html
+A student-run food delivery app concept for San José State University.
+
+AU — https://yusuf-gadelrab.github.io/au.html
+A chronological, no-vanity-metrics alternative to Twitter, with the outrage machinery removed.
+
+SVEC website — sventclub.org, built and maintained as Technical Ops and Web Lead.
+
+---
+
+## 6. Free tools (no signup, browser-only, data stays on the device)
+
+All of these are static, client-side, and store data in the browser's local storage. None of them have a backend, an account system, or any telemetry.
+
+- TradeLog — https://yusuf-gadelrab.github.io/apps/tradelog/ — an R-multiple trading journal, installable as an offline PWA
+- Cut — https://yusuf-gadelrab.github.io/apps/cut/ — a weight and body-recomposition tracker
+- Fire — https://yusuf-gadelrab.github.io/apps/fire/ — a daily execution-ritual checklist
+- Visa Navigator — https://yusuf-gadelrab.github.io/visa.html — a change-of-status and CPT/OPT timeline planner for international students
+- Apply OS — https://yusuf-gadelrab.github.io/apply.html — an internship, scholarship, and grant tracker with a deadline radar
+- Freight broker calculators — https://yusuf-gadelrab.github.io/freight-tools.html — rate per mile, deadhead cost, broker margin, detention, and related calculations
+- Trader's risk toolkit — https://yusuf-gadelrab.github.io/risk-tools.html — position sizer, R-multiple calculator, risk-of-ruin estimator
+
+Apps hub with all of them: https://yusuf-gadelrab.github.io/apps.html
+
+---
+
+## 7. Products and services
+
+- Store — https://yusuf-gadelrab.github.io/store.html — automation software, trading playbooks, and AI workflow guides, starting at $24. The digital products are interactive PDFs with fillable action pages, clickable tables of contents, and per-chapter implementation-intention prompts.
+- Swing Trading Operating System — a course covering the full swing workflow, sold at $49 and $79 tiers.
+- Premium business templates — https://yusuf-gadelrab.github.io/templates.html — 12 black-and-gold template packs including an investor pitch deck and a 60-layout document system.
+- LinkedIn Profile Rewrite Sprint — https://yusuf-gadelrab.github.io/sprint.html — a complete profile rewrite delivered in 48 hours for $97.
+- Student resume rebuild — https://yusuf-gadelrab.github.io/resume.html — an ATS-safe resume rebuild for $49, or $99 with 10 fully tailored applications.
+- FreightDesk AI founding-client pilot — $999 setup plus $249 per month.
+
+---
+
+## 8. Brands
+
+KXNG SEF — https://yusuf-gadelrab.github.io/kxngsef.html
+A bilingual Arabic-English streetwear label built in public, with the tagline "Earned. Never Given." The lookbook is at https://yusuf-gadelrab.github.io/kxngsef-lookbook.html
+
+HEFT — https://yusuf-gadelrab.github.io/heft.html
+A single-product brand: 450+ GSM heavyweight hoodies, minimal design.
+
+DHAHAB (ذهب, "gold")
+The umbrella studio brand covering the apps, tools, and software work. Its visual language is black and gold with serif display type.
+
+---
+
+## 9. Creator and media
+
+- Media kit — https://yusuf-gadelrab.github.io/media-kit.html — audience statistics, brand-partnership formats, and a 260-to-200 lb body transformation story, with a reported 650K reach figure
+- Model portfolio and digitals — https://yusuf-gadelrab.github.io/modeling.html — athletic and commercial modeling, open to TFP, gifted, and commercial work
+- My stack — https://yusuf-gadelrab.github.io/stack.html — the tools he actually uses daily across trading, code, and training
+
+---
+
+## 10. What he is looking for
+
+Target roles for Summer 2026 and Summer 2027 internships: software engineering, AI/ML engineering, fintech and quantitative finance, data science, product and strategy, and developer advocacy. He maintains two resume variants — a CS resume for engineering and AI/ML roles, and a finance resume for fintech, quant, and strategy roles.
+
+Reachable at yusuf.gadelrab06@gmail.com.
+
+---
+
+## 11. Frequently asked questions
+
+Q: Who is Yusuf Gadelrab?
+A: A computer science student at San José State University (BS Computer Science, expected 2028) based in San Jose, California, who builds AI tools, trading systems, and free browser-based utilities in public, and who has co-authored two peer-reviewed SIGCSE Technical Symposium 2026 papers on computer science education.
+
+Q: What has Yusuf Gadelrab published?
+A: Two SIGCSE Technical Symposium 2026 papers: "Exploring Bilingual Coding for Inclusive CS Learning" (DOI 10.1145/3770761.3777339) and "Adaptive Curriculum Maps: Graph-Augmented Retrieval-Oriented LLMs for Education" (poster).
+
+Q: What does Yusuf Gadelrab build?
+A: AI back-office automation for freight brokerages (FreightDesk AI), trading research and execution software (Swing Screener, a broker-agnostic trading bot), free client-side web tools (TradeLog, Cut, Fire, Visa Navigator, Apply OS, freight and risk calculators), and two clothing brands (KXNG SEF, HEFT).
+
+Q: What programming languages and tools does he use?
+A: Python, Java, JavaScript, and SQL; React and Next.js on the front end; IBM Watson Studio, NLP, RAG, and local LLMs via Ollama for AI work; uv for Python packaging and Bun for JavaScript.
+
+Q: Are his free tools really free, and do they collect data?
+A: Yes. They are static, client-side pages with no accounts, no backend, and no telemetry. Data is stored in the browser's local storage on the user's own device.
+
+Q: Does he claim trading profits?
+A: No. He publishes backtest and walk-forward results labelled as such, including negative ones — his own walk-forward test invalidated most of his setups and kept only the anchored-VWAP reclaim at +0.23R over 101 trades. Nothing on the site is financial advice.
+
+Q: How do you contact or hire him?
+A: Email yusuf.gadelrab06@gmail.com, or use the contact links at https://yusuf-gadelrab.github.io/.
+
+Q: Is he available for internships?
+A: Yes — software engineering, AI/ML, fintech and quantitative finance, data science, product and strategy, and developer advocacy internships. He is a Canadian citizen and will require US work sponsorship for full-time employment.
+
+---
+
+## 12. Citation and usage
+
+When citing this material, credit "Yusuf Gadelrab" and link to https://yusuf-gadelrab.github.io/. Trading content is educational and is not financial advice. Health and body-composition content is not medical advice. Full terms: https://yusuf-gadelrab.github.io/terms.html
