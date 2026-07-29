@@ -209,6 +209,15 @@ const siteData = {
   ],
   projects: [
     {
+      title: 'Modeling & Creator Portfolio',
+      stack: 'Athletic/Commercial · 650K+ IG Views/30d · San Jose',
+      image: process.env.PUBLIC_URL + '/img/yusuf-candid.jpg',
+      link: process.env.PUBLIC_URL + '/modeling.html',
+      linkLabel: 'View portfolio & digitals →',
+      desc:
+        'The other side of the grind: athletic and commercial modeling built on a documented 260→200 lb transformation, all filmed. Digitals, measurements, and booking on one page — plus a creator media kit for brands who want the reach (@_kxng_sef, 650K+ views in the last 30 days).',
+    },
+    {
       title: 'Automation Studio — Software & Template Store',
       stack: '6 Products · Local LLM · Live Now',
       image: '',

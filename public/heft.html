@@ -7,6 +7,7 @@
 <meta name="description" content="HEFT makes one thing: 450+ GSM heavyweight hoodies. Minimal design, maximum weight. No logos screaming at you. Just heft.">
 <link rel="canonical" href="https://yusuf-gadelrab.github.io/heft.html">
 <link rel="icon" type="image/svg+xml" href="https://yusuf-gadelrab.github.io/favicon.svg">
+<meta name="theme-color" content="#0B0B0D">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="HEFT">
 <meta property="og:title" content="HEFT — Heavyweight Hoodies. Nothing Else.">
@@ -18,166 +19,168 @@
 <meta name="twitter:description" content="450+ GSM heavyweight hoodies. Minimal design, maximum weight.">
 <meta name="twitter:image" content="https://yusuf-gadelrab.github.io/og-card.png">
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"Brand","name":"HEFT","url":"https://yusuf-gadelrab.github.io/heft.html","description":"450+ GSM heavyweight hoodies. Minimal design, maximum weight.","founder":{"@type":"Person","name":"Yusuf Gadelrab"}}</script>
+<link rel="stylesheet" href="/css/site.css">
 <style>
-  :root{
-    --bg:#0d0d0d; --ink:#ececec; --mut:#8a8a8a; --line:#242424; --acc:#d9c8a9;
-  }
-  *{margin:0;padding:0;box-sizing:border-box}
-  html{scroll-behavior:smooth}
-  body{background:var(--bg);color:var(--ink);font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;-webkit-font-smoothing:antialiased;line-height:1.6}
-  a{color:inherit;text-decoration:none}
-  .wrap{max-width:1100px;margin:0 auto;padding:0 24px}
+  /* ---- page-specific only: the GSM comparison bars and the numbered lineup ---- */
+  .hero-heft{padding-top:var(--s8);padding-bottom:var(--s7)}
+  .hero-heft h1{font-size:var(--t-hero);letter-spacing:2px;line-height:.9;margin:var(--s4) 0}
 
-  nav{position:fixed;top:0;left:0;right:0;z-index:10;background:rgba(13,13,13,.85);backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
-  nav .wrap{display:flex;align-items:center;gap:28px;height:64px}
-  .logo{font-weight:800;letter-spacing:.35em;font-size:18px}
-  nav ul{display:flex;gap:32px;list-style:none;font-size:12px;letter-spacing:.15em;text-transform:uppercase;color:var(--mut);margin-left:auto}
-  nav ul a:hover{color:var(--ink)}
-
-  header{min-height:100svh;display:flex;flex-direction:column;justify-content:center;position:relative}
-  .hero-kicker{font-size:12px;letter-spacing:.4em;text-transform:uppercase;color:var(--mut);margin-bottom:24px}
-  h1{font-size:clamp(56px,12vw,160px);font-weight:800;letter-spacing:-.02em;line-height:.95;text-transform:uppercase}
-  .hero-sub{margin-top:28px;max-width:460px;color:var(--mut);font-size:17px}
-  .hero-after{margin-top:18px;max-width:460px;font-size:18px;font-weight:600;color:var(--ink)}
-  .hero-note{margin-top:18px;font-size:12px;letter-spacing:.08em;color:var(--mut)}
-  .hero-cta{margin-top:40px;display:flex;gap:16px;flex-wrap:wrap}
-  .btn{display:inline-block;padding:16px 36px;border:1px solid var(--ink);font-size:12px;letter-spacing:.2em;text-transform:uppercase;transition:background .2s,color .2s,border-color .2s,transform .18s ease}
-  .btn:hover{background:var(--ink);color:var(--bg);transform:translateY(-2px)}
-  .btn.solid{background:var(--ink);color:var(--bg)}
-  .btn.solid:hover{background:transparent;color:var(--ink)}
-  .btn.gold{background:var(--acc);border-color:var(--acc);color:var(--bg);font-weight:700}
-  .btn.gold:hover{background:transparent;color:var(--acc)}
-  .nav-cta{display:inline-block;background:var(--acc);color:var(--bg);padding:10px 20px;font-size:11px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;transition:opacity .2s,transform .18s ease}
-  .nav-cta:hover{opacity:.85;transform:translateY(-1px)}
-  a:focus-visible,button:focus-visible{outline:2px solid var(--acc);outline-offset:3px}
-  .scroll-hint{position:absolute;bottom:32px;left:50%;transform:translateX(-50%);color:var(--mut);font-size:11px;letter-spacing:.3em;text-transform:uppercase}
-
-  section{padding:120px 0;border-top:1px solid var(--line)}
-  .sec-label{font-size:11px;letter-spacing:.4em;text-transform:uppercase;color:var(--mut);margin-bottom:16px}
-  h2{font-size:clamp(32px,5vw,56px);font-weight:800;text-transform:uppercase;letter-spacing:-.01em;margin-bottom:24px}
-  .lede{max-width:560px;color:var(--mut);font-size:17px}
-
-  .specs{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:1px;background:var(--line);border:1px solid var(--line);margin-top:56px}
-  .spec{background:var(--bg);padding:40px 32px}
-  .spec b{display:block;font-size:34px;font-weight:800;margin-bottom:8px}
-  .spec span{font-size:13px;color:var(--mut);letter-spacing:.05em}
-
-  .gsmbars{margin-top:48px;max-width:640px}
-  .gsmbar{margin-bottom:20px}
-  .gsmbar .lbl{display:flex;justify-content:space-between;gap:12px;font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--mut);margin-bottom:8px}
+  .gsmbars{max-width:640px}
+  .gsmbar+.gsmbar{margin-top:var(--s5)}
+  .gsmbar .lbl{display:flex;justify-content:space-between;gap:var(--s3);
+    font-size:var(--t-micro);letter-spacing:2px;text-transform:uppercase;
+    color:var(--muted);margin-bottom:var(--s2)}
   .gsmbar .lbl b{color:var(--ink);font-weight:700;white-space:nowrap}
-  .gsmbar .track{height:14px;border:1px solid var(--line);background:#141414}
-  .gsmbar .fill{height:100%;background:#3a3a3a;transform-origin:left;animation:grow .9s ease-out both}
-  .gsmbar.heft .fill{background:var(--ink)}
-  @keyframes grow{from{transform:scaleX(0)}to{transform:scaleX(1)}}
-  .price-anchor{margin-top:36px;max-width:640px;border-left:2px solid var(--acc);padding:14px 20px;font-size:16px;color:var(--mut)}
-  .price-anchor b{color:var(--ink)}
+  .gsmbar .track{height:14px;border:1px solid var(--line-soft);background:var(--bg2);
+    border-radius:var(--radius);overflow:hidden}
+  .gsmbar .fill{height:100%;background:var(--faint);transform-origin:left;
+    animation:heftGrow .9s var(--ease) both}
+  .gsmbar.is-heft .fill{background:linear-gradient(90deg,var(--gold-dim),var(--gold-2))}
+  @keyframes heftGrow{from{transform:scaleX(0)}to{transform:scaleX(1)}}
 
-  .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:24px;margin-top:56px}
-  .card{border:1px solid var(--line);aspect-ratio:4/5;display:flex;flex-direction:column;justify-content:flex-end;padding:28px;position:relative;overflow:hidden;background:linear-gradient(160deg,#161616,#0d0d0d);transition:border-color .25s}
-  .card:hover{border-color:#3d3d3d}
-  .card .tag{font-size:11px;letter-spacing:.3em;text-transform:uppercase;color:var(--mut)}
-  .card h3{font-size:22px;font-weight:700;text-transform:uppercase;margin-top:6px}
-  .card p{color:var(--mut);font-size:14px;margin-top:6px}
-  .card .ghost{position:absolute;top:-10px;right:-6px;font-size:120px;font-weight:800;color:#181818;line-height:1;user-select:none;transition:transform .35s ease}
-  .card:hover .ghost{transform:translateY(-6px)}
-  .not-for{margin-top:40px;max-width:640px;border:1px solid var(--line);padding:18px 22px;color:var(--mut);font-size:14.5px}
-  .not-for b{display:block;color:var(--ink);letter-spacing:.12em;text-transform:uppercase;font-size:11px;margin-bottom:6px}
+  .quote-rail{border-left:2px solid var(--gold);padding:var(--s3) var(--s5);
+    max-width:var(--maxw-prose);color:var(--muted)}
+  .quote-rail b{color:var(--ink)}
 
-  .story p{max-width:640px;color:var(--mut);font-size:18px;margin-bottom:20px}
+  .piece{position:relative;overflow:hidden;min-height:220px;
+    display:flex;flex-direction:column;justify-content:flex-end}
+  .piece .ghost{position:absolute;top:-14px;right:-4px;font-family:var(--display);
+    font-size:120px;line-height:1;color:var(--line-soft);user-select:none;pointer-events:none}
+  .piece .tag{font-family:var(--display);font-size:var(--t-micro);letter-spacing:3px;
+    text-transform:uppercase;color:var(--gold-2)}
+  .piece h3{margin:var(--s2) 0}
+  .piece p{color:var(--muted);font-size:var(--t-small)}
+
+  .story p{color:var(--muted);max-width:var(--maxw-prose)}
+  .story p+p{margin-top:var(--s4)}
   .story strong{color:var(--ink)}
 
-  .drop{background:#111;border:1px solid var(--line);padding:64px 40px;text-align:center;margin-top:16px}
-  .drop h2{margin-bottom:12px}
-  .drop p{color:var(--mut);max-width:440px;margin:0 auto 32px}
-  .drop .btn{padding:18px 48px;font-size:13px}
-  .click-trigger{margin-top:16px;font-size:12.5px;letter-spacing:.05em;color:var(--mut)}
-  @media(prefers-reduced-motion:reduce){.gsmbar .fill{animation:none}.btn:hover,.nav-cta:hover,.card:hover .ghost{transform:none}}
-
-  footer{border-top:1px solid var(--line);padding:48px 0;color:var(--mut);font-size:12px;letter-spacing:.1em}
-  footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:16px}
-
-  @media(max-width:640px){nav ul{display:none}.nav-cta{margin-left:auto;padding:9px 16px}}
+  .drop{text-align:center;padding:var(--s8) var(--s5)}
+  .drop p{color:var(--muted);max-width:46ch;margin:0 auto var(--s6)}
+  .drop .after{margin:var(--s4) auto 0;font-size:var(--t-small);color:var(--muted)}
 </style>
 </head>
 <body>
 
-<nav><div class="wrap">
-  <a class="logo" href="#top">HEFT</a>
-  <ul>
-    <li><a href="#weight">The Weight</a></li>
-    <li><a href="#pieces">Pieces</a></li>
-    <li><a href="#story">Story</a></li>
-  </ul>
-  <a class="nav-cta" href="#drop">Join First Drop</a>
-</div></nav>
+<a class="skip-link" href="#main">Skip to content</a>
 
-<header id="top"><div class="wrap">
-  <div class="hero-kicker">Heavyweight · Minimal · Built to outlast</div>
-  <h1>Weight<br>is the<br>design.</h1>
-  <p class="hero-sub">One hoodie, done right. 450+ GSM cotton fleece. No graphics, no noise, no planned obsolescence.</p>
-  <p class="hero-after">The hoodie you reach for every cold morning — for the next ten years.</p>
-  <div class="hero-cta">
-    <a class="btn gold" href="#drop">Join First Drop</a>
-    <a class="btn" href="#weight">Why Heavy</a>
+<nav class="site-nav">
+  <a class="site-nav__brand" href="/">YUSUF GADELRAB</a>
+  <div class="site-nav__links">
+    <a href="/">Work</a>
+    <a href="/resume.html">Resume</a>
+    <a href="/store.html">Store</a>
+    <a href="/kxngsef.html">KXNG SEF</a>
+    <a href="/media-kit.html">Media Kit</a>
   </div>
-  <p class="hero-note">First 100 sign-ups lock founding pricing for good.</p>
-</div>
-<div class="scroll-hint">Scroll</div>
-</header>
+</nav>
 
-<section id="weight"><div class="wrap">
-  <div class="sec-label">The Weight</div>
-  <h2>Most hoodies are 280 GSM. Ours start at 450.</h2>
-  <p class="lede">GSM — grams per square meter — is the honest measure of a hoodie. Fast fashion hides behind prints because the fabric can't speak for itself. We went the other way: heavier fabric, tighter knit, cleaner lines.</p>
-  <div class="gsmbars" aria-label="Fabric weight comparison: typical hoodie 280 GSM versus HEFT 450 GSM">
-    <div class="gsmbar"><div class="lbl"><span>Typical hoodie</span><b>280 GSM</b></div><div class="track"><div class="fill" style="width:62%"></div></div></div>
-    <div class="gsmbar heft"><div class="lbl"><span>HEFT — The Standard</span><b>450 GSM</b></div><div class="track"><div class="fill" style="width:100%;animation-delay:.15s"></div></div></div>
+<main id="main">
+
+  <header class="section hero-heft">
+    <p class="eyebrow">Heavyweight · Minimal · Built to outlast</p>
+    <h1>Weight<br>is the<br>design.</h1>
+    <p class="lead">One hoodie, done right. 450+ GSM cotton fleece. No graphics, no noise, no planned obsolescence.</p>
+    <p style="margin-top:var(--s4);max-width:var(--maxw-prose)"><strong>The hoodie you reach for every cold morning — for the next ten years.</strong></p>
+    <div class="row" style="margin-top:var(--s6)">
+      <a class="btn btn-gold" href="#drop">Join First Drop</a>
+      <a class="btn btn-ghost" href="#weight">Why Heavy</a>
+    </div>
+    <p class="faint" style="margin-top:var(--s4);font-size:var(--t-small)">First 100 sign-ups lock founding pricing for good.</p>
+  </header>
+
+  <hr class="divider">
+
+  <section id="weight" class="section">
+    <p class="eyebrow">The Weight</p>
+    <h2>Most hoodies are 280 GSM. Ours start at 450.</h2>
+    <p class="lead" style="margin-top:var(--s3)">GSM — grams per square meter — is the honest measure of a hoodie. Fast fashion hides behind prints because the fabric can't speak for itself. We went the other way: heavier fabric, tighter knit, cleaner lines.</p>
+
+    <div class="gsmbars" style="margin-top:var(--s6)" aria-label="Fabric weight comparison: typical hoodie 280 GSM versus HEFT 450 GSM">
+      <div class="gsmbar">
+        <div class="lbl"><span>Typical hoodie</span><b>280 GSM</b></div>
+        <div class="track"><div class="fill" style="width:62%"></div></div>
+      </div>
+      <div class="gsmbar is-heft">
+        <div class="lbl"><span>HEFT — The Standard</span><b>450 GSM</b></div>
+        <div class="track"><div class="fill" style="width:100%;animation-delay:.15s"></div></div>
+      </div>
+    </div>
+
+    <div class="grid" style="margin-top:var(--s7)">
+      <div class="card card--flat stat"><span class="stat__value">450+</span><span class="stat__label">GSM heavyweight cotton fleece</span></div>
+      <div class="card card--flat stat"><span class="stat__value">100%</span><span class="stat__label">ring-spun cotton face, pre-shrunk</span></div>
+      <div class="card card--flat stat"><span class="stat__value">0</span><span class="stat__label">logos on the front. A single tonal stitch mark.</span></div>
+      <div class="card card--flat stat"><span class="stat__value">10 yr</span><span class="stat__label">the lifespan we design for — repair, not replace</span></div>
+    </div>
+
+    <p class="quote-rail" style="margin-top:var(--s6)">Hoodies at this weight retail for <b>$150–180</b> — with someone else's logo on the chest. The Standard targets <b>$100 flat</b>. Cost plus honesty, nothing hidden.</p>
+  </section>
+
+  <hr class="divider">
+
+  <section id="pieces" class="section">
+    <p class="eyebrow">Pieces</p>
+    <h2>The lineup.</h2>
+    <p class="lead" style="margin-top:var(--s3)">Three silhouettes. Four colors — bone, slate, moss, black. That's the whole store, on purpose.</p>
+    <div class="grid" style="margin-top:var(--s6)">
+      <article class="card piece">
+        <span class="ghost" aria-hidden="true">01</span>
+        <div><span class="tag">Flagship</span><h3>The Standard</h3>
+        <p>Classic-fit pullover. 450 GSM. Double-lined hood, no drawstring flop.</p></div>
+      </article>
+      <article class="card piece">
+        <span class="ghost" aria-hidden="true">02</span>
+        <div><span class="tag">Oversized</span><h3>The Slab</h3>
+        <p>Dropped shoulder, boxy cut, 500 GSM. The heaviest thing in your closet.</p></div>
+      </article>
+      <article class="card piece">
+        <span class="ghost" aria-hidden="true">03</span>
+        <div><span class="tag">Zip</span><h3>The Utility</h3>
+        <p>Full-zip, matte hardware, hidden phone pocket. Same weight, more range.</p></div>
+      </article>
+    </div>
+    <p class="quote-rail" style="margin-top:var(--s6)"><b>Fair warning —</b> Not for you if you want a light summer hoodie or a big front graphic. HEFT is heavy, plain, and warm — on purpose.</p>
+  </section>
+
+  <hr class="divider">
+
+  <section id="story" class="section story">
+    <p class="eyebrow">Story</p>
+    <h2>Built by someone who got tired of thin.</h2>
+    <div style="margin-top:var(--s5)">
+      <p>HEFT started with a simple annoyance: every hoodie under $100 felt like a t-shirt with a hood, and every hoodie that didn't cost $180 with someone else's logo on it.</p>
+      <p><strong>So we cut everything that isn't the hoodie.</strong> No hype drops every week. No 40-item catalog. No graphics designed to go out of style so you buy the next one.</p>
+      <p>Heavy fabric. Minimal design. A price that reflects cost, not clout. That's the whole brand.</p>
+    </div>
+  </section>
+
+  <section id="drop" class="section section--tight">
+    <div class="card card--flat drop">
+      <p class="eyebrow">First Drop</p>
+      <h2 style="margin:var(--s3) 0">Get in before it exists.</h2>
+      <p>First run is limited and priced at cost + honesty. The first 100 names on the list lock founding pricing — forever.</p>
+      <a class="btn btn-gold" href="mailto:yusuf.gadelrab06@gmail.com?subject=HEFT%20First%20Drop&body=Add%20me%20to%20the%20Founding%20100.">Join First Drop</a>
+      <p class="after">One email when the drop opens — founding price locked for you.</p>
+      <!-- Founding-100 counter: add "Founding 100 — N claimed" + thin progress bar here ONLY once real signups exist (N > 0). Never display an invented number. -->
+    </div>
+  </section>
+
+</main>
+
+<footer class="site-footer">
+  <div>HEFT © 2026 — San Jose, CA · Weight is the design.</div>
+  <div class="site-footer__links">
+    <a href="/">Work</a>
+    <a href="/resume.html">Resume</a>
+    <a href="/store.html">Store</a>
+    <a href="/kxngsef.html">KXNG SEF</a>
+    <a href="/media-kit.html">Media Kit</a>
+    <a href="mailto:yusuf.gadelrab06@gmail.com">yusuf.gadelrab06@gmail.com</a>
+    <a href="https://github.com/Yusuf-Gadelrab" target="_blank" rel="noopener">GitHub</a>
+    <a href="https://www.linkedin.com/in/yusuf-gadelrab-76246b221" target="_blank" rel="noopener">LinkedIn</a>
   </div>
-  <div class="specs">
-    <div class="spec"><b>450+</b><span>GSM heavyweight cotton fleece</span></div>
-    <div class="spec"><b>100%</b><span>ring-spun cotton face, pre-shrunk</span></div>
-    <div class="spec"><b>0</b><span>logos on the front. A single tonal stitch mark.</span></div>
-    <div class="spec"><b>10 yr</b><span>the lifespan we design for — repair, not replace</span></div>
-  </div>
-  <p class="price-anchor">Hoodies at this weight retail for <b>$150–180</b> — with someone else's logo on the chest. The Standard targets <b>$100 flat</b>. Cost plus honesty, nothing hidden.</p>
-</div></section>
-
-<section id="pieces"><div class="wrap">
-  <div class="sec-label">Pieces</div>
-  <h2>The lineup.</h2>
-  <p class="lede">Three silhouettes. Four colors — bone, slate, moss, black. That's the whole store, on purpose.</p>
-  <div class="grid">
-    <div class="card"><div class="ghost">01</div><div><div class="tag">Flagship</div><h3>The Standard</h3><p>Classic-fit pullover. 450 GSM. Double-lined hood, no drawstring flop.</p></div></div>
-    <div class="card"><div class="ghost">02</div><div><div class="tag">Oversized</div><h3>The Slab</h3><p>Dropped shoulder, boxy cut, 500 GSM. The heaviest thing in your closet.</p></div></div>
-    <div class="card"><div class="ghost">03</div><div><div class="tag">Zip</div><h3>The Utility</h3><p>Full-zip, matte hardware, hidden phone pocket. Same weight, more range.</p></div></div>
-  </div>
-  <p class="not-for"><b>Fair warning</b>Not for you if you want a light summer hoodie or a big front graphic. HEFT is heavy, plain, and warm — on purpose.</p>
-</div></section>
-
-<section id="story" class="story"><div class="wrap">
-  <div class="sec-label">Story</div>
-  <h2>Built by someone who got tired of thin.</h2>
-  <p>HEFT started with a simple annoyance: every hoodie under $100 felt like a t-shirt with a hood, and every hoodie that didn't cost $180 with someone else's logo on it.</p>
-  <p><strong>So we cut everything that isn't the hoodie.</strong> No hype drops every week. No 40-item catalog. No graphics designed to go out of style so you buy the next one.</p>
-  <p>Heavy fabric. Minimal design. A price that reflects cost, not clout. That's the whole brand.</p>
-</div></section>
-
-<section id="drop"><div class="wrap">
-  <div class="drop">
-    <div class="sec-label">First Drop</div>
-    <h2>Get in before it exists.</h2>
-    <p>First run is limited and priced at cost + honesty. The first 100 names on the list lock founding pricing — forever.</p>
-    <a class="btn gold" href="mailto:yusuf.gadelrab06@gmail.com?subject=HEFT%20First%20Drop&body=Add%20me%20to%20the%20Founding%20100.">Join First Drop</a>
-    <p class="click-trigger">One email when the drop opens — founding price locked for you.</p>
-    <!-- Founding-100 counter: add "Founding 100 — N claimed" + thin progress bar here ONLY once real signups exist (N > 0). Never display an invented number. -->
-  </div>
-</div></section>
-
-<footer><div class="wrap">
-  <div>HEFT © 2026 — San Jose, CA</div>
-  <div>Weight is the design.</div>
-</div></footer>
+</footer>
 
 </body>
 </html>

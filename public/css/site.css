@@ -1,0 +1,281 @@
+/* ============================================================================
+   Yusuf Gadelrab — shared design system
+   Single source of truth for every page in public/. Tokens lifted from the
+   KXNG SEF brand (BRAND.md) so the portfolio, the store and the clothing brand
+   read as one operation instead of twelve unrelated pages.
+
+   Two surface registers, ONE system:
+     <body>            brand surface  — Impact display, full streetwear energy
+     <body class="pro"> professional  — grotesk display, calmer, for resume /
+                                        media-kit / client-facing pages
+   Palette, spacing, components and behaviour are identical across both. Only
+   the display typeface and heading letter-spacing change, because Impact on a
+   resume reads as a flyer, not as an engineer.
+   ========================================================================= */
+
+:root{
+  /* --- surface --- */
+  --bg:#0B0B0D;
+  --bg2:#141416;
+  --panel:#17171a;
+  --panel2:#1c1c20;
+
+  /* --- ink --- */
+  --bone:#F2EDE4;
+  --ink:#F2EDE4;
+  --muted:#a29c8e;
+  --faint:#6f6a61;
+
+  /* --- accent (exactly one hero element per view — see BRAND.md) --- */
+  --gold:#D4AF37;
+  --gold-2:#e9c96a;
+  --gold-dim:#8a7328;
+  --line:rgba(212,175,55,.18);
+  --line-soft:rgba(242,237,228,.10);
+  --glow:rgba(212,175,55,.35);
+
+  /* --- semantic --- */
+  --ok:#5FBF7F;
+  --warn:#E0B341;
+  --bad:#E0685F;
+
+  /* --- type --- */
+  --display:Impact,Haettenschweiler,"Arial Narrow Bold",sans-serif;
+  --display-pro:"Inter Tight",Inter,-apple-system,BlinkMacSystemFont,"Segoe UI",system-ui,sans-serif;
+  --body-font:-apple-system,BlinkMacSystemFont,"Segoe UI",Inter,system-ui,sans-serif;
+  --mono:"SF Mono",ui-monospace,Menlo,Consolas,monospace;
+
+  /* Fluid type scale. clamp() everywhere so nothing needs a mobile breakpoint
+     to stay readable. */
+  --t-hero:clamp(46px,9vw,104px);
+  --t-h1:clamp(34px,5.5vw,64px);
+  --t-h2:clamp(26px,3.4vw,40px);
+  --t-h3:clamp(19px,2.1vw,25px);
+  --t-body:clamp(15px,1.05vw,17px);
+  --t-small:14px;
+  --t-micro:12px;
+
+  /* --- spacing: 4px base, used for EVERY gap so rhythm never drifts --- */
+  --s1:4px;  --s2:8px;  --s3:12px; --s4:16px; --s5:24px;
+  --s6:32px; --s7:48px; --s8:64px; --s9:96px;
+  --section-y:clamp(56px,8vw,110px);
+  --section-x:clamp(18px,5vw,60px);
+  --maxw:1180px;
+  --maxw-prose:68ch;
+
+  --radius:2px;          /* sharp — the brand is not rounded */
+  --radius-lg:4px;
+  --shadow:0 8px 30px -8px rgba(0,0,0,.6);
+  --shadow-gold:0 8px 30px -8px var(--glow);
+  --ease:cubic-bezier(.22,.61,.36,1);
+}
+
+/* ---------- reset ---------- */
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{
+  background:var(--bg);
+  color:var(--ink);
+  font-family:var(--body-font);
+  font-size:var(--t-body);
+  line-height:1.65;
+  -webkit-font-smoothing:antialiased;
+  overflow-x:hidden;
+}
+a{color:inherit;text-decoration:none}
+img,svg,video{max-width:100%;height:auto;display:block}
+::selection{background:var(--gold);color:var(--bg)}
+
+/* Visible focus for keyboard users only — never remove the outline outright,
+   it is the only way a keyboard user knows where they are. */
+:focus-visible{outline:2px solid var(--gold);outline-offset:3px;border-radius:var(--radius)}
+:focus:not(:focus-visible){outline:none}
+
+/* ---------- ambient wash (fixed, never scrolls, never intercepts clicks) --- */
+body::before{
+  content:"";position:fixed;inset:0;z-index:0;pointer-events:none;
+  background:
+    radial-gradient(55vw 38vw at 85% -8%,rgba(212,175,55,.07),transparent 60%),
+    radial-gradient(45vw 36vw at -8% 40%,rgba(212,175,55,.05),transparent 60%);
+}
+header,main,footer,section{position:relative;z-index:1}
+
+/* ---------- layout ---------- */
+.section{padding:var(--section-y) var(--section-x);max-width:var(--maxw);margin:0 auto}
+.section--tight{padding-top:var(--s7);padding-bottom:var(--s7)}
+.prose{max-width:var(--maxw-prose)}
+.stack>*+*{margin-top:var(--s4)}
+.stack-lg>*+*{margin-top:var(--s6)}
+.row{display:flex;flex-wrap:wrap;gap:var(--s4);align-items:center}
+.grid{display:grid;gap:var(--s5);grid-template-columns:repeat(auto-fit,minmax(min(300px,100%),1fr))}
+.grid--2{grid-template-columns:repeat(auto-fit,minmax(min(420px,100%),1fr))}
+.center{text-align:center}
+
+/* ---------- type ---------- */
+h1,h2,h3,h4{font-family:var(--display);text-transform:uppercase;line-height:1.02;font-weight:400}
+body.pro h1,body.pro h2,body.pro h3,body.pro h4{
+  font-family:var(--display-pro);text-transform:none;font-weight:700;
+  line-height:1.12;letter-spacing:-.02em;
+}
+h1{font-size:var(--t-h1);letter-spacing:1.5px}
+h2{font-size:var(--t-h2);letter-spacing:1.2px}
+h3{font-size:var(--t-h3);letter-spacing:.8px}
+body.pro h1,body.pro h2,body.pro h3{letter-spacing:-.02em}
+
+.hero-type{font-family:var(--display);font-size:var(--t-hero);text-transform:uppercase;
+  line-height:.88;letter-spacing:2px}
+body.pro .hero-type{font-family:var(--display-pro);text-transform:none;
+  letter-spacing:-.03em;line-height:1.02;font-weight:800}
+
+.gold{color:var(--gold-2)}
+.gold-fill{
+  background:linear-gradient(120deg,var(--gold-2),var(--gold) 45%,var(--gold-dim));
+  -webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;
+  color:var(--gold); /* fallback where background-clip is unsupported */
+}
+.muted{color:var(--muted)}
+.faint{color:var(--faint)}
+.mono{font-family:var(--mono);font-size:.92em}
+.lead{font-size:clamp(17px,1.5vw,20px);color:var(--muted);max-width:var(--maxw-prose)}
+.eyebrow{font-family:var(--display);font-size:var(--t-micro);letter-spacing:3px;
+  text-transform:uppercase;color:var(--gold-2)}
+body.pro .eyebrow{font-family:var(--display-pro);font-weight:600;letter-spacing:2px}
+
+/* ---------- nav ---------- */
+.site-nav{
+  position:sticky;top:0;z-index:50;
+  display:flex;align-items:center;justify-content:space-between;gap:var(--s4);
+  padding:var(--s3) var(--section-x);
+  background:rgba(11,11,13,.82);
+  backdrop-filter:saturate(140%) blur(12px);
+  border-bottom:1px solid var(--line);
+}
+.site-nav__brand{font-family:var(--display);text-transform:uppercase;letter-spacing:2px;
+  font-size:16px;white-space:nowrap}
+body.pro .site-nav__brand{font-family:var(--display-pro);font-weight:700;letter-spacing:-.01em;
+  text-transform:none;font-size:17px}
+.site-nav__links{display:flex;flex-wrap:wrap;gap:var(--s5);align-items:center}
+.site-nav__links a{font-size:var(--t-small);color:var(--muted);transition:color .2s var(--ease)}
+.site-nav__links a:hover,.site-nav__links a[aria-current="page"]{color:var(--gold-2)}
+@media(max-width:620px){
+  .site-nav{flex-direction:column;align-items:flex-start;gap:var(--s2)}
+  .site-nav__links{gap:var(--s4)}
+}
+
+/* ---------- buttons ---------- */
+.btn{
+  padding:15px 30px;border-radius:var(--radius);
+  font-family:var(--display);letter-spacing:1.5px;text-transform:uppercase;font-size:15px;
+  cursor:pointer;display:inline-flex;align-items:center;justify-content:center;gap:9px;
+  border:1px solid transparent;text-align:center;
+  transition:transform .25s var(--ease),box-shadow .3s var(--ease),
+             background .3s var(--ease),border-color .3s var(--ease);
+}
+body.pro .btn{font-family:var(--display-pro);text-transform:none;font-weight:600;letter-spacing:0}
+.btn:hover{transform:translateY(-3px)}
+.btn:active{transform:translateY(-1px)}
+.btn-gold{background:linear-gradient(135deg,var(--gold),var(--gold-2));color:var(--bg);
+  box-shadow:var(--shadow-gold)}
+.btn-gold:hover{box-shadow:0 14px 40px -8px var(--glow)}
+.btn-ghost{border-color:var(--line);color:var(--ink);background:rgba(255,255,255,.02)}
+.btn-ghost:hover{border-color:var(--gold);background:rgba(212,175,55,.07)}
+.btn-sm{padding:10px 20px;font-size:13px}
+.btn[disabled],.btn[aria-disabled="true"]{opacity:.45;pointer-events:none}
+
+/* ---------- surfaces ---------- */
+.card{
+  background:linear-gradient(180deg,var(--panel),var(--panel2));
+  border:1px solid var(--line-soft);border-radius:var(--radius-lg);
+  padding:var(--s6);
+  transition:border-color .3s var(--ease),transform .3s var(--ease),box-shadow .3s var(--ease);
+}
+.card:hover{border-color:var(--line);transform:translateY(-4px);box-shadow:var(--shadow)}
+.card--flat:hover{transform:none;box-shadow:none}
+.panel{background:var(--panel);border:1px solid var(--line-soft);
+  border-radius:var(--radius-lg);padding:var(--s5)}
+
+.badge{display:inline-flex;align-items:center;gap:var(--s2);
+  padding:6px 14px;border:1px solid var(--line);border-radius:var(--radius);
+  font-family:var(--display);font-size:var(--t-micro);letter-spacing:2.5px;
+  text-transform:uppercase;color:var(--gold-2);background:rgba(212,175,55,.06)}
+body.pro .badge{font-family:var(--display-pro);font-weight:600;letter-spacing:1px;
+  text-transform:none;font-size:var(--t-small)}
+.badge .dot{width:7px;height:7px;background:var(--gold);border-radius:1px;
+  box-shadow:0 0 10px var(--glow)}
+
+/* Metric tile — the numbers do the selling, so they get the largest type. */
+.stat{display:flex;flex-direction:column;gap:var(--s1)}
+.stat__value{font-family:var(--display);font-size:clamp(30px,4vw,46px);line-height:1;
+  color:var(--gold-2)}
+body.pro .stat__value{font-family:var(--display-pro);font-weight:800;letter-spacing:-.03em}
+.stat__label{font-size:var(--t-small);color:var(--muted)}
+
+.divider{height:1px;background:linear-gradient(90deg,transparent,var(--line),transparent);
+  border:0;margin:var(--s7) 0}
+
+/* ---------- tables ---------- */
+/* Wide tables scroll inside their own container — the page body must never
+   scroll sideways on a phone. */
+.table-wrap{overflow-x:auto;-webkit-overflow-scrolling:touch}
+table{width:100%;border-collapse:collapse;font-size:var(--t-small)}
+th,td{padding:var(--s3) var(--s4);text-align:left;border-bottom:1px solid var(--line-soft)}
+th{font-family:var(--display);letter-spacing:1.5px;text-transform:uppercase;
+  font-size:var(--t-micro);color:var(--gold-2);font-weight:400}
+body.pro th{font-family:var(--display-pro);font-weight:600;letter-spacing:.5px;text-transform:none}
+tbody tr:hover{background:rgba(212,175,55,.03)}
+
+/* ---------- forms ---------- */
+input,textarea,select{
+  width:100%;padding:var(--s3) var(--s4);
+  background:var(--bg2);color:var(--ink);
+  border:1px solid var(--line-soft);border-radius:var(--radius);
+  font-family:inherit;font-size:var(--t-body);
+}
+input:focus,textarea:focus,select:focus{border-color:var(--gold);outline:none}
+label{display:block;font-size:var(--t-small);color:var(--muted);margin-bottom:var(--s2)}
+
+/* ---------- footer ---------- */
+.site-footer{
+  border-top:1px solid var(--line);
+  padding:var(--s7) var(--section-x);
+  max-width:var(--maxw);margin:var(--s8) auto 0;
+  display:flex;flex-wrap:wrap;gap:var(--s5);
+  justify-content:space-between;align-items:center;
+  color:var(--muted);font-size:var(--t-small);
+}
+.site-footer a:hover{color:var(--gold-2)}
+.site-footer__links{display:flex;flex-wrap:wrap;gap:var(--s5)}
+
+/* ---------- utilities ---------- */
+.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;
+  clip:rect(0 0 0 0);white-space:nowrap;border:0}
+.skip-link{position:absolute;left:var(--s4);top:-60px;z-index:100;
+  padding:var(--s3) var(--s4);background:var(--gold);color:var(--bg);
+  transition:top .2s var(--ease)}
+.skip-link:focus{top:var(--s4)}
+
+/* ---------- motion ---------- */
+.reveal{opacity:0;transform:translateY(16px);
+  transition:opacity .6s var(--ease),transform .6s var(--ease)}
+.reveal.is-in{opacity:1;transform:none}
+
+@media(prefers-reduced-motion:reduce){
+  *,*::before,*::after{
+    animation-duration:.01ms!important;animation-iteration-count:1!important;
+    transition-duration:.01ms!important;scroll-behavior:auto!important;
+  }
+  .reveal{opacity:1;transform:none}
+}
+
+/* ---------- print (resume is the page people actually print) ---------- */
+@media print{
+  :root{--bg:#fff;--ink:#111;--muted:#444;--panel:#fff;--panel2:#fff;
+        --line:#ccc;--line-soft:#ddd;--gold:#8a7328;--gold-2:#8a7328}
+  body{background:#fff;color:#111}
+  body::before{display:none}
+  .site-nav,.site-footer,.btn,.skip-link{display:none!important}
+  .card,.panel{border:1px solid #ccc;box-shadow:none;break-inside:avoid}
+  .gold-fill{-webkit-text-fill-color:#8a7328;color:#8a7328}
+  a[href^="http"]::after{content:" (" attr(href) ")";font-size:10px;color:#666}
+  .section{padding:12px 0;max-width:none}
+}
