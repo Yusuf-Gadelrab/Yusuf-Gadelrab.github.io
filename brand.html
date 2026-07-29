@@ -16,6 +16,7 @@
 <link rel="canonical" href="https://yusuf-gadelrab.github.io/brand.html">
 <link rel="icon" type="image/svg+xml" href="https://yusuf-gadelrab.github.io/favicon.svg">
 <link rel="apple-touch-icon" sizes="180x180" href="https://yusuf-gadelrab.github.io/apple-touch-icon.png">
+<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#d4af37">
 <meta name="theme-color" content="#0B0B0D">
 <meta name="author" content="Yusuf Gadelrab">
 <meta property="og:type" content="website">
@@ -67,6 +68,14 @@
     padding:var(--s5);border:1px solid var(--line-soft);border-radius:var(--radius)}
   .scale-row figure{margin:0;text-align:center}
   .scale-row figcaption{font-family:var(--mono);font-size:11px;color:var(--muted);margin-top:8px}
+  .kit-grid{display:grid;gap:var(--s5);grid-template-columns:repeat(auto-fit,minmax(min(260px,100%),1fr))}
+  .kit-item{margin:0;border:1px solid var(--line-soft);border-radius:var(--radius);
+    overflow:hidden;background:#0a0a0b}
+  .kit-item img{display:block;width:100%;height:auto}
+  .kit-item figcaption{padding:var(--s3) var(--s4);font-family:var(--mono);
+    font-size:var(--t-small);color:var(--ink);border-top:1px solid var(--line-soft)}
+  .kit-item figcaption span{color:var(--muted);font-size:11px}
+  @media(min-width:760px){.kit-item--wide{grid-column:span 2}}
 </style>
 <!-- geo:entity — canonical Person node, one entity across every page -->
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"Person","@id":"https://yusuf-gadelrab.github.io/#person","name":"Yusuf Gadelrab","url":"https://yusuf-gadelrab.github.io/","mainEntityOfPage":"https://yusuf-gadelrab.github.io/about.html","jobTitle":"Computer Science Student, AI Builder & Researcher","email":"mailto:yusuf.gadelrab06@gmail.com","sameAs":["https://github.com/Yusuf-Gadelrab","https://www.linkedin.com/in/yusuf-gadelrab-76246b221","https://www.instagram.com/_kxng_sef/","https://doi.org/10.1145/3770761.3777339"],"affiliation":{"@type":"CollegeOrUniversity","name":"San José State University","url":"https://www.sjsu.edu/"},"address":{"@type":"PostalAddress","addressLocality":"San Jose","addressRegion":"CA","addressCountry":"US"}}</script>
@@ -80,6 +89,7 @@
   <a class="site-nav__brand" href="/"><img class="site-nav__lion" src="/img/brand/lion-mark.svg" alt="" width="34" height="34"><span>YUSUF GADELRAB</span></a>
   <div class="site-nav__links">
     <a href="/">Work</a>
+    <a href="/guides.html">Guides</a>
     <a href="/store.html">Store</a>
     <a href="/apps.html">Apps</a>
     <a href="/kxngsef.html">KXNG SEF</a>
@@ -244,7 +254,44 @@
 
   <section class="section section--tight">
     <div class="grp-head">
-      <p class="eyebrow">08 · Where it lives</p>
+      <p class="eyebrow">08 · The kit</p>
+      <h2>Everything, in one download.</h2>
+      <p>Every SVG variant, both lockup sets, the profile avatars, the header banners, and a one-page rules file.</p>
+    </div>
+
+    <div class="kit-grid" style="margin-top:var(--s6)">
+      <figure class="kit-item">
+        <img src="/img/brand/kit/avatar-400.png" alt="Square profile avatar: the gold lion mark centred on near-black." loading="lazy">
+        <figcaption>Avatar · 400 / 800 / 1024px<br><span>inset so a circular crop never clips the mane</span></figcaption>
+      </figure>
+      <figure class="kit-item">
+        <img src="/img/brand/kit/avatar-light-800.png" alt="Square profile avatar in near-black ink on a bone ground." loading="lazy">
+        <figcaption>Avatar, light ground<br><span>for light-mode profiles and print directories</span></figcaption>
+      </figure>
+      <figure class="kit-item kit-item--wide">
+        <img src="/img/brand/kit/banner-linkedin-1584x396.png" alt="LinkedIn header banner: lion mark beside the name and a one-line summary." loading="lazy">
+        <figcaption>LinkedIn header · 1584×396<br><span>lower-left kept clear for the profile photo</span></figcaption>
+      </figure>
+      <figure class="kit-item kit-item--wide">
+        <img src="/img/brand/kit/banner-x-1500x500.png" alt="Wide header banner for X and GitHub." loading="lazy">
+        <figcaption>X / GitHub header · 1500×500</figcaption>
+      </figure>
+    </div>
+
+    <div class="row" style="margin-top:var(--s6)">
+      <a class="btn btn-gold" href="/downloads/dhahab-lion-kit.zip" download>Download the kit (ZIP)</a>
+      <a class="btn btn-ghost" href="/img/brand/lion-mark.svg" download>Just the mark (SVG)</a>
+    </div>
+    <p class="muted" style="margin-top:var(--s4);font-size:var(--t-small);max-width:60ch">
+      The mark is my identity — use it to refer to me or my work, not as your own brand.
+    </p>
+  </section>
+
+  <hr class="divider">
+
+  <section class="section section--tight">
+    <div class="grp-head">
+      <p class="eyebrow">09 · Where it lives</p>
       <h2>One generator, every surface.</h2>
     </div>
     <div class="grid" style="margin-top:var(--s6)">

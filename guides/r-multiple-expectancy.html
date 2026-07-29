@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="preload" href="/css/site.css" as="style">
+<meta name="robots" content="index,follow,max-image-preview:large,max-snippet:-1">
+<meta property="og:locale" content="en_US">
+<title>R-Multiple &amp; Expectancy Explained — With Worked Numbers</title>
+<meta name="description" content="What an R-multiple is, how to calculate expectancy, the break-even win rate for any reward-to-risk, and why a 70% win rate can still lose money. Worked examples, free calculator.">
+<link rel="canonical" href="https://yusuf-gadelrab.github.io/guides/r-multiple-expectancy.html">
+<link rel="icon" type="image/svg+xml" href="https://yusuf-gadelrab.github.io/favicon.svg">
+<link rel="apple-touch-icon" sizes="180x180" href="https://yusuf-gadelrab.github.io/apple-touch-icon.png">
+<meta name="theme-color" content="#0B0B0D">
+<meta name="author" content="Yusuf Gadelrab">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="Yusuf Gadelrab">
+<meta property="og:title" content="R-Multiple &amp; Expectancy Explained">
+<meta property="og:description" content="Position size, R-multiples, expectancy, break-even win rate, and risk of ruin — with the arithmetic shown.">
+<meta property="og:url" content="https://yusuf-gadelrab.github.io/guides/r-multiple-expectancy.html">
+<meta property="og:image" content="https://yusuf-gadelrab.github.io/og-card.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="R-Multiple &amp; Expectancy Explained">
+<meta name="twitter:description" content="Why a 70% win rate can still lose money — the arithmetic, worked out.">
+<meta name="twitter:image" content="https://yusuf-gadelrab.github.io/og-card.png">
+
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[
+{"@type":"TechArticle","@id":"https://yusuf-gadelrab.github.io/guides/r-multiple-expectancy.html#article","headline":"R-Multiple and Expectancy Explained, With Worked Numbers","name":"R-Multiple and Expectancy Explained","description":"How to size a position, express results in R, compute expectancy, find the break-even win rate for any reward-to-risk ratio, and estimate risk of ruin.","datePublished":"2026-07-29","dateModified":"2026-07-29","inLanguage":"en","author":{"@id":"https://yusuf-gadelrab.github.io/#person"},"publisher":{"@id":"https://yusuf-gadelrab.github.io/#person"},"about":["Risk management","Position sizing","Trading expectancy"],"proficiencyLevel":"Beginner","mainEntityOfPage":"https://yusuf-gadelrab.github.io/guides/r-multiple-expectancy.html","isAccessibleForFree":true},
+{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://yusuf-gadelrab.github.io/"},{"@type":"ListItem","position":2,"name":"Guides","item":"https://yusuf-gadelrab.github.io/guides.html"},{"@type":"ListItem","position":3,"name":"R-Multiple & Expectancy"}]}
+]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","@id":"https://yusuf-gadelrab.github.io/guides/r-multiple-expectancy.html#faq","mainEntity":[
+{"@type":"Question","name":"What is an R-multiple in trading?","acceptedAnswer":{"@type":"Answer","text":"An R-multiple expresses a trade's result in units of the risk taken on that trade. 1R is the distance from your entry to your stop loss, in dollars. If you risk $250 and make $500, that trade is +2R. If the stop is hit, it is -1R. Because R normalises for position size and account size, a +2R trade in a $5,000 account is directly comparable to a +2R trade in a $500,000 account."}},
+{"@type":"Question","name":"How do you calculate position size from risk?","acceptedAnswer":{"@type":"Answer","text":"Position size = (account size x risk percent) / (entry price - stop price). On a $25,000 account risking 1%, you can lose $250. Buying at $50 with a stop at $47.50 puts $2.50 of risk on each share, so you buy 100 shares. The stop, not a round-number share count, determines the size."}},
+{"@type":"Question","name":"How do you calculate trading expectancy?","acceptedAnswer":{"@type":"Answer","text":"Expectancy in R = (win rate x average win in R) - (loss rate x average loss in R). A system that wins 40% of the time for +2R and loses 60% of the time for -1R has expectancy of (0.40 x 2) - (0.60 x 1) = +0.20R per trade. Positive expectancy means the system makes money across a large sample; zero or negative means it does not, regardless of how the equity curve looks over ten trades."}},
+{"@type":"Question","name":"What win rate do I need to break even?","acceptedAnswer":{"@type":"Answer","text":"Break-even win rate = 1 / (1 + reward-to-risk ratio). At 1R reward you need 50%. At 2R you need 33.3%. At 3R you need 25%. At 0.5R you need 66.7%. Any win rate above the break-even line for your reward-to-risk produces positive expectancy before costs."}},
+{"@type":"Question","name":"Can a 70% win rate still lose money?","acceptedAnswer":{"@type":"Answer","text":"Yes. Win rate alone says nothing about profitability. Winning 70% of trades at +0.3R and losing 30% at -1R gives (0.70 x 0.3) - (0.30 x 1) = -0.09R per trade — a losing system with a win rate most traders would envy. The reverse is also true: a 35% win rate at +3R is strongly profitable."}},
+{"@type":"Question","name":"What is risk of ruin?","acceptedAnswer":{"@type":"Answer","text":"Risk of ruin is the probability that a losing streak takes your account below a level you cannot recover from, given your win rate, reward-to-risk, and risk per trade. It is driven far more by risk per trade than by edge: the same system risking 3% per trade instead of 1% can turn a survivable drawdown into a terminal one. A Monte Carlo simulation is the practical way to estimate it."}},
+{"@type":"Question","name":"How many trades do you need before expectancy means anything?","acceptedAnswer":{"@type":"Answer","text":"Enough that a normal losing streak cannot dominate the average — in practice at least 30 trades for a rough read and 100 or more before trusting the number. Expectancy measured over 10 trades is mostly noise, which is why serious validation uses walk-forward testing over a large sample rather than a recent run of results."}}
+]}</script>
+
+<link rel="stylesheet" href="/css/site.css">
+<style>
+  .prose{max-width:68ch}
+  .prose h2{margin:var(--s7) 0 var(--s4);font-size:var(--t-h2)}
+  .prose h3{margin:var(--s6) 0 var(--s3);font-size:var(--t-h3)}
+  .prose p{color:var(--muted);margin:0 0 var(--s4)}
+  .prose ul{color:var(--muted);padding-left:1.2em;margin:0 0 var(--s4)}
+  .prose li{margin-bottom:var(--s2)}
+  .prose a{color:var(--gold-2)}
+  .prose strong{color:var(--fg)}
+  .formula{display:block;padding:var(--s4);margin:0 0 var(--s4);border:1px solid var(--line-soft);
+    border-radius:var(--radius);font-family:ui-monospace,SFMono-Regular,Menlo,monospace;
+    font-size:var(--t-small);color:var(--gold-2);overflow-x:auto}
+  .tbl{width:100%;border-collapse:collapse;margin:0 0 var(--s4);font-size:var(--t-small)}
+  .tbl th,.tbl td{text-align:left;padding:var(--s3);border-bottom:1px solid var(--line-soft);color:var(--muted)}
+  .tbl th{font-family:var(--display-pro);color:var(--gold-2);font-weight:600}
+  .callout{padding:var(--s4);border:1px solid var(--line-soft);border-radius:var(--radius);
+    color:var(--muted);font-size:var(--t-small);margin:0 0 var(--s4)}
+</style>
+</head>
+<body class="pro">
+
+<a class="skip-link" href="#main">Skip to content</a>
+
+<nav class="site-nav">
+  <a class="site-nav__brand" href="/"><img class="site-nav__lion" src="/img/brand/lion-mark.svg" alt="" width="34" height="34"><span>YUSUF GADELRAB</span></a>
+  <div class="site-nav__links">
+    <a href="/">Work</a>
+    <a href="/guides.html">Guides</a>
+    <a href="/apps.html">Apps</a>
+    <a href="/store.html">Store</a>
+  </div>
+</nav>
+
+<main id="main">
+
+  <header class="section">
+    <p class="eyebrow">Guide · Risk</p>
+    <h1 style="margin:var(--s4) 0">R-multiple and expectancy, explained</h1>
+    <p class="lead">Two numbers decide whether a trading strategy survives contact with reality: how much you risk per trade, and what you earn per unit of that risk. Everything below is arithmetic — no indicators, no opinions.</p>
+  </header>
+
+  <hr class="divider">
+
+  <section class="section section--tight">
+    <div class="prose">
+
+      <h2>What is an R-multiple?</h2>
+      <p>An R-multiple expresses a trade's result in units of the risk you took on that trade. <strong>1R is the distance from your entry to your stop loss, in dollars.</strong> Risk $250 and make $500, and the trade is +2R. Get stopped out, and it is −1R.</p>
+      <p>The point of R is comparability. A $180 gain in a small account and an $1,800 gain in a large one are the same trade if both were +2R. Once every result is in R, you can average them, rank setups against each other, and spot the one that quietly bleeds the account.</p>
+
+      <h2>How do you calculate position size?</h2>
+      <span class="formula">position size = (account size × risk %) ÷ (entry price − stop price)</span>
+      <p>On a $25,000 account risking 1%, you are allowed to lose $250. Buy at $50 with a stop at $47.50 and each share carries $2.50 of risk, so the position is 100 shares. Notice what decides the size: <strong>the stop does</strong>. A wider stop means a smaller position, not a bigger loss.</p>
+      <p>This is the single mechanical habit that separates traders who survive from traders who do not. It also means "I bought 100 shares because that felt right" is not a sizing method.</p>
+      <p><a href="/risk-tools.html">Run it in the free position sizer →</a></p>
+
+      <h2>How do you calculate expectancy?</h2>
+      <span class="formula">expectancy (R) = (win rate × avg win in R) − (loss rate × avg loss in R)</span>
+      <p>Take a system that wins 40% of the time for +2R and loses 60% of the time for −1R:</p>
+      <span class="formula">(0.40 × 2) − (0.60 × 1) = 0.80 − 0.60 = <strong>+0.20R per trade</strong></span>
+      <p>Over 100 trades risking 1% of a $25,000 account, +0.20R per trade is roughly $500 of expected profit before costs. That is what a real edge looks like: small, boring, and only visible across a large sample.</p>
+
+      <h2>What win rate do I need to break even?</h2>
+      <span class="formula">break-even win rate = 1 ÷ (1 + reward-to-risk)</span>
+      <table class="tbl">
+        <thead><tr><th>Reward : risk</th><th>Break-even win rate</th><th>What that means</th></tr></thead>
+        <tbody>
+          <tr><td>0.5R</td><td>66.7%</td><td>You must be right two times out of three just to tread water</td></tr>
+          <tr><td>1R</td><td>50.0%</td><td>A coin flip with no edge left over</td></tr>
+          <tr><td>2R</td><td>33.3%</td><td>Wrong two times out of three and still profitable</td></tr>
+          <tr><td>3R</td><td>25.0%</td><td>Wrong three times out of four and still profitable</td></tr>
+        </tbody>
+      </table>
+
+      <h3>Can a 70% win rate lose money?</h3>
+      <p>Easily. Win 70% of trades at +0.3R and lose 30% at −1R:</p>
+      <span class="formula">(0.70 × 0.3) − (0.30 × 1) = 0.21 − 0.30 = <strong>−0.09R per trade</strong></span>
+      <p>That is a losing system with a win rate most traders would brag about. The mirror image is also true — a 35% win rate at +3R is strongly profitable and feels awful to trade. <strong>Win rate is a feeling; expectancy is the result.</strong></p>
+
+      <h2>What is risk of ruin?</h2>
+      <p>Risk of ruin is the probability that an ordinary losing streak takes the account somewhere it cannot come back from. It depends on win rate and reward-to-risk, but it is dominated by <strong>risk per trade</strong>. The same edge risking 3% instead of 1% per trade converts a survivable drawdown into a terminal one, because the recovery math is brutal: a 50% drawdown needs a 100% gain to get back to flat.</p>
+      <p>Because streaks are random, the honest way to estimate this is a Monte Carlo simulation over thousands of shuffled sequences rather than a formula applied to your last twenty trades. <a href="/risk-tools.html">The free risk-of-ruin simulator does that in the browser →</a></p>
+
+      <h2>How many trades before the number means anything?</h2>
+      <p>At least 30 for a rough read, and 100 or more before you trust it. Expectancy measured over ten trades is noise wearing a decimal point.</p>
+      <p>This matters more than it sounds. When I ran my own swing setups through a no-lookahead walk-forward test, most of them died: only the anchored-VWAP reclaim survived, at <strong>+0.23R over 101 trades</strong>. A VCP variant came out breakeven, and a gap and opening-range-breakout proxy came out at −0.28R and was dropped entirely. Nothing about that was visible in a small recent sample — which is exactly the point. <a href="/swing-screener.html">The full write-up is here →</a></p>
+
+      <h2>Putting it together</h2>
+      <ul>
+        <li>Set the stop first, then let it determine position size.</li>
+        <li>Record every outcome in R, not dollars.</li>
+        <li>Compute expectancy per setup, not just for the account — one bad setup can eat the profits of three good ones.</li>
+        <li>Check your reward-to-risk against the break-even table before blaming your entries.</li>
+        <li>Keep risk per trade small enough that a ten-loss streak is an inconvenience, not an ending.</li>
+      </ul>
+
+      <p class="callout">Educational content, not financial advice. No live profit-and-loss figures are claimed anywhere on this site; backtest and walk-forward results are always labelled as such. Full terms: <a href="/terms.html">/terms.html</a></p>
+
+      <h2>Tools referenced in this guide</h2>
+      <ul>
+        <li><a href="/risk-tools.html">Trader's risk toolkit</a> — position sizer, R-multiple, expectancy, risk of ruin, Kelly, break-even win rate. Free, no signup.</li>
+        <li><a href="/apps/tradelog/">TradeLog</a> — an R-multiple trading journal that computes expectancy per setup. Installs offline, stores data on your device.</li>
+        <li><a href="/swing-screener.html">Swing Screener</a> — the screener and no-lookahead backtest engine behind the walk-forward results above.</li>
+      </ul>
+
+    </div>
+  </section>
+
+  <hr class="divider">
+
+  <section class="section section--tight" id="faq">
+    <div class="grp-head">
+      <p class="eyebrow">FAQ</p>
+      <h2>Quick answers</h2>
+    </div>
+    <div class="grid" style="margin-top:var(--s6)">
+      <article class="card" style="padding:var(--s5)"><h3>What is an R-multiple?</h3><p style="color:var(--muted);font-size:var(--t-small);margin:var(--s3) 0 0">A trade's result measured in units of the risk taken. 1R is entry minus stop, in dollars. Risk $250, make $500, that is +2R. Get stopped, that is −1R.</p></article>
+      <article class="card" style="padding:var(--s5)"><h3>How is expectancy calculated?</h3><p style="color:var(--muted);font-size:var(--t-small);margin:var(--s3) 0 0">(win rate × average win in R) − (loss rate × average loss in R). Winning 40% at +2R and losing 60% at −1R gives +0.20R per trade.</p></article>
+      <article class="card" style="padding:var(--s5)"><h3>What win rate breaks even?</h3><p style="color:var(--muted);font-size:var(--t-small);margin:var(--s3) 0 0">1 ÷ (1 + reward-to-risk). 50% at 1R, 33.3% at 2R, 25% at 3R, 66.7% at 0.5R.</p></article>
+      <article class="card" style="padding:var(--s5)"><h3>Can a 70% win rate lose money?</h3><p style="color:var(--muted);font-size:var(--t-small);margin:var(--s3) 0 0">Yes. 70% at +0.3R against 30% at −1R is −0.09R per trade. Win rate is a feeling; expectancy is the result.</p></article>
+      <article class="card" style="padding:var(--s5)"><h3>What is risk of ruin?</h3><p style="color:var(--muted);font-size:var(--t-small);margin:var(--s3) 0 0">The probability a losing streak takes the account below recovery. Driven mostly by risk per trade, best estimated with a Monte Carlo simulation.</p></article>
+      <article class="card" style="padding:var(--s5)"><h3>How many trades do I need?</h3><p style="color:var(--muted);font-size:var(--t-small);margin:var(--s3) 0 0">30 for a rough read, 100+ before trusting it. Ten trades is noise wearing a decimal point.</p></article>
+    </div>
+  </section>
+
+</main>
+
+<footer class="site-footer">
+  <div class="site-footer__links">
+    <a href="/">Work</a>
+    <a href="/about.html">About</a>
+    <a href="/guides.html">Guides</a>
+    <a href="/apps.html">Apps</a>
+    <a href="/store.html">Store</a>
+    <a href="/privacy.html">Privacy</a>
+    <a href="/terms.html">Terms</a>
+    <a href="mailto:yusuf.gadelrab06@gmail.com">yusuf.gadelrab06@gmail.com</a>
+  </div>
+</footer>
+
+<script src="/js/site.js" defer></script>
+</body>
+</html>

@@ -125,6 +125,21 @@ Apps hub with all of them: https://yusuf-gadelrab.github.io/apps.html
 
 ---
 
+## 6b. Guides (long-form, formulas shown on the page)
+
+Guides index: https://yusuf-gadelrab.github.io/guides.html
+
+"R-multiple and expectancy explained" — https://yusuf-gadelrab.github.io/guides/r-multiple-expectancy.html
+Position size = (account size x risk percent) / (entry price - stop price). An R-multiple expresses a result in units of the risk taken: 1R is entry minus stop. Expectancy in R = (win rate x average win in R) - (loss rate x average loss in R). Break-even win rate = 1 / (1 + reward-to-risk): 50% at 1R, 33.3% at 2R, 25% at 3R, 66.7% at 0.5R. A 70% win rate at +0.3R against 30% at -1R is -0.09R per trade, so win rate alone does not indicate profitability. Risk of ruin is dominated by risk per trade and is best estimated by Monte Carlo simulation. At least 30 trades for a rough read, 100+ before trusting expectancy.
+
+"Freight broker margin, rate per mile and fuel surcharge" — https://yusuf-gadelrab.github.io/guides/freight-broker-margin.html
+Margin dollars = customer rate - carrier pay; margin percent divides by the customer rate, while markup divides by carrier pay and looks larger ($400 on a $2,400 load is 16.7% margin or 20% markup). Rate per mile = linehaul / loaded miles; all-in rate per mile includes deadhead. Deadhead cost = deadhead miles x operating cost per mile. FSC per mile = (current diesel - base fuel price) / MPG. Detention bills hourly after free time, conventionally two hours, and is only collectible with timestamped in and out documentation. Break-even = (loaded + deadhead miles) x operating cost per mile.
+
+"CPT vs OPT for F-1 students" — https://yusuf-gadelrab.github.io/guides/cpt-vs-opt.html
+CPT is authorized by the school's DSO in SEVIS, is employer-specific, requires a job offer and curriculum integration, needs no USCIS filing or fee, and generally requires one full academic year of full-time F-1 enrollment first. OPT is authorized by USCIS via Form I-765, is not employer-specific, produces an EAD, and allows 12 months per education level, with a possible 24-month STEM extension for E-Verify employers. Twelve months or more of full-time CPT at one level eliminates OPT at that level. Post-completion OPT can be filed up to 90 days before and 60 days after the program end date, within 30 days of the DSO's SEVIS recommendation, and allows 90 days of unemployment plus 60 more during the STEM extension. This guide is explicitly not legal advice and links to DHS, USCIS, and ICE sources.
+
+---
+
 ## 7. Products and services
 
 - Store — https://yusuf-gadelrab.github.io/store.html — automation software, trading playbooks, and AI workflow guides, starting at $24. The digital products are interactive PDFs with fillable action pages, clickable tables of contents, and per-chapter implementation-intention prompts.

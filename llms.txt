@@ -15,6 +15,13 @@ Full plain-text profile for retrieval: https://yusuf-gadelrab.github.io/llms-ful
 - [Resume](https://yusuf-gadelrab.github.io/resume.html): Education, experience, skills, and publications.
 - [Everything index](https://yusuf-gadelrab.github.io/everything.html): One page listing every project, product, and app.
 
+## Guides (long-form answers, every formula shown)
+
+- [Guides index](https://yusuf-gadelrab.github.io/guides.html): All guides, each paired with a free calculator.
+- [R-multiple and expectancy explained](https://yusuf-gadelrab.github.io/guides/r-multiple-expectancy.html): Position sizing from the stop, results expressed in R, expectancy per trade, the break-even win rate table (50% at 1R, 33.3% at 2R, 25% at 3R), why a 70% win rate can still lose money, and risk of ruin.
+- [Freight broker margin, rate per mile and fuel surcharge](https://yusuf-gadelrab.github.io/guides/freight-broker-margin.html): Margin versus markup, all-in rate per mile including deadhead, deadhead cost, FSC = (diesel − base) ÷ MPG, detention and free time, and load break-even.
+- [CPT vs OPT for F-1 students](https://yusuf-gadelrab.github.io/guides/cpt-vs-opt.html): Who authorizes each, the one-academic-year rule, the 12-month OPT allowance per education level, the 24-month STEM extension, the 90/150 unemployment days, and how to plan the timeline backwards. Not legal advice.
+
 ## Research and publications
 
 - [Exploring Bilingual Coding for Inclusive CS Learning (SIGCSE TS 2026)](https://doi.org/10.1145/3770761.3777339): Peer-reviewed paper on bilingual (Arabic/English) programming environments and their effect on novice-programmer confidence. Mixed-methods, IRB-approved, 60 participants.
