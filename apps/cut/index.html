@@ -11,22 +11,39 @@
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 <style>
 :root{
-  --bg:#0a0a0a; --card:#161616; --text:#f2f2f2; --dim:#9a9a9a;
-  --gold:#d4af37; --gold-soft:#e8c96a; --border:rgba(212,175,55,.25);
-  --radius:14px;
+  --bg:#0a0a0a; --text:#f2f2f2; --dim:#9a9a9a;
+  --gold:#d4af37; --gold-soft:#e8c96a; --border:rgba(212,175,55,.22);
+  --radius:16px;
+  --serif:ui-serif,"New York",Georgia,"Times New Roman",serif;
 }
 *{box-sizing:border-box;margin:0;padding:0}
 body{
-  background:var(--bg); color:var(--text);
+  background:radial-gradient(ellipse at 50% -10%, rgba(212,175,55,.10), transparent 55%), #0a0a0a;
+  color:var(--text);
   font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
-  min-height:100vh; padding:1rem;
-  padding-top:calc(1rem + env(safe-area-inset-top));
+  min-height:100vh; padding:1.25rem 1rem 2rem;
+  padding-top:calc(1.25rem + env(safe-area-inset-top));
 }
-.wrap{max-width:640px;margin:0 auto;display:flex;flex-direction:column;gap:1rem}
-.eyebrow{color:var(--gold);letter-spacing:.25em;text-transform:uppercase;font-size:.75rem;font-weight:600}
-h1{font-size:2rem;margin-top:.25rem}
-.origin{color:var(--dim);font-size:.85rem;margin-top:.25rem}
-.card{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:1rem}
+body::before{
+  content:""; position:fixed; top:0; left:0; right:0; height:2px; z-index:10;
+  background:linear-gradient(90deg,transparent,#d4af37,transparent);
+}
+.wrap{max-width:640px;margin:0 auto;display:flex;flex-direction:column;gap:1.25rem}
+header{text-align:center;padding:.75rem 0 .25rem}
+.eyebrow{color:var(--gold);letter-spacing:.3em;text-transform:uppercase;font-size:.72rem;font-weight:600}
+h1,h2,h3{font-family:var(--serif);letter-spacing:-0.02em}
+h1{
+  font-size:clamp(2rem,6vw,2.6rem);margin-top:.4rem;font-weight:600;
+  background:linear-gradient(90deg,#fff,#e8c96a,#fff);
+  -webkit-background-clip:text;background-clip:text;
+  -webkit-text-fill-color:transparent;color:transparent;
+}
+.origin{color:var(--dim);font-size:.85rem;margin-top:.4rem;letter-spacing:.02em}
+.card{
+  background:linear-gradient(180deg,#181818,#141414);
+  border:1px solid var(--border);border-radius:var(--radius);
+  padding:1.25rem;box-shadow:0 10px 34px rgba(0,0,0,.5);
+}
 .logrow{display:flex;gap:.75rem;align-items:stretch}
 #weightInput{
   flex:1;min-width:0;background:var(--bg);color:var(--text);
@@ -35,16 +52,24 @@ h1{font-size:2rem;margin-top:.25rem}
 }
 #weightInput:focus{outline:none;border-color:var(--gold)}
 button{
-  background:var(--gold);color:#000;font-weight:700;border:none;border-radius:10px;
+  background:linear-gradient(135deg,#d4af37,#e8c96a);color:#000;font-weight:700;border:none;border-radius:10px;
   padding:.85rem 1.25rem;font-size:1rem;cursor:pointer;min-height:48px;
   font-family:inherit;
+  transition:transform .15s ease, box-shadow .15s ease;
 }
-button:active{background:var(--gold-soft)}
+button:hover{transform:translateY(-1px);box-shadow:0 4px 18px rgba(212,175,55,.35)}
+button:active{transform:translateY(0);box-shadow:0 2px 10px rgba(212,175,55,.25)}
 button.ghost{background:transparent;color:var(--gold);border:1px solid var(--border)}
-.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(96px,1fr));gap:.5rem}
-.stat{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:.75rem .5rem;text-align:center}
-.stat .label{color:var(--dim);font-size:.65rem;text-transform:uppercase;letter-spacing:.1em}
-.stat .value{font-size:1.15rem;font-weight:700;margin-top:.25rem}
+button.ghost:hover{box-shadow:0 4px 18px rgba(212,175,55,.18)}
+.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(96px,1fr));gap:.6rem}
+.stat{
+  background:linear-gradient(180deg,#181818,#141414);
+  border:1px solid var(--border);border-radius:var(--radius);
+  padding:.85rem .5rem;text-align:center;box-shadow:0 10px 34px rgba(0,0,0,.5);
+}
+.stat .label{color:var(--dim);font-size:.62rem;text-transform:uppercase;letter-spacing:.14em}
+.stat .value{font-size:1.15rem;font-weight:700;margin-top:.3rem}
+.stat:first-child .value{font-family:var(--serif);letter-spacing:-0.02em;color:var(--gold-soft);font-size:1.35rem}
 .up{color:#e05c5c}.down{color:#57c979}
 canvas{width:100%;height:240px;display:block;touch-action:pan-y}
 .goalrow{display:flex;align-items:center;gap:.75rem;flex-wrap:wrap}
@@ -60,14 +85,21 @@ canvas{width:100%;height:240px;display:block;touch-action:pan-y}
 .empty{color:var(--dim);text-align:center;padding:1.5rem 1rem;font-size:.95rem}
 .empty b{color:var(--gold)}
 #msg{color:var(--gold-soft);font-size:.85rem;min-height:1.2em;margin-top:.5rem;text-align:center}
+.divider{border:none;height:1px;background:rgba(255,255,255,.06);margin:.25rem 0}
+footer{
+  text-align:center;color:var(--dim);font-size:.75rem;line-height:1.9;
+  padding:1.5rem 0 .5rem;border-top:1px solid rgba(255,255,255,.06);margin-top:.5rem;
+}
+footer a{color:var(--gold);text-decoration:none}
+footer a:hover{color:var(--gold-soft)}
 </style>
 </head>
 <body>
 <div class="wrap">
   <header>
-    <div class="eyebrow">Yusuf Gadelrab · Tools</div>
+    <div class="eyebrow">DHAHAB · ذهب</div>
     <h1>Cut</h1>
-    <div class="origin">Started at 260. Receipts on the grid.</div>
+    <div class="origin">The Golden Standard · 260 → 200, documented</div>
   </header>
 
   <div class="card">
@@ -96,6 +128,12 @@ canvas{width:100%;height:240px;display:block;touch-action:pan-y}
     <button id="importBtn" class="ghost">Import CSV</button>
     <input id="fileInput" type="file" accept=".csv,text/csv" hidden>
   </div>
+
+  <footer>
+    <div>Personal-journey tool — not medical advice.</div>
+    <div><a href="/privacy.html">Privacy</a> · <a href="/terms.html">Terms</a></div>
+    <div>© 2026 DHAHAB · Yusuf Gadelrab</div>
+  </footer>
 </div>
 
 <script>
@@ -258,19 +296,19 @@ canvas{width:100%;height:240px;display:block;touch-action:pan-y}
     ctx.textAlign = "left";
 
     var gy2 = y(goal);
-    ctx.strokeStyle = "rgba(232,201,106,.7)";
+    ctx.strokeStyle = "rgba(212,175,55,.55)";
     ctx.setLineDash([6,4]);
     ctx.beginPath(); ctx.moveTo(padL, gy2); ctx.lineTo(cssW-padR, gy2); ctx.stroke();
     ctx.setLineDash([]);
 
-    ctx.fillStyle = "rgba(242,242,242,.35)";
+    ctx.fillStyle = "rgba(255,255,255,.28)";
     visible.forEach(function(k){
       ctx.beginPath();
       ctx.arc(x(k), y(entries[k]), 2.5, 0, Math.PI*2);
       ctx.fill();
     });
 
-    ctx.strokeStyle = "#d4af37";
+    ctx.strokeStyle = "#e8c96a";
     ctx.lineWidth = 2;
     ctx.beginPath();
     var started = false;

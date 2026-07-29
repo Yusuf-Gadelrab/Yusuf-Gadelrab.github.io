@@ -1,4 +1,4 @@
-var CACHE = "tradelog-v1";
+var CACHE = "tradelog-v2";
 var ASSETS = ["./", "./index.html", "./manifest.webmanifest"];
 
 self.addEventListener("install", function (e) {

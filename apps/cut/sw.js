@@ -1,4 +1,4 @@
-var CACHE = "cut-v1";
+var CACHE = "cut-v2";
 var PRECACHE = ["./", "./index.html", "./manifest.webmanifest"];
 
 self.addEventListener("install", function (e) {
