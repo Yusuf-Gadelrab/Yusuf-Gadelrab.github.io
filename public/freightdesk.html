@@ -8,7 +8,8 @@
 <meta name="description" content="An AI back-office clerk for small freight brokerages: reads your billing/AR inbox and drafts every reply on a local model. No API fees, data stays in your building.">
 <link rel="canonical" href="https://yusuf-gadelrab.github.io/freightdesk.html">
 <link rel="icon" type="image/svg+xml" href="https://yusuf-gadelrab.github.io/favicon-automation.svg">
-<meta name="theme-color" content="#0a0a0b">
+<link rel="apple-touch-icon" sizes="180x180" href="https://yusuf-gadelrab.github.io/apple-touch-icon.png">
+<meta name="theme-color" content="#0B0B0D">
 <meta name="author" content="Yusuf Gadelrab">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Yusuf Gadelrab">
@@ -37,487 +38,342 @@
 {"@type":"Question","name":"Can I cancel the FreightDesk AI monthly plan?","acceptedAnswer":{"@type":"Answer","text":"Yes, any time. The install stays yours — the local model and workflows keep running on your machine; cancelling only stops updates and tuning support."}}
 ]}
 </script>
+<link rel="stylesheet" href="/css/site.css">
 <style>
-  :root{
-    --bg:#0a0a0a; --ivory:#141417; --ivory2:#191920; --panel:#111114;
-    --gold:#d4af37; --gold-2:#f4d47a; --gold-3:#f8e6ae; --gold-deep:#e9cf7a;
-    --ink:#f5f2e8; --muted:#a39f94; --line:rgba(212,175,55,.30); --line-soft:rgba(212,175,55,.14);
-    --shadow:0 18px 45px -18px rgba(0,0,0,.75);
-    --glow:rgba(212,175,55,.35);
-    --serif:Georgia,'Times New Roman',Times,serif;
-    --sans:-apple-system,BlinkMacSystemFont,"Segoe UI",Inter,system-ui,sans-serif;
-  }
-  *{box-sizing:border-box;margin:0;padding:0}
-  html{scroll-behavior:smooth}
-  body{
-    background:var(--bg); color:var(--ink); font-family:var(--sans);
-    line-height:1.62; -webkit-font-smoothing:antialiased; overflow-x:hidden;
-  }
-  a{color:inherit;text-decoration:none}
-  ::selection{background:var(--gold);color:#0a0a0a}
+  /* Page-specific only. Tokens, reset, type scale, buttons, cards, badges,
+     nav, footer, forms and print styles all live in /css/site.css. */
 
-  body::before{
-    content:""; position:fixed; inset:0; z-index:0; pointer-events:none;
-    background:
-      radial-gradient(55vw 38vw at 85% -8%, rgba(212,175,55,.10), transparent 62%),
-      radial-gradient(45vw 34vw at -8% 42%, rgba(212,175,55,.06), transparent 60%);
-  }
-
-  /* ---------- NAV ---------- */
-  nav{
-    position:fixed; top:0; left:0; right:0; z-index:50;
-    display:flex; align-items:center; justify-content:space-between;
-    padding:16px clamp(18px,5vw,64px);
-    background:rgba(10,10,10,.6); backdrop-filter:blur(14px); -webkit-backdrop-filter:blur(14px);
-    border-bottom:1px solid transparent;
-    transition:border-color .4s, background .4s, padding .3s, box-shadow .4s;
-  }
-  nav.scrolled{border-bottom-color:var(--line-soft); background:rgba(10,10,10,.86);
-    padding-top:10px; padding-bottom:10px; box-shadow:0 8px 30px -18px rgba(0,0,0,.8)}
-  .brand{display:flex; align-items:center; gap:12px; font-weight:700; letter-spacing:.2px; font-family:var(--serif); font-size:18px}
-  .brand .mark{
-    width:34px;height:34px;border-radius:9px;display:grid;place-items:center;flex:0 0 auto;
-    background:linear-gradient(135deg,var(--gold),#8a7328);
-    color:#0a0a0a; font-weight:700; font-size:16px; font-family:var(--serif);
-    box-shadow:0 0 18px var(--glow);
-  }
-  .brand small{display:block;font-size:10.5px;color:var(--muted);font-weight:500;letter-spacing:1.4px;font-family:var(--sans);text-transform:uppercase}
-  .nav-links{display:flex; align-items:center; gap:4px}
-  .nav-links a{
-    padding:8px 14px; border-radius:9px; font-size:14px; color:var(--muted); font-weight:500;
-    transition:color .25s, background .25s;
-  }
-  .nav-links a:hover{color:var(--ink); background:rgba(212,175,55,.10)}
-  .nav-cta{
-    color:#0a0a0a !important; font-weight:700; margin-left:6px;
-    background:linear-gradient(135deg,var(--gold),var(--gold-2));
-    box-shadow:0 0 16px var(--glow);
-  }
-  .nav-cta:hover{background:linear-gradient(135deg,var(--gold-2),var(--gold)) !important}
-  .menu-btn{display:none;background:var(--panel);border:1px solid var(--line);color:var(--ink);
-    border-radius:9px;padding:7px 12px;font-size:18px;cursor:pointer}
-
-  main{position:relative;z-index:1}
-  section{padding:clamp(42px,5.5vw,76px) clamp(18px,5vw,64px); max-width:1180px; margin:0 auto}
-
-  .rule{height:1px;max-width:1180px;margin:0 auto;
-    background:linear-gradient(90deg,transparent,rgba(212,175,55,.5) 30%,rgba(212,175,55,.5) 70%,transparent)}
+  .rule{height:1px;max-width:var(--maxw);margin:0 auto;
+    background:linear-gradient(90deg,transparent,var(--line) 30%,var(--line) 70%,transparent)}
+  section{scroll-margin-top:var(--s8)}
 
   /* ---------- HERO ---------- */
-  .hero{padding-top:104px; padding-bottom:clamp(24px,3vw,40px)}
-  .hero-grid{display:grid; grid-template-columns:1.08fr .92fr; gap:clamp(28px,4vw,56px); align-items:center}
-  .eyebrow{
-    display:inline-flex; align-items:center; gap:9px;
-    padding:7px 14px; border:1px solid var(--line); border-radius:100px;
-    font-size:11.5px; letter-spacing:1.8px; text-transform:uppercase; color:var(--gold-2); font-weight:600;
-    background:rgba(212,175,55,.07);
-  }
-  .pulse{width:7px;height:7px;border-radius:50%;background:var(--gold);box-shadow:0 0 0 0 var(--glow);animation:pulse 2.4s infinite}
+  .hero{padding-top:var(--s7);padding-bottom:var(--s5)}
+  .hero-grid{display:grid;grid-template-columns:1.08fr .92fr;gap:clamp(28px,4vw,56px);align-items:center}
+  .hero h1{margin:var(--s4) 0}
+  .pulse{width:7px;height:7px;border-radius:50%;background:var(--gold);
+    box-shadow:0 0 0 0 var(--glow);animation:pulse 2.4s infinite}
   @keyframes pulse{0%{box-shadow:0 0 0 0 var(--glow)}70%{box-shadow:0 0 0 10px transparent}100%{box-shadow:0 0 0 0 transparent}}
-
-  h1{
-    font-family:var(--serif); font-size:clamp(32px,4.8vw,58px); line-height:1.08; font-weight:700;
-    letter-spacing:-.4px; margin:18px 0 16px;
-  }
   .shimmer{
     background:linear-gradient(100deg,var(--gold) 20%,var(--gold-2) 38%,#f8ecc0 50%,var(--gold-2) 62%,var(--gold) 80%);
     background-size:220% 100%;
-    -webkit-background-clip:text; background-clip:text; -webkit-text-fill-color:transparent; color:transparent;
-    animation:shimmer 5.5s ease-in-out 2 forwards;
-  }
+    -webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;color:var(--gold)}
   @keyframes shimmer{0%{background-position:120% 0}55%{background-position:-80% 0}100%{background-position:-80% 0}}
-  .lede{font-size:clamp(15.5px,1.7vw,17.5px); color:var(--muted); max-width:62ch}
-  .lede b{color:var(--ink);font-weight:600}
-  .lede + .lede{margin-top:10px}
+  .lead b{color:var(--ink);font-weight:600}
+  .lead + .lead{margin-top:var(--s3)}
+  .grad{background:linear-gradient(115deg,var(--gold),var(--gold-2) 55%,var(--gold));
+    -webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;color:var(--gold)}
 
   /* inline stat chips */
-  .chiprow{display:grid; grid-template-columns:repeat(2,minmax(0,max-content)); gap:10px; margin-top:20px}
-  .chipstat{
-    display:flex; align-items:baseline; gap:8px; padding:9px 15px;
-    border:1px solid var(--line-soft); border-radius:12px;
-    background:linear-gradient(180deg,var(--ivory),var(--panel));
-    box-shadow:0 8px 20px -14px rgba(0,0,0,.6);
-  }
-  .chipstat .num{font-family:var(--serif); font-size:21px; font-weight:700; color:var(--gold-2); letter-spacing:-.3px}
-  .chipstat .lbl{font-size:12px; color:var(--muted); line-height:1.35}
+  .chiprow{display:grid;grid-template-columns:repeat(2,minmax(0,max-content));gap:var(--s2);margin-top:var(--s5)}
+  .chipstat{display:flex;align-items:baseline;gap:var(--s2);padding:9px 15px;
+    border:1px solid var(--line-soft);border-radius:var(--radius-lg);
+    background:linear-gradient(180deg,var(--panel),var(--panel2))}
+  .chipstat .num{font-family:var(--display);font-size:22px;color:var(--gold-2);letter-spacing:.5px}
+  .chipstat .lbl{font-size:var(--t-micro);color:var(--muted);line-height:1.35}
 
   /* hero founding offer line */
-  .hero-offer{
-    margin-top:18px; padding:14px 18px; border:1px solid var(--line); border-radius:14px;
+  .hero-offer{margin-top:var(--s4);padding:var(--s3) var(--s4);border:1px solid var(--line);
+    border-radius:var(--radius-lg);
     background:linear-gradient(90deg,rgba(212,175,55,.10),rgba(212,175,55,.02));
-    display:flex; flex-wrap:wrap; align-items:baseline; gap:6px 14px;
-  }
-  .offer-tag{font-size:11px;font-weight:800;letter-spacing:1.6px;text-transform:uppercase;color:#0a0a0a;
-    background:linear-gradient(135deg,var(--gold),var(--gold-2));padding:4px 11px;border-radius:100px;align-self:center}
-  .offer-price{font-family:var(--serif);font-size:18.5px;color:var(--ink)}
-  .offer-price s{color:#8b877b;font-size:15px}
-  .offer-price b{font-size:22px}
-  .offer-note{font-size:12.5px;color:var(--muted);flex-basis:100%}
+    display:flex;flex-wrap:wrap;align-items:baseline;gap:var(--s1) var(--s3)}
+  .offer-tag{font-family:var(--display);font-size:var(--t-micro);letter-spacing:1.8px;text-transform:uppercase;
+    color:var(--bg);background:linear-gradient(135deg,var(--gold),var(--gold-2));
+    padding:4px 11px;border-radius:var(--radius);align-self:center}
+  .offer-price{font-family:var(--display);font-size:20px;letter-spacing:1px;color:var(--ink)}
+  .offer-price s{color:var(--faint);font-size:15px}
+  .offer-price b{font-size:24px;font-weight:400;color:var(--gold-2)}
+  .offer-note{font-size:var(--t-micro);color:var(--muted);flex-basis:100%}
 
-  .hero-cta{display:flex; flex-wrap:wrap; gap:14px; margin-top:22px}
-  .btn{
-    padding:15px 30px; border-radius:12px; font-weight:700; font-size:15.5px; cursor:pointer;
-    display:inline-flex; align-items:center; gap:9px; border:1px solid transparent;
-    transition:transform .25s, box-shadow .3s, background .3s, border-color .3s;
-    position:relative; overflow:hidden;
-  }
-  .btn:hover{transform:translateY(-3px)}
-  .btn-gold{background:linear-gradient(135deg,var(--gold),var(--gold-2)); color:#0a0a0a;
-    box-shadow:0 12px 32px -10px var(--glow)}
-  .btn-gold:hover{box-shadow:0 18px 42px -10px var(--glow)}
-  .btn-gold::after{
-    content:""; position:absolute; top:0; left:-80%; width:45%; height:100%;
+  .hero-cta{display:flex;flex-wrap:wrap;gap:var(--s3);margin-top:var(--s5)}
+  .btn-gold{position:relative;overflow:hidden}
+  .btn-gold::after{content:"";position:absolute;top:0;left:-80%;width:45%;height:100%;
     background:linear-gradient(105deg,transparent,rgba(255,255,255,.55),transparent);
-    transform:skewX(-20deg); animation:sheen 4.2s ease-in-out 2 forwards;
-  }
+    transform:skewX(-20deg);animation:sheen 4.2s ease-in-out 2 forwards}
   @keyframes sheen{0%{left:-80%}42%{left:130%}100%{left:130%}}
-  .btn-ghost{border-color:var(--line); color:var(--ink); background:rgba(255,255,255,.02)}
-  .btn-ghost:hover{border-color:var(--gold); background:rgba(212,175,55,.08)}
 
   /* ---------- MOCK EMAIL CARD ---------- */
-  .mailwrap{position:relative}
-  .mailcard{
-    border:1px solid var(--line); border-radius:18px; background:var(--panel); overflow:hidden;
-    box-shadow:var(--shadow); font-size:13.5px;
-  }
-  .mail-head{display:flex; justify-content:space-between; gap:10px; padding:11px 18px;
-    background:var(--ivory); border-bottom:1px solid var(--line-soft);
-    font-size:11.5px; color:var(--muted); font-weight:700; letter-spacing:.6px; text-transform:uppercase}
-  .mail-body{padding:14px 18px}
-  .mail-body .from{font-size:12px;color:var(--muted);margin-bottom:3px}
-  .mail-body .subj{font-weight:700;font-size:14px}
+  .mailcard{border:1px solid var(--line);border-radius:var(--radius-lg);background:var(--panel);
+    overflow:hidden;box-shadow:var(--shadow);font-size:var(--t-small)}
+  .mail-head{display:flex;justify-content:space-between;gap:var(--s2);padding:11px 18px;
+    background:var(--panel2);border-bottom:1px solid var(--line-soft);
+    font-family:var(--display);font-size:var(--t-micro);color:var(--muted);letter-spacing:1.5px;text-transform:uppercase}
+  .mail-body{padding:var(--s3) var(--s4)}
+  .mail-body .from{font-size:var(--t-micro);color:var(--muted);margin-bottom:3px}
+  .mail-body .subj{font-weight:700;font-size:var(--t-small)}
   .mail-body p{color:var(--muted);margin-top:6px;font-size:13px}
-  .ai-divider{
-    text-align:center; font-size:10.5px; letter-spacing:1.8px; text-transform:uppercase;
-    color:var(--gold-2); font-weight:800; padding:8px 12px;
-    border-top:1px dashed var(--line); border-bottom:1px dashed var(--line);
-    background:rgba(212,175,55,.06);
-  }
-  .mail-reply{padding:14px 18px 16px; background:linear-gradient(180deg,rgba(212,175,55,.08),transparent)}
-  .ai-tag{display:inline-block; font-size:10px; font-weight:800; letter-spacing:1.5px; text-transform:uppercase;
-    color:#0a0a0a; background:linear-gradient(135deg,var(--gold),var(--gold-2)); padding:4px 11px; border-radius:100px; margin-bottom:9px}
-  .mail-reply p{color:#ddd8ca; font-size:13px}
-  .mail-actions{display:flex; gap:9px; margin-top:12px}
-  .send-pill{font-size:12.5px;font-weight:700;color:#0a0a0a;padding:7px 18px;border-radius:100px;
-    background:linear-gradient(135deg,var(--gold),var(--gold-2));box-shadow:0 8px 18px -8px var(--glow)}
-  .edit-pill{font-size:12.5px;font-weight:700;color:var(--muted);padding:7px 18px;border-radius:100px;border:1px solid var(--line)}
-  .mail-cap{font-size:11.5px;color:var(--muted);text-align:center;margin-top:10px;font-style:italic}
+  .ai-divider{text-align:center;font-family:var(--display);font-size:var(--t-micro);letter-spacing:2px;
+    text-transform:uppercase;color:var(--gold-2);padding:var(--s2) var(--s3);
+    border-top:1px dashed var(--line);border-bottom:1px dashed var(--line);background:rgba(212,175,55,.06)}
+  .mail-reply{padding:var(--s3) var(--s4) var(--s4);background:linear-gradient(180deg,rgba(212,175,55,.08),transparent)}
+  .ai-tag{display:inline-block;font-family:var(--display);font-size:var(--t-micro);letter-spacing:1.5px;
+    text-transform:uppercase;color:var(--bg);background:linear-gradient(135deg,var(--gold),var(--gold-2));
+    padding:4px 11px;border-radius:var(--radius);margin-bottom:9px}
+  .mail-reply p{color:var(--ink);font-size:13px}
+  .mail-actions{display:flex;gap:9px;margin-top:var(--s3)}
+  .send-pill{font-family:var(--display);font-size:var(--t-micro);letter-spacing:1px;text-transform:uppercase;
+    color:var(--bg);padding:7px 18px;border-radius:var(--radius);
+    background:linear-gradient(135deg,var(--gold),var(--gold-2))}
+  .edit-pill{font-family:var(--display);font-size:var(--t-micro);letter-spacing:1px;text-transform:uppercase;
+    color:var(--muted);padding:7px 18px;border-radius:var(--radius);border:1px solid var(--line)}
+  .mail-cap{font-size:var(--t-micro);color:var(--muted);text-align:center;margin-top:var(--s2);font-style:italic}
 
   /* ---------- PROOF CHIPS ---------- */
-  .trust{
-    max-width:1180px; margin:0 auto;
-    padding:clamp(14px,2.2vw,24px) clamp(18px,5vw,64px) clamp(22px,2.8vw,36px);
-    display:flex; flex-wrap:wrap; justify-content:center; gap:12px 14px;
-  }
-  .proof-chip{
-    display:inline-flex; align-items:center; gap:9px; padding:10px 18px;
-    border:1px solid var(--line-soft); border-radius:100px;
-    background:linear-gradient(180deg,var(--ivory),var(--panel));
-    font-size:13px; color:#ddd8ca; font-weight:600; letter-spacing:.2px;
-  }
-  .proof-chip i{font-style:normal; color:var(--gold-2); font-family:var(--serif); font-weight:800}
-  .seal{width:clamp(76px,8vw,94px); height:auto; flex:0 0 auto;
+  .trust{max-width:var(--maxw);margin:0 auto;
+    padding:var(--s4) var(--section-x) var(--s6);
+    display:flex;flex-wrap:wrap;justify-content:center;gap:var(--s3)}
+  .proof-chip{display:inline-flex;align-items:center;gap:9px;padding:10px 18px;
+    border:1px solid var(--line-soft);border-radius:var(--radius);
+    background:linear-gradient(180deg,var(--panel),var(--panel2));
+    font-size:var(--t-small);color:var(--ink);font-weight:600}
+  .proof-chip i{font-style:normal;color:var(--gold-2);font-weight:800}
+  .seal{width:clamp(76px,8vw,94px);height:auto;flex:0 0 auto;
     filter:drop-shadow(0 10px 18px rgba(212,175,55,.22))}
 
   /* section headings */
-  .sec-head{max-width:72ch; margin-bottom:30px}
-  .kicker{color:var(--gold);font-size:12.5px;letter-spacing:2.4px;text-transform:uppercase;font-weight:700}
-  h2{font-family:var(--serif); font-size:clamp(27px,3.8vw,42px); font-weight:700; letter-spacing:-.4px;
-    margin:10px 0 12px; line-height:1.12}
-  h2 .grad{
-    background:linear-gradient(115deg,var(--gold),var(--gold-2) 55%,var(--gold));
-    -webkit-background-clip:text; background-clip:text; -webkit-text-fill-color:transparent; color:transparent;
-  }
-  .sec-head p{color:var(--muted); font-size:clamp(15px,1.7vw,17px)}
+  .sec-head{max-width:72ch;margin-bottom:var(--s6)}
+  .sec-head h2{margin:var(--s2) 0 var(--s3)}
+  .sec-head p{color:var(--muted)}
 
-  /* cards */
-  .grid{display:grid; gap:16px}
+  /* card extras (base .card lives in site.css) */
   .g2{grid-template-columns:repeat(2,1fr)}
   .g3{grid-template-columns:repeat(3,1fr)}
-  .card{
-    padding:24px; border:1px solid var(--line-soft); border-radius:18px;
-    background:linear-gradient(180deg,var(--ivory),var(--panel));
-    transition:transform .35s, border-color .35s, box-shadow .35s; position:relative; overflow:hidden;
-    box-shadow:0 10px 28px -20px rgba(0,0,0,.6);
-  }
-  .card:hover{transform:translateY(-5px); border-color:var(--line); box-shadow:var(--shadow)}
-  .card .ic{font-size:24px; margin-bottom:10px; display:block}
-  .card h3{font-family:var(--serif); font-size:19px; margin-bottom:6px; letter-spacing:-.2px}
-  .card p{color:var(--muted); font-size:14.5px}
-  .card .chip{display:inline-block;margin-top:12px;font-size:11.5px;color:var(--gold-2);font-weight:600;
-    border:1px solid var(--line);padding:4px 12px;border-radius:100px;background:rgba(212,175,55,.06)}
+  .card{padding:var(--s5)}
+  .card .ic{font-size:24px;margin-bottom:var(--s2);display:block}
+  .card h3{margin-bottom:var(--s2)}
+  .card p{color:var(--muted);font-size:var(--t-small)}
+  .card .chip{display:inline-block;margin-top:var(--s3);font-size:var(--t-micro);color:var(--gold-2);
+    font-weight:600;border:1px solid var(--line);padding:4px 12px;border-radius:var(--radius);
+    background:rgba(212,175,55,.06)}
 
   /* pipeline svg */
-  .pipeline{margin:6px 0 26px; border:1px solid var(--line-soft); border-radius:18px;
-    background:linear-gradient(180deg,var(--ivory),var(--panel)); padding:clamp(14px,2.4vw,26px);
-    box-shadow:0 10px 28px -20px rgba(0,0,0,.6); overflow-x:auto}
-  .pipeline svg{display:block; width:100%; min-width:560px; height:auto}
+  .pipeline{margin:var(--s1) 0 var(--s5);border:1px solid var(--line-soft);border-radius:var(--radius-lg);
+    background:linear-gradient(180deg,var(--panel),var(--panel2));padding:clamp(14px,2.4vw,26px);
+    overflow-x:auto;-webkit-overflow-scrolling:touch}
+  .pipeline svg{display:block;width:100%;min-width:560px;height:auto}
   .flow{stroke-dasharray:6 6}
   .reveal.in .flow{animation:dashflow 1.3s linear 6}
   @keyframes dashflow{to{stroke-dashoffset:-12}}
 
   /* tabs */
-  .tabs{display:flex;flex-wrap:wrap;gap:10px;margin-bottom:22px}
-  .tab{
-    padding:11px 21px;border:1px solid var(--line);border-radius:100px;cursor:pointer;
-    color:var(--muted);font-size:14px;font-weight:700;transition:all .3s;background:transparent;font-family:var(--sans);
-  }
+  .tabs{display:flex;flex-wrap:wrap;gap:var(--s2);margin-bottom:var(--s5)}
+  .tab{padding:11px 21px;border:1px solid var(--line);border-radius:var(--radius);cursor:pointer;
+    color:var(--muted);font-family:var(--display);text-transform:uppercase;letter-spacing:1.2px;
+    font-size:var(--t-small);transition:all .3s var(--ease);background:transparent}
   .tab:hover{color:var(--ink);border-color:var(--gold)}
-  .tab.active{color:#0a0a0a;background:linear-gradient(135deg,var(--gold),var(--gold-2));border-color:transparent;
-    box-shadow:0 0 18px var(--glow)}
-  .panel{display:none;animation:fadeup .5s ease}
+  .tab.active{color:var(--bg);background:linear-gradient(135deg,var(--gold),var(--gold-2));
+    border-color:transparent;box-shadow:var(--shadow-gold)}
+  /* .panel here is the tab pane, not the site.css surface */
+  .panel{display:none;background:none;border:0;padding:0;border-radius:0;animation:fadeup .5s var(--ease)}
   .panel.active{display:block}
   @keyframes fadeup{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
-  .feat-list{display:grid;gap:10px}
-  .feat{display:flex;gap:13px;padding:13px 18px;border:1px solid var(--line-soft);border-radius:13px;
-    background:var(--ivory);transition:border-color .3s, transform .3s, box-shadow .3s; align-items:baseline}
-  .feat:hover{border-color:var(--line);transform:translateX(4px);box-shadow:0 8px 22px -16px rgba(0,0,0,.6)}
-  .feat .fic{color:var(--gold);font-weight:800;flex:0 0 auto;font-family:var(--serif);font-size:16px}
+  .feat-list{display:grid;gap:var(--s2)}
+  .feat{display:flex;gap:var(--s3);padding:13px 18px;border:1px solid var(--line-soft);
+    border-radius:var(--radius);background:var(--panel);align-items:baseline;
+    transition:border-color .3s var(--ease),transform .3s var(--ease)}
+  .feat:hover{border-color:var(--line);transform:translateX(4px)}
+  .feat .fic{color:var(--gold-2);font-weight:800;flex:0 0 auto}
   .feat b{color:var(--ink)}
-  .feat span{color:var(--muted);font-size:14px}
-  .callout{
-    border:1px solid var(--line-soft);border-left:3px solid var(--gold);border-radius:14px;
-    background:linear-gradient(90deg,rgba(212,175,55,.08),rgba(212,175,55,.015));padding:18px 22px;
-  }
+  .feat span{color:var(--muted);font-size:var(--t-small)}
+  .callout{border:1px solid var(--line-soft);border-left:3px solid var(--gold);border-radius:var(--radius);
+    background:linear-gradient(90deg,rgba(212,175,55,.08),rgba(212,175,55,.015));
+    padding:var(--s4) var(--s5);color:var(--ink);font-size:var(--t-body)}
   .callout b{color:var(--gold-2)}
-  .callout p, .callout{color:#ddd8ca;font-size:15px}
 
   /* edge band */
-  .edge{
-    border:1px solid var(--line); border-radius:24px; overflow:hidden;
-    background:linear-gradient(180deg,var(--ivory),var(--ivory2));
-    box-shadow:var(--shadow);
-    padding:clamp(28px,4vw,46px);
-  }
-  .edge-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-top:24px}
-  .edge-item h3{font-family:var(--serif);font-size:18px;margin:9px 0 5px}
-  .edge-item p{color:var(--muted);font-size:14px}
-  .edge-item .eic{
-    width:42px;height:42px;border-radius:12px;display:grid;place-items:center;font-size:20px;
-    background:var(--panel);border:1px solid var(--line);box-shadow:0 6px 16px -10px rgba(0,0,0,.7);
-  }
+  .edge{border:1px solid var(--line);border-radius:var(--radius-lg);overflow:hidden;
+    background:linear-gradient(180deg,var(--panel),var(--panel2));
+    box-shadow:var(--shadow);padding:clamp(28px,4vw,46px)}
+  .edge-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:var(--s5);margin-top:var(--s5)}
+  .edge-item h3{margin:9px 0 var(--s1)}
+  .edge-item p{color:var(--muted);font-size:var(--t-small)}
+  .edge-item .eic{width:42px;height:42px;border-radius:var(--radius);display:grid;place-items:center;
+    font-size:20px;background:var(--bg2);border:1px solid var(--line)}
 
   /* ---------- PRICING ---------- */
-  .sale-banner{
-    display:inline-flex;align-items:center;gap:10px;
-    padding:9px 18px;border-radius:100px;font-size:13px;font-weight:700;letter-spacing:1.2px;text-transform:uppercase;
-    color:#0a0a0a;background:linear-gradient(135deg,var(--gold),var(--gold-2));
-    box-shadow:0 10px 26px -10px var(--glow); margin-bottom:18px;
-    position:relative;overflow:hidden;
-  }
-  .sale-banner::after{
-    content:""; position:absolute; top:0; left:-80%; width:40%; height:100%;
+  .sale-banner{display:inline-flex;align-items:center;gap:var(--s2);padding:9px 18px;
+    border-radius:var(--radius);font-family:var(--display);font-size:var(--t-small);letter-spacing:1.6px;
+    text-transform:uppercase;color:var(--bg);background:linear-gradient(135deg,var(--gold),var(--gold-2));
+    box-shadow:var(--shadow-gold);margin-bottom:var(--s4);position:relative;overflow:hidden}
+  .sale-banner::after{content:"";position:absolute;top:0;left:-80%;width:40%;height:100%;
     background:linear-gradient(105deg,transparent,rgba(255,255,255,.5),transparent);
-    transform:skewX(-20deg); animation:sheen 3.6s ease-in-out 2 forwards;
-  }
-  .price-wrap{display:grid;grid-template-columns:1.15fr .85fr;gap:20px;align-items:stretch}
-  .price-card{
-    border:2px solid var(--gold); border-radius:22px; padding:clamp(26px,3.4vw,38px);
-    background:linear-gradient(180deg,var(--ivory),var(--panel)); position:relative; overflow:hidden;
-    box-shadow:0 26px 60px -24px rgba(212,175,55,.28);
-  }
+    transform:skewX(-20deg);animation:sheen 3.6s ease-in-out 2 forwards}
+  .price-wrap{display:grid;grid-template-columns:1.15fr .85fr;gap:var(--s5);align-items:stretch}
+  .price-card{border:2px solid var(--gold);border-radius:var(--radius-lg);padding:clamp(26px,3.4vw,38px);
+    background:linear-gradient(180deg,var(--panel),var(--panel2));position:relative;overflow:hidden;
+    box-shadow:0 26px 60px -24px rgba(212,175,55,.28)}
   .price-card::after{content:"";position:absolute;top:0;left:0;right:0;height:3px;
-    background:linear-gradient(90deg,transparent,var(--gold-3),var(--gold-2),var(--gold-3),transparent)}
-  .price-tag{display:flex;align-items:baseline;gap:14px;flex-wrap:wrap;margin:6px 0 2px}
-  .price-old{font-family:var(--serif);font-size:clamp(20px,2.6vw,27px);color:#8b877b;text-decoration:line-through;text-decoration-color:rgba(212,175,55,.7);text-decoration-thickness:2px}
-  .price-new{font-family:var(--serif);font-size:clamp(42px,5.4vw,60px);font-weight:700;letter-spacing:-1px;color:var(--gold-2)}
-  .price-sub{color:var(--muted);font-size:14.5px}
-  .price-mo{font-family:var(--serif);font-size:22px;color:var(--ink);margin-top:12px}
-  .price-mo s{color:#8b877b;font-size:16px;margin-left:8px}
-  .price-includes{margin-top:20px;display:grid;gap:9px}
-  .inc{display:flex;gap:11px;align-items:baseline;font-size:14.5px;color:#ddd8ca}
-  .inc i{font-style:normal;color:var(--gold);font-weight:800;font-family:var(--serif)}
-  .price-note{
-    border:1px dashed var(--line); border-radius:18px; padding:clamp(22px,3vw,30px);
-    background:rgba(255,255,255,.02); display:flex; flex-direction:column; justify-content:center; gap:12px;
-  }
-  .price-note h3{font-family:var(--serif);font-size:20px}
-  .price-note p{color:var(--muted);font-size:14px}
-  .price-note .spots{font-family:var(--serif);font-size:14.5px;color:var(--gold-2);font-weight:700;letter-spacing:.4px}
-  .guarantee-echo{display:flex;align-items:center;gap:14px;margin-top:6px;padding-top:14px;border-top:1px dashed var(--line)}
-  .guarantee-echo .seal{width:56px;filter:drop-shadow(0 6px 12px rgba(212,175,55,.22))}
+    background:linear-gradient(90deg,transparent,var(--gold-2),var(--gold),var(--gold-2),transparent)}
+  .price-tag{display:flex;align-items:baseline;gap:var(--s3);flex-wrap:wrap;margin:var(--s1) 0 2px}
+  .price-new{font-family:var(--display);font-size:clamp(44px,5.4vw,64px);letter-spacing:1px;color:var(--gold-2);line-height:1}
+  .price-sub{color:var(--muted);font-size:var(--t-small)}
+  .price-mo{font-family:var(--display);font-size:24px;letter-spacing:1px;color:var(--ink);margin-top:var(--s3)}
+  .price-includes{margin-top:var(--s5);display:grid;gap:9px}
+  .inc{display:flex;gap:11px;align-items:baseline;font-size:var(--t-small);color:var(--ink)}
+  .inc i{font-style:normal;color:var(--gold-2);font-weight:800}
+  .price-note{border:1px dashed var(--line);border-radius:var(--radius-lg);padding:clamp(22px,3vw,30px);
+    background:rgba(255,255,255,.02);display:flex;flex-direction:column;justify-content:center;gap:var(--s3)}
+  .price-note p{color:var(--muted);font-size:var(--t-small)}
+  .price-note .spots{font-family:var(--display);letter-spacing:1px;font-size:var(--t-small);color:var(--gold-2)}
+  .guarantee-echo{display:flex;align-items:center;gap:var(--s3);margin-top:var(--s1);
+    padding-top:var(--s3);border-top:1px dashed var(--line)}
+  .guarantee-echo .seal{width:56px}
   .guarantee-echo p{font-size:13px;color:var(--muted)}
   .guarantee-echo b{color:var(--ink)}
 
   /* credibility */
-  .cred{text-align:center; max-width:820px; margin:0 auto}
-  .cred blockquote{
-    font-family:var(--serif); font-size:clamp(19px,2.7vw,26px); line-height:1.5; letter-spacing:-.2px; color:var(--ink);
-  }
-  .cred blockquote b{
-    background:linear-gradient(115deg,var(--gold),var(--gold-2) 60%,var(--gold));
-    -webkit-background-clip:text; background-clip:text; -webkit-text-fill-color:transparent; color:transparent;
-  }
-  .cred .cred-sub{margin-top:14px;color:var(--muted);font-size:14px}
-  .cred .flourish{color:var(--gold);font-size:24px;letter-spacing:8px;margin-bottom:14px}
+  .cred-sub{margin-top:var(--s3);color:var(--muted);font-size:var(--t-small)}
 
   /* CTA final */
-  .final{
-    text-align:center;border:1px solid var(--line);border-radius:28px;
+  .final{text-align:center;border:1px solid var(--line);border-radius:var(--radius-lg);
     background:
       radial-gradient(60% 110% at 50% 0%,rgba(212,175,55,.12),transparent),
-      linear-gradient(180deg,rgba(16,15,13,.90),rgba(10,10,11,.96)),
-      url('img/fd/sunset-backdrop.jpg') center 38%/cover no-repeat var(--ivory2);
-    padding:clamp(40px,5.5vw,68px) 26px; box-shadow:var(--shadow);
-  }
-  .final h2{margin-bottom:12px}
-  .final p{color:var(--muted);max-width:54ch;margin:0 auto 26px;font-size:16.5px}
-  .contact-line{margin-top:24px;color:var(--muted);font-size:15px;display:flex;flex-wrap:wrap;gap:8px 22px;justify-content:center}
+      linear-gradient(180deg,rgba(16,15,13,.90),rgba(11,11,13,.96)),
+      url('img/fd/sunset-backdrop.jpg') center 38%/cover no-repeat var(--panel2);
+    padding:clamp(40px,5.5vw,68px) var(--s5);box-shadow:var(--shadow)}
+  .final h2{margin-bottom:var(--s3)}
+  .final p{color:var(--muted);max-width:54ch;margin:0 auto var(--s5)}
+  .contact-line{margin-top:var(--s5);color:var(--muted);font-size:var(--t-small);
+    display:flex;flex-wrap:wrap;gap:var(--s2) var(--s5);justify-content:center}
   .contact-line a{color:var(--gold-2);font-weight:600}
   .contact-line a:hover{text-decoration:underline}
-
-  footer{border-top:1px solid var(--line-soft);padding:34px clamp(18px,5vw,64px);text-align:center;
-    color:var(--muted);font-size:14px;position:relative;z-index:1;background:var(--panel)}
-  footer a{color:var(--gold-2);font-weight:600}
-  footer a:hover{text-decoration:underline}
 
   /* ---------- FOUR JOBS (alternating illustration rows) ---------- */
   .jobrow{display:grid;grid-template-columns:1fr 1fr;gap:clamp(24px,4vw,56px);align-items:center;
     padding:clamp(22px,3.2vw,38px) 0}
   .jobrow + .jobrow{border-top:1px solid var(--line-soft)}
   .jobrow.flip .jobviz{order:2}
-  .jobviz{border:1px solid var(--line-soft);border-radius:20px;padding:clamp(16px,2.4vw,28px);
-    background:radial-gradient(80% 120% at 50% 0%,rgba(212,175,55,.08),transparent 70%),linear-gradient(180deg,var(--ivory),var(--panel));
-    box-shadow:0 14px 34px -24px rgba(0,0,0,.75)}
+  .jobviz{border:1px solid var(--line-soft);border-radius:var(--radius-lg);padding:clamp(16px,2.4vw,28px);
+    background:radial-gradient(80% 120% at 50% 0%,rgba(212,175,55,.08),transparent 70%),
+               linear-gradient(180deg,var(--panel),var(--panel2))}
   .jobviz svg{display:block;width:100%;height:auto}
-  .jobnum{font-family:var(--serif);font-size:12.5px;color:var(--gold);letter-spacing:2.6px;text-transform:uppercase;font-weight:700}
-  .jobtxt h3{font-family:var(--serif);font-size:clamp(21px,2.6vw,27px);margin:8px 0 10px;letter-spacing:-.3px}
-  .jobtxt > p{color:var(--muted);font-size:15px;max-width:52ch}
-  .joblist{margin-top:14px;display:grid;gap:8px}
-  .joblist span{display:flex;gap:10px;font-size:13.5px;color:#ddd8ca;align-items:baseline}
-  .joblist i{font-style:normal;color:var(--gold);font-family:var(--serif);font-weight:800}
+  .jobnum{font-family:var(--display);font-size:var(--t-micro);color:var(--gold-2);
+    letter-spacing:2.6px;text-transform:uppercase}
+  .jobtxt h3{margin:var(--s2) 0 var(--s3)}
+  .jobtxt > p{color:var(--muted);font-size:var(--t-small);max-width:52ch}
+  .joblist{margin-top:var(--s3);display:grid;gap:var(--s2)}
+  .joblist span{display:flex;gap:var(--s2);font-size:13.5px;color:var(--ink);align-items:baseline}
+  .joblist i{font-style:normal;color:var(--gold-2);font-weight:800}
 
   /* ---------- PRODUCT UI MOCK (triage inbox) ---------- */
-  .appmock{border:1px solid var(--line);border-radius:20px;overflow:hidden;background:var(--panel);
-    box-shadow:var(--shadow);font-size:13.5px}
-  .app-chrome{display:flex;align-items:center;gap:8px;padding:12px 18px;background:var(--ivory);
-    border-bottom:1px solid var(--line-soft)}
-  .dot{width:11px;height:11px;border-radius:50%;background:#2a2a30;flex:0 0 auto}
-  .dot.g{background:linear-gradient(135deg,var(--gold),var(--gold-2))}
-  .app-title{font-size:11.5px;color:var(--muted);letter-spacing:1.4px;text-transform:uppercase;font-weight:700;margin-left:8px}
-  .app-live{margin-left:auto;display:inline-flex;align-items:center;gap:7px;font-size:10.5px;color:var(--gold-2);
-    font-weight:800;letter-spacing:1.2px;text-transform:uppercase}
-  .mailrow{display:grid;grid-template-columns:auto 1fr auto;gap:4px 14px;padding:14px 18px;
-    border-bottom:1px solid var(--line-soft);align-items:center;transition:background .3s}
+  .appmock{border:1px solid var(--line);border-radius:var(--radius-lg);overflow:hidden;
+    background:var(--panel);box-shadow:var(--shadow);font-size:var(--t-small)}
+  .app-chrome{display:flex;align-items:center;gap:var(--s2);padding:var(--s3) var(--s4);
+    background:var(--panel2);border-bottom:1px solid var(--line-soft)}
+  .app-chrome .dot{width:11px;height:11px;border-radius:50%;background:#2a2a30;flex:0 0 auto;box-shadow:none}
+  .app-chrome .dot.g{background:linear-gradient(135deg,var(--gold),var(--gold-2))}
+  .app-title{font-family:var(--display);font-size:var(--t-micro);color:var(--muted);
+    letter-spacing:1.6px;text-transform:uppercase;margin-left:var(--s2)}
+  .app-live{margin-left:auto;display:inline-flex;align-items:center;gap:7px;font-family:var(--display);
+    font-size:var(--t-micro);color:var(--gold-2);letter-spacing:1.4px;text-transform:uppercase}
+  .mailrow{display:grid;grid-template-columns:auto 1fr auto;gap:var(--s1) var(--s3);padding:var(--s3) var(--s4);
+    border-bottom:1px solid var(--line-soft);align-items:center;transition:background .3s var(--ease)}
   .mailrow:hover{background:rgba(212,175,55,.04)}
-  .avatar{width:34px;height:34px;border-radius:50%;display:grid;place-items:center;font-family:var(--serif);
-    font-weight:700;font-size:14px;color:#0a0a0a;background:linear-gradient(135deg,var(--gold),var(--gold-2));grid-row:span 2}
+  .avatar{width:34px;height:34px;border-radius:50%;display:grid;place-items:center;
+    font-family:var(--display);font-size:15px;color:var(--bg);
+    background:linear-gradient(135deg,var(--gold),var(--gold-2));grid-row:span 2}
   .mr-who{font-size:13px;font-weight:700;color:var(--ink)}
-  .mr-who small{color:var(--muted);font-weight:500;margin-left:8px;font-size:11.5px}
-  .mr-snip{grid-column:2;font-size:12.5px;color:var(--muted);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-  .mr-tag{grid-row:span 2;font-size:9.5px;font-weight:800;letter-spacing:1.1px;text-transform:uppercase;
-    padding:5px 11px;border-radius:100px;white-space:nowrap;justify-self:end}
-  .tag-gold{color:#0a0a0a;background:linear-gradient(135deg,var(--gold),var(--gold-2));box-shadow:0 6px 14px -8px var(--glow)}
+  .mr-who small{color:var(--muted);font-weight:500;margin-left:var(--s2);font-size:11.5px}
+  .mr-snip{grid-column:2;font-size:var(--t-micro);color:var(--muted);white-space:nowrap;
+    overflow:hidden;text-overflow:ellipsis}
+  .mr-tag{grid-row:span 2;font-family:var(--display);font-size:10px;letter-spacing:1.1px;text-transform:uppercase;
+    padding:5px 11px;border-radius:var(--radius);white-space:nowrap;justify-self:end}
+  .tag-gold{color:var(--bg);background:linear-gradient(135deg,var(--gold),var(--gold-2))}
   .tag-line{color:var(--gold-2);border:1px solid var(--line);background:rgba(212,175,55,.07)}
   .tag-dim{color:var(--muted);border:1px solid var(--line-soft);background:rgba(255,255,255,.02)}
   .mailrow.openrow{background:linear-gradient(90deg,rgba(212,175,55,.07),transparent)}
-  .draftbox{grid-column:2/4;margin-top:6px;border:1px dashed var(--line);border-radius:12px;
-    padding:12px 14px;background:rgba(212,175,55,.05)}
+  .draftbox{grid-column:2/4;margin-top:var(--s1);border:1px dashed var(--line);border-radius:var(--radius);
+    padding:var(--s3);background:rgba(212,175,55,.05)}
   .draftbox .ai-tag{margin-bottom:7px}
-  .draftbox p{font-size:12.5px;color:#ddd8ca;line-height:1.6}
-  .draftbox .mail-actions{margin-top:10px}
-  .app-foot{display:flex;flex-wrap:wrap;gap:8px 20px;justify-content:space-between;padding:11px 18px;
-    font-size:11.5px;color:var(--muted);background:var(--ivory)}
+  .draftbox p{font-size:var(--t-micro);color:var(--ink);line-height:1.6}
+  .draftbox .mail-actions{margin-top:var(--s2)}
+  .app-foot{display:flex;flex-wrap:wrap;gap:var(--s2) var(--s5);justify-content:space-between;
+    padding:11px 18px;font-size:var(--t-micro);color:var(--muted);background:var(--panel2)}
   .app-foot b{color:var(--gold-2)}
 
   /* ---------- FOUNDER ---------- */
   .founder-grid{display:grid;grid-template-columns:.85fr 1.15fr;gap:clamp(26px,4vw,58px);align-items:center}
-  .founder-photo{position:relative;border-radius:22px;overflow:hidden;border:1px solid var(--line);
-    box-shadow:var(--shadow),0 0 0 6px rgba(212,175,55,.05);max-width:400px;justify-self:center;margin:0}
-  .founder-photo img{display:block;width:100%;height:auto;aspect-ratio:3/4;object-fit:cover;
-    filter:saturate(.94) contrast(1.04)}
+  .founder-photo{position:relative;border-radius:var(--radius-lg);overflow:hidden;border:1px solid var(--line);
+    box-shadow:var(--shadow);max-width:400px;justify-self:center;margin:0}
+  .founder-photo img{width:100%;aspect-ratio:3/4;object-fit:cover}
   .founder-photo::after{content:"";position:absolute;inset:0;pointer-events:none;
-    background:linear-gradient(180deg,rgba(10,10,10,0) 52%,rgba(10,10,10,.62))}
-  .founder-photo figcaption{position:absolute;left:0;right:0;bottom:0;z-index:1;padding:14px 18px;
-    font-size:12.5px;color:var(--gold-3);letter-spacing:.4px;line-height:1.5}
-  .founder-txt blockquote{font-family:var(--serif);font-size:clamp(18px,2.3vw,23px);line-height:1.55;
-    letter-spacing:-.2px;color:var(--ink);margin-top:6px}
-  .founder-txt blockquote b{
+    background:linear-gradient(180deg,rgba(11,11,13,0) 52%,rgba(11,11,13,.62))}
+  .founder-photo figcaption{position:absolute;left:0;right:0;bottom:0;z-index:1;padding:var(--s3) var(--s4);
+    font-size:var(--t-micro);color:var(--gold-2);line-height:1.5}
+  blockquote{font-family:var(--display);text-transform:uppercase;line-height:1.16;letter-spacing:1px;
+    font-size:clamp(19px,2.4vw,26px);color:var(--ink);margin-top:var(--s2)}
+  blockquote b{font-weight:400;
     background:linear-gradient(115deg,var(--gold),var(--gold-2) 60%,var(--gold));
-    -webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;color:transparent}
-  .founder-txt .cred-sub{margin-top:14px;color:var(--muted);font-size:14px}
+    -webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;color:var(--gold)}
 
   /* click-triggers, ROI calc, pilot timeline, booking form, sticky mobile CTA */
-  section{scroll-margin-top:76px}
-  .btn:active{transform:translateY(-1px) scale(.985)}
-  p.click-trigger{font-size:12.5px;color:var(--muted);margin:10px auto 0;letter-spacing:.3px;max-width:none}
-  .allin{margin-top:14px;padding-top:12px;border-top:1px dashed var(--line);font-size:13.5px;color:var(--muted)}
-  .allin b{color:var(--gold-2);font-family:var(--serif);font-size:15.5px}
-  .roi{border:1px solid var(--line-soft);border-radius:18px;padding:clamp(18px,2.6vw,26px);
-    background:linear-gradient(180deg,var(--ivory),var(--panel));margin-bottom:26px;
-    box-shadow:0 10px 28px -20px rgba(0,0,0,.6)}
-  .roi h3{font-family:var(--serif);font-size:19px;margin-bottom:4px}
-  .roi .roi-sub{font-size:13px;color:var(--muted);margin-bottom:14px}
-  .roi-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
-  .roi-grid label{display:grid;gap:6px;font-size:11.5px;color:var(--muted);letter-spacing:.8px;text-transform:uppercase;font-weight:700}
-  .roi-grid input{padding:11px 14px;border:1px solid var(--line);border-radius:11px;background:rgba(255,255,255,.03);
-    color:var(--gold-2);font-size:17px;font-weight:700;font-family:var(--serif);width:100%}
-  .roi-grid input:focus{outline:none;border-color:var(--gold);box-shadow:0 0 0 3px rgba(212,175,55,.18)}
-  .roi-out{margin-top:16px;padding:14px 18px;border:1px dashed var(--line);border-radius:13px;
-    background:rgba(212,175,55,.06);font-size:15px;color:#ddd8ca;transition:background .3s}
-  .roi-out b{font-family:var(--serif);font-size:21px;color:var(--gold-2)}
-  .roi-note{font-size:11.5px;color:var(--muted);margin-top:8px}
-  .timeline{display:flex;flex-wrap:wrap;justify-content:center;align-items:center;gap:8px;margin:0 auto 24px;max-width:780px}
-  .tl-step{display:inline-flex;align-items:center;gap:7px;padding:8px 14px;border-radius:100px;
-    font-size:12.5px;font-weight:700;border:1px solid var(--line-soft);color:var(--muted);background:rgba(255,255,255,.02)}
-  .tl-step.done{color:#0a0a0a;background:linear-gradient(135deg,var(--gold),var(--gold-2));border-color:transparent}
+  p.click-trigger{font-size:var(--t-micro);color:var(--muted);margin:var(--s2) auto 0;max-width:none}
+  .allin{margin-top:var(--s3);padding-top:var(--s3);border-top:1px dashed var(--line);
+    font-size:13.5px;color:var(--muted)}
+  .allin b{color:var(--gold-2);font-family:var(--display);font-size:17px;letter-spacing:.5px}
+  .roi{border:1px solid var(--line-soft);border-radius:var(--radius-lg);padding:clamp(18px,2.6vw,26px);
+    background:linear-gradient(180deg,var(--panel),var(--panel2));margin-bottom:var(--s5)}
+  .roi h3{margin-bottom:var(--s1)}
+  .roi .roi-sub{font-size:13px;color:var(--muted);margin-bottom:var(--s3)}
+  .roi-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:var(--s3)}
+  .roi-grid label{display:grid;gap:var(--s1);font-family:var(--display);font-size:var(--t-micro);
+    color:var(--muted);letter-spacing:1.5px;text-transform:uppercase}
+  .roi-grid input{color:var(--gold-2);font-size:17px;font-weight:700}
+  .roi-out{margin-top:var(--s4);padding:var(--s3) var(--s4);border:1px dashed var(--line);
+    border-radius:var(--radius);background:rgba(212,175,55,.06);font-size:var(--t-body);color:var(--ink)}
+  .roi-out b{font-family:var(--display);font-size:22px;letter-spacing:.5px;color:var(--gold-2)}
+  .roi-note{font-size:11.5px;color:var(--muted);margin-top:var(--s2)}
+  .timeline{display:flex;flex-wrap:wrap;justify-content:center;align-items:center;gap:var(--s2);
+    margin:0 auto var(--s5);max-width:780px}
+  .tl-step{display:inline-flex;align-items:center;gap:7px;padding:8px 14px;border-radius:var(--radius);
+    font-size:var(--t-micro);font-weight:700;border:1px solid var(--line-soft);color:var(--muted);
+    background:rgba(255,255,255,.02)}
+  .tl-step.done{color:var(--bg);background:linear-gradient(135deg,var(--gold),var(--gold-2));border-color:transparent}
   .tl-arrow{color:var(--gold);font-size:13px}
-  .pilot-form{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;max-width:760px;margin:0 auto;text-align:left}
-  .pilot-form input{padding:13px 15px;border:1px solid var(--line);border-radius:12px;
-    background:rgba(255,255,255,.04);color:var(--ink);font-size:16px;font-family:var(--sans);width:100%}
-  .pilot-form input::placeholder{color:#8b877b}
-  .pilot-form input:focus{outline:none;border-color:var(--gold);box-shadow:0 0 0 3px rgba(212,175,55,.18)}
+  .pilot-form{display:grid;grid-template-columns:repeat(3,1fr);gap:var(--s2);max-width:760px;
+    margin:0 auto;text-align:left}
+  .pilot-form input{font-size:16px}
+  .pilot-form input::placeholder{color:var(--faint)}
   .pilot-form .btn{grid-column:1/-1;justify-content:center;margin-top:2px}
-  p.form-sent{display:none;margin:12px auto 0;font-size:13.5px;color:var(--gold-2);max-width:none}
-  p.form-sent b{color:var(--gold-3)}
+  p.form-sent{display:none;margin:var(--s3) auto 0;font-size:13.5px;color:var(--gold-2);max-width:none}
+  p.form-sent b{color:var(--gold-2)}
   .mcta{display:none}
-  @media(max-width:880px){
-    .mcta{position:fixed;left:0;right:0;bottom:0;z-index:70;display:flex;flex-direction:column;align-items:center;justify-content:center;
-      gap:1px;min-height:52px;padding:10px 16px calc(10px + env(safe-area-inset-bottom));
-      background:linear-gradient(135deg,var(--gold),var(--gold-2));color:#0a0a0a;font-weight:800;font-size:15.5px;
-      box-shadow:0 -10px 30px -12px rgba(0,0,0,.7)}
-    .mcta small{font-size:11px;font-weight:600;opacity:.82}
-    body{padding-bottom:78px}
-    .roi-grid{grid-template-columns:1fr}
-    .pilot-form{grid-template-columns:1fr}
-  }
 
-  /* reveal on scroll */
-  .reveal{opacity:0;transform:translateY(28px);transition:opacity .8s cubic-bezier(.2,.7,.2,1),transform .8s cubic-bezier(.2,.7,.2,1)}
+  /* reveal on scroll — the page script toggles .in (site.css ships .is-in) */
   .reveal.in{opacity:1;transform:none}
   .reveal.d1{transition-delay:.08s}.reveal.d2{transition-delay:.16s}.reveal.d3{transition-delay:.24s}
 
   #progress{position:fixed;top:0;left:0;height:3px;width:0;z-index:60;
-    background:linear-gradient(90deg,#8a7328,var(--gold),var(--gold-2));
+    background:linear-gradient(90deg,var(--gold-dim),var(--gold),var(--gold-2));
     box-shadow:0 0 12px var(--glow)}
 
   @media(max-width:880px){
-    .nav-links{display:none;position:absolute;top:100%;left:0;right:0;flex-direction:column;align-items:stretch;
-      padding:12px;gap:4px;background:rgba(10,10,10,.97);border-bottom:1px solid var(--line-soft);
-      box-shadow:0 20px 40px -20px rgba(0,0,0,.8)}
-    .nav-links.open{display:flex}
-    .nav-links a{text-align:center}
-    .menu-btn{display:block}
+    .mcta{position:fixed;left:0;right:0;bottom:0;z-index:70;display:flex;flex-direction:column;
+      align-items:center;justify-content:center;gap:1px;min-height:52px;
+      padding:10px 16px calc(10px + env(safe-area-inset-bottom));
+      background:linear-gradient(135deg,var(--gold),var(--gold-2));color:var(--bg);
+      font-family:var(--display);text-transform:uppercase;letter-spacing:1.2px;font-size:15px}
+    .mcta small{font-size:11px;letter-spacing:.4px;opacity:.82}
+    body{padding-bottom:78px}
+    .roi-grid{grid-template-columns:1fr}
+    .pilot-form{grid-template-columns:1fr}
     .hero-grid{grid-template-columns:1fr}
     .g2,.g3,.edge-grid,.price-wrap{grid-template-columns:1fr}
-    .jobrow{grid-template-columns:1fr;gap:18px}
+    .jobrow{grid-template-columns:1fr;gap:var(--s4)}
     .jobrow.flip .jobviz{order:0}
     .founder-grid{grid-template-columns:1fr}
     .founder-photo{max-width:340px}
     .mr-snip{white-space:normal}
     .mr-tag{grid-row:auto;grid-column:2;justify-self:start;margin-top:2px}
     .avatar{grid-row:span 3}
-  }
-
-  @media (prefers-reduced-motion: reduce){
-    html{scroll-behavior:auto}
-    *,*::before,*::after{animation:none !important;transition:none !important}
-    .reveal{opacity:1;transform:none}
+    .chiprow{grid-template-columns:1fr}
   }
 </style>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "SoftwareApplication", "name": "FreightDesk AI", "url": "https://yusuf-gadelrab.github.io/freightdesk.html", "applicationCategory": "BusinessApplication", "operatingSystem": "Windows, macOS", "description": "AI AR/Billing email assistant for small freight brokerages \u2014 runs on a local model, covers 18 back-office workflows.", "author": {"@type": "Person", "name": "Yusuf Gadelrab"}}</script>
+<style>/* iOS Safari zooms the page when a focused field is under 16px */
+input,select,textarea{font-size:16px}</style>
 </head>
-<body>
+<body class="pro">
 <div id="progress"></div>
 
 <!-- shared SVG defs for seals -->
@@ -539,32 +395,21 @@
   </defs>
 </svg>
 
-<nav id="nav">
-  <a href="#top" class="brand">
-    <span class="mark">F</span>
-    <span>FreightDesk&nbsp;AI<small>AR &amp; Billing on Autopilot</small></span>
-  </a>
-  <button class="menu-btn" id="menuBtn" aria-label="Menu">☰</button>
-  <div class="nav-links" id="navLinks">
-    <a href="#problem">The Problem</a>
-    <a href="#covers">What It Does</a>
-    <a href="#pricing">Pricing</a>
-    <a href="#faq">FAQ</a>
-    <a href="#book" class="nav-cta">Book my pilot</a>
-  </div>
-</nav>
+<a class="skip-link" href="#main">Skip to content</a>
+<nav class="site-nav" id="nav"><a class="site-nav__brand" href="/">YUSUF GADELRAB</a><div class="site-nav__links" id="navLinks"><a href="/">Work</a><a href="/resume.html">Resume</a><a href="/store.html">Store</a><a href="/kxngsef.html">KXNG SEF</a><a href="/media-kit.html">Media Kit</a></div><button class="menu-btn" id="menuBtn" aria-label="Menu" hidden>&#9776;</button></nav>
 
-<main id="top">
+<main id="main">
+<span id="top"></span>
 
   <!-- HERO -->
-  <section class="hero">
+  <section class="section hero">
     <div class="hero-grid">
       <div>
-        <span class="eyebrow reveal"><span class="pulse"></span>We automate what you want — then we automate what you need</span>
+        <span class="badge reveal"><span class="pulse"></span>We automate what you want — then we automate what you need</span>
         <h1 class="reveal d1">Get paid faster — <span class="shimmer">without hiring a back office.</span></h1>
-        <p class="lede reveal d1" style="font-size:13px;letter-spacing:.4px;color:var(--gold-2);margin-bottom:10px">Proven case study · now taking founding-client pilots · launch pricing ends August 15</p>
-        <p class="lede reveal d2">FreightDesk AI is an <b>AI back-office clerk for small freight brokerages</b>. It plugs into your billing / AR / dispatch inbox, reads every incoming email, classifies it — POD request, invoice dispute, rate reconciliation, advance question, W9 chase, past-due nudge — and <b>drafts the correct reply with the right numbers and documents attached</b>, then sends it or holds it for one-click approval.</p>
-        <p class="lede reveal d2">It covers the full 18-point workload of a small-freight financial controller, and it runs on a <b>local AI on your own machine</b> — no API fees, no per-seat SaaS, and your data never leaves your building.</p>
+        <p class="lead reveal d1" style="font-size:13px;letter-spacing:.4px;color:var(--gold-2);margin-bottom:10px">Proven case study · now taking founding-client pilots · launch pricing ends August 15</p>
+        <p class="lead reveal d2">FreightDesk AI is an <b>AI back-office clerk for small freight brokerages</b>. It plugs into your billing / AR / dispatch inbox, reads every incoming email, classifies it — POD request, invoice dispute, rate reconciliation, advance question, W9 chase, past-due nudge — and <b>drafts the correct reply with the right numbers and documents attached</b>, then sends it or holds it for one-click approval.</p>
+        <p class="lead reveal d2">It covers the full 18-point workload of a small-freight financial controller, and it runs on a <b>local AI on your own machine</b> — no API fees, no per-seat SaaS, and your data never leaves your building.</p>
 
         <div class="chiprow reveal d2">
           <span class="chipstat"><span class="num" data-count="18">18</span><span class="lbl">pain points<br/>automated</span></span>
@@ -615,9 +460,9 @@
   <div class="rule"></div>
 
   <!-- PROBLEM -->
-  <section id="problem">
+  <section class="section" id="problem">
     <div class="sec-head reveal">
-      <div class="kicker">The Problem</div>
+      <div class="eyebrow">The Problem</div>
       <h2>Your back office is <span class="grad">drowning in email.</span></h2>
       <p>Every day your AR, billing, and dispatch teams open the same inbox to the same chaos — and quietly lose most of the day to it.</p>
     </div>
@@ -646,9 +491,9 @@
   <div class="rule"></div>
 
   <!-- FOUR JOBS -->
-  <section id="jobs">
+  <section class="section" id="jobs">
     <div class="sec-head reveal">
-      <div class="kicker">How It Works</div>
+      <div class="eyebrow">How It Works</div>
       <h2>Four jobs, handled <span class="grad">before your first coffee.</span></h2>
       <p>Triage, quoting, tracking, follow-up — the four email loops that eat a broker's day, drawn end to end.</p>
     </div>
@@ -801,9 +646,9 @@
   <div class="rule"></div>
 
   <!-- WHAT IT DOES -->
-  <section id="covers">
+  <section class="section" id="covers">
     <div class="sec-head reveal">
-      <div class="kicker">What It Does</div>
+      <div class="eyebrow">What It Does</div>
       <h2>All <span class="grad">18 pain points</span> of a freight back office. Covered.</h2>
       <p>FreightDesk covers the full 18-point workload of a small-freight financial controller — end to end. Here's the loop, then every workflow inside it.</p>
     </div>
@@ -896,9 +741,9 @@
   <div class="rule"></div>
 
   <!-- PRODUCT VIEW -->
-  <section id="product">
+  <section class="section" id="product">
     <div class="sec-head reveal">
-      <div class="kicker">Inside the Product</div>
+      <div class="eyebrow">Inside the Product</div>
       <h2>What your team sees at <span class="grad">9:00 AM.</span></h2>
       <p>The morning inbox, already worked. Every email labeled, every reply drafted — your team reviews, clicks send, and moves on to real work.</p>
     </div>
@@ -917,7 +762,7 @@
         <span class="mr-snip">"Need a rate: 2 pallets, Fresno → Reno, Thursday pickup — can you get me a number today?"</span>
         <div class="draftbox">
           <span class="ai-tag">AI draft · awaiting one click</span>
-          <p>Hi Mike — Fresno → Reno, 2 pallets (~1,100 lb), Thursday pickup: <b style="color:var(--gold-2)">$1,180 all-in</b>, next-day delivery. Rate confirmation attached — reply "book it" and the truck is locked in.</p>
+          <p>Hi Mike — Fresno → Reno, 2 pallets (~1,100 lb), Thursday pickup: <b class="gold">$1,180 all-in</b>, next-day delivery. Rate confirmation attached — reply "book it" and the truck is locked in.</p>
           <div class="mail-actions"><span class="send-pill">Send ✓</span><span class="edit-pill">Edit</span></div>
         </div>
       </div>
@@ -961,11 +806,11 @@
   <div class="rule"></div>
 
   <!-- UNFAIR EDGE -->
-  <section id="edge">
+  <section class="section" id="edge">
     <div class="edge reveal">
-      <div class="kicker">The Unfair Edge</div>
+      <div class="eyebrow">The Unfair Edge</div>
       <h2>Zero API bills. <span class="grad">Forever.</span></h2>
-      <p style="color:var(--muted);max-width:64ch;font-size:clamp(15px,1.7vw,17px)">Every competitor runs on OpenAI or a per-seat SaaS meter — every email is another charge, and every message leaves your building. FreightDesk runs on a <b style="color:var(--ink)">local AI, on your own machine.</b></p>
+      <p style="color:var(--muted);max-width:64ch;font-size:clamp(15px,1.7vw,17px)">Every competitor runs on OpenAI or a per-seat SaaS meter — every email is another charge, and every message leaves your building. FreightDesk runs on a <b>local AI, on your own machine.</b></p>
       <div class="edge-grid">
         <div class="edge-item reveal"><span class="eic">🔌</span><h3>No metered AI bill</h3><p>No per-message cost. No bill that grows with your email volume. The AI is yours, running on your hardware.</p></div>
         <div class="edge-item reveal d1"><span class="eic">💺</span><h3>No per-seat SaaS</h3><p>Your whole team uses it. Adding a person never adds a line item.</p></div>
@@ -977,9 +822,9 @@
   <div class="rule"></div>
 
   <!-- PRICING -->
-  <section id="pricing">
+  <section class="section" id="pricing">
     <div class="sec-head reveal" style="margin-bottom:22px">
-      <div class="kicker">Founding-Client Pricing</div>
+      <div class="eyebrow">Founding-Client Pricing</div>
       <h2>One flat price. <span class="grad">No meters, no seats.</span></h2>
       <p>A part-time AR clerk runs $1,800–2,200 a month — and the repetitive 60% of that job is exactly what FreightDesk does. Launch pricing holds until August 15.</p>
     </div>
@@ -1002,7 +847,7 @@
       <div class="card reveal">
         <span class="ic">🧮</span>
         <h3>The salary you don't pay</h3>
-        <p>A part-time AR clerk: <b>$1,800–2,200/mo</b>. FreightDesk: <b>$249/mo</b> for the same repetitive workload — that's <b style="color:var(--gold-2)">$19,000–23,000 a year</b> back on your P&amp;L.</p>
+        <p>A part-time AR clerk: <b>$1,800–2,200/mo</b>. FreightDesk: <b>$249/mo</b> for the same repetitive workload — that's <b class="gold">$19,000–23,000 a year</b> back on your P&amp;L.</p>
       </div>
       <div class="card reveal d1">
         <span class="ic">⏱</span>
@@ -1018,7 +863,7 @@
 
     <div class="price-wrap">
       <div class="price-card reveal">
-        <div class="kicker">FreightDesk AI · Founding client</div>
+        <div class="eyebrow">FreightDesk AI · Founding client</div>
         <div class="price-tag">
           <span class="price-new">$999</span>
           <span class="price-sub">one-time setup — 3-day install, live on your inbox by Friday</span>
@@ -1056,7 +901,7 @@
   <div class="rule"></div>
 
   <!-- CREDIBILITY / FOUNDER -->
-  <section id="founder">
+  <section class="section" id="founder">
     <div class="founder-grid">
       <figure class="founder-photo reveal">
         <img src="img/fd/founder-hwyhaul.jpg"
@@ -1065,11 +910,11 @@
         <figcaption>Yusuf Gadelrab — FreightDesk started inside HwyHaul, a real freight-tech brokerage.</figcaption>
       </figure>
       <div class="founder-txt reveal d1">
-        <div class="kicker">Who Built This</div>
+        <div class="eyebrow">Who Built This</div>
         <h2>Built by someone who <span class="grad">shipped this inside a real freight brokerage.</span></h2>
         <blockquote>Built and battle-tested inside a <b>real freight brokerage</b> — against the live inbox of a working financial controller. Every one of the 18 workflows was validated on real back-office email before this page existed.</blockquote>
         <p class="cred-sub">Client confidentiality is part of the product — which is why you'll never see a client named here, and yours never will be either.</p>
-        <p class="cred-sub">Checkable, not claimed: co-author, SIGCSE TS 2026 (ACM) — <a href="https://doi.org/10.1145/3770761.3777339" target="_blank" rel="noreferrer" style="color:var(--gold-2);font-weight:600">DOI: 10.1145/3770761.3777339</a> · 77 automated tests on this pipeline.</p>
+        <p class="cred-sub">Checkable, not claimed: co-author, SIGCSE TS 2026 (ACM) — <a href="https://doi.org/10.1145/3770761.3777339" target="_blank" rel="noreferrer" class="gold">DOI: 10.1145/3770761.3777339</a> · 77 automated tests on this pipeline.</p>
         <div class="hero-cta" style="margin-top:18px">
           <a href="hwyhaul.html" class="btn btn-ghost">📄 Read the freight-tech case study →</a>
         </div>
@@ -1080,9 +925,9 @@
   <div class="rule"></div>
 
   <!-- FAQ -->
-  <section id="faq">
+  <section class="section" id="faq">
     <div class="sec-head reveal">
-      <div class="kicker">Questions Brokers Ask</div>
+      <div class="eyebrow">Questions Brokers Ask</div>
       <h2>Before you <span class="grad">book a pilot.</span></h2>
     </div>
     <div style="max-width:780px;margin:0 auto;display:grid;gap:12px">
@@ -1114,9 +959,9 @@
   </section>
 
   <!-- FINAL CTA / BOOKING -->
-  <section id="book">
+  <section class="section" id="book">
     <div class="final reveal">
-      <div class="kicker">Get Started</div>
+      <div class="eyebrow">Get Started</div>
       <h2>Watch it <span class="grad">classify a real billing email.</span></h2>
       <p>A 15-minute walkthrough: FreightDesk reads a live message from your inbox and drafts the correct reply in front of you. If it fits, your pilot installs in 3 days.</p>
       <div class="timeline" aria-label="Your pilot timeline">
@@ -1146,11 +991,19 @@
 
 <a href="#book" class="mcta" aria-label="Book my pilot walkthrough">Book my pilot walkthrough →<small>15 min · $999 setup · 14-day setup-fee-back</small></a>
 
-<footer>
-  <p><b style="color:var(--ink);font-family:var(--serif)">FreightDesk AI</b> · by Yusuf Gadelrab · San Jose, CA<br/>
-  <a href="mailto:yusuf.gadelrab06@gmail.com?subject=FreightDesk%20pilot%20slot">Email</a> &nbsp;·&nbsp;
-  <a href="tel:+16693281148">(669) 328-1148</a> &nbsp;·&nbsp;
-  <a href="https://www.linkedin.com/in/yusuf-gadelrab-76246b221" target="_blank" rel="noreferrer">LinkedIn</a></p>
+<footer class="site-footer">
+  <div>FreightDesk AI · by Yusuf Gadelrab · San Jose, CA · founding-client pilots open · 14-day setup-fee-back guarantee</div>
+  <div class="site-footer__links">
+    <a href="/">Work</a>
+    <a href="/resume.html">Resume</a>
+    <a href="/store.html">Store</a>
+    <a href="/kxngsef.html">KXNG SEF</a>
+    <a href="/media-kit.html">Media Kit</a>
+    <a href="mailto:yusuf.gadelrab06@gmail.com?subject=FreightDesk%20pilot%20slot">yusuf.gadelrab06@gmail.com</a>
+    <a href="tel:+16693281148">(669) 328-1148</a>
+    <a href="https://github.com/Yusuf-Gadelrab" target="_blank" rel="noreferrer">GitHub</a>
+    <a href="https://www.linkedin.com/in/yusuf-gadelrab-76246b221" target="_blank" rel="noreferrer">LinkedIn</a>
+  </div>
 </footer>
 
 <script>
@@ -1242,9 +1095,6 @@
 <!-- polish2:minimal-gold -->
 <style id="pv2-css">
 :root{--pv2g:#d4af37;--pv2e:cubic-bezier(.22,.61,.36,1)}
-body{-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility}
-h1,h2,h3{letter-spacing:-.015em}
-p,li{line-height:1.75}
 .pv2-r{opacity:0;transform:translateY(24px);transition:opacity .7s var(--pv2e),transform .7s var(--pv2e)}
 .pv2-r.pv2-in{opacity:1;transform:none}
 html.pv2-nojs .pv2-r,html.pv2-red .pv2-r{opacity:1!important;transform:none!important}
