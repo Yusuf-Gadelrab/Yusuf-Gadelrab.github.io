@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="preload" href="/css/site.css" as="style">
+<meta name="robots" content="index,follow,max-image-preview:large,max-snippet:-1">
+<meta property="og:locale" content="en_US">
+<title>RAG Explained — Retrieval-Augmented Generation, Plainly</title>
+<meta name="description" content="What retrieval-augmented generation is, how chunking, embeddings and reranking fit together, where RAG breaks, and when a graph beats vector search.">
+<link rel="canonical" href="https://yusuf-gadelrab.github.io/guides/rag-explained.html">
+<link rel="icon" type="image/svg+xml" href="https://yusuf-gadelrab.github.io/favicon.svg">
+<link rel="apple-touch-icon" sizes="180x180" href="https://yusuf-gadelrab.github.io/apple-touch-icon.png">
+<meta name="theme-color" content="#0B0B0D">
+<meta name="author" content="Yusuf Gadelrab">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="Yusuf Gadelrab">
+<meta property="og:title" content="RAG Explained, Plainly">
+<meta property="og:description" content="Chunking, embeddings, reranking, and the four places RAG pipelines actually break.">
+<meta property="og:url" content="https://yusuf-gadelrab.github.io/guides/rag-explained.html">
+<meta property="og:image" content="https://yusuf-gadelrab.github.io/og-card.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="RAG Explained, Plainly">
+<meta name="twitter:description" content="Chunking, embeddings, reranking, and the four places RAG pipelines actually break.">
+<meta name="twitter:image" content="https://yusuf-gadelrab.github.io/og-card.png">
+<link rel="alternate" type="text/plain" href="https://yusuf-gadelrab.github.io/llms-full.txt" title="Plain-text profile for language models">
+
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"TechArticle","@id":"https://yusuf-gadelrab.github.io/guides/rag-explained.html#article","headline":"Retrieval-Augmented Generation (RAG), Explained Plainly","name":"Retrieval-Augmented Generation (RAG), Explained Plainly","description":"What retrieval-augmented generation is, how chunking, embeddings and reranking fit together, where RAG breaks, and when a graph beats vector search.","datePublished":"2026-07-29","dateModified":"2026-07-29","inLanguage":"en","author":{"@id":"https://yusuf-gadelrab.github.io/#person"},"publisher":{"@id":"https://yusuf-gadelrab.github.io/#person"},"about":["Retrieval-augmented generation","Embeddings","Applied AI"],"mainEntityOfPage":"https://yusuf-gadelrab.github.io/guides/rag-explained.html","isAccessibleForFree":true,"proficiencyLevel":"Beginner"},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://yusuf-gadelrab.github.io/"},{"@type":"ListItem","position":2,"name":"Guides","item":"https://yusuf-gadelrab.github.io/guides.html"},{"@type":"ListItem","position":3,"name":"RAG Explained"}]}]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","@id":"https://yusuf-gadelrab.github.io/guides/rag-explained.html#faq","mainEntity":[{"@type":"Question","name":"What is retrieval-augmented generation (RAG)?","acceptedAnswer":{"@type":"Answer","text":"RAG is a pattern where relevant text is retrieved from your own documents at question time and placed into the model's prompt, so the answer is grounded in that source material rather than in the model's training data alone."}},{"@type":"Question","name":"What is the difference between RAG and fine-tuning?","acceptedAnswer":{"@type":"Answer","text":"Retrieval supplies facts that change and can be updated by re-indexing documents. Fine-tuning changes behaviour, tone, and format by adjusting weights, and is expensive to update. Most systems that seem to need fine-tuning actually need better retrieval and a better prompt."}},{"@type":"Question","name":"What is chunking in RAG?","acceptedAnswer":{"@type":"Answer","text":"Chunking is splitting documents into passages before embedding them. Chunks that are too small lose the context that made them meaningful; chunks that are too large average several topics into one vector. Splitting on document structure first, with slight overlap and attached metadata, works better than splitting purely on length."}},{"@type":"Question","name":"Why does RAG return wrong answers?","acceptedAnswer":{"@type":"Answer","text":"Four common causes: the retriever never surfaced the right passage, it surfaced an adjacent passage instead of the answer, the model ignored the supplied context, or nothing relevant was retrieved and the model invented an answer. Evaluating retrieval separately from generation is what tells you which one is happening."}},{"@type":"Question","name":"What is reranking?","acceptedAnswer":{"@type":"Answer","text":"Reranking takes the candidate passages returned by fast vector search and scores them with a stronger, slower model, keeping only the best few for the prompt. It substantially improves precision because vector similarity alone is a coarse relevance signal."}},{"@type":"Question","name":"When is a knowledge graph better than vector search?","acceptedAnswer":{"@type":"Answer","text":"When the question is about relationships rather than similarity — prerequisites, dependencies, ordering, or hierarchy. Vector search finds passages that mention a concept; a graph can find the concepts that must come before it. Combining the two is the basis of graph-augmented retrieval."}}]}</script>
+
+<link rel="stylesheet" href="/css/site.css">
+<style>
+  .prose{max-width:68ch}
+  .prose h2{margin:var(--s7) 0 var(--s4);font-size:var(--t-h2)}
+  .prose h3{margin:var(--s6) 0 var(--s3);font-size:var(--t-h3)}
+  .prose p{color:var(--muted);margin:0 0 var(--s4)}
+  .prose ul,.prose ol{color:var(--muted);padding-left:1.2em;margin:0 0 var(--s4)}
+  .prose li{margin-bottom:var(--s2)}
+  .prose a{color:var(--gold-2)}
+  .prose strong{color:var(--fg)}
+  .formula{display:block;padding:var(--s4);margin:0 0 var(--s4);border:1px solid var(--line-soft);
+    border-radius:var(--radius);font-family:ui-monospace,SFMono-Regular,Menlo,monospace;
+    font-size:var(--t-small);color:var(--gold-2);overflow-x:auto;white-space:pre-wrap}
+  .tblwrap{overflow-x:auto;margin:0 0 var(--s4)}
+  .tbl{width:100%;border-collapse:collapse;font-size:var(--t-small)}
+  .tbl th,.tbl td{text-align:left;padding:var(--s3);border-bottom:1px solid var(--line-soft);
+    color:var(--muted);vertical-align:top}
+  .tbl th{font-family:var(--display-pro);color:var(--gold-2);font-weight:600}
+  .callout{padding:var(--s4);border:1px solid var(--line-soft);border-radius:var(--radius);
+    color:var(--muted);font-size:var(--t-small);margin:0 0 var(--s5)}
+  .callout--warn{border-color:var(--gold-2)}
+  .faq-card{padding:var(--s5)}
+  .faq-card h3{font-size:var(--t-h3);margin:0}
+  .faq-card p{color:var(--muted);font-size:var(--t-small);margin:var(--s3) 0 0}
+</style>
+</head>
+<body class="pro">
+
+<a class="skip-link" href="#main">Skip to content</a>
+
+<nav class="site-nav">
+  <a class="site-nav__brand" href="/"><img class="site-nav__lion" src="/img/brand/lion-mark.svg" alt="" width="34" height="34"><span>YUSUF GADELRAB</span></a>
+  <div class="site-nav__links">
+    <a href="/">Work</a>
+    <a href="/guides.html">Guides</a>
+    <a href="/stack.html">Stack</a>
+    <a href="/store.html">Store</a>
+  </div>
+</nav>
+
+<main id="main">
+
+  <header class="section">
+    <p class="eyebrow">Guide · AI</p>
+    <h1 style="margin:var(--s4) 0">RAG, without the diagram everyone reposts</h1>
+    <p class="lead">Retrieval-augmented generation is a simple idea wrapped in intimidating vocabulary: before answering, go and find the relevant text, then put it in the prompt. Everything hard about RAG is in the finding.</p>
+  </header>
+
+  <hr class="divider">
+
+  <section class="section section--tight">
+    <div class="prose">
+      <h2>What problem does RAG solve?</h2>
+      <p>A language model knows what was in its training data and nothing about your documents, your database, or anything that happened after its cutoff. The two ways to fix that are fine-tuning, which bakes knowledge into weights and is expensive to update, and retrieval, which fetches the relevant text at question time and hands it to the model.</p>
+      <p><strong>Retrieval wins for facts that change.</strong> Fine-tuning wins for behaviour and format. Most people who think they need fine-tuning need retrieval and a better prompt.</p>
+      <h2>The pipeline</h2>
+      <ol>
+        <li><strong>Chunk</strong> — split documents into passages small enough to be precise and large enough to be self-contained.</li>
+        <li><strong>Embed</strong> — convert each chunk into a vector that encodes meaning, so similar text lands nearby in vector space.</li>
+        <li><strong>Index</strong> — store the vectors so nearest-neighbour lookups are fast.</li>
+        <li><strong>Retrieve</strong> — embed the question the same way and pull the closest chunks.</li>
+        <li><strong>Rerank</strong> — score the candidates with a stronger model and keep the best few.</li>
+        <li><strong>Generate</strong> — put those chunks in the prompt with an instruction to answer only from them, and to say so when they do not contain the answer.</li>
+      </ol>
+      <h2>Chunking is where most quality is won or lost</h2>
+      <p>Chunk too small and a passage loses the context that made it meaningful — a paragraph that says "this is not permitted" without the sentence naming what "this" is. Chunk too large and the embedding averages several topics into a vector that is close to nothing in particular.</p>
+      <ul>
+        <li>Split on structure — headings, sections, list items — before splitting on length.</li>
+        <li>Overlap adjacent chunks slightly so a sentence spanning a boundary is not orphaned.</li>
+        <li>Attach metadata: source, section title, date. It is needed for both filtering and citation.</li>
+        <li>Keep tables and code blocks intact. Splitting them mid-structure destroys their meaning entirely.</li>
+      </ul>
+      <h2>Where RAG pipelines actually fail</h2>
+      <div class="tblwrap"><table class="tbl">
+        <thead><tr><th>Failure</th><th>What it looks like</th><th>Usual fix</th></tr></thead>
+        <tbody>
+          <tr><td>Retrieval miss</td><td>The answer exists in the corpus but never reaches the prompt</td><td>Hybrid search — combine keyword and vector retrieval; add reranking</td></tr>
+          <tr><td>Right chunk, wrong slice</td><td>The retrieved passage is adjacent to the answer</td><td>Better chunk boundaries, overlap, retrieve neighbours of a hit</td></tr>
+          <tr><td>Model ignores context</td><td>Answer contradicts the supplied passages</td><td>Instruct explicitly to answer only from context; require citations per claim</td></tr>
+          <tr><td>Confident empty answer</td><td>Nothing relevant was retrieved and the model invents something</td><td>Give it permission to say the corpus does not contain the answer, and test that path</td></tr>
+        </tbody>
+      </table></div>
+      <p>The second-order lesson: <strong>evaluate retrieval separately from generation.</strong> If you only measure final answers you cannot tell whether the retriever failed or the model did, and you will tune the wrong half of the system.</p>
+      <h2>When plain vector search is not enough</h2>
+      <p>Vector similarity is good at "find text that means something like this" and bad at relationships — prerequisites, dependencies, ordering, hierarchy. Ask "what do I need to understand before this concept?" and similarity search returns passages that <em>mention</em> the concept, not the ones that <em>precede</em> it.</p>
+      <p>That is where a graph helps: model the entities and the edges between them, walk the graph to assemble context, and use retrieval to fill in the text. This graph-augmented approach is the subject of one of the two SIGCSE Technical Symposium 2026 papers I co-authored — using knowledge graphs to build adaptive curriculum maps, so a tutoring system can reason about prerequisite structure rather than topical similarity.</p>
+      <p>The companion paper looked at bilingual coding for inclusive CS learning (<a href="https://doi.org/10.1145/3770761.3777339" rel="noopener">DOI 10.1145/3770761.3777339</a>), a mixed-methods IRB study of 60 participants that reported a 24% improvement in learner confidence. <a href="/about.html">More on the research →</a></p>
+      <h2>A sane starting build</h2>
+      <ol>
+        <li>Start with 20 real questions and their correct answers. Without an evaluation set you are guessing.</li>
+        <li>Chunk on structure, embed, and retrieve top-20 with hybrid keyword plus vector search.</li>
+        <li>Rerank down to the 3–5 chunks you actually put in the prompt.</li>
+        <li>Require the model to cite the chunk behind each claim, and to refuse when the context is insufficient.</li>
+        <li>Measure retrieval hit rate and answer accuracy separately, then fix whichever is worse.</li>
+      </ol>
+
+      <h2>Tools referenced in this guide</h2>
+      <ul>
+        <li><a href="/about.html">About &amp; research</a> — the SIGCSE 2026 papers, including the graph-augmented retrieval work.</li>
+        <li><a href="/guides/local-llm-ollama.html">Local LLM guide</a> — how to run the generation half of this on your own machine.</li>
+        <li><a href="/stack.html">My stack</a> — the tools I actually use for this work.</li>
+      </ul>
+    </div>
+  </section>
+
+  <hr class="divider">
+
+  <section class="section section--tight" id="faq">
+    <div class="grp-head">
+      <p class="eyebrow">FAQ</p>
+      <h2>Quick answers</h2>
+    </div>
+    <div class="grid" style="margin-top:var(--s6)">
+      <article class="card faq-card"><h3>What is RAG?</h3><p>Fetch the relevant passages from your own documents at question time and put them in the prompt, so the answer is grounded in your sources.</p></article>
+      <article class="card faq-card"><h3>RAG or fine-tuning?</h3><p>Retrieval for facts that change; fine-tuning for behaviour and format. Most &#x27;we need fine-tuning&#x27; problems are retrieval problems.</p></article>
+      <article class="card faq-card"><h3>Why does chunking matter?</h3><p>Too small loses context, too large blurs the vector. Split on structure, overlap slightly, keep tables and code intact, attach metadata.</p></article>
+      <article class="card faq-card"><h3>Why do answers come back wrong?</h3><p>Retrieval miss, adjacent-passage miss, model ignoring context, or invention on an empty retrieval. Measure retrieval separately to tell which.</p></article>
+      <article class="card faq-card"><h3>What is reranking?</h3><p>Rescoring the vector-search candidates with a stronger model and keeping only the best few. Big precision win for little work.</p></article>
+      <article class="card faq-card"><h3>When do you need a graph?</h3><p>When the question is about prerequisites, dependencies, or ordering — relationships that similarity search cannot represent.</p></article>
+    </div>
+  </section>
+
+</main>
+
+<footer class="site-footer">
+  <div class="site-footer__links">
+    <a href="/">Work</a>
+    <a href="/about.html">About</a>
+    <a href="/guides.html">Guides</a>
+    <a href="/apps.html">Apps</a>
+    <a href="/store.html">Store</a>
+    <a href="/privacy.html">Privacy</a>
+    <a href="/terms.html">Terms</a>
+    <a href="mailto:yusuf.gadelrab06@gmail.com">yusuf.gadelrab06@gmail.com</a>
+  </div>
+</footer>
+
+<script src="/js/site.js" defer></script>
+</body>
+</html>

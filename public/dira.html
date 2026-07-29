@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<!-- tech:seo — managed block (SEO / social / structured data / perf / PWA) -->
+<link rel="preload" href="/css/site.css" as="style">
+<meta property="og:locale" content="en_US">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://yusuf-gadelrab.github.io/"},{"@type":"ListItem","position":2,"name":"DIRA","item":"https://yusuf-gadelrab.github.io/dira.html"}]}</script>
+<link rel="manifest" href="/manifest.webmanifest">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<script>addEventListener("load",function(){if("serviceWorker" in navigator)navigator.serviceWorker.register("/sw.js").catch(function(){})});</script>
+<!-- /tech:seo -->
+<title>DIRA — Security Audit for Startup Codebases</title>
+<meta name="description" content="Secrets, dependency CVEs, misconfigs, license risk, git-history leaks and a startup security-readiness score. One free command.">
+<link rel="canonical" href="https://yusuf-gadelrab.github.io/dira.html">
+<link rel="icon" type="image/svg+xml" href="https://yusuf-gadelrab.github.io/favicon-automation.svg">
+<link rel="apple-touch-icon" sizes="180x180" href="https://yusuf-gadelrab.github.io/apple-touch-icon.png">
+<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#d4af37">
+<meta name="theme-color" content="#0B0B0D">
+<meta name="author" content="Yusuf Gadelrab">
+<meta property="og:image" content="https://yusuf-gadelrab.github.io/og/dira-card.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Yusuf Gadelrab">
+<meta property="og:title" content="DIRA — Security Audit for Startup Codebases">
+<meta property="og:description" content="Secrets, dependency CVEs, misconfigs, license risk, git-history leaks and a startup security-readiness score. One free command.">
+<meta property="og:url" content="https://yusuf-gadelrab.github.io/dira.html">
+<meta name="twitter:image" content="https://yusuf-gadelrab.github.io/og/dira-card.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="DIRA — Security Audit for Startup Codebases">
+<meta name="twitter:description" content="Secrets, dependency CVEs, misconfigs, license risk, git-history leaks and a startup security-readiness score. One free command.">
+<meta name="keywords" content="secret scanning, startup security audit, SBOM generator, SOC 2 readiness, dependency CVE scanner, SARIF, devsecops, open source security tool">
+<meta name="robots" content="index,follow">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"SoftwareApplication","name":"DIRA","alternateName":"dira-scan","applicationCategory":"DeveloperApplication","operatingSystem":"macOS, Linux, Windows","url":"https://yusuf-gadelrab.github.io/dira.html","description":"Zero-dependency security audit for startup codebases: secret scanning, dependency CVEs via OSV.dev, 34 misconfiguration rules, dependency license classification, git-history leak detection, live TLS and security-header checks, SBOM generation, and an 18-point startup security-readiness score.","author":{"@type":"Person","name":"Yusuf Gadelrab","url":"https://yusuf-gadelrab.github.io/"},"license":"https://opensource.org/licenses/MIT","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"slogan":"Find it before your first enterprise customer does."}
+</script>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[
+{"@type":"Question","name":"What does DIRA scan for?","acceptedAnswer":{"@type":"Answer","text":"Six scanners: leaked credentials (20 provider patterns plus an entropy-gated generic rule), dependency vulnerabilities resolved against OSV.dev, 34 misconfiguration rules across Docker, Kubernetes, Terraform, GitHub Actions, cloud IAM, frontend code and LLM applications, dependency license risk, secrets buried in git history, and the live domain's TLS and security headers."}},
+{"@type":"Question","name":"Does DIRA send my code anywhere?","acceptedAnswer":{"@type":"Answer","text":"No. Scanning happens entirely on your machine. The only network calls are anonymous package-name lookups to OSV.dev and the public npm and PyPI registries, plus requests to a domain you explicitly pass with --target. The --offline flag disables all of them. Detected secrets are redacted before they reach any report or cache."}},
+{"@type":"Question","name":"How much does DIRA cost?","acceptedAnswer":{"@type":"Answer","text":"Nothing. It is MIT-licensed open source under the MIT license, installable from source with pipx install git+https://github.com/Yusuf-Gadelrab/dira, with PyPI and npm packages on the way."}},
+{"@type":"Question","name":"Can DIRA replace a penetration test or a SOC 2 audit?","acceptedAnswer":{"@type":"Answer","text":"No. DIRA is automated pattern analysis. It cannot see your cloud IAM, your MFA enforcement, or your access reviews — those appear in the report as manual attestations. A clean run means no known bad patterns in the repository, not that the product is secure."}}
+]}
+</script>
+<link rel="stylesheet" href="/css/site.css">
+<style>
+  .rule{height:1px;max-width:var(--maxw);margin:0 auto;
+    background:linear-gradient(90deg,transparent,var(--line) 30%,var(--line) 70%,transparent)}
+  .term{background:#0b0b0c;border:1px solid var(--line);border-radius:14px;overflow:hidden;
+    box-shadow:0 24px 60px rgba(0,0,0,.45)}
+  .term__bar{display:flex;gap:7px;align-items:center;padding:11px 14px;border-bottom:1px solid var(--line);
+    background:linear-gradient(180deg,#131313,#0d0d0d)}
+  .term__dot{width:10px;height:10px;border-radius:50%;background:#2c2c2c}
+  .term__title{margin-left:10px;font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:#8a857d}
+  .term pre{margin:0;padding:20px 22px;overflow-x:auto;font-family:ui-monospace,SFMono-Regular,Menlo,monospace;
+    font-size:13px;line-height:1.75;color:#e8e4dc}
+  .term .g{color:#d4af37}.term .r{color:#ff6b6b}.term .o{color:#ff9f43}.term .y{color:#e9cf7a}
+  .term .d{color:#7d786f}.term .ok{color:#5ac36a}
+  .scanners{display:grid;grid-template-columns:repeat(auto-fit,minmax(258px,1fr));gap:16px}
+  .sc{border:1px solid var(--line);border-radius:14px;padding:20px 22px;background:rgba(255,255,255,.012)}
+  .sc h3{margin:0 0 6px;font-size:17px}
+  .sc .k{font-family:ui-monospace,Menlo,monospace;font-size:11px;letter-spacing:.12em;text-transform:uppercase;
+    color:#d4af37;margin-bottom:9px;display:block}
+  .sc p{margin:0;font-size:14.5px;color:#a9a49b;line-height:1.65}
+  .steps{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:16px;counter-reset:s}
+  .step{border:1px solid var(--line);border-radius:14px;padding:20px 22px}
+  .step:before{counter-increment:s;content:"0" counter(s);font-family:ui-monospace,Menlo,monospace;
+    font-size:12px;color:#d4af37;letter-spacing:.14em}
+  .step h3{margin:8px 0 6px;font-size:17px}
+  .step p{margin:0;color:#a9a49b;font-size:14.5px}
+  .kv{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:14px;text-align:center}
+  .kv div{border:1px solid var(--line);border-radius:14px;padding:20px 12px}
+  .kv b{display:block;font-family:"Iowan Old Style",Georgia,serif;font-size:34px;color:#e9cf7a;line-height:1.1}
+  .kv span{font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:#8a857d}
+  code.inline{font-family:ui-monospace,Menlo,monospace;font-size:.92em;color:#e9cf7a;
+    background:rgba(212,175,55,.08);border:1px solid rgba(212,175,55,.18);padding:2px 7px;border-radius:6px}
+  .limits{border:1px solid var(--line);border-left:3px solid #d4af37;border-radius:12px;padding:20px 24px;
+    background:rgba(212,175,55,.04)}
+  .limits p{color:#b6b1a8;margin:0 0 10px}
+  .limits p:last-child{margin-bottom:0}
+</style>
+<!-- geo:entity — canonical Person node, one entity across every page -->
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Person","@id":"https://yusuf-gadelrab.github.io/#person","name":"Yusuf Gadelrab","url":"https://yusuf-gadelrab.github.io/","mainEntityOfPage":"https://yusuf-gadelrab.github.io/about.html","jobTitle":"Computer Science Student, AI Builder & Researcher","email":"mailto:yusuf.gadelrab06@gmail.com","sameAs":["https://github.com/Yusuf-Gadelrab","https://www.linkedin.com/in/yusuf-gadelrab-76246b221","https://www.instagram.com/_kxng_sef/","https://doi.org/10.1145/3770761.3777339"],"affiliation":{"@type":"CollegeOrUniversity","name":"San José State University","url":"https://www.sjsu.edu/"},"address":{"@type":"PostalAddress","addressLocality":"San Jose","addressRegion":"CA","addressCountry":"US"}}</script>
+</head>
+<body class="pro">
+<div id="progress"></div>
+
+<a class="skip-link" href="#main">Skip to content</a>
+<nav class="site-nav" id="nav"><a class="site-nav__brand" href="/"><img class="site-nav__lion" src="/img/brand/lion-mark.svg" alt="" width="34" height="34"><span>YUSUF GADELRAB</span></a><div class="site-nav__links" id="navLinks"><a href="/">Work</a><a href="/resume.html">Resume</a><a href="/guides.html">Guides</a>
+    <a href="/store.html">Store</a><a href="/apps.html">Apps</a><a href="/kxngsef.html">KXNG SEF</a><a href="/media-kit.html">Media Kit</a></div><button class="menu-btn" id="menuBtn" aria-label="Menu" hidden>&#9776;</button></nav>
+
+<main id="main">
+
+<section class="section" style="padding-top:96px">
+  <div class="wrap" style="text-align:center;max-width:860px">
+    <div class="eyebrow">Dhahab · Open Source</div>
+    <h1 style="margin:14px 0 8px">DIRA <span style="color:#8a857d;font-size:.5em">درع</span></h1>
+    <p class="lead" style="margin:0 auto 10px;max-width:640px">
+      Security audit for startup codebases. One command, zero dependencies, free.
+    </p>
+    <p style="color:#8a857d;max-width:620px;margin:0 auto 30px">
+      Secrets · dependency CVEs · 34 misconfiguration rules · license risk · git-history leaks ·
+      live TLS &amp; headers · SBOM · security-readiness score
+    </p>
+    <p>
+      <a class="btn btn-gold" href="https://github.com/Yusuf-Gadelrab/dira">Get it on GitHub</a>
+      <a class="btn btn-ghost" href="#install">How to run it</a>
+    </p>
+  </div>
+</section>
+
+<section class="section" style="padding-top:0">
+  <div class="wrap" style="max-width:820px">
+    <div class="term">
+      <div class="term__bar">
+        <span class="term__dot"></span><span class="term__dot"></span><span class="term__dot"></span>
+        <span class="term__title">dira scan . -t yourapp.com</span>
+      </div>
+<pre><span class="d">$</span> dira scan . -t yourapp.com
+
+  <span class="g">SECURITY GRADE</span>    <span class="r">F</span>   <span class="d">risk 72/100</span>
+  <span class="g">STARTUP READINESS</span> <span class="y">38%</span>  <span class="d">Early-stage gaps (30/80 pts)</span>
+
+  <span class="r">CRITICAL 2</span>  <span class="o">HIGH 5</span>  <span class="y">MEDIUM 11</span>  <span class="d">LOW 6</span>
+
+  <span class="r">─── CRITICAL ─────────────────────────────────────</span>
+  <span class="r">●</span> Stripe secret/restricted key
+      <span class="g">src/lib/billing.ts:14</span>  <span class="d">sk_l************XwEr</span>
+      <span class="d">→ Revoke the key at the provider, issue a new one, move it to a
+        secret manager, and purge it from git history.</span>
+
+  <span class="r">●</span> GitHub token found in git history <span class="d">(commit 8f21ac3)</span>
+      <span class="g">git history @ 8f21ac3</span>
+      <span class="d">→ Deleting the file does not remove it from history — rotate now.</span>
+
+  <span class="o">─── HIGH ─────────────────────────────────────────</span>
+  <span class="o">●</span> lodash 4.17.11 — CVE-2021-23337: command injection
+      <span class="g">package-lock.json</span>  <span class="d">npm:lodash@4.17.11</span>
+      <span class="d">→ Upgrade lodash to 4.17.21 or later.</span>
+
+  <span class="o">●</span> Secret exposed through a public build-time env var
+      <span class="g">.env.production:7</span>  <span class="d">NEXT_PUBLIC_STRIPE_SECRET_KEY</span>
+      <span class="d">→ Compiled into the JS bundle and readable by every visitor.</span>
+
+  <span class="d">Licenses  MIT ×29  BSD-3-Clause ×14  Apache-2.0 ×6  MPL-2.0 ×2</span>
+
+  <span class="d">418 files · 402 cached · 87 deps · 0.9s</span>
+</pre>
+    </div>
+  </div>
+</section>
+
+<div class="rule"></div>
+
+<section class="section">
+  <div class="wrap">
+    <div class="eyebrow">Why it exists</div>
+    <h2>Your first enterprise customer will ask. Better you find it first.</h2>
+    <p class="lead" style="max-width:720px">
+      Startup security tooling is either a platform that costs more than your runway or five separate
+      CLIs nobody ever wires up. So the leaked Stripe key sits in the repo until a security
+      questionnaire, an acquirer's diligence checklist, or somebody else finds it.
+    </p>
+    <p style="color:#a9a49b;max-width:720px">
+      DIRA is one command that answers the question founders actually get asked — <em>is this codebase
+      safe enough to sell to an enterprise?</em> — and prints the exact fix beside every finding.
+    </p>
+
+    <div class="kv" style="margin-top:34px">
+      <div><b>6</b><span>Scanners</span></div>
+      <div><b>54</b><span>Detection rules</span></div>
+      <div><b>0</b><span>Dependencies</span></div>
+      <div><b>0.9s</b><span>Warm re-scan</span></div>
+    </div>
+  </div>
+</section>
+
+<div class="rule"></div>
+
+<section class="section">
+  <div class="wrap">
+    <div class="eyebrow">What it checks</div>
+    <h2>Six scanners, one pass</h2>
+    <div class="scanners" style="margin-top:26px">
+      <div class="sc"><span class="k">secrets</span><h3>Leaked credentials</h3>
+        <p>20 provider patterns — AWS, Stripe, OpenAI, Anthropic, GitHub, GCP, Slack, npm, database
+        DSNs, private keys — plus an entropy-gated generic rule. Every value is redacted before it
+        reaches a report.</p></div>
+      <div class="sc"><span class="k">deps</span><h3>Dependency CVEs</h3>
+        <p>Every package in your lockfiles resolved against OSV.dev — npm, PyPI, Go, crates.io,
+        RubyGems. Free, batched, no API key, with the exact fixed version to upgrade to.</p></div>
+      <div class="sc"><span class="k">config</span><h3>34 misconfiguration rules</h3>
+        <p>Docker, Kubernetes, Terraform, GitHub Actions, cloud IAM, frontend code
+        (<code class="inline">NEXT_PUBLIC_</code> secrets, tokens in localStorage, XSS sinks) and LLM
+        apps (browser-side provider keys, prompt concatenation, model output piped to an executor).</p></div>
+      <div class="sc"><span class="k">licenses</span><h3>License risk</h3>
+        <p>Each dependency's license resolved and classified — permissive, file-level copyleft,
+        GPL, AGPL/SSPL. The finding that kills acquisitions, with an inventory for your diligence
+        folder.</p></div>
+      <div class="sc"><span class="k">git</span><h3>History leaks</h3>
+        <p>Deleting the file does not rotate the key. DIRA reads commit diffs for secrets that were
+        removed from the working tree but still live in history, plus tracked
+        <code class="inline">.env</code> files and credentials in the remote URL.</p></div>
+      <div class="sc"><span class="k">surface</span><h3>The live domain</h3>
+        <p>TLS validity and expiry, HSTS/CSP/nosniff/frame-options, cookie flags, HTTP→HTTPS
+        redirect, and whether <code class="inline">/.env</code> or <code class="inline">/.git/config</code>
+        is being served to the internet.</p></div>
+    </div>
+  </div>
+</section>
+
+<div class="rule"></div>
+
+<section class="section">
+  <div class="wrap">
+    <div class="eyebrow">The differentiator</div>
+    <h2>A readiness score, not just a bug list</h2>
+    <p class="lead" style="max-width:720px">
+      Eighteen weighted checks modelled on what SOC&nbsp;2 auditors and enterprise security
+      questionnaires actually ask for: lock-pinned dependencies, automated updates, CI, tests,
+      secret scanning, SAST, CODEOWNERS, a disclosure policy, infrastructure as code, error
+      tracking, an incident-response plan, backups, privacy documentation.
+    </p>
+    <p style="color:#a9a49b;max-width:720px">
+      You get a percentage, a tier, and the specific missing artifact — plus the manual
+      attestations no scanner can verify for you (MFA enforcement, branch protection,
+      least-privilege IAM, same-day offboarding). Then <code class="inline">dira fix --apply</code>
+      writes the boring ones for you.
+    </p>
+  </div>
+</section>
+
+<div class="rule"></div>
+
+<section class="section" id="install">
+  <div class="wrap">
+    <div class="eyebrow">Run it</div>
+    <h2>Three minutes to your first report</h2>
+    <div class="steps" style="margin-top:26px">
+      <div class="step"><h3>Scan</h3>
+        <p><code class="inline">pipx install git+https://github.com/Yusuf-Gadelrab/dira@v1.1.0</code>,
+        then <code class="inline">dira scan .</code> — PyPI and npm packages are on the way.</p></div>
+      <div class="step"><h3>Share</h3>
+        <p><code class="inline">-f html -o report.html</code> produces a client-shareable audit.
+        <code class="inline">-f sarif</code> lands findings in GitHub's Security tab.</p></div>
+      <div class="step"><h3>Gate</h3>
+        <p><code class="inline">dira init</code> installs the CI workflow and pre-commit hook.
+        PRs scan only what changed; exit code 1 fails the build.</p></div>
+      <div class="step"><h3>Fix</h3>
+        <p><code class="inline">dira fix --apply</code> writes the missing policy files and
+        .gitignore rules, then prints the rotations only you can do.</p></div>
+    </div>
+  </div>
+</section>
+
+<div class="rule"></div>
+
+<section class="section">
+  <div class="wrap" style="max-width:820px">
+    <div class="eyebrow">Honest limits</div>
+    <h2>What it is not</h2>
+    <div class="limits" style="margin-top:22px">
+      <p>DIRA is automated pattern analysis. It does <strong>not</strong> replace a penetration test,
+      a threat model, or a real SOC&nbsp;2 audit, and it cannot see your cloud IAM, your MFA posture,
+      or your access reviews — those are listed as manual attestations in the report.</p>
+      <p>A clean run means "no known bad patterns in this repository". It does not mean "secure".</p>
+      <p>Scanning a domain you do not own or have permission to test may be unlawful. The
+      <code class="inline">--target</code> flag makes unauthenticated requests to a handful of
+      well-known paths — point it at your own infrastructure only.</p>
+      <p>Your code never leaves your machine. The only network calls are anonymous package-name
+      lookups to OSV.dev, npm and PyPI, and requests to a domain you name yourself.
+      <code class="inline">--offline</code> disables all of them.</p>
+    </div>
+  </div>
+</section>
+
+<section class="section" style="padding-top:0">
+  <div class="wrap" style="text-align:center;max-width:700px">
+    <h2>Scan your repo in the next five minutes</h2>
+    <p class="lead" style="margin:0 auto 26px">MIT licensed. Free forever. No account, no telemetry.</p>
+    <p>
+      <a class="btn btn-gold" href="https://github.com/Yusuf-Gadelrab/dira">View on GitHub</a>
+      <a class="btn btn-ghost" href="mailto:yusuf.gadelrab06@gmail.com?subject=DIRA%20security%20audit">Ask me to run it for you</a>
+    </p>
+
+    <div style="margin-top:38px;padding-top:30px;border-top:1px solid var(--line-soft)">
+      <p style="margin:0 0 6px;font-family:var(--display-pro);letter-spacing:.4px">Not on GitHub yet?</p>
+      <p style="margin:0 0 16px;color:var(--muted);font-size:var(--t-small)">Leave your email and you'll hear the day DIRA lands on PyPI and npm. One message, nothing else.</p>
+      <form id="f-dira" novalidate style="display:flex;gap:8px;flex-wrap:wrap;justify-content:center;max-width:420px;margin:0 auto">
+        <input type="email" id="e-dira" placeholder="you@email.com" autocomplete="email" aria-label="Email for the DIRA release list" required
+          style="flex:1 1 190px;min-width:0;background:var(--panel2);border:1px solid var(--line);border-radius:var(--radius);color:var(--bone);padding:10px 12px;font-family:var(--body-font);font-size:13px">
+        <button class="btn btn-gold btn-sm" type="submit">Tell me at launch</button>
+      </form>
+      <p id="n-dira" style="margin-top:10px;font-size:11px;color:var(--faint)">Used for this one announcement. <a href="/legal.html">Legal</a>
+    <a href="/privacy.html">Privacy</a> · <a href="/waitlist.html">all waitlists</a></p>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer class="site-footer">
+  <div>DIRA · by Yusuf Gadelrab · San Jose, CA · MIT licensed · automated analysis, not a penetration test</div>
+  <div class="site-footer__links">
+    <a href="/writing.html">Writing</a>
+    <a href="https://github.com/Yusuf-Gadelrab/dira" target="_blank" rel="noreferrer">Source</a>
+    <a href="/risk-tools.html">Risk Toolkit</a>
+    <a href="/freight-tools.html">Freight Calculators</a>
+    <a href="/apply.html">Apply OS</a>
+    <a href="/visa.html">Visa Navigator</a>
+    <a href="/">Work</a>
+    <a href="/resume.html">Resume</a>
+    <a href="/store.html">Store</a>
+    <a href="/apps.html">Apps</a>
+    <a href="/kxngsef.html">KXNG SEF</a>
+    <a href="/media-kit.html">Media Kit</a>
+    <a href="mailto:yusuf.gadelrab06@gmail.com?subject=DIRA">yusuf.gadelrab06@gmail.com</a>
+    <a href="https://github.com/Yusuf-Gadelrab" target="_blank" rel="noreferrer">GitHub</a>
+    <a href="https://www.linkedin.com/in/yusuf-gadelrab-76246b221" target="_blank" rel="noreferrer">LinkedIn</a>
+    <a href="/brand.html">Brand</a>
+    <a href="/stack.html">Stack</a>
+    <a href="/everything.html">Everything</a>
+    <a href="/codeswitch.html">CODESWITCH</a>
+    <a href="/circle.html">Circle</a>
+    <a href="/waitlist.html">Waitlists</a>
+    <a href="/privacy.html">Privacy</a>
+    <a href="/terms.html">Terms</a>
+  </div>
+</footer>
+
+<script>
+  var nav=document.getElementById('nav'), prog=document.getElementById('progress');
+  function onScroll(){
+    var y=window.scrollY||document.documentElement.scrollTop;
+    nav.classList.toggle('scrolled', y>20);
+    var h=document.documentElement.scrollHeight-window.innerHeight;
+    prog.style.width=(h>0?(y/h*100):0)+'%';
+  }
+  window.addEventListener('scroll',onScroll,{passive:true}); onScroll();
+
+  var menuBtn=document.getElementById('menuBtn'), navLinks=document.getElementById('navLinks');
+  menuBtn.addEventListener('click',function(){navLinks.classList.toggle('open')});
+  navLinks.querySelectorAll('a').forEach(function(a){a.addEventListener('click',function(){navLinks.classList.remove('open')})});
+</script>
+<script src="/js/waitlist.js" defer></script>
+<script>
+addEventListener("DOMContentLoaded", function () {
+  if (window.YGWaitlist) YGWaitlist.attach("f-dira", "e-dira", "n-dira", "DIRA Release");
+});
+</script>
+</body>
+</html>

@@ -157,7 +157,22 @@ body.pro .eyebrow{font-family:var(--display-pro);font-weight:600;letter-spacing:
   border-bottom:1px solid var(--line);
 }
 .site-nav__brand{font-family:var(--display);text-transform:uppercase;letter-spacing:2px;
-  font-size:16px;white-space:nowrap}
+  font-size:16px;white-space:nowrap;display:inline-flex;align-items:center;gap:10px}
+.site-nav__lion{width:34px;height:34px;display:block;flex:none;
+  transition:transform .35s var(--ease),filter .35s var(--ease)}
+.site-nav__brand:hover .site-nav__lion{transform:rotate(-6deg) scale(1.06);
+  filter:drop-shadow(0 0 10px rgba(212,175,55,.45))}
+/* Lion mark — shared across static pages (page headers, footers, product covers) */
+.lion-mark{display:block;flex:none}
+.lion-header{display:flex;align-items:center;gap:14px;margin-bottom:var(--s3,18px)}
+.lion-header .lion-mark{width:52px;height:52px}
+.lion-footer{width:40px;height:40px;opacity:.85;margin:0 auto 14px;display:block}
+/* inline-block, not block: the mark then follows the hero's own text-align, so it
+   centres on centred pages instead of sticking to the left gutter */
+.page-lion{display:inline-block;width:46px;height:46px;margin:0 0 10px;
+  animation:lion-in .7s var(--ease) both}
+@keyframes lion-in{from{opacity:0;transform:translateY(-6px) scale(.9)}to{opacity:1;transform:none}}
+@media(prefers-reduced-motion:reduce){.page-lion{animation:none}}
 body.pro .site-nav__brand{font-family:var(--display-pro);font-weight:700;letter-spacing:-.01em;
   text-transform:none;font-size:17px}
 .site-nav__links{display:flex;flex-wrap:wrap;gap:var(--s5);align-items:center}
@@ -238,6 +253,10 @@ input,textarea,select{
   font-family:inherit;font-size:var(--t-body);
 }
 input:focus,textarea:focus,select:focus{border-color:var(--gold);outline:none}
+/* iOS Safari zooms the whole viewport when a focused field is under 16px, and
+   --t-body is 15px. Floor form fields at 16px without touching body copy. */
+input,textarea,select{font-size:max(16px,var(--t-body))}
+
 label{display:block;font-size:var(--t-small);color:var(--muted);margin-bottom:var(--s2)}
 
 /* ---------- footer ---------- */

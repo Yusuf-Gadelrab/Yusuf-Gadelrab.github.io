@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="preload" href="/css/site.css" as="style">
+<meta name="robots" content="index,follow,max-image-preview:large,max-snippet:-1">
+<meta property="og:locale" content="en_US">
+<title>Build an Installable Offline PWA With No Backend</title>
+<meta name="description" content="How to build an installable offline PWA with no backend: manifest fields, service worker caching, cache versioning, and how iOS install differs.">
+<link rel="canonical" href="https://yusuf-gadelrab.github.io/guides/offline-pwa.html">
+<link rel="icon" type="image/svg+xml" href="https://yusuf-gadelrab.github.io/favicon.svg">
+<link rel="apple-touch-icon" sizes="180x180" href="https://yusuf-gadelrab.github.io/apple-touch-icon.png">
+<meta name="theme-color" content="#0B0B0D">
+<meta name="author" content="Yusuf Gadelrab">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="Yusuf Gadelrab">
+<meta property="og:title" content="Build an Installable Offline PWA With No Backend">
+<meta property="og:description" content="Manifest, service worker caching, cache versioning, storage choice, and how install differs on iOS and Android.">
+<meta property="og:url" content="https://yusuf-gadelrab.github.io/guides/offline-pwa.html">
+<meta property="og:image" content="https://yusuf-gadelrab.github.io/og-card.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Build an Installable Offline PWA With No Backend">
+<meta name="twitter:description" content="Manifest, service worker caching, cache versioning, storage choice, and how install differs on iOS and Android.">
+<meta name="twitter:image" content="https://yusuf-gadelrab.github.io/og-card.png">
+<link rel="alternate" type="text/plain" href="https://yusuf-gadelrab.github.io/llms-full.txt" title="Plain-text profile for language models">
+
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"TechArticle","@id":"https://yusuf-gadelrab.github.io/guides/offline-pwa.html#article","headline":"Building an Installable Offline PWA With No Backend","name":"Building an Installable Offline PWA With No Backend","description":"How to build an installable offline PWA with no backend: manifest fields, service worker caching, cache versioning, and how iOS install differs.","datePublished":"2026-07-29","dateModified":"2026-07-29","inLanguage":"en","author":{"@id":"https://yusuf-gadelrab.github.io/#person"},"publisher":{"@id":"https://yusuf-gadelrab.github.io/#person"},"about":["Progressive web apps","Service workers","Offline-first design"],"mainEntityOfPage":"https://yusuf-gadelrab.github.io/guides/offline-pwa.html","isAccessibleForFree":true,"proficiencyLevel":"Intermediate"},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://yusuf-gadelrab.github.io/"},{"@type":"ListItem","position":2,"name":"Guides","item":"https://yusuf-gadelrab.github.io/guides.html"},{"@type":"ListItem","position":3,"name":"Offline PWA"}]}]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","@id":"https://yusuf-gadelrab.github.io/guides/offline-pwa.html#faq","mainEntity":[{"@type":"Question","name":"What makes a website installable as a PWA?","acceptedAnswer":{"@type":"Answer","text":"Three things: it is served over HTTPS, it links a valid web app manifest with name, icons, start_url and display, and it registers a service worker with a fetch handler. If any one is missing the browser simply never offers installation, with no error message shown."}},{"@type":"Question","name":"What is the difference between cache-first and network-first?","acceptedAnswer":{"@type":"Answer","text":"Cache-first serves from the cache and only touches the network on a miss, which suits the app shell — HTML, CSS, JS and icons that change only on deploy. Network-first tries the network and falls back to the cache, which suits data that goes stale, like prices or API responses."}},{"@type":"Question","name":"Why do users still see the old version after I deploy a PWA?","acceptedAnswer":{"@type":"Answer","text":"Because the new service worker installs but stays in a waiting state until every tab controlled by the old one is closed, and reloading a tab does not close it. Fix it by bumping the cache name on every deploy, deleting old caches during the activate event, and calling skipWaiting() plus clients.claim()."}},{"@type":"Question","name":"Should I use localStorage or IndexedDB?","acceptedAnswer":{"@type":"Answer","text":"Use localStorage for small amounts of JSON — a few thousand records is comfortable within its roughly 5 MB limit. Move to IndexedDB when you need to store binary data, query with indexes instead of loading everything, or when synchronous writes start causing visible jank."}},{"@type":"Question","name":"How do you install a PWA on an iPhone?","acceptedAnswer":{"@type":"Answer","text":"Open the site in Safari, tap the Share button, then choose Add to Home Screen. iOS provides no automatic install prompt and no beforeinstallprompt event, so the page cannot trigger it — and third-party browsers on iOS have historically not offered the option at all."}},{"@type":"Question","name":"Can a PWA work with no backend at all?","acceptedAnswer":{"@type":"Answer","text":"Yes. If all state lives in the user's browser through localStorage or IndexedDB and the service worker caches the app shell, there is nothing left for a server to do beyond serving static files. That also means no accounts, no sync, and no server-side compute."}}]}</script>
+
+<link rel="stylesheet" href="/css/site.css">
+<style>
+  .prose{max-width:68ch}
+  .prose h2{margin:var(--s7) 0 var(--s4);font-size:var(--t-h2)}
+  .prose h3{margin:var(--s6) 0 var(--s3);font-size:var(--t-h3)}
+  .prose p{color:var(--muted);margin:0 0 var(--s4)}
+  .prose ul,.prose ol{color:var(--muted);padding-left:1.2em;margin:0 0 var(--s4)}
+  .prose li{margin-bottom:var(--s2)}
+  .prose a{color:var(--gold-2)}
+  .prose strong{color:var(--fg)}
+  .formula{display:block;padding:var(--s4);margin:0 0 var(--s4);border:1px solid var(--line-soft);
+    border-radius:var(--radius);font-family:ui-monospace,SFMono-Regular,Menlo,monospace;
+    font-size:var(--t-small);color:var(--gold-2);overflow-x:auto;white-space:pre-wrap}
+  .tblwrap{overflow-x:auto;margin:0 0 var(--s4)}
+  .tbl{width:100%;border-collapse:collapse;font-size:var(--t-small)}
+  .tbl th,.tbl td{text-align:left;padding:var(--s3);border-bottom:1px solid var(--line-soft);
+    color:var(--muted);vertical-align:top}
+  .tbl th{font-family:var(--display-pro);color:var(--gold-2);font-weight:600}
+  .callout{padding:var(--s4);border:1px solid var(--line-soft);border-radius:var(--radius);
+    color:var(--muted);font-size:var(--t-small);margin:0 0 var(--s5)}
+  .callout--warn{border-color:var(--gold-2)}
+  .faq-card{padding:var(--s5)}
+  .faq-card h3{font-size:var(--t-h3);margin:0}
+  .faq-card p{color:var(--muted);font-size:var(--t-small);margin:var(--s3) 0 0}
+</style>
+</head>
+<body class="pro">
+
+<a class="skip-link" href="#main">Skip to content</a>
+
+<nav class="site-nav">
+  <a class="site-nav__brand" href="/"><img class="site-nav__lion" src="/img/brand/lion-mark.svg" alt="" width="34" height="34"><span>YUSUF GADELRAB</span></a>
+  <div class="site-nav__links">
+    <a href="/">Work</a>
+    <a href="/guides.html">Guides</a>
+    <a href="/stack.html">Stack</a>
+    <a href="/apps.html">Apps</a>
+  </div>
+</nav>
+
+<main id="main">
+
+  <header class="section">
+    <p class="eyebrow">Guide · Web</p>
+    <h1 style="margin:var(--s4) 0">An installable app, no backend, no app store</h1>
+    <p class="lead">A progressive web app is three files on top of a normal website: a manifest, a service worker, and a storage decision. Get those right and the thing installs to a home screen, launches without a browser chrome, and works on a plane.</p>
+  </header>
+
+  <hr class="divider">
+
+  <section class="section section--tight">
+    <div class="prose">
+      <h2>What actually makes a site installable</h2>
+      <p>Browsers apply a short checklist before they will offer installation: the site is served over HTTPS, it links a valid web app manifest with the required fields, and it registers a service worker with a fetch handler. Miss any one and the install prompt silently never appears — there is no error, which is why this is the first thing to verify.</p>
+      <p>Everything else — offline behaviour, caching strategy, storage — is your design problem, not a requirement. A PWA that installs but breaks offline is worse than a bookmark, so the caching work is where the actual engineering is.</p>
+      <h2>The manifest fields that matter</h2>
+      <p>A manifest is a small JSON file linked from the head. Most of the spec is optional; a handful of fields decide whether the install looks like an app or looks like a shortcut.</p>
+      <span class="formula">&lt;link rel="manifest" href="/apps/tradelog/"&gt;
+
+{
+  "name": "TradeLog",
+  "short_name": "TradeLog",
+  "start_url": "/apps/tradelog/",
+  "scope": "/apps/tradelog/",
+  "display": "standalone",
+  "background_color": "#0B0B0D",
+  "theme_color": "#0B0B0D",
+  "icons": [
+    {"src": "icon-192.png", "sizes": "192x192", "type": "image/png"},
+    {"src": "icon-512.png", "sizes": "512x512", "type": "image/png"},
+    {"src": "icon-512-maskable.png", "sizes": "512x512",
+     "type": "image/png", "purpose": "maskable"}
+  ]
+}</span>
+      <ul>
+        <li><strong>start_url</strong> — where the app opens from the home screen. Point it at the app, not at the site root, or every launch lands on your homepage.</li>
+        <li><strong>scope</strong> — the URL prefix the app considers its own. Links outside scope open in the browser instead of in the app window.</li>
+        <li><strong>display</strong> — <code>standalone</code> removes browser chrome. <code>fullscreen</code> also removes the status bar; <code>minimal-ui</code> keeps a thin bar.</li>
+        <li><strong>short_name</strong> — what appears under the icon. Over about 12 characters it gets truncated on a phone.</li>
+        <li><strong>icons</strong> — 192px and 512px PNGs at minimum, plus a <code>maskable</code> variant with roughly 20% safe padding so Android does not crop your logo into a circle.</li>
+        <li><strong>background_color</strong> — the splash colour while the app boots. Set it to your real background or the launch flashes white.</li>
+      </ul>
+      <h2>Service worker caching strategies</h2>
+      <p>A service worker is a script that sits between the app and the network and can answer requests from a cache. There are two strategies worth learning and one rule for choosing between them: <strong>cache-first for things that rarely change, network-first for things that do.</strong></p>
+      <div class="tblwrap"><table class="tbl">
+        <thead><tr><th>Strategy</th><th>How it works</th><th>Use it for</th></tr></thead>
+        <tbody>
+          <tr><td>Cache-first</td><td>Serve from cache; only hit the network on a miss</td><td>App shell: HTML, CSS, JS, icons, fonts</td></tr>
+          <tr><td>Network-first</td><td>Try the network; fall back to cache on failure</td><td>API responses, prices, anything time-sensitive</td></tr>
+          <tr><td>Stale-while-revalidate</td><td>Serve cache immediately, refresh cache in background</td><td>Content that can be one version old without harm</td></tr>
+          <tr><td>Network-only</td><td>Never cache</td><td>Analytics, POSTs, anything with side effects</td></tr>
+        </tbody>
+      </table></div>
+      <p>For an app with no backend, this collapses nicely: everything is app shell, so almost everything is cache-first, and there is no data endpoint to worry about because the data lives in the browser.</p>
+      <span class="formula">const CACHE = 'tradelog-v7';
+const SHELL = ['/apps/tradelog/', '/apps/tradelog/index.html',
+               '/apps/tradelog/app.js', '/apps/tradelog/app.css'];
+
+self.addEventListener('install', e =&gt; {
+  e.waitUntil(caches.open(CACHE).then(c =&gt; c.addAll(SHELL)));
+  self.skipWaiting();
+});
+
+self.addEventListener('activate', e =&gt; {
+  e.waitUntil(
+    caches.keys().then(keys =&gt; Promise.all(
+      keys.filter(k =&gt; k !== CACHE).map(k =&gt; caches.delete(k))
+    )).then(() =&gt; self.clients.claim())
+  );
+});
+
+self.addEventListener('fetch', e =&gt; {
+  e.respondWith(caches.match(e.request).then(r =&gt; r || fetch(e.request)));
+});</span>
+      <h2>Cache versioning, and the classic bug</h2>
+      <p>The single most common PWA bug: <strong>you ship a fix, users reload, and they still see the old app.</strong> This is not a mystery, it is the service worker lifecycle working as designed. A new worker installs but stays in a <em>waiting</em> state until every tab controlled by the old one is closed — and reloading a tab does not close it.</p>
+      <ol>
+        <li><strong>Bump the cache name on every deploy.</strong> <code>tradelog-v6</code> becomes <code>tradelog-v7</code>. If the name does not change, <code>addAll</code> writes into the same bucket and old entries survive.</li>
+        <li><strong>Delete old caches in <code>activate</code>.</strong> Otherwise every version you ever shipped stays on the user's disk forever.</li>
+        <li><strong>Call <code>skipWaiting()</code> and <code>clients.claim()</code></strong> so the new worker takes over immediately instead of waiting for all tabs to close.</li>
+        <li><strong>Never cache the service worker file itself with a long max-age.</strong> If <code>sw.js</code> is cached by the HTTP layer, the browser cannot see that it changed, and the app is frozen until the cache header expires.</li>
+      </ol>
+      <p class="callout callout--warn">The failure mode is silent and it looks like your deploy did not work. Before debugging your build, open DevTools → Application → Service Workers and check whether a worker is stuck in <em>waiting</em>. That is the answer roughly nine times out of ten.</p>
+      <h2>localStorage or IndexedDB?</h2>
+      <p>Both keep data on the user's device. They are not interchangeable.</p>
+      <div class="tblwrap"><table class="tbl">
+        <thead><tr><th></th><th>localStorage</th><th>IndexedDB</th></tr></thead>
+        <tbody>
+          <tr><td>API</td><td>Synchronous, three methods, trivial</td><td>Asynchronous, transactional, verbose</td></tr>
+          <tr><td>Data type</td><td>Strings only — you JSON round-trip everything</td><td>Structured objects, blobs, files</td></tr>
+          <tr><td>Practical size</td><td>About 5 MB per origin</td><td>Large — typically a share of free disk</td></tr>
+          <tr><td>Querying</td><td>None. You load everything and filter in JS</td><td>Indexes and cursors</td></tr>
+          <tr><td>Blocking</td><td>Blocks the main thread on every read and write</td><td>Off the main thread</td></tr>
+        </tbody>
+      </table></div>
+      <p>The rule I use: <strong>localStorage until it hurts.</strong> A few thousand records of JSON is fine — a trade journal, a weight log, a habit checklist. Move to IndexedDB when you are storing binary data, when you need to query rather than load-everything-and-filter, or when the payload passes a megabyte or two and the synchronous writes start showing up as jank.</p>
+      <p>One caveat for either: browser storage is not backup. It survives reloads and reboots, but it does not survive a cleared browsing history, and on iOS it can be evicted after extended non-use. Ship an export button and say so plainly.</p>
+      <h2>Installing on iOS versus Android</h2>
+      <p>This is the part that costs support emails, because the two platforms behave completely differently and only one of them tells the user anything.</p>
+      <ul>
+        <li><strong>Android Chrome</strong> — the browser detects installability and surfaces its own prompt. You can also capture the <code>beforeinstallprompt</code> event and trigger it from your own button, which converts far better than waiting for the browser banner.</li>
+        <li><strong>iOS Safari</strong> — there is no prompt and no <code>beforeinstallprompt</code> event. The user must tap <strong>Share → Add to Home Screen</strong> manually. Nothing on the page can trigger it.</li>
+        <li><strong>iOS third-party browsers</strong> — Chrome and Firefox on iOS have historically been unable to add a PWA to the home screen at all. If a user says the option is missing, ask which browser they are in before anything else.</li>
+        <li><strong>Detecting installed state</strong> — <code>window.matchMedia('(display-mode: standalone)')</code> works broadly; iOS also exposes <code>navigator.standalone</code>.</li>
+      </ul>
+      <p>Practical consequence: detect iOS Safari and show a small one-line instruction with the share icon, and hide it once the app is running in standalone mode. Without that hint, most iPhone users will never install.</p>
+      <h2>What you give up</h2>
+      <p>No App Store listing and no App Store search traffic. No push notifications on iOS unless the app has been added to the home screen. No background execution to speak of. Nothing that requires a native API the browser has not exposed.</p>
+      <p>What you get in exchange: zero platform fees, no review queue, no annual developer fee, and a deploy that reaches every user the moment you push. For a personal tool, that trade is usually correct. I ship three of these — <a href="/apps/tradelog/">TradeLog</a>, <a href="/apps/cut/">Cut</a>, and <a href="/apps/fire/">Fire</a> — all offline, all local storage, no accounts anywhere.</p>
+
+      <h2>Tools referenced in this guide</h2>
+      <ul>
+        <li><a href="/apps.html">Apps hub</a> — the three installable PWAs, all offline and account-free.</li>
+        <li><a href="/apps/tradelog/">TradeLog</a> — R-multiple trading journal — a localStorage-backed PWA in production.</li>
+        <li><a href="/apps/fire/">Fire</a> — daily ritual checklist, the smallest of the three and the clearest example of the pattern.</li>
+        <li><a href="/privacy.html">Privacy policy</a> — how the local-only storage claim is written up for users.</li>
+      </ul>
+    </div>
+  </section>
+
+  <hr class="divider">
+
+  <section class="section section--tight" id="faq">
+    <div class="grp-head">
+      <p class="eyebrow">FAQ</p>
+      <h2>Quick answers</h2>
+    </div>
+    <div class="grid" style="margin-top:var(--s6)">
+      <article class="card faq-card"><h3>What makes a site installable?</h3><p>HTTPS, a valid manifest with icons and start_url, and a service worker with a fetch handler. Miss one and the prompt silently never appears.</p></article>
+      <article class="card faq-card"><h3>Cache-first or network-first?</h3><p>Cache-first for the app shell — HTML, CSS, JS, icons. Network-first for anything that goes stale. No backend means almost everything is shell.</p></article>
+      <article class="card faq-card"><h3>Why is my deploy not showing up?</h3><p>The new worker is stuck waiting behind open tabs. Bump the cache name, delete old caches on activate, call skipWaiting() and clients.claim().</p></article>
+      <article class="card faq-card"><h3>localStorage or IndexedDB?</h3><p>localStorage until it hurts — a few thousand JSON records inside ~5 MB. IndexedDB for binary data, real queries, or when writes cause jank.</p></article>
+      <article class="card faq-card"><h3>How do you install on iPhone?</h3><p>Safari → Share → Add to Home Screen, done manually. iOS has no install prompt and no beforeinstallprompt event to hook.</p></article>
+      <article class="card faq-card"><h3>Can a PWA run with no server?</h3><p>Yes — state in browser storage, shell in the service worker cache. The trade is no accounts, no sync, no server-side compute.</p></article>
+    </div>
+  </section>
+
+</main>
+
+<footer class="site-footer">
+  <div class="site-footer__links">
+    <a href="/">Work</a>
+    <a href="/about.html">About</a>
+    <a href="/guides.html">Guides</a>
+    <a href="/apps.html">Apps</a>
+    <a href="/store.html">Store</a>
+    <a href="/privacy.html">Privacy</a>
+    <a href="/terms.html">Terms</a>
+    <a href="mailto:yusuf.gadelrab06@gmail.com">yusuf.gadelrab06@gmail.com</a>
+  </div>
+</footer>
+
+<script src="/js/site.js" defer></script>
+</body>
+</html>

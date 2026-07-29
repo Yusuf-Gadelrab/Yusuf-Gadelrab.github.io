@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="preload" href="/css/site.css" as="style">
+<meta name="robots" content="index,follow,max-image-preview:large,max-snippet:-1">
+<meta property="og:locale" content="en_US">
+<title>Print-on-Demand Margin Math, Honestly</title>
+<meta name="description" content="Base cost, retail, platform fees, and net per unit on a tee and a hoodie — plus the costs people forget: returns, samples, artwork time, and ads.">
+<link rel="canonical" href="https://yusuf-gadelrab.github.io/guides/print-on-demand-economics.html">
+<link rel="icon" type="image/svg+xml" href="https://yusuf-gadelrab.github.io/favicon.svg">
+<link rel="apple-touch-icon" sizes="180x180" href="https://yusuf-gadelrab.github.io/apple-touch-icon.png">
+<meta name="theme-color" content="#0B0B0D">
+<meta name="author" content="Yusuf Gadelrab">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="Yusuf Gadelrab">
+<meta property="og:title" content="Print-on-Demand Margin Math, Honestly">
+<meta property="og:description" content="A worked net-per-unit table on a tee and a hoodie, and the costs that quietly eat the margin.">
+<meta property="og:url" content="https://yusuf-gadelrab.github.io/guides/print-on-demand-economics.html">
+<meta property="og:image" content="https://yusuf-gadelrab.github.io/og-card.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Print-on-Demand Margin Math, Honestly">
+<meta name="twitter:description" content="A worked net-per-unit table on a tee and a hoodie, and the costs that quietly eat the margin.">
+<meta name="twitter:image" content="https://yusuf-gadelrab.github.io/og-card.png">
+<link rel="alternate" type="text/plain" href="https://yusuf-gadelrab.github.io/llms-full.txt" title="Plain-text profile for language models">
+
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"Article","@id":"https://yusuf-gadelrab.github.io/guides/print-on-demand-economics.html#article","headline":"Print-on-Demand Margin Math, Honestly","name":"Print-on-Demand Margin Math, Honestly","description":"Base cost, retail, platform fees, and net per unit on a tee and a hoodie — plus the costs people forget: returns, samples, artwork time, and ads.","datePublished":"2026-07-29","dateModified":"2026-07-29","inLanguage":"en","author":{"@id":"https://yusuf-gadelrab.github.io/#person"},"publisher":{"@id":"https://yusuf-gadelrab.github.io/#person"},"about":["Print on demand","Unit economics","Ecommerce"],"mainEntityOfPage":"https://yusuf-gadelrab.github.io/guides/print-on-demand-economics.html","isAccessibleForFree":true},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://yusuf-gadelrab.github.io/"},{"@type":"ListItem","position":2,"name":"Guides","item":"https://yusuf-gadelrab.github.io/guides.html"},{"@type":"ListItem","position":3,"name":"Print-on-Demand Math"}]}]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","@id":"https://yusuf-gadelrab.github.io/guides/print-on-demand-economics.html#faq","mainEntity":[{"@type":"Question","name":"How do you calculate print-on-demand profit per unit?","acceptedAnswer":{"@type":"Answer","text":"Net per unit equals retail price minus base cost minus platform fees, where platform fees are usually a percentage of retail plus a fixed per-transaction charge. As an illustrative example, a $32 tee with a $13.30 base cost and roughly 8% plus $0.30 in fees nets about $15.84."}},{"@type":"Question","name":"What margin is realistic on print-on-demand?","acceptedAnswer":{"@type":"Answer","text":"Illustratively, around 45 to 60% of retail once base cost and platform fees are removed, with hoodies typically showing a higher percentage and a much higher dollar margin than tees. Actual figures depend entirely on your supplier, garment, print area, and storefront, so run the numbers against a real quote."}},{"@type":"Question","name":"Is print-on-demand profitable?","acceptedAnswer":{"@type":"Answer","text":"Per unit, usually yes. In total, only at volume — an illustrative $15.84 net per shirt means 10 sales a month is a hobby and 200 is a part-time job. Print-on-demand removes inventory risk but does nothing about demand, which is the genuinely hard part."}},{"@type":"Question","name":"What costs do print-on-demand sellers forget?","acceptedAnswer":{"@type":"Answer","text":"Returns and reprints, samples bought at your own cost, the hours spent on artwork and mockups, shipping that customers expect to be free, chargebacks, and above all advertising. Ad cost per acquisition frequently exceeds net per unit on a single item, which turns a profitable product into a loss."}},{"@type":"Question","name":"Should you sell tees or hoodies?","acceptedAnswer":{"@type":"Answer","text":"Hoodies carry a higher base cost but a much larger dollar margin per sale — illustratively about $33.86 against $15.84. Since the fixed transaction fee is charged per order rather than per item, higher-ticket products and multi-item carts are structurally more profitable than optimising a tee's margin."}},{"@type":"Question","name":"Is print-on-demand better than bulk ordering?","acceptedAnswer":{"@type":"Answer","text":"For starting out, yes. Bulk ordering commits thousands of dollars and a guessed size curve before any customer exists. Print-on-demand gives up roughly a third of the per-unit margin in exchange for zero inventory risk and no minimum order, which is the right trade until a specific design has proven repeat demand."}}]}</script>
+
+<link rel="stylesheet" href="/css/site.css">
+<style>
+  .prose{max-width:68ch}
+  .prose h2{margin:var(--s7) 0 var(--s4);font-size:var(--t-h2)}
+  .prose h3{margin:var(--s6) 0 var(--s3);font-size:var(--t-h3)}
+  .prose p{color:var(--muted);margin:0 0 var(--s4)}
+  .prose ul,.prose ol{color:var(--muted);padding-left:1.2em;margin:0 0 var(--s4)}
+  .prose li{margin-bottom:var(--s2)}
+  .prose a{color:var(--gold-2)}
+  .prose strong{color:var(--fg)}
+  .formula{display:block;padding:var(--s4);margin:0 0 var(--s4);border:1px solid var(--line-soft);
+    border-radius:var(--radius);font-family:ui-monospace,SFMono-Regular,Menlo,monospace;
+    font-size:var(--t-small);color:var(--gold-2);overflow-x:auto;white-space:pre-wrap}
+  .tblwrap{overflow-x:auto;margin:0 0 var(--s4)}
+  .tbl{width:100%;border-collapse:collapse;font-size:var(--t-small)}
+  .tbl th,.tbl td{text-align:left;padding:var(--s3);border-bottom:1px solid var(--line-soft);
+    color:var(--muted);vertical-align:top}
+  .tbl th{font-family:var(--display-pro);color:var(--gold-2);font-weight:600}
+  .callout{padding:var(--s4);border:1px solid var(--line-soft);border-radius:var(--radius);
+    color:var(--muted);font-size:var(--t-small);margin:0 0 var(--s5)}
+  .callout--warn{border-color:var(--gold-2)}
+  .faq-card{padding:var(--s5)}
+  .faq-card h3{font-size:var(--t-h3);margin:0}
+  .faq-card p{color:var(--muted);font-size:var(--t-small);margin:var(--s3) 0 0}
+</style>
+</head>
+<body class="pro">
+
+<a class="skip-link" href="#main">Skip to content</a>
+
+<nav class="site-nav">
+  <a class="site-nav__brand" href="/"><img class="site-nav__lion" src="/img/brand/lion-mark.svg" alt="" width="34" height="34"><span>YUSUF GADELRAB</span></a>
+  <div class="site-nav__links">
+    <a href="/">Work</a>
+    <a href="/guides.html">Guides</a>
+    <a href="/kxngsef.html">KXNG SEF</a>
+    <a href="/store.html">Store</a>
+  </div>
+</nav>
+
+<main id="main">
+
+  <header class="section">
+    <p class="eyebrow">Guide · Business</p>
+    <h1 style="margin:var(--s4) 0">The margin is fine. The volume is the problem.</h1>
+    <p class="lead">Print-on-demand removes inventory risk, which is the thing that kills most clothing brands. What it does not remove is the arithmetic: a good margin on a product nobody has heard of still earns nothing.</p>
+  </header>
+
+  <hr class="divider">
+
+  <section class="section section--tight">
+    <div class="prose">
+      <p class="callout">Every figure below is an <strong>illustrative example of the arithmetic</strong>, chosen to be realistic in shape. They are not quotes from any specific supplier and they are not results from any brand. Suppliers price differently by garment, print area, colour count, and region — run your own numbers against a real quote before deciding anything.</p>
+      <h2>The three numbers</h2>
+      <p>Print-on-demand economics reduce to base cost, retail price, and platform fee. Everything else is a variation on those three.</p>
+      <ul>
+        <li><strong>Base cost</strong> — what the supplier charges to print and ship one unit. Rises with garment quality, print area, number of print locations, and colour count.</li>
+        <li><strong>Retail price</strong> — what you charge. The only lever you fully control, and the one most people set too low out of nerves.</li>
+        <li><strong>Platform fee</strong> — the storefront's cut plus payment processing. Typically a percentage plus a fixed per-transaction charge.</li>
+      </ul>
+      <span class="formula">net per unit = retail − base cost − platform fee
+
+platform fee ≈ (retail × fee rate) + fixed transaction charge</span>
+      <h2>A worked example on a tee</h2>
+      <p>Illustrative numbers: a mid-weight tee with a single front print, retailing at $32, on a storefront taking 5% plus roughly 3% payment processing and $0.30 per transaction.</p>
+      <div class="tblwrap"><table class="tbl">
+        <thead><tr><th>Line</th><th>Amount</th><th>Note</th></tr></thead>
+        <tbody>
+          <tr><td>Retail</td><td>$32.00</td><td>Customer pays this plus shipping</td></tr>
+          <tr><td>Base cost (print + fulfilment)</td><td>−$13.30</td><td>Garment, print, pick and pack</td></tr>
+          <tr><td>Platform + processing (~8%)</td><td>−$2.56</td><td>Illustrative blended rate</td></tr>
+          <tr><td>Fixed transaction fee</td><td>−$0.30</td><td>Per order, not per item</td></tr>
+          <tr><td><strong>Net per unit</strong></td><td><strong>$15.84</strong></td><td>About 49% of retail</td></tr>
+        </tbody>
+      </table></div>
+      <h2>The same math on a hoodie</h2>
+      <p>Hoodies carry a much higher base cost, so the percentage margin compresses even though the dollar margin grows.</p>
+      <div class="tblwrap"><table class="tbl">
+        <thead><tr><th>Line</th><th>Amount</th><th>Note</th></tr></thead>
+        <tbody>
+          <tr><td>Retail</td><td>$58.00</td><td></td></tr>
+          <tr><td>Base cost</td><td>−$19.20</td><td>Heavier garment, larger print area</td></tr>
+          <tr><td>Platform + processing (~8%)</td><td>−$4.64</td><td></td></tr>
+          <tr><td>Fixed transaction fee</td><td>−$0.30</td><td></td></tr>
+          <tr><td><strong>Net per unit</strong></td><td><strong>$33.86</strong></td><td>About 58% of retail</td></tr>
+        </tbody>
+      </table></div>
+      <p>Read those two tables together and the first real lesson appears: <strong>the hoodie earns more than twice the dollars per sale</strong>, which matters far more than the percentage. Percentages do not pay rent; dollars per order do. This is why brands push toward higher-ticket items and multi-item carts rather than optimising a tee's margin by a point.</p>
+      <h2>The volume problem</h2>
+      <p>$15.84 a shirt sounds fine until you multiply it.</p>
+      <div class="tblwrap"><table class="tbl">
+        <thead><tr><th>Units sold / month</th><th>Gross margin at $15.84</th><th>What that actually is</th></tr></thead>
+        <tbody>
+          <tr><td>10</td><td>$158</td><td>A hobby</td></tr>
+          <tr><td>50</td><td>$792</td><td>A meaningful side income</td></tr>
+          <tr><td>200</td><td>$3,168</td><td>A part-time job with real operational load</td></tr>
+          <tr><td>1,000</td><td>$15,840</td><td>A business, with staffing and support needs</td></tr>
+        </tbody>
+      </table></div>
+      <p>Selling 200 shirts a month is not a design problem. It is a distribution problem — audience, content cadence, repeat customers, and retention. <strong>Print-on-demand solves inventory risk and solves nothing about demand,</strong> and demand is the part that is genuinely hard. The people who quit usually quit with a good product and no traffic.</p>
+      <h2>The costs nobody puts in the spreadsheet</h2>
+      <div class="tblwrap"><table class="tbl">
+        <thead><tr><th>Hidden cost</th><th>Typical shape</th><th>Effect on net</th></tr></thead>
+        <tbody>
+          <tr><td>Returns and reprints</td><td>A few percent of orders, often on you rather than the supplier</td><td>Shaves a few percent off net across all units</td></tr>
+          <tr><td>Samples</td><td>One unit of each product, at your own cost, plus shipping</td><td>A fixed upfront spend before any revenue exists</td></tr>
+          <tr><td>Artwork time</td><td>Hours per design, plus mockups and revisions</td><td>Free only if your time is worthless</td></tr>
+          <tr><td>Ads</td><td>Cost per acquisition frequently exceeds net per unit on a single item</td><td>Can turn a positive-margin product into a loss</td></tr>
+          <tr><td>Shipping expectations</td><td>Customers expect free or cheap shipping</td><td>Either raise retail or absorb it out of net</td></tr>
+          <tr><td>Payment disputes</td><td>Chargebacks carry the refund plus a fixed fee</td><td>Small in volume, painful per event</td></tr>
+          <tr><td>Platform changes</td><td>Base costs and fee rates get revised</td><td>Your margin is quietly repriced by someone else</td></tr>
+        </tbody>
+      </table></div>
+      <p>The one that ends most stores is the ads line. If net per unit is $15.84 and it costs $22 in ads to acquire a customer who buys one item, every sale loses money — and that only becomes visible after you have spent enough to see it. The escape routes are higher average order value, repeat purchases, or acquisition that does not cost money per unit, which is what organic content actually is.</p>
+      <h2>Pricing, briefly</h2>
+      <ol>
+        <li><strong>Start from the net you need,</strong> not from what competitors charge. Work backwards to retail.</li>
+        <li><strong>Price the bundle, not the item.</strong> The fixed transaction fee is per order, so a two-item cart is structurally more profitable.</li>
+        <li><strong>Do not compete on price against a supplier that has scale you do not.</strong> You will lose, and you will lose on your own margin.</li>
+        <li><strong>Recheck after every supplier price change.</strong> Base costs move; retail prices usually do not until someone notices.</li>
+        <li><strong>Treat free shipping as a price increase,</strong> because it is one. Fold it into retail deliberately rather than absorbing it silently.</li>
+      </ol>
+      <h2>Why print-on-demand is still the right start</h2>
+      <p>Held against the alternative, the case is strong. Bulk ordering 200 units means several thousand dollars committed before a single customer exists, a size curve guessed in advance, and boxes in a room. Print-on-demand trades roughly a third of the per-unit margin for zero inventory risk, no minimum order, and the ability to kill a design that does not sell without eating the stock.</p>
+      <p>For testing whether a design has an audience at all, that trade is clearly correct. Move to bulk only once a specific item has demonstrated repeat demand — and at that point the higher margin is earned by evidence rather than assumed. This is the model behind <a href="/kxngsef.html">KXNG SEF</a> and <a href="/heft.html">HEFT</a>: no inventory, no minimums, designs that do not sell simply stop being printed.</p>
+
+      <h2>Tools referenced in this guide</h2>
+      <ul>
+        <li><a href="/kxngsef.html">KXNG SEF</a> — clothing brand run on a print-on-demand model.</li>
+        <li><a href="/heft.html">HEFT</a> — second brand on the same fulfilment model.</li>
+        <li><a href="/store.html">Store</a> — the digital-product side, where the unit economics work very differently.</li>
+        <li><a href="/guides/ai-automation-small-business.html">AI automation guide</a> — reducing the per-order operational load.</li>
+      </ul>
+    </div>
+  </section>
+
+  <hr class="divider">
+
+  <section class="section section--tight" id="faq">
+    <div class="grp-head">
+      <p class="eyebrow">FAQ</p>
+      <h2>Quick answers</h2>
+    </div>
+    <div class="grid" style="margin-top:var(--s6)">
+      <article class="card faq-card"><h3>How is net per unit calculated?</h3><p>Retail minus base cost minus platform fee, where the fee is a percentage plus a fixed per-order charge. Illustrative $32 tee nets about $15.84.</p></article>
+      <article class="card faq-card"><h3>What margin is realistic?</h3><p>Illustratively 45–60% of retail after base cost and fees. Depends entirely on supplier, garment, and print area — get a real quote.</p></article>
+      <article class="card faq-card"><h3>Is it profitable?</h3><p>Per unit yes, in total only at volume. 10 shirts a month is a hobby, 200 is a part-time job. POD fixes inventory risk, not demand.</p></article>
+      <article class="card faq-card"><h3>What costs get forgotten?</h3><p>Returns, samples, artwork hours, free shipping, chargebacks, and ads. Ad cost per customer often exceeds net per single item.</p></article>
+      <article class="card faq-card"><h3>Tees or hoodies?</h3><p>Hoodies. Illustratively $33.86 net against $15.84, and the fixed fee is per order — so higher ticket and bigger carts win.</p></article>
+      <article class="card faq-card"><h3>POD or bulk?</h3><p>POD to start. Bulk commits thousands and a guessed size curve upfront; POD trades about a third of margin for zero inventory risk.</p></article>
+    </div>
+  </section>
+
+</main>
+
+<footer class="site-footer">
+  <div class="site-footer__links">
+    <a href="/">Work</a>
+    <a href="/about.html">About</a>
+    <a href="/guides.html">Guides</a>
+    <a href="/apps.html">Apps</a>
+    <a href="/store.html">Store</a>
+    <a href="/privacy.html">Privacy</a>
+    <a href="/terms.html">Terms</a>
+    <a href="mailto:yusuf.gadelrab06@gmail.com">yusuf.gadelrab06@gmail.com</a>
+  </div>
+</footer>
+
+<script src="/js/site.js" defer></script>
+</body>
+</html>

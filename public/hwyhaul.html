@@ -23,6 +23,7 @@
 <link rel="canonical" href="https://yusuf-gadelrab.github.io/hwyhaul.html">
 <link rel="icon" type="image/svg+xml" href="https://yusuf-gadelrab.github.io/favicon.svg">
 <link rel="apple-touch-icon" sizes="180x180" href="https://yusuf-gadelrab.github.io/apple-touch-icon.png">
+<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#d4af37">
 <meta name="theme-color" content="#0B0B0D">
 <meta name="author" content="Yusuf Gadelrab">
 <meta property="og:type" content="website">
@@ -85,7 +86,7 @@
   .pipe-step{flex:1 1 180px;min-width:170px}
   .pipe-step .step-n{font-family:var(--display-pro);font-size:var(--t-micro);
     letter-spacing:2px;color:var(--gold-2);font-weight:700}
-  .pipe-step h4{margin:var(--s2) 0}
+  .pipe-step h3{margin:var(--s2) 0}
   .pipe-step p{color:var(--muted);font-size:var(--t-small)}
 
   .pills{display:flex;flex-wrap:wrap;gap:var(--s2)}
@@ -110,6 +111,9 @@
   .final p{color:var(--muted);max-width:52ch;margin:var(--s4) auto var(--s6)}
   .final .row{justify-content:center}
 </style>
+<!-- geo:entity — canonical Person node, one entity across every page -->
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Person","@id":"https://yusuf-gadelrab.github.io/#person","name":"Yusuf Gadelrab","url":"https://yusuf-gadelrab.github.io/","mainEntityOfPage":"https://yusuf-gadelrab.github.io/about.html","jobTitle":"Computer Science Student, AI Builder & Researcher","email":"mailto:yusuf.gadelrab06@gmail.com","sameAs":["https://github.com/Yusuf-Gadelrab","https://www.linkedin.com/in/yusuf-gadelrab-76246b221","https://www.instagram.com/_kxng_sef/","https://doi.org/10.1145/3770761.3777339"],"affiliation":{"@type":"CollegeOrUniversity","name":"San José State University","url":"https://www.sjsu.edu/"},"address":{"@type":"PostalAddress","addressLocality":"San Jose","addressRegion":"CA","addressCountry":"US"}}</script>
+<link rel="alternate" type="text/plain" href="https://yusuf-gadelrab.github.io/llms-full.txt" title="Plain-text profile for language models">
 </head>
 <body class="pro">
 
@@ -118,10 +122,11 @@
 <a class="skip-link" href="#main">Skip to content</a>
 
 <nav class="site-nav">
-  <a class="site-nav__brand" href="/">YUSUF GADELRAB</a>
+  <a class="site-nav__brand" href="/"><img class="site-nav__lion" src="/img/brand/lion-mark.svg" alt="" width="34" height="34"><span>YUSUF GADELRAB</span></a>
   <div class="site-nav__links">
     <a href="/">Work</a>
     <a href="/resume.html">Resume</a>
+    <a href="/guides.html">Guides</a>
     <a href="/store.html">Store</a>
     <a href="/apps.html">Apps</a>
     <a href="/kxngsef.html">KXNG SEF</a>
@@ -145,7 +150,7 @@
         </div>
       </div>
       <figure class="hero-shot reveal">
-        <img src="img/yusuf-hwyhaul.jpg" alt="Yusuf Gadelrab excitedly holding up a HwyHaul t-shirt" width="675" height="900" loading="lazy" decoding="async">
+        <img src="img/yusuf-hwyhaul.jpg" alt="Yusuf Gadelrab excitedly holding up a HwyHaul t-shirt" width="825" height="1100" loading="lazy" decoding="async">
         <figcaption><b>Last day at HwyHaul</b> — July 2026</figcaption>
       </figure>
     </div>
@@ -197,7 +202,7 @@
       <div class="panel callout"><b>The core loop.</b> A carrier texts a load request over WhatsApp or email. The system reads it, extracts the structured load (equipment type, target price, lane, reefer mode, driver combo), and drafts a reply in the brokerage's voice — always replying, even on a partial message, so no carrier is left hanging.</div>
       <div style="margin-top:var(--s5)">
         <div class="feat"><span class="fic">✓</span><span><b>Structured extraction</b> — pulls equipment_type, target_price, lane, load_size, reefer_mode and driver_combination out of messy free-text messages.</span></div>
-        <div class="feat"><span class="fic">✓</span><span><b>Always-reply guarantee</b> — even an ambiguous "SJ/LA?" shorthand gets a graceful clarifying response instead of silence.</span></div>
+        <div class="feat"><span class="fic">✓</span><span><b>Always-reply design</b> — even an ambiguous "SJ/LA?" shorthand gets a graceful clarifying response instead of silence.</span></div>
         <div class="feat"><span class="fic">✓</span><span><b>Resilient by design</b> — a VPN-aware client degrades cleanly to mock data when the internal network is unreachable, so it never crashes mid-shift.</span></div>
       </div>
     </div>
@@ -229,10 +234,10 @@
     <h2 class="reveal">From an incoming message to a sent reply.</h2>
     <p class="lead reveal" style="margin:var(--s3) 0 var(--s6)">A deterministic classifier keeps the demo instant; a local LLM is wired in as an optional upgrade. The pipeline drafts — it never fires blindly.</p>
     <div class="pipe">
-      <div class="card pipe-step reveal"><div class="step-n">STEP 1</div><h4>Incoming message</h4><p>Carrier email or WhatsApp text arrives at the intake webhook.</p></div>
-      <div class="card pipe-step reveal"><div class="step-n">STEP 2</div><h4>Classify &amp; extract</h4><p>Reads intent, picks 1 of 8 reply types, pulls load / invoice / amount.</p></div>
-      <div class="card pipe-step reveal"><div class="step-n">STEP 3</div><h4>Draft in-voice</h4><p>Fills the matching template in the brokerage's tone.</p></div>
-      <div class="card pipe-step reveal"><div class="step-n">STEP 4</div><h4>Human sends</h4><p>You review, pick the recipient, hit Send — it goes out for real.</p></div>
+      <div class="card pipe-step reveal"><div class="step-n">STEP 1</div><h3>Incoming message</h3><p>Carrier email or WhatsApp text arrives at the intake webhook.</p></div>
+      <div class="card pipe-step reveal"><div class="step-n">STEP 2</div><h3>Classify &amp; extract</h3><p>Reads intent, picks 1 of 8 reply types, pulls load / invoice / amount.</p></div>
+      <div class="card pipe-step reveal"><div class="step-n">STEP 3</div><h3>Draft in-voice</h3><p>Fills the matching template in the brokerage's tone.</p></div>
+      <div class="card pipe-step reveal"><div class="step-n">STEP 4</div><h3>Human sends</h3><p>You review, pick the recipient, hit Send — it goes out for real.</p></div>
     </div>
 
     <div class="code reveal" style="margin-top:var(--s6)">
@@ -299,7 +304,7 @@
     </div>
 
     <div class="panel callout reveal" style="margin-top:var(--s3)">
-      🚚 <b>What happened next:</b> the systems in this case study became <a href="freightdesk.html" class="gold">FreightDesk AI</a> — now installing for founding-client brokerages at $249/mo.
+      🚚 <b>What happened next:</b> the systems in this case study became <a href="freightdesk.html" class="gold">FreightDesk AI</a> — now open for founding-client pilots at $999 setup + $249/mo. No clients are installed yet.
     </div>
   </section>
 
@@ -322,6 +327,9 @@
 <footer class="site-footer">
   <div>Yusuf Gadelrab · CS @ SJSU · Case study of internship work at HwyHaul</div>
   <div class="site-footer__links">
+    <a href="/writing.html">Writing</a>
+    <a href="/eh.html">eh</a>
+    <a href="/dira.html">DIRA</a>
     <a href="/risk-tools.html">Risk Toolkit</a>
     <a href="/freight-tools.html">Freight Calculators</a>
     <a href="/apply.html">Apply OS</a>
@@ -335,6 +343,13 @@
     <a href="mailto:yusuf.gadelrab06@gmail.com">yusuf.gadelrab06@gmail.com</a>
     <a href="https://github.com/Yusuf-Gadelrab" target="_blank" rel="noopener">GitHub</a>
     <a href="https://www.linkedin.com/in/yusuf-gadelrab-76246b221" target="_blank" rel="noopener">LinkedIn</a>
+    <a href="/brand.html">Brand</a>
+    <a href="/stack.html">Stack</a>
+    <a href="/everything.html">Everything</a>
+    <a href="/codeswitch.html">CODESWITCH</a>
+    <a href="/circle.html">Circle</a>
+    <a href="/waitlist.html">Waitlists</a>
+    <a href="/legal.html">Legal</a>
     <a href="/privacy.html">Privacy</a>
     <a href="/terms.html">Terms</a>
   </div>

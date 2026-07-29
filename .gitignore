@@ -4,3 +4,5 @@ build/
 .DS_Store
 public/__probe.html
 public/__*.html
+
+.indexnow-key

@@ -640,3 +640,18 @@
 
   w.YGSite = { openPalette: function () { Palette.open(); } };
 })();
+
+
+/* Console easter egg. Invisible to normal visitors, so it's safe on every page —
+   and this site's audience opens DevTools. */
+(function(){
+  try{
+    var gold = "color:#d4af37;font-weight:700";
+    var mut  = "color:#a39f94";
+    console.log("%c\u9053  yusuf gadelrab", gold);
+    console.log("%cCanadian, in San Jose, running AI models on a laptop with the Wi-Fi off.", mut);
+    console.log("%cEvery model on this site's projects runs locally. Total API spend to date: $0.00.", mut);
+    console.log("%cYou opened DevTools on a personal website. We're the same. \u2192 /eh.html", mut);
+    console.log("%cIf you're hiring: yusuf.gadelrab06@gmail.com (sorry for the console spam)", gold);
+  }catch(e){}
+})();

@@ -24,6 +24,7 @@
 <link rel="canonical" href="https://yusuf-gadelrab.github.io/everything.html">
 <link rel="icon" type="image/svg+xml" href="https://yusuf-gadelrab.github.io/favicon.svg">
 <link rel="apple-touch-icon" sizes="180x180" href="https://yusuf-gadelrab.github.io/apple-touch-icon.png">
+<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#d4af37">
 <meta name="theme-color" content="#0B0B0D">
 <meta name="author" content="Yusuf Gadelrab">
 <meta property="og:type" content="website">
@@ -103,6 +104,9 @@
   "about": "projects, research, trading, and content built in public"
 }
 </script>
+<!-- geo:entity — canonical Person node, one entity across every page -->
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Person","@id":"https://yusuf-gadelrab.github.io/#person","name":"Yusuf Gadelrab","url":"https://yusuf-gadelrab.github.io/","mainEntityOfPage":"https://yusuf-gadelrab.github.io/about.html","jobTitle":"Computer Science Student, AI Builder & Researcher","email":"mailto:yusuf.gadelrab06@gmail.com","sameAs":["https://github.com/Yusuf-Gadelrab","https://www.linkedin.com/in/yusuf-gadelrab-76246b221","https://www.instagram.com/_kxng_sef/","https://doi.org/10.1145/3770761.3777339"],"affiliation":{"@type":"CollegeOrUniversity","name":"San José State University","url":"https://www.sjsu.edu/"},"address":{"@type":"PostalAddress","addressLocality":"San Jose","addressRegion":"CA","addressCountry":"US"}}</script>
+<link rel="alternate" type="text/plain" href="https://yusuf-gadelrab.github.io/llms-full.txt" title="Plain-text profile for language models">
 </head>
 <body>
 
@@ -111,10 +115,11 @@
 <a class="skip-link" href="#main">Skip to content</a>
 
 <nav class="site-nav">
-  <a class="site-nav__brand" href="/">YUSUF GADELRAB</a>
+  <a class="site-nav__brand" href="/"><img class="site-nav__lion" src="/img/brand/lion-mark.svg" alt="" width="34" height="34"><span>YUSUF GADELRAB</span></a>
   <div class="site-nav__links">
     <a href="/">Work</a>
     <a href="/resume.html">Resume</a>
+    <a href="/guides.html">Guides</a>
     <a href="/store.html">Store</a>
     <a href="/apps.html">Apps</a>
     <a href="/kxngsef.html">KXNG SEF</a>
@@ -126,7 +131,8 @@
 
 <header class="section hero-all">
   <img class="portrait reveal" fetchpriority="high" src="img/yusuf-headshot.jpg" alt="Yusuf Gadelrab, professional headshot in a suit with a gold frame border" width="700" height="749">
-  <p class="eyebrow reveal">San Jose, CA · CS @ SJSU · Building in public</p>
+  <img class="page-lion" src="/img/brand/lion-mark.svg" alt="" width="46" height="46">
+    <p class="eyebrow reveal">San Jose, CA · CS @ SJSU · Building in public</p>
   <h1 class="reveal">Everything I do, <span class="gold-fill">one gold map.</span></h1>
   <p class="lead reveal">Most people know me for one thing. This page is the whole picture: peer-reviewed research, AI products, quant trading systems, club leadership, and the students I teach along the way. Deep dives live on my personal site.</p>
   <div class="row reveal" style="margin-top:var(--s6)">
@@ -186,7 +192,17 @@
   <div class="grid" style="margin-top:var(--s7)">
 
     <article class="card proj reveal">
-      <img class="proj__thumb" src="projects/hwyhaul-case.jpg" alt="HwyHaul LoadLink case study — 'The freight back office, run by AI' hero with Yusuf holding a HwyHaul shirt" width="1600" height="900" loading="lazy" decoding="async">
+      <img class="proj__thumb" src="og/codeswitch-card.png" alt="CODESWITCH — Learn to code in the language you think in" width="1200" height="630" loading="lazy" decoding="async">
+      <div class="proj__body">
+        <span class="proj__tag">Nonprofit · CS Education</span>
+        <h3>CODESWITCH</h3>
+        <p>A free bilingual intro-CS program for high schoolers still learning English, built out of my own SIGCSE research on bilingual coding. Concepts taught in the student's home language first, English keywords attached second. Curriculum, volunteer handbook and a four-language glossary are written and public; the first cohort is planned for fall 2026.</p>
+        <a class="go" href="codeswitch.html">See the program →</a>
+      </div>
+    </article>
+
+    <article class="card proj reveal">
+      <img class="proj__thumb" src="projects/hwyhaul-case.jpg" alt="HwyHaul LoadLink case study — 'The freight back office, run by AI' hero with Yusuf holding a HwyHaul shirt" width="1200" height="675" loading="lazy" decoding="async">
       <div class="proj__body">
         <span class="proj__tag">Freight AI · Case Study</span>
         <h3>HwyHaul — AI Freight Ops</h3>
@@ -196,7 +212,7 @@
     </article>
 
     <article class="card proj reveal">
-      <img class="proj__thumb" src="projects/eventreels.jpg" alt="EventReels studio interface — drag-and-drop footage uploader with reel-length slider and title card field" width="1600" height="833" loading="lazy" decoding="async">
+      <img class="proj__thumb" src="projects/eventreels.jpg" alt="EventReels studio interface — drag-and-drop footage uploader with reel-length slider and title card field" width="1200" height="624" loading="lazy" decoding="async">
       <div class="proj__body">
         <span class="proj__tag">Startup Prototype · Video</span>
         <h3>EventReels</h3>
@@ -206,7 +222,7 @@
     </article>
 
     <article class="card proj reveal">
-      <img class="proj__thumb" src="projects/ecoimpact.jpg" alt="EcoImpact app — dark San Jose trash map with cleanup pins, impact meter, and community leaderboard" width="1600" height="1000" loading="lazy" decoding="async">
+      <img class="proj__thumb" src="projects/ecoimpact.jpg" alt="EcoImpact app — dark San Jose trash map with cleanup pins, impact meter, and community leaderboard" width="1200" height="750" loading="lazy" decoding="async">
       <div class="proj__body">
         <span class="proj__tag">Startup Prototype · Climate</span>
         <h3>EcoImpact</h3>
@@ -216,7 +232,7 @@
     </article>
 
     <article class="card proj reveal">
-      <img class="proj__thumb" src="projects/spartaneats.jpg" alt="SpartanEats app — $1.99 flat-fee campus food delivery home screen and student courier jobs board, side by side" width="1600" height="900" loading="lazy" decoding="async">
+      <img class="proj__thumb" src="projects/spartaneats.jpg" alt="SpartanEats app — $1.99 flat-fee campus food delivery home screen and student courier jobs board, side by side" width="1200" height="675" loading="lazy" decoding="async">
       <div class="proj__body">
         <span class="proj__tag">Startup · Campus</span>
         <h3>SpartanEats</h3>
@@ -226,7 +242,7 @@
     </article>
 
     <article class="card proj reveal">
-      <img class="proj__thumb" src="projects/edgelog.jpg" alt="EdgeLog trade journal dashboard — expectancy, win rate, profit factor, equity curve, and R distribution over 36 trades" width="1600" height="867" loading="lazy" decoding="async">
+      <img class="proj__thumb" src="projects/edgelog.jpg" alt="EdgeLog trade journal dashboard showing sample data — expectancy, win rate, profit factor, equity curve and R distribution" width="1200" height="650" loading="lazy" decoding="async">
       <div class="proj__body">
         <span class="proj__tag">Quant · Research</span>
         <h3>Swing Screener &amp; Validation Harness</h3>
@@ -245,7 +261,7 @@
     </article>
 
     <article class="card proj reveal">
-      <img class="proj__thumb" src="projects/svec.jpg" alt="sventclub.org homepage — 'Build the future. Stay grounded.' hero for the Silicon Valley Entrepreneurship Club" width="1600" height="900" loading="lazy" decoding="async">
+      <img class="proj__thumb" src="projects/svec.jpg" alt="sventclub.org homepage — 'Build the future. Stay grounded.' hero for the Silicon Valley Entrepreneurship Club" width="1200" height="675" loading="lazy" decoding="async">
       <div class="proj__body">
         <span class="proj__tag">Web · Club</span>
         <h3>SVEC Website</h3>
@@ -271,7 +287,7 @@
       <p class="lead" style="margin-top:var(--s3)">Code is half of it. The other half is rooms full of people: running club operations, managing a chapter's money, and teaching CS to students who remind me why I started.</p>
     </div>
     <figure class="side-photo reveal">
-      <img src="img/yusuf-candid.jpg" alt="Yusuf Gadelrab, casual selfie in a plant-filled atrium on campus" width="600" height="800" loading="lazy" decoding="async">
+      <img src="img/yusuf-candid.jpg" alt="Yusuf Gadelrab, casual selfie in a plant-filled atrium on campus" width="825" height="1100" loading="lazy" decoding="async">
       <figcaption>Off the laptop — San Jose, 2026</figcaption>
     </figure>
   </div>
@@ -324,18 +340,64 @@
 
 <hr class="divider">
 
+<section class="section section--tight">
+  <p class="eyebrow">Also here</p>
+  <h2 class="reveal">The rest of it</h2>
+  <p class="lead reveal" style="margin-top:var(--s3)">Smaller surfaces that do not fit a category above, but are live and maintained.</p>
+  <div class="grid" style="margin-top:var(--s6)">
+    <a class="card" href="/brand.html">
+      <h3>The DHAHAB lion mark</h3>
+      <p>The house identity — why it is a lion, how the geometry is generated from one program, the rules, and downloadable files.</p>
+    </a>
+    <a class="card" href="/stack.html">
+      <h3>My stack</h3>
+      <p>The tools actually behind the trading, the code and the cut. No affiliate padding.</p>
+    </a>
+    <a class="card" href="/modeling.html">
+      <h3>Model portfolio</h3>
+      <p>Digitals and measurements — athletic and commercial work, San Jose.</p>
+    </a>
+    <a class="card" href="/kxngsef-lookbook.html">
+      <h3>KXNG SEF lookbook</h3>
+      <p>Every printable design in the line, shot large and grouped by placement.</p>
+    </a>
+    <a class="card" href="/heft.html">
+      <h3>HEFT</h3>
+      <p>One product, done properly: 450+ GSM heavyweight hoodies.</p>
+    </a>
+    <a class="card" href="/au.html">
+      <h3>AU — a feed without the outrage</h3>
+      <p>Chronological only, no vanity metrics, every post carries proof.</p>
+    </a>
+    <a class="card" href="/circle.html">
+      <h3>DHAHAB Circle</h3>
+      <p>A community for builders and traders. One rule: receipts over opinions.</p>
+    </a>
+    <a class="card" href="/eh.html">
+      <h3>eh</h3>
+      <p>The unserious page. A goose is involved.</p>
+    </a>
+  </div>
+</section>
+
+<hr class="divider">
+
 <section id="final-cta" class="section section--tight center">
   <h2 class="reveal">If you only click one thing</h2>
-  <p class="lead reveal" style="margin:var(--s4) auto var(--s6)">2× SIGCSE 2026 · 78% directional accuracy · 77 passing tests — everything above is real and running. The newest door: FreightDesk founding-client pilots, installing now.</p>
+  <p class="lead reveal" style="margin:var(--s4) auto var(--s6)">2× SIGCSE 2026 · 78% directional accuracy on a 6-month backtest · 77 passing tests — everything above is built and running. The newest door: FreightDesk founding-client pilots, open now.</p>
   <a class="btn btn-gold reveal" href="freightdesk.html">Book a founding pilot →</a>
   <p class="faint reveal" style="margin-top:var(--s4);font-size:var(--t-small)">$999 one-time setup + $249/mo · launch pricing ends August 15</p>
 </section>
 
 </main>
 
+<section aria-labelledby="compliance-h" style="max-width:1080px;margin:0 auto;padding:28px 20px 8px;border-top:1px solid rgba(212,175,55,.18)"><h2 id="compliance-h" style="font-family:Georgia,'Times New Roman',serif;font-size:15px;letter-spacing:.06em;text-transform:uppercase;color:#d4af37;margin:0 0 10px">Disclosures</h2><p style="font-size:13.5px;line-height:1.65;color:#9a958c;margin:0 0 8px">Trading figures on this page are backtest and walk-forward simulation results, not live trading performance. The +0.23R headline did not survive my own adversarial re-test and I say so on the page. Hypothetical results do not account for real slippage, fees or drawdown, and past performance does not guarantee future results. No live profit-and-loss figures are claimed anywhere on this site. FreightDesk pricing and cost comparisons are list prices and illustrative math, not a projection of your savings. Nothing here is financial, investment, tax or legal advice.</p><p style="font-size:13.5px;line-height:1.65;color:#9a958c;margin:0"><a style="color:#d4af37" href="/terms.html">Terms of Use</a> · <a style="color:#d4af37" href="/privacy.html">Privacy Policy</a></p></section>
 <footer class="site-footer">
   <div>© 2026 Yusuf Gadelrab · San Jose, CA · Black &amp; gold, always.</div>
   <div class="site-footer__links">
+    <a href="/writing.html">Writing</a>
+    <a href="/eh.html">eh</a>
+    <a href="/dira.html">DIRA</a>
     <a href="/risk-tools.html">Risk Toolkit</a>
     <a href="/freight-tools.html">Freight Calculators</a>
     <a href="/apply.html">Apply OS</a>
@@ -349,6 +411,13 @@
     <a href="mailto:yusuf.gadelrab06@gmail.com">yusuf.gadelrab06@gmail.com</a>
     <a href="https://github.com/Yusuf-Gadelrab" target="_blank" rel="noopener">GitHub</a>
     <a href="https://www.linkedin.com/in/yusuf-gadelrab-76246b221" target="_blank" rel="noopener">LinkedIn</a>
+    <a href="/brand.html">Brand</a>
+    <a href="/stack.html">Stack</a>
+    <a href="/everything.html">Everything</a>
+    <a href="/codeswitch.html">CODESWITCH</a>
+    <a href="/circle.html">Circle</a>
+    <a href="/waitlist.html">Waitlists</a>
+    <a href="/legal.html">Legal</a>
     <a href="/privacy.html">Privacy</a>
     <a href="/terms.html">Terms</a>
   </div>

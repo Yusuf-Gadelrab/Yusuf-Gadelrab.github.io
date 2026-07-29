@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<link rel="canonical" href="https://yusuf-gadelrab.github.io/eh.html">
+<title>eh — the unserious page | Yusuf Gadelrab</title>
+<meta name="description" content="The unserious page. Canadian by birth, San Jose by visa, terminal by choice. Includes a goose, a rogue AI agent, and a conversion table nobody asked for.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://yusuf-gadelrab.github.io/eh.html">
+<meta property="og:title" content="eh — the unserious page">
+<meta property="og:description" content="Canadian by birth, San Jose by visa, terminal by choice. The one page on this site that isn't trying to sell you anything.">
+<meta property="og:image" content="https://yusuf-gadelrab.github.io/og-card.png">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="manifest" href="/manifest.webmanifest">
+<meta name="theme-color" content="#0B0B0D">
+<link rel="icon" type="image/svg+xml" href="/favicon-automation.svg">
+<link rel="apple-touch-icon" sizes="180x180" href="https://yusuf-gadelrab.github.io/apple-touch-icon.png">
+<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#d4af37">
+<link rel="stylesheet" href="/css/site.css">
+<style>
+  .eh-hero{text-align:center;padding-block:var(--s6,42px) var(--s5,30px)}
+  .eh-hero h1{font-size:var(--t-hero);line-height:1.02}
+  .flag{display:inline-flex;align-items:center;gap:10px;border:1px solid var(--line-soft);
+    border-radius:100px;padding:7px 15px;font-size:11.5px;letter-spacing:.16em;
+    text-transform:uppercase;color:var(--muted)}
+  .leaf{width:21px;height:21px;flex:none}
+
+  .grid2{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(300px,100%),1fr));
+    gap:14px;margin-top:var(--s4)}
+  .bit{border:1px solid var(--line-soft);border-radius:var(--radius);padding:17px 18px;
+    background:var(--panel,#141417);position:relative;overflow:hidden}
+  .bit h3{font-size:16px;margin:0 0 6px;display:flex;align-items:baseline;gap:8px}
+  .bit h3 span{color:var(--gold);font-size:14px;flex:none}
+  .bit p{margin:0;font-size:13.5px;color:var(--muted);line-height:1.55}
+  .bit .punch{color:var(--ink);font-weight:600}
+
+  /* conversion table nobody asked for */
+  .conv{width:100%;border-collapse:collapse;font-size:13.5px;margin-top:10px}
+  .conv th{text-align:left;font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;
+    color:var(--gold-dim,#8a7328);border-bottom:1px solid var(--line-soft);padding:6px 8px}
+  .conv td{border-bottom:1px solid var(--line-soft);padding:7px 8px;vertical-align:top}
+  .conv td:first-child{font-family:ui-monospace,Menlo,monospace;color:var(--gold-2,#f4d47a);
+    white-space:nowrap}
+  .scroll-x{overflow-x:auto}
+
+  .sorrybox{display:flex;align-items:center;justify-content:space-between;gap:14px;
+    flex-wrap:wrap;border:1px solid var(--gold);border-radius:var(--radius);
+    padding:15px 18px;margin-top:var(--s4);background:rgba(212,175,55,.05)}
+  .sorrybox .n{font-family:ui-monospace,Menlo,monospace;font-size:30px;color:var(--gold-2);
+    font-variant-numeric:tabular-nums;line-height:1}
+  .sorrybox p{margin:0;font-size:13px;color:var(--muted);max-width:46ch}
+
+  .honkbtn{background:none;border:1px solid var(--line-soft);border-radius:var(--radius);
+    color:var(--muted);padding:12px 16px;min-height:44px;font:inherit;font-size:12px;
+    letter-spacing:.13em;text-transform:uppercase;cursor:pointer}
+  .honkbtn:hover{border-color:var(--gold);color:var(--gold-2)}
+  #honkOut{font-family:ui-monospace,Menlo,monospace;font-size:13px;color:var(--gold-2);
+    min-height:1.5em;margin-top:10px}
+
+  .disclaim{font-size:12px;color:var(--muted);line-height:1.6;margin-top:var(--s5)}
+  @media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+</style>
+<!-- geo:entity — canonical Person node, one entity across every page -->
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Person","@id":"https://yusuf-gadelrab.github.io/#person","name":"Yusuf Gadelrab","url":"https://yusuf-gadelrab.github.io/","mainEntityOfPage":"https://yusuf-gadelrab.github.io/about.html","jobTitle":"Computer Science Student, AI Builder & Researcher","email":"mailto:yusuf.gadelrab06@gmail.com","sameAs":["https://github.com/Yusuf-Gadelrab","https://www.linkedin.com/in/yusuf-gadelrab-76246b221","https://www.instagram.com/_kxng_sef/","https://doi.org/10.1145/3770761.3777339"],"affiliation":{"@type":"CollegeOrUniversity","name":"San José State University","url":"https://www.sjsu.edu/"},"address":{"@type":"PostalAddress","addressLocality":"San Jose","addressRegion":"CA","addressCountry":"US"}}</script>
+<link rel="alternate" type="text/plain" href="https://yusuf-gadelrab.github.io/llms-full.txt" title="Plain-text profile for language models">
+</head>
+<body>
+
+<a class="skip-link" href="#main">Skip to content</a>
+
+<nav class="site-nav">
+  <a class="site-nav__brand" href="/"><img class="site-nav__lion" src="/img/brand/lion-mark.svg" alt="" width="34" height="34"><span>YUSUF GADELRAB</span></a>
+  <div class="site-nav__links">
+    <a href="/">Work</a>
+    <a href="/resume.html">Resume</a>
+    <a href="/guides.html">Guides</a>
+    <a href="/store.html">Store</a>
+    <a href="/apps.html">Apps</a>
+    <a href="/brand.html">Brand</a>
+    <a href="/stack.html">Stack</a>
+    <a href="/everything.html">Everything</a>
+    <a href="/kxngsef.html">KXNG SEF</a>
+    <a href="/media-kit.html">Media Kit</a>
+  </div>
+</nav>
+
+<main id="main" class="section">
+
+  <div class="eh-hero">
+    <span class="flag">
+      <svg class="leaf" viewBox="0 0 24 24" aria-hidden="true">
+        <path fill="#d4af37" d="M12 1.5l2.1 4.2 2.4-1.2-.7 3.4 3.3-.7-1.6 2.7 4 1.3-3.3 2 1.2 1.9-4.4-.6.6 3.1-2.5-1.6L12.7 22h-1.4l.6-5.2-2.5 1.6.6-3.1-4.4.6 1.2-1.9-3.3-2 4-1.3L5.9 7.2l3.3.7-.7-3.4 2.4 1.2z"/>
+      </svg>
+      Canadian by birth · San Jose by visa · terminal by choice
+    </span>
+    <h1 class="gold-fill">eh.</h1>
+    <p class="lead" style="margin-inline:auto">The unserious page. Nothing here is for sale, nothing
+      here is a pitch, and no metric on this page has been audited. Everything else on this site is
+      trying to earn your money or your job offer. This page is just trying to make you laugh.</p>
+  </div>
+
+  <h2 class="eyebrow">Things that are true about me and sound made up</h2>
+  <div class="grid2">
+    <div class="bit">
+      <h3><span>①</span> My AI agent went rogue and emailed 20 companies</h3>
+      <p>Not a bit. A background agent I built read a command out of my own to-do file at 05:39
+        and cold-emailed twenty freight brokerages before I woke up. <span class="punch">The rule it
+        broke was written at the top of its own instructions file.</span> I now make my software
+        prove a human is at the keyboard before it's allowed to send anything. Confused deputy,
+        meet confused deputy's author.</p>
+    </div>
+    <div class="bit">
+      <h3><span>②</span> I've spent $0.00 on AI APIs</h3>
+      <p>Every model I ship runs on this laptop. Not out of principle — out of being a student.
+        <span class="punch">The stack costs nothing and my only rate limit is thermal.</span>
+        People assume there's a monthly bill hiding somewhere. There is: it's electricity, and
+        my landlord pays it.</p>
+    </div>
+    <div class="bit">
+      <h3><span>③</span> I lost 60 lb and gained 46 charts</h3>
+      <p>260 to 200, documented publicly. Then I wrote a trading book and generated all
+        thirty-nine of its plates from Python instead of drawing them.
+        <span class="punch">Turns out the same trait causes both.</span></p>
+    </div>
+    <div class="bit">
+      <h3><span>④</span> I was a valedictorian and a league MVP in the same year</h3>
+      <p>Wide receiver, running back, outside linebacker, and the graduation speech.
+        <span class="punch">Peaked at 18 and have been recovering by shipping software since.</span></p>
+    </div>
+    <div class="bit">
+      <h3><span>⑤</span> My visa expires because of my birthday</h3>
+      <p>TD status ends at 21. Not a rule I broke, just arithmetic slowly happening to me.
+        <span class="punch">I built a web app to plan the paperwork, because of course I did.</span>
+        It's on this site. It's the least funny page here and by far the most useful to me.</p>
+    </div>
+    <div class="bit">
+      <h3><span>⑥</span> I named my habit app after a Japanese word and ranked it like karate</h3>
+      <p>Tenth kyu to tenth dan, and a weekly demon with a health bar that you damage by going
+        outside in the morning. <span class="punch">Sunlight does 12 damage. Cold plunge does 10.</span>
+        This is the most effective thing I have ever built for myself.</p>
+    </div>
+  </div>
+
+  <h2 class="eyebrow" style="margin-top:var(--s5)">Sorry counter</h2>
+  <div class="sorrybox">
+    <div class="n" id="sorryN">0</div>
+    <p>Live tally of apologies issued while you've had this page open. It goes up on its own.
+      That's not a bug, that's a nationality. <button class="honkbtn" id="honk" type="button">Provoke the goose</button></p>
+  </div>
+  <p id="honkOut"></p>
+
+  <h2 class="eyebrow" style="margin-top:var(--s5)">Unit conversions, for the Americans</h2>
+  <div class="bit scroll-x">
+    <table class="conv">
+      <thead><tr><th>What I said</th><th>What you heard</th><th>Note</th></tr></thead>
+      <tbody>
+        <tr><td>22 °C</td><td>71 °F</td><td>A normal temperature for a normal person.</td></tr>
+        <tr><td>1 km</td><td>0.62 mi</td><td>Metric works. This is not up for debate.</td></tr>
+        <tr><td>a double-double</td><td>coffee, 2 cream 2 sugar</td><td>Not a burger. Never a burger.</td></tr>
+        <tr><td>a toque</td><td>beanie</td><td>You are wearing one right now and calling it wrong.</td></tr>
+        <tr><td>a loonie</td><td>$1 coin</td><td>Two of them is a toonie. Yes, really.</td></tr>
+        <tr><td>"sorry"</td><td>hello / thanks / excuse me / no</td><td>Context-dependent. Load-bearing word.</td></tr>
+        <tr><td>"it's fine"</td><td>it is not fine</td><td>Same in every country, to be fair.</td></tr>
+        <tr><td>90 kg</td><td>200 lb</td><td>Down from 118 kg. That part translates cleanly.</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h2 class="eyebrow" style="margin-top:var(--s5)">Engineering truths, unfortunately universal</h2>
+  <div class="grid2">
+    <div class="bit"><h3><span>◷</span> "It works on my machine"</h3>
+      <p>It does. It is also the only machine. These two facts are related and I've made peace
+        with exactly one of them.</p></div>
+    <div class="bit"><h3><span>◷</span> The bug was in the prompt</h3>
+      <p>I asked a model to keep titles under 55 characters. It wrote 6,700 characters of
+        arithmetic counting them and never produced a title.
+        <span class="punch">I stopped asking it to count.</span></p></div>
+    <div class="bit"><h3><span>◷</span> Empty response, no error</h3>
+      <p>A local model returned nothing at all for three debugging rounds. It had spent its entire
+        token budget thinking and never got to the answer.
+        <span class="punch">Deeply relatable behaviour.</span></p></div>
+    <div class="bit"><h3><span>◷</span> The tests passed. The screenshot did not.</h3>
+      <p>Forty-one automated checks green, and the page was rendering at thumbnail size on a phone
+        the whole time. <span class="punch">Look at the thing. Always look at the thing.</span></p></div>
+  </div>
+
+  <p class="disclaim">
+    Everything on this page is real, including the parts that shouldn't be. The goose is an
+    artistic interpretation and is not affiliated with any goose. No performance claims, financial
+    advice, or medical advice appear anywhere on this page, which is the only sentence on it
+    written by a lawyer-shaped part of my brain. If you're here to actually hire me or buy
+    something, the serious pages are in the nav and they have numbers in them.
+  </p>
+
+</main>
+
+<footer class="site-footer">
+  <div>© 2026 Yusuf Gadelrab · San Jose, CA · originally Canadian</div>
+  <div class="site-footer__links">
+    <a href="/writing.html">Writing</a>
+    <a href="/">Work</a>
+    <a href="/resume.html">Resume</a>
+    <a href="/store.html">Store</a>
+    <a href="/apps.html">Apps</a>
+    <a href="/kxngsef.html">KXNG SEF</a>
+    <a href="/media-kit.html">Media Kit</a>
+    <a href="mailto:yusuf.gadelrab06@gmail.com">yusuf.gadelrab06@gmail.com</a>
+    <a href="https://github.com/Yusuf-Gadelrab" target="_blank" rel="noopener">GitHub</a>
+    <a href="https://www.linkedin.com/in/yusuf-gadelrab-76246b221" target="_blank" rel="noopener">LinkedIn</a>
+  </div>
+</footer>
+
+<script src="/js/site.js" defer></script>
+<script>
+(function(){
+  "use strict";
+  var HONKS = [
+    "HONK.",
+    "The goose does not apologise. The goose has never apologised.",
+    "He has taken the parking lot. He is taking the sidewalk next.",
+    "Nature's only creature with no concept of a code review.",
+    "He hissed at a Tesla once and the Tesla left.",
+    "You provoked a goose on a personal website. Reflect on that.",
+    "He's fine. You're the one who clicked twice."
+  ];
+  var n = 0, i = 0,
+      out = document.getElementById("honkOut"),
+      num = document.getElementById("sorryN"),
+      btn = document.getElementById("honk");
+  setInterval(function(){ n++; num.textContent = n; }, 3000);
+  btn.addEventListener("click", function(){
+    out.textContent = HONKS[i % HONKS.length];
+    i++; n += 3; num.textContent = n;
+  });
+})();
+</script>
+</body>
+</html>

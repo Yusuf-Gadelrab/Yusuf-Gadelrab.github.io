@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="preload" href="/css/site.css" as="style">
+<meta name="robots" content="index,follow,max-image-preview:large,max-snippet:-1">
+<meta property="og:locale" content="en_US">
+<title>A Student Portfolio That Gets Interviews</title>
+<meta name="description" content="What a student software portfolio needs: a live URL, a README that pitches, three strong projects instead of ten weak ones, and case studies reviewers finish.">
+<link rel="canonical" href="https://yusuf-gadelrab.github.io/guides/portfolio-that-gets-interviews.html">
+<link rel="icon" type="image/svg+xml" href="https://yusuf-gadelrab.github.io/favicon.svg">
+<link rel="apple-touch-icon" sizes="180x180" href="https://yusuf-gadelrab.github.io/apple-touch-icon.png">
+<meta name="theme-color" content="#0B0B0D">
+<meta name="author" content="Yusuf Gadelrab">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="Yusuf Gadelrab">
+<meta property="og:title" content="A Student Portfolio That Gets Interviews">
+<meta property="og:description" content="Shipped and reachable beats impressive-sounding. What a reviewer checks in 60 seconds.">
+<meta property="og:url" content="https://yusuf-gadelrab.github.io/guides/portfolio-that-gets-interviews.html">
+<meta property="og:image" content="https://yusuf-gadelrab.github.io/og-card.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="A Student Portfolio That Gets Interviews">
+<meta name="twitter:description" content="Shipped and reachable beats impressive-sounding. What a reviewer checks in 60 seconds.">
+<meta name="twitter:image" content="https://yusuf-gadelrab.github.io/og-card.png">
+<link rel="alternate" type="text/plain" href="https://yusuf-gadelrab.github.io/llms-full.txt" title="Plain-text profile for language models">
+
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"TechArticle","@id":"https://yusuf-gadelrab.github.io/guides/portfolio-that-gets-interviews.html#article","headline":"A Student Software Portfolio That Gets Interviews","name":"A Student Software Portfolio That Gets Interviews","description":"What a student software portfolio needs: a live URL, a README that pitches, three strong projects instead of ten weak ones, and case studies reviewers finish.","datePublished":"2026-07-29","dateModified":"2026-07-29","inLanguage":"en","author":{"@id":"https://yusuf-gadelrab.github.io/#person"},"publisher":{"@id":"https://yusuf-gadelrab.github.io/#person"},"about":["Software portfolios","Technical hiring","Student projects"],"mainEntityOfPage":"https://yusuf-gadelrab.github.io/guides/portfolio-that-gets-interviews.html","isAccessibleForFree":true,"proficiencyLevel":"Beginner"},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://yusuf-gadelrab.github.io/"},{"@type":"ListItem","position":2,"name":"Guides","item":"https://yusuf-gadelrab.github.io/guides.html"},{"@type":"ListItem","position":3,"name":"Student Portfolios"}]}]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","@id":"https://yusuf-gadelrab.github.io/guides/portfolio-that-gets-interviews.html#faq","mainEntity":[{"@type":"Question","name":"What makes a student software portfolio effective?","acceptedAnswer":{"@type":"Answer","text":"Evidence that you finished something real and can explain it. That means a live clickable URL rather than a repository alone, a README that opens with what the project does and why, and a small number of projects with genuine depth. Reviewers spend under a minute, so reachability beats ambition."}},{"@type":"Question","name":"How many projects should be in a portfolio?","acceptedAnswer":{"@type":"Answer","text":"Three strong ones. Ten shallow projects read as ten abandoned weekends, while three with error handling, tests, a deploy, a real README, and commits spread over time read as someone who follows through. Cut anything you cannot defend in a deep interview question."}},{"@type":"Question","name":"Is a live demo better than a GitHub repository?","acceptedAnswer":{"@type":"Answer","text":"Yes. A reviewer who can click and see the thing working credits you immediately, while one who must clone, install dependencies, and guess at configuration will simply move on. A deployed small project outranks an undeployed larger one."}},{"@type":"Question","name":"What should a project README contain?","acceptedAnswer":{"@type":"Answer","text":"A one-sentence description, a live demo link and a screenshot or GIF near the top, then why the project exists, how it works, what was hard, and the result with a number if one honestly exists. Local setup instructions belong at the bottom, not the top."}},{"@type":"Question","name":"How do you write a project case study?","acceptedAnswer":{"@type":"Answer","text":"As a decision narrative rather than a feature list: context, constraints, what you built, the one thing that did not work at first, the result, and what you would change. The hard-part paragraph is what distinguishes a builder from someone following a tutorial."}},{"@type":"Question","name":"What do reviewers check first in a portfolio?","acceptedAnswer":{"@type":"Answer","text":"Whether the page loads, whether one sentence tells them what the project is, whether the demo link works, whether the README explains rather than only instructs, and whether the code looks like yours rather than a tutorial. Broken links and missing descriptions cause most of the failures."}}]}</script>
+
+<link rel="stylesheet" href="/css/site.css">
+<style>
+  .prose{max-width:68ch}
+  .prose h2{margin:var(--s7) 0 var(--s4);font-size:var(--t-h2)}
+  .prose h3{margin:var(--s6) 0 var(--s3);font-size:var(--t-h3)}
+  .prose p{color:var(--muted);margin:0 0 var(--s4)}
+  .prose ul,.prose ol{color:var(--muted);padding-left:1.2em;margin:0 0 var(--s4)}
+  .prose li{margin-bottom:var(--s2)}
+  .prose a{color:var(--gold-2)}
+  .prose strong{color:var(--fg)}
+  .formula{display:block;padding:var(--s4);margin:0 0 var(--s4);border:1px solid var(--line-soft);
+    border-radius:var(--radius);font-family:ui-monospace,SFMono-Regular,Menlo,monospace;
+    font-size:var(--t-small);color:var(--gold-2);overflow-x:auto;white-space:pre-wrap}
+  .tblwrap{overflow-x:auto;margin:0 0 var(--s4)}
+  .tbl{width:100%;border-collapse:collapse;font-size:var(--t-small)}
+  .tbl th,.tbl td{text-align:left;padding:var(--s3);border-bottom:1px solid var(--line-soft);
+    color:var(--muted);vertical-align:top}
+  .tbl th{font-family:var(--display-pro);color:var(--gold-2);font-weight:600}
+  .callout{padding:var(--s4);border:1px solid var(--line-soft);border-radius:var(--radius);
+    color:var(--muted);font-size:var(--t-small);margin:0 0 var(--s5)}
+  .callout--warn{border-color:var(--gold-2)}
+  .faq-card{padding:var(--s5)}
+  .faq-card h3{font-size:var(--t-h3);margin:0}
+  .faq-card p{color:var(--muted);font-size:var(--t-small);margin:var(--s3) 0 0}
+</style>
+</head>
+<body class="pro">
+
+<a class="skip-link" href="#main">Skip to content</a>
+
+<nav class="site-nav">
+  <a class="site-nav__brand" href="/"><img class="site-nav__lion" src="/img/brand/lion-mark.svg" alt="" width="34" height="34"><span>YUSUF GADELRAB</span></a>
+  <div class="site-nav__links">
+    <a href="/">Work</a>
+    <a href="/guides.html">Guides</a>
+    <a href="/resume.html">Resume</a>
+    <a href="/apply.html">Apply OS</a>
+  </div>
+</nav>
+
+<main id="main">
+
+  <header class="section">
+    <p class="eyebrow">Guide · Career</p>
+    <h1 style="margin:var(--s4) 0">Shipped and reachable beats impressive-sounding</h1>
+    <p class="lead">A reviewer gives your portfolio under a minute. In that minute they are answering one question: did this person actually finish something real? Everything below is about making that answer obvious fast.</p>
+  </header>
+
+  <hr class="divider">
+
+  <section class="section section--tight">
+    <div class="prose">
+      <h2>The only test that matters</h2>
+      <p>A portfolio is not a gallery and it is not a resume in HTML. It is <strong>evidence that you can take something from idea to working thing that other people can use</strong>. Most student portfolios fail that test not because the projects are bad but because the evidence is unreachable — a repo with no README, a demo that 404s, a screenshot of something nobody can run.</p>
+      <p><strong>A live URL beats a repository.</strong> A reviewer who can click and immediately see the thing working has already given you more credit than a reviewer who has to clone, install dependencies, and guess at environment variables — which they will not do. Deploy it. Free static hosting and free tiers cover almost every student project, and a deployed toy outranks an undeployed system.</p>
+      <h2>What a reviewer checks in 60 seconds</h2>
+      <div class="tblwrap"><table class="tbl">
+        <thead><tr><th>Second</th><th>What they do</th><th>What kills you</th></tr></thead>
+        <tbody>
+          <tr><td>0–5</td><td>Load the site or repo</td><td>It does not load, or it is a wall of unstyled text</td></tr>
+          <tr><td>5–15</td><td>Read the top line — what is this?</td><td>No one-sentence description of what the project does</td></tr>
+          <tr><td>15–30</td><td>Click the live demo</td><td>Broken link, dead deploy, or no demo at all</td></tr>
+          <tr><td>30–45</td><td>Skim the README or case study</td><td>Setup instructions where the explanation should be</td></tr>
+          <tr><td>45–60</td><td>Open the code, scan one file</td><td>Tutorial code, one giant file, no commits after day one</td></tr>
+        </tbody>
+      </table></div>
+      <p>Notice that none of those seconds are spent on your design taste or your framework choice. They are spent establishing that the thing is real and that you can explain it.</p>
+      <h2>Three strong projects, not ten weak ones</h2>
+      <p>Ten shallow projects read as ten abandoned weekends. Three projects with depth read as someone who follows through. Depth means the boring parts are there: error handling, a test or two, a deploy, a README, commits spread over more than one day, and some evidence you dealt with a problem you did not anticipate at the start.</p>
+      <ul>
+        <li><strong>Cut anything from a tutorial</strong> unless you extended it substantially, and say what you extended.</li>
+        <li><strong>Cut anything you cannot explain in an interview</strong> — every project on the page is fair game for a deep question.</li>
+        <li><strong>Cut anything with no users and no result</strong>, unless the technical difficulty itself is the point.</li>
+        <li><strong>Keep the one that is unusual.</strong> One weird, specific project is worth more attention than three competent CRUD apps.</li>
+        <li><strong>Keep the one with a number attached.</strong> Accuracy, latency, throughput, time saved, users — any honest metric anchors the whole page.</li>
+      </ul>
+      <h2>The README is the pitch</h2>
+      <p>For most projects the README is the only documentation anyone will read, and for a hiring reviewer it is the case study. Setup instructions matter, but they belong <em>below</em> the explanation, not above it.</p>
+      <span class="formula"># Project name
+One sentence: what it does and who it is for.
+
+[Live demo](url)  ·  30-second screenshot or GIF
+
+## Why
+The problem, in two or three sentences.
+
+## How it works
+The architecture in a short paragraph, plus the stack.
+
+## What was hard
+The real constraint, and what you decided.
+
+## Results
+Numbers if you have them. Scope if you do not.
+
+## Run it locally
+The commands, last.</span>
+      <p>A screenshot or a short GIF near the top does an enormous amount of work, because it lets someone understand the project without running anything. It is the cheapest credibility you can buy.</p>
+      <h2>How to write a project case study</h2>
+      <p>A case study is not a feature list. It is a decision narrative — you had a problem, you had constraints, you chose something, and something happened. The structure that reads well:</p>
+      <ol>
+        <li><strong>Context.</strong> What the problem was and why it was worth solving. One paragraph.</li>
+        <li><strong>Constraints.</strong> Time, cost, data, hardware, skill. Constraints are what make the decisions interesting.</li>
+        <li><strong>What you built.</strong> The architecture in plain language before any diagram, plus the stack and why.</li>
+        <li><strong>The hard part.</strong> The one thing that did not work at first. This is the paragraph that separates a builder from a follower of tutorials.</li>
+        <li><strong>The result.</strong> A number, or honest scope. "78% directional accuracy over 50+ sources per day" is a result; "successfully implemented" is not.</li>
+        <li><strong>What you would change.</strong> Short, specific, unromantic. It signals you evaluated your own work.</li>
+      </ol>
+      <p class="callout">Write the case study while the project is fresh. Reconstructing why you made a decision six months later produces vague prose, and vague prose is what makes a portfolio forgettable.</p>
+      <h2>The portfolio site itself</h2>
+      <ul>
+        <li><strong>One page is enough.</strong> Who you are, three projects with links, contact. Depth lives on the project pages.</li>
+        <li><strong>Every project links to something clickable</strong> — live demo first, repository second, paper or write-up third.</li>
+        <li><strong>Fast and readable on a phone.</strong> A meaningful share of reviews happen on a phone between meetings.</li>
+        <li><strong>Real text, not images of text.</strong> Recruiters and search engines both read the page.</li>
+        <li><strong>Your email visible without a form.</strong> Contact forms lose messages and add friction to the exact action you want.</li>
+        <li><strong>Dates on things.</strong> A portfolio with no dates reads as stale by default.</li>
+      </ul>
+      <h2>The version of this that is easy to skip</h2>
+      <p>Building the portfolio is the fun part; keeping it reachable is the part that decays. Deploys expire, free tiers sleep, links rot. <strong>Check every link on your portfolio the week before you start applying</strong>, and again mid-season. A dead demo link on an otherwise strong page is worse than no link, because it converts a positive signal into evidence you do not maintain your work.</p>
+      <p>The application side of this — which roles, which deadlines, what you sent and when — is what <a href="/apply.html">Apply OS</a> handles, and the document that points at the portfolio is covered in the <a href="/guides/ats-resume.html">ATS resume guide</a>.</p>
+
+      <h2>Tools referenced in this guide</h2>
+      <ul>
+        <li><a href="/apply.html">Apply OS</a> — free deadline radar and application pipeline, browser-only.</li>
+        <li><a href="/resume.html">Resume rebuild</a> — the ATS-safe document your portfolio links from.</li>
+        <li><a href="/guides/ats-resume.html">ATS resume guide</a> — how projects should be written on the resume itself.</li>
+      </ul>
+    </div>
+  </section>
+
+  <hr class="divider">
+
+  <section class="section section--tight" id="faq">
+    <div class="grp-head">
+      <p class="eyebrow">FAQ</p>
+      <h2>Quick answers</h2>
+    </div>
+    <div class="grid" style="margin-top:var(--s6)">
+      <article class="card faq-card"><h3>What actually works?</h3><p>Evidence you finished something real and can explain it: a live URL, a README that pitches, and depth over volume. Reviewers give it under a minute.</p></article>
+      <article class="card faq-card"><h3>How many projects?</h3><p>Three with real depth. Ten shallow ones read as ten abandoned weekends. Cut anything you cannot defend in a deep question.</p></article>
+      <article class="card faq-card"><h3>Demo or repo?</h3><p>Live demo. Nobody clones and configures your project. A deployed small thing outranks an undeployed bigger one.</p></article>
+      <article class="card faq-card"><h3>What goes in the README?</h3><p>One-sentence description, demo link and GIF up top, then why, how, what was hard, and the result. Setup commands go last.</p></article>
+      <article class="card faq-card"><h3>How do I write a case study?</h3><p>Context, constraints, what you built, the part that did not work, the result, what you would change. The hard part is the paragraph that counts.</p></article>
+      <article class="card faq-card"><h3>What gets checked first?</h3><p>Does it load, is there a one-line description, does the demo link work, does the README explain, is the code yours. Broken links kill most pages.</p></article>
+    </div>
+  </section>
+
+</main>
+
+<footer class="site-footer">
+  <div class="site-footer__links">
+    <a href="/">Work</a>
+    <a href="/about.html">About</a>
+    <a href="/guides.html">Guides</a>
+    <a href="/apps.html">Apps</a>
+    <a href="/store.html">Store</a>
+    <a href="/privacy.html">Privacy</a>
+    <a href="/terms.html">Terms</a>
+    <a href="mailto:yusuf.gadelrab06@gmail.com">yusuf.gadelrab06@gmail.com</a>
+  </div>
+</footer>
+
+<script src="/js/site.js" defer></script>
+</body>
+</html>

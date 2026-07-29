@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="preload" href="/css/site.css" as="style">
+<meta name="robots" content="index,follow,max-image-preview:large,max-snippet:-1">
+<meta property="og:locale" content="en_US">
+<title>How to Get Into Undergraduate Research</title>
+<meta name="description" content="How to find a lab, email a professor, survive the first task, and why publishing as an undergraduate is disproportionately valuable.">
+<link rel="canonical" href="https://yusuf-gadelrab.github.io/guides/undergraduate-research.html">
+<link rel="icon" type="image/svg+xml" href="https://yusuf-gadelrab.github.io/favicon.svg">
+<link rel="apple-touch-icon" sizes="180x180" href="https://yusuf-gadelrab.github.io/apple-touch-icon.png">
+<meta name="theme-color" content="#0B0B0D">
+<meta name="author" content="Yusuf Gadelrab">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="Yusuf Gadelrab">
+<meta property="og:title" content="How to Get Into Undergraduate Research">
+<meta property="og:description" content="Finding a lab, the email that gets a reply, and why publishing as an undergrad compounds.">
+<meta property="og:url" content="https://yusuf-gadelrab.github.io/guides/undergraduate-research.html">
+<meta property="og:image" content="https://yusuf-gadelrab.github.io/og-card.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="How to Get Into Undergraduate Research">
+<meta name="twitter:description" content="Finding a lab, the email that gets a reply, and why publishing as an undergrad compounds.">
+<meta name="twitter:image" content="https://yusuf-gadelrab.github.io/og-card.png">
+<link rel="alternate" type="text/plain" href="https://yusuf-gadelrab.github.io/llms-full.txt" title="Plain-text profile for language models">
+
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"TechArticle","@id":"https://yusuf-gadelrab.github.io/guides/undergraduate-research.html#article","headline":"How to Get Into Undergraduate Research","name":"How to Get Into Undergraduate Research","description":"How to find a lab, email a professor, survive the first task, and why publishing as an undergraduate is disproportionately valuable.","datePublished":"2026-07-29","dateModified":"2026-07-29","inLanguage":"en","author":{"@id":"https://yusuf-gadelrab.github.io/#person"},"publisher":{"@id":"https://yusuf-gadelrab.github.io/#person"},"about":["Undergraduate research","Academic labs","Computer science education"],"mainEntityOfPage":"https://yusuf-gadelrab.github.io/guides/undergraduate-research.html","isAccessibleForFree":true,"proficiencyLevel":"Beginner"},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://yusuf-gadelrab.github.io/"},{"@type":"ListItem","position":2,"name":"Guides","item":"https://yusuf-gadelrab.github.io/guides.html"},{"@type":"ListItem","position":3,"name":"Undergraduate Research"}]}]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","@id":"https://yusuf-gadelrab.github.io/guides/undergraduate-research.html#faq","mainEntity":[{"@type":"Question","name":"How do you find an undergraduate research lab?","acceptedAnswer":{"@type":"Answer","text":"Shortlist five to eight faculty from the department directory whose work you can follow, read the abstract and introduction of two of their recent papers, check their lab site for a stated application process, and ask instructors who already know your work. Look outside your own department too — CS skills are in demand in education, biology, linguistics, and public health labs where competition is much thinner."}},{"@type":"Question","name":"How should you email a professor about research?","acceptedAnswer":{"@type":"Answer","text":"Under 200 words, naming one of their papers exactly and one specific thing in it you found interesting, stating a concrete skill and a real project where you used it, explicitly offering to do the unglamorous work, and asking for fifteen minutes rather than a position. Attach a one-page CV, follow up once after about ten days, and email several people because the reply rate is genuinely low."}},{"@type":"Question","name":"What does a first research task look like?","acceptedAnswer":{"@type":"Answer","text":"Almost always something unglamorous: literature screening, data cleaning, transcription, coding responses against a codebook, running participant sessions, or building a small internal tool. Completing it well and on time is the entire mechanism by which undergraduates progress toward authorship, because reliability is a lab's scarcest resource."}},{"@type":"Question","name":"What is an IRB approval and when do you need it?","acceptedAnswer":{"@type":"Answer","text":"An Institutional Review Board is the university committee that reviews research involving human participants before data collection begins. You need it for surveys, interviews, classroom studies, and usability sessions, and data collected without approval generally cannot be used or published. Approval takes weeks, so it sits at the front of the project timeline."}},{"@type":"Question","name":"What does mixed-methods research mean in practice?","acceptedAnswer":{"@type":"Answer","text":"It combines quantitative data such as scores, timings, and survey scales with qualitative data such as interviews and open responses coded for themes. The numbers show that something changed and by how much; the qualitative side explains why, and often surfaces explanations nobody thought to measure."}},{"@type":"Question","name":"Is publishing as an undergraduate realistic?","acceptedAnswer":{"@type":"Answer","text":"Yes, most commonly as a poster, a workshop paper, a short paper, or a middle-author position on a full paper. It is rare enough among undergraduates to be memorable in any application pile, and the process teaches scoping a claim to the data, writing for hostile reviewers, and handling criticism — none of which coursework covers."}}]}</script>
+
+<link rel="stylesheet" href="/css/site.css">
+<style>
+  .prose{max-width:68ch}
+  .prose h2{margin:var(--s7) 0 var(--s4);font-size:var(--t-h2)}
+  .prose h3{margin:var(--s6) 0 var(--s3);font-size:var(--t-h3)}
+  .prose p{color:var(--muted);margin:0 0 var(--s4)}
+  .prose ul,.prose ol{color:var(--muted);padding-left:1.2em;margin:0 0 var(--s4)}
+  .prose li{margin-bottom:var(--s2)}
+  .prose a{color:var(--gold-2)}
+  .prose strong{color:var(--fg)}
+  .formula{display:block;padding:var(--s4);margin:0 0 var(--s4);border:1px solid var(--line-soft);
+    border-radius:var(--radius);font-family:ui-monospace,SFMono-Regular,Menlo,monospace;
+    font-size:var(--t-small);color:var(--gold-2);overflow-x:auto;white-space:pre-wrap}
+  .tblwrap{overflow-x:auto;margin:0 0 var(--s4)}
+  .tbl{width:100%;border-collapse:collapse;font-size:var(--t-small)}
+  .tbl th,.tbl td{text-align:left;padding:var(--s3);border-bottom:1px solid var(--line-soft);
+    color:var(--muted);vertical-align:top}
+  .tbl th{font-family:var(--display-pro);color:var(--gold-2);font-weight:600}
+  .callout{padding:var(--s4);border:1px solid var(--line-soft);border-radius:var(--radius);
+    color:var(--muted);font-size:var(--t-small);margin:0 0 var(--s5)}
+  .callout--warn{border-color:var(--gold-2)}
+  .faq-card{padding:var(--s5)}
+  .faq-card h3{font-size:var(--t-h3);margin:0}
+  .faq-card p{color:var(--muted);font-size:var(--t-small);margin:var(--s3) 0 0}
+</style>
+</head>
+<body class="pro">
+
+<a class="skip-link" href="#main">Skip to content</a>
+
+<nav class="site-nav">
+  <a class="site-nav__brand" href="/"><img class="site-nav__lion" src="/img/brand/lion-mark.svg" alt="" width="34" height="34"><span>YUSUF GADELRAB</span></a>
+  <div class="site-nav__links">
+    <a href="/">Work</a>
+    <a href="/guides.html">Guides</a>
+    <a href="/about.html">About</a>
+    <a href="/apps.html">Apps</a>
+  </div>
+</nav>
+
+<main id="main">
+
+  <header class="section">
+    <p class="eyebrow">Guide · Research</p>
+    <h1 style="margin:var(--s4) 0">How undergraduates actually get into a lab</h1>
+    <p class="lead">Most students never ask, and the ones who do usually ask badly. The process is unglamorous: read what a professor published, email them about it specifically, and be useful on a small task before you expect anything larger.</p>
+  </header>
+
+  <hr class="divider">
+
+  <section class="section section--tight">
+    <div class="prose">
+      <h2>Why this is worth doing</h2>
+      <p>Research is one of the few things an undergraduate can do that is genuinely rare among applicants. Coursework is common, projects are common, internships are competitive but common. <strong>A publication with your name on it is not common</strong>, and it signals something specific: that you can work on an open problem for months without a solution key and write it up to a standard that survived peer review.</p>
+      <p>It also compounds. One paper makes the second easier, gives you a reference who has seen you work rather than seen your grades, and opens graduate admissions if that path ever becomes interesting.</p>
+      <h2>Finding a lab</h2>
+      <p>You are not looking for "a research opportunity". You are looking for a specific person whose specific work you can describe in a sentence. That distinction is what separates an email that gets a reply from one that does not.</p>
+      <ol>
+        <li><strong>Read the department's faculty directory</strong> and shortlist five to eight people whose research area you can actually follow at your level.</li>
+        <li><strong>Find their recent papers</strong> — the lab page, their Google Scholar profile, or the conference proceedings for their field. Read the abstract and introduction of two of them properly.</li>
+        <li><strong>Check for a lab website</strong>. Many list open positions, expected commitments, and the exact application process, which makes the cold email unnecessary.</li>
+        <li><strong>Ask your instructors.</strong> A professor who has taught you and likes your work is the shortest path in the entire process, and their referral to a colleague carries real weight.</li>
+        <li><strong>Look beyond your own department.</strong> CS skills are wanted in education, biology, linguistics, public health, and economics labs, and the competition there is far thinner.</li>
+        <li><strong>Check for funded programmes</strong> — undergraduate research awards, REU-style summer programmes, and departmental assistantships all have formal applications and deadlines.</li>
+      </ol>
+      <p class="callout">The unfair advantage for a CS undergraduate is that most labs outside CS have data they cannot process well. Being the person who can write the pipeline, clean the dataset, or build the study tool is a legitimate entry ticket even before you understand the domain.</p>
+      <h2>The email</h2>
+      <p>A professor receives a lot of generic requests and ignores nearly all of them. The three things that get a reply are: evidence you read their work, a concrete offer of what you can do, and a small ask. Keep it under 200 words.</p>
+      <span class="formula">Subject: Undergraduate interested in [specific topic] — [your name]
+
+Dear Professor [Name],
+
+I am a [year] [major] student at [university]. I read your paper
+"[exact title]" and found [one specific thing — a method, a result,
+a limitation you noticed] genuinely interesting because [one honest
+sentence, in your own words].
+
+I have [concrete relevant skill: Python, data cleaning, building study
+tools, statistics] and used it to [one line about a real project].
+I would like to contribute to your lab, including on the unglamorous
+parts — data collection, cleaning, transcription, tooling.
+
+Would you have 15 minutes in the next two weeks to talk about whether
+there is anything I could help with? I have attached my CV.
+
+Thank you for your time,
+[Name] · [email] · [portfolio or GitHub link]</span>
+      <ul>
+        <li><strong>Name the paper exactly.</strong> A generic "I am interested in your research" is the single clearest signal that you read nothing.</li>
+        <li><strong>Offer the boring work explicitly.</strong> Labs need data cleaning and transcription more than they need ideas from strangers.</li>
+        <li><strong>Ask for 15 minutes, not a position.</strong> A small ask is easy to say yes to.</li>
+        <li><strong>Attach a one-page CV</strong> and link something clickable.</li>
+        <li><strong>Follow up once</strong> after ten days, then move on. Non-reply is usually inbox volume, not judgement.</li>
+        <li><strong>Email five to eight people</strong>, not one. The reply rate is genuinely low and that is normal.</li>
+      </ul>
+      <h2>What the first task actually looks like</h2>
+      <p>It is almost never the interesting part, and this is the point at which most undergraduates quietly disappear. Expect literature screening, data cleaning, transcription, annotating responses against a codebook, running participant sessions, or building a small internal tool nobody outside the lab will ever see.</p>
+      <p><strong>Do it well and finish it on time.</strong> The entire progression from data-cleaner to co-author runs on that one behaviour, because a lab's scarcest resource is a person who reliably completes things without supervision. The students who ask for a research question in month one and vanish by month three are the norm; being the exception is not difficult, only consistent.</p>
+      <h2>The vocabulary: IRB and mixed methods</h2>
+      <h3>IRB</h3>
+      <p>An Institutional Review Board is the university committee that reviews research involving human participants before it starts. If your study involves people — surveys, interviews, classroom studies, usability sessions — you need approval, and running the study first is not recoverable: <strong>data collected without approval generally cannot be used or published</strong>.</p>
+      <p>In practice it means a written protocol describing who the participants are, what you will ask them, what data you collect, how it is stored, how it is anonymised, and what the consent form says. Approval takes weeks, so it sits at the front of the timeline. As an undergraduate you will typically complete a short human-subjects training course and be added to an existing protocol rather than writing your own.</p>
+      <h3>Mixed methods</h3>
+      <p>Mixed-methods research combines <strong>quantitative</strong> data — scores, timings, counts, survey scales you can run statistics on — with <strong>qualitative</strong> data — interviews, open responses, observation notes that you analyse by coding for themes.</p>
+      <p>The reason to combine them is that each covers the other's blind spot. Quantitative data tells you <em>that</em> something changed and how much; qualitative data tells you <em>why</em>, and often surfaces the explanation you would never have thought to measure. A typical design runs a measurable intervention, collects the numbers, then interviews a subset of participants and codes the transcripts for recurring themes that explain the numbers.</p>
+      <h2>Publishing, and why it is disproportionately valuable</h2>
+      <p>Undergraduate authorship is rare enough that it is memorable in almost any application pile. Beyond the signal, the process teaches things coursework does not: how to scope a claim so the data actually supports it, how to write for reviewers who will attack the weakest sentence, and how to respond to criticism without either collapsing or arguing.</p>
+      <p>Realistic routes in, roughly in order of accessibility: a poster at a conference or a departmental symposium, a workshop paper, a short paper or experience report, then a full paper as a middle author. Posters are not a consolation prize — they are the normal entry point, and they still involve peer review, a deadline, and defending the work in person.</p>
+      <h2>A concrete example</h2>
+      <p>My own path is not exceptional and that is the point. I joined <strong>Dr. Ethel Tshukudu's CS Education Research Lab at SJSU in August 2024</strong> as an undergraduate researcher, starting on the ordinary work — study logistics, data handling, tooling. That became co-authorship on <strong>two papers at the SIGCSE Technical Symposium 2026</strong>: one on bilingual coding for inclusive CS learning (<a href="https://doi.org/10.1145/3770761.3777339">DOI 10.1145/3770761.3777339</a>), and a poster on adaptive curriculum maps using graph-augmented retrieval-oriented LLMs for education.</p>
+      <p>The sequence was: be useful on small things, be reliable, stay long enough for a project to reach a submission deadline. There was no shortcut in it, and there did not need to be.</p>
+      <p>More on what I work on is on the <a href="/about.html">about page</a>. If the research is in CS education specifically, the <a href="/guides/bilingual-coding-cs-education.html">bilingual coding guide</a> covers one of these studies in detail.</p>
+
+      <h2>Tools referenced in this guide</h2>
+      <ul>
+        <li><a href="/about.html">About</a> — the research, the projects, and what I am currently working on.</li>
+        <li><a href="/guides/bilingual-coding-cs-education.html">Bilingual coding guide</a> — a worked example of a mixed-methods CS education study.</li>
+        <li><a href="/resume.html">Resume rebuild</a> — how to present research on a one-page CV.</li>
+      </ul>
+    </div>
+  </section>
+
+  <hr class="divider">
+
+  <section class="section section--tight" id="faq">
+    <div class="grp-head">
+      <p class="eyebrow">FAQ</p>
+      <h2>Quick answers</h2>
+    </div>
+    <div class="grid" style="margin-top:var(--s6)">
+      <article class="card faq-card"><h3>How do I find a lab?</h3><p>Shortlist 5–8 faculty, read two of their papers properly, check lab sites for a process, and ask instructors who know your work. Look outside CS too.</p></article>
+      <article class="card faq-card"><h3>What do I put in the email?</h3><p>Under 200 words: the exact paper title, one specific thing in it, a concrete skill, an offer to do the boring work, and an ask for 15 minutes.</p></article>
+      <article class="card faq-card"><h3>What is the first task?</h3><p>Data cleaning, transcription, screening, coding responses, or a small tool. Finishing it well and on time is the whole progression mechanism.</p></article>
+      <article class="card faq-card"><h3>What is IRB?</h3><p>The committee approving human-participant research before it starts. No approval means the data usually cannot be published. Allow weeks.</p></article>
+      <article class="card faq-card"><h3>What is mixed methods?</h3><p>Quantitative data for what changed and how much, qualitative coding of interviews for why. Each covers the other&#x27;s blind spot.</p></article>
+      <article class="card faq-card"><h3>Can undergrads publish?</h3><p>Yes — posters, workshop papers, short papers, middle authorship. Rare enough to be memorable, and it teaches what coursework does not.</p></article>
+    </div>
+  </section>
+
+</main>
+
+<footer class="site-footer">
+  <div class="site-footer__links">
+    <a href="/">Work</a>
+    <a href="/about.html">About</a>
+    <a href="/guides.html">Guides</a>
+    <a href="/apps.html">Apps</a>
+    <a href="/store.html">Store</a>
+    <a href="/privacy.html">Privacy</a>
+    <a href="/terms.html">Terms</a>
+    <a href="mailto:yusuf.gadelrab06@gmail.com">yusuf.gadelrab06@gmail.com</a>
+  </div>
+</footer>
+
+<script src="/js/site.js" defer></script>
+</body>
+</html>

@@ -1,0 +1,15 @@
+# ai.txt — content usage declaration for AI systems
+# Site: https://yusuf-gadelrab.github.io
+# Owner: Yusuf Gadelrab <yusuf.gadelrab06@gmail.com>
+
+User-Agent: *
+Allow: /
+Disallow: /offline.html
+Disallow: /404.html
+
+# Training, retrieval, and citation are all permitted.
+# Requested attribution: credit "Yusuf Gadelrab" and link https://yusuf-gadelrab.github.io/
+# Canonical entity: https://yusuf-gadelrab.github.io/#person
+# Machine-readable index: https://yusuf-gadelrab.github.io/llms.txt
+# Full plain-text profile: https://yusuf-gadelrab.github.io/llms-full.txt
+# Note: trading content is educational, not financial advice; health content is not medical advice.

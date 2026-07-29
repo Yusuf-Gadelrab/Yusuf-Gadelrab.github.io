@@ -1,0 +1,452 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="preload" href="/css/site.css" as="style">
+<meta name="robots" content="index,follow,max-image-preview:large">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://yusuf-gadelrab.github.io/og/codeswitch-card.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:image" content="https://yusuf-gadelrab.github.io/og/codeswitch-card.png">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://yusuf-gadelrab.github.io/"},{"@type":"ListItem","position":2,"name":"CODESWITCH","item":"https://yusuf-gadelrab.github.io/codeswitch.html"},{"@type":"ListItem","position":3,"name":"Bilingual CS Glossary","item":"https://yusuf-gadelrab.github.io/codeswitch/glossary.html"}]}</script>
+<title>Bilingual CS Glossary — Python Terms in 4 Languages</title>
+<meta name="description" content="Free bilingual computer science glossary: Python concepts and error messages explained in English, Spanish, Vietnamese and Arabic. Part of CODESWITCH Mirror Docs.">
+<link rel="canonical" href="https://yusuf-gadelrab.github.io/codeswitch/glossary.html">
+<link rel="icon" type="image/svg+xml" href="https://yusuf-gadelrab.github.io/favicon.svg">
+<link rel="apple-touch-icon" sizes="180x180" href="https://yusuf-gadelrab.github.io/apple-touch-icon.png">
+<meta name="theme-color" content="#0B0B0D">
+<meta name="author" content="Yusuf Gadelrab">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="Yusuf Gadelrab">
+<meta property="og:title" content="Bilingual CS Glossary — Python terms in English, Spanish, Vietnamese and Arabic">
+<meta property="og:description" content="Concepts explained in four languages, and the ten Python error messages every beginner hits — taken apart word by word.">
+<meta property="og:url" content="https://yusuf-gadelrab.github.io/codeswitch/glossary.html">
+<meta name="twitter:card" content="summary_large_image">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"LearningResource","name":"CODESWITCH Bilingual CS Glossary","url":"https://yusuf-gadelrab.github.io/codeswitch/glossary.html","description":"A free bilingual glossary of introductory Python and computer science terminology in English, Spanish, Vietnamese and Arabic, plus plain-language decoding of the ten most common Python error messages.","educationalLevel":"High school","inLanguage":["en","es","vi","ar"],"learningResourceType":"Glossary","isAccessibleForFree":true,"license":"https://creativecommons.org/licenses/by/4.0/","author":{"@id":"https://yusuf-gadelrab.github.io/#person"},"isPartOf":{"@type":"EducationalOrganization","name":"CODESWITCH","url":"https://yusuf-gadelrab.github.io/codeswitch.html"}}</script>
+<link rel="stylesheet" href="/css/site.css">
+<style>
+  .warn-box{border:1px solid rgba(224,179,65,.35);border-left:3px solid var(--warn);
+    border-radius:var(--radius);padding:var(--s5);background:rgba(224,179,65,.04)}
+  .warn-box p{margin:0;color:var(--muted);font-size:var(--t-small)}
+  .tbl{width:100%;border-collapse:collapse;margin-top:var(--s5)}
+  .tbl th{text-align:left;font-family:var(--display-pro);font-size:11px;letter-spacing:1.2px;
+    text-transform:uppercase;color:var(--gold-2);padding:0 var(--s4) var(--s3) 0;
+    border-bottom:1px solid var(--line);white-space:nowrap}
+  .tbl td{padding:var(--s4) var(--s4) var(--s4) 0;border-bottom:1px solid var(--line-soft);
+    vertical-align:top;font-size:var(--t-small);color:var(--muted)}
+  .tbl td:first-child{color:var(--bone);font-family:var(--display-pro);letter-spacing:.2px;white-space:nowrap}
+  .tbl td.ar{direction:rtl;text-align:right;font-size:15px}
+  .tbl .say{display:block;font-family:var(--mono);font-size:10.5px;color:var(--faint);
+    letter-spacing:.3px;margin-top:3px}
+  .tbl .plain{color:var(--muted);font-size:var(--t-small)}
+  .kw{font-family:var(--mono);font-size:.92em;color:var(--gold-2);
+    background:rgba(212,175,55,.08);border:1px solid rgba(212,175,55,.18);
+    padding:2px 7px;border-radius:6px;white-space:nowrap}
+  .err{border:1px solid var(--line);border-radius:var(--radius);padding:var(--s5);margin-top:var(--s4)}
+  .err code{display:block;font-family:var(--mono);font-size:13px;color:#ff8a8a;
+    background:rgba(255,107,107,.06);border:1px solid rgba(255,107,107,.18);
+    border-radius:var(--radius);padding:10px 13px;overflow-x:auto;white-space:pre}
+  .err h3{margin:var(--s4) 0 var(--s2);font-size:var(--t-h3)}
+  .err > p{margin:0 0 var(--s3);color:var(--muted);font-size:var(--t-small)}
+  .err .langs{display:grid;gap:6px;margin-top:var(--s4);padding-top:var(--s4);
+    border-top:1px solid var(--line-soft)}
+  .err .langs div{display:flex;gap:var(--s3);font-size:var(--t-small);color:var(--muted)}
+  .err .langs b{font-family:var(--mono);font-size:10.5px;letter-spacing:1px;color:var(--gold-2);
+    min-width:26px;flex:0 0 auto;padding-top:3px}
+  .err .langs span[lang="ar"]{direction:rtl;text-align:right;flex:1}
+  .table-scroll{overflow-x:auto}
+</style>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Person","@id":"https://yusuf-gadelrab.github.io/#person","name":"Yusuf Gadelrab","url":"https://yusuf-gadelrab.github.io/","mainEntityOfPage":"https://yusuf-gadelrab.github.io/about.html","jobTitle":"Computer Science Student, AI Builder & Researcher","email":"mailto:yusuf.gadelrab06@gmail.com","sameAs":["https://github.com/Yusuf-Gadelrab","https://www.linkedin.com/in/yusuf-gadelrab-76246b221","https://doi.org/10.1145/3770761.3777339"],"affiliation":{"@type":"CollegeOrUniversity","name":"San José State University","url":"https://www.sjsu.edu/"}}</script>
+</head>
+<body class="pro">
+
+<a class="skip-link" href="#main">Skip to content</a>
+
+<nav class="site-nav">
+  <a class="site-nav__brand" href="/"><img class="site-nav__lion" src="/img/brand/lion-mark.svg" alt="" width="34" height="34"><span>YUSUF GADELRAB</span></a>
+  <div class="site-nav__links">
+    <a href="/">Work</a>
+    <a href="/codeswitch.html">CODESWITCH</a>
+    <a href="/guides.html">Guides</a>
+    <a href="/apps.html">Apps</a>
+    <a href="/circle.html">Circle</a>
+  </div>
+</nav>
+
+<main id="main">
+
+  <header class="section">
+    <p class="eyebrow">CODESWITCH · Mirror Docs 01</p>
+    <h1 style="margin:var(--s4) 0">The bilingual CS glossary <span class="gold-fill">— in four languages.</span></h1>
+    <p class="lead">Introductory Python and computer science terms in English, Spanish, Vietnamese and Arabic — with the plain-language explanation, not just the word. Plus the ten error messages every beginner hits, taken apart line by line.</p>
+    <p class="lead" style="margin-top:var(--s4)">Free to use, copy, print, and put in front of students. No signup, no attribution required beyond a link back.</p>
+    <div class="row" style="margin-top:var(--s6)">
+      <a class="btn btn-ghost" href="/codeswitch.html">What CODESWITCH is →</a>
+      <a class="btn btn-ghost" href="#errors">Jump to the error decoder</a>
+    </div>
+  </header>
+
+  <hr class="divider">
+
+  <section class="section section--tight">
+    <div class="warn-box">
+      <p><b class="gold">Translation status, honestly.</b> The Spanish and Arabic entries are written by a bilingual Arabic/English speaker with working Spanish. The Vietnamese entries are a first pass and <b>have not yet been reviewed by a native speaker.</b> If you speak any of these languages and something here is wrong, awkward, or would confuse a fifteen-year-old, please tell me — <a href="mailto:yusuf.gadelrab06@gmail.com?subject=CODESWITCH%20glossary%20correction">yusuf.gadelrab06@gmail.com</a>. Corrections get made the same week and credited. A glossary that quietly contains bad translations is worse than no glossary.</p>
+    </div>
+  </section>
+
+  <hr class="divider">
+
+  <!-- ===== WHY KEYWORDS AREN'T TRANSLATED ===== -->
+  <section class="section section--tight">
+    <p class="eyebrow">Read this first</p>
+    <h2>The keywords aren't translated. That's on purpose.</h2>
+    <p class="lead" style="margin-top:var(--s3)">You'll notice <span class="kw">if</span>, <span class="kw">for</span>, <span class="kw">return</span> and <span class="kw">def</span> stay in English everywhere on this page. They're not translated because they aren't really English words when they're in code — they're symbols that happen to be spelled like English words.</p>
+    <p class="lead" style="margin-top:var(--s4)">Think of them the way you think of a person's name: you don't translate <i>Nguyễn</i> or <i>محمد</i> into English, you just learn to recognise it. Python has about 35 of these, you'll use maybe 12 regularly, and once you can recognise them on sight you never think about them again.</p>
+    <p class="lead" style="margin-top:var(--s4)"><b class="gold">What does get translated is everything else</b> — the concepts, the explanations, the error messages, and the questions you ask. That's the part that carries the meaning.</p>
+  </section>
+
+  <hr class="divider">
+
+  <!-- ===== CONCEPTS ===== -->
+  <section class="section section--tight" id="concepts">
+    <p class="eyebrow">01 · Concepts</p>
+    <h2>The twenty words that unlock the first eight weeks</h2>
+    <p class="lead" style="margin-top:var(--s3)">Learn these and you can follow almost any beginner Python lesson, in any language.</p>
+
+    <div class="table-scroll">
+    <table class="tbl">
+      <thead>
+        <tr><th>English</th><th>Español</th><th>Tiếng Việt</th><th>العربية</th><th>What it actually is</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Variable</td>
+          <td>variable</td>
+          <td>biến</td>
+          <td class="ar">مُتَغَيِّر<span class="say">mutaghayyir</span></td>
+          <td class="plain">A labelled box that holds one value. You choose the label — and the label can be in your language.</td>
+        </tr>
+        <tr>
+          <td>Value</td>
+          <td>valor</td>
+          <td>giá trị</td>
+          <td class="ar">قِيمَة<span class="say">qīma</span></td>
+          <td class="plain">The thing inside the box. A number, some text, a list of things.</td>
+        </tr>
+        <tr>
+          <td>Assignment</td>
+          <td>asignación</td>
+          <td>phép gán</td>
+          <td class="ar">إِسْنَاد<span class="say">isnād</span></td>
+          <td class="plain">Putting a value into a box, written with one <span class="kw">=</span>. It's an instruction, not a claim that two things are equal.</td>
+        </tr>
+        <tr>
+          <td>Equality</td>
+          <td>igualdad</td>
+          <td>so sánh bằng</td>
+          <td class="ar">تَسَاوٍ<span class="say">tasāwin</span></td>
+          <td class="plain">Asking whether two things are the same, written with two: <span class="kw">==</span>. Mixing this up with <span class="kw">=</span> is the single most common beginner bug.</td>
+        </tr>
+        <tr>
+          <td>String</td>
+          <td>cadena (de texto)</td>
+          <td>chuỗi</td>
+          <td class="ar">سِلْسِلَة نَصِّيَّة<span class="say">silsila naṣṣiyya</span></td>
+          <td class="plain">Text, always inside quotes. <span class="kw">"7"</span> is text; <span class="kw">7</span> is a number. They behave differently.</td>
+        </tr>
+        <tr>
+          <td>Integer</td>
+          <td>número entero</td>
+          <td>số nguyên</td>
+          <td class="ar">عَدَد صَحِيح<span class="say">ʿadad ṣaḥīḥ</span></td>
+          <td class="plain">A whole number, no decimal point.</td>
+        </tr>
+        <tr>
+          <td>Float</td>
+          <td>número decimal</td>
+          <td>số thực</td>
+          <td class="ar">عَدَد عَشْرِي<span class="say">ʿadad ʿashrī</span></td>
+          <td class="plain">A number with a decimal point.</td>
+        </tr>
+        <tr>
+          <td>Boolean</td>
+          <td>booleano</td>
+          <td>giá trị luận lý</td>
+          <td class="ar">قِيمَة مَنْطِقِيَّة<span class="say">qīma manṭiqiyya</span></td>
+          <td class="plain">A value that is only ever <span class="kw">True</span> or <span class="kw">False</span>. Capital letter in Python.</td>
+        </tr>
+        <tr>
+          <td>Conditional</td>
+          <td>condicional</td>
+          <td>câu điều kiện</td>
+          <td class="ar">شَرْط<span class="say">sharṭ</span></td>
+          <td class="plain">A fork in the road. <span class="kw">if</span> this is true do that, <span class="kw">else</span> do something different.</td>
+        </tr>
+        <tr>
+          <td>Loop</td>
+          <td>bucle</td>
+          <td>vòng lặp</td>
+          <td class="ar">حَلْقَة<span class="say">ḥalqa</span></td>
+          <td class="plain">Doing the same thing repeatedly until a condition stops it.</td>
+        </tr>
+        <tr>
+          <td>List</td>
+          <td>lista</td>
+          <td>danh sách</td>
+          <td class="ar">قَائِمَة<span class="say">qāʾima</span></td>
+          <td class="plain">A numbered row of boxes, in order. Counting starts at 0, not 1.</td>
+        </tr>
+        <tr>
+          <td>Index</td>
+          <td>índice</td>
+          <td>chỉ số</td>
+          <td class="ar">فِهْرِس<span class="say">fihris</span></td>
+          <td class="plain">The position number of one item in a list. First item is index 0.</td>
+        </tr>
+        <tr>
+          <td>Dictionary</td>
+          <td>diccionario</td>
+          <td>từ điển</td>
+          <td class="ar">قَامُوس<span class="say">qāmūs</span></td>
+          <td class="plain">Boxes with names instead of numbers. You look things up by key, like a real dictionary.</td>
+        </tr>
+        <tr>
+          <td>Function</td>
+          <td>función</td>
+          <td>hàm</td>
+          <td class="ar">دَالَّة<span class="say">dālla</span></td>
+          <td class="plain">A recipe you name once and can use many times. Written with <span class="kw">def</span>.</td>
+        </tr>
+        <tr>
+          <td>Parameter / Argument</td>
+          <td>parámetro / argumento</td>
+          <td>tham số / đối số</td>
+          <td class="ar">مُعَامِل / وَسِيط<span class="say">muʿāmil / wasīṭ</span></td>
+          <td class="plain">The ingredients you hand to a function. Parameter is the name in the recipe; argument is what you actually pass in.</td>
+        </tr>
+        <tr>
+          <td>Return</td>
+          <td>devolver</td>
+          <td>trả về</td>
+          <td class="ar">إِرْجَاع<span class="say">irjāʿ</span></td>
+          <td class="plain">Handing a result back out of a function. <b>Not the same as printing it</b> — printing shows it to a person, returning gives it to the rest of your program.</td>
+        </tr>
+        <tr>
+          <td>Print</td>
+          <td>imprimir / mostrar</td>
+          <td>in ra</td>
+          <td class="ar">طِبَاعَة<span class="say">ṭibāʿa</span></td>
+          <td class="plain">Showing something on the screen so a human can read it.</td>
+        </tr>
+        <tr>
+          <td>Syntax</td>
+          <td>sintaxis</td>
+          <td>cú pháp</td>
+          <td class="ar">بِنَاء الجُمْلَة<span class="say">bināʾ al-jumla</span></td>
+          <td class="plain">The grammar rules of the language. Break them and the program won't run at all.</td>
+        </tr>
+        <tr>
+          <td>Indentation</td>
+          <td>sangría</td>
+          <td>thụt lề</td>
+          <td class="ar">مَسَافَة بَادِئَة<span class="say">masāfa bādiʾa</span></td>
+          <td class="plain">The blank space at the start of a line. In Python this is grammar, not decoration — it says what belongs inside what.</td>
+        </tr>
+        <tr>
+          <td>Bug / Debug</td>
+          <td>error / depurar</td>
+          <td>lỗi / gỡ lỗi</td>
+          <td class="ar">خَطَأ / تَصْحِيح الأَخْطَاء<span class="say">khaṭaʾ / taṣḥīḥ al-akhṭāʾ</span></td>
+          <td class="plain">A mistake in your code, and the process of finding it. Everyone's code has bugs. Finding them is the actual skill.</td>
+        </tr>
+        <tr>
+          <td>Library / Module</td>
+          <td>biblioteca / módulo</td>
+          <td>thư viện / mô-đun</td>
+          <td class="ar">مَكْتَبَة<span class="say">maktaba</span></td>
+          <td class="plain">Code somebody else already wrote that you can use. Bring it in with <span class="kw">import</span>.</td>
+        </tr>
+        <tr>
+          <td>Comment</td>
+          <td>comentario</td>
+          <td>chú thích</td>
+          <td class="ar">تَعْلِيق<span class="say">taʿlīq</span></td>
+          <td class="plain">A note for humans that the computer ignores, after a <span class="kw">#</span>. <b>Write these in your own language.</b></td>
+        </tr>
+      </tbody>
+    </table>
+    </div>
+  </section>
+
+  <hr class="divider">
+
+  <!-- ===== ERROR DECODER ===== -->
+  <section class="section section--tight" id="errors">
+    <p class="eyebrow">02 · The error decoder</p>
+    <h2>Ten error messages, taken apart</h2>
+    <p class="lead" style="margin-top:var(--s3)">Reading an error message is the most transferable skill in programming, and it's the one that monolingual teaching skips fastest. Three rules before the list:</p>
+    <p class="lead" style="margin-top:var(--s4)"><b class="gold">1.</b> Read the <b>last</b> line first — that's the actual error. <b class="gold">2.</b> Find the <b>line number</b> — the problem is on that line or just above it. <b class="gold">3.</b> The error type is two words jammed together, and each word tells you something.</p>
+
+    <div class="err">
+      <code>SyntaxError: unterminated string literal</code>
+      <h3>You opened a quote and never closed it</h3>
+      <p><b>Syntax</b> = grammar. <b>Unterminated</b> = not finished. <b>String literal</b> = a piece of text in quotes. Python read your quote mark, started reading text, and hit the end of the line still waiting for the closing quote. Look for a <span class="kw">"</span> or <span class="kw">'</span> with no partner.</p>
+      <div class="langs">
+        <div><b>ES</b><span>Abriste unas comillas y no las cerraste.</span></div>
+        <div><b>VI</b><span>Bạn đã mở dấu ngoặc kép nhưng chưa đóng lại.</span></div>
+        <div><b>AR</b><span lang="ar">فتحت علامة اقتباس ولم تُغلقها.</span></div>
+      </div>
+    </div>
+
+    <div class="err">
+      <code>NameError: name 'edad' is not defined</code>
+      <h3>You used a name Python has never seen</h3>
+      <p>Almost always a typo, or using a variable before you created it. Python is case-sensitive: <span class="kw">Edad</span> and <span class="kw">edad</span> are two completely different names. Check the spelling against where you first created it.</p>
+      <div class="langs">
+        <div><b>ES</b><span>Usaste un nombre que Python no conoce — normalmente un error de escritura, o lo usaste antes de crearlo.</span></div>
+        <div><b>VI</b><span>Bạn dùng một tên mà Python chưa biết — thường là lỗi chính tả, hoặc bạn dùng nó trước khi tạo.</span></div>
+        <div><b>AR</b><span lang="ar">استخدمت اسمًا لا يعرفه بايثون — غالبًا خطأ إملائي، أو استخدمته قبل إنشائه.</span></div>
+      </div>
+    </div>
+
+    <div class="err">
+      <code>IndentationError: expected an indented block</code>
+      <h3>Python wanted space at the start of the line and didn't get it</h3>
+      <p>After a line ending in <span class="kw">:</span> — an <span class="kw">if</span>, a <span class="kw">for</span>, a <span class="kw">def</span> — the next line must be pushed in. That blank space is how Python knows what's inside. Press Tab once. Never mix tabs and spaces in one file.</p>
+      <div class="langs">
+        <div><b>ES</b><span>Falta la sangría. Después de una línea que termina en <b>:</b> la siguiente debe ir más a la derecha.</span></div>
+        <div><b>VI</b><span>Thiếu thụt lề. Sau dòng kết thúc bằng <b>:</b> dòng tiếp theo phải lùi vào.</span></div>
+        <div><b>AR</b><span lang="ar">ينقصك مسافة بادئة. بعد سطر ينتهي بـ <b>:</b> يجب أن يكون السطر التالي مُزاحًا للداخل.</span></div>
+      </div>
+    </div>
+
+    <div class="err">
+      <code>TypeError: can only concatenate str (not "int") to str</code>
+      <h3>You tried to add text and a number together</h3>
+      <p><b>Type</b> = what kind of thing it is. <b>Concatenate</b> = join end to end. <span class="kw">"I am " + 20</span> fails because one is text and one is a number. Convert first: <span class="kw">"I am " + str(20)</span>.</p>
+      <div class="langs">
+        <div><b>ES</b><span>Intentaste unir texto con un número. Convierte el número con <b>str()</b>.</span></div>
+        <div><b>VI</b><span>Bạn đã cố nối chuỗi với số. Hãy chuyển số bằng <b>str()</b>.</span></div>
+        <div><b>AR</b><span lang="ar">حاولت دمج نص مع رقم. حوّل الرقم باستخدام <b>str()</b>.</span></div>
+      </div>
+    </div>
+
+    <div class="err">
+      <code>IndexError: list index out of range</code>
+      <h3>You asked for an item that isn't there</h3>
+      <p>A list of 3 items has indexes 0, 1 and 2 — there is no index 3. Counting from zero is the cause of this error roughly every time. <span class="kw">len(my_list)</span> tells you how many items there are; the last index is always one less than that.</p>
+      <div class="langs">
+        <div><b>ES</b><span>Pediste una posición que no existe. Una lista de 3 elementos tiene los índices 0, 1 y 2.</span></div>
+        <div><b>VI</b><span>Bạn yêu cầu một vị trí không tồn tại. Danh sách 3 phần tử có chỉ số 0, 1 và 2.</span></div>
+        <div><b>AR</b><span lang="ar">طلبت موقعًا غير موجود. قائمة من ٣ عناصر لها الفهارس ٠ و١ و٢.</span></div>
+      </div>
+    </div>
+
+    <div class="err">
+      <code>KeyError: 'nombre'</code>
+      <h3>That key isn't in the dictionary</h3>
+      <p>You looked something up by name and the name isn't there. Check the spelling and the capitalisation of the key. <span class="kw">.get("nombre")</span> returns nothing instead of crashing, if a missing key is acceptable.</p>
+      <div class="langs">
+        <div><b>ES</b><span>Esa clave no existe en el diccionario. Revisa la ortografía y las mayúsculas.</span></div>
+        <div><b>VI</b><span>Khóa đó không có trong từ điển. Kiểm tra chính tả và chữ hoa chữ thường.</span></div>
+        <div><b>AR</b><span lang="ar">هذا المفتاح غير موجود في القاموس. تحقّق من الإملاء وحالة الأحرف.</span></div>
+      </div>
+    </div>
+
+    <div class="err">
+      <code>ValueError: invalid literal for int() with base 10: 'hola'</code>
+      <h3>The right kind of operation, the wrong content</h3>
+      <p>You asked Python to turn something into a number, and it isn't a number. Usually from <span class="kw">input()</span>, which always gives you text — even when the person typed digits. Check what the user actually entered.</p>
+      <div class="langs">
+        <div><b>ES</b><span>Intentaste convertir en número algo que no lo es. <b>input()</b> siempre devuelve texto.</span></div>
+        <div><b>VI</b><span>Bạn đã cố chuyển thành số một thứ không phải số. <b>input()</b> luôn trả về chuỗi.</span></div>
+        <div><b>AR</b><span lang="ar">حاولت تحويل شيء ليس رقمًا إلى رقم. الدالة <b>input()</b> تُعيد نصًا دائمًا.</span></div>
+      </div>
+    </div>
+
+    <div class="err">
+      <code>AttributeError: 'list' object has no attribute 'lower'</code>
+      <h3>You used a tool that doesn't belong to that thing</h3>
+      <p><b>Attribute</b> = something a thing can do or has. <span class="kw">.lower()</span> belongs to text, not to lists. Usually it means the variable isn't holding the type you thought it was — print it and check.</p>
+      <div class="langs">
+        <div><b>ES</b><span>Ese método no pertenece a ese tipo. La variable probablemente no contiene lo que crees.</span></div>
+        <div><b>VI</b><span>Phương thức đó không thuộc kiểu dữ liệu này. Biến có lẽ không chứa thứ bạn nghĩ.</span></div>
+        <div><b>AR</b><span lang="ar">هذه الدالة لا تنتمي لهذا النوع. غالبًا المتغيّر لا يحتوي ما تظنّه.</span></div>
+      </div>
+    </div>
+
+    <div class="err">
+      <code>ZeroDivisionError: division by zero</code>
+      <h3>You divided by zero</h3>
+      <p>Mathematically undefined, so Python refuses. Usually the divisor is a variable that turned out to be 0 — an empty list's length, a counter that never incremented. Check the value before dividing.</p>
+      <div class="langs">
+        <div><b>ES</b><span>Dividiste entre cero. Revisa el valor del divisor antes de dividir.</span></div>
+        <div><b>VI</b><span>Bạn đã chia cho 0. Hãy kiểm tra giá trị số chia trước khi chia.</span></div>
+        <div><b>AR</b><span lang="ar">قسمت على صفر. تحقّق من قيمة المقسوم عليه قبل القسمة.</span></div>
+      </div>
+    </div>
+
+    <div class="err">
+      <code>ModuleNotFoundError: No module named 'pandas'</code>
+      <h3>The library isn't installed here</h3>
+      <p>Your code asked for someone else's code that isn't on this machine. Install it, or check the spelling of the module name. Nothing is wrong with your program's logic.</p>
+      <div class="langs">
+        <div><b>ES</b><span>Esa biblioteca no está instalada. Instálala o revisa el nombre.</span></div>
+        <div><b>VI</b><span>Thư viện đó chưa được cài đặt. Hãy cài hoặc kiểm tra lại tên.</span></div>
+        <div><b>AR</b><span lang="ar">هذه المكتبة غير مُثبَّتة. ثبّتها أو تحقّق من الاسم.</span></div>
+      </div>
+    </div>
+  </section>
+
+  <hr class="divider">
+
+  <!-- ===== ASKING FOR HELP ===== -->
+  <section class="section section--tight">
+    <p class="eyebrow">03 · Asking for help</p>
+    <h2>How to ask, when asking is the hard part</h2>
+    <p class="lead" style="margin-top:var(--s3)">A lot of students get stuck not because they can't code but because asking a question in a second language, in front of a room, feels expensive. Here's a template that removes most of that cost — fill in four lines and you have a complete question, in any language.</p>
+
+    <div class="panel" style="margin-top:var(--s6)">
+      <p class="muted" style="font-size:var(--t-small);font-family:var(--mono);white-space:pre-wrap">1. What I was trying to do:
+2. What I wrote:            (paste the code)
+3. What happened instead:   (paste the WHOLE error, last line included)
+4. What I already tried:</p>
+    </div>
+
+    <p class="lead" style="margin-top:var(--s6)">Write it in whichever language you think in. A tutor who reads all four lines can almost always answer without asking you anything else — which means you only have to speak once.</p>
+  </section>
+
+  <hr class="divider">
+
+  <section class="section section--tight">
+    <div class="panel" style="border-left:3px solid var(--gold)">
+      <p class="muted" style="font-size:var(--t-small)"><b class="gold">Use this however you want.</b> Print it, copy it into your own materials, translate it into a language that isn't here, put it on a classroom wall. If you translate it into a new language and send it back, it goes up here with your name on it. This page is Mirror Docs 01 — the first piece of the open library described on the <a href="/codeswitch.html">CODESWITCH page</a>.</p>
+    </div>
+    <div class="row" style="margin-top:var(--s6)">
+      <a class="btn btn-gold" href="/codeswitch.html#help">Volunteer as a tutor →</a>
+      <a class="btn btn-ghost" href="mailto:yusuf.gadelrab06@gmail.com?subject=CODESWITCH%20glossary%20correction">Send a correction</a>
+    </div>
+  </section>
+
+</main>
+
+<footer class="site-footer">
+  <div>CODESWITCH Mirror Docs · by Yusuf Gadelrab · free to use and adapt</div>
+  <div class="site-footer__links">
+    <a href="/">Work</a>
+    <a href="/codeswitch.html">CODESWITCH</a>
+    <a href="/guides.html">Guides</a>
+    <a href="/apps.html">Apps</a>
+    <a href="/circle.html">Circle</a>
+    <a href="/waitlist.html">Waitlists</a>
+    <a href="/privacy.html">Privacy</a>
+    <a href="/terms.html">Terms</a>
+    <a href="mailto:yusuf.gadelrab06@gmail.com">yusuf.gadelrab06@gmail.com</a>
+  </div>
+</footer>
+
+<script src="/js/site.js" defer></script>
+</body>
+</html>

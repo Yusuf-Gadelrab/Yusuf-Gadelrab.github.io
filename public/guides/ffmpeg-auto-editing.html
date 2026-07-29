@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="preload" href="/css/site.css" as="style">
+<meta name="robots" content="index,follow,max-image-preview:large,max-snippet:-1">
+<meta property="og:locale" content="en_US">
+<title>Automated Video Editing With ffmpeg</title>
+<meta name="description" content="Scene-change detection, audio-energy highlights, lossless cutting and concatenation, 9:16 vertical conversion, and why a local pipeline beats a cloud API.">
+<link rel="canonical" href="https://yusuf-gadelrab.github.io/guides/ffmpeg-auto-editing.html">
+<link rel="icon" type="image/svg+xml" href="https://yusuf-gadelrab.github.io/favicon.svg">
+<link rel="apple-touch-icon" sizes="180x180" href="https://yusuf-gadelrab.github.io/apple-touch-icon.png">
+<meta name="theme-color" content="#0B0B0D">
+<meta name="author" content="Yusuf Gadelrab">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="Yusuf Gadelrab">
+<meta property="og:title" content="Automated Video Editing With ffmpeg">
+<meta property="og:description" content="Scene detection, audio-energy highlights, cutting, concatenation, and 9:16 conversion — all locally.">
+<meta property="og:url" content="https://yusuf-gadelrab.github.io/guides/ffmpeg-auto-editing.html">
+<meta property="og:image" content="https://yusuf-gadelrab.github.io/og-card.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Automated Video Editing With ffmpeg">
+<meta name="twitter:description" content="Scene detection, audio-energy highlights, cutting, concatenation, and 9:16 conversion — all locally.">
+<meta name="twitter:image" content="https://yusuf-gadelrab.github.io/og-card.png">
+<link rel="alternate" type="text/plain" href="https://yusuf-gadelrab.github.io/llms-full.txt" title="Plain-text profile for language models">
+
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"TechArticle","@id":"https://yusuf-gadelrab.github.io/guides/ffmpeg-auto-editing.html#article","headline":"Automated Video Editing With ffmpeg: Detection, Cutting, Vertical","name":"Automated Video Editing With ffmpeg: Detection, Cutting, Vertical","description":"Scene-change detection, audio-energy highlights, lossless cutting and concatenation, 9:16 vertical conversion, and why a local pipeline beats a cloud API.","datePublished":"2026-07-29","dateModified":"2026-07-29","inLanguage":"en","author":{"@id":"https://yusuf-gadelrab.github.io/#person"},"publisher":{"@id":"https://yusuf-gadelrab.github.io/#person"},"about":["ffmpeg","Video processing","Automation"],"mainEntityOfPage":"https://yusuf-gadelrab.github.io/guides/ffmpeg-auto-editing.html","isAccessibleForFree":true,"proficiencyLevel":"Intermediate"},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://yusuf-gadelrab.github.io/"},{"@type":"ListItem","position":2,"name":"Guides","item":"https://yusuf-gadelrab.github.io/guides.html"},{"@type":"ListItem","position":3,"name":"ffmpeg Auto-Editing"}]}]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","@id":"https://yusuf-gadelrab.github.io/guides/ffmpeg-auto-editing.html#faq","mainEntity":[{"@type":"Question","name":"How do you detect scene changes with ffmpeg?","acceptedAnswer":{"@type":"Answer","text":"Use the select filter's scene score, which rates how different each frame is from the previous one on a 0 to 1 scale, and threshold it — for example select='gt(scene,0.4)'. Around 0.3 is sensitive and fires on camera movement, 0.4 is a reasonable default, and 0.5 or above catches hard cuts only."}},{"@type":"Question","name":"How do you find highlights in a video automatically?","acceptedAnswer":{"@type":"Answer","text":"Analyse audio energy rather than video. Compute short-term loudness with the ebur128 filter and keep windows several decibels above the file's median, or use silencedetect to find quiet gaps and rank the audible segments between them by mean loudness. Pad each pick with a few seconds of lead-in."}},{"@type":"Question","name":"How do you cut a video without re-encoding?","acceptedAnswer":{"@type":"Answer","text":"Use -c copy for stream copy, with -ss placed before -i so ffmpeg seeks quickly. The limitation is that stream copy can only cut at keyframes, so the cut point may drift by a fraction of a second; put -ss after -i and re-encode when the cut must be frame-accurate."}},{"@type":"Question","name":"Why does concatenated ffmpeg output freeze or desync?","acceptedAnswer":{"@type":"Answer","text":"The concat demuxer with -c copy requires every input to share the same codec, resolution, frame rate, sample rate, and channel layout. When they differ, playback typically works for the first clip then breaks. Normalise all clips to identical parameters first, or use the concat filter and accept one re-encode."}},{"@type":"Question","name":"How do you convert horizontal video to 9:16 vertical?","acceptedAnswer":{"@type":"Answer","text":"Three options: pad with a blurred, enlarged copy of the video behind the original, which is the safe default; centre-crop to ih*9/16 by ih and scale to 1080x1920, which fills the frame but loses the edges; or track the subject and move the crop window, which looks best but requires per-frame detection."}},{"@type":"Question","name":"Why use a local ffmpeg pipeline instead of a video API?","acceptedAnswer":{"@type":"Answer","text":"No upload time on large files, no per-minute processing cost while you iterate on thresholds, no third party receiving footage of identifiable people, deterministic output you can debug file by file, and no exposure to another company's pricing or uptime. The trade is that APIs bundle transcription and face tracking that ffmpeg alone does not provide."}}]}</script>
+
+<link rel="stylesheet" href="/css/site.css">
+<style>
+  .prose{max-width:68ch}
+  .prose h2{margin:var(--s7) 0 var(--s4);font-size:var(--t-h2)}
+  .prose h3{margin:var(--s6) 0 var(--s3);font-size:var(--t-h3)}
+  .prose p{color:var(--muted);margin:0 0 var(--s4)}
+  .prose ul,.prose ol{color:var(--muted);padding-left:1.2em;margin:0 0 var(--s4)}
+  .prose li{margin-bottom:var(--s2)}
+  .prose a{color:var(--gold-2)}
+  .prose strong{color:var(--fg)}
+  .formula{display:block;padding:var(--s4);margin:0 0 var(--s4);border:1px solid var(--line-soft);
+    border-radius:var(--radius);font-family:ui-monospace,SFMono-Regular,Menlo,monospace;
+    font-size:var(--t-small);color:var(--gold-2);overflow-x:auto;white-space:pre-wrap}
+  .tblwrap{overflow-x:auto;margin:0 0 var(--s4)}
+  .tbl{width:100%;border-collapse:collapse;font-size:var(--t-small)}
+  .tbl th,.tbl td{text-align:left;padding:var(--s3);border-bottom:1px solid var(--line-soft);
+    color:var(--muted);vertical-align:top}
+  .tbl th{font-family:var(--display-pro);color:var(--gold-2);font-weight:600}
+  .callout{padding:var(--s4);border:1px solid var(--line-soft);border-radius:var(--radius);
+    color:var(--muted);font-size:var(--t-small);margin:0 0 var(--s5)}
+  .callout--warn{border-color:var(--gold-2)}
+  .faq-card{padding:var(--s5)}
+  .faq-card h3{font-size:var(--t-h3);margin:0}
+  .faq-card p{color:var(--muted);font-size:var(--t-small);margin:var(--s3) 0 0}
+</style>
+</head>
+<body class="pro">
+
+<a class="skip-link" href="#main">Skip to content</a>
+
+<nav class="site-nav">
+  <a class="site-nav__brand" href="/"><img class="site-nav__lion" src="/img/brand/lion-mark.svg" alt="" width="34" height="34"><span>YUSUF GADELRAB</span></a>
+  <div class="site-nav__links">
+    <a href="/">Work</a>
+    <a href="/guides.html">Guides</a>
+    <a href="/stack.html">Stack</a>
+    <a href="/apps.html">Apps</a>
+  </div>
+</nav>
+
+<main id="main">
+
+  <header class="section">
+    <p class="eyebrow">Guide · Media</p>
+    <h1 style="margin:var(--s4) 0">Turning long footage into clips, automatically</h1>
+    <p class="lead">An automatic editor is not one clever algorithm. It is a detector that proposes cut points, a scorer that ranks segments, and a cutter that stitches the winners together — and ffmpeg can do all three from the command line.</p>
+  </header>
+
+  <hr class="divider">
+
+  <section class="section section--tight">
+    <div class="prose">
+      <h2>The shape of the pipeline</h2>
+      <ol>
+        <li><strong>Probe</strong> — read duration, resolution, frame rate, and audio layout so nothing downstream guesses.</li>
+        <li><strong>Detect</strong> — find candidate boundaries with scene-change detection and candidate highlights with audio energy.</li>
+        <li><strong>Score and select</strong> — rank the candidate segments and pick the ones that fit the target runtime.</li>
+        <li><strong>Cut</strong> — extract the selected ranges, ideally without re-encoding.</li>
+        <li><strong>Assemble</strong> — concatenate, convert aspect ratio, normalise loudness, encode once at the end.</li>
+      </ol>
+      <p>The discipline that keeps this fast is doing all the analysis on cheap passes and <strong>encoding exactly once</strong>, at the end. Every intermediate re-encode costs time and a generation of quality.</p>
+      <h2>Probe first</h2>
+      <span class="formula">ffprobe -v error -show_entries \
+  format=duration:stream=width,height,r_frame_rate,codec_type \
+  -of json input.mp4</span>
+      <p>Hardcoding 1920x1080 at 30fps is how a pipeline breaks on the first phone clip someone hands you. Read it, branch on it.</p>
+      <h2>Scene-change detection</h2>
+      <p>ffmpeg's <code>select</code> filter exposes a per-frame <code>scene</code> score between 0 and 1, measuring how different a frame is from its predecessor. Thresholding that score gives you cut candidates.</p>
+      <span class="formula">ffmpeg -i input.mp4 \
+  -filter:v "select='gt(scene,0.4)',showinfo" \
+  -f null - 2&gt;&amp;1 | grep showinfo
+
+# print timestamps only, machine-readable
+ffprobe -show_frames -of csv=p=0 \
+  -f lavfi "movie=input.mp4,select=gt(scene\,0.4)" \
+  -show_entries frame=pkt_pts_time</span>
+      <ul>
+        <li><strong>0.3</strong> — sensitive. Fires on camera movement and lighting changes as well as real cuts.</li>
+        <li><strong>0.4</strong> — a reasonable default for mixed footage.</li>
+        <li><strong>0.5 and above</strong> — hard cuts only. Misses dissolves and slow transitions entirely.</li>
+        <li>Single continuous shots — a locked-off camera at an event produces almost no scene changes, so this detector contributes nothing and audio has to carry the selection.</li>
+      </ul>
+      <h2>Finding highlights with audio</h2>
+      <p>For unedited footage — an event, a talk, a match — the visual track is often uniform and the interesting moments are audible: a cheer, a laugh, a sudden loudness jump. Audio energy is a crude but effective highlight detector, and it is cheap to compute.</p>
+      <span class="formula"># per-window loudness, one line per measurement
+ffmpeg -i input.mp4 -af ebur128=framelog=verbose -f null - 2&gt;&amp;1
+
+# volume statistics across the whole file
+ffmpeg -i input.mp4 -af volumedetect -f null - 2&gt;&amp;1
+
+# detect silence, then treat the gaps between silences as segments
+ffmpeg -i input.mp4 -af silencedetect=noise=-30dB:d=0.6 -f null - 2&gt;&amp;1</span>
+      <p>Two approaches that work in practice. <strong>Peak-relative:</strong> compute short-term loudness over one-second windows, then keep windows more than roughly 6 dB above the file's median — those are your spikes. <strong>Silence-inverted:</strong> use <code>silencedetect</code> to find quiet gaps, treat the audible stretches between them as natural segments, and rank those segments by mean loudness.</p>
+      <p>Then pad each pick: a highlight starts before the spike. Two to three seconds of lead-in and one to two of tail turns a jarring fragment into a watchable clip.</p>
+      <h2>Cutting without re-encoding</h2>
+      <p>Stream copy is enormously faster than re-encoding, but it can only cut at keyframes. Put <code>-ss</code> before <code>-i</code> and ffmpeg seeks quickly to the nearest keyframe; put it after, and it decodes up to the exact frame, which is accurate and slow.</p>
+      <span class="formula"># fast, keyframe-aligned, no quality loss
+ffmpeg -ss 00:01:12 -i input.mp4 -t 8 -c copy clip01.mp4
+
+# frame-accurate, re-encodes
+ffmpeg -i input.mp4 -ss 00:01:12.400 -t 8 \
+  -c:v libx264 -crf 18 -preset veryfast -c:a aac clip01.mp4</span>
+      <p>The pragmatic compromise: cut with stream copy when the keyframe interval is small enough that a fraction of a second of drift does not matter, and re-encode only the clips where the cut point must be exact. Or force a short keyframe interval when you control the source encode.</p>
+      <h2>Concatenating the picks</h2>
+      <p>The concat demuxer joins files without re-encoding, but only when every input shares the same codec, resolution, frame rate, and audio parameters. Mixed sources need the concat filter, which re-encodes.</p>
+      <span class="formula"># clips.txt
+file 'clip01.mp4'
+file 'clip02.mp4'
+file 'clip03.mp4'
+
+ffmpeg -f concat -safe 0 -i clips.txt -c copy reel.mp4</span>
+      <p class="callout callout--warn">If concatenated output plays the first clip and then freezes or desyncs, the inputs did not actually match. Normalise every clip to identical codec, resolution, frame rate, sample rate, and channel layout first, or switch to the concat filter and accept one re-encode.</p>
+      <h2>Converting to 9:16 vertical</h2>
+      <p>Vertical delivery from horizontal footage is a framing decision, not a resize. Three options, in ascending order of effort:</p>
+      <div class="tblwrap"><table class="tbl">
+        <thead><tr><th>Approach</th><th>How it looks</th><th>When to use it</th></tr></thead>
+        <tbody>
+          <tr><td>Blurred-background pad</td><td>Original centred, blurred enlarged copy behind it</td><td>Fast, safe default for talking-head and wide shots</td></tr>
+          <tr><td>Centre crop</td><td>Fills the frame, cuts off both sides</td><td>Subject reliably centred; loses anything at the edges</td></tr>
+          <tr><td>Tracked crop</td><td>Crop window follows the subject</td><td>Best result, needs detection per frame and real work</td></tr>
+        </tbody>
+      </table></div>
+      <span class="formula"># blurred-background 1080x1920
+ffmpeg -i reel.mp4 -filter_complex \
+ "[0:v]scale=1080:-2,boxblur=20:2,crop=1080:1920[bg];\
+  [0:v]scale=1080:-2[fg];\
+  [bg][fg]overlay=(W-w)/2:(H-h)/2" \
+ -c:a copy vertical.mp4
+
+# centre crop to 9:16
+ffmpeg -i reel.mp4 -vf \
+ "crop=ih*9/16:ih,scale=1080:1920" -c:a copy vertical.mp4</span>
+      <p>Finish with loudness normalisation so clips cut from different parts of a recording do not jump in volume. The two-pass <code>loudnorm</code> filter targeting around −14 LUFS is the usual choice for social platforms.</p>
+      <span class="formula">ffmpeg -i vertical.mp4 -af loudnorm=I=-14:TP=-1.5:LRA=11 \
+  -c:v copy final.mp4</span>
+      <h2>Why local beats an API for this</h2>
+      <ul>
+        <li><strong>No upload.</strong> A 4 GB event recording takes longer to upload on a home connection than to process locally. The transfer is the bottleneck, not the compute.</li>
+        <li><strong>No per-minute cost.</strong> Video APIs price per minute processed. Iterating on a threshold means reprocessing the same footage twenty times — free locally, expensive per call.</li>
+        <li><strong>No rights question.</strong> Footage of identifiable people at an event does not go to a third party at all, which removes both a consent conversation and a terms-of-service question about training use.</li>
+        <li><strong>Deterministic and debuggable.</strong> The same command produces the same output, and every intermediate is a file you can open.</li>
+        <li><strong>No dependency on someone else's uptime or pricing page.</strong> The pipeline works the same in three years.</li>
+      </ul>
+      <p>The honest counterpoint: an API gives you transcription, face tracking, and semantic highlight selection that a local ffmpeg pipeline does not have without extra models. If your selection logic genuinely needs to understand speech, run a local transcription model and keep the rest of the pipeline where it is.</p>
+      <p>This is the architecture behind <a href="/eventreels.html">EventReels</a> — probe, detect, score, cut, assemble, one encode at the end, entirely on the machine.</p>
+
+      <h2>Tools referenced in this guide</h2>
+      <ul>
+        <li><a href="/eventreels.html">EventReels</a> — the working auto-editing pipeline this guide describes.</li>
+        <li><a href="/stack.html">My stack</a> — the rest of the tooling around it.</li>
+        <li><a href="/guides/local-llm-ollama.html">Local LLM guide</a> — the same local-over-API argument applied to language models.</li>
+        <li><a href="/guides/ai-automation-small-business.html">AI automation guide</a> — where a pipeline like this fits into an actual workflow.</li>
+      </ul>
+    </div>
+  </section>
+
+  <hr class="divider">
+
+  <section class="section section--tight" id="faq">
+    <div class="grp-head">
+      <p class="eyebrow">FAQ</p>
+      <h2>Quick answers</h2>
+    </div>
+    <div class="grid" style="margin-top:var(--s6)">
+      <article class="card faq-card"><h3>How do you detect scene changes?</h3><p>Threshold the select filter&#x27;s scene score: gt(scene,0.4) is a fair default. 0.3 fires on camera movement, 0.5+ catches hard cuts only.</p></article>
+      <article class="card faq-card"><h3>How do you find highlights?</h3><p>By audio, not video. Loudness spikes above the median via ebur128, or invert silencedetect and rank the audible segments. Pad the lead-in.</p></article>
+      <article class="card faq-card"><h3>How do you cut without re-encoding?</h3><p>-ss before -i with -c copy. Fast and lossless, but cuts land on keyframes — re-encode only the clips that must be frame-accurate.</p></article>
+      <article class="card faq-card"><h3>Why does concat break?</h3><p>The concat demuxer needs identical codec, resolution, frame rate, and audio params. Mismatched inputs play clip one then freeze.</p></article>
+      <article class="card faq-card"><h3>How do you go vertical?</h3><p>Blurred-background pad is the safe default; centre crop fills the frame but loses the edges; tracked crop looks best and costs real work.</p></article>
+      <article class="card faq-card"><h3>Why local instead of an API?</h3><p>No upload, no per-minute cost while iterating, no footage handed to a third party, deterministic and debuggable. APIs still win on transcription.</p></article>
+    </div>
+  </section>
+
+</main>
+
+<footer class="site-footer">
+  <div class="site-footer__links">
+    <a href="/">Work</a>
+    <a href="/about.html">About</a>
+    <a href="/guides.html">Guides</a>
+    <a href="/apps.html">Apps</a>
+    <a href="/store.html">Store</a>
+    <a href="/privacy.html">Privacy</a>
+    <a href="/terms.html">Terms</a>
+    <a href="mailto:yusuf.gadelrab06@gmail.com">yusuf.gadelrab06@gmail.com</a>
+  </div>
+</footer>
+
+<script src="/js/site.js" defer></script>
+</body>
+</html>

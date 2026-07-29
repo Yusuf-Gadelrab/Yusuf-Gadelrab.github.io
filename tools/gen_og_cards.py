@@ -68,6 +68,78 @@ def font(path: str, idx: int, size: int) -> ImageFont.FreeTypeFont:
 # headline is written as [line1, line2]; line1 renders bone, line2 gold.
 # icon is a single glyph drawn in the gold token square.
 CARDS: dict[str, dict] = {
+    "about-card": dict(
+        icon="◉",
+        head=["Who is", "Yusuf Gadelrab?"],
+        sub="Answer-first biography, credentials and sourced numbers.",
+        url="yusuf-gadelrab.github.io/about",
+    ),
+    "brand-card": dict(
+        icon="✷",
+        head=["The DHAHAB", "lion mark"],
+        sub="One generated mark: why a lion, the rules, and the files.",
+        url="yusuf-gadelrab.github.io/brand",
+    ),
+    "circle-card": dict(
+        icon="◎",
+        head=["DHAHAB Circle"],
+        sub="A community for builders and traders. Receipts over opinions.",
+        url="yusuf-gadelrab.github.io/circle",
+    ),
+    "dira-card": dict(
+        icon="⛨",
+        head=["DIRA — security", "audit in one command"],
+        sub="Secrets, CVEs, misconfigs and a startup readiness score.",
+        url="yusuf-gadelrab.github.io/dira",
+    ),
+    "guides-card": dict(
+        icon="§",
+        head=["Guides, with", "every formula shown"],
+        sub="Long-form answers, each paired with a free calculator.",
+        url="yusuf-gadelrab.github.io/guides",
+    ),
+    "media-kit-card": dict(
+        icon="◐",
+        head=["Creator", "media kit"],
+        sub="Audience, formats, past work and how to book a collaboration.",
+        url="yusuf-gadelrab.github.io/media-kit",
+    ),
+    "modeling-card": dict(
+        icon="◑",
+        head=["Model portfolio", "& digitals"],
+        sub="Athletic and commercial, San Jose. Digitals and measurements.",
+        url="yusuf-gadelrab.github.io/modeling",
+    ),
+    "stack-card": dict(
+        icon="⌘",
+        head=["My stack —", "what I actually use"],
+        sub="The tools behind the trading, the code and the cut.",
+        url="yusuf-gadelrab.github.io/stack",
+    ),
+    "kxngsef-lookbook-card": dict(
+        icon="♛",
+        head=["KXNG SEF", "lookbook"],
+        sub="Every printable design in the line, grouped by placement.",
+        url="yusuf-gadelrab.github.io/kxngsef-lookbook",
+    ),
+    "ecoimpact-card": dict(
+        icon="♺",
+        head=["EcoImpact"],
+        sub="A trash map and an impact meter for real cleanup work.",
+        url="yusuf-gadelrab.github.io/ecoimpact",
+    ),
+    "eventreels-card": dict(
+        icon="▶",
+        head=["EventReels"],
+        sub="Your night, already edited — an automated reel pipeline.",
+        url="yusuf-gadelrab.github.io/eventreels",
+    ),
+    "spartaneats-card": dict(
+        icon="◍",
+        head=["SpartanEats"],
+        sub="Campus-priced student food delivery, built for SJSU.",
+        url="yusuf-gadelrab.github.io/spartaneats",
+    ),
     "apply-card": dict(
         icon="◈",
         head=["Apply OS —", "Deadline Radar"],
@@ -200,11 +272,28 @@ def rounded(draw: ImageDraw.ImageDraw, box, radius, **kw):
 def fit_headline(lines: list[str], max_w: int):
     """Largest size at which every line fits the measure. Set-wide range keeps
     cards visually comparable instead of one card shouting."""
-    for size in range(62, 37, -1):
+    for size in range(56, 41, -1):
         f = font(F_HEAD, F_HEAD_IDX, size)
         if all(f.getlength(t) <= max_w * SS for t in lines):
             return f, size
-    return font(F_HEAD, F_HEAD_IDX, 38), 38
+    return font(F_HEAD, F_HEAD_IDX, 42), 42
+
+
+LION_PNG = ROOT / "public" / "img" / "brand" / "lion-mark-1024.png"
+LION_SIZE = 92
+LION_XY = (W - INSET - 48 - LION_SIZE, INSET + 44)
+
+
+def paste_lion(im: Image.Image) -> None:
+    """House mark, top-right. Silently skipped if the PNG has not been
+    generated yet (tools/brand/lion.py --png), so card builds never hard-fail
+    on a missing asset."""
+    if not LION_PNG.exists():
+        return
+    lion = Image.open(LION_PNG).convert("RGBA").resize(
+        (LION_SIZE * SS, LION_SIZE * SS), Image.LANCZOS)
+    # paste-with-mask, not alpha_composite: background() hands back an RGB image
+    im.paste(lion, (LION_XY[0] * SS, LION_XY[1] * SS), lion)
 
 
 def build(spec: dict) -> Image.Image:
@@ -215,18 +304,27 @@ def build(spec: dict) -> Image.Image:
     rounded(d, (INSET, INSET, W - INSET, H - INSET), 22,
             fill=(*PANEL, 150), outline=(*GOLD, 46), width=1 * SS)
 
+    paste_lion(im)
+
     # icon chip
     ix, iy = ICON_XY
     rounded(d, (ix, iy, ix + ICON_SIZE, iy + ICON_SIZE), 26,
             fill=(*GOLD, 16), outline=(*GOLD, 130), width=2 * SS)
     glyph = spec["icon"]
     alnum = glyph.isalnum() or glyph == "$"
-    gsize = 34 if len(glyph) > 1 else (46 if alnum else 44)
-    gf = (font(F_SANS, 1, gsize) if alnum
-          else ImageFont.truetype(F_GLYPH, gsize * SS))
-    gw = gf.getlength(glyph)
+    if alnum:
+        gf = font(F_SANS, 1, 34 if len(glyph) > 1 else 46)
+    else:
+        # Arial Unicode draws geometric shapes small relative to the em, so fit
+        # by measured ink height instead of nominal point size — otherwise the
+        # symbol chips read visibly weaker than the letter chips.
+        target = 40 * SS
+        gf = ImageFont.truetype(F_GLYPH, 44 * SS)
+        bb = gf.getbbox(glyph)
+        ink = max(bb[3] - bb[1], 1)
+        gf = ImageFont.truetype(F_GLYPH, max(1, round(44 * SS * target / ink)))
     bb = gf.getbbox(glyph)
-    d.text(((ix + ICON_SIZE / 2) * SS - gw / 2,
+    d.text(((ix + ICON_SIZE / 2) * SS - (bb[0] + bb[2]) / 2,
             (iy + ICON_SIZE / 2) * SS - (bb[1] + bb[3]) / 2),
            glyph, font=gf, fill=GOLD_2)
 

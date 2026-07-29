@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="preload" href="/css/site.css" as="style">
+<meta name="robots" content="index,follow,max-image-preview:large,max-snippet:-1">
+<meta property="og:locale" content="en_US">
+<title>The Freight Broker Back Office — Where the Hours Go</title>
+<meta name="description" content="What a small brokerage does after the load books: confirmations, check calls, POD chasing, invoicing and AR — and what automates cleanly.">
+<link rel="canonical" href="https://yusuf-gadelrab.github.io/guides/freight-back-office.html">
+<link rel="icon" type="image/svg+xml" href="https://yusuf-gadelrab.github.io/favicon.svg">
+<link rel="apple-touch-icon" sizes="180x180" href="https://yusuf-gadelrab.github.io/apple-touch-icon.png">
+<meta name="theme-color" content="#0B0B0D">
+<meta name="author" content="Yusuf Gadelrab">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="Yusuf Gadelrab">
+<meta property="og:title" content="The Freight Broker Back Office">
+<meta property="og:description" content="What happens after the load books, and which of it a machine can do.">
+<meta property="og:url" content="https://yusuf-gadelrab.github.io/guides/freight-back-office.html">
+<meta property="og:image" content="https://yusuf-gadelrab.github.io/og-card.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="The Freight Broker Back Office">
+<meta name="twitter:description" content="What happens after the load books, and which of it a machine can do.">
+<meta name="twitter:image" content="https://yusuf-gadelrab.github.io/og-card.png">
+<link rel="alternate" type="text/plain" href="https://yusuf-gadelrab.github.io/llms-full.txt" title="Plain-text profile for language models">
+
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"TechArticle","@id":"https://yusuf-gadelrab.github.io/guides/freight-back-office.html#article","headline":"The Freight Broker Back Office: Where the Hours Actually Go","name":"The Freight Broker Back Office: Where the Hours Actually Go","description":"What a small brokerage does after the load books: confirmations, check calls, POD chasing, invoicing and AR — and what automates cleanly.","datePublished":"2026-07-29","dateModified":"2026-07-29","inLanguage":"en","author":{"@id":"https://yusuf-gadelrab.github.io/#person"},"publisher":{"@id":"https://yusuf-gadelrab.github.io/#person"},"about":["Freight brokerage","Accounts receivable","Back-office automation"],"mainEntityOfPage":"https://yusuf-gadelrab.github.io/guides/freight-back-office.html","isAccessibleForFree":true,"proficiencyLevel":"Beginner"},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://yusuf-gadelrab.github.io/"},{"@type":"ListItem","position":2,"name":"Guides","item":"https://yusuf-gadelrab.github.io/guides.html"},{"@type":"ListItem","position":3,"name":"Freight Back Office"}]}]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","@id":"https://yusuf-gadelrab.github.io/guides/freight-back-office.html#faq","mainEntity":[{"@type":"Question","name":"What does a freight broker do after a load is booked?","acceptedAnswer":{"@type":"Answer","text":"Issue and collect a signed rate confirmation, verify carrier authority and insurance, run check calls through pickup and delivery, collect the proof of delivery, generate an invoice in the customer's required format, settle with the carrier or their factoring company, and then track the receivable to payment with dunning at 30, 45, and 60 days."}},{"@type":"Question","name":"Why do freight invoices get paid late?","acceptedAnswer":{"@type":"Answer","text":"Most commonly a missing proof of delivery, an invoice submitted in a format the customer's accounts-payable system rejects, or nobody chasing at 30 days. Each of these delays a full payment cycle, and none of them are visible until cash is already tight."}},{"@type":"Question","name":"What is the most chased document in freight?","acceptedAnswer":{"@type":"Answer","text":"The proof of delivery. Without it the invoice usually cannot be submitted at all, which is why POD collection is the step most worth automating in a small brokerage."}},{"@type":"Question","name":"Which back-office tasks can AI handle in a brokerage?","acceptedAnswer":{"@type":"Answer","text":"Reading billing email and extracting load references and amounts, matching documents to loads, drafting invoices in customer-specific formats, chasing missing documents on a schedule, running accounts-receivable ageing and dunning, and flagging expiring carrier insurance or authority before dispatch."}},{"@type":"Question","name":"What should stay human in a brokerage?","acceptedAnswer":{"@type":"Answer","text":"Rate negotiation, decisions about which customers and carriers to keep, claims handling, and any exchange where the relationship itself is the asset. Automation should handle repetition and deadlines, not judgement."}},{"@type":"Question","name":"Why is email a bad system of record for freight?","acceptedAnswer":{"@type":"Answer","text":"Because information in an inbox is not queryable. Nobody can answer 'which loads are missing a POD right now' without a person reading threads, so every deadline depends on someone remembering it, which is exactly where margin leaks."}}]}</script>
+
+<link rel="stylesheet" href="/css/site.css">
+<style>
+  .prose{max-width:68ch}
+  .prose h2{margin:var(--s7) 0 var(--s4);font-size:var(--t-h2)}
+  .prose h3{margin:var(--s6) 0 var(--s3);font-size:var(--t-h3)}
+  .prose p{color:var(--muted);margin:0 0 var(--s4)}
+  .prose ul,.prose ol{color:var(--muted);padding-left:1.2em;margin:0 0 var(--s4)}
+  .prose li{margin-bottom:var(--s2)}
+  .prose a{color:var(--gold-2)}
+  .prose strong{color:var(--fg)}
+  .formula{display:block;padding:var(--s4);margin:0 0 var(--s4);border:1px solid var(--line-soft);
+    border-radius:var(--radius);font-family:ui-monospace,SFMono-Regular,Menlo,monospace;
+    font-size:var(--t-small);color:var(--gold-2);overflow-x:auto;white-space:pre-wrap}
+  .tblwrap{overflow-x:auto;margin:0 0 var(--s4)}
+  .tbl{width:100%;border-collapse:collapse;font-size:var(--t-small)}
+  .tbl th,.tbl td{text-align:left;padding:var(--s3);border-bottom:1px solid var(--line-soft);
+    color:var(--muted);vertical-align:top}
+  .tbl th{font-family:var(--display-pro);color:var(--gold-2);font-weight:600}
+  .callout{padding:var(--s4);border:1px solid var(--line-soft);border-radius:var(--radius);
+    color:var(--muted);font-size:var(--t-small);margin:0 0 var(--s5)}
+  .callout--warn{border-color:var(--gold-2)}
+  .faq-card{padding:var(--s5)}
+  .faq-card h3{font-size:var(--t-h3);margin:0}
+  .faq-card p{color:var(--muted);font-size:var(--t-small);margin:var(--s3) 0 0}
+</style>
+</head>
+<body class="pro">
+
+<a class="skip-link" href="#main">Skip to content</a>
+
+<nav class="site-nav">
+  <a class="site-nav__brand" href="/"><img class="site-nav__lion" src="/img/brand/lion-mark.svg" alt="" width="34" height="34"><span>YUSUF GADELRAB</span></a>
+  <div class="site-nav__links">
+    <a href="/">Work</a>
+    <a href="/guides.html">Guides</a>
+    <a href="/freight-tools.html">Calculators</a>
+    <a href="/freightdesk.html">FreightDesk</a>
+  </div>
+</nav>
+
+<main id="main">
+
+  <header class="section">
+    <p class="eyebrow">Guide · Freight</p>
+    <h1 style="margin:var(--s4) 0">After the load books, the real work starts</h1>
+    <p class="lead">Booking freight is the visible job. The invisible one — confirmations, documents, invoices, and chasing money — is where a small brokerage's margin quietly goes, and it is the part that automates best.</p>
+  </header>
+
+  <hr class="divider">
+
+  <section class="section section--tight">
+    <div class="prose">
+      <h2>The lifecycle after "covered"</h2>
+      <ol>
+        <li><strong>Rate confirmation</strong> out to the carrier; signed copy back and filed.</li>
+        <li><strong>Carrier vetting and documents</strong> — authority, insurance certificate, W-9 — verified and stored against expiry dates.</li>
+        <li><strong>Dispatch and check calls</strong> — pickup confirmed, in transit, delivered, with timestamps that matter later for detention.</li>
+        <li><strong>POD collection</strong> — the proof of delivery, which is the single most chased document in the industry.</li>
+        <li><strong>Invoice generation</strong> — customer rate, accessorials, references, and the POD attached in whatever format that specific customer demands.</li>
+        <li><strong>Carrier settlement</strong> — pay the carrier on their terms, or through a factoring company, correctly and on time.</li>
+        <li><strong>Accounts receivable</strong> — track the invoice to payment, dun at 30, 45, 60 days, reconcile short-pays and disputes.</li>
+      </ol>
+      <p>Every step is small. There are just a great many of them, each with a deadline, each attached to an email thread, and each capable of costing real money when it slips.</p>
+      <h2>Where the money actually leaks</h2>
+      <div class="tblwrap"><table class="tbl">
+        <thead><tr><th>Leak</th><th>Mechanism</th><th>Cost</th></tr></thead>
+        <tbody>
+          <tr><td>Missing POD</td><td>Invoice cannot be sent, or is sent and rejected</td><td>Days to weeks of delay on every affected load</td></tr>
+          <tr><td>Wrong invoice format</td><td>Customer's AP system rejects or ignores it</td><td>Re-work plus a full payment-cycle delay</td></tr>
+          <tr><td>Unbilled accessorials</td><td>Detention and layover never make it onto the invoice</td><td>Pure lost margin, invisible in the P&L</td></tr>
+          <tr><td>Late dunning</td><td>Nobody chased at 30 days</td><td>Cash tied up; occasionally never collected</td></tr>
+          <tr><td>Expired carrier insurance</td><td>Not caught before dispatch</td><td>Potentially catastrophic liability</td></tr>
+        </tbody>
+      </table></div>
+      <p>None of these are strategy failures. They are all attention failures — the predictable result of a small team handling a high volume of small deadlines through an inbox.</p>
+      <h2>What automates cleanly</h2>
+      <p>The rule of thumb: <strong>automate what is repetitive, structured, and deadline-driven; keep humans on judgement and relationships.</strong></p>
+      <ul>
+        <li><strong>Reading billing email</strong> and extracting load numbers, references, amounts, and attachments.</li>
+        <li><strong>Matching documents to loads</strong> — POD to load number, rate confirmation to invoice.</li>
+        <li><strong>Drafting invoices</strong> in each customer's required format, with accessorials pulled from the timestamps already recorded.</li>
+        <li><strong>Chasing missing documents</strong> on a schedule, with escalation, so nobody has to remember.</li>
+        <li><strong>AR ageing and dunning</strong> — automatic at 30, 45, 60 days, with a human review before anything gets sharp.</li>
+        <li><strong>Compliance expiry monitoring</strong> — insurance and authority dates flagged before dispatch, not after.</li>
+      </ul>
+      <p>What should stay human: negotiating rates, deciding whether to keep a difficult customer, handling a claim, and any conversation where the relationship is the asset.</p>
+      <h2>Why the inbox is the wrong system of record</h2>
+      <p>Most small brokerages run on email plus a spreadsheet. It works until volume rises, and then it fails in a specific way: information exists but is not <em>queryable</em>. Nobody can answer "which loads are missing a POD right now" without a person reading threads. Every leak in the table above is a version of that same problem.</p>
+      <p>The fix is not necessarily new software with a login. It is turning the email stream into structured records — load, document, status, deadline — and letting something watch that structure instead of a human watching an inbox.</p>
+      <p>That is what <a href="/freightdesk.html">FreightDesk AI</a> does: it reads the billing inbox, drafts the invoice, chases the missing paperwork on a schedule, and hands a human the exceptions. The workflow-by-workflow case study — 18 AR and billing workflows — is <a href="/hwyhaul.html">here</a>, and the arithmetic behind the numbers themselves is in the <a href="/guides/freight-broker-margin.html">margin and rate-per-mile guide</a>.</p>
+
+      <h2>Tools referenced in this guide</h2>
+      <ul>
+        <li><a href="/freightdesk.html">FreightDesk AI</a> — AI back office for small brokerages: reads billing email, drafts invoices, chases documents.</li>
+        <li><a href="/freight-tools.html">Freight calculators</a> — rate per mile, deadhead, margin, detention, FSC, break-even — free.</li>
+        <li><a href="/hwyhaul.html">HwyHaul LoadLink case study</a> — 18 AR and billing workflows, documented.</li>
+      </ul>
+    </div>
+  </section>
+
+  <hr class="divider">
+
+  <section class="section section--tight" id="faq">
+    <div class="grp-head">
+      <p class="eyebrow">FAQ</p>
+      <h2>Quick answers</h2>
+    </div>
+    <div class="grid" style="margin-top:var(--s6)">
+      <article class="card faq-card"><h3>What happens after booking?</h3><p>Rate confirmation, carrier vetting, check calls, POD collection, invoicing, carrier settlement, then AR and dunning at 30/45/60 days.</p></article>
+      <article class="card faq-card"><h3>Why do invoices get paid late?</h3><p>Missing POD, wrong invoice format for the customer&#x27;s AP system, or nobody chasing at 30 days. Each costs a full payment cycle.</p></article>
+      <article class="card faq-card"><h3>What gets chased most?</h3><p>The proof of delivery. Without it the invoice usually cannot even be submitted.</p></article>
+      <article class="card faq-card"><h3>What can AI actually do?</h3><p>Read billing email, match documents to loads, draft invoices, chase paperwork on a schedule, run AR ageing, flag expiring insurance.</p></article>
+      <article class="card faq-card"><h3>What stays human?</h3><p>Rate negotiation, customer and carrier decisions, claims, and anything where the relationship is the asset.</p></article>
+      <article class="card faq-card"><h3>Why is the inbox the problem?</h3><p>Information exists but is not queryable. &#x27;Which loads are missing a POD?&#x27; requires a human reading threads — that gap is the leak.</p></article>
+    </div>
+  </section>
+
+</main>
+
+<footer class="site-footer">
+  <div class="site-footer__links">
+    <a href="/">Work</a>
+    <a href="/about.html">About</a>
+    <a href="/guides.html">Guides</a>
+    <a href="/apps.html">Apps</a>
+    <a href="/store.html">Store</a>
+    <a href="/privacy.html">Privacy</a>
+    <a href="/terms.html">Terms</a>
+    <a href="mailto:yusuf.gadelrab06@gmail.com">yusuf.gadelrab06@gmail.com</a>
+  </div>
+</footer>
+
+<script src="/js/site.js" defer></script>
+</body>
+</html>

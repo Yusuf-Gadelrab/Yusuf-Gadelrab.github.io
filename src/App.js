@@ -40,7 +40,7 @@ const siteData = {
       { value: '78%', label: 'Model directional accuracy · 6-mo backtest' },
       { value: '60', label: 'Research study participants' },
       { value: '40%', label: 'Web engagement lift · SVEC' },
-      { value: '+86%', label: 'Personal trading return' },
+      { value: '101', label: 'Trades in a published walk-forward audit' },
     ],
   },
   now: {
@@ -380,6 +380,7 @@ const TAB_LABEL = { Resume: 'Résumé' };
 const SITE_LINKS = [
   { label: 'Resume', href: '/resume.html' },
   { label: 'Store', href: '/store.html' },
+  { label: 'CODESWITCH', href: '/codeswitch.html' },
   { label: 'KXNG SEF', href: '/kxngsef.html' },
   { label: 'Media Kit', href: '/media-kit.html' },
 ];
@@ -753,7 +754,10 @@ function SiteNav({ page, go, brand }) {
   const home = (e) => { e.preventDefault(); go('Home'); };
   return (
     <nav className="site-nav">
-      <a className="site-nav__brand" href="/" onClick={home}>{brand.name.toUpperCase()}</a>
+      <a className="site-nav__brand" href="/" onClick={home}>
+        <img className="site-nav__lion" src="/img/brand/lion-mark.svg" alt="" width="34" height="34" />
+        <span>{brand.name.toUpperCase()}</span>
+      </a>
       <div className="site-nav__links">
         <a href="/" onClick={home} aria-current={page === 'Home' ? 'page' : undefined}>Work</a>
         {SITE_LINKS.map((l) => <a key={l.href} href={l.href}>{l.label}</a>)}
@@ -776,23 +780,59 @@ function PageTabs({ page, go }) {
   );
 }
 
+function ComplianceNote() {
+  return (
+    <section aria-labelledby="compliance-h"
+      style={{ maxWidth: 1080, margin: '0 auto', padding: '28px 20px 8px', borderTop: '1px solid rgba(212,175,55,.18)' }}>
+      <h2 id="compliance-h" style={{ fontFamily: "Georgia, 'Times New Roman', serif", fontSize: 15, letterSpacing: '.06em', textTransform: 'uppercase', color: '#d4af37', margin: '0 0 10px' }}>
+        Disclosures
+      </h2>
+      <p style={{ fontSize: 13.5, lineHeight: 1.65, color: '#9a958c', margin: '0 0 8px' }}>
+        Figures shown on this site are research and engineering results, not live trading performance. The 78% directional
+        accuracy is a six-month backtest of a model, and the 101-trade walk-forward audit is a hypothetical simulation whose
+        headline edge did not survive my own adversarial re-test. Backtested and simulated results do not represent live
+        trading, and past performance does not guarantee future results. No live profit-and-loss figures are claimed anywhere
+        on this site. Nothing here is financial, investment, tax or legal advice.
+      </p>
+      <p style={{ fontSize: 13.5, lineHeight: 1.65, color: '#9a958c', margin: 0 }}>
+        <a style={{ color: '#d4af37' }} href="/terms.html">Terms of Use</a>{' · '}
+        <a style={{ color: '#d4af37' }} href="/privacy.html">Privacy Policy</a>{' · '}
+        <a style={{ color: '#d4af37' }} href="/refunds.html">Refund Policy</a>
+      </p>
+    </section>
+  );
+}
+
 function SiteFooter({ contact, brand }) {
   return (
+    <>
+    <ComplianceNote />
     <footer className="site-footer">
       <div>
+        <img className="lion-mark" src="/img/brand/lion-mark.svg" alt="" width="40" height="40"
+             style={{ opacity: .85, marginBottom: 12 }} />
         <div>{brand.name} — San Jose, CA</div>
         <div><a href={`mailto:${contact.email}`}>{contact.email}</a> · {contact.phone}</div>
       </div>
       <div className="site-footer__links">
         <a href="/">Work</a>
+        <a href="/about.html">About</a>
+        <a href="/guides.html">Guides</a>
         <a href="/resume.html">Resume</a>
         <a href="/store.html">Store</a>
+        <a href="/codeswitch.html">CODESWITCH</a>
+        <a href="/circle.html">Circle</a>
+        <a href="/waitlist.html">Waitlists</a>
         <a href="/kxngsef.html">KXNG SEF</a>
         <a href="/media-kit.html">Media Kit</a>
+        <a href="/brand.html">Brand</a>
         <a href="https://github.com/Yusuf-Gadelrab" target="_blank" rel="noopener noreferrer">GitHub</a>
         <a href="https://www.linkedin.com/in/yusuf-gadelrab-76246b221" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+        <a href="/privacy.html">Privacy</a>
+        <a href="/terms.html">Terms</a>
       </div>
     </footer>
+    </>
   );
 }
 
@@ -1253,7 +1293,7 @@ function Legal() {
       <SectionTitle eyebrow="Legal & Privacy" title="The fine print" />
       <p className="lead">Short version: I don't collect your data, and nothing here is financial advice.</p>
       {item('Privacy', 'This site has no backend, analytics, or ads. The Edit panel saves to your browser\'s localStorage only — I never see it. GitHub Pages may log IPs for security; see github.com/privacy.')}
-      {item('Financial disclaimer', 'Return figures reflect my personal results for informational purposes only. I\'m not a licensed financial advisor. Past performance is not indicative of future results. Consult a professional before investing.')}
+      {item('Financial disclaimer', 'I publish backtested and walk-forward simulation results only. No live profit-and-loss or personal return figures are claimed anywhere on this site. Hypothetical results do not represent live trading, and past performance is not indicative of future results. I am not a licensed financial advisor and nothing here is investment advice — consult a professional before risking capital.')}
       {item('Copyright & IP', 'All content is mine. You can link to it freely; you can\'t copy or republish it without permission. Code follows the license in each individual repo.')}
       {item('Everything else', 'Opinions here are my own and don\'t represent any employer or school. The site is provided as-is, with no warranties. External links go places I don\'t control. Terms may change.')}
       <hr className="divider" />

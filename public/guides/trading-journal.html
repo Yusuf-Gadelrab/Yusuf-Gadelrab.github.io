@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="preload" href="/css/site.css" as="style">
+<meta name="robots" content="index,follow,max-image-preview:large,max-snippet:-1">
+<meta property="og:locale" content="en_US">
+<title>What to Log in a Trading Journal (and What to Ignore)</title>
+<meta name="description" content="The fields that change behaviour in a trading journal — R-multiple, setup tag, mistake tag, MAE/MFE — and how to review without lying to yourself.">
+<link rel="canonical" href="https://yusuf-gadelrab.github.io/guides/trading-journal.html">
+<link rel="icon" type="image/svg+xml" href="https://yusuf-gadelrab.github.io/favicon.svg">
+<link rel="apple-touch-icon" sizes="180x180" href="https://yusuf-gadelrab.github.io/apple-touch-icon.png">
+<meta name="theme-color" content="#0B0B0D">
+<meta name="author" content="Yusuf Gadelrab">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="Yusuf Gadelrab">
+<meta property="og:title" content="What to Log in a Trading Journal">
+<meta property="og:description" content="The handful of fields that change behaviour — and the ones that just feel productive.">
+<meta property="og:url" content="https://yusuf-gadelrab.github.io/guides/trading-journal.html">
+<meta property="og:image" content="https://yusuf-gadelrab.github.io/og-card.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="What to Log in a Trading Journal">
+<meta name="twitter:description" content="The handful of fields that change behaviour — and the ones that just feel productive.">
+<meta name="twitter:image" content="https://yusuf-gadelrab.github.io/og-card.png">
+<link rel="alternate" type="text/plain" href="https://yusuf-gadelrab.github.io/llms-full.txt" title="Plain-text profile for language models">
+
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"TechArticle","@id":"https://yusuf-gadelrab.github.io/guides/trading-journal.html#article","headline":"What to Log in a Trading Journal, and What to Ignore","name":"What to Log in a Trading Journal, and What to Ignore","description":"The fields that change behaviour in a trading journal — R-multiple, setup tag, mistake tag, MAE/MFE — and how to review without lying to yourself.","datePublished":"2026-07-29","dateModified":"2026-07-29","inLanguage":"en","author":{"@id":"https://yusuf-gadelrab.github.io/#person"},"publisher":{"@id":"https://yusuf-gadelrab.github.io/#person"},"about":["Trading journal","Trade review","Risk management"],"mainEntityOfPage":"https://yusuf-gadelrab.github.io/guides/trading-journal.html","isAccessibleForFree":true,"proficiencyLevel":"Beginner"},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://yusuf-gadelrab.github.io/"},{"@type":"ListItem","position":2,"name":"Guides","item":"https://yusuf-gadelrab.github.io/guides.html"},{"@type":"ListItem","position":3,"name":"Trading Journal"}]}]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","@id":"https://yusuf-gadelrab.github.io/guides/trading-journal.html#faq","mainEntity":[{"@type":"Question","name":"What should you log in a trading journal?","acceptedAnswer":{"@type":"Answer","text":"Six fields do most of the work: setup tag, planned risk in dollars (your 1R), entry, stop and exit prices, the resulting R-multiple, a mistake tag from a fixed short list, and maximum adverse and favourable excursion. Everything else is optional decoration."}},{"@type":"Question","name":"Why record trades in R instead of dollars?","acceptedAnswer":{"@type":"Answer","text":"Dollars mix idea quality with position size. R normalises for size, so a +2R trade is comparable whether you risked $50 or $500, which makes setups comparable across time and as the account grows."}},{"@type":"Question","name":"What are MAE and MFE?","acceptedAnswer":{"@type":"Answer","text":"Maximum adverse excursion is the worst unrealised loss during a trade; maximum favourable excursion is the best unrealised gain. Together they show whether stops are too tight, targets too far, or exits too early — high MFE with low realised R means you are leaving the edge on the table."}},{"@type":"Question","name":"How often should you review a trading journal?","acceptedAnswer":{"@type":"Answer","text":"Weekly for mistake tags and once every 30 or more trades per setup for expectancy. Reviewing expectancy weekly on a handful of trades produces noise-driven changes, which is worse than not reviewing at all."}},{"@type":"Question","name":"Why use mistake tags instead of written notes?","acceptedAnswer":{"@type":"Answer","text":"A fixed short list can be counted and ranked by dollars lost, so patterns surface after 50 trades. Free-text notes contain the same information but are never re-read in aggregate, so the pattern never appears."}},{"@type":"Question","name":"Is win rate a useful journal metric?","acceptedAnswer":{"@type":"Answer","text":"Only alongside reward-to-risk. Winning 70% of trades at +0.3R while losing 30% at -1R is -0.09R per trade — a losing system with a flattering win rate. Expectancy is the metric that decides."}}]}</script>
+
+<link rel="stylesheet" href="/css/site.css">
+<style>
+  .prose{max-width:68ch}
+  .prose h2{margin:var(--s7) 0 var(--s4);font-size:var(--t-h2)}
+  .prose h3{margin:var(--s6) 0 var(--s3);font-size:var(--t-h3)}
+  .prose p{color:var(--muted);margin:0 0 var(--s4)}
+  .prose ul,.prose ol{color:var(--muted);padding-left:1.2em;margin:0 0 var(--s4)}
+  .prose li{margin-bottom:var(--s2)}
+  .prose a{color:var(--gold-2)}
+  .prose strong{color:var(--fg)}
+  .formula{display:block;padding:var(--s4);margin:0 0 var(--s4);border:1px solid var(--line-soft);
+    border-radius:var(--radius);font-family:ui-monospace,SFMono-Regular,Menlo,monospace;
+    font-size:var(--t-small);color:var(--gold-2);overflow-x:auto;white-space:pre-wrap}
+  .tblwrap{overflow-x:auto;margin:0 0 var(--s4)}
+  .tbl{width:100%;border-collapse:collapse;font-size:var(--t-small)}
+  .tbl th,.tbl td{text-align:left;padding:var(--s3);border-bottom:1px solid var(--line-soft);
+    color:var(--muted);vertical-align:top}
+  .tbl th{font-family:var(--display-pro);color:var(--gold-2);font-weight:600}
+  .callout{padding:var(--s4);border:1px solid var(--line-soft);border-radius:var(--radius);
+    color:var(--muted);font-size:var(--t-small);margin:0 0 var(--s5)}
+  .callout--warn{border-color:var(--gold-2)}
+  .faq-card{padding:var(--s5)}
+  .faq-card h3{font-size:var(--t-h3);margin:0}
+  .faq-card p{color:var(--muted);font-size:var(--t-small);margin:var(--s3) 0 0}
+</style>
+</head>
+<body class="pro">
+
+<a class="skip-link" href="#main">Skip to content</a>
+
+<nav class="site-nav">
+  <a class="site-nav__brand" href="/"><img class="site-nav__lion" src="/img/brand/lion-mark.svg" alt="" width="34" height="34"><span>YUSUF GADELRAB</span></a>
+  <div class="site-nav__links">
+    <a href="/">Work</a>
+    <a href="/guides.html">Guides</a>
+    <a href="/risk-tools.html">Calculators</a>
+    <a href="/apps.html">Apps</a>
+  </div>
+</nav>
+
+<main id="main">
+
+  <header class="section">
+    <p class="eyebrow">Guide · Process</p>
+    <h1 style="margin:var(--s4) 0">A trading journal that changes behaviour</h1>
+    <p class="lead">Most journals are diaries: long, honest, and useless. A journal earns its keep when it produces one number per setup that tells you what to stop doing.</p>
+  </header>
+
+  <hr class="divider">
+
+  <section class="section section--tight">
+    <div class="prose">
+      <h2>The minimum viable journal</h2>
+      <p>Six fields per trade will out-perform a page of prose, because they can be aggregated:</p>
+      <div class="tblwrap"><table class="tbl">
+        <thead><tr><th>Field</th><th>Why it earns its place</th></tr></thead>
+        <tbody>
+          <tr><td>Setup tag</td><td>The only way to compute expectancy per setup instead of per account.</td></tr>
+          <tr><td>Planned risk (1R in dollars)</td><td>Makes every result comparable. Without it there are no R-multiples.</td></tr>
+          <tr><td>Entry, stop, exit</td><td>Lets the journal compute R rather than trusting your memory of it.</td></tr>
+          <tr><td>R-multiple result</td><td>The output that everything else exists to produce.</td></tr>
+          <tr><td>Mistake tag</td><td>One of a fixed, short list. Free text hides patterns; a fixed list surfaces them.</td></tr>
+          <tr><td>MAE / MFE</td><td>Maximum adverse and favourable excursion — tells you whether your stops and targets are in the wrong place.</td></tr>
+        </tbody>
+      </table></div>
+      <h2>Why R, not dollars</h2>
+      <p>Dollars mix two different questions — was the idea good, and was the size right — into one number. R separates them. A +2R trade is a +2R trade whether you risked $50 or $500, so setups become comparable across account sizes and across time as the account grows.</p>
+      <span class="formula">R-multiple = (exit − entry) ÷ (entry − stop)</span>
+      <p>The arithmetic behind sizing, expectancy, and break-even win rates is in the <a href="/guides/r-multiple-expectancy.html">R-multiple guide</a>.</p>
+      <h2>Mistake tags beat journal entries</h2>
+      <p>Keep the list short enough to be honest and fixed enough to count. Something like: <strong>chased entry</strong>, <strong>moved stop</strong>, <strong>oversized</strong>, <strong>no setup</strong>, <strong>early exit</strong>, <strong>revenge trade</strong>, <strong>none</strong>.</p>
+      <p>After 50 trades this list does something no paragraph can: it tells you that, say, 60% of your losses beyond −1R came from moving stops. That is a rule change, not a feeling. A free-text journal containing the same information will never surface it, because you will never re-read fifty paragraphs.</p>
+      <h2>What MAE and MFE tell you</h2>
+      <ul>
+        <li><strong>High MAE on winners</strong> — your stop is tighter than the trade needs; you are getting shaken out of good ideas.</li>
+        <li><strong>Low MFE on losers</strong> — the setup never worked at all, so entries, not exits, are the problem.</li>
+        <li><strong>High MFE, low realised R</strong> — you are exiting early. The edge exists and you are not collecting it.</li>
+        <li><strong>MAE approaching 1R on most winners</strong> — the stop is in a common noise zone; consider a different anchor for it.</li>
+      </ul>
+      <h2>The weekly review that works</h2>
+      <ol>
+        <li>Compute expectancy per setup tag. Not per week, per setup.</li>
+        <li>Rank mistake tags by dollars lost, not by frequency.</li>
+        <li>Cut or halve the size of the worst setup for the next 20 trades. One change at a time.</li>
+        <li>Check sample size before concluding anything — under 30 trades in a setup, note it and wait.</li>
+        <li>Write one sentence, not one page: what changes next week.</li>
+      </ol>
+      <h2>What to ignore</h2>
+      <p>Screenshots of every chart, hour-by-hour emotional narration, indicator settings you never vary, and win-rate as a headline number. Win rate without reward-to-risk is decoration — 70% at +0.3R against 30% at −1R is a losing system, and the journal that celebrates the 70% is actively harmful.</p>
+      <p>I built <a href="/apps/tradelog/">TradeLog</a> for exactly this shape: log the trade, get expectancy per setup, no account, no server, data stays in your browser.</p>
+      <p class="callout">Educational content, not financial advice. No live profit-and-loss figures are claimed anywhere on this site; backtest and walk-forward results are always labelled as such. Full terms: <a href="/terms.html">/terms.html</a></p>
+
+      <h2>Tools referenced in this guide</h2>
+      <ul>
+        <li><a href="/apps/tradelog/">TradeLog</a> — R-multiple journal with per-setup expectancy. Installs offline, stores nothing off your device.</li>
+        <li><a href="/risk-tools.html">Risk toolkit</a> — position sizer, expectancy, break-even win rate, risk of ruin.</li>
+        <li><a href="/guides/r-multiple-expectancy.html">R-multiple &amp; expectancy guide</a> — the underlying math.</li>
+      </ul>
+    </div>
+  </section>
+
+  <hr class="divider">
+
+  <section class="section section--tight" id="faq">
+    <div class="grp-head">
+      <p class="eyebrow">FAQ</p>
+      <h2>Quick answers</h2>
+    </div>
+    <div class="grid" style="margin-top:var(--s6)">
+      <article class="card faq-card"><h3>What should you log?</h3><p>Setup tag, 1R in dollars, entry/stop/exit, resulting R, a mistake tag from a fixed list, and MAE/MFE. Six fields beat six paragraphs.</p></article>
+      <article class="card faq-card"><h3>Why R instead of dollars?</h3><p>R strips out position size, so a +2R trade is comparable whether you risked $50 or $500 — and setups become comparable to each other.</p></article>
+      <article class="card faq-card"><h3>What are MAE and MFE?</h3><p>Worst and best unrealised excursion during the trade. High MFE with low realised R means you are exiting early and leaving edge behind.</p></article>
+      <article class="card faq-card"><h3>Why fixed mistake tags?</h3><p>They can be counted. After 50 trades a list says &#x27;60% of big losses came from moving stops&#x27; — a paragraph never will.</p></article>
+      <article class="card faq-card"><h3>How often to review?</h3><p>Mistake tags weekly; expectancy only once a setup has 30+ trades. Weekly expectancy on five trades is noise.</p></article>
+      <article class="card faq-card"><h3>Is win rate useful?</h3><p>Only with reward-to-risk attached. 70% at +0.3R against 30% at −1R is a losing system with a flattering headline.</p></article>
+    </div>
+  </section>
+
+</main>
+
+<footer class="site-footer">
+  <div class="site-footer__links">
+    <a href="/">Work</a>
+    <a href="/about.html">About</a>
+    <a href="/guides.html">Guides</a>
+    <a href="/apps.html">Apps</a>
+    <a href="/store.html">Store</a>
+    <a href="/privacy.html">Privacy</a>
+    <a href="/terms.html">Terms</a>
+    <a href="mailto:yusuf.gadelrab06@gmail.com">yusuf.gadelrab06@gmail.com</a>
+  </div>
+</footer>
+
+<script src="/js/site.js" defer></script>
+</body>
+</html>

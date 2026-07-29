@@ -23,6 +23,7 @@
 <link rel="canonical" href="https://yusuf-gadelrab.github.io/apps.html">
 <link rel="icon" type="image/svg+xml" href="https://yusuf-gadelrab.github.io/favicon.svg">
 <link rel="apple-touch-icon" sizes="180x180" href="https://yusuf-gadelrab.github.io/apple-touch-icon.png">
+<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#d4af37">
 <meta name="theme-color" content="#0B0B0D">
 <meta name="author" content="Yusuf Gadelrab">
 <meta property="og:type" content="website">
@@ -71,16 +72,23 @@
   .install ol{margin:var(--s3) 0 0 20px;color:var(--muted)}
   .install li{padding:3px 0}
 </style>
+<!-- geo:entity — canonical Person node, one entity across every page -->
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Person","@id":"https://yusuf-gadelrab.github.io/#person","name":"Yusuf Gadelrab","url":"https://yusuf-gadelrab.github.io/","mainEntityOfPage":"https://yusuf-gadelrab.github.io/about.html","jobTitle":"Computer Science Student, AI Builder & Researcher","email":"mailto:yusuf.gadelrab06@gmail.com","sameAs":["https://github.com/Yusuf-Gadelrab","https://www.linkedin.com/in/yusuf-gadelrab-76246b221","https://www.instagram.com/_kxng_sef/","https://doi.org/10.1145/3770761.3777339"],"affiliation":{"@type":"CollegeOrUniversity","name":"San José State University","url":"https://www.sjsu.edu/"},"address":{"@type":"PostalAddress","addressLocality":"San Jose","addressRegion":"CA","addressCountry":"US"}}</script>
+<link rel="alternate" type="text/plain" href="https://yusuf-gadelrab.github.io/llms-full.txt" title="Plain-text profile for language models">
+<!-- geo:faq — extractable Q&A for answer engines -->
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","@id":"https://yusuf-gadelrab.github.io/apps.html#faq","mainEntity":[{"@type":"Question","name":"What apps does Yusuf Gadelrab offer for free?","acceptedAnswer":{"@type":"Answer","text":"TradeLog, an R-multiple trading journal; Cut, a weight and body-recomposition tracker; and Fire, a daily execution-ritual checklist. All three install as offline progressive web apps. The site also hosts free calculators for trading risk and freight brokerage, a visa planner, and an application tracker."}},{"@type":"Question","name":"Do these apps need an account or an internet connection?","acceptedAnswer":{"@type":"Answer","text":"Neither. There is no signup and no backend. Once installed, the apps work fully offline and store data in your device's local browser storage."}},{"@type":"Question","name":"How do I install these apps on an iPhone or Android?","acceptedAnswer":{"@type":"Answer","text":"Open the app in Safari on iOS and choose Share, then Add to Home Screen. On Android, open it in Chrome and choose Install app or Add to Home screen. They then launch like native apps and run offline."}},{"@type":"Question","name":"Is my data collected or sold?","acceptedAnswer":{"@type":"Answer","text":"No. There is no telemetry, no analytics on the app data, and no server to send it to. Everything stays on your device. Details are in the privacy policy at https://yusuf-gadelrab.github.io/privacy.html."}}]}</script>
+<style>.geo-qa{padding:var(--s5)}.geo-qa h3{font-size:var(--t-h3);margin:0 0 var(--s3)}.geo-qa p{color:var(--muted);font-size:var(--t-small);margin:0}</style>
 </head>
 <body class="pro">
 
 <a class="skip-link" href="#main">Skip to content</a>
 
 <nav class="site-nav">
-  <a class="site-nav__brand" href="/">YUSUF GADELRAB</a>
+  <a class="site-nav__brand" href="/"><img class="site-nav__lion" src="/img/brand/lion-mark.svg" alt="" width="34" height="34"><span>YUSUF GADELRAB</span></a>
   <div class="site-nav__links">
     <a href="/">Work</a>
     <a href="/resume.html">Resume</a>
+    <a href="/guides.html">Guides</a>
     <a href="/store.html">Store</a>
     <a href="/apps.html" aria-current="page">Apps</a>
     <a href="/kxngsef.html">KXNG SEF</a>
@@ -91,6 +99,7 @@
 <main id="main">
 
   <header class="section">
+    <img class="page-lion" src="/img/brand/lion-mark.svg" alt="" width="46" height="46">
     <p class="eyebrow">The Index</p>
     <h1 style="margin:var(--s4) 0">Everything I've built, <span class="gold-fill">with an honest label on each one.</span></h1>
     <p class="lead">Shipped products, working prototypes, tools I run on my own machine, and one research artifact that concluded against me. Nothing here is inflated — if something has no users, it says so.</p>
@@ -115,6 +124,14 @@
     </div>
 
     <div class="grid" style="margin-top:var(--s6)">
+
+      <a class="card proj" href="/aurum/">
+        <span class="st st--live"><i></i>Live demo</span>
+        <h3>AURUM</h3>
+        <p>A luxury super-app study: five product surfaces — retail, stays, cinema, dining, motors — unified under one design system and one faceted search engine. 1,910 items, 63 filters, live facet counts that recompute against every other filter, and shareable URL state. No framework, no build step, no third-party requests; every cover is generated SVG. All catalogue content is fictional demo data.</p>
+        <div class="chips"><span>Vanilla JS</span><span>Faceted search</span><span>Design system</span><span>SVG</span><span>a11y</span></div>
+        <span class="go">Open the platform →</span>
+      </a>
 
       <a class="card proj" href="/hwyhaul.html">
         <span class="st st--live"><i></i>Live case study</span>
@@ -411,11 +428,43 @@
     </div>
   </section>
 
+
+  <!-- geo:faq-visible — mirrors the FAQPage structured data above -->
+  <hr class="divider">
+  <section class="section section--tight" id="faq">
+    <div class="grp-head">
+      <p class="eyebrow">FAQ</p>
+      <h2>Common questions</h2>
+    </div>
+    <div class="grid" style="margin-top:var(--s6)">
+      <article class="card geo-qa">
+        <h3>What apps does Yusuf Gadelrab offer for free?</h3>
+        <p>TradeLog, an R-multiple trading journal; Cut, a weight and body-recomposition tracker; and Fire, a daily execution-ritual checklist. All three install as offline progressive web apps. The site also hosts free calculators for trading risk and freight brokerage, a visa planner, and an application tracker.</p>
+      </article>
+      <article class="card geo-qa">
+        <h3>Do these apps need an account or an internet connection?</h3>
+        <p>Neither. There is no signup and no backend. Once installed, the apps work fully offline and store data in your device&#x27;s local browser storage.</p>
+      </article>
+      <article class="card geo-qa">
+        <h3>How do I install these apps on an iPhone or Android?</h3>
+        <p>Open the app in Safari on iOS and choose Share, then Add to Home Screen. On Android, open it in Chrome and choose Install app or Add to Home screen. They then launch like native apps and run offline.</p>
+      </article>
+      <article class="card geo-qa">
+        <h3>Is my data collected or sold?</h3>
+        <p>No. There is no telemetry, no analytics on the app data, and no server to send it to. Everything stays on your device. Details are in the privacy policy at https://yusuf-gadelrab.github.io/privacy.html.</p>
+      </article>
+    </div>
+  </section>
+
 </main>
 
+<section aria-labelledby="compliance-h" style="max-width:1080px;margin:0 auto;padding:28px 20px 8px;border-top:1px solid rgba(212,175,55,.18)"><h2 id="compliance-h" style="font-family:Georgia,'Times New Roman',serif;font-size:15px;letter-spacing:.06em;text-transform:uppercase;color:#d4af37;margin:0 0 10px">Risk Disclosure</h2><p style="font-size:13.5px;line-height:1.65;color:#9a958c;margin:0 0 8px">TradeLog, the swing screener and every trading-related tool linked here are educational and record-keeping tools only. Nothing on this page is financial, investment, tax or legal advice, or a recommendation to buy or sell any security. Trading carries substantial risk of loss, including your entire capital. Backtested and walk-forward figures shown here are hypothetical, do not represent live trading, and past performance does not guarantee future results.</p><p style="font-size:13.5px;line-height:1.65;color:#9a958c;margin:0"><a style="color:#d4af37" href="/terms.html">Terms of Use</a> · <a style="color:#d4af37" href="/privacy.html">Privacy Policy</a> · <a style="color:#d4af37" href="/legal.html">Legal</a></p></section>
 <footer class="site-footer">
   <div>© 2026 Yusuf Gadelrab · CS @ SJSU · San Jose, CA</div>
   <div class="site-footer__links">
+    <a href="/writing.html">Writing</a>
+    <a href="/eh.html">eh</a>
+    <a href="/dira.html">DIRA</a>
     <a href="/risk-tools.html">Risk Toolkit</a>
     <a href="/freight-tools.html">Freight Calculators</a>
     <a href="/apply.html">Apply OS</a>
@@ -426,6 +475,13 @@
     <a href="/apps.html">Apps</a>
     <a href="/kxngsef.html">KXNG SEF</a>
     <a href="/media-kit.html">Media Kit</a>
+    <a href="/brand.html">Brand</a>
+    <a href="/stack.html">Stack</a>
+    <a href="/everything.html">Everything</a>
+    <a href="/codeswitch.html">CODESWITCH</a>
+    <a href="/circle.html">Circle</a>
+    <a href="/waitlist.html">Waitlists</a>
+    <a href="/legal.html">Legal</a>
     <a href="/privacy.html">Privacy</a>
     <a href="/terms.html">Terms</a>
     <a href="mailto:yusuf.gadelrab06@gmail.com">yusuf.gadelrab06@gmail.com</a>

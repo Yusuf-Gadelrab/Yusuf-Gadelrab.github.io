@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="preload" href="/css/site.css" as="style">
+<meta name="robots" content="index,follow,max-image-preview:large,max-snippet:-1">
+<meta property="og:locale" content="en_US">
+<title>Stop Loss Placement — Structure, ATR, and Position Size</title>
+<meta name="description" content="Structure-based, ATR-based, or percentage stops. Why the stop sets position size rather than the other way round, and the places never to put one.">
+<link rel="canonical" href="https://yusuf-gadelrab.github.io/guides/stop-loss-placement.html">
+<link rel="icon" type="image/svg+xml" href="https://yusuf-gadelrab.github.io/favicon.svg">
+<link rel="apple-touch-icon" sizes="180x180" href="https://yusuf-gadelrab.github.io/apple-touch-icon.png">
+<meta name="theme-color" content="#0B0B0D">
+<meta name="author" content="Yusuf Gadelrab">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="Yusuf Gadelrab">
+<meta property="og:title" content="Stop Loss Placement, Done Properly">
+<meta property="og:description" content="Structure vs ATR vs percentage stops, why the stop determines size, and the places never to put one.">
+<meta property="og:url" content="https://yusuf-gadelrab.github.io/guides/stop-loss-placement.html">
+<meta property="og:image" content="https://yusuf-gadelrab.github.io/og-card.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Stop Loss Placement, Done Properly">
+<meta name="twitter:description" content="Structure vs ATR vs percentage stops, why the stop determines size, and the places never to put one.">
+<meta name="twitter:image" content="https://yusuf-gadelrab.github.io/og-card.png">
+<link rel="alternate" type="text/plain" href="https://yusuf-gadelrab.github.io/llms-full.txt" title="Plain-text profile for language models">
+
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"TechArticle","@id":"https://yusuf-gadelrab.github.io/guides/stop-loss-placement.html#article","headline":"Stop Loss Placement: Structure, Volatility, and Sizing","name":"Stop Loss Placement: Structure, Volatility, and Sizing","description":"Structure-based, ATR-based, or percentage stops. Why the stop sets position size rather than the other way round, and the places never to put one.","datePublished":"2026-07-29","dateModified":"2026-07-29","inLanguage":"en","author":{"@id":"https://yusuf-gadelrab.github.io/#person"},"publisher":{"@id":"https://yusuf-gadelrab.github.io/#person"},"about":["Stop loss","Position sizing","Risk management"],"mainEntityOfPage":"https://yusuf-gadelrab.github.io/guides/stop-loss-placement.html","isAccessibleForFree":true,"proficiencyLevel":"Beginner"},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://yusuf-gadelrab.github.io/"},{"@type":"ListItem","position":2,"name":"Guides","item":"https://yusuf-gadelrab.github.io/guides.html"},{"@type":"ListItem","position":3,"name":"Stop Loss Placement"}]}]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","@id":"https://yusuf-gadelrab.github.io/guides/stop-loss-placement.html#faq","mainEntity":[{"@type":"Question","name":"Where should you place a stop loss?","acceptedAnswer":{"@type":"Answer","text":"Place it just beyond the price that would prove the trade idea wrong, which is usually a structural level such as the low of a base, a consolidation floor, or the anchored VWAP that generated the signal. Then check that this distance is at least about one average true range, because anything tighter sits inside normal noise and will be hit at random."}},{"@type":"Question","name":"Does the stop determine position size, or the other way round?","acceptedAnswer":{"@type":"Answer","text":"The stop determines position size. Find the invalidation price first, treat the entry-to-stop distance as 1R per share, then divide your account risk budget by that distance to get the share count. A $30,000 account risking 1% has a $300 budget, so a $2.40 stop distance allows 125 shares."}},{"@type":"Question","name":"What is an ATR-based stop?","acceptedAnswer":{"@type":"Answer","text":"An ATR stop sets the distance as a multiple of average true range, commonly 1.5 to 3 times ATR14 for swing timeframes. Because ATR measures the instrument's own typical movement including gaps, the stop widens automatically in volatile names and the resulting position size shrinks to match."}},{"@type":"Question","name":"Are percentage stops any good?","acceptedAnswer":{"@type":"Answer","text":"A fixed 7% or 8% stop ignores both structure and volatility, so it is far too wide for a low-volatility stock and far too tight for a leveraged ETF or a small-cap. Its only real virtue is that it cannot be rationalised away, which makes it a reasonable outer cap or a beginner's starting rule."}},{"@type":"Question","name":"Where should you never put a stop?","acceptedAnswer":{"@type":"Answer","text":"Avoid exact round numbers such as $50.00 or $100.00, and avoid sitting exactly at the obvious swing low that every chart reader can see, because price frequently trades a few cents through those levels and reverses. Also avoid any distance inside roughly one ATR, and avoid setting the stop at a dollar amount you find comfortable rather than at a level the chart justifies."}},{"@type":"Question","name":"Should you ever move a stop loss?","acceptedAnswer":{"@type":"Answer","text":"Move it in the direction of reduced risk only. Trailing a stop up in a long position, or to breakeven, is fine when the rule was defined before entry. Widening a stop converts a known 1R loss into an unknown one and always happens under pressure, which is why it is the most damaging habit in retail trading."}}]}</script>
+
+<link rel="stylesheet" href="/css/site.css">
+<style>
+  .prose{max-width:68ch}
+  .prose h2{margin:var(--s7) 0 var(--s4);font-size:var(--t-h2)}
+  .prose h3{margin:var(--s6) 0 var(--s3);font-size:var(--t-h3)}
+  .prose p{color:var(--muted);margin:0 0 var(--s4)}
+  .prose ul,.prose ol{color:var(--muted);padding-left:1.2em;margin:0 0 var(--s4)}
+  .prose li{margin-bottom:var(--s2)}
+  .prose a{color:var(--gold-2)}
+  .prose strong{color:var(--fg)}
+  .formula{display:block;padding:var(--s4);margin:0 0 var(--s4);border:1px solid var(--line-soft);
+    border-radius:var(--radius);font-family:ui-monospace,SFMono-Regular,Menlo,monospace;
+    font-size:var(--t-small);color:var(--gold-2);overflow-x:auto;white-space:pre-wrap}
+  .tblwrap{overflow-x:auto;margin:0 0 var(--s4)}
+  .tbl{width:100%;border-collapse:collapse;font-size:var(--t-small)}
+  .tbl th,.tbl td{text-align:left;padding:var(--s3);border-bottom:1px solid var(--line-soft);
+    color:var(--muted);vertical-align:top}
+  .tbl th{font-family:var(--display-pro);color:var(--gold-2);font-weight:600}
+  .callout{padding:var(--s4);border:1px solid var(--line-soft);border-radius:var(--radius);
+    color:var(--muted);font-size:var(--t-small);margin:0 0 var(--s5)}
+  .callout--warn{border-color:var(--gold-2)}
+  .faq-card{padding:var(--s5)}
+  .faq-card h3{font-size:var(--t-h3);margin:0}
+  .faq-card p{color:var(--muted);font-size:var(--t-small);margin:var(--s3) 0 0}
+</style>
+</head>
+<body class="pro">
+
+<a class="skip-link" href="#main">Skip to content</a>
+
+<nav class="site-nav">
+  <a class="site-nav__brand" href="/"><img class="site-nav__lion" src="/img/brand/lion-mark.svg" alt="" width="34" height="34"><span>YUSUF GADELRAB</span></a>
+  <div class="site-nav__links">
+    <a href="/">Work</a>
+    <a href="/guides.html">Guides</a>
+    <a href="/risk-tools.html">Calculators</a>
+    <a href="/apps.html">Apps</a>
+  </div>
+</nav>
+
+<main id="main">
+
+  <header class="section">
+    <p class="eyebrow">Guide · Risk</p>
+    <h1 style="margin:var(--s4) 0">Where the stop goes, and what it decides</h1>
+    <p class="lead">A stop loss is not a safety net bolted on after you buy. It is the first number in the trade, because it defines 1R, and 1R defines how many shares you are allowed to own.</p>
+  </header>
+
+  <hr class="divider">
+
+  <section class="section section--tight">
+    <div class="prose">
+      <h2>The stop comes first</h2>
+      <p>Most people size a position by deciding how much they want to own, then place a stop wherever it feels comfortable. That is backwards, and it is why position sizes drift with mood rather than with risk.</p>
+      <p>The correct order is fixed:</p>
+      <ol>
+        <li>Find the price at which the trade idea is <strong>wrong</strong>. That is the stop.</li>
+        <li>Distance from entry to stop is <strong>1R</strong>, expressed per share.</li>
+        <li>Decide the account risk for this trade — commonly 0.5% to 1%.</li>
+        <li>Divide. That gives share count. You do not get to choose it.</li>
+      </ol>
+      <span class="formula">1R per share = entry − stop
+Risk budget  = account × risk %
+Shares       = risk budget ÷ 1R per share</span>
+      <p>Worked: a $30,000 account risking 1% is a $300 budget. Entry $48.00 with a structural stop at $45.60 gives 1R of $2.40 per share, so 125 shares, a $6,000 position. Move that stop to $47.40 and 1R is $0.60, so the same $300 budget buys 500 shares and a $24,000 position. <strong>Same risk, four times the exposure, purely because the structure was tighter.</strong></p>
+      <p class="callout callout--warn">This is also the trap. A tight stop lets you carry a large position, and a large position on a stop that was tight for cosmetic rather than structural reasons is how a normal loss becomes several. Tighten the stop only when the chart genuinely offers a tighter invalidation, never to justify more shares.</p>
+      <h2>Structure-based stops</h2>
+      <p>Place the stop just beyond the price level that would prove the idea wrong: below the low of the base, below the anchored VWAP that generated the signal, below the consolidation floor, beyond the pattern's defining swing.</p>
+      <p>The advantage is that the exit means something. When a structural stop fills, the reason you entered has been invalidated, so the exit carries information rather than just recording a bad hour. <strong>Signal and invalidation should be defined by the same object</strong> wherever possible.</p>
+      <h2>Volatility-based stops (ATR)</h2>
+      <p>Average true range measures how far an instrument typically moves in a period, including gaps. An ATR stop scales the distance to the instrument's own noise level instead of to a fixed percentage.</p>
+      <span class="formula">Stop = entry − (k × ATR14)
+
+common k values: 1.5 to 3.0 for swing timeframes</span>
+      <p>Worked: entry $48.00, ATR14 of $1.20, k of 2 gives a stop at $45.60 and 1R of $2.40. If that stock's ATR later rises to $2.00, the same k puts the stop at $44.00 and the same risk budget buys fewer shares automatically. That auto-adjustment is the point: <strong>the position shrinks as the instrument gets noisier</strong>, without you having to remember to shrink it.</p>
+      <h2>Percentage stops</h2>
+      <p>A flat 7% or 8% stop is the simplest rule and the weakest one, because it ignores both structure and volatility. A 7% stop on a low-volatility utility is enormous; on a leveraged ETF or a small-cap biotech it is inside a normal Tuesday. It has exactly one virtue: it is impossible to rationalise away, which for a beginner is worth something.</p>
+      <div class="tblwrap"><table class="tbl">
+        <thead><tr><th>Method</th><th>Adapts to volatility</th><th>Carries information</th><th>Best used for</th></tr></thead>
+        <tbody>
+          <tr><td>Structure</td><td>Indirectly</td><td>Yes — invalidates the thesis</td><td>Pattern and level-based swing trades</td></tr>
+          <tr><td>ATR multiple</td><td>Yes, directly</td><td>Partly</td><td>Systematic entries, mixed-volatility universes</td></tr>
+          <tr><td>Fixed percentage</td><td>No</td><td>No</td><td>Beginners, or as an outer cap on the other two</td></tr>
+        </tbody>
+      </table></div>
+      <p>In practice the useful combination is structure first, with an ATR check: if the structural stop is under 1 ATR away, it is inside noise and will be hit at random. Widen it to at least 1 ATR and take fewer shares, or skip the trade.</p>
+      <h2>Where not to put a stop</h2>
+      <ul>
+        <li><strong>On a round number.</strong> $50.00, $100.00, and $250.00 attract resting orders from everyone else. Sit a little beyond, not exactly on it.</li>
+        <li><strong>Exactly at the obvious swing low.</strong> Every chart reader sees the same low. Price routinely trades a few cents through it and reverses. A small buffer beyond the obvious level costs a little R and avoids a lot of undercut-and-rally.</li>
+        <li><strong>Inside the noise.</strong> Anything under roughly 1 ATR of the entry will be hit by random movement regardless of whether the idea was right.</li>
+        <li><strong>At a dollar figure you can tolerate losing.</strong> The market does not know your comfort level. If the structural stop is bigger than your tolerance, cut share count, not the stop.</li>
+        <li><strong>Nowhere.</strong> A mental stop is a stop you will renegotiate at the worst possible moment.</li>
+      </ul>
+      <h2>Never move a stop down</h2>
+      <p>Moving a stop further away converts a defined 1R loss into an undefined one, and it always happens under pressure, which is exactly when judgement is worst. It is the single most destructive habit available to a retail trader, because one widened stop can erase the gains from a dozen disciplined trades.</p>
+      <p>Moving a stop <em>up</em> in a long, to breakeven or behind a trailing structure, is a different action entirely and is fine, provided the rule was written before the trade. The asymmetry is deliberate: risk may only be reduced, never increased, after entry.</p>
+      <p>Log a <strong>moved stop</strong> mistake tag every single time it happens. After 50 trades that tag usually explains most of the losses beyond −1R, and that is a rule change rather than a feeling. <a href="/guides/trading-journal.html">Journal fields that surface it →</a></p>
+      <p class="callout">Educational content, not financial advice. No live profit-and-loss figures are claimed anywhere on this site; backtest and walk-forward results are always labelled as such. Full terms: <a href="/terms.html">/terms.html</a></p>
+
+      <h2>Tools referenced in this guide</h2>
+      <ul>
+        <li><a href="/risk-tools.html">Trader's risk toolkit</a> — position sizer that turns entry, stop, and account risk into a share count.</li>
+        <li><a href="/apps/tradelog/">TradeLog</a> — logs planned 1R and flags moved-stop trades so the pattern is countable.</li>
+        <li><a href="/guides/r-multiple-expectancy.html">R-multiple &amp; expectancy guide</a> — why every result should be measured in R rather than dollars.</li>
+      </ul>
+    </div>
+  </section>
+
+  <hr class="divider">
+
+  <section class="section section--tight" id="faq">
+    <div class="grp-head">
+      <p class="eyebrow">FAQ</p>
+      <h2>Quick answers</h2>
+    </div>
+    <div class="grid" style="margin-top:var(--s6)">
+      <article class="card faq-card"><h3>Where does the stop go?</h3><p>Just beyond the level that proves the idea wrong, and at least about 1 ATR away so noise alone cannot hit it.</p></article>
+      <article class="card faq-card"><h3>Stop first or size first?</h3><p>Stop first, always. Entry minus stop is 1R per share; risk budget divided by 1R gives the share count. You do not choose the size.</p></article>
+      <article class="card faq-card"><h3>What is an ATR stop?</h3><p>Distance set as 1.5-3x ATR14, so it scales to the instrument&#x27;s own noise. Volatile names get wider stops and automatically smaller positions.</p></article>
+      <article class="card faq-card"><h3>Are percentage stops fine?</h3><p>Weakest option — they ignore structure and volatility. Useful only as a beginner rule or an outer cap on a structural stop.</p></article>
+      <article class="card faq-card"><h3>Where not to put one?</h3><p>Not on round numbers, not exactly at the obvious swing low, not inside 1 ATR, and never at a dollar figure that merely feels tolerable.</p></article>
+      <article class="card faq-card"><h3>Can you move a stop?</h3><p>Only tighter. Trailing up is fine if the rule pre-existed. Widening turns a defined 1R loss into an undefined one, under pressure.</p></article>
+    </div>
+  </section>
+
+</main>
+
+<footer class="site-footer">
+  <div class="site-footer__links">
+    <a href="/">Work</a>
+    <a href="/about.html">About</a>
+    <a href="/guides.html">Guides</a>
+    <a href="/apps.html">Apps</a>
+    <a href="/store.html">Store</a>
+    <a href="/privacy.html">Privacy</a>
+    <a href="/terms.html">Terms</a>
+    <a href="mailto:yusuf.gadelrab06@gmail.com">yusuf.gadelrab06@gmail.com</a>
+  </div>
+</footer>
+
+<script src="/js/site.js" defer></script>
+</body>
+</html>

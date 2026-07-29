@@ -19,7 +19,7 @@
 <title>KXNG SEF — Earned. Never Given.</title>
 <meta name="description" content="KXNG SEF — bilingual Arabic-English streetwear built in public. Drop 001: six pieces, tees $32, hoodie $58, sizes S-2XL. Earned. Never given.">
 <link rel="canonical" href="https://yusuf-gadelrab.github.io/kxngsef.html">
-<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.85em' font-size='84'>🗡️</text></svg>">
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
 <meta name="theme-color" content="#0B0B0D">
 <meta name="author" content="Yusuf Gadelrab">
 <meta name="robots" content="index,follow">
@@ -288,6 +288,15 @@
   .hero-note{color:var(--muted);font-size:var(--t-small);max-width:48ch;margin:var(--s2) 0 var(--s6)}
   .hero-cta{display:flex;flex-wrap:wrap;gap:var(--s3);justify-content:center}
 
+  /* ---------- SIZE RUN ---------- */
+  /* Wide 2000px strips: cap the height so a size run never dwarfs the tables
+     it illustrates, and let the image scale rather than forcing a scrollbar. */
+  .size-run{margin:0 0 var(--s5);background:var(--panel2);border:1px solid var(--line);
+    border-radius:var(--radius);padding:var(--s4);overflow:hidden}
+  .size-run img{width:100%;height:auto;display:block;border-radius:calc(var(--radius) - 4px)}
+  .size-run figcaption{margin-top:var(--s3);color:var(--muted);font-size:var(--t-micro);
+    text-align:center;letter-spacing:.04em}
+
   /* ---------- SECTION HEADS ---------- */
   .sec-head{max-width:64ch;margin-bottom:var(--s7)}
   .sec-head h2{margin:var(--s3) 0 var(--s3)}
@@ -388,11 +397,16 @@
   .swatch img{width:100%;height:auto;display:block;border-radius:inherit}
 </style>
 <link rel="apple-touch-icon" sizes="180x180" href="https://yusuf-gadelrab.github.io/apple-touch-icon.png">
+<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#d4af37">
+<!-- geo:entity — canonical Person node, one entity across every page -->
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Person","@id":"https://yusuf-gadelrab.github.io/#person","name":"Yusuf Gadelrab","url":"https://yusuf-gadelrab.github.io/","mainEntityOfPage":"https://yusuf-gadelrab.github.io/about.html","jobTitle":"Computer Science Student, AI Builder & Researcher","email":"mailto:yusuf.gadelrab06@gmail.com","sameAs":["https://github.com/Yusuf-Gadelrab","https://www.linkedin.com/in/yusuf-gadelrab-76246b221","https://www.instagram.com/_kxng_sef/","https://doi.org/10.1145/3770761.3777339"],"affiliation":{"@type":"CollegeOrUniversity","name":"San José State University","url":"https://www.sjsu.edu/"},"address":{"@type":"PostalAddress","addressLocality":"San Jose","addressRegion":"CA","addressCountry":"US"}}</script>
+<link rel="alternate" type="text/plain" href="https://yusuf-gadelrab.github.io/llms-full.txt" title="Plain-text profile for language models">
 </head>
 <body>
 
 <a class="skip-link" href="#main">Skip to content</a>
-<nav class="site-nav"><a class="site-nav__brand" href="/">YUSUF GADELRAB</a><div class="site-nav__links"><a href="/">Work</a><a href="/resume.html">Resume</a><a href="/store.html">Store</a><a href="/apps.html">Apps</a><a href="/kxngsef.html" aria-current="page">KXNG SEF</a><a href="/media-kit.html">Media Kit</a></div></nav>
+<nav class="site-nav"><a class="site-nav__brand" href="/"><img class="site-nav__lion" src="/img/brand/lion-mark.svg" alt="" width="34" height="34"><span>YUSUF GADELRAB</span></a><div class="site-nav__links"><a href="/">Work</a><a href="/resume.html">Resume</a><a href="/guides.html">Guides</a>
+    <a href="/store.html">Store</a><a href="/apps.html">Apps</a><a href="/kxngsef.html" aria-current="page">KXNG SEF</a><a href="/media-kit.html">Media Kit</a></div></nav>
 
 <header class="hero">
   <span class="ar-watermark" aria-hidden="true" dir="rtl" lang="ar">سيف</span>
@@ -420,7 +434,7 @@
 <!-- BUILD:GRID -->
       <article class="card piece reveal">
         <div class="swatch">
-          <img src="/img/kxngsef/01-crown-hit-tee-black.jpg" alt="Bone t-shirt with a stacked KXNG SEF wordmark and a minimal three-point crown on the chest" loading="lazy" decoding="async" width="900" height="1050">
+          <img src="/img/kxngsef/01-crown-hit-tee-black.jpg" alt="Black unisex tee with the KXNG SEF wordmark in bone under a gold three-point crown, printed on the chest" loading="lazy" decoding="async" width="685" height="800">
         </div>
         <h3 id="crown">Crown Hit</h3>
         <p class="desc">Front chest hit — stacked wordmark under a minimal three-point crown.</p>
@@ -438,7 +452,7 @@
 
       <article class="card piece reveal">
         <div class="swatch">
-          <img src="/img/kxngsef/02-sef-sword-tee-black.jpg" alt="Black t-shirt with a large Arabic sword back print and the caption Sef, Arabic for sword" loading="lazy" decoding="async" width="900" height="1050">
+          <img src="/img/kxngsef/02-sef-sword-tee-black.jpg" alt="Black unisex tee with a large Arabic sword print reading sayf in gold across the back" loading="lazy" decoding="async" width="685" height="800">
         </div>
         <h3 id="sword">Sef Sword</h3>
         <p class="desc">Back print — سيف, huge. The word the whole name is built on.</p>
@@ -456,7 +470,7 @@
 
       <article class="card piece reveal">
         <div class="swatch">
-          <img src="/img/kxngsef/03-earned-never-given-tee-black.jpg" alt="Bone t-shirt with a large two-line back print reading Earned. Never given." loading="lazy" decoding="async" width="900" height="1050">
+          <img src="/img/kxngsef/03-earned-never-given-tee-black.jpg" alt="Black unisex tee with a large two-line back print reading Earned. Never given." loading="lazy" decoding="async" width="685" height="800">
         </div>
         <h3 id="earned">Earned. Never Given.</h3>
         <p class="desc">Back statement piece. Two lines, no explanation needed.</p>
@@ -474,7 +488,7 @@
 
       <article class="card piece reveal">
         <div class="swatch">
-          <img src="/img/kxngsef/04-built-in-public-tee-black.jpg" alt="Black t-shirt with a terminal-style back print reading dollar sign built in public, with a blinking cursor" loading="lazy" decoding="async" width="900" height="1050">
+          <img src="/img/kxngsef/04-built-in-public-tee-black.jpg" alt="Black unisex tee with a terminal-style front print reading built in public, with a gold cursor block" loading="lazy" decoding="async" width="685" height="800">
         </div>
         <h3 id="built">Built in Public</h3>
         <p class="desc">Terminal-style hit — <span class="mtext" style="font-size:.85em">$ built in public</span>, cursor and all.</p>
@@ -492,7 +506,7 @@
 
       <article class="card piece reveal">
         <div class="swatch">
-          <img src="/img/kxngsef/05-408-kxng-tee-black.jpg" alt="Bone t-shirt with San Jose lettered above a giant 408 and a small crown below" loading="lazy" decoding="async" width="900" height="1050">
+          <img src="/img/kxngsef/05-408-kxng-tee-black.jpg" alt="Black unisex tee with SAN JOSE lettered above a giant gold 408 and a small crown below" loading="lazy" decoding="async" width="685" height="800">
         </div>
         <h3 id="kxng408">408 KXNG</h3>
         <p class="desc">San José up top, giant 408 below it. Where it started.</p>
@@ -510,7 +524,7 @@
 
       <article class="card piece reveal">
         <div class="swatch">
-          <img src="/img/kxngsef/06-scholar-athlete-hoodie-black.jpg" alt="Charcoal hoodie with a varsity crest: arched Scholar Athlete Club text, a center crown, and Est. 2026 below" loading="lazy" decoding="async" width="900" height="1050">
+          <img src="/img/kxngsef/06-scholar-athlete-hoodie-black.jpg" alt="Black unisex hoodie with a varsity crest: arched Scholar Athlete Club text, a center gold crown, and Est. 2026 below" loading="lazy" decoding="async" width="685" height="800">
         </div>
         <h3 id="scholar">Scholar Athlete Club</h3>
         <p class="desc">Varsity crest hoodie — arched lockup, center crown, Est. 2026.</p>
@@ -564,6 +578,16 @@
       <h2>Find your fit.</h2>
       <p>Standard unisex cut on every piece. Measurements below are the standard unisex chart for this class of blank, taken on the flat garment in inches. <b>If you're between two sizes — or you want the boxier streetwear drape — size up.</b></p>
     </div>
+
+    <figure class="size-run reveal">
+      <img src="/img/kxngsef/tee-black-sizes.jpg" alt="Five black unisex tees shown side by side at sizes S, M, L, XL and 2XL, illustrating the relative fit of each size" loading="lazy" decoding="async" width="2000" height="646">
+      <figcaption>Unisex tee, S through 2XL — relative proportions on the flat garment.</figcaption>
+    </figure>
+    <figure class="size-run reveal">
+      <img src="/img/kxngsef/hoodie-black-sizes.jpg" alt="Five black unisex hoodies shown side by side at sizes S, M, L, XL and 2XL, illustrating the relative fit of each size" loading="lazy" decoding="async" width="2000" height="655">
+      <figcaption>Unisex hoodie, S through 2XL.</figcaption>
+    </figure>
+
     <div class="size-tables">
 
       <div class="card reveal">
@@ -663,6 +687,9 @@
 <footer class="site-footer">
   <div>KXNG SEF · founded by Yusuf Gadelrab · San Jose, CA · © 2026 · Earned. Never given.</div>
   <div class="site-footer__links">
+    <a href="/writing.html">Writing</a>
+    <a href="/eh.html">eh</a>
+    <a href="/dira.html">DIRA</a>
     <a href="/risk-tools.html">Risk Toolkit</a>
     <a href="/freight-tools.html">Freight Calculators</a>
     <a href="/apply.html">Apply OS</a>
@@ -677,6 +704,13 @@
     <a href="mailto:yusuf.gadelrab06@gmail.com">yusuf.gadelrab06@gmail.com</a>
     <a href="https://github.com/Yusuf-Gadelrab" target="_blank" rel="noopener">GitHub</a>
     <a href="https://www.linkedin.com/in/yusuf-gadelrab-76246b221" target="_blank" rel="noopener">LinkedIn</a>
+    <a href="/brand.html">Brand</a>
+    <a href="/stack.html">Stack</a>
+    <a href="/everything.html">Everything</a>
+    <a href="/codeswitch.html">CODESWITCH</a>
+    <a href="/circle.html">Circle</a>
+    <a href="/waitlist.html">Waitlists</a>
+    <a href="/legal.html">Legal</a>
     <a href="/privacy.html">Privacy</a>
     <a href="/terms.html">Terms</a>
   </div>

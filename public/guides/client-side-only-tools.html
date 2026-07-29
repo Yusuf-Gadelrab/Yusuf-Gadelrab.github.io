@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="preload" href="/css/site.css" as="style">
+<meta name="robots" content="index,follow,max-image-preview:large,max-snippet:-1">
+<meta property="og:locale" content="en_US">
+<title>The Case for Client-Side-Only Tools</title>
+<meta name="description" content="No account means no breach surface. What you gain from browser-only tools, what you give up in sync and compute, what it costs to run, and how to say so.">
+<link rel="canonical" href="https://yusuf-gadelrab.github.io/guides/client-side-only-tools.html">
+<link rel="icon" type="image/svg+xml" href="https://yusuf-gadelrab.github.io/favicon.svg">
+<link rel="apple-touch-icon" sizes="180x180" href="https://yusuf-gadelrab.github.io/apple-touch-icon.png">
+<meta name="theme-color" content="#0B0B0D">
+<meta name="author" content="Yusuf Gadelrab">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="Yusuf Gadelrab">
+<meta property="og:title" content="The Case for Client-Side-Only Tools">
+<meta property="og:description" content="No accounts, no database, no breach surface — and an honest account of what that costs the user.">
+<meta property="og:url" content="https://yusuf-gadelrab.github.io/guides/client-side-only-tools.html">
+<meta property="og:image" content="https://yusuf-gadelrab.github.io/og-card.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="The Case for Client-Side-Only Tools">
+<meta name="twitter:description" content="No accounts, no database, no breach surface — and an honest account of what that costs the user.">
+<meta name="twitter:image" content="https://yusuf-gadelrab.github.io/og-card.png">
+<link rel="alternate" type="text/plain" href="https://yusuf-gadelrab.github.io/llms-full.txt" title="Plain-text profile for language models">
+
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"TechArticle","@id":"https://yusuf-gadelrab.github.io/guides/client-side-only-tools.html#article","headline":"The Case for Client-Side-Only Tools","name":"The Case for Client-Side-Only Tools","description":"No account means no breach surface. What you gain from browser-only tools, what you give up in sync and compute, what it costs to run, and how to say so.","datePublished":"2026-07-29","dateModified":"2026-07-29","inLanguage":"en","author":{"@id":"https://yusuf-gadelrab.github.io/#person"},"publisher":{"@id":"https://yusuf-gadelrab.github.io/#person"},"about":["Local-first software","Privacy by design","Static hosting"],"mainEntityOfPage":"https://yusuf-gadelrab.github.io/guides/client-side-only-tools.html","isAccessibleForFree":true,"proficiencyLevel":"Beginner"},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://yusuf-gadelrab.github.io/"},{"@type":"ListItem","position":2,"name":"Guides","item":"https://yusuf-gadelrab.github.io/guides.html"},{"@type":"ListItem","position":3,"name":"Client-Side Tools"}]}]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","@id":"https://yusuf-gadelrab.github.io/guides/client-side-only-tools.html#faq","mainEntity":[{"@type":"Question","name":"What is a client-side-only tool?","acceptedAnswer":{"@type":"Answer","text":"A tool that runs entirely in the browser, with all state kept in browser storage such as localStorage or IndexedDB, and no server component beyond serving static files. There is no account, no database, and no transmission of what the user enters."}},{"@type":"Question","name":"Is a tool without accounts more secure?","acceptedAnswer":{"@type":"Answer","text":"For the user's data, generally yes, because the strongest protection is not holding the data at all. There is no user table to dump, no session tokens to steal, and no password reset flow to phish. It does not make the code itself more secure, and it offers no protection if the device is compromised."}},{"@type":"Question","name":"What do you lose with no backend?","acceptedAnswer":{"@type":"Answer","text":"Cross-device sync, server-side backup and recovery, collaboration between users, server-side compute, secret API keys, and any real usage analytics. For single-user tools these usually matter less than the cost of running an account system, but they are real losses and should be disclosed."}},{"@type":"Question","name":"What does it cost to run a client-side tool?","acceptedAnswer":{"@type":"Answer","text":"Effectively nothing. Static files on GitHub Pages, Netlify, or Cloudflare Pages are free at personal-project traffic levels, and there is no database to back up or patch. Cost per user falls as usage grows rather than rising."}},{"@type":"Question","name":"How do users back up data in a browser-only app?","acceptedAnswer":{"@type":"Answer","text":"Through an export function that downloads their data as JSON or CSV, which they store themselves. This is the single most important feature in a local-only tool, because clearing site data deletes everything and browsers can evict storage after extended non-use."}},{"@type":"Question","name":"What should a local-only privacy policy say?","acceptedAnswer":{"@type":"Answer","text":"Name the exact storage mechanism, state that there is no account and no server-side database, disclose anything that is still collected such as hosting server logs or third-party fonts and analytics, explain that clearing site data deletes everything, and point at the export button. Every claim should be verifiable from the browser's network tab."}}]}</script>
+
+<link rel="stylesheet" href="/css/site.css">
+<style>
+  .prose{max-width:68ch}
+  .prose h2{margin:var(--s7) 0 var(--s4);font-size:var(--t-h2)}
+  .prose h3{margin:var(--s6) 0 var(--s3);font-size:var(--t-h3)}
+  .prose p{color:var(--muted);margin:0 0 var(--s4)}
+  .prose ul,.prose ol{color:var(--muted);padding-left:1.2em;margin:0 0 var(--s4)}
+  .prose li{margin-bottom:var(--s2)}
+  .prose a{color:var(--gold-2)}
+  .prose strong{color:var(--fg)}
+  .formula{display:block;padding:var(--s4);margin:0 0 var(--s4);border:1px solid var(--line-soft);
+    border-radius:var(--radius);font-family:ui-monospace,SFMono-Regular,Menlo,monospace;
+    font-size:var(--t-small);color:var(--gold-2);overflow-x:auto;white-space:pre-wrap}
+  .tblwrap{overflow-x:auto;margin:0 0 var(--s4)}
+  .tbl{width:100%;border-collapse:collapse;font-size:var(--t-small)}
+  .tbl th,.tbl td{text-align:left;padding:var(--s3);border-bottom:1px solid var(--line-soft);
+    color:var(--muted);vertical-align:top}
+  .tbl th{font-family:var(--display-pro);color:var(--gold-2);font-weight:600}
+  .callout{padding:var(--s4);border:1px solid var(--line-soft);border-radius:var(--radius);
+    color:var(--muted);font-size:var(--t-small);margin:0 0 var(--s5)}
+  .callout--warn{border-color:var(--gold-2)}
+  .faq-card{padding:var(--s5)}
+  .faq-card h3{font-size:var(--t-h3);margin:0}
+  .faq-card p{color:var(--muted);font-size:var(--t-small);margin:var(--s3) 0 0}
+</style>
+</head>
+<body class="pro">
+
+<a class="skip-link" href="#main">Skip to content</a>
+
+<nav class="site-nav">
+  <a class="site-nav__brand" href="/"><img class="site-nav__lion" src="/img/brand/lion-mark.svg" alt="" width="34" height="34"><span>YUSUF GADELRAB</span></a>
+  <div class="site-nav__links">
+    <a href="/">Work</a>
+    <a href="/guides.html">Guides</a>
+    <a href="/stack.html">Stack</a>
+    <a href="/apps.html">Apps</a>
+  </div>
+</nav>
+
+<main id="main">
+
+  <header class="section">
+    <p class="eyebrow">Guide · Architecture</p>
+    <h1 style="margin:var(--s4) 0">Tools with no backend, and the honest trade</h1>
+    <p class="lead">A tool that never sends data anywhere cannot leak it, cannot lose it in someone else's breach, and cannot be repriced when the hosting bill arrives. It also cannot sync to your phone. Both halves are worth saying out loud.</p>
+  </header>
+
+  <hr class="divider">
+
+  <section class="section section--tight">
+    <div class="prose">
+      <h2>The default is heavier than the problem</h2>
+      <p>Most small utilities get built with an account system, a database, a session store, and a hosting bill — for a calculator. The reflex is so automatic that nobody asks whether the server is doing anything the browser could not.</p>
+      <p>For a large class of tools, it is not. A position sizer, a trade journal, a weight tracker, a habit checklist, a unit converter, a text formatter: all of these are pure functions plus a little state. The browser has a JavaScript engine and persistent storage. That is the entire requirement.</p>
+      <h2>What you gain</h2>
+      <h3>No breach surface</h3>
+      <p>The strongest security property available is <strong>not holding the data.</strong> No user table means no credential dump, no password reset flow to phish, no session tokens to steal, no compliance obligation around personal data you never received. You cannot be forced to hand over records that were never on your server, and an attacker who fully compromises the host gets a folder of static files.</p>
+      <h3>Data stays where the user can see it</h3>
+      <p>Browser storage is inspectable. A curious user can open DevTools and read exactly what the app kept. That is a much stronger claim than a privacy policy, because it is verifiable rather than promised — the network tab shows there are no outbound requests carrying their data.</p>
+      <h3>It costs nothing to run</h3>
+      <p>Static files on GitHub Pages, Netlify, or Cloudflare Pages cost nothing at realistic personal-project traffic. There is no database to back up, no dependency to patch at 2am, no bill that grows with users. A client-side tool that gets popular gets <em>cheaper</em> per user, not more expensive.</p>
+      <h3>It keeps working</h3>
+      <p>No server means no outage, no rate limit, no deprecation. Offline through a service worker, it works on a plane. A tool built this way in 2020 still runs today with no maintenance, which is not a claim most SaaS side projects can make.</p>
+      <h2>What you give up</h2>
+      <p>This is the part most local-first pitches skip, so here it is plainly.</p>
+      <div class="tblwrap"><table class="tbl">
+        <thead><tr><th>You lose</th><th>What that means in practice</th></tr></thead>
+        <tbody>
+          <tr><td>Cross-device sync</td><td>Data logged on the laptop is not on the phone. Two devices means two separate datasets.</td></tr>
+          <tr><td>Backup</td><td>Clearing browser data deletes everything. On iOS, storage can be evicted after long non-use.</td></tr>
+          <tr><td>Server-side compute</td><td>No heavy jobs, no scheduled tasks, no calling a paid API without exposing the key.</td></tr>
+          <tr><td>Collaboration</td><td>No sharing, no multi-user, no permissions — there is nothing to share through.</td></tr>
+          <tr><td>Analytics on usage</td><td>You genuinely do not know how the tool is used, which makes it harder to improve.</td></tr>
+          <tr><td>Recovery</td><td>No support ticket can restore what a user deleted, because you never had a copy.</td></tr>
+        </tbody>
+      </table></div>
+      <p>The honest framing is not that these do not matter. It is that <strong>for single-user tools they usually matter less than the ongoing cost of an account system</strong> — for the builder and for the user, who has one more password and one more breach notification in their future.</p>
+      <h2>Mitigations that keep the model intact</h2>
+      <ol>
+        <li><strong>Ship export and import.</strong> A JSON or CSV download turns 'no backup' into 'your backup, your file'. This is the single highest-value feature in a local-only tool.</li>
+        <li><strong>Warn before destructive actions</strong> and never auto-clear storage on version change.</li>
+        <li><strong>Make the storage key stable</strong> across deploys, and migrate schemas forward rather than resetting them.</li>
+        <li><strong>Say where the data lives, in the app,</strong> not only in the privacy policy. One line under the form does more than a page nobody opens.</li>
+        <li><strong>If sync is genuinely needed later,</strong> add it as an opt-in layer over the same local store rather than rewriting around a server.</li>
+      </ol>
+      <h2>Writing the privacy policy honestly</h2>
+      <p>A local-only tool makes for a short, unusually credible privacy policy — but only if it is specific. Vague reassurance reads exactly like every policy that turned out to be false.</p>
+      <ul>
+        <li>Name the storage mechanism: 'stored in your browser's localStorage on this device'.</li>
+        <li>State plainly that there is no account, no server-side database, and no transmission of entered data.</li>
+        <li>Disclose what <em>is</em> collected, if anything — static hosting still produces server logs with IP addresses, and any embedded analytics or fonts are third-party requests. Do not claim zero collection while loading a tracker.</li>
+        <li>Explain the eviction risk: clearing site data deletes it, and browsers may evict storage. Point at the export button in the same sentence.</li>
+        <li>Skip the legal-sounding padding. A policy a user can read in 60 seconds is more protective than one they cannot.</li>
+      </ul>
+      <p>The test I use: could a technically literate user verify every claim in the policy from the network tab in under a minute? If yes, it is honest. If a claim requires trusting me, it should be softened or removed. <a href="/privacy.html">Mine is here →</a></p>
+      <h2>When you actually do need a backend</h2>
+      <p>Not every tool fits. You need a server when the data is genuinely shared between people, when compute exceeds what a phone browser can do, when an API key must stay secret, when the data must survive a lost device, or when a regulation requires audit trails you can produce. Those are real requirements — the point is to check whether you have one, not to assume you do.</p>
+
+      <h2>Tools referenced in this guide</h2>
+      <ul>
+        <li><a href="/apps.html">Apps hub</a> — three tools built this way — no accounts, no server, no analytics on your entries.</li>
+        <li><a href="/apps/cut/">Cut</a> — weight tracker with local storage and an export path.</li>
+        <li><a href="/privacy.html">Privacy policy</a> — a short, verifiable version of the claims described here.</li>
+        <li><a href="/stack.html">My stack</a> — what static hosting and tooling this runs on.</li>
+      </ul>
+    </div>
+  </section>
+
+  <hr class="divider">
+
+  <section class="section section--tight" id="faq">
+    <div class="grp-head">
+      <p class="eyebrow">FAQ</p>
+      <h2>Quick answers</h2>
+    </div>
+    <div class="grid" style="margin-top:var(--s6)">
+      <article class="card faq-card"><h3>What is a client-side-only tool?</h3><p>Runs entirely in the browser, state in localStorage or IndexedDB, no server beyond static files. No account, no database, nothing transmitted.</p></article>
+      <article class="card faq-card"><h3>Is no-account more secure?</h3><p>For user data, yes — the strongest protection is not holding it. No user table, no tokens, no reset flow to phish. It does not protect a compromised device.</p></article>
+      <article class="card faq-card"><h3>What do you give up?</h3><p>Sync, backup, recovery, collaboration, server-side compute, secret API keys, and real usage analytics. Say so rather than hiding it.</p></article>
+      <article class="card faq-card"><h3>What does it cost to run?</h3><p>Effectively zero. Static hosting is free at personal traffic, nothing to back up or patch, and cost per user falls as usage grows.</p></article>
+      <article class="card faq-card"><h3>How do users back up?</h3><p>An export button that downloads JSON or CSV. Highest-value feature in a local-only tool — clearing site data wipes everything.</p></article>
+      <article class="card faq-card"><h3>What goes in the privacy policy?</h3><p>The exact storage mechanism, no account or database, whatever hosting logs still collect, the eviction risk, and the export path. Verifiable claims only.</p></article>
+    </div>
+  </section>
+
+</main>
+
+<footer class="site-footer">
+  <div class="site-footer__links">
+    <a href="/">Work</a>
+    <a href="/about.html">About</a>
+    <a href="/guides.html">Guides</a>
+    <a href="/apps.html">Apps</a>
+    <a href="/store.html">Store</a>
+    <a href="/privacy.html">Privacy</a>
+    <a href="/terms.html">Terms</a>
+    <a href="mailto:yusuf.gadelrab06@gmail.com">yusuf.gadelrab06@gmail.com</a>
+  </div>
+</footer>
+
+<script src="/js/site.js" defer></script>
+</body>
+</html>

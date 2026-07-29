@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="preload" href="/css/site.css" as="style">
+<meta name="robots" content="index,follow,max-image-preview:large,max-snippet:-1">
+<meta property="og:locale" content="en_US">
+<title>A LinkedIn Profile That Gets Recruiter Replies</title>
+<meta name="description" content="How recruiters actually search LinkedIn, what belongs in the headline and About, why the first two lines decide everything, and what costs replies.">
+<link rel="canonical" href="https://yusuf-gadelrab.github.io/guides/linkedin-profile-recruiters.html">
+<link rel="icon" type="image/svg+xml" href="https://yusuf-gadelrab.github.io/favicon.svg">
+<link rel="apple-touch-icon" sizes="180x180" href="https://yusuf-gadelrab.github.io/apple-touch-icon.png">
+<meta name="theme-color" content="#0B0B0D">
+<meta name="author" content="Yusuf Gadelrab">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="Yusuf Gadelrab">
+<meta property="og:title" content="A LinkedIn Profile That Gets Recruiter Replies">
+<meta property="og:description" content="How recruiters actually search, and what the first two lines have to do.">
+<meta property="og:url" content="https://yusuf-gadelrab.github.io/guides/linkedin-profile-recruiters.html">
+<meta property="og:image" content="https://yusuf-gadelrab.github.io/og-card.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="A LinkedIn Profile That Gets Recruiter Replies">
+<meta name="twitter:description" content="How recruiters actually search, and what the first two lines have to do.">
+<meta name="twitter:image" content="https://yusuf-gadelrab.github.io/og-card.png">
+<link rel="alternate" type="text/plain" href="https://yusuf-gadelrab.github.io/llms-full.txt" title="Plain-text profile for language models">
+
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"TechArticle","@id":"https://yusuf-gadelrab.github.io/guides/linkedin-profile-recruiters.html#article","headline":"A LinkedIn Profile That Gets Recruiter Replies","name":"A LinkedIn Profile That Gets Recruiter Replies","description":"How recruiters actually search LinkedIn, what belongs in the headline and About, why the first two lines decide everything, and what costs replies.","datePublished":"2026-07-29","dateModified":"2026-07-29","inLanguage":"en","author":{"@id":"https://yusuf-gadelrab.github.io/#person"},"publisher":{"@id":"https://yusuf-gadelrab.github.io/#person"},"about":["LinkedIn","Personal branding","Job search"],"mainEntityOfPage":"https://yusuf-gadelrab.github.io/guides/linkedin-profile-recruiters.html","isAccessibleForFree":true,"proficiencyLevel":"Beginner"},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://yusuf-gadelrab.github.io/"},{"@type":"ListItem","position":2,"name":"Guides","item":"https://yusuf-gadelrab.github.io/guides.html"},{"@type":"ListItem","position":3,"name":"LinkedIn Profiles"}]}]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","@id":"https://yusuf-gadelrab.github.io/guides/linkedin-profile-recruiters.html#faq","mainEntity":[{"@type":"Question","name":"How do recruiters search LinkedIn?","acceptedAnswer":{"@type":"Answer","text":"They search concrete keywords — a language, framework, title, location, sometimes a school — then scan a results list that shows only name, headline, and location. Your headline is what decides whether your profile gets opened at all."}},{"@type":"Question","name":"What should a LinkedIn headline contain?","acceptedAnswer":{"@type":"Answer","text":"What you are, one proof point or specialisation, your concrete stack in the industry's own terms, and what you are building or seeking. Use most of the roughly 220 characters, and avoid words like passionate, aspiring, ninja, or guru, which are neither searched nor informative."}},{"@type":"Question","name":"How long should the About section be?","acceptedAnswer":{"@type":"Answer","text":"Structurally, only the first two lines matter, because LinkedIn truncates the rest behind a see-more link. Lead with a plain declarative summary of who you are, then use short paragraphs for proof with numbers, your stack, what you want next, and contact details."}},{"@type":"Question","name":"What should go in Experience entries?","acceptedAnswer":{"@type":"Answer","text":"What changed because you were there, not the duties from the job posting. Use action, object, method, result, and quantify the result whenever an honest number exists."}},{"@type":"Question","name":"Do you need to post on LinkedIn to get noticed?","acceptedAnswer":{"@type":"Answer","text":"Not daily. A profile with no activity reads as abandoned, but a handful of substantive posts about what you actually built is enough, and that content is usually the same as your portfolio work, so it costs nothing extra to produce."}},{"@type":"Question","name":"What LinkedIn settings actually matter?","acceptedAnswer":{"@type":"Answer","text":"A custom profile URL, a clear photo and non-default banner, a populated Skills section because it feeds search, a Featured section pinning your portfolio and any publications, the recruiter-visible open-to-work setting, and a location set to where you can genuinely work."}}]}</script>
+
+<link rel="stylesheet" href="/css/site.css">
+<style>
+  .prose{max-width:68ch}
+  .prose h2{margin:var(--s7) 0 var(--s4);font-size:var(--t-h2)}
+  .prose h3{margin:var(--s6) 0 var(--s3);font-size:var(--t-h3)}
+  .prose p{color:var(--muted);margin:0 0 var(--s4)}
+  .prose ul,.prose ol{color:var(--muted);padding-left:1.2em;margin:0 0 var(--s4)}
+  .prose li{margin-bottom:var(--s2)}
+  .prose a{color:var(--gold-2)}
+  .prose strong{color:var(--fg)}
+  .formula{display:block;padding:var(--s4);margin:0 0 var(--s4);border:1px solid var(--line-soft);
+    border-radius:var(--radius);font-family:ui-monospace,SFMono-Regular,Menlo,monospace;
+    font-size:var(--t-small);color:var(--gold-2);overflow-x:auto;white-space:pre-wrap}
+  .tblwrap{overflow-x:auto;margin:0 0 var(--s4)}
+  .tbl{width:100%;border-collapse:collapse;font-size:var(--t-small)}
+  .tbl th,.tbl td{text-align:left;padding:var(--s3);border-bottom:1px solid var(--line-soft);
+    color:var(--muted);vertical-align:top}
+  .tbl th{font-family:var(--display-pro);color:var(--gold-2);font-weight:600}
+  .callout{padding:var(--s4);border:1px solid var(--line-soft);border-radius:var(--radius);
+    color:var(--muted);font-size:var(--t-small);margin:0 0 var(--s5)}
+  .callout--warn{border-color:var(--gold-2)}
+  .faq-card{padding:var(--s5)}
+  .faq-card h3{font-size:var(--t-h3);margin:0}
+  .faq-card p{color:var(--muted);font-size:var(--t-small);margin:var(--s3) 0 0}
+</style>
+</head>
+<body class="pro">
+
+<a class="skip-link" href="#main">Skip to content</a>
+
+<nav class="site-nav">
+  <a class="site-nav__brand" href="/"><img class="site-nav__lion" src="/img/brand/lion-mark.svg" alt="" width="34" height="34"><span>YUSUF GADELRAB</span></a>
+  <div class="site-nav__links">
+    <a href="/">Work</a>
+    <a href="/guides.html">Guides</a>
+    <a href="/resume.html">Resume</a>
+    <a href="/apply.html">Apply OS</a>
+  </div>
+</nav>
+
+<main id="main">
+
+  <header class="section">
+    <p class="eyebrow">Guide · Career</p>
+    <h1 style="margin:var(--s4) 0">Write the profile for how recruiters actually search</h1>
+    <p class="lead">A recruiter runs a keyword search, scans a list of one-line results, opens a few, and reads two lines of each before deciding. Optimise for that sequence and nothing else.</p>
+  </header>
+
+  <hr class="divider">
+
+  <section class="section section--tight">
+    <div class="prose">
+      <h2>How recruiters actually find people</h2>
+      <p>The workflow is search, scan, open, skim. They search on concrete terms — a language, a framework, a title, a location, sometimes a school. The results list shows your <strong>name, headline, and location</strong>, and nothing else. That headline is doing all the work of getting you opened.</p>
+      <p>So a headline of "Aspiring Software Engineer | Passionate about technology" fails twice: it contains no term anyone searches for, and it says nothing that would make someone click.</p>
+      <h2>The headline</h2>
+      <span class="formula">[what you are] · [proof or specialisation] | [concrete stack] | [what you are building]</span>
+      <p>Concrete beats aspirational. Load it with the nouns a recruiter would type — the language, the framework, the domain, the credential — while still reading like a human wrote it. You have around 220 characters; use most of them.</p>
+      <ul>
+        <li>Include your actual stack in the words the industry uses.</li>
+        <li>Include one credential or proof point if you have one: a publication, a shipped product, a named employer.</li>
+        <li>Include what you are looking for if you are looking. Recruiters filter on "open to" language.</li>
+        <li>Avoid: passionate, aspiring, enthusiast, ninja, guru. They occupy space and signal nothing.</li>
+      </ul>
+      <h2>The About section: only the first two lines are read</h2>
+      <p>LinkedIn truncates About behind a "see more" link. Whatever is above that fold is the entire section for most readers, so <strong>the first sentence must be the summary of you</strong>, written in plain declarative form.</p>
+      <p>The structure that works below the fold: what you do now, one or two specific pieces of proof with numbers, your stack, and what you want next, ending with contact details. Short paragraphs. No walls of text — the mobile app renders them as a grey slab nobody finishes.</p>
+      <h2>Experience entries are not job descriptions</h2>
+      <p>Copying your duties from the job posting is the most common waste of space on LinkedIn. Write what changed because you were there. Action, object, method, result — with the result quantified when it honestly can be.</p>
+      <span class="formula">Instead of: Responsible for maintaining internal reporting tools
+Write:      Rebuilt the internal reporting pipeline over 50+ daily sources,
+            cutting manual research time 60%</span>
+      <h2>The mechanical points that quietly matter</h2>
+      <ul>
+        <li><strong>Custom URL.</strong> linkedin.com/in/yourname, not the string of digits. It goes on the resume.</li>
+        <li><strong>Photo and banner.</strong> A clear face and a banner that is not the default. This is a two-minute fix with outsized effect on reply rates.</li>
+        <li><strong>Skills section.</strong> It feeds the search index. Populate it with the terms you want to be found for.</li>
+        <li><strong>Featured section.</strong> Pin the portfolio, the paper, the repository. It is the only place a link gets real visual weight.</li>
+        <li><strong>Open-to-work settings.</strong> The recruiter-only version is visible in their tooling without the green banner.</li>
+        <li><strong>Location.</strong> Set it to where you can actually work. Recruiters filter hard on it.</li>
+      </ul>
+      <h2>Activity, briefly</h2>
+      <p>You do not need to post daily. But a profile with zero activity looks abandoned, and a profile with a handful of substantive posts about what you built reads as evidence. Posting the thing you made, with a link and what you learned, is the highest-value-per-minute activity on the platform — and it is the same content as your portfolio, so it costs you nothing new.</p>
+      <p>If you would rather have it done for you, I rewrite profiles end to end in 48 hours: <a href="/sprint.html">the LinkedIn Profile Rewrite Sprint →</a></p>
+
+      <h2>Tools referenced in this guide</h2>
+      <ul>
+        <li><a href="/sprint.html">LinkedIn Profile Rewrite Sprint</a> — a complete rewrite delivered in 48 hours.</li>
+        <li><a href="/resume.html">Resume rebuild</a> — the ATS-safe document that pairs with the profile.</li>
+        <li><a href="/guides/ats-resume.html">ATS resume guide</a> — what breaks a resume parse and what does not.</li>
+      </ul>
+    </div>
+  </section>
+
+  <hr class="divider">
+
+  <section class="section section--tight" id="faq">
+    <div class="grp-head">
+      <p class="eyebrow">FAQ</p>
+      <h2>Quick answers</h2>
+    </div>
+    <div class="grid" style="margin-top:var(--s6)">
+      <article class="card faq-card"><h3>How do recruiters search?</h3><p>Keyword search, then a results list showing only name, headline, and location. The headline decides whether you get opened.</p></article>
+      <article class="card faq-card"><h3>What goes in the headline?</h3><p>What you are, a proof point, your real stack in industry terms, and what you are building. Use most of the ~220 characters.</p></article>
+      <article class="card faq-card"><h3>How long should About be?</h3><p>Only the first two lines are read before the fold. Lead with a plain declarative summary, then short paragraphs with numbers.</p></article>
+      <article class="card faq-card"><h3>What about Experience?</h3><p>Not job duties — what changed because you were there, quantified wherever an honest number exists.</p></article>
+      <article class="card faq-card"><h3>Do I need to post?</h3><p>Not daily. Zero activity looks abandoned; a few substantive build posts read as evidence and reuse your portfolio work.</p></article>
+      <article class="card faq-card"><h3>Which settings matter?</h3><p>Custom URL, real photo and banner, populated Skills, a Featured section with your links, open-to-work for recruiters, correct location.</p></article>
+    </div>
+  </section>
+
+</main>
+
+<footer class="site-footer">
+  <div class="site-footer__links">
+    <a href="/">Work</a>
+    <a href="/about.html">About</a>
+    <a href="/guides.html">Guides</a>
+    <a href="/apps.html">Apps</a>
+    <a href="/store.html">Store</a>
+    <a href="/privacy.html">Privacy</a>
+    <a href="/terms.html">Terms</a>
+    <a href="mailto:yusuf.gadelrab06@gmail.com">yusuf.gadelrab06@gmail.com</a>
+  </div>
+</footer>
+
+<script src="/js/site.js" defer></script>
+</body>
+</html>

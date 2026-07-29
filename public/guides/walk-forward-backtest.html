@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="preload" href="/css/site.css" as="style">
+<meta name="robots" content="index,follow,max-image-preview:large,max-snippet:-1">
+<meta property="og:locale" content="en_US">
+<title>Walk-Forward Testing &amp; Lookahead Bias, Explained</title>
+<meta name="description" content="Why in-sample backtests lie, what lookahead and survivorship bias look like in code, how walk-forward works, and how to spot a curve fit.">
+<link rel="canonical" href="https://yusuf-gadelrab.github.io/guides/walk-forward-backtest.html">
+<link rel="icon" type="image/svg+xml" href="https://yusuf-gadelrab.github.io/favicon.svg">
+<link rel="apple-touch-icon" sizes="180x180" href="https://yusuf-gadelrab.github.io/apple-touch-icon.png">
+<meta name="theme-color" content="#0B0B0D">
+<meta name="author" content="Yusuf Gadelrab">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="Yusuf Gadelrab">
+<meta property="og:title" content="Walk-Forward Testing &amp;amp; Lookahead Bias">
+<meta property="og:description" content="Why in-sample backtests lie, and what an honest test looks like in code.">
+<meta property="og:url" content="https://yusuf-gadelrab.github.io/guides/walk-forward-backtest.html">
+<meta property="og:image" content="https://yusuf-gadelrab.github.io/og-card.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Walk-Forward Testing &amp;amp; Lookahead Bias">
+<meta name="twitter:description" content="Why in-sample backtests lie, and what an honest test looks like in code.">
+<meta name="twitter:image" content="https://yusuf-gadelrab.github.io/og-card.png">
+<link rel="alternate" type="text/plain" href="https://yusuf-gadelrab.github.io/llms-full.txt" title="Plain-text profile for language models">
+
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"TechArticle","@id":"https://yusuf-gadelrab.github.io/guides/walk-forward-backtest.html#article","headline":"Walk-Forward Testing and Lookahead Bias: How Backtests Lie","name":"Walk-Forward Testing and Lookahead Bias: How Backtests Lie","description":"Why in-sample backtests lie, what lookahead and survivorship bias look like in code, how walk-forward works, and how to spot a curve fit.","datePublished":"2026-07-29","dateModified":"2026-07-29","inLanguage":"en","author":{"@id":"https://yusuf-gadelrab.github.io/#person"},"publisher":{"@id":"https://yusuf-gadelrab.github.io/#person"},"about":["Backtesting","Walk-forward analysis","Quantitative research"],"mainEntityOfPage":"https://yusuf-gadelrab.github.io/guides/walk-forward-backtest.html","isAccessibleForFree":true,"proficiencyLevel":"Beginner"},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://yusuf-gadelrab.github.io/"},{"@type":"ListItem","position":2,"name":"Guides","item":"https://yusuf-gadelrab.github.io/guides.html"},{"@type":"ListItem","position":3,"name":"Walk-Forward Testing"}]}]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","@id":"https://yusuf-gadelrab.github.io/guides/walk-forward-backtest.html#faq","mainEntity":[{"@type":"Question","name":"What is lookahead bias in backtesting?","acceptedAnswer":{"@type":"Answer","text":"Lookahead bias is using data at a point in time that was not actually available then — most commonly computing a signal from a bar's close and filling the order at that same close, when the fill could only have happened on the next bar. It also appears when indicators are computed over the whole dataset before splitting, or when restated data is applied to dates before the restatement existed."}},{"@type":"Question","name":"What is walk-forward testing?","acceptedAnswer":{"@type":"Answer","text":"Walk-forward testing fits parameters on a training window, tests on the block of data immediately after it, then slides both windows forward and repeats. The reported performance is the concatenation of out-of-sample blocks, so every trade came from parameters chosen without seeing that trade."}},{"@type":"Question","name":"Why do in-sample backtests look so good?","acceptedAnswer":{"@type":"Answer","text":"Because the parameters were chosen to fit that exact data. Any strategy with enough tunable knobs can be made to fit history perfectly, which says nothing about the future. In-sample results should be treated as a debugging check, not evidence."}},{"@type":"Question","name":"What is survivorship bias?","acceptedAnswer":{"@type":"Answer","text":"Survivorship bias is testing against a universe that only includes securities still listed today, so companies that were delisted, acquired, or went bankrupt are silently missing. Long-biased strategies look better than they were because the worst outcomes were deleted from the sample."}},{"@type":"Question","name":"How many trades does a backtest need?","acceptedAnswer":{"@type":"Answer","text":"At least 100 out-of-sample trades before expectancy is worth trusting, and more if the strategy is rare-signal or highly parameterised. Under 30 trades the result is dominated by luck."}},{"@type":"Question","name":"What costs should a backtest include?","acceptedAnswer":{"@type":"Answer","text":"Slippage, commissions, financing, partial fills, and short-borrow availability at minimum. A backtest that assumes perfect fills at mid price overstates every strategy, and overstates high-frequency ones enormously."}}]}</script>
+
+<link rel="stylesheet" href="/css/site.css">
+<style>
+  .prose{max-width:68ch}
+  .prose h2{margin:var(--s7) 0 var(--s4);font-size:var(--t-h2)}
+  .prose h3{margin:var(--s6) 0 var(--s3);font-size:var(--t-h3)}
+  .prose p{color:var(--muted);margin:0 0 var(--s4)}
+  .prose ul,.prose ol{color:var(--muted);padding-left:1.2em;margin:0 0 var(--s4)}
+  .prose li{margin-bottom:var(--s2)}
+  .prose a{color:var(--gold-2)}
+  .prose strong{color:var(--fg)}
+  .formula{display:block;padding:var(--s4);margin:0 0 var(--s4);border:1px solid var(--line-soft);
+    border-radius:var(--radius);font-family:ui-monospace,SFMono-Regular,Menlo,monospace;
+    font-size:var(--t-small);color:var(--gold-2);overflow-x:auto;white-space:pre-wrap}
+  .tblwrap{overflow-x:auto;margin:0 0 var(--s4)}
+  .tbl{width:100%;border-collapse:collapse;font-size:var(--t-small)}
+  .tbl th,.tbl td{text-align:left;padding:var(--s3);border-bottom:1px solid var(--line-soft);
+    color:var(--muted);vertical-align:top}
+  .tbl th{font-family:var(--display-pro);color:var(--gold-2);font-weight:600}
+  .callout{padding:var(--s4);border:1px solid var(--line-soft);border-radius:var(--radius);
+    color:var(--muted);font-size:var(--t-small);margin:0 0 var(--s5)}
+  .callout--warn{border-color:var(--gold-2)}
+  .faq-card{padding:var(--s5)}
+  .faq-card h3{font-size:var(--t-h3);margin:0}
+  .faq-card p{color:var(--muted);font-size:var(--t-small);margin:var(--s3) 0 0}
+</style>
+</head>
+<body class="pro">
+
+<a class="skip-link" href="#main">Skip to content</a>
+
+<nav class="site-nav">
+  <a class="site-nav__brand" href="/"><img class="site-nav__lion" src="/img/brand/lion-mark.svg" alt="" width="34" height="34"><span>YUSUF GADELRAB</span></a>
+  <div class="site-nav__links">
+    <a href="/">Work</a>
+    <a href="/guides.html">Guides</a>
+    <a href="/risk-tools.html">Calculators</a>
+    <a href="/apps.html">Apps</a>
+  </div>
+</nav>
+
+<main id="main">
+
+  <header class="section">
+    <p class="eyebrow">Guide · Research</p>
+    <h1 style="margin:var(--s4) 0">How backtests lie, and what an honest one looks like</h1>
+    <p class="lead">Almost every strategy works on the data it was built on. The interesting question is whether it works on data it has never seen — and most of the ways people answer that question are quietly broken.</p>
+  </header>
+
+  <hr class="divider">
+
+  <section class="section section--tight">
+    <div class="prose">
+      <h2>What is lookahead bias?</h2>
+      <p>Lookahead bias is using information at bar <em>t</em> that was not available until after bar <em>t</em>. It is almost never deliberate, and it is almost always fatal to the result.</p>
+      <p>The classic version is off-by-one indexing: computing a signal from the daily close and then filling the order at that same close. In reality you cannot know the close until the session is over, so the fill must land on the next bar's open. One index shift can turn a losing system into a spectacular one.</p>
+      <ul>
+        <li>Signal computed on the close, filled at the same close</li>
+        <li>Indicators recalculated over the full dataset and then sliced, so early bars carry information from later ones</li>
+        <li>Restated fundamentals or adjusted prices applied to dates before the restatement existed</li>
+        <li>A stop that gets checked against the same bar's low after using that bar's high to decide the entry</li>
+        <li>Splitting train and test data after normalising across the whole set</li>
+      </ul>
+      <h2>What is survivorship bias?</h2>
+      <p>Survivorship bias is testing on a universe that only contains what is still listed today. Delisted, acquired, and bankrupt tickers vanish from most convenient datasets, so the test never has to hold the ones that went to zero. Any long-biased strategy looks better against a universe that quietly deleted its worst outcomes.</p>
+      <h2>In-sample, out-of-sample, walk-forward</h2>
+      <p>Three levels of honesty:</p>
+      <div class="tblwrap"><table class="tbl">
+        <thead><tr><th>Method</th><th>What it does</th><th>How much to trust it</th></tr></thead>
+        <tbody>
+          <tr><td>In-sample</td><td>Optimise and evaluate on the same data</td><td>None. This is curve fitting with extra steps.</td></tr>
+          <tr><td>Single out-of-sample split</td><td>Optimise on the first chunk, test once on the last</td><td>Some — but you only get one honest test, and looking twice spends it.</td></tr>
+          <tr><td>Walk-forward</td><td>Roll the optimise/test window forward repeatedly, always testing on unseen data</td><td>The most useful of the three, and still not a guarantee.</td></tr>
+        </tbody>
+      </table></div>
+      <p>Walk-forward works like this: fit parameters on a training window, test on the block immediately after it, then slide both windows forward and repeat. The reported result is the concatenation of every out-of-sample block. Because every trade in the result came from parameters chosen without seeing that trade, the equity curve is at least structurally honest.</p>
+      <h2>The costs people leave out</h2>
+      <ul>
+        <li><strong>Slippage</strong> — assume worse fills than mid, especially on gaps and small caps.</li>
+        <li><strong>Commission and financing</strong> — small per trade, decisive at high frequency.</li>
+        <li><strong>Partial fills</strong> — a backtest fills 100% of a limit order that reality would have missed.</li>
+        <li><strong>Borrow availability</strong> for shorts, which the data will not tell you about.</li>
+        <li><strong>Your own behaviour</strong> — the backtest takes every signal; you will not.</li>
+      </ul>
+      <h2>How to read a result</h2>
+      <p>Ask three questions of any backtest, including your own:</p>
+      <ol>
+        <li><strong>How many trades?</strong> Under 100 out-of-sample trades, expectancy is mostly noise.</li>
+        <li><strong>How many parameters were tuned?</strong> Every knob is a chance to fit history. A two-parameter system with 300 trades beats a nine-parameter system with 40.</li>
+        <li><strong>Where are the negative results?</strong> A write-up with no failed variants is a sales page. Real research kills more ideas than it keeps.</li>
+      </ol>
+      <p>When I ran this on my own setups, the outcome was mostly negative: only the anchored-VWAP reclaim survived at +0.23R over 101 trades, a VCP variant came out breakeven, and a gap/opening-range-breakout proxy came out at −0.28R and was cut. Two filters I was confident about — regime and normalised momentum lag — both reduced expectancy and were rejected.</p>
+      <p>That is the point of the exercise: <strong>an honest test is one that is allowed to say no.</strong> <a href="/swing-screener.html">Full write-up and engine →</a></p>
+      <p class="callout">Educational content, not financial advice. No live profit-and-loss figures are claimed anywhere on this site; backtest and walk-forward results are always labelled as such. Full terms: <a href="/terms.html">/terms.html</a></p>
+
+      <h2>Tools referenced in this guide</h2>
+      <ul>
+        <li><a href="/swing-screener.html">Swing Screener</a> — the no-lookahead backtest engine and walk-forward results.</li>
+        <li><a href="/trading-bot.html">Trading bot</a> — the execution side, with a hard gate requiring 60 profitable paper trades before any live broker.</li>
+        <li><a href="/guides/r-multiple-expectancy.html">R-multiple &amp; expectancy guide</a> — how to measure what a test produced.</li>
+      </ul>
+    </div>
+  </section>
+
+  <hr class="divider">
+
+  <section class="section section--tight" id="faq">
+    <div class="grp-head">
+      <p class="eyebrow">FAQ</p>
+      <h2>Quick answers</h2>
+    </div>
+    <div class="grid" style="margin-top:var(--s6)">
+      <article class="card faq-card"><h3>What is lookahead bias?</h3><p>Using information the market had not published yet — usually filling at the same close that generated the signal. One index shift can invent an edge that never existed.</p></article>
+      <article class="card faq-card"><h3>What is walk-forward testing?</h3><p>Fit on a training window, test on the next block, slide forward, repeat. Every reported trade came from parameters chosen before that trade existed.</p></article>
+      <article class="card faq-card"><h3>Why do in-sample results look great?</h3><p>Because the parameters were fitted to that data. It is curve fitting with extra steps — useful for debugging, useless as evidence.</p></article>
+      <article class="card faq-card"><h3>What is survivorship bias?</h3><p>Testing on a universe of survivors only. Delisted and bankrupt names are missing, so long strategies look better than they were.</p></article>
+      <article class="card faq-card"><h3>How many trades are enough?</h3><p>100+ out-of-sample trades before expectancy means much. Under 30 you are measuring luck with a decimal point.</p></article>
+      <article class="card faq-card"><h3>What gets left out of backtests?</h3><p>Slippage, commissions, financing, partial fills, borrow availability — and your own willingness to actually take every signal.</p></article>
+    </div>
+  </section>
+
+</main>
+
+<footer class="site-footer">
+  <div class="site-footer__links">
+    <a href="/">Work</a>
+    <a href="/about.html">About</a>
+    <a href="/guides.html">Guides</a>
+    <a href="/apps.html">Apps</a>
+    <a href="/store.html">Store</a>
+    <a href="/privacy.html">Privacy</a>
+    <a href="/terms.html">Terms</a>
+    <a href="mailto:yusuf.gadelrab06@gmail.com">yusuf.gadelrab06@gmail.com</a>
+  </div>
+</footer>
+
+<script src="/js/site.js" defer></script>
+</body>
+</html>
