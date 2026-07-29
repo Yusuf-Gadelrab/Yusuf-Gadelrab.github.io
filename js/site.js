@@ -345,6 +345,8 @@
       root.hidden = false;
       d.documentElement.classList.add('yg-pal-open');
       input.value = '';
+      /* The long placeholder truncates below ~420px, so trade detail for fit. */
+      input.placeholder = w.innerWidth < 480 ? 'Search the site…' : 'Jump to a page, section or action…';
       render('');
       input.focus();
       var trig = d.querySelector('.yg-cmd');
