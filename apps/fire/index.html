@@ -282,7 +282,7 @@ function render(){
     li.appendChild(tg);
     const mk = (label,title,fn)=>{const b=document.createElement('button');b.className='mini';b.textContent=label;b.title=title;b.onclick=fn;return b};
     li.appendChild(mk('↑','Move up',()=>{if(i>0){[tasks[i-1],tasks[i]]=[tasks[i],tasks[i-1]];save(K.tasks,tasks);render()}}));
-    li.appendChild(mk('↓','Move down',()=>{if(i<tasks.length-1){[tasks[i+1],tasks[i]]=[tasks[i],tasks[i+1]];save(K.tasks,tasks);render()}}));
+    li.appendChild(mk('↓','Move down',()=>{if(i<tasks.length-1){[tasks[i+1],tasks[i]]=[tasks[i+1],tasks[i]]=[tasks[i],tasks[i+1]];save(K.tasks,tasks);render()}}));
     li.appendChild(mk('✎','Rename',()=>{const n=prompt('Rename task:',t.name);if(n&&n.trim()){t.name=n.trim();save(K.tasks,tasks);render()}}));
     li.appendChild(mk('✕','Delete',()=>{if(confirm('Delete "'+t.name+'"?')){tasks.splice(i,1);delete checks[t.id];save(K.tasks,tasks);save(K.checks,checks);render()}}));
     ul.appendChild(li);
