@@ -57,19 +57,23 @@
 <script>
   // Checkout links — same map shape as store.html. Swap in live Lemon Squeezy URLs.
   const CHECKOUT = {
-    'tpl-deck':      'https://yusufgadelrab.lemonsqueezy.com/buy/investor-deck-template',
-    'tpl-proposal':  'https://yusufgadelrab.lemonsqueezy.com/buy/client-proposal-template',
-    'tpl-brand':     'https://yusufgadelrab.lemonsqueezy.com/buy/brand-guidelines-pack',
-    'tpl-paperwork': 'https://yusufgadelrab.lemonsqueezy.com/buy/freelance-paperwork-pack',
-    'tpl-mediakit':  'https://yusufgadelrab.lemonsqueezy.com/buy/creator-media-kit',
-    'tpl-resume':    'https://yusufgadelrab.lemonsqueezy.com/buy/executive-resume-pack',
-    'tpl-landing':   'https://yusufgadelrab.lemonsqueezy.com/buy/landing-page-kit',
-    'tpl-freight':   'https://yusufgadelrab.lemonsqueezy.com/buy/freight-broker-ops-pack',
-    'tpl-swipe':     'https://yusufgadelrab.lemonsqueezy.com/buy/cold-email-swipe-file',
-    'tpl-os':        'https://yusufgadelrab.lemonsqueezy.com/buy/freelance-business-os',
-    'tpl-slides':    'https://yusufgadelrab.lemonsqueezy.com/buy/slide-library',
-    'tpl-prompts':   'https://yusufgadelrab.lemonsqueezy.com/buy/ai-prompt-vault',
-    'tpl-vault':     'https://yusufgadelrab.lemonsqueezy.com/buy/midnight-gold-vault'
+    // ⚠ 2026-07-29 cleanup: these all held GUESSED Lemon Squeezy URLs. Verified live —
+    // yusufgadelrab.lemonsqueezy.com does not exist, every one returned 404, so all 13
+    // buy buttons sent real buyers to a 404. Blanked; the mailto reserve fallback below
+    // now fires instead. Only paste a URL here after curl-verifying it returns 200.
+    'tpl-deck':      '',
+    'tpl-proposal':  '',
+    'tpl-brand':     '',
+    'tpl-paperwork': '',
+    'tpl-mediakit':  '',
+    'tpl-resume':    '',
+    'tpl-landing':   '',
+    'tpl-freight':   '',
+    'tpl-swipe':     '',
+    'tpl-os':        '',
+    'tpl-slides':    '',
+    'tpl-prompts':   '',
+    'tpl-vault':     ''
   };
 </script>
 <link rel="stylesheet" href="/css/site.css">
