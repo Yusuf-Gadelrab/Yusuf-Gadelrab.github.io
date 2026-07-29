@@ -39,10 +39,14 @@
 
 <main id="main" class="offline">
   <div class="offline__mark" aria-hidden="true">&#9723;</div>
-  <p class="eyebrow offline__state" id="state">No connection</p>
+  <img class="page-lion" src="/img/brand/lion-mark.svg" alt="" width="46" height="46">
+    <p class="eyebrow offline__state" id="state">No connection</p>
   <h1 class="gold-fill">You're offline</h1>
-  <p class="lead">This page hasn't been cached on your device yet. Reconnect and it'll load
-    normally — pages you've already opened still work offline.</p>
+  <p class="lead">Awkward: my entire AI stack runs offline on purpose, and the one thing that
+    couldn't cope is my own website. This page just hasn't been cached on your device yet.
+    Reconnect and it'll load normally — pages you've already opened still work offline.</p>
+  <p class="lead" style="font-size:13px;opacity:.75">Somewhere, a local model is doing inference
+    with the Wi-Fi off and quietly judging this page.</p>
   <div class="row" style="justify-content:center;gap:12px">
     <button class="btn btn-gold" type="button" id="retry">Try again</button>
     <a class="btn btn-ghost" href="/">Go home</a>

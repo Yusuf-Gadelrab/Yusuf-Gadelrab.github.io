@@ -1,4 +1,4 @@
-const CACHE = 'fire-v5';
+const CACHE = 'fire-v6';
 const ASSETS = ['./', './index.html', './manifest.webmanifest'];
 
 self.addEventListener('install', e => {
