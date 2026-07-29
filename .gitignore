@@ -2,3 +2,5 @@ node_modules/
 build/
 .env
 .DS_Store
+public/__probe.html
+public/__*.html
