@@ -98,6 +98,12 @@ CARDS: dict[str, dict] = {
         sub="Long-form answers, each paired with a free calculator.",
         url="yusuf-gadelrab.github.io/guides",
     ),
+    "hire-card": dict(
+        icon="→",
+        head=["Two ways to", "work with me"],
+        sub="Recruiters get proof. Founders get a freelance builder.",
+        url="yusuf-gadelrab.github.io/hire",
+    ),
     "media-kit-card": dict(
         icon="◐",
         head=["Creator", "media kit"],

@@ -382,6 +382,7 @@ const SITE_LINKS = [
   { label: 'Store', href: '/store.html' },
   { label: 'CODESWITCH', href: '/codeswitch.html' },
   { label: 'KXNG SEF', href: '/kxngsef.html' },
+  { label: 'Hire', href: '/hire.html' },
   { label: 'Media Kit', href: '/media-kit.html' },
 ];
 
@@ -819,6 +820,7 @@ function SiteFooter({ contact, brand }) {
         <a href="/about.html">About</a>
         <a href="/guides.html">Guides</a>
         <a href="/resume.html">Resume</a>
+        <a href="/hire.html">Hire</a>
         <a href="/store.html">Store</a>
         <a href="/codeswitch.html">CODESWITCH</a>
         <a href="/circle.html">Circle</a>

@@ -44,6 +44,7 @@
     { t: 'AU — build feed',        u: '/au.html',              g: 'Site',     k: 'log chronological journal updates' },
     { t: 'Resume services',        u: '/resume.html',          g: 'Services', k: 'rebuild tailored applications cv' },
     { t: 'LinkedIn Profile Sprint', u: '/sprint.html',         g: 'Services', k: 'rewrite profile 48 hours ghostwriting' },
+    { t: 'Hire Yusuf Gadelrab',    u: '/hire.html',            g: 'Services', k: 'recruiters founding clients freelance internship work with me' },
     { t: 'Store — tools & automation', u: '/store.html',       g: 'Store',    k: 'buy products software ai downloads' },
     { t: 'Business template vault', u: '/templates.html',      g: 'Store',    k: 'decks slides packs midnight gold' },
     { t: 'KXNG SEF — clothing',    u: '/kxngsef.html',         g: 'Store',    k: 'streetwear hoodie tee drop merch brand' },
