@@ -78,7 +78,7 @@
         "url": "https://yusuf-gadelrab.github.io/kxngsef.html#crown",
         "price": "32.00",
         "priceCurrency": "USD",
-        "availability": "https://schema.org/PreOrder"
+        "availability": "https://schema.org/OutOfStock"
       },
       "sku": "KS001-CROWN-TEE",
       "material": "100% cotton",
@@ -103,7 +103,7 @@
         "url": "https://yusuf-gadelrab.github.io/kxngsef.html#sword",
         "price": "32.00",
         "priceCurrency": "USD",
-        "availability": "https://schema.org/PreOrder"
+        "availability": "https://schema.org/OutOfStock"
       },
       "sku": "KS001-SWORD-TEE",
       "material": "100% cotton",
@@ -128,7 +128,7 @@
         "url": "https://yusuf-gadelrab.github.io/kxngsef.html#earned",
         "price": "32.00",
         "priceCurrency": "USD",
-        "availability": "https://schema.org/PreOrder"
+        "availability": "https://schema.org/OutOfStock"
       },
       "sku": "KS001-EARNED-TEE",
       "material": "100% cotton",
@@ -153,7 +153,7 @@
         "url": "https://yusuf-gadelrab.github.io/kxngsef.html#built",
         "price": "32.00",
         "priceCurrency": "USD",
-        "availability": "https://schema.org/PreOrder"
+        "availability": "https://schema.org/OutOfStock"
       },
       "sku": "KS001-BUILT-TEE",
       "material": "100% cotton",
@@ -178,7 +178,7 @@
         "url": "https://yusuf-gadelrab.github.io/kxngsef.html#kxng408",
         "price": "32.00",
         "priceCurrency": "USD",
-        "availability": "https://schema.org/PreOrder"
+        "availability": "https://schema.org/OutOfStock"
       },
       "sku": "KS001-408-TEE",
       "material": "100% cotton",
@@ -203,7 +203,7 @@
         "url": "https://yusuf-gadelrab.github.io/kxngsef.html#scholar",
         "price": "58.00",
         "priceCurrency": "USD",
-        "availability": "https://schema.org/PreOrder"
+        "availability": "https://schema.org/OutOfStock"
       },
       "sku": "KS001-SCHOLAR-HOODIE",
       "material": "Cotton/polyester fleece blend",
@@ -720,17 +720,7 @@
 </footer>
 
 <script>
-  // wire waitlist buttons to the CHECKOUT map (defined in <head>) — falls back to their mailto href when empty
-  document.querySelectorAll('[data-buy]').forEach(function(a){
-    var key = a.getAttribute('data-buy');
-    if (CHECKOUT[key]) {
-      a.href = CHECKOUT[key];
-      a.target = '_blank';
-      a.rel = 'noopener';
-      a.textContent = 'Buy →';   // live checkout exists — stop calling it a waitlist
-      document.documentElement.classList.add('store-live');
-    }
-  });
+  // Buttons are wired by /js/commerce.js against the CHECKOUT map above.
 
   // reveal on scroll
   var io = new IntersectionObserver(function(entries){
@@ -740,5 +730,7 @@
 </script>
 
 <script src="/js/site.js" defer></script>
+<script src="/js/waitlist.js" defer></script>
+<script src="/js/commerce.js" defer></script>
 </body>
 </html>

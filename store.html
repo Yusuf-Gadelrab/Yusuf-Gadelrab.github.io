@@ -31,7 +31,7 @@
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Yusuf Gadelrab">
 <meta property="og:title" content="Automation Software & AI Tools Store — From $24">
-<meta property="og:description" content="Twelve downloads on sale today from $24 — automation tools plus the 230-page Trading Master Playbook and the Claude Optimization Playbook — plus FreightDesk, the AI back office for freight brokers. Launch pricing ends August 15.">
+<meta property="og:description" content="Twelve downloads on sale today from $24 — automation tools plus the 245-page Trading Master Playbook and the Claude Optimization Playbook — plus FreightDesk, the AI back office for freight brokers. Launch pricing ends August 15.">
 <meta property="og:url" content="https://yusuf-gadelrab.github.io/store.html">
 
 <meta name="twitter:card" content="summary_large_image">
@@ -49,7 +49,7 @@
 {"@type":"ListItem","position":4,"item":{"@type":"SoftwareApplication","name":"Swing Setup Screener","applicationCategory":"FinanceApplication","operatingSystem":"macOS, Windows, Linux","description":"Python CLI that scans any watchlist for anchored-VWAP reclaims, VCPs, and gap/ORB setups — 29/29 tests passing, backtest harness included.","offers":{"@type":"Offer","price":"24","priceCurrency":"USD"}}},
 {"@type":"ListItem","position":5,"item":{"@type":"SoftwareApplication","name":"Next.js 16 / React 19 RSC Boilerplate","applicationCategory":"DeveloperApplication","operatingSystem":"macOS, Windows, Linux","description":"Current-generation Next.js 16 + React 19 starter: RSC default, use() streaming, Server Actions, Zod v4, Prisma, Bun.","offers":{"@type":"Offer","price":"49","priceCurrency":"USD"}}},
 {"@type":"ListItem","position":6,"item":{"@type":"SoftwareApplication","name":"Midnight Gold Landing Page Kit","applicationCategory":"DesignApplication","operatingSystem":"Any","description":"Four premium black & gold landing pages, each a single self-contained HTML file with zero external dependencies.","offers":{"@type":"Offer","price":"24","priceCurrency":"USD"}}},
-{"@type":"ListItem","position":7,"item":{"@type":"Book","name":"The Trading Master Playbook — Full Course Edition","bookFormat":"https://schema.org/EBook","author":{"@type":"Person","name":"Yusuf Gadelrab"},"description":"230-page trading course PDF (Second Edition, includes a 39-plate Visual Chart Atlas): market structure, candlestick and chart-pattern catalogs, options Greeks with 13 structure catalogs, position sizing and expectancy math, checkpoints with full answer key, worksheets. Educational only — not financial advice.","offers":{"@type":"Offer","price":"49","priceCurrency":"USD"}}},
+{"@type":"ListItem","position":7,"item":{"@type":"Book","name":"The Trading Master Playbook — Full Course Edition","bookFormat":"https://schema.org/EBook","author":{"@type":"Person","name":"Yusuf Gadelrab"},"description":"245-page trading course PDF (Second Edition, includes a 39-plate Visual Chart Atlas): market structure, candlestick and chart-pattern catalogs, options Greeks with 13 structure catalogs, position sizing and expectancy math, checkpoints with full answer key, worksheets. Educational only — not financial advice.","offers":{"@type":"Offer","price":"49","priceCurrency":"USD"}}},
 {"@type":"ListItem","position":8,"item":{"@type":"Book","name":"The Claude Optimization Playbook","bookFormat":"https://schema.org/EBook","author":{"@type":"Person","name":"Yusuf Gadelrab"},"description":"Second Edition independent field guide (43 pages + 6 systems diagrams) to running Claude Code efficiently: model routing, prompt-caching mechanics, CLAUDE.md memory architecture, background-agent patterns. Not affiliated with Anthropic.","offers":{"@type":"Offer","price":"19","priceCurrency":"USD"}}}
 ]}
 </script>
@@ -327,7 +327,7 @@
   <section class="section hero">
     <span class="badge reveal"><span class="pulse"></span>Automation studio · Built in public · San Jose, CA</span>
     <h1 class="reveal d1">We automate what you want. <span class="gold-fill">Then we automate what you need.</span></h1>
-    <p class="lead reveal d2">Every tool here started as automation I needed myself — a freight back office answering its own email, outreach personalizing itself, charts screening themselves. <b>Twelve of them are packaged and on sale below, from $24 — including the 230-page Trading Master Playbook and the new 8-module illustrated trading course.</b> All the AI tools run on local models — zero API fees, your data never leaves your machine.</p>
+    <p class="lead reveal d2">Every tool here started as automation I needed myself — a freight back office answering its own email, outreach personalizing itself, charts screening themselves. <b>Twelve of them are packaged and on sale below, from $24 — including the 245-page Trading Master Playbook and the new 8-module illustrated trading course.</b> All the AI tools run on local models — zero API fees, your data never leaves your machine.</p>
     <div class="hero-cta reveal d3">
       <a href="#products" class="btn btn-gold">Show me the store ↓</a>
       <a href="./freightdesk.html" class="btn btn-ghost">🚚 FreightDesk for brokers</a>
@@ -974,19 +974,7 @@
     fitAll();
   })();
 
-  // wire buy buttons to the CHECKOUT map (defined in <head>)
-  document.querySelectorAll('[data-buy]').forEach(function(a){
-    var key=a.getAttribute('data-buy');
-    if(CHECKOUT[key]){ a.href=CHECKOUT[key]; a.target='_blank'; a.rel='noopener'; return; }
-    // No live checkout yet. Leaving the placeholder URL in place sent buyers to a
-    // 404, which reads as a broken store; capture the intent instead.
-    var name=(a.getAttribute('data-name')||key||'product').replace(/-/g,' ');
-    a.href='mailto:yusuf.gadelrab06@gmail.com'
-      +'?subject='+encodeURIComponent('Reserve: '+name)
-      +'&body='+encodeURIComponent('I want to buy "'+name+'". Send me the checkout link when it is live.');
-    a.setAttribute('data-pending','1');
-    if(!/reserve/i.test(a.textContent)) a.textContent='Reserve my copy — '+a.textContent.replace(/^[^—]*—\s*/,'');
-  });
+  // Buy buttons are wired by /js/commerce.js against the CHECKOUT map above.
 
   // nav scroll state + progress bar
   var nav=document.getElementById('nav'), prog=document.getElementById('progress');
@@ -1060,5 +1048,7 @@ d.readyState==='loading'?d.addEventListener('DOMContentLoaded',boot):boot();
 </script>
 
 <script src="/js/site.js" defer></script>
+<script src="/js/waitlist.js" defer></script>
+<script src="/js/commerce.js" defer></script>
 </body>
 </html>

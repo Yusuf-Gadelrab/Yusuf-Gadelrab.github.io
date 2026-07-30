@@ -353,12 +353,10 @@
 </footer>
 
 <script>
-  // wire buy buttons to the CHECKOUT map (defined in <head>) — mailto stays until URLs are pasted
-  document.querySelectorAll("[data-buy]").forEach(a=>{
-    const key=a.getAttribute("data-buy");
-    if(CHECKOUT[key]){ a.href=CHECKOUT[key]; a.target="_blank"; a.rel="noopener"; }
-  });
+  // Buy buttons are wired by /js/commerce.js against the CHECKOUT map above.
 </script>
 <script src="/js/site.js" defer></script>
+<script src="/js/waitlist.js" defer></script>
+<script src="/js/commerce.js" defer></script>
 </body>
 </html>

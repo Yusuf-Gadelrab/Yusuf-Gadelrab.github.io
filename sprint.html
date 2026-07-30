@@ -99,10 +99,13 @@
   .proofline a{color:var(--gold-2);border-bottom:1px solid var(--gold-dim)}
 </style>
 <script>
-  // paste live Lemon Squeezy buy links here and the buttons update (same 30-second job as store.html)
+  // ⚠ 2026-07-30: both values held guessed Lemon Squeezy URLs that 404 —
+  // yusufgadelrab.lemonsqueezy.com does not exist. They were only neutralised by a
+  // string check in the footer script, so the dead URLs still shipped in page source.
+  // Blanked to match store/templates/kxngsef. Only paste a curl-verified 200 URL here.
   const CHECKOUT = {
-    'sprint':     'https://yusufgadelrab.lemonsqueezy.com/buy/profile-sprint',
-    'bundle-249': 'https://yusufgadelrab.lemonsqueezy.com/buy/profile-sprint-bundle'
+    'sprint':     '',
+    'bundle-249': ''
   };
 </script>
 <!-- geo:entity — canonical Person node, one entity across every page -->
@@ -301,13 +304,8 @@
   </div>
 </footer>
 
-<script>
-  // placeholders contain '/buy/profile-sprint'; buttons stay on the mailto flow until real LS URLs are pasted
-  document.querySelectorAll('[data-buy]').forEach(a=>{
-    const u=CHECKOUT[a.getAttribute('data-buy')];
-    if(u && u.indexOf('/buy/profile-sprint')===-1){ a.href=u; a.target='_blank'; a.rel='noopener'; }
-  });
-</script>
 <script src="/js/site.js" defer></script>
+<script src="/js/waitlist.js" defer></script>
+<script src="/js/commerce.js" defer></script>
 </body>
 </html>

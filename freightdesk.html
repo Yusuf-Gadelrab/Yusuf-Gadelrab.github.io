@@ -987,14 +987,11 @@ input,select,textarea{font-size:16px}</style>
         <span class="tl-step">3-day install</span><span class="tl-arrow">→</span>
         <span class="tl-step">Live by Friday</span>
       </div>
-      <form class="pilot-form" id="pilotForm">
-        <input type="text" id="pfName" name="name" aria-label="Your name" placeholder="Your name" required autocomplete="name">
-        <input type="text" id="pfBrokerage" name="brokerage" aria-label="Brokerage name" placeholder="Brokerage name" required autocomplete="organization">
-        <input type="text" id="pfVolume" name="volume" aria-label="AR emails per day (rough)" placeholder="AR emails / day (rough)" inputmode="numeric">
-        <button type="submit" class="btn btn-gold">Book my pilot walkthrough →</button>
+      <form class="pilot-form" id="pilotForm" novalidate>
+        <input type="email" id="pfEmail" name="email" aria-label="Your email address" placeholder="you@brokerage.com" autocomplete="email" required>
+        <button type="submit" class="btn btn-gold">Join the pilot waitlist →</button>
       </form>
-      <p class="click-trigger">15 minutes · watch it draft a real reply · no commitment · three fields, nothing more</p>
-      <p class="form-sent" id="formSent">Opening your mail app… nothing happened? Email <b>yusuf.gadelrab06@gmail.com</b> directly — your details were copied to your clipboard.</p>
+      <p class="click-trigger" id="pfNote">15 minutes · watch it draft a real reply · no commitment · one field, nothing more</p>
       <div class="contact-line">
         <a href="mailto:yusuf.gadelrab06@gmail.com?subject=FreightDesk%20pilot%20slot">yusuf.gadelrab06@gmail.com</a>
         <a href="tel:+16693281148">(669) 328-1148</a>
@@ -1115,18 +1112,9 @@ input,select,textarea{font-size:16px}</style>
   }
   [roiE,roiM,roiR].forEach(function(el){ if(el) el.addEventListener('input',roiCalc) });
 
-  // pilot booking form → prefilled email (with clipboard fallback for missing mail clients)
-  var pf=document.getElementById('pilotForm');
-  if(pf){ pf.addEventListener('submit',function(ev){
-    ev.preventDefault();
-    var n=document.getElementById('pfName').value.trim(),
-        b=document.getElementById('pfBrokerage').value.trim(),
-        v=document.getElementById('pfVolume').value.trim();
-    var body='Name: '+n+'\nBrokerage: '+b+'\nAR emails/day: '+(v||'—')+"\n\nI'd like the 15-minute pilot walkthrough.";
-    try{ if(navigator.clipboard&&navigator.clipboard.writeText) navigator.clipboard.writeText('To: yusuf.gadelrab06@gmail.com\n'+body); }catch(err){}
-    document.getElementById('formSent').style.display='block';
-    location.href='mailto:yusuf.gadelrab06@gmail.com?subject='+encodeURIComponent('FreightDesk pilot walkthrough — '+b)+'&body='+encodeURIComponent(body);
-  }); }
+  addEventListener('DOMContentLoaded', function () {
+    if (window.YGWaitlist) YGWaitlist.attach('pilotForm', 'pfEmail', 'pfNote', 'FreightDesk Pilot');
+  });
 </script>
 <!-- polish2:minimal-gold -->
 <style id="pv2-css">
@@ -1158,6 +1146,7 @@ d.readyState==='loading'?d.addEventListener('DOMContentLoaded',boot):boot();
 })();
 </script>
 
+<script src="/js/waitlist.js" defer></script>
 <script src="/js/site.js" defer></script>
 </body>
 </html>

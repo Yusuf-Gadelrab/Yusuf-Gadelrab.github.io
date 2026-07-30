@@ -790,19 +790,7 @@
   window.addEventListener('load', fitAll);
   fitAll();
 
-  // Wire buy buttons to the CHECKOUT map.
-  document.querySelectorAll('[data-buy]').forEach(function(a){
-    var k = a.getAttribute('data-buy');
-    if(CHECKOUT[k]){ a.href = CHECKOUT[k]; a.target = '_blank'; a.rel = 'noopener'; return; }
-    // No live checkout for this SKU — capture intent by email instead of leaving an
-    // in-page anchor that looks like a buy button but does nothing.
-    if(/^mailto:/.test(a.getAttribute('href') || '')) return;
-    var name = (a.getAttribute('data-name') || k || 'template pack').replace(/^tpl-/, '').replace(/-/g, ' ');
-    a.href = 'mailto:yusuf.gadelrab06@gmail.com'
-      + '?subject=' + encodeURIComponent('Reserve: ' + name)
-      + '&body=' + encodeURIComponent('I want to buy the "' + name + '" pack. Send me the checkout link when it is live.');
-    a.setAttribute('data-pending', '1');
-  });
+  // Buy buttons are wired by /js/commerce.js against the CHECKOUT map above.
 
   // Sticky Vault bar (appears past the flagship, hides while #vault is on screen)
   var vb = document.getElementById('vaultBar'), vsec = document.getElementById('vault'), vVis = false;
@@ -819,5 +807,7 @@
 })();
 </script>
 <script src="/js/site.js" defer></script>
+<script src="/js/waitlist.js" defer></script>
+<script src="/js/commerce.js" defer></script>
 </body>
 </html>
