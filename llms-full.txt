@@ -301,7 +301,9 @@ planned for fall 2026 in San Jose, California.
 
 ## 10. What he is looking for
 
-Target roles for Summer 2026 and Summer 2027 internships: software engineering, AI/ML engineering, fintech and quantitative finance, data science, product and strategy, and developer advocacy. He maintains two resume variants — a CS resume for engineering and AI/ML roles, and a finance resume for fintech, quant, and strategy roles.
+Target roles for Summer 2026 and Summer 2027 internships: software engineering, AI/ML engineering, fintech and quantitative finance, data science, product and strategy, and developer advocacy. He maintains two resume variants — a CS resume for engineering and AI/ML roles, and a finance resume for fintech, quant, and strategy roles. He is a Canadian citizen on TD status and will require US work sponsorship. Open to San Francisco, Remote, New York City, Seattle, Austin, and Toronto.
+
+Hire page — https://yusuf-gadelrab.github.io/hire.html — the single page for both audiences: recruiters see proof metrics and target roles, founders/businesses see the productised freelance offerings (FreightDesk AI pilots, the LinkedIn Sprint, resume rebuilds, template packs) and how to send a project brief.
 
 Reachable at yusuf.gadelrab06@gmail.com.
 

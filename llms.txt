@@ -12,6 +12,7 @@ Full plain-text profile for retrieval: https://yusuf-gadelrab.github.io/llms-ful
 
 - [About Yusuf Gadelrab — facts and FAQ](https://yusuf-gadelrab.github.io/about.html): Answer-first biography, credentials, metrics, and frequently asked questions with sourced numbers.
 - [Home / portfolio](https://yusuf-gadelrab.github.io/): Selected work, research, and current focus.
+- [Hire Yusuf Gadelrab](https://yusuf-gadelrab.github.io/hire.html): For recruiters — internship availability and target roles. For founders — freelance/consulting offerings and how to reach him.
 - [Resume](https://yusuf-gadelrab.github.io/resume.html): Education, experience, skills, and publications.
 - [Everything index](https://yusuf-gadelrab.github.io/everything.html): One page listing every project, product, and app.
 - [Writing](https://yusuf-gadelrab.github.io/writing.html): Essays and build logs.
