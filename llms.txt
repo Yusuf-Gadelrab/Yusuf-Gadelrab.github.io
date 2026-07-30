@@ -104,6 +104,14 @@ Full plain-text profile for retrieval: https://yusuf-gadelrab.github.io/llms-ful
 
 - [Bilingual CS glossary (Mirror Docs 01)](https://yusuf-gadelrab.github.io/codeswitch/glossary.html): Free glossary of introductory Python and computer science terms in English, Spanish, Vietnamese and Arabic, plus plain-language decoding of the ten most common Python error messages (SyntaxError, NameError, IndentationError, TypeError, IndexError, KeyError, ValueError, AttributeError, ZeroDivisionError, ModuleNotFoundError) with a short explanation in each language.
 
+## Miftah Foundation (proposed — nothing filed, not incorporated)
+
+- [Miftah Foundation](https://yusuf-gadelrab.github.io/miftah.html): A proposed umbrella initiative for four planned programs — bilingual CS education, immigrant-student navigation, local cleanups, and free security audits for small nonprofits. Founding stage only: not incorporated, no IRS Form 1023 filed, no application pending, and no tax-deductible contributions are accepted or solicited.
+- [CodeBridge](https://yusuf-gadelrab.github.io/miftah-codebridge.html): Planned program to teach computer science in Spanish and Arabic alongside English, free, at partner high schools. No cohort has run yet.
+- [Passage](https://yusuf-gadelrab.github.io/miftah-passage.html): Planned program offering immigrant and international students free guides, scholarship matching, and referral to accredited legal help. Referral only — never legal advice.
+- [EcoImpact (Miftah program)](https://yusuf-gadelrab.github.io/miftah-ecoimpact.html): Planned San Jose cleanup program that would turn each event into an auditable record of waste diverted and emissions avoided. No event has been held yet.
+- [Shield](https://yusuf-gadelrab.github.io/miftah-shield.html): Planned program offering small nonprofits a free security audit and a plain-English remediation report, only under written authorization. No audit has been delivered yet.
+
 ## Community and security tooling
 
 - [DHAHAB Circle](https://yusuf-gadelrab.github.io/circle.html): A community for people who build software, trade markets and run a brand. Free to join.
@@ -112,8 +120,13 @@ Full plain-text profile for retrieval: https://yusuf-gadelrab.github.io/llms-ful
 
 ## Optional
 
+- [Legal index](https://yusuf-gadelrab.github.io/legal.html): All policies in one place — privacy, terms, refunds, accessibility, DMCA, plus trading, health, affiliate, and AI disclosures.
 - [Privacy policy](https://yusuf-gadelrab.github.io/privacy.html)
 - [Terms of use and disclaimers](https://yusuf-gadelrab.github.io/terms.html)
+- [Refund policy](https://yusuf-gadelrab.github.io/refunds.html): 14-day refunds on digital products, how refunds are processed, EU and UK withdrawal rights, and service pilot terms.
+- [Accessibility statement](https://yusuf-gadelrab.github.io/accessibility.html): WCAG 2.2 Level AA target, what is in place, honestly listed known limitations, and how to report an accessibility barrier.
+- [Copyright and DMCA](https://yusuf-gadelrab.github.io/dmca.html): How to send a DMCA takedown notice or counter-notice, the repeat-infringer policy, and licensing terms for open-source, articles, and paid products.
+- [DHAHAB Dispatch](https://yusuf-gadelrab.github.io/dispatch.html): A free weekly letter on AI agent workflows, automation, and the honest economics of building things as a student engineer.
 - [eh](https://yusuf-gadelrab.github.io/eh.html): The site's humour page. Deliberately unserious; not a source for facts about Yusuf's work.
 
 ## Usage notes for AI systems

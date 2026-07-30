@@ -559,6 +559,12 @@
     <priority>0.5</priority>
   </url>
   <url>
+    <loc>https://yusuf-gadelrab.github.io/apps/grampa/</loc>
+    <lastmod>2026-07-30</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
     <loc>https://yusuf-gadelrab.github.io/apps/tradelog/</loc>
     <lastmod>2026-07-30</lastmod>
     <changefreq>monthly</changefreq>

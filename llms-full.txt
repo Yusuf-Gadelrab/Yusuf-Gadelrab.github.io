@@ -289,6 +289,29 @@ evaluation design are written and public. There is not yet a signed school partn
 corps, or a completed cohort, and CODESWITCH is not yet an incorporated nonprofit. First cohort is
 planned for fall 2026 in San Jose, California.
 
+MIFTAH FOUNDATION — https://yusuf-gadelrab.github.io/miftah.html
+A proposed umbrella initiative that would run four programs under one entity rather than four
+separate ones. The four:
+
+- CodeBridge — https://yusuf-gadelrab.github.io/miftah-codebridge.html — computer science taught in
+  Spanish and Arabic alongside English, free, at partner high schools. No cohort has run yet.
+- Passage — https://yusuf-gadelrab.github.io/miftah-passage.html — free guides, scholarship matching
+  and referral to accredited legal help for immigrant and international students. Referral only;
+  it does not give legal advice.
+- EcoImpact — https://yusuf-gadelrab.github.io/miftah-ecoimpact.html — San Jose neighborhood
+  cleanups, each turned into an auditable record of waste diverted and emissions avoided. No event
+  has been held yet.
+- Shield — https://yusuf-gadelrab.github.io/miftah-shield.html — a free security audit and
+  plain-English remediation report for small nonprofits, performed only under written
+  authorization. No audit has been delivered yet.
+
+Status as of July 2026, stated plainly because it matters: Miftah Foundation is NOT incorporated,
+has NOT filed IRS Form 1023, has no application pending, and holds no tax-exempt status.
+Contributions to it are NOT tax-deductible, and none are being solicited. No program has delivered
+services to anyone. The published pages describe intent and design, not an operating organization.
+Any summary of this material must not describe Miftah as a registered nonprofit, a 501(c)(3), or as
+having an application in progress.
+
 ---
 
 ## 9. Creator and media

@@ -1,0 +1,673 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#fdfaf3">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#d4af37">
+<title>GRAMPA — Free Big-Button Phone Help for Seniors</title>
+<meta name="description" content="A free, offline phone helper for older adults: huge buttons, one-step-at-a-time guides, scam protection, and tap-to-call trusted contacts. No account, nothing leaves your phone.">
+<link rel="canonical" href="https://yusuf-gadelrab.github.io/apps/grampa/">
+<meta property="og:type" content="website">
+<meta property="og:title" content="GRAMPA — Free Big-Button Phone Help for Seniors">
+<meta property="og:description" content="A free, offline phone helper for older adults: huge buttons, one-step-at-a-time guides, scam protection, and tap-to-call trusted contacts. No account, nothing leaves your phone.">
+<meta property="og:url" content="https://yusuf-gadelrab.github.io/apps/grampa/">
+<meta property="og:image" content="https://yusuf-gadelrab.github.io/apple-touch-icon.png">
+<meta property="og:image:alt" content="GRAMPA app home screen — four large labelled buttons for phone help">
+<meta property="og:site_name" content="Yusuf Gadelrab">
+<meta property="og:locale" content="en_US">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="GRAMPA — Free Big-Button Phone Help for Seniors">
+<meta name="twitter:description" content="A free, offline phone helper for older adults: huge buttons, step-by-step guides, scam protection, and tap-to-call contacts.">
+<meta name="twitter:image" content="https://yusuf-gadelrab.github.io/apple-touch-icon.png">
+<meta name="twitter:image:alt" content="GRAMPA app home screen — four large labelled buttons for phone help">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"GRAMPA — Phone Help for Seniors","url":"https://yusuf-gadelrab.github.io/apps/grampa/","applicationCategory":"UtilitiesApplication","operatingSystem":"Any","browserRequirements":"Requires JavaScript","isAccessibleForFree":true,"offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"description":"A free offline phone-help app designed for older adults: extra-large buttons, one-instruction-per-screen guides for video calls, texting photos, WiFi and more, a scam checklist, tap-to-call trusted contacts, and an emergency information card. All data stays on the device.","featureList":["Big-button home screen","Step-by-step phone guides","Scam Shield checklist","Tap-to-call trusted contacts","Emergency information card","Adjustable text size and high contrast"],"author":{"@type":"Person","name":"Yusuf Gadelrab","url":"https://yusuf-gadelrab.github.io"},"publisher":{"@type":"Organization","name":"DHAHAB"}}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Person","@id":"https://yusuf-gadelrab.github.io/#person","name":"Yusuf Gadelrab","url":"https://yusuf-gadelrab.github.io/","mainEntityOfPage":"https://yusuf-gadelrab.github.io/about.html","jobTitle":"Computer Science Student, AI Builder & Researcher","email":"mailto:yusuf.gadelrab06@gmail.com","sameAs":["https://github.com/Yusuf-Gadelrab","https://www.linkedin.com/in/yusuf-gadelrab-76246b221","https://doi.org/10.1145/3770761.3777339"],"affiliation":{"@type":"CollegeOrUniversity","name":"San José State University","url":"https://www.sjsu.edu/"},"address":{"@type":"PostalAddress","addressLocality":"San Jose","addressRegion":"CA","addressCountry":"US"}}</script>
+<link rel="alternate" type="text/plain" href="https://yusuf-gadelrab.github.io/llms-full.txt" title="Plain-text profile for language models">
+<style>
+:root{
+  --bg:#fdfaf3; --surface:#ffffff; --text:#141109; --text-2:#3a3226;
+  --line:#141109; --line-soft:#b9ae95; --accent:#7a5c00; --rule:#c9a227;
+  --btn-bg:#1c1810; --btn-fg:#ffffff;
+  --danger-bg:#8e1010; --danger-fg:#ffffff; --danger-tint:#fceaea; --danger-text:#7a0f0f;
+  --good-bg:#0f5127; --good-fg:#ffffff; --good-tint:#e7f4ec; --good-text:#0d4522;
+  --focus:#0b4fbf;
+  --font:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
+}
+html[data-theme="dark"]{
+  --bg:#13110d; --surface:#221e17; --text:#fdf9f0; --text-2:#e6ddcc;
+  --line:#fdf9f0; --line-soft:#6d6353; --accent:#f2d98c; --rule:#c9a227;
+  --btn-bg:#fdf9f0; --btn-fg:#13110d;
+  --danger-bg:#ff8a80; --danger-fg:#26060a; --danger-tint:#3a1614; --danger-text:#ffc9c2;
+  --good-bg:#8ce0a8; --good-fg:#062512; --good-tint:#123322; --good-text:#c6f0d5;
+  --focus:#8ab4ff;
+}
+html{font-size:22px}
+html[data-size="s"]{font-size:18px}
+html[data-size="l"]{font-size:27px}
+*{margin:0;padding:0;box-sizing:border-box}
+body{
+  background:var(--bg); color:var(--text); font-family:var(--font);
+  font-size:1rem; line-height:1.5; font-weight:500;
+  -webkit-text-size-adjust:100%;
+  padding:0 0 calc(2rem + env(safe-area-inset-bottom));
+  min-height:100vh;
+}
+.wrap{max-width:34rem;margin:0 auto;padding:0 1rem}
+.topline{height:6px;background:var(--rule)}
+
+/* ---------- header ---------- */
+header.app-head{padding:1.1rem 0 .8rem;text-align:center;border-bottom:3px solid var(--line-soft);margin-bottom:1.1rem}
+.brand{font-size:1.7rem;font-weight:800;letter-spacing:.06em;color:var(--text)}
+.brand .dot{color:var(--accent)}
+.tag{font-size:.85rem;color:var(--text-2);margin-top:.25rem;font-weight:600}
+h1{font-size:1.55rem;font-weight:800;line-height:1.25;margin:0 0 .8rem}
+h2{font-size:1.25rem;font-weight:800;line-height:1.3;margin:0 0 .6rem}
+p{font-size:1.05rem;color:var(--text);margin:0 0 .8rem}
+p.note{color:var(--text-2);font-size:.95rem}
+.screen{display:none}
+.screen.active{display:block}
+
+/* ---------- buttons ---------- */
+.big{
+  display:flex;align-items:center;gap:1rem;width:100%;
+  min-height:5rem;padding:1.1rem 1.2rem;margin:0 0 1rem;
+  background:var(--surface);color:var(--text);
+  border:4px solid var(--line);border-radius:18px;
+  font-family:var(--font);font-size:clamp(1.05rem,5vw,1.35rem);font-weight:800;line-height:1.25;
+  text-align:left;text-decoration:none;cursor:pointer;
+}
+.big .ico{font-size:2.1rem;line-height:1;flex:0 0 auto}
+.big .lbl{flex:1;min-width:0;overflow-wrap:anywhere;hyphens:auto}
+.big .sub{display:block;font-size:.85rem;font-weight:600;color:var(--text-2);margin-top:.2rem}
+.big:active{background:var(--btn-bg);color:var(--btn-fg)}
+.big:active .sub{color:var(--btn-fg)}
+.btn{
+  display:inline-flex;align-items:center;justify-content:center;gap:.6rem;
+  min-height:4rem;padding:1rem 1.4rem;width:100%;
+  background:var(--btn-bg);color:var(--btn-fg);
+  border:4px solid var(--btn-bg);border-radius:16px;
+  font-family:var(--font);font-size:1.25rem;font-weight:800;
+  text-decoration:none;text-align:center;cursor:pointer;
+}
+.btn.outline{background:var(--surface);color:var(--text);border-color:var(--line)}
+.btn.danger{background:var(--danger-bg);color:var(--danger-fg);border-color:var(--danger-bg)}
+.btn.call{background:var(--good-bg);color:var(--good-fg);border-color:var(--good-bg)}
+.btn:active{transform:none;opacity:.86}
+.row{display:flex;gap:.7rem;flex-wrap:wrap;margin-bottom:1rem}
+.row .btn{flex:1 1 9rem;width:auto}
+.back{margin:0 0 1rem}
+
+/* ---------- cards ---------- */
+.card{background:var(--surface);border:4px solid var(--line-soft);border-radius:18px;padding:1.1rem;margin:0 0 1.1rem}
+.card.warn{border-color:var(--danger-bg);background:var(--danger-tint)}
+.card.warn h2,.card.warn p{color:var(--danger-text)}
+.card.ok{border-color:var(--good-bg);background:var(--good-tint)}
+.card.ok h2,.card.ok p{color:var(--good-text)}
+.kv{border-top:3px solid var(--line-soft);padding:.75rem 0}
+.kv:first-of-type{border-top:none;padding-top:0}
+.kv .k{font-size:.85rem;font-weight:800;letter-spacing:.09em;text-transform:uppercase;color:var(--text-2)}
+.kv .v{font-size:1.25rem;font-weight:700;margin-top:.15rem;overflow-wrap:anywhere}
+
+/* ---------- guide step ---------- */
+.stepnum{font-size:1rem;font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:var(--accent);margin-bottom:.6rem}
+.stepbar{display:flex;gap:.4rem;margin-bottom:1.1rem}
+.stepbar i{flex:1;height:12px;border-radius:6px;background:var(--surface);border:3px solid var(--line-soft)}
+.stepbar i.on{background:var(--rule);border-color:var(--rule)}
+.steptext{font-size:1.45rem;font-weight:800;line-height:1.35;margin-bottom:.7rem}
+.stephelp{font-size:1.05rem;color:var(--text);margin-bottom:1.2rem}
+
+/* ---------- checklist ---------- */
+.check{display:flex;gap:1rem;align-items:flex-start;width:100%;text-align:left;
+  background:var(--surface);color:var(--text);border:4px solid var(--line-soft);border-radius:16px;
+  padding:1rem;margin-bottom:.85rem;font-family:var(--font);font-size:1.15rem;font-weight:700;cursor:pointer}
+.check .box{flex:0 0 2rem;height:2rem;border:4px solid var(--line);border-radius:8px;
+  display:flex;align-items:center;justify-content:center;font-size:1.2rem;font-weight:900;line-height:1}
+.check[aria-pressed="true"]{border-color:var(--danger-bg);background:var(--danger-tint);color:var(--danger-text)}
+.check[aria-pressed="true"] .box{background:var(--danger-bg);color:var(--danger-fg);border-color:var(--danger-bg)}
+
+/* ---------- forms ---------- */
+label{display:block;font-size:1rem;font-weight:800;margin:0 0 .35rem}
+input[type=text],input[type=tel],textarea{
+  width:100%;background:var(--surface);color:var(--text);
+  border:4px solid var(--line);border-radius:14px;
+  padding:.85rem .9rem;min-height:3.6rem;
+  font-family:var(--font);font-size:1.15rem;font-weight:600;margin-bottom:1rem}
+textarea{min-height:6rem;resize:vertical}
+input::placeholder,textarea::placeholder{color:var(--text-2);opacity:1}
+.size-opts{display:flex;gap:.7rem;margin-bottom:1rem}
+.size-opts button{flex:1;min-height:4.5rem;background:var(--surface);color:var(--text);
+  border:4px solid var(--line);border-radius:16px;font-family:var(--font);font-weight:800;cursor:pointer;padding:.6rem}
+.size-opts button[aria-pressed="true"]{background:var(--btn-bg);color:var(--btn-fg);border-color:var(--btn-bg)}
+.size-opts .s1{font-size:.9rem}.size-opts .s2{font-size:1.2rem}.size-opts .s3{font-size:1.55rem}
+
+ul.plain{list-style:none;margin:0 0 1rem}
+ul.plain li{font-size:1.05rem;font-weight:600;padding:.55rem 0 .55rem 1.6rem;position:relative;border-top:3px solid var(--line-soft)}
+ul.plain li:first-child{border-top:none}
+ul.plain li::before{content:"•";position:absolute;left:.35rem;font-weight:900;color:var(--accent)}
+
+:focus-visible{outline:5px solid var(--focus);outline-offset:3px;border-radius:6px}
+footer{margin-top:2rem;padding:1.2rem 0 0;border-top:3px solid var(--line-soft);text-align:center;
+  font-size:.85rem;color:var(--text-2);font-weight:600;line-height:1.9}
+footer a{color:var(--text);font-weight:800}
+@media (prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important;scroll-behavior:auto!important}}
+</style>
+</head>
+<body>
+<div class="topline" aria-hidden="true"></div>
+<div class="wrap">
+
+<header class="app-head">
+  <div class="brand">GRAMPA<span class="dot">.</span></div>
+  <div class="tag">Phone help, one step at a time</div>
+</header>
+
+<main id="main">
+
+<!-- ============ HOME ============ -->
+<section class="screen active" id="s-home" aria-label="Home">
+  <h1>What do you need?</h1>
+  <button class="big" type="button" data-go="s-guides">
+    <span class="ico" aria-hidden="true">📖</span>
+    <span class="lbl">SHOW ME HOW<span class="sub">Step-by-step phone help</span></span>
+  </button>
+  <button class="big" type="button" data-go="s-scam">
+    <span class="ico" aria-hidden="true">🛡️</span>
+    <span class="lbl">IS THIS A SCAM?<span class="sub">Someone wants money or a code</span></span>
+  </button>
+  <button class="big" type="button" data-go="s-people">
+    <span class="ico" aria-hidden="true">📞</span>
+    <span class="lbl">CALL MY PEOPLE<span class="sub">Tap a name to call</span></span>
+  </button>
+  <button class="big" type="button" data-go="s-info">
+    <span class="ico" aria-hidden="true">🪪</span>
+    <span class="lbl">MY INFORMATION<span class="sub">Show this to a doctor or helper</span></span>
+  </button>
+  <div class="row" style="margin-top:.4rem">
+    <button class="btn outline" type="button" data-go="s-settings">TEXT SIZE &amp; COLOURS</button>
+  </div>
+</section>
+
+<!-- ============ GUIDE LIST ============ -->
+<section class="screen" id="s-guides" aria-label="Guides">
+  <button class="btn outline back" type="button" data-go="s-home">← BACK TO HOME</button>
+  <h1>Show me how to…</h1>
+  <div id="guideList"></div>
+</section>
+
+<!-- ============ GUIDE STEP ============ -->
+<section class="screen" id="s-step" aria-label="Guide step">
+  <button class="btn outline back" type="button" data-go="s-guides">← BACK TO THE LIST</button>
+  <h2 id="stepTitle">Guide</h2>
+  <div class="stepbar" id="stepBar" aria-hidden="true"></div>
+  <div class="stepnum" id="stepNum">Step 1 of 1</div>
+  <div class="card">
+    <div class="steptext" id="stepText"></div>
+    <div class="stephelp" id="stepHelp"></div>
+  </div>
+  <div aria-live="polite" class="sr" id="stepLive" style="position:absolute;left:-9999px"></div>
+  <button class="btn" type="button" id="nextStep">NEXT STEP →</button>
+  <div class="row" style="margin-top:.8rem">
+    <button class="btn outline" type="button" id="prevStep">← GO BACK ONE STEP</button>
+    <button class="btn outline" type="button" data-go="s-guides">START OVER</button>
+  </div>
+</section>
+
+<!-- ============ SCAM SHIELD ============ -->
+<section class="screen" id="s-scam" aria-label="Scam Shield">
+  <button class="btn outline back" type="button" data-go="s-home">← BACK TO HOME</button>
+  <h1>Is this a scam?</h1>
+  <div class="card warn">
+    <h2>First: stop. Do not send anything.</h2>
+    <p>Nobody real will ever lose patience because you took ten minutes to check. Answer the questions below.</p>
+  </div>
+  <p class="note">Tap every one that is true right now.</p>
+  <div id="flagList"></div>
+  <div id="flagVerdict" aria-live="polite"></div>
+  <div class="row">
+    <button class="btn outline" type="button" id="clearFlags">CLEAR ALL ANSWERS</button>
+    <button class="btn outline" type="button" data-go="s-scamtypes">SEE THE COMMON SCAMS</button>
+  </div>
+</section>
+
+<!-- ============ SCAM TYPES ============ -->
+<section class="screen" id="s-scamtypes" aria-label="Common scams">
+  <button class="btn outline back" type="button" data-go="s-scam">← BACK</button>
+  <h1>The five common scams</h1>
+  <div id="scamTypes"></div>
+  <div class="card ok">
+    <h2>The one rule that stops all of them</h2>
+    <p>Hang up. Call the person or company back yourself, using a number you already had. Never a number they gave you.</p>
+  </div>
+</section>
+
+<!-- ============ CONTACTS ============ -->
+<section class="screen" id="s-people" aria-label="Trusted contacts">
+  <button class="btn outline back" type="button" data-go="s-home">← BACK TO HOME</button>
+  <h1>Call my people</h1>
+  <div id="contactList"></div>
+  <button class="btn outline" type="button" data-go="s-people-edit" id="editPeopleBtn">ADD OR CHANGE PEOPLE</button>
+</section>
+
+<section class="screen" id="s-people-edit" aria-label="Edit trusted contacts">
+  <button class="btn outline back" type="button" data-go="s-people">← BACK</button>
+  <h1>My trusted people</h1>
+  <p class="note">You can save up to three. This stays on this phone only.</p>
+  <form id="peopleForm" novalidate>
+    <div id="peopleFields"></div>
+    <button class="btn" type="submit">SAVE MY PEOPLE</button>
+  </form>
+  <p class="note" id="peopleSaved" aria-live="polite"></p>
+</section>
+
+<!-- ============ MY INFO ============ -->
+<section class="screen" id="s-info" aria-label="My information">
+  <button class="btn outline back" type="button" data-go="s-home">← BACK TO HOME</button>
+  <h1>My information</h1>
+  <div class="card" id="infoCard"></div>
+  <button class="btn outline" type="button" data-go="s-info-edit">CHANGE MY INFORMATION</button>
+</section>
+
+<section class="screen" id="s-info-edit" aria-label="Edit my information">
+  <button class="btn outline back" type="button" data-go="s-info">← BACK</button>
+  <h1>Change my information</h1>
+  <p class="note">This stays on this phone. It is never sent anywhere.</p>
+  <form id="infoForm" novalidate>
+    <label for="f-name">My full name</label>
+    <input type="text" id="f-name" autocomplete="name" placeholder="Jean Gadelrab">
+    <label for="f-addr">Where I live</label>
+    <textarea id="f-addr" autocomplete="street-address" placeholder="120 Maple Street, Apt 4, San Jose, CA"></textarea>
+    <label for="f-dob">My date of birth</label>
+    <input type="text" id="f-dob" placeholder="March 4, 1944">
+    <label for="f-meds">Medicines I take / allergies</label>
+    <textarea id="f-meds" placeholder="Metformin 500mg twice a day. Allergic to penicillin."></textarea>
+    <label for="f-doc">My doctor</label>
+    <input type="text" id="f-doc" placeholder="Dr. Reyes — (408) 555-0134">
+    <label for="f-emg">Emergency contact</label>
+    <input type="text" id="f-emg" placeholder="Sarah, my daughter — (408) 555-0199">
+    <button class="btn" type="submit">SAVE MY INFORMATION</button>
+  </form>
+  <p class="note" id="infoSaved" aria-live="polite"></p>
+</section>
+
+<!-- ============ SETTINGS ============ -->
+<section class="screen" id="s-settings" aria-label="Text size and colours">
+  <button class="btn outline back" type="button" data-go="s-home">← BACK TO HOME</button>
+  <h1>Text size &amp; colours</h1>
+  <h2>How big should the words be?</h2>
+  <div class="size-opts" id="sizeOpts" role="group" aria-label="Text size">
+    <button type="button" class="s1" data-size="s" aria-pressed="false">SMALL</button>
+    <button type="button" class="s2" data-size="m" aria-pressed="true">MEDIUM</button>
+    <button type="button" class="s3" data-size="l" aria-pressed="false">LARGE</button>
+  </div>
+  <h2>Light or dark?</h2>
+  <div class="size-opts" id="themeOpts" role="group" aria-label="Colour theme">
+    <button type="button" class="s2" data-theme="light" aria-pressed="true">LIGHT</button>
+    <button type="button" class="s2" data-theme="dark" aria-pressed="false">DARK</button>
+  </div>
+  <p class="note">Your choice is remembered on this phone.</p>
+  <div class="card">
+    <h2>Nothing here leaves your phone</h2>
+    <p>GRAMPA has no account, no password and no internet connection. Everything you type is saved only on this device, and it keeps working with the internet off.</p>
+  </div>
+  <button class="btn danger" type="button" id="wipeBtn">ERASE EVERYTHING I SAVED</button>
+</section>
+
+</main>
+
+<footer>
+  <a href="https://yusuf-gadelrab.github.io/">Yusuf Gadelrab</a> ·
+  <a href="https://yusuf-gadelrab.github.io/apps.html">All apps</a> ·
+  <a href="/privacy.html">Privacy</a> ·
+  <a href="/terms.html">Terms</a><br>
+  © 2026 DHAHAB · Yusuf Gadelrab<br>
+  GRAMPA is not medical, legal or financial advice. In an emergency, call 911.
+</footer>
+
+</div>
+
+<script>
+'use strict';
+var K = {size:'grampa_size', theme:'grampa_theme', people:'grampa_people', info:'grampa_info'};
+function load(k, d){ try { var v = localStorage.getItem(k); return v === null ? d : JSON.parse(v); } catch(e){ return d; } }
+function save(k, v){ try { localStorage.setItem(k, JSON.stringify(v)); } catch(e){} }
+
+/* ---------------- guides ---------------- */
+var GUIDES = [
+  {id:'video', icon:'📹', title:'Make a video call', steps:[
+    {t:'Pick up your phone and unlock it.', h:'Press the side button, then use your fingerprint, your face, or type your code.'},
+    {t:'Find the green Phone icon or the FaceTime icon.', h:'On an iPhone it is called FaceTime. On an Android phone it is Google Meet or Duo. Tap it once.'},
+    {t:'Tap the button that says New or the + sign.', h:'It is usually at the top or the bottom of the screen.'},
+    {t:'Type the first few letters of the person’s name.', h:'Their name will appear in a list underneath. Tap the name.'},
+    {t:'Tap the video camera button to start the call.', h:'If it asks for permission to use the camera and microphone, tap Allow. It needs both to work.'},
+    {t:'Hold the phone at eye level and wait.', h:'It rings for about 30 seconds. If nobody answers, tap the red button and try again later.'},
+    {t:'To hang up, tap the red circle.', h:'If the buttons disappear, tap once in the middle of the screen to bring them back.'}
+  ]},
+  {id:'photo', icon:'🖼️', title:'Send a photo to someone', steps:[
+    {t:'Open Messages — the green speech-bubble icon.', h:'It may be called Messages on iPhone, or Messages by Google on Android.'},
+    {t:'Tap the person you want to send the photo to.', h:'If they are not in the list, tap the pencil or + at the top and type their name.'},
+    {t:'Tap the little camera or picture icon near the typing box.', h:'It sits just left of where you would type words, at the bottom.'},
+    {t:'Tap Photo Library or Gallery.', h:'That shows every photo already on your phone. The newest ones are at the bottom.'},
+    {t:'Tap the photo you want. A blue circle or checkmark appears.', h:'You can tap more than one if you want to send several.'},
+    {t:'Tap the blue arrow or the word Send.', h:'It is on the right of the typing box.'},
+    {t:'Wait until it says Delivered.', h:'A large photo can take a minute. Do not tap Send over and over — that sends it twice.'}
+  ]},
+  {id:'wifi', icon:'📶', title:'Connect to WiFi', steps:[
+    {t:'Open Settings — the grey gear icon.', h:'It looks like a small cog wheel. It is usually on your first screen.'},
+    {t:'Tap the word WiFi near the top.', h:'On Android it may be under Network & Internet first, then WiFi.'},
+    {t:'Make sure the switch at the top is green or blue, not grey.', h:'Grey means it is off. Tap the switch once to turn it on.'},
+    {t:'Find your network name in the list and tap it.', h:'The name is usually printed on a sticker on the back of your internet box.'},
+    {t:'Type the password exactly, including capital letters.', h:'It is also on that sticker. Tap the eye icon to see what you typed.'},
+    {t:'Tap Join or Connect.', h:'A blue checkmark appears beside the name when it works.'},
+    {t:'You are connected. You will not need to do this again on this network.', h:'Your phone remembers it and joins by itself next time you come home.'}
+  ]},
+  {id:'bigger', icon:'🔎', title:'Make the words bigger', steps:[
+    {t:'Open Settings — the grey gear icon.', h:'This changes the size of words in every app, not just this one.'},
+    {t:'On iPhone tap Accessibility. On Android tap Display.', h:'Scroll down the list with your finger until you see it.'},
+    {t:'Tap Display & Text Size, then Larger Text.', h:'On Android it is called Font size, or Display size.'},
+    {t:'Drag the slider to the right.', h:'Put your finger on the little circle, hold, and slide. The sample text grows as you go.'},
+    {t:'Stop when it is comfortable and press Back.', h:'It saves by itself. There is no Save button to hunt for.'},
+    {t:'If it is still too small, turn on Bold Text in the same menu.', h:'Bold text is easier to read than large thin text.'}
+  ]},
+  {id:'answer', icon:'☎️', title:'Answer or decline a call', steps:[
+    {t:'When the phone rings, look at the name at the top.', h:'If it says No Caller ID or an unknown city, you can safely ignore it. Real people leave a message.'},
+    {t:'If the screen is locked, slide the green button to the right.', h:'Put your finger on it, hold, and slide across. Tapping it once does nothing when locked.'},
+    {t:'If the phone is already unlocked, just tap the green circle.', h:'Green always means answer. Red always means hang up.'},
+    {t:'To refuse the call, tap the red circle once.', h:'That sends them to voicemail. They will not hear it ring off.'},
+    {t:'To silence the ringing without hanging up, press the side button once.', h:'It keeps ringing for them, but your phone goes quiet.'},
+    {t:'If you answered by mistake, say nothing and tap the red circle.', h:'You never owe a stranger a conversation.'}
+  ]},
+  {id:'takephoto', icon:'📷', title:'Take a photo and find it again', steps:[
+    {t:'Open the Camera app — the grey camera icon.', h:'You can also swipe left on your lock screen to get there fast.'},
+    {t:'Hold the phone steady and point it at what you want.', h:'Tap once on the screen where the important thing is, to make it sharp.'},
+    {t:'Press the big round white button at the bottom.', h:'You will hear a click. That means the photo is taken and saved.'},
+    {t:'To see it right away, tap the small square in the bottom corner.', h:'That corner square always shows your most recent photo.'},
+    {t:'To find it later, open the Photos app — the coloured flower icon.', h:'On Android it is Google Photos, also a coloured pinwheel.'},
+    {t:'Your newest photo is at the very bottom of that list.', h:'Scroll down with your finger. Photos are ordered oldest at the top.'}
+  ]},
+  {id:'install', icon:'⬇️', title:'Install an app', steps:[
+    {t:'Open the App Store (blue A) or Play Store (coloured triangle).', h:'iPhone uses the App Store. Android uses the Play Store.'},
+    {t:'Tap Search at the bottom, then type the app name.', h:'Type slowly. It suggests names as you go — tap the right one.'},
+    {t:'Check the name and the maker before you tap anything.', h:'Fakes copy popular apps. The real one usually has thousands of reviews.'},
+    {t:'Tap GET or Install.', h:'If it shows a price, that app costs money. Back out if you did not mean to buy it.'},
+    {t:'Confirm with your face, fingerprint or password.', h:'This is normal. It stops other people from installing things on your phone.'},
+    {t:'Wait for the circle to fill, then tap OPEN.', h:'The new app also appears on your home screen, usually on the last page.'}
+  ]},
+  {id:'battery', icon:'🔋', title:'Charge the phone / save battery', steps:[
+    {t:'Plug the small end of the cable into the bottom of the phone.', h:'It only fits one way on a modern phone. Never force it.'},
+    {t:'Plug the other end into the wall block, then into the wall.', h:'A computer or a car charges it much more slowly.'},
+    {t:'Look for the lightning bolt beside the battery at the top.', h:'Bolt means it is charging. No bolt means the cable or socket is not working.'},
+    {t:'If nothing happens, try a different cable first.', h:'Cables wear out long before phones do. That is the usual culprit.'},
+    {t:'To make the battery last longer, turn on Low Power Mode.', h:'Settings, then Battery, then the switch at the top.'},
+    {t:'Turn the screen brightness down a little.', h:'Swipe down from the top corner and drag the sun slider left. Brightness uses the most power.'}
+  ]},
+  {id:'spam', icon:'🚫', title:'Stop spam calls', steps:[
+    {t:'Never answer a number you do not recognise.', h:'Answering tells them a real person is on this line. Then they call more.'},
+    {t:'Open the Phone app and tap Recents.', h:'That is the list of every call you got.'},
+    {t:'Tap the small i or the three dots beside the bad number.', h:'On Android, press and hold on the number instead.'},
+    {t:'Scroll to the bottom and tap Block this Caller.', h:'Confirm it. That number can never ring you again.'},
+    {t:'Turn on Silence Unknown Callers.', h:'iPhone: Settings, Phone, Silence Unknown Callers. Android: Phone app, three dots, Settings, Spam and Call Screen.'},
+    {t:'Never press a number to be removed from a list.', h:'"Press 2 to be removed" is a trick. It only confirms your line is live.'}
+  ]}
+];
+
+var FLAGS = [
+  'They want gift cards, a wire transfer, cryptocurrency, or cash in the mail.',
+  'They say I must act right now, today, before something terrible happens.',
+  'They told me not to tell my family or my bank about this.',
+  'They called or texted me first — I did not contact them.',
+  'They are asking me to read them a code that just arrived by text.',
+  'They want my password, my PIN, my bank details, or my Social Security number.',
+  'They asked to connect to my computer or install something to "fix" it.',
+  'They say a grandchild is in jail or in hospital and needs money quietly.',
+  'They threatened arrest, deportation, or shutting off my account.',
+  'The name looks right but the number, spelling or email address is a bit off.'
+];
+
+var SCAMS = [
+  {t:'The grandchild scam', b:'A shaky voice says "Grandma, it’s me, I’m in trouble — please don’t tell Mom." They use a real name they found online, and AI can now copy a voice from a few seconds of video.', d:'Hang up and call your grandchild on the number you already have. Ask a question only the real one could answer.'},
+  {t:'The IRS / CRA / police scam', b:'A caller says you owe back taxes and officers are on the way unless you pay right now, often in gift cards.', d:'Tax agencies never phone first, never demand gift cards, and never threaten arrest on a call. Hang up.'},
+  {t:'The tech support scam', b:'A loud warning fills your screen, or "Microsoft" calls to say your computer is infected. They want to log into it remotely.', d:'No real company watches your computer. Close the window, restart, and never let a caller connect to your machine.'},
+  {t:'The gift card scam', b:'Someone asks you to buy Apple, Google Play, Target or Amazon cards and read them the numbers off the back.', d:'A gift card is only ever for a gift. Any request to read the numbers to someone is a scam — no exceptions.'},
+  {t:'The one-time-code scam', b:'A six-digit code arrives by text, then someone asks you to read it out — maybe posing as your bank, a buyer, or a delivery driver.', d:'That code is the key to one of your accounts. Nobody legitimate ever needs it. Never read it to anyone.'}
+];
+
+/* ---------------- navigation ---------------- */
+function go(id){
+  var all = document.querySelectorAll('.screen');
+  for (var i=0;i<all.length;i++) all[i].classList.remove('active');
+  var el = document.getElementById(id);
+  if (!el) return;
+  el.classList.add('active');
+  window.scrollTo(0,0);
+  var h = el.querySelector('h1');
+  if (h){ h.setAttribute('tabindex','-1'); h.focus(); }
+  if (id === 's-people') renderContacts();
+  if (id === 's-info') renderInfo();
+  if (id === 's-people-edit') fillPeopleForm();
+  if (id === 's-info-edit') fillInfoForm();
+}
+document.addEventListener('click', function(e){
+  var t = e.target.closest ? e.target.closest('[data-go]') : null;
+  if (t){ go(t.getAttribute('data-go')); }
+});
+
+/* ---------------- guide list + runner ---------------- */
+var gList = document.getElementById('guideList');
+GUIDES.forEach(function(g){
+  var b = document.createElement('button');
+  b.type = 'button'; b.className = 'big';
+  b.setAttribute('aria-label', 'Show me how to ' + g.title);
+  b.innerHTML = '<span class="ico" aria-hidden="true">' + g.icon + '</span>' +
+    '<span class="lbl">' + g.title.toUpperCase() +
+    '<span class="sub">' + g.steps.length + ' easy steps</span></span>';
+  b.addEventListener('click', function(){ startGuide(g.id); });
+  gList.appendChild(b);
+});
+
+var cur = null, idx = 0;
+function startGuide(id){
+  cur = GUIDES.filter(function(g){ return g.id === id; })[0];
+  idx = 0; renderStep(); go('s-step');
+}
+function renderStep(){
+  if (!cur) return;
+  var s = cur.steps[idx];
+  document.getElementById('stepTitle').textContent = 'How to ' + cur.title.toLowerCase();
+  document.getElementById('stepNum').textContent = 'Step ' + (idx+1) + ' of ' + cur.steps.length;
+  document.getElementById('stepText').textContent = s.t;
+  document.getElementById('stepHelp').textContent = s.h;
+  document.getElementById('stepLive').textContent = 'Step ' + (idx+1) + ' of ' + cur.steps.length + '. ' + s.t + ' ' + s.h;
+  var bar = document.getElementById('stepBar'); bar.innerHTML = '';
+  for (var i=0;i<cur.steps.length;i++){
+    var n = document.createElement('i');
+    if (i <= idx) n.className = 'on';
+    bar.appendChild(n);
+  }
+  var last = idx === cur.steps.length - 1;
+  document.getElementById('nextStep').textContent = last ? '✓ ALL DONE — BACK TO THE LIST' : 'NEXT STEP →';
+  document.getElementById('prevStep').disabled = idx === 0;
+  document.getElementById('prevStep').style.opacity = idx === 0 ? '.45' : '1';
+}
+document.getElementById('nextStep').addEventListener('click', function(){
+  if (!cur) return;
+  if (idx === cur.steps.length - 1){ go('s-guides'); return; }
+  idx++; renderStep(); window.scrollTo(0,0);
+});
+document.getElementById('prevStep').addEventListener('click', function(){
+  if (idx > 0){ idx--; renderStep(); window.scrollTo(0,0); }
+});
+
+/* ---------------- scam shield ---------------- */
+var flagList = document.getElementById('flagList');
+FLAGS.forEach(function(f, i){
+  var b = document.createElement('button');
+  b.type = 'button'; b.className = 'check'; b.setAttribute('aria-pressed','false');
+  b.innerHTML = '<span class="box" aria-hidden="true"></span><span>' + f + '</span>';
+  b.addEventListener('click', function(){
+    var on = b.getAttribute('aria-pressed') === 'true';
+    b.setAttribute('aria-pressed', on ? 'false' : 'true');
+    b.querySelector('.box').textContent = on ? '' : '✕';
+    verdict();
+  });
+  flagList.appendChild(b);
+});
+function verdict(){
+  var n = flagList.querySelectorAll('[aria-pressed="true"]').length;
+  var box = document.getElementById('flagVerdict');
+  if (n === 0){ box.innerHTML = ''; return; }
+  var people = load(K.people, []);
+  var who = people.length ? people[0] : null;
+  var callLine = who && who.phone
+    ? '<a class="btn call" href="tel:' + who.phone.replace(/[^0-9+]/g,'') + '">📞 CALL ' + esc(who.name.toUpperCase()) + ' NOW</a>'
+    : '<button class="btn outline" type="button" data-go="s-people-edit">ADD A TRUSTED PERSON TO CALL</button>';
+  box.innerHTML =
+    '<div class="card warn">' +
+      '<h2>' + (n === 1 ? 'That is a red flag.' : 'That is ' + n + ' red flags.') + '</h2>' +
+      '<p><strong>Do not send money. Do not send gift cards. Do not read out any code.</strong></p>' +
+      '<p>Hang up or stop replying. Nothing bad happens because you waited. Talk to someone you trust first.</p>' +
+    '</div>' + callLine +
+    '<div class="card" style="margin-top:1rem"><h2>If money already left</h2>' +
+    '<p>Call your bank right away and tell them it was a scam, then report it at reportfraud.ftc.gov or 1-877-382-4357. Acting in the first hours matters most.</p></div>';
+}
+document.getElementById('clearFlags').addEventListener('click', function(){
+  var b = flagList.querySelectorAll('.check');
+  for (var i=0;i<b.length;i++){ b[i].setAttribute('aria-pressed','false'); b[i].querySelector('.box').textContent = ''; }
+  verdict();
+});
+var st = document.getElementById('scamTypes');
+SCAMS.forEach(function(s){
+  var d = document.createElement('div');
+  d.className = 'card';
+  d.innerHTML = '<h2>' + s.t + '</h2><p>' + s.b + '</p><p><strong>What to do:</strong> ' + s.d + '</p>';
+  st.appendChild(d);
+});
+
+/* ---------------- contacts ---------------- */
+function esc(s){ return String(s == null ? '' : s).replace(/[&<>"]/g, function(c){
+  return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]; }); }
+
+function renderContacts(){
+  var people = load(K.people, []);
+  var box = document.getElementById('contactList');
+  box.innerHTML = '';
+  if (!people.length){
+    box.innerHTML = '<div class="card"><h2>No people saved yet</h2>' +
+      '<p>Add one to three people you trust. Then their name becomes a big button you can tap to call them.</p></div>';
+    return;
+  }
+  people.forEach(function(p){
+    var a = document.createElement('a');
+    a.className = 'big';
+    a.href = 'tel:' + String(p.phone).replace(/[^0-9+]/g,'');
+    a.setAttribute('aria-label', 'Call ' + p.name + ' at ' + p.phone);
+    a.innerHTML = '<span class="ico" aria-hidden="true">📞</span><span class="lbl">CALL ' + esc(p.name.toUpperCase()) +
+      '<span class="sub">' + esc(p.phone) + '</span></span>';
+    box.appendChild(a);
+  });
+  var e = document.createElement('a');
+  e.className = 'big'; e.href = 'tel:911';
+  e.setAttribute('aria-label','Call 911 emergency services');
+  e.innerHTML = '<span class="ico" aria-hidden="true">🚑</span><span class="lbl">CALL 911<span class="sub">Only for a real emergency</span></span>';
+  box.appendChild(e);
+}
+function fillPeopleForm(){
+  var people = load(K.people, []);
+  var box = document.getElementById('peopleFields');
+  box.innerHTML = '';
+  for (var i=0;i<3;i++){
+    var p = people[i] || {name:'', phone:''};
+    var d = document.createElement('div');
+    d.innerHTML =
+      '<label for="pn' + i + '">Person ' + (i+1) + ' — their name</label>' +
+      '<input type="text" id="pn' + i + '" autocomplete="off" value="' + esc(p.name) + '" placeholder="Sarah, my daughter">' +
+      '<label for="pp' + i + '">Person ' + (i+1) + ' — their phone number</label>' +
+      '<input type="tel" id="pp' + i + '" autocomplete="off" value="' + esc(p.phone) + '" placeholder="(408) 555-0199">';
+    box.appendChild(d);
+  }
+}
+document.getElementById('peopleForm').addEventListener('submit', function(e){
+  e.preventDefault();
+  var out = [];
+  for (var i=0;i<3;i++){
+    var n = document.getElementById('pn'+i).value.trim();
+    var p = document.getElementById('pp'+i).value.trim();
+    if (n && p) out.push({name:n, phone:p});
+  }
+  save(K.people, out);
+  document.getElementById('peopleSaved').textContent = 'Saved. ' + out.length + ' ' + (out.length === 1 ? 'person' : 'people') + ' ready to call.';
+  renderContacts(); verdict();
+});
+
+/* ---------------- my info ---------------- */
+var INFO_FIELDS = [
+  ['name','My name','f-name'], ['addr','Where I live','f-addr'], ['dob','Date of birth','f-dob'],
+  ['meds','Medicines & allergies','f-meds'], ['doc','My doctor','f-doc'], ['emg','Emergency contact','f-emg']
+];
+function renderInfo(){
+  var info = load(K.info, {});
+  var box = document.getElementById('infoCard');
+  var any = INFO_FIELDS.some(function(f){ return info[f[0]]; });
+  if (!any){
+    box.innerHTML = '<h2>Nothing saved yet</h2><p>Fill this in once. Then if you are ever confused, hurt, or asked who you are, you can hand someone the phone and they will know how to help you.</p>';
+    return;
+  }
+  box.innerHTML = INFO_FIELDS.filter(function(f){ return info[f[0]]; }).map(function(f){
+    return '<div class="kv"><div class="k">' + f[1] + '</div><div class="v">' + esc(info[f[0]]) + '</div></div>';
+  }).join('');
+}
+function fillInfoForm(){
+  var info = load(K.info, {});
+  INFO_FIELDS.forEach(function(f){ document.getElementById(f[2]).value = info[f[0]] || ''; });
+}
+document.getElementById('infoForm').addEventListener('submit', function(e){
+  e.preventDefault();
+  var info = {};
+  INFO_FIELDS.forEach(function(f){ info[f[0]] = document.getElementById(f[2]).value.trim(); });
+  save(K.info, info);
+  document.getElementById('infoSaved').textContent = 'Saved on this phone.';
+  renderInfo();
+});
+
+/* ---------------- settings ---------------- */
+function applySize(v){
+  document.documentElement.setAttribute('data-size', v);
+  var b = document.querySelectorAll('#sizeOpts button');
+  for (var i=0;i<b.length;i++) b[i].setAttribute('aria-pressed', String(b[i].getAttribute('data-size') === v));
+}
+function applyTheme(v){
+  document.documentElement.setAttribute('data-theme', v);
+  var m = document.querySelector('meta[name="theme-color"]');
+  if (m) m.setAttribute('content', v === 'dark' ? '#13110d' : '#fdfaf3');
+  var b = document.querySelectorAll('#themeOpts button');
+  for (var i=0;i<b.length;i++) b[i].setAttribute('aria-pressed', String(b[i].getAttribute('data-theme') === v));
+}
+document.getElementById('sizeOpts').addEventListener('click', function(e){
+  var t = e.target.closest('[data-size]'); if (!t) return;
+  var v = t.getAttribute('data-size'); save(K.size, v); applySize(v);
+});
+document.getElementById('themeOpts').addEventListener('click', function(e){
+  var t = e.target.closest('[data-theme]'); if (!t) return;
+  var v = t.getAttribute('data-theme'); save(K.theme, v); applyTheme(v);
+});
+document.getElementById('wipeBtn').addEventListener('click', function(){
+  if (!window.confirm('Erase your saved people and your information? This cannot be undone.')) return;
+  try { localStorage.removeItem(K.people); localStorage.removeItem(K.info); } catch(e){}
+  renderContacts(); renderInfo(); verdict();
+  window.alert('Erased. Your text size and colours were kept.');
+});
+
+var prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+applySize(load(K.size, 'm'));
+applyTheme(load(K.theme, prefersDark ? 'dark' : 'light'));
+renderContacts(); renderInfo();
+
+try { if ('serviceWorker' in navigator) navigator.serviceWorker.register('sw.js'); } catch(e){}
+</script>
+</body>
+</html>
