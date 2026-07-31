@@ -116,6 +116,12 @@ CARDS: dict[str, dict] = {
         sub="Athletic and commercial, San Jose. Digitals and measurements.",
         url="yusuf-gadelrab.github.io/modeling",
     ),
+    "acting-card": dict(
+        icon="◒",
+        head=["Actor &", "model"],
+        sub="Bilingual performer, athlete, builder. San Jose / Bay Area.",
+        url="yusuf-gadelrab.github.io/acting",
+    ),
     "stack-card": dict(
         icon="⌘",
         head=["My stack —", "what I actually use"],
