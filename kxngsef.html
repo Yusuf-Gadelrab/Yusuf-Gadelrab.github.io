@@ -58,7 +58,8 @@
       "slogan": "Earned. Never given.",
       "description": "Bilingual Arabic-English streetwear for the scholar-athlete and builder crowd. Print-on-demand, no inventory.",
       "founder": {
-        "@id": "https://yusuf-gadelrab.github.io/#person"
+        "@type": "Person",
+        "name": "Yusuf Gadelrab"
       },
       "url": "https://yusuf-gadelrab.github.io/kxngsef.html",
       "sameAs": [
@@ -398,7 +399,7 @@
 <link rel="apple-touch-icon" sizes="180x180" href="https://yusuf-gadelrab.github.io/apple-touch-icon.png">
 <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#d4af37">
 <!-- geo:entity — canonical Person node, one entity across every page -->
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"Person","@id":"https://yusuf-gadelrab.github.io/#person","name":"Yusuf Gadelrab","url":"https://yusuf-gadelrab.github.io/"}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Person","@id":"https://yusuf-gadelrab.github.io/#person","name":"Yusuf Gadelrab","url":"https://yusuf-gadelrab.github.io/","mainEntityOfPage":"https://yusuf-gadelrab.github.io/about.html","jobTitle":"Computer Science Student, AI Builder & Researcher","email":"mailto:yusuf.gadelrab06@gmail.com","sameAs":["https://github.com/Yusuf-Gadelrab","https://www.linkedin.com/in/yusuf-gadelrab-76246b221","https://www.instagram.com/_kxng_sef/","https://doi.org/10.1145/3770761.3777339"],"affiliation":{"@type":"CollegeOrUniversity","name":"San José State University","url":"https://www.sjsu.edu/"},"address":{"@type":"PostalAddress","addressLocality":"San Jose","addressRegion":"CA","addressCountry":"US"}}</script>
 <link rel="alternate" type="text/plain" href="https://yusuf-gadelrab.github.io/llms-full.txt" title="Plain-text profile for language models">
 </head>
 <body>
@@ -719,7 +720,17 @@
 </footer>
 
 <script>
-  // Buttons are wired by /js/commerce.js against the CHECKOUT map above.
+  // wire waitlist buttons to the CHECKOUT map (defined in <head>) — falls back to their mailto href when empty
+  document.querySelectorAll('[data-buy]').forEach(function(a){
+    var key = a.getAttribute('data-buy');
+    if (CHECKOUT[key]) {
+      a.href = CHECKOUT[key];
+      a.target = '_blank';
+      a.rel = 'noopener';
+      a.textContent = 'Buy →';   // live checkout exists — stop calling it a waitlist
+      document.documentElement.classList.add('store-live');
+    }
+  });
 
   // reveal on scroll
   var io = new IntersectionObserver(function(entries){
@@ -729,7 +740,5 @@
 </script>
 
 <script src="/js/site.js" defer></script>
-<script src="/js/waitlist.js" defer></script>
-<script src="/js/commerce.js" defer></script>
 </body>
 </html>

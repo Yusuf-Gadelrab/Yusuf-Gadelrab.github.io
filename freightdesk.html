@@ -38,7 +38,9 @@
 
 <meta name="keywords" content="freight broker automation, freight broker software, AI for freight brokers, AR automation, billing automation, POD request automation, invoice dispute software, back office automation, logistics email automation, local AI freight software">
 <meta name="robots" content="index,follow">
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"SoftwareApplication","name":"FreightDesk AI","applicationCategory":"BusinessApplication","operatingSystem":"macOS, Windows","url":"https://yusuf-gadelrab.github.io/freightdesk.html","description":"AI back-office clerk for small freight brokerages: reads the billing/AR inbox, classifies every email (POD requests, invoice disputes, rate reconciliation, W9 chasing, past-due follow-up) and drafts the correct reply on a local AI model — zero API fees, data never leaves the building.","author":{"@id":"https://yusuf-gadelrab.github.io/#person"},"offers":{"@type":"Offer","availability":"https://schema.org/LimitedAvailability","price":"999","priceCurrency":"USD","description":"$999 one-time setup + $249/mo, founding-client pilot pricing"},"slogan":"We automate what you want — then we automate what you need."}</script>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"SoftwareApplication","name":"FreightDesk AI","applicationCategory":"BusinessApplication","operatingSystem":"macOS, Windows","url":"https://yusuf-gadelrab.github.io/freightdesk.html","description":"AI back-office clerk for small freight brokerages: reads the billing/AR inbox, classifies every email (POD requests, invoice disputes, rate reconciliation, W9 chasing, past-due follow-up) and drafts the correct reply on a local AI model — zero API fees, data never leaves the building.","author":{"@type":"Person","name":"Yusuf Gadelrab","url":"https://yusuf-gadelrab.github.io/"},"offers":{"@type":"Offer","availability":"https://schema.org/LimitedAvailability","price":"999","priceCurrency":"USD","description":"$999 one-time setup + $249/mo, founding-client pilot pricing"},"slogan":"We automate what you want — then we automate what you need."}
+</script>
 <script type="application/ld+json">
 {"@context":"https://schema.org","@type":"FAQPage","mainEntity":[
 {"@type":"Question","name":"What does FreightDesk AI automate for freight brokers?","acceptedAnswer":{"@type":"Answer","text":"FreightDesk covers the full 18-point workload of a small-freight financial controller: POD requests and verification, invoice disputes, rate reconciliation, advance reconciliation, W9 tracking, 30-day past-due follow-up, release-list generation, AR aging, and automatic reply drafting for every incoming billing/AR email."}},
@@ -383,7 +385,7 @@
 <style>/* iOS Safari zooms the page when a focused field is under 16px */
 input,select,textarea{font-size:16px}</style>
 <!-- geo:entity — canonical Person node, one entity across every page -->
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"Person","@id":"https://yusuf-gadelrab.github.io/#person","name":"Yusuf Gadelrab","url":"https://yusuf-gadelrab.github.io/"}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Person","@id":"https://yusuf-gadelrab.github.io/#person","name":"Yusuf Gadelrab","url":"https://yusuf-gadelrab.github.io/","mainEntityOfPage":"https://yusuf-gadelrab.github.io/about.html","jobTitle":"Computer Science Student, AI Builder & Researcher","email":"mailto:yusuf.gadelrab06@gmail.com","sameAs":["https://github.com/Yusuf-Gadelrab","https://www.linkedin.com/in/yusuf-gadelrab-76246b221","https://www.instagram.com/_kxng_sef/","https://doi.org/10.1145/3770761.3777339"],"affiliation":{"@type":"CollegeOrUniversity","name":"San José State University","url":"https://www.sjsu.edu/"},"address":{"@type":"PostalAddress","addressLocality":"San Jose","addressRegion":"CA","addressCountry":"US"}}</script>
 <link rel="alternate" type="text/plain" href="https://yusuf-gadelrab.github.io/llms-full.txt" title="Plain-text profile for language models">
 </head>
 <body class="pro">
@@ -985,11 +987,14 @@ input,select,textarea{font-size:16px}</style>
         <span class="tl-step">3-day install</span><span class="tl-arrow">→</span>
         <span class="tl-step">Live by Friday</span>
       </div>
-      <form class="pilot-form" id="pilotForm" novalidate>
-        <input type="email" id="pfEmail" name="email" aria-label="Your email address" placeholder="you@brokerage.com" autocomplete="email" required>
-        <button type="submit" class="btn btn-gold">Join the pilot waitlist →</button>
+      <form class="pilot-form" id="pilotForm">
+        <input type="text" id="pfName" name="name" aria-label="Your name" placeholder="Your name" required autocomplete="name">
+        <input type="text" id="pfBrokerage" name="brokerage" aria-label="Brokerage name" placeholder="Brokerage name" required autocomplete="organization">
+        <input type="text" id="pfVolume" name="volume" aria-label="AR emails per day (rough)" placeholder="AR emails / day (rough)" inputmode="numeric">
+        <button type="submit" class="btn btn-gold">Book my pilot walkthrough →</button>
       </form>
-      <p class="click-trigger" id="pfNote">15 minutes · watch it draft a real reply · no commitment · one field, nothing more</p>
+      <p class="click-trigger">15 minutes · watch it draft a real reply · no commitment · three fields, nothing more</p>
+      <p class="form-sent" id="formSent">Opening your mail app… nothing happened? Email <b>yusuf.gadelrab06@gmail.com</b> directly — your details were copied to your clipboard.</p>
       <div class="contact-line">
         <a href="mailto:yusuf.gadelrab06@gmail.com?subject=FreightDesk%20pilot%20slot">yusuf.gadelrab06@gmail.com</a>
         <a href="tel:+16693281148">(669) 328-1148</a>
@@ -1110,9 +1115,18 @@ input,select,textarea{font-size:16px}</style>
   }
   [roiE,roiM,roiR].forEach(function(el){ if(el) el.addEventListener('input',roiCalc) });
 
-  addEventListener('DOMContentLoaded', function () {
-    if (window.YGWaitlist) YGWaitlist.attach('pilotForm', 'pfEmail', 'pfNote', 'FreightDesk Pilot');
-  });
+  // pilot booking form → prefilled email (with clipboard fallback for missing mail clients)
+  var pf=document.getElementById('pilotForm');
+  if(pf){ pf.addEventListener('submit',function(ev){
+    ev.preventDefault();
+    var n=document.getElementById('pfName').value.trim(),
+        b=document.getElementById('pfBrokerage').value.trim(),
+        v=document.getElementById('pfVolume').value.trim();
+    var body='Name: '+n+'\nBrokerage: '+b+'\nAR emails/day: '+(v||'—')+"\n\nI'd like the 15-minute pilot walkthrough.";
+    try{ if(navigator.clipboard&&navigator.clipboard.writeText) navigator.clipboard.writeText('To: yusuf.gadelrab06@gmail.com\n'+body); }catch(err){}
+    document.getElementById('formSent').style.display='block';
+    location.href='mailto:yusuf.gadelrab06@gmail.com?subject='+encodeURIComponent('FreightDesk pilot walkthrough — '+b)+'&body='+encodeURIComponent(body);
+  }); }
 </script>
 <!-- polish2:minimal-gold -->
 <style id="pv2-css">
@@ -1144,7 +1158,6 @@ d.readyState==='loading'?d.addEventListener('DOMContentLoaded',boot):boot();
 })();
 </script>
 
-<script src="/js/waitlist.js" defer></script>
 <script src="/js/site.js" defer></script>
 </body>
 </html>
