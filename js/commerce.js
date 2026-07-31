@@ -156,7 +156,7 @@
     el.href = mailtoHref(name);   // real destination if JS below fails or is blocked
 
     /* Nothing here is for sale yet, so nothing here says "buy". Purchase wording on
-       a page that cannot take a payment is both untrue and, given the pending I-539,
+       a page that cannot take a payment is untrue, and an untrue commercial claim is
        the kind of claim worth not making. */
     if (!/waitlist|notify|notified/i.test(el.textContent)) {
       el.textContent = "Join the waitlist →";
