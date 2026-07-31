@@ -33,16 +33,29 @@
 <meta name="twitter:description" content="Athletic/commercial model, San Jose CA. Digitals, measurements, and booking inside.">
 <meta name="twitter:image" content="https://yusuf-gadelrab.github.io/og/modeling-card.png">
 <link rel="stylesheet" href="/css/site.css">
+<link rel="preload" as="image" href="img/yusuf-headshot.webp" type="image/webp" fetchpriority="high">
 <style>
   /* page-specific only — everything else comes from site.css */
   .portrait{width:148px;height:158px;object-fit:cover;border-radius:20px;margin:var(--s5) auto var(--s2);
     border:1px solid var(--line);box-shadow:0 0 0 5px rgba(212,175,55,.10),0 14px 40px rgba(0,0,0,.55)}
-  .digitals{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(220px,100%),1fr));gap:var(--s4)}
+  .digitals{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(240px,100%),1fr));gap:var(--s4)}
   .digitals figure{margin:0;background:var(--panel);border:1px solid var(--line-soft);
-    border-radius:var(--radius-lg);overflow:hidden}
-  .digitals img{width:100%;aspect-ratio:3/4;object-fit:cover}
-  .digitals figure.wide img{aspect-ratio:3/2}
-  .digitals figcaption{color:var(--muted);font-size:var(--t-micro);text-align:center;padding:var(--s3)}
+    border-radius:var(--radius-lg);overflow:hidden;transition:border-color .25s var(--ease),transform .25s var(--ease)}
+  .digitals figure:hover{border-color:var(--line)}
+  .digitals .shot{position:relative;display:block;aspect-ratio:4/5;overflow:hidden;cursor:zoom-in;
+    background:var(--bg2);border:0;padding:0;width:100%}
+  .digitals .shot img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .5s var(--ease)}
+  .digitals .shot:hover img{transform:scale(1.045)}
+  .digitals .shot::after{content:"";position:absolute;inset:0;
+    background:linear-gradient(180deg,transparent 60%,rgba(0,0,0,.55));opacity:0;transition:opacity .25s var(--ease)}
+  .digitals .shot:hover::after{opacity:1}
+  .digitals .shot__expand{position:absolute;right:var(--s3);bottom:var(--s3);width:32px;height:32px;
+    border-radius:50%;background:rgba(11,11,13,.72);border:1px solid var(--line);color:var(--gold-2);
+    display:flex;align-items:center;justify-content:center;font-size:15px;opacity:0;transform:translateY(4px);
+    transition:opacity .25s var(--ease),transform .25s var(--ease);pointer-events:none}
+  .digitals .shot:hover .shot__expand{opacity:1;transform:none}
+  .digitals figcaption{color:var(--muted);font-size:var(--t-micro);text-align:center;padding:var(--s3);
+    letter-spacing:.03em}
   .specs{max-width:640px}
   .specs td:first-child{color:var(--muted);text-transform:uppercase;letter-spacing:.06em;
     font-size:var(--t-micro);width:44%}
@@ -54,10 +67,30 @@
     border:1px solid var(--line);border-radius:var(--radius-lg);padding:var(--s7);text-align:center}
   .note{color:var(--muted);font-size:var(--t-small);margin-top:var(--s4);max-width:640px}
   .micro{display:block;color:var(--muted);font-size:var(--t-small);margin-top:var(--s3)}
+
+  /* Lightbox — vanilla, no deps. Opens the clicked digital at full size. */
+  .lightbox{position:fixed;inset:0;z-index:200;display:flex;align-items:center;justify-content:center;
+    background:rgba(6,6,7,.94);backdrop-filter:blur(6px);padding:var(--s6)}
+  .lightbox[hidden]{display:none}
+  .lightbox__frame{max-width:min(92vw,860px);max-height:88vh;text-align:center}
+  .lightbox__img{max-width:100%;max-height:80vh;object-fit:contain;border-radius:var(--radius-lg);
+    border:1px solid var(--line);box-shadow:0 30px 80px -20px rgba(0,0,0,.7)}
+  .lightbox__cap{color:var(--muted);font-size:var(--t-small);margin-top:var(--s4)}
+  .lightbox__close,.lightbox__nav{position:absolute;background:rgba(11,11,13,.7);border:1px solid var(--line);
+    color:var(--gold-2);border-radius:50%;width:44px;height:44px;display:flex;align-items:center;
+    justify-content:center;font-size:20px;cursor:pointer;transition:background .2s var(--ease)}
+  .lightbox__close:hover,.lightbox__nav:hover{background:rgba(212,175,55,.16)}
+  .lightbox__close{top:var(--s5);right:var(--s5)}
+  .lightbox__nav--prev{left:var(--s5);top:50%;transform:translateY(-50%)}
+  .lightbox__nav--next{right:var(--s5);top:50%;transform:translateY(-50%)}
+  @media(max-width:640px){
+    .lightbox__nav--prev{left:var(--s3)}.lightbox__nav--next{right:var(--s3)}
+    .lightbox__close{top:var(--s3);right:var(--s3)}
+  }
 </style>
-<script type="application/ld+json">{"@context": "https://schema.org", "@type": "ProfilePage", "mainEntity": {"@context": "https://schema.org", "@type": "Person", "name": "Yusuf Gadelrab", "url": "https://yusuf-gadelrab.github.io", "image": "https://yusuf-gadelrab.github.io/img/yusuf-headshot.jpg", "affiliation": {"@type": "CollegeOrUniversity", "name": "San Jose State University"}, "address": {"@type": "PostalAddress", "addressLocality": "San Jose", "addressRegion": "CA", "addressCountry": "US"}, "sameAs": ["https://www.instagram.com/_kxng_sef", "https://www.linkedin.com/in/yusuf-gadelrab-76246b221", "https://github.com/Yusuf-Gadelrab"], "jobTitle": "Athletic & Commercial Model", "height": "5'10\"", "description": "Athletic and commercial model in San Jose / Bay Area with a documented 260-to-200 lb transformation. Ex-football captain (league MVP)."}}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"ProfilePage","mainEntity":{"@id":"https://yusuf-gadelrab.github.io/#person"},"image":[{"@type":"ImageObject","contentUrl":"https://yusuf-gadelrab.github.io/img/yusuf-headshot.jpg","caption":"Studio-style headshot, suit, gold frame border","width":700,"height":749},{"@type":"ImageObject","contentUrl":"https://yusuf-gadelrab.github.io/img/yusuf-candid.jpg","caption":"Natural-light candid, unretouched","width":825,"height":1100},{"@type":"ImageObject","contentUrl":"https://yusuf-gadelrab.github.io/img/yusuf-gym.jpg","caption":"Training shot documenting the transformation","width":728,"height":487}]}</script>
 <!-- geo:entity — canonical Person node, one entity across every page -->
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"Person","@id":"https://yusuf-gadelrab.github.io/#person","name":"Yusuf Gadelrab","url":"https://yusuf-gadelrab.github.io/","mainEntityOfPage":"https://yusuf-gadelrab.github.io/about.html","jobTitle":"Computer Science Student, AI Builder & Researcher","email":"mailto:yusuf.gadelrab06@gmail.com","sameAs":["https://github.com/Yusuf-Gadelrab","https://www.linkedin.com/in/yusuf-gadelrab-76246b221","https://www.instagram.com/_kxng_sef/","https://doi.org/10.1145/3770761.3777339"],"affiliation":{"@type":"CollegeOrUniversity","name":"San José State University","url":"https://www.sjsu.edu/"},"address":{"@type":"PostalAddress","addressLocality":"San Jose","addressRegion":"CA","addressCountry":"US"}}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Person","@id":"https://yusuf-gadelrab.github.io/#person","name":"Yusuf Gadelrab","url":"https://yusuf-gadelrab.github.io/"}</script>
 <link rel="alternate" type="text/plain" href="https://yusuf-gadelrab.github.io/llms-full.txt" title="Plain-text profile for language models">
 </head>
 <body class="pro">
@@ -65,16 +98,7 @@
 <a class="skip-link" href="#main">Skip to content</a>
 <nav class="site-nav">
   <a class="site-nav__brand" href="/"><img class="site-nav__lion" src="/img/brand/lion-mark.svg" alt="" width="34" height="34"><span>YUSUF GADELRAB</span></a>
-  <div class="site-nav__links">
-    <a href="/">Work</a>
-    <a href="/resume.html">Resume</a>
-    <a href="/guides.html">Guides</a>
-    <a href="/store.html">Store</a>
-    <a href="/apps.html">Apps</a>
-    <a href="/kxngsef.html">KXNG SEF</a>
-    <a href="/hire.html">Hire</a>
-    <a href="/media-kit.html">Media Kit</a>
-  </div>
+  <div class="site-nav__links"><a href="/">Work</a><a href="/resume.html">Resume</a><a href="/guides.html">Guides</a><a href="/store.html">Store</a><a href="/apps.html">Apps</a><a href="/kxngsef.html">KXNG SEF</a><a href="/hire.html">Hire</a><a href="/media-kit.html">Media Kit</a></div>
 </nav>
 
 <main id="main">
@@ -82,7 +106,10 @@
 <section class="section center">
   <img class="page-lion" src="/img/brand/lion-mark.svg" alt="" width="46" height="46">
     <div class="eyebrow">Model Portfolio &amp; Digitals</div>
-  <img class="portrait" src="img/yusuf-headshot.jpg" alt="Yusuf Gadelrab, professional headshot in a suit with a gold frame border" width="700" height="749">
+  <picture>
+    <source srcset="img/yusuf-headshot.webp" type="image/webp">
+    <img class="portrait" src="img/yusuf-headshot.jpg" alt="Yusuf Gadelrab, professional headshot in a suit with a gold frame border" width="700" height="749" fetchpriority="high" decoding="async">
+  </picture>
   <h1 class="hero-type gold-fill">Yusuf Gadelrab</h1>
   <p class="lead" style="margin:var(--s4) auto 0">Athletic &amp; commercial model — San Jose / Bay Area. Student-athlete build with a documented 260→200 lb transformation, comfortable on camera every day.</p>
 
@@ -104,22 +131,50 @@
 
 <section class="section reveal">
   <h2>Digitals</h2>
-  <div class="digitals" style="margin-top:var(--s5)">
+  <div class="digitals" style="margin-top:var(--s5)" id="digitals-grid">
     <figure>
-      <img src="img/yusuf-headshot.jpg" alt="Studio-style headshot, suit, gold frame border" width="700" height="749" loading="lazy" decoding="async">
+      <button type="button" class="shot" data-lightbox-index="0">
+        <picture>
+          <source srcset="img/yusuf-headshot.webp" type="image/webp">
+          <img src="img/yusuf-headshot.jpg" alt="Studio-style headshot, suit, gold frame border" width="700" height="749" loading="lazy" decoding="async">
+        </picture>
+        <span class="shot__expand" aria-hidden="true">⤢</span>
+      </button>
       <figcaption>Headshot</figcaption>
     </figure>
     <figure>
-      <img src="img/yusuf-candid.jpg" alt="Natural-light candid in a plant-filled atrium" width="825" height="1100" loading="lazy" decoding="async">
+      <button type="button" class="shot" data-lightbox-index="1">
+        <picture>
+          <source srcset="img/yusuf-candid.webp" type="image/webp">
+          <img src="img/yusuf-candid.jpg" alt="Natural-light candid in a plant-filled atrium" width="825" height="1100" loading="lazy" decoding="async">
+        </picture>
+        <span class="shot__expand" aria-hidden="true">⤢</span>
+      </button>
       <figcaption>Natural light · unretouched</figcaption>
     </figure>
-    <figure class="wide">
-      <img src="img/yusuf-gym.jpg" alt="Training shot in the gym" width="728" height="487" loading="lazy" decoding="async">
+    <figure>
+      <button type="button" class="shot" data-lightbox-index="2">
+        <picture>
+          <source srcset="img/yusuf-gym.webp" type="image/webp">
+          <img src="img/yusuf-gym.jpg" alt="Training shot in the gym" width="728" height="487" loading="lazy" decoding="async">
+        </picture>
+        <span class="shot__expand" aria-hidden="true">⤢</span>
+      </button>
       <figcaption>Training · the transformation in progress</figcaption>
     </figure>
   </div>
   <p class="note">Fresh digitals available on request — new sets shot within 48 hours for any brief.</p>
 </section>
+
+<div class="lightbox" id="lightbox" hidden role="dialog" aria-modal="true" aria-label="Digital preview">
+  <button type="button" class="lightbox__nav lightbox__nav--prev" id="lightbox-prev" aria-label="Previous image">‹</button>
+  <div class="lightbox__frame">
+    <img class="lightbox__img" id="lightbox-img" src="" alt="">
+    <p class="lightbox__cap" id="lightbox-cap"></p>
+  </div>
+  <button type="button" class="lightbox__nav lightbox__nav--next" id="lightbox-next" aria-label="Next image">›</button>
+  <button type="button" class="lightbox__close" id="lightbox-close" aria-label="Close preview">✕</button>
+</div>
 
 <section class="section reveal">
   <h2>Measurements</h2>
@@ -159,7 +214,7 @@
     <li>Product collaborations and gifted-product tests</li>
     <li>TFP with photographers building portfolios — selective, Bay Area</li>
   </ul>
-  <p class="note">Creator campaigns with deliverables and reach? That's the <a class="gold" href="media-kit.html">media kit</a> — packages, audience stats, and booking in one page.</p>
+  <p class="note">Creator campaigns with deliverables and reach? That's the <a class="gold" href="/media-kit.html">media kit</a> — packages, audience stats, and booking in one page.</p>
 </section>
 
 <section class="section reveal">
@@ -168,7 +223,7 @@
     <p class="muted" style="margin:var(--s2) 0 var(--s5)">One email, a reply within 24 hours, no agency in between.</p>
     <div class="row" style="justify-content:center">
       <a class="btn btn-gold" href="mailto:yusuf.gadelrab06@gmail.com?subject=Modeling%20Inquiry%20-%20%5BBrand%2FProject%5D&amp;body=Project%3A%20%0AUsage%3A%20%0ADates%3A%20%0ALocation%3A%20">Email a brief →</a>
-      <a class="btn btn-ghost" href="media-kit.html">Creator media kit →</a>
+      <a class="btn btn-ghost" href="/media-kit.html">Creator media kit →</a>
     </div>
   </div>
 </section>
@@ -214,6 +269,49 @@
 <script>
   const io = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) { e.target.classList.add('is-in'); io.unobserve(e.target); } }), { threshold: .15 });
   document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+</script>
+
+<script>
+(function(){
+  const shots = Array.from(document.querySelectorAll('#digitals-grid .shot'));
+  if (!shots.length) return;
+  const lb = document.getElementById('lightbox');
+  const lbImg = document.getElementById('lightbox-img');
+  const lbCap = document.getElementById('lightbox-cap');
+  let i = 0, lastFocus = null;
+
+  function slideData(idx){
+    const fig = shots[idx].closest('figure');
+    const img = fig.querySelector('img');
+    return { src: img.currentSrc || img.src, alt: img.alt, cap: fig.querySelector('figcaption')?.textContent || '' };
+  }
+  function render(){
+    const d = slideData(i);
+    lbImg.src = d.src; lbImg.alt = d.alt; lbCap.textContent = d.cap;
+  }
+  function open(idx){
+    i = idx; lastFocus = document.activeElement;
+    render(); lb.hidden = false; document.body.style.overflow = 'hidden';
+    document.getElementById('lightbox-close').focus();
+  }
+  function close(){
+    lb.hidden = true; document.body.style.overflow = '';
+    if (lastFocus) lastFocus.focus();
+  }
+  function step(dir){ i = (i + dir + shots.length) % shots.length; render(); }
+
+  shots.forEach((btn, idx) => btn.addEventListener('click', () => open(idx)));
+  document.getElementById('lightbox-close').addEventListener('click', close);
+  document.getElementById('lightbox-prev').addEventListener('click', () => step(-1));
+  document.getElementById('lightbox-next').addEventListener('click', () => step(1));
+  lb.addEventListener('click', e => { if (e.target === lb) close(); });
+  document.addEventListener('keydown', e => {
+    if (lb.hidden) return;
+    if (e.key === 'Escape') close();
+    if (e.key === 'ArrowLeft') step(-1);
+    if (e.key === 'ArrowRight') step(1);
+  });
+})();
 </script>
 
 <script src="/js/site.js" defer></script>

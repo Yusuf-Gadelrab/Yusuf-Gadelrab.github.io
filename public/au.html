@@ -12,7 +12,7 @@
 <meta property="og:image:height" content="630">
 <meta property="og:image:alt" content="AU — a chronological, no-vanity feed">
 <meta name="twitter:image" content="https://yusuf-gadelrab.github.io/og/au-card.png">
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"AU","url":"https://yusuf-gadelrab.github.io/au.html","applicationCategory":"SocialNetworkingApplication","operatingSystem":"Any (browser)","browserRequirements":"Requires JavaScript","description":"A chronological, no-vanity-metric feed prototype: no like counts, no quote-posts and no verification hierarchy — every post must carry an artifact.","author":{"@type":"Person","name":"Yusuf Gadelrab","url":"https://yusuf-gadelrab.github.io/"},"isAccessibleForFree":true,"offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"AU","url":"https://yusuf-gadelrab.github.io/au.html","applicationCategory":"SocialNetworkingApplication","operatingSystem":"Any (browser)","browserRequirements":"Requires JavaScript","description":"A chronological, no-vanity-metric feed prototype: no like counts, no quote-posts and no verification hierarchy — every post must carry an artifact.","author":{"@id":"https://yusuf-gadelrab.github.io/#person"},"isAccessibleForFree":true,"offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}}</script>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://yusuf-gadelrab.github.io/"},{"@type":"ListItem","position":2,"name":"Apps & projects","item":"https://yusuf-gadelrab.github.io/apps.html"},{"@type":"ListItem","position":3,"name":"AU","item":"https://yusuf-gadelrab.github.io/au.html"}]}</script>
 <link rel="manifest" href="/manifest.webmanifest">
 <meta name="apple-mobile-web-app-capable" content="yes">
@@ -202,14 +202,12 @@
    This page's own CSS overrides the shared floor, so pin it here. */
 input,textarea,select{font-size:16px!important}</style>
 <!-- geo:entity — canonical Person node, one entity across every page -->
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"Person","@id":"https://yusuf-gadelrab.github.io/#person","name":"Yusuf Gadelrab","url":"https://yusuf-gadelrab.github.io/","mainEntityOfPage":"https://yusuf-gadelrab.github.io/about.html","jobTitle":"Computer Science Student, AI Builder & Researcher","email":"mailto:yusuf.gadelrab06@gmail.com","sameAs":["https://github.com/Yusuf-Gadelrab","https://www.linkedin.com/in/yusuf-gadelrab-76246b221","https://www.instagram.com/_kxng_sef/","https://doi.org/10.1145/3770761.3777339"],"affiliation":{"@type":"CollegeOrUniversity","name":"San José State University","url":"https://www.sjsu.edu/"},"address":{"@type":"PostalAddress","addressLocality":"San Jose","addressRegion":"CA","addressCountry":"US"}}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Person","@id":"https://yusuf-gadelrab.github.io/#person","name":"Yusuf Gadelrab","url":"https://yusuf-gadelrab.github.io/"}</script>
 <link rel="alternate" type="text/plain" href="https://yusuf-gadelrab.github.io/llms-full.txt" title="Plain-text profile for language models">
 </head>
 <body>
 <a class="skip-link" href="#main">Skip to content</a>
-<nav class="site-nav"><a class="site-nav__brand" href="/"><img class="site-nav__lion" src="/img/brand/lion-mark.svg" alt="" width="34" height="34"><span>YUSUF GADELRAB</span></a><div class="site-nav__links"><a href="/">Work</a><a href="/resume.html">Resume</a><a href="/guides.html">Guides</a>
-    <a href="/store.html">Store</a><a href="/apps.html">Apps</a>
-    <a href="/hire.html">Hire</a><a href="/kxngsef.html">KXNG SEF</a><a href="/media-kit.html">Media Kit</a><a href="/au.html" aria-current="page">AU</a></div></nav>
+<nav class="site-nav"><a class="site-nav__brand" href="/"><img class="site-nav__lion" src="/img/brand/lion-mark.svg" alt="" width="34" height="34"><span>YUSUF GADELRAB</span></a><div class="site-nav__links"><a href="/">Work</a><a href="/resume.html">Resume</a><a href="/guides.html">Guides</a><a href="/store.html">Store</a><a href="/apps.html">Apps</a><a href="/kxngsef.html">KXNG SEF</a><a href="/hire.html">Hire</a><a href="/media-kit.html">Media Kit</a></div></nav>
 
 <main id="main">
 
@@ -262,7 +260,7 @@ input,textarea,select{font-size:16px!important}</style>
             </div>
             <div class="field">
               <label for="post-metric">Metric (optional)</label>
-              <input id="post-metric" type="text" placeholder="e.g. 101 trades, +0.23R" autocomplete="off">
+              <input id="post-metric" type="text" placeholder="e.g. 4,933 trades, +0.117R" autocomplete="off">
             </div>
           </div>
 
@@ -444,8 +442,8 @@ input,textarea,select{font-size:16px!important}</style>
                   R('lint_witch','Ruth Ó Baoill', 1.6*h, 'Same experience. Semantic naming is where systems go to argue.') ] }),
 
       P({ handle:'yusuf', name:'Yusuf Gadelrab', kind:'ship', ago: 3.2*h,
-        text:'Finished the walk-forward on the swing screener. Only one setup survived out of sample: the anchored VWAP reclaim (AVWAP), +0.23R average over 101 trades. VCP came out roughly breakeven. The gap/ORB daily proxy was negative at -0.28R, so I am cutting it instead of tuning it into looking good.',
-        metric:'+0.23R over 101 trades' }),
+        text:'Re-ran the swing screener result I was proudest of and it did not hold. The anchored VWAP reclaim looked like +0.23R over 101 trades, but shifting the arbitrary window grid on the same 8 names gives a median of +0.004R. On a 129-symbol 10-year universe it is +0.117R over 4,933 trades, 95% CI +0.057 to +0.174. Publishing the smaller number.',
+        metric:'+0.117R over 4,933 trades' }),
 
       P({ handle:'tapedeck', name:'Ilse Kruger', kind:'ship', ago: 4.5*h,
         text:'Reflowed the whole PCB to get the crystal off the switching regulator. Jitter dropped enough that the ADC finally reads clean at 200kHz. Four revisions. I have a drawer of expensive coasters.',

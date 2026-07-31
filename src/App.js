@@ -40,7 +40,7 @@ const siteData = {
       { value: '78%', label: 'Model directional accuracy · 6-mo backtest' },
       { value: '60', label: 'Research study participants' },
       { value: '40%', label: 'Web engagement lift · SVEC' },
-      { value: '101', label: 'Trades in a published walk-forward audit' },
+      { value: '+0.117R', label: 'Edge over 4,933 trades, 129-symbol 10-yr universe (95% CI +0.057-+0.174)' },
     ],
   },
   now: {
@@ -144,7 +144,7 @@ const siteData = {
       tag: 'Research',
       image: '',
       bullets: [
-        'Improved average participant confidence 24% across 60 SJSU students by co-designing and analyzing pre/post surveys for a bilingual programming workshop on the Hedy multilingual platform.',
+        'Measured statistically significant pre-to-post gains in programming confidence across 60 SJSU students by co-designing and analyzing pre/post surveys for a bilingual programming workshop on the Hedy multilingual platform; novice learners gained significantly more than experienced ones.',
         'Expanded CS accessibility for underrepresented learners by facilitating 3+ inclusive-computing workshops and conducting qualitative research on structural barriers.',
       ],
     },
@@ -191,7 +191,7 @@ const siteData = {
       image: '',
       link: 'https://dl.acm.org/doi/10.1145/3770761.3777339',
       abstract:
-        'Investigated how bilingual programming workshops influence student attitudes, perceived understanding, and comfort. Across 60 SJSU participants (40 novice, 20 experienced) using the multilingual Hedy platform, novice learners showed the largest gains in confidence and enjoyment. Contributed to survey design and mixed-methods analysis; average confidence scores improved 24%.',
+        'Investigated how bilingual programming workshops influence student attitudes, perceived understanding, and comfort. Across 60 SJSU participants (40 novice, 20 experienced) using the multilingual Hedy platform, novice learners showed the largest gains in confidence and enjoyment. Contributed to survey design and mixed-methods analysis; pre-to-post gains in confidence, computing identity, enjoyment and motivation were statistically significant.',
       citation:
         'Tshukudu, E., Shah, N., Kieu, T., Deeb, L., Venkateswaran, H., Ghai, A., Gadelrab, Y., & Hada, P. (2026). "Exploring Bilingual Coding for Inclusive Computer Science Learning." SIGCSE TS 2026, ACM. doi.org/10.1145/3770761.3777339',
     },
@@ -790,8 +790,9 @@ function ComplianceNote() {
       </h2>
       <p style={{ fontSize: 13.5, lineHeight: 1.65, color: '#9a958c', margin: '0 0 8px' }}>
         Figures shown on this site are research and engineering results, not live trading performance. The 78% directional
-        accuracy is a six-month backtest of a model, and the 101-trade walk-forward audit is a hypothetical simulation whose
-        headline edge did not survive my own adversarial re-test. Backtested and simulated results do not represent live
+        accuracy is a six-month backtest of a model. An early +0.23R result over 101 trades did not survive my own adversarial
+        re-test; the defensible figure is +0.117R over 4,933 trades (95% CI +0.057-+0.174), and most of that is market drift
+        rather than the signal itself. Backtested and simulated results do not represent live
         trading, and past performance does not guarantee future results. No live profit-and-loss figures are claimed anywhere
         on this site. Nothing here is financial, investment, tax or legal advice.
       </p>

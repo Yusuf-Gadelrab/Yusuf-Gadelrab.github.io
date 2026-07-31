@@ -39,6 +39,7 @@
 <link rel="icon" type="image/svg+xml" href="/favicon.svg">
 
 <link rel="stylesheet" href="/css/site.css">
+<link rel="preload" as="image" href="img/yusuf-headshot.webp" type="image/webp" fetchpriority="high">
 <style>
   /* Page-specific only. Tokens, reset, nav, buttons, cards, stats, footer and
      print rules live in /css/site.css. */
@@ -87,22 +88,41 @@
     border-left:2px solid var(--gold);background:rgba(212,175,55,.05);
     color:var(--ink);font-size:var(--t-small);max-width:var(--maxw-prose)}
 
-  /* Rate cards need equal heights and a bottom-pinned CTA. */
-  .rate-card{display:flex;flex-direction:column;text-align:center;position:relative}
-  .rate-card--featured{border-color:var(--line);
+  /* Collaboration-format cards — equal heights, bottom-pinned CTA. No pricing lives here. */
+  .collab-card{display:flex;flex-direction:column;text-align:center;position:relative}
+  .collab-card--featured{border-color:var(--line);
     background:linear-gradient(180deg,rgba(212,175,55,.08),var(--panel2))}
-  .rate-card__badge{position:absolute;top:-13px;left:50%;transform:translateX(-50%);
+  .collab-card__badge{position:absolute;top:-13px;left:50%;transform:translateX(-50%);
     background:linear-gradient(135deg,var(--gold),var(--gold-2));color:var(--bg);
     font-size:var(--t-micro);font-weight:700;letter-spacing:.5px;
     padding:4px 12px;border-radius:var(--radius);white-space:nowrap}
-  .rate-card .price{font-size:34px;font-weight:800;color:var(--gold-2);
-    margin:var(--s2) 0 var(--s1);letter-spacing:-.03em}
-  .rate-card .price s{color:var(--faint);font-size:17px;font-weight:400;margin-right:var(--s2)}
-  .rate-card ul{list-style:none;margin:var(--s4) 0 var(--s5);text-align:left;flex:1}
-  .rate-card li{padding:4px 0 4px 24px;position:relative;font-size:var(--t-small)}
-  .rate-card li::before{content:"✓";position:absolute;left:0;color:var(--gold-2);font-weight:700}
-  .rate-card .btn{margin-top:auto}
-  .rate-note{color:var(--muted);font-size:var(--t-small);text-align:center;margin-top:var(--s4)}
+  .collab-card h3{margin-top:var(--s2)}
+  .collab-card ul{list-style:none;margin:var(--s4) 0 var(--s5);text-align:left;flex:1}
+  .collab-card li{padding:4px 0 4px 24px;position:relative;font-size:var(--t-small)}
+  .collab-card li::before{content:"✓";position:absolute;left:0;color:var(--gold-2);font-weight:700}
+  .collab-card .btn{margin-top:auto}
+  .collab-note{color:var(--muted);font-size:var(--t-small);text-align:center;margin-top:var(--s4)}
+
+  /* Lightbox — vanilla, no deps. Shared pattern with modeling.html. */
+  .lightbox{position:fixed;inset:0;z-index:200;display:flex;align-items:center;justify-content:center;
+    background:rgba(6,6,7,.94);backdrop-filter:blur(6px);padding:var(--s6)}
+  .lightbox[hidden]{display:none}
+  .lightbox__frame{max-width:min(92vw,860px);max-height:88vh;text-align:center}
+  .lightbox__img{max-width:100%;max-height:80vh;object-fit:contain;border-radius:var(--radius-lg);
+    border:1px solid var(--line);box-shadow:0 30px 80px -20px rgba(0,0,0,.7)}
+  .lightbox__cap{color:var(--muted);font-size:var(--t-small);margin-top:var(--s4)}
+  .lightbox__close,.lightbox__nav{position:absolute;background:rgba(11,11,13,.7);border:1px solid var(--line);
+    color:var(--gold-2);border-radius:50%;width:44px;height:44px;display:flex;align-items:center;
+    justify-content:center;font-size:20px;cursor:pointer;transition:background .2s var(--ease)}
+  .lightbox__close:hover,.lightbox__nav:hover{background:rgba(212,175,55,.16)}
+  .lightbox__close{top:var(--s5);right:var(--s5)}
+  .lightbox__nav--prev{left:var(--s5);top:50%;transform:translateY(-50%)}
+  .lightbox__nav--next{right:var(--s5);top:50%;transform:translateY(-50%)}
+  .zoomable{cursor:zoom-in}
+  @media(max-width:640px){
+    .lightbox__nav--prev{left:var(--s3)}.lightbox__nav--next{right:var(--s3)}
+    .lightbox__close{top:var(--s3);right:var(--s3)}
+  }
 
   .final{text-align:center;
     background:radial-gradient(60% 100% at 50% 0%,rgba(212,175,55,.09),transparent),
@@ -124,9 +144,9 @@
   /* The reveal observer below stamps `.in` (not the system's `.is-in`), so map it. */
   .reveal.in{opacity:1;transform:none}
 </style>
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"Person","name":"Yusuf Gadelrab","url":"https://yusuf-gadelrab.github.io","image":"https://yusuf-gadelrab.github.io/img/yusuf-headshot.jpg","sameAs":["https://www.instagram.com/_kxng_sef","https://www.linkedin.com/in/yusuf-gadelrab-76246b221"],"description":"Fitness transformation × college life × tech builder — documented daily on camera."}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"ProfilePage","mainEntity":{"@id":"https://yusuf-gadelrab.github.io/#person"},"image":[{"@type":"ImageObject","contentUrl":"https://yusuf-gadelrab.github.io/img/yusuf-headshot.jpg","caption":"Studio-style headshot, suit, gold frame border","width":700,"height":749},{"@type":"ImageObject","contentUrl":"https://yusuf-gadelrab.github.io/img/yusuf-candid.jpg","caption":"Natural-light candid, unretouched","width":825,"height":1100}]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Person","@id":"https://yusuf-gadelrab.github.io/#person","name":"Yusuf Gadelrab","url":"https://yusuf-gadelrab.github.io/"}</script>
 <!-- geo:entity — canonical Person node, one entity across every page -->
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"Person","@id":"https://yusuf-gadelrab.github.io/#person","name":"Yusuf Gadelrab","url":"https://yusuf-gadelrab.github.io/","mainEntityOfPage":"https://yusuf-gadelrab.github.io/about.html","jobTitle":"Computer Science Student, AI Builder & Researcher","email":"mailto:yusuf.gadelrab06@gmail.com","sameAs":["https://github.com/Yusuf-Gadelrab","https://www.linkedin.com/in/yusuf-gadelrab-76246b221","https://www.instagram.com/_kxng_sef/","https://doi.org/10.1145/3770761.3777339"],"affiliation":{"@type":"CollegeOrUniversity","name":"San José State University","url":"https://www.sjsu.edu/"},"address":{"@type":"PostalAddress","addressLocality":"San Jose","addressRegion":"CA","addressCountry":"US"}}</script>
 <link rel="alternate" type="text/plain" href="https://yusuf-gadelrab.github.io/llms-full.txt" title="Plain-text profile for language models">
 </head>
 <body class="pro">
@@ -135,16 +155,7 @@
 
 <nav class="site-nav">
   <a class="site-nav__brand" href="/"><img class="site-nav__lion" src="/img/brand/lion-mark.svg" alt="" width="34" height="34"><span>YUSUF GADELRAB</span></a>
-  <div class="site-nav__links">
-    <a href="/">Work</a>
-    <a href="/resume.html">Resume</a>
-    <a href="/guides.html">Guides</a>
-    <a href="/store.html">Store</a>
-    <a href="/apps.html">Apps</a>
-    <a href="/kxngsef.html">KXNG SEF</a>
-    <a href="/hire.html">Hire</a>
-    <a href="/media-kit.html" aria-current="page">Media Kit</a>
-  </div>
+  <div class="site-nav__links"><a href="/">Work</a><a href="/resume.html">Resume</a><a href="/guides.html">Guides</a><a href="/store.html">Store</a><a href="/apps.html">Apps</a><a href="/kxngsef.html">KXNG SEF</a><a href="/hire.html">Hire</a><a href="/media-kit.html" aria-current="page">Media Kit</a></div>
 </nav>
 
 <main id="main">
@@ -152,14 +163,19 @@
   <header class="section hero">
     <img class="page-lion" src="/img/brand/lion-mark.svg" alt="" width="46" height="46">
     <p class="eyebrow">Creator Media Kit</p>
-    <img class="portrait" src="img/yusuf-headshot.jpg" alt="Yusuf Gadelrab, professional headshot in a suit with a gold frame border" width="700" height="749">
+    <button type="button" class="zoomable" style="border:0;background:none;padding:0" data-lb-index="0" aria-label="View headshot full size">
+      <picture>
+        <source srcset="img/yusuf-headshot.webp" type="image/webp">
+        <img class="portrait" src="img/yusuf-headshot.jpg" alt="Yusuf Gadelrab, professional headshot in a suit with a gold frame border" width="700" height="749" fetchpriority="high" decoding="async">
+      </picture>
+    </button>
     <h1>Yusuf Gadelrab</h1>
     <p class="lead" style="margin-top:var(--s3)">Fitness transformation × college life × tech builder — documented daily on camera. Set any challenge; I'll turn it into content.</p>
     <div class="hero-cta">
-      <a class="btn btn-gold" href="#rates">See rates &amp; book ↓</a>
+      <a class="btn btn-gold" href="#collab">Partnership options ↓</a>
       <a class="btn btn-ghost" href="https://www.instagram.com/_kxng_sef" target="_blank" rel="noopener">@_kxng_sef</a>
     </div>
-    <span class="micro">Three packages · booked by email, no call required · replies within 24 hours</span>
+    <span class="micro">Three collaboration formats · reach me by email · replies within 24 hours</span>
 
     <div class="stats-grid">
       <div class="stat">
@@ -239,76 +255,86 @@
       <li>Cross-platform: every piece echoes to LinkedIn and my site</li>
       <li>Authentic fit only — I pitch brands I'd actually use</li>
     </ul>
-    <p class="lock-line">Reach here is compounding month over month, and rates re-price as it grows — a deal signed now locks today's rates for your full campaign.</p>
+    <p class="lock-line">Reach here is compounding month over month — the consistency compounds with it, so the earlier a partnership starts, the more of that curve it catches.</p>
   </section>
 
-  <section class="section section--tight reveal" id="rates">
+  <section class="section section--tight reveal" id="collab">
     <div class="sec-head">
-      <p class="eyebrow">Rates</p>
-      <h2>Three ways in</h2>
+      <p class="eyebrow">Partnership</p>
+      <h2>Three ways to collaborate</h2>
     </div>
     <div class="grid">
-      <article class="card rate-card">
+      <article class="card collab-card">
         <h3>Concept Reel</h3>
-        <div class="price">$150</div>
         <ul>
           <li>1 scripted, filmed &amp; edited reel</li>
           <li>Your product inside a real routine</li>
           <li>Organic usage rights included</li>
         </ul>
-        <a class="btn btn-ghost" href="mailto:yusuf.gadelrab06@gmail.com?subject=Booking%20-%20Concept%20Reel">Book this reel →</a>
-        <span class="micro">Booked by email · no call required</span>
+        <a class="btn btn-ghost" href="mailto:yusuf.gadelrab06@gmail.com?subject=Collab%20Inquiry%20-%20Concept%20Reel">Ask about this →</a>
+        <span class="micro">By email · no call required</span>
       </article>
-      <article class="card rate-card rate-card--featured">
-        <span class="rate-card__badge">★ Best value</span>
-        <h3>3-Reel Series</h3>
-        <div class="price"><s>$450</s>$400</div>
+      <article class="card collab-card collab-card--featured">
+        <span class="collab-card__badge">★ Most requested</span>
+        <h3>3-Reel Story Arc</h3>
         <ul>
           <li>Multi-week story arc across 3 reels</li>
           <li>Before/after receipts included</li>
           <li>Every piece echoed to LinkedIn</li>
         </ul>
-        <a class="btn btn-gold" href="mailto:yusuf.gadelrab06@gmail.com?subject=Booking%20-%203-Reel%20Series">Book the series →</a>
-        <span class="micro">Saves $50 vs three single reels</span>
+        <a class="btn btn-gold" href="mailto:yusuf.gadelrab06@gmail.com?subject=Collab%20Inquiry%20-%203-Reel%20Story%20Arc">Ask about this →</a>
+        <span class="micro">Full arc, one continuous thread</span>
       </article>
-      <article class="card rate-card">
-        <h3>30-Day Ambassador</h3>
-        <div class="price">$1,000</div>
+      <article class="card collab-card">
+        <h3>30-Day Feature</h3>
         <ul>
           <li>8 reels across 30 days</li>
           <li>Daily-routine integration + stories</li>
           <li>Link in bio for the full month</li>
         </ul>
-        <a class="btn btn-ghost" href="mailto:yusuf.gadelrab06@gmail.com?subject=Booking%20-%2030-Day%20Ambassador">Book 30 days →</a>
-        <span class="micro">One ambassador slot at a time</span>
+        <a class="btn btn-ghost" href="mailto:yusuf.gadelrab06@gmail.com?subject=Collab%20Inquiry%20-%2030-Day%20Feature">Ask about this →</a>
+        <span class="micro">One feature slot at a time</span>
       </article>
     </div>
-    <p class="rate-note">Custom challenge? Name it — fitness test, 30-day protocol, product torture test. Pricing scales with scope.</p>
-    <p class="rate-note">I take a maximum of 2 brand collabs per month alongside a full-time CS degree — quality over volume.</p>
+    <p class="collab-note">Custom challenge? Name it — fitness test, 30-day protocol, product torture test. I'll scope it to your brief.</p>
+    <p class="collab-note">I keep bandwidth open for a small number of brand partnerships at a time alongside a full-time CS degree — quality over volume.</p>
   </section>
 
   <section class="section section--tight reveal">
     <div class="final">
       <div class="cta-row">
         <figure class="cta-photo">
-          <img src="img/yusuf-candid.jpg" alt="Yusuf Gadelrab, casual selfie in a plant-filled atrium" width="825" height="1100" loading="lazy" decoding="async">
+          <button type="button" class="zoomable" style="border:0;background:none;padding:0;display:block" data-lb-index="1" aria-label="View candid photo full size">
+            <picture>
+              <source srcset="img/yusuf-candid.webp" type="image/webp">
+              <img src="img/yusuf-candid.jpg" alt="Yusuf Gadelrab, casual selfie in a plant-filled atrium" width="825" height="1100" loading="lazy" decoding="async">
+            </picture>
+          </button>
           <figcaption>Off camera — San Jose</figcaption>
         </figure>
         <div class="cta-copy">
           <p class="eyebrow">Collaborate</p>
           <h2>Let's build something</h2>
           <p>650K+ Instagram views in the last 30 days — your product in the next 30.</p>
-          <a class="btn btn-gold" href="mailto:yusuf.gadelrab06@gmail.com?subject=Collab%20-%20%5BYour%20Brand%5D&amp;body=Brand%3A%20%0AProduct%3A%20%0APackage%20(reel%20%2F%20series%20%2F%20ambassador)%3A%20%0ATimeline%3A%20">Start my collab →</a>
+          <a class="btn btn-gold" href="mailto:yusuf.gadelrab06@gmail.com?subject=Collab%20Inquiry%20-%20%5BYour%20Brand%5D&amp;body=Brand%3A%20%0AProduct%3A%20%0AFormat%20(reel%20%2F%20story%20arc%20%2F%20feature)%3A%20%0ATimeline%3A%20">Start a conversation →</a>
           <span class="micro">Replies within 24 hours · you deal with me directly — no agency</span>
           <div class="cta-links">
             <a href="https://www.instagram.com/_kxng_sef" target="_blank" rel="noopener">Instagram</a>
             <a href="https://www.linkedin.com/in/yusuf-gadelrab-76246b221" target="_blank" rel="noopener">LinkedIn</a>
-            <a href="#rates">Rates ↑</a>
+            <a href="#collab">Partnership ↑</a>
           </div>
         </div>
       </div>
     </div>
   </section>
+
+<div class="lightbox" id="lightbox" hidden role="dialog" aria-modal="true" aria-label="Photo preview">
+  <div class="lightbox__frame">
+    <img class="lightbox__img" id="lightbox-img" src="" alt="">
+    <p class="lightbox__cap" id="lightbox-cap"></p>
+  </div>
+  <button type="button" class="lightbox__close" id="lightbox-close" aria-label="Close preview">✕</button>
+</div>
 
 </main>
 
@@ -332,7 +358,7 @@
     <a href="/apps.html">Apps</a>
     <a href="/kxngsef.html">KXNG SEF</a>
     <a href="/media-kit.html">Media Kit</a>
-    <a href="modeling.html">Model Portfolio</a>
+    <a href="/modeling.html">Model Portfolio</a>
     <a href="https://www.instagram.com/_kxng_sef" target="_blank" rel="noopener">@_kxng_sef</a>
     <a href="https://github.com/Yusuf-Gadelrab" target="_blank" rel="noopener">GitHub</a>
     <a href="https://www.linkedin.com/in/yusuf-gadelrab-76246b221" target="_blank" rel="noopener">LinkedIn</a>
@@ -359,6 +385,38 @@
     requestAnimationFrame(step);
   }), { threshold: .4 });
   counters.forEach(el => co.observe(el));
+</script>
+
+<script>
+(function(){
+  const slides = [
+    { sel: '.portrait', cap: 'Yusuf Gadelrab — headshot' },
+    { sel: '.cta-photo img', cap: 'Off camera — San Jose' }
+  ];
+  const triggers = Array.from(document.querySelectorAll('[data-lb-index]'));
+  if (!triggers.length) return;
+  const lb = document.getElementById('lightbox');
+  const lbImg = document.getElementById('lightbox-img');
+  const lbCap = document.getElementById('lightbox-cap');
+  let lastFocus = null;
+
+  function open(idx){
+    const s = slides[idx]; if (!s) return;
+    const img = document.querySelector(s.sel);
+    lastFocus = document.activeElement;
+    lbImg.src = img.currentSrc || img.src; lbImg.alt = img.alt; lbCap.textContent = s.cap;
+    lb.hidden = false; document.body.style.overflow = 'hidden';
+    document.getElementById('lightbox-close').focus();
+  }
+  function close(){
+    lb.hidden = true; document.body.style.overflow = '';
+    if (lastFocus) lastFocus.focus();
+  }
+  triggers.forEach(btn => btn.addEventListener('click', () => open(+btn.dataset.lbIndex)));
+  document.getElementById('lightbox-close').addEventListener('click', close);
+  lb.addEventListener('click', e => { if (e.target === lb) close(); });
+  document.addEventListener('keydown', e => { if (!lb.hidden && e.key === 'Escape') close(); });
+})();
 </script>
 <script src="/js/site.js" defer></script>
 </body>
