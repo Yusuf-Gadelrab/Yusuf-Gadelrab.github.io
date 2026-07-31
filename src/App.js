@@ -237,6 +237,15 @@ const siteData = {
         'My flagship product — an AI back-office clerk freight brokerages install on their own machine, now taking founding-client pilots ($999 setup + $249/mo). It drafts POD-chasing, dispute, reconciliation, and past-due emails with a local LLM — no per-seat SaaS fees, no metered API bills.',
     },
     {
+      title: 'DHAHAB Studio · Productized Services',
+      stack: 'Launch Sites · Security Audits · Automation Builds',
+      image: '',
+      link: process.env.PUBLIC_URL + '/services.html',
+      linkLabel: 'See the services →',
+      desc:
+        'Three fixed-scope builds for early founders: a conversion-ready launch site live in about a week, a DIRA-powered Shield Audit with a scored report in 48 hours, and an AI automation build shipped with a QC gate and a runbook. One builder end to end, founding cohort open now.',
+    },
+    {
       title: 'HwyHaul LoadLink — AI Freight Back Office',
       stack: 'FastAPI · Local LLM (Ollama) · SQLAlchemy',
       image: '',

@@ -38,6 +38,7 @@ GROUP_OF = {
     "local-llm-ollama": 1, "rag-explained": 1, "ai-automation-small-business": 1,
     "offline-pwa": 1, "client-side-only-tools": 1, "ffmpeg-auto-editing": 1,
     "ai-search-optimization": 1,
+    "student-founder-security-checklist": 1,
     "ats-resume": 2, "swe-internship-international-student": 2,
     "linkedin-profile-recruiters": 2, "cpt-vs-opt": 2,
     "portfolio-that-gets-interviews": 2, "coding-interview-patterns": 2,

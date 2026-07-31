@@ -34,10 +34,10 @@
 <meta name="twitter:description" content="Secrets, dependency CVEs, misconfigs, license risk, git-history leaks and a startup security-readiness score. One free command.">
 <meta name="keywords" content="secret scanning, startup security audit, SBOM generator, SOC 2 readiness, dependency CVE scanner, SARIF, devsecops, open source security tool">
 <meta name="robots" content="index,follow">
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"SoftwareApplication","name":"DIRA","alternateName":"dira-scan","applicationCategory":"DeveloperApplication","operatingSystem":"macOS, Linux, Windows","url":"https://yusuf-gadelrab.github.io/dira.html","description":"Zero-dependency security audit for startup codebases: secret scanning, dependency CVEs via OSV.dev, 34 misconfiguration rules, dependency license classification, git-history leak detection, live TLS and security-header checks, SBOM generation, and an 18-point startup security-readiness score.","author":{"@id":"https://yusuf-gadelrab.github.io/#person"},"license":"https://opensource.org/licenses/MIT","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"slogan":"Find it before your first enterprise customer does."}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"SoftwareApplication","name":"DIRA","alternateName":"dira-scan","applicationCategory":"DeveloperApplication","operatingSystem":"macOS, Linux, Windows","url":"https://yusuf-gadelrab.github.io/dira.html","description":"Zero-dependency security audit for startup codebases: secret scanning, dependency CVEs via OSV.dev, 38 misconfiguration rules, dependency license classification, git-history leak detection, live TLS and security-header checks, SBOM generation, and an 18-point startup security-readiness score.","author":{"@id":"https://yusuf-gadelrab.github.io/#person"},"license":"https://opensource.org/licenses/MIT","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"slogan":"Find it before your first enterprise customer does."}</script>
 <script type="application/ld+json">
 {"@context":"https://schema.org","@type":"FAQPage","mainEntity":[
-{"@type":"Question","name":"What does DIRA scan for?","acceptedAnswer":{"@type":"Answer","text":"Six scanners: leaked credentials (20 provider patterns plus an entropy-gated generic rule), dependency vulnerabilities resolved against OSV.dev, 34 misconfiguration rules across Docker, Kubernetes, Terraform, GitHub Actions, cloud IAM, frontend code and LLM applications, dependency license risk, secrets buried in git history, and the live domain's TLS and security headers."}},
+{"@type":"Question","name":"What does DIRA scan for?","acceptedAnswer":{"@type":"Answer","text":"Seven scanners: leaked credentials (23 provider patterns plus an entropy-gated generic rule), dependency vulnerabilities resolved against OSV.dev, 38 misconfiguration rules across Docker, Kubernetes, Terraform, GitHub Actions, cloud IAM, frontend code and LLM applications, dependency license risk, secrets buried in git history, the live domain's TLS and security headers, and an 18-point startup security-readiness score."}},
 {"@type":"Question","name":"Does DIRA send my code anywhere?","acceptedAnswer":{"@type":"Answer","text":"No. Scanning happens entirely on your machine. The only network calls are anonymous package-name lookups to OSV.dev and the public npm and PyPI registries, plus requests to a domain you explicitly pass with --target. The --offline flag disables all of them. Detected secrets are redacted before they reach any report or cache."}},
 {"@type":"Question","name":"How much does DIRA cost?","acceptedAnswer":{"@type":"Answer","text":"Nothing. It is MIT-licensed open source under the MIT license, installable from source with pipx install git+https://github.com/Yusuf-Gadelrab/dira, with PyPI and npm packages on the way."}},
 {"@type":"Question","name":"Can DIRA replace a penetration test or a SOC 2 audit?","acceptedAnswer":{"@type":"Answer","text":"No. DIRA is automated pattern analysis. It cannot see your cloud IAM, your MFA enforcement, or your access reviews — those appear in the report as manual attestations. A clean run means no known bad patterns in the repository, not that the product is secure."}}
@@ -99,7 +99,7 @@
       Security audit for startup codebases. One command, zero dependencies, free.
     </p>
     <p style="color:#8a857d;max-width:620px;margin:0 auto 30px">
-      Secrets · dependency CVEs · 34 misconfiguration rules · license risk · git-history leaks ·
+      Secrets · dependency CVEs · 38 misconfiguration rules · license risk · git-history leaks ·
       live TLS &amp; headers · SBOM · security-readiness score
     </p>
     <p>
@@ -165,10 +165,15 @@
       DIRA is one command that answers the question founders actually get asked — <em>is this codebase
       safe enough to sell to an enterprise?</em> — and prints the exact fix beside every finding.
     </p>
+    <p style="color:#a9a49b;max-width:720px">
+      Want to walk the same ground by hand first? The free guide
+      <a class="gold" href="/guides/student-founder-security-checklist.html">18 things to fix before
+      your first real user</a> covers the checklist DIRA automates, with the why behind each item.
+    </p>
 
     <div class="kv" style="margin-top:34px">
-      <div><b>6</b><span>Scanners</span></div>
-      <div><b>54</b><span>Detection rules</span></div>
+      <div><b>7</b><span>Scanners</span></div>
+      <div><b>62</b><span>Detection rules</span></div>
       <div><b>0</b><span>Dependencies</span></div>
       <div><b>0.9s</b><span>Warm re-scan</span></div>
     </div>
@@ -180,16 +185,16 @@
 <section class="section">
   <div class="wrap">
     <div class="eyebrow">What it checks</div>
-    <h2>Six scanners, one pass</h2>
+    <h2>Seven scanners, one pass</h2>
     <div class="scanners" style="margin-top:26px">
       <div class="sc"><span class="k">secrets</span><h3>Leaked credentials</h3>
-        <p>20 provider patterns — AWS, Stripe, OpenAI, Anthropic, GitHub, GCP, Slack, npm, database
+        <p>23 provider patterns — AWS, Stripe, OpenAI, Anthropic, GitHub, GCP, Slack, npm, database
         DSNs, private keys — plus an entropy-gated generic rule. Every value is redacted before it
         reaches a report.</p></div>
       <div class="sc"><span class="k">deps</span><h3>Dependency CVEs</h3>
         <p>Every package in your lockfiles resolved against OSV.dev — npm, PyPI, Go, crates.io,
         RubyGems. Free, batched, no API key, with the exact fixed version to upgrade to.</p></div>
-      <div class="sc"><span class="k">config</span><h3>34 misconfiguration rules</h3>
+      <div class="sc"><span class="k">config</span><h3>38 misconfiguration rules</h3>
         <p>Docker, Kubernetes, Terraform, GitHub Actions, cloud IAM, frontend code
         (<code class="inline">NEXT_PUBLIC_</code> secrets, tokens in localStorage, XSS sinks) and LLM
         apps (browser-side provider keys, prompt concatenation, model output piped to an executor).</p></div>
@@ -205,6 +210,10 @@
         <p>TLS validity and expiry, HSTS/CSP/nosniff/frame-options, cookie flags, HTTP→HTTPS
         redirect, and whether <code class="inline">/.env</code> or <code class="inline">/.git/config</code>
         is being served to the internet.</p></div>
+      <div class="sc"><span class="k">readiness</span><h3>Security-readiness score</h3>
+        <p>Eighteen weighted checks modelled on SOC&nbsp;2 and enterprise security questionnaires —
+        CI, tests, secret scanning, SAST, CODEOWNERS, IaC, backups, incident response — rolled up
+        into a percentage and a tier.</p></div>
     </div>
   </div>
 </section>
@@ -238,7 +247,7 @@
     <h2>Three minutes to your first report</h2>
     <div class="steps" style="margin-top:26px">
       <div class="step"><h3>Scan</h3>
-        <p><code class="inline">pipx install git+https://github.com/Yusuf-Gadelrab/dira@v1.1.0</code>,
+        <p><code class="inline">pipx install git+https://github.com/Yusuf-Gadelrab/dira@v1.2.0</code>,
         then <code class="inline">dira scan .</code> — PyPI and npm packages are on the way.</p></div>
       <div class="step"><h3>Share</h3>
         <p><code class="inline">-f html -o report.html</code> produces a client-shareable audit.
