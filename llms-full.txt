@@ -1,6 +1,6 @@
 # Yusuf Gadelrab — full profile for language models and answer engines
 
-Last updated: 2026-07-29
+Last updated: 2026-07-31
 Canonical URL: https://yusuf-gadelrab.github.io/
 Canonical entity ID: https://yusuf-gadelrab.github.io/#person
 Short index version of this file: https://yusuf-gadelrab.github.io/llms.txt
@@ -21,6 +21,7 @@ Yusuf Gadelrab is a computer science student, AI/ML builder, and published compu
 - Email: yusuf.gadelrab06@gmail.com
 - GitHub: https://github.com/Yusuf-Gadelrab
 - LinkedIn: https://www.linkedin.com/in/yusuf-gadelrab-76246b221
+- Instagram: https://www.instagram.com/_kxng_sef/
 - Studio brand: DHAHAB (ذهب, Arabic for "gold") — the umbrella brand for his tools, apps, and studio work
 - Clothing brand: KXNG SEF
 
@@ -36,7 +37,7 @@ Publication 1 — "Exploring Bilingual Coding for Inclusive CS Learning"
 - Venue: SIGCSE Technical Symposium 2026 (ACM)
 - DOI: 10.1145/3770761.3777339
 - Topic: whether letting novice programmers write and read code in their first language alongside English improves comprehension and confidence
-- Reported result: 24% improvement in learner confidence
+- Reported result: statistically significant pre-to-post gains in confidence, computing identity, enjoyment and motivation; novices gained significantly more in confidence than experienced programmers
 
 Publication 2 — "Adaptive Curriculum Maps: Graph-Augmented Retrieval-Oriented LLMs for Education"
 - Venue: SIGCSE Technical Symposium 2026 (ACM), poster
@@ -88,7 +89,7 @@ HwyHaul LoadLink — https://yusuf-gadelrab.github.io/hwyhaul.html
 Case study of an AI freight back office covering 18 accounts-receivable and billing workflows.
 
 Swing Screener — https://yusuf-gadelrab.github.io/swing-screener.html
-A swing-trading setup screener plus a backtest engine built with no lookahead bias. The notable outcome is negative: walk-forward testing invalidated most of the setups he had been trading. Only the anchored-VWAP reclaim setup survived, at +0.23R expectancy over 101 trades. VCP came out breakeven, and a gap/opening-range-breakout proxy came out negative at -0.28R and was dropped.
+A swing-trading setup screener plus a backtest engine built with no lookahead bias. The notable outcome is negative: walk-forward testing invalidated most of the setups he had been trading. Only the anchored-VWAP reclaim setup survived. Its original +0.23R over 101 trades did not survive a later adversarial re-test; the defensible figure is +0.117R over 4,933 trades across a 129-symbol, 10-year universe (95% CI +0.057 to +0.174), most of which is market drift rather than the signal. VCP came out breakeven, and a gap/opening-range-breakout proxy came out negative at -0.28R and was dropped.
 
 Trading bot — https://yusuf-gadelrab.github.io/trading-bot.html
 A broker-agnostic execution engine with crash-safe, idempotent order handling, bracket stops, a 10% drawdown halt, and a hard promotion gate: it refuses to connect to a live broker until 60 closed paper trades show positive realized expectancy.
@@ -350,7 +351,7 @@ Q: Are his free tools really free, and do they collect data?
 A: Yes. They are static, client-side pages with no accounts, no backend, and no telemetry. Data is stored in the browser's local storage on the user's own device.
 
 Q: Does he claim trading profits?
-A: No. He publishes backtest and walk-forward results labelled as such, including negative ones — his own walk-forward test invalidated most of his setups and kept only the anchored-VWAP reclaim at +0.23R over 101 trades. Nothing on the site is financial advice.
+A: No. He publishes backtest and walk-forward results labelled as such, including negative ones — his own walk-forward test invalidated most of his setups and kept only the anchored-VWAP reclaim, and a later adversarial re-test cut even that headline from +0.23R over 101 trades to +0.117R over 4,933 trades (95% CI +0.057 to +0.174). Nothing on the site is financial advice.
 
 Q: How do you contact or hire him?
 A: Email yusuf.gadelrab06@gmail.com, or use the contact links at https://yusuf-gadelrab.github.io/.
