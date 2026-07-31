@@ -38,11 +38,7 @@
 <meta name="twitter:title" content="Resume Rebuild $49 · 10 Tailored Applications $99">
 <meta name="twitter:description" content="ATS-safe rebuild in 48h, or 10 fully tailored applications in 72h. Tailored, never fabricated.">
 
-<script type="application/ld+json">
-{"@context":"https://schema.org","@type":"Service","name":"Application Engine for Students","serviceType":"Resume writing and job application tailoring","url":"https://yusuf-gadelrab.github.io/resume.html","provider":{"@type":"Person","name":"Yusuf Gadelrab","email":"yusuf.gadelrab06@gmail.com","telephone":"+1-669-328-1148","url":"https://yusuf-gadelrab.github.io/","sameAs":["https://www.linkedin.com/in/yusuf-gadelrab-76246b221","https://github.com/Yusuf-Gadelrab"]},"areaServed":"US","audience":{"@type":"Audience","audienceType":"College students and new grads"},"hasOfferCatalog":{"@type":"OfferCatalog","name":"Packs","itemListElement":[
-{"@type":"Offer","name":"ATS Resume Rebuild","price":"49","priceCurrency":"USD","description":"Full single-column ATS-safe rebuild targeted at one role family, delivered as PDF + HTML in 48 hours with one revision round."},
-{"@type":"Offer","name":"10 Tailored Applications Pack","price":"99","priceCurrency":"USD","description":"Resume rebuild plus 10 applications tailored to 10 real postings — keyword-matched resume and written cover letter per posting, delivered in 72 hours."}]}}
-</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Service","name":"Application Engine for Students","serviceType":"Resume writing and job application tailoring","url":"https://yusuf-gadelrab.github.io/resume.html","provider":{"@id":"https://yusuf-gadelrab.github.io/#person"},"areaServed":"US","audience":{"@type":"Audience","audienceType":"College students and new grads"},"hasOfferCatalog":{"@type":"OfferCatalog","name":"Packs","itemListElement":[{"@type":"Offer","name":"ATS Resume Rebuild","price":"49","priceCurrency":"USD","description":"Full single-column ATS-safe rebuild targeted at one role family, delivered as PDF + HTML in 48 hours with one revision round."},{"@type":"Offer","name":"10 Tailored Applications Pack","price":"99","priceCurrency":"USD","description":"Resume rebuild plus 10 applications tailored to 10 real postings — keyword-matched resume and written cover letter per posting, delivered in 72 hours."}]}}</script>
 <script>
   // Paste live card-checkout URLs here later (Lemon Squeezy) — same pattern as store.html.
   // While a key is empty, its button keeps the mailto fallback, so the page sells via
@@ -118,7 +114,7 @@
     color:var(--gold-2);font-weight:700;font-size:18px;letter-spacing:.5px}
 </style>
 <!-- geo:entity — canonical Person node, one entity across every page -->
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"Person","@id":"https://yusuf-gadelrab.github.io/#person","name":"Yusuf Gadelrab","url":"https://yusuf-gadelrab.github.io/","mainEntityOfPage":"https://yusuf-gadelrab.github.io/about.html","jobTitle":"Computer Science Student, AI Builder & Researcher","email":"mailto:yusuf.gadelrab06@gmail.com","sameAs":["https://github.com/Yusuf-Gadelrab","https://www.linkedin.com/in/yusuf-gadelrab-76246b221","https://www.instagram.com/_kxng_sef/","https://doi.org/10.1145/3770761.3777339"],"affiliation":{"@type":"CollegeOrUniversity","name":"San José State University","url":"https://www.sjsu.edu/"},"address":{"@type":"PostalAddress","addressLocality":"San Jose","addressRegion":"CA","addressCountry":"US"}}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Person","@id":"https://yusuf-gadelrab.github.io/#person","name":"Yusuf Gadelrab","url":"https://yusuf-gadelrab.github.io/"}</script>
 <link rel="alternate" type="text/plain" href="https://yusuf-gadelrab.github.io/llms-full.txt" title="Plain-text profile for language models">
 </head>
 <body class="pro">
@@ -353,12 +349,10 @@
 </footer>
 
 <script>
-  // wire buy buttons to the CHECKOUT map (defined in <head>) — mailto stays until URLs are pasted
-  document.querySelectorAll("[data-buy]").forEach(a=>{
-    const key=a.getAttribute("data-buy");
-    if(CHECKOUT[key]){ a.href=CHECKOUT[key]; a.target="_blank"; a.rel="noopener"; }
-  });
+  // Buy buttons are wired by /js/commerce.js against the CHECKOUT map above.
 </script>
 <script src="/js/site.js" defer></script>
+<script src="/js/waitlist.js" defer></script>
+<script src="/js/commerce.js" defer></script>
 </body>
 </html>

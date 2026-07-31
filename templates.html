@@ -183,7 +183,7 @@
   section[id],.pack[id]{scroll-margin-top:88px}
 </style>
 <!-- geo:entity — canonical Person node, one entity across every page -->
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"Person","@id":"https://yusuf-gadelrab.github.io/#person","name":"Yusuf Gadelrab","url":"https://yusuf-gadelrab.github.io/","mainEntityOfPage":"https://yusuf-gadelrab.github.io/about.html","jobTitle":"Computer Science Student, AI Builder & Researcher","email":"mailto:yusuf.gadelrab06@gmail.com","sameAs":["https://github.com/Yusuf-Gadelrab","https://www.linkedin.com/in/yusuf-gadelrab-76246b221","https://www.instagram.com/_kxng_sef/","https://doi.org/10.1145/3770761.3777339"],"affiliation":{"@type":"CollegeOrUniversity","name":"San José State University","url":"https://www.sjsu.edu/"},"address":{"@type":"PostalAddress","addressLocality":"San Jose","addressRegion":"CA","addressCountry":"US"}}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Person","@id":"https://yusuf-gadelrab.github.io/#person","name":"Yusuf Gadelrab","url":"https://yusuf-gadelrab.github.io/"}</script>
 <link rel="alternate" type="text/plain" href="https://yusuf-gadelrab.github.io/llms-full.txt" title="Plain-text profile for language models">
 </head>
 <body class="pro">
@@ -790,19 +790,7 @@
   window.addEventListener('load', fitAll);
   fitAll();
 
-  // Wire buy buttons to the CHECKOUT map.
-  document.querySelectorAll('[data-buy]').forEach(function(a){
-    var k = a.getAttribute('data-buy');
-    if(CHECKOUT[k]){ a.href = CHECKOUT[k]; a.target = '_blank'; a.rel = 'noopener'; return; }
-    // No live checkout for this SKU — capture intent by email instead of leaving an
-    // in-page anchor that looks like a buy button but does nothing.
-    if(/^mailto:/.test(a.getAttribute('href') || '')) return;
-    var name = (a.getAttribute('data-name') || k || 'template pack').replace(/^tpl-/, '').replace(/-/g, ' ');
-    a.href = 'mailto:yusuf.gadelrab06@gmail.com'
-      + '?subject=' + encodeURIComponent('Reserve: ' + name)
-      + '&body=' + encodeURIComponent('I want to buy the "' + name + '" pack. Send me the checkout link when it is live.');
-    a.setAttribute('data-pending', '1');
-  });
+  // Buy buttons are wired by /js/commerce.js against the CHECKOUT map above.
 
   // Sticky Vault bar (appears past the flagship, hides while #vault is on screen)
   var vb = document.getElementById('vaultBar'), vsec = document.getElementById('vault'), vVis = false;
@@ -819,5 +807,7 @@
 })();
 </script>
 <script src="/js/site.js" defer></script>
+<script src="/js/waitlist.js" defer></script>
+<script src="/js/commerce.js" defer></script>
 </body>
 </html>

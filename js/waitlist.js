@@ -164,6 +164,40 @@
       '<span>' + text + '</span></p>';
   }
 
+  /* ── headless join ──────────────────────────────────────────────────────────
+   * Same transport, banking, dedupe and mailto fallback as the form path, but
+   * callable from any UI. commerce.js uses this so an interest button and a
+   * waitlist form land in exactly one list with one backend to swap.
+   * Resolves {status:"sent"|"mailto"|"already"}; rejects only on a real failure.
+   */
+  function join(listName, rawEmail) {
+    var email = clean(rawEmail).toLowerCase();
+    if (!valid(email)) return Promise.reject(new Error("invalid-email"));
+
+    if (joined().indexOf(listName) !== -1) {
+      return Promise.resolve({ status: "already", email: email });
+    }
+
+    record(listName, email, live ? "attempt" : "mailto");
+
+    if (!live) {
+      mailtoFallback(listName, email);
+      markJoined(listName, email);
+      return Promise.resolve({ status: "mailto", email: email });
+    }
+
+    enqueue(listName, email);
+    return post(listName, email).then(function () {
+      dequeue(listName, email);
+      record(listName, email, "sent");
+      markJoined(listName, email);
+      return { status: "sent", email: email };
+    }).catch(function (err) {
+      record(listName, email, "failed");   // stays queued, retried on next visit
+      throw err;
+    });
+  }
+
   /* ── wiring ─────────────────────────────────────────────────────────────── */
   function attach(formId, emailId, noteId, listName) {
     var form = document.getElementById(formId);
@@ -263,6 +297,7 @@
 
   window.YGWaitlist = {
     attach: attach,
+    join: join,
     joined: joined,
     log: log,
     queue: queue,
