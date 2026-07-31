@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<!-- tech:seo — managed block (SEO / social / structured data / perf / PWA) -->
+<link rel="preload" href="/css/site.css" as="style">
+<meta name="author" content="Yusuf Gadelrab">
+<meta property="og:site_name" content="Yusuf Gadelrab">
+<meta property="og:url" content="https://yusuf-gadelrab.github.io/dhahab-prompt-vault-privacy.html">
+<meta property="og:locale" content="en_US">
+<meta name="twitter:title" content="DHAHAB Prompt Vault Privacy Policy">
+<meta name="twitter:description" content="Privacy policy for the DHAHAB Prompt Vault Chrome extension. Short version: it collects nothing and makes zero network requests.">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebPage","name":"DHAHAB Prompt Vault Privacy Policy","url":"https://yusuf-gadelrab.github.io/dhahab-prompt-vault-privacy.html","description":"Privacy policy for the DHAHAB Prompt Vault Chrome extension. Short version: it collects nothing and makes zero network requests.","publisher":{"@id":"https://yusuf-gadelrab.github.io/#person"},"inLanguage":"en-US"}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://yusuf-gadelrab.github.io/"},{"@type":"ListItem","position":2,"name":"DHAHAB Prompt Vault Privacy Policy","item":"https://yusuf-gadelrab.github.io/dhahab-prompt-vault-privacy.html"}]}</script>
+<!-- /tech:seo -->
+<title>DHAHAB Prompt Vault Privacy Policy</title>
+<meta name="description" content="Privacy policy for the DHAHAB Prompt Vault Chrome extension. Short version: it collects nothing and makes zero network requests.">
+<link rel="canonical" href="https://yusuf-gadelrab.github.io/dhahab-prompt-vault-privacy.html">
+<link rel="icon" type="image/svg+xml" href="https://yusuf-gadelrab.github.io/favicon.svg">
+<link rel="apple-touch-icon" sizes="180x180" href="https://yusuf-gadelrab.github.io/apple-touch-icon.png">
+<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#d4af37">
+<meta name="theme-color" content="#0B0B0D">
+<meta name="robots" content="index,follow">
+<link rel="stylesheet" href="/css/site.css">
+<style>
+  .legal{max-width:var(--maxw-prose,720px)}
+  .legal h2{margin-top:var(--s7,40px)}
+  .legal p,.legal li{color:var(--muted,#9a9a9a)}
+  .legal strong{color:var(--ink,#f2f2f2)}
+  .legal ul{margin:10px 0 0 20px}
+  .legal code{color:var(--gold-2,#e6c877)}
+  .updated{font-size:.85rem;color:var(--faint,#777)}
+</style>
+<meta property="og:type" content="website">
+<meta property="og:title" content="DHAHAB Prompt Vault Privacy Policy">
+<meta property="og:description" content="Short version: the extension collects nothing and makes zero network requests.">
+<meta name="twitter:card" content="summary">
+<!-- geo:entity — canonical Person node, one entity across every page -->
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Person","@id":"https://yusuf-gadelrab.github.io/#person","name":"Yusuf Gadelrab","url":"https://yusuf-gadelrab.github.io/"}</script>
+</head>
+<body class="pro">
+
+<a class="skip-link" href="#main">Skip to content</a>
+
+<nav class="site-nav">
+  <a class="site-nav__brand" href="/"><img class="site-nav__lion" src="/img/brand/lion-mark.svg" alt="" width="34" height="34"><span>YUSUF GADELRAB</span></a>
+  <div class="site-nav__links"><a href="/">Work</a><a href="/resume.html">Resume</a><a href="/guides.html">Guides</a><a href="/store.html">Store</a><a href="/apps.html">Apps</a><a href="/kxngsef.html">KXNG SEF</a><a href="/hire.html">Hire</a><a href="/media-kit.html">Media Kit</a></div>
+</nav>
+
+<main id="main">
+  <header class="section hero">
+    <img class="page-lion" src="/img/brand/lion-mark.svg" alt="" width="46" height="46">
+    <p class="eyebrow">DHAHAB · ذهب</p>
+    <h1>DHAHAB Prompt Vault Privacy Policy</h1>
+    <p class="updated">Last updated: July 29, 2026 · Applies to the DHAHAB Prompt Vault Chrome extension</p>
+  </header>
+
+  <section class="section section--tight legal">
+    <h2>The short version</h2>
+    <p><strong>DHAHAB Prompt Vault ("the extension") is built to collect nothing.</strong> This policy is short because there is nothing to disclose beyond what is below.</p>
+
+    <h2>What data the extension handles</h2>
+    <p>The extension stores the prompts, folders, tags, and usage counts you create, using Chrome's built-in <code>chrome.storage.local</code> API. This data:</p>
+    <ul>
+      <li>Stays on your device, inside your Chrome profile.</li>
+      <li>Is never transmitted anywhere. The extension makes <strong>zero network requests</strong> of any kind: no analytics, no telemetry, no crash reporting, no remote config, no ads.</li>
+      <li>Is never sold, shared, or accessed by the developer. There is no server to send it to, and no account to create.</li>
+      <li>Is only readable by the extension itself and by you (via Chrome's extension storage inspector or the built-in Export feature).</li>
+    </ul>
+
+    <h2>What the extension can see on web pages</h2>
+    <p>The content script that powers the command palette and "save selection" feature runs only on four sites: claude.ai, chatgpt.com, gemini.google.com, and perplexity.ai. On those sites it can read the text you have selected (only when you explicitly right-click and choose "Save to DHAHAB Vault") and can insert text into the page's chat composer (only when you explicitly choose a prompt from the command palette). It does not read, log, or transmit anything else on those pages: not your conversations, not your account info, not other page content.</p>
+
+    <h2>Permissions and why each is needed</h2>
+    <ul>
+      <li><strong><code>storage</code></strong> · Save your prompts and folders locally on your device.</li>
+      <li><strong><code>contextMenus</code></strong> · Add the right-click "Save to DHAHAB Vault" option.</li>
+      <li><strong><code>commands</code></strong> · Register the keyboard shortcut that opens the command palette.</li>
+      <li><strong>Host access to claude.ai, chatgpt.com, gemini.google.com, perplexity.ai</strong> · Inject the command palette and insert text into those sites' composers. No other sites are accessed.</li>
+    </ul>
+    <p>The extension does <strong>not</strong> request the <code>tabs</code>, <code>scripting</code>, or <code>&lt;all_urls&gt;</code> permissions, and does not read your browsing history.</p>
+
+    <h2>Data deletion</h2>
+    <p>Uninstalling the extension deletes all of its stored data automatically (this is standard Chrome behavior for <code>chrome.storage.local</code>). You can also clear it at any time from the manager page, or clear individual prompts.</p>
+
+    <h2>Children's privacy</h2>
+    <p>The extension is not directed at children and collects no personal information from anyone, of any age.</p>
+
+    <h2>Changes to this policy</h2>
+    <p>If this extension ever adds optional cloud sync or payments, this policy will be updated before that feature ships, and the update will describe exactly what changes and what stays local.</p>
+
+    <h2>Contact</h2>
+    <p>Yusuf Gadelrab · <a href="mailto:yusuf.gadelrab06@gmail.com">yusuf.gadelrab06@gmail.com</a></p>
+  </section>
+</main>
+
+<footer class="site-footer">
+  <div class="site-footer__links">
+    <a href="/">Portfolio</a>
+    <a href="/apps.html">Apps</a>
+    <a href="/privacy.html">Site Privacy</a>
+    <a href="/terms.html">Terms</a>
+    <a href="mailto:yusuf.gadelrab06@gmail.com">Email</a>
+  </div>
+  <p class="muted">© 2026 Yusuf Gadelrab · DHAHAB · San Jose, CA</p>
+</footer>
+
+<script src="/js/site.js" defer></script>
+</body>
+</html>
