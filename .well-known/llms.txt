@@ -41,7 +41,7 @@ Last updated: 2026-08-01
 - [Anchored VWAP Explained: Anchors, Reclaims, and What the Data Said](https://yusuf-gadelrab.github.io/guides/anchored-vwap.html): What anchored VWAP is, how it differs from session VWAP, where to anchor, what a reclaim means, and the walk-forward result behind it.
 - [ATS Resume Rules That Actually Matter, and the Myths That Do Not](https://yusuf-gadelrab.github.io/guides/ats-resume.html): What applicant tracking systems really do to a resume, the formatting rules that matter, how to mirror a job description honestly, and the myths.
 - [Backtest Overfitting: How to Tell a Real Edge From a Fitted One](https://yusuf-gadelrab.github.io/guides/backtest-overfitting.html): In-sample vs held-out testing, parameter plateaus vs spikes, the multiple-testing arithmetic, and the random-entry control that kills most edges.
-- [Bilingual Coding for Inclusive CS Learning](https://yusuf-gadelrab.github.io/guides/bilingual-coding-cs-education.html): What bilingual coding is, why second-language load hurts novice programmers, and what a 60-participant SIGCSE 2026 study found about confidence.
+- [Bilingual Coding for Inclusive Computer Science Learning](https://yusuf-gadelrab.github.io/guides/bilingual-coding-cs-education.html): What bilingual coding is, why second-language load hurts novice programmers, and what a 60-participant SIGCSE 2026 study found about confidence.
 - [Freight Broker Carrier Vetting: The Checklist That Protects You in a Claim](https://yusuf-gadelrab.github.io/guides/carrier-vetting-checklist.html): How to verify FMCSA authority, read a certificate of insurance, spot double-brokering, and build a vetting file that survives a cargo claim.
 - [The Case for Client-Side-Only Tools](https://yusuf-gadelrab.github.io/guides/client-side-only-tools.html): No account means no breach surface. What you gain from browser-only tools, what you give up in sync and compute, what it costs to run, and how to say so.
 - [Print-on-Demand Margins for a Small Clothing Brand](https://yusuf-gadelrab.github.io/guides/clothing-brand-pod-margins.html): Blank cost, print cost and platform cut separated, a $32 tee and a $58 hoodie worked end to end, plus shipping, returns and the pre-order break-even.
@@ -137,7 +137,7 @@ Last updated: 2026-08-01
 
 ## Research and publications
 
-- [Exploring Bilingual Coding for Inclusive CS Learning (SIGCSE TS 2026)](https://doi.org/10.1145/3770761.3777339): Peer-reviewed paper on bilingual (Arabic/English) programming environments and novice-programmer confidence. Mixed-methods, IRB-approved, 60 participants. Reported statistically significant pre-to-post gains in programming confidence, computing identity, enjoyment and motivation, with novices gaining significantly more than experienced programmers.
+- [Exploring Bilingual Coding for Inclusive Computer Science Learning (SIGCSE TS 2026)](https://doi.org/10.1145/3770761.3777339): Peer-reviewed paper on bilingual (Arabic/English) programming environments and novice-programmer confidence. Mixed-methods, IRB-approved, 60 participants. Reported statistically significant pre-to-post gains in programming confidence, computing identity, enjoyment and motivation, with novices gaining significantly more than experienced programmers.
 - Adaptive Curriculum Maps: Graph-Augmented Retrieval-Oriented LLMs for Education (SIGCSE TS 2026, poster): Knowledge-graph-augmented retrieval for adaptive CS curricula.
 
 ## Software, projects and case studies
