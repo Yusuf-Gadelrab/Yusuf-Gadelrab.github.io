@@ -37,7 +37,7 @@
 <meta name="keywords" content="secret scanning, startup security audit, SBOM generator, SOC 2 readiness, dependency CVE scanner, SARIF, devsecops, open source security tool">
 <meta name="robots" content="index,follow">
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"SoftwareApplication","name":"DIRA","alternateName":"dira-scan","applicationCategory":"DeveloperApplication","operatingSystem":"macOS, Linux, Windows","url":"https://yusuf-gadelrab.github.io/dira.html","description":"Zero-dependency security audit for startup codebases: secret scanning, dependency CVEs via OSV.dev, 38 misconfiguration rules, dependency license classification, git-history leak detection, live TLS and security-header checks, SBOM generation, and an 18-point startup security-readiness score.","author":{"@id":"https://yusuf-gadelrab.github.io/#person"},"license":"https://opensource.org/licenses/MIT","offers":{"@type":"Offer","price":"0","priceCurrency":"USD","availability":"https://schema.org/InStock"},"slogan":"Find it before your first enterprise customer does."}</script>
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"What does DIRA scan for?","acceptedAnswer":{"@type":"Answer","text":"Seven scanners: leaked credentials (23 provider patterns plus an entropy-gated generic rule), dependency vulnerabilities resolved against OSV.dev, 38 misconfiguration rules across Docker, Kubernetes, Terraform, GitHub Actions, cloud IAM, frontend code and LLM applications, dependency license risk, secrets buried in git history, the live domain's TLS and security headers, and an 18-point startup security-readiness score."}},{"@type":"Question","name":"Does DIRA send my code anywhere?","acceptedAnswer":{"@type":"Answer","text":"No. Scanning happens entirely on your machine. The only network calls are anonymous package-name lookups to OSV.dev and the public npm and PyPI registries, plus requests to a domain you explicitly pass with --target. The --offline flag disables all of them. Detected secrets are redacted before they reach any report or cache."}},{"@type":"Question","name":"How much does DIRA cost?","acceptedAnswer":{"@type":"Answer","text":"Nothing. It is MIT-licensed open source under the MIT license, installable from source with pipx install git+https://github.com/Yusuf-Gadelrab/dira, with PyPI and npm packages on the way."}},{"@type":"Question","name":"Can DIRA replace a penetration test or a SOC 2 audit?","acceptedAnswer":{"@type":"Answer","text":"No. DIRA is automated pattern analysis. It cannot see your cloud IAM, your MFA enforcement, or your access reviews — those appear in the report as manual attestations. A clean run means no known bad patterns in the repository, not that the product is secure."}},{"@type":"Question","name":"Is DIRA on PyPI or npm yet?","acceptedAnswer":{"@type":"Answer","text":"Not yet. v1.2.0 installs from source on GitHub today with pipx install git+https://github.com/Yusuf-Gadelrab/dira@v1.2.0, then dira scan . PyPI and npm packages are on the way; the email list on this page pings the day either lands."}}]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"What does DIRA scan for?","acceptedAnswer":{"@type":"Answer","text":"Seven scanners: leaked credentials (23 provider patterns plus an entropy-gated generic rule), dependency vulnerabilities resolved against OSV.dev, 38 misconfiguration rules across Docker, Kubernetes, Terraform, GitHub Actions, cloud IAM, frontend code and LLM applications, dependency license risk, secrets buried in git history, the live domain's TLS and security headers, and an 18-point startup security-readiness score."}},{"@type":"Question","name":"Does DIRA send my code anywhere?","acceptedAnswer":{"@type":"Answer","text":"No. Scanning happens entirely on your machine. The only network calls are anonymous package-name lookups to OSV.dev and the public npm and PyPI registries, plus requests to a domain you explicitly pass with --target. The --offline flag disables all of them. Detected secrets are redacted before they reach any report or cache."}},{"@type":"Question","name":"How much does DIRA cost?","acceptedAnswer":{"@type":"Answer","text":"The scanner is free forever — MIT-licensed open source, installable from source with pipx install git+https://github.com/Yusuf-Gadelrab/dira, with PyPI and npm packages on the way. There is no paid tier of the tool and no feature held back. Two optional paid services exist for people who want the output turned into a client-ready document: a $149 Startup Readiness Report and a $499 Deep Audit, both human-reviewed and delivered as PDF and HTML. Neither is required to use DIRA."}},{"@type":"Question","name":"Can DIRA replace a penetration test or a SOC 2 audit?","acceptedAnswer":{"@type":"Answer","text":"No. DIRA is automated pattern analysis. It cannot see your cloud IAM, your MFA enforcement, or your access reviews — those appear in the report as manual attestations. A clean run means no known bad patterns in the repository, not that the product is secure."}},{"@type":"Question","name":"Is DIRA on PyPI or npm yet?","acceptedAnswer":{"@type":"Answer","text":"Not yet. v1.2.0 installs from source on GitHub today with pipx install git+https://github.com/Yusuf-Gadelrab/dira@v1.2.0, then dira scan . PyPI and npm packages are on the way; the email list on this page pings the day either lands."}}]}</script>
 <link rel="stylesheet" href="/css/site.css">
 <style>
   .rule{height:1px;max-width:var(--maxw);margin:0 auto;
@@ -94,7 +94,74 @@
   .qa a{color:var(--gold-2)}
   .cmp-note{color:var(--faint);font-size:var(--t-micro);margin-top:var(--s3)}
   .cmp td:first-child,.cmp th:first-child{color:var(--ink)}
+
+  /* ── Pricing ──────────────────────────────────────────────────────────────
+     Same 14px-radius / --line card language as .sc and .step above, so the tiers
+     read as another row of this page rather than a bolted-on store. */
+  .tiers{display:grid;gap:18px;grid-template-columns:repeat(auto-fit,minmax(min(300px,100%),1fr));
+    align-items:start;margin-top:30px}
+  .tier{border:1px solid var(--line);border-radius:14px;padding:26px 24px 24px;
+    background:rgba(255,255,255,.012);display:flex;flex-direction:column;height:100%}
+  .tier--mid{border-color:rgba(212,175,55,.42);background:rgba(212,175,55,.045);
+    box-shadow:0 22px 54px rgba(0,0,0,.4)}
+  .tier__tag{font-family:ui-monospace,Menlo,monospace;font-size:11px;letter-spacing:.14em;
+    text-transform:uppercase;color:#d4af37;display:block;margin-bottom:10px}
+  .tier h3{margin:0 0 4px;font-size:20px;line-height:1.25}
+  .tier__amt{font-family:"Iowan Old Style",Georgia,serif;font-size:42px;line-height:1.05;
+    color:#e9cf7a;margin:14px 0 2px}
+  .tier__amt small{font-family:var(--body-font);font-size:12px;letter-spacing:.14em;
+    text-transform:uppercase;color:#8a857d;display:block;margin-top:8px}
+  .tier__line{margin:16px 0 0;color:#a9a49b;font-size:14.5px;line-height:1.65}
+  .tier ul{list-style:none;margin:20px 0 0;padding:0;display:grid;gap:11px}
+  .tier li{position:relative;padding-left:22px;color:#a9a49b;font-size:14px;line-height:1.6}
+  .tier li:before{content:"";position:absolute;left:0;top:.52em;width:9px;height:9px;
+    border-left:1.5px solid #d4af37;border-bottom:1.5px solid #d4af37;
+    transform:rotate(-45deg) translateY(-1px)}
+  .tier li b{color:var(--ink)}
+  .tier__act{margin-top:auto;padding-top:24px}
+  .tier__act .btn{width:100%;text-align:center}
+  .tier__fine{margin:12px 0 0;color:var(--faint);font-size:var(--t-micro);line-height:1.55}
+  .receipt{border:1px solid var(--line);border-left:3px solid #d4af37;border-radius:14px;
+    padding:26px 28px;background:rgba(212,175,55,.04);margin-top:34px}
+  .receipt h3{margin:0 0 6px;font-size:19px}
+  .receipt ol{margin:18px 0 0;padding-left:0;list-style:none;counter-reset:r;
+    display:grid;gap:12px;grid-template-columns:repeat(auto-fit,minmax(min(250px,100%),1fr))}
+  .receipt li{counter-increment:r;color:#a9a49b;font-size:14px;line-height:1.6;
+    padding-left:34px;position:relative}
+  .receipt li:before{content:counter(r,decimal-leading-zero);position:absolute;left:0;top:0;
+    font-family:ui-monospace,Menlo,monospace;font-size:11px;letter-spacing:.1em;color:#d4af37}
+  .receipt li b{color:var(--ink);display:block;font-weight:600;margin-bottom:2px}
+  @media(max-width:520px){.tier__amt{font-size:36px}}
 </style>
+<script>
+  /* ===========================================================================
+     CHECKOUT — the ONLY thing left to do before DIRA's paid tiers can take money.
+     ---------------------------------------------------------------------------
+     Same convention as store.html. Paste each tier's live checkout URL between
+     the quotes; nothing else on this page changes. /js/commerce.js reads this map
+     on load and flips every matching [data-buy] element from "Join the waitlist"
+     to a real buy button the moment its value is a valid https:// URL. Leave a
+     value empty and that tier stays on the waitlist rail.
+
+     RULE (learned the hard way, 2026-07-29, store.html): every value in the sibling
+     map once held a GUESSED vendor URL. All of them 404'd, so every buy button sent
+     real buyers nowhere. curl -sI <url> and confirm HTTP 200 BEFORE pasting.
+
+     Platform choice, fee math, product names/descriptions, post-purchase copy and
+     the refund policy are all written up in:
+       ~/Startups/dira/paid/CHECKOUT-SETUP.md
+
+     ⚖ Do not paste live URLs until the written attorney scope confirmation is on
+     file. Building and staging this section is fine; taking payment is the gated
+     act. The $2,400 Full Audit is deliberately absent — it is quoted on a call and
+     is never a checkout product.
+     =========================================================================== */
+  const CHECKOUT = {
+    'dira-readiness': '',   // $149  DIRA Startup Readiness Report
+    'dira-deep':      ''    // $499  DIRA Deep Audit
+  };
+</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"ItemList","name":"DIRA security tiers","itemListElement":[{"@type":"ListItem","position":1,"item":{"@type":"SoftwareApplication","name":"dira-scan","applicationCategory":"DeveloperApplication","operatingSystem":"macOS, Linux, Windows","url":"https://yusuf-gadelrab.github.io/dira.html#pricing","description":"The full open-source DIRA scanner: seven scanners, 62 detection rules, SBOM output, PR diff gating and the 18-point startup security-readiness score. MIT licensed, zero dependencies, runs entirely on your machine.","license":"https://opensource.org/licenses/MIT","offers":{"@type":"Offer","price":"0","priceCurrency":"USD","availability":"https://schema.org/InStock"}}},{"@type":"ListItem","position":2,"item":{"@type":"Service","name":"DIRA Startup Readiness Report","serviceType":"Security readiness report","provider":{"@id":"https://yusuf-gadelrab.github.io/#person"},"url":"https://yusuf-gadelrab.github.io/dira.html#pricing","description":"A client-ready Startup Security Readiness Report delivered as PDF and HTML: executive summary, prioritized findings with impact and effort scoring, a 30-day remediation roadmap, the 18-point readiness scorecard, and a SOC 2 and vendor-questionnaire appendix, plus a human QA pass on every automated finding. Delivered within 5 business days of repo access. Automated analysis with human review, not a penetration test.","offers":{"@type":"Offer","price":"149","priceCurrency":"USD","availability":"https://schema.org/PreOrder","url":"https://yusuf-gadelrab.github.io/dira.html#pricing"}}},{"@type":"ListItem","position":3,"item":{"@type":"Service","name":"DIRA Deep Audit","serviceType":"Security audit report with consultant review","provider":{"@id":"https://yusuf-gadelrab.github.io/#person"},"url":"https://yusuf-gadelrab.github.io/dira.html#pricing","description":"Everything in the Startup Readiness Report plus manual confirmation of every critical and high severity finding, consultant review notes typeset into the report, and a 30-minute readout call. Delivered within 5 business days of repo access. Automated analysis with human review, not a penetration test.","offers":{"@type":"Offer","price":"499","priceCurrency":"USD","availability":"https://schema.org/PreOrder","url":"https://yusuf-gadelrab.github.io/dira.html#pricing"}}}]}</script>
 <!-- geo:entity — canonical Person node, one entity across every page -->
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebPage","@id":"https://yusuf-gadelrab.github.io/dira.html#webpage","url":"https://yusuf-gadelrab.github.io/dira.html","inLanguage":"en","isPartOf":{"@id":"https://yusuf-gadelrab.github.io/#website"},"about":{"@id":"https://yusuf-gadelrab.github.io/#person"},"publisher":{"@id":"https://yusuf-gadelrab.github.io/#person"}}</script>
 </head>
@@ -118,7 +185,7 @@
     <div class="eyebrow">Dhahab · Open Source · v1.2.0</div>
     <h1 style="margin:14px 0 8px">DIRA <span style="color:#8a857d;font-size:.5em">درع</span></h1>
     <p class="lead" style="margin:0 auto 10px;max-width:660px">
-      <b>A zero-dependency Python security scanner for your codebase — 98 passing tests,
+      <b>A zero-dependency Python security scanner for your codebase — 124 passing tests,
       MIT licensed, one command.</b>
     </p>
     <p style="color:#8a857d;max-width:620px;margin:0 auto 30px">
@@ -133,6 +200,7 @@
       <a href="#install">How to run it</a>
       <a href="#scanners">What it checks</a>
       <a href="#trust">Why trust it</a>
+      <a href="#pricing">Pricing</a>
       <a href="#faq">FAQ</a>
     </p>
   </div>
@@ -206,7 +274,7 @@
       <div><b>7</b><span>Scanners</span></div>
       <div><b>62</b><span>Detection rules</span></div>
       <div><b>0</b><span>Dependencies</span></div>
-      <div><b>98</b><span>Passing tests</span></div>
+      <div><b>124</b><span>Passing tests</span></div>
       <div><b>0.9s</b><span>Warm re-scan</span></div>
     </div>
   </div>
@@ -270,7 +338,7 @@
     <div class="next" style="margin-top:30px">
       <div>
         <span class="mk">01 · Why trust a student's security tool?</span>
-        <p><b>The audit trail is the whole pitch: 98 passing tests, and zero dependencies means
+        <p><b>The audit trail is the whole pitch: 124 passing tests, and zero dependencies means
         there is nothing to audit but the source itself.</b> It's MIT licensed on GitHub — read
         every rule yourself instead of taking my word for it.</p>
       </div>
@@ -324,6 +392,129 @@
       least-privilege IAM, same-day offboarding). Then <code class="inline">dira fix --apply</code>
       writes the boring ones for you.
     </p>
+  </div>
+</section>
+
+<div class="rule"></div>
+
+<section class="section" id="pricing">
+  <div class="wrap">
+    <div class="eyebrow">Pricing</div>
+    <h2>The tool is free. The report is the thing you'd pay for.</h2>
+    <p class="lead" style="max-width:760px">
+      Running <code class="inline">dira scan .</code> costs nothing and always will. What money buys
+      is the part a scanner can't do for you: a person reading every finding, throwing out the noise,
+      and typesetting what's left into a document you can hand to an enterprise buyer's security team.
+    </p>
+
+    <div class="tiers">
+
+      <div class="tier">
+        <span class="tier__tag">Free forever</span>
+        <h3>dira-scan</h3>
+        <div class="tier__amt">$0<small>MIT licensed · no account</small></div>
+        <p class="tier__line">The entire open-source scanner. Not a trial, not a crippled tier —
+        the same engine that generates the paid reports.</p>
+        <ul>
+          <li><b>All seven scanners</b> — secrets, dependency CVEs, 38 config/IaC rules, license
+          risk, git-history leaks, live TLS &amp; headers, readiness score.</li>
+          <li><b>62 detection rules</b>, 124 passing tests, zero dependencies.</li>
+          <li><b>Your own reports</b> — <code class="inline">-f html</code>,
+          <code class="inline">-f sarif</code>, <code class="inline">-f json</code>, plus
+          CycloneDX/SPDX SBOM output.</li>
+          <li><b>CI and PR gating</b> — <code class="inline">dira init</code> writes the workflow
+          and pre-commit hook; <code class="inline">--diff</code> scans only what changed.</li>
+          <li><b>Auto-remediation</b> — <code class="inline">dira fix --apply</code> writes the
+          boring missing files for you.</li>
+          <li><b>Runs offline</b>, on your machine. No telemetry, no account, no upsell wall.</li>
+        </ul>
+        <div class="tier__act">
+          <a class="btn btn-ghost" href="https://github.com/Yusuf-Gadelrab/dira">Get it on GitHub →</a>
+          <p class="tier__fine">Installs from source today with <code class="inline">pipx</code>.
+          PyPI and npm are on the way.</p>
+        </div>
+      </div>
+
+      <div class="tier tier--mid">
+        <span class="tier__tag">Most founders start here</span>
+        <h3>Startup Readiness Report</h3>
+        <div class="tier__amt">$149<small>One-time · per repository</small></div>
+        <p class="tier__line">The scan output, reviewed by a human and rebuilt as a client-ready
+        document — the thing you actually send when a prospect asks for your security posture.</p>
+        <ul>
+          <li><b>Executive summary</b> — grade, readiness score, risk number, and the three moves
+          that matter most, written for a non-engineer reader.</li>
+          <li><b>Prioritized findings</b> — every issue scored P0–P3 by impact and effort, with the
+          specific fix beside it, not just the rule name.</li>
+          <li><b>A 30-day remediation roadmap</b> — week 1, week 2–4, ordered so the questionnaire
+          blockers clear first.</li>
+          <li><b>The 18-point readiness scorecard</b> — which SOC 2-shaped artifacts you have,
+          which you're missing, and what each one is.</li>
+          <li><b>SOC 2 &amp; vendor-questionnaire appendix</b> — mapped to the questions buyers
+          actually send, including the manual attestations no scanner can verify.</li>
+          <li><b>A human QA pass on every automated finding</b> — false positives removed before
+          you ever see them, so nothing in the document embarrasses you.</li>
+          <li><b>Delivered as PDF + HTML</b> within 5 business days of repo access.</li>
+        </ul>
+        <div class="tier__act">
+          <a class="btn btn-gold" data-buy="dira-readiness" data-name="DIRA Readiness Report"
+             data-list="DIRA Readiness Report" href="#">Get notified when this opens →</a>
+          <p class="tier__fine">Not selling yet — join the list and you'll hear the day it opens.
+          Want it sooner? <a class="gold" href="mailto:yusuf.gadelrab06@gmail.com?subject=DIRA%20Readiness%20Report%20(%24149)">Email me directly</a>.</p>
+        </div>
+      </div>
+
+      <div class="tier">
+        <span class="tier__tag">With consultant notes</span>
+        <h3>Deep Audit</h3>
+        <div class="tier__amt">$499<small>One-time · per repository</small></div>
+        <p class="tier__line">For when the report has to survive questions — a diligence process, a
+        security review, an investor who forwards it to someone technical.</p>
+        <ul>
+          <li><b>Everything in the Readiness Report</b>, same document, same delivery.</li>
+          <li><b>Every critical and high manually confirmed</b> — each one traced back to the
+          source and verified by hand before it ships, so no severity is taken on the scanner's word.</li>
+          <li><b>Consultant review notes typeset into the report</b> — written commentary on what
+          the findings mean for <em>your</em> architecture, not generic rule descriptions.</li>
+          <li><b>A 30-minute readout call</b> after delivery — walk the findings, ask anything,
+          decide what to fix first.</li>
+          <li><b>Delivered as PDF + HTML</b> within 5 business days of repo access; call scheduled
+          after delivery.</li>
+        </ul>
+        <div class="tier__act">
+          <a class="btn btn-ghost" data-buy="dira-deep" data-name="DIRA Deep Audit"
+             data-list="DIRA Deep Audit" href="#">Get notified when this opens →</a>
+          <p class="tier__fine">Need more than a report? The bespoke 15-hour engagement is quoted on
+          a call — <a class="gold" href="mailto:yusuf.gadelrab06@gmail.com?subject=DIRA%20full%20audit%20enquiry">email me</a>.</p>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="receipt">
+      <h3>What you actually receive</h3>
+      <p style="color:#b6b1a8;margin:0;max-width:760px">Not a screenshot of a terminal. A six-section
+      report, in the same black-and-gold house style as everything else here — here is a real one,
+      generated end to end by the same command that would generate yours.</p>
+      <p style="margin:20px 0 0">
+        <a class="btn btn-gold" href="/downloads/dira-sample-readiness-report.html" target="_blank" rel="noopener">Read the full sample report →</a>
+      </p>
+      <ol>
+        <li><b>Executive summary</b> Grade, readiness %, risk score, and the three moves that matter most.</li>
+        <li><b>Prioritized findings</b> P0–P3, one row per issue type, impact × effort, fix included.</li>
+        <li><b>30-day roadmap</b> Week-by-week, blockers first.</li>
+        <li><b>Readiness scorecard</b> The 18 checks, scored, with what's missing named.</li>
+        <li><b>SOC 2 appendix</b> Mapped to real vendor-questionnaire items and manual attestations.</li>
+        <li><b>Methodology &amp; scope</b> Exactly what was scanned, which ruleset, and what wasn't.</li>
+      </ol>
+      <p style="color:var(--faint);font-size:var(--t-micro);margin:20px 0 0;max-width:760px">
+        Sample uses a fictional client and a synthetic repository. Every tier is automated analysis
+        plus human review — <strong>not a penetration test</strong>, not a SOC 2 audit, and not a
+        guarantee that your product is secure. Read-only repo access, local clone only, deleted
+        within 14 days of delivery. Full refund before work starts; nothing is billed until scope is
+        agreed in writing.
+      </p>
+    </div>
   </div>
 </section>
 
@@ -395,9 +586,12 @@
       </article>
       <article class="card qa">
         <h3>How much does DIRA cost?</h3>
-        <p>Nothing. It's MIT-licensed open source, installable from source with
-        <code class="inline">pipx install git+https://github.com/Yusuf-Gadelrab/dira</code>, with
-        PyPI and npm packages on the way.</p>
+        <p><b>The scanner is free forever.</b> MIT-licensed open source, installable from source
+        with <code class="inline">pipx install git+https://github.com/Yusuf-Gadelrab/dira</code>,
+        with PyPI and npm packages on the way. There is no paid tier of the tool and no feature
+        held back. Two optional paid services exist if you want the output turned into a
+        client-ready document — a <a class="gold" href="#pricing">$149 Startup Readiness Report and
+        a $499 Deep Audit</a>, both human-reviewed. Neither is required to use DIRA.</p>
       </article>
       <article class="card qa">
         <h3>Can DIRA replace a penetration test or a SOC 2 audit?</h3>
@@ -495,6 +689,11 @@
   navLinks.querySelectorAll('a').forEach(function(a){a.addEventListener('click',function(){navLinks.classList.remove('open')})});
 </script>
 <script src="/js/waitlist.js" defer></script>
+<!-- commerce.js reads the CHECKOUT map above. Every value is empty, so both paid
+     tiers render as waitlist joins on the shared YGWaitlist rail — no page on this
+     site claims to take a payment it cannot take. Loaded after waitlist.js so the
+     rail exists before a button is clicked. -->
+<script src="/js/commerce.js" defer></script>
 <script>
 addEventListener("DOMContentLoaded", function () {
   if (window.YGWaitlist) YGWaitlist.attach("f-dira", "e-dira", "n-dira", "DIRA Release");
