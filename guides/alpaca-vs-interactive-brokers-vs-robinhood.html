@@ -58,7 +58,7 @@
 
 <a class="skip-link" href="#main">Skip to content</a>
 
-<nav class="site-nav">
+<nav class="site-nav" aria-label="Primary">
   <a class="site-nav__brand" href="/"><img class="site-nav__lion" src="/img/brand/lion-mark.svg" alt="" width="34" height="34" decoding="async"><span>YUSUF GADELRAB</span></a>
   <div class="site-nav__links">
     <a href="/">Work</a>
@@ -103,8 +103,8 @@
       </ul>
       <p>The recommendation is unambiguous: use an official API. If you want Robinhood specifically, the supported path is their published crypto trading API, and equities automation is not available to you there. If you want to automate stocks, that is what Alpaca and Interactive Brokers are for. I say this having written a reverse-engineered equities adapter myself and then flagged it in my own project notes as the wrong default, which is a slower way to learn the same lesson.</p>
       <h2>The matrix</h2>
-      <div class="tblwrap"><table class="tbl">
-        <thead><tr><th></th><th>Alpaca</th><th>Interactive Brokers</th><th>Robinhood</th></tr></thead>
+      <div class="tblwrap" tabindex="0" role="group" aria-label="Table, scrolls horizontally"><table class="tbl">
+        <thead><tr><th scope="col"></th><th scope="col">Alpaca</th><th scope="col">Interactive Brokers</th><th scope="col">Robinhood</th></tr></thead>
         <tbody>
           <tr><td>Official equities API</td><td><strong>Yes</strong>, REST plus streaming, documented and versioned</td><td><strong>Yes</strong>, TWS socket API, Client Portal Web API, and FIX for institutional</td><td><strong>No.</strong> Unofficial libraries only, against the terms of service</td></tr>
           <tr><td>Official crypto API</td><td>Yes</td><td>Crypto available through the same account structure</td><td><strong>Yes</strong>, key-authenticated, the one supported programmatic path</td></tr>

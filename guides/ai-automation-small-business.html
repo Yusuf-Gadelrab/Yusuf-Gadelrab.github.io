@@ -58,7 +58,7 @@
 
 <a class="skip-link" href="#main">Skip to content</a>
 
-<nav class="site-nav">
+<nav class="site-nav" aria-label="Primary">
   <a class="site-nav__brand" href="/"><img class="site-nav__lion" src="/img/brand/lion-mark.svg" alt="" width="34" height="34" decoding="async"><span>YUSUF GADELRAB</span></a>
   <div class="site-nav__links">
     <a href="/">Work</a>
@@ -90,8 +90,8 @@
     <div class="prose">
       <h2>The filter</h2>
       <p>A task is a good automation candidate when it is <strong>repetitive, structured, deadline-driven, and cheap to verify</strong>. That last one carries most of the weight: if checking the output takes as long as producing it, automation has moved the work rather than removed it.</p>
-      <div class="tblwrap"><table class="tbl">
-        <thead><tr><th>Automate</th><th>Keep human</th></tr></thead>
+      <div class="tblwrap" tabindex="0" role="group" aria-label="Table, scrolls horizontally"><table class="tbl">
+        <thead><tr><th scope="col">Automate</th><th scope="col">Keep human</th></tr></thead>
         <tbody>
           <tr><td>Drafting a first version</td><td>Sending anything that commits you</td></tr>
           <tr><td>Extracting fields from documents</td><td>Deciding what the fields mean for the relationship</td></tr>

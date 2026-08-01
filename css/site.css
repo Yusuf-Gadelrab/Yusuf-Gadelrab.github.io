@@ -31,10 +31,25 @@
   /* --- accent (exactly one hero element per view — see BRAND.md) --- */
   --gold:#D4AF37;
   --gold-2:#e9c96a;
-  --gold-dim:#8a7328;
+  /* --gold-dim was #8a7328 = 4.27:1 on --bg, under the 4.5:1 AA floor. It is not
+     only a gradient stop: 128 `color:` declarations across the site use it as
+     real body text (.term__hash, .az__where, eyebrows). #9E832E is the same hue
+     (45.9deg) and saturation (55%) lifted 0.5% in lightness — visually identical,
+     but 5.37:1 on --bg and >=4.5:1 on every panel surface. */
+  --gold-dim:#9E832E;
   --line:rgba(212,175,55,.18);
   --line-soft:rgba(242,237,228,.10);
+  /* --line-soft is 1.28:1 — fine for decorative dividers, but WCAG 1.4.11 needs
+     3:1 for the visible boundary of an actual control. Separate token so raising
+     control borders never brightens every hairline on the site. */
+  --line-control:rgba(242,237,228,.38);
   --glow:rgba(212,175,55,.35);
+  /* var(--fg) is referenced 98x across 80 pages' local <style> blocks but was
+     never defined anywhere, so 85 of those uses were invalid-at-computed-value
+     and silently inherited the parent colour — .prose strong and .term__def
+     never brightened off --muted. The 13 uses that carry a fallback all use
+     #f5f3ee, confirming --ink was the intent. */
+  --fg:var(--ink);
 
   /* --- semantic --- */
   --ok:#5FBF7F;
@@ -294,8 +309,11 @@ label{display:block;font-size:var(--t-small);color:var(--muted);margin-bottom:va
 
 /* ---------- print (resume is the page people actually print) ---------- */
 @media print{
+  /* On white the lifted --gold-dim drops to 3.66:1, so print keeps the original
+     darker gold, which is 4.6:1 on paper. */
   :root{--bg:#fff;--ink:#111;--muted:#444;--panel:#fff;--panel2:#fff;
-        --line:#ccc;--line-soft:#ddd;--gold:#8a7328;--gold-2:#8a7328}
+        --line:#ccc;--line-soft:#ddd;--gold:#8a7328;--gold-2:#8a7328;
+        --gold-dim:#8a7328;--line-control:#767676;--fg:#111}
   body{background:#fff;color:#111}
   body::before{display:none}
   .site-nav,.site-footer,.btn,.skip-link{display:none!important}
@@ -530,6 +548,33 @@ tbody tr{transition:background .15s var(--ease)}
 .related__item span{display:block;color:var(--muted);font-size:var(--t-micro);line-height:1.6}
 .related__more{margin-top:var(--s5);color:var(--muted);font-size:var(--t-small)}
 .related__more a{color:var(--gold-2)}
+
+/* ---------- accessibility hardening ----------------------------------------
+   WCAG 1.4.11 (non-text contrast) and 2.4.7/2.4.11 (focus appearance). The
+   boundary of an interactive control has to be perceivable at 3:1, and a focus
+   ring may never be removed without an equally visible replacement. */
+
+/* Control boundaries: 1.28:1 -> 3.19:1. Decorative hairlines keep --line-soft. */
+input,textarea,select,
+.yg-cmd,.yg-pal__esc,.yg-cta-bar__x,#yg-top{border-color:var(--line-control)}
+
+/* `input:focus{outline:none}` above left a 1px border-colour swap as the only
+   focus signal — roughly a 1.5:1 change, invisible to most users. Restore a real
+   ring for keyboard users while keeping mouse/touch focus visually quiet. */
+input:focus-visible,textarea:focus-visible,select:focus-visible,
+.yg-pal__input:focus-visible{
+  outline:2px solid var(--gold);outline-offset:2px;border-color:var(--gold);
+}
+/* The command-palette input is auto-focused on open and had `outline:none;
+   border:0`, leaving no indication at all. */
+.yg-pal__input:focus-visible{outline-offset:0}
+
+/* A scroll container that cannot be focused cannot be scrolled without a mouse.
+   Chrome and Firefox disagree on auto-focusability of overflow boxes, so the
+   generated wrappers carry an explicit tabindex and this styles the result. */
+.table-wrap:focus-visible,.tblwrap:focus-visible,.tw:focus-visible{
+  outline:2px solid var(--gold);outline-offset:2px;
+}
 
 /* ---------- motion opt-out (must stay last) -------------------------------- */
 @media(prefers-reduced-motion:reduce){

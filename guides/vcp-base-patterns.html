@@ -58,7 +58,7 @@
 
 <a class="skip-link" href="#main">Skip to content</a>
 
-<nav class="site-nav">
+<nav class="site-nav" aria-label="Primary">
   <a class="site-nav__brand" href="/"><img class="site-nav__lion" src="/img/brand/lion-mark.svg" alt="" width="34" height="34" decoding="async"><span>YUSUF GADELRAB</span></a>
   <div class="site-nav__links">
     <a href="/">Work</a>
@@ -99,8 +99,8 @@
       <h2>What makes it a VCP</h2>
       <p>The volatility contraction pattern, popularised by Mark Minervini, is a base in which each successive pullback is <strong>smaller than the one before it</strong>. The idea is that supply is being exhausted in measurable steps: fewer sellers appear at each pullback, so each dip gets shallower.</p>
       <p>A worked count on a hypothetical base:</p>
-      <div class="tblwrap"><table class="tbl">
-        <thead><tr><th>Contraction</th><th>High</th><th>Low</th><th>Depth</th><th>Reading</th></tr></thead>
+      <div class="tblwrap" tabindex="0" role="group" aria-label="Table, scrolls horizontally"><table class="tbl">
+        <thead><tr><th scope="col">Contraction</th><th scope="col">High</th><th scope="col">Low</th><th scope="col">Depth</th><th scope="col">Reading</th></tr></thead>
         <tbody>
           <tr><td>T1</td><td>100.00</td><td>82.00</td><td>18.0%</td><td>First shakeout, widest</td></tr>
           <tr><td>T2</td><td>97.00</td><td>88.30</td><td>9.0%</td><td>Roughly half of T1</td></tr>
@@ -114,7 +114,7 @@
       <p>The reasoning is straightforward. If the last pullback is shallow <em>and</em> almost nobody traded it, there is very little supply left at that price. A shallow pullback on heavy volume says the opposite: plenty of people are still selling, they are just being absorbed for now.</p>
       <h2>The pivot and the buy point</h2>
       <p>The pivot is the high of the final contraction. The mechanical entry is a break above it, ideally on volume expanding well above average, because a breakout without volume is a price move without participation.</p>
-      <span class="formula">Entry  = pivot + small buffer
+      <span class="formula" tabindex="0" role="group" aria-label="Formula, scrolls horizontally">Entry  = pivot + small buffer
 Stop   = below the low of the final contraction
 1R     = entry − stop
 Size   = (account × risk %) ÷ 1R</span>
@@ -129,8 +129,8 @@ Size   = (account × risk %) ÷ 1R</span>
       </ul>
       <h2>What my own testing said</h2>
       <p>This is the part most write-ups omit. I built a screener and a no-lookahead backtest engine, then ran my swing setups through walk-forward testing rather than an in-sample fit. <strong>The VCP-style contraction setup came out roughly breakeven.</strong> Not a disaster, not an edge — after costs there was nothing there worth sizing.</p>
-      <div class="tblwrap"><table class="tbl">
-        <thead><tr><th>Setup</th><th>Walk-forward result</th><th>Verdict</th></tr></thead>
+      <div class="tblwrap" tabindex="0" role="group" aria-label="Table, scrolls horizontally"><table class="tbl">
+        <thead><tr><th scope="col">Setup</th><th scope="col">Walk-forward result</th><th scope="col">Verdict</th></tr></thead>
         <tbody>
           <tr><td>AVWAP reclaim</td><td>+0.117R over 4,933 trades (95% CI +0.057 to +0.174)</td><td>Kept — the only survivor. An earlier +0.23R on 101 trades did not survive my own re-test</td></tr>
           <tr><td>VCP-style contraction</td><td>roughly breakeven</td><td>Not traded mechanically</td></tr>

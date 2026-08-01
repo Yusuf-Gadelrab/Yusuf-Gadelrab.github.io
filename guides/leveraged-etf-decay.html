@@ -58,7 +58,7 @@
 
 <a class="skip-link" href="#main">Skip to content</a>
 
-<nav class="site-nav">
+<nav class="site-nav" aria-label="Primary">
   <a class="site-nav__brand" href="/"><img class="site-nav__lion" src="/img/brand/lion-mark.svg" alt="" width="34" height="34" decoding="async"><span>YUSUF GADELRAB</span></a>
   <div class="site-nav__links">
     <a href="/">Work</a>
@@ -93,8 +93,8 @@
       <p>To hold that daily multiple, the fund rebalances its exposure at the end of every session. If the index rises, the fund must add exposure to keep the ratio; if the index falls, it must cut exposure. The mechanical consequence is that <strong>the fund buys after up days and sells after down days</strong>, which is exactly the wrong behaviour in a market that oscillates.</p>
       <h2>The worked two-day example</h2>
       <p>Take an index at 100 and a 3x fund at 100. Day one the index rises 10%; day two it falls 9.0909%, which returns it exactly to 100.</p>
-      <div class="tblwrap"><table class="tbl">
-        <thead><tr><th></th><th>Index</th><th>Index level</th><th>3x daily move</th><th>3x fund value</th></tr></thead>
+      <div class="tblwrap" tabindex="0" role="group" aria-label="Table, scrolls horizontally"><table class="tbl">
+        <thead><tr><th scope="col"></th><th scope="col">Index</th><th scope="col">Index level</th><th scope="col">3x daily move</th><th scope="col">3x fund value</th></tr></thead>
         <tbody>
           <tr><td>Start</td><td>—</td><td>100.00</td><td>—</td><td>100.00</td></tr>
           <tr><td>Day 1</td><td>+10.00%</td><td>110.00</td><td>+30.00%</td><td>130.00</td></tr>
@@ -102,14 +102,14 @@
           <tr><td>Net</td><td>0.00%</td><td>100.00</td><td>—</td><td>−5.45%</td></tr>
         </tbody>
       </table></div>
-      <span class="formula">Day 2 fund value = 130.00 × (1 − 0.272727) = 130.00 × 0.727273 = 94.55
+      <span class="formula" tabindex="0" role="group" aria-label="Formula, scrolls horizontally">Day 2 fund value = 130.00 × (1 − 0.272727) = 130.00 × 0.727273 = 94.55
 
 Index round trip:  0.00%
 3x fund round trip: −5.45%</span>
       <p>The index finished exactly flat. The 3x fund lost 5.45%. Nobody made a bad decision and no fee caused it. The loss is pure arithmetic: a −27.27% day requires a +37.5% day to recover, and the fund never got one.</p>
       <h2>Volatility drag, generalised</h2>
       <p>The same effect exists in any leveraged compounding sequence, and it scales roughly with the square of the leverage factor and with variance:</p>
-      <span class="formula">drag ≈ ½ × L × (L − 1) × σ²
+      <span class="formula" tabindex="0" role="group" aria-label="Formula, scrolls horizontally">drag ≈ ½ × L × (L − 1) × σ²
 
 where L is the leverage multiple
       σ² is the variance of daily returns</span>
@@ -119,8 +119,8 @@ where L is the leverage multiple
       <p>Compounding is not only a tax. In a smoothly trending market with low daily volatility, compounding works in your favour and a 3x fund can beat 3x the underlying's period return. Five consecutive 2% up days give an index +10.4% while a 3x fund returns +33.8%, which is more than three times the index's period gain.</p>
       <p>This is the honest version of the trade-off. <strong>Leveraged ETFs are instruments for short, directional, low-chop periods.</strong> They are not broken products; they are products whose behaviour depends on the path, not just the endpoint.</p>
       <h2>When they fit and when they do not</h2>
-      <div class="tblwrap"><table class="tbl">
-        <thead><tr><th>Situation</th><th>Verdict</th><th>Why</th></tr></thead>
+      <div class="tblwrap" tabindex="0" role="group" aria-label="Table, scrolls horizontally"><table class="tbl">
+        <thead><tr><th scope="col">Situation</th><th scope="col">Verdict</th><th scope="col">Why</th></tr></thead>
         <tbody>
           <tr><td>Multi-day trend trade with a defined stop</td><td>Reasonable</td><td>Path is short and the daily rebalancing has little time to compound against you</td></tr>
           <tr><td>Hedging an existing position for a few days</td><td>Reasonable</td><td>Capital-efficient; a small position covers a large exposure</td></tr>

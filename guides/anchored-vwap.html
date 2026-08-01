@@ -58,7 +58,7 @@
 
 <a class="skip-link" href="#main">Skip to content</a>
 
-<nav class="site-nav">
+<nav class="site-nav" aria-label="Primary">
   <a class="site-nav__brand" href="/"><img class="site-nav__lion" src="/img/brand/lion-mark.svg" alt="" width="34" height="34" decoding="async"><span>YUSUF GADELRAB</span></a>
   <div class="site-nav__links">
     <a href="/">Work</a>
@@ -90,7 +90,7 @@
     <div class="prose">
       <h2>What is anchored VWAP?</h2>
       <p>VWAP — volume-weighted average price — is the average price paid per share over a period, weighting each price by the volume traded there. Standard VWAP resets every session. <strong>Anchored VWAP (AVWAP) starts from a bar you choose</strong> and keeps running from there.</p>
-      <span class="formula">VWAP = Σ(price × volume) ÷ Σ(volume), summed from the anchor bar to now</span>
+      <span class="formula" tabindex="0" role="group" aria-label="Formula, scrolls horizontally">VWAP = Σ(price × volume) ÷ Σ(volume), summed from the anchor bar to now</span>
       <p>That choice is the whole idea. Anchor to an earnings gap and the line tracks the average cost basis of everyone who has traded since that earnings report. When price sits above it, that cohort is collectively in profit; below it, collectively underwater. The technique was popularised by Brian Shannon, whose framing is that price and volume tell you what participants actually did, not what they said.</p>
       <h2>Where do you anchor?</h2>
       <p>An anchor is only meaningful if the event changed who owns the stock. Useful anchors:</p>
@@ -107,8 +107,8 @@
       <p>The mechanical version I test looks for three things: price closes back above the AVWAP from a defined anchor, the reclaim holds for a confirming bar rather than wicking through, and the stop goes just below the AVWAP so the invalidation is the same line that generated the signal. That last part matters — <strong>the setup and the risk are defined by the same object</strong>, which is what makes it sizeable.</p>
       <h2>Does it actually work?</h2>
       <p>Some of it does. I built a screener and a no-lookahead backtest engine, then ran my own swing setups through walk-forward testing rather than a curve-fit in-sample check. Most of them did not survive.</p>
-      <div class="tblwrap"><table class="tbl">
-        <thead><tr><th>Setup</th><th>Walk-forward result</th><th>Verdict</th></tr></thead>
+      <div class="tblwrap" tabindex="0" role="group" aria-label="Table, scrolls horizontally"><table class="tbl">
+        <thead><tr><th scope="col">Setup</th><th scope="col">Walk-forward result</th><th scope="col">Verdict</th></tr></thead>
         <tbody>
           <tr><td>AVWAP reclaim</td><td>+0.117R over 4,933 trades (95% CI +0.057 to +0.174)</td><td>Kept — the only survivor. An earlier +0.23R on 101 trades did not survive my own re-test</td></tr>
           <tr><td>VCP-style contraction</td><td>≈ breakeven</td><td>Neutral, not traded mechanically</td></tr>

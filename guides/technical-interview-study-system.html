@@ -58,7 +58,7 @@
 
 <a class="skip-link" href="#main">Skip to content</a>
 
-<nav class="site-nav">
+<nav class="site-nav" aria-label="Primary">
   <a class="site-nav__brand" href="/"><img class="site-nav__lion" src="/img/brand/lion-mark.svg" alt="" width="34" height="34" decoding="async"><span>YUSUF GADELRAB</span></a>
   <div class="site-nav__links">
     <a href="/">Work</a>
@@ -97,8 +97,8 @@
       <p>Both failures have the same fix, which is uncomfortable and cheap: spend a substantial fraction of your study time re-solving things you have already solved, from memory, on a schedule.</p>
       <h2>The Leitner system, operationally</h2>
       <p>Leitner is the simplest workable implementation of spaced repetition. Items live in numbered boxes; each box has a review interval; a clean recall promotes an item one box, a failure sends it back to box one. That is the whole algorithm and it needs no software.</p>
-      <div class="tblwrap"><table class="tbl">
-        <thead><tr><th>Box</th><th>Review interval</th><th>Meaning</th><th>On success / on failure</th></tr></thead>
+      <div class="tblwrap" tabindex="0" role="group" aria-label="Table, scrolls horizontally"><table class="tbl">
+        <thead><tr><th scope="col">Box</th><th scope="col">Review interval</th><th scope="col">Meaning</th><th scope="col">On success / on failure</th></tr></thead>
         <tbody>
           <tr><td>1</td><td>1 day</td><td>Failed recently, or never solved unaided</td><td>→ box 2 / stays in box 1</td></tr>
           <tr><td>2</td><td>3 days</td><td>Solved with a hint</td><td>→ box 3 / back to box 1</td></tr>
@@ -112,7 +112,7 @@
       <p><strong>Box one has a size limit.</strong> If box one holds forty items, you are not studying, you are drowning, and you will start skipping reviews, which breaks the whole system. Cap it at around ten. When it is full, you do not add new problems that day. New material waits until the backlog clears. This rule feels like it slows you down and it is the single highest-leverage constraint in the system.</p>
       <h3>What is actually on a card</h3>
       <p>This is where most people implement it wrong. The card is not the problem statement, because re-solving a full problem takes 30 minutes and you cannot review 15 of those in a session. The card is the retrievable unit.</p>
-      <span class="formula">Front:  the recognition cue
+      <span class="formula" tabindex="0" role="group" aria-label="Formula, scrolls horizontally">Front:  the recognition cue
         "Contiguous subarray, longest satisfying a condition"
 
 Back:   1. pattern name           sliding window
@@ -143,8 +143,8 @@ Review = write 2 from a blank page in under 5 minutes, then diff.</span>
       <p class="callout">The diff step is the one to protect when time is short. A template you can nearly write is worth much less than one you can write exactly, and "nearly" is invisible until you compare the two side by side. Most people who feel prepared and then blank in an interview were living in the gap between nearly and exactly.</p>
       <h2>Timeboxing, and what to do when the box expires</h2>
       <p>Unbounded struggle is the most common way study time gets wasted. Ninety minutes on one problem feels like commitment and mostly produces frustration plus one data point. A timebox converts the same ninety minutes into three problems and three diagnoses.</p>
-      <div class="tblwrap"><table class="tbl">
-        <thead><tr><th>Phase</th><th>Budget</th><th>What must exist when the timer ends</th></tr></thead>
+      <div class="tblwrap" tabindex="0" role="group" aria-label="Table, scrolls horizontally"><table class="tbl">
+        <thead><tr><th scope="col">Phase</th><th scope="col">Budget</th><th scope="col">What must exist when the timer ends</th></tr></thead>
         <tbody>
           <tr><td>Understand</td><td>0–5 min</td><td>The input shape, the output, and two examples worked by hand</td></tr>
           <tr><td>Approach</td><td>5–15 min</td><td>A named pattern and a complexity target, said out loud</td></tr>
@@ -176,8 +176,8 @@ Review = write 2 from a blank page in under 5 minutes, then diff.</span>
       </ol>
       <p>If you only have thirty minutes, do the first block and stop. Twenty minutes of reviews with no new problem beats a new problem with no reviews, every single time, and the fact that it feels like less progress is exactly why people get this backwards.</p>
       <h2>A schedule that fits a semester</h2>
-      <div class="tblwrap"><table class="tbl">
-        <thead><tr><th>Phase</th><th>Weeks</th><th>Focus</th><th>The honest signal you are ready to move on</th></tr></thead>
+      <div class="tblwrap" tabindex="0" role="group" aria-label="Table, scrolls horizontally"><table class="tbl">
+        <thead><tr><th scope="col">Phase</th><th scope="col">Weeks</th><th scope="col">Focus</th><th scope="col">The honest signal you are ready to move on</th></tr></thead>
         <tbody>
           <tr><td>Foundations</td><td>1–2</td><td>Complexity analysis, the language's data structures cold, two or three patterns</td><td>You can state the complexity of any built-in operation you use without checking</td></tr>
           <tr><td>Pattern acquisition</td><td>3–6</td><td>One new pattern per week; template written from memory; deck fills up</td><td>Box one clears most days without a backlog</td></tr>

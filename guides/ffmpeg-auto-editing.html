@@ -58,7 +58,7 @@
 
 <a class="skip-link" href="#main">Skip to content</a>
 
-<nav class="site-nav">
+<nav class="site-nav" aria-label="Primary">
   <a class="site-nav__brand" href="/"><img class="site-nav__lion" src="/img/brand/lion-mark.svg" alt="" width="34" height="34" decoding="async"><span>YUSUF GADELRAB</span></a>
   <div class="site-nav__links">
     <a href="/">Work</a>
@@ -98,13 +98,13 @@
       </ol>
       <p>The discipline that keeps this fast is doing all the analysis on cheap passes and <strong>encoding exactly once</strong>, at the end. Every intermediate re-encode costs time and a generation of quality.</p>
       <h2>Probe first</h2>
-      <span class="formula">ffprobe -v error -show_entries \
+      <span class="formula" tabindex="0" role="group" aria-label="Formula, scrolls horizontally">ffprobe -v error -show_entries \
   format=duration:stream=width,height,r_frame_rate,codec_type \
   -of json input.mp4</span>
       <p>Hardcoding 1920x1080 at 30fps is how a pipeline breaks on the first phone clip someone hands you. Read it, branch on it.</p>
       <h2>Scene-change detection</h2>
       <p>ffmpeg's <code>select</code> filter exposes a per-frame <code>scene</code> score between 0 and 1, measuring how different a frame is from its predecessor. Thresholding that score gives you cut candidates.</p>
-      <span class="formula">ffmpeg -i input.mp4 \
+      <span class="formula" tabindex="0" role="group" aria-label="Formula, scrolls horizontally">ffmpeg -i input.mp4 \
   -filter:v "select='gt(scene,0.4)',showinfo" \
   -f null - 2&gt;&amp;1 | grep showinfo
 
@@ -120,7 +120,7 @@ ffprobe -show_frames -of csv=p=0 \
       </ul>
       <h2>Finding highlights with audio</h2>
       <p>For unedited footage — an event, a talk, a match — the visual track is often uniform and the interesting moments are audible: a cheer, a laugh, a sudden loudness jump. Audio energy is a crude but effective highlight detector, and it is cheap to compute.</p>
-      <span class="formula"># per-window loudness, one line per measurement
+      <span class="formula" tabindex="0" role="group" aria-label="Formula, scrolls horizontally"># per-window loudness, one line per measurement
 ffmpeg -i input.mp4 -af ebur128=framelog=verbose -f null - 2&gt;&amp;1
 
 # volume statistics across the whole file
@@ -132,7 +132,7 @@ ffmpeg -i input.mp4 -af silencedetect=noise=-30dB:d=0.6 -f null - 2&gt;&amp;1</s
       <p>Then pad each pick: a highlight starts before the spike. Two to three seconds of lead-in and one to two of tail turns a jarring fragment into a watchable clip.</p>
       <h2>Cutting without re-encoding</h2>
       <p>Stream copy is enormously faster than re-encoding, but it can only cut at keyframes. Put <code>-ss</code> before <code>-i</code> and ffmpeg seeks quickly to the nearest keyframe; put it after, and it decodes up to the exact frame, which is accurate and slow.</p>
-      <span class="formula"># fast, keyframe-aligned, no quality loss
+      <span class="formula" tabindex="0" role="group" aria-label="Formula, scrolls horizontally"># fast, keyframe-aligned, no quality loss
 ffmpeg -ss 00:01:12 -i input.mp4 -t 8 -c copy clip01.mp4
 
 # frame-accurate, re-encodes
@@ -141,7 +141,7 @@ ffmpeg -i input.mp4 -ss 00:01:12.400 -t 8 \
       <p>The pragmatic compromise: cut with stream copy when the keyframe interval is small enough that a fraction of a second of drift does not matter, and re-encode only the clips where the cut point must be exact. Or force a short keyframe interval when you control the source encode.</p>
       <h2>Concatenating the picks</h2>
       <p>The concat demuxer joins files without re-encoding, but only when every input shares the same codec, resolution, frame rate, and audio parameters. Mixed sources need the concat filter, which re-encodes.</p>
-      <span class="formula"># clips.txt
+      <span class="formula" tabindex="0" role="group" aria-label="Formula, scrolls horizontally"># clips.txt
 file 'clip01.mp4'
 file 'clip02.mp4'
 file 'clip03.mp4'
@@ -150,15 +150,15 @@ ffmpeg -f concat -safe 0 -i clips.txt -c copy reel.mp4</span>
       <p class="callout callout--warn">If concatenated output plays the first clip and then freezes or desyncs, the inputs did not actually match. Normalise every clip to identical codec, resolution, frame rate, sample rate, and channel layout first, or switch to the concat filter and accept one re-encode.</p>
       <h2>Converting to 9:16 vertical</h2>
       <p>Vertical delivery from horizontal footage is a framing decision, not a resize. Three options, in ascending order of effort:</p>
-      <div class="tblwrap"><table class="tbl">
-        <thead><tr><th>Approach</th><th>How it looks</th><th>When to use it</th></tr></thead>
+      <div class="tblwrap" tabindex="0" role="group" aria-label="Table, scrolls horizontally"><table class="tbl">
+        <thead><tr><th scope="col">Approach</th><th scope="col">How it looks</th><th scope="col">When to use it</th></tr></thead>
         <tbody>
           <tr><td>Blurred-background pad</td><td>Original centred, blurred enlarged copy behind it</td><td>Fast, safe default for talking-head and wide shots</td></tr>
           <tr><td>Centre crop</td><td>Fills the frame, cuts off both sides</td><td>Subject reliably centred; loses anything at the edges</td></tr>
           <tr><td>Tracked crop</td><td>Crop window follows the subject</td><td>Best result, needs detection per frame and real work</td></tr>
         </tbody>
       </table></div>
-      <span class="formula"># blurred-background 1080x1920
+      <span class="formula" tabindex="0" role="group" aria-label="Formula, scrolls horizontally"># blurred-background 1080x1920
 ffmpeg -i reel.mp4 -filter_complex \
  "[0:v]scale=1080:-2,boxblur=20:2,crop=1080:1920[bg];\
   [0:v]scale=1080:-2[fg];\
@@ -169,7 +169,7 @@ ffmpeg -i reel.mp4 -filter_complex \
 ffmpeg -i reel.mp4 -vf \
  "crop=ih*9/16:ih,scale=1080:1920" -c:a copy vertical.mp4</span>
       <p>Finish with loudness normalisation so clips cut from different parts of a recording do not jump in volume. The two-pass <code>loudnorm</code> filter targeting around −14 LUFS is the usual choice for social platforms.</p>
-      <span class="formula">ffmpeg -i vertical.mp4 -af loudnorm=I=-14:TP=-1.5:LRA=11 \
+      <span class="formula" tabindex="0" role="group" aria-label="Formula, scrolls horizontally">ffmpeg -i vertical.mp4 -af loudnorm=I=-14:TP=-1.5:LRA=11 \
   -c:v copy final.mp4</span>
       <h2>Why local beats an API for this</h2>
       <ul>

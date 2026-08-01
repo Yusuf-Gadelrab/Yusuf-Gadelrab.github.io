@@ -58,7 +58,7 @@
 
 <a class="skip-link" href="#main">Skip to content</a>
 
-<nav class="site-nav">
+<nav class="site-nav" aria-label="Primary">
   <a class="site-nav__brand" href="/"><img class="site-nav__lion" src="/img/brand/lion-mark.svg" alt="" width="34" height="34" decoding="async"><span>YUSUF GADELRAB</span></a>
   <div class="site-nav__links">
     <a href="/">Work</a>
@@ -96,13 +96,13 @@
         <li><strong>Retail price</strong> — what you charge. The only lever you fully control, and the one most people set too low out of nerves.</li>
         <li><strong>Platform fee</strong> — the storefront's cut plus payment processing. Typically a percentage plus a fixed per-transaction charge.</li>
       </ul>
-      <span class="formula">net per unit = retail − base cost − platform fee
+      <span class="formula" tabindex="0" role="group" aria-label="Formula, scrolls horizontally">net per unit = retail − base cost − platform fee
 
 platform fee ≈ (retail × fee rate) + fixed transaction charge</span>
       <h2>A worked example on a tee</h2>
       <p>Illustrative numbers: a mid-weight tee with a single front print, retailing at $32, on a storefront taking 5% plus roughly 3% payment processing and $0.30 per transaction.</p>
-      <div class="tblwrap"><table class="tbl">
-        <thead><tr><th>Line</th><th>Amount</th><th>Note</th></tr></thead>
+      <div class="tblwrap" tabindex="0" role="group" aria-label="Table, scrolls horizontally"><table class="tbl">
+        <thead><tr><th scope="col">Line</th><th scope="col">Amount</th><th scope="col">Note</th></tr></thead>
         <tbody>
           <tr><td>Retail</td><td>$32.00</td><td>Customer pays this plus shipping</td></tr>
           <tr><td>Base cost (print + fulfilment)</td><td>−$13.30</td><td>Garment, print, pick and pack</td></tr>
@@ -113,8 +113,8 @@ platform fee ≈ (retail × fee rate) + fixed transaction charge</span>
       </table></div>
       <h2>The same math on a hoodie</h2>
       <p>Hoodies carry a much higher base cost, so the percentage margin compresses even though the dollar margin grows.</p>
-      <div class="tblwrap"><table class="tbl">
-        <thead><tr><th>Line</th><th>Amount</th><th>Note</th></tr></thead>
+      <div class="tblwrap" tabindex="0" role="group" aria-label="Table, scrolls horizontally"><table class="tbl">
+        <thead><tr><th scope="col">Line</th><th scope="col">Amount</th><th scope="col">Note</th></tr></thead>
         <tbody>
           <tr><td>Retail</td><td>$58.00</td><td></td></tr>
           <tr><td>Base cost</td><td>−$19.20</td><td>Heavier garment, larger print area</td></tr>
@@ -126,8 +126,8 @@ platform fee ≈ (retail × fee rate) + fixed transaction charge</span>
       <p>Read those two tables together and the first real lesson appears: <strong>the hoodie earns more than twice the dollars per sale</strong>, which matters far more than the percentage. Percentages do not pay rent; dollars per order do. This is why brands push toward higher-ticket items and multi-item carts rather than optimising a tee's margin by a point.</p>
       <h2>The volume problem</h2>
       <p>$15.84 a shirt sounds fine until you multiply it.</p>
-      <div class="tblwrap"><table class="tbl">
-        <thead><tr><th>Units sold / month</th><th>Gross margin at $15.84</th><th>What that actually is</th></tr></thead>
+      <div class="tblwrap" tabindex="0" role="group" aria-label="Table, scrolls horizontally"><table class="tbl">
+        <thead><tr><th scope="col">Units sold / month</th><th scope="col">Gross margin at $15.84</th><th scope="col">What that actually is</th></tr></thead>
         <tbody>
           <tr><td>10</td><td>$158</td><td>A hobby</td></tr>
           <tr><td>50</td><td>$792</td><td>A meaningful side income</td></tr>
@@ -137,8 +137,8 @@ platform fee ≈ (retail × fee rate) + fixed transaction charge</span>
       </table></div>
       <p>Selling 200 shirts a month is not a design problem. It is a distribution problem — audience, content cadence, repeat customers, and retention. <strong>Print-on-demand solves inventory risk and solves nothing about demand,</strong> and demand is the part that is genuinely hard. The people who quit usually quit with a good product and no traffic.</p>
       <h2>The costs nobody puts in the spreadsheet</h2>
-      <div class="tblwrap"><table class="tbl">
-        <thead><tr><th>Hidden cost</th><th>Typical shape</th><th>Effect on net</th></tr></thead>
+      <div class="tblwrap" tabindex="0" role="group" aria-label="Table, scrolls horizontally"><table class="tbl">
+        <thead><tr><th scope="col">Hidden cost</th><th scope="col">Typical shape</th><th scope="col">Effect on net</th></tr></thead>
         <tbody>
           <tr><td>Returns and reprints</td><td>A few percent of orders, often on you rather than the supplier</td><td>Shaves a few percent off net across all units</td></tr>
           <tr><td>Samples</td><td>One unit of each product, at your own cost, plus shipping</td><td>A fixed upfront spend before any revenue exists</td></tr>

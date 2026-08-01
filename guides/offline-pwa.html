@@ -58,7 +58,7 @@
 
 <a class="skip-link" href="#main">Skip to content</a>
 
-<nav class="site-nav">
+<nav class="site-nav" aria-label="Primary">
   <a class="site-nav__brand" href="/"><img class="site-nav__lion" src="/img/brand/lion-mark.svg" alt="" width="34" height="34" decoding="async"><span>YUSUF GADELRAB</span></a>
   <div class="site-nav__links">
     <a href="/">Work</a>
@@ -93,7 +93,7 @@
       <p>Everything else — offline behaviour, caching strategy, storage — is your design problem, not a requirement. A PWA that installs but breaks offline is worse than a bookmark, so the caching work is where the actual engineering is.</p>
       <h2>The manifest fields that matter</h2>
       <p>A manifest is a small JSON file linked from the head. Most of the spec is optional; a handful of fields decide whether the install looks like an app or looks like a shortcut.</p>
-      <span class="formula">&lt;link rel="manifest" href="/apps/tradelog/"&gt;
+      <span class="formula" tabindex="0" role="group" aria-label="Formula, scrolls horizontally">&lt;link rel="manifest" href="/apps/tradelog/"&gt;
 
 {
   "name": "TradeLog",
@@ -119,8 +119,8 @@
         <li><strong>background_color</strong> — the splash colour while the app boots. Set it to your real background or the launch flashes white.</li>
       </ul>
       <h3>Manifest field reference</h3>
-      <div class="tblwrap"><table class="tbl">
-        <thead><tr><th>Field</th><th>Needed?</th><th>What it does</th><th>The common mistake</th></tr></thead>
+      <div class="tblwrap" tabindex="0" role="group" aria-label="Table, scrolls horizontally"><table class="tbl">
+        <thead><tr><th scope="col">Field</th><th scope="col">Needed?</th><th scope="col">What it does</th><th scope="col">The common mistake</th></tr></thead>
         <tbody>
           <tr><td><code>name</code></td><td>Required</td><td>Full app name on the install prompt and splash screen</td><td>Left as the site title, so the prompt offers to install a portfolio</td></tr>
           <tr><td><code>short_name</code></td><td>Strongly advised</td><td>The label under the home-screen icon</td><td>Longer than about 12 characters, so it truncates with an ellipsis</td></tr>
@@ -139,8 +139,8 @@
       <p>Two of those are worth setting even though almost nobody does. <code>id</code> pins the app's identity, so changing <code>start_url</code> a year later updates the installed app instead of quietly installing a second copy next to it. <code>display_override</code> is the only safe way to ask for anything newer than <code>standalone</code>, because browsers that do not recognise the value fall through to <code>display</code> instead of refusing the manifest.</p>
       <h2>Service worker caching strategies</h2>
       <p>A service worker is a script that sits between the app and the network and can answer requests from a cache. There are two strategies worth learning and one rule for choosing between them: <strong>cache-first for things that rarely change, network-first for things that do.</strong></p>
-      <div class="tblwrap"><table class="tbl">
-        <thead><tr><th>Strategy</th><th>How it works</th><th>Use it for</th></tr></thead>
+      <div class="tblwrap" tabindex="0" role="group" aria-label="Table, scrolls horizontally"><table class="tbl">
+        <thead><tr><th scope="col">Strategy</th><th scope="col">How it works</th><th scope="col">Use it for</th></tr></thead>
         <tbody>
           <tr><td>Cache-first</td><td>Serve from cache; only hit the network on a miss</td><td>App shell: HTML, CSS, JS, icons, fonts</td></tr>
           <tr><td>Network-first</td><td>Try the network; fall back to cache on failure</td><td>API responses, prices, anything time-sensitive</td></tr>
@@ -149,7 +149,7 @@
         </tbody>
       </table></div>
       <p>For an app with no backend, this collapses nicely: everything is app shell, so almost everything is cache-first, and there is no data endpoint to worry about because the data lives in the browser.</p>
-      <span class="formula">const CACHE = 'tradelog-v7';
+      <span class="formula" tabindex="0" role="group" aria-label="Formula, scrolls horizontally">const CACHE = 'tradelog-v7';
 const SHELL = ['/apps/tradelog/', '/apps/tradelog/index.html',
                '/apps/tradelog/app.js', '/apps/tradelog/app.css'];
 
@@ -180,8 +180,8 @@ self.addEventListener('fetch', e =&gt; {
       <p class="callout callout--warn">The failure mode is silent and it looks like your deploy did not work. Before debugging your build, open DevTools → Application → Service Workers and check whether a worker is stuck in <em>waiting</em>. That is the answer roughly nine times out of ten.</p>
       <h2>localStorage or IndexedDB?</h2>
       <p>Both keep data on the user's device. They are not interchangeable.</p>
-      <div class="tblwrap"><table class="tbl">
-        <thead><tr><th></th><th>localStorage</th><th>IndexedDB</th></tr></thead>
+      <div class="tblwrap" tabindex="0" role="group" aria-label="Table, scrolls horizontally"><table class="tbl">
+        <thead><tr><th scope="col"></th><th scope="col">localStorage</th><th scope="col">IndexedDB</th></tr></thead>
         <tbody>
           <tr><td>API</td><td>Synchronous, three methods, trivial</td><td>Asynchronous, transactional, verbose</td></tr>
           <tr><td>Data type</td><td>Strings only — you JSON round-trip everything</td><td>Structured objects, blobs, files</td></tr>

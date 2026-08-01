@@ -58,7 +58,7 @@
 
 <a class="skip-link" href="#main">Skip to content</a>
 
-<nav class="site-nav">
+<nav class="site-nav" aria-label="Primary">
   <a class="site-nav__brand" href="/"><img class="site-nav__lion" src="/img/brand/lion-mark.svg" alt="" width="34" height="34" decoding="async"><span>YUSUF GADELRAB</span></a>
   <div class="site-nav__links">
     <a href="/">Work</a>
@@ -93,7 +93,7 @@
       <p>The practices go by two names: <strong>GEO</strong> (generative engine optimization) and <strong>AEO</strong> (answer engine optimization). They overlap almost entirely, and neither requires abandoning normal SEO — a page that is crawlable, fast, and structured still wins both. What changes is the emphasis: unambiguous entities, self-contained passages, and machine-readable facts.</p>
       <h2>Entity consolidation: one @id, referenced everywhere</h2>
       <p>The single highest-leverage technical move is making a retrieval system certain <em>who</em> the site is about. If ten pages each declare a separate Person node, a model sees ten weakly-connected entities. If ten pages reference one canonical <code>@id</code>, it sees one entity with ten pieces of evidence.</p>
-      <span class="formula">// on the homepage only — the canonical definition
+      <span class="formula" tabindex="0" role="group" aria-label="Formula, scrolls horizontally">// on the homepage only — the canonical definition
 {
   "@context": "https://schema.org",
   "@type": "Person",
@@ -121,7 +121,7 @@
       </ul>
       <h2>llms.txt and llms-full.txt</h2>
       <p><code>llms.txt</code> is a proposed convention: a markdown file at the site root that gives a language model a clean, navigable summary of the site without HTML, navigation, or scripts. <code>llms-full.txt</code> is the expanded version containing the actual content.</p>
-      <span class="formula"># Site Name
+      <span class="formula" tabindex="0" role="group" aria-label="Formula, scrolls horizontally"># Site Name
 
 &gt; One-sentence description of who this is and what the site covers.
 
@@ -140,8 +140,8 @@
       <p>The reason to ship it anyway: it costs an hour, it is trivially machine-parseable, and it forces you to write a clean one-line description of every page — which is useful regardless of who reads it.</p>
       <h2>robots.txt and the named AI crawlers</h2>
       <p>AI companies operate separately-named agents, often splitting training crawlers from live-retrieval crawlers. Those are different decisions: blocking training while allowing retrieval is a coherent position, and so is the reverse.</p>
-      <div class="tblwrap"><table class="tbl">
-        <thead><tr><th>Agent</th><th>Operator</th><th>Primary purpose</th></tr></thead>
+      <div class="tblwrap" tabindex="0" role="group" aria-label="Table, scrolls horizontally"><table class="tbl">
+        <thead><tr><th scope="col">Agent</th><th scope="col">Operator</th><th scope="col">Primary purpose</th></tr></thead>
         <tbody>
           <tr><td>GPTBot</td><td>OpenAI</td><td>Training data collection</td></tr>
           <tr><td>OAI-SearchBot</td><td>OpenAI</td><td>Live search retrieval and citation</td></tr>
@@ -155,7 +155,7 @@
           <tr><td>CCBot</td><td>Common Crawl</td><td>Open crawl corpus used by many trainers</td></tr>
         </tbody>
       </table></div>
-      <span class="formula">User-agent: GPTBot
+      <span class="formula" tabindex="0" role="group" aria-label="Formula, scrolls horizontally">User-agent: GPTBot
 Allow: /
 
 User-agent: OAI-SearchBot
@@ -199,7 +199,7 @@ Sitemap: https://example.com/sitemap.xml</span>
       <p>The underlying test is simple: <strong>if someone pasted one section of your page into a chat with no other context, would it answer the question?</strong> If not, that section will not get cited.</p>
       <h2>IndexNow for fast recrawl</h2>
       <p>IndexNow is a protocol supported by Bing, Yandex, Seznam and others that lets you push URLs the moment they change instead of waiting for a crawl. That matters for AI search because Copilot is built on the Bing index — faster Bing recrawl means faster Copilot freshness.</p>
-      <span class="formula"># 1. host a key file at the site root
+      <span class="formula" tabindex="0" role="group" aria-label="Formula, scrolls horizontally"># 1. host a key file at the site root
 #    https://example.com/&lt;key&gt;.txt  containing exactly &lt;key&gt;
 
 # 2. ping on publish

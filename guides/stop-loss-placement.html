@@ -58,7 +58,7 @@
 
 <a class="skip-link" href="#main">Skip to content</a>
 
-<nav class="site-nav">
+<nav class="site-nav" aria-label="Primary">
   <a class="site-nav__brand" href="/"><img class="site-nav__lion" src="/img/brand/lion-mark.svg" alt="" width="34" height="34" decoding="async"><span>YUSUF GADELRAB</span></a>
   <div class="site-nav__links">
     <a href="/">Work</a>
@@ -97,7 +97,7 @@
         <li>Decide the account risk for this trade — commonly 0.5% to 1%.</li>
         <li>Divide. That gives share count. You do not get to choose it.</li>
       </ol>
-      <span class="formula">1R per share = entry − stop
+      <span class="formula" tabindex="0" role="group" aria-label="Formula, scrolls horizontally">1R per share = entry − stop
 Risk budget  = account × risk %
 Shares       = risk budget ÷ 1R per share</span>
       <p>Worked: a $30,000 account risking 1% is a $300 budget. Entry $48.00 with a structural stop at $45.60 gives 1R of $2.40 per share, so 125 shares, a $6,000 position. Move that stop to $47.40 and 1R is $0.60, so the same $300 budget buys 500 shares and a $24,000 position. <strong>Same risk, four times the exposure, purely because the structure was tighter.</strong></p>
@@ -107,14 +107,14 @@ Shares       = risk budget ÷ 1R per share</span>
       <p>The advantage is that the exit means something. When a structural stop fills, the reason you entered has been invalidated, so the exit carries information rather than just recording a bad hour. <strong>Signal and invalidation should be defined by the same object</strong> wherever possible.</p>
       <h2>Volatility-based stops (ATR)</h2>
       <p>Average true range measures how far an instrument typically moves in a period, including gaps. An ATR stop scales the distance to the instrument's own noise level instead of to a fixed percentage.</p>
-      <span class="formula">Stop = entry − (k × ATR14)
+      <span class="formula" tabindex="0" role="group" aria-label="Formula, scrolls horizontally">Stop = entry − (k × ATR14)
 
 common k values: 1.5 to 3.0 for swing timeframes</span>
       <p>Worked: entry $48.00, ATR14 of $1.20, k of 2 gives a stop at $45.60 and 1R of $2.40. If that stock's ATR later rises to $2.00, the same k puts the stop at $44.00 and the same risk budget buys fewer shares automatically. That auto-adjustment is the point: <strong>the position shrinks as the instrument gets noisier</strong>, without you having to remember to shrink it.</p>
       <h2>Percentage stops</h2>
       <p>A flat 7% or 8% stop is the simplest rule and the weakest one, because it ignores both structure and volatility. A 7% stop on a low-volatility utility is enormous; on a leveraged ETF or a small-cap biotech it is inside a normal Tuesday. It has exactly one virtue: it is impossible to rationalise away, which for a beginner is worth something.</p>
-      <div class="tblwrap"><table class="tbl">
-        <thead><tr><th>Method</th><th>Adapts to volatility</th><th>Carries information</th><th>Best used for</th></tr></thead>
+      <div class="tblwrap" tabindex="0" role="group" aria-label="Table, scrolls horizontally"><table class="tbl">
+        <thead><tr><th scope="col">Method</th><th scope="col">Adapts to volatility</th><th scope="col">Carries information</th><th scope="col">Best used for</th></tr></thead>
         <tbody>
           <tr><td>Structure</td><td>Indirectly</td><td>Yes — invalidates the thesis</td><td>Pattern and level-based swing trades</td></tr>
           <tr><td>ATR multiple</td><td>Yes, directly</td><td>Partly</td><td>Systematic entries, mixed-volatility universes</td></tr>

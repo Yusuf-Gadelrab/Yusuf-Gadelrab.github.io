@@ -58,7 +58,7 @@
 
 <a class="skip-link" href="#main">Skip to content</a>
 
-<nav class="site-nav">
+<nav class="site-nav" aria-label="Primary">
   <a class="site-nav__brand" href="/"><img class="site-nav__lion" src="/img/brand/lion-mark.svg" alt="" width="34" height="34" decoding="async"><span>YUSUF GADELRAB</span></a>
   <div class="site-nav__links">
     <a href="/">Work</a>
@@ -91,7 +91,7 @@
       <p class="callout callout--warn"><strong>Disclosure:</strong> I build and price digital products of my own and I ran exactly this arithmetic to pick my own checkout, so I am not a disinterested observer. There are no affiliate links on this page and I am not paid by any of these four. <strong>Second disclosure, on pricing:</strong> every platform below changes its fees. The rates in the table are the published rates at the time of writing and they are shown so the arithmetic is checkable, not because they are permanent. Recompute with the current numbers from each vendor's own pricing page before you make a decision worth money.</p>
       <h2>The only formula you need</h2>
       <p>Every one of these platforms reduces to the same shape: a percentage of the sale, plus a fixed amount per transaction, plus in some cases a separate payment-processor fee and a monthly plan fee. Write it once and the comparison stops being about marketing copy.</p>
-      <span class="formula">net_per_sale = price
+      <span class="formula" tabindex="0" role="group" aria-label="Formula, scrolls horizontally">net_per_sale = price
              - (price x platform_rate)
              - platform_fixed_fee
              - (price x processor_rate + processor_fixed)   # only if you bring your own processor
@@ -99,7 +99,7 @@
 
 monthly_net = (net_per_sale x units) - monthly_plan_fee</span>
       <p>The second line is what catches people. A plan that advertises a 0% platform fee still charges you Stripe's rate underneath, and a plan with a monthly fee only wins above a certain unit volume. That break-even is a division, not an opinion:</p>
-      <span class="formula">break_even_units = monthly_plan_fee / (fee_saved_per_sale)
+      <span class="formula" tabindex="0" role="group" aria-label="Formula, scrolls horizontally">break_even_units = monthly_plan_fee / (fee_saved_per_sale)
 
 # illustration only, using an assumed $29/mo plan that removes
 # an assumed 5% platform fee on a $39 product:
@@ -108,8 +108,8 @@ monthly_net = (net_per_sale x units) - monthly_plan_fee</span>
       <p>Below fifteen sales a month in that illustration, the free plan wins. Above it, the paid plan does. If you do not yet know which side of that line you are on, you are on the free side, because you have not sold anything yet.</p>
       <h2>The fee structures, side by side</h2>
       <p>Read this as the shape of each model rather than as four permanent numbers.</p>
-      <div class="tblwrap"><table class="tbl">
-        <thead><tr><th></th><th>Lemon Squeezy</th><th>Gumroad</th><th>Payhip</th><th>Etsy</th></tr></thead>
+      <div class="tblwrap" tabindex="0" role="group" aria-label="Table, scrolls horizontally"><table class="tbl">
+        <thead><tr><th scope="col"></th><th scope="col">Lemon Squeezy</th><th scope="col">Gumroad</th><th scope="col">Payhip</th><th scope="col">Etsy</th></tr></thead>
         <tbody>
           <tr><td>Model</td><td>Merchant of record</td><td>Merchant of record</td><td>Software plus your own processor</td><td>Marketplace</td></tr>
           <tr><td>Published rate at time of writing</td><td>5% + $0.50 per transaction, with surcharges for international cards and subscription renewals</td><td>10% flat per sale, payment processing included</td><td>5% on the free plan, lower or zero on paid monthly plans</td><td>$0.20 listing fee, 6.5% transaction fee, plus payment processing (roughly 3% + $0.25 in the US, varies by country)</td></tr>
@@ -125,8 +125,8 @@ monthly_net = (net_per_sale x units) - monthly_plan_fee</span>
       </table></div>
       <h2>The same $39 product, four times</h2>
       <p>Using the published rates above on a single $39 download, with no discount and a US card. The point of this table is the spread, not the decimals.</p>
-      <div class="tblwrap"><table class="tbl">
-        <thead><tr><th>Platform</th><th>Fees on a $39 sale</th><th>You keep</th><th>Effective take rate</th></tr></thead>
+      <div class="tblwrap" tabindex="0" role="group" aria-label="Table, scrolls horizontally"><table class="tbl">
+        <thead><tr><th scope="col">Platform</th><th scope="col">Fees on a $39 sale</th><th scope="col">You keep</th><th scope="col">Effective take rate</th></tr></thead>
         <tbody>
           <tr><td>Lemon Squeezy</td><td>5% ($1.95) + $0.50</td><td><strong>$36.55</strong></td><td>6.3%</td></tr>
           <tr><td>Payhip, paid plan at 0% platform fee</td><td>Stripe only: 2.9% ($1.13) + $0.30</td><td><strong>$37.57</strong> before the monthly plan fee</td><td>3.7% plus the plan</td></tr>
@@ -147,7 +147,7 @@ monthly_net = (net_per_sale x units) - monthly_plan_fee</span>
       <h2>Discovery: when is a marketplace worth the higher cut</h2>
       <p>Lemon Squeezy, Payhip, and to a large extent Gumroad are storefronts. They process a sale you brought. Nobody browses them looking for something to buy. Etsy is the opposite: it has search traffic, and people arrive with intent and no idea who you are. Gumroad Discover is a partial middle ground, surfacing products inside Gumroad at a higher fee on the sales it sources.</p>
       <p>The question is never "is Etsy expensive", it is "does Etsy bring enough incremental sales to beat a cheaper channel I have to fill myself". That is another division:</p>
-      <span class="formula">extra_units_needed = (own_channel_net / marketplace_net) - 1
+      <span class="formula" tabindex="0" role="group" aria-label="Formula, scrolls horizontally">extra_units_needed = (own_channel_net / marketplace_net) - 1
 
 # organic Etsy sale vs Lemon Squeezy, at $39:
 #   36.55 / 34.84 - 1 = 0.049  ->  about 5% more units

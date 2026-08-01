@@ -58,7 +58,7 @@
 
 <a class="skip-link" href="#main">Skip to content</a>
 
-<nav class="site-nav">
+<nav class="site-nav" aria-label="Primary">
   <a class="site-nav__brand" href="/"><img class="site-nav__lion" src="/img/brand/lion-mark.svg" alt="" width="34" height="34" decoding="async"><span>YUSUF GADELRAB</span></a>
   <div class="site-nav__links">
     <a href="/">Work</a>
@@ -93,8 +93,8 @@
       <p>A vendor who tests 200 parameter combinations and publishes the best one is not showing you a strategy result. They are showing you the maximum of 200 draws, which is a very different object with a very different expected out-of-sample value. A screenshot in a Discord is worse: nobody screenshots the flat quarter, so what circulates is the right tail of a population you never get to see.</p>
       <p>This applies to your own work with no discount. If you stopped iterating the moment the equity curve looked good, you ran the same selection process on yourself, just without keeping the log. That is the mechanism behind <a href="/guides/backtest-overfitting.html">backtest overfitting</a>, and it is why the number of configurations you tried is a more important disclosure than any statistic in the table.</p>
       <h2>The whole guide in one table</h2>
-      <div class="tblwrap"><table class="tbl">
-        <thead><tr><th>Statistic</th><th>What it looks like</th><th>What it hides</th></tr></thead>
+      <div class="tblwrap" tabindex="0" role="group" aria-label="Table, scrolls horizontally"><table class="tbl">
+        <thead><tr><th scope="col">Statistic</th><th scope="col">What it looks like</th><th scope="col">What it hides</th></tr></thead>
         <tbody>
           <tr><td>Win rate</td><td>68% winners</td><td>Nothing at all without the payoff ratio. 68% can be a losing system.</td></tr>
           <tr><td>Profit factor</td><td>2.1, which sounds robust</td><td>Usually one or two outlier trades. Recompute it without the single best trade.</td></tr>
@@ -112,12 +112,12 @@
       <h2>Win rate is not a result</h2>
       <p>Win rate is the most quoted and least informative number in retail trading. On its own it says nothing about whether a system makes money, because it does not describe how big the winners are relative to the losers.</p>
       <p>The break-even win rate falls straight out of the payoff ratio, where payoff is average win divided by average loss, both measured in R:</p>
-      <span class="formula">payoff            = average win R / average loss R
+      <span class="formula" tabindex="0" role="group" aria-label="Formula, scrolls horizontally">payoff            = average win R / average loss R
 break-even win %  = 1 / (1 + payoff)
 
 example: payoff 2.0  ->  1 / 3.0  =  33.3%</span>
-      <div class="tblwrap"><table class="tbl">
-        <thead><tr><th>Payoff ratio (avg win : avg loss)</th><th>Break-even win rate</th><th>Reading</th></tr></thead>
+      <div class="tblwrap" tabindex="0" role="group" aria-label="Table, scrolls horizontally"><table class="tbl">
+        <thead><tr><th scope="col">Payoff ratio (avg win : avg loss)</th><th scope="col">Break-even win rate</th><th scope="col">Reading</th></tr></thead>
         <tbody>
           <tr><td>0.5 : 1</td><td>66.7%</td><td>A 68% win rate here is barely above water</td></tr>
           <tr><td>1.0 : 1</td><td>50.0%</td><td>Coin flip, before costs</td></tr>
@@ -131,13 +131,13 @@ example: payoff 2.0  ->  1 / 3.0  =  33.3%</span>
       <p>High win rates also get advertised for a behavioural reason: they are pleasant to trade and easy to sell. They are usually produced by taking profits quickly while letting losers run to the stop, which gives a long comfortable string of green followed by a cluster of full-sized losses.</p>
       <h2>Profit factor and the single best trade</h2>
       <p>Profit factor is gross profit divided by gross loss. Above 1.0 the system made money, and vendors like it because a value like 2.1 sounds sturdy. It is extremely fragile to outliers.</p>
-      <span class="formula">profit factor = sum of winning trades / |sum of losing trades|
+      <span class="formula" tabindex="0" role="group" aria-label="Formula, scrolls horizontally">profit factor = sum of winning trades / |sum of losing trades|
 
 80 trades, gross profit 42.0R, gross loss 20.0R
 PF = 42.0 / 20.0 = 2.10</span>
       <p>Now remove the single best trade, which happened to be +14.0R on a biotech gap:</p>
-      <div class="tblwrap"><table class="tbl">
-        <thead><tr><th>Measure</th><th>All 80 trades</th><th>Excluding best trade</th><th>Change</th></tr></thead>
+      <div class="tblwrap" tabindex="0" role="group" aria-label="Table, scrolls horizontally"><table class="tbl">
+        <thead><tr><th scope="col">Measure</th><th scope="col">All 80 trades</th><th scope="col">Excluding best trade</th><th scope="col">Change</th></tr></thead>
         <tbody>
           <tr><td>Gross profit</td><td>42.0R</td><td>28.0R</td><td>-33%</td></tr>
           <tr><td>Gross loss</td><td>20.0R</td><td>20.0R</td><td>unchanged</td></tr>
@@ -154,12 +154,12 @@ PF = 42.0 / 20.0 = 2.10</span>
       <p>A percentile table beats both. The 10th, 25th, 50th, 75th and 90th percentile of trade R tells you the shape in five numbers. If your own journal software cannot produce that, it is worth fixing, because the same distribution feeds every sizing decision you make. <a href="/apps/tradelog/">TradeLog</a> keeps per-trade R locally so the distribution is recoverable rather than reduced to a headline average.</p>
       <h2>Sharpe ratio has an error bar too</h2>
       <p>Sharpe is a ratio of mean excess return to the standard deviation of returns. Reported without a sample size it is close to meaningless, because the Sharpe estimate itself has a standard error that shrinks only with the square root of the number of observations. A useful approximation, valid for roughly normal returns:</p>
-      <span class="formula">SE(Sharpe)  ~  sqrt( (1 + S^2 / 2) / N )
+      <span class="formula" tabindex="0" role="group" aria-label="Formula, scrolls horizontally">SE(Sharpe)  ~  sqrt( (1 + S^2 / 2) / N )
 
 S = Sharpe at the SAME frequency as the observations
 N = number of return observations</span>
       <p>Work an example the way a real report presents it. Someone quotes an annualised Sharpe of 1.0 built from 40 monthly observations, a little over three years:</p>
-      <span class="formula">monthly S   = 1.0 / sqrt(12)        = 0.289
+      <span class="formula" tabindex="0" role="group" aria-label="Formula, scrolls horizontally">monthly S   = 1.0 / sqrt(12)        = 0.289
 SE(monthly) = sqrt((1 + 0.042) / 40) = 0.161
 SE(annual)  = 0.161 x sqrt(12)      = 0.559
 
@@ -184,18 +184,18 @@ SE(annual)  = 0.161 x sqrt(12)      = 0.559
       <p>CAGR also embeds a compounding assumption that only holds if you could actually have scaled into it. Size that works on $30,000 may not fill at $3,000,000 in the same names, and a report that compounds without a liquidity or capacity note has quietly assumed infinite depth.</p>
       <h2>Sample size, and the confidence interval nobody prints</h2>
       <p>This is the section that decides whether the rest of the report is worth reading. An expectancy figure without an interval around it is a point estimate presented as a fact. The interval is simple to compute if the report gives you the number of trades and the standard deviation of trade R:</p>
-      <span class="formula">SE(mean R) = s / sqrt(N)
+      <span class="formula" tabindex="0" role="group" aria-label="Formula, scrolls horizontally">SE(mean R) = s / sqrt(N)
 95% CI     = mean R  +/-  1.96 x SE
 
 s = standard deviation of per-trade R
 N = number of trades</span>
       <p>Worked on a typical published sample. A course sells a setup showing +0.20R expectancy over 60 trades, with a per-trade standard deviation of 1.4R, which is unremarkable for a system with a hard stop and open-ended winners:</p>
-      <span class="formula">SE   = 1.4 / sqrt(60)   = 0.181
+      <span class="formula" tabindex="0" role="group" aria-label="Formula, scrolls horizontally">SE   = 1.4 / sqrt(60)   = 0.181
 95% CI = 0.20 +/- 1.96 x 0.181
        = -0.154R  to  +0.554R</span>
       <p><strong>The interval covers everything from a losing system to an excellent one.</strong> The honest summary of that backtest is not that the setup makes 0.20R per trade. It is that 60 trades cannot tell you whether the setup makes money.</p>
       <p>Because the interval narrows with the square root of N, buying precision is expensive. Halving the width takes four times the trades. The sample size needed for a target half-width w is:</p>
-      <span class="formula">N = (1.96 x s / w)^2
+      <span class="formula" tabindex="0" role="group" aria-label="Formula, scrolls horizontally">N = (1.96 x s / w)^2
 
 s = 1.4R,  want half-width w = 0.10R
 N = (1.96 x 1.4 / 0.10)^2 = 27.44^2 ~ 753 trades
@@ -223,7 +223,7 @@ N = (1.96 x 1.4 / 0.05)^2 ~ 3,011 trades</span>
       <p>The smell test for leakage is counterintuitive: <strong>results that are too clean are the warning sign, not the reassurance.</strong> A high win rate combined with a small drawdown and an equity curve that goes up in a near-straight line is far more likely to be a leak than a discovery. Real edges are noisy, and their equity curves have flat stretches that last uncomfortably long. When I see a suspiciously smooth curve I go looking for the leak before I look at the returns, and it usually turns out to be normalisation or same-bar fills. The structural fix is walk-forward rather than a single split, which is covered in the <a href="/guides/walk-forward-backtest.html">walk-forward testing guide</a>.</p>
       <h2>Costs, and why a penny matters more than you think</h2>
       <p>Most reports either omit costs or apply a flat commission and stop there. The full set is commission, half the bid-ask spread on each side, slippage against the quoted price, borrow cost on shorts, and financing on anything held with leverage. Expressed in R, the drag is:</p>
-      <span class="formula">cost per share (round trip)
+      <span class="formula" tabindex="0" role="group" aria-label="Formula, scrolls horizontally">cost per share (round trip)
   = 2 x commission + spread crossed + slippage
 
 cost drag in R = cost per share / (1R per share)
@@ -231,8 +231,8 @@ cost drag in R = cost per share / (1R per share)
 example: 0.005 commission x2, 0.04 spread, 0.04 slippage
   = 0.09 per share round trip</span>
       <p>The critical property is that <strong>cost drag in R is inversely proportional to your stop distance.</strong> The same nine cents is trivial on a wide swing stop and fatal on a tight intraday one:</p>
-      <div class="tblwrap"><table class="tbl">
-        <thead><tr><th>1R per share (stop distance)</th><th>Cost drag per trade</th><th>Effect on a +0.10R gross edge</th></tr></thead>
+      <div class="tblwrap" tabindex="0" role="group" aria-label="Table, scrolls horizontally"><table class="tbl">
+        <thead><tr><th scope="col">1R per share (stop distance)</th><th scope="col">Cost drag per trade</th><th scope="col">Effect on a +0.10R gross edge</th></tr></thead>
         <tbody>
           <tr><td>$0.25</td><td>0.360R</td><td>Deeply negative, strategy is untradeable</td></tr>
           <tr><td>$0.50</td><td>0.180R</td><td>Negative</td></tr>

@@ -58,7 +58,7 @@
 
 <a class="skip-link" href="#main">Skip to content</a>
 
-<nav class="site-nav">
+<nav class="site-nav" aria-label="Primary">
   <a class="site-nav__brand" href="/"><img class="site-nav__lion" src="/img/brand/lion-mark.svg" alt="" width="34" height="34" decoding="async"><span>YUSUF GADELRAB</span></a>
   <div class="site-nav__links">
     <a href="/">Work</a>
@@ -98,8 +98,8 @@
       <p>When local loses: long multi-step reasoning, large-context work, anything where a subtle mistake is expensive, and code generation of any real complexity. Use the frontier API there and stop being precious about it.</p>
       <h2>Picking a model for your hardware</h2>
       <p>The binding constraint is memory. A rough guide for quantised weights:</p>
-      <div class="tblwrap"><table class="tbl">
-        <thead><tr><th>RAM / VRAM</th><th>Realistic model size</th><th>What it is good for</th></tr></thead>
+      <div class="tblwrap" tabindex="0" role="group" aria-label="Table, scrolls horizontally"><table class="tbl">
+        <thead><tr><th scope="col">RAM / VRAM</th><th scope="col">Realistic model size</th><th scope="col">What it is good for</th></tr></thead>
         <tbody>
           <tr><td>8 GB</td><td>3B–7B quantised</td><td>Classification, tagging, short rewrites</td></tr>
           <tr><td>16 GB</td><td>7B–14B quantised</td><td>Drafting, summarising, structured extraction</td></tr>
@@ -112,7 +112,7 @@
       <p>Quantisation stores weights at lower precision — 4-bit and 5-bit variants being the common choices — which shrinks memory use several-fold for a modest quality loss. Practical rule: <strong>a larger model at 4-bit usually beats a smaller model at 8-bit</strong> at the same memory budget. Below 4-bit, quality degrades quickly.</p>
       <h2>Use the HTTP API, not the CLI</h2>
       <p>Ollama exposes a local HTTP endpoint on port 11434. Scripts should call that, not shell out to the interactive command.</p>
-      <span class="formula">curl http://localhost:11434/api/generate -d '{
+      <span class="formula" tabindex="0" role="group" aria-label="Formula, scrolls horizontally">curl http://localhost:11434/api/generate -d '{
   "model": "your-model",
   "prompt": "Summarise this in one sentence: ...",
   "stream": false,

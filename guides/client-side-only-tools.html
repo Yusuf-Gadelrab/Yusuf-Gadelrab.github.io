@@ -58,7 +58,7 @@
 
 <a class="skip-link" href="#main">Skip to content</a>
 
-<nav class="site-nav">
+<nav class="site-nav" aria-label="Primary">
   <a class="site-nav__brand" href="/"><img class="site-nav__lion" src="/img/brand/lion-mark.svg" alt="" width="34" height="34" decoding="async"><span>YUSUF GADELRAB</span></a>
   <div class="site-nav__links">
     <a href="/">Work</a>
@@ -102,8 +102,8 @@
       <p>No server means no outage, no rate limit, no deprecation. Offline through a service worker, it works on a plane. A tool built this way in 2020 still runs today with no maintenance, which is not a claim most SaaS side projects can make.</p>
       <h2>What you give up</h2>
       <p>This is the part most local-first pitches skip, so here it is plainly.</p>
-      <div class="tblwrap"><table class="tbl">
-        <thead><tr><th>You lose</th><th>What that means in practice</th></tr></thead>
+      <div class="tblwrap" tabindex="0" role="group" aria-label="Table, scrolls horizontally"><table class="tbl">
+        <thead><tr><th scope="col">You lose</th><th scope="col">What that means in practice</th></tr></thead>
         <tbody>
           <tr><td>Cross-device sync</td><td>Data logged on the laptop is not on the phone. Two devices means two separate datasets.</td></tr>
           <tr><td>Backup</td><td>Clearing browser data deletes everything. On iOS, storage can be evicted after long non-use.</td></tr>

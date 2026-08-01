@@ -58,7 +58,7 @@
 
 <a class="skip-link" href="#main">Skip to content</a>
 
-<nav class="site-nav">
+<nav class="site-nav" aria-label="Primary">
   <a class="site-nav__brand" href="/"><img class="site-nav__lion" src="/img/brand/lion-mark.svg" alt="" width="34" height="34" decoding="async"><span>YUSUF GADELRAB</span></a>
   <div class="site-nav__links">
     <a href="/">Work</a>
@@ -119,12 +119,12 @@
       <p>Every key, token, password, and connection string belongs in an environment variable loaded from a file git never sees. The habit that actually holds: create <code>.env</code> before the first route, and put <code>.env</code> in <code>.gitignore</code> in that same first commit. "I'll add it to .gitignore before I push" is the sentence that precedes almost every leaked-key story.</p>
       <h3>2. Treat .env.example as the only env file that belongs in git</h3>
       <p>Commit a <code>.env.example</code> with variable names and placeholder values, never the real file. That gives the next person, or you on a new laptop in six months, the exact shape of what's required without a single real credential ever touching version control.</p>
-      <span class="formula">.env.example
+      <span class="formula" tabindex="0" role="group" aria-label="Formula, scrolls horizontally">.env.example
 STRIPE_SECRET_KEY=sk_live_placeholder_never_a_real_value
 DATABASE_URL=postgres://user:pass@host:5432/db</span>
       <h3>3. Audit git history, not just the working tree</h3>
       <p>Deleting a file in a new commit does not remove it from history. Anyone who clones the repo can still read every version that ever existed, including the one from three commits ago before anyone noticed.</p>
-      <span class="formula">git log --all --full-history -- .env
+      <span class="formula" tabindex="0" role="group" aria-label="Formula, scrolls horizontally">git log --all --full-history -- .env
 git log -p --all -S "sk_live" -- .</span>
       <p>If something real turns up, do not just delete it in a new commit. Purge it from history with <code>git filter-repo</code> (the maintained tool for this) or BFG Repo-Cleaner, then force-push to every remote, and treat the key as burned regardless, per the next point.</p>
       <h3>4. Rotate first, investigate second</h3>
@@ -132,7 +132,7 @@ git log -p --all -S "sk_live" -- .</span>
       <h2>Dependencies: someone else's bug becomes yours the moment you install it</h2>
       <h3>5. Pin your lockfile and scan it for known CVEs on every install</h3>
       <p><code>package.json</code> and <code>requirements.txt</code> describe ranges; <code>package-lock.json</code>, <code>yarn.lock</code>, and <code>uv.lock</code> pin exact versions. Commit the lockfile, always. Then check the pinned versions against a vulnerability database, not just at launch but on a cadence: a dependency that was clean the day it was installed can pick up a CVE the following month with nothing on your side having changed.</p>
-      <span class="formula">npm audit --omit=dev
+      <span class="formula" tabindex="0" role="group" aria-label="Formula, scrolls horizontally">npm audit --omit=dev
 pip-audit -r requirements.txt
 osv-scanner -L package-lock.json</span>
       <p>Most findings resolve with a version bump. The ones that don't, usually a transitive dependency stuck behind an unmaintained package, are worth a one-line comment explaining why it's accepted, so the next audit doesn't rediscover the same dead end.</p>
@@ -155,11 +155,11 @@ osv-scanner -L package-lock.json</span>
       <h2>What a browser or a scanner can see from the outside</h2>
       <h3>13. Force HTTPS everywhere and turn on HSTS</h3>
       <p>Most serious hosts do this by default now, which is exactly why it's easy to forget to verify. Confirm plain HTTP actually redirects rather than serving content, and confirm the HSTS header is present so a browser refuses to downgrade even if something tries to force it.</p>
-      <span class="formula">curl -sI http://yourapp.com   # should redirect, not serve content
+      <span class="formula" tabindex="0" role="group" aria-label="Formula, scrolls horizontally">curl -sI http://yourapp.com   # should redirect, not serve content
 curl -sI https://yourapp.com | grep -i strict-transport-security</span>
       <h3>14. Set the handful of security headers that actually matter</h3>
       <p>This does not need a security team, it needs about six headers: a Content-Security-Policy, <code>X-Content-Type-Options: nosniff</code>, a frame-ancestors or X-Frame-Options rule, a sane cookie policy (<code>Secure</code>, <code>HttpOnly</code>, <code>SameSite</code>), and a referrer policy. Most frameworks ship a one-line helper for all of it. Check what's actually being sent, not what you think you configured.</p>
-      <span class="formula">curl -sI https://yourapp.com | grep -iE 'content-security-policy|x-frame-options|x-content-type-options'</span>
+      <span class="formula" tabindex="0" role="group" aria-label="Formula, scrolls horizontally">curl -sI https://yourapp.com | grep -iE 'content-security-policy|x-frame-options|x-content-type-options'</span>
       <h3>15. Get CORS right, especially once cookies or auth headers are involved</h3>
       <p>A wildcard <code>Access-Control-Allow-Origin: *</code> next to <code>Access-Control-Allow-Credentials: true</code> is a misconfiguration most browsers refuse to honor, but the version that does work, an explicit origin reflected back for every request, is just as bad in practice. Allow only the origins that genuinely need access, and treat the list like a firewall rule, not a formality.</p>
       <h2>Application basics that get skipped under deadline pressure</h2>
@@ -176,8 +176,8 @@ curl -sI https://yourapp.com | grep -i strict-transport-security</span>
       <p>This is the point where "no known bad patterns" stops being enough and a customer wants evidence: a disclosure policy (a <code>security.txt</code> file is the lightest version of this), branch protection with required reviews, CI that runs tests and a secret scan on every pull request, dependency updates on a schedule rather than never, and a documented, even lightweight, incident response process. None of it is exotic. All of it is exactly what shows up on the enterprise security questionnaires and SOC 2 readiness checklists that eventually land on a growing founder's desk, usually with a two-week deadline attached.</p>
       <h2>What DIRA checks for you automatically</h2>
       <p>A meaningful share of this checklist is mechanical enough to automate, which is the reason I built <a href="/dira.html">DIRA</a>: a free, MIT-licensed command-line scanner that runs the secrets, dependency, config, and TLS checks above against your own codebase in under a second on a warm run, with zero telemetry and zero dependencies of its own.</p>
-      <div class="tblwrap"><table class="tbl">
-        <thead><tr><th>Checklist items</th><th>What DIRA covers</th></tr></thead>
+      <div class="tblwrap" tabindex="0" role="group" aria-label="Table, scrolls horizontally"><table class="tbl">
+        <thead><tr><th scope="col">Checklist items</th><th scope="col">What DIRA covers</th></tr></thead>
         <tbody>
           <tr><td>1–4, secrets and git history</td><td>Secret scanning across two dozen provider patterns plus an entropy-gated generic rule, redacted before they reach a report, plus a dedicated pass over git history for anything since removed from the working tree.</td></tr>
           <tr><td>5–6, dependencies and licenses</td><td>Every lockfile entry resolved against OSV.dev for known CVEs, and every dependency's license classified, so copyleft risk shows up before a diligence call instead of during one.</td></tr>

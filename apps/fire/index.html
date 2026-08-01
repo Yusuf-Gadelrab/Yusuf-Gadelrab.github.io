@@ -135,6 +135,9 @@ footer a:hover{text-decoration:underline}
 .mkt .tradeoff{margin-top:1.05rem;padding:.85rem 1rem;border:1px solid var(--border);border-radius:12px;color:var(--dim);font-size:.85rem;line-height:1.7}
 .mkt .tradeoff b{color:var(--gold-soft)}
 .mkt .faq-a{color:var(--dim);font-size:.88rem;line-height:1.7;margin:0}
+.mkt .links{display:flex;flex-wrap:wrap;gap:.55rem;margin-top:.9rem}
+.mkt .links a{display:inline-block;border:1px solid var(--border);border-radius:12px;padding:.6rem .9rem;color:var(--gold-soft);text-decoration:none;font-size:.82rem;letter-spacing:.02em;transition:border-color .15s,box-shadow .15s}
+.mkt .links a:hover{border-color:rgba(212,175,55,.45);box-shadow:0 6px 20px rgba(212,175,55,.18)}
 </style>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"SoftwareApplication","@id":"https://yusuf-gadelrab.github.io/apps/fire/#app","name":"Fire — Offline Daily Ritual Tracker","url":"https://yusuf-gadelrab.github.io/apps/fire/","description":"A free offline habit tracker and daily ritual checklist. It resets each morning, tracks 100%-day streaks, and runs entirely in the browser with no account and no server — every task, tick and streak is stored in localStorage on the device.","applicationCategory":"LifestyleApplication","operatingSystem":"iOS, Android, Windows, macOS, Linux — any modern browser","browserRequirements":"Requires JavaScript and localStorage","softwareVersion":"1.0","isAccessibleForFree":true,"featureList":["Daily ritual checklist that clears itself at local midnight","Animated progress ring showing the percentage of today's list completed","Consecutive 100%-day streak counter with an all-time best","Fourteen-day completion grid with a perfect-day count","A once-a-day \"Shipped.\" moment when the list reaches 100%","Add, rename, reorder and delete your own tasks","Export and import all data as a JSON backup file","Installable offline PWA with no account, no server and no tracking"],"offers":{"@type":"Offer","price":"0","priceCurrency":"USD","availability":"https://schema.org/OnlineOnly"},"author":{"@id":"https://yusuf-gadelrab.github.io/#person"},"publisher":{"@type":"Organization","name":"DHAHAB"}}</script>
 <meta name="description" content="A free offline habit tracker and daily ritual checklist. It resets each morning, tracks 100%-day streaks, and needs no account, no server and no signup.">
@@ -155,8 +158,8 @@ footer a:hover{text-decoration:underline}
 <!-- geo:entity — canonical Person node, one entity across every page -->
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebPage","@id":"https://yusuf-gadelrab.github.io/apps/fire/#webpage","url":"https://yusuf-gadelrab.github.io/apps/fire/","inLanguage":"en","isPartOf":{"@id":"https://yusuf-gadelrab.github.io/#website"},"about":{"@id":"https://yusuf-gadelrab.github.io/#person"},"publisher":{"@id":"https://yusuf-gadelrab.github.io/#person"}}</script>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://yusuf-gadelrab.github.io/"},{"@type":"ListItem","position":2,"name":"Apps","item":"https://yusuf-gadelrab.github.io/apps.html"},{"@type":"ListItem","position":3,"name":"Fire"}]}</script>
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"HowTo","name":"Install Fire on your phone","description":"Install Fire, a free offline daily checklist app, on an iPhone or iPad from Safari. No App Store, no download, no signup.","totalTime":"PT1M","tool":[{"@type":"HowToTool","name":"Safari on iOS"}],"step":[{"@type":"HowToStep","name":"Open this page in Safari.","text":"Open this page in Safari. On iPhone and iPad only Safari can do this — Chrome and Firefox on iOS are not allowed to add a web app to the Home Screen.","url":"https://yusuf-gadelrab.github.io/apps/fire/#install"},{"@type":"HowToStep","name":"Tap the Share button.","text":"Tap the Share button. It is the square with an arrow pointing up out of it, in the toolbar at the bottom of the screen.","url":"https://yusuf-gadelrab.github.io/apps/fire/#install"},{"@type":"HowToStep","name":"Scroll down and tap “Add to Home Screen.”","text":"Scroll down and tap “Add to Home Screen.” It sits under the row of share targets, in the list of actions.","url":"https://yusuf-gadelrab.github.io/apps/fire/#install"},{"@type":"HowToStep","name":"Tap “Add.”","text":"Tap “Add.” The Fire icon lands on your Home Screen and opens like any other app.","url":"https://yusuf-gadelrab.github.io/apps/fire/#install"}]}</script>
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","@id":"https://yusuf-gadelrab.github.io/apps/fire/#faq","mainEntity":[{"@type":"Question","name":"Does Fire need an internet connection?","acceptedAnswer":{"@type":"Answer","text":"Only for the very first load. After that the app is cached on your device and opens and runs with no connection at all. The daily reset, the percentage ring and the streak are all computed on your own phone, so airplane mode changes nothing."}},{"@type":"Question","name":"Do I need an account to use Fire?","acceptedAnswer":{"@type":"Answer","text":"No. There is no signup, no login, no email address and no password. Open the page, edit the list, and start ticking things off."}},{"@type":"Question","name":"Where are my tasks and streaks stored?","acceptedAnswer":{"@type":"Answer","text":"In your browser’s localStorage, on the one device you typed them into. There is no server behind this app, so nothing is uploaded and nobody, including me, can see your list."}},{"@type":"Question","name":"Does Fire sync between my phone and my laptop?","acceptedAnswer":{"@type":"Answer","text":"No. There is no sync and no cloud backup, so each device keeps its own separate list and streak. To move one across, use Export JSON on one device and Import JSON on the other."}},{"@type":"Question","name":"Is Fire free?","acceptedAnswer":{"@type":"Answer","text":"Yes. It is free, with no trial, no paid tier, no ads and nothing locked behind a purchase. I built it to run my own day and left it open for anyone who wants it."}},{"@type":"Question","name":"How do I export my history or get the app off my phone?","acceptedAnswer":{"@type":"Answer","text":"Press Export JSON in the Last 14 days card to download your tasks and streak history as a file, and Import JSON to load one back in. To remove the app, press and hold its Home Screen icon and delete it, or clear this site’s data in your browser — either one erases the list on that device."}}]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"HowTo","name":"Add Fire to your Home Screen","description":"Install Fire, a free offline habit tracker and daily ritual checklist, straight from the browser on iPhone, iPad, Android or desktop. No App Store, no download, no signup.","totalTime":"PT1M","tool":[{"@type":"HowToTool","name":"Safari on iPhone or iPad"},{"@type":"HowToTool","name":"Chrome on Android"},{"@type":"HowToTool","name":"Chrome or Edge on desktop"}],"step":[{"@type":"HowToStep","name":"Open Fire in the right browser.","text":"On an iPhone or iPad, open this page in Safari — iOS only allows a web app onto the Home Screen from Safari, not from Chrome and not from an in-app browser. On Android, open it in Chrome. On a desktop computer, open it in Chrome or Edge.","url":"https://yusuf-gadelrab.github.io/apps/fire/#install"},{"@type":"HowToStep","name":"Open your browser’s install control.","text":"In Safari on iPhone or iPad, tap the Share button in the bottom toolbar — the square with an arrow pointing up out of it. In Chrome on Android, tap the three-dot menu in the top corner. In Chrome or Edge on desktop, click the install icon at the right-hand end of the address bar, or open the three-dot menu.","url":"https://yusuf-gadelrab.github.io/apps/fire/#install"},{"@type":"HowToStep","name":"Choose “Add to Home Screen” or “Install app”.","text":"Safari lists it as “Add to Home Screen”, a little way down the share sheet under the row of share targets. Chrome on Android calls it “Install app”, or “Add to Home screen” on older versions, and may also raise its own install banner on the page. Chrome and Edge on desktop call it “Install…”.","url":"https://yusuf-gadelrab.github.io/apps/fire/#install"},{"@type":"HowToStep","name":"Confirm the install.","text":"Tap “Add” in Safari, or confirm the prompt in Chrome or Edge. Fire then lands on your Home Screen, in your app drawer or on your desktop, and opens full screen with no address bar around it.","url":"https://yusuf-gadelrab.github.io/apps/fire/#install"}]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","@id":"https://yusuf-gadelrab.github.io/apps/fire/#faq","mainEntity":[{"@type":"Question","name":"Does Fire work offline?","acceptedAnswer":{"@type":"Answer","text":"Yes. After the first load a service worker keeps the whole app cached on your device, so it opens and runs with no connection at all. The daily reset, the progress ring and the streak are all computed on the device itself, so airplane mode changes nothing."}},{"@type":"Question","name":"Do I need an account to use Fire?","acceptedAnswer":{"@type":"Answer","text":"No. There is no signup, no login, no email address and no password. Open the page, edit the list, and start ticking things off."}},{"@type":"Question","name":"Where is my data stored?","acceptedAnswer":{"@type":"Answer","text":"In your browser’s localStorage, on the one device you typed it into. Fire has no backend, so nothing is uploaded, nothing is analysed and nobody — including me — can see your list."}},{"@type":"Question","name":"What happens if I clear my browser data?","acceptedAnswer":{"@type":"Answer","text":"Your tasks, your ticks and your streak history are deleted, because that is the only place they live. Nothing syncs to another device and there is no cloud copy to restore from. If the streak matters to you, press Export JSON now and then and keep the file somewhere safe — Import JSON loads it straight back."}},{"@type":"Question","name":"Can I use Fire on my iPhone?","acceptedAnswer":{"@type":"Answer","text":"Yes. Open the page in Safari and add it to your Home Screen, and it behaves like an installed app — its own icon, full screen, no App Store account and no download. On iOS this only works from Safari."}},{"@type":"Question","name":"Does Fire send notifications or reminders?","acceptedAnswer":{"@type":"Answer","text":"No. Fire never asks for notification permission and has no push, no reminders and no badges. You open it when you sit down to work and the list is waiting."}},{"@type":"Question","name":"Is Fire free?","acceptedAnswer":{"@type":"Answer","text":"Yes. It is free, with no trial, no paid tier, no ads and nothing locked behind a purchase. I built it to run my own day and left it open for anyone who wants it."}}]}</script>
 <link rel="alternate" type="text/plain" href="https://yusuf-gadelrab.github.io/llms-full.txt" title="Plain-text profile for language models">
 </head>
 <body>
@@ -236,55 +239,75 @@ footer a:hover{text-decoration:underline}
   <div class="dimtxt">All data stays on this device (localStorage).</div>
 </div>
 
-<section class="card mkt" id="install" aria-labelledby="install-h">
-  <h2 id="install-h">Add Fire to your Home Screen</h2>
-  <p>Fire installs straight from the browser. There is no App Store listing, no download and no account — the whole thing takes about a minute.</p>
-  <h3>On iPhone or iPad, in Safari</h3>
-  <ol>
-    <li><b>Open this page in Safari.</b> On iPhone and iPad only Safari can do this — Chrome and Firefox on iOS are not allowed to add a web app to the Home Screen.</li>
-    <li><b>Tap the Share button.</b> It is the square with an arrow pointing up out of it, in the toolbar at the bottom of the screen.</li>
-    <li><b>Scroll down and tap “Add to Home Screen.”</b> It sits under the row of share targets, in the list of actions.</li>
-    <li><b>Tap “Add.”</b> The Fire icon lands on your Home Screen and opens like any other app.</li>
-  </ol>
-  <h3>On Android or desktop, in Chrome or Edge</h3>
-  <ol>
-    <li><b>Open this page in Chrome or Edge.</b> Any Chromium browser works, on an Android phone or on a desktop computer.</li>
-    <li><b>Open the browser menu, or click the install icon in the address bar.</b> The menu is the three dots; the install icon is a small screen with a downward arrow in it.</li>
-    <li><b>Choose “Install app” or “Add to Home screen,” then confirm.</b> Fire then sits in your app drawer or on your desktop like a normal application.</li>
-  </ol>
-  <h3>What installing actually gets you</h3>
+<section class="card mkt" id="how" aria-labelledby="how-h">
+  <h2 id="how-h">How the daily ritual works</h2>
+  <p>Fire is one list, run once a day. It opens with six sample tasks so the page is never empty — rename them, reorder them or delete them until the list is yours, then work it every morning.</p>
   <ul>
-    <li>A real home-screen icon you tap like any other app — no App Store, no download, no install prompt from a store.</li>
-    <li>Full screen, with no address bar and no browser chrome around it.</li>
-    <li>It opens and works with no connection at all after the first load. The whole app is cached on the device, so ticking off the list on a plane, on the subway or on dead hotel wifi works exactly the same.</li>
+    <li><b>Tick as you go.</b> Tap a row to mark it done. The ring fills to the percentage of today’s list you have finished, and that number follows you in the bar at the top of the screen once you scroll.</li>
+    <li><b>100% is the moment.</b> When the last item turns gold the ring pulses and <i>Shipped.</i> appears — once a day, the first time you get there, not every time you glance at the app.</li>
+    <li><b>Midnight resets the list, not the record.</b> The first time you open Fire on a new day, yesterday’s percentage is filed into your history and every tick clears, so you start again from zero.</li>
+    <li><b>The streak counts perfect days only.</b> Your current streak is the unbroken run of days finished at 100%; anything less ends it. Your best streak is kept separately and never falls.</li>
+    <li><b>Fourteen days at a glance.</b> The grid under the list shows the last two weeks — solid gold for a perfect day, faint for a partial one, empty for a miss — with a count of how many were perfect.</li>
+    <li><b>Your data, in a file.</b> Export JSON writes your tasks, ticks, history and best streak to a dated backup. Import JSON reads one straight back in.</li>
   </ul>
 </section>
 
-<section class="card mkt" id="no-account" aria-labelledby="no-account-h">
-  <h2 id="no-account-h">Why this has no account</h2>
-  <p>Fire is one HTML file that runs entirely inside your browser. That is a deliberate design choice, and it cuts both ways — here is the whole trade, both sides of it.</p>
+<section class="card mkt" id="offline" aria-labelledby="offline-h">
+  <h2 id="offline-h">An offline habit tracker with no account and no server</h2>
+  <p>Fire is a single HTML file that runs entirely inside your browser. Load it once and a service worker keeps it on the device, so this is a streak tracker that works offline — on a plane, on the subway, on dead hotel wifi, in airplane mode. Nothing about the daily checklist needs a network after that first load.</p>
   <ul>
-    <li>No account, no signup, no login, no email address, no password.</li>
-    <li>No backend, no server, no analytics, no tracking, no cookies.</li>
-    <li>Your tasks, your ticks and your streak history are stored in your browser’s localStorage, on that one device.</li>
+    <li><b>No account.</b> No signup, no login, no email address, no password — a daily checklist app you simply open and use.</li>
+    <li><b>No server.</b> No backend, no analytics, no tracking scripts, no cookies, no third-party requests.</li>
+    <li><b>No notification spam.</b> Fire never asks for permission to notify you and cannot send you anything.</li>
+    <li><b>Local storage only.</b> Your tasks, your ticks and your streak history live in your browser’s localStorage on that one device. Nothing leaves it.</li>
   </ul>
-  <div class="tradeoff"><b>The honest tradeoff:</b> nothing syncs between devices, nothing is backed up, and clearing your browser data or deleting the app erases your entries. Your list is not encrypted, because there is no server to send it to and no key for anyone to hold. If the streak matters to you, press Export JSON every so often and keep the file somewhere safe.</div>
+  <div class="tradeoff"><b>The honest tradeoff:</b> local-only means there is no sync and no cloud backup, so your morning ritual app on your phone and the same page on your laptop keep separate lists. Clearing this site’s data, using a private window or deleting the installed app erases the streak, and nothing is encrypted because there is no server to send it to and no key for anyone to hold. If the streak matters, press <b>Export JSON</b> in the Last 14 days card every so often and keep the file somewhere safe — <b>Import JSON</b> restores it.</div>
+</section>
+
+<section class="card mkt" id="install" aria-labelledby="install-h">
+  <h2 id="install-h">Add Fire to your Home Screen</h2>
+  <p>Fire installs straight from the browser on iPhone, iPad, Android and desktop. There is no App Store listing, no download and no account — about a minute, start to finish.</p>
+  <ol>
+    <li><b>Open Fire in the right browser.</b> On an iPhone or iPad, open this page in Safari — iOS only allows a web app onto the Home Screen from Safari, not from Chrome and not from an in-app browser. On Android, open it in Chrome. On a desktop computer, open it in Chrome or Edge.</li>
+    <li><b>Open your browser’s install control.</b> In Safari on iPhone or iPad, tap the Share button in the bottom toolbar — the square with an arrow pointing up out of it. In Chrome on Android, tap the three-dot menu in the top corner. In Chrome or Edge on desktop, click the install icon at the right-hand end of the address bar, or open the three-dot menu.</li>
+    <li><b>Choose “Add to Home Screen” or “Install app”.</b> Safari lists it as “Add to Home Screen”, a little way down the share sheet under the row of share targets. Chrome on Android calls it “Install app”, or “Add to Home screen” on older versions, and may also raise its own install banner on the page. Chrome and Edge on desktop call it “Install…”.</li>
+    <li><b>Confirm the install.</b> Tap “Add” in Safari, or confirm the prompt in Chrome or Edge. Fire then lands on your Home Screen, in your app drawer or on your desktop, and opens full screen with no address bar around it.</li>
+  </ol>
+  <h3>What installing actually gets you</h3>
+  <ul>
+    <li>A real home-screen icon you tap like any other app — no store account, no download, no update queue.</li>
+    <li>Full screen, with no address bar and no browser chrome around the list.</li>
+    <li>The app cached on the device, so it opens with no connection at all after that first load.</li>
+  </ul>
 </section>
 
 <section class="card mkt" id="faq" aria-labelledby="faq-h">
   <h2 id="faq-h">Questions people ask</h2>
-  <h3>Does Fire need an internet connection?</h3>
-  <p class="faq-a">Only for the very first load. After that the app is cached on your device and opens and runs with no connection at all. The daily reset, the percentage ring and the streak are all computed on your own phone, so airplane mode changes nothing.</p>
+  <h3>Does Fire work offline?</h3>
+  <p class="faq-a">Yes. After the first load a service worker keeps the whole app cached on your device, so it opens and runs with no connection at all. The daily reset, the progress ring and the streak are all computed on the device itself, so airplane mode changes nothing.</p>
   <h3>Do I need an account to use Fire?</h3>
   <p class="faq-a">No. There is no signup, no login, no email address and no password. Open the page, edit the list, and start ticking things off.</p>
-  <h3>Where are my tasks and streaks stored?</h3>
-  <p class="faq-a">In your browser’s localStorage, on the one device you typed them into. There is no server behind this app, so nothing is uploaded and nobody, including me, can see your list.</p>
-  <h3>Does Fire sync between my phone and my laptop?</h3>
-  <p class="faq-a">No. There is no sync and no cloud backup, so each device keeps its own separate list and streak. To move one across, use Export JSON on one device and Import JSON on the other.</p>
+  <h3>Where is my data stored?</h3>
+  <p class="faq-a">In your browser’s localStorage, on the one device you typed it into. Fire has no backend, so nothing is uploaded, nothing is analysed and nobody — including me — can see your list.</p>
+  <h3>What happens if I clear my browser data?</h3>
+  <p class="faq-a">Your tasks, your ticks and your streak history are deleted, because that is the only place they live. Nothing syncs to another device and there is no cloud copy to restore from. If the streak matters to you, press Export JSON now and then and keep the file somewhere safe — Import JSON loads it straight back.</p>
+  <h3>Can I use Fire on my iPhone?</h3>
+  <p class="faq-a">Yes. Open the page in Safari and add it to your Home Screen, and it behaves like an installed app — its own icon, full screen, no App Store account and no download. On iOS this only works from Safari.</p>
+  <h3>Does Fire send notifications or reminders?</h3>
+  <p class="faq-a">No. Fire never asks for notification permission and has no push, no reminders and no badges. You open it when you sit down to work and the list is waiting.</p>
   <h3>Is Fire free?</h3>
   <p class="faq-a">Yes. It is free, with no trial, no paid tier, no ads and nothing locked behind a purchase. I built it to run my own day and left it open for anyone who wants it.</p>
-  <h3>How do I export my history or get the app off my phone?</h3>
-  <p class="faq-a">Press Export JSON in the Last 14 days card to download your tasks and streak history as a file, and Import JSON to load one back in. To remove the app, press and hold its Home Screen icon and delete it, or clear this site’s data in your browser — either one erases the list on that device.</p>
+</section>
+
+<section class="card mkt" id="more" aria-labelledby="more-h">
+  <h2 id="more-h">The rest of the kit</h2>
+  <p>Fire is one of three offline apps in the DHAHAB set. Same rules for all of them: free, installable, no account, all data on your device.</p>
+  <div class="links">
+    <a href="/apps/tradelog/">TradeLog · R-multiple trade journal</a>
+    <a href="/apps/cut/">Cut · weight and cut tracker</a>
+    <a href="/apps.html">All apps and tools</a>
+    <a href="/store.html">The studio</a>
+  </div>
 </section>
 
 <div class="studio">

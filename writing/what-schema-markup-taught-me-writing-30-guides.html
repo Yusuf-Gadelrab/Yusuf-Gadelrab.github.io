@@ -27,7 +27,6 @@
 <link rel="alternate" type="text/plain" href="https://yusuf-gadelrab.github.io/llms-full.txt">
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "BlogPosting", "headline": "I wrote 30 guides in a week and here is what the schema markup taught me", "datePublished": "2026-07-31", "dateModified": "2026-07-31", "url": "https://yusuf-gadelrab.github.io/writing/what-schema-markup-taught-me-writing-30-guides.html", "mainEntityOfPage": "https://yusuf-gadelrab.github.io/writing/what-schema-markup-taught-me-writing-30-guides.html", "description": "TechArticle vs Article vs BlogPosting, the FAQ rule most people break, and how one Person node turned 90 pages into a single entity instead of 90 authors.", "image": "https://yusuf-gadelrab.github.io/og-card.png", "author": {"@id": "https://yusuf-gadelrab.github.io/#person"}, "publisher": {"@id": "https://yusuf-gadelrab.github.io/#person"}, "isPartOf": {"@type": "Blog", "@id": "https://yusuf-gadelrab.github.io/writing.html#blog"}, "keywords": "structured data, schema.org, TechArticle, FAQPage, BreadcrumbList, entity SEO, JSON-LD"}</script>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "Person", "@id": "https://yusuf-gadelrab.github.io/#person"}</script>
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://yusuf-gadelrab.github.io/"},{"@type":"ListItem","position":2,"name":"Writing","item":"https://yusuf-gadelrab.github.io/writing.html"},{"@type":"ListItem","position":3,"name":"I wrote 30 guides in a week and here is what the schema"}]}</script>
 <link rel="stylesheet" href="/css/site.css">
 <style>
   .art{max-width:44rem;margin:0 auto;padding:var(--s6) var(--s5)}
@@ -76,7 +75,8 @@
 </style>
 </head>
 <body>
-<nav class="site-nav">
+<a class="skip-link" href="#main">Skip to content</a>
+<nav class="site-nav" aria-label="Primary">
   <a class="site-nav__brand" href="/"><img class="site-nav__lion" src="/img/brand/lion-mark.svg" alt="" width="34" height="34" decoding="async"><span>YUSUF GADELRAB</span></a>
   <div class="site-nav__links">
     <a href="/">Work</a>
@@ -85,14 +85,7 @@
     <a href="/about.html">About</a>
   </div>
 </nav>
-
-<nav class="crumbs" aria-label="Breadcrumb">
-  <ol>
-    <li><a href="/">Home</a></li>
-    <li><a href="/writing.html">Writing</a></li>
-    <li><span aria-current="page">I wrote 30 guides in a week and here is what the schema</span></li>
-  </ol>
-</nav>
+<main id="main">
 <article class="art">
   <h1>I wrote 30 guides in a week and here is what the schema markup taught me</h1>
   <p class="meta">2026-07-31 &middot; Yusuf Gadelrab</p>
@@ -109,12 +102,14 @@
 
   <p>The rule I settled on and encoded in the generator: if the page contains a procedure or a formula and its value does not decay with time, TechArticle. If it is an opinion with a publication date attached, BlogPosting. This post is a BlogPosting. The <a href="/guides/r-multiple-expectancy.html">R-multiple and expectancy guide</a> is a TechArticle, and it should still be correct in three years.</p>
 
-  <div class="tw">
+  <div class="tw" tabindex="0" role="group" aria-label="Table, scrolls horizontally">
   <table>
-    <tr><th>Type</th><th>Use it when</th><th>Example on this site</th></tr>
+    <thead><tr><th scope="col">Type</th><th scope="col">Use it when</th><th scope="col">Example on this site</th></tr></thead>
+    <tbody>
     <tr><td>TechArticle</td><td>A procedure or formula the reader will apply</td><td><a href="/guides/walk-forward-backtest.html">Walk-forward testing guide</a></td></tr>
     <tr><td>BlogPosting</td><td>A dated, first-person argument or build log</td><td>This post</td></tr>
     <tr><td>Article</td><td>General informational content that is neither</td><td><a href="/about.html">Reference pages</a></td></tr>
+    </tbody>
   </table>
   </div>
 
@@ -205,6 +200,7 @@
   Open to Summer 2027 software engineering, AI/ML, and quant internships.</p>
 </div>
 </article>
+</main>
 <footer class="site-footer">
   <div class="site-footer__links">
     <a href="/">Work</a>

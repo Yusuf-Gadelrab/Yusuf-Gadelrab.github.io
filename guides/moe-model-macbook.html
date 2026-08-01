@@ -58,7 +58,7 @@
 
 <a class="skip-link" href="#main">Skip to content</a>
 
-<nav class="site-nav">
+<nav class="site-nav" aria-label="Primary">
   <a class="site-nav__brand" href="/"><img class="site-nav__lion" src="/img/brand/lion-mark.svg" alt="" width="34" height="34" decoding="async"><span>YUSUF GADELRAB</span></a>
   <div class="site-nav__links">
     <a href="/">Work</a>
@@ -91,7 +91,7 @@
       <h2>What mixture-of-experts actually changes</h2>
       <p>A dense transformer runs every parameter for every token. A 30B dense model at 4-bit quantization has to read roughly 17 GB of weights out of memory to produce one token, and memory bandwidth — not compute — is what limits generation on a laptop. That is why dense 30B models feel slow on Apple Silicon regardless of how fast the chip is.</p>
       <p>A mixture-of-experts model replaces the feed-forward block in each layer with a set of parallel "experts" and a small router that picks a handful of them per token. Qwen3-30B-A3B, the model I run daily, has about 30.5B total parameters and activates roughly 3B of them for any given token. Different tokens route to different experts, so all 30B must be resident and available — but only ~3B are read per token.</p>
-      <span class="formula">Dense 30B @ Q4:   ~17 GB resident, ~17 GB read per token
+      <span class="formula" tabindex="0" role="group" aria-label="Formula, scrolls horizontally">Dense 30B @ Q4:   ~17 GB resident, ~17 GB read per token
 MoE 30B-A3B @ Q4: ~17 GB resident, ~2 GB read per token
 
 RAM footprint:  set by TOTAL parameters
@@ -100,7 +100,7 @@ Generation speed: set by ACTIVE parameters</span>
       <p class="callout">The routing has a cost the arithmetic hides. Which experts a token needs is only known at generation time, and consecutive tokens often need different ones, so memory access is scattered rather than sequential. Real throughput lands well below the bandwidth ceiling the numbers above suggest — expect the ratio to help enormously and not to be the 8x the raw parameter math implies.</p>
       <h2>Unified memory: the Apple Silicon quirk</h2>
       <p>On Apple Silicon, CPU and GPU share one pool of memory. There is no separate VRAM to fill and no PCIe transfer to pay for, which is why a 64 GB MacBook can hold a model that would need a serious discrete GPU elsewhere. The catch is that macOS caps how much of that pool the GPU may wire down — around 75% by default — and everything else on your machine competes for the rest.</p>
-      <span class="formula"># see the current GPU wired-memory limit (0 = system default, ~75%)
+      <span class="formula" tabindex="0" role="group" aria-label="Formula, scrolls horizontally"># see the current GPU wired-memory limit (0 = system default, ~75%)
 sysctl iogpu.wired_limit_mb
 
 # raise it — 56 GB on a 64 GB machine. Resets on reboot.
@@ -108,8 +108,8 @@ sudo sysctl iogpu.wired_limit_mb=57344</span>
       <p>Raise this only if you have measured a model spilling, and leave real headroom. Push it too high and the system starts swapping under memory pressure, which is dramatically worse than a slightly smaller model — you go from tokens per second to seconds per token.</p>
       <h2>Quantization: what each level costs you</h2>
       <p>Quantization stores weights at reduced precision. The size arithmetic is straightforward: total parameters times bits-per-weight divided by 8. For a 30.5B-parameter model:</p>
-      <div class="tblwrap"><table class="tbl">
-        <thead><tr><th>Level</th><th>Approx. bits/weight</th><th>Size for 30.5B params</th><th>What you give up</th></tr></thead>
+      <div class="tblwrap" tabindex="0" role="group" aria-label="Table, scrolls horizontally"><table class="tbl">
+        <thead><tr><th scope="col">Level</th><th scope="col">Approx. bits/weight</th><th scope="col">Size for 30.5B params</th><th scope="col">What you give up</th></tr></thead>
         <tbody>
           <tr><td>Q8_0</td><td>~8.5</td><td>~32 GB</td><td>Nothing measurable. Also the least practical on a laptop.</td></tr>
           <tr><td>Q6_K</td><td>~6.6</td><td>~25 GB</td><td>Effectively nothing for chat and drafting.</td></tr>
@@ -123,7 +123,7 @@ sudo sysctl iogpu.wired_limit_mb=57344</span>
       <p>The failure mode below Q4 is worth knowing because it is counterintuitive. Aggressive quantization does not primarily erase facts — it erases <em>precision</em>. The model still knows things and gets steadily worse at following formatting instructions, closing brackets, staying in the requested structure, and holding a constraint across a long answer. If a local model suddenly cannot keep to a JSON shape it handled last week, check the quantization level before you rewrite the prompt.</p>
       <h2>Context length is a second, separate RAM bill</h2>
       <p>Model weights are the fixed cost. The KV cache is the variable one, and it is the number people forget: every token in the context window stores a key and a value vector in every layer, for the whole session.</p>
-      <span class="formula">bytes/token = 2 × n_layers × n_kv_heads × head_dim × bytes_per_element
+      <span class="formula" tabindex="0" role="group" aria-label="Formula, scrolls horizontally">bytes/token = 2 × n_layers × n_kv_heads × head_dim × bytes_per_element
 
 Qwen3-30B-A3B: 48 layers, 4 KV heads, head_dim 128, fp16 (2 bytes)
 = 2 × 48 × 4 × 128 × 2 = 98,304 bytes = 96 KiB per token
@@ -135,8 +135,8 @@ Qwen3-30B-A3B: 48 layers, 4 KV heads, head_dim 128, fp16 (2 bytes)
       <p>You can halve the cache by quantizing it. In Ollama that is <code>OLLAMA_KV_CACHE_TYPE=q8_0</code>, which requires flash attention to be enabled. The quality cost of an 8-bit KV cache is very small; <code>q4_0</code> halves it again and does start to show, particularly on long-context recall.</p>
       <h2>Ollama settings that actually matter</h2>
       <p>Most Ollama tuning advice is noise. These five are not:</p>
-      <div class="tblwrap"><table class="tbl">
-        <thead><tr><th>Setting</th><th>Value</th><th>Why</th></tr></thead>
+      <div class="tblwrap" tabindex="0" role="group" aria-label="Table, scrolls horizontally"><table class="tbl">
+        <thead><tr><th scope="col">Setting</th><th scope="col">Value</th><th scope="col">Why</th></tr></thead>
         <tbody>
           <tr><td><code>OLLAMA_FLASH_ATTENTION</code></td><td><code>1</code></td><td>Faster attention, less memory. Also a prerequisite for KV cache quantization.</td></tr>
           <tr><td><code>OLLAMA_KV_CACHE_TYPE</code></td><td><code>q8_0</code></td><td>Halves KV cache memory at negligible quality cost. Needs flash attention on.</td></tr>
@@ -149,7 +149,7 @@ Qwen3-30B-A3B: 48 layers, 4 KV heads, head_dim 128, fp16 (2 bytes)
       <h2>Realistic tokens per second on Apple Silicon</h2>
       <p>Generation speed on a laptop is bounded by memory bandwidth, so the chip tier matters more than the core count. Roughly: base M-series chips land near 100–120 GB/s, Pro chips in the 150–275 GB/s range, and Max chips at 400 GB/s and up. Divide bandwidth by bytes-read-per-token for a theoretical ceiling, then expect real numbers well below it.</p>
       <p>On my M1 Max (400 GB/s) running Qwen3-30B-A3B at Q4_K_M, generation sits in the tens of tokens per second at short context and degrades as the context fills — by 20k tokens in, it is meaningfully slower, because attention cost grows with sequence length even though the weight reads do not. Do not trust anyone's numbers including mine; measure your own, because quantization, context length, and what else is running all move it substantially.</p>
-      <span class="formula">curl -s http://localhost:11434/api/chat -d '{
+      <span class="formula" tabindex="0" role="group" aria-label="Formula, scrolls horizontally">curl -s http://localhost:11434/api/chat -d '{
   "model": "qwen3:30b-a3b", "stream": false,
   "messages": [{"role":"user","content":"Write 300 words about memory bandwidth."}]
 }' | python3 -c '
@@ -163,8 +163,8 @@ print("gen     tok/s:", round(d["eval_count"] / (d["eval_duration"]/1e9), 1))'</
       <p>That single fact should shape the design. Retrieve fewer, better chunks — which is what <a href="/guides/embedding-model-rag.html">choosing an embedding model and a reranker properly</a> buys you. Keep the stable part of your prompt stable so the runtime can reuse its cached KV state rather than reprefilling it, the local analogue of <a href="/guides/prompt-caching.html">prompt caching on a hosted API</a>. And prefer batch work over interactive work wherever the task allows.</p>
       <h2>When local is genuinely good enough</h2>
       <p>The honest split is about latency tolerance and correctness stakes, not about capability in the abstract.</p>
-      <div class="tblwrap"><table class="tbl">
-        <thead><tr><th>Local wins</th><th>Pay for an API</th></tr></thead>
+      <div class="tblwrap" tabindex="0" role="group" aria-label="Table, scrolls horizontally"><table class="tbl">
+        <thead><tr><th scope="col">Local wins</th><th scope="col">Pay for an API</th></tr></thead>
         <tbody>
           <tr><td>Batch jobs and overnight runs — nobody is waiting.</td><td>Anything interactive where a user watches a cursor blink.</td></tr>
           <tr><td>High-volume, low-stakes work: classification, tagging, first-draft generation.</td><td>Long-context reasoning over big documents — prefill alone rules it out.</td></tr>

@@ -58,7 +58,7 @@
 
 <a class="skip-link" href="#main">Skip to content</a>
 
-<nav class="site-nav">
+<nav class="site-nav" aria-label="Primary">
   <a class="site-nav__brand" href="/"><img class="site-nav__lion" src="/img/brand/lion-mark.svg" alt="" width="34" height="34" decoding="async"><span>YUSUF GADELRAB</span></a>
   <div class="site-nav__links">
     <a href="/">Work</a>
@@ -92,8 +92,8 @@
       <p>A portfolio is not a gallery and it is not a resume in HTML. It is <strong>evidence that you can take something from idea to working thing that other people can use</strong>. Most student portfolios fail that test not because the projects are bad but because the evidence is unreachable — a repo with no README, a demo that 404s, a screenshot of something nobody can run.</p>
       <p><strong>A live URL beats a repository.</strong> A reviewer who can click and immediately see the thing working has already given you more credit than a reviewer who has to clone, install dependencies, and guess at environment variables — which they will not do. Deploy it. Free static hosting and free tiers cover almost every student project, and a deployed toy outranks an undeployed system.</p>
       <h2>What a reviewer checks in 60 seconds</h2>
-      <div class="tblwrap"><table class="tbl">
-        <thead><tr><th>Second</th><th>What they do</th><th>What kills you</th></tr></thead>
+      <div class="tblwrap" tabindex="0" role="group" aria-label="Table, scrolls horizontally"><table class="tbl">
+        <thead><tr><th scope="col">Second</th><th scope="col">What they do</th><th scope="col">What kills you</th></tr></thead>
         <tbody>
           <tr><td>0–5</td><td>Load the site or repo</td><td>It does not load, or it is a wall of unstyled text</td></tr>
           <tr><td>5–15</td><td>Read the top line — what is this?</td><td>No one-sentence description of what the project does</td></tr>
@@ -114,7 +114,7 @@
       </ul>
       <h2>The README is the pitch</h2>
       <p>For most projects the README is the only documentation anyone will read, and for a hiring reviewer it is the case study. Setup instructions matter, but they belong <em>below</em> the explanation, not above it.</p>
-      <span class="formula"># Project name
+      <span class="formula" tabindex="0" role="group" aria-label="Formula, scrolls horizontally"># Project name
 One sentence: what it does and who it is for.
 
 [Live demo](url)  ·  30-second screenshot or GIF

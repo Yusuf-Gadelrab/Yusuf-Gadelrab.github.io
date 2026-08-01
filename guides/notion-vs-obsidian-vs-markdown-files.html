@@ -58,7 +58,7 @@
 
 <a class="skip-link" href="#main">Skip to content</a>
 
-<nav class="site-nav">
+<nav class="site-nav" aria-label="Primary">
   <a class="site-nav__brand" href="/"><img class="site-nav__lion" src="/img/brand/lion-mark.svg" alt="" width="34" height="34" decoding="async"><span>YUSUF GADELRAB</span></a>
   <div class="site-nav__links">
     <a href="/">Work</a>
@@ -101,8 +101,8 @@
       <h3>A Plain Folder of Markdown Files: No App at All</h3>
       <p>The third option skips the app entirely. A folder, a text editor, and nothing else. Every note is a <code>.md</code> file you can open in literally any editor, on any operating system, for the rest of your life. There is no vendor, no login, no subscription, and no risk of a company pivoting your notebook into something it was never meant to be. This sounds primitive next to Notion's databases or Obsidian's graph view, and in terms of features, it is. What it buys back is total control: zero cost, zero lock-in, instant search with a tool like ripgrep, and perfect version history if you put the folder under git.</p>
       <h2>The Head-to-Head Matrix</h2>
-      <div class="tblwrap"><table class="tbl">
-        <thead><tr><th>Dimension</th><th>Notion</th><th>Obsidian</th><th>Plain Markdown Folder</th></tr></thead>
+      <div class="tblwrap" tabindex="0" role="group" aria-label="Table, scrolls horizontally"><table class="tbl">
+        <thead><tr><th scope="col">Dimension</th><th scope="col">Notion</th><th scope="col">Obsidian</th><th scope="col">Plain Markdown Folder</th></tr></thead>
         <tbody>
           <tr><td>Where data lives</td><td>Notion's cloud database, not files on your disk</td><td>Local files on your disk, Markdown in a folder called a vault</td><td>Local files on your disk, exactly as you left them</td></tr>
           <tr><td>File format & portability</td><td>Proprietary blocks, exported to Markdown/CSV/HTML on demand</td><td>Plain Markdown natively, plus optional plugin-specific syntax</td><td>Plain Markdown or plain text, nothing else</td></tr>
@@ -117,8 +117,8 @@
       </table></div>
       <h2>What Actually Survives an Export</h2>
       <p>The question that matters is not whether a tool has an export button, it is what the export button actually preserves. This is where the three options diverge the most, and it is worth looking at directly rather than trusting a features page.</p>
-      <div class="tblwrap"><table class="tbl">
-        <thead><tr><th>Tool</th><th>What exports cleanly</th><th>What breaks or is lost</th><th>Rough effort to fully leave</th></tr></thead>
+      <div class="tblwrap" tabindex="0" role="group" aria-label="Table, scrolls horizontally"><table class="tbl">
+        <thead><tr><th scope="col">Tool</th><th scope="col">What exports cleanly</th><th scope="col">What breaks or is lost</th><th scope="col">Rough effort to fully leave</th></tr></thead>
         <tbody>
           <tr><td>Notion</td><td>Simple pages, headings, basic text, images, to Markdown or HTML</td><td>Relations, rollups, linked databases, and custom views do not survive as those things</td><td>Days to weeks, depending on how database-shaped your workspace is</td></tr>
           <tr><td>Obsidian</td><td>Every note, since it was already a Markdown file on disk</td><td>Plugin-specific syntax such as Dataview query blocks stops working without the plugin</td><td>Hours, mostly spent replacing plugin syntax with plain Markdown or nothing</td></tr>
@@ -128,7 +128,7 @@
       <h2>The Real Case for a Plain Folder of Files</h2>
       <p>It is easy to dismiss the plain-files option as something only a certain kind of terminal-obsessed CS student would pick, but the argument for it is concrete, not aesthetic. Take a folder of Markdown notes, add ripgrep for search and git for history, and you have a system with no app to break, no subscription to lapse, and no format to convert two years from now.</p>
       <p>Ripgrep is fast enough that searching a few thousand notes feels instant, and because it is a general-purpose command-line tool, it works the exact same way whether you are searching class notes, project logs, or a journal. Git gives you something no app-based tool offers by default: a real, inspectable history of every edit you ever made to a note, plus free syncing between machines if you push to a private repository. Here is what that actually looks like in a terminal, not in theory.</p>
-      <span class="formula"># search every note for a phrase, case-insensitive, with line numbers
+      <span class="formula" tabindex="0" role="group" aria-label="Formula, scrolls horizontally"># search every note for a phrase, case-insensitive, with line numbers
 rg -i -n "spaced repetition" ~/notes
 
 # find every note that mentions two different topics

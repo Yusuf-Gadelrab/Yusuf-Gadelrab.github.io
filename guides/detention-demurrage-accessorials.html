@@ -58,7 +58,7 @@
 
 <a class="skip-link" href="#main">Skip to content</a>
 
-<nav class="site-nav">
+<nav class="site-nav" aria-label="Primary">
   <a class="site-nav__brand" href="/"><img class="site-nav__lion" src="/img/brand/lion-mark.svg" alt="" width="34" height="34" decoding="async"><span>YUSUF GADELRAB</span></a>
   <div class="site-nav__links">
     <a href="/">Work</a>
@@ -91,8 +91,8 @@
       <p class="callout callout--warn">Every rate, free-time window, and dollar figure below is an illustrative example of the arithmetic, not a quote and not a market rate. Accessorial terms are set by contract and by tariff, and they vary by lane, mode, equipment, facility, and carrier. Read your own rate confirmation and your own customer contract before relying on any number here.</p>
       <h2>The vocabulary, precisely</h2>
       <p>These three words get used interchangeably in conversation and mean quite different things on an invoice. Getting them wrong costs money in both directions — billing demurrage when you mean detention gets the invoice rejected, and quoting detention when the customer's contract says demurrage gets you a dispute.</p>
-      <div class="tblwrap"><table class="tbl">
-        <thead><tr><th>Term</th><th>What is actually being charged for</th><th>Where it lives</th></tr></thead>
+      <div class="tblwrap" tabindex="0" role="group" aria-label="Table, scrolls horizontally"><table class="tbl">
+        <thead><tr><th scope="col">Term</th><th scope="col">What is actually being charged for</th><th scope="col">Where it lives</th></tr></thead>
         <tbody>
           <tr><td><strong>Detention</strong></td><td>Holding the truck and driver at a facility beyond the agreed free time</td><td>Over-the-road trucking: shipper and receiver docks</td></tr>
           <tr><td><strong>Detention (per diem)</strong></td><td>Keeping an ocean container outside the terminal, at your yard or the consignee's, beyond free days</td><td>Intermodal and drayage</td></tr>
@@ -126,8 +126,8 @@
       <p>In intermodal and ocean, the "who owes it" question is additionally a regulatory one. Recent US Federal Maritime Commission rulemaking constrains who a demurrage and detention invoice may be issued to, what the invoice must contain, and the windows for issuing and disputing it — broadly, an invoice must be issued within a set number of days of the charges last accruing, and the billed party must be given a defined window to dispute. Those specifics change; verify the current rule text rather than working from memory, and read every D&amp;D invoice against it, because a non-compliant invoice is a disputable invoice.</p>
       <h2>Typical free time</h2>
       <p>Free time is contractual, not statutory. These are the shapes you will most often encounter, not entitlements.</p>
-      <div class="tblwrap"><table class="tbl">
-        <thead><tr><th>Situation</th><th>Typical free time</th><th>Then what</th></tr></thead>
+      <div class="tblwrap" tabindex="0" role="group" aria-label="Table, scrolls horizontally"><table class="tbl">
+        <thead><tr><th scope="col">Situation</th><th scope="col">Typical free time</th><th scope="col">Then what</th></tr></thead>
         <tbody>
           <tr><td>Dry van, live load or live unload</td><td>2 hours</td><td>Hourly detention, often $50–$100/hr, frequently capped</td></tr>
           <tr><td>Reefer, live load or unload</td><td>2–3 hours</td><td>Higher hourly rate; the reefer is burning fuel while it waits</td></tr>
@@ -151,8 +151,8 @@
       </ol>
       <h3>The notification requirement kills more claims than bad timestamps do</h3>
       <p>Most contracts require notice <em>before or as</em> free time expires, not after the fact. The mechanism is deliberate: it gives the customer a chance to call the facility and fix the delay while it is still fixable. Miss the notification window and the claim is often dead regardless of how good the evidence is. This is the single highest-leverage process change available: <strong>an alert at the 90-minute mark on a two-hour clock, sent automatically, converts more detention into revenue than any amount of after-the-fact chasing.</strong></p>
-      <div class="tblwrap"><table class="tbl">
-        <thead><tr><th>What kills a claim</th><th>Why</th><th>The fix</th></tr></thead>
+      <div class="tblwrap" tabindex="0" role="group" aria-label="Table, scrolls horizontally"><table class="tbl">
+        <thead><tr><th scope="col">What kills a claim</th><th scope="col">Why</th><th scope="col">The fix</th></tr></thead>
         <tbody>
           <tr><td>In and out boxes on the BOL left blank</td><td>No documentary source at all</td><td>Make signed in/out times a required field on the driver's checklist</td></tr>
           <tr><td>Times written in by the driver days later</td><td>Not contemporaneous; trivially disputed</td><td>Capture at the moment, from the system that already has it</td></tr>
@@ -165,8 +165,8 @@
       <h2>How accessorials decide whether a load was profitable</h2>
       <p>This is the part that is easy to underrate. Consider an illustrative load: 1,100 miles, customer rate $1,850, carrier pay $1,550. Gross margin $300, or 16.2% — a perfectly normal load.</p>
       <p>Now the receiver holds the truck four hours past free time. The carrier's rate confirmation says two hours free then $60 per hour, so you owe four hours: $240. What you recover depends entirely on paperwork and on contract terms.</p>
-      <div class="tblwrap"><table class="tbl">
-        <thead><tr><th>Scenario</th><th>Owed to carrier</th><th>Recovered from customer</th><th>Net margin</th><th>Margin %</th></tr></thead>
+      <div class="tblwrap" tabindex="0" role="group" aria-label="Table, scrolls horizontally"><table class="tbl">
+        <thead><tr><th scope="col">Scenario</th><th scope="col">Owed to carrier</th><th scope="col">Recovered from customer</th><th scope="col">Net margin</th><th scope="col">Margin %</th></tr></thead>
         <tbody>
           <tr><td>No detention at all</td><td>$0</td><td>$0</td><td>$300</td><td>16.2%</td></tr>
           <tr><td>Detention documented, contract at parity ($60/hr, no cap)</td><td>−$240</td><td>+$240</td><td>$300</td><td>16.2%</td></tr>
@@ -180,8 +180,8 @@
       <p>Same load. The receiver requires a lumper, the driver pays $185 out of pocket, you reimburse the carrier, and the charge does not make it onto the customer invoice because the receipt arrived as a photo in a text message three days later. That is $185 off a $300 margin, or off the $160 that survived the detention above — at which point the load has cost you money to move.</p>
       <h2>The leak, at brokerage scale</h2>
       <p>Per load these are small numbers. The reason they matter is that they are a percentage, and percentages compound across volume. Illustratively, at 200 loads a month with an average gross margin of $300, monthly gross margin is $60,000.</p>
-      <div class="tblwrap"><table class="tbl">
-        <thead><tr><th>Unbilled accessorial leak</th><th>Monthly cost</th><th>Annual cost</th><th>Equivalent to</th></tr></thead>
+      <div class="tblwrap" tabindex="0" role="group" aria-label="Table, scrolls horizontally"><table class="tbl">
+        <thead><tr><th scope="col">Unbilled accessorial leak</th><th scope="col">Monthly cost</th><th scope="col">Annual cost</th><th scope="col">Equivalent to</th></tr></thead>
         <tbody>
           <tr><td>2%</td><td>$1,200</td><td>$14,400</td><td>A meaningful software budget</td></tr>
           <tr><td>4%</td><td>$2,400</td><td>$28,800</td><td>Most of a junior back-office salary</td></tr>

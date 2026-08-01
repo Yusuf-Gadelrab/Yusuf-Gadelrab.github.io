@@ -58,7 +58,7 @@
 
 <a class="skip-link" href="#main">Skip to content</a>
 
-<nav class="site-nav">
+<nav class="site-nav" aria-label="Primary">
   <a class="site-nav__brand" href="/"><img class="site-nav__lion" src="/img/brand/lion-mark.svg" alt="" width="34" height="34" decoding="async"><span>YUSUF GADELRAB</span></a>
   <div class="site-nav__links">
     <a href="/">Work</a>
@@ -101,7 +101,7 @@
         <li>Is it a recurring subscription, and would you actually notice if it silently renewed for another year?</li>
       </ol>
       <p>None of these require perfect information, just an honest guess. The goal is to catch the two failure modes that drain a student budget fastest: paying for convenience you could get free anyway, and paying for a subscription you forgot you had.</p>
-      <span class="formula">Break-even test
+      <span class="formula" tabindex="0" role="group" aria-label="Formula, scrolls horizontally">Break-even test
 
 hours saved per month x your effective hourly rate   vs.   monthly cost
 
@@ -124,8 +124,8 @@ The arithmetic doesn't change much. Your honesty about 'hours saved' does.</span
       <p>The same instinct shows up elsewhere in how I work. I run a local Qwen model through Ollama on my own machine for background automation specifically so I'm not paying per token for routine work, the setup is in the <a href="/guides/local-llm-ollama.html">local LLM guide</a>. And instead of paying for a commercial code security scanner, I built and publish my own free, MIT-licensed one, <a href="/dira.html">DIRA</a>. None of that is frugality for its own sake. It's the same filter, applied consistently, category after category.</p>
       <h2>The scored table: about 15 categories</h2>
       <p>Every 'Pay' or 'Conditional' verdict below assumes you check the vendor's current pricing page yourself before deciding. Prices and discount terms change often enough that quoting a number here would be stale the day this page ships, so none are quoted. Treat the 'Why' column as reasoning, not a price list.</p>
-      <div class="tblwrap"><table class="tbl">
-        <thead><tr><th>Category</th><th>Free option that's actually good enough</th><th>Verdict</th><th>Why</th></tr></thead>
+      <div class="tblwrap" tabindex="0" role="group" aria-label="Table, scrolls horizontally"><table class="tbl">
+        <thead><tr><th scope="col">Category</th><th scope="col">Free option that's actually good enough</th><th scope="col">Verdict</th><th scope="col">Why</th></tr></thead>
         <tbody>
           <tr><td>Code editor / IDE</td><td>VS Code, or a free-tier JetBrains IDE if your school licenses one</td><td>Skip paid</td><td>A free editor covers nearly all coursework and internship-prep work; check university IT before assuming you need a personal license</td></tr>
           <tr><td>AI coding assistant</td><td>Free tier of a coding assistant, backed by a local model for routine completions</td><td>Conditional</td><td>Worth a modest subscription once you're shipping real projects on a weekly cadence; skip it while you're mostly doing homework, the free tier covers that</td></tr>

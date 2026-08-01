@@ -58,7 +58,7 @@
 
 <a class="skip-link" href="#main">Skip to content</a>
 
-<nav class="site-nav">
+<nav class="site-nav" aria-label="Primary">
   <a class="site-nav__brand" href="/"><img class="site-nav__lion" src="/img/brand/lion-mark.svg" alt="" width="34" height="34" decoding="async"><span>YUSUF GADELRAB</span></a>
   <div class="site-nav__links">
     <a href="/">Work</a>
@@ -95,8 +95,8 @@
       <p><strong>Trivy</strong> is an open-source scanner from Aqua Security, distributed under Apache-2.0 as a single Go binary. It grew out of container security and expanded outward: operating-system packages inside images, language dependencies, infrastructure-as-code misconfiguration, secrets, licenses, Kubernetes clusters, and SBOM generation. No account, no telemetry requirement, no seat count.</p>
       <p><strong>DIRA</strong> is a zero-dependency Python scanner I wrote to answer one narrow question a founder actually gets asked, which is not "what is broken in this file" but "can this codebase survive a procurement review". It bundles secrets, dependency CVEs, config rules, license risk, git-history leaks, a live TLS and headers check, an SBOM and a readiness score into one command. It is v1.2.0, MIT licensed, has 98 passing tests, and is maintained by exactly one person, which is a real risk factor and belongs in this paragraph rather than a footnote.</p>
       <h2>The matrix</h2>
-      <div class="tblwrap"><table class="tbl">
-        <thead><tr><th></th><th>Snyk</th><th>Trivy</th><th>DIRA</th></tr></thead>
+      <div class="tblwrap" tabindex="0" role="group" aria-label="Table, scrolls horizontally"><table class="tbl">
+        <thead><tr><th scope="col"></th><th scope="col">Snyk</th><th scope="col">Trivy</th><th scope="col">DIRA</th></tr></thead>
         <tbody>
           <tr><td>Licensing</td><td>Commercial platform, free tier with usage limits. CLI is open source; the analysis service is not.</td><td>Apache-2.0, fully open source.</td><td>MIT, fully open source.</td></tr>
           <tr><td>Account required</td><td>Yes, for essentially everything.</td><td>No.</td><td>No.</td></tr>
@@ -169,7 +169,7 @@
       <p>These are not mutually exclusive and nothing about the licensing forces a choice. A realistic setup for a small team is Trivy on the image in CI, DIRA on the repository and the live domain before a release or a customer call, and Snyk if and when someone is paying for the seat. The tools cost nothing to stack, and each one's blind spot is roughly the other's strength.</p>
       <h2>Wiring whichever you pick into CI</h2>
       <p>The scanner you run manually twice is worth less than the mediocre scanner that runs on every pull request. All three exit non-zero on findings above a threshold, which is the only integration contract that matters.</p>
-      <span class="formula"># fast inner-loop pass, seconds, no network
+      <span class="formula" tabindex="0" role="group" aria-label="Formula, scrolls horizontally"># fast inner-loop pass, seconds, no network
 dira scan . --only secrets,config
 
 # PR gate: only the files this branch touched

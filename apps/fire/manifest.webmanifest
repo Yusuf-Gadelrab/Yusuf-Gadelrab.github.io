@@ -1,9 +1,15 @@
 {
+  "id": "/apps/fire/",
   "name": "Fire — Daily Ritual",
   "short_name": "Fire",
+  "description": "A free offline habit tracker and daily ritual checklist. It resets each morning, tracks 100%-day streaks, and stores every task and tick in localStorage on your device — no account, no server, no tracking.",
+  "categories": ["productivity", "lifestyle", "utilities"],
+  "lang": "en-US",
+  "dir": "ltr",
   "start_url": "./",
   "scope": "./",
   "display": "standalone",
+  "orientation": "portrait-primary",
   "background_color": "#0a0a0a",
   "theme_color": "#0a0a0b",
   "icons": [

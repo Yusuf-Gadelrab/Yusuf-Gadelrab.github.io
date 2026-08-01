@@ -58,7 +58,7 @@
 
 <a class="skip-link" href="#main">Skip to content</a>
 
-<nav class="site-nav">
+<nav class="site-nav" aria-label="Primary">
   <a class="site-nav__brand" href="/"><img class="site-nav__lion" src="/img/brand/lion-mark.svg" alt="" width="34" height="34" decoding="async"><span>YUSUF GADELRAB</span></a>
   <div class="site-nav__links">
     <a href="/">Work</a>
@@ -90,8 +90,8 @@
     <div class="prose">
       <h2>The minimum viable journal</h2>
       <p>Six fields per trade will out-perform a page of prose, because they can be aggregated:</p>
-      <div class="tblwrap"><table class="tbl">
-        <thead><tr><th>Field</th><th>Why it earns its place</th></tr></thead>
+      <div class="tblwrap" tabindex="0" role="group" aria-label="Table, scrolls horizontally"><table class="tbl">
+        <thead><tr><th scope="col">Field</th><th scope="col">Why it earns its place</th></tr></thead>
         <tbody>
           <tr><td>Setup tag</td><td>The only way to compute expectancy per setup instead of per account.</td></tr>
           <tr><td>Planned risk (1R in dollars)</td><td>Makes every result comparable. Without it there are no R-multiples.</td></tr>
@@ -103,7 +103,7 @@
       </table></div>
       <h2>Why R, not dollars</h2>
       <p>Dollars mix two different questions — was the idea good, and was the size right — into one number. R separates them. A +2R trade is a +2R trade whether you risked $50 or $500, so setups become comparable across account sizes and across time as the account grows.</p>
-      <span class="formula">R-multiple = (exit − entry) ÷ (entry − stop)</span>
+      <span class="formula" tabindex="0" role="group" aria-label="Formula, scrolls horizontally">R-multiple = (exit − entry) ÷ (entry − stop)</span>
       <p>The arithmetic behind sizing, expectancy, and break-even win rates is in the <a href="/guides/r-multiple-expectancy.html">R-multiple guide</a>.</p>
       <h2>Mistake tags beat journal entries</h2>
       <p>Keep the list short enough to be honest and fixed enough to count. Something like: <strong>chased entry</strong>, <strong>moved stop</strong>, <strong>oversized</strong>, <strong>no setup</strong>, <strong>early exit</strong>, <strong>revenge trade</strong>, <strong>none</strong>.</p>

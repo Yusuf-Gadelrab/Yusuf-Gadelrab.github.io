@@ -58,7 +58,7 @@
 
 <a class="skip-link" href="#main">Skip to content</a>
 
-<nav class="site-nav">
+<nav class="site-nav" aria-label="Primary">
   <a class="site-nav__brand" href="/"><img class="site-nav__lion" src="/img/brand/lion-mark.svg" alt="" width="34" height="34" decoding="async"><span>YUSUF GADELRAB</span></a>
   <div class="site-nav__links">
     <a href="/">Work</a>
@@ -94,14 +94,14 @@
       <h2>What an embedding actually is</h2>
       <p>An embedding model is a neural network that reads text and outputs a fixed-length list of floating-point numbers — a vector. A 1024-dimension model always returns 1024 numbers, whether the input was one word or four hundred. The model was trained so that texts humans would consider related land close together in that space, and unrelated texts land far apart. Nothing about the vector is human-readable. Dimension 417 does not mean "legal document." The only thing you can do with a vector is compare it to another vector.</p>
       <p>The comparison is almost always cosine similarity: the cosine of the angle between two vectors, which ignores their lengths and measures only direction. It runs from -1 (opposite) through 0 (unrelated) to 1 (identical direction). Most modern embedding models output unit-length vectors, which makes cosine similarity and the dot product the same operation, which is why vector databases can compare millions of vectors per second.</p>
-      <span class="formula">cos(A, B) = (A · B) / (||A|| × ||B||)
+      <span class="formula" tabindex="0" role="group" aria-label="Formula, scrolls horizontally">cos(A, B) = (A · B) / (||A|| × ||B||)
 
 with unit-length vectors this collapses to just the dot product:
 cos(A, B) = A · B = a1×b1 + a2×b2 + ... + an×bn</span>
       <p>The critical consequence: <strong>similar does not mean relevant, and it definitely does not mean correct.</strong> An embedding model trained on general web text will happily rank "the refund policy is 30 days" and "the refund policy is 90 days" as near-identical, because they are near-identical as language. Vector search finds text that looks like the query. Everything downstream has to survive that limitation.</p>
       <h2>The four numbers on a model card that matter</h2>
-      <div class="tblwrap"><table class="tbl">
-        <thead><tr><th>Spec</th><th>What it controls</th><th>How much to care</th></tr></thead>
+      <div class="tblwrap" tabindex="0" role="group" aria-label="Table, scrolls horizontally"><table class="tbl">
+        <thead><tr><th scope="col">Spec</th><th scope="col">What it controls</th><th scope="col">How much to care</th></tr></thead>
         <tbody>
           <tr><td>Dimensions</td><td>Vector size — storage, index memory, and comparison speed</td><td>A lot, for cost. Very little, for quality above ~768.</td></tr>
           <tr><td>Max sequence length</td><td>How much text one embedding can represent before silent truncation</td><td>A lot. This is the one that quietly breaks pipelines.</td></tr>
@@ -111,7 +111,7 @@ cos(A, B) = A · B = a1×b1 + a2×b2 + ... + an×bn</span>
       </table></div>
       <h3>Dimensions: a storage decision, not a quality decision</h3>
       <p>Dimensions are the number everyone fixates on, and they are mostly a cost lever. Storage is exactly linear and easy to compute: dimensions × 4 bytes for float32, times the number of chunks.</p>
-      <span class="formula">bytes = n_chunks × dimensions × 4        (float32)
+      <span class="formula" tabindex="0" role="group" aria-label="Formula, scrolls horizontally">bytes = n_chunks × dimensions × 4        (float32)
 
  10,000 chunks ×  768 dims × 4 =  30.7 MB
  10,000 chunks × 1536 dims × 4 =  61.4 MB
@@ -126,8 +126,8 @@ cos(A, B) = A · B = a1×b1 + a2×b2 + ... + an×bn</span>
       <p>Public retrieval leaderboards are useful for excluding bad models and nearly useless for choosing between good ones. The top twenty models sit within a few points of each other on an average over tasks that are probably nothing like yours, and models get tuned against those benchmarks, which inflates the top of the board relative to real-world behavior. Use the leaderboard to build a shortlist of three. Use your own data to pick from the shortlist.</p>
       <h2>Local versus API embeddings</h2>
       <p>The tradeoff is different from the one for generation models, because embedding models are small. A strong general-purpose embedder is often a few hundred million parameters, which runs comfortably on a laptop CPU and very fast on any GPU. You do not need a 30B model to embed a paragraph, which is why local embeddings are much more often the right call than local generation.</p>
-      <div class="tblwrap"><table class="tbl">
-        <thead><tr><th></th><th>Local (Ollama, sentence-transformers)</th><th>Hosted API</th></tr></thead>
+      <div class="tblwrap" tabindex="0" role="group" aria-label="Table, scrolls horizontally"><table class="tbl">
+        <thead><tr><th scope="col"></th><th scope="col">Local (Ollama, sentence-transformers)</th><th scope="col">Hosted API</th></tr></thead>
         <tbody>
           <tr><td>Cost</td><td>Electricity. Effectively free at any volume you will hit as one person.</td><td>Per-token, and re-indexing a large corpus means paying again.</td></tr>
           <tr><td>Privacy</td><td>Documents never leave the machine. Often the whole reason.</td><td>Every chunk is sent to a third party at index time.</td></tr>
@@ -137,7 +137,7 @@ cos(A, B) = A · B = a1×b1 + a2×b2 + ... + an×bn</span>
         </tbody>
       </table></div>
       <p>Pull and call a local embedder in two commands. Note that this is the HTTP API, not the interactive CLI — for anything programmatic, always talk to the API, which returns structured JSON instead of a stream of terminal formatting you would have to parse:</p>
-      <span class="formula">ollama pull nomic-embed-text
+      <span class="formula" tabindex="0" role="group" aria-label="Formula, scrolls horizontally">ollama pull nomic-embed-text
 
 curl -s http://localhost:11434/api/embed \
   -d '{"model":"nomic-embed-text","input":["first chunk","second chunk"]}' \
@@ -159,7 +159,7 @@ curl -s http://localhost:11434/api/embed \
       <h2>How to evaluate: recall@k, on fifty of your own questions</h2>
       <p>Retrieval is measurable, and measuring it takes an afternoon. Build a golden set: fifty real questions someone would actually ask your corpus, each labeled with the chunk or document that contains the answer. Fifty is not statistically luxurious, but it will reliably show you a ten-point difference, which is the size of difference worth acting on.</p>
       <p>Then compute recall@k — the fraction of questions where a correct chunk appears anywhere in the top k results. This is the metric that matters, because the generation model does not care whether the right chunk ranked first or fourth, only whether it was in the window at all.</p>
-      <span class="formula">recall@k = (queries where a relevant chunk is in the top k) / (total queries)
+      <span class="formula" tabindex="0" role="group" aria-label="Formula, scrolls horizontally">recall@k = (queries where a relevant chunk is in the top k) / (total queries)
 
 MRR = mean over queries of 1 / (rank of the first relevant chunk)
 
@@ -167,7 +167,7 @@ MRR = mean over queries of 1 / (rank of the first relevant chunk)
 # MRR answers:      how high did it rank?
 # Optimize recall@k first. Then use a reranker to fix ordering.</span>
       <p>A tiny harness is enough. Run the golden set against configuration A, run it against configuration B, print both numbers, and change exactly one thing at a time:</p>
-      <span class="formula">def recall_at_k(store, golden, k=10):
+      <span class="formula" tabindex="0" role="group" aria-label="Formula, scrolls horizontally">def recall_at_k(store, golden, k=10):
     hits = 0
     for question, expected_id in golden:
         results = store.search(question, k=k)
@@ -181,7 +181,7 @@ for k in (1, 3, 5, 10, 20):
       <h2>When a reranker beats a better embedder</h2>
       <p>An embedding model compares a query vector to a chunk vector — the two were encoded separately and never saw each other. That is what makes vector search fast: you precompute every chunk once. A cross-encoder reranker instead reads the query and the chunk <em>together</em> and scores the pair directly, which is dramatically more accurate and far too slow to run against a whole corpus.</p>
       <p>So you use both. Retrieve wide and cheap with vectors, then rerank narrow and expensive with a cross-encoder.</p>
-      <span class="formula">query -> vector search, k=50   (fast, approximate, high recall)
+      <span class="formula" tabindex="0" role="group" aria-label="Formula, scrolls horizontally">query -> vector search, k=50   (fast, approximate, high recall)
       -> cross-encoder rerank -> keep top 8   (slow, accurate, high precision)
       -> generation model
 
@@ -192,8 +192,8 @@ for k in (1, 3, 5, 10, 20):
       <p>Vectors from different models are not comparable. Not "slightly less accurate" — meaningless. Different dimensionality, different geometry, no shared reference frame. Changing your embedding model means re-embedding every chunk in the corpus and rebuilding the index, with no partial migration and no fallback.</p>
       <p class="callout callout--warn">This is why an API embedding model deprecation is a genuine operational event and not a version bump. Keep the raw source text alongside your vectors, always, so a re-index is a batch job and not an archaeology project. If you only stored the vectors, you cannot migrate — you have to re-crawl the source, and the source may have changed.</p>
       <h2>A decision table</h2>
-      <div class="tblwrap"><table class="tbl">
-        <thead><tr><th>Situation</th><th>What to do</th></tr></thead>
+      <div class="tblwrap" tabindex="0" role="group" aria-label="Table, scrolls horizontally"><table class="tbl">
+        <thead><tr><th scope="col">Situation</th><th scope="col">What to do</th></tr></thead>
         <tbody>
           <tr><td>First RAG build, under 50k chunks</td><td>Local embedder at 768 dimensions, structural chunking, top-k 10. Ship it, then measure.</td></tr>
           <tr><td>Documents are sensitive or under NDA</td><td>Local, non-negotiable. The privacy argument is stronger than any quality argument at this scale.</td></tr>

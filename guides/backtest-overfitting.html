@@ -58,7 +58,7 @@
 
 <a class="skip-link" href="#main">Skip to content</a>
 
-<nav class="site-nav">
+<nav class="site-nav" aria-label="Primary">
   <a class="site-nav__brand" href="/"><img class="site-nav__lion" src="/img/brand/lion-mark.svg" alt="" width="34" height="34" decoding="async"><span>YUSUF GADELRAB</span></a>
   <div class="site-nav__links">
     <a href="/">Work</a>
@@ -100,8 +100,8 @@
       <h2>Parameter sensitivity: the plateau and the spike</h2>
       <p>A real effect is broad. If a 40-bar lookback works and a 39-bar lookback does not, you have not found a market property, you have found a coincidence in a specific price series. The single cheapest overfitting test is to look at the neighbourhood of your chosen parameters rather than the parameters themselves.</p>
       <p>Take a strategy with two knobs, a lookback length and an ATR stop multiple, and print out-of-sample expectancy in R for every combination. Here is what a result worth keeping looks like:</p>
-      <div class="tblwrap"><table class="tbl">
-        <thead><tr><th>Lookback \ ATR stop</th><th>1.5×</th><th>2.0×</th><th>2.5×</th><th>3.0×</th></tr></thead>
+      <div class="tblwrap" tabindex="0" role="group" aria-label="Table, scrolls horizontally"><table class="tbl">
+        <thead><tr><th scope="col">Lookback \ ATR stop</th><th scope="col">1.5×</th><th scope="col">2.0×</th><th scope="col">2.5×</th><th scope="col">3.0×</th></tr></thead>
         <tbody>
           <tr><td>20 bars</td><td>+0.06</td><td>+0.09</td><td>+0.10</td><td>+0.08</td></tr>
           <tr><td>30 bars</td><td>+0.08</td><td>+0.11</td><td>+0.12</td><td>+0.10</td></tr>
@@ -111,8 +111,8 @@
       </table></div>
       <p>Every cell is positive, the surface changes smoothly, and the best cell is barely better than its neighbours. Nothing about that grid depends on picking the right number. You could be wrong about the lookback by 20 bars and still have roughly the same system.</p>
       <p>Here is the same grid for a strategy that should be thrown away:</p>
-      <div class="tblwrap"><table class="tbl">
-        <thead><tr><th>Lookback \ ATR stop</th><th>1.5×</th><th>2.0×</th><th>2.5×</th><th>3.0×</th></tr></thead>
+      <div class="tblwrap" tabindex="0" role="group" aria-label="Table, scrolls horizontally"><table class="tbl">
+        <thead><tr><th scope="col">Lookback \ ATR stop</th><th scope="col">1.5×</th><th scope="col">2.0×</th><th scope="col">2.5×</th><th scope="col">3.0×</th></tr></thead>
         <tbody>
           <tr><td>20 bars</td><td>−0.02</td><td>+0.03</td><td>−0.04</td><td>+0.01</td></tr>
           <tr><td>30 bars</td><td>+0.05</td><td>−0.06</td><td><strong>+0.31</strong></td><td>−0.03</td></tr>
@@ -121,7 +121,7 @@
         </tbody>
       </table></div>
       <p>The headline number is far better: +0.31R against +0.12R. It is also completely isolated. Its immediate neighbours average slightly below zero, which means the strategy is a coin flip everywhere except one cell, and that cell is the one you would have reported. <strong>A parameter spike is not a strong result, it is a measurement of how much noise your data set contains.</strong></p>
-      <span class="formula">Plateau ratio = mean(8 surrounding cells) ÷ peak cell
+      <span class="formula" tabindex="0" role="group" aria-label="Formula, scrolls horizontally">Plateau ratio = mean(8 surrounding cells) ÷ peak cell
 
 Good grid:  +0.108 ÷ +0.12  =  0.90
 Bad grid:   −0.010 ÷ +0.31  =  −0.03
@@ -131,7 +131,7 @@ Rule of thumb: below about 0.6, treat the peak as noise.</span>
       <h2>Why testing 200 variants guarantees a winner</h2>
       <p>This is the piece of arithmetic that ends most backtests, and it is almost never shown. Suppose every variant you test has a true edge of exactly zero. Their measured Sharpe ratios are still scattered around zero by sampling noise. Take the best of the batch and you have not found skill, you have found the right tail of a distribution you generated yourself.</p>
       <p>The expected maximum of N independent standard normal draws is approximately the square root of twice the natural log of N. Multiply that by the standard error of a Sharpe estimate and you get the number you should expect to see from pure noise:</p>
-      <span class="formula">SE(Sharpe)  ≈ √(1 ÷ years of data)
+      <span class="formula" tabindex="0" role="group" aria-label="Formula, scrolls horizontally">SE(Sharpe)  ≈ √(1 ÷ years of data)
 E[best of N] ≈ SE(Sharpe) × √(2 · ln N)
 
 Worked, 5 years of data, 200 variants tested:
@@ -140,8 +140,8 @@ Worked, 5 years of data, 200 variants tested:
   E[best]  = 0.447 × 3.256   = 1.46
 
 A 1.46 Sharpe is the EXPECTED winner when every variant is worthless.</span>
-      <div class="tblwrap"><table class="tbl">
-        <thead><tr><th>Variants tested</th><th>√(2 · ln N)</th><th>Expected best Sharpe under a true zero edge (5y data)</th></tr></thead>
+      <div class="tblwrap" tabindex="0" role="group" aria-label="Table, scrolls horizontally"><table class="tbl">
+        <thead><tr><th scope="col">Variants tested</th><th scope="col">√(2 · ln N)</th><th scope="col">Expected best Sharpe under a true zero edge (5y data)</th></tr></thead>
         <tbody>
           <tr><td>5</td><td>1.79</td><td>0.80</td></tr>
           <tr><td>10</td><td>2.15</td><td>0.96</td></tr>
@@ -151,7 +151,7 @@ A 1.46 Sharpe is the EXPECTED winner when every variant is worthless.</span>
         </tbody>
       </table></div>
       <p>Read the bottom row again. Run a grid search over a thousand configurations on five years of data and a Sharpe of 1.66 is the <em>average</em> outcome of testing nothing but garbage. Most retail backtesting projects sail past a thousand configurations without counting, because the count is not the number of ideas you wrote up, it is the number of configurations the search actually evaluated.</p>
-      <span class="formula">Configurations searched = (values per parameter) ^ (number of parameters)
+      <span class="formula" tabindex="0" role="group" aria-label="Formula, scrolls horizontally">Configurations searched = (values per parameter) ^ (number of parameters)
 
   5 parameters × 6 candidate values each
   = 6^5
@@ -162,7 +162,7 @@ You tested 7,776 hypotheses, not one.</span>
       <p>Bonferroni is deliberately conservative and your variants are correlated rather than independent, so the true penalty sits somewhere between no correction and the full one. That is an argument for estimating the penalty, not for skipping it. The practical version: keep a log of every configuration evaluated across the whole project, and treat that running total as N.</p>
       <h2>Deflated Sharpe and the haircut</h2>
       <p>Once you have an expected best-under-the-null, you can subtract it. That is the whole idea behind deflated Sharpe ratios: compare the observed result against the noise ceiling produced by your own search rather than against zero.</p>
-      <span class="formula">Deflated z = (observed Sharpe − E[best of N]) ÷ SE(Sharpe)
+      <span class="formula" tabindex="0" role="group" aria-label="Formula, scrolls horizontally">Deflated z = (observed Sharpe − E[best of N]) ÷ SE(Sharpe)
 
 Observed 2.00, N = 200, 5 years:
   z = (2.00 − 1.46) ÷ 0.447 = 1.21
@@ -187,7 +187,7 @@ Effective Sharpe after haircut = 2.00 − 1.46 = 0.54</span>
       </ol>
       <p>What comes back is a null distribution for your own system. If the strategy's expectancy sits inside that distribution, the signal added nothing measurable and you have been paying commissions for a random number generator wearing a chart pattern.</p>
       <p>Here is that test run against my own research, which is the reason this section exists:</p>
-      <span class="formula">Signal contribution = strategy expectancy − matched random-entry expectancy
+      <span class="formula" tabindex="0" role="group" aria-label="Formula, scrolls horizontally">Signal contribution = strategy expectancy − matched random-entry expectancy
 
 AVWAP-reclaim swing setup, 129 symbols, 10-year universe:
   strategy expectancy   = +0.117R over 4,933 trades
@@ -197,7 +197,7 @@ AVWAP-reclaim swing setup, 129 symbols, 10-year universe:
   signal contribution   = +0.030R,  CI crosses zero</span>
       <p>The headline figure is +0.117R over 4,933 trades with a confidence interval that clears zero, which looks like a result. A risk-matched random entry on the same universe, same window, same holding periods, and same risk already captures +0.086R of it. <strong>The signal's own contribution is +0.030R, with a confidence interval that crosses zero, so this is not a validated edge.</strong> It is a stop-loss and holding-period policy applied to a long-biased universe during a period when that universe went up, plus a signal whose marginal contribution cannot be distinguished from noise at this sample size.</p>
       <p>That is the honest reading of my best surviving setup, and it is worth more than a flattering one. An earlier and much smaller sample from the same project looked considerably better and did not survive re-testing, which is the ordinary fate of results built on a hundred-ish trades.</p>
-      <span class="formula">SE(expectancy) = σ_R ÷ √n
+      <span class="formula" tabindex="0" role="group" aria-label="Formula, scrolls horizontally">SE(expectancy) = σ_R ÷ √n
 
   σ_R ≈ 2.10R  (R outcomes are fat-tailed)
   n   = 4,933
@@ -209,7 +209,7 @@ To halve that interval you need roughly 4× the trades: ~19,700.</span>
       <p>That last line is the part people skip. Precision improves with the square root of sample size, so the sample needed to resolve a 0.03R difference is enormous. If a small edge is what you have, you need patience and volume, and you should be running <a href="/guides/paper-to-live-trading.html">paper trading with a hard promotion gate</a> rather than sizing up on a backtest.</p>
       <h2>Degrees of freedom against sample size</h2>
       <p>Every tunable choice is a degree of freedom, and the count is always larger than people admit. It includes the obvious knobs, but also the universe filter, the holding cap, the regime switch you added and removed, the two indicators you tried and abandoned, and the start date you nudged because 2008 looked ugly.</p>
-      <span class="formula">Trades per free parameter = out-of-sample trades ÷ free parameters
+      <span class="formula" tabindex="0" role="group" aria-label="Formula, scrolls horizontally">Trades per free parameter = out-of-sample trades ÷ free parameters
 
   240 OOS trades ÷ 6 free parameters = 40 per parameter
 
@@ -245,8 +245,8 @@ Working floors:
         <li><strong>Paper trade</strong> to a pre-committed gate before any real capital, because execution reality is a separate test from statistical reality.</li>
         <li><strong>Publish the failures</strong> alongside the survivor. A research file with no rejected variants is a sales page.</li>
       </ol>
-      <div class="tblwrap"><table class="tbl">
-        <thead><tr><th>Signal</th><th>Fitted result</th><th>Result worth trusting</th></tr></thead>
+      <div class="tblwrap" tabindex="0" role="group" aria-label="Table, scrolls horizontally"><table class="tbl">
+        <thead><tr><th scope="col">Signal</th><th scope="col">Fitted result</th><th scope="col">Result worth trusting</th></tr></thead>
         <tbody>
           <tr><td>Parameter surface</td><td>Isolated spike, neighbours near zero</td><td>Broad plateau, neighbours within ~10%</td></tr>
           <tr><td>Configurations searched</td><td>Unknown or uncounted</td><td>Logged, and used in the haircut</td></tr>

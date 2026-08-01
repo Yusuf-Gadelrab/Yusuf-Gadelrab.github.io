@@ -58,7 +58,7 @@
 
 <a class="skip-link" href="#main">Skip to content</a>
 
-<nav class="site-nav">
+<nav class="site-nav" aria-label="Primary">
   <a class="site-nav__brand" href="/"><img class="site-nav__lion" src="/img/brand/lion-mark.svg" alt="" width="34" height="34" decoding="async"><span>YUSUF GADELRAB</span></a>
   <div class="site-nav__links">
     <a href="/">Work</a>
@@ -90,8 +90,8 @@
     <div class="prose">
       <h2>Three different readers, three different clocks</h2>
       <p>"How long do they look at it" has three answers, because three different things look at your material and they are looking for different information. Building for the wrong one is why portfolios that are genuinely good still get no responses.</p>
-      <div class="tblwrap"><table class="tbl">
-        <thead><tr><th>Reader</th><th>Clock</th><th>What they are actually answering</th></tr></thead>
+      <div class="tblwrap" tabindex="0" role="group" aria-label="Table, scrolls horizontally"><table class="tbl">
+        <thead><tr><th scope="col">Reader</th><th scope="col">Clock</th><th scope="col">What they are actually answering</th></tr></thead>
         <tbody>
           <tr><td><strong>The applicant tracking system</strong></td><td>Milliseconds</td><td>Can I parse this document into fields? Does the text contain the terms this req was posted with?</td></tr>
           <tr><td><strong>The recruiter</strong></td><td>About eight seconds, frequently on a phone</td><td>Is this person real, what do they do, is there anything concrete, can I forward this without embarrassing myself?</td></tr>
@@ -134,8 +134,8 @@
       <p>The tutorial-following clone with the tutorial's own structure intact. The to-do app. The portfolio site itself listed as a portfolio project. Anything with a README that is still the framework's generated default. Anything whose last commit is a broken build. None of these are shameful, they were all useful to build, and none of them belong on the first screen.</p>
       <h2>Quantified outcomes, honestly</h2>
       <p>"Built a web app with React and Node" describes tooling. "Cut a manual research process from six hours a week to two" describes an outcome. The second one is what a recruiter can forward and a hiring manager can ask about, and it is what makes the difference between a project list and a portfolio.</p>
-      <div class="tblwrap"><table class="tbl">
-        <thead><tr><th>Project type</th><th>What is worth quantifying</th></tr></thead>
+      <div class="tblwrap" tabindex="0" role="group" aria-label="Table, scrolls horizontally"><table class="tbl">
+        <thead><tr><th scope="col">Project type</th><th scope="col">What is worth quantifying</th></tr></thead>
         <tbody>
           <tr><td>Tool or automation</td><td>Time saved per run or per week, number of runs, manual steps eliminated</td></tr>
           <tr><td>Data or machine learning</td><td>Dataset size, accuracy or error against a stated baseline, what the baseline was</td></tr>
@@ -163,8 +163,8 @@
       <p class="callout">The clean-clone test, run once per project before you link it anywhere: clone into a fresh directory on a machine with nothing configured, follow your own quickstart literally, and change nothing you did not write down. Almost every project fails this the first time, usually on an undocumented environment variable or a hardcoded path. It takes ten minutes and it is the difference between a reviewer succeeding and a reviewer closing the tab.</p>
       <h2>The live-demo rule</h2>
       <p>A live demo is the strongest single element you can offer, and a broken one is worse than none at all, because it converts a neutral impression into direct evidence that you do not check your own work. The rule that resolves this: <strong>every project needs a fallback artifact that works with zero setup and cannot go down.</strong></p>
-      <div class="tblwrap"><table class="tbl">
-        <thead><tr><th>Option</th><th>Reliability</th><th>Honest assessment</th></tr></thead>
+      <div class="tblwrap" tabindex="0" role="group" aria-label="Table, scrolls horizontally"><table class="tbl">
+        <thead><tr><th scope="col">Option</th><th scope="col">Reliability</th><th scope="col">Honest assessment</th></tr></thead>
         <tbody>
           <tr><td>Static or client-side-only site on free hosting</td><td>Very high</td><td>Nothing to crash, no server bill, no cold start. If a project can be built this way, it should be</td></tr>
           <tr><td>Free-tier host that sleeps when idle</td><td>Low in practice</td><td>The first visit after idle can take long enough that a recruiter leaves before it loads. Assume that visit is the only one you get</td></tr>

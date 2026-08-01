@@ -58,7 +58,7 @@
 
 <a class="skip-link" href="#main">Skip to content</a>
 
-<nav class="site-nav">
+<nav class="site-nav" aria-label="Primary">
   <a class="site-nav__brand" href="/"><img class="site-nav__lion" src="/img/brand/lion-mark.svg" alt="" width="34" height="34" decoding="async"><span>YUSUF GADELRAB</span></a>
   <div class="site-nav__links">
     <a href="/">Work</a>
@@ -102,8 +102,8 @@
         <li><strong>Terminology that matches the posting.</strong> If the job says "Python" and you wrote "Py", a keyword filter misses you. This is not gaming the system; it is speaking its language.</li>
       </ul>
       <h2>The myths</h2>
-      <div class="tblwrap"><table class="tbl">
-        <thead><tr><th>Myth</th><th>Reality</th></tr></thead>
+      <div class="tblwrap" tabindex="0" role="group" aria-label="Table, scrolls horizontally"><table class="tbl">
+        <thead><tr><th scope="col">Myth</th><th scope="col">Reality</th></tr></thead>
         <tbody>
           <tr><td>"White-text keyword stuffing beats the ATS"</td><td>Trivially detected, and it is grounds for rejection when a human sees the document. Do not.</td></tr>
           <tr><td>"The ATS gives you a match score out of 100"</td><td>Some products compute a match score, most recruiters ignore it, and none of them reject solely on it.</td></tr>
@@ -122,7 +122,7 @@
       </ol>
       <h2>Bullets that survive a six-second read</h2>
       <p>A parser gets your bullets into the database; a human decides in seconds. The structure that works: <strong>action, object, method, result</strong> — and the result is a number wherever one honestly exists.</p>
-      <span class="formula">Weak:  Responsible for the team's data pipeline
+      <span class="formula" tabindex="0" role="group" aria-label="Formula, scrolls horizontally">Weak:  Responsible for the team's data pipeline
 Better: Built an NLP scoring pipeline over 50+ market sources per day,
         cutting manual research time 60%</span>
       <p>If there is no number, use scope: how many users, how many records, how many workflows, over what period. "Improved performance" is unreadable; "cut page load from 4.2s to 1.1s" is a fact.</p>

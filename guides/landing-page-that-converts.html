@@ -58,7 +58,7 @@
 
 <a class="skip-link" href="#main">Skip to content</a>
 
-<nav class="site-nav">
+<nav class="site-nav" aria-label="Primary">
   <a class="site-nav__brand" href="/"><img class="site-nav__lion" src="/img/brand/lion-mark.svg" alt="" width="34" height="34" decoding="async"><span>YUSUF GADELRAB</span></a>
   <div class="site-nav__links">
     <a href="/">Work</a>
@@ -113,8 +113,8 @@
       <p>Everything else on the page — the manifesto, the founder story, the feature grid — belongs below that. Not because those things do not matter, but because they are answers to questions the visitor has not asked yet, and answering unasked questions is how a page loses someone in its first screen.</p>
       <h2>Specificity beats adjectives, every time</h2>
       <p>The single highest-leverage edit available on most pages is deleting adjectives and replacing them with nouns, numbers, and verbs. Adjectives are claims anyone can make. Specifics are claims only you can make.</p>
-      <div class="tblwrap"><table class="tbl">
-        <thead><tr><th>Adjective version</th><th>Specific version</th><th>Why it works</th></tr></thead>
+      <div class="tblwrap" tabindex="0" role="group" aria-label="Table, scrolls horizontally"><table class="tbl">
+        <thead><tr><th scope="col">Adjective version</th><th scope="col">Specific version</th><th scope="col">Why it works</th></tr></thead>
         <tbody>
           <tr><td>"Streamline your back-office operations"</td><td>"Turn a billing inbox into drafted invoices before the end of the day"</td><td>Names the input, the output, and the timeframe</td></tr>
           <tr><td>"The best trading journal app"</td><td>"Log a trade in 15 seconds. Works offline. No account."</td><td>Three checkable claims instead of one unverifiable superlative</td></tr>
@@ -140,8 +140,8 @@
       <p>And then, from the first real user, ask for one sentence. One specific sentence from a named person beats five generic ones, and beats a logo wall entirely.</p>
       <h2>Objections as page sections</h2>
       <p>The most reliable way to structure everything below the fold is to stop thinking about it as content and start thinking about it as a queue of objections, answered in the order a real person raises them.</p>
-      <div class="tblwrap"><table class="tbl">
-        <thead><tr><th>The objection</th><th>The section that answers it</th><th>What fails</th></tr></thead>
+      <div class="tblwrap" tabindex="0" role="group" aria-label="Table, scrolls horizontally"><table class="tbl">
+        <thead><tr><th scope="col">The objection</th><th scope="col">The section that answers it</th><th scope="col">What fails</th></tr></thead>
         <tbody>
           <tr><td>"What is this, exactly?"</td><td>Three steps, plain language, ideally with a visual</td><td>A feature list, which assumes the category is already understood</td></tr>
           <tr><td>"Is this for someone like me?"</td><td>Who it is for, and explicitly who it is not for</td><td>Claiming it is for everyone, which reads as for nobody</td></tr>
@@ -169,7 +169,7 @@
       <p>Then check it on an actual phone, on cellular, not on a desktop browser resized to look like a phone. That is where the traffic is, and it is where the four-second decision gets made. The technical side of building pages this way is covered in <a href="/guides/client-side-only-tools.html">the client-side tools guide</a>, and how the same page gets found in the first place is in <a href="/guides/ai-search-optimization.html">the AI search optimisation guide</a>.</p>
       <h2>Measuring it without a tracking stack</h2>
       <p>You do not need a tag manager, a session recorder, and a heatmap tool. At the traffic levels a new page actually gets, those tools mostly produce confident-looking noise. What you need is one number and enough structure to attribute it.</p>
-      <span class="formula">the only metric that matters early:
+      <span class="formula" tabindex="0" role="group" aria-label="Formula, scrolls horizontally">the only metric that matters early:
 
 conversions per 100 sessions
 
@@ -184,8 +184,8 @@ not pageviews, not time on page, not bounce rate</span>
       </ul>
       <h3>The sample-size honesty section</h3>
       <p>This is where most solo landing-page optimisation goes wrong. At a 2% conversion rate, the numbers you see at small volumes are dominated by chance. Here is the range you would expect purely from randomness, with a true 2% rate:</p>
-      <div class="tblwrap"><table class="tbl">
-        <thead><tr><th>Sessions</th><th>Expected conversions</th><th>Normal range from chance alone</th><th>What you can conclude</th></tr></thead>
+      <div class="tblwrap" tabindex="0" role="group" aria-label="Table, scrolls horizontally"><table class="tbl">
+        <thead><tr><th scope="col">Sessions</th><th scope="col">Expected conversions</th><th scope="col">Normal range from chance alone</th><th scope="col">What you can conclude</th></tr></thead>
         <tbody>
           <tr><td>100</td><td>2</td><td>0 to 5</td><td>Nothing at all</td></tr>
           <tr><td>500</td><td>10</td><td>4 to 16</td><td>Very little</td></tr>

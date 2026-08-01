@@ -58,7 +58,7 @@
 
 <a class="skip-link" href="#main">Skip to content</a>
 
-<nav class="site-nav">
+<nav class="site-nav" aria-label="Primary">
   <a class="site-nav__brand" href="/"><img class="site-nav__lion" src="/img/brand/lion-mark.svg" alt="" width="34" height="34" decoding="async"><span>YUSUF GADELRAB</span></a>
   <div class="site-nav__links">
     <a href="/">Work</a>
@@ -105,8 +105,8 @@
       <p class="callout">The name-match rule catches more fraud than the safety score does. Impersonation works by putting a real, clean carrier's MC number on paperwork with a different phone number and a different remit-to. If the remit-to bank details do not match the entity on the authority record, you are almost certainly not talking to that carrier.</p>
       <h2>Layer two: the certificate of insurance</h2>
       <p>The COI is the document people wave at each other and nobody reads. It is also the only evidence you will have that cargo coverage existed on the day of the loss, because auto liability filings are visible in the federal system while cargo coverage generally is not filed there for motor carriers. If the certificate is wrong, you find out during the claim.</p>
-      <div class="tblwrap"><table class="tbl">
-        <thead><tr><th>What the COI must show</th><th>Why it matters</th><th>What a bad one looks like</th></tr></thead>
+      <div class="tblwrap" tabindex="0" role="group" aria-label="Table, scrolls horizontally"><table class="tbl">
+        <thead><tr><th scope="col">What the COI must show</th><th scope="col">Why it matters</th><th scope="col">What a bad one looks like</th></tr></thead>
         <tbody>
           <tr><td>Named insured, matching the carrier's legal name exactly</td><td>The policy covers that entity, not the one that hauled your load</td><td>A DBA on the certificate that appears nowhere on the authority record</td></tr>
           <tr><td>Your brokerage as certificate holder</td><td>Confirms the agent issued it for this relationship, not recycled from another broker</td><td>Another broker's name in the holder box, or the holder box left blank</td></tr>
@@ -134,8 +134,8 @@
       <p>Set your thresholds once, in writing, and apply them the same way at 9am Monday and 4:45pm Friday. A threshold that gets waived under pressure is not a threshold, it is a preference.</p>
       <h2>Layer four: double-brokering and impersonation</h2>
       <p>Double-brokering is when the carrier you contracted with re-brokers your load to a third party without authorisation. The commercial risk is specific and painful: if you pay the entity you contracted with, and the actual hauling carrier never gets paid, that carrier can pursue your customer and, in practice, you. You can end up paying for the same load twice — and that is the good outcome, since the bad one is the freight vanishing entirely.</p>
-      <div class="tblwrap"><table class="tbl">
-        <thead><tr><th>Red flag</th><th>What it usually means</th><th>Response</th></tr></thead>
+      <div class="tblwrap" tabindex="0" role="group" aria-label="Table, scrolls horizontally"><table class="tbl">
+        <thead><tr><th scope="col">Red flag</th><th scope="col">What it usually means</th><th scope="col">Response</th></tr></thead>
         <tbody>
           <tr><td>Remit-to or factoring details differ from the carrier of record</td><td>Impersonation or an unauthorised re-broker</td><td>Hard stop</td></tr>
           <tr><td>Payment details changed mid-load, by email</td><td>Business email compromise, one of the most common freight frauds</td><td>Hard stop; call the number on the authority record, not the one in the email</td></tr>
@@ -154,8 +154,8 @@
       <p>The single highest-value habit in this entire guide takes ninety seconds: when anything about a carrier changes — payment details, contact person, trailer type, or the driver assigned — call the number listed on the FMCSA record, not the number in the email that told you about the change. Impersonation collapses immediately under an outbound call to a number the impersonator does not control.</p>
       <h2>The paperwork trail that protects you in a claim</h2>
       <p>Vetting is what you do before the load. The file is what you can produce afterwards, and the two are not the same job. A claim, a chargeback, a negligent-selection allegation, or an audit all ask the same question in different words: <em>what did you know, when did you know it, and can you prove it?</em></p>
-      <div class="tblwrap"><table class="tbl">
-        <thead><tr><th>Document</th><th>Captured when</th><th>What it protects</th></tr></thead>
+      <div class="tblwrap" tabindex="0" role="group" aria-label="Table, scrolls horizontally"><table class="tbl">
+        <thead><tr><th scope="col">Document</th><th scope="col">Captured when</th><th scope="col">What it protects</th></tr></thead>
         <tbody>
           <tr><td>Signed broker-carrier agreement</td><td>Once, before the first load</td><td>Anti-re-brokering clause, insurance minimums, indemnity, and the terms every rate confirmation then incorporates</td></tr>
           <tr><td>Authority record snapshot</td><td>At onboarding and re-checked per load</td><td>Evidence the carrier was authorised on the pickup date, not merely at some point</td></tr>

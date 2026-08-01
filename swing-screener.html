@@ -12,17 +12,17 @@
 <meta property="og:image" content="https://yusuf-gadelrab.github.io/og/swing-screener-card.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
-<meta property="og:image:alt" content="Swing Screener — The Backtest That Killed My Own Strategy">
+<meta property="og:image:alt" content="Swing Trade Screener and no-lookahead backtest engine in Python">
 <meta name="twitter:image" content="https://yusuf-gadelrab.github.io/og/swing-screener-card.png">
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"TechArticle","headline":"I built the validation harness that killed my own trading strategy","url":"https://yusuf-gadelrab.github.io/swing-screener.html","description":"Case study: a swing-setup screener, a backtest engine, and the adversarial validation audit that took my own headline result apart.","author":{"@id":"https://yusuf-gadelrab.github.io/#person"},"publisher":{"@id":"https://yusuf-gadelrab.github.io/#person"},"datePublished":"2026-07-29","dateModified":"2026-07-29","mainEntityOfPage":{"@type":"WebPage","@id":"https://yusuf-gadelrab.github.io/swing-screener.html#webpage"},"image":"https://yusuf-gadelrab.github.io/og/swing-screener-card.png"}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"TechArticle","headline":"I built the validation harness that killed my own trading strategy","url":"https://yusuf-gadelrab.github.io/swing-screener.html","description":"A Python CLI that scans a watchlist for anchored-VWAP reclaim, VCP and gap setups, plus a no-lookahead backtest engine and the audit that broke its result.","author":{"@id":"https://yusuf-gadelrab.github.io/#person"},"publisher":{"@id":"https://yusuf-gadelrab.github.io/#person"},"datePublished":"2026-07-29","dateModified":"2026-08-01","mainEntityOfPage":{"@type":"WebPage","@id":"https://yusuf-gadelrab.github.io/swing-screener.html#webpage"},"image":"https://yusuf-gadelrab.github.io/og/swing-screener-card.png"}</script>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://yusuf-gadelrab.github.io/"},{"@type":"ListItem","position":2,"name":"Case studies","item":"https://yusuf-gadelrab.github.io/apps.html"},{"@type":"ListItem","position":3,"name":"Swing Screener","item":"https://yusuf-gadelrab.github.io/swing-screener.html"}]}</script>
 <link rel="manifest" href="/manifest.webmanifest">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 <script>addEventListener("load",function(){if("serviceWorker" in navigator)navigator.serviceWorker.register("/sw.js").catch(function(){})});</script>
 <!-- /tech:seo -->
-<title>Swing Screener — The Backtest That Killed My Own Strategy</title>
-<meta name="description" content="Case study: a swing-setup screener, a backtest engine, and the adversarial validation audit that took my own headline result apart.">
+<title>Swing Trade Screener + Backtest Engine — Python CLI</title>
+<meta name="description" content="A Python CLI that scans a watchlist for anchored-VWAP reclaim, VCP and gap setups, plus a no-lookahead backtest engine and the audit that broke its result.">
 <link rel="canonical" href="https://yusuf-gadelrab.github.io/swing-screener.html">
 <link rel="icon" type="image/svg+xml" href="https://yusuf-gadelrab.github.io/favicon.svg">
 <link rel="apple-touch-icon" sizes="180x180" href="https://yusuf-gadelrab.github.io/apple-touch-icon.png">
@@ -31,13 +31,13 @@
 <meta name="author" content="Yusuf Gadelrab">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Yusuf Gadelrab">
-<meta property="og:title" content="Swing Screener — the harness that killed my own strategy">
-<meta property="og:description" content="A swing-setup screener, a backtest engine, and the adversarial audit that took my own headline result apart.">
+<meta property="og:title" content="Swing Trade Screener + Backtest Engine — Python CLI">
+<meta property="og:description" content="A Python CLI that scans a watchlist for anchored-VWAP reclaim, VCP and gap setups, plus a no-lookahead backtest engine and the audit that broke its result.">
 <meta property="og:url" content="https://yusuf-gadelrab.github.io/swing-screener.html">
 
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Swing Screener — the harness that killed my own strategy">
-<meta name="twitter:description" content="A swing-setup screener, a backtest engine, and the adversarial audit that took my own headline result apart.">
+<meta name="twitter:title" content="Swing Trade Screener + Backtest Engine — Python CLI">
+<meta name="twitter:description" content="A Python CLI that scans a watchlist for anchored-VWAP reclaim, VCP and gap setups, plus a no-lookahead backtest engine and the audit that broke its result.">
 
 <link rel="stylesheet" href="/css/site.css">
 <style>
@@ -50,9 +50,25 @@
   .verdict{border-left:3px solid var(--bad)}
   .verdict b{color:var(--bad)}
   .num{font-family:var(--mono);color:var(--gold-2)}
+  .code{border:1px solid var(--line-soft);border-radius:var(--radius-lg);
+    background:var(--panel);overflow:hidden}
+  .code .bar{display:flex;gap:7px;padding:var(--s3) var(--s4);
+    border-bottom:1px solid var(--line-soft);align-items:center}
+  .code .bar i{width:10px;height:10px;border-radius:50%;display:block;background:var(--faint)}
+  .code .bar span{margin-left:var(--s2);color:var(--muted);font-family:var(--mono);font-size:var(--t-micro)}
+  .code pre{padding:var(--s5);overflow-x:auto;font-family:var(--mono);
+    font-size:13px;line-height:1.85;color:var(--ink)}
+  .code pre .c{color:var(--faint)}
+  .code pre .g{color:var(--gold-2)}
+  .qa h3{color:var(--gold-2)}
+  .qa p{color:var(--muted);font-size:var(--t-small);margin-top:var(--s3)}
+  .risk{border-left:3px solid var(--warn)}
+  .risk b{color:var(--warn)}
 </style>
 <!-- geo:entity — page-level WebPage node (resolves the mainEntityOfPage @id above), plus a bare reference to the canonical Person entity defined in full on index.html -->
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebPage","@id":"https://yusuf-gadelrab.github.io/swing-screener.html#webpage","url":"https://yusuf-gadelrab.github.io/swing-screener.html","name":"Swing Screener — The Backtest That Killed My Own Strategy","description":"Case study: a swing-setup screener, a backtest engine, and the adversarial validation audit that took my own headline result apart.","inLanguage":"en","isPartOf":{"@id":"https://yusuf-gadelrab.github.io/#website"},"about":{"@id":"https://yusuf-gadelrab.github.io/#person"},"publisher":{"@id":"https://yusuf-gadelrab.github.io/#person"}}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebPage","@id":"https://yusuf-gadelrab.github.io/swing-screener.html#webpage","url":"https://yusuf-gadelrab.github.io/swing-screener.html","name":"Swing Trade Screener + Backtest Engine — Python CLI","description":"A Python CLI that scans a watchlist for anchored-VWAP reclaim, VCP and gap setups, plus a no-lookahead backtest engine and the audit that broke its result.","inLanguage":"en","isPartOf":{"@id":"https://yusuf-gadelrab.github.io/#website"},"about":{"@id":"https://yusuf-gadelrab.github.io/#person"},"publisher":{"@id":"https://yusuf-gadelrab.github.io/#person"}}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"SoftwareSourceCode","@id":"https://yusuf-gadelrab.github.io/swing-screener.html#software","name":"swing-screener","description":"A terminal CLI that scans a configurable watchlist for anchored-VWAP reclaim, Minervini-style volatility contraction and gap/opening-range setups using free daily bars, plus a no-lookahead walk-forward backtest engine and an adversarial validation harness.","programmingLanguage":"Python","runtimePlatform":"Python 3.10+","license":"https://spdx.org/licenses/MIT.html","applicationCategory":"DeveloperApplication","author":{"@id":"https://yusuf-gadelrab.github.io/#person"},"maintainer":{"@id":"https://yusuf-gadelrab.github.io/#person"},"isAccessibleForFree":true,"mainEntityOfPage":{"@id":"https://yusuf-gadelrab.github.io/swing-screener.html#webpage"}}</script>
+<!--FAQLD-->
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"Person","@id":"https://yusuf-gadelrab.github.io/#person"}</script>
 <link rel="alternate" type="text/plain" href="https://yusuf-gadelrab.github.io/llms-full.txt" title="Plain-text profile for language models">
 </head>
@@ -92,7 +108,39 @@
   <section class="section section--tight">
     <p class="eyebrow">The Problem</p>
     <h2>A backtest that confirms you is worth nothing.</h2>
-    <p class="lead" style="margin-top:var(--s3)">My walk-forward said the anchored-VWAP-reclaim setup earned <span class="num">+0.23R</span> over 101 trades. That is exactly the kind of number people put in a bio and then trade on. It came from eight correlated large-cap tech names I picked with hindsight, over one arbitrary window alignment. Before putting money behind it, the honest move is to build the test designed to <em>kill</em> it, not the one designed to confirm it.</p>
+    <p class="lead" style="margin-top:var(--s3)">My walk-forward on the anchored-VWAP-reclaim setup produced a headline expectancy that looked like a real edge — from eight correlated large-cap tech names I picked with hindsight, over one arbitrary window alignment. That is exactly the kind of number people put in a bio and then trade on. Before putting money behind it, the honest move is to build the test designed to <em>kill</em> it, not the one designed to confirm it. The headline did not survive, so it has been retired rather than quoted.</p>
+  </section>
+
+  <hr class="divider">
+
+  <section class="section section--tight" id="what-it-does">
+    <p class="eyebrow">What It Does</p>
+    <h2>Three setups, scanned on free daily bars.</h2>
+    <p class="lead" style="margin-top:var(--s3);max-width:var(--maxw-prose)">Point it at a watchlist and it prints one row per symbol: which setups triggered and the levels that define them. Data is free yfinance daily bars, so there is no API key and no market-data bill.</p>
+    <div class="grid" style="margin-top:var(--s6)">
+      <div class="card">
+        <h3>Anchored-VWAP reclaim</h3>
+        <p>VWAP tracks the average cost basis traders paid. Anchored to the recent swing low it becomes a support line measured from that event. The detector fires when price has closed <em>below</em> the anchored VWAP for at least two consecutive bars and the latest close pushes back <em>above</em> it. Reports the anchored VWAP level.</p>
+      </div>
+      <div class="card">
+        <h3>VCP — volatility contraction</h3>
+        <p>Minervini's base pattern: successively tighter price ranges as weak hands are shaken out, confirmed by a volume dry-up against the baseline. The screener splits the recent tail into consecutive windows, checks each range is tighter than the last, and reports the <b>pivot</b> — the high of the final window.</p>
+      </div>
+      <div class="card">
+        <h3>Gap / opening range</h3>
+        <p>The latest bar's open against the prior close gives the gap percentage; anything beyond the threshold flags a continuation candidate. The prior bar's high and low become opening-range-breakout reference levels for the next session — <span class="mono">ORB Hi</span> and <span class="mono">ORB Lo</span>.</p>
+      </div>
+    </div>
+    <div class="grid grid--2" style="margin-top:var(--s6)">
+      <div class="card">
+        <h3>What the backtest engine guarantees</h3>
+        <p>The <span class="mono">backtest</span> subcommand replays the same detectors bar by bar. At each bar the detectors see only data up to that bar — <b>no lookahead</b>. When a setup fires it opens a trade using that setup's own entry and stop levels, targets a configurable R multiple, and walks forward to the stop, the target, or the max-hold timeout. Nothing is decided with information the trade would not have had.</p>
+      </div>
+      <div class="card">
+        <h3>What it outputs</h3>
+        <p>A Rich-rendered terminal table of triggered setups with close, anchored VWAP, VCP pivot, gap % and ORB levels — optionally filtered to symbols that actually triggered. The backtest prints hit rate, average R multiple and expectancy per setup. Either mode can save a dated markdown report.</p>
+      </div>
+    </div>
   </section>
 
   <hr class="divider">
@@ -133,7 +181,7 @@
     <div class="grid grid--2" style="margin-top:var(--s6)">
       <div class="card">
         <h3>1. It wasn't reproducible</h3>
-        <p>The 126-bar window grid start is arbitrary. Sliding it across 21 alignments on the same eight names gives a median of <span class="num">+0.004R</span>, ranging −0.045R to +0.287R. The <span class="num">+0.23R</span> headline sat near the top of that distribution — a coin flip that landed well.</p>
+        <p>The 126-bar window grid start is arbitrary. Sliding it across 21 alignments on the same eight names gives a median of <span class="num">+0.004R</span>, ranging <span class="num">−0.045R</span> to <span class="num">+0.287R</span>. The original headline sat near the top of that distribution — a coin flip that landed well. The centre of the distribution is indistinguishable from zero.</p>
       </div>
       <div class="card">
         <h3>2. It's mostly long drift</h3>
@@ -145,13 +193,44 @@
       </div>
       <div class="card">
         <h3>4. What's left, costs eat</h3>
-        <p>Against a benchmark matched decile-by-decile on risk-as-%-of-price, the signal's incremental contribution is <span class="num">+0.030R</span>, 95% CI [−0.014, +0.077] — crossing zero. Round-trip slippage of 5–10 bps costs 0.018–0.036R, i.e. 60–120% of it.</p>
+        <p>Risk-matched random entries using the identical stop and target already capture <span class="num">+0.086R</span> — long-term market drift. So the signal's own incremental contribution is <span class="num">+0.030R</span>, 95% CI <span class="num">[−0.014, +0.077]</span> — crossing zero, so it does not clear significance. Round-trip costs of 5–10 bps run 0.018–0.036R and would mostly or entirely consume it.</p>
       </div>
     </div>
 
     <div class="panel callout" style="margin-top:var(--s6)">
-      <b>What did survive, in fairness.</b> The strategy is not fake and it is not curve-fit. Expanded to 129 symbols over 10 years it still returns <span class="num">+0.117R</span> over 4,933 trades with a block-bootstrap 95% CI of [+0.057, +0.174] and a correlation-adjusted t of +3.4. All 150 parameter cells came back positive with a smooth, monotone surface — and the shipped parameterisation sits mid-pack rather than on the peak, which is the strongest evidence against curve-fitting. The raw expectancy is real. It just isn't <em>the signal's</em>.
+      <b>What did survive, in fairness.</b> The strategy is not fake and it is not curve-fit. Expanded to a 129-symbol, 10-year universe it still returns <span class="num">+0.117R</span> over 4,933 trades with a block-bootstrap 95% CI of <span class="num">[+0.057, +0.174]</span> and a correlation-adjusted t of +3.4. All 150 parameter cells came back positive with a smooth, monotone surface — and the shipped parameterisation sits mid-pack rather than on the peak, which is the strongest evidence against curve-fitting. The raw expectancy is real. It just isn't <em>the signal's</em>.
     </div>
+
+    <div class="panel verdict" style="margin-top:var(--s6)">
+      <b>Stated plainly: this is not a validated edge.</b>
+      <p class="muted" style="margin-top:var(--s3);font-size:var(--t-small)">The only defensible summary is the one above — a positive raw expectancy on a broad universe, almost all of which a random entry with the same risk geometry would have collected anyway, and a signal-attributable remainder whose confidence interval crosses zero and sits inside transaction costs. Anything stronger than that is not supported by the data on disk.</p>
+    </div>
+  </section>
+
+  <hr class="divider">
+
+  <section class="section section--tight" id="quickstart">
+    <p class="eyebrow">Install &amp; Quickstart</p>
+    <h2>Python, <span class="mono">uv</span>, no API keys.</h2>
+    <p class="lead" style="margin-top:var(--s3);max-width:var(--maxw-prose)">The repository is <b>private today</b>, so there is no public clone URL — access is by request rather than a link. Once you have a copy, the whole setup is one dependency sync: <span class="mono">uv sync</span> from the project root creates the virtualenv and installs everything. There is nothing to configure, no key to obtain and no account to make.</p>
+    <div class="code" style="margin-top:var(--s6)">
+      <div class="bar"><i></i><i></i><i></i><span>screener</span></div>
+<pre>uv sync                                          <span class="c"># create .venv, install deps</span>
+
+uv run swing-screener                            <span class="c"># default watchlist</span>
+uv run swing-screener <span class="g">--symbols</span> SPY,NVDA,AMD   <span class="c"># tickers inline</span>
+uv run swing-screener <span class="g">--config</span> watchlist.example.txt
+uv run swing-screener <span class="g">--triggered-only</span>         <span class="c"># hide symbols with no setup</span>
+uv run swing-screener <span class="g">--period</span> 1y              <span class="c"># longer history window</span>
+uv run swing-screener <span class="g">--report</span>                 <span class="c"># save a dated markdown report</span></pre>
+    </div>
+    <div class="code" style="margin-top:var(--s4)">
+      <div class="bar"><i></i><i></i><i></i><span>backtest</span></div>
+<pre>uv run swing-screener backtest                   <span class="c"># default watchlist, 2y</span>
+uv run swing-screener backtest <span class="g">--symbols</span> SPY,NVDA,AMD <span class="g">--target-r</span> 3 <span class="g">--max-hold</span> 15
+uv run swing-screener backtest <span class="g">--period</span> 5y <span class="g">--report</span></pre>
+    </div>
+    <p class="muted" style="margin-top:var(--s5);max-width:var(--maxw-prose);font-size:var(--t-small)">Every flag above is the real CLI surface, not an illustration. Defaults: <span class="mono">--period 6mo</span> for the screener and <span class="mono">2y</span> for the backtest, <span class="mono">--target-r 2.0</span>, <span class="mono">--max-hold 20</span> bars. A watchlist file is one ticker per line and accepts <span class="mono">#</span> comments. The audit scripts that produced the findings above live alongside the package and are reproducible from the repo.</p>
   </section>
 
   <hr class="divider">
@@ -179,14 +258,22 @@
   <section class="section section--tight">
     <p class="eyebrow">Honest Status</p>
     <h2>A local tool and a research artifact.</h2>
-    <div class="grid grid--2" style="margin-top:var(--s6)">
+    <div class="grid" style="margin-top:var(--s6)">
       <div class="card">
         <h3>What it is</h3>
-        <p>A CLI I run on my own watchlist, plus a validation harness and a full written audit. Both work. The audit is reproducible from scripts in the repo.</p>
+        <p>A CLI I run on my own watchlist, plus a no-lookahead backtest engine, a validation harness and a full written audit. All of it works, and the audit is reproducible from scripts in the repo. MIT licensed, 46 passing tests.</p>
       </div>
       <div class="card">
-        <h3>What it is not</h3>
-        <p>Not a profitable trading system, and I'm not claiming one. There is no live money behind it. The <a class="gold" href="/trading-bot.html">execution engine</a> that would trade this setup exists and is tested, but it stays in paper mode precisely because of what this audit found.</p>
+        <h3>Not a signals service</h3>
+        <p>It does not send alerts, run on a server, or tell you what to buy. It prints levels; levels are references, not recommendations. It places no orders, connects to no broker and has no idea your account exists.</p>
+      </div>
+      <div class="card">
+        <h3>No return promises</h3>
+        <p>Not a profitable trading system, and I am not claiming one. Every figure on this page is backtested or walk-forward simulated — none of it is live P&amp;L. The audit above is the reason to treat the setup as unproven rather than promising.</p>
+      </div>
+      <div class="card">
+        <h3>Paper only, downstream</h3>
+        <p>The <a class="gold" href="/trading-bot.html">execution engine</a> that would trade this setup exists and is tested, but it stays in paper mode precisely because of what this audit found — and it refuses to connect a live broker until a real paper track record exists.</p>
       </div>
     </div>
     <div class="panel callout" style="margin-top:var(--s6)">
@@ -197,6 +284,53 @@
       <a href="/apps.html" class="btn btn-gold">← All projects</a>
       <a href="/trading-bot.html" class="btn btn-ghost">The execution engine →</a>
     </div>
+  </section>
+
+  <hr class="divider">
+
+  <section class="section section--tight" id="faq">
+    <p class="eyebrow">FAQ</p>
+    <h2>Common questions.</h2>
+    <div class="grid grid--2" style="margin-top:var(--s6)">
+      <article class="card qa">
+        <h3>What is an anchored VWAP reclaim?</h3>
+        <p>VWAP weights price by volume, so it tracks the average cost basis traders actually paid. Anchoring it to a meaningful bar, here the recent swing low, turns it into a dynamic support line measured from that event. A reclaim fires when price has traded below the anchored VWAP for at least two consecutive bars and the latest close pushes back above it.</p>
+      </article>
+      <article class="card qa">
+        <h3>Does Swing Screener give me buy signals?</h3>
+        <p>No. It reports which setups triggered and prints the associated levels, and those levels are references rather than recommendations. It places no orders, connects to no broker and knows nothing about your account. Nothing it outputs is financial advice.</p>
+      </article>
+      <article class="card qa">
+        <h3>Is the backtest walk-forward?</h3>
+        <p>Yes. The backtest replays the same detectors bar by bar, and at every bar the detectors see only the data available up to that bar, so there is no lookahead. When a setup fires it opens a trade using that setup's own entry and stop levels, targets a configurable R multiple, and walks forward until the stop, the target or the max-hold timeout is reached.</p>
+      </article>
+      <article class="card qa">
+        <h3>What does expectancy in R mean?</h3>
+        <p>R is one unit of risk, the distance from the entry to the stop. A trade that reaches a 2R target earns twice what it risked and a trade that is stopped out loses 1R. Expectancy is the mean R across every trade, so an expectancy of +0.10R means the average trade returned a tenth of what it put at risk.</p>
+      </article>
+      <article class="card qa">
+        <h3>Can I run it on my own watchlist?</h3>
+        <p>Yes. Pass tickers inline with the symbols flag, or point the config flag at a watchlist file containing one ticker per line. Price data comes from free yfinance daily bars, so there is no API key to obtain and no paid market data subscription to buy.</p>
+      </article>
+      <article class="card qa">
+        <h3>Did the strategy actually hold up?</h3>
+        <p>Not as a validated edge. Across a 129-symbol, 10-year universe the setup returned +0.117R over 4,933 trades with a block-bootstrap 95% confidence interval of [+0.057, +0.174]. Risk-matched random entries using the identical stop and target already captured +0.086R of that, so the signal's own incremental contribution is +0.030R with a 95% confidence interval of [−0.014, +0.077], which does not clear significance.</p>
+      </article>
+      <article class="card qa">
+        <h3>Is it free and open source?</h3>
+        <p>It is MIT licensed, with no paid tier, no account and no telemetry. The repository is private at the moment rather than published, so access is by request instead of a public clone URL.</p>
+      </article>
+    </div>
+  </section>
+
+  <hr class="divider">
+
+  <section class="section section--tight">
+    <div class="panel risk">
+      <b>⚠ Risk disclosure.</b>
+      <p class="muted" style="margin-top:var(--s3);font-size:var(--t-small);max-width:var(--maxw-prose)">Swing Screener is an educational and research tool. It is not financial advice, not investment advice, and not a recommendation to buy or sell any security. Every result on this page is backtested or walk-forward simulated rather than live trading performance, and backtested and past results do not indicate future results. Trading carries substantial risk of loss, including the total loss of principal. You are solely responsible for your own trading decisions. See <a class="gold" href="/terms.html">Terms</a>, <a class="gold" href="/privacy.html">Privacy</a> and <a class="gold" href="/refunds.html">Refunds</a>.</p>
+    </div>
+    <p class="muted" style="margin-top:var(--s6);font-size:var(--t-small)">Related: <a class="gold" href="/trading-bot.html">the execution engine</a> · <a class="gold" href="/risk-tools.html">position-sizing and risk calculators</a> · <a class="gold" href="/apps/tradelog/">TradeLog, the offline R-multiple journal</a> · <a class="gold" href="/apps.html">all apps and projects</a>.</p>
   </section>
 
 </main>

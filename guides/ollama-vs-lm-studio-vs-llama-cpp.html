@@ -58,7 +58,7 @@
 
 <a class="skip-link" href="#main">Skip to content</a>
 
-<nav class="site-nav">
+<nav class="site-nav" aria-label="Primary">
   <a class="site-nav__brand" href="/"><img class="site-nav__lion" src="/img/brand/lion-mark.svg" alt="" width="34" height="34" decoding="async"><span>YUSUF GADELRAB</span></a>
   <div class="site-nav__links">
     <a href="/">Work</a>
@@ -105,7 +105,7 @@
       <p>Bringing an arbitrary GGUF file into Ollama is possible but not zero-friction either: you write a small Modelfile that points at the file and defines a template, then run a create command. It works well, it is just one more step than the LM Studio drag-and-drop feel or the llama.cpp direct path argument.</p>
       <h2>API Compatibility</h2>
       <p>This is the one area where all three genuinely agree. <code>llama-server</code>, the Ollama daemon, and the LM Studio local server all expose an OpenAI-compatible <code>/v1/chat/completions</code> endpoint, which means the same client code, the official OpenAI Python SDK, LangChain, or a raw curl call, works against any of them by changing only the base URL. Ollama additionally has its own native REST API with a few conveniences the OpenAI spec does not cover, such as explicit model loading and unloading.</p>
-      <span class="formula">curl http://localhost:11434/v1/chat/completions \
+      <span class="formula" tabindex="0" role="group" aria-label="Formula, scrolls horizontally">curl http://localhost:11434/v1/chat/completions \
   -H "Content-Type: application/json" \
   -d '{
     "model": "qwen3",
@@ -118,8 +118,8 @@
       <p class="callout callout--warn">None of these tools will save you from a model that is simply too large for your machine RAM. If a 30B-plus model is thrashing your system, the fix is a smaller model or a more aggressive quantization, not a different runtime.</p>
       <h2>Quantization: Choosing a GGUF Quant Level</h2>
       <p>GGUF quantization trades file size and memory footprint for output quality, and the tradeoff is not linear. Q8_0 is close to the full-precision original and correspondingly large. Q4_K_M is the default most people land on: a real, occasionally noticeable, but usually acceptable quality drop in exchange for roughly half the memory. Going below Q4 tends to degrade noticeably, especially on smaller models that had less redundancy to begin with. K-quants and importance-matrix quants generally beat naive round-to-nearest quantization at the same bit width, which is why most GGUF files you find in the wild use one of those methods rather than a plain legacy quant.</p>
-      <div class="tblwrap"><table class="tbl">
-        <thead><tr><th>Quant</th><th>Relative Size</th><th>Typical Use</th></tr></thead>
+      <div class="tblwrap" tabindex="0" role="group" aria-label="Table, scrolls horizontally"><table class="tbl">
+        <thead><tr><th scope="col">Quant</th><th scope="col">Relative Size</th><th scope="col">Typical Use</th></tr></thead>
         <tbody>
           <tr><td>Q8_0</td><td>Largest, near full precision</td><td>Quality-sensitive work, if RAM allows</td></tr>
           <tr><td>Q6_K</td><td>Large</td><td>Middle ground when Q8_0 does not fit</td></tr>
@@ -130,8 +130,8 @@
       </table></div>
       <h2>Feature Matrix: Ollama vs LM Studio vs llama.cpp</h2>
       <p>Putting the pieces side by side:</p>
-      <div class="tblwrap"><table class="tbl">
-        <thead><tr><th>Dimension</th><th>Ollama</th><th>LM Studio</th><th>llama.cpp</th></tr></thead>
+      <div class="tblwrap" tabindex="0" role="group" aria-label="Table, scrolls horizontally"><table class="tbl">
+        <thead><tr><th scope="col">Dimension</th><th scope="col">Ollama</th><th scope="col">LM Studio</th><th scope="col">llama.cpp</th></tr></thead>
         <tbody>
           <tr><td>Install / setup friction</td><td>Lowest, Homebrew or app install, one pull command to a running model</td><td>Low, download the app, use the built-in model browser, click to load</td><td>Highest, build from source or grab a binary, then source your own GGUF file</td></tr>
           <tr><td>Model management</td><td>Pull from a curated library, tag hides the exact quant unless you check the manifest</td><td>Built-in Hugging Face model browser, shows the real GGUF file and quant before download</td><td>Fully manual, find and download the GGUF file yourself</td></tr>

@@ -58,7 +58,7 @@
 
 <a class="skip-link" href="#main">Skip to content</a>
 
-<nav class="site-nav">
+<nav class="site-nav" aria-label="Primary">
   <a class="site-nav__brand" href="/"><img class="site-nav__lion" src="/img/brand/lion-mark.svg" alt="" width="34" height="34" decoding="async"><span>YUSUF GADELRAB</span></a>
   <div class="site-nav__links">
     <a href="/">Work</a>
@@ -95,8 +95,8 @@
       <p>This guide is about the measurement, not the plan. If you need the plan — maintenance, deficit size, the protein floor — that is <a href="/guides/cut-calorie-math.html">the calorie arithmetic guide</a>. This one answers a narrower and more useful question: <strong>given a number on a scale this morning, what are you actually allowed to conclude?</strong></p>
       <h2>Where the noise comes from, and roughly how big it is</h2>
       <p>Body mass on any given morning is fat, plus lean tissue, plus bone, plus whatever water, food, and waste happen to be inside you at that moment. Only the first two change slowly. Everything else moves fast, and it moves in pounds.</p>
-      <div class="tblwrap"><table class="tbl">
-        <thead><tr><th>Source</th><th>Typical same-week swing</th><th>How fast it resolves</th></tr></thead>
+      <div class="tblwrap" tabindex="0" role="group" aria-label="Table, scrolls horizontally"><table class="tbl">
+        <thead><tr><th scope="col">Source</th><th scope="col">Typical same-week swing</th><th scope="col">How fast it resolves</th></tr></thead>
         <tbody>
           <tr><td>Glycogen and its bound water</td><td>1–4 lb</td><td>Days. Every gram of stored carbohydrate carries roughly 3 g of water with it.</td></tr>
           <tr><td>Sodium and fluid balance</td><td>1–3 lb</td><td>24–72 hours after intake normalises.</td></tr>
@@ -111,7 +111,7 @@
       <p class="callout">A useful reframe: you are not weighing fat. You are weighing fat plus a large, fast, random number. Your entire job as a tracker is to average that random number away, and averaging takes time. There is no clever workaround, no better scale, and no time of day that removes it.</p>
       <h2>The formulas disagree, which is itself the point</h2>
       <p>Before the tracking starts, most people run a TDEE calculator. Total daily energy expenditure is basal metabolic rate multiplied by an activity factor, and there are several competing estimators for the BMR half.</p>
-      <span class="formula">Mifflin-St Jeor (men):    BMR = 10W + 6.25H - 5A + 5
+      <span class="formula" tabindex="0" role="group" aria-label="Formula, scrolls horizontally">Mifflin-St Jeor (men):    BMR = 10W + 6.25H - 5A + 5
 Mifflin-St Jeor (women):  BMR = 10W + 6.25H - 5A - 161
    W = kg, H = cm, A = years
 
@@ -132,7 +132,7 @@ TDEE = BMR × activity factor (roughly 1.2 sedentary to 1.9 very active)</span>
       <p>Average all seven days of the week, then compare that average to the previous week's average. Simple, robust, and it collapses seven noisy samples into one number whose noise is roughly a third of a single day's. The weakness is latency: you find out about last week at the end of this week, and a Wednesday-to-Wednesday comparison can still be pulled around by one outlier day at either edge.</p>
       <h3>Exponentially weighted averages</h3>
       <p>An exponentially weighted moving average updates every day, weights recent days more heavily, and never needs you to wait for a week boundary. It is one line of arithmetic.</p>
-      <span class="formula">trend(today) = trend(yesterday) + k × (weight(today) - trend(yesterday))
+      <span class="formula" tabindex="0" role="group" aria-label="Formula, scrolls horizontally">trend(today) = trend(yesterday) + k × (weight(today) - trend(yesterday))
 
 k = 0.1  →  smooth, slow, roughly a 2-3 week memory
 k = 0.25 →  responsive, noisier, roughly a 1 week memory
@@ -142,8 +142,8 @@ Start with trend = your first weigh-in, then just iterate.</span>
       <p>Either filter is fine. What is not fine is comparing raw daily numbers to each other, which is the default behaviour of every scale ever sold and the source of most of the misery.</p>
       <h2>How long before a trend means anything</h2>
       <p>The honest answer depends on how aggressive the deficit is, because the signal size scales with it while the noise does not.</p>
-      <div class="tblwrap"><table class="tbl">
-        <thead><tr><th>Target rate</th><th>Weekly signal</th><th>Minimum wait before judging</th></tr></thead>
+      <div class="tblwrap" tabindex="0" role="group" aria-label="Table, scrolls horizontally"><table class="tbl">
+        <thead><tr><th scope="col">Target rate</th><th scope="col">Weekly signal</th><th scope="col">Minimum wait before judging</th></tr></thead>
         <tbody>
           <tr><td>0.5 lb/week (≈250 cal/day)</td><td>0.5 lb</td><td>4 weeks. The signal is small enough that three weeks of noise can hide it entirely.</td></tr>
           <tr><td>1 lb/week (≈500 cal/day)</td><td>1 lb</td><td>3 weeks. The usual case, and the usual answer.</td></tr>
@@ -156,7 +156,7 @@ Start with trend = your first weigh-in, then just iterate.</span>
       <h2>A blown week, in actual arithmetic</h2>
       <p>This is the part that gets skipped, and it is the part that decides whether a plan survives its first bad week. So do the numbers instead of the guilt.</p>
       <p>Say you are running a 500 calorie daily deficit and you have a genuinely terrible weekend: a restaurant meal, drinks, and a next-day recovery meal, adding up to roughly 3,000 calories above maintenance across two days. What happened?</p>
-      <span class="formula">Planned week:   -500 × 7        = -3,500 cal  ≈ -1.0 lb
+      <span class="formula" tabindex="0" role="group" aria-label="Formula, scrolls horizontally">Planned week:   -500 × 7        = -3,500 cal  ≈ -1.0 lb
 Actual week:    -500 × 5 + 3,000 = +500 cal  ≈ +0.14 lb
 
 Net damage:  about one week of progress, not one month.

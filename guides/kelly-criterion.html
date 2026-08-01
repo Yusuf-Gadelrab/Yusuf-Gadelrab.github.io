@@ -58,7 +58,7 @@
 
 <a class="skip-link" href="#main">Skip to content</a>
 
-<nav class="site-nav">
+<nav class="site-nav" aria-label="Primary">
   <a class="site-nav__brand" href="/"><img class="site-nav__lion" src="/img/brand/lion-mark.svg" alt="" width="34" height="34" decoding="async"><span>YUSUF GADELRAB</span></a>
   <div class="site-nav__links">
     <a href="/">Work</a>
@@ -90,13 +90,13 @@
     <div class="prose">
       <h2>The formula</h2>
       <p>For a bet that wins with probability <em>p</em> and pays <em>b</em> to 1:</p>
-      <span class="formula">f* = p − (1 − p) ÷ b
+      <span class="formula" tabindex="0" role="group" aria-label="Formula, scrolls horizontally">f* = p − (1 − p) ÷ b
 
 where f* is the fraction of capital to risk,
       p is the win probability,
       b is the reward-to-risk ratio</span>
       <p>A setup that wins 45% of the time at 2R:</p>
-      <span class="formula">f* = 0.45 − 0.55 ÷ 2 = 0.45 − 0.275 = 0.175 → 17.5% of capital</span>
+      <span class="formula" tabindex="0" role="group" aria-label="Formula, scrolls horizontally">f* = 0.45 − 0.55 ÷ 2 = 0.45 − 0.275 = 0.175 → 17.5% of capital</span>
       <p>Risking 17.5% of the account on one trade is not a plan, it is a countdown. That number is correct and unusable, and understanding why is the whole point of the guide.</p>
       <h2>Why full Kelly is unusable</h2>
       <ul>
@@ -107,8 +107,8 @@ where f* is the fraction of capital to risk,
       </ul>
       <h2>Fractional Kelly</h2>
       <p>Because the growth curve is flat near its peak but steep past it, taking a fraction of Kelly gives up little expected growth and removes most of the variance.</p>
-      <div class="tblwrap"><table class="tbl">
-        <thead><tr><th>Sizing</th><th>Fraction of f*</th><th>Trade-off</th></tr></thead>
+      <div class="tblwrap" tabindex="0" role="group" aria-label="Table, scrolls horizontally"><table class="tbl">
+        <thead><tr><th scope="col">Sizing</th><th scope="col">Fraction of f*</th><th scope="col">Trade-off</th></tr></thead>
         <tbody>
           <tr><td>Full Kelly</td><td>100%</td><td>Maximum theoretical growth, ruinous variance, extremely sensitive to estimation error</td></tr>
           <tr><td>Half Kelly</td><td>50%</td><td>Roughly three quarters of the growth with dramatically lower drawdown — the common practitioner choice</td></tr>

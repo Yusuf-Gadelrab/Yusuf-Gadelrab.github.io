@@ -58,7 +58,7 @@
 
 <a class="skip-link" href="#main">Skip to content</a>
 
-<nav class="site-nav">
+<nav class="site-nav" aria-label="Primary">
   <a class="site-nav__brand" href="/"><img class="site-nav__lion" src="/img/brand/lion-mark.svg" alt="" width="34" height="34" decoding="async"><span>YUSUF GADELRAB</span></a>
   <div class="site-nav__links">
     <a href="/">Work</a>
@@ -105,8 +105,8 @@
       <p class="callout">If you have five minutes and not twenty: abstract, figures, limitations. That triple tells you what was claimed, what was actually observed, and what the authors themselves say it does not prove. It is a startling amount of a paper for five minutes of work.</p>
       <h2>How to judge a sample size</h2>
       <p>There is no universal threshold, which is why "n = 60, is that a lot?" has no answer in isolation. The right question is whether the sample is large enough to detect an effect of the size the authors are looking for, and whether it is representative of the population the claim is about.</p>
-      <div class="tblwrap"><table class="tbl">
-        <thead><tr><th>Question</th><th>What a good answer looks like</th><th>What should worry you</th></tr></thead>
+      <div class="tblwrap" tabindex="0" role="group" aria-label="Table, scrolls horizontally"><table class="tbl">
+        <thead><tr><th scope="col">Question</th><th scope="col">What a good answer looks like</th><th scope="col">What should worry you</th></tr></thead>
         <tbody>
           <tr><td>How many participants, and in each condition?</td><td>Stated plainly in the abstract or early methods, with the per-group split</td><td>Only a total, with the group sizes buried or absent</td></tr>
           <tr><td>Was there a power analysis?</td><td>A stated target effect size and the sample needed to detect it, decided before data collection</td><td>No mention, especially alongside a barely-significant result</td></tr>
@@ -119,7 +119,7 @@
       <p>The subtler failure is representativeness. A sample drawn entirely from one university's introductory course is a fine basis for a claim about that population and a weak basis for a claim about students generally. Most overreach in papers happens at exactly this joint, and the limitations section usually admits it in one sentence that the abstract does not.</p>
       <h2>What a p-value actually means</h2>
       <p>The formal definition is genuinely awkward, so here it is precisely and then in plain terms.</p>
-      <span class="formula">p = P(observing data at least this extreme | the null hypothesis is true)
+      <span class="formula" tabindex="0" role="group" aria-label="Formula, scrolls horizontally">p = P(observing data at least this extreme | the null hypothesis is true)
 
 It is NOT:  the probability the null hypothesis is true
 It is NOT:  the probability the result was a fluke
@@ -136,7 +136,7 @@ It is NOT:  a measure of how big or important the effect is</span>
       </ul>
       <h2>Effect size is the number you actually wanted</h2>
       <p>An effect size says how big the difference is, in units that survive comparison across studies. For a difference between two group means, the standard measure is Cohen's d.</p>
-      <span class="formula">Cohen's d = (mean_A - mean_B) / pooled standard deviation
+      <span class="formula" tabindex="0" role="group" aria-label="Formula, scrolls horizontally">Cohen's d = (mean_A - mean_B) / pooled standard deviation
 
 Rough conventions (and they are only conventions):
   d ≈ 0.2   small
@@ -159,8 +159,8 @@ and confidence intervals, which carry more information than any of them.</span>
       <p>This is also a decent illustration of why exact numbers matter more than remembered impressions. A percentage figure attached to this study in casual retelling would be an invention, because the paper reports no percentage figures at all. If you cannot point to the number in the paper, do not repeat the number. The broader context of that work is in <a href="/guides/bilingual-coding-cs-education.html">the bilingual coding guide</a>, and both papers are described on <a href="/research.html">the research page</a>.</p>
       <h2>Spotting a claim the data does not support</h2>
       <p>Most overreach is not fraud. It is a chain of small, individually defensible steps that ends somewhere the evidence never went. These are the joints where the chain usually slips.</p>
-      <div class="tblwrap"><table class="tbl">
-        <thead><tr><th>What the paper shows</th><th>What the discussion says</th><th>The gap</th></tr></thead>
+      <div class="tblwrap" tabindex="0" role="group" aria-label="Table, scrolls horizontally"><table class="tbl">
+        <thead><tr><th scope="col">What the paper shows</th><th scope="col">What the discussion says</th><th scope="col">The gap</th></tr></thead>
         <tbody>
           <tr><td>A correlation in observational data</td><td>"X improves Y"</td><td>Causal language on non-causal data. Look for random assignment; without it, be suspicious of any verb implying causation.</td></tr>
           <tr><td>An effect in one specific population</td><td>"Students benefit from…"</td><td>Generalisation past the sample. Check who was actually enrolled.</td></tr>
@@ -173,8 +173,8 @@ and confidence intervals, which carry more information than any of them.</span>
       <p>One quick heuristic that catches a surprising share of this: <strong>read the abstract's final sentence and the limitations section back to back.</strong> They are written by the same authors about the same study, and when they disagree in tone, the limitations section is the one telling the truth.</p>
       <h2>What peer review actually catches</h2>
       <p>Having been through the process, the useful correction to most people's mental model is this: peer review is a check on <em>reasoning and reporting</em>, not a verification of the data. Reviewers do not re-run the study. They usually do not see the raw data at all.</p>
-      <div class="tblwrap"><table class="tbl">
-        <thead><tr><th>Peer review reliably catches</th><th>Peer review does not catch</th></tr></thead>
+      <div class="tblwrap" tabindex="0" role="group" aria-label="Table, scrolls horizontally"><table class="tbl">
+        <thead><tr><th scope="col">Peer review reliably catches</th><th scope="col">Peer review does not catch</th></tr></thead>
         <tbody>
           <tr><td>Claims not supported by the reported results</td><td>Fabricated or mistaken data</td></tr>
           <tr><td>Missing methodological detail that blocks replication</td><td>Whether the study replicates</td></tr>

@@ -58,7 +58,7 @@
 
 <a class="skip-link" href="#main">Skip to content</a>
 
-<nav class="site-nav">
+<nav class="site-nav" aria-label="Primary">
   <a class="site-nav__brand" href="/"><img class="site-nav__lion" src="/img/brand/lion-mark.svg" alt="" width="34" height="34" decoding="async"><span>YUSUF GADELRAB</span></a>
   <div class="site-nav__links">
     <a href="/">Work</a>
@@ -101,8 +101,8 @@
       </ul>
       <p>Each of these is individually fixable with a regex, and the regex pile is exactly how you end up with a 200-line parser that is itself the least reliable component in the system. The fix is not a better parser. The fix is to stop letting the model emit invalid output in the first place, and then to validate what it does emit anyway.</p>
       <h2>The four mechanisms, from worst to best</h2>
-      <div class="tblwrap"><table class="tbl">
-        <thead><tr><th>Mechanism</th><th>What it guarantees</th><th>What it does not</th></tr></thead>
+      <div class="tblwrap" tabindex="0" role="group" aria-label="Table, scrolls horizontally"><table class="tbl">
+        <thead><tr><th scope="col">Mechanism</th><th scope="col">What it guarantees</th><th scope="col">What it does not</th></tr></thead>
         <tbody>
           <tr><td>Prompt and parse</td><td>Nothing.</td><td>Everything. Do not build on this.</td></tr>
           <tr><td>JSON mode</td><td>The output is syntactically valid JSON.</td><td>That it matches your schema, has your fields, or uses your types.</td></tr>
@@ -118,7 +118,7 @@
       <h3>Constrained decoding</h3>
       <p>Constrained decoding is the strongest mechanism and the one most people do not know they have. At each generation step, the model produces a probability distribution over the entire vocabulary; a grammar engine masks out every token that would make the partial output invalid against your schema, and sampling happens only over what remains. The model is not asked nicely to produce valid JSON — it is structurally incapable of producing anything else.</p>
       <p>This is available locally for free. Ollama accepts a JSON Schema in the <code>format</code> field and enforces it during generation; llama.cpp exposes the same capability as GBNF grammars; libraries like Outlines and XGrammar implement it over other runtimes. If you are running <a href="/guides/local-llm-ollama.html">a model locally</a>, this is the single highest-leverage feature you are probably not using:</p>
-      <span class="formula">curl -s http://localhost:11434/api/chat -d '{
+      <span class="formula" tabindex="0" role="group" aria-label="Formula, scrolls horizontally">curl -s http://localhost:11434/api/chat -d '{
   "model": "qwen3",
   "stream": false,
   "messages": [{"role": "user", "content": "Extract the load details: ..."}],
@@ -136,7 +136,7 @@
       <h2>You still need validation with retry</h2>
       <p>Whichever mechanism you use, a validation layer belongs in front of your business logic. It is the only place that can enforce the constraints schemas cannot express — that a date is in the past, that a total equals the sum of the line items, that an ID exists in your database — and it is the layer that gives the model a second chance with a useful error message instead of dying.</p>
       <p>The pattern is short. Validate; on failure, feed the validation error back as a new turn and try once more; cap the attempts and fail loudly.</p>
-      <span class="formula">from pydantic import BaseModel, ValidationError, Field
+      <span class="formula" tabindex="0" role="group" aria-label="Formula, scrolls horizontally">from pydantic import BaseModel, ValidationError, Field
 from typing import Literal
 
 class Load(BaseModel):
@@ -170,7 +170,7 @@ def extract(text: str, max_attempts: int = 3) -> Load:
       <h2>Idempotency: the retry loop's real cost</h2>
       <p>Here is the failure that reaches production: extraction succeeds, the write succeeds, the response times out on the way back, the retry logic fires, and the same record is written twice. The model behaved perfectly. The retry loop did the damage.</p>
       <p>The rule is simple and easy to violate: <strong>the retry loop must never contain a side effect.</strong> Structure the code so the model call and validation happen inside the loop and the write happens strictly after it returns.</p>
-      <span class="formula"># wrong — a validation retry can re-run the insert
+      <span class="formula" tabindex="0" role="group" aria-label="Formula, scrolls horizontally"># wrong — a validation retry can re-run the insert
 for attempt in range(3):
     data = call_model(...)
     db.insert(data)          # side effect INSIDE the loop
@@ -193,8 +193,8 @@ db.upsert(data, key=idempotency_key(source_document_id))</span>
       <p>Structured output failures are close to impossible to debug after the fact without the raw string. Log, on every failure: the raw model output before parsing, the stop reason, the validation error, the attempt number, and the schema version. That last one matters more than it sounds — schemas drift, and "this used to work" is usually "the schema changed and nothing recorded which version produced this row."</p>
       <p>Track your retry rate as an actual metric. A stable 2% is the system working. A rate climbing over weeks means your inputs are drifting away from what your prompt and schema were built for, and the retry loop is quietly absorbing it until the day it cannot. This is the same discipline as the automated quality gates I use for <a href="/guides/ai-automation-small-business.html">generated outreach drafts</a>: the model produces, a deterministic checker validates, and nothing ships that fails the check.</p>
       <h2>A short decision list</h2>
-      <div class="tblwrap"><table class="tbl">
-        <thead><tr><th>Situation</th><th>Use</th></tr></thead>
+      <div class="tblwrap" tabindex="0" role="group" aria-label="Table, scrolls horizontally"><table class="tbl">
+        <thead><tr><th scope="col">Situation</th><th scope="col">Use</th></tr></thead>
         <tbody>
           <tr><td>Local model, any structured task</td><td>Constrained decoding — Ollama's <code>format</code> field with a JSON Schema. Free, strongest guarantee available.</td></tr>
           <tr><td>Hosted API, extraction or classification</td><td>Tool calling with strict mode if the provider has it, plus a validation layer.</td></tr>

@@ -58,7 +58,7 @@
 
 <a class="skip-link" href="#main">Skip to content</a>
 
-<nav class="site-nav">
+<nav class="site-nav" aria-label="Primary">
   <a class="site-nav__brand" href="/"><img class="site-nav__lion" src="/img/brand/lion-mark.svg" alt="" width="34" height="34" decoding="async"><span>YUSUF GADELRAB</span></a>
   <div class="site-nav__links">
     <a href="/">Work</a>
@@ -109,8 +109,8 @@
         <li>Keep tables and code blocks intact. Splitting them mid-structure destroys their meaning entirely.</li>
       </ul>
       <h2>Where RAG pipelines actually fail</h2>
-      <div class="tblwrap"><table class="tbl">
-        <thead><tr><th>Failure</th><th>What it looks like</th><th>Usual fix</th></tr></thead>
+      <div class="tblwrap" tabindex="0" role="group" aria-label="Table, scrolls horizontally"><table class="tbl">
+        <thead><tr><th scope="col">Failure</th><th scope="col">What it looks like</th><th scope="col">Usual fix</th></tr></thead>
         <tbody>
           <tr><td>Retrieval miss</td><td>The answer exists in the corpus but never reaches the prompt</td><td>Hybrid search — combine keyword and vector retrieval; add reranking</td></tr>
           <tr><td>Right chunk, wrong slice</td><td>The retrieved passage is adjacent to the answer</td><td>Better chunk boundaries, overlap, retrieve neighbours of a hit</td></tr>

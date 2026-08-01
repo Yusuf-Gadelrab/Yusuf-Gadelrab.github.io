@@ -58,7 +58,7 @@
 
 <a class="skip-link" href="#main">Skip to content</a>
 
-<nav class="site-nav">
+<nav class="site-nav" aria-label="Primary">
   <a class="site-nav__brand" href="/"><img class="site-nav__lion" src="/img/brand/lion-mark.svg" alt="" width="34" height="34" decoding="async"><span>YUSUF GADELRAB</span></a>
   <div class="site-nav__links">
     <a href="/">Work</a>
@@ -92,8 +92,8 @@
       <p>"I did 300 problems" tells you nothing about readiness, because it does not distinguish between 300 problems in the patterns you already know and 300 spread across the ones you do not. Volume without a diagnosis produces a common and frustrating outcome: a large solved count and a consistent failure on any problem phrased slightly unfamiliarly.</p>
       <p>The reframe is simple. <strong>An interview problem is a pattern wearing a costume.</strong> Your job in the first two minutes is to identify the pattern; the implementation afterwards is mechanical if you have drilled it. So practice should be organised around recognising patterns and around finding the ones where your recognition fails.</p>
       <h2>The recurring patterns</h2>
-      <div class="tblwrap"><table class="tbl">
-        <thead><tr><th>Pattern</th><th>Recognition cue</th><th>Typical complexity</th></tr></thead>
+      <div class="tblwrap" tabindex="0" role="group" aria-label="Table, scrolls horizontally"><table class="tbl">
+        <thead><tr><th scope="col">Pattern</th><th scope="col">Recognition cue</th><th scope="col">Typical complexity</th></tr></thead>
         <tbody>
           <tr><td>Two pointers</td><td>Sorted array, pair or triplet sum, in-place partition, palindrome</td><td>O(n) after any sort</td></tr>
           <tr><td>Sliding window</td><td>Contiguous subarray or substring, longest or shortest satisfying a condition</td><td>O(n)</td></tr>
@@ -110,7 +110,7 @@
       <p>That table is most of the surface area of a standard software interview loop. The remaining problems are usually combinations — a BFS whose frontier is a heap, a DP over intervals, a binary search whose predicate runs a greedy check.</p>
       <h2>The two-minute recognition drill</h2>
       <p>Recognition is a separate skill from implementation and it is the one that fails under pressure. Drill it separately: read a problem, spend two minutes deciding the pattern and the complexity target, write it down, then check. Do not implement. You can run twenty of these in the time one full solution takes, and it trains exactly the step interviews test first.</p>
-      <span class="formula">For each problem, before coding, answer four questions:
+      <span class="formula" tabindex="0" role="group" aria-label="Formula, scrolls horizontally">For each problem, before coding, answer four questions:
 
   1. What is the input shape?        sorted / graph / intervals / string
   2. What is being asked?            exists / count / optimum / enumerate
@@ -129,8 +129,8 @@
       <p>The failure location matters as much as the failure. If you recognise sliding window instantly but keep mishandling the shrink condition, you do not need more sliding-window problems — you need to write the template once, correctly, and rehearse it. If you never recognise it in the first place, the fix is the opposite.</p>
       <h2>Spaced repetition, because you will forget</h2>
       <p>Algorithm knowledge decays like anything else. A problem solved cleanly in March is often a blank in June. Spaced repetition solves this cheaply: re-attempt solved problems on an expanding schedule rather than solving new ones forever.</p>
-      <div class="tblwrap"><table class="tbl">
-        <thead><tr><th>Outcome</th><th>Next review</th><th>Rationale</th></tr></thead>
+      <div class="tblwrap" tabindex="0" role="group" aria-label="Table, scrolls horizontally"><table class="tbl">
+        <thead><tr><th scope="col">Outcome</th><th scope="col">Next review</th><th scope="col">Rationale</th></tr></thead>
         <tbody>
           <tr><td>Failed</td><td>1 day</td><td>Nothing has been learned yet</td></tr>
           <tr><td>Solved with a hint</td><td>3 days</td><td>Recognition is fragile</td></tr>

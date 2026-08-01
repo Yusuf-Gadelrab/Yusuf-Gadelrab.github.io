@@ -58,7 +58,7 @@
 
 <a class="skip-link" href="#main">Skip to content</a>
 
-<nav class="site-nav">
+<nav class="site-nav" aria-label="Primary">
   <a class="site-nav__brand" href="/"><img class="site-nav__lion" src="/img/brand/lion-mark.svg" alt="" width="34" height="34" decoding="async"><span>YUSUF GADELRAB</span></a>
   <div class="site-nav__links">
     <a href="/">Work</a>
@@ -97,8 +97,8 @@
       </ul>
       <p>That is a real list and it is worth doing. What it is not is evidence that the strategy makes money.</p>
       <h2>What paper does not simulate</h2>
-      <div class="tblwrap"><table class="tbl">
-        <thead><tr><th>Friction</th><th>What paper assumes</th><th>What real money does</th></tr></thead>
+      <div class="tblwrap" tabindex="0" role="group" aria-label="Table, scrolls horizontally"><table class="tbl">
+        <thead><tr><th scope="col">Friction</th><th scope="col">What paper assumes</th><th scope="col">What real money does</th></tr></thead>
         <tbody>
           <tr><td>Slippage</td><td>Fills at the quoted price</td><td>Fills a few ticks worse, much worse on gaps and thin names</td></tr>
           <tr><td>Partial fills</td><td>The whole order fills</td><td>Limit orders fill partially or not at all, changing the risk you actually took</td></tr>
@@ -112,7 +112,7 @@
       <p>The last row is the largest by a distance. A backtest and a paper account both take 100% of signals. In real money you will hesitate after two losses, size down after a drawdown, and take a discretionary exit at the worst moment. <strong>A strategy's realised expectancy is the strategy's expectancy multiplied by your compliance with it</strong>, and compliance is never 100%.</p>
       <h2>How much does friction cost?</h2>
       <p>Run the arithmetic on the edge I actually validated. The anchored-VWAP reclaim came out at +0.117R over 4,933 trades on a 129-symbol, 10-year universe (95% CI +0.057 to +0.174) — the +0.23R over 101 trades I first reported did not survive my own adversarial re-test. Assume a 1R risk of $300 per trade, so the modelled edge is $35.10 per trade.</p>
-      <span class="formula">modelled edge    = 0.117R × $300 = $35.10 per trade
+      <span class="formula" tabindex="0" role="group" aria-label="Formula, scrolls horizontally">modelled edge    = 0.117R × $300 = $35.10 per trade
 slippage 2 ticks × 2 sides on 100 shares ≈ $4.00
 commission + fees                        ≈ $2.00
 net edge                                  ≈ $63.00 per trade</span>

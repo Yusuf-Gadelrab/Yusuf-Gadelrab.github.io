@@ -58,7 +58,7 @@
 
 <a class="skip-link" href="#main">Skip to content</a>
 
-<nav class="site-nav">
+<nav class="site-nav" aria-label="Primary">
   <a class="site-nav__brand" href="/"><img class="site-nav__lion" src="/img/brand/lion-mark.svg" alt="" width="34" height="34" decoding="async"><span>YUSUF GADELRAB</span></a>
   <div class="site-nav__links">
     <a href="/">Work</a>
@@ -91,8 +91,8 @@
       <h2>Volume by time versus volume by price</h2>
       <p>The standard histogram buckets volume by <em>time</em>: one bar per session or per five-minute interval, showing how much traded in that window. It answers "was today busy?"</p>
       <p>A volume profile rotates that ninety degrees and buckets volume by <em>price</em>: horizontal bars showing how much total volume traded at each price level over a chosen range. It answers "which prices did the market spend its money at?" That is the more useful question, because acceptance and rejection happen at prices, not at clock times.</p>
-      <div class="tblwrap"><table class="tbl">
-        <thead><tr><th></th><th>Volume by time</th><th>Volume profile</th></tr></thead>
+      <div class="tblwrap" tabindex="0" role="group" aria-label="Table, scrolls horizontally"><table class="tbl">
+        <thead><tr><th scope="col"></th><th scope="col">Volume by time</th><th scope="col">Volume profile</th></tr></thead>
         <tbody>
           <tr><td>Axis</td><td>Horizontal, one bar per period</td><td>Vertical, one bar per price bucket</td></tr>
           <tr><td>Answers</td><td>When was activity heavy?</td><td>Which prices absorbed the most volume?</td></tr>
@@ -109,8 +109,8 @@
       <p>The workaday reading: inside the value area, the market is balanced and mean-reverting, so fading the edges is the higher-probability behaviour. Outside it, the market is imbalanced and trending, so accepting the move is the higher-probability behaviour. <strong>The value area edges are where those two regimes swap</strong>, which is why VAH and VAL are worth marking even if you use nothing else from the tool.</p>
       <h2>High and low volume nodes</h2>
       <p>Beyond the POC, the shape of the profile matters.</p>
-      <div class="tblwrap"><table class="tbl">
-        <thead><tr><th>Feature</th><th>What it means</th><th>How price behaves</th></tr></thead>
+      <div class="tblwrap" tabindex="0" role="group" aria-label="Table, scrolls horizontally"><table class="tbl">
+        <thead><tr><th scope="col">Feature</th><th scope="col">What it means</th><th scope="col">How price behaves</th></tr></thead>
         <tbody>
           <tr><td>High volume node (HVN)</td><td>A price where a lot of volume traded — heavy agreement and inventory</td><td>Price slows, chops, and often stalls. Good place for a target, bad place for a breakout entry.</td></tr>
           <tr><td>Low volume node (LVN)</td><td>A price the market moved through quickly with little trade</td><td>Price tends to travel across it fast. Good place for a stop to sit beyond, and a natural edge for a range.</td></tr>
