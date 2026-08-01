@@ -226,6 +226,9 @@ Blank cost, print cost and platform cut separated, a $32 tee and a $58 hoodie wo
 "Coding Interview Patterns, Not Problem Counts" - https://yusuf-gadelrab.github.io/guides/coding-interview-patterns.html
 The pattern-based approach to technical interviews: the ten recurring problem patterns, why tracking the pattern you fail beats counting, and spaced repetition.
 
+"How to Cold Email a Professor for Research (With Two Examples)" - https://yusuf-gadelrab.github.io/guides/cold-email-professor-research.html
+What actually gets a reply: reading the lab's recent papers, a five-sentence structure, what to attach, follow-up cadence, and two complete examples.
+
 "CPT vs OPT for F-1 Students - Rules, Timeline, Trade-offs" - https://yusuf-gadelrab.github.io/guides/cpt-vs-opt.html
 CPT vs OPT for F-1 students: eligibility, who authorizes what, the one-year rule, the 12-month limit, STEM extension, unemployment days. Plan backwards.
 
@@ -319,6 +322,9 @@ What retrieval-augmented generation is, how chunking, embeddings and reranking f
 "Reading a Trading Backtest Report Honestly: A Stat-by-Stat Audit" - https://yusuf-gadelrab.github.io/guides/reading-a-backtest-report.html
 Stat by stat: what win rate, profit factor, Sharpe, max drawdown and CAGR hide, with worked confidence intervals and cost maths.
 
+"Reading a Scientific Paper When You Are Not a Researcher" - https://yusuf-gadelrab.github.io/guides/reading-a-scientific-paper.html
+The order to read sections in, how to judge a sample size, what p-values and effect sizes actually mean, and how to spot a claim the data does not support.
+
 "Finding and Winning Funding as an International Student" - https://yusuf-gadelrab.github.io/guides/scholarships-international-students.html
 How international students find and win scholarships, where eligibility usually breaks, and how to run an application pipeline that survives deadlines.
 
@@ -339,6 +345,9 @@ An 18-point security checklist for student founders shipping their first product
 
 "Landing a SWE Internship as an International Student" - https://yusuf-gadelrab.github.io/guides/swe-internship-international-student.html
 How international students should run a SWE internship search: the timeline, the sponsorship question, who to target, and how work authorization fits.
+
+"Building a Technical Portfolio That Survives a Recruiter's 8 Seconds" - https://yusuf-gadelrab.github.io/guides/technical-portfolio-8-seconds.html
+What recruiters and applicant tracking systems actually parse, why three projects beat ten, quantified outcomes, README as landing page, and the live-demo rule.
 
 "What to Log in a Trading Journal, and What to Ignore" - https://yusuf-gadelrab.github.io/guides/trading-journal.html
 The fields that change behaviour in a trading journal - R-multiple, setup tag, mistake tag, MAE/MFE - and how to review without lying to yourself.
@@ -370,6 +379,9 @@ Writing index: https://yusuf-gadelrab.github.io/writing.html
 
 "AI tools I pay for vs what I run locally" - https://yusuf-gadelrab.github.io/writing/ai-tools-i-pay-for-vs-what-i-run-locally.html
 I run a 30B model on my laptop for free. Here is exactly where that wins, where it loses badly, and which paid AI tools survived the comparison.
+
+"Building a nonprofit before I can legally earn" - https://yusuf-gadelrab.github.io/writing/building-a-nonprofit-before-youre-allowed-to-earn.html
+Immigration status can restrict what you may do without restricting what you may build. Four program ideas, one entity, and nothing filed yet.
 
 "A position size calculator that won't let you round up" - https://yusuf-gadelrab.github.io/writing/built-a-position-size-calculator-that-refuses-to-let-you-round-up-free.html
 Rounding 187 shares up to 200 is a silent 7% increase in risk on every trade. A free, no-signup position sizer built to refuse that.
@@ -622,11 +634,11 @@ Start here (9)
   https://yusuf-gadelrab.github.io/hire.html - Hire Yusuf Gadelrab - Recruiters & Founding Clients
   https://yusuf-gadelrab.github.io/everything.html - Everything I Do
   https://yusuf-gadelrab.github.io/guides.html - Guides - Plain-English Answers With the Math Shown
-  https://yusuf-gadelrab.github.io/writing.html - Writing
+  https://yusuf-gadelrab.github.io/writing.html - Writing - 23 Posts on Shipping Software as a Student
   https://yusuf-gadelrab.github.io/projects.html - Projects - Yusuf Gadelrab, Engineering Portfolio
   https://yusuf-gadelrab.github.io/research.html - Research - Yusuf Gadelrab, SIGCSE 2026 Papers
 
-Guides (long-form answers, every formula shown) (56)
+Guides (long-form answers, every formula shown) (59)
   https://yusuf-gadelrab.github.io/guides/ai-automation-small-business.html - Where AI Automation Actually Pays Off in a Small Business
   https://yusuf-gadelrab.github.io/guides/ai-search-optimization.html - How to Get Cited by AI Answer Engines: Entities, llms.txt, and Structure
   https://yusuf-gadelrab.github.io/guides/alpaca-vs-interactive-brokers-vs-robinhood.html - Alpaca vs Interactive Brokers vs Robinhood for algorithmic trading
@@ -638,6 +650,7 @@ Guides (long-form answers, every formula shown) (56)
   https://yusuf-gadelrab.github.io/guides/client-side-only-tools.html - The Case for Client-Side-Only Tools
   https://yusuf-gadelrab.github.io/guides/clothing-brand-pod-margins.html - Print-on-Demand Margins for a Small Clothing Brand
   https://yusuf-gadelrab.github.io/guides/coding-interview-patterns.html - Coding Interview Patterns, Not Problem Counts
+  https://yusuf-gadelrab.github.io/guides/cold-email-professor-research.html - How to Cold Email a Professor for Research (With Two Examples)
   https://yusuf-gadelrab.github.io/guides/cpt-vs-opt.html - CPT vs OPT for F-1 Students - Rules, Timeline, Trade-offs
   https://yusuf-gadelrab.github.io/guides/cut-calorie-math.html - The Arithmetic Behind a 60-Pound Cut
   https://yusuf-gadelrab.github.io/guides/detention-demurrage-accessorials.html - Detention, Demurrage and Accessorials: What They Are and Who Owes Them
@@ -669,6 +682,7 @@ Guides (long-form answers, every formula shown) (56)
   https://yusuf-gadelrab.github.io/guides/r-multiple-expectancy.html - R-Multiple & Expectancy Explained - With Worked Numbers
   https://yusuf-gadelrab.github.io/guides/rag-explained.html - Retrieval-Augmented Generation (RAG), Explained Plainly
   https://yusuf-gadelrab.github.io/guides/reading-a-backtest-report.html - Reading a Trading Backtest Report Honestly: A Stat-by-Stat Audit
+  https://yusuf-gadelrab.github.io/guides/reading-a-scientific-paper.html - Reading a Scientific Paper When You Are Not a Researcher
   https://yusuf-gadelrab.github.io/guides/scholarships-international-students.html - Finding and Winning Funding as an International Student
   https://yusuf-gadelrab.github.io/guides/snyk-vs-trivy-vs-dira.html - Snyk vs Trivy vs DIRA: choosing a security scanner for a small codebase
   https://yusuf-gadelrab.github.io/guides/static-site-ai-search.html - Shipping a Static Site AI Search Engines Can Actually Read: llms.txt, Entity Graphs, and the SPA Problem
@@ -676,6 +690,7 @@ Guides (long-form answers, every formula shown) (56)
   https://yusuf-gadelrab.github.io/guides/structured-llm-output.html - Structured Output From an LLM Without Regret: JSON Mode, Tool Calling, Constrained Decoding, and the Retry Loop You Still Need
   https://yusuf-gadelrab.github.io/guides/student-founder-security-checklist.html - The Student Founder's Security Checklist: 18 Things to Fix Before Your First User
   https://yusuf-gadelrab.github.io/guides/swe-internship-international-student.html - Landing a SWE Internship as an International Student
+  https://yusuf-gadelrab.github.io/guides/technical-portfolio-8-seconds.html - Building a Technical Portfolio That Survives a Recruiter's 8 Seconds
   https://yusuf-gadelrab.github.io/guides/trading-journal.html - What to Log in a Trading Journal, and What to Ignore
   https://yusuf-gadelrab.github.io/guides/undergraduate-research.html - How to Get Into Undergraduate Research
   https://yusuf-gadelrab.github.io/guides/vcp-base-patterns.html - VCP and Base Patterns: Structure, Pivots, and What Testing Showed
@@ -684,8 +699,9 @@ Guides (long-form answers, every formula shown) (56)
   https://yusuf-gadelrab.github.io/guides/walk-forward-backtest.html - Walk-Forward Testing and Lookahead Bias: How Backtests Lie
   https://yusuf-gadelrab.github.io/guides/weight-tracking-signal-vs-noise.html - Tracking Weight Without Losing Your Mind: Signal vs Noise
 
-Writing (essays and build logs) (22)
+Writing (essays and build logs) (23)
   https://yusuf-gadelrab.github.io/writing/ai-tools-i-pay-for-vs-what-i-run-locally.html - AI tools I pay for vs what I run locally
+  https://yusuf-gadelrab.github.io/writing/building-a-nonprofit-before-youre-allowed-to-earn.html - Building a nonprofit before I can legally earn
   https://yusuf-gadelrab.github.io/writing/built-a-position-size-calculator-that-refuses-to-let-you-round-up-free.html - A position size calculator that won't let you round up
   https://yusuf-gadelrab.github.io/writing/check-a-repo-for-secrets-before-you-make-it-public.html - Check a repo for secrets before going public
   https://yusuf-gadelrab.github.io/writing/free-first-paid-second-the-build-stack.html - Free first: the zero dollar build stack
@@ -755,7 +771,7 @@ Brands (4)
   https://yusuf-gadelrab.github.io/brand.html - DHAHAB Brand - The Lion Mark
   https://yusuf-gadelrab.github.io/heft.html - HEFT - Heavyweight Hoodies. Nothing Else.
   https://yusuf-gadelrab.github.io/kxngsef-lookbook.html - KXNG SEF - Arabic-English Streetwear Lookbook, 17 Designs
-  https://yusuf-gadelrab.github.io/kxngsef.html - KXNG SEF - Earned. Never Given.
+  https://yusuf-gadelrab.github.io/kxngsef.html - KXNG SEF - Arabic-English Streetwear · Earned. Never Given.
 
 Creator and media (4)
   https://yusuf-gadelrab.github.io/acting.html - Yusuf Gadelrab · Actor & Model · San Jose
@@ -781,7 +797,7 @@ Optional (9)
   https://yusuf-gadelrab.github.io/dhahab-prompt-vault-privacy.html - DHAHAB Prompt Vault Privacy Policy
   https://yusuf-gadelrab.github.io/dmca.html - Copyright & DMCA
   https://yusuf-gadelrab.github.io/eh.html - eh (humour page, not a source of facts)
-  https://yusuf-gadelrab.github.io/kxngsef-shipping.html - Shipping & Returns - KXNG SEF
+  https://yusuf-gadelrab.github.io/kxngsef-shipping.html - Shipping & Returns - KXNG SEF Made-to-Order Streetwear
   https://yusuf-gadelrab.github.io/legal.html - Legal
   https://yusuf-gadelrab.github.io/privacy.html - Privacy Policy - Yusuf Gadelrab / DHAHAB
   https://yusuf-gadelrab.github.io/refunds.html - Refund Policy - 14-Day Digital Refunds & Apparel Returns

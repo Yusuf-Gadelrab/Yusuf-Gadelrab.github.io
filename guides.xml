@@ -152,6 +152,13 @@
 <description>What paper does not simulate: slippage, partial fills, borrow, emotion. Why a promotion gate matters, and the 60-trade rule my engine enforces in code.</description>
 </item>
 <item>
+<title>The first pass is eight seconds, on a phone, by a non-engineer</title>
+<link>https://yusuf-gadelrab.github.io/guides/technical-portfolio-8-seconds.html</link>
+<guid isPermaLink="true">https://yusuf-gadelrab.github.io/guides/technical-portfolio-8-seconds.html</guid>
+<pubDate>Wed, 29 Jul 2026 00:00:00 +0000</pubDate>
+<description>What recruiters and applicant tracking systems actually parse, why three projects beat ten, quantified outcomes, README as landing page, and the live-demo rule.</description>
+</item>
+<item>
 <title>The arithmetic of digging out</title>
 <link>https://yusuf-gadelrab.github.io/guides/drawdown-recovery-math.html</link>
 <guid isPermaLink="true">https://yusuf-gadelrab.github.io/guides/drawdown-recovery-math.html</guid>
@@ -185,6 +192,13 @@
 <guid isPermaLink="true">https://yusuf-gadelrab.github.io/guides/reading-a-backtest-report.html</guid>
 <pubDate>Wed, 29 Jul 2026 00:00:00 +0000</pubDate>
 <description>Stat by stat: what win rate, profit factor, Sharpe, max drawdown and CAGR hide, with worked confidence intervals and cost maths.</description>
+</item>
+<item>
+<title>Read it out of order, and check the effect size first</title>
+<link>https://yusuf-gadelrab.github.io/guides/reading-a-scientific-paper.html</link>
+<guid isPermaLink="true">https://yusuf-gadelrab.github.io/guides/reading-a-scientific-paper.html</guid>
+<pubDate>Wed, 29 Jul 2026 00:00:00 +0000</pubDate>
+<description>The order to read sections in, how to judge a sample size, what p-values and effect sizes actually mean, and how to spot a claim the data does not support.</description>
 </item>
 <item>
 <title>RAG, without the diagram everyone reposts</title>
@@ -325,6 +339,13 @@
 <guid isPermaLink="true">https://yusuf-gadelrab.github.io/guides/free-vs-paid-student-tools.html</guid>
 <pubDate>Wed, 29 Jul 2026 00:00:00 +0000</pubDate>
 <description>A decision framework and scored table across 15 tool categories for CS students on what deserves money and what free option is already enough.</description>
+</item>
+<item>
+<title>Five sentences, one paper, one small ask</title>
+<link>https://yusuf-gadelrab.github.io/guides/cold-email-professor-research.html</link>
+<guid isPermaLink="true">https://yusuf-gadelrab.github.io/guides/cold-email-professor-research.html</guid>
+<pubDate>Wed, 29 Jul 2026 00:00:00 +0000</pubDate>
+<description>What actually gets a reply: reading the lab&#x27;s recent papers, a five-sentence structure, what to attach, follow-up cadence, and two complete examples.</description>
 </item>
 <item>
 <title>Eligibility first, essays second</title>

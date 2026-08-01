@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="preload" href="/css/site.css" as="style">
+<meta name="robots" content="index,follow,max-image-preview:large,max-snippet:-1">
+<meta property="og:locale" content="en_US">
+<title>The 8-Second Technical Portfolio Test</title>
+<meta name="description" content="What recruiters and applicant tracking systems actually parse, why three projects beat ten, quantified outcomes, README as landing page, and the live-demo rule.">
+<link rel="canonical" href="https://yusuf-gadelrab.github.io/guides/technical-portfolio-8-seconds.html">
+<link rel="icon" type="image/svg+xml" href="https://yusuf-gadelrab.github.io/favicon.svg">
+<link rel="apple-touch-icon" sizes="180x180" href="https://yusuf-gadelrab.github.io/apple-touch-icon.png">
+<meta name="theme-color" content="#0B0B0D">
+<meta name="author" content="Yusuf Gadelrab">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="Yusuf Gadelrab">
+<meta property="og:title" content="The 8-Second Technical Portfolio Test">
+<meta property="og:description" content="Before an engineer ever reads your code, a recruiter gives your link eight seconds on a phone. Build for that pass first.">
+<meta property="og:url" content="https://yusuf-gadelrab.github.io/guides/technical-portfolio-8-seconds.html">
+<meta property="og:image" content="https://yusuf-gadelrab.github.io/og-card.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="The 8-Second Technical Portfolio Test">
+<meta name="twitter:description" content="Before an engineer ever reads your code, a recruiter gives your link eight seconds on a phone. Build for that pass first.">
+<meta name="twitter:image" content="https://yusuf-gadelrab.github.io/og-card.png">
+<link rel="alternate" type="text/plain" href="https://yusuf-gadelrab.github.io/llms-full.txt" title="Plain-text profile for language models">
+
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"TechArticle","@id":"https://yusuf-gadelrab.github.io/guides/technical-portfolio-8-seconds.html#article","headline":"Building a Technical Portfolio That Survives a Recruiter's 8 Seconds","name":"Building a Technical Portfolio That Survives a Recruiter's 8 Seconds","description":"What recruiters and applicant tracking systems actually parse, why three projects beat ten, quantified outcomes, README as landing page, and the live-demo rule.","datePublished":"2026-07-29","dateModified":"2026-07-29","inLanguage":"en","author":{"@id":"https://yusuf-gadelrab.github.io/#person"},"publisher":{"@id":"https://yusuf-gadelrab.github.io/#person"},"about":["Software portfolios","Resume writing","Job search","Personal branding","Technical hiring"],"mainEntityOfPage":"https://yusuf-gadelrab.github.io/guides/technical-portfolio-8-seconds.html","isAccessibleForFree":true,"proficiencyLevel":"Beginner"},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://yusuf-gadelrab.github.io/"},{"@type":"ListItem","position":2,"name":"Guides","item":"https://yusuf-gadelrab.github.io/guides.html"},{"@type":"ListItem","position":3,"name":"The 8-Second Portfolio"}]}]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","@id":"https://yusuf-gadelrab.github.io/guides/technical-portfolio-8-seconds.html#faq","mainEntity":[{"@type":"Question","name":"What do recruiters actually look at in a technical portfolio?","acceptedAnswer":{"@type":"Answer","text":"In the first pass, on a phone, they are answering whether you are real, what you build, whether there is anything concrete, and whether the link is safe to forward to a hiring manager. That is roughly eight seconds and it happens before any engineer reads code. Design the top of the page so a stranger can state your name, what you build, and one project without scrolling."}},{"@type":"Question","name":"Does an applicant tracking system read my portfolio site?","acceptedAnswer":{"@type":"Answer","text":"No. The ATS parses your resume into structured fields, and your portfolio enters the process as a URL inside that parsed text. That makes the URL itself the thing to get right: written out as visible plain text, short enough to retype, no shorteners or tracking parameters, in the header of page one, and identical everywhere you publish it."}},{"@type":"Question","name":"How many projects should a portfolio have?","acceptedAnswer":{"@type":"Answer","text":"Three, chosen so that each is finished enough for someone to use without you present, explainable in one sentence, and distinct from the others. A portfolio is judged on its weakest visible item rather than its average, so removing a weak project is usually the highest-leverage edit available and costs nothing."}},{"@type":"Question","name":"What should I quantify in a project description?","acceptedAnswer":{"@type":"Answer","text":"Whatever the project actually changed: time saved, dataset size, accuracy against a stated baseline, users, latency before and after, test count. Attach the method to every figure, because a number you cannot reproduce under a follow-up question does more damage than no number at all. If a result is weaker than it looks, say so on the page."}},{"@type":"Question","name":"Do I need a live demo for every project?","acceptedAnswer":{"@type":"Answer","text":"You need a working artifact for every project, which is not the same thing. A demo that errors or takes thirty seconds to wake from a sleeping free tier is worse than none, since it is direct evidence you do not check your own work. A twenty to forty second screen recording works on a phone, needs no install, and cannot go down."}},{"@type":"Question","name":"What should a project README contain?","acceptedAnswer":{"@type":"Answer","text":"One sentence on what it does, then a screenshot or GIF immediately, then a quickstart that works from a clean clone, why it exists, five lines on how it works, honest limitations, and a license. Test it by cloning into a fresh directory and following your own instructions literally, since most projects fail that on an undocumented environment variable."}},{"@type":"Question","name":"Does my GitHub contribution graph matter to recruiters?","acceptedAnswer":{"@type":"Answer","text":"Not as a goal. A dense grid built from trivial commits is transparent, and a sparse one with three real pinned projects is fine. What does matter is pinning the repositories you want read, writing a description and topics on each, and a three-line profile README, because a default profile page wastes a first impression recruiters actually check."}},{"@type":"Question","name":"What is the fastest way to break a technical portfolio?","acceptedAnswer":{"@type":"Answer","text":"A dead link, an expired domain, a private repository linked publicly, a demo that 500s, or a site that is unreadable on a phone. Every one of those is preventable by opening your own links on cellular data once a month and clicking all of them, including the footer, which takes about two minutes."}}]}</script>
+
+<link rel="stylesheet" href="/css/site.css">
+<style>
+  .prose{max-width:68ch}
+  .prose h2{margin:var(--s7) 0 var(--s4);font-size:var(--t-h2)}
+  .prose h3{margin:var(--s6) 0 var(--s3);font-size:var(--t-h3)}
+  .prose p{color:var(--muted);margin:0 0 var(--s4)}
+  .prose ul,.prose ol{color:var(--muted);padding-left:1.2em;margin:0 0 var(--s4)}
+  .prose li{margin-bottom:var(--s2)}
+  .prose a{color:var(--gold-2)}
+  .prose strong{color:var(--fg)}
+  .formula{display:block;padding:var(--s4);margin:0 0 var(--s4);border:1px solid var(--line-soft);
+    border-radius:var(--radius);font-family:ui-monospace,SFMono-Regular,Menlo,monospace;
+    font-size:var(--t-small);color:var(--gold-2);overflow-x:auto;white-space:pre-wrap}
+  .tblwrap{overflow-x:auto;margin:0 0 var(--s4)}
+  .tbl{width:100%;border-collapse:collapse;font-size:var(--t-small)}
+  .tbl th,.tbl td{text-align:left;padding:var(--s3);border-bottom:1px solid var(--line-soft);
+    color:var(--muted);vertical-align:top}
+  .tbl th{font-family:var(--display-pro);color:var(--gold-2);font-weight:600}
+  .callout{padding:var(--s4);border:1px solid var(--line-soft);border-radius:var(--radius);
+    color:var(--muted);font-size:var(--t-small);margin:0 0 var(--s5)}
+  .callout--warn{border-color:var(--gold-2)}
+  .faq-card{padding:var(--s5)}
+  .faq-card h3{font-size:var(--t-h3);margin:0;line-height:1.3}
+  .faq-card p{color:var(--muted);font-size:var(--t-small);line-height:1.65;margin:var(--s3) 0 0}
+</style>
+</head>
+<body class="pro">
+
+<a class="skip-link" href="#main">Skip to content</a>
+
+<nav class="site-nav">
+  <a class="site-nav__brand" href="/"><img class="site-nav__lion" src="/img/brand/lion-mark.svg" alt="" width="34" height="34" decoding="async"><span>YUSUF GADELRAB</span></a>
+  <div class="site-nav__links">
+    <a href="/">Work</a>
+    <a href="/guides.html">Guides</a>
+    <a href="/resume.html">Resume</a>
+    <a href="/apply.html">Apply OS</a>
+  </div>
+</nav>
+
+<nav class="crumbs" aria-label="Breadcrumb">
+  <ol>
+    <li><a href="/">Home</a></li>
+    <li><a href="/guides.html">Guides</a></li>
+    <li><span aria-current="page">The 8-Second Portfolio</span></li>
+  </ol>
+</nav>
+
+<main id="main">
+
+  <header class="section">
+    <p class="eyebrow">Guide · Career</p>
+    <h1 style="margin:var(--s4) 0">The first pass is eight seconds, on a phone, by a non-engineer</h1>
+    <p class="lead">Most portfolio advice optimizes for the engineer who reviews you in round two. That review only happens if you survive a much shorter, much less technical pass first: a recruiter with forty tabs open, deciding whether your link is worth forwarding. Those are different tests, and only one of them is a filter.</p>
+  </header>
+
+  <hr class="divider">
+
+  <section class="section section--tight">
+    <div class="prose">
+      <h2>Three different readers, three different clocks</h2>
+      <p>"How long do they look at it" has three answers, because three different things look at your material and they are looking for different information. Building for the wrong one is why portfolios that are genuinely good still get no responses.</p>
+      <div class="tblwrap"><table class="tbl">
+        <thead><tr><th>Reader</th><th>Clock</th><th>What they are actually answering</th></tr></thead>
+        <tbody>
+          <tr><td><strong>The applicant tracking system</strong></td><td>Milliseconds</td><td>Can I parse this document into fields? Does the text contain the terms this req was posted with?</td></tr>
+          <tr><td><strong>The recruiter</strong></td><td>About eight seconds, frequently on a phone</td><td>Is this person real, what do they do, is there anything concrete, can I forward this without embarrassing myself?</td></tr>
+          <tr><td><strong>The engineer or hiring manager</strong></td><td>Thirty to ninety seconds, on a laptop, later</td><td>Did this person finish something real, and can they explain it?</td></tr>
+        </tbody>
+      </table></div>
+      <p>This guide is about the first two, because they are the filter. The third reader is covered in <a href="/guides/portfolio-that-gets-interviews.html">the portfolio that gets interviews guide</a>, which goes deeper on case studies and what a technical reviewer checks. Read that one second. Nothing in it matters if the link never gets opened.</p>
+      <h2>What an ATS actually parses, and what it does not</h2>
+      <p>The most common misconception is that the applicant tracking system reads your portfolio. It does not. It parses your resume into structured fields and stores the result. Your portfolio enters the process as a URL sitting inside that parsed text, which makes the URL itself a piece of infrastructure worth taking seriously.</p>
+      <ul>
+        <li><strong>The link must survive parsing as plain text.</strong> A URL that only exists as a hyperlink behind the word "Portfolio" can be flattened into the word "Portfolio" with the destination gone. Write the visible URL out.</li>
+        <li><strong>No shorteners, no tracking parameters.</strong> A shortened link looks like spam to a human and can be stripped or blocked by mail filters. A URL with a long query string looks broken and is impossible to type from a printed page.</li>
+        <li><strong>Short enough to retype by hand.</strong> Recruiters do this more than you would expect, particularly from a PDF opened on a phone. Compare a clean domain against a nested workspace URL with a random identifier in it: only one of those survives being read aloud.</li>
+        <li><strong>The same link everywhere.</strong> Resume, LinkedIn, email signature, GitHub profile. Different links in different places creates ambiguity about which is current, and the resolution is usually that nobody checks any of them.</li>
+        <li><strong>Top of page one.</strong> Header block with your email, not buried in a projects section on page two.</li>
+      </ul>
+      <p>Everything else about surviving the parse is resume mechanics rather than portfolio design, and it is covered properly in <a href="/guides/ats-resume.html">the ATS resume guide</a>. The one-line summary: the parser is a database importer, not an adversary, and the rules that matter are boring formatting rules.</p>
+      <h2>What happens in the eight seconds</h2>
+      <p>The recruiter taps the link on a phone. The page loads or it does not. They scroll once, maybe twice. Then they either close the tab or paste the link into a message to a hiring manager. Design the top of your page for that exact sequence.</p>
+      <h3>The above-the-fold requirement</h3>
+      <p>Without scrolling, on a phone, in about three seconds, a stranger should be able to state your name, what you build, and one concrete thing you have built. That means the first screen contains, in order:</p>
+      <ol>
+        <li><strong>Your name and one line of what you do.</strong> Not a mission statement. "Third-year CS student building data pipelines and small ML tools" is a line. "Passionate technologist bridging innovation and impact" is not.</li>
+        <li><strong>Three projects, each with a one-sentence outcome.</strong> Not tiles with just names. The sentence is the whole point.</li>
+        <li><strong>Working links.</strong> Repository, live demo or a fallback artifact, and a contact route.</li>
+        <li><strong>Nothing else.</strong> No full-screen hero animation, no "scroll to discover", no typed-text effect that takes four seconds to spell your title.</li>
+      </ol>
+      <p class="callout">The blunt test: hand your phone with the page open to someone who does not know what you do, take it back after eight seconds, and ask them three questions. What does he build? Name one project. Would you forward this? If they cannot answer all three, the top of the page is wrong, and no amount of quality further down fixes it.</p>
+      <h2>Three projects, not ten</h2>
+      <p>A portfolio is evaluated on its weakest visible item, not its average. Ten projects where four are tutorial clones reads as four tutorial clones with some noise around them. Three strong ones read as three strong ones. Removing work is the single highest-leverage edit available to most student portfolios, and it costs nothing but ego.</p>
+      <h3>The selection criteria</h3>
+      <ul>
+        <li><strong>It is finished enough to use.</strong> Someone can run it, or see it running, without you present. This is the criterion that eliminates most candidates for inclusion.</li>
+        <li><strong>It is explainable in one sentence.</strong> If the sentence needs a subordinate clause explaining the assignment it came from, it is coursework rather than a project.</li>
+        <li><strong>It is distinct from the others.</strong> Three variations on the same web app demonstrate one skill three times. One systems or tooling project, one data or machine learning project, one product with real users covers far more ground.</li>
+        <li><strong>It survives twenty minutes of questioning.</strong> Every design decision on the page has to be one you can defend, including the bad ones, honestly, as tradeoffs you understood.</li>
+        <li><strong>You would still choose it if nobody was grading you.</strong> Interest shows in the writeup, and its absence shows just as clearly.</li>
+      </ul>
+      <h3>What to cut without hesitation</h3>
+      <p>The tutorial-following clone with the tutorial's own structure intact. The to-do app. The portfolio site itself listed as a portfolio project. Anything with a README that is still the framework's generated default. Anything whose last commit is a broken build. None of these are shameful, they were all useful to build, and none of them belong on the first screen.</p>
+      <h2>Quantified outcomes, honestly</h2>
+      <p>"Built a web app with React and Node" describes tooling. "Cut a manual research process from six hours a week to two" describes an outcome. The second one is what a recruiter can forward and a hiring manager can ask about, and it is what makes the difference between a project list and a portfolio.</p>
+      <div class="tblwrap"><table class="tbl">
+        <thead><tr><th>Project type</th><th>What is worth quantifying</th></tr></thead>
+        <tbody>
+          <tr><td>Tool or automation</td><td>Time saved per run or per week, number of runs, manual steps eliminated</td></tr>
+          <tr><td>Data or machine learning</td><td>Dataset size, accuracy or error against a stated baseline, what the baseline was</td></tr>
+          <tr><td>Product with users</td><td>Users, retention, sessions, uptime, the specific problem it removed</td></tr>
+          <tr><td>Systems or performance</td><td>Latency before and after, throughput, resource cost, load tested to what point</td></tr>
+          <tr><td>Library or developer tool</td><td>Test count and coverage, install count, contributors, issues closed</td></tr>
+          <tr><td>Research</td><td>Study size, method, whether the effect was statistically significant, and where it is published</td></tr>
+        </tbody>
+      </table></div>
+      <h3>The honesty rule, and why it is self-interested</h3>
+      <p>Every number on your portfolio is a promise that you can explain how it was produced. A figure you cannot reproduce under a follow-up question does more damage than having no number at all, because it converts "impressive" into "unreliable" in a single exchange, and the interviewer remembers the second one.</p>
+      <p>Two things make a number safe. Attach the method to it ("78% directional accuracy on a six-month backtest" is checkable; "78% accurate" is not), and be willing to retire it. I have removed figures from my own site after they failed a stricter re-test, including a trading result that did not survive a proper walk-forward evaluation and a research statistic that turned out to overstate what the published paper actually reported. Both removals were mildly painful and both were obviously correct, because the alternative is defending a number you already know is wrong in front of someone who might check.</p>
+      <p>Where a result is real but weaker than it looks, say so on the page. "Statistically significant pre-to-post gains across 60 participants" plus a note that a specific secondary comparison was not significant reads as someone who understands their own data. Omitting the caveat reads fine right up until an interviewer opens the paper.</p>
+      <h2>The README is the landing page</h2>
+      <p>For most technical reviewers, the repository README <em>is</em> your portfolio, because it is where the forwarded link goes. Treat it as a product page with a fixed structure, and put the visual proof above the fold.</p>
+      <ol>
+        <li><strong>One sentence: what it does and who it is for.</strong> Before the badges, before the table of contents.</li>
+        <li><strong>A screenshot or a short GIF, immediately.</strong> This is the highest-value element in the entire README because it works on a phone, in eight seconds, with nothing installed.</li>
+        <li><strong>Quickstart that works from a clean clone.</strong> Three commands or fewer to something visible.</li>
+        <li><strong>Why it exists.</strong> Two sentences on the problem. This is where genuine interest becomes visible.</li>
+        <li><strong>How it works.</strong> Five lines on architecture and the one or two decisions that were actually interesting.</li>
+        <li><strong>Honest limitations.</strong> What it does not do, what would break at scale, what you would change. This section makes technical readers trust the rest of the document.</li>
+        <li><strong>License and contact.</strong> A repository with no license is legally ambiguous, which matters more than students expect.</li>
+      </ol>
+      <p class="callout">The clean-clone test, run once per project before you link it anywhere: clone into a fresh directory on a machine with nothing configured, follow your own quickstart literally, and change nothing you did not write down. Almost every project fails this the first time, usually on an undocumented environment variable or a hardcoded path. It takes ten minutes and it is the difference between a reviewer succeeding and a reviewer closing the tab.</p>
+      <h2>The live-demo rule</h2>
+      <p>A live demo is the strongest single element you can offer, and a broken one is worse than none at all, because it converts a neutral impression into direct evidence that you do not check your own work. The rule that resolves this: <strong>every project needs a fallback artifact that works with zero setup and cannot go down.</strong></p>
+      <div class="tblwrap"><table class="tbl">
+        <thead><tr><th>Option</th><th>Reliability</th><th>Honest assessment</th></tr></thead>
+        <tbody>
+          <tr><td>Static or client-side-only site on free hosting</td><td>Very high</td><td>Nothing to crash, no server bill, no cold start. If a project can be built this way, it should be</td></tr>
+          <tr><td>Free-tier host that sleeps when idle</td><td>Low in practice</td><td>The first visit after idle can take long enough that a recruiter leaves before it loads. Assume that visit is the only one you get</td></tr>
+          <tr><td>Paid always-on hosting</td><td>High</td><td>Works, costs money, and needs monitoring you will forget about</td></tr>
+          <tr><td>A 20 to 40 second screen recording as a GIF or MP4</td><td>Total</td><td>Cannot break, works on a phone, no install. The correct fallback for every project without exception</td></tr>
+          <tr><td>Screenshots only</td><td>Total</td><td>Weakest of the working options, but strictly better than a dead link</td></tr>
+        </tbody>
+      </table></div>
+      <p>The operational half of this is monitoring. Domains expire, free tiers change policy, and a link that worked in September can be a parked domain in November while you keep sending it out. Check every link on your resume and portfolio on the first of the month, in under two minutes, and log the date the way you would log anything else in <a href="/apply.html">an application tracker</a>.</p>
+      <h2>The GitHub profile is part of the portfolio</h2>
+      <p>Recruiters open it, usually before the personal site, and a default profile page is a wasted first impression. Four cheap fixes:</p>
+      <ul>
+        <li><strong>Pin the three projects you actually want read.</strong> Otherwise the page shows whatever was touched most recently, which is frequently a course repository or an unfinished experiment.</li>
+        <li><strong>Write a repository description and add topics.</strong> A repo with no description is a name in a list, and topics are how search inside the platform finds you at all.</li>
+        <li><strong>Add a short profile README.</strong> Three lines, the same one-liner from your site, and links. Not an animated statistics wall.</li>
+        <li><strong>Ignore the contribution graph as a goal.</strong> A dense green grid built from trivial commits is transparent and slightly embarrassing; a sparse one with three real projects is fine. Nobody has ever been hired for a streak.</li>
+      </ul>
+      <p>The same consistency principle applies across surfaces: the one-liner on your site, your GitHub bio, and your LinkedIn headline should say recognizably the same thing, because a recruiter checking all three is checking for coherence as much as for content. That is the subject of <a href="/guides/linkedin-profile-recruiters.html">the LinkedIn profile guide</a>.</p>
+      <h2>The killers</h2>
+      <ul>
+        <li><strong>A dead link.</strong> Expired domain, moved page, typo in the resume. Fatal, common, and entirely preventable by a two-minute monthly check.</li>
+        <li><strong>A demo that errors or takes thirty seconds to wake.</strong> Worse than no demo, for the reason above.</li>
+        <li><strong>A private repository linked publicly.</strong> The reviewer gets a 404 and assumes the project does not exist.</li>
+        <li><strong>Secrets committed to a public repo.</strong> An immediate credibility problem in a security-adjacent conversation, and a real risk on its own. Scan before you link.</li>
+        <li><strong>The framework's default README.</strong> It says the project was never finished, whatever the code says.</li>
+        <li><strong>A site that is unreadable on a phone.</strong> Roughly half of first opens are mobile. A five-megabyte hero image on a phone connection loses more candidates than any missing feature.</li>
+        <li><strong>No contact route.</strong> A portfolio with no email address has failed at its only job.</li>
+        <li><strong>A PDF-only portfolio.</strong> Cannot be skimmed on a phone, cannot be linked to a specific project, will not be opened.</li>
+        <li><strong>Last commit three years ago, with no note explaining it.</strong> A finished project is fine; say it is finished. Unexplained abandonment is not the same thing.</li>
+        <li><strong>Claims with no method attached.</strong> Covered above, and the most expensive one on this list, because it fails in the interview rather than before it.</li>
+      </ul>
+      <h2>If you do not have three real projects yet</h2>
+      <p>The honest path is short and it is not "build a bigger project." Take the most complete thing you have, finish one narrow slice of it properly, write the README as described above, record a thirty-second demo, and ship it somewhere it stays up. One genuinely finished small project outperforms three ambitious unfinished ones, every time, because the question being answered is whether you finish things.</p>
+      <p>Then add the two kinds of work students systematically undervalue: research, which is the most differentiating thing on an undergraduate resume and is available by <a href="/guides/cold-email-professor-research.html">asking a professor properly</a>, and teaching or tutoring, which demonstrates the communication skill every interview loop is silently measuring. Both are covered in <a href="/guides/undergraduate-research.html">the undergraduate research guide</a>.</p>
+      <h2>The audit, in ten minutes</h2>
+      <ol>
+        <li>Open your portfolio link on a phone, on cellular data, not office wifi. Time it.</li>
+        <li>Run the eight-second test on someone who does not know what you do. All three questions.</li>
+        <li>Click every link on the page, including the ones in the footer.</li>
+        <li>Clean-clone your top project and follow your own quickstart literally.</li>
+        <li>Read your top three project sentences aloud. Cut every one that names only tools and no outcome.</li>
+        <li>Check that every number on the page has a method you could explain for two minutes.</li>
+        <li>Confirm the same URL appears on your resume, LinkedIn, and GitHub profile.</li>
+        <li>Delete the weakest visible project. There is almost always one, and the portfolio gets stronger the moment it is gone.</li>
+      </ol>
+      <p>Run that once before a recruiting season and once mid-season. It is the whole maintenance burden. Everything else, the deeper case studies and what a technical reviewer looks for on the second pass, belongs to <a href="/guides/portfolio-that-gets-interviews.html">the next guide</a> and to <a href="/resume.html">the resume itself</a>, which is still the document that carries the link.</p>
+
+      <h2>Tools referenced in this guide</h2>
+      <ul>
+        <li><a href="/resume.html">Resume</a> — the document the portfolio URL has to survive inside.</li>
+        <li><a href="/guides/portfolio-that-gets-interviews.html">Portfolio that gets interviews</a> — the deeper technical-reviewer pass, once the link is opened.</li>
+        <li><a href="/guides/ats-resume.html">ATS resume guide</a> — the parsing rules that are real and the folklore that is not.</li>
+        <li><a href="/apply.html">Apply OS</a> — tracking applications, links, and the monthly link check.</li>
+      </ul>
+    </div>
+  </section>
+
+  <hr class="divider">
+
+  <section class="section section--tight" id="faq">
+    <div class="grp-head">
+      <p class="eyebrow">FAQ</p>
+      <h2>Quick answers</h2>
+    </div>
+    <div class="grid" style="margin-top:var(--s6)">
+      <article class="card faq-card"><h3>What do recruiters actually look at in a technical portfolio?</h3><p>In the first pass, on a phone, they are answering whether you are real, what you build, whether there is anything concrete, and whether the link is safe to forward to a hiring manager. That is roughly eight seconds and it happens before any engineer reads code. Design the top of the page so a stranger can state your name, what you build, and one project without scrolling.</p></article>
+      <article class="card faq-card"><h3>Does an applicant tracking system read my portfolio site?</h3><p>No. The ATS parses your resume into structured fields, and your portfolio enters the process as a URL inside that parsed text. That makes the URL itself the thing to get right: written out as visible plain text, short enough to retype, no shorteners or tracking parameters, in the header of page one, and identical everywhere you publish it.</p></article>
+      <article class="card faq-card"><h3>How many projects should a portfolio have?</h3><p>Three, chosen so that each is finished enough for someone to use without you present, explainable in one sentence, and distinct from the others. A portfolio is judged on its weakest visible item rather than its average, so removing a weak project is usually the highest-leverage edit available and costs nothing.</p></article>
+      <article class="card faq-card"><h3>What should I quantify in a project description?</h3><p>Whatever the project actually changed: time saved, dataset size, accuracy against a stated baseline, users, latency before and after, test count. Attach the method to every figure, because a number you cannot reproduce under a follow-up question does more damage than no number at all. If a result is weaker than it looks, say so on the page.</p></article>
+      <article class="card faq-card"><h3>Do I need a live demo for every project?</h3><p>You need a working artifact for every project, which is not the same thing. A demo that errors or takes thirty seconds to wake from a sleeping free tier is worse than none, since it is direct evidence you do not check your own work. A twenty to forty second screen recording works on a phone, needs no install, and cannot go down.</p></article>
+      <article class="card faq-card"><h3>What should a project README contain?</h3><p>One sentence on what it does, then a screenshot or GIF immediately, then a quickstart that works from a clean clone, why it exists, five lines on how it works, honest limitations, and a license. Test it by cloning into a fresh directory and following your own instructions literally, since most projects fail that on an undocumented environment variable.</p></article>
+      <article class="card faq-card"><h3>Does my GitHub contribution graph matter to recruiters?</h3><p>Not as a goal. A dense grid built from trivial commits is transparent, and a sparse one with three real pinned projects is fine. What does matter is pinning the repositories you want read, writing a description and topics on each, and a three-line profile README, because a default profile page wastes a first impression recruiters actually check.</p></article>
+      <article class="card faq-card"><h3>What is the fastest way to break a technical portfolio?</h3><p>A dead link, an expired domain, a private repository linked publicly, a demo that 500s, or a site that is unreadable on a phone. Every one of those is preventable by opening your own links on cellular data once a month and clicking all of them, including the footer, which takes about two minutes.</p></article>
+    </div>
+  </section>
+
+<!-- related:auto:start -->
+  <hr class="divider">
+
+  <section class="section section--tight related" id="related" aria-labelledby="related-h">
+    <div class="grp-head">
+      <p class="eyebrow">Keep reading</p>
+      <h2 id="related-h">Related guides</h2>
+    </div>
+    <div class="related__grid">
+      <a class="related__item" href="/guides/portfolio-that-gets-interviews.html"><strong>Shipped and reachable beats impressive-sounding</strong><span>Shipped and reachable beats impressive-sounding. What a reviewer checks in 60 seconds.</span></a>
+      <a class="related__item" href="/guides/verify-visa-sponsorship-internships.html"><strong>Verify sponsorship yourself. Every list is already wrong.</strong><span>Stop trusting sponsorship lists. Verify it yourself from req language, public disclosure data, and one written…</span></a>
+      <a class="related__item" href="/guides/ats-resume.html"><strong>What an ATS actually does to your resume</strong><span>What ATS software really does, what breaks parsing, and which rules are folklore.</span></a>
+      <a class="related__item" href="/guides/linkedin-profile-recruiters.html"><strong>Write the profile for how recruiters actually search</strong><span>How recruiters actually search, and what the first two lines have to do.</span></a>
+    </div>
+    <p class="related__more">Every guide is indexed on <a href="/guides.html">the guides hub</a>. Or put it to work in <a href="/hire.html">what I am open to for Summer 2027</a> and <a href="/templates.html">the business document templates</a>.</p>
+  </section>
+<!-- related:auto:end -->
+
+</main>
+
+<footer class="site-footer">
+  <div class="site-footer__links">
+    <a href="/">Work</a>
+    <a href="/about.html">About</a>
+    <a href="/guides.html">Guides</a>
+    <a href="/apps.html">Apps</a>
+    <a href="/store.html">Store</a>
+    <a href="/privacy.html">Privacy</a>
+    <a href="/terms.html">Terms</a>
+    <a href="mailto:yusuf.gadelrab06@gmail.com">yusuf.gadelrab06@gmail.com</a>
+  </div>
+</footer>
+
+<script src="/js/site.js" defer></script>
+</body>
+</html>
