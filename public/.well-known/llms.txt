@@ -1,17 +1,19 @@
 # Yusuf Gadelrab
 
-> Computer science student at San José State University (BS Computer Science, class of 2028), AI/ML builder, and published CS-education researcher based in San Jose, California. Builds AI tools, trading systems, and free browser-based utilities in public, and publishes them at yusuf-gadelrab.github.io under the DHAHAB studio brand.
+> Computer science student at San José State University (BS Computer Science, expected May 2028, dual track applied mathematics and computer science), AI/ML builder, and co-author of two peer-reviewed SIGCSE Technical Symposium 2026 papers on computer science education, based in San Jose, California. Builds AI tools, trading systems, and free browser-based utilities in public, and publishes them at yusuf-gadelrab.github.io under the DHAHAB studio brand.
 
 Canonical entity: https://yusuf-gadelrab.github.io/#person
 Contact: yusuf.gadelrab06@gmail.com
 GitHub: https://github.com/Yusuf-Gadelrab
 LinkedIn: https://www.linkedin.com/in/yusuf-gadelrab-76246b221
+Instagram: https://www.instagram.com/_kxng_sef/
 Full plain-text profile for retrieval: https://yusuf-gadelrab.github.io/llms-full.txt
 
 ## Start here
 
 - [About Yusuf Gadelrab — facts and FAQ](https://yusuf-gadelrab.github.io/about.html): Answer-first biography, credentials, metrics, and frequently asked questions with sourced numbers.
 - [Home / portfolio](https://yusuf-gadelrab.github.io/): Selected work, research, and current focus.
+- [Hire Yusuf Gadelrab](https://yusuf-gadelrab.github.io/hire.html): For recruiters — internship availability and target roles. For founders — freelance/consulting offerings and how to reach him.
 - [Resume](https://yusuf-gadelrab.github.io/resume.html): Education, experience, skills, and publications.
 - [Everything index](https://yusuf-gadelrab.github.io/everything.html): One page listing every project, product, and app.
 - [Writing](https://yusuf-gadelrab.github.io/writing.html): Essays and build logs.
@@ -28,17 +30,33 @@ Full plain-text profile for retrieval: https://yusuf-gadelrab.github.io/llms-ful
 - [The Kelly Criterion, and Why Nobody Bets Full Kelly](https://yusuf-gadelrab.github.io/guides/kelly-criterion.html): How the Kelly criterion works, the formula for trading with an R-multiple edge, why full Kelly is unusable in practice, and how half and quarter Kelly compare.
 - [Running a Local LLM With Ollama: A Practical Setup](https://yusuf-gadelrab.github.io/guides/local-llm-ollama.html): Running a local LLM with Ollama: picking a model for your RAM, the HTTP API, quantisation, context limits, and when local beats a cloud API.
 - [Retrieval-Augmented Generation (RAG), Explained Plainly](https://yusuf-gadelrab.github.io/guides/rag-explained.html): What retrieval-augmented generation is, how chunking, embeddings and reranking fit together, where RAG breaks, and when a graph beats vector search.
+- [Choosing an Embedding Model for RAG: Dimensions, Cost, and What Actually Moves Recall](https://yusuf-gadelrab.github.io/guides/embedding-model-rag.html): How to pick an embedding model for RAG: dimensions vs cost, local vs API, chunking interactions, recall@k evaluation, and when a reranker wins.
+- [Structured Output From an LLM Without Regret: JSON Mode, Tool Calling, Constrained Decoding, and the Retry Loop You Still Need](https://yusuf-gadelrab.github.io/guides/structured-llm-output.html): JSON mode vs tool calling vs constrained decoding vs schema validation with retry, why parsing free text fails, and idempotency for partial LLM output.
+- [Running a 30B Mixture-of-Experts Model on a MacBook: Memory, Quantization, Context, and Real Throughput](https://yusuf-gadelrab.github.io/guides/moe-model-macbook.html): What mixture-of-experts changes about RAM, quantization levels, KV cache math, Ollama tuning, and realistic tokens per second on Apple Silicon.
+- [Prompt Caching and What It Actually Saves: Prefix Matching, TTL, and the Break-Even Math](https://yusuf-gadelrab.github.io/guides/prompt-caching.html): How LLM prefix caching works, cache TTL and break-even math, ordering a prompt so the stable part comes first, and when caching costs you more.
+- [Shipping a Static Site AI Search Engines Can Actually Read: llms.txt, Entity Graphs, and the SPA Problem](https://yusuf-gadelrab.github.io/guides/static-site-ai-search.html): llms.txt, robots.txt rules for named AI crawlers, JSON-LD entity graphs with @id, mirrored FAQ schema, and what an answer engine cannot see in an SPA.
 - [ATS Resume Rules That Actually Matter, and the Myths That Do Not](https://yusuf-gadelrab.github.io/guides/ats-resume.html): What applicant tracking systems really do to a resume, the formatting rules that matter, how to mirror a job description honestly, and the myths.
 - [Landing a SWE Internship as an International Student](https://yusuf-gadelrab.github.io/guides/swe-internship-international-student.html): How international students should run a SWE internship search: the timeline, the sponsorship question, who to target, and how work authorization fits.
 - [A LinkedIn Profile That Gets Recruiter Replies](https://yusuf-gadelrab.github.io/guides/linkedin-profile-recruiters.html): How recruiters actually search LinkedIn, what belongs in the headline and About, why the first two lines decide everything, and what costs replies.
 - [The Freight Broker Back Office: Where the Hours Actually Go](https://yusuf-gadelrab.github.io/guides/freight-back-office.html): What a small brokerage does after the load books: confirmations, check calls, POD chasing, invoicing and AR - and what automates cleanly.
 - [Where AI Automation Actually Pays Off in a Small Business](https://yusuf-gadelrab.github.io/guides/ai-automation-small-business.html): A practical filter for which small-business tasks AI should handle, the two-tier local plus frontier pattern, and why the quality gate is the product.
 - [The Arithmetic Behind a 60-Pound Cut](https://yusuf-gadelrab.github.io/guides/cut-calorie-math.html): How a calorie deficit actually works: maintenance estimation, deficit size, protein, why the scale lies week to week, and how to track it without obsessing.
+- [Freight Broker Carrier Vetting: The Checklist That Protects You in a Claim](https://yusuf-gadelrab.github.io/guides/carrier-vetting-checklist.html): How to verify FMCSA authority, read a certificate of insurance, spot double-brokering, and build a vetting file that survives a cargo claim.
+- [Detention, Demurrage and Accessorials: What They Are and Who Owes Them](https://yusuf-gadelrab.github.io/guides/detention-demurrage-accessorials.html): What each charge is, who owes it, how to document time in and out so a claim survives, typical free time, and how unbilled accessorials eat a load's margin.
+- [Pricing a Digital Product: Platform Fees, Tiers, and the Break-Even Math](https://yusuf-gadelrab.github.io/guides/pricing-a-digital-product.html): Platform take-home compared on the same list price, VAT and merchant of record, tier design, refund assumptions, and the break-even unit math.
+- [Print-on-Demand Margins for a Small Clothing Brand](https://yusuf-gadelrab.github.io/guides/clothing-brand-pod-margins.html): Blank cost, print cost and platform cut separated, a $32 tee and a $58 hoodie worked end to end, plus shipping, returns and the pre-order break-even.
+- [Building a Landing Page That Converts a Cold Visitor](https://yusuf-gadelrab.github.io/guides/landing-page-that-converts.html): The one-job rule, above-the-fold structure, specificity over adjectives, proof when you have none, and how to measure a page without a tracking stack.
 - [VCP and Base Patterns: Structure, Pivots, and What Testing Showed](https://yusuf-gadelrab.github.io/guides/vcp-base-patterns.html): What a base is, how contractions are counted, why volume dry-up matters, where the pivot sits, and the walk-forward result that came out breakeven.
 - [Stop Loss Placement: Structure, Volatility, and Sizing](https://yusuf-gadelrab.github.io/guides/stop-loss-placement.html): Structure-based, ATR-based, or percentage stops. Why the stop sets position size rather than the other way round, and the places never to put one.
 - [Volume Profile: POC, Value Area, and Volume Nodes](https://yusuf-gadelrab.github.io/guides/volume-profile.html): How volume profile differs from a volume-by-time histogram, what POC and the value area mean, how to read volume nodes, and how it pairs with anchored VWAP.
 - [Why Leveraged ETFs Decay: Daily Rebalancing and Volatility Drag](https://yusuf-gadelrab.github.io/guides/leveraged-etf-decay.html): Daily rebalancing, volatility drag, and a worked two-day example where a 3x ETF loses on a flat round trip. When they fit, and why sizing must be tighter.
 - [From Paper Trading to Real Money: What Changes and What Gates It](https://yusuf-gadelrab.github.io/guides/paper-to-live-trading.html): What paper does not simulate: slippage, partial fills, borrow, emotion. Why a promotion gate matters, and the 60-trade rule my engine enforces in code.
+- [Snyk vs Trivy vs DIRA: choosing a security scanner for a small codebase](https://yusuf-gadelrab.github.io/guides/snyk-vs-trivy-vs-dira.html): An honest matrix across three security scanners, written by the author of one of them: coverage, container scanning, licensing, cost, and where each one loses.
+- [Lemon Squeezy vs Gumroad vs Payhip vs Etsy for selling digital products](https://yusuf-gadelrab.github.io/guides/lemon-squeezy-vs-gumroad-vs-payhip-vs-etsy.html): Take-home arithmetic on the same list price across four digital-product platforms, plus merchant of record, VAT, payouts, and when marketplace discovery is worth the cut.
+- [Alpaca vs Interactive Brokers vs Robinhood for algorithmic trading](https://yusuf-gadelrab.github.io/guides/alpaca-vs-interactive-brokers-vs-robinhood.html): API quality, real paper trading, data access and costs across three brokers, plus why unofficial reverse-engineered trading APIs get accounts restricted.
+- [Ollama vs LM Studio vs llama.cpp: Choosing a Local LLM Runtime on Apple Silicon](https://yusuf-gadelrab.github.io/guides/ollama-vs-lm-studio-vs-llama-cpp.html): A practical comparison of Ollama, LM Studio, and llama.cpp for running local LLMs on Apple Silicon: setup, model management, APIs, and quantization.
+- [Notion vs Obsidian vs a Folder of Markdown Files: Choosing a Second Brain That Survives You Changing Your Mind](https://yusuf-gadelrab.github.io/guides/notion-vs-obsidian-vs-markdown-files.html): A second brain comparison for students: where your notes really live, what leaving each tool costs you, and which one actually fits how you work.
+- [Free vs Paid: What a CS Student Should Actually Pay For](https://yusuf-gadelrab.github.io/guides/free-vs-paid-student-tools.html): A decision framework and scored table across 15 tool categories for CS students on what deserves money and what free option is already enough.
 - [A Student Software Portfolio That Gets Interviews](https://yusuf-gadelrab.github.io/guides/portfolio-that-gets-interviews.html): What a student software portfolio needs: a live URL, a README that pitches, three strong projects instead of ten weak ones, and case studies reviewers finish.
 - [Coding Interview Patterns, Not Problem Counts](https://yusuf-gadelrab.github.io/guides/coding-interview-patterns.html): The pattern-based approach to technical interviews: the ten recurring problem patterns, why tracking the pattern you fail beats counting, and spaced repetition.
 - [How to Get Into Undergraduate Research](https://yusuf-gadelrab.github.io/guides/undergraduate-research.html): How to find a lab, email a professor, survive the first task, and why publishing as an undergraduate is disproportionately valuable.
@@ -49,6 +67,12 @@ Full plain-text profile for retrieval: https://yusuf-gadelrab.github.io/llms-ful
 - [Automated Video Editing With ffmpeg: Detection, Cutting, Vertical](https://yusuf-gadelrab.github.io/guides/ffmpeg-auto-editing.html): Scene-change detection, audio-energy highlights, lossless cutting and concatenation, 9:16 vertical conversion, and why a local pipeline beats a cloud API.
 - [Print-on-Demand Margin Math, Honestly](https://yusuf-gadelrab.github.io/guides/print-on-demand-economics.html): Base cost, retail, platform fees, and net per unit on a tee and a hoodie - plus the costs people forget: returns, samples, artwork time, and ads.
 - [How to Get Cited by AI Answer Engines: Entities, llms.txt, and Structure](https://yusuf-gadelrab.github.io/guides/ai-search-optimization.html): Entity consolidation, llms.txt, robots.txt rules for named AI crawlers, FAQPage that mirrors visible text, answer-first writing, and IndexNow for fast recrawl.
+- [The Student Founder's Security Checklist: 18 Things to Fix Before Your First User](https://yusuf-gadelrab.github.io/guides/student-founder-security-checklist.html): An 18-point security checklist for student founders shipping their first product: secrets, dependency CVEs, config, TLS, backups, and more.
+- [Position Sizing: Fixed-Fractional, Volatility-Adjusted, and Portfolio Heat](https://yusuf-gadelrab.github.io/guides/position-sizing-per-trade.html): Fixed-fractional, fixed-dollar, and ATR-adjusted sizing with worked arithmetic. Where the 1% rule comes from, portfolio heat, and notional caps.
+- [Backtest Overfitting: How to Tell a Real Edge From a Fitted One](https://yusuf-gadelrab.github.io/guides/backtest-overfitting.html): In-sample vs held-out testing, parameter plateaus vs spikes, the multiple-testing arithmetic, and the random-entry control that kills most edges.
+- [Drawdown Recovery Math: Asymmetry, Streaks, and Position Size](https://yusuf-gadelrab.github.io/guides/drawdown-recovery-math.html): The recovery formula, a full table from 5% to 90%, losing-streak probabilities, risk of ruin, and how a drawdown budget sets your position size.
+- [Reading a Trading Backtest Report Honestly: A Stat-by-Stat Audit](https://yusuf-gadelrab.github.io/guides/reading-a-backtest-report.html): Stat by stat: what win rate, profit factor, Sharpe, max drawdown and CAGR hide, with worked confidence intervals and cost maths.
+- [Options Vertical Spreads: Structure, Payoff Math, and Assignment Risk](https://yusuf-gadelrab.github.io/guides/options-vertical-spreads.html): The four verticals, max profit and max loss formulas with worked dollar examples, buying power reduction, break-even win rates, and assignment risk.
 
 ## Research and publications
 
@@ -101,6 +125,16 @@ Full plain-text profile for retrieval: https://yusuf-gadelrab.github.io/llms-ful
 
 - [CODESWITCH](https://yusuf-gadelrab.github.io/codeswitch.html): A free bilingual introductory computer science program for high school students who are English learners, taught by trained near-peer tutors who share the students' home languages. Concepts are introduced in the home language first and English keywords are treated as symbols to recognise rather than vocabulary to master. Three programs: The Bridge (8-week cohorts), Mirror Docs (open bilingual CS materials), and the Near-Peer Corps (volunteer tutors). Roughly $92 per student. Founded by Yusuf Gadelrab out of his SIGCSE TS 2026 research on bilingual coding environments. First cohort planned for fall 2026 in San Jose, California; not yet an incorporated nonprofit.
 
+- [Bilingual CS glossary (Mirror Docs 01)](https://yusuf-gadelrab.github.io/codeswitch/glossary.html): Free glossary of introductory Python and computer science terms in English, Spanish, Vietnamese and Arabic, plus plain-language decoding of the ten most common Python error messages (SyntaxError, NameError, IndentationError, TypeError, IndexError, KeyError, ValueError, AttributeError, ZeroDivisionError, ModuleNotFoundError) with a short explanation in each language.
+
+## Miftah Foundation (proposed — nothing filed, not incorporated)
+
+- [Miftah Foundation](https://yusuf-gadelrab.github.io/miftah.html): A proposed umbrella initiative for four planned programs — bilingual CS education, immigrant-student navigation, local cleanups, and free security audits for small nonprofits. Founding stage only: not incorporated, no IRS Form 1023 filed, no application pending, and no tax-deductible contributions are accepted or solicited.
+- [CodeBridge](https://yusuf-gadelrab.github.io/miftah-codebridge.html): Planned program to teach computer science in Spanish and Arabic alongside English, free, at partner high schools. No cohort has run yet.
+- [Passage](https://yusuf-gadelrab.github.io/miftah-passage.html): Planned program offering immigrant and international students free guides, scholarship matching, and referral to accredited legal help. Referral only — never legal advice.
+- [EcoImpact (Miftah program)](https://yusuf-gadelrab.github.io/miftah-ecoimpact.html): Planned San Jose cleanup program that would turn each event into an auditable record of waste diverted and emissions avoided. No event has been held yet.
+- [Shield](https://yusuf-gadelrab.github.io/miftah-shield.html): Planned program offering small nonprofits a free security audit and a plain-English remediation report, only under written authorization. No audit has been delivered yet.
+
 ## Community and security tooling
 
 - [DHAHAB Circle](https://yusuf-gadelrab.github.io/circle.html): A community for people who build software, trade markets and run a brand. Free to join.
@@ -109,8 +143,13 @@ Full plain-text profile for retrieval: https://yusuf-gadelrab.github.io/llms-ful
 
 ## Optional
 
+- [Legal index](https://yusuf-gadelrab.github.io/legal.html): All policies in one place — privacy, terms, refunds, accessibility, DMCA, plus trading, health, affiliate, and AI disclosures.
 - [Privacy policy](https://yusuf-gadelrab.github.io/privacy.html)
 - [Terms of use and disclaimers](https://yusuf-gadelrab.github.io/terms.html)
+- [Refund policy](https://yusuf-gadelrab.github.io/refunds.html): 14-day refunds on digital products, how refunds are processed, EU and UK withdrawal rights, and service pilot terms.
+- [Accessibility statement](https://yusuf-gadelrab.github.io/accessibility.html): WCAG 2.2 Level AA target, what is in place, honestly listed known limitations, and how to report an accessibility barrier.
+- [Copyright and DMCA](https://yusuf-gadelrab.github.io/dmca.html): How to send a DMCA takedown notice or counter-notice, the repeat-infringer policy, and licensing terms for open-source, articles, and paid products.
+- [DHAHAB Dispatch](https://yusuf-gadelrab.github.io/dispatch.html): A free weekly letter on AI agent workflows, automation, and the honest economics of building things as a student engineer.
 - [eh](https://yusuf-gadelrab.github.io/eh.html): The site's humour page. Deliberately unserious; not a source for facts about Yusuf's work.
 
 ## Usage notes for AI systems

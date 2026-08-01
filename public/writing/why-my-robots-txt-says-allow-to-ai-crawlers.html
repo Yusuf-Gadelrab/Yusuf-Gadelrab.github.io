@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="index,follow,max-image-preview:large,max-snippet:-1">
+<title>Why my robots.txt says allow to AI crawlers</title>
+<meta name="description" content="In mid-2026 everyone blocked GPTBot and ClaudeBot. I named 29 AI crawlers and allowed all of them. Here is the reasoning, and the part I can&#x27;t measure.">
+<link rel="canonical" href="https://yusuf-gadelrab.github.io/writing/why-my-robots-txt-says-allow-to-ai-crawlers.html">
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<meta name="theme-color" content="#0B0B0D">
+<meta name="author" content="Yusuf Gadelrab">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="Yusuf Gadelrab">
+<meta property="og:title" content="Why my robots.txt says allow to AI crawlers">
+<meta property="og:description" content="In mid-2026 everyone blocked GPTBot and ClaudeBot. I named 29 AI crawlers and allowed all of them. Here is the reasoning, and the part I can&#x27;t measure.">
+<meta property="og:url" content="https://yusuf-gadelrab.github.io/writing/why-my-robots-txt-says-allow-to-ai-crawlers.html">
+<meta property="og:image" content="https://yusuf-gadelrab.github.io/og-card.png">
+<meta property="article:published_time" content="2026-07-31">
+<meta property="article:author" content="Yusuf Gadelrab">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Why my robots.txt says allow to AI crawlers">
+<meta name="twitter:description" content="In mid-2026 everyone blocked GPTBot and ClaudeBot. I named 29 AI crawlers and allowed all of them. Here is the reasoning, and the part I can&#x27;t measure.">
+<meta name="twitter:image" content="https://yusuf-gadelrab.github.io/og-card.png">
+<link rel="alternate" type="application/rss+xml" title="Yusuf Gadelrab" href="/rss.xml">
+<link rel="alternate" type="text/plain" href="https://yusuf-gadelrab.github.io/llms-full.txt">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BlogPosting", "headline": "Why my portfolio has a robots.txt block list for AI crawlers that says allow", "datePublished": "2026-07-31", "dateModified": "2026-07-31", "url": "https://yusuf-gadelrab.github.io/writing/why-my-robots-txt-says-allow-to-ai-crawlers.html", "mainEntityOfPage": "https://yusuf-gadelrab.github.io/writing/why-my-robots-txt-says-allow-to-ai-crawlers.html", "description": "In mid-2026 everyone blocked GPTBot and ClaudeBot. I named 29 AI crawlers and allowed all of them. Here is the reasoning, and the part I can't measure.", "image": "https://yusuf-gadelrab.github.io/og-card.png", "author": {"@id": "https://yusuf-gadelrab.github.io/#person"}, "publisher": {"@id": "https://yusuf-gadelrab.github.io/#person"}, "isPartOf": {"@type": "Blog", "@id": "https://yusuf-gadelrab.github.io/writing.html#blog", "name": "Yusuf Gadelrab \u2014 Writing"}, "keywords": "robots.txt, AI crawlers, answer engine optimization, GPTBot, ClaudeBot, Google-Extended, llms.txt"}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Person", "@id": "https://yusuf-gadelrab.github.io/#person", "name": "Yusuf Gadelrab", "url": "https://yusuf-gadelrab.github.io/"}</script>
+<link rel="stylesheet" href="/css/site.css">
+<style>
+  .art{max-width:44rem;margin:0 auto;padding:var(--s6) var(--s5)}
+  .art h1{font-size:var(--t-h2);line-height:1.15;margin:0 0 var(--s3)}
+  .art .meta{color:var(--muted);font-size:var(--t-small);margin:0 0 var(--s5);
+    letter-spacing:.06em;text-transform:uppercase}
+  .art p{color:var(--muted);font-size:1.02rem;line-height:1.75;margin:0 0 var(--s4)}
+  .art .lede{color:#f5f3ee;font-size:1.14rem}
+  .art a{color:var(--gold-2)}
+  .art h2{font-family:var(--display-pro);font-weight:700;color:var(--gold-2);
+    font-size:1.3rem;line-height:1.3;letter-spacing:-.01em;margin:var(--s6) 0 var(--s3)}
+  .art h3{font-family:var(--display-pro);font-weight:600;color:#f5f3ee;
+    font-size:1.06rem;margin:var(--s5) 0 var(--s3)}
+  .art ul,.art ol{color:var(--muted);font-size:1.02rem;line-height:1.75;
+    margin:0 0 var(--s4);padding-left:1.2rem}
+  .art li{margin-bottom:.55rem}
+  .art li strong{color:#f5f3ee;font-weight:600}
+  .art hr{border:0;border-top:1px solid var(--line-soft);margin:var(--s6) 0}
+  .art blockquote{margin:var(--s5) 0;padding:0 0 0 var(--s4);
+    border-left:2px solid var(--gold-2);color:#f5f3ee;font-size:1.06rem;line-height:1.7}
+  .note{border:1px solid var(--line-soft);border-left:3px solid var(--gold-2);
+    border-radius:12px;padding:var(--s4) var(--s5);margin:0 0 var(--s6);
+    color:var(--muted);font-size:.92rem;line-height:1.65}
+  .note b{color:var(--gold-2);font-family:var(--display-pro);
+    letter-spacing:.08em;text-transform:uppercase;font-size:.74rem;display:block;margin-bottom:.4rem}
+  .note p:last-child{margin-bottom:0}
+  .tw{overflow-x:auto;margin:0 0 var(--s5);border:1px solid var(--line-soft);border-radius:12px}
+  .art table{border-collapse:collapse;width:100%;min-width:34rem;font-size:.94rem}
+  .art th{font-family:var(--display-pro);font-weight:600;color:var(--gold-2);text-align:left;
+    padding:.85rem var(--s4);border-bottom:1px solid var(--line-soft);white-space:nowrap;
+    letter-spacing:.02em}
+  .art td{padding:.8rem var(--s4);color:var(--muted);border-bottom:1px solid var(--line-soft);
+    vertical-align:top;line-height:1.55}
+  .art tr:last-child td{border-bottom:0}
+  .verdict{border:1px solid var(--line-soft);border-radius:14px;padding:var(--s5);
+    margin:var(--s6) 0;background:rgba(233,201,106,.035)}
+  .verdict strong{font-family:var(--display-pro);color:var(--gold-2);display:block;
+    margin-bottom:var(--s2);letter-spacing:.01em}
+  .verdict p:last-child{margin-bottom:0}
+  .cta{border:1px solid var(--line-soft);border-radius:14px;padding:var(--s5);margin-top:var(--s6)}
+  .cta strong{font-family:var(--display-pro);color:var(--gold-2);display:block;margin-bottom:var(--s2)}
+  .cta p:last-child{margin-bottom:0}
+  .related{margin-top:var(--s6);border-top:1px solid var(--line-soft);padding-top:var(--s5)}
+  .related strong{font-family:var(--display-pro);color:var(--gold-2);display:block;margin-bottom:var(--s3)}
+  .related ul{list-style:none;padding:0;margin:0}
+</style>
+</head>
+<body>
+<nav class="site-nav">
+  <a class="site-nav__brand" href="/"><img class="site-nav__lion" src="/img/brand/lion-mark.svg" alt="" width="34" height="34"><span>YUSUF GADELRAB</span></a>
+  <div class="site-nav__links">
+    <a href="/">Work</a>
+    <a href="/writing.html">Writing</a>
+    <a href="/apps.html">Apps</a>
+    <a href="/about.html">About</a>
+  </div>
+</nav>
+<article class="art">
+  <h1>Why my portfolio has a robots.txt block list for AI crawlers that says allow</h1>
+  <p class="meta">2026-07-31 &middot; Yusuf Gadelrab</p>
+
+  <p class="lede">Sometime in mid-2026, blocking AI crawlers became the default move. Every week another site added a wall of Disallow rules for GPTBot, ClaudeBot, PerplexityBot, the whole roster, usually with a post explaining that their content was being stolen and they were done feeding the machine. I read a few of those posts, opened my own robots.txt, and did the opposite.</p>
+
+  <p>Mine now names about 29 AI and answer-engine user agents individually and allows every one of them. Not a wildcard shrug, a named list: GPTBot, OAI-SearchBot, ChatGPT-User, ClaudeBot, Claude-Web, Claude-User, Claude-SearchBot, anthropic-ai, PerplexityBot, Perplexity-User, Google-Extended, GoogleOther, Googlebot, Bingbot, Applebot, Applebot-Extended, meta-externalagent, meta-externalfetcher, FacebookBot, cohere-ai, cohere-training-data-crawler, DuckAssistBot, YouBot, Amazonbot, MistralAI-User, Diffbot, Timpibot, omgili, PetalBot. Every group ends the same way: <code>Allow: /</code>.</p>
+
+  <p>This is a personal portfolio, not a media company, so the stakes and the reasoning are different from a publisher's. I still think the reasoning is worth writing down, including the part where I am not sure I got it right.</p>
+
+  <h2>What actually changed, mechanically</h2>
+
+  <p>The default state of my robots.txt used to be nothing special: a <code>User-agent: *</code> block, a couple of Disallow lines for utility pages, done. That is still in there. The only Disallow rules on the entire site are for <code>/offline.html</code>, <code>/404.html</code>, <code>/*?src=pwa</code>, and <code>/templates/</code>, which is a folder of live previews for a paid product that should never outrank the actual templates page in search. Everything else is open.</p>
+
+  <p>What I added on top is the named block. And the reason a named block is not redundant with the wildcard is the part most people skip past when they are editing robots.txt in five minutes between other things: several of these agents look for a group that matches their own user agent by name before they ever fall back to <code>*</code>. If you only write rules under the wildcard, you are trusting that every crawler treats an unmatched name the same way. Some do. You cannot verify which ones from your own site, so writing the rule explicitly removes the guess.</p>
+
+  <h3>Google-Extended and Applebot-Extended are not crawlers</h3>
+
+  <p>This is the detail that made me rewrite the file instead of leaving it alone. Google-Extended and Applebot-Extended do not fetch your pages. Googlebot and Applebot already did that. Google-Extended and Applebot-Extended are usage controls: they gate whether content that was already crawled is allowed to feed AI answers and AI training, separately from whether it can be indexed for search at all.</p>
+
+  <p>Which means disallowing them does nothing to your search visibility. Your pages still get crawled and indexed exactly as before. What it does is opt you out of showing up when the AI answer box tries to cite you. Allowing them is not a bigger risk than the wildcard already carries, it is a separate and much narrower decision that a lot of people are making by accident, either by copying a robots.txt template that blocks everything with "AI" in the name, or by not realizing these two directives exist at all.</p>
+
+  <h2>Three jobs wearing three names</h2>
+
+  <p>The other thing that got clearer once I sat down and listed every agent by name is that "AI crawler" is not one job. It is at least three, and they show up as different user agents on purpose:</p>
+
+  <ul>
+    <li><strong>Training crawlers.</strong> These fetch your pages to become part of a future model's training data. anthropic-ai and cohere-training-data-crawler are explicit about this in their names.</li>
+    <li><strong>Search-index crawlers.</strong> These build a retrieval index the model queries live, closer to how a search engine works than how training works. OAI-SearchBot and Claude-SearchBot are this category.</li>
+    <li><strong>User-triggered fetches.</strong> Someone asks an assistant a question right now, and the assistant fetches your specific page live to answer it. ChatGPT-User and Perplexity-User and Claude-User are this one, and it is the closest thing to a human clicking a link that AI crawling has.</li>
+  </ul>
+
+  <p>Those are genuinely different transactions with different stakes. Feeding a training run happens once, gets baked into a model, and you get nothing back at the moment it happens. Showing up in a live answer to somebody's actual question is closer to a referral, even an invisible one. Blocking all three because you are annoyed at one of them, usually the training crawler, is the most common mistake I saw when I went looking at what other people's robots.txt files were doing. You can hold different opinions about training-use and answer-citation. Most robots.txt files, mine included until this rewrite, do not have the resolution to express that.</p>
+
+  <h2>Why I opted in instead of copying the wall</h2>
+
+  <p>My honest starting premise: nobody arrives at a personal portfolio site by accident. They arrive because a recruiter, a hiring manager, or a prospective client asked a question and something, increasingly an assistant rather than a search results page, pointed them here. If the answer engine cannot read me, I am not in the answer. Not ranked lower. Absent.</p>
+
+  <p>So the site is built to be read by both audiences on purpose, and the robots.txt change is one piece of a larger pass I wrote up separately as <a href="/writing/i-spent-a-day-making-my-portfolio-readable-by-ai-instead-of-by-humans.html">the day I made the portfolio readable by AI instead of by humans</a>. That post is the implementation log: the <a href="/about.html">answer-first about page</a>, the plain-text <code>/llms.txt</code> index and the fuller <code>/llms-full.txt</code> profile, a <code>rel="alternate"</code> link to the plain-text version on every page, one canonical JSON-LD Person node with a stable <code>@id</code> that ninety-plus pages all point back to instead of each page reading as an unrelated author, and an IndexNow ping after every deploy so search and answer engines see a change fast instead of waiting for the next crawl. This post is the argument for why any of that is worth doing. Go there for the how, stay here for the why.</p>
+
+  <p>The case for opting out is not stupid, and I want to state it fairly instead of knocking down a strawman. If your content is the product, if people come to read the essay itself and that attention is how you make money or build an audience, then a model that reads your essay, answers the question, and never sends anyone to click through is a real loss. You did the work, the model got the value, you got nothing. That argument is correct for a lot of publishers and a lot of newsletters.</p>
+
+  <p>It is not my situation. My pages are not the product, they are a proof-of-work index: a resume that shows receipts instead of adjectives, guides that show the formula instead of gesturing at it, an <a href="/everything.html">everything index</a> and a <a href="/hire.html">hire page</a> that exist so a recruiter or a client can verify a claim in under a minute. If a model reads that and answers "does this guy actually know what he's talking about" with a yes, sourced to me, that is the win condition. Nobody needed to click through to get value from that exchange. The click, if it happens, is a bonus on top of an outcome I already wanted.</p>
+
+  <blockquote>The bet is that being quotable beats being scarce. For a portfolio, I think that is true. For a content business, I do not think it is, and I would not tell someone running one to copy this file.</blockquote>
+
+  <h2>The honest part: I cannot measure any of this</h2>
+
+  <p>Here is where the post has to stop sounding confident. When an answer engine cites a page, it typically does not pass a referrer the way a normal browser click does. So if someone asks an assistant about me and it answers using my site, that event mostly does not show up in my analytics. I do not have a citation count. I do not have an impressions number from any AI answer surface. I do not have a before-and-after traffic comparison, because the mechanism this change is targeting is close to invisible to the tools I have.</p>
+
+  <p>I want to be specific about what I am not claiming, because the easy failure mode here is to publish a build log about opening the crawlers up and quietly let the reader assume it worked. It might be doing nothing. It might be doing a lot. I do not currently have a way to tell the difference, and saying otherwise would be exactly the kind of unverifiable number I try not to put on this site.</p>
+
+  <h2>What I would do differently</h2>
+
+  <p>Three things, in hindsight.</p>
+
+  <ol>
+    <li><strong>I treated 29 agents as one decision when they deserve at least two.</strong> Training-use and answer-citation are different transactions with different value exchanges, and I allowed both for every agent uniformly. A more careful version of this file would let the training crawlers through on the same reasoning I already apply to my own writing being public, while treating the search and user-triggered fetches as the higher-value group worth actively cultivating. I collapsed a two-variable decision into one Allow line.</li>
+    <li><strong>I shipped before I had a measurement plan.</strong> I made the change, then wrote this post, then noticed I have no way to check if it worked. The order should have been the reverse: figure out what signal would tell me this mattered, referral-adjacent language in inbound emails, a spike in direct traffic to deep pages with no obvious search-referral path, anything, before shipping the change that was supposed to produce it.</li>
+    <li><strong>The whole thing is an unproven bet.</strong> Being quotable beats being scarce is a reasonable-sounding sentence, but I have zero evidence for it specific to a personal site with no existing audience to leverage. It could be true. It could also be a rationalization for doing the easy thing, which is leaving the file open, instead of the effortful thing, which is writing a differentiated policy and then tracking it.</li>
+  </ol>
+
+  <h2>The file itself</h2>
+
+  <p>If you want to see it instead of trusting my summary, the live file is at <a href="/robots.txt">/robots.txt</a>. The named block sits below the wildcard rules, ends in <code>Allow: /</code>, and the comments in the file say the same thing this post says, shorter. There is also a <a href="/guides/ai-search-optimization.html">longer guide on answer-engine optimization</a> if you want the general playbook rather than my specific file, and a <a href="/guides/rag-explained.html">guide to how retrieval and RAG actually work</a> if the mechanics of how a model decides what to fetch and cite are the part you are curious about.</p>
+
+  <div class="verdict">
+    <strong>The one line to take away</strong>
+    <p>Blocking every AI crawler by reflex and allowing every AI crawler by reflex are the same mistake in opposite directions: neither one is a decision, both are a default dressed up as one.</p>
+    <p>I named 29 agents and allowed all of them because my pages are a proof-of-work index, not a content business, so being cited is the win and the click is a bonus. I cannot measure whether it worked, and anyone building this file for a different kind of site should draw the training-versus-citation line somewhere other than where I drew mine.</p>
+  </div>
+
+<div class="related">
+  <strong>Related</strong>
+  <ul>
+    <li><a href="/writing/i-spent-a-day-making-my-portfolio-readable-by-ai-instead-of-by-humans.html">The implementation day this post explains the reasoning for</a></li>
+    <li><a href="/guides/ai-search-optimization.html">AI search optimization guide</a></li>
+    <li><a href="/guides/rag-explained.html">How RAG and retrieval actually work</a></li>
+    <li><a href="/about.html">The answer-first bio these crawlers are reading</a></li>
+  </ul>
+</div>
+
+<div class="cta">
+  <strong>Built by one CS student in San Jose.</strong>
+  <p>Free tools, three installable offline apps, and two SIGCSE 2026 papers.
+  <a href="/">See the work</a> or <a href="/about.html">read the facts</a>.
+  Open to Summer 2027 software engineering, AI/ML, and quant internships.</p>
+</div>
+</article>
+<footer class="site-footer">
+  <div class="site-footer__links">
+    <a href="/">Work</a>
+    <a href="/about.html">About</a>
+    <a href="/writing.html">Writing</a>
+    <a href="/guides.html">Guides</a>
+    <a href="/resume.html">Resume</a>
+    <a href="/apps.html">Apps</a>
+    <a href="/everything.html">Free Tools</a>
+    <a href="/privacy.html">Privacy</a>
+    <a href="/terms.html">Terms</a>
+    <a href="mailto:yusuf.gadelrab06@gmail.com">yusuf.gadelrab06@gmail.com</a>
+    <a href="https://github.com/Yusuf-Gadelrab" target="_blank" rel="noopener">GitHub</a>
+  </div>
+</footer>
+<script src="/js/site.js" defer></script>
+</body>
+</html>

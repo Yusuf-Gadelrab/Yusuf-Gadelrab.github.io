@@ -57,6 +57,11 @@ GROUP_OF = {
     "media-kit-essentials": 3,
     "build-in-public": 3,
     "cut-calorie-math": 4,
+    "position-sizing-per-trade": 0,
+    "drawdown-recovery-math": 0,
+    "backtest-overfitting": 0,
+    "reading-a-backtest-report": 0,
+    "options-vertical-spreads": 0,
 }
 
 # The three hand-written guides that predate the generator.

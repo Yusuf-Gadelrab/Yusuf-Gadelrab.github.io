@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="preload" href="/css/site.css" as="style">
+<meta name="robots" content="index,follow,max-image-preview:large,max-snippet:-1">
+<meta property="og:locale" content="en_US">
+<title>Position Sizing: How Much to Risk Per Trade</title>
+<meta name="description" content="Fixed-fractional, fixed-dollar, and ATR-adjusted sizing with worked arithmetic. Where the 1% rule comes from, portfolio heat, and notional caps.">
+<link rel="canonical" href="https://yusuf-gadelrab.github.io/guides/position-sizing-per-trade.html">
+<link rel="icon" type="image/svg+xml" href="https://yusuf-gadelrab.github.io/favicon.svg">
+<link rel="apple-touch-icon" sizes="180x180" href="https://yusuf-gadelrab.github.io/apple-touch-icon.png">
+<meta name="theme-color" content="#0B0B0D">
+<meta name="author" content="Yusuf Gadelrab">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="Yusuf Gadelrab">
+<meta property="og:title" content="Position Sizing: How Much to Risk Per Trade">
+<meta property="og:description" content="Fixed-fractional vs fixed-dollar vs ATR sizing, the real origin of the 1% rule, portfolio heat, and why gaps break risk-based sizing.">
+<meta property="og:url" content="https://yusuf-gadelrab.github.io/guides/position-sizing-per-trade.html">
+<meta property="og:image" content="https://yusuf-gadelrab.github.io/og-card.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Position Sizing: How Much to Risk Per Trade">
+<meta name="twitter:description" content="Fixed-fractional vs fixed-dollar vs ATR sizing, the real origin of the 1% rule, portfolio heat, and why gaps break risk-based sizing.">
+<meta name="twitter:image" content="https://yusuf-gadelrab.github.io/og-card.png">
+<link rel="alternate" type="text/plain" href="https://yusuf-gadelrab.github.io/llms-full.txt" title="Plain-text profile for language models">
+
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"TechArticle","@id":"https://yusuf-gadelrab.github.io/guides/position-sizing-per-trade.html#article","headline":"Position Sizing: Fixed-Fractional, Volatility-Adjusted, and Portfolio Heat","name":"Position Sizing: Fixed-Fractional, Volatility-Adjusted, and Portfolio Heat","description":"Fixed-fractional, fixed-dollar, and ATR-adjusted sizing with worked arithmetic. Where the 1% rule comes from, portfolio heat, and notional caps.","datePublished":"2026-07-29","dateModified":"2026-07-29","inLanguage":"en","author":{"@id":"https://yusuf-gadelrab.github.io/#person"},"publisher":{"@id":"https://yusuf-gadelrab.github.io/#person"},"about":["Position sizing","Risk management","Portfolio heat","Trading"],"mainEntityOfPage":"https://yusuf-gadelrab.github.io/guides/position-sizing-per-trade.html","isAccessibleForFree":true,"proficiencyLevel":"Intermediate"},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://yusuf-gadelrab.github.io/"},{"@type":"ListItem","position":2,"name":"Guides","item":"https://yusuf-gadelrab.github.io/guides.html"},{"@type":"ListItem","position":3,"name":"Position Sizing"}]}]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","@id":"https://yusuf-gadelrab.github.io/guides/position-sizing-per-trade.html#faq","mainEntity":[{"@type":"Question","name":"How much should I risk per trade?","acceptedAnswer":{"@type":"Answer","text":"Most retail traders land between 0.5% and 1.5% of account equity per trade. The defensible way to pick your number is to divide a drawdown you can genuinely tolerate by the longest losing streak you think your method will produce, using the formula 1 minus (1 minus D) to the power of 1 over L. A 20% tolerable drawdown across a 20-loss streak works out to about 1.1% per trade."}},{"@type":"Question","name":"What is the 1 percent rule in trading?","acceptedAnswer":{"@type":"Answer","text":"The 1% rule says never risk more than 1% of your account on a single trade, where risk means the loss taken if the stop fills. It is not an arbitrary constant: 1% is roughly the level at which twenty consecutive losses produce a drawdown of about 20%. If your tolerable drawdown or your expected streak length differs, your number should differ too."}},{"@type":"Question","name":"What is the difference between risk per trade and position size?","acceptedAnswer":{"@type":"Answer","text":"Risk per trade is what you lose if the stop is hit, and position size is the dollar value of what you own. They are linked only by the stop distance. A 300 dollar risk becomes a 6,000 dollar position with a 2.40 stop distance on a 48 dollar stock, or a 24,000 dollar position with a 0.60 stop distance, which is the same risk on paper and a very different overnight exposure."}},{"@type":"Question","name":"Is fixed fractional or fixed dollar position sizing better?","acceptedAnswer":{"@type":"Answer","text":"Fixed fractional is better for almost everyone past the first few dozen trades because the dollar risk shrinks automatically in a drawdown and grows in a run, so the account decays geometrically rather than linearly. Fixed dollar sizing keeps taking the same bite from a shrinking account and never compounds a winning stretch. Fixed dollar is reasonable only as a simplification while you are learning the workflow."}},{"@type":"Question","name":"How do you size positions using ATR?","acceptedAnswer":{"@type":"Answer","text":"Set the stop distance as a multiple of average true range, commonly 1.5 to 3 times ATR14, then divide your risk budget by that distance to get shares. On a 30,000 dollar account risking 0.75%, a 225 dollar budget with a 2 ATR stop buys 140 shares of a name with 0.80 ATR and only 36 shares of a name with 3.10 ATR. The result is roughly equal risk contribution from instruments with very different volatility."}},{"@type":"Question","name":"What is portfolio heat?","acceptedAnswer":{"@type":"Answer","text":"Portfolio heat is the sum of all open risk across every position, expressed as a percentage of equity. Six positions each risking 1% is 6% heat, but if four of them are correlated they behave closer to a single position risking 3 to 4%, so a correlated cluster should be counted and capped as one trade. Common working caps are 6% to 8% total heat and no more than about 3% in any one sector or theme."}},{"@type":"Question","name":"Does position sizing change on a small account?","acceptedAnswer":{"@type":"Answer","text":"Yes, because percentage rules stop being scale-invariant below roughly 10,000 dollars. Share granularity means a 20 dollar risk budget rounds to whole shares and cannot size high-priced stocks at all, fixed fees like options contract charges become material against a small risk budget, and you are forced into two or three concurrent positions rather than a diversified book. The percentage rule still applies, but expect a lumpier equity curve than it implies."}}]}</script>
+
+<link rel="stylesheet" href="/css/site.css">
+<style>
+  .prose{max-width:68ch}
+  .prose h2{margin:var(--s7) 0 var(--s4);font-size:var(--t-h2)}
+  .prose h3{margin:var(--s6) 0 var(--s3);font-size:var(--t-h3)}
+  .prose p{color:var(--muted);margin:0 0 var(--s4)}
+  .prose ul,.prose ol{color:var(--muted);padding-left:1.2em;margin:0 0 var(--s4)}
+  .prose li{margin-bottom:var(--s2)}
+  .prose a{color:var(--gold-2)}
+  .prose strong{color:var(--fg)}
+  .formula{display:block;padding:var(--s4);margin:0 0 var(--s4);border:1px solid var(--line-soft);
+    border-radius:var(--radius);font-family:ui-monospace,SFMono-Regular,Menlo,monospace;
+    font-size:var(--t-small);color:var(--gold-2);overflow-x:auto;white-space:pre-wrap}
+  .tblwrap{overflow-x:auto;margin:0 0 var(--s4)}
+  .tbl{width:100%;border-collapse:collapse;font-size:var(--t-small)}
+  .tbl th,.tbl td{text-align:left;padding:var(--s3);border-bottom:1px solid var(--line-soft);
+    color:var(--muted);vertical-align:top}
+  .tbl th{font-family:var(--display-pro);color:var(--gold-2);font-weight:600}
+  .callout{padding:var(--s4);border:1px solid var(--line-soft);border-radius:var(--radius);
+    color:var(--muted);font-size:var(--t-small);margin:0 0 var(--s5)}
+  .callout--warn{border-color:var(--gold-2)}
+  .faq-card{padding:var(--s5)}
+  .faq-card h3{font-size:var(--t-h3);margin:0}
+  .faq-card p{color:var(--muted);font-size:var(--t-small);margin:var(--s3) 0 0}
+</style>
+</head>
+<body class="pro">
+
+<a class="skip-link" href="#main">Skip to content</a>
+
+<nav class="site-nav">
+  <a class="site-nav__brand" href="/"><img class="site-nav__lion" src="/img/brand/lion-mark.svg" alt="" width="34" height="34"><span>YUSUF GADELRAB</span></a>
+  <div class="site-nav__links">
+    <a href="/">Work</a>
+    <a href="/guides.html">Guides</a>
+    <a href="/risk-tools.html">Calculators</a>
+    <a href="/apps.html">Apps</a>
+  </div>
+</nav>
+
+<nav class="crumbs" aria-label="Breadcrumb">
+  <ol>
+    <li><a href="/">Home</a></li>
+    <li><a href="/guides.html">Guides</a></li>
+    <li><span aria-current="page">Position Sizing</span></li>
+  </ol>
+</nav>
+
+<main id="main">
+
+  <header class="section">
+    <p class="eyebrow">Guide · Risk</p>
+    <h1 style="margin:var(--s4) 0">How much to risk per trade</h1>
+    <p class="lead">The stop tells you what 1R is worth per share. Position sizing decides how many of those you are willing to lose. Almost every account that dies quickly dies here, not on entries.</p>
+  </header>
+
+  <hr class="divider">
+
+  <section class="section section--tight">
+    <div class="prose">
+      <h2>Risk per trade is not position size</h2>
+      <p>These get used interchangeably and they are not the same number. <strong>Risk per trade is what you lose if the stop fills. Position size is what you own.</strong> A $300 risk can be a $6,000 position or a $24,000 position depending only on where the stop sits. Confusing them is how people end up with a 1% risk rule and an 80% concentration problem at once.</p>
+      <p>This guide is the sizing sibling to the <a href="/guides/stop-loss-placement.html">stop loss placement guide</a>. There, structure sets the invalidation price and therefore 1R per share. Here you set the multiplier: how many units of 1R you are prepared to lose on this trade, which then produces the share count as arithmetic rather than as a decision. If you pick the share count first, everything downstream is decoration.</p>
+      <span class="formula">1R per share = entry − stop
+Risk budget  = account × risk %
+Shares       = risk budget ÷ 1R per share
+Position     = shares × entry
+
+Worked: $30,000 account, 1% risk  = $300 budget
+        entry $48.00, stop $45.60 → 1R = $2.40
+        shares   = 300 ÷ 2.40 = 125
+        position = 125 × 48.00 = $6,000  (20% of account)</span>
+      <p>Hold the risk budget constant and move only the stop, and the position swings enormously while the risk does not move at all:</p>
+      <div class="tblwrap"><table class="tbl">
+        <thead><tr><th>Entry</th><th>Stop</th><th>1R per share</th><th>Shares at $300 risk</th><th>Position</th><th>% of a $30k account</th></tr></thead>
+        <tbody>
+          <tr><td>$48.00</td><td>$47.40</td><td>$0.60</td><td>500</td><td>$24,000</td><td>80.0%</td></tr>
+          <tr><td>$48.00</td><td>$45.60</td><td>$2.40</td><td>125</td><td>$6,000</td><td>20.0%</td></tr>
+          <tr><td>$48.00</td><td>$43.20</td><td>$4.80</td><td>62</td><td>$2,976</td><td>9.9%</td></tr>
+          <tr><td>$48.00</td><td>$38.40</td><td>$9.60</td><td>31</td><td>$1,488</td><td>5.0%</td></tr>
+        </tbody>
+      </table></div>
+      <p>The top row is the one that hurts. The risk math says $300 either way, but 80% of the account is sitting in one name overnight, and a stop is only a promise the market keeps during regular hours. Hence a notional cap on top of the risk cap, covered further down.</p>
+      <h2>Fixed-fractional sizing</h2>
+      <p>Fixed fractional means risking a constant percentage of <em>current</em> equity on every trade. Equity rises, the dollar risk rises with it. Equity falls, the dollar risk falls automatically. It is the default method for a structural reason: each loss is measured against a smaller base than the last, so a losing streak decays the account geometrically instead of linearly and cannot arithmetically reach zero.</p>
+      <p>Compare 40 consecutive losses on a $30,000 account. At a flat 1% of current equity you finish at 0.99^40, roughly $20,070. At a fixed $300 per trade you finish at $18,000. Early on the two look identical. The gap opens exactly when you need it to, deep in the drawdown, because the fixed-dollar version keeps taking the same bite from a shrinking account.</p>
+      <p>The cost is that fixed fractional feels slow. On a $5,000 account, 1% is $50, and $50 does not feel like trading. That feeling is the reason most small accounts abandon the method, and it is also the reason most small accounts do not survive their first bad month.</p>
+      <h3>Where the 1% rule actually comes from</h3>
+      <p>The 1% rule is not folklore. It falls out of two inputs you can measure: the drawdown you can survive without changing behaviour, and the longest losing streak your strategy plausibly produces. Fix those two and per-trade risk is determined, not chosen.</p>
+      <span class="formula">Per-trade risk ≈ 1 − (1 − D)^(1/L)
+
+  D = maximum drawdown you will tolerate
+  L = worst plausible consecutive-loss streak
+
+Worked: D = 20%, L = 10 losses
+        1 − 0.80^(1/10) = 1 − 0.9779 = 2.2% per trade
+
+Worked: D = 20%, L = 20 losses
+        1 − 0.80^(1/20) = 1 − 0.9889 = 1.1% per trade
+
+Worked: D = 10%, L = 20 losses
+        1 − 0.90^(1/20) = 1 − 0.9947 = 0.53% per trade</span>
+      <p>Read the middle line again. <strong>The 1% rule is roughly the answer to: survive twenty losses in a row inside a 20% drawdown.</strong> That is all it is. It is not a magic constant, it is a specific pair of assumptions, and if your assumptions differ your number should differ.</p>
+      <p>Is a 20-loss streak realistic? For a system winning 40% of the time, the chance of any given run of 10 straight losses is 0.6^10, about 0.6%. Across 200 trades there are 191 overlapping starting points, so expect roughly one 10-loss run per 200 trades as a matter of course. Streaks of 15 to 20 show up over a career.</p>
+      <p>Recovery arithmetic is the other half of this and it is brutally asymmetric: a 20% drawdown needs +25% to get back, a 50% drawdown needs +100%. That asymmetry is the actual reason to keep D small. The full curve is in the <a href="/guides/drawdown-recovery-math.html">drawdown recovery math guide</a>.</p>
+      <h2>Fixed-dollar sizing</h2>
+      <p>Fixed dollar means risking the same amount every trade regardless of equity: $50 a trade, every trade. Its honest advantage is that it removes a recalculation step, which matters when you are new and the checklist is already long.</p>
+      <p>It has one serious flaw and one hidden one. The serious flaw is that it does not de-risk in a drawdown. The hidden one is that it does not re-risk in a run, so after two profitable years you are still trading like the account is half its size. It is a training-wheels method: fine for the first fifty trades, wrong to keep past a few hundred.</p>
+      <h2>Volatility-adjusted sizing</h2>
+      <p>Volatility-adjusted sizing sets the stop distance from the instrument's own average true range instead of from a fixed percentage, so a quiet name and a violent name contribute roughly equal risk to the portfolio. This is the retail version of risk parity, and it is the single biggest improvement available to anyone trading a mixed universe.</p>
+      <span class="formula">Stop distance = k × ATR14        (k typically 1.5 to 3.0)
+Shares        = (account × risk %) ÷ (k × ATR14)
+
+$30,000 account, 0.75% risk = $225 budget, k = 2
+
+  Name A: price $40,  ATR14 $0.80 → distance $1.60 → 140 shares → $5,600
+  Name B: price $150, ATR14 $3.10 → distance $6.20 →  36 shares → $5,400
+
+Same $225 at risk. Similar notional. Very different share counts.</span>
+      <p>The two positions above cost about the same and risk about the same, even though one stock is nearly four times the price of the other. Without the volatility adjustment, an equal-share or equal-dollar allocation would have quietly put two or three times more risk into the noisier name.</p>
+      <p>The honest limits: ATR is backward-looking, so it understates risk exactly when volatility regime-shifts, which is when it matters. It also treats gap risk as if it were continuous, which it is not. Recompute ATR on the day you size, not on the day you first found the idea.</p>
+      <h2>Comparing the three, plus Kelly</h2>
+      <div class="tblwrap"><table class="tbl">
+        <thead><tr><th>Method</th><th>Scales with equity</th><th>Scales with volatility</th><th>Best for</th><th>Main failure mode</th></tr></thead>
+        <tbody>
+          <tr><td>Fixed dollar</td><td>No</td><td>No</td><td>First 50 trades, very small accounts</td><td>Keeps taking the same bite from a shrinking account</td></tr>
+          <tr><td>Fixed fractional</td><td>Yes</td><td>Only through the stop</td><td>Almost everyone, almost always</td><td>Feels too small to bother with early on</td></tr>
+          <tr><td>Volatility-adjusted (ATR)</td><td>Yes</td><td>Yes, directly</td><td>Mixed-volatility or systematic universes</td><td>ATR lags regime changes and ignores gaps</td></tr>
+          <tr><td>Kelly / optimal-f</td><td>Yes</td><td>Indirectly</td><td>Measured edges with stable distributions</td><td>Wildly oversized when the edge estimate is wrong</td></tr>
+        </tbody>
+      </table></div>
+      <p>Kelly deserves a specific warning. It takes your win rate and payoff ratio as <em>known</em>, and yours are estimates from a small sample. Overestimate the edge by a third and full Kelly is a route to ruin, not to growth. Practitioners who use it at all use a fraction, typically a quarter or a half. Mechanics and failure cases: <a href="/guides/kelly-criterion.html">Kelly criterion guide</a>. Calculators: <a href="/risk-tools.html#position-sizer">risk toolkit</a>.</p>
+      <h2>Why account size changes the answer</h2>
+      <p>Percentage rules are scale-invariant on paper and very much not in practice. Below roughly $10,000, four separate frictions start to dominate the arithmetic.</p>
+      <p><strong>Share granularity.</strong> You cannot buy 8.33 shares at most brokers, so a $20 risk budget against a $2.40 stop becomes 8 shares and $19.20 of actual risk. That 4% rounding error is tolerable. On a $400 stock with a $12 stop, the same budget rounds to one share, and one share is an all-or-nothing bet on a single instrument's tick size.</p>
+      <div class="tblwrap"><table class="tbl">
+        <thead><tr><th>Account</th><th>1% risk budget</th><th>Shares at 1R = $2.40</th><th>Shares at 1R = $12.00</th><th>Practical read</th></tr></thead>
+        <tbody>
+          <tr><td>$2,000</td><td>$20</td><td>8</td><td>1</td><td>Granularity dominates; high-priced names unusable</td></tr>
+          <tr><td>$5,000</td><td>$50</td><td>20</td><td>4</td><td>Workable on cheap names only</td></tr>
+          <tr><td>$25,000</td><td>$250</td><td>104</td><td>20</td><td>Both sizeable; 3 to 4 concurrent positions realistic</td></tr>
+          <tr><td>$100,000</td><td>$1,000</td><td>416</td><td>83</td><td>Rounding is noise; correlation becomes the real constraint</td></tr>
+        </tbody>
+      </table></div>
+      <p><strong>Cost drag.</strong> Commissions are largely gone on US equities, the spread and slippage are not. Half a cent each way on 500 shares is $5, or 1.7% of a $300 risk budget. Percentage costs scale, but fixed components do not: a $0.65 options contract fee or a borrow charge is a rounding error on a large account and a real tax on a small one.</p>
+      <p><strong>Forced concentration.</strong> A $5,000 account risking 1% has a $50 budget, and at that granularity you end up holding two positions rather than four. Two positions is not a portfolio, it is a pair of bets, and no sizing rule fixes that. Small accounts should expect a lumpier equity curve than the percentage rule implies.</p>
+      <p><strong>The day-trade constraint changed.</strong> The pattern day trader rule that pinned sub-$25,000 margin accounts to three day trades in five business days was eliminated in June 2026. That removes a hard cap on turnover for small accounts, but it removes only the regulation, not the reason it existed. Higher turnover on a small account multiplies cost drag and multiplies the number of independent chances you have to violate your own sizing rules.</p>
+      <h2>Portfolio heat: total open risk</h2>
+      <p>Per-trade risk answers one question. Portfolio heat answers the one that kills accounts: if every open position stops out today, what is the total?</p>
+      <span class="formula">Portfolio heat = Σ (open risk per position) ÷ account equity
+
+  6 positions × 1% each          = 6% heat
+  correlated cluster: 4 of those 6
+  are semiconductor names        ≈ behaves like ONE 4% trade
+
+Effective heat ≈ independent risk + (correlated cluster risk × ρ)
+  4 × 1% at ρ ≈ 0.8 → counts as roughly 3.4%, not 1%</span>
+      <p>Correlation is the part nobody budgets for. Six positions at 1% each feels like six independent coin flips. If four of them are the same sector, the same factor, or four different expressions of the same macro view, they will gap together on the same headline. <strong>Count a correlated cluster as one position sized at the cluster's combined risk, not as four positions sized at 1%.</strong></p>
+      <p>Workable caps for a discretionary swing book: 6% to 8% total open heat, no more than 3% in any one sector or correlated theme, and a forced cut to half sizing past a preset drawdown threshold. Those are a starting frame, not a result.</p>
+      <p>Heat is only measurable if you record planned risk at entry, in R, on every trade: the intended 1R and risk percentage before you click, not the realised dollar loss afterwards. <a href="/apps/tradelog/">TradeLog</a> stores it locally and offline, and the <a href="/guides/r-multiple-expectancy.html">R-multiple and expectancy guide</a> covers why R rather than dollars lets you compare trades across account sizes.</p>
+      <h2>Scaling in and scaling out</h2>
+      <p>Pyramiding is legitimate under one rule: <strong>total open risk after an add must not exceed the risk you were originally willing to take.</strong> That means the first leg has to be de-risked before the second leg is allowed to exist.</p>
+      <span class="formula">Initial: 125 shares, entry $48.00, stop $45.60 → risk $300
+Price reaches $50.40 (+1R). Trail stop to $48.00.
+
+  Leg 1 risk now = 125 × ($48.00 − $48.00) = $0
+  Add 60 shares at $50.40, stop $48.00
+  Leg 2 risk     =  60 × $2.40 = $144
+
+  Total open risk = $144  (below the original $300)
+  Total position  = 185 shares, $9,384 notional</span>
+      <p>Done that way the position grows while the risk shrinks. Done the common way, adding at a higher price without moving the original stop, risk grows faster than the position and one reversal takes back several winners.</p>
+      <p>Scaling out is not free. Selling a third at +1R and a third at +2R reliably improves your win rate and reliably reduces expectancy on any system whose returns come from a fat right tail, because you have capped the only trades that pay for everything else. It buys tolerance, not edge. If you scale out, log it as a deliberate cost.</p>
+      <h2>Leverage and notional caps</h2>
+      <p>Risk-based sizing has a specific blind spot: it assumes the stop fills at the stop. Overnight gaps, halts, and fast opens do not honour that assumption, and the loss is then set by the notional, not by the plan.</p>
+      <span class="formula">Gap loss = shares × (stop − gap-open price)
+
+  125 shares, planned stop $45.60, gaps open at $41.00
+  = 125 × $4.60 = $575 realised
+  = 1.9R against a $300 plan
+
+  Same event on the 500-share version (tight stop, 80% of account)
+  = 500 × $4.60 = $2,300 = 7.7R</span>
+      <p>That is the whole case for a second cap that has nothing to do with your stop:</p>
+      <ul>
+        <li><strong>Notional cap per position.</strong> Commonly 20% to 25% of equity, regardless of how tight the stop is.</li>
+        <li><strong>Gross exposure cap.</strong> Long plus short notional, typically 1.0x to 1.5x equity on swing timeframes. Margin availability is not a target.</li>
+        <li><strong>Halve size on leveraged products.</strong> Treat one unit of a 3x ETF as three units of exposure.</li>
+        <li><strong>Event cap.</strong> No full-size overnight hold through scheduled earnings or a binary catalyst. The stop does not apply across a gap.</li>
+        <li><strong>Correlated-cluster cap.</strong> Applied to notional, not just to risk, because a cluster gaps as one thing.</li>
+      </ul>
+      <p>Leveraged ETFs deserve their own line because the sizing error there compounds daily rather than once. Volatility drag means the product does not track 3x the index over any holding period longer than a day, so a position sized on the index move is mis-sized by construction. The mechanics are in the <a href="/guides/leveraged-etf-decay.html">leveraged ETF decay guide</a>.</p>
+      <p class="callout callout--warn">All arithmetic on this page assumes a fill at your stop price, no borrow recall, no halt, and no broker outage. Those assumptions fail occasionally and they fail together. Size for the version of the trade where the stop is jumped, not for the version where it works. Nothing here is a prediction of any outcome, and no live account results are claimed anywhere on this site.</p>
+      <h2>A workable default</h2>
+      <ol>
+        <li>Pick the drawdown you will genuinely tolerate without changing your behaviour. Be pessimistic; most people overstate this by half.</li>
+        <li>Estimate your worst plausible loss streak from your own trade record, or assume 20 if you do not have one yet.</li>
+        <li>Solve for per-trade risk with the formula above. For most people it lands between 0.5% and 1.5%.</li>
+        <li>Set the stop from structure or from an ATR multiple, never from the size you wanted.</li>
+        <li>Divide the risk budget by 1R per share. Round the share count <em>down</em>, always.</li>
+        <li>Check the result against your notional cap and your open portfolio heat before submitting. If either is breached, cut the share count, not the stop.</li>
+        <li>Log planned risk percentage, planned 1R, and portfolio heat at entry. Review realised R against planned R monthly.</li>
+      </ol>
+      <p>One last discipline point: size assuming your edge is smaller than your backtest says, because it almost always is. The gap between a fitted result and a <a href="/guides/walk-forward-backtest.html">walk-forward result</a> is routinely larger than the edge itself, and the transition problem is covered in <a href="/guides/paper-to-live-trading.html">going from paper to live</a>. Halving your intended risk for the first fifty live trades costs very little and buys the only thing that matters here, which is still being solvent when the sample gets big enough to trust.</p>
+      <p class="callout">Educational content, not financial advice. No live profit-and-loss figures are claimed anywhere on this site; backtest and walk-forward results are always labelled as such. Full terms: <a href="/terms.html">/terms.html</a></p>
+
+      <h2>Tools referenced in this guide</h2>
+      <ul>
+        <li><a href="/risk-tools.html">Trader's risk toolkit</a> — position sizer, expectancy, and Monte Carlo drawdown tools that run the arithmetic on this page.</li>
+        <li><a href="/apps/tradelog/">TradeLog</a> — records planned 1R, planned risk percentage, and open portfolio heat, offline and local.</li>
+        <li><a href="/guides/stop-loss-placement.html">Stop loss placement guide</a> — the sibling guide: where the stop goes, which is what sets 1R before any of this applies.</li>
+      </ul>
+    </div>
+  </section>
+
+  <hr class="divider">
+
+  <section class="section section--tight" id="faq">
+    <div class="grp-head">
+      <p class="eyebrow">FAQ</p>
+      <h2>Quick answers</h2>
+    </div>
+    <div class="grid" style="margin-top:var(--s6)">
+      <article class="card faq-card"><h3>How much to risk per trade?</h3><p>Usually 0.5% to 1.5% of equity. Back it out of a tolerable drawdown divided across your worst plausible loss streak.</p></article>
+      <article class="card faq-card"><h3>What is the 1% rule?</h3><p>Never risk more than 1% of the account on one trade. It is roughly the level where twenty straight losses cost you about 20%.</p></article>
+      <article class="card faq-card"><h3>Risk vs position size?</h3><p>Risk is what you lose at the stop; position size is what you own. Stop distance is the only thing linking them.</p></article>
+      <article class="card faq-card"><h3>Fixed fractional or fixed dollar?</h3><p>Fixed fractional, past your first few dozen trades. It de-risks automatically in a drawdown and compounds in a run.</p></article>
+      <article class="card faq-card"><h3>How do you size with ATR?</h3><p>Stop distance = 1.5-3x ATR14, then risk budget divided by that distance. Quiet and violent names end up contributing equal risk.</p></article>
+      <article class="card faq-card"><h3>What is portfolio heat?</h3><p>Total open risk across all positions. Six trades at 1% is 6%, but a correlated cluster counts as one trade, not four.</p></article>
+      <article class="card faq-card"><h3>Does a small account change it?</h3><p>Yes. Share granularity, fixed fees, and forced concentration below roughly $10k make the percentage rule lumpier than it looks.</p></article>
+    </div>
+  </section>
+
+<!-- related:auto:start -->
+  <hr class="divider">
+
+  <section class="section section--tight related" id="related" aria-labelledby="related-h">
+    <div class="grp-head">
+      <p class="eyebrow">Keep reading</p>
+      <h2 id="related-h">Related guides</h2>
+    </div>
+    <div class="related__grid">
+      <a class="related__item" href="/guides/kelly-criterion.html"><strong>Kelly, fractional Kelly, and the gap between them</strong><span>The formula, the worked example, and the reason practitioners cut it in half or worse.</span></a>
+      <a class="related__item" href="/guides/r-multiple-expectancy.html"><strong>R-multiple &amp; expectancy, explained</strong><span>Size from the stop, score in R, and judge a setup on expectancy instead of win rate.</span></a>
+      <a class="related__item" href="/guides/stop-loss-placement.html"><strong>Where the stop goes, and what it decides</strong><span>Structure vs ATR vs percentage stops, why the stop determines size, and the places never to put one.</span></a>
+      <a class="related__item" href="/guides/drawdown-recovery-math.html"><strong>The arithmetic of digging out</strong><span>Gain required = DD / (1 - DD). Streak probabilities, risk of ruin, sequence risk, and turning a drawdown cap into a…</span></a>
+    </div>
+    <p class="related__more">Every guide is indexed on <a href="/guides.html">the guides hub</a>. Or put it to work in <a href="/risk-tools.html">the free position-size and expectancy calculators</a>.</p>
+  </section>
+<!-- related:auto:end -->
+
+</main>
+
+<footer class="site-footer">
+  <div class="site-footer__links">
+    <a href="/">Work</a>
+    <a href="/about.html">About</a>
+    <a href="/guides.html">Guides</a>
+    <a href="/apps.html">Apps</a>
+    <a href="/store.html">Store</a>
+    <a href="/privacy.html">Privacy</a>
+    <a href="/terms.html">Terms</a>
+    <a href="mailto:yusuf.gadelrab06@gmail.com">yusuf.gadelrab06@gmail.com</a>
+  </div>
+</footer>
+
+<script src="/js/site.js" defer></script>
+</body>
+</html>

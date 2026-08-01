@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="preload" href="/css/site.css" as="style">
+<meta name="robots" content="index,follow,max-image-preview:large,max-snippet:-1">
+<meta property="og:locale" content="en_US">
+<title>Choosing an Embedding Model for RAG</title>
+<meta name="description" content="How to pick an embedding model for RAG: dimensions vs cost, local vs API, chunking interactions, recall@k evaluation, and when a reranker wins.">
+<link rel="canonical" href="https://yusuf-gadelrab.github.io/guides/embedding-model-rag.html">
+<link rel="icon" type="image/svg+xml" href="https://yusuf-gadelrab.github.io/favicon.svg">
+<link rel="apple-touch-icon" sizes="180x180" href="https://yusuf-gadelrab.github.io/apple-touch-icon.png">
+<meta name="theme-color" content="#0B0B0D">
+<meta name="author" content="Yusuf Gadelrab">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="Yusuf Gadelrab">
+<meta property="og:title" content="Choosing an Embedding Model for RAG">
+<meta property="og:description" content="Dimensions, storage cost, local vs API, recall@k evaluation, rerankers — and the honest answer that chunking usually matters more than the model.">
+<meta property="og:url" content="https://yusuf-gadelrab.github.io/guides/embedding-model-rag.html">
+<meta property="og:image" content="https://yusuf-gadelrab.github.io/og-card.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Choosing an Embedding Model for RAG">
+<meta name="twitter:description" content="Dimensions, storage cost, local vs API, recall@k evaluation, rerankers — and the honest answer that chunking usually matters more than the model.">
+<meta name="twitter:image" content="https://yusuf-gadelrab.github.io/og-card.png">
+<link rel="alternate" type="text/plain" href="https://yusuf-gadelrab.github.io/llms-full.txt" title="Plain-text profile for language models">
+
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"TechArticle","@id":"https://yusuf-gadelrab.github.io/guides/embedding-model-rag.html#article","headline":"Choosing an Embedding Model for RAG: Dimensions, Cost, and What Actually Moves Recall","name":"Choosing an Embedding Model for RAG: Dimensions, Cost, and What Actually Moves Recall","description":"How to pick an embedding model for RAG: dimensions vs cost, local vs API, chunking interactions, recall@k evaluation, and when a reranker wins.","datePublished":"2026-07-29","dateModified":"2026-07-29","inLanguage":"en","author":{"@id":"https://yusuf-gadelrab.github.io/#person"},"publisher":{"@id":"https://yusuf-gadelrab.github.io/#person"},"about":["Retrieval-augmented generation","Vector search","Embedding models","Information retrieval"],"mainEntityOfPage":"https://yusuf-gadelrab.github.io/guides/embedding-model-rag.html","isAccessibleForFree":true,"proficiencyLevel":"Intermediate"},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://yusuf-gadelrab.github.io/"},{"@type":"ListItem","position":2,"name":"Guides","item":"https://yusuf-gadelrab.github.io/guides.html"},{"@type":"ListItem","position":3,"name":"Embedding Models"}]}]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","@id":"https://yusuf-gadelrab.github.io/guides/embedding-model-rag.html#faq","mainEntity":[{"@type":"Question","name":"What is an embedding in RAG, in plain terms?","acceptedAnswer":{"@type":"Answer","text":"An embedding is a fixed-length list of numbers that a model produces from a piece of text, arranged so that texts with similar meaning produce vectors pointing in similar directions. Retrieval works by embedding the user's question, comparing that vector against every stored chunk vector with cosine similarity, and returning the closest ones. Nothing about the numbers is human-readable; the only operation available is comparison."}},{"@type":"Question","name":"Do more embedding dimensions mean better retrieval?","acceptedAnswer":{"@type":"Answer","text":"Barely, above roughly 768 dimensions, and the storage cost is exactly linear. Going from 384 to 768 usually helps; going from 1536 to 3072 is often within measurement noise on a domain-specific corpus while doubling your index size and memory. Treat dimensions as a cost decision you make after measuring recall, not a quality decision you make before."}},{"@type":"Question","name":"Should I use a local embedding model or a hosted API?","acceptedAnswer":{"@type":"Answer","text":"Local is the right default for most projects. Embedding models are small enough to run fast on a laptop, so you get free re-indexing, no rate limits, and documents that never leave your machine. Hosted APIs earn their cost mainly on multilingual corpora, heavily specialized domains, and cases where you genuinely cannot run infrastructure."}},{"@type":"Question","name":"How do I know if my embedding model is the problem?","acceptedAnswer":{"@type":"Answer","text":"Build a golden set of about fifty real questions with known correct chunks, then measure recall@k at k of 1, 3, 5, 10 and 20. If recall@20 is high but recall@3 is low, ranking is the problem and a reranker fixes it. If recall@20 is also low, the right chunk is never being retrieved, which is almost always a chunking problem rather than a model problem."}},{"@type":"Question","name":"When does a reranker beat switching to a better embedding model?","acceptedAnswer":{"@type":"Answer","text":"Almost always, when your recall@20 is already decent. A cross-encoder reranker reads the query and the candidate chunk together, which is a fundamentally more accurate computation than comparing two independently-encoded vectors. Retrieve 50 candidates with vector search, rerank them down to 8, and you typically beat any embedder upgrade for less engineering effort."}},{"@type":"Question","name":"Can I mix embeddings from two different models in one index?","acceptedAnswer":{"@type":"Answer","text":"No. Vectors from different models live in different spaces with different geometry and often different dimensionality, so comparing them produces meaningless similarity scores. Changing your embedding model requires re-embedding the entire corpus and rebuilding the index, which is why you should always keep the raw source text alongside the vectors."}},{"@type":"Question","name":"What is the most common silent failure in an embedding pipeline?","acceptedAnswer":{"@type":"Answer","text":"Truncation. Every embedding model has a maximum input length, and most implementations silently discard anything beyond it rather than raising an error, so a chunk longer than the limit gets embedded from only its first section. Verify by tokenizing your longest chunks with the model's own tokenizer, since character-count estimates are wrong by 30% or more on code, tables, and non-English text."}}]}</script>
+
+<link rel="stylesheet" href="/css/site.css">
+<style>
+  .prose{max-width:68ch}
+  .prose h2{margin:var(--s7) 0 var(--s4);font-size:var(--t-h2)}
+  .prose h3{margin:var(--s6) 0 var(--s3);font-size:var(--t-h3)}
+  .prose p{color:var(--muted);margin:0 0 var(--s4)}
+  .prose ul,.prose ol{color:var(--muted);padding-left:1.2em;margin:0 0 var(--s4)}
+  .prose li{margin-bottom:var(--s2)}
+  .prose a{color:var(--gold-2)}
+  .prose strong{color:var(--fg)}
+  .formula{display:block;padding:var(--s4);margin:0 0 var(--s4);border:1px solid var(--line-soft);
+    border-radius:var(--radius);font-family:ui-monospace,SFMono-Regular,Menlo,monospace;
+    font-size:var(--t-small);color:var(--gold-2);overflow-x:auto;white-space:pre-wrap}
+  .tblwrap{overflow-x:auto;margin:0 0 var(--s4)}
+  .tbl{width:100%;border-collapse:collapse;font-size:var(--t-small)}
+  .tbl th,.tbl td{text-align:left;padding:var(--s3);border-bottom:1px solid var(--line-soft);
+    color:var(--muted);vertical-align:top}
+  .tbl th{font-family:var(--display-pro);color:var(--gold-2);font-weight:600}
+  .callout{padding:var(--s4);border:1px solid var(--line-soft);border-radius:var(--radius);
+    color:var(--muted);font-size:var(--t-small);margin:0 0 var(--s5)}
+  .callout--warn{border-color:var(--gold-2)}
+  .faq-card{padding:var(--s5)}
+  .faq-card h3{font-size:var(--t-h3);margin:0}
+  .faq-card p{color:var(--muted);font-size:var(--t-small);margin:var(--s3) 0 0}
+</style>
+</head>
+<body class="pro">
+
+<a class="skip-link" href="#main">Skip to content</a>
+
+<nav class="site-nav">
+  <a class="site-nav__brand" href="/"><img class="site-nav__lion" src="/img/brand/lion-mark.svg" alt="" width="34" height="34"><span>YUSUF GADELRAB</span></a>
+  <div class="site-nav__links">
+    <a href="/">Work</a>
+    <a href="/guides.html">Guides</a>
+    <a href="/stack.html">Stack</a>
+    <a href="/apps.html">Apps</a>
+  </div>
+</nav>
+
+<nav class="crumbs" aria-label="Breadcrumb">
+  <ol>
+    <li><a href="/">Home</a></li>
+    <li><a href="/guides.html">Guides</a></li>
+    <li><span aria-current="page">Embedding Models</span></li>
+  </ol>
+</nav>
+
+<main id="main">
+
+  <header class="section">
+    <p class="eyebrow">Guide · AI engineering</p>
+    <h1 style="margin:var(--s4) 0">Picking an embedding model, and why it matters less than you think</h1>
+    <p class="lead">Every RAG tutorial spends ten minutes on which embedding model to use and thirty seconds on how to split the documents. That is exactly backwards. Here is what the model choice actually buys you, how to measure it instead of guessing, and the three decisions that move recall far more than swapping one model for another.</p>
+  </header>
+
+  <hr class="divider">
+
+  <section class="section section--tight">
+    <div class="prose">
+      <h2>The question, and the better question</h2>
+      <p>The question that gets asked is "which embedding model should I use?" It has a boring answer: pick a well-regarded general-purpose model at 768 or 1024 dimensions, ship it, and move on. The question worth asking is "why is my retrieval missing the obviously relevant paragraph?" — and in most broken pipelines the answer has nothing to do with the model. It is a chunk that split a table away from its header, a query phrased as a question against chunks written as statements, or a top-k of 3 when the answer needed 8.</p>
+      <p>This guide covers the model choice properly, because it does matter at the margins, and then covers the things that matter more. If you are new to the overall pipeline, <a href="/guides/rag-explained.html">the RAG explainer</a> is the prerequisite; this one assumes you already know what a vector store is and are now trying to make one work well.</p>
+      <h2>What an embedding actually is</h2>
+      <p>An embedding model is a neural network that reads text and outputs a fixed-length list of floating-point numbers — a vector. A 1024-dimension model always returns 1024 numbers, whether the input was one word or four hundred. The model was trained so that texts humans would consider related land close together in that space, and unrelated texts land far apart. Nothing about the vector is human-readable. Dimension 417 does not mean "legal document." The only thing you can do with a vector is compare it to another vector.</p>
+      <p>The comparison is almost always cosine similarity: the cosine of the angle between two vectors, which ignores their lengths and measures only direction. It runs from -1 (opposite) through 0 (unrelated) to 1 (identical direction). Most modern embedding models output unit-length vectors, which makes cosine similarity and the dot product the same operation, which is why vector databases can compare millions of vectors per second.</p>
+      <span class="formula">cos(A, B) = (A · B) / (||A|| × ||B||)
+
+with unit-length vectors this collapses to just the dot product:
+cos(A, B) = A · B = a1×b1 + a2×b2 + ... + an×bn</span>
+      <p>The critical consequence: <strong>similar does not mean relevant, and it definitely does not mean correct.</strong> An embedding model trained on general web text will happily rank "the refund policy is 30 days" and "the refund policy is 90 days" as near-identical, because they are near-identical as language. Vector search finds text that looks like the query. Everything downstream has to survive that limitation.</p>
+      <h2>The four numbers on a model card that matter</h2>
+      <div class="tblwrap"><table class="tbl">
+        <thead><tr><th>Spec</th><th>What it controls</th><th>How much to care</th></tr></thead>
+        <tbody>
+          <tr><td>Dimensions</td><td>Vector size — storage, index memory, and comparison speed</td><td>A lot, for cost. Very little, for quality above ~768.</td></tr>
+          <tr><td>Max sequence length</td><td>How much text one embedding can represent before silent truncation</td><td>A lot. This is the one that quietly breaks pipelines.</td></tr>
+          <tr><td>Benchmark score (MTEB and similar)</td><td>Average retrieval quality across a fixed set of public tasks</td><td>A little. Rankings compress into a few points near the top.</td></tr>
+          <tr><td>Parameters / latency</td><td>How long it takes to embed a document set and each incoming query</td><td>A lot at index time, a little at query time.</td></tr>
+        </tbody>
+      </table></div>
+      <h3>Dimensions: a storage decision, not a quality decision</h3>
+      <p>Dimensions are the number everyone fixates on, and they are mostly a cost lever. Storage is exactly linear and easy to compute: dimensions × 4 bytes for float32, times the number of chunks.</p>
+      <span class="formula">bytes = n_chunks × dimensions × 4        (float32)
+
+ 10,000 chunks ×  768 dims × 4 =  30.7 MB
+ 10,000 chunks × 1536 dims × 4 =  61.4 MB
+ 10,000 chunks × 3072 dims × 4 = 122.9 MB
+100,000 chunks × 1024 dims × 4 = 409.6 MB</span>
+      <p>Then add index overhead. An HNSW graph — the default in most vector databases — typically costs another 1.5× to 2× on top of the raw vectors, and it wants to live in RAM. At 10,000 chunks none of this matters on any machine built this decade. At 5 million chunks, the difference between 768 and 3072 dimensions is the difference between a small instance and a large one, every month, forever.</p>
+      <p>The quality return on dimensions flattens fast. Going from 384 to 768 is usually a real improvement. From 768 to 1024, small. From 1536 to 3072, often within measurement noise on a domain-specific corpus. Some newer models support Matryoshka representation learning, where you can truncate the vector to a shorter prefix and keep most of the quality — that is a genuinely useful lever if you have it, because it lets you make the storage decision after you have measured, instead of before.</p>
+      <h3>Max sequence length: the silent truncation trap</h3>
+      <p>Every embedding model has a maximum input length, typically 512 tokens for older models and 8,192 for newer ones. Feed it more and most implementations <strong>truncate without warning</strong>. Your 1,200-token chunk gets embedded as its first 512 tokens, the rest is discarded, and retrieval quietly fails for any query whose answer lived in the back half. There is no error, no log line, and no way to notice except by measuring recall.</p>
+      <p>This is where model choice and chunking interact, and it is the one interaction you must get right. Chunk to comfortably under the model's limit, and verify by tokenizing a sample of your longest chunks with the model's own tokenizer rather than estimating with a characters-per-token rule of thumb — that rule is wrong by 30% or more on code, tables, and non-English text.</p>
+      <h3>Benchmark scores: a filter, not a ranking</h3>
+      <p>Public retrieval leaderboards are useful for excluding bad models and nearly useless for choosing between good ones. The top twenty models sit within a few points of each other on an average over tasks that are probably nothing like yours, and models get tuned against those benchmarks, which inflates the top of the board relative to real-world behavior. Use the leaderboard to build a shortlist of three. Use your own data to pick from the shortlist.</p>
+      <h2>Local versus API embeddings</h2>
+      <p>The tradeoff is different from the one for generation models, because embedding models are small. A strong general-purpose embedder is often a few hundred million parameters, which runs comfortably on a laptop CPU and very fast on any GPU. You do not need a 30B model to embed a paragraph, which is why local embeddings are much more often the right call than local generation.</p>
+      <div class="tblwrap"><table class="tbl">
+        <thead><tr><th></th><th>Local (Ollama, sentence-transformers)</th><th>Hosted API</th></tr></thead>
+        <tbody>
+          <tr><td>Cost</td><td>Electricity. Effectively free at any volume you will hit as one person.</td><td>Per-token, and re-indexing a large corpus means paying again.</td></tr>
+          <tr><td>Privacy</td><td>Documents never leave the machine. Often the whole reason.</td><td>Every chunk is sent to a third party at index time.</td></tr>
+          <tr><td>Speed</td><td>Fast enough. Batch embedding a 10k-chunk corpus is minutes, not hours.</td><td>Network round-trip per batch; rate limits at scale.</td></tr>
+          <tr><td>Quality</td><td>Very close to hosted for general English text.</td><td>Usually a small edge, larger on multilingual and specialized domains.</td></tr>
+          <tr><td>Failure mode</td><td>You maintain the runtime and the model version.</td><td>A model deprecation forces a full re-index on someone else's schedule.</td></tr>
+        </tbody>
+      </table></div>
+      <p>Pull and call a local embedder in two commands. Note that this is the HTTP API, not the interactive CLI — for anything programmatic, always talk to the API, which returns structured JSON instead of a stream of terminal formatting you would have to parse:</p>
+      <span class="formula">ollama pull nomic-embed-text
+
+curl -s http://localhost:11434/api/embed \
+  -d '{"model":"nomic-embed-text","input":["first chunk","second chunk"]}' \
+  | python3 -c "import sys,json; d=json.load(sys.stdin); print(len(d['embeddings']), len(d['embeddings'][0]))"
+
+# -> 2 768   (two vectors, 768 dimensions each)</span>
+      <p class="callout">One thing that surprises people: Anthropic does not ship an embedding model. Claude is a generation model, and a RAG pipeline built around Claude uses someone else's embedder — local or hosted — for the retrieval half and Claude only for the answer. The two halves are genuinely independent, which is good news: you can change either one without touching the other, as long as you re-index when you change the embedder.</p>
+      <h2>Chunking is the variable you actually control</h2>
+      <p>Here is the honest hierarchy, in descending order of how much each one moves retrieval quality on a typical corpus: how you split the documents, how many results you retrieve, whether you rerank, and only then which embedding model you used. Teams routinely spend a week A/B-testing embedders for a two-point recall difference while running a fixed 512-character split that severs every table from its caption.</p>
+      <p>What actually works, in rough order of impact:</p>
+      <ul>
+        <li><strong>Split on structure, not on character count.</strong> Headings, sections, list items, function definitions. A chunk should be a thing, not a fixed-width window that happened to land there.</li>
+        <li><strong>Keep the chunk self-contained.</strong> If it says "this applies to the above," retrieval will surface it alone and the model will have no idea what "above" was. Prepend the document title and section heading to every chunk — it costs a few tokens and it is the single cheapest quality win available.</li>
+        <li><strong>Overlap by 10–15%.</strong> Enough that a sentence spanning a boundary survives in at least one chunk. More than 20% and you are paying storage to store the same text repeatedly.</li>
+        <li><strong>Never split a table, a code block, or a numbered list.</strong> These are the chunks most likely to hold the actual answer and the most destroyed by a naive split.</li>
+        <li><strong>Aim for 200–500 tokens.</strong> Short enough that the embedding is about one thing, long enough to carry context. Well under any modern model's sequence limit.</li>
+        <li><strong>Store the parent document ID and offsets.</strong> Retrieve the chunk, then optionally expand to its neighbors before handing text to the generation model. Retrieval granularity and context granularity do not have to match.</li>
+      </ul>
+      <h2>How to evaluate: recall@k, on fifty of your own questions</h2>
+      <p>Retrieval is measurable, and measuring it takes an afternoon. Build a golden set: fifty real questions someone would actually ask your corpus, each labeled with the chunk or document that contains the answer. Fifty is not statistically luxurious, but it will reliably show you a ten-point difference, which is the size of difference worth acting on.</p>
+      <p>Then compute recall@k — the fraction of questions where a correct chunk appears anywhere in the top k results. This is the metric that matters, because the generation model does not care whether the right chunk ranked first or fourth, only whether it was in the window at all.</p>
+      <span class="formula">recall@k = (queries where a relevant chunk is in the top k) / (total queries)
+
+MRR = mean over queries of 1 / (rank of the first relevant chunk)
+
+# recall@k answers: did we retrieve it at all?
+# MRR answers:      how high did it rank?
+# Optimize recall@k first. Then use a reranker to fix ordering.</span>
+      <p>A tiny harness is enough. Run the golden set against configuration A, run it against configuration B, print both numbers, and change exactly one thing at a time:</p>
+      <span class="formula">def recall_at_k(store, golden, k=10):
+    hits = 0
+    for question, expected_id in golden:
+        results = store.search(question, k=k)
+        if any(r.chunk_id == expected_id for r in results):
+            hits += 1
+    return hits / len(golden)
+
+for k in (1, 3, 5, 10, 20):
+    print(k, round(recall_at_k(store, GOLDEN, k), 3))</span>
+      <p>The shape of that curve tells you what to fix. If recall@20 is high but recall@3 is low, retrieval is finding the right chunk and ranking it badly — that is a reranker problem. If recall@20 is <em>also</em> low, the right chunk is not being found at all, which is a chunking or an embedding problem, and chunking is the far more likely culprit. Diagnosing which of the two you have is the whole point of running the sweep before touching anything.</p>
+      <h2>When a reranker beats a better embedder</h2>
+      <p>An embedding model compares a query vector to a chunk vector — the two were encoded separately and never saw each other. That is what makes vector search fast: you precompute every chunk once. A cross-encoder reranker instead reads the query and the chunk <em>together</em> and scores the pair directly, which is dramatically more accurate and far too slow to run against a whole corpus.</p>
+      <p>So you use both. Retrieve wide and cheap with vectors, then rerank narrow and expensive with a cross-encoder.</p>
+      <span class="formula">query -> vector search, k=50   (fast, approximate, high recall)
+      -> cross-encoder rerank -> keep top 8   (slow, accurate, high precision)
+      -> generation model
+
+50 cross-encoder scorings per query: tens of milliseconds.
+5,000,000 cross-encoder scorings per query: not a product.</span>
+      <p>In practice a mediocre embedder plus a reranker beats an excellent embedder alone on nearly every corpus, because the reranker is doing a fundamentally harder and more informative computation. If you have a fixed budget of engineering time, adding a reranker is a better use of it than upgrading an embedder. The catch is latency: the rerank step adds real milliseconds to every query, so it belongs in a pipeline where the user is already waiting on a generated answer, not in an autocomplete.</p>
+      <h2>The migration cost nobody budgets for</h2>
+      <p>Vectors from different models are not comparable. Not "slightly less accurate" — meaningless. Different dimensionality, different geometry, no shared reference frame. Changing your embedding model means re-embedding every chunk in the corpus and rebuilding the index, with no partial migration and no fallback.</p>
+      <p class="callout callout--warn">This is why an API embedding model deprecation is a genuine operational event and not a version bump. Keep the raw source text alongside your vectors, always, so a re-index is a batch job and not an archaeology project. If you only stored the vectors, you cannot migrate — you have to re-crawl the source, and the source may have changed.</p>
+      <h2>A decision table</h2>
+      <div class="tblwrap"><table class="tbl">
+        <thead><tr><th>Situation</th><th>What to do</th></tr></thead>
+        <tbody>
+          <tr><td>First RAG build, under 50k chunks</td><td>Local embedder at 768 dimensions, structural chunking, top-k 10. Ship it, then measure.</td></tr>
+          <tr><td>Documents are sensitive or under NDA</td><td>Local, non-negotiable. The privacy argument is stronger than any quality argument at this scale.</td></tr>
+          <tr><td>Recall@20 is high, recall@3 is low</td><td>Add a reranker. Do not touch the embedder.</td></tr>
+          <tr><td>Recall@20 is also low</td><td>Fix chunking. Check for silent truncation first, then check whether chunks are self-contained.</td></tr>
+          <tr><td>Multilingual or heavily domain-specific corpus</td><td>This is where a better hosted embedder genuinely earns its cost. Measure it against your golden set before committing.</td></tr>
+          <tr><td>Millions of chunks and rising infra cost</td><td>Drop dimensions or quantize the vectors to int8. Measure the recall cost — it is usually smaller than expected.</td></tr>
+          <tr><td>Exact identifiers, SKUs, error codes in queries</td><td>Add keyword search alongside vectors (hybrid retrieval). Embeddings are bad at exact-match by construction.</td></tr>
+        </tbody>
+      </table></div>
+      <h2>What I actually run</h2>
+      <p>My own retrieval work runs local end to end: a local embedding model over documents that never leave the machine, and <a href="/guides/local-llm-ollama.html">a local generation model via Ollama</a> — currently a 30B mixture-of-experts model at roughly 40k context — for the answering half. The reason is not cost, it is that the corpora involved are personal notes and unpublished research, and "this never touched a third-party API" is a property worth more than two points of benchmark score.</p>
+      <p>The one place I stopped optimizing the model and started optimizing the pipeline was when I built the retrieval side of an equity research platform during an IBM SkillsBuild program: an NLP scoring system reading 50+ live market sources a day, hitting 78% directional accuracy and cutting manual research time by about 60%. Nearly all of the quality came from how the source documents were segmented and filtered before they were ever embedded. The embedder was the least interesting decision in the system.</p>
+
+      <h2>Tools referenced in this guide</h2>
+      <ul>
+        <li><a href="/guides/rag-explained.html">RAG explained</a> — the pipeline this guide plugs into — chunking, retrieval, reranking, and where it breaks.</li>
+        <li><a href="/guides/local-llm-ollama.html">Local LLM with Ollama</a> — running the generation half on your own machine.</li>
+        <li><a href="/guides/moe-model-macbook.html">30B MoE on a MacBook</a> — what it costs in RAM and tokens/sec to keep the whole pipeline local.</li>
+        <li><a href="/stack.html">My stack</a> — the tools behind the retrieval and automation work.</li>
+      </ul>
+    </div>
+  </section>
+
+  <hr class="divider">
+
+  <section class="section section--tight" id="faq">
+    <div class="grp-head">
+      <p class="eyebrow">FAQ</p>
+      <h2>Quick answers</h2>
+    </div>
+    <div class="grid" style="margin-top:var(--s6)">
+      <article class="card faq-card"><h3>What is an embedding?</h3><p>A fixed-length vector a model produces from text, arranged so similar meanings point in similar directions. Retrieval compares the question&#x27;s vector to every chunk&#x27;s vector by cosine similarity.</p></article>
+      <article class="card faq-card"><h3>Do more dimensions help?</h3><p>Barely above ~768, and storage cost is exactly linear. 384 to 768 helps; 1536 to 3072 is often noise while doubling index size. It is a cost decision, not a quality one.</p></article>
+      <article class="card faq-card"><h3>Local or hosted embeddings?</h3><p>Local by default — embedders are small, so you get free re-indexing and documents that never leave the machine. Hosted earns its cost on multilingual and specialized corpora.</p></article>
+      <article class="card faq-card"><h3>Is the model my problem?</h3><p>Measure recall@k on 50 real questions. High recall@20 + low recall@3 = ranking problem, add a reranker. Low recall@20 too = chunking problem, not a model problem.</p></article>
+      <article class="card faq-card"><h3>Reranker or better embedder?</h3><p>Reranker, almost always. A cross-encoder reads query and chunk together, which beats comparing two separately-encoded vectors. Retrieve 50, rerank to 8.</p></article>
+      <article class="card faq-card"><h3>Can I mix two models&#x27; vectors?</h3><p>No. Different models produce different geometry and often different dimensionality, so the similarity scores are meaningless. Switching embedders means re-embedding everything.</p></article>
+      <article class="card faq-card"><h3>Most common silent failure?</h3><p>Truncation. Models cap input length and most libraries discard the overflow without an error, so long chunks get embedded from their first section only. Tokenize to verify.</p></article>
+    </div>
+  </section>
+
+<!-- related:auto:start -->
+  <hr class="divider">
+
+  <section class="section section--tight related" id="related" aria-labelledby="related-h">
+    <div class="grp-head">
+      <p class="eyebrow">Keep reading</p>
+      <h2 id="related-h">Related guides</h2>
+    </div>
+    <div class="related__grid">
+      <a class="related__item" href="/guides/rag-explained.html"><strong>RAG, without the diagram everyone reposts</strong><span>Chunking, embeddings, reranking, and the four places RAG pipelines actually break.</span></a>
+      <a class="related__item" href="/guides/moe-model-macbook.html"><strong>Memory like a 30B, speed like a 3B</strong><span>Memory like a 30B, speed like a 3B. Quantization, KV cache math, Ollama flags that matter, and when local is…</span></a>
+      <a class="related__item" href="/guides/structured-llm-output.html"><strong>Getting JSON out of a language model, reliably</strong><span>Four mechanisms ranked, a worked JSON Schema and retry loop, and the two failure modes — truncation and duplicated…</span></a>
+      <a class="related__item" href="/guides/prompt-caching.html"><strong>Prompt caching, and the traffic pattern where it costs you more</strong><span>Prefix matching, TTL windows, the break-even arithmetic, and the traffic pattern where caching makes your bill 24%…</span></a>
+    </div>
+    <p class="related__more">Every guide is indexed on <a href="/guides.html">the guides hub</a>. Or put it to work in <a href="/services.html">the automation work I take on</a> and <a href="/everything.html">everything else that is live and free</a>.</p>
+  </section>
+<!-- related:auto:end -->
+
+</main>
+
+<footer class="site-footer">
+  <div class="site-footer__links">
+    <a href="/">Work</a>
+    <a href="/about.html">About</a>
+    <a href="/guides.html">Guides</a>
+    <a href="/apps.html">Apps</a>
+    <a href="/store.html">Store</a>
+    <a href="/privacy.html">Privacy</a>
+    <a href="/terms.html">Terms</a>
+    <a href="mailto:yusuf.gadelrab06@gmail.com">yusuf.gadelrab06@gmail.com</a>
+  </div>
+</footer>
+
+<script src="/js/site.js" defer></script>
+</body>
+</html>
