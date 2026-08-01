@@ -163,6 +163,7 @@ tr.total-row td{border-top:1px solid var(--gold-dim); font-weight:700; color:var
   th,td{padding:8px 6px;}
 }
 </style>
+<style>@media screen{.tbl-scroll{overflow-x:auto;-webkit-overflow-scrolling:touch}.tbl-scroll:focus-visible{outline:2px solid #D4AF37;outline-offset:2px}}</style>
 </head>
 <body>
 <div class="shell">
@@ -646,7 +647,7 @@ function clientTable(rows){
       '</div></td>' +
     '</tr>';
   }).join("");
-  return '<div style="overflow-x:auto;"><table><thead><tr>'+head+'</tr></thead><tbody>'+body+'</tbody></table></div>';
+  return '<div style="overflow-x:auto;"><div class="tbl-scroll" tabindex="0" role="region" aria-label="Scrollable table"><table><thead><tr>'+head+'</tr></thead><tbody>'+body+'</tbody></table></div></div>';
 }
 function statusTagClass(s){
   if (s==="active") return "good";
@@ -849,7 +850,7 @@ function projectTable(){
         '<span class="del-zone" data-zone="'+p.id+'"><button class="small danger" data-del="'+p.id+'" type="button">Delete</button></span></div></td>' +
     '</tr>';
   }).join("");
-  return '<div style="overflow-x:auto;"><table><thead><tr><th>Project</th><th>Client</th><th>Deadline</th><th>Progress</th><th>Status</th><th></th></tr></thead><tbody>'+rows+'</tbody></table></div>';
+  return '<div style="overflow-x:auto;"><div class="tbl-scroll" tabindex="0" role="region" aria-label="Scrollable table"><table><thead><tr><th>Project</th><th>Client</th><th>Deadline</th><th>Progress</th><th>Status</th><th></th></tr></thead><tbody>'+rows+'</tbody></table></div></div>';
 }
 function wireProjectTable(el){
   el.querySelectorAll("[data-percent]").forEach(function(r){
@@ -954,9 +955,9 @@ function invoiceTable(totalAmount, totalPaid, totalOutstanding){
       '</div></td>' +
     '</tr>';
   }).join("");
-  return '<div style="overflow-x:auto;"><table><thead><tr><th>#</th><th>Client</th><th>Amount</th><th>Issued</th><th>Due</th><th>Status</th><th></th></tr></thead><tbody>'+rows+
+  return '<div style="overflow-x:auto;"><div class="tbl-scroll" tabindex="0" role="region" aria-label="Scrollable table"><table><thead><tr><th>#</th><th>Client</th><th>Amount</th><th>Issued</th><th>Due</th><th>Status</th><th></th></tr></thead><tbody>'+rows+
     '<tr class="total-row"><td colspan="2">Totals</td><td>'+fmtMoney(totalAmount)+'</td><td colspan="2"></td><td colspan="2">Paid '+fmtMoney(totalPaid)+' · Outstanding '+fmtMoney(totalOutstanding)+'</td></tr>' +
-    '</tbody></table></div>';
+    '</tbody></table></div></div>';
 }
 function wireInvoiceTable(el){
   el.querySelectorAll("[data-markpaid]").forEach(function(b){
@@ -1046,7 +1047,7 @@ function timeTable(){
         '<span class="del-zone" data-zone="'+t.id+'"><button class="small danger" data-del="'+t.id+'" type="button">Delete</button></span></div></td>' +
     '</tr>';
   }).join("");
-  return '<div style="overflow-x:auto;"><table><thead><tr><th>Date</th><th>Client</th><th>Hours</th><th>Rate</th><th>Value</th><th>Billable</th><th></th></tr></thead><tbody>'+rows+'</tbody></table></div>';
+  return '<div style="overflow-x:auto;"><div class="tbl-scroll" tabindex="0" role="region" aria-label="Scrollable table"><table><thead><tr><th>Date</th><th>Client</th><th>Hours</th><th>Rate</th><th>Value</th><th>Billable</th><th></th></tr></thead><tbody>'+rows+'</tbody></table></div></div>';
 }
 function wireTimeTable(el){
   el.querySelectorAll("[data-edit]").forEach(function(b){

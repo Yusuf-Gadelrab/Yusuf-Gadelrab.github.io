@@ -637,7 +637,7 @@ Start here (9)
   https://yusuf-gadelrab.github.io/hire.html - Hire Yusuf Gadelrab - Recruiters & Founding Clients
   https://yusuf-gadelrab.github.io/everything.html - Everything I Do
   https://yusuf-gadelrab.github.io/guides.html - Guides - Plain-English Answers With the Math Shown
-  https://yusuf-gadelrab.github.io/writing.html - Writing
+  https://yusuf-gadelrab.github.io/writing.html - Writing - 23 Posts on Shipping Software as a Student
   https://yusuf-gadelrab.github.io/projects.html - Projects - Yusuf Gadelrab, Engineering Portfolio
   https://yusuf-gadelrab.github.io/research.html - Research - Yusuf Gadelrab, SIGCSE 2026 Papers
 
@@ -751,7 +751,7 @@ Software, projects and case studies (11)
   https://yusuf-gadelrab.github.io/hwyhaul.html - HwyHaul LoadLink - AI Freight Back Office
   https://yusuf-gadelrab.github.io/spartaneats.html - SpartanEats - SJSU Student Food Delivery App Concept
   https://yusuf-gadelrab.github.io/swing-screener.html - Swing Trade Screener + Backtest Engine - Python CLI
-  https://yusuf-gadelrab.github.io/trading-bot.html - Trading Bot - Broker-Agnostic Execution Engine
+  https://yusuf-gadelrab.github.io/trading-bot.html - Trading Bot Safety Architecture - Python Execution Engine
 
 Sample outputs (1)
   https://yusuf-gadelrab.github.io/downloads/dira-sample-readiness-report.html - Meridian Labs (Sample) - Startup Security Readiness Report
@@ -770,7 +770,7 @@ Free tools (no signup, browser-only, data never leaves the device) (9)
 Products and services (5)
   https://yusuf-gadelrab.github.io/resume.html - Student Resume Rebuild $49 · Tailored Apps $99
   https://yusuf-gadelrab.github.io/services.html - DHAHAB Studio - Launch Sites, Security Audits, Automation
-  https://yusuf-gadelrab.github.io/sprint.html - LinkedIn Profile Rewrite Sprint - $97 in 48 Hours
+  https://yusuf-gadelrab.github.io/sprint.html - LinkedIn Profile Rewrite Service - $97, 48-Hour Turnaround
   https://yusuf-gadelrab.github.io/store.html - Automation Software & Trading Playbooks - From $19
   https://yusuf-gadelrab.github.io/templates.html - Business Proposal & Pitch Deck Templates - Premium HTML
 
@@ -784,7 +784,7 @@ Creator and media (4)
   https://yusuf-gadelrab.github.io/acting.html - Yusuf Gadelrab · Actor & Model · San Jose
   https://yusuf-gadelrab.github.io/media-kit.html - Yusuf Gadelrab - Creator Media Kit
   https://yusuf-gadelrab.github.io/modeling.html - Yusuf Gadelrab - Model Portfolio & Digitals
-  https://yusuf-gadelrab.github.io/stack.html - My Stack - Tools I Actually Use
+  https://yusuf-gadelrab.github.io/stack.html - My Dev Stack: AI, Coding & Trading Tools I Actually Use
 
 Nonprofit and education (6)
   https://yusuf-gadelrab.github.io/codeswitch.html - CODESWITCH - Bilingual Computer Science for English Learners

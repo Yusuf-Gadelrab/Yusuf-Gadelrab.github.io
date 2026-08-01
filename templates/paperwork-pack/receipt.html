@@ -65,6 +65,7 @@ table.items tbody td.num{ text-align:right; }
 .paid-via{ margin-top:16px; font-size:12.5px; color:var(--paper-muted); text-align:center; }
 .footer{ position:absolute; left:60px; right:60px; bottom:20px; display:flex; justify-content:space-between; font-size:10px; color:var(--paper-muted); letter-spacing:.3px; padding-top:8px; border-top:1px solid var(--paper-line); }
 </style>
+<style>@media screen{.tbl-scroll{overflow-x:auto;-webkit-overflow-scrolling:touch}.tbl-scroll:focus-visible{outline:2px solid #D4AF37;outline-offset:2px}}</style>
 </head>
 <body>
 <div class="page">
@@ -103,12 +104,12 @@ table.items tbody td.num{ text-align:right; }
       </div>
     </div>
 
-    <table class="items">
+    <div class="tbl-scroll" tabindex="0" role="region" aria-label="Scrollable table"><table class="items">
       <thead><tr><th>Description</th><th class="num">Amount</th></tr></thead>
       <tbody>
         <tr><td>Q3 Brand &amp; Web Refresh — full invoice balance</td><td class="num">$4,900.00</td></tr>
       </tbody>
-    </table>
+    </table></div>
 
     <div class="total-box"><span class="lbl">Amount Paid</span><span class="val gold-text">$4,900.00</span></div>
     <div class="paid-via">Paid in full via Zelle · Reference ZL-88291</div>

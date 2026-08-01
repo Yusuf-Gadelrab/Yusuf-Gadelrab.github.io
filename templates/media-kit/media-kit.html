@@ -157,6 +157,7 @@ footer.doc-footer{padding:20px 0 48px}
   .case-metrics{grid-template-columns:repeat(2,1fr)}
 }
 </style>
+<style>@media screen{.tbl-scroll{overflow-x:auto;-webkit-overflow-scrolling:touch}.tbl-scroll:focus-visible{outline:2px solid #D4AF37;outline-offset:2px}}</style>
 </head>
 <body>
 
@@ -322,7 +323,7 @@ footer.doc-footer{padding:20px 0 48px}
     <h2>Rate Card</h2>
   </div>
   <!-- ===== EDIT BELOW: rates ===== -->
-  <table class="rates">
+  <div class="tbl-scroll" tabindex="0" role="region" aria-label="Scrollable table"><table class="rates">
     <thead>
       <tr><th>Deliverable</th><th style="text-align:right">Rate</th></tr>
     </thead>
@@ -348,7 +349,7 @@ footer.doc-footer{padding:20px 0 48px}
         <td class="price">$1,600</td>
       </tr>
     </tbody>
-  </table>
+  </table></div>
   <!-- ===== EDIT ABOVE ===== -->
 </section>
 

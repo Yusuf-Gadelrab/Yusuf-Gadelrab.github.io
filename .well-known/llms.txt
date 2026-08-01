@@ -29,7 +29,7 @@ Last updated: 2026-08-01
 - [Hire Yusuf Gadelrab - Recruiters & Founding Clients](https://yusuf-gadelrab.github.io/hire.html): Recruiters: internship-ready SWE/AI/ML/quant talent. Founders: a freelance builder for automation and AI tooling. See the proof, then reach out.
 - [Everything I Do](https://yusuf-gadelrab.github.io/everything.html): One page for everything: projects, research, trading, and content - built in public by Yusuf Gadelrab.
 - [Guides - Plain-English Answers With the Math Shown](https://yusuf-gadelrab.github.io/guides.html): Free guides with every formula worked out: R-multiple and expectancy for traders, freight broker margin and rate per mile, and CPT vs OPT for F-1 students.
-- [Writing](https://yusuf-gadelrab.github.io/writing.html): Essays on building in public: PWAs without the App Store, CS education research, generated brand systems, risk sizing, and shipping as a student.
+- [Writing - 23 Posts on Shipping Software as a Student](https://yusuf-gadelrab.github.io/writing.html): Build-in-public notes with the numbers attached: walk-forward tested strategies, 3 offline PWAs, a zero-dependency scanner, and 2 SIGCSE 2026 papers.
 - [Projects - Yusuf Gadelrab, Engineering Portfolio](https://yusuf-gadelrab.github.io/projects.html): Every technical project Yusuf Gadelrab has built: AI freight tooling, a security scanner, trading research systems, product prototypes, and free web apps.
 - [Research - Yusuf Gadelrab, SIGCSE 2026 Papers](https://yusuf-gadelrab.github.io/research.html): Two peer-reviewed SIGCSE TS 2026 papers by Yusuf Gadelrab on bilingual coding and adaptive curriculum maps. Methods, DOI, and what the study found.
 
@@ -152,7 +152,7 @@ Last updated: 2026-08-01
 - [HwyHaul LoadLink - AI Freight Back Office](https://yusuf-gadelrab.github.io/hwyhaul.html): Case study: an AI freight back office covering 18 AR/billing workflows, built and tested 100% on local models with $0 API cost.
 - [SpartanEats - SJSU Student Food Delivery App Concept](https://yusuf-gadelrab.github.io/spartaneats.html): SpartanEats: a student-run food delivery concept for San Jose State. Campus-priced delivery from local spots, built by SJSU students for Spartans.
 - [Swing Trade Screener + Backtest Engine - Python CLI](https://yusuf-gadelrab.github.io/swing-screener.html): A Python CLI that scans a watchlist for anchored-VWAP reclaim, VCP and gap setups, plus a no-lookahead backtest engine and the audit that broke its result.
-- [Trading Bot - Broker-Agnostic Execution Engine](https://yusuf-gadelrab.github.io/trading-bot.html): Case study: a broker-agnostic trading execution engine with a crash-safe order journal, a fail-closed risk layer, and 48 passing tests. Not trading real money.
+- [Trading Bot Safety Architecture - Python Execution Engine](https://yusuf-gadelrab.github.io/trading-bot.html): A broker-agnostic Python trading bot that refuses to connect a live broker until 60 closed paper trades show positive expectancy. Fails closed, 88 tests.
 
 ## Sample outputs
 
@@ -174,7 +174,7 @@ Last updated: 2026-08-01
 
 - [Student Resume Rebuild $49 · Tailored Apps $99](https://yusuf-gadelrab.github.io/resume.html): ATS-safe resume rebuild for $49, or $99 with 10 fully tailored applications - keyword-matched resume and cover letter for each real posting.
 - [DHAHAB Studio - Launch Sites, Security Audits, Automation](https://yusuf-gadelrab.github.io/services.html): Productized services from DHAHAB Studio: launch sites, DIRA security audits, AI automation builds. Founding cohort open - invite only, pricing on request.
-- [LinkedIn Profile Rewrite Sprint - $97 in 48 Hours](https://yusuf-gadelrab.github.io/sprint.html): Complete LinkedIn profile rewrite in 48 hours for $97: recruiter-stopping headlines, rebuilt About, metric-first bullets, and keyword mapping.
+- [LinkedIn Profile Rewrite Service - $97, 48-Hour Turnaround](https://yusuf-gadelrab.github.io/sprint.html): A full LinkedIn profile rewrite in 48 hours for $97: three headline options, a rebuilt About section, metric-first bullets, a keyword map and a banner brief.
 - [Automation Software & Trading Playbooks - From $19](https://yusuf-gadelrab.github.io/store.html): Automation software and trading playbooks from $19: the 274-page Master Playbook, an 8-module swing course, local-AI email kits, 12 template packs.
 - [Business Proposal & Pitch Deck Templates - Premium HTML](https://yusuf-gadelrab.github.io/templates.html): Investor pitch deck, business proposal and SOW, freelance invoice, resume and landing page templates. 32 premium HTML files you own. No Canva, no Adobe.
 
@@ -190,7 +190,7 @@ Last updated: 2026-08-01
 - [Yusuf Gadelrab · Actor & Model · San Jose](https://yusuf-gadelrab.github.io/acting.html): Acting portfolio for Yusuf Gadelrab: bilingual Arabic and English performer, athlete, and CS student-researcher in San Jose / Bay Area. Self-tape ready.
 - [Yusuf Gadelrab - Creator Media Kit](https://yusuf-gadelrab.github.io/media-kit.html): Creator media kit: audience stats, a 260-to-200 lb transformation story, and brand collaboration options for @_kxng_sef.
 - [Yusuf Gadelrab - Model Portfolio & Digitals](https://yusuf-gadelrab.github.io/modeling.html): Model portfolio and digitals for Yusuf Gadelrab - athletic and commercial, San Jose CA. Documented 260-to-200 lb transformation, ex-football captain.
-- [My Stack - Tools I Actually Use](https://yusuf-gadelrab.github.io/stack.html): The tools Yusuf Gadelrab actually uses daily: Python and uv, Bun, React, local LLMs via Ollama, Claude Code, and the trading and automation stack behind it.
+- [My Dev Stack: AI, Coding & Trading Tools I Actually Use](https://yusuf-gadelrab.github.io/stack.html): Every tool in my daily stack with the honest version: what it replaced, why it stayed, and what it costs. Most of it is free. Here is where the money goes.
 
 ## Nonprofit and education
 

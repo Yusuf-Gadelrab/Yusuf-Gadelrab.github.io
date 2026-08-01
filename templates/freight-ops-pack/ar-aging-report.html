@@ -73,6 +73,8 @@ table.aging tfoot td.num{ text-align:right; }
 .footer{ position:absolute; left:56px; right:56px; bottom:34px; display:flex; justify-content:space-between; align-items:center; padding-top:10px; border-top:1px solid var(--paper-line); font-size:10px; color:var(--paper-muted); }
 .footer .pg{ color:var(--gold-dim); font-weight:700; }
 </style>
+<style>@media screen{.tbl-scroll{overflow-x:auto;-webkit-overflow-scrolling:touch}.tbl-scroll:focus-visible{outline:2px solid #D4AF37;outline-offset:2px}}</style>
+<style>th[scope=row]{font-weight:inherit;text-transform:none;letter-spacing:inherit;text-align:left}</style>
 </head>
 <body>
 
@@ -120,7 +122,7 @@ table.aging tfoot td.num{ text-align:right; }
     </div>
   </div>
 
-  <table class="aging">
+  <div class="tbl-scroll" tabindex="0" role="region" aria-label="Scrollable table"><table class="aging">
     <thead>
       <tr><th style="width:24%">Customer</th><th class="num">Current</th><th class="num">1–30</th><th class="num">31–60</th><th class="num">61–90</th><th class="num">90+</th><th class="num">Total</th></tr>
     </thead>
@@ -136,17 +138,17 @@ table.aging tfoot td.num{ text-align:right; }
     <tfoot>
       <tr><td>Total</td><td class="num">$48,570</td><td class="num">$31,980</td><td class="num">$18,950</td><td class="num">$11,840</td><td class="num">$7,120</td><td class="num gold-text">$118,460</td></tr>
     </tfoot>
-  </table>
+  </table></div>
 
   <div class="callout">
     <h2>Top 5 Past Due (31+ days)</h2>
-    <table>
-      <tr><td>Delacroix Beverage Co. — Inv #INV-4471, 96 days past due</td><td class="num">$4,180</td></tr>
-      <tr><td>Union Hardware Distributors — Inv #INV-4402, 94 days past due</td><td class="num">$2,940</td></tr>
-      <tr><td>Palmetto Paper Co. — Inv #INV-4488, 72 days past due</td><td class="num">$4,780</td></tr>
-      <tr><td>Delacroix Beverage Co. — Inv #INV-4509, 68 days past due</td><td class="num">$3,160</td></tr>
-      <tr><td>Union Hardware Distributors — Inv #INV-4415, 65 days past due</td><td class="num">$3,900</td></tr>
-    </table>
+    <div class="tbl-scroll" tabindex="0" role="region" aria-label="Scrollable table"><table>
+      <tr><th scope="row">Delacroix Beverage Co. — Inv #INV-4471, 96 days past due</th><td class="num">$4,180</td></tr>
+      <tr><th scope="row">Union Hardware Distributors — Inv #INV-4402, 94 days past due</th><td class="num">$2,940</td></tr>
+      <tr><th scope="row">Palmetto Paper Co. — Inv #INV-4488, 72 days past due</th><td class="num">$4,780</td></tr>
+      <tr><th scope="row">Delacroix Beverage Co. — Inv #INV-4509, 68 days past due</th><td class="num">$3,160</td></tr>
+      <tr><th scope="row">Union Hardware Distributors — Inv #INV-4415, 65 days past due</th><td class="num">$3,900</td></tr>
+    </table></div>
   </div>
 
   <div class="footer">

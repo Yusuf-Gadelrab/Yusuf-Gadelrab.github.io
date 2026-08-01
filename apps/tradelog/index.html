@@ -385,8 +385,10 @@ footer a:hover{text-decoration:underline}
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"HowTo","name":"Add TradeLog to your Home Screen","description":"Install TradeLog, a free offline R-multiple trading journal, on an iPhone or iPad from Safari, on Android from Chrome, or on a desktop from Chrome or Edge. No App Store, no download, no account.","totalTime":"PT1M","tool":[{"@type":"HowToTool","name":"Safari on iPhone or iPad"},{"@type":"HowToTool","name":"Chrome on Android"},{"@type":"HowToTool","name":"Chrome or Edge on desktop"}],"step":[{"@type":"HowToStep","name":"Open TradeLog in Safari.","text":"Open TradeLog in Safari. On iPhone and iPad only Safari can add a web app to the Home Screen — Chrome, Firefox and the in-app browsers inside other apps cannot.","url":"https://yusuf-gadelrab.github.io/apps/tradelog/#install"},{"@type":"HowToStep","name":"Tap the Share button.","text":"Tap the Share button. It is the square with an arrow pointing up out of it, in the toolbar at the bottom of the screen.","url":"https://yusuf-gadelrab.github.io/apps/tradelog/#install"},{"@type":"HowToStep","name":"Scroll down and tap “Add to Home Screen.”","text":"Scroll down and tap “Add to Home Screen.” It sits under the row of share targets, in the list of actions.","url":"https://yusuf-gadelrab.github.io/apps/tradelog/#install"},{"@type":"HowToStep","name":"Tap “Add.”","text":"Tap “Add.” The TradeLog icon lands on your Home Screen and opens like any other app.","url":"https://yusuf-gadelrab.github.io/apps/tradelog/#install"},{"@type":"HowToStep","name":"Open the three-dot menu in Chrome.","text":"Open the three-dot menu in Chrome. It is at the top right, on the end of the address bar.","url":"https://yusuf-gadelrab.github.io/apps/tradelog/#install"},{"@type":"HowToStep","name":"Tap “Install app,” or “Add to Home screen” on older versions of Chrome.","text":"Tap “Install app,” or “Add to Home screen” on older versions of Chrome. Chrome may also offer its own install banner along the bottom of the screen, which does exactly the same thing.","url":"https://yusuf-gadelrab.github.io/apps/tradelog/#install"},{"@type":"HowToStep","name":"Confirm, and TradeLog lands in your app drawer.","text":"Confirm, and TradeLog lands in your app drawer. It sits on your home screen too, and opens full screen with no address bar around it.","url":"https://yusuf-gadelrab.github.io/apps/tradelog/#install"},{"@type":"HowToStep","name":"Click the install icon in the address bar.","text":"Click the install icon in the address bar. It is a small screen with a downward arrow in it, at the right-hand end of the bar. If it is not showing, open the three-dot menu and choose “Install…” instead.","url":"https://yusuf-gadelrab.github.io/apps/tradelog/#install"},{"@type":"HowToStep","name":"Confirm, and TradeLog gets its own window.","text":"Confirm, and TradeLog gets its own window. You also get an icon in your dock, taskbar or Start menu, kept separate from your browser tabs.","url":"https://yusuf-gadelrab.github.io/apps/tradelog/#install"}]}</script>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","@id":"https://yusuf-gadelrab.github.io/apps/tradelog/#faq","mainEntity":[{"@type":"Question","name":"Does TradeLog need an internet connection?","acceptedAnswer":{"@type":"Answer","text":"Only for the very first load. After that the app is cached on your device and opens and runs with no connection at all. Trades, the equity curve and every statistic are computed on your own phone, so airplane mode changes nothing."}},{"@type":"Question","name":"Do I need an account to use TradeLog?","acceptedAnswer":{"@type":"Answer","text":"No. There is no signup, no login, no email address and no password. Open the page and start logging trades."}},{"@type":"Question","name":"Where is my trade data stored?","acceptedAnswer":{"@type":"Answer","text":"In your browser’s localStorage, on the one device you typed it into. There is no server behind this app, so nothing is uploaded and nobody, including me, can see your trades."}},{"@type":"Question","name":"Does TradeLog sync between my phone and my laptop?","acceptedAnswer":{"@type":"Answer","text":"No. There is no sync and no cloud backup, so each device keeps its own separate journal. To move a journal across, use Export CSV on one device and Import CSV on the other."}},{"@type":"Question","name":"Is TradeLog free?","acceptedAnswer":{"@type":"Answer","text":"Yes. It is free, with no trial, no paid tier, no ads and nothing locked behind a purchase. I built it for my own trading and left it open for anyone who wants it."}},{"@type":"Question","name":"How do I export my trades or get the app off my phone?","acceptedAnswer":{"@type":"Answer","text":"Press Export CSV in the Trades card to download every trade as a spreadsheet file, and Import CSV to load one back in. To remove the app, press and hold its Home Screen icon and delete it, or clear this site’s data in your browser — either one erases the journal on that device."}}]}</script>
 <link rel="alternate" type="text/plain" href="https://yusuf-gadelrab.github.io/llms-full.txt" title="Plain-text profile for language models">
+<style>.skip-link{position:absolute;left:12px;top:-60px;z-index:1000;padding:10px 16px;background:#D4AF37;color:#0a0a0a;font:600 14px/1 system-ui,sans-serif;text-decoration:none;border-radius:6px;transition:top .2s ease}.skip-link:focus{top:12px}@media print{.skip-link{display:none!important}}</style>
 </head>
 <body>
+<a class="skip-link" href="#main">Skip to content</a>
 <div class="topbar" id="topbar" aria-hidden="true">
   <div class="brand">DHAHAB <span>&middot;</span> TradeLog</div>
 </div>
@@ -405,6 +407,7 @@ footer a:hover{text-decoration:underline}
     <li><span aria-current="page">TradeLog</span></li>
   </ol>
 </nav>
+<div id="main" role="main" tabindex="-1">
 
 <div class="card hero">
   <div class="hero-label">Expectancy</div>
@@ -427,7 +430,7 @@ footer a:hover{text-decoration:underline}
   <div class="io">
     <button type="button" class="btn-ghost" id="exportBtn">Export CSV</button>
     <button type="button" class="btn-ghost" id="importBtn">Import CSV</button>
-    <input type="file" id="importFile" accept=".csv,text/csv">
+    <input type="file" id="importFile" accept=".csv,text/csv" aria-label="Import CSV file" hidden>
   </div>
 </div>
 
@@ -1021,5 +1024,6 @@ try{
 }catch(e){}
 })();
 </script>
+</div>
 </body>
 </html>

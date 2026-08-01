@@ -165,12 +165,14 @@
     .foot-row{flex-direction:column; align-items:flex-start;}
   }
 </style>
+<style>.skip-link{position:absolute;left:12px;top:-60px;z-index:1000;padding:10px 16px;background:#D4AF37;color:#0a0a0a;font:600 14px/1 system-ui,sans-serif;text-decoration:none;border-radius:6px;transition:top .2s ease}.skip-link:focus{top:12px}@media print{.skip-link{display:none!important}}</style>
 </head>
 <body>
+<a class="skip-link" href="#main">Skip to content</a>
 
 <header class="nav">
   <div class="nav-row">
-    <a href="#top" class="brand">
+    <a href="#main" class="brand">
       <svg class="mark" viewBox="0 0 28 28" fill="none" aria-hidden="true">
         <path d="M14 1L26 14L14 27L2 14Z" stroke="url(#g2)" stroke-width="1.5"/>
         <defs><linearGradient id="g2" x1="0" y1="0" x2="28" y2="28"><stop stop-color="#f4d47a"/><stop offset="1" stop-color="#c99b1e"/></linearGradient></defs>
@@ -190,7 +192,7 @@
   </div>
 </header>
 
-<main id="top">
+<main id="main" tabindex="-1">
   <section class="hero">
     <div class="hero-inner">
       <p class="eyebrow"><!-- EDIT -->Growth &amp; automation consultancy</p>

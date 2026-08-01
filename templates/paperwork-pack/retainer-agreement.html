@@ -64,6 +64,8 @@ section.clause p:last-child{ margin-bottom:0; }
 .footer{ position:absolute; left:60px; right:60px; bottom:34px; display:flex; justify-content:space-between; font-size:10px; color:var(--paper-muted); letter-spacing:.3px; padding-top:8px; border-top:1px solid var(--paper-line); }
 .footer .pg{ color:var(--gold-dim); font-weight:700; }
 </style>
+<style>@media screen{.tbl-scroll{overflow-x:auto;-webkit-overflow-scrolling:touch}.tbl-scroll:focus-visible{outline:2px solid #D4AF37;outline-offset:2px}}</style>
+<style>th[scope=row]{font-weight:inherit;text-transform:none;letter-spacing:inherit;text-align:left}</style>
 </head>
 <body>
 
@@ -154,13 +156,13 @@ section.clause p:last-child{ margin-bottom:0; }
 
   <section class="clause">
     <h2><span class="num">4.</span> Fee &amp; Billing Cycle</h2>
-    <table class="terms-table">
-      <tr><td class="lbl">Monthly Retainer Fee</td><td>$2,800/month</td></tr>
-      <tr><td class="lbl">Billing Date</td><td>1st of each month, in advance</td></tr>
-      <tr><td class="lbl">Payment Method</td><td>Bank transfer, Zelle, or the payment link provided on each invoice</td></tr>
-      <tr><td class="lbl">Payment Terms</td><td>Due within 10 days of invoice date</td></tr>
-      <tr><td class="lbl">Late Fee</td><td>1.5% per month on balances more than 10 days past due</td></tr>
-    </table>
+    <div class="tbl-scroll" tabindex="0" role="region" aria-label="Scrollable table"><table class="terms-table">
+      <tr><th scope="row" class="lbl">Monthly Retainer Fee</th><td>$2,800/month</td></tr>
+      <tr><th scope="row" class="lbl">Billing Date</th><td>1st of each month, in advance</td></tr>
+      <tr><th scope="row" class="lbl">Payment Method</th><td>Bank transfer, Zelle, or the payment link provided on each invoice</td></tr>
+      <tr><th scope="row" class="lbl">Payment Terms</th><td>Due within 10 days of invoice date</td></tr>
+      <tr><th scope="row" class="lbl">Late Fee</th><td>1.5% per month on balances more than 10 days past due</td></tr>
+    </table></div>
     <p>Provider may suspend Services if an invoice remains unpaid more than 15 days past its due date, without waiving any other remedy available under this Agreement.</p>
   </section>
 

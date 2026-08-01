@@ -587,3 +587,23 @@ input:focus-visible,textarea:focus-visible,select:focus-visible,
   .yg-cta-bar__go:hover,#yg-top:hover{transform:none!important}
   .site-nav__links a::after{transition:none!important}
 }
+
+/* FAQ accordion — shared component. The bare `.faq` class is already overloaded
+   (accordion grid on store/templates, page wrapper on faq.html), so pages that
+   render a FAQ from their own JSON-LD via tools/faq_render.py use `.yg-faq`. */
+.yg-faq{display:grid;gap:1px;background:var(--line);border:1px solid var(--line);
+  border-radius:var(--radius-lg);overflow:hidden}
+.yg-faq details{background:var(--panel);transition:background .3s var(--ease)}
+.yg-faq details[open]{background:var(--panel2)}
+.yg-faq summary{cursor:pointer;list-style:none;padding:var(--s4) var(--s5);
+  font-family:var(--display);font-size:1.05rem;color:var(--ink);
+  display:flex;justify-content:space-between;align-items:center;gap:var(--s4)}
+.yg-faq summary::-webkit-details-marker{display:none}
+.yg-faq summary::after{content:"+";font-family:var(--display);font-size:22px;line-height:1;
+  color:var(--gold);flex:none}
+.yg-faq details[open] summary::after{content:"\2013"}
+.yg-faq summary:hover{color:var(--gold-2)}
+.yg-faq summary:focus-visible{outline:2px solid var(--gold);outline-offset:-2px}
+.yg-faq .a{padding:0 var(--s5) var(--s5);color:var(--muted);font-size:var(--t-small);max-width:74ch}
+.yg-faq .a p{margin:0}
+.yg-faq .a p+p{margin-top:var(--s3)}

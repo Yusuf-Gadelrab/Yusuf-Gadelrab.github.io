@@ -112,6 +112,7 @@ input.rate-input{ width:80px; }
 @media print{ .no-print{ display:none !important; } }
 .no-print{ max-width:8.5in; margin:0 auto 24px; text-align:center; font-size:12px; color:#666; }
 </style>
+<style>@media screen{.tbl-scroll{overflow-x:auto;-webkit-overflow-scrolling:touch}.tbl-scroll:focus-visible{outline:2px solid #D4AF37;outline-offset:2px}}</style>
 </head>
 <body>
 
@@ -163,43 +164,43 @@ input.rate-input{ width:80px; }
   </div>
 
   <!-- ===== EDIT BELOW: line items ===== -->
-  <table class="items" id="itemsTable">
+  <div class="tbl-scroll" tabindex="0" role="region" aria-label="Scrollable table"><table class="items" id="itemsTable">
     <thead>
       <tr><th style="width:46%">Description</th><th class="num" style="width:12%">Qty</th><th class="num" style="width:16%">Rate</th><th class="num" style="width:16%">Amount</th></tr>
     </thead>
     <tbody>
       <tr class="item-row">
         <td><div class="item-desc">Homepage redesign &amp; responsive build</div><div class="item-sub">Figma → production HTML/CSS, mobile-first, 2 rounds of revisions</div></td>
-        <td class="num"><input class="qty-input" type="number" value="1" min="0" step="1"></td>
-        <td class="num"><input class="rate-input" type="number" value="3200" min="0" step="1"></td>
+        <td class="num"><input class="qty-input" aria-label="Quantity — Homepage redesign & responsive build" type="number" value="1" min="0" step="1"></td>
+        <td class="num"><input class="rate-input" aria-label="Rate — Homepage redesign & responsive build" type="number" value="3200" min="0" step="1"></td>
         <td class="num amount">$3,200.00</td>
       </tr>
       <tr class="item-row">
         <td><div class="item-desc">Logo refinement + brand guideline PDF</div><div class="item-sub">Primary mark, submarks, color system, type pairing, 12-page guide</div></td>
-        <td class="num"><input class="qty-input" type="number" value="1" min="0" step="1"></td>
-        <td class="num"><input class="rate-input" type="number" value="950" min="0" step="1"></td>
+        <td class="num"><input class="qty-input" aria-label="Quantity — Logo refinement + brand guideline PDF" type="number" value="1" min="0" step="1"></td>
+        <td class="num"><input class="rate-input" aria-label="Rate — Logo refinement + brand guideline PDF" type="number" value="950" min="0" step="1"></td>
         <td class="num amount">$950.00</td>
       </tr>
       <tr class="item-row">
         <td><div class="item-desc">Social media template kit</div><div class="item-sub">10 editable templates, sized for IG/LinkedIn/X</div></td>
-        <td class="num"><input class="qty-input" type="number" value="1" min="0" step="1"></td>
-        <td class="num"><input class="rate-input" type="number" value="480" min="0" step="1"></td>
+        <td class="num"><input class="qty-input" aria-label="Quantity — Social media template kit" type="number" value="1" min="0" step="1"></td>
+        <td class="num"><input class="rate-input" aria-label="Rate — Social media template kit" type="number" value="480" min="0" step="1"></td>
         <td class="num amount">$480.00</td>
       </tr>
       <tr class="item-row">
         <td><div class="item-desc">Strategy calls &amp; revisions</div><div class="item-sub">Hours beyond monthly retainer cap, billed hourly</div></td>
-        <td class="num"><input class="qty-input" type="number" value="3" min="0" step="0.5"></td>
-        <td class="num"><input class="rate-input" type="number" value="140" min="0" step="1"></td>
+        <td class="num"><input class="qty-input" aria-label="Quantity — Strategy calls & revisions" type="number" value="3" min="0" step="0.5"></td>
+        <td class="num"><input class="rate-input" aria-label="Rate — Strategy calls & revisions" type="number" value="140" min="0" step="1"></td>
         <td class="num amount">$420.00</td>
       </tr>
     </tbody>
-  </table>
+  </table></div>
 
   <div class="totals-wrap">
     <div class="totals">
       <div class="totals-row"><span class="lbl">Subtotal</span><span class="val" id="subtotal">$5,050.00</span></div>
-      <div class="totals-row editable"><span class="lbl">Discount</span><span class="val">$<input id="discount" type="number" value="150" min="0" step="1"></span></div>
-      <div class="totals-row editable"><span class="lbl">Tax</span><span class="val"><input id="taxRate" type="number" value="0" min="0" step="0.1" style="width:45px;">%</span></div>
+      <div class="totals-row editable"><span class="lbl">Discount</span><span class="val">$<input id="discount" aria-label="Discount amount" type="number" value="150" min="0" step="1"></span></div>
+      <div class="totals-row editable"><span class="lbl">Tax</span><span class="val"><input id="taxRate" aria-label="Tax rate, percent" type="number" value="0" min="0" step="0.1" style="width:45px;">%</span></div>
       <div class="total-box"><span class="lbl">Total Due</span><span class="val gold-text" id="grandTotal">$4,900.00</span></div>
     </div>
   </div>

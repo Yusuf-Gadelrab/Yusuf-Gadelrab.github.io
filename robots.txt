@@ -27,6 +27,21 @@ Disallow: /templates/
 # this content may be used in AI answers at all.
 # ---------------------------------------------------------------------------
 
+# Search indexers get their own group so /templates/ is CRAWLABLE for them.
+# Those 32 pages carry <meta name="robots" content="noindex"> plus a canonical
+# to /templates.html, but Disallow blocks crawling rather than indexing — a
+# blocked URL can still be listed bare, and the noindex is never read. Letting
+# these three fetch the pages is what actually purges them from the index.
+# Google-Extended / Applebot-Extended stay in the AI-training block below, so
+# allowing this does NOT open the paid HTML to model training.
+User-agent: Googlebot
+User-agent: Bingbot
+User-agent: Applebot
+Allow: /
+Disallow: /offline.html
+Disallow: /404.html
+Disallow: /*?src=pwa
+
 # OpenAI
 User-agent: GPTBot
 User-agent: OAI-SearchBot
@@ -41,14 +56,10 @@ User-agent: anthropic-ai
 User-agent: PerplexityBot
 User-agent: Perplexity-User
 # Google
-User-agent: Googlebot
 User-agent: Google-Extended
 User-agent: GoogleOther
 User-agent: Google-CloudVertexBot
-# Microsoft / Bing
-User-agent: Bingbot
-# Apple
-User-agent: Applebot
+# Apple (Applebot itself is in the search-indexer group above)
 User-agent: Applebot-Extended
 # Meta
 User-agent: meta-externalagent

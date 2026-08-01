@@ -60,6 +60,8 @@ hr.top-rule{ height:2px; border:none; background:linear-gradient(90deg,var(--gol
 .footer{ position:absolute; left:60px; right:60px; bottom:34px; display:flex; justify-content:space-between; font-size:10px; color:var(--paper-muted); padding-top:8px; border-top:1px solid var(--paper-line); }
 .footer .pg{ color:var(--gold-dim); font-weight:700; }
 </style>
+<style>@media screen{.tbl-scroll{overflow-x:auto;-webkit-overflow-scrolling:touch}.tbl-scroll:focus-visible{outline:2px solid #D4AF37;outline-offset:2px}}</style>
+<style>th[scope=row]{font-weight:inherit;text-transform:none;letter-spacing:inherit;text-align:left}</style>
 </head>
 <body>
 
@@ -144,12 +146,12 @@ hr.top-rule{ height:2px; border:none; background:linear-gradient(90deg,var(--gol
     <p>To keep this load moving toward payment, please send the documents within 2 business days of this notice. If there is an issue on the receiving end (refused signature, damaged freight, disputed shortage), let us know immediately — that changes our next step and needs to be documented separately.</p>
   </div>
 
-  <table class="escalation-table">
-    <tr><td class="lbl">First Request Sent</td><td>July 31, 2026 — email + portal notice</td></tr>
-    <tr><td class="lbl">Second Request (this notice)</td><td>August 4, 2026</td></tr>
-    <tr><td class="lbl">Resolution Deadline</td><td>August 6, 2026, 5:00 PM PT</td></tr>
-    <tr><td class="lbl">If Unresolved</td><td>Load flagged for dispute review; future tenders paused; may affect Carrier Scorecard rating</td></tr>
-  </table>
+  <div class="tbl-scroll" tabindex="0" role="region" aria-label="Scrollable table"><table class="escalation-table">
+    <tr><th scope="row" class="lbl">First Request Sent</th><td>July 31, 2026 — email + portal notice</td></tr>
+    <tr><th scope="row" class="lbl">Second Request (this notice)</th><td>August 4, 2026</td></tr>
+    <tr><th scope="row" class="lbl">Resolution Deadline</th><td>August 6, 2026, 5:00 PM PT</td></tr>
+    <tr><th scope="row" class="lbl">If Unresolved</th><td>Load flagged for dispute review; future tenders paused; may affect Carrier Scorecard rating</td></tr>
+  </table></div>
 
   <div class="card">
     <h2>Fastest Path to Resolution</h2>

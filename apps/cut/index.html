@@ -245,8 +245,10 @@ footer b{color:var(--gold-soft);font-weight:600}
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"HowTo","name":"Install Cut on a computer","description":"Install Cut, a free offline weight tracker, on Windows, macOS or Linux from Chrome or Edge. No download, no account.","totalTime":"PT1M","tool":[{"@type":"HowToTool","name":"Chrome or Edge on desktop"}],"step":[{"@type":"HowToStep","name":"Open this page in Chrome or Edge.","text":"Open this page in Chrome or Edge. Any Chromium browser works, on Windows, macOS or Linux.","url":"https://yusuf-gadelrab.github.io/apps/cut/#install"},{"@type":"HowToStep","name":"Click the install icon in the address bar, or open the three-dot menu and choose “Install…”.","text":"Click the install icon in the address bar, or open the three-dot menu and choose “Install…”. The install icon is a small screen with a downward arrow in it, at the right end of the address bar.","url":"https://yusuf-gadelrab.github.io/apps/cut/#install"},{"@type":"HowToStep","name":"Confirm the install.","text":"Confirm the install. Cut opens in its own window with no address bar and no tabs, and sits with your other applications.","url":"https://yusuf-gadelrab.github.io/apps/cut/#install"}]}</script>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","@id":"https://yusuf-gadelrab.github.io/apps/cut/#faq","mainEntity":[{"@type":"Question","name":"Does Cut need an internet connection?","acceptedAnswer":{"@type":"Answer","text":"Only for the very first load. After that the app is cached on your device and opens and runs with no connection at all. The trend line, the goal line and your streak are all computed on your own phone, so airplane mode changes nothing."}},{"@type":"Question","name":"Do I need an account to use Cut?","acceptedAnswer":{"@type":"Answer","text":"No. There is no signup, no login, no email address and no password. Open the page and log your first weigh-in."}},{"@type":"Question","name":"Where is my weight data stored?","acceptedAnswer":{"@type":"Answer","text":"In your browser’s localStorage, on the one device you typed it into. There is no server behind this app, so nothing is uploaded and nobody, including me, can see your weight."}},{"@type":"Question","name":"Does Cut sync between my phone and my laptop?","acceptedAnswer":{"@type":"Answer","text":"No. There is no sync and no cloud backup, so each device keeps its own separate history. To move a history across, use Export CSV on one device and Import CSV on the other."}},{"@type":"Question","name":"Is Cut free?","acceptedAnswer":{"@type":"Answer","text":"Yes. It is free, with no trial, no paid tier, no ads and nothing locked behind a purchase. I built it to run my own cut and left it open for anyone who wants it."}},{"@type":"Question","name":"How do I export my weigh-ins or get the app off my phone?","acceptedAnswer":{"@type":"Answer","text":"Press Export CSV to download every weigh-in as a spreadsheet file, and Import CSV to load one back in. To remove the app, press and hold its Home Screen icon and delete it, or clear this site’s data in your browser — either one erases the history on that device."}}]}</script>
 <link rel="alternate" type="text/plain" href="https://yusuf-gadelrab.github.io/llms-full.txt" title="Plain-text profile for language models">
+<style>.skip-link{position:absolute;left:12px;top:-60px;z-index:1000;padding:10px 16px;background:#D4AF37;color:#0a0a0a;font:600 14px/1 system-ui,sans-serif;text-decoration:none;border-radius:6px;transition:top .2s ease}.skip-link:focus{top:12px}@media print{.skip-link{display:none!important}}</style>
 </head>
 <body>
+<a class="skip-link" href="#main">Skip to content</a>
 <div class="topbar" id="topbar">DHAHAB · Cut</div>
 <div class="wrap">
   <header>
@@ -262,6 +264,7 @@ footer b{color:var(--gold-soft);font-weight:600}
       <li><span aria-current="page">Cut</span></li>
     </ol>
   </nav>
+<div id="main" role="main" tabindex="-1">
 
   <section class="hero" aria-label="Current weight">
     <div class="hero-num"><span id="heroNum">—</span><span class="unit">lb</span></div>
@@ -858,5 +861,6 @@ footer b{color:var(--gold-soft);font-weight:600}
   }catch(e){}
 })();
 </script>
+</div>
 </body>
 </html>

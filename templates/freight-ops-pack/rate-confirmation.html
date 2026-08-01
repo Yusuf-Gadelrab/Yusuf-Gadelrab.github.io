@@ -79,6 +79,8 @@ table.rate tr.total td{ border-top:1.5px solid var(--gold); border-bottom:none; 
 .footer{ position:absolute; left:56px; right:56px; bottom:34px; display:flex; justify-content:space-between; align-items:center; padding-top:10px; border-top:1px solid var(--paper-line); font-size:10px; color:var(--paper-muted); letter-spacing:.3px; }
 .footer .pg{ color:var(--gold-dim); font-weight:700; }
 </style>
+<style>@media screen{.tbl-scroll{overflow-x:auto;-webkit-overflow-scrolling:touch}.tbl-scroll:focus-visible{outline:2px solid #D4AF37;outline-offset:2px}}</style>
+<style>th[scope=row]{font-weight:inherit;text-transform:none;letter-spacing:inherit;text-align:left}</style>
 </head>
 <body>
 
@@ -149,12 +151,12 @@ table.rate tr.total td{ border-top:1.5px solid var(--gold); border-bottom:none; 
 
   <div class="two-col">
     <div>
-      <table class="rate">
-        <tr><td>Linehaul</td><td class="num">$2,950.00</td></tr>
-        <tr><td>Fuel Surcharge</td><td class="num">$310.00</td></tr>
-        <tr><td>Lumper Accessorial (reimbursable w/ receipt)</td><td class="num">$75.00</td></tr>
-        <tr class="total"><td>Total Rate</td><td class="num gold-text">$3,335.00</td></tr>
-      </table>
+      <div class="tbl-scroll" tabindex="0" role="region" aria-label="Scrollable table"><table class="rate">
+        <tr><th scope="row">Linehaul</th><td class="num">$2,950.00</td></tr>
+        <tr><th scope="row">Fuel Surcharge</th><td class="num">$310.00</td></tr>
+        <tr><th scope="row">Lumper Accessorial (reimbursable w/ receipt)</th><td class="num">$75.00</td></tr>
+        <tr class="total"><th scope="row">Total Rate</th><td class="num gold-text">$3,335.00</td></tr>
+      </table></div>
     </div>
     <div class="card">
       <h3>Payment Terms</h3>

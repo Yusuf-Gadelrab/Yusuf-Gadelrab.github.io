@@ -327,6 +327,41 @@
   </div>
 </section>
 
+<!-- FAQ:AUTO:START -->
+  <section class="section" id="faq">
+    <div class="sec-head reveal">
+      <div class="eyebrow">Questions</div>
+      <h2>What HISN <span class="gold-fill">actually does.</span></h2>
+      <p>Including the parts that rule it out for you.</p>
+    </div>
+    <div class="yg-faq reveal">
+      <details>
+        <summary>What is HISN?</summary>
+        <div class="a"><p>An open-source command-line auditor for Model Context Protocol servers and AI agent stacks. It reads your server implementation and client configuration and checks them against the attack classes named in the MCP security specification, then reports findings as terminal output, a shareable HTML report, or SARIF for your CI pipeline.</p></div>
+      </details>
+
+      <details>
+        <summary>Why does MCP need its own security tool?</summary>
+        <div class="a"><p>Existing scanners solve adjacent problems. Dependency scanners read your package manifest. Red-teaming tools send probes at a model and grade the replies. Neither reads an MCP server&#x27;s own configuration and checks it against the protocol&#x27;s requirements — whether it accepts tokens that were not issued to it, whether it validates redirect URIs exactly, whether session identifiers are bound to a user. That gap is what HISN is built for.</p></div>
+      </details>
+
+      <details>
+        <summary>Which attack classes does it check?</summary>
+        <div class="a"><p>The seven named in the MCP specification&#x27;s security best practices: the confused deputy problem in OAuth proxy servers, token passthrough, server-side request forgery during OAuth metadata discovery, session hijacking, local MCP server compromise, authorization URL validation failures such as javascript: scheme injection, and scope minimization failures.</p></div>
+      </details>
+
+      <details>
+        <summary>Does HISN send my code anywhere?</summary>
+        <div class="a"><p>No. Analysis runs entirely on your machine. HISN is designed with the same constraints as DIRA: local analysis, no telemetry, no account, and any detected credential redacted before it reaches a report.</p></div>
+      </details>
+
+      <details>
+        <summary>How much does it cost?</summary>
+        <div class="a"><p>Nothing. HISN is free and MIT licensed. There is no paid tier, no trial, and no account to create.</p></div>
+      </details>
+    </div>
+  </section>
+  <!-- FAQ:AUTO:END -->
 </main>
 
 <footer class="site-footer">

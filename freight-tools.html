@@ -137,7 +137,7 @@
   /* privacy / offline callout + related links */
   .priv{display:grid;gap:var(--s4);
     grid-template-columns:repeat(auto-fit,minmax(min(260px,100%),1fr))}
-  .priv h3{font-size:15px;letter-spacing:.4px;color:var(--gold-2);margin:0 0 var(--s2)}
+  .priv h2,.priv h3{font-size:15px;letter-spacing:.4px;color:var(--gold-2);margin:0 0 var(--s2)}
   .priv p{color:var(--muted);font-size:var(--t-small);margin:0;line-height:1.7}
   .rel{display:flex;flex-wrap:wrap;gap:var(--s2);margin-top:var(--s4);padding:0;list-style:none}
   .rel a{display:inline-block;padding:8px 15px;border:1px solid var(--line-soft);
@@ -180,19 +180,19 @@
 
     <div class="priv" style="margin-top:var(--s5)">
       <div class="card card--flat" style="padding:var(--s5)">
-        <h3>No server, no account</h3>
+        <h2>No server, no account</h2>
         <p>The whole page is static HTML and one inline script. There is no backend to send anything to, no login, no email gate and no integration with a load board or TMS. Every figure is computed on your own device.</p>
       </div>
       <div class="card card--flat" style="padding:var(--s5)">
-        <h3>Works offline after first load</h3>
+        <h2>Works offline after first load</h2>
         <p>The page is cached by a service worker, so once you have opened it once it keeps working with no signal — at a dock, in a yard, or anywhere the bars run out.</p>
       </div>
       <div class="card card--flat" style="padding:var(--s5)">
-        <h3>Local storage only — and its tradeoff</h3>
+        <h2>Local storage only — and its tradeoff</h2>
         <p>Your last-used inputs are saved in this browser's local storage so the page remembers them. There is no encryption, no backup and no sync: clearing site data deletes them, and nothing carries across to another device.</p>
       </div>
       <div class="card card--flat" style="padding:var(--s5)">
-        <h3>About the pre-filled numbers</h3>
+        <h2>About the pre-filled numbers</h2>
         <p>Every field starts with a round, made-up placeholder so the page has something to calculate. They are <b style="color:var(--ink)">not</b> market rates, benchmarks or industry averages — no rate index ships with this page. Overwrite them with your own figures.</p>
       </div>
     </div>

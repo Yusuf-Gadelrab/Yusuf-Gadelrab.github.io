@@ -461,6 +461,7 @@ table.feat-table .fx{ color:var(--muted); opacity:.5; }
 .img-ph-cap{ font-size:11.5px; color:var(--muted); }
 
 </style>
+<style>@media screen{.tbl-scroll{overflow-x:auto;-webkit-overflow-scrolling:touch}.tbl-scroll:focus-visible{outline:2px solid #D4AF37;outline-offset:2px}}</style>
 </head>
 <body>
 <svg class="defs-svg" aria-hidden="true">
@@ -1055,14 +1056,14 @@ table.feat-table .fx{ color:var(--muted); opacity:.5; }
 <div class="content">
   <p class="eyebrow">Feature Comparison</p>
   <h2 class="slide-title">What each plan includes</h2>
-  <table class="feat-table">
+  <div class="tbl-scroll" tabindex="0" role="region" aria-label="Scrollable table"><table class="feat-table">
     <tr><th>Feature</th><th>Starter</th><th>Growth</th><th>Enterprise</th></tr>
     <tr><td>Team members</td><td>Up to 5</td><td>Up to 25</td><td>Unlimited</td></tr>
     <tr><td>Automated reporting</td><td class="fx">&#10005;</td><td class="fc gold-text">&#10003;</td><td class="fc gold-text">&#10003;</td></tr>
     <tr><td>API access</td><td class="fx">&#10005;</td><td class="fc gold-text">&#10003;</td><td class="fc gold-text">&#10003;</td></tr>
     <tr><td>Dedicated support</td><td class="fx">&#10005;</td><td class="fx">&#10005;</td><td class="fc gold-text">&#10003;</td></tr>
     <tr><td>Custom integrations</td><td class="fx">&#10005;</td><td class="fx">&#10005;</td><td class="fc gold-text">&#10003;</td></tr>
-  </table>
+  </table></div>
 </div>
 <div class="footer"><span>Sample Co. &middot; INTERNAL USE</span><span class="pagenum">36</span></div>
 </section>
@@ -1130,12 +1131,12 @@ table.feat-table .fx{ color:var(--muted); opacity:.5; }
 <div class="content">
   <p class="eyebrow">Vendor Scorecard</p>
   <h2 class="slide-title">How the top three options stack up</h2>
-  <table class="score-table">
+  <div class="tbl-scroll" tabindex="0" role="region" aria-label="Scrollable table"><table class="score-table">
     <tr><th>Criteria</th><th>Sample Co.</th><th>Vendor B</th><th>Vendor C</th></tr>
     <tr><td>Implementation Speed</td><td><span class="sc-dot full"></span><span class="sc-dot full"></span><span class="sc-dot full"></span></td><td><span class="sc-dot full"></span><span class="sc-dot full"></span><span class="sc-dot"></span></td><td><span class="sc-dot full"></span><span class="sc-dot"></span><span class="sc-dot"></span></td></tr>
     <tr><td>Support Quality</td><td><span class="sc-dot full"></span><span class="sc-dot full"></span><span class="sc-dot full"></span></td><td><span class="sc-dot full"></span><span class="sc-dot"></span><span class="sc-dot"></span></td><td><span class="sc-dot full"></span><span class="sc-dot full"></span><span class="sc-dot"></span></td></tr>
     <tr><td>Price-to-Value</td><td><span class="sc-dot full"></span><span class="sc-dot full"></span><span class="sc-dot full"></span></td><td><span class="sc-dot full"></span><span class="sc-dot"></span><span class="sc-dot"></span></td><td><span class="sc-dot full"></span><span class="sc-dot full"></span><span class="sc-dot"></span></td></tr>
-  </table>
+  </table></div>
 </div>
 <div class="footer"><span>Sample Co. &middot; INTERNAL USE</span><span class="pagenum">40</span></div>
 </section>

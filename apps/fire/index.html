@@ -161,8 +161,10 @@ footer a:hover{text-decoration:underline}
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"HowTo","name":"Add Fire to your Home Screen","description":"Install Fire, a free offline habit tracker and daily ritual checklist, straight from the browser on iPhone, iPad, Android or desktop. No App Store, no download, no signup.","totalTime":"PT1M","tool":[{"@type":"HowToTool","name":"Safari on iPhone or iPad"},{"@type":"HowToTool","name":"Chrome on Android"},{"@type":"HowToTool","name":"Chrome or Edge on desktop"}],"step":[{"@type":"HowToStep","name":"Open Fire in the right browser.","text":"On an iPhone or iPad, open this page in Safari — iOS only allows a web app onto the Home Screen from Safari, not from Chrome and not from an in-app browser. On Android, open it in Chrome. On a desktop computer, open it in Chrome or Edge.","url":"https://yusuf-gadelrab.github.io/apps/fire/#install"},{"@type":"HowToStep","name":"Open your browser’s install control.","text":"In Safari on iPhone or iPad, tap the Share button in the bottom toolbar — the square with an arrow pointing up out of it. In Chrome on Android, tap the three-dot menu in the top corner. In Chrome or Edge on desktop, click the install icon at the right-hand end of the address bar, or open the three-dot menu.","url":"https://yusuf-gadelrab.github.io/apps/fire/#install"},{"@type":"HowToStep","name":"Choose “Add to Home Screen” or “Install app”.","text":"Safari lists it as “Add to Home Screen”, a little way down the share sheet under the row of share targets. Chrome on Android calls it “Install app”, or “Add to Home screen” on older versions, and may also raise its own install banner on the page. Chrome and Edge on desktop call it “Install…”.","url":"https://yusuf-gadelrab.github.io/apps/fire/#install"},{"@type":"HowToStep","name":"Confirm the install.","text":"Tap “Add” in Safari, or confirm the prompt in Chrome or Edge. Fire then lands on your Home Screen, in your app drawer or on your desktop, and opens full screen with no address bar around it.","url":"https://yusuf-gadelrab.github.io/apps/fire/#install"}]}</script>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","@id":"https://yusuf-gadelrab.github.io/apps/fire/#faq","mainEntity":[{"@type":"Question","name":"Does Fire work offline?","acceptedAnswer":{"@type":"Answer","text":"Yes. After the first load a service worker keeps the whole app cached on your device, so it opens and runs with no connection at all. The daily reset, the progress ring and the streak are all computed on the device itself, so airplane mode changes nothing."}},{"@type":"Question","name":"Do I need an account to use Fire?","acceptedAnswer":{"@type":"Answer","text":"No. There is no signup, no login, no email address and no password. Open the page, edit the list, and start ticking things off."}},{"@type":"Question","name":"Where is my data stored?","acceptedAnswer":{"@type":"Answer","text":"In your browser’s localStorage, on the one device you typed it into. Fire has no backend, so nothing is uploaded, nothing is analysed and nobody — including me — can see your list."}},{"@type":"Question","name":"What happens if I clear my browser data?","acceptedAnswer":{"@type":"Answer","text":"Your tasks, your ticks and your streak history are deleted, because that is the only place they live. Nothing syncs to another device and there is no cloud copy to restore from. If the streak matters to you, press Export JSON now and then and keep the file somewhere safe — Import JSON loads it straight back."}},{"@type":"Question","name":"Can I use Fire on my iPhone?","acceptedAnswer":{"@type":"Answer","text":"Yes. Open the page in Safari and add it to your Home Screen, and it behaves like an installed app — its own icon, full screen, no App Store account and no download. On iOS this only works from Safari."}},{"@type":"Question","name":"Does Fire send notifications or reminders?","acceptedAnswer":{"@type":"Answer","text":"No. Fire never asks for notification permission and has no push, no reminders and no badges. You open it when you sit down to work and the list is waiting."}},{"@type":"Question","name":"Is Fire free?","acceptedAnswer":{"@type":"Answer","text":"Yes. It is free, with no trial, no paid tier, no ads and nothing locked behind a purchase. I built it to run my own day and left it open for anyone who wants it."}}]}</script>
 <link rel="alternate" type="text/plain" href="https://yusuf-gadelrab.github.io/llms-full.txt" title="Plain-text profile for language models">
+<style>.skip-link{position:absolute;left:12px;top:-60px;z-index:1000;padding:10px 16px;background:#D4AF37;color:#0a0a0a;font:600 14px/1 system-ui,sans-serif;text-decoration:none;border-radius:6px;transition:top .2s ease}.skip-link:focus{top:12px}@media print{.skip-link{display:none!important}}</style>
 </head>
 <body>
+<a class="skip-link" href="#main">Skip to content</a>
 <div id="topbar" aria-hidden="true">
   <div class="bar-inner">
     <span class="bar-brand">DHAHAB · Fire</span>
@@ -185,6 +187,7 @@ footer a:hover{text-decoration:underline}
       <li><span aria-current="page">Fire</span></li>
     </ol>
   </nav>
+<div id="main" role="main" tabindex="-1">
 <div class="card">
   <div class="hero">
     <div class="stat-tile">
@@ -222,7 +225,7 @@ footer a:hover{text-decoration:underline}
 
 <div class="card">
   <div class="row" style="margin-top:0">
-    <input id="newTask" placeholder="Add task…" enterkeyhint="done">
+    <input id="newTask" aria-label="New task" placeholder="Add task…" enterkeyhint="done">
     <button class="btn" id="addBtn">Add</button>
   </div>
 </div>
@@ -538,5 +541,6 @@ try{
   if('serviceWorker' in navigator) navigator.serviceWorker.register('sw.js');
 }catch(e){}
 </script>
+</div>
 </body>
 </html>

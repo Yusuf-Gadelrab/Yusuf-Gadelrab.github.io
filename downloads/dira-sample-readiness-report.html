@@ -85,7 +85,7 @@ footer{margin-top:70px;padding-top:26px;border-top:1px solid var(--line);color:v
 <p>Nothing found here is unusual for a company at this stage — what matters to an enterprise buyer is the trajectory. Close the Week 1 items, re-run the scan, and you walk into the next security questionnaire with evidence instead of promises.</p>
 <h2 class='page'>Prioritized findings</h2>
 <p class='dim'>P0 fix this week · P1 this month · P2 this quarter · P3 housekeeping. One row per issue type; counts show total occurrences.</p>
-<table><thead><tr><th>Priority</th><th>Finding</th><th>Impact</th><th>Effort</th><th>What it means / what to do</th></tr></thead>
+<div class="table-wrap" tabindex="0" role="region" aria-label="Scrollable table"><table><thead><tr><th>Priority</th><th>Finding</th><th>Impact</th><th>Effort</th><th>What it means / what to do</th></tr></thead>
 <tr><td class='pri'>P1</td><td><span class='pill' style='--sev:#ff8c42'>high</span><br>SQL built by string concatenation<div style='margin-top:6px'><span class='mono'>setup_fixture.sh:30</span></div></td><td>High</td><td>Low</td><td>A misconfiguration that widens your attack surface or fails a security review.<div class='dim' style='margin-top:6px'><b style='color:var(--gold)'>Fix:</b> Use parameterized queries / bound placeholders.</div></td></tr>
 <tr><td class='pri'>P1</td><td><span class='pill' style='--sev:#ff8c42'>high</span><br>TLS verification disabled<div style='margin-top:6px'><span class='mono'>setup_fixture.sh:34</span></div></td><td>High</td><td>Low</td><td>A misconfiguration that widens your attack surface or fails a security review.<div class='dim' style='margin-top:6px'><b style='color:var(--gold)'>Fix:</b> Never disable certificate verification; pin a CA bundle instead.</div></td></tr>
 <tr><td class='pri'>P2</td><td><span class='pill' style='--sev:#d4af37'>medium</span><br>Missing: Dependencies are lock-pinned</td><td>Moderate</td><td>Low</td><td>Missing process evidence a buyer&#x27;s security questionnaire asks for.<div class='dim' style='margin-top:6px'><b style='color:var(--gold)'>Fix:</b> Commit a lockfile (package-lock.json / uv.lock / poetry.lock / Cargo.lock).</div></td></tr>
@@ -106,7 +106,7 @@ footer{margin-top:70px;padding-top:26px;border-top:1px solid var(--line);color:v
 <tr><td class='pri'>P3</td><td><span class='pill' style='--sev:#8a8a8a'>info</span><br>Missing: License declared</td><td>Low</td><td>Low</td><td>Missing process evidence a buyer&#x27;s security questionnaire asks for.<div class='dim' style='margin-top:6px'><b style='color:var(--gold)'>Fix:</b> Add a LICENSE file.</div></td></tr>
 <tr><td class='pri'>P3</td><td><span class='pill' style='--sev:#8a8a8a'>info</span><br>Missing: Reproducible build/runtime definition</td><td>Low</td><td>Medium</td><td>Missing process evidence a buyer&#x27;s security questionnaire asks for.<div class='dim' style='margin-top:6px'><b style='color:var(--gold)'>Fix:</b> Add a Dockerfile (non-root, pinned base image).</div></td></tr>
 <tr><td class='pri'>P3</td><td><span class='pill' style='--sev:#8a8a8a'>info</span><br>Missing: Privacy policy / data handling documented</td><td>Low</td><td>Medium</td><td>Missing process evidence a buyer&#x27;s security questionnaire asks for.<div class='dim' style='margin-top:6px'><b style='color:var(--gold)'>Fix:</b> Publish a privacy policy and record what personal data you store and where.</div></td></tr>
-</table>
+</table></div>
 <h2 class='page'>30-day remediation roadmap</h2>
 <div class='week'><div class='wk'>Week 1 — Stop the bleeding + quick wins</div>
 <ul style='margin-top:10px'>
@@ -143,7 +143,7 @@ footer{margin-top:70px;padding-top:26px;border-top:1px solid var(--line);color:v
 <h2 class='page'>Security readiness scorecard · 0%</h2>
 <div class='meter'><i style='width:0%'></i></div>
 <p class='dim'>0 of 80 points · 18 checks weighted by what enterprise security reviews actually ask.</p>
-<table><thead><tr><th></th><th>Check</th><th>Pts</th><th>Why it matters / how to close it</th></tr></thead>
+<div class="table-wrap" tabindex="0" role="region" aria-label="Scrollable table"><table><thead><tr><th></th><th>Check</th><th>Pts</th><th>Why it matters / how to close it</th></tr></thead>
 <tr><td><span class='no'>✘</span></td><td>Dependencies are lock-pinned</td><td>6</td><td>Unpinned deps mean an attacker who takes over a maintainer account ships straight to prod.<div class='dim' style='margin-top:5px'><b style='color:var(--gold)'>Close it:</b> Commit a lockfile (package-lock.json / uv.lock / poetry.lock / Cargo.lock).</div></td></tr>
 <tr><td><span class='no'>✘</span></td><td>Automated dependency updates</td><td>6</td><td>Most breaches start with a known CVE nobody upgraded.<div class='dim' style='margin-top:5px'><b style='color:var(--gold)'>Close it:</b> Add .github/dependabot.yml or renovate.json.</div></td></tr>
 <tr><td><span class='no'>✘</span></td><td>Continuous integration configured</td><td>5</td><td>No CI means nothing is verified before it ships.<div class='dim' style='margin-top:5px'><b style='color:var(--gold)'>Close it:</b> Add a CI workflow that installs, lints, and tests on every PR.</div></td></tr>
@@ -162,10 +162,10 @@ footer{margin-top:70px;padding-top:26px;border-top:1px solid var(--line);color:v
 <tr><td><span class='no'>✘</span></td><td>Backup / recovery documented</td><td>4</td><td>Ransomware and a bad migration have the same fix: tested restores.<div class='dim' style='margin-top:5px'><b style='color:var(--gold)'>Close it:</b> Document backup schedule, retention, and a tested restore procedure.</div></td></tr>
 <tr><td><span class='no'>✘</span></td><td>Privacy policy / data handling documented</td><td>3</td><td>Required before you can legally take EU or enterprise customer data.<div class='dim' style='margin-top:5px'><b style='color:var(--gold)'>Close it:</b> Publish a privacy policy and record what personal data you store and where.</div></td></tr>
 <tr><td><span class='no'>✘</span></td><td>License declared</td><td>2</td><td>Diligence flags unlicensed code as an IP risk.<div class='dim' style='margin-top:5px'><b style='color:var(--gold)'>Close it:</b> Add a LICENSE file.</div></td></tr>
-</table>
+</table></div>
 <h2 class='page'>Appendix — SOC 2 &amp; vendor-questionnaire readiness</h2>
 <p>When an enterprise prospect sends a security questionnaire, these are the questions behind it. “Evidenced” means this assessment found repository evidence you can point to; “gap” means answer honestly and attach the roadmap date. Buyers accept gaps with dates — they reject surprises.</p>
-<table><thead><tr><th>Status</th><th>Buyer question</th><th>SOC 2 control</th><th>Your answer today</th></tr></thead>
+<div class="table-wrap" tabindex="0" role="region" aria-label="Scrollable table"><table><thead><tr><th>Status</th><th>Buyer question</th><th>SOC 2 control</th><th>Your answer today</th></tr></thead>
 <tr><td><span class='no'>Gap</span></td><td>Do you pin and verify third-party dependency versions?</td><td class='dim'>CC8.1 — Change management</td><td>Not yet — say so, and commit to a date. Close it: Commit a lockfile (package-lock.json / uv.lock / poetry.lock / Cargo.lock).</td></tr>
 <tr><td><span class='no'>Gap</span></td><td>How do you identify and remediate vulnerable dependencies?</td><td class='dim'>CC7.1 — Vulnerability management</td><td>Not yet — say so, and commit to a date. Close it: Add .github/dependabot.yml or renovate.json.</td></tr>
 <tr><td><span class='no'>Gap</span></td><td>Are changes built and tested automatically before deployment?</td><td class='dim'>CC8.1 — Change management</td><td>Not yet — say so, and commit to a date. Close it: Add a CI workflow that installs, lints, and tests on every PR.</td></tr>
@@ -184,7 +184,7 @@ footer{margin-top:70px;padding-top:26px;border-top:1px solid var(--line);color:v
 <tr><td><span class='no'>Gap</span></td><td>Describe your backup schedule, retention, and most recent tested restore.</td><td class='dim'>A1.2 — Availability &amp; recovery</td><td>Not yet — say so, and commit to a date. Close it: Document backup schedule, retention, and a tested restore procedure.</td></tr>
 <tr><td><span class='no'>Gap</span></td><td>Do you publish a privacy policy and maintain a record of personal data processing?</td><td class='dim'>P1–P8 — Privacy criteria</td><td>Not yet — say so, and commit to a date. Close it: Publish a privacy policy and record what personal data you store and where.</td></tr>
 <tr><td><span class='no'>Gap</span></td><td>Is the intellectual-property status of your codebase and dependencies documented?</td><td class='dim'>CC1.x — Governance (IP diligence)</td><td>Not yet — say so, and commit to a date. Close it: Add a LICENSE file.</td></tr>
-</table>
+</table></div>
 <h3>Manual attestations — outside a repository’s evidence</h3>
 <p class='dim'>These cannot be verified from code. Complete and keep them current; every serious questionnaire asks.</p><ul>
 <li>☐ MFA enforced on GitHub, cloud, email, and the domain registrar</li>
