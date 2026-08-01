@@ -211,7 +211,7 @@ const siteData = {
     {
       title: 'Modeling & Creator Portfolio',
       stack: 'Athletic/Commercial · 650K+ IG Views/30d · San Jose',
-      image: process.env.PUBLIC_URL + '/img/yusuf-candid.jpg',
+      image: process.env.PUBLIC_URL + '/img/yusuf-candid.webp',
       link: process.env.PUBLIC_URL + '/modeling.html',
       linkLabel: 'View portfolio & digitals →',
       desc:
@@ -258,7 +258,7 @@ const siteData = {
     {
       title: 'EventReels — Your Night, Already Edited',
       stack: 'Python · ffmpeg · FastAPI · Scene + Audio Analysis',
-      image: process.env.PUBLIC_URL + '/projects/eventreels.jpg',
+      image: process.env.PUBLIC_URL + '/projects/eventreels.webp',
       link: 'https://github.com/Yusuf-Gadelrab/eventreels',
       linkLabel: 'View on GitHub →',
       desc:
@@ -267,7 +267,7 @@ const siteData = {
     {
       title: 'EdgeLog — Your Edge as a Number, Not a Vibe',
       stack: 'FastAPI · SQLite · SVG Charts · Quant Metrics',
-      image: process.env.PUBLIC_URL + '/projects/edgelog.jpg',
+      image: process.env.PUBLIC_URL + '/projects/edgelog.webp',
       link: 'https://github.com/Yusuf-Gadelrab/edgelog',
       linkLabel: 'View on GitHub →',
       desc:
@@ -276,7 +276,7 @@ const siteData = {
     {
       title: 'EcoImpact — Fix the World, See the Proof',
       stack: 'FastAPI · Leaflet · OpenStreetMap · SQLite',
-      image: process.env.PUBLIC_URL + '/projects/ecoimpact.jpg',
+      image: process.env.PUBLIC_URL + '/projects/ecoimpact.webp',
       link: 'https://github.com/Yusuf-Gadelrab/ecoimpact',
       linkLabel: 'View on GitHub →',
       desc:
@@ -286,8 +286,9 @@ const siteData = {
       title: 'swing-screener — Setups as Numbers, Not Gut Feel',
       stack: 'Python · pandas · uv · Backtest Harness',
       image: '',
-      link: '',
-      privateRepo: true,
+      link: 'https://github.com/Yusuf-Gadelrab/swing-screener',
+      linkLabel: 'View on GitHub →',
+      privateRepo: false,
       desc:
         'A swing-trading screener that scans OHLC price history for three classic setups — anchored-VWAP reclaim, VCP contraction, and opening-range breakout — and flags candidates instead of me eyeballing charts. A built-in backtest harness replays each setup over historical data and reports hit-rate and expectancy in R, so a pattern earns its place by the numbers or gets cut. Finance-aware, stdlib-and-pandas light, packaged with uv.',
     },
@@ -765,7 +766,7 @@ function SiteNav({ page, go, brand }) {
   return (
     <nav className="site-nav">
       <a className="site-nav__brand" href="/" onClick={home}>
-        <img className="site-nav__lion" src="/img/brand/lion-mark.svg" alt="" width="34" height="34" />
+        <img className="site-nav__lion" src="/img/brand/lion-mark.svg" alt="" width="34" height="34" decoding="async" />
         <span>{brand.name.toUpperCase()}</span>
       </a>
       <div className="site-nav__links">
@@ -820,7 +821,7 @@ function SiteFooter({ contact, brand }) {
     <ComplianceNote />
     <footer className="site-footer">
       <div>
-        <img className="lion-mark" src="/img/brand/lion-mark.svg" alt="" width="40" height="40"
+        <img className="lion-mark" src="/img/brand/lion-mark.svg" alt="" width="40" height="40" loading="lazy" decoding="async"
              style={{ opacity: .85, marginBottom: 12 }} />
         <div>{brand.name} — San Jose, CA</div>
         <div><a href={`mailto:${contact.email}`}>{contact.email}</a> · {contact.phone}</div>
@@ -883,7 +884,7 @@ function Home({ d, go }) {
           </p>
         </div>
         {d.home.heroImage && (
-          <img className="hero-photo" src={d.home.heroImage} alt={d.brand.name}
+          <img className="hero-photo" src={d.home.heroImage} alt={`${d.brand.name}, professional headshot in a suit with a gold frame border`} decoding="async"
             width="620" height="618" />
         )}
       </div>
@@ -1084,9 +1085,9 @@ function About({ d }) {
       {/* #yg-about-photo is the hook index.html's photo script styles (and skips
           injecting into, because it is already here) */}
       <figure id="yg-about-photo">
-        <img src={`${process.env.PUBLIC_URL}/img/yusuf-headshot.jpg`}
+        <img src={`${process.env.PUBLIC_URL}/img/yusuf-headshot.webp`}
           alt="Yusuf Gadelrab, professional headshot in a suit with a gold frame border"
-          width="700" height="749" loading="lazy" />
+          width="700" height="749" loading="lazy" decoding="async" />
         <figcaption>Yusuf Gadelrab · San Jose, CA</figcaption>
       </figure>
       <div className="row" style={{ marginBottom: 'var(--s5)' }}>
@@ -1232,7 +1233,7 @@ function GalleryGrid({ items }) {
       {items.map((g, i) => (
         <div className="gallery-tile reveal" key={i} style={{ transitionDelay: `${i * 70}ms` }}>
           {g.image
-            ? <img src={g.image} alt={g.caption || ''} loading="lazy" />
+            ? <img src={g.image} alt={g.caption || ''} loading="lazy" decoding="async" />
             : <GenArt seed={i + 11} variant={['flow', 'code', 'web', 'finance'][i % 4]} />}
           {g.caption && <div className="gallery-cap">{g.caption}</div>}
         </div>
