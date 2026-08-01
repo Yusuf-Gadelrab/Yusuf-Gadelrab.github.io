@@ -124,9 +124,8 @@
   .cta .btnrow{display:flex;flex-wrap:wrap;gap:var(--s3);margin-top:var(--s5)}
 
   /* FAQ, grouped per calculator */
-  .grp-head{display:flex;flex-wrap:wrap;gap:var(--s3);align-items:baseline;
-    justify-content:space-between}
-  .grp-head h2{margin:var(--s2) 0 0}
+  .grp-head h2{margin:var(--s2) 0 var(--s3)}
+  .grp-head > p:last-child{margin:0}
   .faqgrp + .faqgrp{margin-top:var(--s6)}
   .faqgrp__k{font-family:var(--display-pro);font-weight:600;font-size:var(--t-micro);
     letter-spacing:2px;text-transform:uppercase;color:var(--gold-dim);
@@ -153,7 +152,7 @@
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebPage","@id":"https://yusuf-gadelrab.github.io/freight-tools.html#webpage","url":"https://yusuf-gadelrab.github.io/freight-tools.html","inLanguage":"en","isPartOf":{"@id":"https://yusuf-gadelrab.github.io/#website"},"about":{"@id":"https://yusuf-gadelrab.github.io/#person"},"publisher":{"@id":"https://yusuf-gadelrab.github.io/#person"}}</script>
 <link rel="alternate" type="text/plain" href="https://yusuf-gadelrab.github.io/llms-full.txt" title="Plain-text profile for language models">
 <!-- geo:faq — extractable Q&A for answer engines -->
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","@id":"https://yusuf-gadelrab.github.io/freight-tools.html#faq","mainEntity":[{"@type":"Question","name":"How do you calculate rate per mile for a freight load?","acceptedAnswer":{"@type":"Answer","text":"Divide the linehaul revenue by the miles. Loaded rate per mile uses only the pickup-to-delivery miles, so $2,450 over 1,180 loaded miles is $2.076 per mile. All-in rate per mile puts the empty miles in the denominator too, so the same load across 1,320 total miles is $1.856 per mile."}},{"@type":"Question","name":"What is all-in rate per mile and why is it lower?","acceptedAnswer":{"@type":"Answer","text":"All-in rate per mile spreads the same linehaul across every mile the truck turns, loaded and empty. It is always lower than loaded rate per mile whenever there is any deadhead, because the numerator never changes and the denominator grows. On the $2,450 example, 140 deadhead miles pull the rate from $2.076 down to $1.856, a difference of $0.220 per mile."}},{"@type":"Question","name":"What is a good rate per mile for a dry van load?","acceptedAnswer":{"@type":"Answer","text":"There is no universal number and this page ships no rate index, so it cannot honestly give you one. A good rate is any rate above your own break-even per mile with enough left over to pay for the risk, and that floor is different for every operation. Run calculator 06 on your real fixed and variable costs first, then judge the load against that instead of against a figure you read somewhere."}},{"@type":"Question","name":"Should the fuel surcharge be included in rate per mile?","acceptedAnswer":{"@type":"Answer","text":"Either way works as long as you say which one you mean. Linehaul-only rate per mile is what brokers and carriers usually quote when they compare lanes, while all-in rate per mile including the surcharge is what actually lands on the invoice. Mixing the two inside one conversation is how two people end up arguing about a lane that is not really in dispute."}},{"@type":"Question","name":"Why do two loads at the same rate per mile pay so differently?","acceptedAnswer":{"@type":"Answer","text":"Rate per mile has no time in it. Two loads at $2.00 pay very differently if one is a drop-and-hook that is empty again in forty minutes and the other sits four hours at a live unload, and differently again if one customer pays in 15 days and the other in 60. Deadhead, detention exposure, lane repeatability and days-to-pay all sit outside the formula."}},{"@type":"Question","name":"What is deadhead in trucking?","acceptedAnswer":{"@type":"Answer","text":"Deadhead is any mile the truck runs empty, most often the repositioning run from the last delivery to the next pickup. Nobody is billed for those miles, but fuel, tires, driver pay and hours of service are consumed exactly as they would be under load."}},{"@type":"Question","name":"How do you calculate the cost of deadhead miles?","acceptedAnswer":{"@type":"Answer","text":"Multiply the empty miles by your operating cost per mile, fuel plus everything that is not fuel. At 140 empty miles, $3.85 diesel and 6.0 MPG, fuel alone is $89.83; add $1.21 per mile for driver pay, tires, maintenance and allocated fixed cost and the true cost is $259.23. Pricing deadhead as fuel only understates it by more than half."}},{"@type":"Question","name":"Should I take a load with a long deadhead?","acceptedAnswer":{"@type":"Answer","text":"Compare the deadhead cost against what the load pays after that cost, not against the headline rate. Spread across 1,180 loaded miles, a $259 empty run costs $0.220 per loaded mile, which turns a $2.076 load into roughly $1.86. Direction matters as much as distance: empty miles toward a strong outbound market can pay for themselves, while the same miles deeper into a dead market cost you the next load as well as this one."}},{"@type":"Question","name":"How many deadhead miles are too many?","acceptedAnswer":{"@type":"Answer","text":"There is no fixed percentage worth quoting, because this is a dollar question rather than a ratio question. The honest test is whether the load still clears your break-even once the empty miles, the empty hours and the market you land in are all counted. A short deadhead into a dead area can be worse than a long one into a strong one."}},{"@type":"Question","name":"Do brokers pay for deadhead miles?","acceptedAnswer":{"@type":"Answer","text":"Not as a separate line item in most spot transactions. Deadhead is normally priced into the linehaul, which is exactly why carrier and broker often disagree about what a load is worth: the carrier is looking at the all-in number and the broker is looking at the loaded one. Some contract and dedicated agreements do pay empty mileage explicitly, so read the rate confirmation."}},{"@type":"Question","name":"How do you calculate a freight broker's margin?","acceptedAnswer":{"@type":"Answer","text":"Margin in dollars is the customer rate minus the carrier rate. Margin percent is that spread divided by the customer rate, so $2,450 billed with $2,050 paid to the truck is a $400 spread and a 16.3% margin. Brokerage income statements measure margin against revenue, which is the convention this calculator follows."}},{"@type":"Question","name":"What is the difference between margin and markup?","acceptedAnswer":{"@type":"Answer","text":"Margin divides the spread by the customer rate; markup divides it by the carrier rate. The same $400 on a $2,450 load is a 16.3% margin and a 19.5% markup, both correct and 3.2 points apart. A twenty percent load therefore means two different carrier rates depending on which one the other person meant, so name the denominator out loud."}},{"@type":"Question","name":"What is a good freight broker margin percentage?","acceptedAnswer":{"@type":"Answer","text":"It depends on the lane, the mode, the season and how the freight was won, and this page has no benchmark data to offer, so any single industry average quoted without your lane behind it is not worth pricing against. Compare your own lanes to each other over time instead. Percent alone is also vanity on small freight: 15% is $60 on a $400 load and $600 on a $4,000 load, and the $60 one can easily cost more to cover."}},{"@type":"Question","name":"How much does a broker make on a load?","acceptedAnswer":{"@type":"Answer","text":"The spread, minus everything the spread still has to pay for. Gross margin is not profit: it has not yet covered the load board subscription, the factoring or quick-pay discount, contingent cargo and liability insurance, the claim nobody has told you about yet, or the salary of the person who covered the load. Net per load is a much smaller number than the percentage on the screen."}},{"@type":"Question","name":"Does margin percent account for how long the customer takes to pay?","acceptedAnswer":{"@type":"Answer","text":"No, and that is one of its largest blind spots. A 16.3% margin collected in 15 days and the same 16.3% collected in 75 days are very different businesses, because the carrier usually has to be paid long before the customer pays you. Factoring or quick-pay closes that gap and takes a cut of the spread to do it, none of which shows up in the percentage."}},{"@type":"Question","name":"How do you calculate detention pay?","acceptedAnswer":{"@type":"Answer","text":"Subtract the free time from the total time on site, then multiply the remaining hours by the contracted hourly rate. Four and a half hours on site against a two hour free window leaves 2.5 billable hours, which at $65 an hour is $162.50. Any per-stop or per-day cap in the contract is applied after that."}},{"@type":"Question","name":"What is a typical detention rate per hour?","acceptedAnswer":{"@type":"Answer","text":"There is no standard rate and none is bundled here, because detention rates, free time and caps are all negotiated per contract or per rate confirmation. The only rate that matters on a given load is the one written on that load's paperwork. Type your own figure into the calculator rather than a number you found online."}},{"@type":"Question","name":"How do you bill detention so it actually gets paid?","acceptedAnswer":{"@type":"Answer","text":"Get the accessorial and its rate onto the rate confirmation before the truck rolls, then capture signed in and out times on the bill of lading or a check-in slip. Notify the broker or shipper while the truck is still sitting rather than after the fact, and invoice with the documentation attached. A driver's recollection and an ELD ping are weaker evidence than a stamped document, and that is the ground most detention claims are lost on."}},{"@type":"Question","name":"Do shippers actually pay detention?","acceptedAnswer":{"@type":"Answer","text":"A meaningful share of billed detention is never collected, usually for one of three reasons: it was not on the rate confirmation, the in and out times were never documented, or a cap in the contract quietly absorbed it. Treat detention as revenue you might get rather than revenue you have, and never price a load on the assumption that it will be paid."}},{"@type":"Question","name":"Is detention billed in whole hours or partial hours?","acceptedAnswer":{"@type":"Answer","text":"That is a contract term rather than a rule, and it moves real money. The 2.5 billable hours above are $162.50 at exact time, $195.00 if the contract rounds up to whole hours, and $130.00 if it rounds down. Check which convention your rate confirmation uses before you invoice."}},{"@type":"Question","name":"How is a fuel surcharge calculated?","acceptedAnswer":{"@type":"Answer","text":"Subtract the base fuel price written into your schedule from the current diesel price, then divide by the miles per gallon the schedule assumes. With a $1.25 base, $3.85 diesel and 6.0 MPG that is $0.4333 per mile, or $511.33 across 1,180 miles. Below the base price the surcharge is zero unless the contract runs a negative one."}},{"@type":"Question","name":"What is the DOE fuel index?","acceptedAnswer":{"@type":"Answer","text":"It is the weekly on-highway diesel average published by the U.S. Energy Information Administration, and most fuel surcharge schedules peg to it. It publishes once a week and reports prices already paid, so it lags the pump whenever diesel is moving fast. Many contracts peg to a regional average rather than the national one, so check which series yours actually names."}},{"@type":"Question","name":"What base fuel price should a fuel surcharge use?","acceptedAnswer":{"@type":"Answer","text":"Whatever the contract says, which is why the base is worth negotiating rather than accepting. It is the single biggest lever in the formula: the same $3.85 diesel pays $0.4333 per mile against a $1.25 peg and $0.2250 per mile against a $2.50 peg, a $245.83 difference on 1,180 miles of identical fuel. A base that was set years ago and never revisited is usually working against somebody."}},{"@type":"Question","name":"Does the fuel surcharge apply to deadhead miles?","acceptedAnswer":{"@type":"Answer","text":"Only if the contract says so, and plenty of schedules apply it to loaded miles only. That matters because the truck burns the same diesel empty as it does loaded, so a loaded-miles-only surcharge leaves the empty fuel entirely on the carrier. Check which mileage basis your schedule uses before you agree to it."}},{"@type":"Question","name":"Why does my fuel surcharge not match what I paid at the pump?","acceptedAnswer":{"@type":"Answer","text":"Three things usually explain the gap: the index lags, the assumed MPG is optimistic, and the mileage basis is narrower than the miles actually driven. The MPG term is quietly the most expensive of the three. The same $2.60 spread pays $0.4333 per mile at 6.0 MPG and $0.3714 per mile at 7.0 MPG, a $73.04 difference on one 1,180-mile load."}},{"@type":"Question","name":"How do you calculate break-even for a trucking load?","acceptedAnswer":{"@type":"Answer","text":"Add the fixed cost allocated to the trip to the variable cost per mile times the total miles, loaded and empty. Two days at $210 a day of fixed cost plus $0.92 a mile across 1,180 miles is $420 plus $1,085.60, or $1,505.60. That works out to $1.276 per mile before the load has earned a cent."}},{"@type":"Question","name":"What is a typical cost per mile for an owner-operator?","acceptedAnswer":{"@type":"Answer","text":"This page has no cost benchmark to give you, and borrowing someone else's number is how operators end up hauling at a loss behind a healthy-looking rate per mile. Your cost per mile comes out of your own settlements, fuel receipts, insurance premiums and payment schedule. Build it once, update it quarterly, and treat it as the only floor that matters."}},{"@type":"Question","name":"How do I know if a load is profitable?","acceptedAnswer":{"@type":"Answer","text":"Price the whole trip rather than the rate. Against the $1,505.60 trip above, a $1,450 load is $55.60 underwater before the truck leaves the yard, even though the rate per mile looks survivable. Add the empty miles to get there, the hours nobody will pay for, and the day the truck may sit waiting on the next load."}},{"@type":"Question","name":"Why divide by one minus the margin instead of multiplying by one plus it?","acceptedAnswer":{"@type":"Answer","text":"Because margin is measured against revenue, not against cost. To clear 15% on a $1,505.60 trip you need $1,505.60 divided by 0.85, which is $1,771.29; multiplying by 1.15 gives $1,731.44 and lands $39.85 short. Marking cost up by the margin percentage undershoots the target every single time."}},{"@type":"Question","name":"What costs do people forget in cost per mile?","acceptedAnswer":{"@type":"Answer","text":"The ones that never arrive as a fuel receipt. Truck and trailer payments, physical damage and liability insurance, occupational accident or workers compensation coverage, plates and permits, IFTA, the ELD subscription, parking, tolls and accounting all belong in the fixed number, and it has to be spread over the days the truck actually runs rather than every day on the calendar. Unpaid detention, empty repositioning and an idle day between loads are what break the estimate in practice."}},{"@type":"Question","name":"Do I need a load board or TMS to use these calculators?","acceptedAnswer":{"@type":"Answer","text":"No. This is a single static page, all six calculators run in your own browser, and there is no account, no login, no backend and no integration with any load board or TMS. You type your own numbers in by hand."}},{"@type":"Question","name":"Do these calculators send my rates anywhere?","acceptedAnswer":{"@type":"Answer","text":"No. The page makes no network calls that carry your input: there is no form submission, no analytics and no server call, so customer rates, carrier rates and margins stay on your machine. Your last-used inputs are saved in this browser's local storage only, which means nothing syncs between devices, nothing is backed up, and clearing site data deletes them."}}]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","@id":"https://yusuf-gadelrab.github.io/freight-tools.html#faq","mainEntity":[{"@type":"Question","name":"How do you calculate rate per mile for a freight load?","acceptedAnswer":{"@type":"Answer","text":"Divide the linehaul revenue by the miles. Loaded rate per mile uses only the pickup-to-delivery miles, so $2,450 over 1,180 loaded miles is $2.076 per mile. All-in rate per mile puts the empty miles in the denominator too, so the same load across 1,320 total miles is $1.856 per mile."}},{"@type":"Question","name":"What is all-in rate per mile and why is it lower?","acceptedAnswer":{"@type":"Answer","text":"All-in rate per mile spreads the same linehaul across every mile the truck turns, loaded and empty. It is always lower than loaded rate per mile whenever there is any deadhead, because the numerator never changes and the denominator grows. On the $2,450 example, 140 deadhead miles pull the rate from $2.076 down to $1.856, a difference of $0.220 per mile."}},{"@type":"Question","name":"What is a good rate per mile for a dry van load?","acceptedAnswer":{"@type":"Answer","text":"There is no universal number and this page ships no rate index, so it cannot honestly give you one. A good rate is any rate above your own break-even per mile with enough left over to pay for the risk, and that floor is different for every operation. Run calculator 06 on your real fixed and variable costs first, then judge the load against that instead of against a figure you read somewhere."}},{"@type":"Question","name":"Should the fuel surcharge be included in rate per mile?","acceptedAnswer":{"@type":"Answer","text":"Either way works as long as you say which one you mean. Linehaul-only rate per mile is what brokers and carriers usually quote when they compare lanes, while all-in rate per mile including the surcharge is what actually lands on the invoice. Mixing the two inside one conversation is how two people end up arguing about a lane that is not really in dispute."}},{"@type":"Question","name":"Why do two loads at the same rate per mile pay so differently?","acceptedAnswer":{"@type":"Answer","text":"Rate per mile has no time in it. Two loads at $2.00 pay very differently if one is a drop-and-hook that is empty again in forty minutes and the other sits four hours at a live unload, and differently again if one customer pays in 15 days and the other in 60. Deadhead, detention exposure, lane repeatability and days-to-pay all sit outside the formula."}},{"@type":"Question","name":"What is deadhead in trucking?","acceptedAnswer":{"@type":"Answer","text":"Deadhead is any mile the truck runs empty, most often the repositioning run from the last delivery to the next pickup. Nobody is billed for those miles, but fuel, tires, driver pay and hours of service are consumed exactly as they would be under load."}},{"@type":"Question","name":"How do you calculate the cost of deadhead miles?","acceptedAnswer":{"@type":"Answer","text":"Multiply the empty miles by your operating cost per mile, fuel plus everything that is not fuel. At 140 empty miles, $3.85 diesel and 6.0 MPG, fuel alone is $89.83; add $1.21 per mile for driver pay, tires, maintenance and allocated fixed cost and the true cost is $259.23. Pricing deadhead as fuel only understates it by more than half."}},{"@type":"Question","name":"Should I take a load with a long deadhead?","acceptedAnswer":{"@type":"Answer","text":"Compare the deadhead cost against what the load pays after that cost, not against the headline rate. Spread across 1,180 loaded miles, a $259 empty run costs $0.220 per loaded mile, which turns a $2.076 load into roughly $1.86. Direction matters as much as distance: empty miles toward a strong outbound market can pay for themselves, while the same miles deeper into a dead market cost you the next load as well as this one."}},{"@type":"Question","name":"How many deadhead miles are too many?","acceptedAnswer":{"@type":"Answer","text":"There is no fixed percentage worth quoting, because this is a dollar question rather than a ratio question. The honest test is whether the load still clears your break-even once the empty miles, the empty hours and the market you land in are all counted. A short deadhead into a dead area can be worse than a long one into a strong one."}},{"@type":"Question","name":"Do brokers pay for deadhead miles?","acceptedAnswer":{"@type":"Answer","text":"Not as a separate line item in most spot transactions. Deadhead is normally priced into the linehaul, which is exactly why carrier and broker often disagree about what a load is worth: the carrier is looking at the all-in number and the broker is looking at the loaded one. Some contract and dedicated agreements do pay empty mileage explicitly, so read the rate confirmation."}},{"@type":"Question","name":"How do you calculate a freight broker's margin?","acceptedAnswer":{"@type":"Answer","text":"Margin in dollars is the customer rate minus the carrier rate. Margin percent is that spread divided by the customer rate, so $2,450 billed with $2,050 paid to the truck is a $400 spread and a 16.3% margin. Brokerage income statements measure margin against revenue, which is the convention this calculator follows."}},{"@type":"Question","name":"What is the difference between margin and markup?","acceptedAnswer":{"@type":"Answer","text":"Margin divides the spread by the customer rate; markup divides it by the carrier rate. The same $400 on a $2,450 load is a 16.3% margin and a 19.5% markup, both correct and 3.2 points apart. A twenty percent load therefore means two different carrier rates depending on which one the other person meant, so name the denominator out loud."}},{"@type":"Question","name":"What is a good freight broker margin percentage?","acceptedAnswer":{"@type":"Answer","text":"It depends on the lane, the mode, the season and how the freight was won, and this page has no benchmark data to offer, so any single industry average quoted without your lane behind it is not worth pricing against. Compare your own lanes to each other over time instead. Percent alone is also vanity on small freight: 15% is $60 on a $400 load and $600 on a $4,000 load, and the $60 one can easily cost more to cover."}},{"@type":"Question","name":"How much does a broker make on a load?","acceptedAnswer":{"@type":"Answer","text":"The spread, minus everything the spread still has to pay for. Gross margin is not profit: it has not yet covered the load board subscription, the factoring or quick-pay discount, contingent cargo and liability insurance, the claim nobody has told you about yet, or the salary of the person who covered the load. Net per load is a much smaller number than the percentage on the screen."}},{"@type":"Question","name":"Does margin percent account for how long the customer takes to pay?","acceptedAnswer":{"@type":"Answer","text":"No, and that is one of its largest blind spots. A 16.3% margin collected in 15 days and the same 16.3% collected in 75 days are very different businesses, because the carrier usually has to be paid long before the customer pays you. Factoring or quick-pay closes that gap and takes a cut of the spread to do it, none of which shows up in the percentage."}},{"@type":"Question","name":"How do you calculate detention pay?","acceptedAnswer":{"@type":"Answer","text":"Subtract the free time from the total time on site, then multiply the remaining hours by the contracted hourly rate. Four and a half hours on site against a two hour free window leaves 2.5 billable hours, which at $65 an hour is $162.50. Any per-stop or per-day cap in the contract is applied after that."}},{"@type":"Question","name":"What is a typical detention rate per hour?","acceptedAnswer":{"@type":"Answer","text":"There is no standard rate and none is bundled here, because detention rates, free time and caps are all negotiated per contract or per rate confirmation. The only rate that matters on a given load is the one written on that load's paperwork. Type your own figure into the calculator rather than a number you found online."}},{"@type":"Question","name":"How do you bill detention so it actually gets paid?","acceptedAnswer":{"@type":"Answer","text":"Get the accessorial and its rate onto the rate confirmation before the truck rolls, then capture signed in and out times on the bill of lading or a check-in slip. Notify the broker or shipper while the truck is still sitting rather than after the fact, and invoice with the documentation attached. A driver's recollection and an ELD ping are weaker evidence than a stamped document, and that is the ground most detention claims are lost on."}},{"@type":"Question","name":"Do shippers actually pay detention?","acceptedAnswer":{"@type":"Answer","text":"A meaningful share of billed detention is never collected, usually for one of three reasons: it was not on the rate confirmation, the in and out times were never documented, or a cap in the contract quietly absorbed it. Treat detention as revenue you might get rather than revenue you have, and never price a load on the assumption that it will be paid."}},{"@type":"Question","name":"Is detention billed in whole hours or partial hours?","acceptedAnswer":{"@type":"Answer","text":"That is a contract term rather than a rule, and it moves real money. The 2.5 billable hours above are $162.50 at exact time, $195.00 if the contract rounds up to whole hours, and $130.00 if it rounds down. Check which convention your rate confirmation uses before you invoice."}},{"@type":"Question","name":"How is a fuel surcharge calculated?","acceptedAnswer":{"@type":"Answer","text":"Subtract the base fuel price written into your schedule from the current diesel price, then divide by the miles per gallon the schedule assumes. With a $1.25 base, $3.85 diesel and 6.0 MPG that is $0.4333 per mile, or $511.33 across 1,180 miles. Below the base price the surcharge is zero unless the contract runs a negative one."}},{"@type":"Question","name":"What is the DOE fuel index?","acceptedAnswer":{"@type":"Answer","text":"It is the weekly on-highway diesel average published by the U.S. Energy Information Administration, and most fuel surcharge schedules peg to it. It publishes once a week and reports prices already paid, so it lags the pump whenever diesel is moving fast. Many contracts peg to a regional average rather than the national one, so check which series yours actually names."}},{"@type":"Question","name":"What base fuel price should a fuel surcharge use?","acceptedAnswer":{"@type":"Answer","text":"Whatever the contract says, which is why the base is worth negotiating rather than accepting. It is the single biggest lever in the formula: the same $3.85 diesel pays $0.4333 per mile against a $1.25 peg and $0.2250 per mile against a $2.50 peg, a $245.83 difference on 1,180 miles of identical fuel. A base that was set years ago and never revisited is usually working against somebody."}},{"@type":"Question","name":"Does the fuel surcharge apply to deadhead miles?","acceptedAnswer":{"@type":"Answer","text":"Only if the contract says so, and plenty of schedules apply it to loaded miles only. That matters because the truck burns the same diesel empty as it does loaded, so a loaded-miles-only surcharge leaves the empty fuel entirely on the carrier. Check which mileage basis your schedule uses before you agree to it."}},{"@type":"Question","name":"Why does my fuel surcharge not match what I paid at the pump?","acceptedAnswer":{"@type":"Answer","text":"Three things usually explain the gap: the index lags, the assumed MPG is optimistic, and the mileage basis is narrower than the miles actually driven. The MPG term is quietly the most expensive of the three. The same $2.60 spread pays $0.4333 per mile at 6.0 MPG and $0.3714 per mile at 7.0 MPG, a $73.05 difference on one 1,180-mile load."}},{"@type":"Question","name":"How do you calculate break-even for a trucking load?","acceptedAnswer":{"@type":"Answer","text":"Add the fixed cost allocated to the trip to the variable cost per mile times the total miles, loaded and empty. Two days at $210 a day of fixed cost plus $0.92 a mile across 1,180 miles is $420 plus $1,085.60, or $1,505.60. That works out to $1.276 per mile before the load has earned a cent."}},{"@type":"Question","name":"What is a typical cost per mile for an owner-operator?","acceptedAnswer":{"@type":"Answer","text":"This page has no cost benchmark to give you, and borrowing someone else's number is how operators end up hauling at a loss behind a healthy-looking rate per mile. Your cost per mile comes out of your own settlements, fuel receipts, insurance premiums and payment schedule. Build it once, update it quarterly, and treat it as the only floor that matters."}},{"@type":"Question","name":"How do I know if a load is profitable?","acceptedAnswer":{"@type":"Answer","text":"Price the whole trip rather than the rate. Against the $1,505.60 trip above, a $1,450 load is $55.60 underwater before the truck leaves the yard, even though the rate per mile looks survivable. Add the empty miles to get there, the hours nobody will pay for, and the day the truck may sit waiting on the next load."}},{"@type":"Question","name":"Why divide by one minus the margin instead of multiplying by one plus it?","acceptedAnswer":{"@type":"Answer","text":"Because margin is measured against revenue, not against cost. To clear 15% on a $1,505.60 trip you need $1,505.60 divided by 0.85, which is $1,771.29; multiplying by 1.15 gives $1,731.44 and lands $39.85 short. Marking cost up by the margin percentage undershoots the target every single time."}},{"@type":"Question","name":"What costs do people forget in cost per mile?","acceptedAnswer":{"@type":"Answer","text":"The ones that never arrive as a fuel receipt. Truck and trailer payments, physical damage and liability insurance, occupational accident or workers compensation coverage, plates and permits, IFTA, the ELD subscription, parking, tolls and accounting all belong in the fixed number, and it has to be spread over the days the truck actually runs rather than every day on the calendar. Unpaid detention, empty repositioning and an idle day between loads are what break the estimate in practice."}},{"@type":"Question","name":"Do I need a load board or TMS to use these calculators?","acceptedAnswer":{"@type":"Answer","text":"No. This is a single static page, all six calculators run in your own browser, and there is no account, no login, no backend and no integration with any load board or TMS. You type your own numbers in by hand."}},{"@type":"Question","name":"Do these calculators send my rates anywhere?","acceptedAnswer":{"@type":"Answer","text":"No. The page makes no network calls that carry your input: there is no form submission, no analytics and no server call, so customer rates, carrier rates and margins stay on your machine. Your last-used inputs are saved in this browser's local storage only, which means nothing syncs between devices, nothing is backed up, and clearing site data deletes them."}}]}</script>
 <style>.geo-qa{padding:var(--s5)}.geo-qa h3{font-size:var(--t-h3);margin:0 0 var(--s3)}.geo-qa p{color:var(--muted);font-size:var(--t-small);margin:0}</style>
 </head>
 <body class="pro">
@@ -176,8 +175,28 @@
     <h1>Freight broker calculators</h1>
     <p class="lead">Six calculators for the numbers a broker runs all day: rate per mile, deadhead cost, margin, detention, fuel surcharge, and break-even. Every formula is printed on the page so you can check the math instead of trusting it.</p>
     <div class="note" style="margin-top:var(--s5)">
-      <b>About the pre-filled numbers:</b> every field starts with a round, made-up placeholder so the page has something to calculate. They are <b>not</b> market rates, benchmarks, or industry averages — overwrite them with your own figures. Nothing here is sent anywhere; your last-used inputs are saved only in this browser.
+      <b>Nothing you type leaves your browser.</b> These calculators contain no network calls that carry your input — no form submission, no analytics, no tracking, no server. Paste in real customer rates, carrier rates and margins: they stay on your machine.
     </div>
+
+    <div class="priv" style="margin-top:var(--s5)">
+      <div class="card card--flat" style="padding:var(--s5)">
+        <h3>No server, no account</h3>
+        <p>The whole page is static HTML and one inline script. There is no backend to send anything to, no login, no email gate and no integration with a load board or TMS. Every figure is computed on your own device.</p>
+      </div>
+      <div class="card card--flat" style="padding:var(--s5)">
+        <h3>Works offline after first load</h3>
+        <p>The page is cached by a service worker, so once you have opened it once it keeps working with no signal — at a dock, in a yard, or anywhere the bars run out.</p>
+      </div>
+      <div class="card card--flat" style="padding:var(--s5)">
+        <h3>Local storage only — and its tradeoff</h3>
+        <p>Your last-used inputs are saved in this browser's local storage so the page remembers them. There is no encryption, no backup and no sync: clearing site data deletes them, and nothing carries across to another device.</p>
+      </div>
+      <div class="card card--flat" style="padding:var(--s5)">
+        <h3>About the pre-filled numbers</h3>
+        <p>Every field starts with a round, made-up placeholder so the page has something to calculate. They are <b style="color:var(--ink)">not</b> market rates, benchmarks or industry averages — no rate index ships with this page. Overwrite them with your own figures.</p>
+      </div>
+    </div>
+
     <ul class="toc">
       <li><a href="#rpm">1 · Rate per mile</a></li>
       <li><a href="#deadhead">2 · Deadhead cost</a></li>
@@ -393,26 +412,33 @@ calculator 01 into <b>$1.857 /mi</b>, the same $1.86 the all-in RPM reports.</p>
       <div class="expl">
         <div class="expl__row">
           <h3 class="expl__k">What it computes</h3>
-          <p>The broker spread on one load: what you keep in dollars, what that is as a percent of the customer rate, and — working backwards — the carrier rate you would have to book to hit a target margin on that same customer rate. Useful before you post the load, not after.</p>
+          <p>The broker spread on one load: what you keep in dollars, that spread as a percent of the customer rate, and the same spread as a markup on what you paid the truck. Working backwards, it also returns the carrier rate you would have to book to hit a target margin on that same customer rate. Useful before you post the load, not after.</p>
         </div>
         <div class="expl__row">
           <h3 class="expl__k">The formula</h3>
-          <p class="formula"><b>Gross margin $</b>   = customer rate − carrier rate
-<b>Gross margin %</b>   = gross margin $ ÷ customer rate × 100
-<b>Carrier rate to hit target %</b> = customer rate × (1 − target % ÷ 100)</p>
+          <p class="formula"><b>Gross margin</b> ($)   = customer rate ($) − carrier rate ($)
+<b>Margin on revenue</b> (%) = gross margin ($) ÷ <b>customer rate</b> ($) × 100
+<b>Markup on cost</b> (%)    = gross margin ($) ÷ <b>carrier rate</b> ($) × 100
+<b>Carrier rate for target</b> ($) = customer rate ($) × [ 1 − target % ÷ 100 ]
+
+customer rate   all-in dollars invoiced to the shipper, linehaul + accessorials
+carrier rate    all-in dollars paid to the truck, linehaul + accessorials
+target %        your own margin goal measured against revenue, percent</p>
         </div>
         <div class="expl__row">
           <h3 class="expl__k">Worked example</h3>
-          <p class="formula">Customer $2,400 · carrier $2,000 · target 18%
+          <p class="formula">Customer $2,450 · carrier $2,050 · target 18%
 
-<b>Gross margin $</b> = 2,400 − 2,000            = <b>$400.00</b>
-<b>Gross margin %</b> = 400 ÷ 2,400 × 100        = <b>16.7%</b>  (on revenue)
-Markup on cost   = 400 ÷ 2,000 × 100        = <b>20.0%</b>  (different number)
-Carrier for 18%  = 2,400 × (1 − 0.18)       = <b>$1,968.00</b></p>
+<b>Gross margin</b>      = 2,450 − 2,050          = <b>$400.00</b>
+<b>Margin on revenue</b> = 400 ÷ 2,450 × 100      = <b>16.3%</b>
+<b>Markup on cost</b>    = 400 ÷ 2,050 × 100      = <b>19.5%</b>
+Carrier for 18%    = 2,450 × (1 − 0.18)     = <b>$2,009.00</b>
+
+Same $400. Two percentages, 3.2 points apart.</p>
         </div>
         <div class="expl__row">
           <h3 class="expl__k">When this number misleads you</h3>
-          <p>Margin percent on revenue is not markup on cost, and the two get traded back and forth inside the same phone call. That $400 is a 16.7% margin and a 20% markup — both correct, 3.3 points apart, and a "20% load" means two different carrier rates depending on which one the other person meant. Every percentage on this page is measured against the customer rate, which is the brokerage P&amp;L convention. The second trap is treating gross margin as profit: it has not yet paid the load board, the factoring or quick-pay fee, contingent cargo insurance, the claim you have not heard about yet, or the person who covered the load.</p>
+          <p>Margin on revenue is not markup on cost, and brokers routinely trade the two back and forth inside one phone call. That $400 is a <b>16.3% margin</b> and a <b>19.5% markup</b> — both correct, 3.2 points apart, and a "twenty percent load" therefore means two different carrier rates depending on which one the other person meant. Every headline percentage on this page is measured against the customer rate, the brokerage income-statement convention. The bigger trap is percent as a scoreboard: 15% is <b>$60</b> on a $400 load and <b>$600</b> on a $4,000 load, the two take roughly the same phone calls to cover, and the percentage says they are identical. Percent also says nothing about the cost to cover — the load board seat, the carrier vetting, the tracking calls, the rep's time. And it is silent on cash: a 16.3% margin collected in 15 days and the same 16.3% collected in 75 days are different businesses, because the carrier gets paid long before the customer pays you, and factoring or quick-pay closes that gap by taking a slice of this exact number. Gross margin is not profit.</p>
         </div>
       </div>
     </section>
@@ -489,27 +515,37 @@ Carrier for 18%  = 2,400 × (1 − 0.18)       = <b>$1,968.00</b></p>
       <div class="expl">
         <div class="expl__row">
           <h3 class="expl__k">What it computes</h3>
-          <p>Billable detention once free time is subtracted and any contractual cap is applied, plus lumper, layover, TONU and extra stops rolled into one total you can put on the invoice or paste into the dispute.</p>
+          <p>Billable detention once free time is subtracted and any contractual cap is applied. It adds lumper, layover, TONU and extra stops on top, and totals the lot into one figure you can put on the invoice or paste into a dispute. It bills the clock exactly as typed, so a 2.5-hour overage is 2.5 hours — not the rounded figure many contracts actually use.</p>
         </div>
         <div class="expl__row">
           <h3 class="expl__k">The formula</h3>
-          <p class="formula"><b>Billable hours</b>  = max(0, time on site − free time)
-<b>Detention $</b>     = billable hours × detention rate   (capped if a cap is set)
-<b>Accessorials $</b>  = lumper + layover + TONU + (extra stops × rate per stop)
-<b>Total billable</b>  = detention $ + accessorials $</p>
+          <p class="formula"><b>Billable hours</b> (hr) = max( 0, time on site (hr) − free time (hr) )
+<b>Detention</b> ($)      = billable hours (hr) × detention rate ($/hr)
+                    then capped at the cap ($) if the contract sets one
+<b>Accessorials</b> ($)   = lumper + layover + TONU + [ extra stops × rate per stop ]
+<b>Total billable</b> ($) = detention ($) + accessorials ($)
+
+free time      unpaid hours granted by the rate confirmation, usually 2 hr
+time on site   check-in to departure, decimal hours
+detention rate contracted dollars per hour after free time
+cap            maximum detention payable per stop or per day, dollars; 0 = none
+TONU           truck ordered not used, a flat dollar amount</p>
         </div>
         <div class="expl__row">
           <h3 class="expl__k">Worked example</h3>
-          <p class="formula">2 hr free · 11 hr on site · $75/hr · $600/day cap
+          <p class="formula">2 hr free · 4.5 hr on site · $65/hr · no cap
 
-<b>Billable hours</b> = 11 − 2   = <b>9.00 hr</b>
-<b>Detention</b>      = 9 × 75   = <b>$675.00</b>
-<b>Cap applied</b>               → <b>$600.00</b>
-The cap ate $75.00 — the ninth hour was free to the shipper.</p>
+<b>Billable hours</b> = 4.5 − 2   = <b>2.50 hr</b>
+<b>Detention</b>      = 2.5 × 65  = <b>$162.50</b>
+
+Same 2.5 hours under different contract language:
+  rounded UP to whole hours    3 × 65 = <b>$195.00</b>
+  rounded DOWN to whole hours  2 × 65 = <b>$130.00</b>
+  with a $150 per-stop cap             = <b>$150.00</b>  ($12.50 unbillable)</p>
         </div>
         <div class="expl__row">
           <h3 class="expl__k">When this number misleads you</h3>
-          <p>This calculator will happily bill you detention you cannot collect. Detention pays only when two things are already true: the accessorial and its rate were on the rate confirmation <em>before</em> the truck rolled, and you have signed in and out times on the BOL or a check-in slip to prove the hours. A driver's recollection and an ELD ping are not the same evidence as a stamped document, and that is the ground most detention claims are lost on. Caps do the rest of the damage quietly — everything past the cap is free time you did not agree to. Free time, caps, rounding and the definitions themselves live in your rate confirmation and customer contract, and when the contract disagrees with this page, the contract wins.</p>
+          <p>This calculator will happily bill you detention you will never collect, and a large share of billed detention never gets paid. It is only real money when three things are already true: the accessorial and its rate were on the <b>rate confirmation before the truck rolled</b>, you have <b>signed in and out times</b> on the BOL or a check-in slip, and someone was notified while the truck was still sitting rather than after the invoice bounced. A driver's recollection and an ELD ping are weaker evidence than a stamped document, and that is the ground most claims are lost on. Caps do the rest of the damage quietly: everything past the cap is free time you did not agree to. Whole-hour billing moves it again — the same 2.5 hours is $130.00, $162.50 or $195.00 depending on one sentence in the contract. Free time, caps, rounding and the definitions themselves live in your rate confirmation and customer contract, and where the contract disagrees with this page, the contract wins. Treat detention as revenue you might get, and never price a load assuming you will.</p>
         </div>
       </div>
     </section>
@@ -559,25 +595,36 @@ The cap ate $75.00 — the ninth hour was free to the shipper.</p>
       <div class="expl">
         <div class="expl__row">
           <h3 class="expl__k">What it computes</h3>
-          <p>The cents-per-mile fuel surcharge from the peg-and-divide method: how far the current diesel average sits above the base price written into your schedule, divided by the MPG that schedule assumes, then multiplied out across the billable miles.</p>
+          <p>The cents-per-mile fuel surcharge from the standard peg-and-divide method: how far the current diesel average sits above the base price written into your schedule, divided by the MPG that schedule assumes. It then multiplies that rate across the billable miles to give the surcharge on one load. Below the base price it returns zero rather than a negative number.</p>
         </div>
         <div class="expl__row">
           <h3 class="expl__k">The formula</h3>
-          <p class="formula"><b>FSC per mile</b> = max(0, DOE price − base price) ÷ MPG
-<b>FSC per load</b> = FSC per mile × billable miles
-Below the base price the surcharge is zero (unless your contract runs a negative FSC).</p>
+          <p class="formula"><b>FSC per mile</b> ($/mi) = max( 0, DOE price ($/gal) − base price ($/gal) ) ÷ MPG
+<b>FSC per load</b> ($)   = FSC per mile ($/mi) × billable miles (mi)
+
+DOE price      the diesel average your contract pegs to, $ per US gallon —
+               EIA publishes the on-highway series weekly, national and by region
+base price     the peg written into your FSC schedule, $ per US gallon
+MPG            the miles per gallon your SCHEDULE assumes, not what the truck gets
+billable miles the miles your contract applies FSC to — often loaded miles only
+
+Below the base price the surcharge is zero, unless your contract runs a negative FSC.</p>
         </div>
         <div class="expl__row">
           <h3 class="expl__k">Worked example</h3>
-          <p class="formula">Base $1.25/gal · current DOE $3.89/gal · 6.5 MPG · 1,200 mi
+          <p class="formula">Base $1.25/gal · DOE national avg $3.85/gal · 6.0 MPG · 1,180 mi
 
-<b>Above base</b>   = 3.89 − 1.25   = <b>$2.640 /gal</b>
-<b>FSC per mile</b> = 2.640 ÷ 6.5   = <b>$0.406 /mi</b>
-<b>FSC per load</b> = 0.406 × 1,200 = <b>$487.38</b></p>
+<b>Above base</b>   = 3.85 − 1.25    = <b>$2.600 /gal</b>
+<b>FSC per mile</b> = 2.600 ÷ 6.0    = <b>$0.4333 /mi</b>
+<b>FSC per load</b> = 0.4333 × 1,180 = <b>$511.33</b>
+
+Move one term and the money moves:
+  base $2.50 instead   → $0.2250 /mi → $265.50   (−$245.83)
+  MPG 7.0 instead      → $0.3714 /mi → $438.29   (−$73.05)</p>
         </div>
         <div class="expl__row">
           <h3 class="expl__k">When this number misleads you</h3>
-          <p>There is no such thing as a standard fuel surcharge, so a number produced here is only as real as the contract behind it. The base price and the assumed MPG are both negotiated terms, and moving either moves the money: the same $3.89 diesel pays <b>$0.406/mi</b> against a $1.25 peg and <b>$0.214/mi</b> against a $2.50 one — on 1,200 miles that is a $230.77 difference on identical fuel. Schedules also vary in shape. Some step in half-cent brackets instead of dividing straight through, some peg to a regional <a href="https://www.eia.gov/petroleum/gasdiesel/" target="_blank" rel="noopener" style="color:var(--gold-2)">EIA</a> average rather than the national one, some apply FSC to loaded miles only, and the MPG on paper is rarely the MPG the truck gets. Nothing on this page hardcodes a diesel price — type in the current figure yourself.</p>
+          <p>There is no such thing as a standard fuel surcharge, so a figure produced here is only as real as the contract behind it. The <a href="https://www.eia.gov/petroleum/gasdiesel/" target="_blank" rel="noopener" style="color:var(--gold-2)">DOE/EIA index publishes once a week</a> and reports prices already paid, so in a fast market the schedule is always chasing the pump — the surcharge under-recovers on the way up and over-recovers on the way down, and neither shows up in the arithmetic. A base price set years ago and never revisited silently shifts the whole surcharge: the same $3.85 diesel pays <b>$0.4333/mi</b> against a $1.25 peg and <b>$0.2250/mi</b> against a $2.50 one, a $245.83 difference on 1,180 miles of identical fuel. An optimistic MPG does the same thing more quietly — 6.0 versus 7.0 is $73.05 on that one load. Many contracts also peg to a <b>regional</b> DOE average rather than the national one, so the number you look up may not be the number you are owed. Shape varies too: some schedules step in half-cent brackets instead of dividing straight through, and many apply FSC to loaded miles only, leaving the empty fuel entirely on the carrier. Nothing on this page hardcodes a diesel price — type in the current figure yourself.</p>
         </div>
       </div>
     </section>
@@ -627,30 +674,40 @@ Below the base price the surcharge is zero (unless your contract runs a negative
       <div class="expl">
         <div class="expl__row">
           <h3 class="expl__k">What it computes</h3>
-          <p>The floor and the target for one trip: the rate that exactly covers it with nothing left over, the same figure expressed per mile, and the higher rate the load has to pay for the trip to clear a target margin on revenue.</p>
+          <p>The floor and the target for one trip. It returns the rate that exactly covers the trip with nothing left over, the same figure expressed per mile, and the higher rate the load has to pay for the trip to clear a target margin on revenue. Costs are split into a fixed allocation for the days the truck is committed and a variable rate across every mile it turns, loaded and empty.</p>
         </div>
         <div class="expl__row">
           <h3 class="expl__k">The formula</h3>
-          <p class="formula"><b>Total cost</b>      = fixed cost + (variable cost per mile × total miles)
-<b>Break-even rate</b> = total cost                    (margin = 0)
-<b>Minimum rate</b>    = total cost ÷ (1 − target % ÷ 100)
-<b>Minimum RPM</b>     = minimum rate ÷ total miles
+          <p class="formula"><b>Total cost</b> ($)      = fixed cost ($) + [ variable cost ($/mi) × total miles (mi) ]
+<b>Break-even rate</b> ($) = total cost ($)                        (margin = 0)
+<b>Break-even RPM</b> ($/mi) = total cost ($) ÷ total miles (mi)
+<b>Minimum rate</b> ($)    = total cost ($) ÷ [ 1 − target % ÷ 100 ]
+<b>Minimum RPM</b> ($/mi)  = minimum rate ($) ÷ total miles (mi)
+
+fixed cost     the daily fixed cost of the truck × days this trip commits it, dollars
+variable cost  fuel, driver pay, tires, maintenance, $ per mile
+total miles    loaded + deadhead, statute miles
+target %       margin measured against revenue, percent
+
 Dividing by (1 − margin) is deliberate: margin is measured against revenue, not cost.</p>
         </div>
         <div class="expl__row">
           <h3 class="expl__k">Worked example</h3>
-          <p class="formula">$536 fixed · $1.45/mi variable · 1,340 total mi · 15% target
+          <p class="formula">$210/day fixed × 2 days · $0.92/mi variable · 1,180 total mi · 15% target
 
-<b>Total cost</b>    = 536 + (1.45 × 1,340) = <b>$2,479.00</b>
-<b>Break-even/mi</b> = 2,479 ÷ 1,340        = <b>$1.850 /mi</b>
-<b>Minimum rate</b>  = 2,479 ÷ (1 − 0.15)   = <b>$2,916.47</b>
-<b>Minimum RPM</b>   = 2,916.47 ÷ 1,340     = <b>$2.176 /mi</b>
+<b>Fixed</b>          = 210 × 2                = <b>$420.00</b>
+<b>Variable</b>       = 0.92 × 1,180           = <b>$1,085.60</b>
+<b>Total cost</b>                              = <b>$1,505.60</b>
+<b>Break-even RPM</b> = 1,505.60 ÷ 1,180       = <b>$1.276 /mi</b>
+<b>Minimum rate</b>   = 1,505.60 ÷ (1 − 0.15)  = <b>$1,771.29</b>
+<b>Minimum RPM</b>    = 1,771.29 ÷ 1,180       = <b>$1.501 /mi</b>
 
-The $2,400 load from calculator 01 loses $79.00 against these costs.</p>
+A <b>$1,450</b> load is <b>$55.60 underwater</b> before it leaves the yard.
+Marking up instead: 1,505.60 × 1.15 = $1,731.44 — <b>$39.85 short</b> of target.</p>
         </div>
         <div class="expl__row">
           <h3 class="expl__k">When this number misleads you</h3>
-          <p>Break-even per mile is only as honest as the fixed-cost number feeding it, and that is the figure owner-operators understate most. A truthful fixed cost per day carries the truck and trailer payments, physical damage and liability insurance, occupational accident or workers' comp, plates and permits, IFTA, the ELD subscription, parking, accounting — and it has to be spread over the days the truck actually runs, not the days on the calendar. Leave a few of those out and every load on the board looks profitable. The second thing people get wrong is the divide: margin is measured against revenue, so a 15% target means dividing $2,479 by 0.85 to get $2,916.47, not multiplying by 1.15 to get $2,850.85. Marking cost up by the margin percentage undershoots the target every time.</p>
+          <p>Break-even is only as good as the fixed-cost allocation feeding it, and that is the figure operators understate most. A truthful daily fixed cost carries the truck and trailer payments, physical damage and liability insurance, occupational accident or workers' compensation, plates and permits, IFTA, the ELD subscription, parking, tolls and accounting — and it must be spread over the days the truck <em>actually runs</em>, not every day on the calendar. Leave a few of those out, or divide by 365 instead of the days you really turn, and every load on the board looks profitable. The things that break it in practice are not in the formula at all: unpaid detention that never gets collected, empty repositioning to reach the next pickup, and the idle day between loads that still costs $210 of fixed cost while earning nothing. Bill two days of fixed cost on a trip that ties the truck up for three and the floor is a fiction. The last trap is the divide — a 15% target means $1,505.60 ÷ 0.85 = $1,771.29, not × 1.15 = $1,731.44. Marking cost up by the margin percentage undershoots every time.</p>
         </div>
       </div>
     </section>
@@ -832,7 +889,7 @@ The $2,400 load from calculator 01 loses $79.00 against these costs.</p>
 
           <article class="card geo-qa">
             <h3>Why does my fuel surcharge not match what I paid at the pump?</h3>
-            <p>Three things usually explain the gap: the index lags, the assumed MPG is optimistic, and the mileage basis is narrower than the miles actually driven. The MPG term is quietly the most expensive of the three. The same $2.60 spread pays $0.4333 per mile at 6.0 MPG and $0.3714 per mile at 7.0 MPG, a $73.04 difference on one 1,180-mile load.</p>
+            <p>Three things usually explain the gap: the index lags, the assumed MPG is optimistic, and the mileage basis is narrower than the miles actually driven. The MPG term is quietly the most expensive of the three. The same $2.60 spread pays $0.4333 per mile at 6.0 MPG and $0.3714 per mile at 7.0 MPG, a $73.05 difference on one 1,180-mile load.</p>
           </article>
         </div>
       </div>
@@ -880,6 +937,44 @@ The $2,400 load from calculator 01 loses $79.00 against these costs.</p>
             <p>No. The page makes no network calls that carry your input: there is no form submission, no analytics and no server call, so customer rates, carrier rates and margins stay on your machine. Your last-used inputs are saved in this browser's local storage only, which means nothing syncs between devices, nothing is backed up, and clearing site data deletes them.</p>
           </article>
         </div>
+      </div>
+    </div>
+  </section>
+
+  <hr class="divider">
+  <section class="section section--tight" id="related">
+    <div class="grp-head">
+      <p class="eyebrow">Related</p>
+      <h2>Where to go deeper</h2>
+    </div>
+    <div class="priv" style="margin-top:var(--s5)">
+      <div class="card card--flat" style="padding:var(--s5)">
+        <h3>The math, written long-form</h3>
+        <p>Every formula on this page worked out step by step, with the edge cases the calculators skip over.</p>
+        <ul class="rel">
+          <li><a href="/guides/freight-broker-margin.html">Broker margin, rate per mile &amp; FSC →</a></li>
+          <li><a href="/guides/detention-demurrage-accessorials.html">Detention, demurrage &amp; accessorials →</a></li>
+          <li><a href="/guides/carrier-vetting-checklist.html">Carrier vetting checklist →</a></li>
+        </ul>
+      </div>
+      <div class="card card--flat" style="padding:var(--s5)">
+        <h3>The part after the math</h3>
+        <p>Calculators price the load. These cover where the hours actually go once it is booked.</p>
+        <ul class="rel">
+          <li><a href="/guides/freight-back-office.html">Where the back-office hours go →</a></li>
+          <li><a href="/freightdesk.html">FreightDesk AI →</a></li>
+          <li><a href="/hwyhaul.html">HwyHaul LoadLink →</a></li>
+        </ul>
+      </div>
+      <div class="card card--flat" style="padding:var(--s5)">
+        <h3>Other free tools built the same way</h3>
+        <p>Same rules: no account, no server, nothing you type leaves the browser.</p>
+        <ul class="rel">
+          <li><a href="/risk-tools.html">Risk &amp; position-size toolkit →</a></li>
+          <li><a href="/apps.html">Offline apps →</a></li>
+          <li><a href="/guides/client-side-only-tools.html">Why client-side only →</a></li>
+          <li><a href="/dispatch.html">Dispatch letter →</a></li>
+        </ul>
       </div>
     </div>
   </section>

@@ -12,17 +12,17 @@
 <meta property="og:image" content="https://yusuf-gadelrab.github.io/og/trading-bot-card.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
-<meta property="og:image:alt" content="Trading Bot — Broker-Agnostic Execution Engine">
+<meta property="og:image:alt" content="Broker-agnostic Python trading bot with a paper-trading promotion gate">
 <meta name="twitter:image" content="https://yusuf-gadelrab.github.io/og/trading-bot-card.png">
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"TechArticle","headline":"A trading bot where the interesting part isn't the strategy","url":"https://yusuf-gadelrab.github.io/trading-bot.html","description":"Case study: a broker-agnostic trading execution engine with a crash-safe order journal, a fail-closed risk layer, and 48 passing tests. Not trading real money.","author":{"@id":"https://yusuf-gadelrab.github.io/#person"},"publisher":{"@id":"https://yusuf-gadelrab.github.io/#person"},"datePublished":"2026-07-29","dateModified":"2026-07-29","mainEntityOfPage":{"@type":"WebPage","@id":"https://yusuf-gadelrab.github.io/trading-bot.html#webpage"},"image":"https://yusuf-gadelrab.github.io/og/trading-bot-card.png"}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"TechArticle","headline":"A trading bot where the interesting part isn't the strategy","url":"https://yusuf-gadelrab.github.io/trading-bot.html","description":"A broker-agnostic Python trading bot that refuses to connect a live broker until 60 closed paper trades show positive expectancy. Fails closed, 88 tests.","author":{"@id":"https://yusuf-gadelrab.github.io/#person"},"publisher":{"@id":"https://yusuf-gadelrab.github.io/#person"},"datePublished":"2026-07-29","dateModified":"2026-08-01","mainEntityOfPage":{"@type":"WebPage","@id":"https://yusuf-gadelrab.github.io/trading-bot.html#webpage"},"image":"https://yusuf-gadelrab.github.io/og/trading-bot-card.png"}</script>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://yusuf-gadelrab.github.io/"},{"@type":"ListItem","position":2,"name":"Case studies","item":"https://yusuf-gadelrab.github.io/apps.html"},{"@type":"ListItem","position":3,"name":"Trading Bot","item":"https://yusuf-gadelrab.github.io/trading-bot.html"}]}</script>
 <link rel="manifest" href="/manifest.webmanifest">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 <script>addEventListener("load",function(){if("serviceWorker" in navigator)navigator.serviceWorker.register("/sw.js").catch(function(){})});</script>
 <!-- /tech:seo -->
-<title>Trading Bot — Broker-Agnostic Execution Engine</title>
-<meta name="description" content="Case study: a broker-agnostic trading execution engine with a crash-safe order journal, a fail-closed risk layer, and 48 passing tests. Not trading real money.">
+<title>Trading Bot Safety Architecture — Python Execution Engine</title>
+<meta name="description" content="A broker-agnostic Python trading bot that refuses to connect a live broker until 60 closed paper trades show positive expectancy. Fails closed, 88 tests.">
 <link rel="canonical" href="https://yusuf-gadelrab.github.io/trading-bot.html">
 <link rel="icon" type="image/svg+xml" href="https://yusuf-gadelrab.github.io/favicon.svg">
 <link rel="apple-touch-icon" sizes="180x180" href="https://yusuf-gadelrab.github.io/apple-touch-icon.png">
@@ -31,13 +31,13 @@
 <meta name="author" content="Yusuf Gadelrab">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Yusuf Gadelrab">
-<meta property="og:title" content="Trading Bot — Broker-Agnostic Execution Engine">
-<meta property="og:description" content="A crash-safe, fail-closed trading execution engine with 48 passing tests. Paper mode only — not trading real money.">
+<meta property="og:title" content="Trading Bot Safety Architecture — Python Execution Engine">
+<meta property="og:description" content="A broker-agnostic Python trading bot that refuses to connect a live broker until 60 closed paper trades show positive expectancy. Fails closed, 88 tests.">
 <meta property="og:url" content="https://yusuf-gadelrab.github.io/trading-bot.html">
 
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Trading Bot — Broker-Agnostic Execution Engine">
-<meta name="twitter:description" content="A crash-safe, fail-closed trading execution engine with 48 passing tests. Paper mode only.">
+<meta name="twitter:title" content="Trading Bot Safety Architecture — Python Execution Engine">
+<meta name="twitter:description" content="A broker-agnostic Python trading bot that refuses to connect a live broker until 60 closed paper trades show positive expectancy. Fails closed, 88 tests.">
 
 <link rel="stylesheet" href="/css/site.css">
 <style>
@@ -57,9 +57,23 @@
     font-size:13px;line-height:1.85;color:var(--muted)}
   .code pre .c{color:var(--faint)}
   .code pre .g{color:var(--gold-2)}
+  .num{font-family:var(--mono);color:var(--gold-2)}
+  .qa h3{color:var(--gold-2)}
+  .qa p{color:var(--muted);font-size:var(--t-small);margin-top:var(--s3)}
+  .gate{border-left:3px solid var(--ok)}
+  .gate b{color:var(--ok)}
+  .risk{border-left:3px solid var(--warn)}
+  .risk b{color:var(--warn)}
+  .table-wrap{overflow-x:auto;margin-top:var(--s5)}
+  .table-wrap table{border-collapse:collapse;width:100%;min-width:520px;font-size:var(--t-small)}
+  .table-wrap th,.table-wrap td{text-align:left;padding:10px 14px;border-bottom:1px solid var(--line-soft);color:var(--muted)}
+  .table-wrap th{color:var(--gold-2);font-family:var(--mono);font-size:var(--t-micro);
+    letter-spacing:.08em;text-transform:uppercase}
 </style>
 <!-- geo:entity — page-level WebPage node (resolves the mainEntityOfPage @id above), plus a bare reference to the canonical Person entity defined in full on index.html -->
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebPage","@id":"https://yusuf-gadelrab.github.io/trading-bot.html#webpage","url":"https://yusuf-gadelrab.github.io/trading-bot.html","name":"Trading Bot — Broker-Agnostic Execution Engine","description":"Case study: a broker-agnostic trading execution engine with a crash-safe order journal, a fail-closed risk layer, and 48 passing tests. Not trading real money.","inLanguage":"en","isPartOf":{"@id":"https://yusuf-gadelrab.github.io/#website"},"about":{"@id":"https://yusuf-gadelrab.github.io/#person"},"publisher":{"@id":"https://yusuf-gadelrab.github.io/#person"}}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebPage","@id":"https://yusuf-gadelrab.github.io/trading-bot.html#webpage","url":"https://yusuf-gadelrab.github.io/trading-bot.html","name":"Trading Bot Safety Architecture — Python Execution Engine","description":"A broker-agnostic Python trading bot that refuses to connect a live broker until 60 closed paper trades show positive expectancy. Fails closed, 88 tests.","inLanguage":"en","isPartOf":{"@id":"https://yusuf-gadelrab.github.io/#website"},"about":{"@id":"https://yusuf-gadelrab.github.io/#person"},"publisher":{"@id":"https://yusuf-gadelrab.github.io/#person"}}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"SoftwareSourceCode","@id":"https://yusuf-gadelrab.github.io/trading-bot.html#software","name":"trading-bot","description":"A broker-agnostic execution engine for a single daily-bar swing setup, built around a crash-safe SQLite order journal, deterministic client order IDs, a fail-closed risk layer and a promotion gate that blocks real capital until 60 closed paper trades show positive realized expectancy.","programmingLanguage":"Python","runtimePlatform":"Python 3.11+","applicationCategory":"DeveloperApplication","author":{"@id":"https://yusuf-gadelrab.github.io/#person"},"maintainer":{"@id":"https://yusuf-gadelrab.github.io/#person"},"isAccessibleForFree":true,"mainEntityOfPage":{"@id":"https://yusuf-gadelrab.github.io/trading-bot.html#webpage"}}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","@id":"https://yusuf-gadelrab.github.io/trading-bot.html#faq","mainEntity":[{"@type":"Question","name":"What does this trading bot actually do?","acceptedAnswer":{"@type":"Answer","text":"It executes one daily-bar setup end to end: it scans a watchlist after the close, sizes a position from a fixed percentage of equity risked against the entry-to-stop distance, places the entry, immediately attaches a stop and a 2R target, and then manages those exits until one fills or a 20-bar time stop fires. There is no intraday logic and none was validated."}},{"@type":"Question","name":"Can it trade real money right now?","acceptedAnswer":{"@type":"Answer","text":"No, and it structurally refuses to. Two separate gates stand in the way: a live-capable broker adapter will not start unless ALLOW_LIVE is explicitly set to true, and beyond that the promotion gate blocks real funds until a genuine paper track record exists. The record today is zero closed paper trades, so the gate is shut."}},{"@type":"Question","name":"What is the promotion gate?","acceptedAnswer":{"@type":"Answer","text":"It is a check inside the engine that refuses to trade real money until the journal shows at least 60 closed paper trades at a positive realized expectancy. The rule originally lived only in a markdown design doc, which meant a single environment variable could bypass it, so it was moved into code where it runs on every pass. Overriding it requires a deliberately named environment variable and it logs a warning when used."}},{"@type":"Question","name":"What happens if the process crashes while placing an order?","acceptedAnswer":{"@type":"Answer","text":"Every signal maps to a deterministic client order id, and a SQLite journal claims that id before the broker call rather than after it. On restart the same id is re-derived and the order is skipped instead of being sent twice. A concurrency test runs twelve competing writers against one journal and asserts that exactly one of them wins the claim."}},{"@type":"Question","name":"Which broker should I use?","acceptedAnswer":{"@type":"Answer","text":"Alpaca, for two reasons: it publishes an official API, and it offers a real paper-trading mode so the safety work can be exercised without money at stake. It is also the only adapter that can express a broker-native OCO exit pair, which means the losing leg is cancelled server-side even while this process is dead. Start on the local paper simulator, which needs no network and no keys."}},{"@type":"Question","name":"Does it come with a profitable strategy?","acceptedAnswer":{"@type":"Answer","text":"No, and that is stated deliberately. The setup it executes did not survive an adversarial re-test: the signal's own incremental contribution measured +0.030R with a 95% confidence interval crossing zero, which is not a validated edge. This is an execution engine wrapped around a strategy that has not earned real capital."}},{"@type":"Question","name":"Is it free and open source?","acceptedAnswer":{"@type":"Answer","text":"There is no paid tier, no account and no telemetry, and it runs entirely on your own machine. The repository is private at the moment rather than published, so access is by request instead of a public clone URL."}}]}</script>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"Person","@id":"https://yusuf-gadelrab.github.io/#person"}</script>
 <link rel="alternate" type="text/plain" href="https://yusuf-gadelrab.github.io/llms-full.txt" title="Plain-text profile for language models">
 </head>
@@ -87,9 +101,36 @@
     <h1 style="margin:var(--s5) 0">A trading bot where <span class="gold-fill">the interesting part isn't the strategy.</span></h1>
     <p class="lead">A broker-agnostic execution engine for a single daily-bar setup. The strategy is about forty lines. The other 95% of the codebase exists to answer one question: <b>what happens when the process dies halfway through placing an order?</b></p>
     <div class="grid" style="margin-top:var(--s8);grid-template-columns:repeat(auto-fit,minmax(min(180px,100%),1fr))">
-      <div class="card card--flat stat"><span class="stat__value">48</span><span class="stat__label">passing tests</span></div>
+      <div class="card card--flat stat"><span class="stat__value">88</span><span class="stat__label">passing tests</span></div>
+      <div class="card card--flat stat"><span class="stat__value">60</span><span class="stat__label">paper trades required before live</span></div>
       <div class="card card--flat stat"><span class="stat__value">4</span><span class="stat__label">broker adapters, one interface</span></div>
       <div class="card card--flat stat"><span class="stat__value">$0</span><span class="stat__label">real capital deployed</span></div>
+    </div>
+  </section>
+
+  <hr class="divider">
+
+  <section class="section section--tight" id="promotion-gate">
+    <p class="eyebrow">The Standout Feature</p>
+    <h2>It will not let me trade real money.</h2>
+    <p class="lead" style="margin-top:var(--s3);max-width:var(--maxw-prose)">Most hobby bots are one environment variable away from live capital. This one is not. Before any real-money broker call, the engine reads its own journal and refuses to proceed unless a genuine paper track record already exists — <b>at least 60 closed paper trades at a positive realized expectancy</b>. The rule started life in a markdown design doc, which meant a single flag could quietly skip it, so it was moved into <span class="mono">Engine._guard_promotion_gate</span> where it runs on every single pass.</p>
+    <div class="panel gate" style="margin-top:var(--s6)">
+      <b>Current record: 0 closed paper trades. The gate is therefore shut.</b>
+      <p class="muted" style="margin-top:var(--s3);font-size:var(--t-small)">That is not a placeholder — it is the actual state of the order journal on disk, and it is exactly why no real capital has ever moved through this engine. Overriding the gate is possible, but only by setting a deliberately unpleasant environment variable named <span class="mono">OVERRIDE_PROMOTION_GATE=I_ACCEPT_UNVALIDATED_RISK</span>, and doing so writes a warning into the log and the journal. You cannot trip it by accident.</p>
+    </div>
+    <div class="grid" style="margin-top:var(--s6)">
+      <div class="card">
+        <h3>Gate 1 — explicit live opt-in</h3>
+        <p><span class="mono">DRY_RUN=true</span> and <span class="mono">ALLOW_LIVE=false</span> are the shipped defaults. A live-capable adapter raises rather than starts unless you set <span class="mono">ALLOW_LIVE=true</span> yourself. The default broker is a local simulator with no network and no keys.</p>
+      </div>
+      <div class="card">
+        <h3>Gate 2 — earned track record</h3>
+        <p>Passing gate 1 is not enough. The engine then asks the journal for <span class="mono">(n, expectancy)</span> and raises unless <span class="mono">n &gt;= 60</span> and expectancy is strictly positive. The error message reports the current count and expectancy so a blocked run explains itself.</p>
+      </div>
+      <div class="card">
+        <h3>Gate 3 — explainable zeros</h3>
+        <p>A <span class="mono">gate_detail()</span> breakdown reports closed trades per broker, because "I have closed trades but the gate says zero" has two very different causes — simulator trades, which are never eligible, and trades whose exit price was never recovered, which are excluded rather than fabricated.</p>
+      </div>
     </div>
   </section>
 
@@ -109,7 +150,7 @@
     <div class="grid" style="margin-top:var(--s6)">
       <div class="card">
         <h3>Duplicate orders are impossible</h3>
-        <p>Every signal maps to a deterministic <code class="mono">client_order_id</code>, and a SQLite journal claims that id <em>before</em> the broker call. Crash and restart, the same id is re-derived and the order is skipped rather than re-sent.</p>
+        <p>Every signal maps to a deterministic <code class="mono">client_order_id</code>, and a SQLite journal claims that id <em>before</em> the broker call. Crash and restart, the same id is re-derived and the order is skipped rather than re-sent. A test fires <b>twelve concurrent writers</b> at one journal from separate connections and asserts exactly one wins the claim and eleven lose — the real failure mode being a scheduled job firing twice, or a retry racing the original run.</p>
       </div>
       <div class="card">
         <h3>It fails closed</h3>
@@ -155,6 +196,42 @@
 
   <hr class="divider">
 
+  <section class="section section--tight" id="quickstart">
+    <p class="eyebrow">Install &amp; Quickstart</p>
+    <h2>Starts on a simulator, with no keys.</h2>
+    <p class="lead" style="margin-top:var(--s3);max-width:var(--maxw-prose)">The repository is <b>private today</b>, so there is no public clone URL — access is by request rather than a link. Once you have a copy, setup is a virtualenv, an editable install and a copy of the example environment file. The default broker is a local paper simulator: no network, no credentials, nothing that can reach a real account.</p>
+    <div class="code" style="margin-top:var(--s6)">
+      <div class="bar"><i></i><i></i><i></i><span>setup</span></div>
+<pre>uv venv &amp;&amp; uv pip install -e .
+cp .env.example .env      <span class="c"># .env is gitignored</span></pre>
+    </div>
+    <div class="code" style="margin-top:var(--s4)">
+      <div class="bar"><i></i><i></i><i></i><span>cli.py</span></div>
+<pre>python cli.py <span class="g">scan</span>       <span class="c"># signals only — never places an order, no keys needed</span>
+python cli.py <span class="g">status</span>     <span class="c"># account, guards, positions</span>
+python cli.py <span class="g">run</span>        <span class="c"># scan + trade + manage (DRY_RUN=true just logs intent)</span>
+python cli.py <span class="g">manage</span>     <span class="c"># maintain exits on bot-owned positions — idempotent</span>
+python cli.py <span class="g">halt</span>       <span class="c"># kill switch: blocks all new entries</span>
+python cli.py <span class="g">resume</span>
+python cli.py <span class="g">reconcile</span>  <span class="c"># repair the journal against the broker after a crash</span></pre>
+    </div>
+    <p class="muted" style="margin-top:var(--s5);max-width:var(--maxw-prose);font-size:var(--t-small)">Watchlist is one ticker per line in <span class="mono">watchlist.txt</span>, or pass <span class="mono">--symbols SPY,NVDA</span>. Broker adapters are optional extras, so only the one you pick gets installed. Start with <span class="mono">scan</span> — it reaches no broker and needs no credentials at all.</p>
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>BROKER=</th><th>Official API</th><th>Paper mode</th><th>Notes</th></tr></thead>
+        <tbody>
+          <tr><td class="mono">paper</td><td>n/a</td><td>Yes</td><td>Local simulator. No network, no keys. Start here.</td></tr>
+          <tr><td class="mono">alpaca</td><td>Yes</td><td>Yes</td><td><b>Recommended for equities.</b> Only adapter with broker-native OCO exits.</td></tr>
+          <tr><td class="mono">rh_crypto</td><td>Yes</td><td>No</td><td>Official Robinhood Crypto API. Crypto only; the setup was never tested on crypto.</td></tr>
+          <tr><td class="mono">robinhood</td><td>No</td><td>No</td><td>Unofficial equities adapter. <b>Not a recommended path</b> — see below.</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="muted" style="margin-top:var(--s5);max-width:var(--maxw-prose);font-size:var(--t-small)"><b>On the unofficial Robinhood equities adapter:</b> it exists in the codebase and the README documents it as a bad idea. Robinhood publishes no public stocks API, so that adapter impersonates the mobile app — it breaks Robinhood's terms of service, accounts have been restricted for automated access, it can break without notice, it has no paper mode, and it requires storing a password and TOTP seed locally. It is disclosed here for completeness, not offered as an option. <b>Use Alpaca.</b></p>
+  </section>
+
+  <hr class="divider">
+
   <section class="section section--tight">
     <p class="eyebrow">The Stack</p>
     <h2>Small surface, deliberately.</h2>
@@ -167,9 +244,10 @@
       <span class="pill">Local paper simulator</span>
       <span class="pill">Deterministic client order IDs</span>
       <span class="pill">Idempotent reconciliation</span>
-      <span class="pill">pytest · 48 tests</span>
+      <span class="pill">Promotion gate</span>
+      <span class="pill">pytest · 88 tests</span>
     </div>
-    <p class="muted" style="margin-top:var(--s5);max-width:var(--maxw-prose);font-size:var(--t-small)">Four adapters implement the same interface: a local paper simulator (no network, no keys — the default), Alpaca for equities, official Robinhood Crypto, and an unofficial Robinhood equities adapter. That last one is documented in the README as a bad idea — it impersonates the mobile app, violates Robinhood's terms, has no paper mode, and requires storing credentials locally. It exists, it is labelled, and Alpaca is what's recommended.</p>
+    <p class="muted" style="margin-top:var(--s5);max-width:var(--maxw-prose);font-size:var(--t-small)">Four adapters implement one <span class="mono">Broker</span> interface, so paper and live run identical code paths and you are never testing something different from what you run. The default is the local simulator. Alpaca is the recommended real adapter, because it publishes an official API, offers a genuine paper mode, and is the only one that can express a broker-native OCO exit pair.</p>
   </section>
 
   <hr class="divider">
@@ -177,14 +255,22 @@
   <section class="section section--tight">
     <p class="eyebrow">Honest Status</p>
     <h2>It is not making money, and I won't pretend otherwise.</h2>
-    <div class="grid grid--2" style="margin-top:var(--s6)">
+    <div class="grid" style="margin-top:var(--s6)">
       <div class="card">
         <h3>Built and tested</h3>
-        <p>48 tests cover the safety properties directly — duplicate suppression, unprotected-position detection, ownership boundaries, closed-bar-only signals. The engine runs against the paper simulator today.</p>
+        <p>88 tests cover the safety properties directly — duplicate suppression under concurrency, promotion-gate enforcement, unprotected-position detection, ownership boundaries, closed-bar-only signals. The engine runs against the paper simulator today.</p>
       </div>
       <div class="card">
-        <h3>No real capital</h3>
-        <p>It has never traded live money. And the setup it executes — AVWAP-reclaim — <a class="gold" href="/swing-screener.html">did not survive my own adversarial re-test</a>. So the honest framing is: this is a well-engineered execution engine wrapped around a strategy I do not currently believe in enough to fund.</p>
+        <h3>No real capital, ever</h3>
+        <p>It has never traded live money and the journal on disk holds zero orders. The promotion gate is shut and stays shut until a paper record exists. No sales, no users, no returns are being claimed here.</p>
+      </div>
+      <div class="card">
+        <h3>Not a signals service</h3>
+        <p>It does not publish alerts, sell picks, or run as a service for anyone. It is a program you run on your own machine against your own broker credentials, and it manages only the positions it opened itself.</p>
+      </div>
+      <div class="card">
+        <h3>No return promises</h3>
+        <p>The setup it executes — AVWAP-reclaim — <a class="gold" href="/swing-screener.html">did not survive my own adversarial re-test</a>: the signal's own contribution measured <span class="num">+0.030R</span> with a 95% CI of <span class="num">[−0.014, +0.077]</span>, crossing zero. That is not a validated edge. This is a well-engineered execution engine wrapped around a strategy I do not believe in enough to fund.</p>
       </div>
     </div>
     <div class="panel callout" style="margin-top:var(--s6)">
@@ -198,6 +284,53 @@
       <a href="/apps.html" class="btn btn-gold">← All projects</a>
       <a href="/swing-screener.html" class="btn btn-ghost">The validation story →</a>
     </div>
+  </section>
+
+  <hr class="divider">
+
+  <section class="section section--tight" id="faq">
+    <p class="eyebrow">FAQ</p>
+    <h2>Common questions.</h2>
+    <div class="grid grid--2" style="margin-top:var(--s6)">
+      <article class="card qa">
+        <h3>What does this trading bot actually do?</h3>
+        <p>It executes one daily-bar setup end to end: it scans a watchlist after the close, sizes a position from a fixed percentage of equity risked against the entry-to-stop distance, places the entry, immediately attaches a stop and a 2R target, and then manages those exits until one fills or a 20-bar time stop fires. There is no intraday logic and none was validated.</p>
+      </article>
+      <article class="card qa">
+        <h3>Can it trade real money right now?</h3>
+        <p>No, and it structurally refuses to. Two separate gates stand in the way: a live-capable broker adapter will not start unless ALLOW_LIVE is explicitly set to true, and beyond that the promotion gate blocks real funds until a genuine paper track record exists. The record today is zero closed paper trades, so the gate is shut.</p>
+      </article>
+      <article class="card qa">
+        <h3>What is the promotion gate?</h3>
+        <p>It is a check inside the engine that refuses to trade real money until the journal shows at least 60 closed paper trades at a positive realized expectancy. The rule originally lived only in a markdown design doc, which meant a single environment variable could bypass it, so it was moved into code where it runs on every pass. Overriding it requires a deliberately named environment variable and it logs a warning when used.</p>
+      </article>
+      <article class="card qa">
+        <h3>What happens if the process crashes while placing an order?</h3>
+        <p>Every signal maps to a deterministic client order id, and a SQLite journal claims that id before the broker call rather than after it. On restart the same id is re-derived and the order is skipped instead of being sent twice. A concurrency test runs twelve competing writers against one journal and asserts that exactly one of them wins the claim.</p>
+      </article>
+      <article class="card qa">
+        <h3>Which broker should I use?</h3>
+        <p>Alpaca, for two reasons: it publishes an official API, and it offers a real paper-trading mode so the safety work can be exercised without money at stake. It is also the only adapter that can express a broker-native OCO exit pair, which means the losing leg is cancelled server-side even while this process is dead. Start on the local paper simulator, which needs no network and no keys.</p>
+      </article>
+      <article class="card qa">
+        <h3>Does it come with a profitable strategy?</h3>
+        <p>No, and that is stated deliberately. The setup it executes did not survive an adversarial re-test: the signal's own incremental contribution measured +0.030R with a 95% confidence interval crossing zero, which is not a validated edge. This is an execution engine wrapped around a strategy that has not earned real capital.</p>
+      </article>
+      <article class="card qa">
+        <h3>Is it free and open source?</h3>
+        <p>There is no paid tier, no account and no telemetry, and it runs entirely on your own machine. The repository is private at the moment rather than published, so access is by request instead of a public clone URL.</p>
+      </article>
+    </div>
+  </section>
+
+  <hr class="divider">
+
+  <section class="section section--tight">
+    <div class="panel risk">
+      <b>⚠ Risk disclosure.</b>
+      <p class="muted" style="margin-top:var(--s3);font-size:var(--t-small);max-width:var(--maxw-prose)">This trading bot is an educational and research tool. It is not financial advice, not investment advice, and not a recommendation to buy or sell any security. Every result referenced on this page is backtested or simulated rather than live trading performance, and backtested and past results do not indicate future results. Automated trading carries substantial risk of loss, including the total loss of principal, and software defects, broker outages and network failures can all cause losses beyond what a backtest shows. You are solely responsible for your own trading decisions. See <a class="gold" href="/terms.html">Terms</a>, <a class="gold" href="/privacy.html">Privacy</a> and <a class="gold" href="/refunds.html">Refunds</a>.</p>
+    </div>
+    <p class="muted" style="margin-top:var(--s6);font-size:var(--t-small)">Related: <a class="gold" href="/swing-screener.html">the screener and the audit that broke its result</a> · <a class="gold" href="/risk-tools.html">position-sizing and risk calculators</a> · <a class="gold" href="/apps/tradelog/">TradeLog, the offline R-multiple journal</a> · <a class="gold" href="/apps.html">all apps and projects</a>.</p>
   </section>
 
 </main>
