@@ -504,6 +504,33 @@ body.yg-has-cta #yg-top{bottom:calc(62px + env(safe-area-inset-bottom,0px))}
 .site-nav__links .yg-cmd::after{display:none}
 tbody tr{transition:background .15s var(--ease)}
 
+/* ---------- breadcrumbs ----------------------------------------------------
+   Visible trail that mirrors the BreadcrumbList JSON-LD one-for-one. Google
+   treats a visible breadcrumb as the ground truth the markup has to match, so
+   the two are always emitted together. Sits between .site-nav and <main>. */
+.crumbs{padding:var(--s3) var(--section-x) 0;max-width:var(--maxw);margin:0 auto}
+.crumbs ol{display:flex;flex-wrap:wrap;align-items:center;gap:var(--s2);
+  list-style:none;margin:0;padding:0;
+  font-size:var(--t-micro);letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+.crumbs li{display:flex;align-items:center;gap:var(--s2)}
+.crumbs li+li::before{content:"/";color:var(--faint)}
+.crumbs a{color:var(--muted);text-decoration:none;transition:color .2s var(--ease)}
+.crumbs a:hover{color:var(--gold-2)}
+.crumbs [aria-current="page"]{color:var(--gold-2)}
+
+/* ---------- related links (derived, see tools/guides/engine.py) ------------- */
+.related__grid{display:grid;gap:var(--s4);margin-top:var(--s5);
+  grid-template-columns:repeat(auto-fit,minmax(240px,1fr))}
+.related__item{display:block;padding:var(--s4);border:1px solid var(--line-soft);
+  border-radius:var(--radius);text-decoration:none;
+  transition:border-color .2s var(--ease),transform .2s var(--ease)}
+.related__item:hover{border-color:var(--gold-dim);transform:translateY(-2px)}
+.related__item strong{display:block;font-family:var(--display-pro);color:var(--gold-2);
+  font-size:var(--t-small);font-weight:600;margin-bottom:var(--s2);line-height:1.35}
+.related__item span{display:block;color:var(--muted);font-size:var(--t-micro);line-height:1.6}
+.related__more{margin-top:var(--s5);color:var(--muted);font-size:var(--t-small)}
+.related__more a{color:var(--gold-2)}
+
 /* ---------- motion opt-out (must stay last) -------------------------------- */
 @media(prefers-reduced-motion:reduce){
   @view-transition{navigation:none}
@@ -511,7 +538,7 @@ tbody tr{transition:background .15s var(--ease)}
   .yg-pal__box{animation:none!important}
   .yg-cta-bar,#yg-top{transition:none!important}
   .yg-cta-bar.is-in,#yg-top.is-in{transform:none}
-  .card:hover,.card:active,.btn:hover,.btn:active,
+  .card:hover,.card:active,.btn:hover,.btn:active,.related__item:hover,
   .yg-cta-bar__go:hover,#yg-top:hover{transform:none!important}
   .site-nav__links a::after{transition:none!important}
 }

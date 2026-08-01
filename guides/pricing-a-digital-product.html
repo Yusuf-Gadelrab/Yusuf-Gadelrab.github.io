@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="preload" href="/css/site.css" as="style">
+<meta name="robots" content="index,follow,max-image-preview:large,max-snippet:-1">
+<meta property="og:locale" content="en_US">
+<title>Pricing a Digital Product: The Arithmetic</title>
+<meta name="description" content="Platform take-home compared on the same list price, VAT and merchant of record, tier design, refund assumptions, and the break-even unit math.">
+<link rel="canonical" href="https://yusuf-gadelrab.github.io/guides/pricing-a-digital-product.html">
+<link rel="icon" type="image/svg+xml" href="https://yusuf-gadelrab.github.io/favicon.svg">
+<link rel="apple-touch-icon" sizes="180x180" href="https://yusuf-gadelrab.github.io/apple-touch-icon.png">
+<meta name="theme-color" content="#0B0B0D">
+<meta name="author" content="Yusuf Gadelrab">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="Yusuf Gadelrab">
+<meta property="og:title" content="Pricing a Digital Product: The Arithmetic">
+<meta property="og:description" content="What each platform actually leaves you on a $49 sale, why two tiers can beat one, and how many units it takes to break even.">
+<meta property="og:url" content="https://yusuf-gadelrab.github.io/guides/pricing-a-digital-product.html">
+<meta property="og:image" content="https://yusuf-gadelrab.github.io/og-card.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Pricing a Digital Product: The Arithmetic">
+<meta name="twitter:description" content="What each platform actually leaves you on a $49 sale, why two tiers can beat one, and how many units it takes to break even.">
+<meta name="twitter:image" content="https://yusuf-gadelrab.github.io/og-card.png">
+<link rel="alternate" type="text/plain" href="https://yusuf-gadelrab.github.io/llms-full.txt" title="Plain-text profile for language models">
+
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"Article","@id":"https://yusuf-gadelrab.github.io/guides/pricing-a-digital-product.html#article","headline":"Pricing a Digital Product: Platform Fees, Tiers, and the Break-Even Math","name":"Pricing a Digital Product: Platform Fees, Tiers, and the Break-Even Math","description":"Platform take-home compared on the same list price, VAT and merchant of record, tier design, refund assumptions, and the break-even unit math.","datePublished":"2026-07-29","dateModified":"2026-07-29","inLanguage":"en","author":{"@id":"https://yusuf-gadelrab.github.io/#person"},"publisher":{"@id":"https://yusuf-gadelrab.github.io/#person"},"about":["Digital products","Pricing strategy","Unit economics"],"mainEntityOfPage":"https://yusuf-gadelrab.github.io/guides/pricing-a-digital-product.html","isAccessibleForFree":true},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://yusuf-gadelrab.github.io/"},{"@type":"ListItem","position":2,"name":"Guides","item":"https://yusuf-gadelrab.github.io/guides.html"},{"@type":"ListItem","position":3,"name":"Digital Product Pricing"}]}]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","@id":"https://yusuf-gadelrab.github.io/guides/pricing-a-digital-product.html#faq","mainEntity":[{"@type":"Question","name":"Which platform leaves you the most on a digital product sale?","acceptedAnswer":{"@type":"Answer","text":"Illustratively on a $49 sale, a 5% plus $0.50 structure leaves about $46.05, a flat 10% leaves about $44.10, and a marketplace with a listing fee plus transaction and processing fees leaves about $43.90, while raw Stripe on your own site leaves about $47.28. The spread across hosted options is roughly $2.40 a sale, which matters far less than what each platform handles for you."}},{"@type":"Question","name":"What is a merchant of record and do I need one?","acceptedAnswer":{"@type":"Answer","text":"A merchant of record becomes the legal seller of your product, so it charges, remits, and files the value-added and sales taxes and carries the compliance obligation. For a first product sold internationally by one person it is usually the right choice, and the extra few percent over raw payment processing is best understood as an insurance premium against a recurring tax job."}},{"@type":"Question","name":"Do I owe VAT on digital products sold to the EU?","acceptedAnswer":{"@type":"Answer","text":"Generally yes, at the buyer's location and from the first sale, with no small-seller threshold for a seller established outside that market, which implies registration, correct per-country rates, evidence of buyer location, periodic filings, and multi-year record retention. A merchant of record platform handles all of it. This is orientation, not tax advice — verify current rules before relying on it."}},{"@type":"Question","name":"Why do two price tiers outsell one price?","acceptedAnswer":{"@type":"Answer","text":"Because a single price is a yes-or-no decision whose default answer is no, while two prices change the question to which one and quietly remove zero from the comparison. The higher tier also anchors the lower one, and buyers who were always willing to pay more are no longer handed the difference."}},{"@type":"Question","name":"Is a $19 and $49 pair always better than a single $29?","acceptedAnswer":{"@type":"Answer","text":"No. Two tiers only win if they raise total conversion, shift the mix toward the higher tier, or both. Illustratively at 1,000 visitors, two tiers with no behavioural change makes about $560 against $580 for a single $29 price, because most buyers move down. With a small conversion lift the same pair makes about $666."}},{"@type":"Question","name":"What refund rate should you assume on a digital product?","acceptedAnswer":{"@type":"Answer","text":"Low single digits is the usual shape, and a clear generous policy tends to raise conversion more than it raises refunds. At $49 with a 6% platform fee and a 3% refund rate the effective net is roughly $44.58 against $46.05, a 3.2% haircut — a rounding error next to a half-point swing in conversion, which is worth 25% of revenue at a 2% baseline."}},{"@type":"Question","name":"How many units does a digital product need to break even?","acceptedAnswer":{"@type":"Answer","text":"Divide the build cost by the blended net per sale. Illustratively, 40 hours at a $30 opportunity cost is $1,200, and a 70/30 mix across $19 and $49 tiers nets about $25.26 after refunds, so break-even is about 48 units — which at a 2.4% conversion rate is roughly 2,000 cold visitors."}},{"@type":"Question","name":"How do you test a price without an analytics stack?","acceptedAnswer":{"@type":"Answer","text":"Measure revenue per visitor rather than conversion rate, change the price for a fixed window instead of splitting traffic, and only test large differences such as $19 against $49, since $27 against $29 is undetectable at any sample size a solo product is likely to reach. Then ask buyers what nearly stopped them, because ten replies beat a dashboard with no conversions in it."}}]}</script>
+
+<link rel="stylesheet" href="/css/site.css">
+<style>
+  .prose{max-width:68ch}
+  .prose h2{margin:var(--s7) 0 var(--s4);font-size:var(--t-h2)}
+  .prose h3{margin:var(--s6) 0 var(--s3);font-size:var(--t-h3)}
+  .prose p{color:var(--muted);margin:0 0 var(--s4)}
+  .prose ul,.prose ol{color:var(--muted);padding-left:1.2em;margin:0 0 var(--s4)}
+  .prose li{margin-bottom:var(--s2)}
+  .prose a{color:var(--gold-2)}
+  .prose strong{color:var(--fg)}
+  .formula{display:block;padding:var(--s4);margin:0 0 var(--s4);border:1px solid var(--line-soft);
+    border-radius:var(--radius);font-family:ui-monospace,SFMono-Regular,Menlo,monospace;
+    font-size:var(--t-small);color:var(--gold-2);overflow-x:auto;white-space:pre-wrap}
+  .tblwrap{overflow-x:auto;margin:0 0 var(--s4)}
+  .tbl{width:100%;border-collapse:collapse;font-size:var(--t-small)}
+  .tbl th,.tbl td{text-align:left;padding:var(--s3);border-bottom:1px solid var(--line-soft);
+    color:var(--muted);vertical-align:top}
+  .tbl th{font-family:var(--display-pro);color:var(--gold-2);font-weight:600}
+  .callout{padding:var(--s4);border:1px solid var(--line-soft);border-radius:var(--radius);
+    color:var(--muted);font-size:var(--t-small);margin:0 0 var(--s5)}
+  .callout--warn{border-color:var(--gold-2)}
+  .faq-card{padding:var(--s5)}
+  .faq-card h3{font-size:var(--t-h3);margin:0}
+  .faq-card p{color:var(--muted);font-size:var(--t-small);margin:var(--s3) 0 0}
+</style>
+</head>
+<body class="pro">
+
+<a class="skip-link" href="#main">Skip to content</a>
+
+<nav class="site-nav">
+  <a class="site-nav__brand" href="/"><img class="site-nav__lion" src="/img/brand/lion-mark.svg" alt="" width="34" height="34"><span>YUSUF GADELRAB</span></a>
+  <div class="site-nav__links">
+    <a href="/">Work</a>
+    <a href="/guides.html">Guides</a>
+    <a href="/store.html">Store</a>
+    <a href="/services.html">Services</a>
+  </div>
+</nav>
+
+<nav class="crumbs" aria-label="Breadcrumb">
+  <ol>
+    <li><a href="/">Home</a></li>
+    <li><a href="/guides.html">Guides</a></li>
+    <li><span aria-current="page">Digital Product Pricing</span></li>
+  </ol>
+</nav>
+
+<main id="main">
+
+  <header class="section">
+    <p class="eyebrow">Guide · Business</p>
+    <h1 style="margin:var(--s4) 0">The price is a decision. The take-home is arithmetic.</h1>
+    <p class="lead">Most people choose a price by looking at what similar products cost and then rounding down out of nerves. That skips two questions with actual answers: what does each platform leave you, and how many units does this need to sell before the time spent building it was worth spending.</p>
+  </header>
+
+  <hr class="divider">
+
+  <section class="section section--tight">
+    <div class="prose">
+      <p class="callout callout--warn">Every fee schedule below is an illustrative snapshot of the shape of each platform's pricing, used to compare structures on identical numbers. Platforms revise fees, and regional processing rates and tax handling differ. Check the current published fee page before deciding anything, and treat tax comments here as orientation rather than tax advice.</p>
+      <h2>Start with take-home, not with price</h2>
+      <p>A digital product has no marginal cost worth counting — the second copy costs the same as the millionth, which is essentially nothing. That makes the fee structure the entire cost side of the business, and fee structures differ from each other far more than people expect. Two platforms charging "about ten percent" can leave you three dollars apart on the same sale.</p>
+      <span class="formula">take-home = list price − (list × percentage fee) − fixed per-transaction fee
+
+effective fee rate = (list price − take-home) ÷ list price</span>
+      <p>The second line is the one that matters and the one nobody computes. A fixed per-transaction fee is nearly invisible at $199 and brutal at $9, which is why the same platform can be the cheapest option for one product and the most expensive for another.</p>
+      <h2>The same $49 product, five ways</h2>
+      <div class="tblwrap"><table class="tbl">
+        <thead><tr><th>Platform</th><th>Fee structure (illustrative)</th><th>Fee on $49</th><th>You keep</th><th>Effective rate</th></tr></thead>
+        <tbody>
+          <tr><td>Lemon Squeezy</td><td>5% + $0.50, payment processing included</td><td>$2.95</td><td><strong>$46.05</strong></td><td>6.0%</td></tr>
+          <tr><td>Payhip, paid plan (~$29/mo)</td><td>2% + Stripe 2.9% + $0.30</td><td>$2.70</td><td><strong>$46.30</strong></td><td>5.5%</td></tr>
+          <tr><td>Payhip, free plan</td><td>5% + Stripe 2.9% + $0.30</td><td>$4.17</td><td><strong>$44.83</strong></td><td>8.5%</td></tr>
+          <tr><td>Gumroad</td><td>10% flat, processing included</td><td>$4.90</td><td><strong>$44.10</strong></td><td>10.0%</td></tr>
+          <tr><td>Etsy</td><td>$0.20 listing + 6.5% transaction + ~3% + $0.25 processing</td><td>$5.10</td><td><strong>$43.90</strong></td><td>10.4%</td></tr>
+          <tr><td>Own site + Stripe</td><td>2.9% + $0.30</td><td>$1.72</td><td><strong>$47.28</strong></td><td>3.5%</td></tr>
+        </tbody>
+      </table></div>
+      <p>Spread across the hosted options: $2.40 per sale between the best and worst, or about 5% of the list price. At 200 units that is $480, which is real but is not the difference between a product working and not working. <strong>Do not choose a platform on fee rate alone</strong> — choose on what it handles for you, then check that the fee is not absurd.</p>
+      <h3>The same comparison at $19</h3>
+      <p>Now run identical structures against a low-ticket price, where the fixed component dominates.</p>
+      <div class="tblwrap"><table class="tbl">
+        <thead><tr><th>Platform</th><th>Fee on $19</th><th>You keep</th><th>Effective rate</th><th>Change vs $49</th></tr></thead>
+        <tbody>
+          <tr><td>Lemon Squeezy</td><td>$1.45</td><td>$17.55</td><td>7.6%</td><td>+1.6 pts</td></tr>
+          <tr><td>Payhip, free plan</td><td>$1.80</td><td>$17.20</td><td>9.5%</td><td>+1.0 pts</td></tr>
+          <tr><td>Gumroad</td><td>$1.90</td><td>$17.10</td><td>10.0%</td><td>no change (pure percentage)</td></tr>
+          <tr><td>Etsy</td><td>$2.26</td><td>$16.74</td><td>11.9%</td><td>+1.5 pts</td></tr>
+          <tr><td>Own site + Stripe</td><td>$0.85</td><td>$18.15</td><td>4.5%</td><td>+1.0 pts</td></tr>
+        </tbody>
+      </table></div>
+      <p>Two conclusions fall out. First, <strong>a flat-percentage platform is structurally better at low prices and worse at high ones</strong>, and the crossover is somewhere in the $20s for most of these structures. Second, the $0.50 or $0.30 fixed fee is an argument for higher prices and for bundles, but a much weaker one than people claim — combining a $19 and a $49 product into one transaction saves exactly one fixed fee, around $0.50. Bundle for conversion reasons, not fee reasons.</p>
+      <h3>When the paid plan pays for itself</h3>
+      <p>Payhip's paid tier drops the platform cut from 5% to 2%, saving 3% of revenue in exchange for a monthly fee. The break-even is a division, not a judgement call.</p>
+      <span class="formula">break-even revenue = monthly plan fee ÷ percentage saved
+
+$29 ÷ 0.03 = $967 of monthly revenue
+
+at a $49 list price, that is 20 sales a month</span>
+      <p>Below 20 sales a month the free plan wins. Above it the paid plan does. The same arithmetic applies to every "lower rate for a monthly fee" offer in this category — run the division before subscribing, and re-run it if volume drops.</p>
+      <h2>VAT, sales tax, and what merchant of record actually buys you</h2>
+      <p>This is the part that quietly justifies most of the fee difference in the table above, and the part most first-time sellers do not know exists until an email arrives.</p>
+      <p>Selling a digital product to a buyer in the EU or UK generally means value-added tax is due <strong>at the buyer's location, from the first sale</strong>, with no small-seller threshold for a seller established outside that market. That implies charging the right rate for each of a couple of dozen countries, collecting and retaining evidence of where the buyer was, registering under the relevant simplified scheme, filing periodically, and keeping records for years. In the US, a substantial number of states tax digital goods, each with its own economic-nexus thresholds. None of this is difficult in principle. All of it is a real, recurring, unpaid job.</p>
+      <p>A <strong>merchant of record</strong> platform becomes the legal seller. It charges the tax, remits it, files the returns, and carries the compliance obligation. That is what the extra few percent over raw Stripe buys — not payment processing, which Stripe already does, but the tax function and the liability attached to it.</p>
+      <div class="tblwrap"><table class="tbl">
+        <thead><tr><th>Approach</th><th>Who owes the tax filings</th><th>Extra cost vs Stripe on $49</th><th>Sensible when</th></tr></thead>
+        <tbody>
+          <tr><td>Merchant of record platform</td><td>The platform</td><td>About $1.20 per sale</td><td>You sell internationally, you are one person, and you want the compliance question closed</td></tr>
+          <tr><td>Own site + Stripe only</td><td>You</td><td>—</td><td>Sales are domestic and small, or you already have an accountant handling filings</td></tr>
+          <tr><td>Own site + a tax service on top</td><td>Shared</td><td>Typically a monthly fee plus a percentage</td><td>Volume is high enough that the per-sale MoR fee exceeds a fixed subscription</td></tr>
+        </tbody>
+      </table></div>
+      <p>For a first product, the merchant-of-record option is usually correct, and the honest way to think about the fee is as an insurance premium against a compliance obligation you do not want to discover you had. Revisit it when volume makes the arithmetic move, not before.</p>
+      <h2>Tier design: why $19 and $49 can beat a single $29</h2>
+      <p>The common claim is that two tiers always outsell one. That is not true, and the version that is true is more useful.</p>
+      <p>A single price puts the visitor in a yes-or-no decision, and the default answer to yes-or-no is no. Two prices change the question to <em>which one</em>, which quietly removes zero from the comparison set. The higher tier also anchors: $49 sitting next to $19 makes $19 read as the careful choice rather than as an amount of money. And some buyers were always going to pay $49 — a single $29 price simply hands that difference back to them.</p>
+      <h3>The condition, stated honestly</h3>
+      <p>Two tiers beat one price only if they raise total conversion, shift the mix toward the higher tier, or both. If neither happens, splitting a $29 product into $19 and $49 makes less money. Illustratively, on 1,000 visitors:</p>
+      <div class="tblwrap"><table class="tbl">
+        <thead><tr><th>Scenario</th><th>Conversion</th><th>Units</th><th>Mix</th><th>Revenue</th></tr></thead>
+        <tbody>
+          <tr><td>Single price, $29</td><td>2.0%</td><td>20</td><td>—</td><td>$580</td></tr>
+          <tr><td>Two tiers, no conversion lift</td><td>2.0%</td><td>20</td><td>70% low / 30% high</td><td>$560</td></tr>
+          <tr><td>Two tiers, small conversion lift</td><td>2.4%</td><td>24</td><td>70% / 30%</td><td><strong>$666</strong></td></tr>
+          <tr><td>Two tiers, lift plus better mix</td><td>2.2%</td><td>22</td><td>60% / 40%</td><td><strong>$682</strong></td></tr>
+        </tbody>
+      </table></div>
+      <p>Row two is the one worth staring at. <strong>Adding a tier with no behavioural effect loses money</strong>, because most buyers move to the cheaper option. The gain comes from the visitors who would have bounced at a single price and the ones who happily pay more, and both effects depend on the tiers being genuinely different rather than the same thing with features removed.</p>
+      <h3>Rules that hold up</h3>
+      <ol>
+        <li><strong>Make the higher tier different in kind, not in quantity.</strong> "Everything plus templates, the editable source files, and a walkthrough" converts. "Everything plus 40 more pages" does not.</li>
+        <li><strong>Three tiers is usually the ceiling for a solo product.</strong> Beyond that, the comparison becomes work, and work is the enemy of a cold visitor's decision.</li>
+        <li><strong>Put the tier you want most people to buy in the middle,</strong> if you run three. The outer options exist largely to define it.</li>
+        <li><strong>Do not create a tier you would be annoyed to deliver.</strong> A high tier that includes your time is not a digital product any more; price it as a service on <a href="/services.html">a services page</a> instead.</li>
+        <li><strong>Avoid launch discounts you intend to repeat.</strong> A price that is 40% off every month is not a price, it is a $29 product with a $49 sticker, and buyers learn the pattern faster than sellers expect.</li>
+      </ol>
+      <h2>Refunds: model them, do not fear them</h2>
+      <p>A clear, generous refund policy raises conversion more than it raises refunds, and refund rates on digital products are usually low single digits. Model it explicitly so it stops being a source of anxiety.</p>
+      <span class="formula">effective net per sale = net × (1 − refund rate) − (refund rate × fee retained on a refunded sale)
+
+at $49 on a 6% platform, 3% refunds:
+$46.05 × 0.97 − (0.03 × $2.95) ≈ $44.58</span>
+      <p>That is a 3.2% haircut on take-home. Compare it against a half-point swing in conversion, which is worth 25% of revenue at a 2% baseline, and the priority ordering becomes obvious: <strong>refund rate is a rounding error next to conversion.</strong> Note the second term, though — many processors keep some or all of the fee on a refunded sale, so a refund can cost slightly more than the revenue it returns. Check your platform's actual behaviour rather than assuming a clean reversal.</p>
+      <p>Chargebacks are a different animal and worth avoiding actively. They typically carry a fixed penalty on top of the reversed amount, and an accumulating chargeback rate can put a payment account at risk. If a buyer is unhappy and asks, refund them — it is cheaper in fees, and dramatically cheaper in risk, than making them dispute it.</p>
+      <h2>The break-even unit math</h2>
+      <p>Digital products have no marginal cost but they are not free to make. The cost is the hours, and pretending those hours are worth nothing is the mistake that makes a product feel successful while being a poor use of a month.</p>
+      <p>Illustratively: 40 hours to build, write, design, and set up a two-tier product, valued at $30 an hour of opportunity cost, is $1,200 of sunk cost. Blended net at a 70/30 mix across a $19 and a $49 tier on a 5% + $0.50 platform is $26.10 per sale. Apply a 3% refund rate and it is roughly $25.26.</p>
+      <div class="tblwrap"><table class="tbl">
+        <thead><tr><th>Question</th><th>Arithmetic</th><th>Answer</th></tr></thead>
+        <tbody>
+          <tr><td>Units to break even</td><td>$1,200 ÷ $25.26</td><td><strong>48 units</strong></td></tr>
+          <tr><td>Visitors needed at 2.4% conversion</td><td>48 ÷ 0.024</td><td><strong>~2,000 cold visitors</strong></td></tr>
+          <tr><td>Units to clear $1,000 profit</td><td>($1,200 + $1,000) ÷ $25.26</td><td>88 units</td></tr>
+          <tr><td>Units if only the $19 tier sells</td><td>$1,200 ÷ $17.55</td><td>69 units</td></tr>
+          <tr><td>Units if only the $49 tier sells</td><td>$1,200 ÷ $46.05</td><td>27 units</td></tr>
+        </tbody>
+      </table></div>
+      <p>Two thousand cold visitors is the number that reframes the project. It is entirely achievable — one guide that ranks, one post that travels, one newsletter mention — but it is a distribution problem, not a pricing problem, and no amount of tier optimisation substitutes for it. The same conclusion appears in <a href="/guides/print-on-demand-economics.html">the print-on-demand margin guide</a> from the other direction: the unit economics are usually fine, and the traffic is the constraint.</p>
+      <p>The corollary is the useful part: because the fixed cost is hours and the marginal cost is zero, <strong>a digital product's break-even is a threshold, not a slope.</strong> Unit 49 and unit 4,900 are worth the same to you. That is a fundamentally better shape than a physical product, and it is the reason the answer to "is it worth building" is usually about whether you can reach 2,000 people, not about whether $19 or $29 is the right number.</p>
+      <h2>Testing a price without an analytics stack</h2>
+      <p>Most solo products never see enough traffic for a statistically clean A/B test, and pretending otherwise leads to confident decisions made on twelve conversions. The workable substitute:</p>
+      <ul>
+        <li><strong>Measure revenue per visitor, not conversion rate.</strong> A higher price that converts less can still win, and conversion rate alone hides that.</li>
+        <li><strong>Change price for a fixed window</strong> — two weeks on, two weeks off — rather than splitting traffic, and accept the confound from seasonality and traffic mix instead of pretending it does not exist.</li>
+        <li><strong>Only test big changes.</strong> $19 against $49 is detectable at small samples. $27 against $29 is not, at any sample size you are likely to reach.</li>
+        <li><strong>Ask buyers.</strong> Ten replies to "what nearly stopped you buying this?" beat a dashboard with no conversions in it.</li>
+        <li><strong>Raise the price before lowering it.</strong> Underpricing is the more common error, and it is the one that is invisible because the product still sells.</li>
+      </ul>
+      <p>How to instrument any of that without a tracking stack is its own subject, covered in <a href="/guides/landing-page-that-converts.html">the landing page guide</a>. The products these numbers were worked against are in <a href="/store.html">the store</a>, and the free templates are on <a href="/templates.html">the templates page</a>.</p>
+
+      <h2>Tools referenced in this guide</h2>
+      <ul>
+        <li><a href="/store.html">Store</a> — the digital products these fee structures and tiers were worked out against.</li>
+        <li><a href="/templates.html">Templates</a> — free templates and starting points.</li>
+        <li><a href="/guides/landing-page-that-converts.html">Landing page guide</a> — how to convert the traffic a price only matters after you have.</li>
+        <li><a href="/services.html">Services</a> — for the work that is a service rather than a product — price it differently.</li>
+      </ul>
+    </div>
+  </section>
+
+  <hr class="divider">
+
+  <section class="section section--tight" id="faq">
+    <div class="grp-head">
+      <p class="eyebrow">FAQ</p>
+      <h2>Quick answers</h2>
+    </div>
+    <div class="grid" style="margin-top:var(--s6)">
+      <article class="card faq-card"><h3>Which platform pays out most?</h3><p>Illustratively on $49: 5% + $0.50 leaves $46.05, flat 10% leaves $44.10, a marketplace leaves about $43.90, raw Stripe leaves $47.28. About $2.40 of spread across hosted options.</p></article>
+      <article class="card faq-card"><h3>What is a merchant of record?</h3><p>A platform that becomes the legal seller, charging, remitting, and filing sales and value-added taxes. For a first international product by one person it is usually worth the extra few percent.</p></article>
+      <article class="card faq-card"><h3>Do I owe EU VAT?</h3><p>Generally yes, at the buyer&#x27;s location from the first sale, with no threshold for outside sellers. That means registration, per-country rates, location evidence, and filings — or a merchant of record.</p></article>
+      <article class="card faq-card"><h3>Why do two tiers work?</h3><p>One price is a yes-or-no decision defaulting to no. Two prices make it a which-one decision and remove zero from the comparison, while the high tier anchors the low one.</p></article>
+      <article class="card faq-card"><h3>Is $19 + $49 always better than $29?</h3><p>No. Illustratively, two tiers with no behavioural change makes $560 against $580 for a single $29, because most buyers move down. It only wins on a conversion lift or a better mix.</p></article>
+      <article class="card faq-card"><h3>What refund rate to assume?</h3><p>Low single digits. At $49 with a 6% fee and 3% refunds, effective net is about $44.58 against $46.05 — a rounding error next to a half-point conversion swing.</p></article>
+      <article class="card faq-card"><h3>How many units to break even?</h3><p>Build cost divided by blended net. Illustratively $1,200 of hours over $25.26 net is 48 units, or about 2,000 cold visitors at 2.4% conversion.</p></article>
+      <article class="card faq-card"><h3>How to test price with no stack?</h3><p>Revenue per visitor, not conversion rate. Fixed windows, not split traffic. Only large differences — $19 vs $49 is detectable, $27 vs $29 never will be.</p></article>
+    </div>
+  </section>
+
+<!-- related:auto:start -->
+  <hr class="divider">
+
+  <section class="section section--tight related" id="related" aria-labelledby="related-h">
+    <div class="grp-head">
+      <p class="eyebrow">Keep reading</p>
+      <h2 id="related-h">Related guides</h2>
+    </div>
+    <div class="related__grid">
+      <a class="related__item" href="/guides/clothing-brand-pod-margins.html"><strong>Where every dollar of a $32 tee actually goes</strong><span>A $32 tee and a $58 hoodie worked line by line, then shipping, returns, pre-orders versus inventory, and the…</span></a>
+      <a class="related__item" href="/guides/lemon-squeezy-vs-gumroad-vs-payhip-vs-etsy.html"><strong>Lemon Squeezy vs Gumroad vs Payhip vs Etsy</strong><span>The same product at the same price, run through four fee structures, with the merchant-of-record and VAT question…</span></a>
+      <a class="related__item" href="/guides/print-on-demand-economics.html"><strong>The margin is fine. The volume is the problem.</strong><span>A worked net-per-unit table on a tee and a hoodie, and the costs that quietly eat the margin.</span></a>
+      <a class="related__item" href="/guides/freight-broker-margin.html"><strong>Freight broker margin &amp; rate per mile</strong><span>Margin versus markup, all-in rate per mile, deadhead, fuel surcharge, and the break-even on a load.</span></a>
+    </div>
+    <p class="related__more">Every guide is indexed on <a href="/guides.html">the guides hub</a>. Or put it to work in <a href="/templates.html">the business document templates</a>.</p>
+  </section>
+<!-- related:auto:end -->
+
+</main>
+
+<footer class="site-footer">
+  <div class="site-footer__links">
+    <a href="/">Work</a>
+    <a href="/about.html">About</a>
+    <a href="/guides.html">Guides</a>
+    <a href="/apps.html">Apps</a>
+    <a href="/store.html">Store</a>
+    <a href="/privacy.html">Privacy</a>
+    <a href="/terms.html">Terms</a>
+    <a href="mailto:yusuf.gadelrab06@gmail.com">yusuf.gadelrab06@gmail.com</a>
+  </div>
+</footer>
+
+<script src="/js/site.js" defer></script>
+</body>
+</html>

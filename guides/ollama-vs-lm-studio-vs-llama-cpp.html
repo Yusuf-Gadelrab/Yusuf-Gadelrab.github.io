@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="preload" href="/css/site.css" as="style">
+<meta name="robots" content="index,follow,max-image-preview:large,max-snippet:-1">
+<meta property="og:locale" content="en_US">
+<title>Ollama vs LM Studio vs llama.cpp: Local LLM Guide</title>
+<meta name="description" content="A practical comparison of Ollama, LM Studio, and llama.cpp for running local LLMs on Apple Silicon: setup, model management, APIs, and quantization.">
+<link rel="canonical" href="https://yusuf-gadelrab.github.io/guides/ollama-vs-lm-studio-vs-llama-cpp.html">
+<link rel="icon" type="image/svg+xml" href="https://yusuf-gadelrab.github.io/favicon.svg">
+<link rel="apple-touch-icon" sizes="180x180" href="https://yusuf-gadelrab.github.io/apple-touch-icon.png">
+<meta name="theme-color" content="#0B0B0D">
+<meta name="author" content="Yusuf Gadelrab">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="Yusuf Gadelrab">
+<meta property="og:title" content="Ollama vs LM Studio vs llama.cpp: Which One Should You Run">
+<meta property="og:description" content="Setup friction, model management, API compatibility, and Apple Silicon performance, compared honestly across all three local LLM runtimes.">
+<meta property="og:url" content="https://yusuf-gadelrab.github.io/guides/ollama-vs-lm-studio-vs-llama-cpp.html">
+<meta property="og:image" content="https://yusuf-gadelrab.github.io/og-card.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Ollama vs LM Studio vs llama.cpp: Which One Should You Run">
+<meta name="twitter:description" content="Setup friction, model management, API compatibility, and Apple Silicon performance, compared honestly across all three local LLM runtimes.">
+<meta name="twitter:image" content="https://yusuf-gadelrab.github.io/og-card.png">
+<link rel="alternate" type="text/plain" href="https://yusuf-gadelrab.github.io/llms-full.txt" title="Plain-text profile for language models">
+
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"TechArticle","@id":"https://yusuf-gadelrab.github.io/guides/ollama-vs-lm-studio-vs-llama-cpp.html#article","headline":"Ollama vs LM Studio vs llama.cpp: Choosing a Local LLM Runtime on Apple Silicon","name":"Ollama vs LM Studio vs llama.cpp: Choosing a Local LLM Runtime on Apple Silicon","description":"A practical comparison of Ollama, LM Studio, and llama.cpp for running local LLMs on Apple Silicon: setup, model management, APIs, and quantization.","datePublished":"2026-07-29","dateModified":"2026-07-29","inLanguage":"en","author":{"@id":"https://yusuf-gadelrab.github.io/#person"},"publisher":{"@id":"https://yusuf-gadelrab.github.io/#person"},"about":["Ollama","LM Studio","llama.cpp","Local LLMs on Apple Silicon"],"mainEntityOfPage":"https://yusuf-gadelrab.github.io/guides/ollama-vs-lm-studio-vs-llama-cpp.html","isAccessibleForFree":true,"proficiencyLevel":"Intermediate"},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://yusuf-gadelrab.github.io/"},{"@type":"ListItem","position":2,"name":"Guides","item":"https://yusuf-gadelrab.github.io/guides.html"},{"@type":"ListItem","position":3,"name":"Ollama vs LM Studio vs llama.cpp"}]}]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","@id":"https://yusuf-gadelrab.github.io/guides/ollama-vs-lm-studio-vs-llama-cpp.html#faq","mainEntity":[{"@type":"Question","name":"Can I run Ollama, LM Studio, and llama.cpp at the same time on one Mac?","acceptedAnswer":{"@type":"Answer","text":"Yes, they do not conflict with each other. Just watch your RAM: each one that has a model loaded is holding that model in memory, and unified memory is shared across everything running on the machine at once."}},{"@type":"Question","name":"Do I need a discrete GPU to run local LLMs on a Mac?","acceptedAnswer":{"@type":"Answer","text":"No. Apple Silicon Macs use unified memory with no separate VRAM pool, and all three tools get Metal acceleration through the same underlying engine. The limit is total system RAM, not a GPU."}},{"@type":"Question","name":"What quantization level should I start with?","acceptedAnswer":{"@type":"Answer","text":"Q4_K_M is the common default and a reasonable starting point for most models. Move up to Q5_K_M, Q6_K, or Q8_0 if you have RAM to spare and want higher quality, or down only if your hardware genuinely cannot fit the larger file."}},{"@type":"Question","name":"Is LM Studio actually free to use?","acceptedAnswer":{"@type":"Answer","text":"It is free to download and closed source. Licensing terms for commercial or work use are set by the vendor, so check them yourself before relying on it for anything beyond personal use."}},{"@type":"Question","name":"Which of the three has the best OpenAI-compatible API?","acceptedAnswer":{"@type":"Answer","text":"All three expose one: llama.cpp through llama-server, Ollama through its native API plus an OpenAI-compatible v1 path, and LM Studio through its local server. For most client code, the choice between them will not matter."}},{"@type":"Question","name":"Can I load a GGUF file I downloaded myself into Ollama?","acceptedAnswer":{"@type":"Answer","text":"Yes, by writing a small Modelfile that points at the file and defines a template, then running a create command. It takes one extra step compared to LM Studio or llama.cpp, where you just point at the file directly."}},{"@type":"Question","name":"Does LM Studio support Apple MLX models?","acceptedAnswer":{"@type":"Answer","text":"Yes. In addition to the standard GGUF and llama.cpp path, LM Studio can run compatible models through the MLX runtime built by Apple, a genuine Apple-specific option the other two tools do not offer out of the box."}}]}</script>
+
+<link rel="stylesheet" href="/css/site.css">
+<style>
+  .prose{max-width:68ch}
+  .prose h2{margin:var(--s7) 0 var(--s4);font-size:var(--t-h2)}
+  .prose h3{margin:var(--s6) 0 var(--s3);font-size:var(--t-h3)}
+  .prose p{color:var(--muted);margin:0 0 var(--s4)}
+  .prose ul,.prose ol{color:var(--muted);padding-left:1.2em;margin:0 0 var(--s4)}
+  .prose li{margin-bottom:var(--s2)}
+  .prose a{color:var(--gold-2)}
+  .prose strong{color:var(--fg)}
+  .formula{display:block;padding:var(--s4);margin:0 0 var(--s4);border:1px solid var(--line-soft);
+    border-radius:var(--radius);font-family:ui-monospace,SFMono-Regular,Menlo,monospace;
+    font-size:var(--t-small);color:var(--gold-2);overflow-x:auto;white-space:pre-wrap}
+  .tblwrap{overflow-x:auto;margin:0 0 var(--s4)}
+  .tbl{width:100%;border-collapse:collapse;font-size:var(--t-small)}
+  .tbl th,.tbl td{text-align:left;padding:var(--s3);border-bottom:1px solid var(--line-soft);
+    color:var(--muted);vertical-align:top}
+  .tbl th{font-family:var(--display-pro);color:var(--gold-2);font-weight:600}
+  .callout{padding:var(--s4);border:1px solid var(--line-soft);border-radius:var(--radius);
+    color:var(--muted);font-size:var(--t-small);margin:0 0 var(--s5)}
+  .callout--warn{border-color:var(--gold-2)}
+  .faq-card{padding:var(--s5)}
+  .faq-card h3{font-size:var(--t-h3);margin:0}
+  .faq-card p{color:var(--muted);font-size:var(--t-small);margin:var(--s3) 0 0}
+</style>
+</head>
+<body class="pro">
+
+<a class="skip-link" href="#main">Skip to content</a>
+
+<nav class="site-nav">
+  <a class="site-nav__brand" href="/"><img class="site-nav__lion" src="/img/brand/lion-mark.svg" alt="" width="34" height="34"><span>YUSUF GADELRAB</span></a>
+  <div class="site-nav__links">
+    <a href="/">Work</a>
+    <a href="/guides.html">Guides</a>
+    <a href="/stack.html">Stack</a>
+    <a href="/apps.html">Apps</a>
+  </div>
+</nav>
+
+<nav class="crumbs" aria-label="Breadcrumb">
+  <ol>
+    <li><a href="/">Home</a></li>
+    <li><a href="/guides.html">Guides</a></li>
+    <li><span aria-current="page">Ollama vs LM Studio vs llama.cpp</span></li>
+  </ol>
+</nav>
+
+<main id="main">
+
+  <header class="section">
+    <p class="eyebrow">Comparison · Local AI</p>
+    <h1 style="margin:var(--s4) 0">Ollama vs LM Studio vs llama.cpp</h1>
+    <p class="lead">Three ways to run a large language model on your own Mac, all built on largely the same llama.cpp engine underneath, with very different experiences layered on top. This guide compares the real friction points, setup, model management, API compatibility, and Apple Silicon performance, then gives an honest verdict on when each tool wins and where each one loses.</p>
+  </header>
+
+  <hr class="divider">
+
+  <section class="section section--tight">
+    <div class="prose">
+      <h2>What You Are Actually Choosing Between</h2>
+      <p>All three tools eventually run the same kind of file: a GGUF-formatted model, most likely a Llama, Qwen, Mistral, or Gemma variant that someone has already converted and quantized. The differences are not in what they can run, they are in how much friction sits between you and a working model, and how much control you get once it is running.</p>
+      <p><strong>llama.cpp</strong> is the engine, an MIT-licensed C/C++ inference library that the rest of this ecosystem is built on top of. It ships three binaries worth knowing: <code>llama-cli</code> for a terminal chat loop, <code>llama-server</code> which exposes an OpenAI-compatible <code>/v1/chat/completions</code> endpoint, and <code>llama-quantize</code> for producing your own GGUF quantizations from a full-precision model. <strong>Ollama</strong> wraps that same ggml lineage in a Go binary, adds a curated model library you pull from by name, and runs as a background daemon with its own REST API on port 11434 plus an OpenAI-compatible <code>/v1</code> path. <strong>LM Studio</strong> is a free-to-download but closed-source desktop app: a model browser that pulls GGUF files from Hugging Face, a chat UI, a local OpenAI-compatible server, and on Apple Silicon specifically, the option to run models through Apple MLX instead of GGUF.</p>
+      <p>If you just want the fastest path to a working chat model with none of the tradeoffs discussed below, the <a href="/guides/local-llm-ollama.html">Ollama walkthrough</a> on this site covers that end to end.</p>
+      <h2>Setup Friction</h2>
+      <p>Ollama wins this one outright. Install via Homebrew or the macOS app, run <code>ollama pull qwen3</code>, and you have a model loaded and an API listening on <code>localhost:11434</code> in the time it takes to download the weights. LM Studio is nearly as easy for anyone comfortable with a normal Mac app: download, open, search the built-in model browser, click download, click load. The tradeoff for both is that easy defaults hide decisions. Raw llama.cpp has real setup cost. You either build it from source with <code>cmake</code>, or grab a release binary, then go find a GGUF file yourself on Hugging Face, check that its quantization fits your RAM, and pass the right flags to <code>llama-server</code> by hand: context length, GPU layers, batch size. None of that is hard once you have done it once, but it is friction Ollama and LM Studio have designed away.</p>
+      <p class="callout">If you are new to local LLMs entirely, start with Ollama. You can always drop down to llama.cpp later once you know which flags you actually care about.</p>
+      <h2>Model Management: Pull vs Manual GGUF</h2>
+      <p>The Ollama model library is a curated, named catalog: pulling a model by name gets you something working without you ever seeing a file path. That is also its biggest hidden cost: the tag abstracts away exactly which quantization you are getting unless you go dig into the manifest. The LM Studio model browser splits the difference: it searches Hugging Face directly and shows you the actual GGUF files and their quant levels before you download, so you are choosing a real file, not a tag. llama.cpp gives you no library at all. You find a GGUF on Hugging Face yourself, download it with a browser or a command-line tool, and point llama-server at the path. That is more manual work, but it means you always know precisely which file, and which quantization, you are running.</p>
+      <ul>
+        <li>Ollama: pull by name from a curated library, tag hides the exact quant, best for getting started fast</li>
+        <li>LM Studio: built-in Hugging Face model browser, shows the real GGUF file and quant before download</li>
+        <li>llama.cpp: fully manual, download the exact GGUF you want and load it with llama-server</li>
+      </ul>
+      <p>Bringing an arbitrary GGUF file into Ollama is possible but not zero-friction either: you write a small Modelfile that points at the file and defines a template, then run a create command. It works well, it is just one more step than the LM Studio drag-and-drop feel or the llama.cpp direct path argument.</p>
+      <h2>API Compatibility</h2>
+      <p>This is the one area where all three genuinely agree. <code>llama-server</code>, the Ollama daemon, and the LM Studio local server all expose an OpenAI-compatible <code>/v1/chat/completions</code> endpoint, which means the same client code, the official OpenAI Python SDK, LangChain, or a raw curl call, works against any of them by changing only the base URL. Ollama additionally has its own native REST API with a few conveniences the OpenAI spec does not cover, such as explicit model loading and unloading.</p>
+      <span class="formula">curl http://localhost:11434/v1/chat/completions \
+  -H "Content-Type: application/json" \
+  -d '{
+    "model": "qwen3",
+    "messages": [{"role": "user", "content": "hello"}]
+  }'</span>
+      <p>If you are wiring a local model into a retrieval pipeline or an internal tool, this compatibility is what makes it practical: see <a href="/guides/rag-explained.html">RAG explained</a> for how retrieval fits on top, or <a href="/guides/ai-automation-small-business.html">the automation guide</a> for a non-developer framing of the same idea.</p>
+      <h2>Performance on Apple Silicon</h2>
+      <p>All three lean on the same reality: Apple Silicon has unified memory, there is no separate VRAM pool, so the model weights plus the KV cache have to fit inside your system RAM alongside everything else running on the machine. All three also get Metal acceleration, since the Ollama and LM Studio GGUF paths both sit on top of the llama.cpp Metal backend. The rough sizing rule is that a 4-bit quantized model needs a bit over half a byte per parameter plus overhead, so a 7 to 8B model at Q4 lands in the several-gigabyte range, comfortable on most recent Macs, while a 30B-plus model wants a high-memory machine and eats a large share of whatever RAM you have.</p>
+      <p>Where LM Studio pulls slightly ahead on Apple Silicon specifically is the option to run compatible models through the MLX runtime built by Apple instead of the llama.cpp and GGUF path, a real Apple-specific option neither Ollama nor raw llama.cpp offers out of the box. Whether that translates into a better experience for a given model depends on the model and how well it has been ported to MLX, it is a genuine option, not a universal win.</p>
+      <p class="callout callout--warn">None of these tools will save you from a model that is simply too large for your machine RAM. If a 30B-plus model is thrashing your system, the fix is a smaller model or a more aggressive quantization, not a different runtime.</p>
+      <h2>Quantization: Choosing a GGUF Quant Level</h2>
+      <p>GGUF quantization trades file size and memory footprint for output quality, and the tradeoff is not linear. Q8_0 is close to the full-precision original and correspondingly large. Q4_K_M is the default most people land on: a real, occasionally noticeable, but usually acceptable quality drop in exchange for roughly half the memory. Going below Q4 tends to degrade noticeably, especially on smaller models that had less redundancy to begin with. K-quants and importance-matrix quants generally beat naive round-to-nearest quantization at the same bit width, which is why most GGUF files you find in the wild use one of those methods rather than a plain legacy quant.</p>
+      <div class="tblwrap"><table class="tbl">
+        <thead><tr><th>Quant</th><th>Relative Size</th><th>Typical Use</th></tr></thead>
+        <tbody>
+          <tr><td>Q8_0</td><td>Largest, near full precision</td><td>Quality-sensitive work, if RAM allows</td></tr>
+          <tr><td>Q6_K</td><td>Large</td><td>Middle ground when Q8_0 does not fit</td></tr>
+          <tr><td>Q5_K_M</td><td>Medium-large</td><td>Good quality, moderate memory savings</td></tr>
+          <tr><td>Q4_K_M</td><td>Medium, the common default</td><td>Best balance of size and quality for most users</td></tr>
+          <tr><td>Q3_K_M and below</td><td>Small</td><td>Noticeable quality loss, mainly for constrained hardware</td></tr>
+        </tbody>
+      </table></div>
+      <h2>Feature Matrix: Ollama vs LM Studio vs llama.cpp</h2>
+      <p>Putting the pieces side by side:</p>
+      <div class="tblwrap"><table class="tbl">
+        <thead><tr><th>Dimension</th><th>Ollama</th><th>LM Studio</th><th>llama.cpp</th></tr></thead>
+        <tbody>
+          <tr><td>Install / setup friction</td><td>Lowest, Homebrew or app install, one pull command to a running model</td><td>Low, download the app, use the built-in model browser, click to load</td><td>Highest, build from source or grab a binary, then source your own GGUF file</td></tr>
+          <tr><td>Model management</td><td>Pull from a curated library, tag hides the exact quant unless you check the manifest</td><td>Built-in Hugging Face model browser, shows the real GGUF file and quant before download</td><td>Fully manual, find and download the GGUF file yourself</td></tr>
+          <tr><td>API surface / OpenAI compatibility</td><td>Native REST API on port 11434 plus an OpenAI-compatible /v1 path</td><td>Local server with OpenAI-compatible endpoints</td><td>llama-server exposes an OpenAI-compatible /v1/chat/completions endpoint</td></tr>
+          <tr><td>Quantization control</td><td>Limited, mostly whatever the pulled tag ships with</td><td>Choose among available GGUF quant files before downloading</td><td>Full control, including making custom quants with llama-quantize</td></tr>
+          <tr><td>GUI</td><td>None built in beyond a minimal menu bar app</td><td>Full desktop chat interface and model browser</td><td>None, command line only</td></tr>
+          <tr><td>License / openness</td><td>MIT, open source</td><td>Free to download, closed source</td><td>MIT, open source</td></tr>
+          <tr><td>Apple Silicon acceleration</td><td>Metal, through the underlying ggml and llama.cpp backend</td><td>Metal through the GGUF path, plus a native MLX runtime option</td><td>Metal, native backend</td></tr>
+          <tr><td>Best-fit user</td><td>Developers who want a fast local API with minimal setup</td><td>Anyone who wants a GUI to browse and compare models visually</td><td>Power users who want every tuning knob and full transparency</td></tr>
+        </tbody>
+      </table></div>
+      <h2>Where Each One Loses</h2>
+      <h3>Where Ollama Loses</h3>
+      <p>Model tags abstract away exactly which quantization you are running unless you dig for it, which is a real problem the moment quality matters and you need to know precisely what you are comparing. It exposes far fewer tuning knobs than raw llama.cpp: grammars, fine-grained sampling, and KV-cache quantization are either hidden or unavailable. And importing an arbitrary GGUF you found yourself means writing a Modelfile rather than just pointing at a file.</p>
+      <h3>Where LM Studio Loses</h3>
+      <p>It is closed source, so you cannot audit what it is doing or fork it if it stops working the way you need. Its licensing terms for commercial or work use are set by the vendor, not by you, and you have to go check them yourself rather than assume open-source-style freedom. And it is a desktop app first: there is no clean story for running it headless on a server or inside CI, which rules it out for anything that is not an interactive desktop session.</p>
+      <h3>Where llama.cpp Loses</h3>
+      <p>You get every flag, and you also have to know which flags you want. There is no model library, so you are on your own for finding a GGUF file, checking whether it fits your RAM, and downloading it, usually from Hugging Face by hand. There is no GUI, and no daemon that keeps a model warm between calls unless you build that yourself on top of llama-server. It is the most powerful option and the least forgiving one.</p>
+      <h2>Pick X If...</h2>
+      <h3>Pick Ollama If...</h3>
+      <ul>
+        <li>You want a working local API in under five minutes</li>
+        <li>You are prototyping and do not want to think about GGUF file management yet</li>
+        <li>You are scripting against it and want a stable REST API you do not have to babysit</li>
+      </ul>
+      <p>This is the default recommendation for most developers starting out, and it is what the <a href="/guides/local-llm-ollama.html">Ollama walkthrough</a> on this site walks through end to end.</p>
+      <h3>Pick LM Studio If...</h3>
+      <ul>
+        <li>You want to browse and compare models visually before committing to one</li>
+        <li>You are not primarily a terminal person and want a real chat interface</li>
+        <li>You are on Apple Silicon and want the option to try a model through MLX instead of GGUF</li>
+      </ul>
+      <h3>Pick llama.cpp If...</h3>
+      <ul>
+        <li>You want to know and control exactly which quantization and flags you are running</li>
+        <li>You need constrained output via GBNF grammars, speculative decoding, or KV-cache quantization</li>
+        <li>You are building something headless, a server or a CI job, where a GUI app or a hidden daemon is the wrong shape</li>
+      </ul>
+      <h2>How I Actually Run This</h2>
+      <p>I run Ollama day to day, serving a Qwen3-30B-A3B mixture-of-experts model I call qwen3-fast over the HTTP API at localhost:11434 on an M1 Max. Two lessons from actually living with it. First, the Ollama serve process needs a real launchd service to survive a reboot: for a while the only thing starting it was the GUI app, which meant it silently stayed down after any restart until I noticed. Second, I never capture ollama run stdout in scripts, the interactive REPL output is not a clean machine-readable stream, so anything programmatic talks to the HTTP API instead.</p>
+      <p>None of that is an argument against LM Studio or llama.cpp, it is just what fit a daemon I wanted running constantly in the background for other tools to call. If your use case is closer to comparing a handful of models side by side before picking one, or you need a capability neither Ollama nor LM Studio exposes, the right answer is genuinely different.</p>
+      <h2>Related Reading</h2>
+      <p>This comparison sits alongside two others published at the same time: <a href="/guides/free-vs-paid-student-tools.html">what a CS student should actually pay for</a>, and <a href="/guides/notion-vs-obsidian-vs-markdown-files.html">Notion vs Obsidian vs plain markdown files</a>. For a look at what runs entirely client-side with no server at all, see <a href="/guides/client-side-only-tools.html">client-side-only tools</a>. And for the full list of what is actually in daily use here, the <a href="/stack.html">stack page</a> and the rest of the <a href="/guides.html">guides</a> are the place to start.</p>
+
+      <h2>Tools referenced in this guide</h2>
+      <ul>
+        <li><a href="/guides/local-llm-ollama.html">Running a Local LLM with Ollama</a> — A hands-on walkthrough of pulling and serving your first model.</li>
+        <li><a href="/guides/rag-explained.html">RAG Explained</a> — How retrieval augmented generation extends what a local model can know.</li>
+        <li><a href="/stack.html">The Stack I Actually Use</a> — Every tool, language, and service in daily rotation right now.</li>
+      </ul>
+    </div>
+  </section>
+
+  <hr class="divider">
+
+  <section class="section section--tight" id="faq">
+    <div class="grp-head">
+      <p class="eyebrow">FAQ</p>
+      <h2>Quick answers</h2>
+    </div>
+    <div class="grid" style="margin-top:var(--s6)">
+      <article class="card faq-card"><h3>Run all three at once?</h3><p>Yes, they do not conflict with each other. Just watch your RAM: each one that has a model loaded is holding that model in memory, and unified memory is shared across everything running on the machine at once.</p></article>
+      <article class="card faq-card"><h3>Need a GPU?</h3><p>No. Apple Silicon Macs use unified memory with no separate VRAM pool, and all three tools get Metal acceleration through the same underlying engine. The limit is total system RAM, not a GPU.</p></article>
+      <article class="card faq-card"><h3>Best starting quant?</h3><p>Q4_K_M is the common default and a reasonable starting point for most models. Move up if you have RAM to spare and want higher quality, or down only if your hardware genuinely cannot fit the larger file.</p></article>
+      <article class="card faq-card"><h3>Is LM Studio free?</h3><p>It is free to download and closed source. Licensing terms for commercial or work use are set by the vendor, so check them yourself before relying on it beyond personal use.</p></article>
+      <article class="card faq-card"><h3>Best OpenAI-compatible API?</h3><p>All three expose one: llama.cpp through llama-server, Ollama through its native API plus an OpenAI-compatible v1 path, and LM Studio through its local server.</p></article>
+      <article class="card faq-card"><h3>Load my own GGUF into Ollama?</h3><p>Yes, by writing a small Modelfile that points at the file and defines a template, then running a create command.</p></article>
+      <article class="card faq-card"><h3>Does LM Studio support MLX?</h3><p>Yes. LM Studio can run compatible models through the MLX runtime built by Apple, in addition to the standard GGUF and llama.cpp path.</p></article>
+    </div>
+  </section>
+
+<!-- related:auto:start -->
+  <hr class="divider">
+
+  <section class="section section--tight related" id="related" aria-labelledby="related-h">
+    <div class="grp-head">
+      <p class="eyebrow">Keep reading</p>
+      <h2 id="related-h">Related guides</h2>
+    </div>
+    <div class="related__grid">
+      <a class="related__item" href="/guides/local-llm-ollama.html"><strong>Running a local LLM, and when it is actually the right call</strong><span>Model choice, the HTTP API, quantisation, context limits, and when local actually beats a cloud API.</span></a>
+      <a class="related__item" href="/guides/moe-model-macbook.html"><strong>Memory like a 30B, speed like a 3B</strong><span>Memory like a 30B, speed like a 3B. Quantization, KV cache math, Ollama flags that matter, and when local is…</span></a>
+      <a class="related__item" href="/guides/client-side-only-tools.html"><strong>Tools with no backend, and the honest trade</strong><span>No accounts, no database, no breach surface — and an honest account of what that costs the user.</span></a>
+      <a class="related__item" href="/guides/embedding-model-rag.html"><strong>Picking an embedding model, and why it matters less than you think</strong><span>Dimensions, storage cost, local vs API, recall@k evaluation, rerankers — and the honest answer that chunking usually…</span></a>
+    </div>
+    <p class="related__more">Every guide is indexed on <a href="/guides.html">the guides hub</a>. Or put it to work in <a href="/services.html">the automation work I take on</a>.</p>
+  </section>
+<!-- related:auto:end -->
+
+</main>
+
+<footer class="site-footer">
+  <div class="site-footer__links">
+    <a href="/">Work</a>
+    <a href="/about.html">About</a>
+    <a href="/guides.html">Guides</a>
+    <a href="/apps.html">Apps</a>
+    <a href="/store.html">Store</a>
+    <a href="/privacy.html">Privacy</a>
+    <a href="/terms.html">Terms</a>
+    <a href="mailto:yusuf.gadelrab06@gmail.com">yusuf.gadelrab06@gmail.com</a>
+  </div>
+</footer>
+
+<script src="/js/site.js" defer></script>
+</body>
+</html>

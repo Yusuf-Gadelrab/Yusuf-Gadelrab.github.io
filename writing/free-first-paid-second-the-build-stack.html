@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="index,follow,max-image-preview:large,max-snippet:-1">
+<title>Free first: the zero dollar build stack</title>
+<meta name="description" content="Not licences, not AI subscriptions. The inference, hosting, data, and distribution a student needs to actually ship, for close to zero dollars.">
+<link rel="canonical" href="https://yusuf-gadelrab.github.io/writing/free-first-paid-second-the-build-stack.html">
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<meta name="theme-color" content="#0B0B0D">
+<meta name="author" content="Yusuf Gadelrab">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="Yusuf Gadelrab">
+<meta property="og:title" content="Free first: the zero dollar build stack">
+<meta property="og:description" content="Not licences, not AI subscriptions. The inference, hosting, data, and distribution a student needs to actually ship, for close to zero dollars.">
+<meta property="og:url" content="https://yusuf-gadelrab.github.io/writing/free-first-paid-second-the-build-stack.html">
+<meta property="og:image" content="https://yusuf-gadelrab.github.io/og-card.png">
+<meta property="article:published_time" content="2026-07-31">
+<meta property="article:author" content="Yusuf Gadelrab">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Free first: the zero dollar build stack">
+<meta name="twitter:description" content="Not licences, not AI subscriptions. The inference, hosting, data, and distribution a student needs to actually ship, for close to zero dollars.">
+<meta name="twitter:image" content="https://yusuf-gadelrab.github.io/og-card.png">
+<link rel="alternate" type="application/rss+xml" title="Yusuf Gadelrab" href="/rss.xml">
+<link rel="alternate" type="text/plain" href="https://yusuf-gadelrab.github.io/llms-full.txt">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BlogPosting", "headline": "Free-first, paid-second: the build stack a broke CS student actually needs", "datePublished": "2026-07-31", "dateModified": "2026-07-31", "url": "https://yusuf-gadelrab.github.io/writing/free-first-paid-second-the-build-stack.html", "mainEntityOfPage": "https://yusuf-gadelrab.github.io/writing/free-first-paid-second-the-build-stack.html", "description": "Not licences, not AI subscriptions. The inference, hosting, data, and distribution a student needs to actually ship, for close to zero dollars.", "image": "https://yusuf-gadelrab.github.io/og-card.png", "author": {"@id": "https://yusuf-gadelrab.github.io/#person"}, "publisher": {"@id": "https://yusuf-gadelrab.github.io/#person"}, "isPartOf": {"@type": "Blog", "@id": "https://yusuf-gadelrab.github.io/writing.html#blog", "name": "Yusuf Gadelrab \u2014 Writing"}, "keywords": "student developer stack, free hosting, local llm, ollama, github pages, zero dependency tooling, free tier traps"}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Person", "@id": "https://yusuf-gadelrab.github.io/#person", "name": "Yusuf Gadelrab", "url": "https://yusuf-gadelrab.github.io/"}</script>
+<link rel="stylesheet" href="/css/site.css">
+<style>
+  .art{max-width:44rem;margin:0 auto;padding:var(--s6) var(--s5)}
+  .art h1{font-size:var(--t-h2);line-height:1.15;margin:0 0 var(--s3)}
+  .art .meta{color:var(--muted);font-size:var(--t-small);margin:0 0 var(--s5);
+    letter-spacing:.06em;text-transform:uppercase}
+  .art p{color:var(--muted);font-size:1.02rem;line-height:1.75;margin:0 0 var(--s4)}
+  .art .lede{color:#f5f3ee;font-size:1.14rem}
+  .art a{color:var(--gold-2)}
+  .art h2{font-family:var(--display-pro);font-weight:700;color:var(--gold-2);
+    font-size:1.3rem;line-height:1.3;letter-spacing:-.01em;margin:var(--s6) 0 var(--s3)}
+  .art h3{font-family:var(--display-pro);font-weight:600;color:#f5f3ee;
+    font-size:1.06rem;margin:var(--s5) 0 var(--s3)}
+  .art ul,.art ol{color:var(--muted);font-size:1.02rem;line-height:1.75;
+    margin:0 0 var(--s4);padding-left:1.2rem}
+  .art li{margin-bottom:.55rem}
+  .art li strong{color:#f5f3ee;font-weight:600}
+  .art hr{border:0;border-top:1px solid var(--line-soft);margin:var(--s6) 0}
+  .art blockquote{margin:var(--s5) 0;padding:0 0 0 var(--s4);
+    border-left:2px solid var(--gold-2);color:#f5f3ee;font-size:1.06rem;line-height:1.7}
+  .note{border:1px solid var(--line-soft);border-left:3px solid var(--gold-2);
+    border-radius:12px;padding:var(--s4) var(--s5);margin:0 0 var(--s6);
+    color:var(--muted);font-size:.92rem;line-height:1.65}
+  .note b{color:var(--gold-2);font-family:var(--display-pro);
+    letter-spacing:.08em;text-transform:uppercase;font-size:.74rem;display:block;margin-bottom:.4rem}
+  .note p:last-child{margin-bottom:0}
+  .tw{overflow-x:auto;margin:0 0 var(--s5);border:1px solid var(--line-soft);border-radius:12px}
+  .art table{border-collapse:collapse;width:100%;min-width:34rem;font-size:.94rem}
+  .art th{font-family:var(--display-pro);font-weight:600;color:var(--gold-2);text-align:left;
+    padding:.85rem var(--s4);border-bottom:1px solid var(--line-soft);white-space:nowrap;
+    letter-spacing:.02em}
+  .art td{padding:.8rem var(--s4);color:var(--muted);border-bottom:1px solid var(--line-soft);
+    vertical-align:top;line-height:1.55}
+  .art tr:last-child td{border-bottom:0}
+  .verdict{border:1px solid var(--line-soft);border-radius:14px;padding:var(--s5);
+    margin:var(--s6) 0;background:rgba(233,201,106,.035)}
+  .verdict strong{font-family:var(--display-pro);color:var(--gold-2);display:block;
+    margin-bottom:var(--s2);letter-spacing:.01em}
+  .verdict p:last-child{margin-bottom:0}
+  .cta{border:1px solid var(--line-soft);border-radius:14px;padding:var(--s5);margin-top:var(--s6)}
+  .cta strong{font-family:var(--display-pro);color:var(--gold-2);display:block;margin-bottom:var(--s2)}
+  .cta p:last-child{margin-bottom:0}
+  .related{margin-top:var(--s6);border-top:1px solid var(--line-soft);padding-top:var(--s5)}
+  .related strong{font-family:var(--display-pro);color:var(--gold-2);display:block;margin-bottom:var(--s3)}
+  .related ul{list-style:none;padding:0;margin:0}
+</style>
+</head>
+<body>
+<nav class="site-nav">
+  <a class="site-nav__brand" href="/"><img class="site-nav__lion" src="/img/brand/lion-mark.svg" alt="" width="34" height="34"><span>YUSUF GADELRAB</span></a>
+  <div class="site-nav__links">
+    <a href="/">Work</a>
+    <a href="/writing.html">Writing</a>
+    <a href="/apps.html">Apps</a>
+    <a href="/about.html">About</a>
+  </div>
+</nav>
+<article class="art">
+  <h1>Free-first, paid-second: the build stack a broke CS student actually needs</h1>
+  <p class="meta">2026-07-31 &middot; Yusuf Gadelrab</p>
+
+  <p class="lede">I have written two of these posts already. One is the licence list: the student software you should claim before you buy anything. The other is the AI subscription list: which paid tools survived next to a model I run for free on my own laptop. Neither one answers the question I actually get asked most, which is how a student ships something real with no budget at all.</p>
+
+  <p>So this is the third post, and it is a different list. Not licences, not chat subscriptions. This is the infrastructure underneath a shipped product: inference, hosting, data, tooling, security, and distribution. If you want the desk software, read <a href="/writing/student-software-stack-free-first-paid-second.html">the licence list</a>. If you want the AI subscription breakdown, read <a href="/writing/ai-tools-i-pay-for-vs-what-i-run-locally.html">the AI subscription list</a>. This one is the build stack, and if I catch myself mentioning an IDE licence or a grammar checker anywhere below, assume I have wandered off topic.</p>
+
+  <h2>What actually ships my stuff</h2>
+
+  <p>Here is the honest inventory, in the order a product actually needs it: something to think with, somewhere to live, something to talk to, data to run on, protection from shipping a hole, and a way for someone to install it. All six are free in my current stack. Not free-trial free. Actually free, every month, indefinitely.</p>
+
+  <h3>Inference: a model that runs while I sleep</h3>
+
+  <p>I run Ollama with a Qwen3 30B mixture-of-experts model on my own laptop. Zero cost per token, no rate limit, and it keeps working at 4am when I am not. I talk to it over the local HTTP API on <code>localhost:11434</code> rather than shelling out to the CLI, because capturing CLI output from a long-running model is a trap that costs you an afternoon the first time it silently hangs. The setup notes are in the <a href="/guides/local-llm-ollama.html">local LLM guide</a>.</p>
+
+  <p>It powers the nightly batch work: drafting, classification, summarizing, first passes on anything repetitive. Where it loses, honestly, is hard reasoning, long context synthesis, code it has never seen, and anything I am about to publish under my own name. That is where a paid API token is worth spending.</p>
+
+  <p>The rule I actually use: local for volume, paid for judgment. Volume is where a token bill comes from. Move the volume to local and most of the bill disappears without touching the quality that matters, because the work that was inflating the bill was never the work that needed judgment in the first place.</p>
+
+  <h3>Hosting: free, static, and enough</h3>
+
+  <p>The entire portfolio runs on GitHub Pages. Ninety-plus pages, three installable apps, a guide library, all of it, on a plan that costs nothing and has never once been the bottleneck. Static hosting is not a compromise tier you graduate out of. For almost everything a student builds, it is the correct architecture, not the cheap one.</p>
+
+  <h3>Backend: the one I do not have</h3>
+
+  <p>The bigger decision was not which backend to pick. It was refusing to have one. The three apps I have shipped, a trading journal, a weight tracker, and a ritual checklist, are progressive web apps that keep everything in <code>localStorage</code> and work offline. No server, no database, no auth system to keep patched, and no user data sitting on a machine I am responsible for securing. I wrote the reasoning up in the <a href="/guides/client-side-only-tools.html">client-side-only tools guide</a>, and the apps themselves are at <a href="/apps.html">the apps hub</a>: <a href="/apps/tradelog/">TradeLog</a>, <a href="/apps/cut/">Cut</a>, and <a href="/apps/fire/">Fire</a>.</p>
+
+  <p>This is a cost strategy dressed as an architecture choice. No backend means no server bill, which means the free tier never expires, which means I never have to make the month-thirteen decision about whether the product is worth paying to keep alive. A product with no bill cannot get shut off for non-payment.</p>
+
+  <h3>Data: the free public API nobody puts in the pitch deck</h3>
+
+  <p>Every build stack eventually needs data from somewhere that is not your own head, and the unglamorous foundation under a lot of what I ship is free public APIs. My security scanner queries OSV.dev, the open-source vulnerability database, for CVEs. It is free, public, and maintained by people who are not trying to sell me a seat. Nobody writes a blog post about the API they call for free, so I am writing this paragraph instead: check for a free public data source before you assume the data layer is where the budget goes.</p>
+
+  <h3>Tooling: fast enough that speed becomes a budget line</h3>
+
+  <p>Python through <code>uv</code>, JavaScript through Bun. Both free, both fast enough that the speed itself starts acting like money. Minutes not spent waiting on an install or a build are the one currency I actually have a lot of as a student, and tooling that wastes it is a real cost even when the sticker price is zero.</p>
+
+  <h3>Security: writing the scanner instead of installing one</h3>
+
+  <p>I built <a href="/dira.html">DIRA</a>, a zero-dependency security scanner, MIT licensed, currently at v1.2.0 with 98 passing tests, pure standard library Python. The alternative was installing a dependency tree just to go looking for supply chain risk in my own dependency tree, which is a strange trade to make in the name of security. Zero dependencies means nothing it scans with can itself be the vulnerability.</p>
+
+  <h3>Distribution: skipping the store entirely</h3>
+
+  <p>Apple charges $99 a year for a developer account before you can put anything in the App Store. I skipped it and shipped installable PWAs through the browser share menu instead: open the app, tap share, add to home screen, done. No review queue, no annual fee, no gatekeeper between a finished app and someone's phone. The tradeoffs are real, no App Store search traffic and no push notification API, but for three tools built to prove I can ship rather than to top a store chart, the tradeoff was obviously worth it.</p>
+
+  <h2>The traps</h2>
+
+  <p>This is the part that actually matters, because free-first only works if you can tell the difference between free and free-shaped. I have paid the tuition on most of these.</p>
+
+  <ul>
+    <li><strong>Free tiers that require a card up front.</strong> The card is the product, the free tier is the funnel. That is not automatically a bad trade, but decide it on day one, not on the renewal date when the charge already cleared.</li>
+    <li><strong>Cloud credits that expire.</strong> A year of free credits will happily let you build a year of architecture you cannot afford in month thirteen. If the free thing locks in a dependency on infrastructure with a real price once the credits run out, the price was deferred, not avoided.</li>
+    <li><strong>Paying per token for something a local model already does fine.</strong> Most automation work is volume: drafts, tags, summaries, first passes. Volume is exactly what a local model is good at, so a token bill for volume work is usually a bill for convenience you did not need to buy.</li>
+    <li><strong>Seat-based tools for a team of one.</strong> Per-seat pricing is a team-scale problem. A team of one paying per seat is paying a team price for a solo workload.</li>
+    <li><strong>Anything bought for a gap you have not actually hit yet.</strong> The hypothetical scaling problem, the hypothetical traffic spike. Build for the load you have.</li>
+    <li><strong>Building your own version of everything.</strong> The trap runs both directions. "Just build it yourself" is not free, it is paid in time, and time is the one budget a student is also short on.</li>
+  </ul>
+
+  <blockquote>A paid tool has to remove a specific hour I am currently losing, and I have to be able to name the hour.</blockquote>
+
+  <p>On the last trap, honesty is worth more than a clean narrative. I have written my own security scanner and my own trading screener from scratch, and both cost real weeks I could have spent elsewhere. I think it was worth it, because I learned the domain I was scanning or trading well enough that I now own the tool instead of renting a black box. But I am not going to pretend that was free. It was paid for in time at a rate I did not track closely enough at the start, and if your deadline is measured in days rather than months, borrowing an existing library is often the financially correct move even though it costs money and building your own costs none.</p>
+
+  <h2>The build stack, need by need</h2>
+
+  <div class="tw">
+  <table>
+    <tr><th>Need</th><th>Free answer</th><th>When paying is defensible</th></tr>
+    <tr><td>LLM inference</td><td>Local model via Ollama, HTTP API</td><td>Hard reasoning, long context, or anything published under your name</td></tr>
+    <tr><td>Hosting</td><td>GitHub Pages, static, custom domain</td><td>You need server-side compute or a database, not just files</td></tr>
+    <tr><td>Database / backend</td><td>Client-side only, localStorage, offline</td><td>Multiple users must share and sync live state</td></tr>
+    <tr><td>Vulnerability data</td><td>OSV.dev public API</td><td>You need a commercial SLA or private advisory feeds</td></tr>
+    <tr><td>Mobile distribution</td><td>Installable PWA via browser share menu</td><td>You need App Store search traffic or native APIs</td></tr>
+    <tr><td>Monitoring / analytics</td><td>Free-tier error logging, manual log review</td><td>Traffic or paying users make blind spots expensive</td></tr>
+    <tr><td>Package tooling</td><td>uv for Python, Bun for JavaScript</td><td>Basically never, both are free and fast at any scale</td></tr>
+  </table>
+  </div>
+
+  <h2>How to evaluate any tool before you add it</h2>
+
+  <ol>
+    <li>Name the specific hour it removes. If you cannot name the hour, it is not solving a problem you have, it is solving a problem you might have.</li>
+    <li>Check whether a local model or a free public API already does the job at acceptable quality. Acceptable, not perfect, for the volume tier of the work.</li>
+    <li>Ask what happens at the free tier's ceiling. If the honest answer is "I would have to pay anyway," decide that today instead of on the day you hit it.</li>
+    <li>Check whether it wants a card before it gives you anything. If yes, put a cancellation date on your calendar the same minute you sign up.</li>
+    <li>Estimate the build-it-yourself cost in actual hours, not enthusiasm. Compare that number, honestly, against the subscription price.</li>
+    <li>If you are a team of one, reject seat-based pricing on sight unless the seat count is genuinely about to grow.</li>
+  </ol>
+
+  <h2>What this stack has actually cost</h2>
+
+  <p>In dollars: the Apple developer fee I chose not to pay, and that is close to the whole list. Everything else above is a laptop I already owned, electricity, and time. That is not a boast, it is a constraint speaking. I budget in tens of dollars, not hundreds, and a stack that bills nothing is the only kind of stack that survives a semester where the budget is that tight.</p>
+
+  <p>It has cost time, and I want to be straight about where. Setting up local inference correctly took a weekend the first time. DIRA took real weeks. The client-side-only architecture is fast to build but has a ceiling I have already hit once, on a feature that genuinely needed shared state, and I chose to leave that feature out rather than add a backend for it. That is the honest tradeoff of free-first: it is not free of cost, it is free of billing, and those are different things that happen to look identical on a bank statement.</p>
+
+  <div class="verdict">
+    <strong>If you are building your first shipped thing</strong>
+    <p>Start with the free-first version of every layer: local inference, static hosting, no backend, free public data, free security tooling, browser-installed distribution. It gets you further than it looks like it should.</p>
+    <p>Then evaluate every paid addition against one test: name the specific hour it removes. If you cannot name the hour, you have not found a gap yet, you have found a want.</p>
+  </div>
+
+  <p>The full setup notes for the pieces above live in <a href="/guides/local-llm-ollama.html">the local LLM guide</a>, <a href="/guides/client-side-only-tools.html">the client-side-only tools guide</a>, and <a href="/guides/offline-pwa.html">the offline PWA guide</a>. The rest of what I build with is on <a href="/stack.html">the stack page</a>, and the free tools themselves are indexed at <a href="/everything.html">everything I have shipped</a>.</p>
+
+<div class="related">
+  <strong>Related</strong>
+  <ul>
+    <li><a href="/writing/student-software-stack-free-first-paid-second.html">The licence list: student software, free first</a></li>
+    <li><a href="/writing/ai-tools-i-pay-for-vs-what-i-run-locally.html">The AI subscription list: what I pay for vs run locally</a></li>
+    <li><a href="/guides/local-llm-ollama.html">Running a local LLM with Ollama</a></li>
+    <li><a href="/dira.html">DIRA, the zero-dependency security scanner</a></li>
+  </ul>
+</div>
+
+<div class="cta">
+  <strong>Built by one CS student in San Jose.</strong>
+  <p>Free tools, three installable offline apps, and two SIGCSE 2026 papers.
+  <a href="/">See the work</a> or <a href="/about.html">read the facts</a>.
+  Open to Summer 2027 software engineering, AI/ML, and quant internships.</p>
+</div>
+</article>
+<footer class="site-footer">
+  <div class="site-footer__links">
+    <a href="/">Work</a>
+    <a href="/about.html">About</a>
+    <a href="/writing.html">Writing</a>
+    <a href="/guides.html">Guides</a>
+    <a href="/resume.html">Resume</a>
+    <a href="/apps.html">Apps</a>
+    <a href="/everything.html">Free Tools</a>
+    <a href="/privacy.html">Privacy</a>
+    <a href="/terms.html">Terms</a>
+    <a href="mailto:yusuf.gadelrab06@gmail.com">yusuf.gadelrab06@gmail.com</a>
+    <a href="https://github.com/Yusuf-Gadelrab" target="_blank" rel="noopener">GitHub</a>
+  </div>
+</footer>
+<script src="/js/site.js" defer></script>
+</body>
+</html>

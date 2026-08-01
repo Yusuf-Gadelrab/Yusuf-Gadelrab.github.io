@@ -157,6 +157,21 @@ Running a local LLM with Ollama: picking a model for your RAM, the HTTP API, qua
 "Retrieval-Augmented Generation (RAG), Explained Plainly" - https://yusuf-gadelrab.github.io/guides/rag-explained.html
 What retrieval-augmented generation is, how chunking, embeddings and reranking fit together, where RAG breaks, and when a graph beats vector search.
 
+"Choosing an Embedding Model for RAG: Dimensions, Cost, and What Actually Moves Recall" - https://yusuf-gadelrab.github.io/guides/embedding-model-rag.html
+How to pick an embedding model for RAG: dimensions vs cost, local vs API, chunking interactions, recall@k evaluation, and when a reranker wins.
+
+"Structured Output From an LLM Without Regret: JSON Mode, Tool Calling, Constrained Decoding, and the Retry Loop You Still Need" - https://yusuf-gadelrab.github.io/guides/structured-llm-output.html
+JSON mode vs tool calling vs constrained decoding vs schema validation with retry, why parsing free text fails, and idempotency for partial LLM output.
+
+"Running a 30B Mixture-of-Experts Model on a MacBook: Memory, Quantization, Context, and Real Throughput" - https://yusuf-gadelrab.github.io/guides/moe-model-macbook.html
+What mixture-of-experts changes about RAM, quantization levels, KV cache math, Ollama tuning, and realistic tokens per second on Apple Silicon.
+
+"Prompt Caching and What It Actually Saves: Prefix Matching, TTL, and the Break-Even Math" - https://yusuf-gadelrab.github.io/guides/prompt-caching.html
+How LLM prefix caching works, cache TTL and break-even math, ordering a prompt so the stable part comes first, and when caching costs you more.
+
+"Shipping a Static Site AI Search Engines Can Actually Read: llms.txt, Entity Graphs, and the SPA Problem" - https://yusuf-gadelrab.github.io/guides/static-site-ai-search.html
+llms.txt, robots.txt rules for named AI crawlers, JSON-LD entity graphs with @id, mirrored FAQ schema, and what an answer engine cannot see in an SPA.
+
 "ATS Resume Rules That Actually Matter, and the Myths That Do Not" - https://yusuf-gadelrab.github.io/guides/ats-resume.html
 What applicant tracking systems really do to a resume, the formatting rules that matter, how to mirror a job description honestly, and the myths.
 
@@ -175,6 +190,21 @@ A practical filter for which small-business tasks AI should handle, the two-tier
 "The Arithmetic Behind a 60-Pound Cut" - https://yusuf-gadelrab.github.io/guides/cut-calorie-math.html
 How a calorie deficit actually works: maintenance estimation, deficit size, protein, why the scale lies week to week, and how to track it without obsessing.
 
+"Freight Broker Carrier Vetting: The Checklist That Protects You in a Claim" - https://yusuf-gadelrab.github.io/guides/carrier-vetting-checklist.html
+How to verify FMCSA authority, read a certificate of insurance, spot double-brokering, and build a vetting file that survives a cargo claim.
+
+"Detention, Demurrage and Accessorials: What They Are and Who Owes Them" - https://yusuf-gadelrab.github.io/guides/detention-demurrage-accessorials.html
+What each charge is, who owes it, how to document time in and out so a claim survives, typical free time, and how unbilled accessorials eat a load's margin.
+
+"Pricing a Digital Product: Platform Fees, Tiers, and the Break-Even Math" - https://yusuf-gadelrab.github.io/guides/pricing-a-digital-product.html
+Platform take-home compared on the same list price, VAT and merchant of record, tier design, refund assumptions, and the break-even unit math.
+
+"Print-on-Demand Margins for a Small Clothing Brand" - https://yusuf-gadelrab.github.io/guides/clothing-brand-pod-margins.html
+Blank cost, print cost and platform cut separated, a $32 tee and a $58 hoodie worked end to end, plus shipping, returns and the pre-order break-even.
+
+"Building a Landing Page That Converts a Cold Visitor" - https://yusuf-gadelrab.github.io/guides/landing-page-that-converts.html
+The one-job rule, above-the-fold structure, specificity over adjectives, proof when you have none, and how to measure a page without a tracking stack.
+
 "VCP and Base Patterns: Structure, Pivots, and What Testing Showed" - https://yusuf-gadelrab.github.io/guides/vcp-base-patterns.html
 What a base is, how contractions are counted, why volume dry-up matters, where the pivot sits, and the walk-forward result that came out breakeven.
 
@@ -189,6 +219,24 @@ Daily rebalancing, volatility drag, and a worked two-day example where a 3x ETF 
 
 "From Paper Trading to Real Money: What Changes and What Gates It" - https://yusuf-gadelrab.github.io/guides/paper-to-live-trading.html
 What paper does not simulate: slippage, partial fills, borrow, emotion. Why a promotion gate matters, and the 60-trade rule my engine enforces in code.
+
+"Snyk vs Trivy vs DIRA: choosing a security scanner for a small codebase" - https://yusuf-gadelrab.github.io/guides/snyk-vs-trivy-vs-dira.html
+An honest matrix across three security scanners, written by the author of one of them: coverage, container scanning, licensing, cost, and where each one loses.
+
+"Lemon Squeezy vs Gumroad vs Payhip vs Etsy for selling digital products" - https://yusuf-gadelrab.github.io/guides/lemon-squeezy-vs-gumroad-vs-payhip-vs-etsy.html
+Take-home arithmetic on the same list price across four digital-product platforms, plus merchant of record, VAT, payouts, and when marketplace discovery is worth the cut.
+
+"Alpaca vs Interactive Brokers vs Robinhood for algorithmic trading" - https://yusuf-gadelrab.github.io/guides/alpaca-vs-interactive-brokers-vs-robinhood.html
+API quality, real paper trading, data access and costs across three brokers, plus why unofficial reverse-engineered trading APIs get accounts restricted.
+
+"Ollama vs LM Studio vs llama.cpp: Choosing a Local LLM Runtime on Apple Silicon" - https://yusuf-gadelrab.github.io/guides/ollama-vs-lm-studio-vs-llama-cpp.html
+A practical comparison of Ollama, LM Studio, and llama.cpp for running local LLMs on Apple Silicon: setup, model management, APIs, and quantization.
+
+"Notion vs Obsidian vs a Folder of Markdown Files: Choosing a Second Brain That Survives You Changing Your Mind" - https://yusuf-gadelrab.github.io/guides/notion-vs-obsidian-vs-markdown-files.html
+A second brain comparison for students: where your notes really live, what leaving each tool costs you, and which one actually fits how you work.
+
+"Free vs Paid: What a CS Student Should Actually Pay For" - https://yusuf-gadelrab.github.io/guides/free-vs-paid-student-tools.html
+A decision framework and scored table across 15 tool categories for CS students on what deserves money and what free option is already enough.
 
 "A Student Software Portfolio That Gets Interviews" - https://yusuf-gadelrab.github.io/guides/portfolio-that-gets-interviews.html
 What a student software portfolio needs: a live URL, a README that pitches, three strong projects instead of ten weak ones, and case studies reviewers finish.
@@ -219,6 +267,24 @@ Base cost, retail, platform fees, and net per unit on a tee and a hoodie - plus 
 
 "How to Get Cited by AI Answer Engines: Entities, llms.txt, and Structure" - https://yusuf-gadelrab.github.io/guides/ai-search-optimization.html
 Entity consolidation, llms.txt, robots.txt rules for named AI crawlers, FAQPage that mirrors visible text, answer-first writing, and IndexNow for fast recrawl.
+
+"The Student Founder's Security Checklist: 18 Things to Fix Before Your First User" - https://yusuf-gadelrab.github.io/guides/student-founder-security-checklist.html
+An 18-point security checklist for student founders shipping their first product: secrets, dependency CVEs, config, TLS, backups, and more.
+
+"Position Sizing: Fixed-Fractional, Volatility-Adjusted, and Portfolio Heat" - https://yusuf-gadelrab.github.io/guides/position-sizing-per-trade.html
+Fixed-fractional, fixed-dollar, and ATR-adjusted sizing with worked arithmetic. Where the 1% rule comes from, portfolio heat, and notional caps.
+
+"Backtest Overfitting: How to Tell a Real Edge From a Fitted One" - https://yusuf-gadelrab.github.io/guides/backtest-overfitting.html
+In-sample vs held-out testing, parameter plateaus vs spikes, the multiple-testing arithmetic, and the random-entry control that kills most edges.
+
+"Drawdown Recovery Math: Asymmetry, Streaks, and Position Size" - https://yusuf-gadelrab.github.io/guides/drawdown-recovery-math.html
+The recovery formula, a full table from 5% to 90%, losing-streak probabilities, risk of ruin, and how a drawdown budget sets your position size.
+
+"Reading a Trading Backtest Report Honestly: A Stat-by-Stat Audit" - https://yusuf-gadelrab.github.io/guides/reading-a-backtest-report.html
+Stat by stat: what win rate, profit factor, Sharpe, max drawdown and CAGR hide, with worked confidence intervals and cost maths.
+
+"Options Vertical Spreads: Structure, Payoff Math, and Assignment Risk" - https://yusuf-gadelrab.github.io/guides/options-vertical-spreads.html
+The four verticals, max profit and max loss formulas with worked dollar examples, buying power reduction, break-even win rates, and assignment risk.
 
 ---
 

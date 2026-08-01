@@ -35,7 +35,7 @@
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Hire Yusuf Gadelrab — Recruiters &amp; Founding Clients">
 <meta name="twitter:description" content="Recruiters: internship-ready SWE/AI/ML/quant talent. Founders: a freelance builder for automation and AI tooling.">
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","@id":"https://yusuf-gadelrab.github.io/hire.html#faq","mainEntity":[{"@type":"Question","name":"Is Yusuf Gadelrab available for a Summer 2027 internship?","acceptedAnswer":{"@type":"Answer","text":"Yes. He is targeting software engineering, AI/ML, fintech and quantitative finance, data science, product/strategy, and developer advocacy roles for Summer 2027. He is a Canadian citizen on TD status and will need US work sponsorship. Open to San Francisco, Remote, New York City, Seattle, Austin, and Toronto."}},{"@type":"Question","name":"Does he do freelance or contract work?","acceptedAnswer":{"@type":"Answer","text":"Yes, solo. He scopes, builds and ships it himself — no agency handoff. Productised options include FreightDesk AI founding-client pilots for freight brokerages, a 48-hour LinkedIn profile rewrite, ATS-safe resume rebuilds, and black-and-gold template packs. Anything outside those, email a brief."}},{"@type":"Question","name":"What is the fastest way to reach him?","acceptedAnswer":{"@type":"Answer","text":"Email yusuf.gadelrab06@gmail.com with what you need in the first line. LinkedIn works too. He replies to serious inquiries within a couple of days."}},{"@type":"Question","name":"Does he do brand partnerships or sponsorships?","acceptedAnswer":{"@type":"Answer","text":"Yes, that runs through a separate media kit with audience numbers and past collaborations, not through this page."}},{"@type":"Question","name":"Is this page written by AI?","acceptedAnswer":{"@type":"Answer","text":"Drafted with tools, edited and fact-checked by Yusuf. Every number on this page links back to where it was first published, so it can be checked rather than trusted."}}]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","@id":"https://yusuf-gadelrab.github.io/hire.html#faq","mainEntity":[{"@type":"Question","name":"Is Yusuf Gadelrab available for a Summer 2027 internship?","acceptedAnswer":{"@type":"Answer","text":"Yes. He is targeting software engineering, AI/ML, fintech and quantitative finance, data science, product/strategy, and developer advocacy roles for Summer 2027. He is a Canadian citizen on TD status and will need US work sponsorship. Open to San Francisco, Remote, New York City, Seattle, Austin, and Toronto."}},{"@type":"Question","name":"Does he do freelance or contract work?","acceptedAnswer":{"@type":"Answer","text":"Yes, solo. He scopes, builds and ships it himself — no agency handoff. Productised options include FreightDesk AI founding-client pilots for freight brokerages, a 48-hour LinkedIn profile rewrite, ATS-safe resume rebuilds, and black-and-gold template packs. Anything outside those, email a brief."}},{"@type":"Question","name":"What is the fastest way to reach him?","acceptedAnswer":{"@type":"Answer","text":"Email yusuf.gadelrab06@gmail.com with what you need in the first line. LinkedIn works too. He replies to serious inquiries within a couple of days."}},{"@type":"Question","name":"Does he do brand partnerships or sponsorships?","acceptedAnswer":{"@type":"Answer","text":"Yes, that runs through a separate media kit with audience numbers and past collaborations, not through this page."}},{"@type":"Question","name":"Does he need visa sponsorship?","acceptedAnswer":{"@type":"Answer","text":"Yes. He is a Canadian citizen and will need US work sponsorship for full-time employment. He would rather say that up front than have it surface after two interview rounds. For freelance and contract work he only takes engagements that fit his current status, and he says so before scoping rather than after."}},{"@type":"Question","name":"How long does he take to reply?","acceptedAnswer":{"@type":"Answer","text":"Within two business days, written by him rather than a template. If it is not a fit he says so in the reply instead of going quiet."}},{"@type":"Question","name":"Is this page written by AI?","acceptedAnswer":{"@type":"Answer","text":"Drafted with tools, edited and fact-checked by Yusuf. Every number on this page links back to where it was first published, so it can be checked rather than trusted."}}]}</script>
 <link rel="stylesheet" href="/css/site.css">
 <style>
   /* ---- page-specific only ---- */
@@ -49,6 +49,45 @@
   .proof:last-child{border-bottom:none}
   .proof b{font-family:var(--display-pro);color:var(--gold-2);display:block;margin-bottom:2px}
   .proof span{color:var(--muted);font-size:var(--t-small)}
+
+  /* These class names were used in the markup but had no rules anywhere — the
+     offer cards and FAQ cards were rendering unstyled. Defined here to match
+     projects.html so the two pages read as one system. */
+  .grp-head{display:flex;flex-wrap:wrap;gap:var(--s3);align-items:baseline;justify-content:space-between}
+  .grp-head p{color:var(--muted);font-size:var(--t-small);max-width:56ch}
+  .proj{display:flex;flex-direction:column;padding:var(--s5)}
+  .proj h3{margin:var(--s2) 0 var(--s3);font-size:var(--t-h3)}
+  .proj>p{color:var(--muted);font-size:var(--t-small);flex:1;margin:0}
+  .proj .go{margin-top:var(--s4);font-family:var(--display-pro);font-weight:600;
+    font-size:var(--t-small);color:var(--gold-2)}
+  a.proj:hover .go{color:var(--gold)}
+  .chips{display:flex;flex-wrap:wrap;gap:6px;margin-top:var(--s4)}
+  .chips span{font-family:var(--mono);font-size:11px;letter-spacing:.3px;color:var(--muted);
+    border:1px solid var(--line-soft);border-radius:var(--radius);padding:3px 8px;white-space:nowrap}
+  .st{display:inline-flex;align-items:center;gap:7px;font-family:var(--display-pro);font-weight:600;
+    font-size:11px;letter-spacing:1px;text-transform:uppercase;padding:4px 10px;border-radius:var(--radius);
+    border:1px solid var(--line-soft);color:var(--muted);background:rgba(255,255,255,.02);align-self:flex-start}
+  .st i{width:6px;height:6px;border-radius:50%;display:block;background:currentColor;flex:0 0 auto}
+  .st--live{color:var(--ok);border-color:rgba(95,191,127,.3)}
+  .qa{padding:var(--s5)}
+  .qa h3{font-size:var(--t-h3);margin:0 0 var(--s3)}
+  .qa p{color:var(--muted);font-size:var(--t-small);margin:0}
+  .qa a{color:var(--gold-2)}
+
+  /* One primary action per view. Secondary routes are quiet text links so the
+     gold button is never competing with two other gold-weight things. */
+  .alt-links{display:flex;flex-wrap:wrap;gap:var(--s2) var(--s5);margin-top:var(--s4);
+    font-size:var(--t-small);color:var(--muted)}
+  .alt-links a{color:var(--ink);text-decoration:underline;
+    text-decoration-color:var(--line);text-underline-offset:3px}
+  .alt-links a:hover{color:var(--gold-2)}
+  .next{display:grid;gap:var(--s5);grid-template-columns:repeat(auto-fit,minmax(min(260px,100%),1fr));
+    margin-top:var(--s6)}
+  .next div{border:1px solid var(--line-soft);border-radius:var(--radius-lg);padding:var(--s5)}
+  .next .mk{font-family:var(--display-pro);font-size:11px;letter-spacing:.12em;text-transform:uppercase;
+    color:var(--gold-2);display:block;margin-bottom:var(--s2)}
+  .next p{color:var(--muted);font-size:var(--t-small);margin:0}
+  .next b{color:var(--ink)}
 </style>
 <!-- geo:entity — canonical Person node, one entity across every page -->
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"Person","@id":"https://yusuf-gadelrab.github.io/#person","name":"Yusuf Gadelrab","url":"https://yusuf-gadelrab.github.io/"}</script>
@@ -60,17 +99,29 @@
 <a class="skip-link" href="#main">Skip to content</a>
 
 <nav class="site-nav">
-  <a class="site-nav__brand" href="/"><img class="site-nav__lion" src="/img/brand/lion-mark.svg" alt="" width="34" height="34"><span>YUSUF GADELRAB</span></a>
+  <a class="site-nav__brand" href="/"><img class="site-nav__lion" src="/img/brand/lion-mark.svg" alt="" width="34" height="34" decoding="async"><span>YUSUF GADELRAB</span></a>
   <div class="site-nav__links"><a href="/">Work</a><a href="/resume.html">Resume</a><a href="/guides.html">Guides</a><a href="/store.html">Store</a><a href="/apps.html">Apps</a><a href="/kxngsef.html">KXNG SEF</a><a href="/hire.html" aria-current="page">Hire</a><a href="/media-kit.html">Media Kit</a></div>
 </nav>
 
 <main id="main">
 
   <header class="section" id="who">
-    <img class="page-lion" src="/img/brand/lion-mark.svg" alt="" width="46" height="46">
+    <img class="page-lion" src="/img/brand/lion-mark.svg" alt="" width="46" height="46" decoding="async">
     <p class="eyebrow">DHAHAB · Work With Me</p>
     <h1 style="margin:var(--s4) 0">Two ways to <span class="gold-fill">work with me.</span></h1>
-    <p class="lead">I'm a computer science student at San José State University shipping AI tooling, trading research, and CS-education work in public. Recruiters get an internship-ready engineer with sourced numbers. Founders get a solo builder who ships fast and says what didn't work.</p>
+    <p class="lead"><b>I'm Yusuf Gadelrab — a CS undergraduate at San José State University (BS, May 2028), co-author on two SIGCSE Technical Symposium 2026 papers, and the sole builder of every project on this site.</b> Recruiters: I'm interviewing for Summer 2027 SWE, AI/ML, quant and data-science internships. Founders: I take a small number of solo build engagements — automation, AI tooling, internal tools.</p>
+    <p class="lead" style="margin-top:var(--s3)">Either way the first step is the same email, and I answer it myself.</p>
+
+    <div class="row" style="margin-top:var(--s6)">
+      <a class="btn btn-gold" href="mailto:yusuf.gadelrab06@gmail.com?subject=Hiring%20Yusuf%20Gadelrab&amp;body=Role%20or%20project%3A%20%0ATimeline%3A%20%0AAnything%20I%20should%20read%20first%3A%20">Email me →</a>
+    </div>
+    <p class="muted" style="font-size:var(--t-micro);margin-top:var(--s3)">Opens a pre-filled email · reply within two business days · you deal with me directly, not an agency</p>
+    <p class="alt-links">
+      <a href="#recruiters">I'm a recruiter</a>
+      <a href="#clients">I'm a founder or business</a>
+      <a href="/resume.html">Résumé</a>
+      <a href="#faq">FAQ</a>
+    </p>
   </header>
 
   <hr class="divider">
@@ -95,10 +146,13 @@
     <p style="margin-top:var(--s6);color:var(--muted);max-width:var(--maxw-prose)">Target roles: software engineering, AI/ML, fintech and quantitative finance, data science, product/strategy, and developer advocacy. Stack: Python, Java, JavaScript, SQL, React, full-stack, RAG/LLMs, local models via Ollama. Relocate OK: San Francisco, Remote, New York City, Seattle, Austin, Toronto.</p>
 
     <div class="row" style="margin-top:var(--s6)">
-      <a class="btn btn-gold" href="/resume.html">See the résumé →</a>
-      <a class="btn btn-ghost" href="/about.html">Read the facts →</a>
-      <a class="btn btn-ghost" href="mailto:yusuf.gadelrab06@gmail.com?subject=Internship%20Opportunity">Email about a role</a>
+      <a class="btn btn-gold" href="mailto:yusuf.gadelrab06@gmail.com?subject=Internship%20Opportunity&amp;body=Company%3A%20%0ARole%3A%20%0ATerm%20(e.g.%20Summer%202027)%3A%20%0ALink%20to%20the%20req%3A%20">Email me about a role →</a>
     </div>
+    <p class="alt-links">
+      <a href="/resume.html">See the résumé</a>
+      <a href="/about.html">Read the sourced facts</a>
+      <a href="/projects.html">Browse the projects</a>
+    </p>
   </section>
 
   <hr class="divider">
@@ -152,7 +206,40 @@
     <p style="margin-top:var(--s6);color:var(--muted);max-width:var(--maxw-prose)">Outside those four: email a brief. If it's a good fit for a solo builder — a script, an internal tool, an automation, a small full-stack build — I'll say so honestly, and say so just as honestly if it isn't.</p>
 
     <div class="row" style="margin-top:var(--s5)">
-      <a class="btn btn-ghost" href="mailto:yusuf.gadelrab06@gmail.com?subject=Project%20Brief">Email a project brief</a>
+      <a class="btn btn-gold" href="mailto:yusuf.gadelrab06@gmail.com?subject=Project%20Brief&amp;body=What%20you%20need%20built%3A%20%0AWhat%20it%20replaces%20today%3A%20%0ATimeline%3A%20%0ABudget%20range%20(rough%20is%20fine)%3A%20">Email a project brief →</a>
+    </div>
+    <p class="muted" style="font-size:var(--t-micro);margin-top:var(--s3)">Three lines is enough. No form, no discovery-call funnel.</p>
+  </section>
+
+  <hr class="divider">
+
+  <!-- ============ OBJECTIONS: what actually happens next ============ -->
+  <section class="section section--tight" id="how">
+    <div class="grp-head">
+      <div>
+        <p class="eyebrow">Before you email</p>
+        <h2>The three things people want to know</h2>
+      </div>
+      <p>Answered up front so nobody has to spend an email finding out.</p>
+    </div>
+
+    <div class="next">
+      <div>
+        <span class="mk">01 · Will you actually reply?</span>
+        <p><b>Within two business days, from me, not a template.</b> Put what you need in the first line and I can answer it in one round instead of four. If it isn't a fit I say that in the reply rather than going quiet.</p>
+      </div>
+      <div>
+        <span class="mk">02 · Can a student really deliver this?</span>
+        <p><b>The work is checkable, which is the point of this whole site.</b> 18 finance workflows and 77 passing tests shipped inside a real freight brokerage. DIRA v1.2.0: 98 passing tests, zero dependencies, MIT-licensed on GitHub. Two peer-reviewed SIGCSE TS 2026 papers. Three installable PWAs and 100+ pages live right now. Every number links to where it came from.</p>
+      </div>
+      <div>
+        <span class="mk">03 · Does the visa make this a dead end?</span>
+        <p><b>Not for an internship, and I'd rather you hear it from me than a screening form.</b> I'm a Canadian citizen and I will need US work sponsorship. For freelance and contract work I only take engagements that fit my status, and I say so before scoping rather than after.</p>
+      </div>
+    </div>
+
+    <div class="row" style="margin-top:var(--s6)">
+      <a class="btn btn-gold" href="mailto:yusuf.gadelrab06@gmail.com?subject=Hiring%20Yusuf%20Gadelrab">Email me →</a>
     </div>
   </section>
 
@@ -173,7 +260,7 @@
         <div><b>Broker-agnostic trading bot</b><span>Deterministic order IDs, a claimed-before-every-call journal, idempotent reconciliation — 48 tests, no live capital until the promotion gate clears.</span></div>
       </div>
       <div class="proof">
-        <div><b>DIRA security scanner</b><span>Zero-dependency Python, MIT-licensed, six scanners plus SBOM and safe auto-remediation — 37 passing tests, open source on GitHub.</span></div>
+        <div><b>DIRA security scanner</b><span>Zero-dependency Python, MIT-licensed, seven scanners plus SBOM and safe auto-remediation — v1.2.0, 98 passing tests, open source on GitHub.</span></div>
       </div>
       <div class="proof">
         <div><b>SIGCSE CS-education research</b><span>Two peer-reviewed papers, IRB-approved mixed methods, 60 participants — under Dr. Ethel Tshukudu's CSEd Research Lab at SJSU.</span></div>
@@ -209,6 +296,14 @@
         <p>Yes — that runs through the <a href="/media-kit.html">media kit</a>, with audience numbers and past collaborations, not through this page.</p>
       </article>
       <article class="card qa">
+        <h3>Does he need visa sponsorship?</h3>
+        <p>Yes. He is a Canadian citizen and will need US work sponsorship for full-time employment. He would rather say that up front than have it surface after two interview rounds. For freelance and contract work he only takes engagements that fit his current status, and he says so before scoping rather than after.</p>
+      </article>
+      <article class="card qa">
+        <h3>How long does he take to reply?</h3>
+        <p>Within two business days, written by him rather than a template. If it is not a fit he says so in the reply instead of going quiet.</p>
+      </article>
+      <article class="card qa">
         <h3>Is this page written by AI?</h3>
         <p>Drafted with tools, edited and fact-checked by Yusuf. Every number here links back to where it was first published, so it can be checked rather than trusted.</p>
       </article>
@@ -222,10 +317,14 @@
       <div>
         <p class="eyebrow">Ready when you are</p>
         <h2 style="margin-top:var(--s2)">Recruiter or founder, the first step is the same.</h2>
+        <p class="muted" style="font-size:var(--t-small);margin-top:var(--s3);max-width:48ch">One email, one line about what you need, a reply within two business days.</p>
       </div>
-      <div class="row">
-        <a class="btn btn-gold" href="mailto:yusuf.gadelrab06@gmail.com">Email me →</a>
-        <a class="btn btn-ghost" href="https://www.linkedin.com/in/yusuf-gadelrab-76246b221" target="_blank" rel="noopener">LinkedIn</a>
+      <div>
+        <a class="btn btn-gold" href="mailto:yusuf.gadelrab06@gmail.com?subject=Hiring%20Yusuf%20Gadelrab&amp;body=Role%20or%20project%3A%20%0ATimeline%3A%20%0AAnything%20I%20should%20read%20first%3A%20">Email me →</a>
+        <p class="alt-links">
+          <a href="https://www.linkedin.com/in/yusuf-gadelrab-76246b221" target="_blank" rel="noopener">LinkedIn</a>
+          <a href="/services.html">DHAHAB Studio offers</a>
+        </p>
       </div>
     </div>
   </section>

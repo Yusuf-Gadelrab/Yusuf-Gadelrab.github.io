@@ -49,7 +49,7 @@ header.hero{position:relative;padding:64px 0 40px;overflow:hidden}
 }
 .portrait-frame .initials{font-family:Georgia,serif;font-size:40px;color:var(--gold-2);opacity:.9}
 .portrait-frame .ph-label{font-size:9px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
-/* swap portrait: {{PHOTO_URL}} — replace .portrait-frame div with <img src="{{PHOTO_URL}}"> at 168x168, object-fit:cover, same border-radius/border/shadow */
+/* swap portrait: {{PHOTO_URL}} — replace .portrait-frame div with <img src="{{PHOTO_URL}}" decoding="async" loading="lazy"> at 168x168, object-fit:cover, same border-radius/border/shadow */
 .hero-copy{flex:1 1 420px}
 .hero-copy h1{font-size:clamp(2.1rem,5vw,3.2rem);letter-spacing:-.5px;margin:.3rem 0 .5rem}
 .hero-copy .position{color:var(--muted);font-size:1.02rem;max-width:560px}
@@ -277,7 +277,7 @@ footer.doc-footer{padding:20px 0 48px}
     <div class="accent-bar"></div>
     <h2>Past Collaborations</h2>
   </div>
-  <!-- ===== EDIT BELOW: brand logos — replace each box with an <img> or leave as text mark ===== -->
+  <!-- ===== EDIT BELOW: brand logos — replace each box with an <img decoding="async"> or leave as text mark ===== -->
   <div class="logo-strip">
     <div class="logo-box">Recover Well Co.</div>
     <div class="logo-box">Fernhollow Athletics</div>

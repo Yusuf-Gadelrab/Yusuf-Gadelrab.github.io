@@ -68,6 +68,14 @@
   </div>
 </nav>
 
+<nav class="crumbs" aria-label="Breadcrumb">
+  <ol>
+    <li><a href="/">Home</a></li>
+    <li><a href="/guides.html">Guides</a></li>
+    <li><span aria-current="page">Local LLM With Ollama</span></li>
+  </ol>
+</nav>
+
 <main id="main">
 
   <header class="section">
@@ -149,13 +157,30 @@
     </div>
   </section>
 
+<!-- related:auto:start -->
+  <hr class="divider">
+
+  <section class="section section--tight related" id="related" aria-labelledby="related-h">
+    <div class="grp-head">
+      <p class="eyebrow">Keep reading</p>
+      <h2 id="related-h">Related guides</h2>
+    </div>
+    <div class="related__grid">
+      <a class="related__item" href="/guides/ollama-vs-lm-studio-vs-llama-cpp.html"><strong>Ollama vs LM Studio vs llama.cpp</strong><span>Setup friction, model management, API compatibility, and Apple Silicon performance, compared honestly across all…</span></a>
+      <a class="related__item" href="/guides/moe-model-macbook.html"><strong>Memory like a 30B, speed like a 3B</strong><span>Memory like a 30B, speed like a 3B. Quantization, KV cache math, Ollama flags that matter, and when local is…</span></a>
+      <a class="related__item" href="/guides/structured-llm-output.html"><strong>Getting JSON out of a language model, reliably</strong><span>Four mechanisms ranked, a worked JSON Schema and retry loop, and the two failure modes — truncation and duplicated…</span></a>
+      <a class="related__item" href="/guides/prompt-caching.html"><strong>Prompt caching, and the traffic pattern where it costs you more</strong><span>Prefix matching, TTL windows, the break-even arithmetic, and the traffic pattern where caching makes your bill 24%…</span></a>
+    </div>
+    <p class="related__more">Every guide is indexed on <a href="/guides.html">the guides hub</a>. Or put it to work in <a href="/services.html">the automation work I take on</a>.</p>
+  </section>
+<!-- related:auto:end -->
+
 </main>
 
 <footer class="site-footer">
   <div class="site-footer__links">
     <a href="/">Work</a>
     <a href="/about.html">About</a>
-    <a href="/hire.html">Hire</a>
     <a href="/guides.html">Guides</a>
     <a href="/apps.html">Apps</a>
     <a href="/store.html">Store</a>

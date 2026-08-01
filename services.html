@@ -38,11 +38,12 @@
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"Service","name":"DHAHAB Studio","url":"https://yusuf-gadelrab.github.io/services.html","description":"Productized services for early-stage founders: conversion-ready launch sites, DIRA-powered security audits, and AI/agent automation builds.","provider":{"@id":"https://yusuf-gadelrab.github.io/#person"},"areaServed":"Worldwide","availableChannel":{"@type":"ServiceChannel","serviceUrl":"https://yusuf-gadelrab.github.io/services.html"},"hasOfferCatalog":{"@type":"OfferCatalog","name":"DHAHAB Studio Services","itemListElement":[{"@type":"Offer","availability":"https://schema.org/LimitedAvailability","itemOffered":{"@type":"Service","name":"Launch Site","description":"A conversion-ready landing page or small site built in about a week — copy, design, SEO and structured data, and deploy."}},{"@type":"Offer","availability":"https://schema.org/LimitedAvailability","itemOffered":{"@type":"Service","name":"Shield Audit","description":"A startup security audit powered by DIRA — secrets, dependency CVEs, config/IaC misconfigurations, and live TLS/header checks — delivered as a scored report with a fix plan."}},{"@type":"Offer","availability":"https://schema.org/LimitedAvailability","itemOffered":{"@type":"Service","name":"Automation Build","description":"An AI/agent workflow automation: drafting pipelines, QC gates, and scheduled jobs, delivered as a running automation with a runbook."}}]}}</script>
 <script type="application/ld+json">
 {"@context":"https://schema.org","@type":"FAQPage","mainEntity":[
-{"@type":"Question","name":"How much do DHAHAB Studio services cost?","acceptedAnswer":{"@type":"Answer","text":"Pricing is scoped per project and quoted on the invite/scope call — there is no fixed menu price because a one-page launch site and a multi-step automation pipeline cost different things to build correctly. Founding-cohort spots get pricing locked in before it opens to the public."}},
-{"@type":"Question","name":"How fast can you start?","acceptedAnswer":{"@type":"Answer","text":"Launch Site sprints run about a week from the scope call to a live, deployed site. Shield Audit reports land within 48 hours of the scan. Automation Build timelines depend on scope and get a firm date on the scope call."}},
-{"@type":"Question","name":"What if my project doesn't fit these three offers?","acceptedAnswer":{"@type":"Answer","text":"Say so in the invite request. If it is a good fit for a solo builder it gets scoped the same way as the others; if it is not, you hear that honestly instead of a pitch."}},
-{"@type":"Question","name":"Is DHAHAB Studio an agency?","acceptedAnswer":{"@type":"Answer","text":"No. One person scopes, builds, and ships every engagement — the same way DIRA and FreightDesk AI were built. No account manager and no subcontractor you have never met."}},
-{"@type":"Question","name":"Do you take payment before the scope call?","acceptedAnswer":{"@type":"Answer","text":"No. Requesting an invite only opens a conversation. Nothing is billed or charged until scope, timeline, and price are agreed on the call."}}
+{"@type":"Question","name":"How much do these cost?","acceptedAnswer":{"@type":"Answer","text":"Scoped per project and quoted on the call — a launch site and a multi-step automation cost different things to build correctly, so there is no fixed menu price. Founding-cohort spots lock in pricing before it opens publicly."}},
+{"@type":"Question","name":"How fast can you start?","acceptedAnswer":{"@type":"Answer","text":"Launch Site: about a week to live. Shield Audit: 48 hours to the report. Automation Build: 1–2 weeks depending on scope, with a firm date set on the call."}},
+{"@type":"Question","name":"What if my project doesn't fit these three?","acceptedAnswer":{"@type":"Answer","text":"Say so in the invite request. If it's a good fit for a solo builder, it gets scoped the same way; if it isn't, you'll hear that honestly instead of a pitch."}},
+{"@type":"Question","name":"Is this an agency?","acceptedAnswer":{"@type":"Answer","text":"No — one person scopes, builds, and ships every engagement, the same way DIRA and FreightDesk AI were built. No account manager, no subcontractor you've never met."}},
+{"@type":"Question","name":"Do you take payment before the scope call?","acceptedAnswer":{"@type":"Answer","text":"No. Requesting an invite only opens a conversation. Nothing is billed until scope, timeline, and price are agreed on the call."}},
+{"@type":"Question","name":"Why should I trust a solo builder with this?","acceptedAnswer":{"@type":"Answer","text":"Because the work is checkable rather than claimed. DIRA is MIT-licensed and public at v1.2.0 with 98 passing tests and zero dependencies. FreightDesk AI covers 18 back-office workflows with 77 passing tests and was built against a real freight brokerage's live inbox. This site is 100+ pages and three installable offline apps, all shipped solo. Every figure links to where it came from."}}
 ]}
 </script>
 <link rel="stylesheet" href="/css/site.css">
@@ -85,6 +86,30 @@
   .offer form.mini input:focus{outline:none;border-color:var(--gold-dim)}
   .offer-note{margin-top:9px;font-size:11px;color:var(--faint)}
 
+  /* hero capture — same rail as the per-offer forms, for people who have not
+     picked an offer yet. One field is the whole form on purpose. */
+  form.mini{display:flex;gap:8px;flex-wrap:wrap;max-width:440px}
+  form.mini input{flex:1 1 200px;min-width:0;background:var(--panel2);border:1px solid var(--line);
+    border-radius:var(--radius);color:var(--bone);padding:11px 12px;font-family:var(--body-font);font-size:13px}
+  form.mini input:focus{outline:none;border-color:var(--gold-dim)}
+  .hero-form{margin:var(--s5) auto 0;justify-content:center}
+
+  /* proof band — shipped work, not testimonials. There are no clients yet and
+     this page must never imply there are. */
+  .proof-band{display:grid;gap:var(--s4);margin-top:var(--s6);
+    grid-template-columns:repeat(auto-fit,minmax(min(230px,100%),1fr))}
+  .proof-band div{border:1px solid var(--line-soft);border-radius:var(--radius-lg);
+    padding:var(--s4) var(--s5);text-align:left}
+  .proof-band b{display:block;font-family:var(--display-pro);font-weight:800;letter-spacing:-.02em;
+    font-size:clamp(24px,3vw,32px);color:var(--gold-2);line-height:1.1}
+  .proof-band span{display:block;color:var(--muted);font-size:var(--t-small);margin-top:6px}
+  .proof-band a{color:var(--gold-2)}
+  .alt-links{display:flex;flex-wrap:wrap;gap:var(--s2) var(--s5);margin-top:var(--s4);
+    justify-content:center;font-size:var(--t-small);color:var(--muted)}
+  .alt-links a{color:var(--ink);text-decoration:underline;
+    text-decoration-color:var(--line);text-underline-offset:3px}
+  .alt-links a:hover{color:var(--gold-2)}
+
   .steps{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:16px;counter-reset:s}
   .step{border:1px solid var(--line);border-radius:14px;padding:20px 22px}
   .step:before{counter-increment:s;content:"0" counter(s);font-family:ui-monospace,Menlo,monospace;
@@ -109,26 +134,43 @@
 <div id="progress"></div>
 
 <a class="skip-link" href="#main">Skip to content</a>
-<nav class="site-nav" id="nav"><a class="site-nav__brand" href="/"><img class="site-nav__lion" src="/img/brand/lion-mark.svg" alt="" width="34" height="34"><span>YUSUF GADELRAB</span></a><div class="site-nav__links" id="navLinks"><a href="/">Work</a><a href="/resume.html">Resume</a><a href="/guides.html">Guides</a><a href="/store.html">Store</a><a href="/apps.html">Apps</a><a href="/kxngsef.html">KXNG SEF</a><a href="/services.html" aria-current="page">Services</a><a href="/hire.html">Hire</a><a href="/media-kit.html">Media Kit</a></div><button class="menu-btn" id="menuBtn" aria-label="Menu" hidden>&#9776;</button></nav>
+<nav class="site-nav" id="nav"><a class="site-nav__brand" href="/"><img class="site-nav__lion" src="/img/brand/lion-mark.svg" alt="" width="34" height="34" decoding="async"><span>YUSUF GADELRAB</span></a><div class="site-nav__links" id="navLinks"><a href="/">Work</a><a href="/resume.html">Resume</a><a href="/guides.html">Guides</a><a href="/store.html">Store</a><a href="/apps.html">Apps</a><a href="/kxngsef.html">KXNG SEF</a><a href="/services.html" aria-current="page">Services</a><a href="/hire.html">Hire</a><a href="/media-kit.html">Media Kit</a></div><button class="menu-btn" id="menuBtn" aria-label="Menu" hidden>&#9776;</button></nav>
 
 <main id="main">
 
 <section class="section" style="padding-top:96px">
   <div class="wrap" style="text-align:center;max-width:800px;margin:0 auto">
-    <img class="page-lion" src="/img/brand/lion-mark.svg" alt="" width="46" height="46">
+    <img class="page-lion" src="/img/brand/lion-mark.svg" alt="" width="46" height="46" decoding="async">
     <div class="eyebrow">DHAHAB Studio · Productized Services</div>
     <h1 style="margin:14px 0 16px">Three problems every early founder has. <span class="gold-fill">One studio that fixes them.</span></h1>
-    <p class="lead" style="margin:0 auto">FreightDesk AI and DIRA both started as favors — a friend's freight brokerage drowning in back-office email, a founder who didn't know a live Stripe key was sitting in a public repo. DHAHAB Studio is those favors, productized: three fixed-scope builds for the problems that show up in almost every early-stage company, scoped and shipped by the person who builds them — not an agency, not a hand-off to someone you've never met.</p>
+    <p class="lead" style="margin:0 auto"><b>DHAHAB Studio is one engineer, three fixed-scope builds: a launch site live in about a week, a security audit reported in 48 hours, and an AI automation with a QC gate on it.</b></p>
+    <p class="lead" style="margin:var(--s3) auto 0">Both offers started as favors — a friend's freight brokerage drowning in back-office email, a founder who didn't know a live Stripe key was sitting in a public repo. Those became FreightDesk AI and DIRA. This is the same work, productized. The person who scopes it is the person who builds it and the person who answers your email.</p>
 
     <div class="cohort-banner">
       <b>Currently onboarding a limited founding cohort.</b>
-      <span>Request an invite below · pricing quoted per project on the scope call, not listed here · nothing is billed before that call.</span>
+      <span>Pricing is quoted per project on the scope call, not listed here · nothing is billed before that call.</span>
     </div>
+
+    <form id="f-any" novalidate class="mini hero-form">
+      <label class="sr-only" for="e-any">Your email address</label>
+      <input type="email" id="e-any" placeholder="you@company.com" autocomplete="email" required>
+      <button class="btn btn-gold" type="submit">Request an invite</button>
+    </form>
+    <p class="offer-note" id="n-any" style="text-align:center">Not sure which of the three you need? Leave your email and say so in the reply — I'll tell you which one fits, or that none of them do.</p>
 
     <div class="jump">
       <a href="#launch-site">01 · Launch Site</a>
       <a href="#shield-audit">02 · Shield Audit</a>
       <a href="#automation-build">03 · Automation Build</a>
+    </div>
+
+    <!-- Shipped work, not testimonials. There are no paying clients yet and
+         nothing on this page may imply otherwise. -->
+    <div class="proof-band">
+      <div><b>98</b><span>Passing tests in <a href="/dira.html">DIRA v1.2.0</a> — MIT-licensed, zero dependencies, public on GitHub</span></div>
+      <div><b>77</b><span>Passing tests behind <a href="/freightdesk.html">FreightDesk AI</a>, built against a real brokerage's live AR inbox</span></div>
+      <div><b>2×</b><span>Peer-reviewed <a href="https://doi.org/10.1145/3770761.3777339" rel="noopener">SIGCSE TS 2026</a> papers, SJSU CS Education Research Lab</span></div>
+      <div><b>100+</b><span>Pages and three installable offline apps shipped solo on this domain</span></div>
     </div>
   </div>
 </section>
@@ -153,7 +195,8 @@
           </div>
           <div class="offer-cta">
             <form id="f-launch" novalidate class="mini">
-              <input type="email" id="e-launch" placeholder="you@company.com" autocomplete="email" aria-label="Email to request a Launch Site invite" required>
+              <label class="sr-only" for="e-launch">Email to request a Launch Site invite</label>
+              <input type="email" id="e-launch" placeholder="you@company.com" autocomplete="email" required>
               <button class="btn btn-gold btn-sm" type="submit">Request a Launch Site invite</button>
             </form>
             <p class="offer-note" id="n-launch">Founding cohort only. One reply to schedule a scope call — no payment collected here.</p>
@@ -189,7 +232,8 @@
           </div>
           <div class="offer-cta">
             <form id="f-shield" novalidate class="mini">
-              <input type="email" id="e-shield" placeholder="you@company.com" autocomplete="email" aria-label="Email to request a Shield Audit invite" required>
+              <label class="sr-only" for="e-shield">Email to request a Shield Audit invite</label>
+              <input type="email" id="e-shield" placeholder="you@company.com" autocomplete="email" required>
               <button class="btn btn-gold btn-sm" type="submit">Request a Shield Audit invite</button>
             </form>
             <p class="offer-note" id="n-shield">Founding cohort only. One reply to schedule a scope call — no payment collected here.</p>
@@ -214,19 +258,20 @@
     <div class="offer">
       <span class="offer-num">03 / AUTOMATION BUILD</span>
       <h2>The busywork, automated — with a leash on it.</h2>
-      <p class="lead">An AI/agent workflow automation built the way FreightDesk AI was: a drafting pipeline, a QC gate that catches bad output before a human sees it, and a scheduled job that runs on its own — never a black box that sends things unsupervised unless you say so.</p>
+      <p class="lead">An AI/agent workflow automation built the way FreightDesk AI was: a drafting pipeline, a QC gate that catches bad output before a human sees it, and a scheduled job that runs on its own — never a black box that sends things unsupervised unless you say so. The tradeoffs behind what to automate first, and what should stay human-reviewed, are covered in <a href="/guides/ai-automation-small-business.html">the AI automation guide for small businesses</a>.</p>
 
       <div class="offer-grid">
         <div>
           <div class="offer-list">
             <span><i>✓</i>The workflow mapped end to end — what gets read, what gets decided, what gets drafted</span>
-            <span><i>✓</i>A drafting pipeline on a local or API model, with one-click approval by default</span>
+            <span><i>✓</i>A drafting pipeline on <a href="/guides/local-llm-ollama.html" class="gold">a local model</a> or an API model, with one-click approval by default</span>
             <span><i>✓</i>A QC gate that quarantines bad drafts instead of letting them through</span>
             <span><i>✓</i>A scheduled job wired up to run on its own, plus a runbook: what it does, how to change it, how to turn it off</span>
           </div>
           <div class="offer-cta">
             <form id="f-auto" novalidate class="mini">
-              <input type="email" id="e-auto" placeholder="you@company.com" autocomplete="email" aria-label="Email to request an Automation Build invite" required>
+              <label class="sr-only" for="e-auto">Email to request an Automation Build invite</label>
+              <input type="email" id="e-auto" placeholder="you@company.com" autocomplete="email" required>
               <button class="btn btn-gold btn-sm" type="submit">Request an Automation Build invite</button>
             </form>
             <p class="offer-note" id="n-auto">Founding cohort only. One reply to schedule a scope call — no payment collected here.</p>
@@ -289,17 +334,27 @@
         <h3>Do you take payment before the scope call?</h3>
         <p>No. Requesting an invite only opens a conversation. Nothing is billed until scope, timeline, and price are agreed on the call.</p>
       </article>
+      <article class="card qa">
+        <h3>Why should I trust a solo builder with this?</h3>
+        <p>Because the work is checkable rather than claimed. <a href="/dira.html">DIRA</a> is MIT-licensed and public at v1.2.0 with 98 passing tests and zero dependencies. <a href="/freightdesk.html">FreightDesk AI</a> covers 18 back-office workflows with 77 passing tests and was built against a real freight brokerage's live inbox. This site is 100+ pages and three installable offline apps, all shipped solo. Every figure links to where it came from.</p>
+      </article>
     </div>
   </div>
 </section>
 
 <section class="section" style="padding-top:0">
-  <div class="wrap" style="text-align:center;max-width:700px">
+  <div class="wrap" style="text-align:center;max-width:620px">
     <h2>Founding cohort is open now</h2>
-    <p class="lead" style="margin:0 auto 26px">Pick an offer above and request an invite, or email directly with what you need.</p>
-    <p>
-      <a class="btn btn-gold" href="#launch-site">See the offers ↑</a>
-      <a class="btn btn-ghost" href="mailto:yusuf.gadelrab06@gmail.com?subject=DHAHAB%20Studio%20Inquiry">Email a project brief</a>
+    <p class="lead" style="margin:0 auto 26px">One field. It opens a conversation and nothing else — no payment, no call booked until you want one.</p>
+    <form id="f-close" novalidate class="mini hero-form">
+      <label class="sr-only" for="e-close">Your email address</label>
+      <input type="email" id="e-close" placeholder="you@company.com" autocomplete="email" required>
+      <button class="btn btn-gold" type="submit">Request an invite</button>
+    </form>
+    <p class="offer-note" id="n-close" style="text-align:center">Founding cohort only · one reply to schedule a scope call · no payment collected here.</p>
+    <p class="alt-links">
+      <a href="mailto:yusuf.gadelrab06@gmail.com?subject=DHAHAB%20Studio%20Inquiry">Or email a project brief directly</a>
+      <a href="#launch-site">Re-read the three offers</a>
     </p>
   </div>
 </section>

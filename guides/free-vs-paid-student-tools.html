@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="preload" href="/css/site.css" as="style">
+<meta name="robots" content="index,follow,max-image-preview:large,max-snippet:-1">
+<meta property="og:locale" content="en_US">
+<title>Free vs Paid: What a CS Student Should Pay For</title>
+<meta name="description" content="A decision framework and scored table across 15 tool categories for CS students on what deserves money and what free option is already enough.">
+<link rel="canonical" href="https://yusuf-gadelrab.github.io/guides/free-vs-paid-student-tools.html">
+<link rel="icon" type="image/svg+xml" href="https://yusuf-gadelrab.github.io/favicon.svg">
+<link rel="apple-touch-icon" sizes="180x180" href="https://yusuf-gadelrab.github.io/apple-touch-icon.png">
+<meta name="theme-color" content="#0B0B0D">
+<meta name="author" content="Yusuf Gadelrab">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="Yusuf Gadelrab">
+<meta property="og:title" content="Free vs Paid: What a CS Student Should Actually Pay For">
+<meta property="og:description" content="A five-question framework plus a scored table across ~15 tool categories, from code editors to cloud GPUs, for CS students deciding what deserves real money.">
+<meta property="og:url" content="https://yusuf-gadelrab.github.io/guides/free-vs-paid-student-tools.html">
+<meta property="og:image" content="https://yusuf-gadelrab.github.io/og-card.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Free vs Paid: What a CS Student Should Actually Pay For">
+<meta name="twitter:description" content="A five-question framework plus a scored table across ~15 tool categories, from code editors to cloud GPUs, for CS students deciding what deserves real money.">
+<meta name="twitter:image" content="https://yusuf-gadelrab.github.io/og-card.png">
+<link rel="alternate" type="text/plain" href="https://yusuf-gadelrab.github.io/llms-full.txt" title="Plain-text profile for language models">
+
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"TechArticle","@id":"https://yusuf-gadelrab.github.io/guides/free-vs-paid-student-tools.html#article","headline":"Free vs Paid: What a CS Student Should Actually Pay For","name":"Free vs Paid: What a CS Student Should Actually Pay For","description":"A decision framework and scored table across 15 tool categories for CS students on what deserves money and what free option is already enough.","datePublished":"2026-07-29","dateModified":"2026-07-29","inLanguage":"en","author":{"@id":"https://yusuf-gadelrab.github.io/#person"},"publisher":{"@id":"https://yusuf-gadelrab.github.io/#person"},"about":["Student budgeting","Free vs paid software","Developer tools","Subscription audits"],"mainEntityOfPage":"https://yusuf-gadelrab.github.io/guides/free-vs-paid-student-tools.html","isAccessibleForFree":true,"proficiencyLevel":"Beginner"},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://yusuf-gadelrab.github.io/"},{"@type":"ListItem","position":2,"name":"Guides","item":"https://yusuf-gadelrab.github.io/guides.html"},{"@type":"ListItem","position":3,"name":"Free vs Paid"}]}]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","@id":"https://yusuf-gadelrab.github.io/guides/free-vs-paid-student-tools.html#faq","mainEntity":[{"@type":"Question","name":"What's the single most important test before buying a student tool?","acceptedAnswer":{"@type":"Answer","text":"Check whether a free tier or substitute already gets you within about 20 percent of the quality; if it does, the free option almost always wins, especially early in school when your needs are still changing."}},{"@type":"Question","name":"Should I buy an annual subscription to save money over monthly?","acceptedAnswer":{"@type":"Answer","text":"Only if you're confident you'll still be using the tool in eleven months, because annual plans are the easiest place for a forgotten subscription to quietly drain a full year of an irregular student income."}},{"@type":"Question","name":"Is a local LLM actually a good substitute for a paid AI subscription?","acceptedAnswer":{"@type":"Answer","text":"For repetitive, low-stakes, or background tasks, yes, a local model running on your own machine has no per-token cost, and pairing it with a free-tier hosted assistant covers most of what a student needs day to day."}},{"@type":"Question","name":"How do I know if my university already provides a tool for free?","acceptedAnswer":{"@type":"Answer","text":"Check your university IT department's software page before buying anything; many schools hold site licenses for design, office, and developer tools that students never think to look for."}},{"@type":"Question","name":"What should I actually spend real money on as a CS student?","acceptedAnswer":{"@type":"Answer","text":"A domain name for your portfolio, a short focused interview-prep window right before you start interviewing, and any cloud compute a specific project genuinely requires; all three have a clear, bounded return."}},{"@type":"Question","name":"How often should I audit my subscriptions?","acceptedAnswer":{"@type":"Answer","text":"Once a year is enough for most students: list every recurring charge, note when you last actually used it, and cancel anything you can't justify in one sentence."}},{"@type":"Question","name":"Do I need a paid VPN as a student?","acceptedAnswer":{"@type":"Answer","text":"Usually not; most day-to-day student risk is better addressed with good password hygiene and your university's network than with a VPN, so pay for one only if you have a specific, named need."}},{"@type":"Question","name":"Why skip a mobile developer program fee for a personal project?","acceptedAnswer":{"@type":"Answer","text":"Because an installable web app can reach the same users without an ongoing yearly fee, and paying only makes sense once you have an actual store-distribution reason, not just because the app works."}}]}</script>
+
+<link rel="stylesheet" href="/css/site.css">
+<style>
+  .prose{max-width:68ch}
+  .prose h2{margin:var(--s7) 0 var(--s4);font-size:var(--t-h2)}
+  .prose h3{margin:var(--s6) 0 var(--s3);font-size:var(--t-h3)}
+  .prose p{color:var(--muted);margin:0 0 var(--s4)}
+  .prose ul,.prose ol{color:var(--muted);padding-left:1.2em;margin:0 0 var(--s4)}
+  .prose li{margin-bottom:var(--s2)}
+  .prose a{color:var(--gold-2)}
+  .prose strong{color:var(--fg)}
+  .formula{display:block;padding:var(--s4);margin:0 0 var(--s4);border:1px solid var(--line-soft);
+    border-radius:var(--radius);font-family:ui-monospace,SFMono-Regular,Menlo,monospace;
+    font-size:var(--t-small);color:var(--gold-2);overflow-x:auto;white-space:pre-wrap}
+  .tblwrap{overflow-x:auto;margin:0 0 var(--s4)}
+  .tbl{width:100%;border-collapse:collapse;font-size:var(--t-small)}
+  .tbl th,.tbl td{text-align:left;padding:var(--s3);border-bottom:1px solid var(--line-soft);
+    color:var(--muted);vertical-align:top}
+  .tbl th{font-family:var(--display-pro);color:var(--gold-2);font-weight:600}
+  .callout{padding:var(--s4);border:1px solid var(--line-soft);border-radius:var(--radius);
+    color:var(--muted);font-size:var(--t-small);margin:0 0 var(--s5)}
+  .callout--warn{border-color:var(--gold-2)}
+  .faq-card{padding:var(--s5)}
+  .faq-card h3{font-size:var(--t-h3);margin:0}
+  .faq-card p{color:var(--muted);font-size:var(--t-small);margin:var(--s3) 0 0}
+</style>
+</head>
+<body class="pro">
+
+<a class="skip-link" href="#main">Skip to content</a>
+
+<nav class="site-nav">
+  <a class="site-nav__brand" href="/"><img class="site-nav__lion" src="/img/brand/lion-mark.svg" alt="" width="34" height="34"><span>YUSUF GADELRAB</span></a>
+  <div class="site-nav__links">
+    <a href="/">Work</a>
+    <a href="/guides.html">Guides</a>
+    <a href="/stack.html">Stack</a>
+    <a href="/apps.html">Apps</a>
+  </div>
+</nav>
+
+<nav class="crumbs" aria-label="Breadcrumb">
+  <ol>
+    <li><a href="/">Home</a></li>
+    <li><a href="/guides.html">Guides</a></li>
+    <li><span aria-current="page">Free vs Paid</span></li>
+  </ol>
+</nav>
+
+<main id="main">
+
+  <header class="section">
+    <p class="eyebrow">Comparison · Students</p>
+    <h1 style="margin:var(--s4) 0">Free vs Paid: What a CS Student Should Actually Pay For</h1>
+    <p class="lead">Every free trial and student discount promises to save you time or sharpen your odds, but stacking five of those promises quietly drains a budget that is already tight. This guide gives you a five-question framework for deciding, then scores about fifteen categories a CS student actually runs into, from code editors to cloud GPU time, against it.</p>
+  </header>
+
+  <hr class="divider">
+
+  <section class="section section--tight">
+    <div class="prose">
+      <h2>The real question isn't whether you can afford it</h2>
+      <p>Every CS student runs into the same pitch: a tool promises to save time, sharpen a resume, or unblock a project, and the price looks small next to the promise. The problem shows up when you stack five or six of those small promises at once and realize most of them quietly duplicate something you already have for free. This isn't a coupon list. It's a repeatable way to decide, plus a scored comparison across roughly fifteen categories a CS student actually runs into, from code editors to cloud GPU time.</p>
+      <p>Money is genuinely tight for most students, and irregular income, a stipend one month, nothing the next, makes the wrong subscription decision more expensive than it looks on a monthly statement. The framework below is the same one I use on my own tooling, and later in this guide I'll walk through a real decision I made with it: skipping a yearly Apple Developer account and shipping <a href="/apps.html">installable offline apps</a> instead.</p>
+      <h2>The Five-Question Purchase Filter</h2>
+      <p>Before you pay for anything, run it through these five questions in order. A tool that fails two or more of them is a strong skip, no matter how good the marketing looks.</p>
+      <ol>
+        <li>Does it unblock money or admission directly, meaning a job offer, a school application, a paying client, or a grade that is genuinely at risk without it?</li>
+        <li>Does the time it saves this month exceed its cost at your real effective hourly rate, computed honestly rather than optimistically?</li>
+        <li>Is there a free substitute that gets you within roughly 20 percent of the quality? If yes, the free option wins by default.</li>
+        <li>Is it already free for you through a student, education, or open-source program you have not actually claimed yet?</li>
+        <li>Is it a recurring subscription, and would you actually notice if it silently renewed for another year?</li>
+      </ol>
+      <p>None of these require perfect information, just an honest guess. The goal is to catch the two failure modes that drain a student budget fastest: paying for convenience you could get free anyway, and paying for a subscription you forgot you had.</p>
+      <span class="formula">Break-even test
+
+hours saved per month x your effective hourly rate   vs.   monthly cost
+
+Worked example (assumed numbers, for illustration only, not a real price):
+Assume your effective hourly rate is $20/hr
+Assume a tool's subscription is $10/month
+Assume it saves you 1 hour per month
+
+1 hr x $20/hr = $20 of value created
+$20 value > $10 cost -> clears the break-even test, reasonable to pay
+
+Now drop the time saved to 20 minutes per month:
+0.33 hr x $20/hr = $6.67 of value created
+$6.67 value < $10 cost -> fails the break-even test, skip it
+
+The arithmetic doesn't change much. Your honesty about 'hours saved' does.</span>
+      <h2>A worked example: why I didn't buy an Apple Developer account</h2>
+      <p>I built three small offline tools for myself: a trade journal, a habit tracker, and a daily checklist. Listing them on the App Store means paying a yearly developer program fee. Instead, I shipped them as installable Progressive Web Apps that add to a phone's home screen straight from the browser, no store, no yearly fee. You can see them at <a href="/apps.html">apps.html</a>.</p>
+      <p>Running that decision through the five-question filter: these are personal tools with no distribution plan, so question one fails outright, nothing gets unblocked by a store listing. Question three also fails the paid option's favor, a PWA gets me within a rounding error of native-app behavior for what these apps do. Two clear fails is a skip, and the yearly fee stayed in my pocket.</p>
+      <p>The same instinct shows up elsewhere in how I work. I run a local Qwen model through Ollama on my own machine for background automation specifically so I'm not paying per token for routine work, the setup is in the <a href="/guides/local-llm-ollama.html">local LLM guide</a>. And instead of paying for a commercial code security scanner, I built and publish my own free, MIT-licensed one, <a href="/dira.html">DIRA</a>. None of that is frugality for its own sake. It's the same filter, applied consistently, category after category.</p>
+      <h2>The scored table: about 15 categories</h2>
+      <p>Every 'Pay' or 'Conditional' verdict below assumes you check the vendor's current pricing page yourself before deciding. Prices and discount terms change often enough that quoting a number here would be stale the day this page ships, so none are quoted. Treat the 'Why' column as reasoning, not a price list.</p>
+      <div class="tblwrap"><table class="tbl">
+        <thead><tr><th>Category</th><th>Free option that's actually good enough</th><th>Verdict</th><th>Why</th></tr></thead>
+        <tbody>
+          <tr><td>Code editor / IDE</td><td>VS Code, or a free-tier JetBrains IDE if your school licenses one</td><td>Skip paid</td><td>A free editor covers nearly all coursework and internship-prep work; check university IT before assuming you need a personal license</td></tr>
+          <tr><td>AI coding assistant</td><td>Free tier of a coding assistant, backed by a local model for routine completions</td><td>Conditional</td><td>Worth a modest subscription once you're shipping real projects on a weekly cadence; skip it while you're mostly doing homework, the free tier covers that</td></tr>
+          <tr><td>LLM chat subscription & API credits</td><td>Free tier of a major chat assistant, API credits spent only per project</td><td>Conditional</td><td>Treat API credits as a project cost you switch on and off, not a standing subscription; pay for chat access only if you hit free-tier limits weekly, not occasionally</td></tr>
+          <tr><td>Local model runtime</td><td>Ollama, LM Studio, or llama.cpp running on your own machine</td><td>Skip paid</td><td>The free substitute that quietly replaces a chunk of the two rows above for repetitive work; see the <a href="/guides/local-llm-ollama.html">local LLM guide</a> and the <a href="/guides/ollama-vs-lm-studio-vs-llama-cpp.html">runtime comparison</a></td></tr>
+          <tr><td>Cloud hosting for a portfolio</td><td>GitHub Pages, Vercel, or Netlify free tier</td><td>Skip paid</td><td>A student portfolio is static or nearly static; free tiers handle the traffic a student site actually gets</td></tr>
+          <tr><td>Domain name</td><td>A subdomain works, but a real domain reads more professional</td><td>Pay</td><td>One of the few line items with no strong free substitute if you want a clean link on a resume; a one-time-ish annual cost, not a recurring drain</td></tr>
+          <tr><td>Database hosting</td><td>Free tier of a managed database, or SQLite on disk for small projects</td><td>Skip paid</td><td>Student projects rarely have enough real users to outgrow a free database tier before graduation</td></tr>
+          <tr><td>Design tool</td><td>Figma free tier</td><td>Skip paid</td><td>Free tier fully covers portfolio graphics, resume layout, and small brand work</td></tr>
+          <tr><td>Note-taking app</td><td>Plain markdown files, or Obsidian's free tier</td><td>Skip paid</td><td>Covered in the sibling comparison of <a href="/guides/notion-vs-obsidian-vs-markdown-files.html">Notion vs Obsidian vs markdown files</a>; the free options are not a compromise here</td></tr>
+          <tr><td>Password manager & backups</td><td>Your browser or OS's built-in manager, plus free-tier cloud storage and an external drive</td><td>Skip paid</td><td>Free tiers are genuinely sufficient for one person's device count and data volume; revisit only if you need family sharing</td></tr>
+          <tr><td>VPN</td><td>Skip entirely for most student use cases</td><td>Skip paid</td><td>Public wifi risk is usually better addressed by password hygiene than a VPN; pay only for a specific, named need</td></tr>
+          <tr><td>LeetCode-style interview prep</td><td>Free problem sets and free curated pattern lists</td><td>Conditional</td><td>Worth a short, focused paid window right before interview season if free rate limits genuinely slow you down, not for casual practice</td></tr>
+          <tr><td>Cloud GPU compute</td><td>Free tier of a notebook platform, limited hours</td><td>Pay as needed</td><td>Real training runs are a pay-per-use project cost, not a subscription; budget it per project, not per month</td></tr>
+          <tr><td>Developer program fees (e.g. app store account)</td><td>Ship as an installable web app instead</td><td>Skip paid</td><td>A yearly fee only earns its cost with a specific store-distribution reason; installable web apps (see <a href="/apps.html">apps.html</a>) cover most personal and portfolio projects</td></tr>
+          <tr><td>Situational subscriptions (charting/market data if you trade, job-search premium tiers)</td><td>Free-tier charting from your broker, plus your own tracking spreadsheet</td><td>Conditional</td><td>Pay only once you have a specific, tested need the paid tier measurably improves, not out of general anxiety about missing something</td></tr>
+        </tbody>
+      </table></div>
+      <h2>Pay for this</h2>
+      <p>A short list, on purpose. Each of these has a bounded, specific return, which is exactly what should clear the filter.</p>
+      <ul>
+        <li>A domain name for your portfolio and resume link, paired with a portfolio built the way described in <a href="/guides/portfolio-that-gets-interviews.html">portfolio that gets interviews</a>, because there's no strong free substitute and it's a cheap, durable signal of professionalism.</li>
+        <li>A short, focused interview-prep subscription in the weeks directly before interview season, after you've exhausted the free pattern list in <a href="/guides/coding-interview-patterns.html">coding interview patterns</a>, because a job offer is worth many times the subscription.</li>
+        <li>Cloud GPU time for a specific training run you genuinely can't do locally, because it's a project cost with a clear start and end, not an open-ended subscription.</li>
+        <li>An AI coding assistant subscription once you're shipping real projects on a weekly cadence, because the time it saves compounds across every session, not just one.</li>
+      </ul>
+      <h2>Do not pay for this</h2>
+      <p>The default, for nearly everything else, should be no. These are the categories where paid rarely earns its cost for a student.</p>
+      <ul>
+        <li>A general-purpose VPN 'just in case,' because most student risk is better addressed by password hygiene and your university's network than by a VPN.</li>
+        <li>A premium note-taking app before you've actually filled the free tier's limits, because plain markdown files or a free-tier tool do the same job at the portfolio stage.</li>
+        <li>A mobile developer program fee for a personal project with no distribution plan, because an installable web app reaches the same users without the yearly cost.</li>
+        <li>A second or third overlapping AI subscription, because most of what they add on top of a free tier plus a local model is convenience, not new capability.</li>
+        <li>Any subscription you can't remember signing up for, full stop.</li>
+      </ul>
+      <h2>Student-specific free routes</h2>
+      <p>Before paying for anything on this list, run down the places a student rate or an outright free license might already be waiting. Your university IT department often already holds a site license for design, office, or developer tools that students never think to ask about, worth ten minutes of checking before a purchase. Most large software vendors publish some form of education pricing or a verified-student free tier on their own site, terms and eligibility shift often enough that a number quoted here would be wrong by the time you read it, so check the vendor's current education page directly rather than trusting a screenshot from a forum post.</p>
+      <p>Beyond that, several cloud and developer-tool companies bundle multiple categories from the table above into a single student developer pack, worth a look if you haven't claimed one. Open-source substitutes exist for nearly every row in the paid column above. And free cloud credit programs aimed at students and early builders show up and disappear on their own schedule, another reason to check current terms rather than remembered ones. The common failure mode isn't spending money you don't have, it's spending money on something your university already gave you for free and you never checked.</p>
+      <p>For the exact free-first stack I actually run day to day, see <a href="/stack.html">stack.html</a>. I wrote a longer version of this same reasoning, applied to a full student setup rather than just this table, in <a href="/writing/student-software-stack-free-first-paid-second.html">student software stack: free first, paid second</a>.</p>
+      <h2>The psychology of subscriptions</h2>
+      <p>Subscriptions are designed to be forgotten. A monthly charge that felt reasonable at signup becomes invisible after the third billing cycle, and irregular student income, a stipend one month, nothing the next, makes that invisibility more expensive than it looks on any single statement. The fix isn't willpower, it's a scheduled check.</p>
+      <p>Run an annual audit: once a year, list every recurring charge you're paying, note the last time you actually opened or used it, and cancel anything you can't justify in one sentence. When a tool offers both a one-time purchase and a subscription for roughly equivalent functionality, and your income is irregular, the one-time purchase is very often the better call even when it looks larger upfront, because it converts an open-ended, easy-to-forget liability into a single decision you only have to make once.</p>
+      <p class="callout">Set a recurring calendar reminder for your subscription audit today. The fifteen minutes it costs once a year is arguably the single highest-leverage move in this entire guide.</p>
+      <p class="callout callout--warn">A 'free trial' that asks for a card number is a subscription with extra steps. Calendar the cancellation date the same day you sign up, not the week the charge would actually hit.</p>
+      <h2>Putting it together</h2>
+      <p>None of this is about being cheap for its own sake. It's about making sure every dollar that leaves a tight student budget cleared an honest test first: it unblocks something real, the time saved beats the cost, no free option gets close enough, it isn't hiding behind a program you already qualify for, and you'd actually notice if it renewed. Run the table above against your own setup, cancel what fails, and keep the handful of categories that genuinely earn their cost. More comparisons like this one are indexed at <a href="/guides.html">guides.html</a>.</p>
+
+      <h2>Tools referenced in this guide</h2>
+      <ul>
+        <li><a href="/stack.html">The Stack</a> — The exact free-first tools Yusuf actually uses, day to day.</li>
+        <li><a href="/apps.html">Free Offline Apps</a> — Installable PWAs shipped without paying a yearly app store developer fee.</li>
+        <li><a href="/dira.html">DIRA Security Scanner</a> — A free, MIT-licensed security scanner built instead of paying for a commercial equivalent.</li>
+      </ul>
+    </div>
+  </section>
+
+  <hr class="divider">
+
+  <section class="section section--tight" id="faq">
+    <div class="grp-head">
+      <p class="eyebrow">FAQ</p>
+      <h2>Quick answers</h2>
+    </div>
+    <div class="grid" style="margin-top:var(--s6)">
+      <article class="card faq-card"><h3>Most important test?</h3><p>Check whether a free tier or substitute already gets you within about 20 percent of the quality; if it does, the free option almost always wins, especially early in school when your needs are still changing.</p></article>
+      <article class="card faq-card"><h3>Annual vs monthly?</h3><p>Only if you&#x27;re confident you&#x27;ll still be using the tool in eleven months, because annual plans are the easiest place for a forgotten subscription to quietly drain a full year of an irregular student income.</p></article>
+      <article class="card faq-card"><h3>Is a local LLM a good substitute?</h3><p>For repetitive, low-stakes, or background tasks, yes, a local model running on your own machine has no per-token cost, and pairing it with a free-tier hosted assistant covers most of what a student needs day to day.</p></article>
+      <article class="card faq-card"><h3>How to check university licenses?</h3><p>Check your university IT department&#x27;s software page before buying anything; many schools hold site licenses for design, office, and developer tools that students never think to look for.</p></article>
+      <article class="card faq-card"><h3>What should I actually pay for?</h3><p>A domain name for your portfolio, a short focused interview-prep window right before you start interviewing, and any cloud compute a specific project genuinely requires; all three have a clear, bounded return.</p></article>
+      <article class="card faq-card"><h3>How often to audit subscriptions?</h3><p>Once a year is enough for most students: list every recurring charge, note when you last actually used it, and cancel anything you can&#x27;t justify in one sentence.</p></article>
+      <article class="card faq-card"><h3>Need a paid VPN?</h3><p>Usually not; most day-to-day student risk is better addressed with good password hygiene and your university&#x27;s network than with a VPN, so pay for one only if you have a specific, named need.</p></article>
+      <article class="card faq-card"><h3>Skip mobile developer fee?</h3><p>Because an installable web app can reach the same users without an ongoing yearly fee, and paying only makes sense once you have an actual store-distribution reason, not just because the app works.</p></article>
+    </div>
+  </section>
+
+<!-- related:auto:start -->
+  <hr class="divider">
+
+  <section class="section section--tight related" id="related" aria-labelledby="related-h">
+    <div class="grp-head">
+      <p class="eyebrow">Keep reading</p>
+      <h2 id="related-h">Related guides</h2>
+    </div>
+    <div class="related__grid">
+      <a class="related__item" href="/guides/client-side-only-tools.html"><strong>Tools with no backend, and the honest trade</strong><span>No accounts, no database, no breach surface — and an honest account of what that costs the user.</span></a>
+      <a class="related__item" href="/guides/portfolio-that-gets-interviews.html"><strong>Shipped and reachable beats impressive-sounding</strong><span>Shipped and reachable beats impressive-sounding. What a reviewer checks in 60 seconds.</span></a>
+      <a class="related__item" href="/guides/local-llm-ollama.html"><strong>Running a local LLM, and when it is actually the right call</strong><span>Model choice, the HTTP API, quantisation, context limits, and when local actually beats a cloud API.</span></a>
+      <a class="related__item" href="/guides/snyk-vs-trivy-vs-dira.html"><strong>Snyk vs Trivy vs DIRA: choosing a security scanner</strong><span>Written by the person who built one of the three, with the conflict of interest stated up front and the places the…</span></a>
+    </div>
+    <p class="related__more">Every guide is indexed on <a href="/guides.html">the guides hub</a>. Or put it to work in <a href="/services.html">the automation work I take on</a>.</p>
+  </section>
+<!-- related:auto:end -->
+
+</main>
+
+<footer class="site-footer">
+  <div class="site-footer__links">
+    <a href="/">Work</a>
+    <a href="/about.html">About</a>
+    <a href="/guides.html">Guides</a>
+    <a href="/apps.html">Apps</a>
+    <a href="/store.html">Store</a>
+    <a href="/privacy.html">Privacy</a>
+    <a href="/terms.html">Terms</a>
+    <a href="mailto:yusuf.gadelrab06@gmail.com">yusuf.gadelrab06@gmail.com</a>
+  </div>
+</footer>
+
+<script src="/js/site.js" defer></script>
+</body>
+</html>

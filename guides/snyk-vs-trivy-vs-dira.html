@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="preload" href="/css/site.css" as="style">
+<meta name="robots" content="index,follow,max-image-preview:large,max-snippet:-1">
+<meta property="og:locale" content="en_US">
+<title>Snyk vs Trivy vs DIRA: Security Scanner Choice</title>
+<meta name="description" content="An honest matrix across three security scanners, written by the author of one of them: coverage, container scanning, licensing, cost, and where each one loses.">
+<link rel="canonical" href="https://yusuf-gadelrab.github.io/guides/snyk-vs-trivy-vs-dira.html">
+<link rel="icon" type="image/svg+xml" href="https://yusuf-gadelrab.github.io/favicon.svg">
+<link rel="apple-touch-icon" sizes="180x180" href="https://yusuf-gadelrab.github.io/apple-touch-icon.png">
+<meta name="theme-color" content="#0B0B0D">
+<meta name="author" content="Yusuf Gadelrab">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="Yusuf Gadelrab">
+<meta property="og:title" content="Snyk vs Trivy vs DIRA: choosing a security scanner">
+<meta property="og:description" content="Written by the person who built one of the three, with the conflict of interest stated up front and the places the other two win called out by name.">
+<meta property="og:url" content="https://yusuf-gadelrab.github.io/guides/snyk-vs-trivy-vs-dira.html">
+<meta property="og:image" content="https://yusuf-gadelrab.github.io/og-card.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Snyk vs Trivy vs DIRA: choosing a security scanner">
+<meta name="twitter:description" content="Written by the person who built one of the three, with the conflict of interest stated up front and the places the other two win called out by name.">
+<meta name="twitter:image" content="https://yusuf-gadelrab.github.io/og-card.png">
+<link rel="alternate" type="text/plain" href="https://yusuf-gadelrab.github.io/llms-full.txt" title="Plain-text profile for language models">
+
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"TechArticle","@id":"https://yusuf-gadelrab.github.io/guides/snyk-vs-trivy-vs-dira.html#article","headline":"Snyk vs Trivy vs DIRA: choosing a security scanner for a small codebase","name":"Snyk vs Trivy vs DIRA: choosing a security scanner for a small codebase","description":"An honest matrix across three security scanners, written by the author of one of them: coverage, container scanning, licensing, cost, and where each one loses.","datePublished":"2026-07-29","dateModified":"2026-07-29","inLanguage":"en","author":{"@id":"https://yusuf-gadelrab.github.io/#person"},"publisher":{"@id":"https://yusuf-gadelrab.github.io/#person"},"about":["Application security","Software composition analysis","Container security","DevSecOps"],"mainEntityOfPage":"https://yusuf-gadelrab.github.io/guides/snyk-vs-trivy-vs-dira.html","isAccessibleForFree":true,"proficiencyLevel":"Intermediate"},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://yusuf-gadelrab.github.io/"},{"@type":"ListItem","position":2,"name":"Guides","item":"https://yusuf-gadelrab.github.io/guides.html"},{"@type":"ListItem","position":3,"name":"Snyk vs Trivy vs DIRA"}]}]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","@id":"https://yusuf-gadelrab.github.io/guides/snyk-vs-trivy-vs-dira.html#faq","mainEntity":[{"@type":"Question","name":"Is DIRA a replacement for Snyk or Trivy?","acceptedAnswer":{"@type":"Answer","text":"No. DIRA has no container image scanning, no operating-system package coverage, no dataflow analysis and no secret verification, and it supports five dependency ecosystems rather than the twenty-plus that Snyk and Trivy cover. It overlaps in dependency CVEs, secrets, config rules and SBOM, and it adds a live TLS and headers check plus a readiness score that neither of the others has. Running Trivy in CI and DIRA before a release is a reasonable stack."}},{"@type":"Question","name":"Which security scanner is best for containers?","acceptedAnswer":{"@type":"Answer","text":"Trivy. It began as a container scanner and it still has the broadest operating-system package coverage across Alpine, Debian, Ubuntu, RHEL and Amazon Linux, plus Kubernetes cluster scanning. Snyk Container is a strong commercial alternative with base-image upgrade recommendations. DIRA does not scan built images at all, only Dockerfiles as configuration."}},{"@type":"Question","name":"Is Snyk free?","acceptedAnswer":{"@type":"Answer","text":"Snyk offers a free tier with monthly usage limits that is usable for a solo project, and paid tiers above it. Tier limits and pricing change regularly, so check Snyk's own pricing page rather than trusting a figure in any article. Trivy and DIRA are both fully free and open source with no account, no seat count and no usage meter."}},{"@type":"Question","name":"Can a free scanner replace a penetration test or a SOC 2 audit?","acceptedAnswer":{"@type":"Answer","text":"No, and all three tools say so in their own documentation. Automated scanning finds known bad patterns in code and configuration. It cannot see your cloud IAM posture, your MFA enforcement, your access reviews or your threat model, and it cannot reason about business logic. Treat a clean scan as a floor, not evidence of security."}},{"@type":"Question","name":"Should I run more than one security scanner?","acceptedAnswer":{"@type":"Answer","text":"Usually yes, because their blind spots are almost complementary and two of the three cost nothing. A common small-team setup is Trivy on the container image in CI, a repository and live-domain scan before a release or a customer security call, and a dedicated secret scanner like gitleaks or trufflehog if credentials are your main worry. The real limit is alert fatigue, not licensing."}},{"@type":"Question","name":"What does a security-readiness score actually measure?","acceptedAnswer":{"@type":"Answer","text":"It measures posture rather than defects: whether you have lockfiles, automated dependency updates, CI, tests, secret scanning, a CODEOWNERS file, a SECURITY.md disclosure policy, infrastructure-as-code, observability, an incident-response plan, backups and a privacy policy. Those are the items enterprise security questionnaires and SOC 2 readiness checklists ask about, and they are largely independent of whether any individual CVE is currently open."}},{"@type":"Question","name":"Why would a scanner have zero dependencies?","acceptedAnswer":{"@type":"Answer","text":"Because a security tool that installs forty packages is itself a supply-chain risk, and because zero dependencies means it can be run with a single ephemeral command against a repository without installing anything or leaving anything behind. The tradeoff is real: everything has to be written from scratch, which is a direct reason DIRA covers fewer ecosystems than tools that lean on existing libraries."}}]}</script>
+
+<link rel="stylesheet" href="/css/site.css">
+<style>
+  .prose{max-width:68ch}
+  .prose h2{margin:var(--s7) 0 var(--s4);font-size:var(--t-h2)}
+  .prose h3{margin:var(--s6) 0 var(--s3);font-size:var(--t-h3)}
+  .prose p{color:var(--muted);margin:0 0 var(--s4)}
+  .prose ul,.prose ol{color:var(--muted);padding-left:1.2em;margin:0 0 var(--s4)}
+  .prose li{margin-bottom:var(--s2)}
+  .prose a{color:var(--gold-2)}
+  .prose strong{color:var(--fg)}
+  .formula{display:block;padding:var(--s4);margin:0 0 var(--s4);border:1px solid var(--line-soft);
+    border-radius:var(--radius);font-family:ui-monospace,SFMono-Regular,Menlo,monospace;
+    font-size:var(--t-small);color:var(--gold-2);overflow-x:auto;white-space:pre-wrap}
+  .tblwrap{overflow-x:auto;margin:0 0 var(--s4)}
+  .tbl{width:100%;border-collapse:collapse;font-size:var(--t-small)}
+  .tbl th,.tbl td{text-align:left;padding:var(--s3);border-bottom:1px solid var(--line-soft);
+    color:var(--muted);vertical-align:top}
+  .tbl th{font-family:var(--display-pro);color:var(--gold-2);font-weight:600}
+  .callout{padding:var(--s4);border:1px solid var(--line-soft);border-radius:var(--radius);
+    color:var(--muted);font-size:var(--t-small);margin:0 0 var(--s5)}
+  .callout--warn{border-color:var(--gold-2)}
+  .faq-card{padding:var(--s5)}
+  .faq-card h3{font-size:var(--t-h3);margin:0}
+  .faq-card p{color:var(--muted);font-size:var(--t-small);margin:var(--s3) 0 0}
+</style>
+</head>
+<body class="pro">
+
+<a class="skip-link" href="#main">Skip to content</a>
+
+<nav class="site-nav">
+  <a class="site-nav__brand" href="/"><img class="site-nav__lion" src="/img/brand/lion-mark.svg" alt="" width="34" height="34"><span>YUSUF GADELRAB</span></a>
+  <div class="site-nav__links">
+    <a href="/">Work</a>
+    <a href="/guides.html">Guides</a>
+    <a href="/stack.html">Stack</a>
+    <a href="/apps.html">Apps</a>
+  </div>
+</nav>
+
+<nav class="crumbs" aria-label="Breadcrumb">
+  <ol>
+    <li><a href="/">Home</a></li>
+    <li><a href="/guides.html">Guides</a></li>
+    <li><span aria-current="page">Snyk vs Trivy vs DIRA</span></li>
+  </ol>
+</nav>
+
+<main id="main">
+
+  <header class="section">
+    <p class="eyebrow">Comparison · Security</p>
+    <h1 style="margin:var(--s4) 0">Snyk vs Trivy vs DIRA: choosing a security scanner</h1>
+    <p class="lead">Three tools that all say "security scanner" on the tin and solve genuinely different problems. One is an enterprise platform, one is the open-source default for containers, and one is a single-command audit I wrote myself. That last fact is why this page starts with a disclosure instead of a verdict.</p>
+  </header>
+
+  <hr class="divider">
+
+  <section class="section section--tight">
+    <div class="prose">
+      <p class="callout callout--warn"><strong>Conflict of interest, stated up front:</strong> I built DIRA. It is free and MIT licensed, I earn nothing when you install it, and there are no affiliate links anywhere on this page. But I am not a neutral party, and you should read every sentence about DIRA below with that in mind. To make that bias auditable rather than invisible, this page names the specific things Snyk and Trivy do better than DIRA before it names anything DIRA does better, and DIRA's own README ships the same comparison against gitleaks, trufflehog and semgrep.</p>
+      <h2>These three are not actually the same category</h2>
+      <p>The first mistake is treating this as one comparison. It is really three tools that overlap in the middle of a Venn diagram and diverge completely at the edges.</p>
+      <p><strong>Snyk</strong> is a commercial developer-security platform. The command-line tool is one entry point into a hosted service that keeps a curated vulnerability database, tracks findings across projects over time, opens fix pull requests, enforces policy, and answers to an enterprise buyer with SSO, role-based access control and a support contract. You authenticate to an account; the intelligence lives on their side.</p>
+      <p><strong>Trivy</strong> is an open-source scanner from Aqua Security, distributed under Apache-2.0 as a single Go binary. It grew out of container security and expanded outward: operating-system packages inside images, language dependencies, infrastructure-as-code misconfiguration, secrets, licenses, Kubernetes clusters, and SBOM generation. No account, no telemetry requirement, no seat count.</p>
+      <p><strong>DIRA</strong> is a zero-dependency Python scanner I wrote to answer one narrow question a founder actually gets asked, which is not "what is broken in this file" but "can this codebase survive a procurement review". It bundles secrets, dependency CVEs, config rules, license risk, git-history leaks, a live TLS and headers check, an SBOM and a readiness score into one command. It is v1.2.0, MIT licensed, has 98 passing tests, and is maintained by exactly one person, which is a real risk factor and belongs in this paragraph rather than a footnote.</p>
+      <h2>The matrix</h2>
+      <div class="tblwrap"><table class="tbl">
+        <thead><tr><th></th><th>Snyk</th><th>Trivy</th><th>DIRA</th></tr></thead>
+        <tbody>
+          <tr><td>Licensing</td><td>Commercial platform, free tier with usage limits. CLI is open source; the analysis service is not.</td><td>Apache-2.0, fully open source.</td><td>MIT, fully open source.</td></tr>
+          <tr><td>Account required</td><td>Yes, for essentially everything.</td><td>No.</td><td>No.</td></tr>
+          <tr><td>Install</td><td>npm, brew, binary, Docker.</td><td>Single Go binary, brew, apt, Docker.</td><td><code>pipx</code>/<code>uvx</code> from source or the release wheel. Zero runtime dependencies. Not yet on PyPI or npm.</td></tr>
+          <tr><td>Container image scanning</td><td><strong>Yes, mature</strong>, including base-image upgrade recommendations.</td><td><strong>Yes, this is its origin and its strongest area.</strong></td><td><strong>No.</strong> It reads Dockerfiles as config; it does not scan built images.</td></tr>
+          <tr><td>OS package vulnerabilities</td><td>Yes, across major distros.</td><td><strong>Yes, the broadest distro coverage of the three.</strong></td><td>No.</td></tr>
+          <tr><td>Language dependency CVEs</td><td>Broad ecosystem coverage with a curated database.</td><td>Broad ecosystem coverage.</td><td>Five ecosystems: npm, PyPI, Go, crates.io, RubyGems, resolved against OSV.dev.</td></tr>
+          <tr><td>Real SAST / dataflow</td><td><strong>Yes</strong>, semantic analysis with taint tracking (Snyk Code).</td><td>No.</td><td><strong>No.</strong> Pattern matching only: it finds sinks, not traced vulnerabilities.</td></tr>
+          <tr><td>Secret scanning</td><td>Present, not the headline product.</td><td>Yes, rule-based.</td><td>24 provider patterns plus an entropy-gated generic rule, redacted in every report.</td></tr>
+          <tr><td>Git history scanning</td><td>Via integrations.</td><td>Yes.</td><td>Yes, a dedicated pass over commit history.</td></tr>
+          <tr><td>IaC / config rules</td><td>Yes, with policy-as-code.</td><td>Yes, broad coverage across Terraform, Kubernetes, Docker, CloudFormation.</td><td>38 rules across Docker, compose/k8s, Terraform, GitHub Actions, cloud IAM, frontend, LLM-app and server-code patterns.</td></tr>
+          <tr><td>Dependency license risk</td><td>Yes, with a policy engine.</td><td>Yes, license detection.</td><td>Yes, classified into permissive, file-level, strong and network copyleft.</td></tr>
+          <tr><td>SBOM</td><td>Yes.</td><td>Yes, CycloneDX and SPDX.</td><td>Yes, CycloneDX 1.5 and SPDX 2.3.</td></tr>
+          <tr><td>Live domain / TLS / headers</td><td>No, out of scope.</td><td>No, out of scope.</td><td><strong>Yes</strong>, TLS expiry, HSTS, CSP, cookie flags, and publicly served <code>/.env</code> or <code>/.git/config</code>.</td></tr>
+          <tr><td>Auto-remediation</td><td><strong>Fix pull requests, the strongest offering here.</strong></td><td>No.</td><td><code>dira fix</code>, additive policy files only. It never edits application code and never rotates a key.</td></tr>
+          <tr><td>Output formats</td><td>Terminal, JSON, SARIF, HTML, dashboard.</td><td>Table, JSON, SARIF, CycloneDX, SPDX, template.</td><td>Terminal, HTML, JSON, SARIF, Markdown.</td></tr>
+          <tr><td>PR-diff gating</td><td>Yes, via Git integrations.</td><td>Via CI configuration.</td><td><code>--diff origin/main</code> built in.</td></tr>
+          <tr><td>Enterprise support</td><td><strong>Yes, contracted.</strong></td><td>Community plus commercial Aqua products.</td><td><strong>None.</strong> One maintainer, GitHub issues.</td></tr>
+          <tr><td>Best fit</td><td>A funded team that has to answer to a security org.</td><td>Anything containerised, and any CI pipeline.</td><td>A pre-Series-A repo facing its first security questionnaire.</td></tr>
+        </tbody>
+      </table></div>
+      <h2>Where Snyk is genuinely better</h2>
+      <p>Four things, and they are not small.</p>
+      <ul>
+        <li><strong>Real static analysis.</strong> Snyk Code performs semantic, dataflow-aware analysis. It can follow untrusted input from an entry point to a dangerous sink and tell you the path. Neither Trivy nor DIRA does this. DIRA finds <code>innerHTML =</code>, SQL built by concatenation, and <code>shell=True</code>, which are sinks worth knowing about, but it cannot prove any of them is reachable from user input.</li>
+        <li><strong>Ecosystem breadth and vulnerability curation.</strong> Snyk maintains its own vulnerability database with human research on top of public feeds, which in practice means coverage and advisory quality across more languages and package managers than a project relying purely on public data.</li>
+        <li><strong>Fix pull requests.</strong> Automatically opening a tested upgrade PR against your repository is the single highest-leverage feature in this entire comparison, and it is the one thing neither of the free tools does.</li>
+        <li><strong>Being a company.</strong> Someone answers the phone. There is an SLA, an SSO login, an audit trail, and a procurement-friendly contract. If your customer's security team asks who owns your scanning, "a commercial vendor under contract" is a materially easier answer than "a tool a student wrote".</li>
+      </ul>
+      <p>The cost is that it is a paid platform with a metered free tier, and pricing and tier limits change, so check Snyk's own pricing page rather than any number you read in a blog post, including this one, which deliberately quotes none.</p>
+      <h2>Where Trivy is genuinely better</h2>
+      <ul>
+        <li><strong>Containers.</strong> If you ship a Docker image, Trivy is the answer and this comparison is basically over. It scans the built image layer by layer, finds vulnerable OS packages inside the base image, and understands the difference between what is in your <code>Dockerfile</code> and what is actually in the artifact you pushed. DIRA reads the Dockerfile and stops there.</li>
+        <li><strong>Operating-system package coverage.</strong> Alpine, Debian, Ubuntu, RHEL, Amazon Linux and more, each with its own advisory feed. That is years of unglamorous maintenance work and it is why Trivy is the default in so many pipelines.</li>
+        <li><strong>Kubernetes.</strong> Cluster scanning and an operator for continuous in-cluster scanning are a whole product surface the other two do not have.</li>
+        <li><strong>Institutional weight.</strong> Backed by a real company, Apache-2.0, huge contributor base, and shipped inside other vendors' products. It is not going to be abandoned because one maintainer gets busy with midterms.</li>
+      </ul>
+      <p>Trivy's weak spots, for balance: it is a findings engine, not a posture report. It will not tell you whether you have a <code>SECURITY.md</code>, an incident-response document, branch protection or a backup policy, and it does not look at your live domain at all. Configuring it well across every scanner it supports takes more flags than a first-time user expects.</p>
+      <h2>What DIRA does differently, and the reasons are narrow</h2>
+      <p>DIRA exists because of a specific gap: the moment a two-person project gets its first enterprise security questionnaire, the questions are about posture, not about a CVE list. Do you scan for secrets in CI. Do you have a disclosure policy. Is your TLS current. Have you ever tested a restore. That is a different question from "is lodash out of date", and none of the tools I was using answered it in one command.</p>
+      <ul>
+        <li><strong>Zero runtime dependencies.</strong> A security tool that pulls in forty packages is itself a supply-chain surface. DIRA has none, so <code>uvx</code> can run it against a repo with nothing installed and nothing left behind.</li>
+        <li><strong>One command, six scanners.</strong> Secrets, dependency CVEs, config, licenses, git history and a live surface check, in a single run with a single report, instead of five CLIs you never got around to wiring up.</li>
+        <li><strong>The live-surface check.</strong> <code>dira scan . -t yourapp.com</code> checks TLS validity and expiry, HSTS, CSP, cookie flags, and whether your production host is serving <code>/.env</code> or <code>/.git/config</code> to the open internet. Neither Snyk nor Trivy looks outside the repository.</li>
+        <li><strong>An 18-check readiness score</strong> modelled on what enterprise questionnaires actually ask, reported as a percentage, with the checks no scanner can verify (MFA, access reviews) listed as manual attestations rather than silently skipped.</li>
+        <li><strong>Redaction by default.</strong> Findings show <code>sk_l************nZaQ</code>, never the full credential, so an HTML report is safe to email to a customer.</li>
+        <li><strong><code>dira fix</code> is deliberately boring.</strong> It appends missing <code>.gitignore</code> patterns, writes a <code>SECURITY.md</code>, a Dependabot config, an <code>.env.example</code> with names but never values, an incident-response doc and a <code>security.txt</code>. It never touches application code, never rewrites history, and never claims to have rotated a key, because a tool that silently "fixes" a leaked credential is lying to you.</li>
+      </ul>
+      <h2>Where DIRA loses, in plain language</h2>
+      <p>This is the section that makes the rest of the page worth reading.</p>
+      <ul>
+        <li><strong>No container image scanning and no OS package coverage.</strong> If your deployable artifact is an image, DIRA is the wrong tool and Trivy is the right one.</li>
+        <li><strong>No dataflow analysis.</strong> Pattern matching finds sinks. Semgrep and Snyk Code trace paths. Those are different products and DIRA is the shallower one.</li>
+        <li><strong>No secret verification.</strong> trufflehog can test a matched key against the live provider and tell you it is active. DIRA matches and redacts; it does not verify.</li>
+        <li><strong>Five dependency ecosystems, not twenty.</strong> If your stack is Java, PHP, .NET or Swift, the dependency scanner has nothing to say to you yet.</li>
+        <li><strong>Secret scanning is less mature than a dedicated tool.</strong> gitleaks has years of rule tuning behind it. Twenty-four patterns plus entropy gating is a good working set, not a superset.</li>
+        <li><strong>Bus factor of one, and not yet on a registry.</strong> The PyPI and npm packages are built but not published, so today you install from source or the release wheel. That is a real friction cost and a real continuity risk.</li>
+        <li><strong>No support, no SLA, no dashboard, no history.</strong> Each run is a snapshot. <code>dira baseline</code> lets you accept today's debt and fail only on new findings, but there is no hosted trend line.</li>
+      </ul>
+      <h2>Cost, which is usually the deciding factor for a student project</h2>
+      <p>Trivy and DIRA are free and open source with no seat count and no account. Snyk has a free tier with monthly usage limits that is genuinely usable for a solo project, and paid tiers beyond it. Because vendors change pricing regularly, the only responsible advice is to read Snyk's current pricing page before assuming anything, and to notice that "free tier" and "free" are different words: a metered free tier is a trial that renews, and it can stop being sufficient on the exact week your project starts mattering.</p>
+      <h2>Pick this one if</h2>
+      <h3>Pick Snyk if</h3>
+      <p>You are on a funded team, you need fix pull requests and real dataflow analysis, someone in the organisation will ask for SSO and an audit trail, or a customer's security team wants to see a named vendor rather than a pile of open-source binaries. Also pick it if the free tier covers you today and you would rather grow into a platform than migrate to one later.</p>
+      <h3>Pick Trivy if</h3>
+      <p>You build containers, you run Kubernetes, or you want one Apache-2.0 binary in CI that covers images, dependencies, IaC and SBOM with no account and no vendor relationship. This is the correct default for the largest number of readers, and it is the answer I give when someone asks without mentioning any of DIRA's specific gaps.</p>
+      <h3>Pick DIRA if</h3>
+      <p>You are one or two people, your repo has never been scanned, and the pressing question is whether it would survive a customer's security questionnaire rather than which transitive dependency is stale. Also pick it if you want the live TLS and headers check, the license-risk classification and the readiness score in the same run, or if you specifically want a tool with no dependencies of its own. <a href="/dira.html">The full scanner and install instructions are here.</a></p>
+      <h3>Run two of them, which is what I actually do</h3>
+      <p>These are not mutually exclusive and nothing about the licensing forces a choice. A realistic setup for a small team is Trivy on the image in CI, DIRA on the repository and the live domain before a release or a customer call, and Snyk if and when someone is paying for the seat. The tools cost nothing to stack, and each one's blind spot is roughly the other's strength.</p>
+      <h2>Wiring whichever you pick into CI</h2>
+      <p>The scanner you run manually twice is worth less than the mediocre scanner that runs on every pull request. All three exit non-zero on findings above a threshold, which is the only integration contract that matters.</p>
+      <span class="formula"># fast inner-loop pass, seconds, no network
+dira scan . --only secrets,config
+
+# PR gate: only the files this branch touched
+dira scan . --diff origin/main --fail-on high
+
+# release gate: full run + the live domain, shareable HTML
+dira scan . -t yourapp.com -f html -o report.html
+
+# findings into the GitHub Security tab
+dira scan . -f sarif -o dira.sarif</span>
+      <p>Whatever you choose, set the failure threshold deliberately. A gate that fails on every low-severity informational finding gets disabled within a week, and a disabled gate scans nothing. Start at high, tighten later. If you want the surrounding process rather than just the tool, the <a href="/guides/student-founder-security-checklist.html">student founder's security checklist</a> is the 18-item version of what these scanners automate, including the parts no scanner can check.</p>
+      <h2>The honest summary</h2>
+      <p>Snyk is the one you buy. Trivy is the one you should probably run. DIRA is the one I wrote because neither of them answered the procurement question in a single command, and it is genuinely worse than both at several things named above by design and by resource constraint. A clean run from any of the three means "no known bad patterns", not "secure", and all three say so in their own documentation. Automated scanning is a floor, not a ceiling: it does not replace a penetration test, a threat model, or a real audit, and if you need the human layer on top, that is what a <a href="/services.html#shield-audit">Shield Audit</a> is for.</p>
+      <p>If you want the reasoning behind building a scanner with no dependencies at all, I wrote that up separately in <a href="/writing/i-wrote-a-security-scanner-with-zero-dependencies-on-purpose.html">why I wrote a security scanner with zero dependencies on purpose</a>. And if this is one of several tooling decisions you are making at once, the companion piece on <a href="/guides/free-vs-paid-student-tools.html">what a CS student should actually pay for</a> covers how to decide when the paid tier is worth it.</p>
+
+      <h2>Tools referenced in this guide</h2>
+      <ul>
+        <li><a href="/dira.html">DIRA</a> — the free MIT-licensed scanner discussed above: secrets, CVEs, config, licenses, git history, live TLS, SBOM and a readiness score.</li>
+        <li><a href="/guides/student-founder-security-checklist.html">Security checklist</a> — the 18-point manual version of what these scanners automate, including the parts they cannot check.</li>
+        <li><a href="/services.html#shield-audit">Shield Audit</a> — the human layer on top of a scan: findings walked through into a scored report with a fix plan.</li>
+      </ul>
+    </div>
+  </section>
+
+  <hr class="divider">
+
+  <section class="section section--tight" id="faq">
+    <div class="grp-head">
+      <p class="eyebrow">FAQ</p>
+      <h2>Quick answers</h2>
+    </div>
+    <div class="grid" style="margin-top:var(--s6)">
+      <article class="card faq-card"><h3>Does DIRA replace Snyk or Trivy?</h3><p>No. No container scanning, no OS packages, no dataflow analysis, no secret verification, five dependency ecosystems. It adds a live TLS check and a readiness score. Stack them instead.</p></article>
+      <article class="card faq-card"><h3>Best scanner for containers?</h3><p>Trivy, clearly. Broadest OS package coverage plus Kubernetes scanning. Snyk Container is the commercial alternative. DIRA reads Dockerfiles but never scans a built image.</p></article>
+      <article class="card faq-card"><h3>Is Snyk free?</h3><p>There is a free tier with monthly usage limits, plus paid tiers. Limits change, so read Snyk&#x27;s pricing page. Trivy and DIRA are free and open source with no account.</p></article>
+      <article class="card faq-card"><h3>Can a scanner replace a pentest?</h3><p>No, and all three say so themselves. Scanners find known bad patterns. They cannot see cloud IAM, MFA enforcement, access reviews or business logic. A clean scan is a floor.</p></article>
+      <article class="card faq-card"><h3>Run more than one scanner?</h3><p>Usually yes. Their blind spots are complementary and two of the three are free. Trivy in CI, a repo and domain scan before releases, gitleaks if secrets are the main worry.</p></article>
+      <article class="card faq-card"><h3>What is a readiness score?</h3><p>Posture rather than defects: lockfiles, dependency updates, CI, tests, secret scanning, CODEOWNERS, SECURITY.md, IaC, backups, incident response. What questionnaires actually ask.</p></article>
+      <article class="card faq-card"><h3>Why zero dependencies?</h3><p>A scanner that installs forty packages is itself a supply-chain surface. The cost is real: everything is hand-written, which is why it covers fewer ecosystems than tools built on libraries.</p></article>
+    </div>
+  </section>
+
+<!-- related:auto:start -->
+  <hr class="divider">
+
+  <section class="section section--tight related" id="related" aria-labelledby="related-h">
+    <div class="grp-head">
+      <p class="eyebrow">Keep reading</p>
+      <h2 id="related-h">Related guides</h2>
+    </div>
+    <div class="related__grid">
+      <a class="related__item" href="/guides/student-founder-security-checklist.html"><strong>18 things to fix before your first real user</strong><span>18 things to fix before your first user, your first security questionnaire, or the bot that finds your leaked key…</span></a>
+      <a class="related__item" href="/guides/free-vs-paid-student-tools.html"><strong>Free vs Paid: What a CS Student Should Actually Pay For</strong><span>A five-question framework plus a scored table across ~15 tool categories, from code editors to cloud GPUs, for CS…</span></a>
+      <a class="related__item" href="/guides/structured-llm-output.html"><strong>Getting JSON out of a language model, reliably</strong><span>Four mechanisms ranked, a worked JSON Schema and retry loop, and the two failure modes — truncation and duplicated…</span></a>
+      <a class="related__item" href="/guides/anchored-vwap.html"><strong>Anchored VWAP, and the one setup that survived testing</strong><span>Where to anchor, what a reclaim means, and the only setup that survived my own walk-forward test.</span></a>
+    </div>
+    <p class="related__more">Every guide is indexed on <a href="/guides.html">the guides hub</a>. Or put it to work in <a href="/services.html">the automation work I take on</a> and <a href="/dira.html">DIRA, the zero-dependency security scanner</a>.</p>
+  </section>
+<!-- related:auto:end -->
+
+</main>
+
+<footer class="site-footer">
+  <div class="site-footer__links">
+    <a href="/">Work</a>
+    <a href="/about.html">About</a>
+    <a href="/guides.html">Guides</a>
+    <a href="/apps.html">Apps</a>
+    <a href="/store.html">Store</a>
+    <a href="/privacy.html">Privacy</a>
+    <a href="/terms.html">Terms</a>
+    <a href="mailto:yusuf.gadelrab06@gmail.com">yusuf.gadelrab06@gmail.com</a>
+  </div>
+</footer>
+
+<script src="/js/site.js" defer></script>
+</body>
+</html>

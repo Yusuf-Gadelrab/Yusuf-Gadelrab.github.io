@@ -122,7 +122,7 @@ input,textarea,select{font-size:16px!important}</style>
 </head>
 <body class="pro">
 <a class="skip-link" href="#main">Skip to content</a>
-<nav class="site-nav" id="nav"><a class="site-nav__brand" href="/"><img class="site-nav__lion" src="/img/brand/lion-mark.svg" alt="" width="34" height="34"><span>YUSUF GADELRAB</span></a><div class="site-nav__links" id="navLinks"><a href="/">Work</a><a href="/resume.html">Resume</a><a href="/guides.html">Guides</a><a href="/store.html">Store</a><a href="/apps.html">Apps</a><a href="/kxngsef.html">KXNG SEF</a><a href="/hire.html">Hire</a><a href="/media-kit.html">Media Kit</a></div><button class="menu-btn" id="menuBtn" aria-label="Menu" hidden>&#9776;</button></nav>
+<nav class="site-nav" id="nav"><a class="site-nav__brand" href="/"><img class="site-nav__lion" src="/img/brand/lion-mark.svg" alt="" width="34" height="34" decoding="async"><span>YUSUF GADELRAB</span></a><div class="site-nav__links" id="navLinks"><a href="/">Work</a><a href="/resume.html">Resume</a><a href="/guides.html">Guides</a><a href="/store.html">Store</a><a href="/apps.html">Apps</a><a href="/kxngsef.html">KXNG SEF</a><a href="/hire.html">Hire</a><a href="/media-kit.html">Media Kit</a></div><button class="menu-btn" id="menuBtn" aria-label="Menu" hidden>&#9776;</button></nav>
 
 <main id="main">
 
@@ -150,7 +150,7 @@ input,textarea,select{font-size:16px!important}</style>
     <div class="calc-head">
       <span class="eyebrow">01 · Sizing</span>
       <h2 id="ps-h">Position sizer</h2>
-      <p>How many shares (or contracts, treated as 1:1 units here) can you buy without risking more than a fixed percent of your account if your stop gets hit. Works for longs and shorts — the calculator infers direction from where you put the stop.</p>
+      <p>How many shares (or contracts, treated as 1:1 units here) can you buy without risking more than a fixed percent of your account if your stop gets hit. Works for longs and shorts — the calculator infers direction from where you put the stop. Where that stop actually belongs is a separate question from the sizing math — see <a href="/guides/stop-loss-placement.html">the stop-loss placement guide</a> for structure-based stops versus arbitrary percentage stops.</p>
     </div>
     <div class="calc-grid">
       <form id="psForm">
@@ -325,7 +325,7 @@ Assumptions: independent draws (no streak correlation, no regime effects), fixed
         <div class="formula">b = avg win / avg loss  (payoff ratio)
 f* = p − (1 − p) / b   =   (p·b − (1 − p)) / b</div>
         <div class="warn-box">
-          <b>Full Kelly is not a recommendation, it's a ceiling.</b> It assumes your win rate and payoff ratio are exact and constant, which they never are in live trading — real edges decay and get mis-estimated from small samples. Even with correct inputs, full Kelly's growth-optimal path still carries 50%+ drawdowns as a normal event. Most professional sizing lands at ¼–½ Kelly specifically to trade some growth rate for a survivable ride.
+          <b>Full Kelly is not a recommendation, it's a ceiling.</b> It assumes your win rate and payoff ratio are exact and constant, which they never are in live trading — real edges decay and get mis-estimated from small samples. Even with correct inputs, full Kelly's growth-optimal path still carries 50%+ drawdowns as a normal event. Most professional sizing lands at ¼–½ Kelly specifically to trade some growth rate for a survivable ride. Full derivation and a worked example: <a href="/guides/kelly-criterion.html">the Kelly criterion guide</a>.
         </div>
       </div>
     </div>
@@ -361,7 +361,7 @@ e.g. at a 2:1 reward:risk, you only need to win 33.3% of the time to break even.
       <p>I run a swing-setup screener that flagged an anchored-VWAP reclaim pattern with a backtested <b>+0.23R over 101 trades</b> across 8 tech/index names. That looked like a real edge. So instead of trusting it, I re-tested it adversarially — the explicit goal was to try to kill the result, not confirm it.</p>
       <p>Sliding the backtest's arbitrary 126-bar window grid on the same 8 names alone, the reproducible expectancy had a <b>median of +0.004R</b>, ranging from −0.045R to +0.287R — the original +0.23R sat near the lucky end of a distribution that was, at its center, indistinguishable from zero. Expanding to a 129-symbol, 10-year universe did find a real, statistically significant expectancy of <b>+0.117R</b> (block-bootstrap 95% CI [+0.057, +0.174]). But when I benchmarked the AVWAP-reclaim signal against risk-matched random entries using the identical stop and target, the random entries alone captured <b>+0.086R</b> of that — just long-term market drift. The signal's own incremental contribution came out to <b>+0.030R per trade, with a 95% confidence interval of [−0.014, +0.077]</b> — a result that does not clear statistical significance, and one that ordinary trading costs (5–10 bps round-trip) would mostly or entirely consume.</p>
       <span class="verdict">Verdict: marginal. Trade it small, sized at a fraction of normal risk, or not at all.</span>
-      <p>That's the exact experience this toolkit is built to prevent you from having to learn the hard way: a good-looking backtest number, a small sample, and a plausible story are not the same thing as a validated edge. Position size like your edge might be much smaller than your backtest says, because it usually is.</p>
+      <p>That's the exact experience this toolkit is built to prevent you from having to learn the hard way: a good-looking backtest number, a small sample, and a plausible story are not the same thing as a validated edge. Position size like your edge might be much smaller than your backtest says, because it usually is. Logging every trade in R, the way <a href="/guides/trading-journal.html">a proper trading journal</a> does, is what surfaces a fake edge before it costs real money.</p>
       <p class="note">Full write-up with method, every benchmark, and the correlation-adjusted statistics: <code>reports/robustness-2026-07.md</code> in the swing-screener repo.</p>
     </div>
   </section>

@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="preload" href="/css/site.css" as="style">
+<meta name="robots" content="index,follow,max-image-preview:large,max-snippet:-1">
+<meta property="og:locale" content="en_US">
+<title>A Static Site AI Search Engines Can Read</title>
+<meta name="description" content="llms.txt, robots.txt rules for named AI crawlers, JSON-LD entity graphs with @id, mirrored FAQ schema, and what an answer engine cannot see in an SPA.">
+<link rel="canonical" href="https://yusuf-gadelrab.github.io/guides/static-site-ai-search.html">
+<link rel="icon" type="image/svg+xml" href="https://yusuf-gadelrab.github.io/favicon.svg">
+<link rel="apple-touch-icon" sizes="180x180" href="https://yusuf-gadelrab.github.io/apple-touch-icon.png">
+<meta name="theme-color" content="#0B0B0D">
+<meta name="author" content="Yusuf Gadelrab">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="Yusuf Gadelrab">
+<meta property="og:title" content="A Static Site AI Search Engines Can Actually Read">
+<meta property="og:description" content="The build side of AI search: llms.txt, named AI user-agents, @id entity graphs, semantic HTML, and why a client-rendered SPA is invisible.">
+<meta property="og:url" content="https://yusuf-gadelrab.github.io/guides/static-site-ai-search.html">
+<meta property="og:image" content="https://yusuf-gadelrab.github.io/og-card.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="A Static Site AI Search Engines Can Actually Read">
+<meta name="twitter:description" content="The build side of AI search: llms.txt, named AI user-agents, @id entity graphs, semantic HTML, and why a client-rendered SPA is invisible.">
+<meta name="twitter:image" content="https://yusuf-gadelrab.github.io/og-card.png">
+<link rel="alternate" type="text/plain" href="https://yusuf-gadelrab.github.io/llms-full.txt" title="Plain-text profile for language models">
+
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"TechArticle","@id":"https://yusuf-gadelrab.github.io/guides/static-site-ai-search.html#article","headline":"Shipping a Static Site AI Search Engines Can Actually Read: llms.txt, Entity Graphs, and the SPA Problem","name":"Shipping a Static Site AI Search Engines Can Actually Read: llms.txt, Entity Graphs, and the SPA Problem","description":"llms.txt, robots.txt rules for named AI crawlers, JSON-LD entity graphs with @id, mirrored FAQ schema, and what an answer engine cannot see in an SPA.","datePublished":"2026-07-29","dateModified":"2026-07-29","inLanguage":"en","author":{"@id":"https://yusuf-gadelrab.github.io/#person"},"publisher":{"@id":"https://yusuf-gadelrab.github.io/#person"},"about":["Search engine optimization","Structured data","Answer engine optimization","Web development"],"mainEntityOfPage":"https://yusuf-gadelrab.github.io/guides/static-site-ai-search.html","isAccessibleForFree":true,"proficiencyLevel":"Intermediate"},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://yusuf-gadelrab.github.io/"},{"@type":"ListItem","position":2,"name":"Guides","item":"https://yusuf-gadelrab.github.io/guides.html"},{"@type":"ListItem","position":3,"name":"Static Sites for AI Search"}]}]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","@id":"https://yusuf-gadelrab.github.io/guides/static-site-ai-search.html#faq","mainEntity":[{"@type":"Question","name":"Can AI answer engines read a client-side rendered SPA?","acceptedAnswer":{"@type":"Answer","text":"Usually not. A live retrieval fetcher answering a user's question makes one HTTP request with a hard timeout and no JavaScript engine, so a page whose body is an empty root div returns nothing usable. Test it with curl, strip the tags, and count the words — if a 2,000-word article reports a dozen words, your content is invisible to that consumer."}},{"@type":"Question","name":"What is llms.txt and does it actually do anything?","acceptedAnswer":{"@type":"Answer","text":"It is a proposed convention for a Markdown file at your domain root giving language models a curated index of your site: an H1 title, an optional blockquote summary, then H2 sections of links with short descriptions. No major provider has publicly committed to consuming it, so treat it as cheap insurance rather than a ranking lever — the real value is having one machine-readable index of your own site that you control and generate from the same source as your pages."}},{"@type":"Question","name":"Should I block AI crawlers in robots.txt?","acceptedAnswer":{"@type":"Answer","text":"Only the ones whose purpose you object to, because they are not interchangeable. Bulk training crawlers like GPTBot, ClaudeBot and CCBot can be blocked with no cost to visibility, but blocking retrieval agents such as ChatGPT-User, Claude-User or PerplexityBot removes you from the answers those assistants generate. Google-Extended and Applebot-Extended are training opt-outs only and do not affect search indexing at all."}},{"@type":"Question","name":"What does @id do in JSON-LD?","acceptedAnswer":{"@type":"Answer","text":"It gives a schema node a stable identifier that other nodes can reference instead of duplicating the data. Define one Person or Organization node with an @id like https://site.com/#person, then have every article's author and publisher fields point at that ID. You get exactly one canonical entity across the site with nothing to drift out of sync, and sameAs links reconcile it with your external profiles."}},{"@type":"Question","name":"Does a visible FAQ have to match FAQPage schema?","acceptedAnswer":{"@type":"Answer","text":"Yes. Structured data describing content a visitor cannot see on the page violates search guidelines and risks a manual action. There is also a practical reason: many extractors never parse JSON-LD and read only the visible text, so a schema-only question is invisible to the exact consumer you were targeting. Generate both from one source so they cannot diverge."}},{"@type":"Question","name":"Does semantic HTML matter more than div soup for AI search?","acceptedAnswer":{"@type":"Answer","text":"Yes, and in some cases the difference is total rather than marginal. Content extractors score elements by tag and structure, so a real table with th cells preserves row and column relationships that a nested flex-div layout destroys entirely. One h1, a heading hierarchy matching the outline, main and article wrappers, and real list elements are the highest-value markup changes available."}},{"@type":"Question","name":"What can an answer engine never see on my page?","acceptedAnswer":{"@type":"Answer","text":"Anything rendered by client-side JavaScript, content behind a cookie wall or email gate, text baked into images or canvas without alt text or a transcript, genuinely deferred lazy-loaded content, anything behind authentication, most iframed content, and anything your robots.txt disallows for that specific user-agent."}},{"@type":"Question","name":"How do I verify my site is readable before deploying?","acceptedAnswer":{"@type":"Answer","text":"Fetch each page with curl and count the words after stripping tags, check headers for a stray X-Robots-Tag noindex, parse every JSON-LD block to confirm it is valid, confirm each FAQ question appears verbatim in the visible text, fetch robots.txt and llms.txt and the sitemap, diff the sitemap's URL list against what you actually generated, and confirm every internal link resolves. All of it scripts in about fifty lines and belongs in a pre-deploy gate."}}]}</script>
+
+<link rel="stylesheet" href="/css/site.css">
+<style>
+  .prose{max-width:68ch}
+  .prose h2{margin:var(--s7) 0 var(--s4);font-size:var(--t-h2)}
+  .prose h3{margin:var(--s6) 0 var(--s3);font-size:var(--t-h3)}
+  .prose p{color:var(--muted);margin:0 0 var(--s4)}
+  .prose ul,.prose ol{color:var(--muted);padding-left:1.2em;margin:0 0 var(--s4)}
+  .prose li{margin-bottom:var(--s2)}
+  .prose a{color:var(--gold-2)}
+  .prose strong{color:var(--fg)}
+  .formula{display:block;padding:var(--s4);margin:0 0 var(--s4);border:1px solid var(--line-soft);
+    border-radius:var(--radius);font-family:ui-monospace,SFMono-Regular,Menlo,monospace;
+    font-size:var(--t-small);color:var(--gold-2);overflow-x:auto;white-space:pre-wrap}
+  .tblwrap{overflow-x:auto;margin:0 0 var(--s4)}
+  .tbl{width:100%;border-collapse:collapse;font-size:var(--t-small)}
+  .tbl th,.tbl td{text-align:left;padding:var(--s3);border-bottom:1px solid var(--line-soft);
+    color:var(--muted);vertical-align:top}
+  .tbl th{font-family:var(--display-pro);color:var(--gold-2);font-weight:600}
+  .callout{padding:var(--s4);border:1px solid var(--line-soft);border-radius:var(--radius);
+    color:var(--muted);font-size:var(--t-small);margin:0 0 var(--s5)}
+  .callout--warn{border-color:var(--gold-2)}
+  .faq-card{padding:var(--s5)}
+  .faq-card h3{font-size:var(--t-h3);margin:0}
+  .faq-card p{color:var(--muted);font-size:var(--t-small);margin:var(--s3) 0 0}
+</style>
+</head>
+<body class="pro">
+
+<a class="skip-link" href="#main">Skip to content</a>
+
+<nav class="site-nav">
+  <a class="site-nav__brand" href="/"><img class="site-nav__lion" src="/img/brand/lion-mark.svg" alt="" width="34" height="34"><span>YUSUF GADELRAB</span></a>
+  <div class="site-nav__links">
+    <a href="/">Work</a>
+    <a href="/guides.html">Guides</a>
+    <a href="/stack.html">Stack</a>
+    <a href="/apps.html">Apps</a>
+  </div>
+</nav>
+
+<nav class="crumbs" aria-label="Breadcrumb">
+  <ol>
+    <li><a href="/">Home</a></li>
+    <li><a href="/guides.html">Guides</a></li>
+    <li><span aria-current="page">Static Sites for AI Search</span></li>
+  </ol>
+</nav>
+
+<main id="main">
+
+  <header class="section">
+    <p class="eyebrow">Guide · AI engineering</p>
+    <h1 style="margin:var(--s4) 0">What an answer engine actually fetches from your site</h1>
+    <p class="lead">Three different things now read your pages: a classic search crawler that eventually runs your JavaScript, a training crawler that mostly does not, and a live retrieval fetcher inside an answer engine that definitely does not and has a timeout. This is the build-side guide — the files, the markup, and the verification commands that decide what each of them can see.</p>
+  </header>
+
+  <hr class="divider">
+
+  <section class="section section--tight">
+    <div class="prose">
+      <h2>Three consumers, three capabilities</h2>
+      <p>The strategy question — how to get cited when the answer replaces the click — is covered in <a href="/guides/ai-search-optimization.html">the AI search optimization guide</a>. This one is about the build: what you actually ship so that the strategy has something to work with. And that starts with being precise about who is fetching.</p>
+      <div class="tblwrap"><table class="tbl">
+        <thead><tr><th>Consumer</th><th>Runs your JavaScript?</th><th>What it wants</th></tr></thead>
+        <tbody>
+          <tr><td>Classic search crawler</td><td>Yes, on a delay and a budget.</td><td>Rendered content, structured data, links, a sitemap.</td></tr>
+          <tr><td>AI training crawler</td><td>Usually not.</td><td>Raw HTML text, at scale, cheaply.</td></tr>
+          <tr><td>Live retrieval fetcher inside an answer engine</td><td>No, and it has a hard timeout.</td><td>A single fast HTML response it can extract an answer from right now.</td></tr>
+        </tbody>
+      </table></div>
+      <p>That third row is the one that changes how you build. When someone asks an assistant a question and it fetches your page to answer, there is no render queue and no second pass. It gets one HTTP response, extracts what it can, and moves on. Whatever is not in that response does not exist.</p>
+      <h2>Test what a non-rendering fetcher sees</h2>
+      <p>One command settles the question. Fetch your page with no JavaScript engine, strip the tags, and count the words:</p>
+      <span class="formula">curl -sL https://yoursite.com/some-page \
+  | python3 -c "import sys,re,html;s=sys.stdin.read();
+s=re.sub(r'(?is)<(script|style|noscript).*?</\\1>',' ',s);
+print(len(html.unescape(re.sub('<[^>]+>',' ',s)).split()),'words')"
+
+# A 2,000-word article should report roughly 2,000 words.
+# If it reports 12, everything a reader sees is being drawn by JavaScript.</span>
+      <p>The failure looks like this in the source: <code>&lt;div id="root"&gt;&lt;/div&gt;</code> and a script tag. That is the entire page as far as a non-rendering client is concerned. Every word of your content, every heading, every link exists only after a bundle downloads, parses, executes, and fetches data — none of which happens for an answer engine on a two-second budget.</p>
+      <p>The fix is not clever, it is structural: <strong>generate real HTML files.</strong> Static site generation, server-side rendering with a real HTML response, or a prerender step in your build. All three produce the same thing that matters — a document with the content already in it. The page you are reading is a generated static file: a Python script holds the content as data, renders the markup and structured data, and writes an HTML file. There is no client-side hydration involved and there is nothing to miss.</p>
+      <h2>Semantic HTML over div soup</h2>
+      <p>Extractors — the readability-style algorithms that strip navigation and boilerplate to find the article — score elements on their tags and structure. Content wrapped in generic containers scores worse than the same content in semantic ones, and in a few cases the meaning is lost entirely rather than merely downgraded.</p>
+      <ul>
+        <li><strong>One <code>&lt;h1&gt;</code>, then a heading hierarchy that matches the outline.</strong> Heading structure is how an extractor segments the page into topics, and it is how a retrieval system decides which section answers a question.</li>
+        <li><strong><code>&lt;main&gt;</code> and <code>&lt;article&gt;</code> around the real content.</strong> The cheapest possible signal for "this is the page, the rest is furniture."</li>
+        <li><strong>Real <code>&lt;table&gt;</code> markup for tabular data, with <code>&lt;th&gt;</code>.</strong> A comparison table built from nested flex divs is not a table to anything but a browser — the row and column relationships are gone, and those relationships were the information.</li>
+        <li><strong>Real <code>&lt;ol&gt;</code> and <code>&lt;ul&gt;</code> for lists.</strong> A sequence of styled divs is a sequence of paragraphs to an extractor.</li>
+        <li><strong>Descriptive link text.</strong> "Click here" tells a machine nothing about the destination; the link text is a large part of how the target page's topic is inferred.</li>
+        <li><strong>Text in text, not in images.</strong> A chart rendered as a PNG with the numbers baked in is invisible. Put the numbers in a table next to it.</li>
+      </ul>
+      <h2>llms.txt: cheap, useful, and not a standard</h2>
+      <p>llms.txt is a proposed convention: a Markdown file at your domain root giving language models a curated, machine-readable index of your site. The format is an H1 with the site name, an optional blockquote summary, then H2 sections of links, each with a short description after a colon.</p>
+      <span class="formula"># Your Name
+
+> One-paragraph description of who you are and what this site contains.
+
+## Guides
+- [Choosing an embedding model for RAG](https://site.com/guides/embedding-model-rag.html): dimensions vs cost, recall@k evaluation, when a reranker wins.
+- [Prompt caching](https://site.com/guides/prompt-caching.html): prefix matching, TTL, break-even math.
+
+## Projects
+- [DIRA](https://site.com/dira.html): zero-dependency Python security scanner.</span>
+      <p>A companion <code>llms-full.txt</code> holds the same material expanded — full descriptions rather than one-liners — for a consumer that wants everything in one fetch. Serve both at the root, and copy <code>llms.txt</code> to <code>/.well-known/llms.txt</code> as well, since that is where a second convention looks for it.</p>
+      <p>Be honest about what this buys you: no major provider has publicly committed to consuming these files, and adoption is uneven. It is cheap insurance rather than a ranking lever. The reason to do it anyway is that it is genuinely useful independent of any crawler — it is a machine-readable index of your own site that you control, and it takes minutes to generate.</p>
+      <p>The important part is generating it from the same source your pages come from. Two hand-maintained lists diverge within a month. On this site the guide registry is a Python data structure; the pages, the hub, the sitemap, and both llms files are all rendered from it, so a new guide cannot exist on one surface and be missing from another.</p>
+      <h2>robots.txt and the named AI user-agents</h2>
+      <p>AI companies operate several crawlers with distinct names and distinct purposes, and the single most useful thing to understand here is that they are not interchangeable. Blocking the wrong one removes you from citations while doing nothing about training.</p>
+      <div class="tblwrap"><table class="tbl">
+        <thead><tr><th>User-agent</th><th>Purpose</th><th>Cost of blocking it</th></tr></thead>
+        <tbody>
+          <tr><td><code>GPTBot</code>, <code>ClaudeBot</code>, <code>CCBot</code>, <code>Bytespider</code></td><td>Bulk crawling, largely for training corpora.</td><td>None to your visibility. This is the one to block if you object to training use.</td></tr>
+          <tr><td><code>ChatGPT-User</code>, <code>Claude-User</code>, <code>Perplexity-User</code></td><td>Fetches your page live because a user's question needs it right now.</td><td>High. Block this and you cannot be cited in an answer.</td></tr>
+          <tr><td><code>OAI-SearchBot</code>, <code>Claude-SearchBot</code>, <code>PerplexityBot</code></td><td>Builds the search index the assistant retrieves from.</td><td>High. Block this and you are not in the index to retrieve.</td></tr>
+          <tr><td><code>Google-Extended</code>, <code>Applebot-Extended</code></td><td>Training and grounding opt-outs only.</td><td>None to search ranking — these do not affect Google Search or Apple search indexing at all.</td></tr>
+        </tbody>
+      </table></div>
+      <p>So a policy of "opt out of training, stay visible in answers" is expressible, and it looks like this:</p>
+      <span class="formula"># opt out of bulk training crawls
+User-agent: GPTBot
+Disallow: /
+
+User-agent: CCBot
+Disallow: /
+
+User-agent: Google-Extended
+Disallow: /
+
+# stay retrievable and citable
+User-agent: OAI-SearchBot
+Allow: /
+
+User-agent: Claude-User
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+Sitemap: https://yoursite.com/sitemap.xml</span>
+      <p class="callout callout--warn">robots.txt is a request, not an access control. It is honoured by the major operators and ignored by anything that does not want to honour it. If content genuinely must not be fetched, it needs authentication, not a directive. Related: a stray <code>X-Robots-Tag: noindex</code> response header overrides everything in your robots.txt and your meta tags, silently — check it with <code>curl -sI</code> before debugging anything else.</p>
+      <h2>JSON-LD entity graphs and @id linking</h2>
+      <p>Structured data is how you state facts about a page in a form that needs no inference. The upgrade most sites have not made is going from a pile of disconnected snippets to a linked graph — every node carrying a stable <code>@id</code>, and other nodes referencing that ID instead of repeating the data.</p>
+      <span class="formula">{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Person",
+      "@id": "https://site.com/#person",
+      "name": "Your Name",
+      "url": "https://site.com/",
+      "sameAs": ["https://github.com/you", "https://linkedin.com/in/you"]
+    },
+    {
+      "@type": "TechArticle",
+      "@id": "https://site.com/guides/x.html#article",
+      "headline": "...",
+      "author":    {"@id": "https://site.com/#person"},
+      "publisher": {"@id": "https://site.com/#person"}
+    }
+  ]
+}</span>
+      <p>Two things are doing work here. First, <code>author</code> is a reference rather than a duplicated object, so there is exactly one Person entity on the entire site and every page points at it — nothing to drift out of sync, and no ambiguity about whether two similar names are the same person. Second, <code>sameAs</code> is the reconciliation mechanism: it says "the entity on this page is the same entity as these external profiles," which is precisely the link a system needs to merge your site's claims with what it already knows from elsewhere.</p>
+      <p>Pick the type that matches what the page actually is — <code>TechArticle</code> for a technical guide, <code>SoftwareApplication</code> for a tool, <code>FAQPage</code> for questions and answers — and put a <code>BreadcrumbList</code> on anything nested, since that is how position in a hierarchy is communicated when the URL alone is ambiguous.</p>
+      <h2>The FAQ rule that gets sites penalised</h2>
+      <p><strong>Every question and answer in your FAQPage schema must be visible on the page, in text, matching the markup.</strong> Not in a collapsed accordion that only populates on click. Not paraphrased. Not schema-only. Structured data that describes content a visitor cannot find is a guidelines violation and a manual-action risk, and it is a surprisingly common mistake because the schema is so easy to write in isolation.</p>
+      <p>There is a second, more practical reason to mirror it. Plenty of extractors do not parse JSON-LD at all — they read the visible text. A question in schema and nowhere else is invisible to exactly the consumer you were trying to reach. Mirroring it means both paths find the same answer, which is the entire point.</p>
+      <p>The reliable way to enforce this is to generate both from one source. On this site, each guide's FAQ entries are a list of question-answer pairs in a data file; the generator emits the FAQPage JSON-LD and the visible FAQ cards from that same list in the same pass. They cannot disagree, because there is no second copy to disagree with.</p>
+      <h2>Write pages that survive being chunked</h2>
+      <p>A retrieval system does not read your page, it reads a piece of it. Whatever the chunking strategy, some paragraph of yours will be evaluated on its own with no surrounding context — the same constraint that governs <a href="/guides/embedding-model-rag.html">chunking a corpus for RAG</a>, applied to your own writing.</p>
+      <ul>
+        <li><strong>Lead with the answer.</strong> Put the direct response in the first sentence under a heading, then the explanation. A chunk that opens with three sentences of setup is a chunk whose relevance is not apparent.</li>
+        <li><strong>Make headings question-shaped where it is natural.</strong> Heading text and query text living in the same space is a real retrieval advantage, not a trick.</li>
+        <li><strong>Keep paragraphs self-contained.</strong> "As mentioned above" is meaningless in a chunk. Repeat the noun instead of using a pronoun that refers three paragraphs back.</li>
+        <li><strong>Put numbers, dates, and units in the text.</strong> Specific figures are what get quoted; vague claims are not extractable.</li>
+        <li><strong>State scope explicitly.</strong> "On Apple Silicon" or "for a five-minute cache window" inside the sentence, not established once at the top of a section and assumed thereafter.</li>
+      </ul>
+      <h2>What an answer engine cannot see, ever</h2>
+      <ul>
+        <li>Anything rendered by client-side JavaScript, including content fetched after page load.</li>
+        <li>Content behind a cookie wall, an age gate, an email capture, or any interstitial.</li>
+        <li>Text baked into images, canvas elements, or video, absent a transcript or alt text.</li>
+        <li>Content that only appears after scrolling, if loading is genuinely deferred rather than merely hidden by CSS.</li>
+        <li>Anything requiring authentication — obviously, and worth stating because staging environments get indexed and production ones get accidentally gated.</li>
+        <li>Iframed content, generally, since the fetcher follows one URL and does not chase embeds.</li>
+        <li>Anything your <code>robots.txt</code> disallows for that specific user-agent, which is why the training-versus-retrieval distinction above matters so much.</li>
+      </ul>
+      <h2>A verification pass you can run in two minutes</h2>
+      <ol>
+        <li><code>curl -sL https://site.com/page</code> and count the words after stripping tags. It should approximate the visible article length.</li>
+        <li><code>curl -sI https://site.com/page</code> and confirm the content type is <code>text/html</code> and there is no <code>X-Robots-Tag: noindex</code> hiding in the headers.</li>
+        <li>Extract every <code>application/ld+json</code> block and run it through a JSON parser. One trailing comma silently invalidates the entire block and nothing warns you.</li>
+        <li>Confirm every question in your FAQPage schema appears verbatim in the page text.</li>
+        <li>Fetch <code>/robots.txt</code>, <code>/llms.txt</code>, <code>/.well-known/llms.txt</code>, and <code>/sitemap.xml</code> and confirm all four return 200 with the right content type.</li>
+        <li>Diff your sitemap's URL list against the files you actually generated. A regeneration that silently drops a section is the classic failure, and it is invisible until traffic disappears.</li>
+        <li>Confirm every internal link resolves to a file that exists. Dead internal links waste crawl budget and break the graph that connects your pages.</li>
+      </ol>
+      <p>All seven are scriptable in about fifty lines, and running them as a pre-deploy gate is worth more than any individual optimisation, because the failure mode here is silent. Nothing errors when your sitemap loses fourteen URLs or a JSON-LD block stops parsing; the pages simply stop being found, and you notice months later. The same argument applies to the rest of what ships with a site — <a href="/guides/student-founder-security-checklist.html">the security checklist</a> covers the automated gates that catch those failures, and <a href="/dira.html">DIRA</a> runs the header and TLS half of this list against a live domain.</p>
+      <h2>The part none of this fixes</h2>
+      <p>Structured data, llms.txt, and semantic markup are parsing aids. They make it easy for a machine to understand what you wrote and impossible for it to misfile you. They do not make thin content worth citing. An answer engine cites a page because it contains a specific, checkable claim that answers a specific question — a number, a formula, a command, a tradeoff stated honestly. Everything in this guide exists to make sure that when you have written something worth citing, nothing in your build pipeline is standing in the way.</p>
+
+      <h2>Tools referenced in this guide</h2>
+      <ul>
+        <li><a href="/guides/ai-search-optimization.html">AI search optimization</a> — the strategy layer above this build guide — entity consolidation, answer-first writing, IndexNow.</li>
+        <li><a href="/guides/embedding-model-rag.html">Embedding models for RAG</a> — how retrieval chunks and ranks pages, which is why self-contained paragraphs matter.</li>
+        <li><a href="/dira.html">DIRA</a> — a free scanner that checks TLS, security headers, and what your live domain is exposing.</li>
+        <li><a href="/apps.html">Apps</a> — the same structured-data pattern applied to product pages.</li>
+      </ul>
+    </div>
+  </section>
+
+  <hr class="divider">
+
+  <section class="section section--tight" id="faq">
+    <div class="grp-head">
+      <p class="eyebrow">FAQ</p>
+      <h2>Quick answers</h2>
+    </div>
+    <div class="grid" style="margin-top:var(--s6)">
+      <article class="card faq-card"><h3>Can AI engines read an SPA?</h3><p>Usually not. A live retrieval fetch is one request, no JavaScript, hard timeout — an empty root div returns nothing. curl the page, strip tags, count words to check.</p></article>
+      <article class="card faq-card"><h3>Does llms.txt do anything?</h3><p>No provider has publicly committed to consuming it, so treat it as cheap insurance. The real value is a machine-readable index of your own site, generated from the same source as your pages.</p></article>
+      <article class="card faq-card"><h3>Block AI crawlers?</h3><p>Only the ones you object to. Blocking GPTBot/ClaudeBot/CCBot costs no visibility; blocking ChatGPT-User, Claude-User or PerplexityBot removes you from answers entirely.</p></article>
+      <article class="card faq-card"><h3>What does @id do?</h3><p>It gives a schema node a stable ID other nodes reference instead of duplicating. One Person entity site-wide, referenced everywhere, reconciled to external profiles via sameAs.</p></article>
+      <article class="card faq-card"><h3>Must the FAQ be visible?</h3><p>Yes. Schema describing invisible content violates guidelines and risks a manual action — and many extractors never parse JSON-LD, so schema-only questions reach nobody.</p></article>
+      <article class="card faq-card"><h3>Semantic HTML vs div soup?</h3><p>It matters, sometimes totally. A real table with th preserves row/column relationships that nested flex divs destroy. One h1, real headings, main/article, real lists.</p></article>
+      <article class="card faq-card"><h3>What can it never see?</h3><p>Client-rendered content, anything behind a cookie wall or auth, text baked into images, deferred lazy-loaded content, most iframes, and anything robots.txt disallows for that agent.</p></article>
+      <article class="card faq-card"><h3>How do I verify before deploy?</h3><p>curl + word count, check headers for stray noindex, parse every JSON-LD block, confirm FAQ text is visible, fetch robots/llms/sitemap, diff the sitemap, check internal links.</p></article>
+    </div>
+  </section>
+
+<!-- related:auto:start -->
+  <hr class="divider">
+
+  <section class="section section--tight related" id="related" aria-labelledby="related-h">
+    <div class="grp-head">
+      <p class="eyebrow">Keep reading</p>
+      <h2 id="related-h">Related guides</h2>
+    </div>
+    <div class="related__grid">
+      <a class="related__item" href="/guides/ai-search-optimization.html"><strong>Getting cited when the answer replaces the click</strong><span>Entity consolidation, llms.txt, AI crawler rules, mirrored FAQPage schema, and answer-first structure.</span></a>
+      <a class="related__item" href="/guides/prompt-caching.html"><strong>Prompt caching, and the traffic pattern where it costs you more</strong><span>Prefix matching, TTL windows, the break-even arithmetic, and the traffic pattern where caching makes your bill 24%…</span></a>
+      <a class="related__item" href="/guides/embedding-model-rag.html"><strong>Picking an embedding model, and why it matters less than you think</strong><span>Dimensions, storage cost, local vs API, recall@k evaluation, rerankers — and the honest answer that chunking usually…</span></a>
+      <a class="related__item" href="/guides/moe-model-macbook.html"><strong>Memory like a 30B, speed like a 3B</strong><span>Memory like a 30B, speed like a 3B. Quantization, KV cache math, Ollama flags that matter, and when local is…</span></a>
+    </div>
+    <p class="related__more">Every guide is indexed on <a href="/guides.html">the guides hub</a>. Or put it to work in <a href="/everything.html">everything else that is live and free</a> and <a href="/apps.html">the three installable offline apps</a>.</p>
+  </section>
+<!-- related:auto:end -->
+
+</main>
+
+<footer class="site-footer">
+  <div class="site-footer__links">
+    <a href="/">Work</a>
+    <a href="/about.html">About</a>
+    <a href="/guides.html">Guides</a>
+    <a href="/apps.html">Apps</a>
+    <a href="/store.html">Store</a>
+    <a href="/privacy.html">Privacy</a>
+    <a href="/terms.html">Terms</a>
+    <a href="mailto:yusuf.gadelrab06@gmail.com">yusuf.gadelrab06@gmail.com</a>
+  </div>
+</footer>
+
+<script src="/js/site.js" defer></script>
+</body>
+</html>
