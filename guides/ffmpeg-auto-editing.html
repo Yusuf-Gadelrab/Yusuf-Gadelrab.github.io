@@ -50,8 +50,8 @@
     color:var(--muted);font-size:var(--t-small);margin:0 0 var(--s5)}
   .callout--warn{border-color:var(--gold-2)}
   .faq-card{padding:var(--s5)}
-  .faq-card h3{font-size:var(--t-h3);margin:0}
-  .faq-card p{color:var(--muted);font-size:var(--t-small);margin:var(--s3) 0 0}
+  .faq-card h3{font-size:var(--t-h3);margin:0;line-height:1.3}
+  .faq-card p{color:var(--muted);font-size:var(--t-small);line-height:1.65;margin:var(--s3) 0 0}
 </style>
 </head>
 <body class="pro">
@@ -59,7 +59,7 @@
 <a class="skip-link" href="#main">Skip to content</a>
 
 <nav class="site-nav">
-  <a class="site-nav__brand" href="/"><img class="site-nav__lion" src="/img/brand/lion-mark.svg" alt="" width="34" height="34"><span>YUSUF GADELRAB</span></a>
+  <a class="site-nav__brand" href="/"><img class="site-nav__lion" src="/img/brand/lion-mark.svg" alt="" width="34" height="34" decoding="async"><span>YUSUF GADELRAB</span></a>
   <div class="site-nav__links">
     <a href="/">Work</a>
     <a href="/guides.html">Guides</a>
@@ -200,12 +200,12 @@ ffmpeg -i reel.mp4 -vf \
       <h2>Quick answers</h2>
     </div>
     <div class="grid" style="margin-top:var(--s6)">
-      <article class="card faq-card"><h3>How do you detect scene changes?</h3><p>Threshold the select filter&#x27;s scene score: gt(scene,0.4) is a fair default. 0.3 fires on camera movement, 0.5+ catches hard cuts only.</p></article>
-      <article class="card faq-card"><h3>How do you find highlights?</h3><p>By audio, not video. Loudness spikes above the median via ebur128, or invert silencedetect and rank the audible segments. Pad the lead-in.</p></article>
-      <article class="card faq-card"><h3>How do you cut without re-encoding?</h3><p>-ss before -i with -c copy. Fast and lossless, but cuts land on keyframes — re-encode only the clips that must be frame-accurate.</p></article>
-      <article class="card faq-card"><h3>Why does concat break?</h3><p>The concat demuxer needs identical codec, resolution, frame rate, and audio params. Mismatched inputs play clip one then freeze.</p></article>
-      <article class="card faq-card"><h3>How do you go vertical?</h3><p>Blurred-background pad is the safe default; centre crop fills the frame but loses the edges; tracked crop looks best and costs real work.</p></article>
-      <article class="card faq-card"><h3>Why local instead of an API?</h3><p>No upload, no per-minute cost while iterating, no footage handed to a third party, deterministic and debuggable. APIs still win on transcription.</p></article>
+      <article class="card faq-card"><h3>How do you detect scene changes with ffmpeg?</h3><p>Use the select filter&#x27;s scene score, which rates how different each frame is from the previous one on a 0 to 1 scale, and threshold it — for example select=&#x27;gt(scene,0.4)&#x27;. Around 0.3 is sensitive and fires on camera movement, 0.4 is a reasonable default, and 0.5 or above catches hard cuts only.</p></article>
+      <article class="card faq-card"><h3>How do you find highlights in a video automatically?</h3><p>Analyse audio energy rather than video. Compute short-term loudness with the ebur128 filter and keep windows several decibels above the file&#x27;s median, or use silencedetect to find quiet gaps and rank the audible segments between them by mean loudness. Pad each pick with a few seconds of lead-in.</p></article>
+      <article class="card faq-card"><h3>How do you cut a video without re-encoding?</h3><p>Use -c copy for stream copy, with -ss placed before -i so ffmpeg seeks quickly. The limitation is that stream copy can only cut at keyframes, so the cut point may drift by a fraction of a second; put -ss after -i and re-encode when the cut must be frame-accurate.</p></article>
+      <article class="card faq-card"><h3>Why does concatenated ffmpeg output freeze or desync?</h3><p>The concat demuxer with -c copy requires every input to share the same codec, resolution, frame rate, sample rate, and channel layout. When they differ, playback typically works for the first clip then breaks. Normalise all clips to identical parameters first, or use the concat filter and accept one re-encode.</p></article>
+      <article class="card faq-card"><h3>How do you convert horizontal video to 9:16 vertical?</h3><p>Three options: pad with a blurred, enlarged copy of the video behind the original, which is the safe default; centre-crop to ih*9/16 by ih and scale to 1080x1920, which fills the frame but loses the edges; or track the subject and move the crop window, which looks best but requires per-frame detection.</p></article>
+      <article class="card faq-card"><h3>Why use a local ffmpeg pipeline instead of a video API?</h3><p>No upload time on large files, no per-minute processing cost while you iterate on thresholds, no third party receiving footage of identifiable people, deterministic output you can debug file by file, and no exposure to another company&#x27;s pricing or uptime. The trade is that APIs bundle transcription and face tracking that ffmpeg alone does not provide.</p></article>
     </div>
   </section>
 

@@ -50,8 +50,8 @@
     color:var(--muted);font-size:var(--t-small);margin:0 0 var(--s5)}
   .callout--warn{border-color:var(--gold-2)}
   .faq-card{padding:var(--s5)}
-  .faq-card h3{font-size:var(--t-h3);margin:0}
-  .faq-card p{color:var(--muted);font-size:var(--t-small);margin:var(--s3) 0 0}
+  .faq-card h3{font-size:var(--t-h3);margin:0;line-height:1.3}
+  .faq-card p{color:var(--muted);font-size:var(--t-small);line-height:1.65;margin:var(--s3) 0 0}
 </style>
 </head>
 <body class="pro">
@@ -59,7 +59,7 @@
 <a class="skip-link" href="#main">Skip to content</a>
 
 <nav class="site-nav">
-  <a class="site-nav__brand" href="/"><img class="site-nav__lion" src="/img/brand/lion-mark.svg" alt="" width="34" height="34"><span>YUSUF GADELRAB</span></a>
+  <a class="site-nav__brand" href="/"><img class="site-nav__lion" src="/img/brand/lion-mark.svg" alt="" width="34" height="34" decoding="async"><span>YUSUF GADELRAB</span></a>
   <div class="site-nav__links">
     <a href="/">Work</a>
     <a href="/guides.html">Guides</a>
@@ -153,12 +153,12 @@ common k values: 1.5 to 3.0 for swing timeframes</span>
       <h2>Quick answers</h2>
     </div>
     <div class="grid" style="margin-top:var(--s6)">
-      <article class="card faq-card"><h3>Where does the stop go?</h3><p>Just beyond the level that proves the idea wrong, and at least about 1 ATR away so noise alone cannot hit it.</p></article>
-      <article class="card faq-card"><h3>Stop first or size first?</h3><p>Stop first, always. Entry minus stop is 1R per share; risk budget divided by 1R gives the share count. You do not choose the size.</p></article>
-      <article class="card faq-card"><h3>What is an ATR stop?</h3><p>Distance set as 1.5-3x ATR14, so it scales to the instrument&#x27;s own noise. Volatile names get wider stops and automatically smaller positions.</p></article>
-      <article class="card faq-card"><h3>Are percentage stops fine?</h3><p>Weakest option — they ignore structure and volatility. Useful only as a beginner rule or an outer cap on a structural stop.</p></article>
-      <article class="card faq-card"><h3>Where not to put one?</h3><p>Not on round numbers, not exactly at the obvious swing low, not inside 1 ATR, and never at a dollar figure that merely feels tolerable.</p></article>
-      <article class="card faq-card"><h3>Can you move a stop?</h3><p>Only tighter. Trailing up is fine if the rule pre-existed. Widening turns a defined 1R loss into an undefined one, under pressure.</p></article>
+      <article class="card faq-card"><h3>Where should you place a stop loss?</h3><p>Place it just beyond the price that would prove the trade idea wrong, which is usually a structural level such as the low of a base, a consolidation floor, or the anchored VWAP that generated the signal. Then check that this distance is at least about one average true range, because anything tighter sits inside normal noise and will be hit at random.</p></article>
+      <article class="card faq-card"><h3>Does the stop determine position size, or the other way round?</h3><p>The stop determines position size. Find the invalidation price first, treat the entry-to-stop distance as 1R per share, then divide your account risk budget by that distance to get the share count. A $30,000 account risking 1% has a $300 budget, so a $2.40 stop distance allows 125 shares.</p></article>
+      <article class="card faq-card"><h3>What is an ATR-based stop?</h3><p>An ATR stop sets the distance as a multiple of average true range, commonly 1.5 to 3 times ATR14 for swing timeframes. Because ATR measures the instrument&#x27;s own typical movement including gaps, the stop widens automatically in volatile names and the resulting position size shrinks to match.</p></article>
+      <article class="card faq-card"><h3>Are percentage stops any good?</h3><p>A fixed 7% or 8% stop ignores both structure and volatility, so it is far too wide for a low-volatility stock and far too tight for a leveraged ETF or a small-cap. Its only real virtue is that it cannot be rationalised away, which makes it a reasonable outer cap or a beginner&#x27;s starting rule.</p></article>
+      <article class="card faq-card"><h3>Where should you never put a stop?</h3><p>Avoid exact round numbers such as $50.00 or $100.00, and avoid sitting exactly at the obvious swing low that every chart reader can see, because price frequently trades a few cents through those levels and reverses. Also avoid any distance inside roughly one ATR, and avoid setting the stop at a dollar amount you find comfortable rather than at a level the chart justifies.</p></article>
+      <article class="card faq-card"><h3>Should you ever move a stop loss?</h3><p>Move it in the direction of reduced risk only. Trailing a stop up in a long position, or to breakeven, is fine when the rule was defined before entry. Widening a stop converts a known 1R loss into an unknown one and always happens under pressure, which is why it is the most damaging habit in retail trading.</p></article>
     </div>
   </section>
 

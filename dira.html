@@ -2,6 +2,8 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8" />
+<meta name="referrer" content="strict-origin-when-cross-origin">
+<meta http-equiv="Content-Security-Policy" content="object-src 'none'; base-uri 'self'">
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <!-- tech:seo — managed block (SEO / social / structured data / perf / PWA) -->
 <link rel="preload" href="/css/site.css" as="style">
@@ -34,15 +36,8 @@
 <meta name="twitter:description" content="Secrets, dependency CVEs, misconfigs, license risk, git-history leaks and a startup security-readiness score. One free command.">
 <meta name="keywords" content="secret scanning, startup security audit, SBOM generator, SOC 2 readiness, dependency CVE scanner, SARIF, devsecops, open source security tool">
 <meta name="robots" content="index,follow">
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"SoftwareApplication","name":"DIRA","alternateName":"dira-scan","applicationCategory":"DeveloperApplication","operatingSystem":"macOS, Linux, Windows","url":"https://yusuf-gadelrab.github.io/dira.html","description":"Zero-dependency security audit for startup codebases: secret scanning, dependency CVEs via OSV.dev, 38 misconfiguration rules, dependency license classification, git-history leak detection, live TLS and security-header checks, SBOM generation, and an 18-point startup security-readiness score.","author":{"@id":"https://yusuf-gadelrab.github.io/#person"},"license":"https://opensource.org/licenses/MIT","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"slogan":"Find it before your first enterprise customer does."}</script>
-<script type="application/ld+json">
-{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[
-{"@type":"Question","name":"What does DIRA scan for?","acceptedAnswer":{"@type":"Answer","text":"Seven scanners: leaked credentials (23 provider patterns plus an entropy-gated generic rule), dependency vulnerabilities resolved against OSV.dev, 38 misconfiguration rules across Docker, Kubernetes, Terraform, GitHub Actions, cloud IAM, frontend code and LLM applications, dependency license risk, secrets buried in git history, the live domain's TLS and security headers, and an 18-point startup security-readiness score."}},
-{"@type":"Question","name":"Does DIRA send my code anywhere?","acceptedAnswer":{"@type":"Answer","text":"No. Scanning happens entirely on your machine. The only network calls are anonymous package-name lookups to OSV.dev and the public npm and PyPI registries, plus requests to a domain you explicitly pass with --target. The --offline flag disables all of them. Detected secrets are redacted before they reach any report or cache."}},
-{"@type":"Question","name":"How much does DIRA cost?","acceptedAnswer":{"@type":"Answer","text":"Nothing. It is MIT-licensed open source under the MIT license, installable from source with pipx install git+https://github.com/Yusuf-Gadelrab/dira, with PyPI and npm packages on the way."}},
-{"@type":"Question","name":"Can DIRA replace a penetration test or a SOC 2 audit?","acceptedAnswer":{"@type":"Answer","text":"No. DIRA is automated pattern analysis. It cannot see your cloud IAM, your MFA enforcement, or your access reviews — those appear in the report as manual attestations. A clean run means no known bad patterns in the repository, not that the product is secure."}}
-]}
-</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"SoftwareApplication","name":"DIRA","alternateName":"dira-scan","applicationCategory":"DeveloperApplication","operatingSystem":"macOS, Linux, Windows","url":"https://yusuf-gadelrab.github.io/dira.html","description":"Zero-dependency security audit for startup codebases: secret scanning, dependency CVEs via OSV.dev, 38 misconfiguration rules, dependency license classification, git-history leak detection, live TLS and security-header checks, SBOM generation, and an 18-point startup security-readiness score.","author":{"@id":"https://yusuf-gadelrab.github.io/#person"},"license":"https://opensource.org/licenses/MIT","offers":{"@type":"Offer","price":"0","priceCurrency":"USD","availability":"https://schema.org/InStock"},"slogan":"Find it before your first enterprise customer does."}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"What does DIRA scan for?","acceptedAnswer":{"@type":"Answer","text":"Seven scanners: leaked credentials (23 provider patterns plus an entropy-gated generic rule), dependency vulnerabilities resolved against OSV.dev, 38 misconfiguration rules across Docker, Kubernetes, Terraform, GitHub Actions, cloud IAM, frontend code and LLM applications, dependency license risk, secrets buried in git history, the live domain's TLS and security headers, and an 18-point startup security-readiness score."}},{"@type":"Question","name":"Does DIRA send my code anywhere?","acceptedAnswer":{"@type":"Answer","text":"No. Scanning happens entirely on your machine. The only network calls are anonymous package-name lookups to OSV.dev and the public npm and PyPI registries, plus requests to a domain you explicitly pass with --target. The --offline flag disables all of them. Detected secrets are redacted before they reach any report or cache."}},{"@type":"Question","name":"How much does DIRA cost?","acceptedAnswer":{"@type":"Answer","text":"Nothing. It is MIT-licensed open source under the MIT license, installable from source with pipx install git+https://github.com/Yusuf-Gadelrab/dira, with PyPI and npm packages on the way."}},{"@type":"Question","name":"Can DIRA replace a penetration test or a SOC 2 audit?","acceptedAnswer":{"@type":"Answer","text":"No. DIRA is automated pattern analysis. It cannot see your cloud IAM, your MFA enforcement, or your access reviews — those appear in the report as manual attestations. A clean run means no known bad patterns in the repository, not that the product is secure."}},{"@type":"Question","name":"Is DIRA on PyPI or npm yet?","acceptedAnswer":{"@type":"Answer","text":"Not yet. v1.2.0 installs from source on GitHub today with pipx install git+https://github.com/Yusuf-Gadelrab/dira@v1.2.0, then dira scan . PyPI and npm packages are on the way; the email list on this page pings the day either lands."}}]}</script>
 <link rel="stylesheet" href="/css/site.css">
 <style>
   .rule{height:1px;max-width:var(--maxw);margin:0 auto;
@@ -79,9 +74,29 @@
     background:rgba(212,175,55,.04)}
   .limits p{color:#b6b1a8;margin:0 0 10px}
   .limits p:last-child{margin-bottom:0}
+
+  /* One primary action per view. Secondary routes are quiet text links so the
+     gold button is never competing with two other gold-weight things. */
+  .alt-links{display:flex;flex-wrap:wrap;gap:var(--s2) var(--s5);margin-top:var(--s4);
+    font-size:var(--t-small);color:var(--muted)}
+  .alt-links a{color:var(--ink);text-decoration:underline;
+    text-decoration-color:var(--line);text-underline-offset:3px}
+  .alt-links a:hover{color:var(--gold-2)}
+  .next{display:grid;gap:var(--s5);grid-template-columns:repeat(auto-fit,minmax(min(260px,100%),1fr))}
+  .next div{border:1px solid var(--line-soft);border-radius:var(--radius-lg);padding:var(--s5)}
+  .next .mk{font-family:var(--display-pro);font-size:11px;letter-spacing:.12em;text-transform:uppercase;
+    color:var(--gold-2);display:block;margin-bottom:var(--s2)}
+  .next p{color:var(--muted);font-size:var(--t-small);margin:0}
+  .next b{color:var(--ink)}
+  .qa{padding:var(--s5)}
+  .qa h3{font-size:var(--t-h3);margin:0 0 var(--s3)}
+  .qa p{color:var(--muted);font-size:var(--t-small);margin:0}
+  .qa a{color:var(--gold-2)}
+  .cmp-note{color:var(--faint);font-size:var(--t-micro);margin-top:var(--s3)}
+  .cmp td:first-child,.cmp th:first-child{color:var(--ink)}
 </style>
 <!-- geo:entity — canonical Person node, one entity across every page -->
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"Person","@id":"https://yusuf-gadelrab.github.io/#person","name":"Yusuf Gadelrab","url":"https://yusuf-gadelrab.github.io/"}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebPage","@id":"https://yusuf-gadelrab.github.io/dira.html#webpage","url":"https://yusuf-gadelrab.github.io/dira.html","inLanguage":"en","isPartOf":{"@id":"https://yusuf-gadelrab.github.io/#website"},"about":{"@id":"https://yusuf-gadelrab.github.io/#person"},"publisher":{"@id":"https://yusuf-gadelrab.github.io/#person"}}</script>
 </head>
 <body class="pro">
 <div id="progress"></div>
@@ -89,22 +104,36 @@
 <a class="skip-link" href="#main">Skip to content</a>
 <nav class="site-nav" id="nav"><a class="site-nav__brand" href="/"><img class="site-nav__lion" src="/img/brand/lion-mark.svg" alt="" width="34" height="34" decoding="async"><span>YUSUF GADELRAB</span></a><div class="site-nav__links" id="navLinks"><a href="/">Work</a><a href="/resume.html">Resume</a><a href="/guides.html">Guides</a><a href="/store.html">Store</a><a href="/apps.html">Apps</a><a href="/kxngsef.html">KXNG SEF</a><a href="/hire.html">Hire</a><a href="/media-kit.html">Media Kit</a></div><button class="menu-btn" id="menuBtn" aria-label="Menu" hidden>&#9776;</button></nav>
 
+<nav class="crumbs" aria-label="Breadcrumb">
+  <ol>
+    <li><a href="/">Home</a></li>
+    <li><span aria-current="page">DIRA</span></li>
+  </ol>
+</nav>
+
 <main id="main">
 
 <section class="section" style="padding-top:96px">
   <div class="wrap" style="text-align:center;max-width:860px">
-    <div class="eyebrow">Dhahab · Open Source</div>
+    <div class="eyebrow">Dhahab · Open Source · v1.2.0</div>
     <h1 style="margin:14px 0 8px">DIRA <span style="color:#8a857d;font-size:.5em">درع</span></h1>
-    <p class="lead" style="margin:0 auto 10px;max-width:640px">
-      Security audit for startup codebases. One command, zero dependencies, free.
+    <p class="lead" style="margin:0 auto 10px;max-width:660px">
+      <b>A zero-dependency Python security scanner for your codebase — 98 passing tests,
+      MIT licensed, one command.</b>
     </p>
     <p style="color:#8a857d;max-width:620px;margin:0 auto 30px">
       Secrets · dependency CVEs · 38 misconfiguration rules · license risk · git-history leaks ·
       live TLS &amp; headers · SBOM · security-readiness score
     </p>
     <p>
-      <a class="btn btn-gold" href="https://github.com/Yusuf-Gadelrab/dira">Get it on GitHub</a>
-      <a class="btn btn-ghost" href="#install">How to run it</a>
+      <a class="btn btn-gold" href="https://github.com/Yusuf-Gadelrab/dira">Get it on GitHub →</a>
+    </p>
+    <p class="muted" style="font-size:var(--t-micro);margin-top:var(--s3)">Installs from source today · <code class="inline">pipx install</code>, no signup · PyPI and npm coming</p>
+    <p class="alt-links center" style="justify-content:center">
+      <a href="#install">How to run it</a>
+      <a href="#scanners">What it checks</a>
+      <a href="#trust">Why trust it</a>
+      <a href="#faq">FAQ</a>
     </p>
   </div>
 </section>
@@ -116,6 +145,7 @@
         <span class="term__dot"></span><span class="term__dot"></span><span class="term__dot"></span>
         <span class="term__title">dira scan . -t yourapp.com</span>
       </div>
+      <div class="table-wrap">
 <pre><span class="d">$</span> dira scan . -t yourapp.com
 
   <span class="g">SECURITY GRADE</span>    <span class="r">F</span>   <span class="d">risk 72/100</span>
@@ -146,6 +176,7 @@
 
   <span class="d">418 files · 402 cached · 87 deps · 0.9s</span>
 </pre>
+      </div>
     </div>
   </div>
 </section>
@@ -175,6 +206,7 @@
       <div><b>7</b><span>Scanners</span></div>
       <div><b>62</b><span>Detection rules</span></div>
       <div><b>0</b><span>Dependencies</span></div>
+      <div><b>98</b><span>Passing tests</span></div>
       <div><b>0.9s</b><span>Warm re-scan</span></div>
     </div>
   </div>
@@ -182,7 +214,7 @@
 
 <div class="rule"></div>
 
-<section class="section">
+<section class="section" id="scanners">
   <div class="wrap">
     <div class="eyebrow">What it checks</div>
     <h2>Seven scanners, one pass</h2>
@@ -215,6 +247,62 @@
         CI, tests, secret scanning, SAST, CODEOWNERS, IaC, backups, incident response — rolled up
         into a percentage and a tier.</p></div>
     </div>
+  </div>
+</section>
+
+<div class="rule"></div>
+
+<section class="section">
+  <div class="wrap center">
+    <a class="btn btn-gold" href="https://github.com/Yusuf-Gadelrab/dira">Get it on GitHub →</a>
+  </div>
+</section>
+
+<div class="rule"></div>
+
+<section class="section" id="trust">
+  <div class="wrap">
+    <div class="eyebrow">Before you install</div>
+    <h2>Three fair questions</h2>
+    <p class="lead" style="max-width:720px">Answered up front, the same way every other number on
+      this site is sourced instead of asserted.</p>
+
+    <div class="next" style="margin-top:30px">
+      <div>
+        <span class="mk">01 · Why trust a student's security tool?</span>
+        <p><b>The audit trail is the whole pitch: 98 passing tests, and zero dependencies means
+        there is nothing to audit but the source itself.</b> It's MIT licensed on GitHub — read
+        every rule yourself instead of taking my word for it.</p>
+      </div>
+      <div>
+        <span class="mk">02 · How is this different from gitleaks, trufflehog, npm audit, or Snyk?</span>
+        <p><b>DIRA is one zero-dependency tool covering seven scanner classes plus SBOM output and
+        PR gating; each of those does one job well.</b> It isn't a replacement for a funded
+        commercial platform like Snyk if you need an org-wide dashboard — it's a fast local pass
+        you can run long before you'd need one. Full comparison below.</p>
+      </div>
+      <div>
+        <span class="mk">03 · What does it cost, and will it phone home?</span>
+        <p><b>Nothing, and no.</b> MIT licensed, runs entirely on your machine. The only network
+        calls are anonymous package-name lookups to OSV.dev, npm and PyPI, plus a domain you name
+        yourself with <code class="inline">--target</code> — and <code class="inline">--offline</code>
+        turns even those off.</p>
+      </div>
+    </div>
+
+    <div class="table-wrap" style="margin-top:30px">
+      <table class="cmp">
+        <thead><tr><th>Capability</th><th>DIRA</th><th>gitleaks</th><th>trufflehog</th><th>npm audit</th><th>Snyk (free tier)</th></tr></thead>
+        <tbody>
+          <tr><td>What it scans for</td><td>7 classes: secrets, dep&nbsp;CVEs, config/IaC, license risk, git history, live TLS</td><td>Secrets only</td><td>Secrets only, with live credential verification</td><td>npm dependency CVEs only</td><td>Dependency CVEs; deeper config/IaC on paid tiers</td></tr>
+          <tr><td>SBOM + PR diff gating</td><td>Built in — CycloneDX/SPDX, <code class="inline">--diff</code></td><td>PR gating via Action, no SBOM</td><td>PR gating via Action, no SBOM</td><td>Neither</td><td>Both, paid tiers</td></tr>
+          <tr><td>Dependencies to install it</td><td>Zero</td><td>Zero (Go binary)</td><td>Zero (Go binary)</td><td>Bundled with npm</td><td>CLI + hosted account</td></tr>
+          <tr><td>Runs fully offline, no account</td><td>Yes</td><td>Yes</td><td>Yes</td><td>Yes</td><td>No — account required</td></tr>
+          <tr><td>Cost</td><td>Free, MIT</td><td>Free, MIT</td><td>Free core, paid enterprise tier</td><td>Free</td><td>Free tier limited; paid for full scope</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="cmp-note">Scope described from each project's public docs as of this writing — verify current features before relying on this for a security decision.</p>
   </div>
 </section>
 
@@ -283,22 +371,74 @@
   </div>
 </section>
 
+<!-- geo:faq-visible — mirrors the FAQPage structured data above -->
+<section class="section" id="faq">
+  <div class="wrap">
+    <div class="eyebrow">FAQ</div>
+    <h2>Common questions</h2>
+    <div class="grid" style="margin-top:26px">
+      <article class="card qa">
+        <h3>What does DIRA scan for?</h3>
+        <p>Seven scanners: leaked credentials (23 provider patterns plus an entropy-gated generic
+        rule), dependency vulnerabilities resolved against OSV.dev, 38 misconfiguration rules
+        across Docker, Kubernetes, Terraform, GitHub Actions, cloud IAM, frontend code and LLM
+        applications, dependency license risk, secrets buried in git history, the live domain's
+        TLS and security headers, and an 18-point startup security-readiness score.</p>
+      </article>
+      <article class="card qa">
+        <h3>Does DIRA send my code anywhere?</h3>
+        <p>No. Scanning happens entirely on your machine. The only network calls are anonymous
+        package-name lookups to OSV.dev and the public npm and PyPI registries, plus requests to a
+        domain you explicitly pass with <code class="inline">--target</code>. The
+        <code class="inline">--offline</code> flag disables all of them. Detected secrets are
+        redacted before they reach any report or cache.</p>
+      </article>
+      <article class="card qa">
+        <h3>How much does DIRA cost?</h3>
+        <p>Nothing. It's MIT-licensed open source, installable from source with
+        <code class="inline">pipx install git+https://github.com/Yusuf-Gadelrab/dira</code>, with
+        PyPI and npm packages on the way.</p>
+      </article>
+      <article class="card qa">
+        <h3>Can DIRA replace a penetration test or a SOC 2 audit?</h3>
+        <p>No. DIRA is automated pattern analysis. It can't see your cloud IAM, your MFA
+        enforcement, or your access reviews — those appear in the report as manual attestations.
+        A clean run means no known bad patterns in the repository, not that the product is secure.</p>
+      </article>
+      <article class="card qa">
+        <h3>Is DIRA on PyPI or npm yet?</h3>
+        <p>Not yet. v1.2.0 installs from source on GitHub today with
+        <code class="inline">pipx install git+https://github.com/Yusuf-Gadelrab/dira@v1.2.0</code>,
+        then <code class="inline">dira scan .</code> PyPI and npm packages are on the way — the
+        email list below pings the day either lands.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<div class="rule"></div>
+
 <section class="section" style="padding-top:0">
   <div class="wrap" style="text-align:center;max-width:700px">
     <h2>Scan your repo in the next five minutes</h2>
-    <p class="lead" style="margin:0 auto 26px">MIT licensed. Free forever. No account, no telemetry.</p>
+    <p class="lead" style="margin:0 auto 26px"><b>MIT licensed. Free forever. No account, no telemetry.</b></p>
     <p>
-      <a class="btn btn-gold" href="https://github.com/Yusuf-Gadelrab/dira">View on GitHub</a>
-      <a class="btn btn-ghost" href="mailto:yusuf.gadelrab06@gmail.com?subject=DIRA%20security%20audit">Ask me to run it for you</a>
+      <a class="btn btn-gold" href="https://github.com/Yusuf-Gadelrab/dira">Get it on GitHub →</a>
+    </p>
+    <p class="alt-links center" style="justify-content:center">
+      <a href="mailto:yusuf.gadelrab06@gmail.com?subject=DIRA%20security%20audit">Ask me to run it for you</a>
+      <a href="#faq">Read the FAQ</a>
+      <a href="/guides/student-founder-security-checklist.html">The manual checklist</a>
     </p>
 
     <div style="margin-top:38px;padding-top:30px;border-top:1px solid var(--line-soft)">
       <p style="margin:0 0 6px;font-family:var(--display-pro);letter-spacing:.4px">Not on GitHub yet?</p>
       <p style="margin:0 0 16px;color:var(--muted);font-size:var(--t-small)">Leave your email and you'll hear the day DIRA lands on PyPI and npm. One message, nothing else.</p>
       <form id="f-dira" novalidate style="display:flex;gap:8px;flex-wrap:wrap;justify-content:center;max-width:420px;margin:0 auto">
-        <input type="email" id="e-dira" placeholder="you@email.com" autocomplete="email" aria-label="Email for the DIRA release list" required
+        <label class="sr-only" for="e-dira">Your email address</label>
+        <input type="email" id="e-dira" placeholder="you@email.com" autocomplete="email" required
           style="flex:1 1 190px;min-width:0;background:var(--panel2);border:1px solid var(--line);border-radius:var(--radius);color:var(--bone);padding:10px 12px;font-family:var(--body-font);font-size:13px">
-        <button class="btn btn-gold btn-sm" type="submit">Tell me at launch</button>
+        <button class="btn btn-ghost btn-sm" type="submit">Tell me at launch</button>
       </form>
       <p id="n-dira" style="margin-top:10px;font-size:11px;color:var(--faint)">Used for this one announcement. <a href="/legal.html">Legal</a>
     <a href="/privacy.html">Privacy</a> · <a href="/waitlist.html">all waitlists</a></p>
@@ -311,6 +451,7 @@
 <footer class="site-footer">
   <div>DIRA · by Yusuf Gadelrab · San Jose, CA · MIT licensed · automated analysis, not a penetration test</div>
   <div class="site-footer__links">
+    <a href="/faq.html">FAQ</a>
     <a href="/writing.html">Writing</a>
     <a href="/dispatch.html">Dispatch</a>
     <a href="https://github.com/Yusuf-Gadelrab/dira" target="_blank" rel="noreferrer">Source</a>

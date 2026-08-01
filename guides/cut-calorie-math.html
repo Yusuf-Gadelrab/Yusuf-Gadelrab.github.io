@@ -50,8 +50,8 @@
     color:var(--muted);font-size:var(--t-small);margin:0 0 var(--s5)}
   .callout--warn{border-color:var(--gold-2)}
   .faq-card{padding:var(--s5)}
-  .faq-card h3{font-size:var(--t-h3);margin:0}
-  .faq-card p{color:var(--muted);font-size:var(--t-small);margin:var(--s3) 0 0}
+  .faq-card h3{font-size:var(--t-h3);margin:0;line-height:1.3}
+  .faq-card p{color:var(--muted);font-size:var(--t-small);line-height:1.65;margin:var(--s3) 0 0}
 </style>
 </head>
 <body class="pro">
@@ -59,7 +59,7 @@
 <a class="skip-link" href="#main">Skip to content</a>
 
 <nav class="site-nav">
-  <a class="site-nav__brand" href="/"><img class="site-nav__lion" src="/img/brand/lion-mark.svg" alt="" width="34" height="34"><span>YUSUF GADELRAB</span></a>
+  <a class="site-nav__brand" href="/"><img class="site-nav__lion" src="/img/brand/lion-mark.svg" alt="" width="34" height="34" decoding="async"><span>YUSUF GADELRAB</span></a>
   <div class="site-nav__links">
     <a href="/">Work</a>
     <a href="/guides.html">Guides</a>
@@ -147,12 +147,12 @@ Then:         eat that for 10–14 days, track weight daily,
       <h2>Quick answers</h2>
     </div>
     <div class="grid" style="margin-top:var(--s6)">
-      <article class="card faq-card"><h3>How do I find maintenance?</h3><p>Bodyweight × 14–16 as a start, then eat there for two weeks and correct using your own weight trend. Data beats the formula.</p></article>
-      <article class="card faq-card"><h3>How big a deficit?</h3><p>About 500/day for roughly a pound a week. Bigger is faster and costs adherence, training quality, and lean mass.</p></article>
-      <article class="card faq-card"><h3>How much protein?</h3><p>Roughly 0.7–1.0 g per pound of target bodyweight. It protects lean mass in a deficit and keeps you full.</p></article>
-      <article class="card faq-card"><h3>Why is the scale stuck?</h3><p>Water, glycogen, sodium, digestion, sleep. Compare weekly averages, not days, and only worry if four weeks are flat.</p></article>
-      <article class="card faq-card"><h3>Do macros matter?</h3><p>Much less than total calories and the protein floor. Split the rest however you actually adhere to.</p></article>
-      <article class="card faq-card"><h3>Can I do it fast?</h3><p>Speed is the wrong target — faster costs lean mass and rebounds. This is general information, not medical advice.</p></article>
+      <article class="card faq-card"><h3>How do you calculate maintenance calories?</h3><p>Start with a rough estimate of bodyweight in pounds multiplied by 14 to 16, eat at that level for 10 to 14 days while weighing daily, then adjust based on the actual weight trend. Your own two-week data is more accurate than any formula, which only needs to get you within a few hundred calories.</p></article>
+      <article class="card faq-card"><h3>How big should a calorie deficit be?</h3><p>A deficit of about 500 calories a day corresponds to roughly a pound a week using the common 3,500-calories-per-pound approximation, and is the usual recommendation. Larger deficits lose weight faster but cost adherence, training quality, and more lean mass. The deficit you actually sustain beats the theoretically optimal one you abandon.</p></article>
+      <article class="card faq-card"><h3>How much protein do you need when cutting?</h3><p>Common practical guidance is roughly 0.7 to 1.0 grams per pound of target bodyweight. Adequate protein combined with resistance training shifts the composition of the loss toward fat rather than lean mass, and protein is also the most satiating macronutrient per calorie.</p></article>
+      <article class="card faq-card"><h3>Why does the scale stall for weeks?</h3><p>Daily weight is dominated by water, glycogen, sodium, digestion, and sleep, which can mask steady fat loss for a week or more. Compare weekly averages to previous weekly averages rather than individual days, and only conclude the deficit is not working if the four-week trend is flat.</p></article>
+      <article class="card faq-card"><h3>Do carbohydrate and fat ratios matter for fat loss?</h3><p>Far less than total calories and the protein floor. Once calories and protein are set, split the remainder between carbohydrate and fat in whichever way you personally adhere to best.</p></article>
+      <article class="card faq-card"><h3>Is losing 60 pounds fast possible?</h3><p>Speed is the wrong target. At a sustainable pace of roughly a pound a week, a 60-pound loss is a project measured in many months, and the approaches that go faster tend to cost more lean mass and have far higher rebound rates. This is general information, not medical advice.</p></article>
     </div>
   </section>
 
@@ -165,10 +165,10 @@ Then:         eat that for 10–14 days, track weight daily,
       <h2 id="related-h">Related guides</h2>
     </div>
     <div class="related__grid">
+      <a class="related__item" href="/guides/weight-tracking-signal-vs-noise.html"><strong>The scale is a noisy instrument. Treat it like one.</strong><span>The scale is a noisy instrument. Here is the noise level, the filter, and the wait time before a number means…</span></a>
       <a class="related__item" href="/guides/ats-resume.html"><strong>What an ATS actually does to your resume</strong><span>What ATS software really does, what breaks parsing, and which rules are folklore.</span></a>
       <a class="related__item" href="/guides/snyk-vs-trivy-vs-dira.html"><strong>Snyk vs Trivy vs DIRA: choosing a security scanner</strong><span>Written by the person who built one of the three, with the conflict of interest stated up front and the places the…</span></a>
       <a class="related__item" href="/guides/client-side-only-tools.html"><strong>Tools with no backend, and the honest trade</strong><span>No accounts, no database, no breach surface — and an honest account of what that costs the user.</span></a>
-      <a class="related__item" href="/guides/offline-pwa.html"><strong>An installable app, no backend, no app store</strong><span>Manifest, service worker caching, cache versioning, storage choice, and how install differs on iOS and Android.</span></a>
     </div>
     <p class="related__more">Every guide is indexed on <a href="/guides.html">the guides hub</a>. Or put it to work in <a href="/apps/cut/">Cut, the offline weight tracker</a>.</p>
   </section>

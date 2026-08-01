@@ -50,8 +50,8 @@
     color:var(--muted);font-size:var(--t-small);margin:0 0 var(--s5)}
   .callout--warn{border-color:var(--gold-2)}
   .faq-card{padding:var(--s5)}
-  .faq-card h3{font-size:var(--t-h3);margin:0}
-  .faq-card p{color:var(--muted);font-size:var(--t-small);margin:var(--s3) 0 0}
+  .faq-card h3{font-size:var(--t-h3);margin:0;line-height:1.3}
+  .faq-card p{color:var(--muted);font-size:var(--t-small);line-height:1.65;margin:var(--s3) 0 0}
 </style>
 </head>
 <body class="pro">
@@ -59,7 +59,7 @@
 <a class="skip-link" href="#main">Skip to content</a>
 
 <nav class="site-nav">
-  <a class="site-nav__brand" href="/"><img class="site-nav__lion" src="/img/brand/lion-mark.svg" alt="" width="34" height="34"><span>YUSUF GADELRAB</span></a>
+  <a class="site-nav__brand" href="/"><img class="site-nav__lion" src="/img/brand/lion-mark.svg" alt="" width="34" height="34" decoding="async"><span>YUSUF GADELRAB</span></a>
   <div class="site-nav__links">
     <a href="/">Work</a>
     <a href="/guides.html">Guides</a>
@@ -157,12 +157,12 @@
       <h2>Quick answers</h2>
     </div>
     <div class="grid" style="margin-top:var(--s6)">
-      <article class="card faq-card"><h3>What is a volume profile?</h3><p>Volume bucketed by price instead of by time. Horizontal bars showing which price levels actually absorbed the trading.</p></article>
-      <article class="card faq-card"><h3>What is the POC?</h3><p>The single most-traded price in the range. It acts as a magnet, and price that leaves it tends to come back and test it.</p></article>
-      <article class="card faq-card"><h3>What is the value area?</h3><p>The band holding about 70% of the range&#x27;s volume, edged by VAH and VAL. Balanced inside, trending outside.</p></article>
-      <article class="card faq-card"><h3>HVN vs LVN?</h3><p>High volume nodes are heavy-inventory prices where price stalls, so they make good targets. Low volume nodes get crossed fast, so stops sit beyond them.</p></article>
-      <article class="card faq-card"><h3>How is it different from the volume histogram?</h3><p>The histogram is volume by time and tells you if a day was busy. The profile is volume by price and tells you which levels mattered.</p></article>
-      <article class="card faq-card"><h3>Does it pair with anchored VWAP?</h3><p>Yes, anchored to the same event. POC and AVWAP at the same price is a strong level; AVWAP above POC means overhead supply.</p></article>
+      <article class="card faq-card"><h3>What is a volume profile?</h3><p>A volume profile buckets traded volume by price rather than by time, drawing horizontal bars that show how much volume changed hands at each price level over a chosen range. It answers which prices the market spent its money at, which is a different and generally more useful question than the standard histogram&#x27;s answer of when volume was heavy.</p></article>
+      <article class="card faq-card"><h3>What is the point of control (POC)?</h3><p>The point of control is the single price with the highest traded volume in the profile&#x27;s range, representing the market&#x27;s most agreed-on price for that period. It tends to act as a magnet, so price that moves away from it frequently returns to test it.</p></article>
+      <article class="card faq-card"><h3>What is the value area?</h3><p>The value area is the contiguous band of prices containing roughly 70% of the range&#x27;s volume, centred on the point of control, with its edges labelled value area high (VAH) and value area low (VAL). Inside it the market is balanced and mean-reverting; outside it the market is imbalanced and trending.</p></article>
+      <article class="card faq-card"><h3>What are high and low volume nodes?</h3><p>A high volume node is a price where heavy volume traded, so price tends to slow and chop there, making it a better target than an entry. A low volume node is a price the market passed through quickly with little trade, so price tends to travel across it fast, which makes the far side of it a sensible place for a stop.</p></article>
+      <article class="card faq-card"><h3>How is volume profile different from the volume histogram?</h3><p>The standard histogram plots volume against time, one bar per period, so it tells you whether a session was busy. A volume profile plots volume against price, so it tells you which price levels absorbed the volume. The first is about activity, the second is about location.</p></article>
+      <article class="card faq-card"><h3>How does volume profile work with anchored VWAP?</h3><p>Anchor both to the same event. The profile shows where volume traded and the anchored VWAP shows the average cost basis of everyone who traded since the anchor. When the two sit at the same price the level is unusually strong; when the VWAP sits above the POC, the average participant is underwater and overhead supply is likely.</p></article>
     </div>
   </section>
 

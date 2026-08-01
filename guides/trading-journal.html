@@ -50,8 +50,8 @@
     color:var(--muted);font-size:var(--t-small);margin:0 0 var(--s5)}
   .callout--warn{border-color:var(--gold-2)}
   .faq-card{padding:var(--s5)}
-  .faq-card h3{font-size:var(--t-h3);margin:0}
-  .faq-card p{color:var(--muted);font-size:var(--t-small);margin:var(--s3) 0 0}
+  .faq-card h3{font-size:var(--t-h3);margin:0;line-height:1.3}
+  .faq-card p{color:var(--muted);font-size:var(--t-small);line-height:1.65;margin:var(--s3) 0 0}
 </style>
 </head>
 <body class="pro">
@@ -59,7 +59,7 @@
 <a class="skip-link" href="#main">Skip to content</a>
 
 <nav class="site-nav">
-  <a class="site-nav__brand" href="/"><img class="site-nav__lion" src="/img/brand/lion-mark.svg" alt="" width="34" height="34"><span>YUSUF GADELRAB</span></a>
+  <a class="site-nav__brand" href="/"><img class="site-nav__lion" src="/img/brand/lion-mark.svg" alt="" width="34" height="34" decoding="async"><span>YUSUF GADELRAB</span></a>
   <div class="site-nav__links">
     <a href="/">Work</a>
     <a href="/guides.html">Guides</a>
@@ -145,12 +145,12 @@
       <h2>Quick answers</h2>
     </div>
     <div class="grid" style="margin-top:var(--s6)">
-      <article class="card faq-card"><h3>What should you log?</h3><p>Setup tag, 1R in dollars, entry/stop/exit, resulting R, a mistake tag from a fixed list, and MAE/MFE. Six fields beat six paragraphs.</p></article>
-      <article class="card faq-card"><h3>Why R instead of dollars?</h3><p>R strips out position size, so a +2R trade is comparable whether you risked $50 or $500 — and setups become comparable to each other.</p></article>
-      <article class="card faq-card"><h3>What are MAE and MFE?</h3><p>Worst and best unrealised excursion during the trade. High MFE with low realised R means you are exiting early and leaving edge behind.</p></article>
-      <article class="card faq-card"><h3>Why fixed mistake tags?</h3><p>They can be counted. After 50 trades a list says &#x27;60% of big losses came from moving stops&#x27; — a paragraph never will.</p></article>
-      <article class="card faq-card"><h3>How often to review?</h3><p>Mistake tags weekly; expectancy only once a setup has 30+ trades. Weekly expectancy on five trades is noise.</p></article>
-      <article class="card faq-card"><h3>Is win rate useful?</h3><p>Only with reward-to-risk attached. 70% at +0.3R against 30% at −1R is a losing system with a flattering headline.</p></article>
+      <article class="card faq-card"><h3>What should you log in a trading journal?</h3><p>Six fields do most of the work: setup tag, planned risk in dollars (your 1R), entry, stop and exit prices, the resulting R-multiple, a mistake tag from a fixed short list, and maximum adverse and favourable excursion. Everything else is optional decoration.</p></article>
+      <article class="card faq-card"><h3>Why record trades in R instead of dollars?</h3><p>Dollars mix idea quality with position size. R normalises for size, so a +2R trade is comparable whether you risked $50 or $500, which makes setups comparable across time and as the account grows.</p></article>
+      <article class="card faq-card"><h3>What are MAE and MFE?</h3><p>Maximum adverse excursion is the worst unrealised loss during a trade; maximum favourable excursion is the best unrealised gain. Together they show whether stops are too tight, targets too far, or exits too early — high MFE with low realised R means you are leaving the edge on the table.</p></article>
+      <article class="card faq-card"><h3>How often should you review a trading journal?</h3><p>Weekly for mistake tags and once every 30 or more trades per setup for expectancy. Reviewing expectancy weekly on a handful of trades produces noise-driven changes, which is worse than not reviewing at all.</p></article>
+      <article class="card faq-card"><h3>Why use mistake tags instead of written notes?</h3><p>A fixed short list can be counted and ranked by dollars lost, so patterns surface after 50 trades. Free-text notes contain the same information but are never re-read in aggregate, so the pattern never appears.</p></article>
+      <article class="card faq-card"><h3>Is win rate a useful journal metric?</h3><p>Only alongside reward-to-risk. Winning 70% of trades at +0.3R while losing 30% at -1R is -0.09R per trade — a losing system with a flattering win rate. Expectancy is the metric that decides.</p></article>
     </div>
   </section>
 

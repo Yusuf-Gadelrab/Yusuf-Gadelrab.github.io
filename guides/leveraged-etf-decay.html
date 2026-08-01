@@ -50,8 +50,8 @@
     color:var(--muted);font-size:var(--t-small);margin:0 0 var(--s5)}
   .callout--warn{border-color:var(--gold-2)}
   .faq-card{padding:var(--s5)}
-  .faq-card h3{font-size:var(--t-h3);margin:0}
-  .faq-card p{color:var(--muted);font-size:var(--t-small);margin:var(--s3) 0 0}
+  .faq-card h3{font-size:var(--t-h3);margin:0;line-height:1.3}
+  .faq-card p{color:var(--muted);font-size:var(--t-small);line-height:1.65;margin:var(--s3) 0 0}
 </style>
 </head>
 <body class="pro">
@@ -59,7 +59,7 @@
 <a class="skip-link" href="#main">Skip to content</a>
 
 <nav class="site-nav">
-  <a class="site-nav__brand" href="/"><img class="site-nav__lion" src="/img/brand/lion-mark.svg" alt="" width="34" height="34"><span>YUSUF GADELRAB</span></a>
+  <a class="site-nav__brand" href="/"><img class="site-nav__lion" src="/img/brand/lion-mark.svg" alt="" width="34" height="34" decoding="async"><span>YUSUF GADELRAB</span></a>
   <div class="site-nav__links">
     <a href="/">Work</a>
     <a href="/guides.html">Guides</a>
@@ -159,12 +159,12 @@ where L is the leverage multiple
       <h2>Quick answers</h2>
     </div>
     <div class="grid" style="margin-top:var(--s6)">
-      <article class="card faq-card"><h3>Why do leveraged ETFs decay?</h3><p>They target a daily multiple and rebalance nightly, so returns compound. Oscillating markets make that compounding work against you.</p></article>
-      <article class="card faq-card"><h3>Worked example?</h3><p>Index 100 to 110 to 100 is flat. A 3x fund goes 100 to 130 to 94.55 — down 5.45% on a flat round trip, from arithmetic alone.</p></article>
-      <article class="card faq-card"><h3>What is volatility drag?</h3><p>Roughly ½ × L × (L−1) × variance. It grows with the square of volatility and faster than linearly with the leverage factor.</p></article>
-      <article class="card faq-card"><h3>When are they appropriate?</h3><p>Short directional holds in low-chop trends, and brief hedges. Never buy-and-hold, never in a choppy range, never in a core account.</p></article>
-      <article class="card faq-card"><h3>How do you size them?</h3><p>Divide by roughly the leverage factor to hold dollar risk constant. A blunt half-size cap on leveraged instruments works well.</p></article>
-      <article class="card faq-card"><h3>Do they always lag the multiple?</h3><p>No. In a smooth trend compounding can beat it — five 2% up days give the index 10.4% and a 3x fund 33.8%. Path decides, not direction.</p></article>
+      <article class="card faq-card"><h3>Why do leveraged ETFs lose money over time?</h3><p>Because they target a multiple of the underlying&#x27;s return over a single day and rebalance nightly to maintain it, so the daily returns compound. In an oscillating market this compounding works against the holder, and the fund can lose money even when the underlying index finishes exactly flat.</p></article>
+      <article class="card faq-card"><h3>Can you show an example of leveraged ETF decay?</h3><p>Start an index and a 3x fund both at 100. The index rises 10% to 110, so the fund gains 30% to 130. The index then falls 9.0909% back to exactly 100, so the fund falls 27.2727% to 94.55. The index round trip is 0% and the fund round trip is -5.45%, entirely from arithmetic rather than fees.</p></article>
+      <article class="card faq-card"><h3>What is volatility drag?</h3><p>Volatility drag is the gap between a leveraged fund&#x27;s compounded return and the simple multiple of the underlying&#x27;s return, caused by daily rebalancing. It scales approximately as one half times L times (L minus 1) times the variance of daily returns, so it grows with the square of volatility and faster than linearly with the leverage factor.</p></article>
+      <article class="card faq-card"><h3>Are leveraged ETFs ever appropriate?</h3><p>They suit short, directional holding periods in low-volatility trends and short-term hedging where capital efficiency matters. In a smooth uptrend compounding actually helps: five consecutive 2% index days give the index 10.4% while a 3x fund returns 33.8%. They are unsuitable for buy and hold, choppy ranges, and long-horizon accounts.</p></article>
+      <article class="card faq-card"><h3>How should you size a leveraged ETF position?</h3><p>Shrink the position by roughly the leverage factor so that dollar risk stays constant. A $30,000 account risking 1% is a $300 budget, which buys 125 shares at a $2.40 stop distance but only about 42 shares when the equivalent stop distance triples to $7.20 in a 3x fund. A blunt half-size cap on leveraged instruments is a reasonable standing rule.</p></article>
+      <article class="card faq-card"><h3>Do leveraged ETFs always underperform their multiple?</h3><p>No. Path matters more than direction. In a smoothly trending, low-volatility market compounding can push a leveraged fund past the simple multiple of the period return. It is choppy, high-variance paths that produce underperformance, which is why holding period and market conditions decide the outcome.</p></article>
     </div>
   </section>
 

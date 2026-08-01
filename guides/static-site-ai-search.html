@@ -50,8 +50,8 @@
     color:var(--muted);font-size:var(--t-small);margin:0 0 var(--s5)}
   .callout--warn{border-color:var(--gold-2)}
   .faq-card{padding:var(--s5)}
-  .faq-card h3{font-size:var(--t-h3);margin:0}
-  .faq-card p{color:var(--muted);font-size:var(--t-small);margin:var(--s3) 0 0}
+  .faq-card h3{font-size:var(--t-h3);margin:0;line-height:1.3}
+  .faq-card p{color:var(--muted);font-size:var(--t-small);line-height:1.65;margin:var(--s3) 0 0}
 </style>
 </head>
 <body class="pro">
@@ -59,7 +59,7 @@
 <a class="skip-link" href="#main">Skip to content</a>
 
 <nav class="site-nav">
-  <a class="site-nav__brand" href="/"><img class="site-nav__lion" src="/img/brand/lion-mark.svg" alt="" width="34" height="34"><span>YUSUF GADELRAB</span></a>
+  <a class="site-nav__brand" href="/"><img class="site-nav__lion" src="/img/brand/lion-mark.svg" alt="" width="34" height="34" decoding="async"><span>YUSUF GADELRAB</span></a>
   <div class="site-nav__links">
     <a href="/">Work</a>
     <a href="/guides.html">Guides</a>
@@ -247,14 +247,14 @@ Sitemap: https://yoursite.com/sitemap.xml</span>
       <h2>Quick answers</h2>
     </div>
     <div class="grid" style="margin-top:var(--s6)">
-      <article class="card faq-card"><h3>Can AI engines read an SPA?</h3><p>Usually not. A live retrieval fetch is one request, no JavaScript, hard timeout — an empty root div returns nothing. curl the page, strip tags, count words to check.</p></article>
-      <article class="card faq-card"><h3>Does llms.txt do anything?</h3><p>No provider has publicly committed to consuming it, so treat it as cheap insurance. The real value is a machine-readable index of your own site, generated from the same source as your pages.</p></article>
-      <article class="card faq-card"><h3>Block AI crawlers?</h3><p>Only the ones you object to. Blocking GPTBot/ClaudeBot/CCBot costs no visibility; blocking ChatGPT-User, Claude-User or PerplexityBot removes you from answers entirely.</p></article>
-      <article class="card faq-card"><h3>What does @id do?</h3><p>It gives a schema node a stable ID other nodes reference instead of duplicating. One Person entity site-wide, referenced everywhere, reconciled to external profiles via sameAs.</p></article>
-      <article class="card faq-card"><h3>Must the FAQ be visible?</h3><p>Yes. Schema describing invisible content violates guidelines and risks a manual action — and many extractors never parse JSON-LD, so schema-only questions reach nobody.</p></article>
-      <article class="card faq-card"><h3>Semantic HTML vs div soup?</h3><p>It matters, sometimes totally. A real table with th preserves row/column relationships that nested flex divs destroy. One h1, real headings, main/article, real lists.</p></article>
-      <article class="card faq-card"><h3>What can it never see?</h3><p>Client-rendered content, anything behind a cookie wall or auth, text baked into images, deferred lazy-loaded content, most iframes, and anything robots.txt disallows for that agent.</p></article>
-      <article class="card faq-card"><h3>How do I verify before deploy?</h3><p>curl + word count, check headers for stray noindex, parse every JSON-LD block, confirm FAQ text is visible, fetch robots/llms/sitemap, diff the sitemap, check internal links.</p></article>
+      <article class="card faq-card"><h3>Can AI answer engines read a client-side rendered SPA?</h3><p>Usually not. A live retrieval fetcher answering a user&#x27;s question makes one HTTP request with a hard timeout and no JavaScript engine, so a page whose body is an empty root div returns nothing usable. Test it with curl, strip the tags, and count the words — if a 2,000-word article reports a dozen words, your content is invisible to that consumer.</p></article>
+      <article class="card faq-card"><h3>What is llms.txt and does it actually do anything?</h3><p>It is a proposed convention for a Markdown file at your domain root giving language models a curated index of your site: an H1 title, an optional blockquote summary, then H2 sections of links with short descriptions. No major provider has publicly committed to consuming it, so treat it as cheap insurance rather than a ranking lever — the real value is having one machine-readable index of your own site that you control and generate from the same source as your pages.</p></article>
+      <article class="card faq-card"><h3>Should I block AI crawlers in robots.txt?</h3><p>Only the ones whose purpose you object to, because they are not interchangeable. Bulk training crawlers like GPTBot, ClaudeBot and CCBot can be blocked with no cost to visibility, but blocking retrieval agents such as ChatGPT-User, Claude-User or PerplexityBot removes you from the answers those assistants generate. Google-Extended and Applebot-Extended are training opt-outs only and do not affect search indexing at all.</p></article>
+      <article class="card faq-card"><h3>What does @id do in JSON-LD?</h3><p>It gives a schema node a stable identifier that other nodes can reference instead of duplicating the data. Define one Person or Organization node with an @id like https://site.com/#person, then have every article&#x27;s author and publisher fields point at that ID. You get exactly one canonical entity across the site with nothing to drift out of sync, and sameAs links reconcile it with your external profiles.</p></article>
+      <article class="card faq-card"><h3>Does a visible FAQ have to match FAQPage schema?</h3><p>Yes. Structured data describing content a visitor cannot see on the page violates search guidelines and risks a manual action. There is also a practical reason: many extractors never parse JSON-LD and read only the visible text, so a schema-only question is invisible to the exact consumer you were targeting. Generate both from one source so they cannot diverge.</p></article>
+      <article class="card faq-card"><h3>Does semantic HTML matter more than div soup for AI search?</h3><p>Yes, and in some cases the difference is total rather than marginal. Content extractors score elements by tag and structure, so a real table with th cells preserves row and column relationships that a nested flex-div layout destroys entirely. One h1, a heading hierarchy matching the outline, main and article wrappers, and real list elements are the highest-value markup changes available.</p></article>
+      <article class="card faq-card"><h3>What can an answer engine never see on my page?</h3><p>Anything rendered by client-side JavaScript, content behind a cookie wall or email gate, text baked into images or canvas without alt text or a transcript, genuinely deferred lazy-loaded content, anything behind authentication, most iframed content, and anything your robots.txt disallows for that specific user-agent.</p></article>
+      <article class="card faq-card"><h3>How do I verify my site is readable before deploying?</h3><p>Fetch each page with curl and count the words after stripping tags, check headers for a stray X-Robots-Tag noindex, parse every JSON-LD block to confirm it is valid, confirm each FAQ question appears verbatim in the visible text, fetch robots.txt and llms.txt and the sitemap, diff the sitemap&#x27;s URL list against what you actually generated, and confirm every internal link resolves. All of it scripts in about fifty lines and belongs in a pre-deploy gate.</p></article>
     </div>
   </section>
 

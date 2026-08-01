@@ -50,8 +50,8 @@
     color:var(--muted);font-size:var(--t-small);margin:0 0 var(--s5)}
   .callout--warn{border-color:var(--gold-2)}
   .faq-card{padding:var(--s5)}
-  .faq-card h3{font-size:var(--t-h3);margin:0}
-  .faq-card p{color:var(--muted);font-size:var(--t-small);margin:var(--s3) 0 0}
+  .faq-card h3{font-size:var(--t-h3);margin:0;line-height:1.3}
+  .faq-card p{color:var(--muted);font-size:var(--t-small);line-height:1.65;margin:var(--s3) 0 0}
 </style>
 </head>
 <body class="pro">
@@ -59,7 +59,7 @@
 <a class="skip-link" href="#main">Skip to content</a>
 
 <nav class="site-nav">
-  <a class="site-nav__brand" href="/"><img class="site-nav__lion" src="/img/brand/lion-mark.svg" alt="" width="34" height="34"><span>YUSUF GADELRAB</span></a>
+  <a class="site-nav__brand" href="/"><img class="site-nav__lion" src="/img/brand/lion-mark.svg" alt="" width="34" height="34" decoding="async"><span>YUSUF GADELRAB</span></a>
   <div class="site-nav__links">
     <a href="/">Work</a>
     <a href="/guides.html">Guides</a>
@@ -221,14 +221,14 @@
       <h2>Quick answers</h2>
     </div>
     <div class="grid" style="margin-top:var(--s6)">
-      <article class="card faq-card"><h3>Detention vs demurrage?</h3><p>Detention is holding the truck and driver past free time. Demurrage is cargo or a container sitting inside a terminal past free days. Same container, two clocks, depending on where it stands.</p></article>
-      <article class="card faq-card"><h3>How much free time is typical?</h3><p>Around 2 hours for dry van live load/unload, 2–3 for reefer, 1–2 for flatbed. Containers usually 3–5 free days per clock, rail ramps 24–48 hours. All contractual, not statutory.</p></article>
-      <article class="card faq-card"><h3>Who pays detention?</h3><p>You owe the carrier what the rate confirmation says and bill the customer what their contract allows. The gap is your margin, so match free time, rate, cap, and notice across both.</p></article>
-      <article class="card faq-card"><h3>How do you document it?</h3><p>Three independent contemporaneous sources of the same two timestamps: ELD or geofence events, signed in/out times on the BOL, and a timestamped check call at arrival.</p></article>
-      <article class="card faq-card"><h3>Why do claims get denied?</h3><p>Usually because notice came after free time expired rather than before. Then blank BOL in/out boxes, times written days later, and standalone accessorial invoices sent weeks after.</p></article>
-      <article class="card faq-card"><h3>Which accessorials get forgotten?</h3><p>Lumpers, driver assist, pallet exchange, layover, stop-offs, reconsignment, redelivery, tarping, liftgate, residential, limited access, after hours. All driver-side events.</p></article>
-      <article class="card faq-card"><h3>What does the leak cost?</h3><p>Illustratively at 200 loads and $300 average margin, a 4% leak is $28,800 a year. Nobody knows their own number until they log every event for a month and compare it to invoices.</p></article>
-      <article class="card faq-card"><h3>Can detention kill a load?</h3><p>Yes. $300 margin, four hours at $60 owed, nothing recovered because timestamps were never captured, and the load nets $60 — while still looking fine in a linehaul-only report.</p></article>
+      <article class="card faq-card"><h3>What is the difference between detention and demurrage?</h3><p>Detention in trucking is a charge for holding the truck and driver at a facility beyond the agreed free time. Demurrage is a charge for cargo or a container sitting inside a terminal or port beyond the free days. In intermodal the same container generates demurrage while it is inside the terminal and detention, also called per diem, once it is outside.</p></article>
+      <article class="card faq-card"><h3>How much free time is typical before detention starts?</h3><p>Two hours is the common shape for a dry van live load or unload, two to three for reefer, and one to two for flatbed, after which detention is billed hourly and often capped. Ocean containers typically get three to five free days on each clock, and rail ramps commonly 24 to 48 hours after notification. All of these are contractual, not statutory, so the rate confirmation governs.</p></article>
+      <article class="card faq-card"><h3>Who pays detention, the shipper or the broker?</h3><p>Two separate questions. The broker owes the carrier whatever the signed rate confirmation states, and bills the customer whatever the customer contract or tariff allows. The gap between those two numbers comes out of the broker&#x27;s margin, which is why matching the free-time window, hourly rate, cap, and notice requirement across both contracts matters more than negotiating the rate itself.</p></article>
+      <article class="card faq-card"><h3>How do you document detention so the claim gets paid?</h3><p>Aim for three independent, contemporaneous sources of the same two timestamps: an ELD or GPS geofence arrival and departure event, in and out times signed on the bill of lading by facility staff, and a timestamped check call or app event logged at arrival. Any single source can be disputed; three consistent sources effectively cannot.</p></article>
+      <article class="card faq-card"><h3>Why do detention claims get denied?</h3><p>Most often because notice was not given before free time expired, since most contracts require notification while the delay is still fixable rather than after the fact. The other common causes are blank in and out boxes on the bill of lading, times written in by the driver days later, a rate confirmation that never stated free time or a rate, and accessorials billed weeks later on a standalone invoice.</p></article>
+      <article class="card faq-card"><h3>What accessorial charges do brokers forget to bill?</h3><p>Lumper fees paid out of pocket by the driver, driver assist, pallet exchange, layover after a capped detention, stop-off charges, reconsignment and redelivery, tarping, liftgate and residential delivery, limited-access locations, and after-hours delivery. Almost all of them are events that happened to the driver, so they are invisible by invoicing time unless something captured them when they occurred.</p></article>
+      <article class="card faq-card"><h3>How much do unbilled accessorials actually cost?</h3><p>Illustratively, at 200 loads a month and an average gross margin of $300, a 4% unbilled leak is $2,400 a month and $28,800 a year, which is most of a junior back-office salary. The honest answer is that nobody knows their own number, and the only way to find it is to log every accessorial event for a month and compare that log against what was actually invoiced.</p></article>
+      <article class="card faq-card"><h3>Can one detention event make a load unprofitable?</h3><p>Yes, easily. On an illustrative load with $300 of gross margin, four hours of detention owed to the carrier at $60 an hour is $240. Recover it in full and the margin is unchanged; recover nothing because the timestamps were never captured and the same load falls to $60, or 3.2% — and it still looks fine in any report that only tracks linehaul against carrier pay.</p></article>
     </div>
   </section>
 

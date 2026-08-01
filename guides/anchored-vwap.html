@@ -50,8 +50,8 @@
     color:var(--muted);font-size:var(--t-small);margin:0 0 var(--s5)}
   .callout--warn{border-color:var(--gold-2)}
   .faq-card{padding:var(--s5)}
-  .faq-card h3{font-size:var(--t-h3);margin:0}
-  .faq-card p{color:var(--muted);font-size:var(--t-small);margin:var(--s3) 0 0}
+  .faq-card h3{font-size:var(--t-h3);margin:0;line-height:1.3}
+  .faq-card p{color:var(--muted);font-size:var(--t-small);line-height:1.65;margin:var(--s3) 0 0}
 </style>
 </head>
 <body class="pro">
@@ -59,7 +59,7 @@
 <a class="skip-link" href="#main">Skip to content</a>
 
 <nav class="site-nav">
-  <a class="site-nav__brand" href="/"><img class="site-nav__lion" src="/img/brand/lion-mark.svg" alt="" width="34" height="34"><span>YUSUF GADELRAB</span></a>
+  <a class="site-nav__brand" href="/"><img class="site-nav__lion" src="/img/brand/lion-mark.svg" alt="" width="34" height="34" decoding="async"><span>YUSUF GADELRAB</span></a>
   <div class="site-nav__links">
     <a href="/">Work</a>
     <a href="/guides.html">Guides</a>
@@ -144,12 +144,12 @@
       <h2>Quick answers</h2>
     </div>
     <div class="grid" style="margin-top:var(--s6)">
-      <article class="card faq-card"><h3>What is anchored VWAP?</h3><p>A volume-weighted average price running from a bar you choose, not from the session open. It tracks the average cost basis of everyone who traded since that event.</p></article>
-      <article class="card faq-card"><h3>How is it different from session VWAP?</h3><p>Session VWAP resets daily and is an intraday tool. Anchored VWAP persists from its anchor, so it works on swing and position timeframes.</p></article>
-      <article class="card faq-card"><h3>Where do you anchor it?</h3><p>Bars where ownership changed: earnings gaps, 52-week highs or lows, major news, the start of a base, or a prior failed breakout.</p></article>
-      <article class="card faq-card"><h3>What is a reclaim?</h3><p>Price crossing back above an AVWAP it was under, and holding. The average buyer since the anchor is back to breakeven, so overhead supply thins out.</p></article>
-      <article class="card faq-card"><h3>Does it work?</h3><p>It was the only setup that survived my walk-forward test, at +0.117R over 4,933 trades. Marginal, not a windfall — my earlier +0.23R on 101 trades did not survive re-testing. Not advice.</p></article>
-      <article class="card faq-card"><h3>Do regime filters help?</h3><p>Not in my data. A market-regime filter and a normalised-momentum-lag filter were both tested and both cut expectancy, so both were rejected.</p></article>
+      <article class="card faq-card"><h3>What is anchored VWAP?</h3><p>Anchored VWAP is a volume-weighted average price calculated from a specific bar you choose rather than from the session open. It represents the average price paid by everyone who has traded since that anchor event, so price above the line means that cohort is collectively in profit and below means it is underwater.</p></article>
+      <article class="card faq-card"><h3>How is anchored VWAP different from regular VWAP?</h3><p>Regular VWAP resets at the start of each session and is mostly used intraday. Anchored VWAP starts at an event you select — an earnings gap, a 52-week high, the start of a base — and keeps running for as long as that event stays relevant, which makes it usable on swing and position timeframes.</p></article>
+      <article class="card faq-card"><h3>Where should you anchor a VWAP?</h3><p>Anchor to bars where ownership genuinely changed: earnings gaps, 52-week highs or lows, major news, index inclusion, the start of a consolidation, or a prior failed breakout. If you cannot state in one sentence why that bar mattered, it is not a valid anchor.</p></article>
+      <article class="card faq-card"><h3>What does an AVWAP reclaim mean?</h3><p>A reclaim is price crossing back above an anchored VWAP it had been trading below, and holding there. It signals that the average buyer since the anchor event has moved from a loss to breakeven, which removes overhead supply from traders who were waiting to exit flat.</p></article>
+      <article class="card faq-card"><h3>Does the AVWAP reclaim setup actually work?</h3><p>In my own walk-forward testing it was the only setup that survived, but the headline shrank under re-testing. An early +0.23R over 101 trades on 8 names was not reproducible; on a 129-symbol, 10-year universe it is +0.117R over 4,933 trades (95% CI +0.057 to +0.174), and a risk-matched random entry already captures +0.086R of that. A VCP-style contraction came out roughly breakeven and a gap/opening-range-breakout proxy came out at -0.28R and was dropped. That is a marginal edge at best, and it is educational information rather than advice.</p></article>
+      <article class="card faq-card"><h3>Who popularised anchored VWAP?</h3><p>Brian Shannon is the practitioner most associated with popularising anchored VWAP for swing and position trading, framing it around what participants actually paid rather than around indicator signals.</p></article>
     </div>
   </section>
 

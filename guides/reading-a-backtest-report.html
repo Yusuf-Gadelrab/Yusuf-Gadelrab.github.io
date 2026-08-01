@@ -50,8 +50,8 @@
     color:var(--muted);font-size:var(--t-small);margin:0 0 var(--s5)}
   .callout--warn{border-color:var(--gold-2)}
   .faq-card{padding:var(--s5)}
-  .faq-card h3{font-size:var(--t-h3);margin:0}
-  .faq-card p{color:var(--muted);font-size:var(--t-small);margin:var(--s3) 0 0}
+  .faq-card h3{font-size:var(--t-h3);margin:0;line-height:1.3}
+  .faq-card p{color:var(--muted);font-size:var(--t-small);line-height:1.65;margin:var(--s3) 0 0}
 </style>
 </head>
 <body class="pro">
@@ -59,7 +59,7 @@
 <a class="skip-link" href="#main">Skip to content</a>
 
 <nav class="site-nav">
-  <a class="site-nav__brand" href="/"><img class="site-nav__lion" src="/img/brand/lion-mark.svg" alt="" width="34" height="34"><span>YUSUF GADELRAB</span></a>
+  <a class="site-nav__brand" href="/"><img class="site-nav__lion" src="/img/brand/lion-mark.svg" alt="" width="34" height="34" decoding="async"><span>YUSUF GADELRAB</span></a>
   <div class="site-nav__links">
     <a href="/">Work</a>
     <a href="/guides.html">Guides</a>
@@ -285,14 +285,14 @@ example: 0.005 commission x2, 0.04 spread, 0.04 slippage
       <h2>Quick answers</h2>
     </div>
     <div class="grid" style="margin-top:var(--s6)">
-      <article class="card faq-card"><h3>How to read a backtest report</h3><p>Check who produced it and how many versions failed, then sample size, confidence interval, costs, and the result with the best trade deleted. Equity curve last.</p></article>
-      <article class="card faq-card"><h3>Is a high win rate good?</h3><p>Meaningless without the payoff ratio. Break-even win rate is 1/(1+payoff), so 68% winners can still be a losing system.</p></article>
-      <article class="card faq-card"><h3>What is a good profit factor?</h3><p>Above 1.0 made money, but recompute it without the single best trade. A drop from 2.10 to 1.40 means one outlier carried the whole result.</p></article>
-      <article class="card faq-card"><h3>How many trades are enough?</h3><p>Depends on variability. At 1.4R per-trade standard deviation, a 0.10R half-width needs about 753 trades; halving uncertainty costs 4x the sample.</p></article>
-      <article class="card faq-card"><h3>Can you trust a small-sample Sharpe?</h3><p>No. An annualised Sharpe of 1.0 from 40 monthly observations has a 95% interval of roughly -0.10 to 2.10, which includes zero.</p></article>
-      <article class="card faq-card"><h3>What is look-ahead bias?</h3><p>Using information the strategy could not have had: same-bar fills, whole-sample normalisation, restated fundamentals, intra-bar stop and target ordering.</p></article>
-      <article class="card faq-card"><h3>Do costs really matter?</h3><p>Cost drag in R scales inversely with stop distance. Nine cents a share is 0.038R on a $2.40 stop and 0.360R on a 25 cent stop.</p></article>
-      <article class="card faq-card"><h3>Why is max drawdown understated?</h3><p>It depends on whether equity was closed-trade, daily marked, or intraday. The same track can show 12%, 19% and 24%, and it is one extreme draw.</p></article>
+      <article class="card faq-card"><h3>How do you read a backtest report honestly?</h3><p>Start with who produced it and how many configurations were tried before this one was published, because a published result is usually the best of many attempts. Then check sample size, compute a confidence interval on expectancy yourself, subtract realistic costs, and recompute the headline stats with the single best trade deleted. Look at the equity curve last, since it is the most persuasive and least informative part of the report.</p></article>
+      <article class="card faq-card"><h3>Is a high win rate good in trading?</h3><p>Win rate on its own says nothing, because it does not describe how large the winners are relative to the losers. The break-even win rate equals 1 divided by 1 plus the payoff ratio, so a 2:1 payoff only needs 33% winners while a 0.5:1 payoff needs 67%. A 68% win rate can belong to a losing system if the average loss is twice the average win.</p></article>
+      <article class="card faq-card"><h3>What is a good profit factor in a backtest?</h3><p>Profit factor is gross profit divided by gross loss, and any value above 1.0 made money over the tested window. The more useful test is to recompute it after deleting the single largest winning trade, and again after deleting the best three. If a profit factor of 2.1 falls to 1.4 when one outlier is removed, the result came from a rare event rather than from a repeatable process.</p></article>
+      <article class="card faq-card"><h3>How many trades does a backtest need to be meaningful?</h3><p>It depends on the variability of per-trade results, not on a fixed number. With a per-trade standard deviation of 1.4R, reaching a 95% confidence half-width of 0.10R takes roughly 753 trades, and a half-width of 0.05R takes about 3,000. Because the interval narrows with the square root of the sample, halving the uncertainty requires four times as many trades.</p></article>
+      <article class="card faq-card"><h3>How reliable is a Sharpe ratio from a small sample?</h3><p>Barely reliable at all. The standard error of a Sharpe estimate is approximately the square root of one plus half the squared Sharpe, divided by the number of observations, all at the same frequency. An annualised Sharpe of 1.0 built from 40 monthly observations has a 95% interval running from about negative 0.10 to 2.10, which includes zero and is therefore consistent with no edge.</p></article>
+      <article class="card faq-card"><h3>What is look-ahead bias in a backtest?</h3><p>Look-ahead bias is any use of information the strategy could not have had at the time it acted. The common forms are computing a signal from a bar&#x27;s close and filling at that same close, normalising features using statistics from the whole sample, using restated fundamentals, mishandling split and dividend adjustments, and assuming a target was hit before a stop inside the same bar. Suspiciously smooth equity curves are the usual symptom.</p></article>
+      <article class="card faq-card"><h3>How much do transaction costs affect backtest results?</h3><p>Cost drag measured in R is the round-trip cost per share divided by the stop distance per share, so it scales inversely with how tight your stop is. Nine cents of combined commission, spread and slippage is about 0.038R on a $2.40 stop but 0.360R on a 25 cent stop. This is why short-timeframe systems with tight stops so often show a real gross edge that is smaller than the friction.</p></article>
+      <article class="card faq-card"><h3>Why is backtest max drawdown usually understated?</h3><p>Because it depends on how equity was measured. Closed-trade equity ignores open losses entirely, daily marks capture more, and intraday equity captures the worst point you would actually have lived through, and the same track can report 12%, 19% and 24% on those three bases. Max drawdown is also a single extreme realisation rather than a stable property, so resampling the trade sequence gives a far more honest picture than the one historical figure.</p></article>
     </div>
   </section>
 

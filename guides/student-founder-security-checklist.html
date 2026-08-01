@@ -50,8 +50,8 @@
     color:var(--muted);font-size:var(--t-small);margin:0 0 var(--s5)}
   .callout--warn{border-color:var(--gold-2)}
   .faq-card{padding:var(--s5)}
-  .faq-card h3{font-size:var(--t-h3);margin:0}
-  .faq-card p{color:var(--muted);font-size:var(--t-small);margin:var(--s3) 0 0}
+  .faq-card h3{font-size:var(--t-h3);margin:0;line-height:1.3}
+  .faq-card p{color:var(--muted);font-size:var(--t-small);line-height:1.65;margin:var(--s3) 0 0}
 </style>
 </head>
 <body class="pro">
@@ -59,7 +59,7 @@
 <a class="skip-link" href="#main">Skip to content</a>
 
 <nav class="site-nav">
-  <a class="site-nav__brand" href="/"><img class="site-nav__lion" src="/img/brand/lion-mark.svg" alt="" width="34" height="34"><span>YUSUF GADELRAB</span></a>
+  <a class="site-nav__brand" href="/"><img class="site-nav__lion" src="/img/brand/lion-mark.svg" alt="" width="34" height="34" decoding="async"><span>YUSUF GADELRAB</span></a>
   <div class="site-nav__links">
     <a href="/">Work</a>
     <a href="/guides.html">Guides</a>
@@ -210,12 +210,12 @@ curl -sI https://yourapp.com | grep -i strict-transport-security</span>
       <h2>Quick answers</h2>
     </div>
     <div class="grid" style="margin-top:var(--s6)">
-      <article class="card faq-card"><h3>Check for a committed secret?</h3><p>git log --all --full-history on the file, or run a real scanner like dira scan . or gitleaks against full history, since deleting a file in a new commit doesn&#x27;t remove it from old ones.</p></article>
-      <article class="card faq-card"><h3>Leaked key, rewrite history?</h3><p>Revoke and reissue the key first, always. History rewriting (filter-repo/BFG + force-push) only stops future clones; forks and caches can still hold the old commits.</p></article>
-      <article class="card faq-card"><h3>Minimum setup before a paying customer?</h3><p>Secrets out of git and history, default creds changed, HTTPS + HSTS forced, one CVE scan run, one tested backup restore. Those five get found fastest by bots.</p></article>
-      <article class="card faq-card"><h3>Does DIRA replace an audit?</h3><p>No, it says so itself. It finds known bad patterns; MFA, access reviews, and real threat modeling stay manual attestations, not automated checks.</p></article>
-      <article class="card faq-card"><h3>Before a security questionnaire?</h3><p>A security.txt, branch protection with required reviews, CI running tests + a secret scan per PR, a dependency-update cadence, and a one-paragraph incident response plan.</p></article>
-      <article class="card faq-card"><h3>Cost to fix most of this list?</h3><p>Close to nothing: git, free-tier CVE scanners, a framework&#x27;s headers middleware, and a free scanner for the mechanical checks. The real cost is a weekend, not money.</p></article>
+      <article class="card faq-card"><h3>What is the fastest way to check if I&#x27;ve ever committed a secret?</h3><p>Run git log --all --full-history -- .env for a specific file, or better, run a dedicated secret scanner such as dira scan . or gitleaks against the full history, not just the current working tree. Deleting a file in a new commit does not remove it from earlier commits, so a search of only the current files misses anything that was already fixed the wrong way.</p></article>
+      <article class="card faq-card"><h3>If a secret key leaked, do I need to rewrite git history?</h3><p>Rewriting history with git filter-repo or BFG Repo-Cleaner, then a force-push, removes the secret from future clones, but treat the key itself as compromised the moment it was ever public regardless of any history rewriting. Revoke and reissue the key first; clean the history second, since forks and cached clones can still hold the old commits.</p></article>
+      <article class="card faq-card"><h3>What&#x27;s the minimum security setup before a first paying customer?</h3><p>Secrets kept out of git and git history, default credentials changed everywhere, HTTPS forced with HSTS, a dependency CVE scan run at least once, and one tested backup restore. Those five catch the mistakes that automated scanners and bots find within hours of a public launch, before anything more targeted becomes relevant.</p></article>
+      <article class="card faq-card"><h3>Can a free scanner like DIRA replace a real security audit?</h3><p>No, and it says so in its own report. Automated scanning finds known bad patterns; it cannot see MFA enforcement, access reviews, or an actual threat model, which is why those appear as manual attestations rather than pass or fail checks. It is a strong first pass and a good gate for pull requests, not a substitute for a human-reviewed pentest or a SOC 2 audit.</p></article>
+      <article class="card faq-card"><h3>What should a student founder do before an enterprise security questionnaire?</h3><p>Have a disclosure policy, even a simple security.txt file, branch protection with required reviews, CI that runs tests and a secret scan on every pull request, a documented dependency-update cadence, and a one-paragraph incident response plan. Together these cover most of what a SOC 2 readiness checklist or an enterprise procurement questionnaire actually asks for.</p></article>
+      <article class="card faq-card"><h3>How much does it cost to fix most of an 18-point security checklist?</h3><p>Close to nothing. Every item on this list uses free tooling: git itself, free-tier CVE scanners, a framework&#x27;s built-in headers middleware, and a free scanner like DIRA for the mechanical checks. The real cost is time, roughly a couple of hours spread across a weekend, not money.</p></article>
     </div>
   </section>
 

@@ -50,8 +50,8 @@
     color:var(--muted);font-size:var(--t-small);margin:0 0 var(--s5)}
   .callout--warn{border-color:var(--gold-2)}
   .faq-card{padding:var(--s5)}
-  .faq-card h3{font-size:var(--t-h3);margin:0}
-  .faq-card p{color:var(--muted);font-size:var(--t-small);margin:var(--s3) 0 0}
+  .faq-card h3{font-size:var(--t-h3);margin:0;line-height:1.3}
+  .faq-card p{color:var(--muted);font-size:var(--t-small);line-height:1.65;margin:var(--s3) 0 0}
 </style>
 </head>
 <body class="pro">
@@ -59,7 +59,7 @@
 <a class="skip-link" href="#main">Skip to content</a>
 
 <nav class="site-nav">
-  <a class="site-nav__brand" href="/"><img class="site-nav__lion" src="/img/brand/lion-mark.svg" alt="" width="34" height="34"><span>YUSUF GADELRAB</span></a>
+  <a class="site-nav__brand" href="/"><img class="site-nav__lion" src="/img/brand/lion-mark.svg" alt="" width="34" height="34" decoding="async"><span>YUSUF GADELRAB</span></a>
   <div class="site-nav__links">
     <a href="/">Work</a>
     <a href="/guides.html">Guides</a>
@@ -214,14 +214,14 @@ With caching: 200 × 20,000 × 1.25       = 5,000,000
       <h2>Quick answers</h2>
     </div>
     <div class="grid" style="margin-top:var(--s6)">
-      <article class="card faq-card"><h3>How does prompt caching work?</h3><p>It stores the key-value state from processing your input tokens and reuses it when a later request starts with the identical token sequence. You cache the prefill, not the answer.</p></article>
-      <article class="card faq-card"><h3>Why is my hit rate zero?</h3><p>Something varies at the front. A timestamp, UUID, or username in the system prompt changes position zero, and matching runs forward from there. Diff two requests&#x27; exact bytes.</p></article>
-      <article class="card faq-card"><h3>How long does a cache entry last?</h3><p>About five minutes from last use, refreshed on each hit, with a one-hour option at roughly double the write cost. Arrival timing, not prompt size, decides whether it helps.</p></article>
-      <article class="card faq-card"><h3>How many requests to break even?</h3><p>Two, on the five-minute window: a 1.25x write plus a 0.1x read beats two full-price requests. Three on the one-hour window, where writes cost 2x. Counted per window, not lifetime.</p></article>
-      <article class="card faq-card"><h3>Can caching cost more?</h3><p>Yes. Requests spaced further apart than the TTL write an entry nobody reads. 200 requests 7.2 minutes apart against a 5-minute TTL runs about 24% more expensive than no caching.</p></article>
-      <article class="card faq-card"><h3>Does it cut output cost?</h3><p>No, never. Caching only skips prefill on the matched input prefix. Short prompts with long answers get almost nothing from it regardless of configuration.</p></article>
-      <article class="card faq-card"><h3>Best prompt ordering?</h3><p>Descending stability: tools, frozen system prompt, static documents, few-shot examples, history, then the current turn. Anything per-request goes dead last.</p></article>
-      <article class="card faq-card"><h3>Why do parallel calls all miss?</h3><p>An entry is only readable once the first response starts streaming, so simultaneous requests all write. Send one, wait for its first token, then fan out the rest.</p></article>
+      <article class="card faq-card"><h3>How does prompt caching actually work?</h3><p>The provider stores the key-value state produced while processing your prompt&#x27;s input tokens, then reuses it when a later request begins with the identical token sequence. You are caching the prefill computation, not the response, so you save both input cost and time-to-first-token while still getting a freshly generated answer each time.</p></article>
+      <article class="card faq-card"><h3>Why is my prompt cache hit rate zero?</h3><p>Almost always because something varies at the front of the prompt. A timestamp, a request UUID, a session ID, or a user&#x27;s name interpolated into the system prompt changes the prefix at position zero, and since matching runs forward from token zero until the first difference, nothing after it can be reused. Diff the exact bytes of two consecutive requests and the culprit is always visible.</p></article>
+      <article class="card faq-card"><h3>How long does a prompt cache entry last?</h3><p>The standard window is about five minutes from last use, refreshed on each hit, with a longer one-hour option available at roughly double the write cost. Five minutes is short enough that your request arrival pattern, not your prompt size, determines whether caching helps at all.</p></article>
+      <article class="card faq-card"><h3>How many requests do I need before prompt caching pays off?</h3><p>With the five-minute window, caching pays from the second matching request onward: a write costs about 1.25 times base input and a read about 0.1 times, so two requests cost 1.35 units versus 2 uncached. With the one-hour window the write costs about 2 times, pushing break-even to the third request. The critical detail is that these counts are per TTL window, not lifetime totals.</p></article>
+      <article class="card faq-card"><h3>Can prompt caching ever cost more than not caching?</h3><p>Yes, and it is a common failure. If your requests arrive further apart than the TTL, every one writes a fresh entry that nothing ever reads, and you pay the write premium each time. Two hundred requests spaced 7.2 minutes apart against a five-minute TTL comes out roughly 24% more expensive than not caching at all.</p></article>
+      <article class="card faq-card"><h3>Does prompt caching reduce output token cost?</h3><p>No. Caching only affects the input side by skipping prefill work on the matched prefix. Output tokens are billed at full price regardless of hit rate, so a workload with short prompts and long generated answers gets almost nothing from caching no matter how it is configured.</p></article>
+      <article class="card faq-card"><h3>How should I order a prompt to maximize cache hits?</h3><p>Descending order of stability. Tool definitions and a frozen system prompt first, then static documents and few-shot examples, then conversation history, and the current user turn last. Anything that changes per request belongs at the very end, so that changing it invalidates as little of the prefix as possible.</p></article>
+      <article class="card faq-card"><h3>Why do parallel requests with the same prompt all miss the cache?</h3><p>A cache entry only becomes readable once the first response starts streaming, so simultaneous requests are all writing rather than reading. Send one request, wait for its first token, then fan out the rest — they will read the entry the first one just wrote instead of each paying full price.</p></article>
     </div>
   </section>
 

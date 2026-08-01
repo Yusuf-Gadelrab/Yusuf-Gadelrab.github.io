@@ -2,7 +2,11 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
+<meta name="referrer" content="strict-origin-when-cross-origin">
+<meta http-equiv="Content-Security-Policy" content="object-src 'none'; base-uri 'self'">
 <title>Northbay Logistics AI — Investor Pitch Deck</title>
+<meta name="robots" content="noindex,follow">
+<link rel="canonical" href="https://yusuf-gadelrab.github.io/templates.html">
 <style>
   /* ===== MIDNIGHT GOLD TOKENS ===== */
   :root{
@@ -123,7 +127,7 @@
     border:1px solid var(--gold); display:flex; align-items:center; justify-content:center;
     font-family:Georgia,serif; font-size:20px;
   }
-  .flow-step h4{ font-size:15.5px; color:var(--ink); margin-bottom:8px; }
+  .flow-step h3,.flow-step h4{ font-size:15.5px; color:var(--ink); margin-bottom:8px; }
   .flow-step p{ font-size:12.5px; color:var(--muted); }
 
   /* ===== SLIDE 6 — PRODUCT SCREENS ===== */
@@ -390,7 +394,7 @@
     <h2 class="slide-title">From inbound email to booked load in under 90 seconds</h2>
     <div class="flow">
       <div class="flow-line"></div>
-      <div class="flow-step"><div class="flow-dot gold-text">1</div><h4>Ingest</h4><p>Emails, EDI, and carrier portals are pulled into one unified inbox, automatically.</p></div>
+      <div class="flow-step"><div class="flow-dot gold-text">1</div><h3>Ingest</h3><p>Emails, EDI, and carrier portals are pulled into one unified inbox, automatically.</p></div>
       <div class="flow-step"><div class="flow-dot gold-text">2</div><h4>Extract</h4><p>LLM-based document parsing pulls rate, lane, weight, and equipment data with 99.2% accuracy.</p></div>
       <div class="flow-step"><div class="flow-dot gold-text">3</div><h4>Match</h4><p>The load is scored against your live carrier network and ranked by rate, reliability, and lane fit.</p></div>
       <div class="flow-step"><div class="flow-dot gold-text">4</div><h4>Execute</h4><p>Confirmations, check-in calls, and TMS updates fire automatically — a human only reviews exceptions.</p></div>

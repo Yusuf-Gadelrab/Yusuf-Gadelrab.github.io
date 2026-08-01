@@ -2,27 +2,29 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8" />
+<meta name="referrer" content="strict-origin-when-cross-origin">
+<meta http-equiv="Content-Security-Policy" content="object-src 'none'; base-uri 'self'">
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <!-- tech:seo — managed block (SEO / social / structured data / perf / PWA) -->
 <link rel="preload" href="/css/site.css" as="style">
 <meta property="og:locale" content="en_US">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Free Trader's Risk Toolkit — Position Sizer &amp; Risk of Ruin">
-<meta name="twitter:description" content="Free no-signup risk calculators for traders: position sizer, R-multiple, expectancy, Monte Carlo risk of ruin, Kelly fraction, and break-even win rate.">
+<meta name="twitter:title" content="Free Position Size Calculator, R Multiple &amp; Risk of Ruin">
+<meta name="twitter:description" content="Free position size calculator, R multiple calculator, expectancy calculator, Monte Carlo risk of ruin, Kelly fraction and break-even win rate. No signup.">
 <meta property="og:image" content="https://yusuf-gadelrab.github.io/og/risk-tools-card.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
-<meta property="og:image:alt" content="Free Trader's Risk Toolkit — Position Sizer &amp; Risk of Ruin">
+<meta property="og:image:alt" content="Free Position Size Calculator, R Multiple &amp; Risk of Ruin">
 <meta name="twitter:image" content="https://yusuf-gadelrab.github.io/og/risk-tools-card.png">
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"The Trader's Risk Toolkit","url":"https://yusuf-gadelrab.github.io/risk-tools.html","applicationCategory":"FinanceApplication","operatingSystem":"Any (browser)","browserRequirements":"Requires JavaScript","description":"Free no-signup risk calculators for traders: position sizer, R-multiple calculator, expectancy, Monte Carlo risk-of-ruin simulator and Kelly fraction.","author":{"@id":"https://yusuf-gadelrab.github.io/#person"},"isAccessibleForFree":true,"offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"The Trader's Risk Toolkit","url":"https://yusuf-gadelrab.github.io/risk-tools.html","applicationCategory":"FinanceApplication","operatingSystem":"Any (browser)","browserRequirements":"Requires JavaScript","description":"Free no-signup risk calculators for traders: position sizer, R-multiple calculator, expectancy, Monte Carlo risk-of-ruin simulator and Kelly fraction.","author":{"@id":"https://yusuf-gadelrab.github.io/#person"},"isAccessibleForFree":true,"offers":{"@type":"Offer","price":"0","priceCurrency":"USD","availability":"https://schema.org/InStock"}}</script>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://yusuf-gadelrab.github.io/"},{"@type":"ListItem","position":2,"name":"Apps & projects","item":"https://yusuf-gadelrab.github.io/apps.html"},{"@type":"ListItem","position":3,"name":"Free Trader's Risk Toolkit","item":"https://yusuf-gadelrab.github.io/risk-tools.html"}]}</script>
 <link rel="manifest" href="/manifest.webmanifest">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 <script>addEventListener("load",function(){if("serviceWorker" in navigator)navigator.serviceWorker.register("/sw.js").catch(function(){})});</script>
 <!-- /tech:seo -->
-<title>Free Risk Toolkit: Position Sizer &amp; Risk of Ruin</title>
-<meta name="description" content="Free no-signup risk calculators for traders: position sizer, R-multiple, expectancy, Monte Carlo risk of ruin, Kelly fraction, and break-even win rate.">
+<title>Free Position Size Calculator, R Multiple &amp; Risk of Ruin</title>
+<meta name="description" content="Free position size calculator, R multiple calculator, expectancy calculator, Monte Carlo risk of ruin, Kelly fraction and break-even win rate. No signup.">
 <link rel="canonical" href="https://yusuf-gadelrab.github.io/risk-tools.html">
 <link rel="icon" type="image/svg+xml" href="https://yusuf-gadelrab.github.io/favicon-automation.svg">
 <meta name="theme-color" content="#0B0B0D">
@@ -30,8 +32,8 @@
 <meta name="robots" content="index,follow">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Yusuf Gadelrab">
-<meta property="og:title" content="Free Trader's Risk Toolkit — Position Sizer, Expectancy, Risk of Ruin">
-<meta property="og:description" content="Position sizing, R-multiples, expectancy, a Monte Carlo risk-of-ruin simulator, Kelly fraction, and break-even win rate — free, client-side, every formula shown.">
+<meta property="og:title" content="Free Position Size Calculator, R Multiple &amp; Risk of Ruin">
+<meta property="og:description" content="Free position size calculator, R multiple calculator, expectancy calculator, Monte Carlo risk of ruin, Kelly fraction and break-even win rate. No signup.">
 <meta property="og:url" content="https://yusuf-gadelrab.github.io/risk-tools.html">
 <link rel="stylesheet" href="/css/site.css">
 <style>
@@ -95,8 +97,23 @@
     border:1px solid var(--line);border-radius:var(--radius);font-size:var(--t-micro);
     letter-spacing:.5px;color:var(--gold-2);background:rgba(212,175,55,.08)}
 
+  .explain{margin-top:var(--s6);border:1px solid var(--line-soft);border-radius:var(--radius-lg);
+    background:var(--panel2);padding:var(--s5)}
+  .explain>div+div{margin-top:var(--s5)}
+  .explain h3{font-size:var(--t-micro);letter-spacing:1.6px;text-transform:uppercase;
+    color:var(--gold-2);margin:0 0 var(--s2)}
+  .explain p{color:var(--muted);font-size:var(--t-small);margin:0;max-width:var(--maxw-prose)}
+  .explain .formula{margin-top:0}
+  .explain .x-warn h3{color:var(--warn)}
+
   .disclaimer{max-width:70ch;font-size:var(--t-small);color:var(--faint);
     border-top:1px solid var(--line-soft);padding-top:var(--s5);margin-top:var(--s7)}
+  .disclaimer-box{max-width:var(--maxw-prose);border:1px solid var(--line-soft);
+    border-left:3px solid var(--bad);border-radius:var(--radius-lg);background:var(--panel);
+    padding:var(--s6)}
+  .disclaimer-box h2{margin:var(--s2) 0 var(--s3)}
+  .disclaimer-box p{color:var(--muted);font-size:var(--t-small)}
+  .disclaimer-box p+p{margin-top:var(--s3)}
 
   .cta-final{text-align:center;border:1px solid var(--line);border-radius:var(--radius-lg);
     background:radial-gradient(60% 100% at 50% 0%,rgba(212,175,55,.10),transparent),
@@ -114,15 +131,23 @@
    This page's own CSS overrides the shared floor, so pin it here. */
 input,textarea,select{font-size:16px!important}</style>
 <!-- geo:entity — canonical Person node, one entity across every page -->
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"Person","@id":"https://yusuf-gadelrab.github.io/#person","name":"Yusuf Gadelrab","url":"https://yusuf-gadelrab.github.io/"}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebPage","@id":"https://yusuf-gadelrab.github.io/risk-tools.html#webpage","url":"https://yusuf-gadelrab.github.io/risk-tools.html","inLanguage":"en","isPartOf":{"@id":"https://yusuf-gadelrab.github.io/#website"},"about":{"@id":"https://yusuf-gadelrab.github.io/#person"},"publisher":{"@id":"https://yusuf-gadelrab.github.io/#person"}}</script>
 <link rel="alternate" type="text/plain" href="https://yusuf-gadelrab.github.io/llms-full.txt" title="Plain-text profile for language models">
 <!-- geo:faq — extractable Q&A for answer engines -->
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","@id":"https://yusuf-gadelrab.github.io/risk-tools.html#faq","mainEntity":[{"@type":"Question","name":"How do I calculate position size for a trade?","acceptedAnswer":{"@type":"Answer","text":"Divide the dollars you are willing to lose by the per-share risk. Dollars at risk = account size x risk percent (1% of a $25,000 account is $250). Per-share risk = entry price minus stop price. Position size = dollars at risk / per-share risk. The free position sizer at https://yusuf-gadelrab.github.io/risk-tools.html does this in the browser and prints the formula under the result."}},{"@type":"Question","name":"What is an R-multiple?","acceptedAnswer":{"@type":"Answer","text":"An R-multiple expresses a trade's outcome in units of the risk you took. 1R is the distance from entry to stop. A trade that makes twice what you risked is +2R; one that hits the stop is -1R. Measuring in R makes trades comparable across position sizes and account sizes."}},{"@type":"Question","name":"What is expectancy in trading?","acceptedAnswer":{"@type":"Answer","text":"Expectancy is the average R you earn per trade: (win rate x average win in R) minus (loss rate x average loss in R). A positive expectancy means the strategy makes money over a large sample; anything at or below zero does not, no matter how good the win rate looks."}},{"@type":"Question","name":"What win rate do I need to break even?","acceptedAnswer":{"@type":"Answer","text":"Break-even win rate = 1 / (1 + reward-to-risk). At 2R reward per 1R risk you need to win 33.3% of the time; at 1R you need 50%; at 3R you need 25%. The break-even calculator on the risk toolkit page computes it for any reward-to-risk ratio."}},{"@type":"Question","name":"What is risk of ruin?","acceptedAnswer":{"@type":"Answer","text":"Risk of ruin is the probability that a run of losses drains your account to an unrecoverable level, given your win rate, reward-to-risk, and risk per trade. The toolkit estimates it with a Monte Carlo simulation so you can see how much a 1% risk per trade differs from a 3% risk per trade."}},{"@type":"Question","name":"Are these calculators free, and is my data private?","acceptedAnswer":{"@type":"Answer","text":"Yes. All six calculators are free with no signup. The page is static and runs entirely in your browser — nothing is sent to a server and nothing is stored off your device. They are educational tools, not financial advice."}}]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","@id":"https://yusuf-gadelrab.github.io/risk-tools.html#faq","mainEntity":[{"@type":"Question","name":"How do I calculate position size for a trade?","acceptedAnswer":{"@type":"Answer","text":"Divide the dollars you are willing to lose by the per-share risk. Dollars at risk = account size x risk percent (1% of a $25,000 account is $250). Per-share risk = entry price minus stop price. Position size = dollars at risk / per-share risk. The free position sizer at https://yusuf-gadelrab.github.io/risk-tools.html does this in the browser and prints the formula under the result."}},{"@type":"Question","name":"What is an R-multiple?","acceptedAnswer":{"@type":"Answer","text":"An R-multiple expresses a trade's outcome in units of the risk you took. 1R is the distance from entry to stop. A trade that makes twice what you risked is +2R; one that hits the stop is -1R. Measuring in R makes trades comparable across position sizes and account sizes."}},{"@type":"Question","name":"What is expectancy in trading?","acceptedAnswer":{"@type":"Answer","text":"Expectancy is the average R you earn per trade: (win rate x average win in R) minus (loss rate x average loss in R). A positive expectancy means the strategy makes money over a large sample; anything at or below zero does not, no matter how good the win rate looks."}},{"@type":"Question","name":"What win rate do I need to break even?","acceptedAnswer":{"@type":"Answer","text":"Break-even win rate = 1 / (1 + reward-to-risk). At 2R reward per 1R risk you need to win 33.3% of the time; at 1R you need 50%; at 3R you need 25%. The break-even calculator on the risk toolkit page computes it for any reward-to-risk ratio."}},{"@type":"Question","name":"What is risk of ruin?","acceptedAnswer":{"@type":"Answer","text":"Risk of ruin is the probability that a run of losses drains your account to an unrecoverable level, given your win rate, reward-to-risk, and risk per trade. The toolkit estimates it with a Monte Carlo simulation so you can see how much a 1% risk per trade differs from a 3% risk per trade."}},{"@type":"Question","name":"Is the Kelly criterion safe for retail traders?","acceptedAnswer":{"@type":"Answer","text":"Not at full size. Kelly assumes you know your true win rate and payoff ratio exactly, and a retail trader is estimating both from a small sample that usually flatters the strategy. At a 42% win rate with 2.10R wins and 1R losses, full Kelly is 14.4% of equity per trade — $3,595 on a $25,000 account, against $250 at a conventional 1% risk. Overstating that win rate by five points pushes full Kelly to 21.8%, a 51% larger bet placed on a mistake. Even with perfect inputs, full Kelly treats a drawdown over 50% as an ordinary event, so a quarter to a half of Kelly is the working standard and 1-2% of equity per trade is where most surviving retail traders sit."}},{"@type":"Question","name":"How many trades do I need before my expectancy means anything?","acceptedAnswer":{"@type":"Answer","text":"Hundreds, not dozens. At a 42% win rate with 2.10R wins and 1R losses, a single trade has a standard deviation of 1.53R, so even if the true expectancy is +0.302R, the average of a random 30-trade sample lands anywhere between roughly -0.25R and +0.85R 95% of the time — an interval that contains zero. My own reference point is an anchored-VWAP setup tested over 4,933 trades: it produced +0.117R over 4,933 trades with a 95% confidence interval of [+0.057R, +0.174R], but a risk-matched random entry already captured +0.086R of that, leaving the signal's own contribution at +0.030R with a confidence interval crossing zero. That is not a validated edge — and it took nearly 5,000 trades to establish that."}},{"@type":"Question","name":"Are these calculators free, and is my data private?","acceptedAnswer":{"@type":"Answer","text":"Yes. All six calculators are free with no signup. The page is static and runs entirely in your browser — nothing is sent to a server and nothing is stored off your device. They are educational tools, not financial advice."}}]}</script>
 <style>.geo-qa{padding:var(--s5)}.geo-qa h3{font-size:var(--t-h3);margin:0 0 var(--s3)}.geo-qa p{color:var(--muted);font-size:var(--t-small);margin:0}</style>
 </head>
 <body class="pro">
 <a class="skip-link" href="#main">Skip to content</a>
 <nav class="site-nav" id="nav"><a class="site-nav__brand" href="/"><img class="site-nav__lion" src="/img/brand/lion-mark.svg" alt="" width="34" height="34" decoding="async"><span>YUSUF GADELRAB</span></a><div class="site-nav__links" id="navLinks"><a href="/">Work</a><a href="/resume.html">Resume</a><a href="/guides.html">Guides</a><a href="/store.html">Store</a><a href="/apps.html">Apps</a><a href="/kxngsef.html">KXNG SEF</a><a href="/hire.html">Hire</a><a href="/media-kit.html">Media Kit</a></div><button class="menu-btn" id="menuBtn" aria-label="Menu" hidden>&#9776;</button></nav>
+
+<nav class="crumbs" aria-label="Breadcrumb">
+  <ol>
+    <li><a href="/">Home</a></li>
+    <li><a href="/apps.html">Apps &amp; projects</a></li>
+    <li><span aria-current="page">Free Trader&#x27;s Risk Toolkit</span></li>
+  </ol>
+</nav>
 
 <main id="main">
 
@@ -132,7 +157,7 @@ input,textarea,select{font-size:16px!important}</style>
     <p class="lead">Six calculators most traders skip, and most losing traders never learn: position sizing, R-multiples, expectancy, a Monte Carlo risk-of-ruin simulator, Kelly fraction, and break-even win rate. Every formula is shown in the open below its result — check the math yourself, don't take it on faith.</p>
     <div class="hero-cta">
       <a href="#position-sizer" class="btn btn-gold">Start with position sizing ↓</a>
-      <a href="/store.html#products" class="btn btn-ghost">Get the full course — $49</a>
+      <a href="/store.html#products" class="btn btn-ghost">Get the full course — $59</a>
     </div>
     <nav class="toc" aria-label="Jump to a calculator">
       <a href="#position-sizer">1. Position sizer</a>
@@ -149,7 +174,7 @@ input,textarea,select{font-size:16px!important}</style>
   <section class="section calc-section" id="position-sizer" aria-labelledby="ps-h">
     <div class="calc-head">
       <span class="eyebrow">01 · Sizing</span>
-      <h2 id="ps-h">Position sizer</h2>
+      <h2 id="ps-h">Position size calculator</h2>
       <p>How many shares (or contracts, treated as 1:1 units here) can you buy without risking more than a fixed percent of your account if your stop gets hit. Works for longs and shorts — the calculator infers direction from where you put the stop. Where that stop actually belongs is a separate question from the sizing math — see <a href="/guides/stop-loss-placement.html">the stop-loss placement guide</a> for structure-based stops versus arbitrary percentage stops.</p>
     </div>
     <div class="calc-grid">
@@ -185,6 +210,33 @@ input,textarea,select{font-size:16px!important}</style>
         <div id="psDirection" class="note"></div>
         <div id="psWarning"></div>
         <div class="formula" id="psFormula"></div>
+      </div>
+    </div>
+    <div class="explain">
+      <div>
+        <h3>What it computes</h3>
+        <p>The number of shares that caps your loss at a fixed percent of the account if the stop is filled at your stop price. It answers "how big", never "should I take this trade" — the entry and the stop are inputs you supply, and the math is only as good as they are.</p>
+      </div>
+      <div>
+        <h3>The formula</h3>
+        <div class="formula">risk_per_share = |entry − stop|
+dollar_risk    = equity × risk %
+position_size  = floor(dollar_risk / risk_per_share)
+notional       = position_size × entry</div>
+      </div>
+      <div>
+        <h3>Worked example</h3>
+        <div class="formula">equity $25,000 · risk 1% · entry $48.20 · stop $46.10
+
+risk_per_share = 48.20 − 46.10        = $2.10
+dollar_risk    = 25,000 × 0.01        = $250.00
+position_size  = floor(250 / 2.10)    = 119 shares
+actual risk    = 119 × 2.10           = $249.90
+notional       = 119 × 48.20          = $5,735.80  (22.9% of equity)</div>
+      </div>
+      <div class="x-warn">
+        <h3>When this number misleads you</h3>
+        <p>It assumes your stop fills at your stop. Gaps and halts break that assumption, and they break it in the direction that hurts. If the same stock opens at $43.00 after an earnings miss, those 119 shares lose $5.20 each — $618.80, or 2.48R, which is 2.5% of the account instead of the 1% you sized for. Illiquid names, pre-market fills and limit-down opens do the same thing. A position sizer sets an intention, not a guarantee, which is why notional concentration (22.9% here) still matters even when the dollar risk looks small.</p>
       </div>
     </div>
   </section>
@@ -230,13 +282,38 @@ long  (stop &lt; entry): profitable exit &gt; entry → positive R
 short (stop &gt; entry): profitable exit &lt; entry → positive R</div>
       </div>
     </div>
+    <div class="explain">
+      <div>
+        <h3>What it computes</h3>
+        <p>A trade's profit or loss expressed in units of the risk you took, so trades of different sizes, prices and account balances can sit in the same column of a journal. 1R is the entry-to-stop distance; a full stop-out is −1R by definition.</p>
+      </div>
+      <div>
+        <h3>The formula</h3>
+        <div class="formula">R = (exit − entry) / (entry − stop)
+
+1R (dollars) = position_size × |entry − stop|</div>
+      </div>
+      <div>
+        <h3>Worked example</h3>
+        <div class="formula">entry $48.20 · stop $46.10 · exit $51.75 · 119 shares
+
+R       = (51.75 − 48.20) / (48.20 − 46.10)
+        = 3.55 / 2.10                       = +1.69R
+dollars = 119 × 3.55                        = $422.45
+check   = 422.45 / 249.90 risked            = 1.69×</div>
+      </div>
+      <div class="x-warn">
+        <h3>When this number misleads you</h3>
+        <p>R normalises by <em>your</em> stop, so a sloppy stop flatters the record. Take the identical $3.55 move with the stop parked at $44.00 instead: the risk unit becomes $4.20, position size drops to 59 shares, and the same idea logs +0.85R and $209.45 — half the result for the same chart. Worse, every full stop-out is exactly −1R whether the stop sat 4% or 13% away, so a page of −1Rs will never tell you your stops are too wide. R compares outcomes; it does not audit stop placement, and it says nothing about how long capital was tied up.</p>
+      </div>
+    </div>
   </section>
 
   <!-- ============ 3. EXPECTANCY ============ -->
   <section class="section calc-section" id="expectancy" aria-labelledby="exp-h">
     <div class="calc-head">
       <span class="eyebrow">03 · The number that actually matters</span>
-      <h2 id="exp-h">Expectancy</h2>
+      <h2 id="exp-h">Expectancy calculator</h2>
       <p>Expectancy is your average result per trade, in R, given your actual win rate and the size of typical wins and losses. A positive expectancy is necessary for a system to work over time — it is not sufficient, and it says nothing about how bad a losing streak can feel along the way (that's what the simulator below is for).</p>
     </div>
     <div class="calc-grid">
@@ -258,13 +335,39 @@ short (stop &gt; entry): profitable exit &lt; entry → positive R</div>
         </div>
       </div>
     </div>
+    <div class="explain">
+      <div>
+        <h3>What it computes</h3>
+        <p>The average R you should expect per trade over a large sample, given a win rate and the typical size of a win and a loss. It is the one number that decides whether a system makes money at all — win rate on its own decides nothing.</p>
+      </div>
+      <div>
+        <h3>The formula</h3>
+        <div class="formula">E = (p × avg_win_R) − ((1 − p) × avg_loss_R)
+
+where p = win rate as a decimal, avg_loss_R entered as a positive number</div>
+      </div>
+      <div>
+        <h3>Worked example</h3>
+        <div class="formula">win rate 42% · avg win 2.10R · avg loss 1.00R
+
+E = 0.42 × 2.10 − 0.58 × 1.00
+  = 0.882 − 0.580                  = +0.302R per trade
+
+at $250 of risk per trade  ->  $75.50 expected per trade
+                           ->  $7,550 expected per 100 trades</div>
+      </div>
+      <div class="x-warn">
+        <h3>When this number misleads you</h3>
+        <p>Expectancy over 30 trades is noise, not an edge. With those same inputs a single trade has a standard deviation of 1.53R, so even if +0.302R is the true expectancy, the average of a random 30-trade sample lands anywhere between roughly −0.25R and +0.85R 95% of the time — an interval that comfortably contains zero. You need around 500 trades before that interval tightens to about [+0.17R, +0.44R]. It also assumes your average win and average loss are stable, which they are not: one outsized winner can carry the whole figure, and a regime change can reset it without warning.</p>
+      </div>
+    </div>
   </section>
 
   <!-- ============ 4. MONTE CARLO ============ -->
   <section class="section calc-section" id="monte-carlo" aria-labelledby="mc-h">
     <div class="calc-head">
       <span class="eyebrow">04 · The lesson expectancy alone won't teach you</span>
-      <h2 id="mc-h">Risk of ruin / drawdown simulator</h2>
+      <h2 id="mc-h">Risk of ruin calculator (Monte Carlo)</h2>
       <p>Positive expectancy over many trades still produces a wide spread of possible outcomes, because trade order and win/loss sequencing are random. This runs 2,000 independent simulated paths of your system and shows the actual distribution of outcomes and drawdowns you could experience, not just the average.</p>
     </div>
     <div class="calc-grid">
@@ -298,13 +401,45 @@ Max drawdown per path = max over time of (running peak − equity) / running pea
 Assumptions: independent draws (no streak correlation, no regime effects), fixed fractional risk (position size recalculated off current equity each trade, not a fixed dollar amount), no costs/slippage.</div>
       </div>
     </div>
+    <div class="explain">
+      <div>
+        <h3>What it computes</h3>
+        <p>2,000 independent random orderings of the same system, so you see the whole distribution of outcomes instead of the average one: median and 10th-percentile final equity, the typical worst drawdown, and how often a drawdown of your chosen size shows up at all.</p>
+      </div>
+      <div>
+        <h3>The formula</h3>
+        <div class="formula">equity(t) = equity(t−1) × (1 + risk% × R(t))
+
+R(t) = +avg_win   with probability p
+       −avg_loss  with probability 1 − p     (drawn independently)
+
+max_drawdown = max over t of (running_peak − equity) / running_peak</div>
+      </div>
+      <div>
+        <h3>Worked example</h3>
+        <div class="formula">win rate 42%  ->  probability of a loss = 0.58
+
+15 straight losses at 1% risk:  0.99^15 = 0.8601  ->  −14.0% equity
+the same streak at 3% risk:     0.97^15 = 0.6333  ->  −36.7% equity
+
+P(at least one 10-loss streak in 200 trades) = 29.9%
+P(at least one 15-loss streak in 200 trades) =  2.2%
+
+Tripling risk per trade did not triple the damage — it turned a
+recoverable dip into a hole that needs +58% just to get back to flat.</div>
+      </div>
+      <div class="x-warn">
+        <h3>When this number misleads you</h3>
+        <p>The simulation assumes trades are independent and identically distributed. Real drawdowns cluster: the same market condition that kills one trade kills the next four, correlated names count as one bet, and a broken thesis gets repeated before it gets abandoned. That makes real drawdowns arrive deeper and faster than this histogram implies. It also charges no commissions, no slippage and no gap overshoot, and it quietly assumes you keep executing identically at the bottom of a 30% drawdown — which is the assumption that actually fails first.</p>
+      </div>
+    </div>
   </section>
 
   <!-- ============ 5. KELLY ============ -->
   <section class="section calc-section" id="kelly" aria-labelledby="kelly-h">
     <div class="calc-head">
       <span class="eyebrow">05 · The theoretical ceiling — do not use it directly</span>
-      <h2 id="kelly-h">Kelly fraction</h2>
+      <h2 id="kelly-h">Kelly criterion calculator</h2>
       <p>The Kelly criterion gives the risk fraction that maximizes long-run geometric growth <em>if</em> your win rate and payoff ratio are known exactly. In real trading they're estimates, not known constants, and full Kelly produces brutal drawdowns even when the inputs are correct. Fractional Kelly (typically ¼–½ Kelly) is the practical standard for this reason.</p>
     </div>
     <div class="calc-grid">
@@ -329,13 +464,42 @@ f* = p − (1 − p) / b   =   (p·b − (1 − p)) / b</div>
         </div>
       </div>
     </div>
+    <div class="explain">
+      <div>
+        <h3>What it computes</h3>
+        <p>The fraction of equity to risk per trade that maximises the long-run <em>geometric</em> growth rate, assuming your win rate and payoff ratio are known exactly and stay constant. It is a mathematical ceiling, not a position-sizing recommendation.</p>
+      </div>
+      <div>
+        <h3>The formula</h3>
+        <div class="formula">b  = avg_win / avg_loss                    (payoff ratio)
+f* = p − (1 − p) / b   =   (p·b − (1 − p)) / b
+
+fractional Kelly = f* × 0.5 (half) or f* × 0.25 (quarter)</div>
+      </div>
+      <div>
+        <h3>Worked example</h3>
+        <div class="formula">win rate 42% · avg win 2.10R · avg loss 1.00R · equity $25,000
+
+b  = 2.10 / 1.00                     = 2.10
+f* = 0.42 − 0.58 / 2.10
+   = 0.42 − 0.2762                   = 0.1438  ->  14.4% per trade
+
+full Kelly    = 14.4% of $25,000     = $3,595 risked per trade
+quarter Kelly =  3.6% of $25,000     =   $899 risked per trade
+1% of equity  =                        $250 risked per trade</div>
+      </div>
+      <div class="x-warn">
+        <h3>When this number misleads you</h3>
+        <p>Kelly assumes you know your true win rate and payoff ratio, and you almost never do — you have an estimate from a small sample, and the estimate is usually flattering. Overstate that 42% win rate by five points and f* jumps from 14.4% to 21.8%, a 51% larger bet placed on a mistake. Over-betting past f* lowers your growth rate <em>and</em> raises your risk of ruin at the same time, so the error is not symmetric. Even with perfect inputs, full Kelly treats a 50%-plus drawdown as an ordinary event, which is why a quarter to a half of Kelly is the working standard and 1–2% of equity per trade is where most surviving retail traders actually sit.</p>
+      </div>
+    </div>
   </section>
 
   <!-- ============ 6. BREAK-EVEN WIN RATE ============ -->
   <section class="section calc-section" id="breakeven" aria-labelledby="be-h">
     <div class="calc-head">
       <span class="eyebrow">06 · The bar you need to clear</span>
-      <h2 id="be-h">Break-even win rate</h2>
+      <h2 id="be-h">Break-even win rate calculator</h2>
       <p>Given a reward:risk ratio, this is the win rate at which expectancy is exactly zero — the minimum you need to clear before a system is worth trading at all.</p>
     </div>
     <div class="calc-grid">
@@ -349,6 +513,35 @@ f* = p − (1 − p) / b   =   (p·b − (1 − p)) / b</div>
         </div>
         <div class="formula">break-even win rate = 1 / (1 + reward:risk)
 e.g. at a 2:1 reward:risk, you only need to win 33.3% of the time to break even.</div>
+      </div>
+    </div>
+    <div class="explain">
+      <div>
+        <h3>What it computes</h3>
+        <p>The win rate at which expectancy is exactly zero for a given reward-to-risk ratio — the bar a system has to clear before it is worth trading at all. Anything below it loses money no matter how good the trades feel.</p>
+      </div>
+      <div>
+        <h3>The formula</h3>
+        <div class="formula">break_even_win_rate = 1 / (1 + reward:risk)
+
+derivation: set p × RR − (1 − p) × 1 = 0  ->  p = 1 / (1 + RR)</div>
+      </div>
+      <div>
+        <h3>Worked example</h3>
+        <div class="formula">reward:risk 2.10 : 1  (target $52.61 from entry $48.20, stop $46.10)
+
+p = 1 / (1 + 2.10) = 1 / 3.10        = 0.3226  ->  32.3%
+
+with costs of $0.07 per share round trip on a $2.10 risk unit:
+cost in R   = 0.07 / 2.10                     = 0.033R
+net win     = 2.10 − 0.033                    = 2.067R
+net loss    = 1.00 + 0.033                    = 1.033R
+net R:R     = 2.067 / 1.033                   = 2.00
+p           = 1 / 3.00                        = 33.3%</div>
+      </div>
+      <div class="x-warn">
+        <h3>When this number misleads you</h3>
+        <p>The clean formula is gross of everything that actually happens. Commissions, a penny or two of slippage on each side, and financing on held positions all shift the bar upward — in the example above a routine $0.07 per share permanently adds a full point of required win rate before you earn a dollar. Partial fills are worse: a target that fills half your size still books a full loss when it fails. And it assumes a single fixed reward-to-risk, whereas real exits scale out, trail, and get cut early, so your realised ratio is almost always lower than the one you planned.</p>
       </div>
     </div>
   </section>
@@ -371,12 +564,20 @@ e.g. at a 2:1 reward:risk, you only need to win 33.3% of the time to break even.
       <span class="eyebrow">Go deeper</span>
       <h2>These six calculators are chapter 4 of the course</h2>
       <p>The Swing Trading Operating System walks through position sizing and expectancy math, the anchored-VWAP setup above (including how to stress-test it yourself), chart-pattern and options-overlay modules, and the weekly routine that ties it together — 8 illustrated modules, no signals or return promises, just the process.</p>
-      <a href="/store.html#products" class="btn btn-gold">See the course — $49</a>
+      <a href="/store.html#products" class="btn btn-gold">See the course — $59</a>
     </div>
   </section>
 
-  <p class="section disclaimer">Educational content only — nothing on this page is financial advice, and no calculator here predicts or promises any return. Trading involves substantial risk of loss, including total loss of principal. Past or backtested performance, including the AVWAP example above, does not indicate future results. Verify every formula independently before relying on it with real capital.</p>
-
+  <section class="section" id="risk-disclosure" aria-labelledby="rd-h">
+    <div class="disclaimer-box">
+      <span class="eyebrow">Risk disclosure</span>
+      <h2 id="rd-h">Trading involves substantial risk of loss</h2>
+      <p>Educational content only — nothing on this page is financial advice, a recommendation, or a solicitation to trade, and no calculator here predicts or promises any return. Trading involves substantial risk of loss, including total loss of principal, and most retail traders lose money.</p>
+      <p>Risk math does not remove risk. A stop can gap through your price, a position can be halted, and a realised loss can exceed the figure any calculator on this page shows. The simulator assumes trades are independent; real drawdowns cluster and arrive worse. Past or backtested performance, including the AVWAP example above, does not indicate future results.</p>
+      <p>Verify every formula independently before relying on it with real capital, and never risk money you cannot afford to lose.</p>
+      <p class="note">Legal: <a href="/refunds.html">Refunds</a> · <a href="/terms.html">Terms</a> · <a href="/privacy.html">Privacy</a></p>
+    </div>
+  </section>
 
   <!-- geo:faq-visible — mirrors the FAQPage structured data above -->
   <hr class="divider">
@@ -408,6 +609,14 @@ e.g. at a 2:1 reward:risk, you only need to win 33.3% of the time to break even.
         <p>Risk of ruin is the probability that a run of losses drains your account to an unrecoverable level, given your win rate, reward-to-risk, and risk per trade. The toolkit estimates it with a Monte Carlo simulation so you can see how much a 1% risk per trade differs from a 3% risk per trade.</p>
       </article>
       <article class="card geo-qa">
+        <h3>Is the Kelly criterion safe for retail traders?</h3>
+        <p>Not at full size. Kelly assumes you know your true win rate and payoff ratio exactly, and a retail trader is estimating both from a small sample that usually flatters the strategy. At a 42% win rate with 2.10R wins and 1R losses, full Kelly is 14.4% of equity per trade — $3,595 on a $25,000 account, against $250 at a conventional 1% risk. Overstating that win rate by five points pushes full Kelly to 21.8%, a 51% larger bet placed on a mistake. Even with perfect inputs, full Kelly treats a drawdown over 50% as an ordinary event, so a quarter to a half of Kelly is the working standard and 1-2% of equity per trade is where most surviving retail traders sit.</p>
+      </article>
+      <article class="card geo-qa">
+        <h3>How many trades do I need before my expectancy means anything?</h3>
+        <p>Hundreds, not dozens. At a 42% win rate with 2.10R wins and 1R losses, a single trade has a standard deviation of 1.53R, so even if the true expectancy is +0.302R, the average of a random 30-trade sample lands anywhere between roughly -0.25R and +0.85R 95% of the time — an interval that contains zero. My own reference point is an anchored-VWAP setup tested over 4,933 trades: it produced +0.117R over 4,933 trades with a 95% confidence interval of [+0.057R, +0.174R], but a risk-matched random entry already captured +0.086R of that, leaving the signal's own contribution at +0.030R with a confidence interval crossing zero. That is not a validated edge — and it took nearly 5,000 trades to establish that.</p>
+      </article>
+      <article class="card geo-qa">
         <h3>Are these calculators free, and is my data private?</h3>
         <p>Yes. All six calculators are free with no signup. The page is static and runs entirely in your browser — nothing is sent to a server and nothing is stored off your device. They are educational tools, not financial advice.</p>
       </article>
@@ -419,6 +628,7 @@ e.g. at a 2:1 reward:risk, you only need to win 33.3% of the time to break even.
 <footer class="site-footer">
   <div>Yusuf Gadelrab · San Jose, CA · Educational tools only, not financial advice</div>
   <div class="site-footer__links">
+    <a href="/faq.html">FAQ</a>
     <a href="/writing.html">Writing</a>
     <a href="/dispatch.html">Dispatch</a>
     <a href="/eh.html">eh</a>
@@ -446,6 +656,7 @@ e.g. at a 2:1 reward:risk, you only need to win 33.3% of the time to break even.
     <a href="/legal.html">Legal</a>
     <a href="/privacy.html">Privacy</a>
     <a href="/terms.html">Terms</a>
+    <a href="/refunds.html">Refunds</a>
   </div>
 </footer>
 

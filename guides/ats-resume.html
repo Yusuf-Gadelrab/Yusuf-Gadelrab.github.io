@@ -50,8 +50,8 @@
     color:var(--muted);font-size:var(--t-small);margin:0 0 var(--s5)}
   .callout--warn{border-color:var(--gold-2)}
   .faq-card{padding:var(--s5)}
-  .faq-card h3{font-size:var(--t-h3);margin:0}
-  .faq-card p{color:var(--muted);font-size:var(--t-small);margin:var(--s3) 0 0}
+  .faq-card h3{font-size:var(--t-h3);margin:0;line-height:1.3}
+  .faq-card p{color:var(--muted);font-size:var(--t-small);line-height:1.65;margin:var(--s3) 0 0}
 </style>
 </head>
 <body class="pro">
@@ -59,7 +59,7 @@
 <a class="skip-link" href="#main">Skip to content</a>
 
 <nav class="site-nav">
-  <a class="site-nav__brand" href="/"><img class="site-nav__lion" src="/img/brand/lion-mark.svg" alt="" width="34" height="34"><span>YUSUF GADELRAB</span></a>
+  <a class="site-nav__brand" href="/"><img class="site-nav__lion" src="/img/brand/lion-mark.svg" alt="" width="34" height="34" decoding="async"><span>YUSUF GADELRAB</span></a>
   <div class="site-nav__links">
     <a href="/">Work</a>
     <a href="/guides.html">Guides</a>
@@ -153,12 +153,12 @@ Better: Built an NLP scoring pipeline over 50+ market sources per day,
       <h2>Quick answers</h2>
     </div>
     <div class="grid" style="margin-top:var(--s6)">
-      <article class="card faq-card"><h3>What does an ATS do?</h3><p>Parses your resume into database fields recruiters search. The danger is a scrambled parse, not a secret rejection score.</p></article>
-      <article class="card faq-card"><h3>Safest format?</h3><p>Single column, standard headings, real text, consistent dates, no tables or text boxes for layout.</p></article>
-      <article class="card faq-card"><h3>Do they auto-reject?</h3><p>Mostly no — they filter and rank. Applications vanish because the parse failed or the search terms were missing.</p></article>
-      <article class="card faq-card"><h3>Copy keywords?</h3><p>Use the posting&#x27;s exact words for skills you actually have, inside real bullets. Never white-text stuffing — it is detected and disqualifying.</p></article>
-      <article class="card faq-card"><h3>Is PDF bad?</h3><p>Text-based PDFs are fine. Design-tool exports with outlined type and scans are not, because there is no text to extract.</p></article>
-      <article class="card faq-card"><h3>One page?</h3><p>For students, yes — because it forces editing. Projects with links belong on it and count as experience.</p></article>
+      <article class="card faq-card"><h3>What does an ATS actually do to a resume?</h3><p>An applicant tracking system parses your resume into structured database fields — name, contact details, employers, titles, dates, education, skills — and makes them searchable for recruiters. The real risk is a bad parse that files your information incorrectly, not a hidden score that rejects you.</p></article>
+      <article class="card faq-card"><h3>What resume format is safest for an ATS?</h3><p>A single-column layout with standard section headings, real selectable text, consistent date formats, standard fonts, and no tables or text boxes used for layout. A text-based PDF or DOCX is fine; image-based exports are not.</p></article>
+      <article class="card faq-card"><h3>Do ATS systems reject resumes automatically?</h3><p>Generally no. Most systems filter and rank rather than auto-reject, and recruiters do the rejecting. The common cause of an application vanishing is that the parse failed or the resume did not contain the terms the recruiter searched for.</p></article>
+      <article class="card faq-card"><h3>Should you copy keywords from the job description?</h3><p>Use the posting&#x27;s exact terminology for skills you genuinely have, placed in the bullets describing where you used them. Do not list skills you cannot defend in an interview, and never hide keywords in white text — it is detected and it is disqualifying.</p></article>
+      <article class="card faq-card"><h3>Is a PDF bad for ATS?</h3><p>Text-based PDFs parse fine in modern systems. The problem is PDFs exported from design tools with outlined type, or scanned images, because there is no extractable text at all.</p></article>
+      <article class="card faq-card"><h3>Should a student resume be one page?</h3><p>One page is good advice for students because it forces ruthless editing, not because a parser counts pages. Projects with links belong on it and count as experience.</p></article>
     </div>
   </section>
 
@@ -171,10 +171,10 @@ Better: Built an NLP scoring pipeline over 50+ market sources per day,
       <h2 id="related-h">Related guides</h2>
     </div>
     <div class="related__grid">
+      <a class="related__item" href="/guides/quant-internship-timeline.html"><strong>Three firm types, three calendars, and a lot of wrong dates</strong><span>Market makers, banks and funds run on three different calendars. Most deadlines people repeat belong to a different…</span></a>
+      <a class="related__item" href="/guides/f1-cpt-one-year-rule.html"><strong>One full academic year, full-time, in F-1 status</strong><span>The one-academic-year requirement, what full-time enrollment actually means, and the mistakes that quietly end…</span></a>
       <a class="related__item" href="/guides/linkedin-profile-recruiters.html"><strong>Write the profile for how recruiters actually search</strong><span>How recruiters actually search, and what the first two lines have to do.</span></a>
-      <a class="related__item" href="/guides/cpt-vs-opt.html"><strong>CPT vs OPT for F-1 students</strong><span>Who authorizes what, the one-academic-year rule, the 12-month limits, and the STEM extension.</span></a>
-      <a class="related__item" href="/guides/coding-interview-patterns.html"><strong>Track which pattern you fail, not how many problems you did</strong><span>Ten recurring patterns, and why tracking failures by pattern beats grinding problem counts.</span></a>
-      <a class="related__item" href="/guides/swe-internship-international-student.html"><strong>The internship search, run as a system</strong><span>The timeline, the sponsorship question, and how work authorization actually fits an internship.</span></a>
+      <a class="related__item" href="/guides/verify-visa-sponsorship-internships.html"><strong>Verify sponsorship yourself. Every list is already wrong.</strong><span>Stop trusting sponsorship lists. Verify it yourself from req language, public disclosure data, and one written…</span></a>
     </div>
     <p class="related__more">Every guide is indexed on <a href="/guides.html">the guides hub</a>. Or put it to work in <a href="/hire.html">what I am open to for Summer 2027</a> and <a href="/everything.html">everything else that is live and free</a>.</p>
   </section>

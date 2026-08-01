@@ -50,8 +50,8 @@
     color:var(--muted);font-size:var(--t-small);margin:0 0 var(--s5)}
   .callout--warn{border-color:var(--gold-2)}
   .faq-card{padding:var(--s5)}
-  .faq-card h3{font-size:var(--t-h3);margin:0}
-  .faq-card p{color:var(--muted);font-size:var(--t-small);margin:var(--s3) 0 0}
+  .faq-card h3{font-size:var(--t-h3);margin:0;line-height:1.3}
+  .faq-card p{color:var(--muted);font-size:var(--t-small);line-height:1.65;margin:var(--s3) 0 0}
 </style>
 </head>
 <body class="pro">
@@ -59,7 +59,7 @@
 <a class="skip-link" href="#main">Skip to content</a>
 
 <nav class="site-nav">
-  <a class="site-nav__brand" href="/"><img class="site-nav__lion" src="/img/brand/lion-mark.svg" alt="" width="34" height="34"><span>YUSUF GADELRAB</span></a>
+  <a class="site-nav__brand" href="/"><img class="site-nav__lion" src="/img/brand/lion-mark.svg" alt="" width="34" height="34" decoding="async"><span>YUSUF GADELRAB</span></a>
   <div class="site-nav__links">
     <a href="/">Work</a>
     <a href="/guides.html">Guides</a>
@@ -147,12 +147,12 @@
       <h2>Quick answers</h2>
     </div>
     <div class="grid" style="margin-top:var(--s6)">
-      <article class="card faq-card"><h3>What is lookahead bias?</h3><p>Using information the market had not published yet — usually filling at the same close that generated the signal. One index shift can invent an edge that never existed.</p></article>
-      <article class="card faq-card"><h3>What is walk-forward testing?</h3><p>Fit on a training window, test on the next block, slide forward, repeat. Every reported trade came from parameters chosen before that trade existed.</p></article>
-      <article class="card faq-card"><h3>Why do in-sample results look great?</h3><p>Because the parameters were fitted to that data. It is curve fitting with extra steps — useful for debugging, useless as evidence.</p></article>
-      <article class="card faq-card"><h3>What is survivorship bias?</h3><p>Testing on a universe of survivors only. Delisted and bankrupt names are missing, so long strategies look better than they were.</p></article>
-      <article class="card faq-card"><h3>How many trades are enough?</h3><p>100+ out-of-sample trades before expectancy means much. Under 30 you are measuring luck with a decimal point.</p></article>
-      <article class="card faq-card"><h3>What gets left out of backtests?</h3><p>Slippage, commissions, financing, partial fills, borrow availability — and your own willingness to actually take every signal.</p></article>
+      <article class="card faq-card"><h3>What is lookahead bias in backtesting?</h3><p>Lookahead bias is using data at a point in time that was not actually available then — most commonly computing a signal from a bar&#x27;s close and filling the order at that same close, when the fill could only have happened on the next bar. It also appears when indicators are computed over the whole dataset before splitting, or when restated data is applied to dates before the restatement existed.</p></article>
+      <article class="card faq-card"><h3>What is walk-forward testing?</h3><p>Walk-forward testing fits parameters on a training window, tests on the block of data immediately after it, then slides both windows forward and repeats. The reported performance is the concatenation of out-of-sample blocks, so every trade came from parameters chosen without seeing that trade.</p></article>
+      <article class="card faq-card"><h3>Why do in-sample backtests look so good?</h3><p>Because the parameters were chosen to fit that exact data. Any strategy with enough tunable knobs can be made to fit history perfectly, which says nothing about the future. In-sample results should be treated as a debugging check, not evidence.</p></article>
+      <article class="card faq-card"><h3>What is survivorship bias?</h3><p>Survivorship bias is testing against a universe that only includes securities still listed today, so companies that were delisted, acquired, or went bankrupt are silently missing. Long-biased strategies look better than they were because the worst outcomes were deleted from the sample.</p></article>
+      <article class="card faq-card"><h3>How many trades does a backtest need?</h3><p>At least 100 out-of-sample trades before expectancy is worth trusting, and more if the strategy is rare-signal or highly parameterised. Under 30 trades the result is dominated by luck.</p></article>
+      <article class="card faq-card"><h3>What costs should a backtest include?</h3><p>Slippage, commissions, financing, partial fills, and short-borrow availability at minimum. A backtest that assumes perfect fills at mid price overstates every strategy, and overstates high-frequency ones enormously.</p></article>
     </div>
   </section>
 
@@ -167,8 +167,8 @@
     <div class="related__grid">
       <a class="related__item" href="/guides/backtest-overfitting.html"><strong>How to tell whether your edge is fake</strong><span>The multiple-testing arithmetic, parameter plateaus, deflated Sharpe, and the random-entry benchmark almost nobody…</span></a>
       <a class="related__item" href="/guides/reading-a-backtest-report.html"><strong>Reading a backtest report honestly</strong><span>Win rate, profit factor, Sharpe, drawdown, CAGR. What each number hides, with worked error bars and cost drag.</span></a>
+      <a class="related__item" href="/guides/quant-internship-timeline.html"><strong>Three firm types, three calendars, and a lot of wrong dates</strong><span>Market makers, banks and funds run on three different calendars. Most deadlines people repeat belong to a different…</span></a>
       <a class="related__item" href="/guides/undergraduate-research.html"><strong>How undergraduates actually get into a lab</strong><span>Finding a lab, the email that gets a reply, and why publishing as an undergrad compounds.</span></a>
-      <a class="related__item" href="/guides/anchored-vwap.html"><strong>Anchored VWAP, and the one setup that survived testing</strong><span>Where to anchor, what a reclaim means, and the only setup that survived my own walk-forward test.</span></a>
     </div>
     <p class="related__more">Every guide is indexed on <a href="/guides.html">the guides hub</a>. Or put it to work in <a href="/swing-screener.html">the screener and its no-lookahead backtest harness</a> and <a href="/hire.html">what I am open to for Summer 2027</a>.</p>
   </section>

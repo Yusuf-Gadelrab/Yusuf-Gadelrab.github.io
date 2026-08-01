@@ -2,6 +2,8 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8" />
+<meta name="referrer" content="strict-origin-when-cross-origin">
+<meta http-equiv="Content-Security-Policy" content="object-src 'none'; base-uri 'self'">
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <!-- tech:seo — managed block (SEO / social / structured data / perf / PWA) -->
 <link rel="preload" href="/css/site.css" as="style">
@@ -39,16 +41,7 @@
 <meta name="keywords" content="freight broker automation, freight broker software, AI for freight brokers, AR automation, billing automation, POD request automation, invoice dispute software, back office automation, logistics email automation, local AI freight software">
 <meta name="robots" content="index,follow">
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"SoftwareApplication","name":"FreightDesk AI","applicationCategory":"BusinessApplication","operatingSystem":"macOS, Windows","url":"https://yusuf-gadelrab.github.io/freightdesk.html","description":"AI back-office clerk for small freight brokerages: reads the billing/AR inbox, classifies every email (POD requests, invoice disputes, rate reconciliation, W9 chasing, past-due follow-up) and drafts the correct reply on a local AI model — zero API fees, data never leaves the building.","author":{"@id":"https://yusuf-gadelrab.github.io/#person"},"offers":{"@type":"Offer","availability":"https://schema.org/LimitedAvailability","price":"999","priceCurrency":"USD","description":"$999 one-time setup + $249/mo, founding-client pilot pricing"},"slogan":"We automate what you want — then we automate what you need."}</script>
-<script type="application/ld+json">
-{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[
-{"@type":"Question","name":"What does FreightDesk AI automate for freight brokers?","acceptedAnswer":{"@type":"Answer","text":"FreightDesk covers the full 18-point workload of a small-freight financial controller: POD requests and verification, invoice disputes, rate reconciliation, advance reconciliation, W9 tracking, 30-day past-due follow-up, release-list generation, AR aging, and automatic reply drafting for every incoming billing/AR email."}},
-{"@type":"Question","name":"Does FreightDesk AI send my data to the cloud?","acceptedAnswer":{"@type":"Answer","text":"No. FreightDesk runs on a local AI model on your own machine. Rates, margins, customer lists, and disputes never leave your building, and there are no per-message API fees."}},
-{"@type":"Question","name":"Is FreightDesk AI available now?","acceptedAnswer":{"@type":"Answer","text":"FreightDesk AI is taking founding-client pilots now: $999 one-time setup plus $249/mo, with a 3-day install and a 14-day setup-fee-back guarantee. It was built and validated against a real freight brokerage's back-office email."}},
-{"@type":"Question","name":"Will FreightDesk AI send emails without approval?","acceptedAnswer":{"@type":"Answer","text":"Not unless you enable it. Every draft starts in one-click-approval mode. Once you trust a category, such as routine POD replies, you can flip that category to auto-send — configured per workflow, not all-or-nothing."}},
-{"@type":"Question","name":"What is needed to install FreightDesk AI?","acceptedAnswer":{"@type":"Answer","text":"A computer in your office and access to the billing/AR inbox. Install takes 3 days — connected, tuned to your customers' document rules, and drafting live replies by Friday."}},
-{"@type":"Question","name":"Can I cancel the FreightDesk AI monthly plan?","acceptedAnswer":{"@type":"Answer","text":"Yes, any time. The install stays yours — the local model and workflows keep running on your machine; cancelling only stops updates and tuning support."}}
-]}
-</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"What does FreightDesk AI automate?","acceptedAnswer":{"@type":"Answer","text":"FreightDesk covers the full 18-point workload of a small-freight financial controller: POD requests and verification, invoice disputes, rate reconciliation, advance reconciliation, W9 tracking, 30-day past-due follow-up, release-list generation, AR aging, and reply drafting for every incoming billing/AR email."}},{"@type":"Question","name":"Will FreightDesk AI send emails without my approval?","acceptedAnswer":{"@type":"Answer","text":"Not unless you enable it. Every draft starts in one-click-approval mode — you read it, you send it. Once you trust a category, such as routine POD replies, you can flip that category to auto-send. You decide per workflow, never all-or-nothing."}},{"@type":"Question","name":"Does my data go to the cloud?","acceptedAnswer":{"@type":"Answer","text":"No. FreightDesk runs on a local AI model on your own machine. Rates, margins, customer lists, and disputes never leave your building, and there are no per-message API fees."}},{"@type":"Question","name":"What do I need to install it?","acceptedAnswer":{"@type":"Answer","text":"A computer in your office and access to the billing/AR inbox. Install takes 3 days — connected, tuned to your customers' document rules, and drafting live replies by Friday."}},{"@type":"Question","name":"What if it doesn't work on my inbox — is the $999 wasted?","acceptedAnswer":{"@type":"Answer","text":"If FreightDesk isn't drafting real replies on your real inbox by day 14, the $999 setup fee comes back in full — no questions, no forms."}},{"@type":"Question","name":"Can I cancel the monthly plan?","acceptedAnswer":{"@type":"Answer","text":"Yes, any time. The install stays yours — the local model and workflows keep running on your machine; cancelling only stops updates and tuning support."}}]}</script>
 <link rel="stylesheet" href="/css/site.css">
 <style>
   /* Page-specific only. Tokens, reset, type scale, buttons, cards, badges,
@@ -97,6 +90,13 @@
   .offer-note{font-size:var(--t-micro);color:var(--muted);flex-basis:100%}
 
   .hero-cta{display:flex;flex-wrap:wrap;gap:var(--s3);margin-top:var(--s5)}
+  /* One primary action per view. Secondary routes are quiet text links so the
+     gold button is never competing with two other gold-weight things. */
+  .alt-links{display:flex;flex-wrap:wrap;gap:var(--s2) var(--s5);margin-top:var(--s3);
+    font-size:var(--t-small);color:var(--muted)}
+  .alt-links a{color:var(--ink);text-decoration:underline;
+    text-decoration-color:var(--line);text-underline-offset:3px}
+  .alt-links a:hover{color:var(--gold-2)}
   .btn-gold{position:relative;overflow:hidden}
   .btn-gold::after{content:"";position:absolute;top:0;left:-80%;width:45%;height:100%;
     background:linear-gradient(105deg,transparent,rgba(255,255,255,.55),transparent);
@@ -341,11 +341,14 @@
     background:rgba(255,255,255,.02)}
   .tl-step.done{color:var(--bg);background:linear-gradient(135deg,var(--gold),var(--gold-2));border-color:transparent}
   .tl-arrow{color:var(--gold);font-size:13px}
-  .pilot-form{display:grid;grid-template-columns:repeat(3,1fr);gap:var(--s2);max-width:760px;
-    margin:0 auto;text-align:left}
+  .pilot-form{display:flex;flex-wrap:wrap;gap:var(--s3);max-width:460px;
+    margin:0 auto;text-align:left;align-items:flex-end}
+  .pf-field{flex:1 1 220px;display:flex;flex-direction:column;gap:6px}
+  .pf-field label{font-family:var(--display);font-size:var(--t-micro);color:var(--muted);
+    letter-spacing:1.5px;text-transform:uppercase}
   .pilot-form input{font-size:16px}
   .pilot-form input::placeholder{color:var(--faint)}
-  .pilot-form .btn{grid-column:1/-1;justify-content:center;margin-top:2px}
+  .pilot-form .btn{flex:0 0 auto;justify-content:center}
   p.form-sent{display:none;margin:var(--s3) auto 0;font-size:13.5px;color:var(--gold-2);max-width:none}
   p.form-sent b{color:var(--gold-2)}
   .mcta{display:none}
@@ -367,7 +370,8 @@
     .mcta small{font-size:11px;letter-spacing:.4px;opacity:.82}
     body{padding-bottom:78px}
     .roi-grid{grid-template-columns:1fr}
-    .pilot-form{grid-template-columns:1fr}
+    .pilot-form{flex-direction:column;align-items:stretch}
+    .pilot-form .btn{width:100%}
     .hero-grid{grid-template-columns:1fr}
     .g2,.g3,.edge-grid,.price-wrap{grid-template-columns:1fr}
     .jobrow{grid-template-columns:1fr;gap:var(--s4)}
@@ -383,7 +387,7 @@
 <style>/* iOS Safari zooms the page when a focused field is under 16px */
 input,select,textarea{font-size:16px}</style>
 <!-- geo:entity — canonical Person node, one entity across every page -->
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"Person","@id":"https://yusuf-gadelrab.github.io/#person","name":"Yusuf Gadelrab","url":"https://yusuf-gadelrab.github.io/"}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebPage","@id":"https://yusuf-gadelrab.github.io/freightdesk.html#webpage","url":"https://yusuf-gadelrab.github.io/freightdesk.html","inLanguage":"en","isPartOf":{"@id":"https://yusuf-gadelrab.github.io/#website"},"about":{"@id":"https://yusuf-gadelrab.github.io/#person"},"publisher":{"@id":"https://yusuf-gadelrab.github.io/#person"}}</script>
 <link rel="alternate" type="text/plain" href="https://yusuf-gadelrab.github.io/llms-full.txt" title="Plain-text profile for language models">
 </head>
 <body class="pro">
@@ -411,6 +415,13 @@ input,select,textarea{font-size:16px}</style>
 <a class="skip-link" href="#main">Skip to content</a>
 <nav class="site-nav" id="nav"><a class="site-nav__brand" href="/"><img class="site-nav__lion" src="/img/brand/lion-mark.svg" alt="" width="34" height="34" decoding="async"><span>YUSUF GADELRAB</span></a><div class="site-nav__links" id="navLinks"><a href="/">Work</a><a href="/resume.html">Resume</a><a href="/guides.html">Guides</a><a href="/store.html">Store</a><a href="/apps.html">Apps</a><a href="/kxngsef.html">KXNG SEF</a><a href="/hire.html">Hire</a><a href="/media-kit.html">Media Kit</a></div><button class="menu-btn" id="menuBtn" aria-label="Menu" hidden>&#9776;</button></nav>
 
+<nav class="crumbs" aria-label="Breadcrumb">
+  <ol>
+    <li><a href="/">Home</a></li>
+    <li><span aria-current="page">FreightDesk AI</span></li>
+  </ol>
+</nav>
+
 <main id="main">
 <span id="top"></span>
 
@@ -421,7 +432,7 @@ input,select,textarea{font-size:16px}</style>
         <span class="badge reveal"><span class="pulse"></span>We automate what you want — then we automate what you need</span>
         <h1 class="reveal d1">Get paid faster — <span class="shimmer">without hiring a back office.</span></h1>
         <p class="lead reveal d1" style="font-size:13px;letter-spacing:.4px;color:var(--gold-2);margin-bottom:10px">Case study from a real brokerage · now taking founding-client pilots · launch pricing ends August 15</p>
-        <p class="lead reveal d2">FreightDesk AI is an <b>AI back-office clerk for small freight brokerages</b>. It plugs into your billing / AR / dispatch inbox, reads every incoming email, classifies it — POD request, invoice dispute, rate reconciliation, advance question, W9 chase, past-due nudge — and <b>drafts the correct reply with the right numbers and documents attached</b>, then sends it or holds it for one-click approval.</p>
+        <p class="lead reveal d2">FreightDesk AI is an <b>AI back-office clerk for small freight brokerages — roughly 3–30 people</b>. It plugs into your billing / AR / dispatch inbox, reads every incoming email, classifies it — POD request, invoice dispute, rate reconciliation, advance question, W9 chase, past-due nudge — and <b>drafts the correct reply with the right numbers and documents attached</b>, then sends it or holds it for one-click approval.</p>
         <p class="lead reveal d2">It covers the full 18-point workload of a small-freight financial controller, and it runs on a <b>local AI on your own machine</b> — no API fees, no per-seat SaaS, and your data never leaves your building.</p>
 
         <div class="chiprow reveal d2">
@@ -439,9 +450,9 @@ input,select,textarea{font-size:16px}</style>
 
         <div class="hero-cta reveal d3">
           <a href="#book" class="btn btn-gold">Book my pilot walkthrough →</a>
-          <a href="#covers" class="btn btn-ghost">See exactly what it automates ↓</a>
         </div>
         <p class="click-trigger reveal d3">15 minutes · watch it draft a real reply from your inbox · no commitment</p>
+        <p class="alt-links reveal d3"><a href="#covers">See exactly what it automates</a></p>
       </div>
 
       <div class="mailwrap reveal d2">
@@ -846,9 +857,9 @@ input,select,textarea{font-size:16px}</style>
       <h3>What's your inbox costing you?</h3>
       <p class="roi-sub">Rough math, your numbers — adjust the three fields.</p>
       <div class="roi-grid">
-        <label>AR emails / day<input id="roiEmails" type="number" inputmode="numeric" min="1" max="500" value="40"></label>
-        <label>Minutes per email<input id="roiMins" type="number" inputmode="numeric" min="1" max="30" value="4"></label>
-        <label>Clerk cost $ / hour<input id="roiRate" type="number" inputmode="numeric" min="10" max="80" value="22"></label>
+        <label for="roiEmails">AR emails / day<input id="roiEmails" type="number" inputmode="numeric" min="1" max="500" value="40"></label>
+        <label for="roiMins">Minutes per email<input id="roiMins" type="number" inputmode="numeric" min="1" max="30" value="4"></label>
+        <label for="roiRate">Clerk cost $ / hour<input id="roiRate" type="number" inputmode="numeric" min="10" max="80" value="22"></label>
       </div>
       <div class="roi-out" id="roiOut">Estimate only: ~<b>$1,291</b>/mo of clerk time on repeat emails, a ~<b>$1,042</b>/mo difference against FreightDesk's $249. Not a projection of your results.</div>
       <p class="roi-note">Estimate: emails × minutes × 22 working days ÷ 60 × hourly cost, minus the $249/mo. Your walkthrough runs the real numbers.</p>
@@ -865,7 +876,7 @@ input,select,textarea{font-size:16px}</style>
       <div class="card reveal d1">
         <span class="ic">⏱</span>
         <h3>The hours you get back</h3>
-        <p>Roughly 60% of a small-freight AR day is the same emails on repeat — PODs, past-dues, W9s. FreightDesk drafts them all, so the goal is to hand those hours back to collections calls and disputes that actually need a human. Actual time recovered varies by brokerage and has not been measured across clients.</p>
+        <p>Roughly 60% of a small-freight AR day is the same emails on repeat — PODs, past-dues, W9s. <b>FreightDesk drafts them all, so the goal is to hand those hours back to collections calls and disputes that actually need a human.</b> Actual time recovered varies by brokerage and has not been measured across clients.</p>
       </div>
       <div class="card reveal d2">
         <span class="ic">📈</span>
@@ -928,9 +939,8 @@ input,select,textarea{font-size:16px}</style>
         <blockquote>My own note on how this was built: I built and tested it inside a <b>real freight brokerage</b>, against the live inbox of a working financial controller. Every one of the 18 workflows was exercised on real back-office email before this page existed. This is my description of my own work, not a customer review.</blockquote>
         <p class="cred-sub">Client confidentiality is part of the product — which is why you'll never see a client named here, and yours never will be either.</p>
         <p class="cred-sub">Checkable, not claimed: co-author, SIGCSE TS 2026 (ACM) — <a href="https://doi.org/10.1145/3770761.3777339" target="_blank" rel="noreferrer" class="gold">DOI: 10.1145/3770761.3777339</a> · 77 automated tests on this pipeline.</p>
-        <div class="hero-cta" style="margin-top:18px">
-          <a href="/hwyhaul.html" class="btn btn-ghost">📄 Read the freight-tech case study →</a>
-        </div>
+        <p class="alt-links" style="margin-top:18px"><a href="/hwyhaul.html">Read the freight-tech case study</a></p>
+        <p class="cred-sub" style="margin-top:14px">The arithmetic this runs on is public: <a href="/guides/freight-broker-margin.html" class="gold">broker margin and all-in rate per mile</a>, <a href="/guides/freight-back-office.html" class="gold">what the back office actually does all day</a>, <a href="/guides/detention-demurrage-accessorials.html" class="gold">when detention and accessorials get paid</a>, and <a href="/guides/carrier-vetting-checklist.html" class="gold">how a carrier gets vetted</a>.</p>
       </div>
     </div>
   </section>
@@ -945,28 +955,28 @@ input,select,textarea{font-size:16px}</style>
     </div>
     <div style="max-width:780px;margin:0 auto;display:grid;gap:12px">
       <details class="card reveal" style="cursor:pointer">
-        <summary style="font-weight:700;color:var(--ink);font-size:16px">What exactly does FreightDesk automate?</summary>
-        <p style="margin-top:10px">The full 18-point workload of a small-freight financial controller: POD requests and verification, invoice disputes, rate reconciliation, advance reconciliation, W9 tracking, 30-day past-due follow-up, release-list generation, AR aging, and reply drafting for every incoming billing/AR email.</p>
+        <summary style="font-weight:700;color:var(--ink);font-size:16px">What does FreightDesk AI automate?</summary>
+        <p style="margin-top:10px"><b>FreightDesk covers the full 18-point workload of a small-freight financial controller</b>: POD requests and verification, invoice disputes, rate reconciliation, advance reconciliation, W9 tracking, 30-day past-due follow-up, release-list generation, AR aging, and reply drafting for every incoming billing/AR email.</p>
       </details>
       <details class="card reveal" style="cursor:pointer">
-        <summary style="font-weight:700;color:var(--ink);font-size:16px">Will it send emails without me seeing them?</summary>
-        <p style="margin-top:10px">Not unless you tell it to. Every draft starts in one-click-approval mode — you read it, you send it. Once you trust a category (say, routine POD replies), you can flip that category to auto-send. You decide per workflow, not all-or-nothing.</p>
+        <summary style="font-weight:700;color:var(--ink);font-size:16px">Will FreightDesk AI send emails without my approval?</summary>
+        <p style="margin-top:10px">Not unless you enable it. <b>Every draft starts in one-click-approval mode — you read it, you send it.</b> Once you trust a category, such as routine POD replies, you can flip that category to auto-send. You decide per workflow, never all-or-nothing.</p>
       </details>
       <details class="card reveal" style="cursor:pointer">
         <summary style="font-weight:700;color:var(--ink);font-size:16px">Does my data go to the cloud?</summary>
-        <p style="margin-top:10px">No. FreightDesk runs on a local AI model on a machine in your office. Rates, margins, customer lists, and disputes never leave your building — and there are no per-message API fees, ever.</p>
+        <p style="margin-top:10px">No. <b>FreightDesk runs on a local AI model on your own machine.</b> Rates, margins, customer lists, and disputes never leave your building, and there are no per-message API fees.</p>
       </details>
       <details class="card reveal" style="cursor:pointer">
-        <summary style="font-weight:700;color:var(--ink);font-size:16px">What do I need on my end to install it?</summary>
-        <p style="margin-top:10px">A computer in your office and access to the billing/AR inbox. Install takes 3 days — connected, tuned to your customers' document rules, and drafting live replies by Friday.</p>
+        <summary style="font-weight:700;color:var(--ink);font-size:16px">What do I need to install it?</summary>
+        <p style="margin-top:10px">A computer in your office and access to the billing/AR inbox. <b>Install takes 3 days — connected, tuned to your customers' document rules, and drafting live replies by Friday.</b></p>
       </details>
       <details class="card reveal" style="cursor:pointer">
-        <summary style="font-weight:700;color:var(--ink);font-size:16px">What if it doesn't work on my inbox?</summary>
-        <p style="margin-top:10px">If FreightDesk isn't drafting real replies on your real inbox by day 14, the $999 setup fee comes back in full — no questions, no forms.</p>
+        <summary style="font-weight:700;color:var(--ink);font-size:16px">What if it doesn't work on my inbox — is the $999 wasted?</summary>
+        <p style="margin-top:10px">If FreightDesk isn't drafting real replies on your real inbox by day 14, <b>the $999 setup fee comes back in full — no questions, no forms.</b></p>
       </details>
       <details class="card reveal" style="cursor:pointer">
-        <summary style="font-weight:700;color:var(--ink);font-size:16px">Can I cancel the monthly?</summary>
-        <p style="margin-top:10px">Any time. And the install stays yours — the local model and workflows keep running on your machine; you only lose updates and tuning support.</p>
+        <summary style="font-weight:700;color:var(--ink);font-size:16px">Can I cancel the monthly plan?</summary>
+        <p style="margin-top:10px">Yes, any time. <b>The install stays yours — the local model and workflows keep running on your machine</b>; cancelling only stops updates and tuning support.</p>
       </details>
     </div>
   </section>
@@ -985,8 +995,11 @@ input,select,textarea{font-size:16px}</style>
         <span class="tl-step">Live by Friday</span>
       </div>
       <form class="pilot-form" id="pilotForm" novalidate>
-        <input type="email" id="pfEmail" name="email" aria-label="Your email address" placeholder="you@brokerage.com" autocomplete="email" required>
-        <button type="submit" class="btn btn-gold">Join the pilot waitlist →</button>
+        <div class="pf-field">
+          <label for="pfEmail">Work email</label>
+          <input type="email" id="pfEmail" name="email" placeholder="you@brokerage.com" autocomplete="email" required>
+        </div>
+        <button type="submit" class="btn btn-gold">Book my pilot walkthrough →</button>
       </form>
       <p class="click-trigger" id="pfNote">15 minutes · watch it draft a real reply · no commitment · one field, nothing more</p>
       <div class="contact-line">
@@ -1001,10 +1014,11 @@ input,select,textarea{font-size:16px}</style>
 
 <a href="#book" class="mcta" aria-label="Book my pilot walkthrough">Book my pilot walkthrough →<small>15 min · $999 setup · 14-day setup-fee-back</small></a>
 
-<section aria-labelledby="compliance-h" style="max-width:1080px;margin:0 auto;padding:28px 20px 8px;border-top:1px solid rgba(212,175,55,.18)"><h2 id="compliance-h" style="font-family:Georgia,'Times New Roman',serif;font-size:15px;letter-spacing:.06em;text-transform:uppercase;color:#d4af37;margin:0 0 10px">Results Disclosure</h2><p style="font-size:13.5px;line-height:1.65;color:#9a958c;margin:0 0 8px">Every dollar and percentage figure on this page — the cost comparison, the ROI calculator and the workflow estimates — is illustrative math based on public market pay ranges and inputs you supply. FreightDesk AI is in founding-client pilots; no time-savings, ROI or revenue outcome has been measured across customers, and none is promised. Your results will depend on your volume, your team and your customers. The 14-day setup-fee-back guarantee covers the $999 setup fee as described above and is the only outcome commitment made here. Nothing on this page is financial, tax, legal or accounting advice.</p><p style="font-size:13.5px;line-height:1.65;color:#9a958c;margin:0"><a style="color:#d4af37" href="/terms.html">Terms of Use</a> · <a style="color:#d4af37" href="/privacy.html">Privacy Policy</a> · <a style="color:#d4af37" href="/refunds.html">Refund Policy</a></p></section>
+<section aria-labelledby="compliance-h" style="max-width:1080px;margin:0 auto;padding:28px 20px 8px;border-top:1px solid rgba(212,175,55,.18)"><h2 id="compliance-h" style="font-family:Georgia,'Times New Roman',serif;font-size:15px;letter-spacing:.06em;text-transform:uppercase;color:#d4af37;margin:0 0 10px">Results Disclosure</h2><p style="font-size:13.5px;line-height:1.65;color:#9a958c;margin:0 0 8px">Every dollar and percentage figure on this page — the cost comparison, the ROI calculator and the workflow estimates — is illustrative math based on public market pay ranges and inputs you supply. <b>FreightDesk AI is in founding-client pilots; no time-savings, ROI or revenue outcome has been measured across customers, and none is promised.</b> Your results will depend on your volume, your team and your customers. The 14-day setup-fee-back guarantee covers the $999 setup fee as described above and is the only outcome commitment made here. Nothing on this page is financial, tax, legal or accounting advice.</p><p style="font-size:13.5px;line-height:1.65;color:#9a958c;margin:0"><a style="color:#d4af37" href="/terms.html">Terms of Use</a> · <a style="color:#d4af37" href="/privacy.html">Privacy Policy</a> · <a style="color:#d4af37" href="/refunds.html">Refund Policy</a></p></section>
 <footer class="site-footer">
   <div>FreightDesk AI · by Yusuf Gadelrab · San Jose, CA · founding-client pilots open · 14-day setup-fee-back guarantee</div>
   <div class="site-footer__links">
+    <a href="/faq.html">FAQ</a>
     <a href="/writing.html">Writing</a>
     <a href="/dispatch.html">Dispatch</a>
     <a href="/dira.html">DIRA</a>

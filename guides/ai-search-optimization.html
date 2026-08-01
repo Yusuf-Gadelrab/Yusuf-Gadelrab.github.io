@@ -50,8 +50,8 @@
     color:var(--muted);font-size:var(--t-small);margin:0 0 var(--s5)}
   .callout--warn{border-color:var(--gold-2)}
   .faq-card{padding:var(--s5)}
-  .faq-card h3{font-size:var(--t-h3);margin:0}
-  .faq-card p{color:var(--muted);font-size:var(--t-small);margin:var(--s3) 0 0}
+  .faq-card h3{font-size:var(--t-h3);margin:0;line-height:1.3}
+  .faq-card p{color:var(--muted);font-size:var(--t-small);line-height:1.65;margin:var(--s3) 0 0}
 </style>
 </head>
 <body class="pro">
@@ -59,7 +59,7 @@
 <a class="skip-link" href="#main">Skip to content</a>
 
 <nav class="site-nav">
-  <a class="site-nav__brand" href="/"><img class="site-nav__lion" src="/img/brand/lion-mark.svg" alt="" width="34" height="34"><span>YUSUF GADELRAB</span></a>
+  <a class="site-nav__brand" href="/"><img class="site-nav__lion" src="/img/brand/lion-mark.svg" alt="" width="34" height="34" decoding="async"><span>YUSUF GADELRAB</span></a>
   <div class="site-nav__links">
     <a href="/">Work</a>
     <a href="/guides.html">Guides</a>
@@ -246,12 +246,12 @@ curl -X POST https://api.indexnow.org/indexnow \
       <h2>Quick answers</h2>
     </div>
     <div class="grid" style="margin-top:var(--s6)">
-      <article class="card faq-card"><h3>What is GEO/AEO?</h3><p>Structuring a site so answer engines can retrieve and cite it. The goal moves from ranking in a list to being the quotable, attributable passage.</p></article>
-      <article class="card faq-card"><h3>Why consolidate entities?</h3><p>One canonical Person or Organization @id, referenced from every page, plus a sameAs list. Ten references to one entity beat ten separate ones.</p></article>
-      <article class="card faq-card"><h3>What is llms.txt?</h3><p>A markdown summary of the site at the root, with llms-full.txt for full content. Cheap insurance — and it must never contradict the pages.</p></article>
-      <article class="card faq-card"><h3>Which AI crawlers matter?</h3><p>GPTBot, OAI-SearchBot, ClaudeBot, Claude-SearchBot, PerplexityBot, Google-Extended, Applebot-Extended, Bingbot, CCBot. Training and retrieval are separate calls.</p></article>
-      <article class="card faq-card"><h3>Must FAQ schema match the page?</h3><p>Yes. Every Q and A must be visible on-page. Schema-only FAQ breaks Google&#x27;s guidelines and draws manual actions. Generate both from one source.</p></article>
-      <article class="card faq-card"><h3>What is IndexNow?</h3><p>A push protocol for instant recrawl on Bing and others, which feeds Copilot. Google does not participate — use a current sitemap there.</p></article>
+      <article class="card faq-card"><h3>What is generative engine optimization (GEO)?</h3><p>GEO, also called answer engine optimization or AEO, is the practice of structuring a site so AI answer engines can retrieve, understand, and cite it. It shifts the goal from ranking in a list of links to being the passage a model can lift verbatim and attribute with confidence.</p></article>
+      <article class="card faq-card"><h3>Why does entity consolidation matter for AI search?</h3><p>Because a retrieval system needs to be certain who a site is about. Defining one canonical schema.org Person or Organization node with a stable @id, and referencing that @id from every other page rather than redefining it, turns ten weakly-connected entities into one entity with ten pieces of supporting evidence. A sameAs list linking authoritative profiles ties it to the wider graph.</p></article>
+      <article class="card faq-card"><h3>What is llms.txt?</h3><p>llms.txt is a proposed convention: a markdown file at the site root giving language models a clean, navigable summary of the site without HTML or navigation, with llms-full.txt holding the expanded content. Adoption is not universal, so treat it as cheap insurance, and never let it say anything that contradicts the rendered pages.</p></article>
+      <article class="card faq-card"><h3>Which AI crawlers should robots.txt address?</h3><p>At minimum GPTBot and OAI-SearchBot from OpenAI, ClaudeBot and Claude-SearchBot from Anthropic, PerplexityBot, Google-Extended, Applebot-Extended, Bingbot, and CCBot. Training crawlers and live-retrieval crawlers are separate agents, so decide them independently — blocking Google-Extended does not affect Google Search ranking, and blocking retrieval bots guarantees you will not be cited.</p></article>
+      <article class="card faq-card"><h3>Does FAQPage schema have to match the visible page?</h3><p>Yes. Every question and answer in FAQPage markup must appear as visible text on the same page. Schema-only FAQ content violates Google&#x27;s structured data guidelines and is a known cause of manual actions, so generate the visible FAQ and the JSON-LD from a single source to prevent drift.</p></article>
+      <article class="card faq-card"><h3>What is IndexNow?</h3><p>IndexNow is a protocol supported by Bing, Yandex, and others that lets a site push changed URLs for immediate recrawl instead of waiting to be crawled. It matters for AI search because Copilot is built on the Bing index. Google does not participate, so keep a current sitemap submitted in Search Console for that side.</p></article>
     </div>
   </section>
 

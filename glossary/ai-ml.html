@@ -1,0 +1,434 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="preload" href="/css/site.css" as="style">
+<meta name="robots" content="index,follow,max-image-preview:large,max-snippet:-1">
+<meta property="og:locale" content="en_US">
+<title>AI &amp; LLM Glossary: Tokens, RAG, Fine-Tuning, Inference</title>
+<meta name="description" content="Plain definitions for token, context window, RAG, embedding, quantization, LoRA, KV cache and 9 more LLM terms, each with a worked example.">
+<link rel="canonical" href="https://yusuf-gadelrab.github.io/glossary/ai-ml.html">
+<link rel="icon" type="image/svg+xml" href="https://yusuf-gadelrab.github.io/favicon.svg">
+<link rel="apple-touch-icon" sizes="180x180" href="https://yusuf-gadelrab.github.io/apple-touch-icon.png">
+<meta name="theme-color" content="#0B0B0D">
+<meta name="author" content="Yusuf Gadelrab">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Yusuf Gadelrab">
+<meta property="og:title" content="AI &amp; LLM Glossary: Tokens, RAG, Quantization, Fine-Tuning">
+<meta property="og:description" content="16 terms behind every LLM conversation, defined in one sentence each, then explained properly with the mechanism and the misconception.">
+<meta property="og:url" content="https://yusuf-gadelrab.github.io/glossary/ai-ml.html">
+<meta property="og:image" content="https://yusuf-gadelrab.github.io/og-card.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="AI &amp; LLM Glossary: Tokens, RAG, Quantization, Fine-Tuning">
+<meta name="twitter:description" content="16 terms behind every LLM conversation, defined in one sentence each, then explained properly with the mechanism and the misconception.">
+<meta name="twitter:image" content="https://yusuf-gadelrab.github.io/og-card.png">
+<link rel="alternate" type="text/plain" href="https://yusuf-gadelrab.github.io/llms-full.txt" title="Plain-text profile for language models">
+
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"DefinedTermSet","@id":"https://yusuf-gadelrab.github.io/glossary/ai-ml.html#termset","name":"AI & LLM Terms","description":"Plain definitions for token, context window, RAG, embedding, quantization, LoRA, KV cache and 9 more LLM terms, each with a worked example.","url":"https://yusuf-gadelrab.github.io/glossary/ai-ml.html","inLanguage":"en","author":{"@id":"https://yusuf-gadelrab.github.io/#person"},"publisher":{"@id":"https://yusuf-gadelrab.github.io/#person"},"hasDefinedTerm":[{"@type":"DefinedTerm","@id":"https://yusuf-gadelrab.github.io/glossary/ai-ml.html#token","name":"Token","description":"A token is the basic unit of text a language model reads and generates, typically a word, part of a word, or punctuation mark rather than a full sentence.","url":"https://yusuf-gadelrab.github.io/glossary/ai-ml.html#token","inDefinedTermSet":{"@id":"https://yusuf-gadelrab.github.io/glossary/ai-ml.html#termset"}},{"@type":"DefinedTerm","@id":"https://yusuf-gadelrab.github.io/glossary/ai-ml.html#context-window","name":"Context window","description":"The context window is the maximum number of tokens, counting both input and output together, that a model can attend to in a single request.","url":"https://yusuf-gadelrab.github.io/glossary/ai-ml.html#context-window","inDefinedTermSet":{"@id":"https://yusuf-gadelrab.github.io/glossary/ai-ml.html#termset"}},{"@type":"DefinedTerm","@id":"https://yusuf-gadelrab.github.io/glossary/ai-ml.html#embedding","name":"Embedding","description":"An embedding is a fixed-length list of numbers that represents a piece of text such that pieces with similar meaning end up mathematically close together.","url":"https://yusuf-gadelrab.github.io/glossary/ai-ml.html#embedding","inDefinedTermSet":{"@id":"https://yusuf-gadelrab.github.io/glossary/ai-ml.html#termset"}},{"@type":"DefinedTerm","@id":"https://yusuf-gadelrab.github.io/glossary/ai-ml.html#vector-database","name":"Vector database","description":"A vector database is a data store built to hold embeddings and answer nearest-neighbor queries, returning the stored items whose vectors are mathematically closest to a query vector.","url":"https://yusuf-gadelrab.github.io/glossary/ai-ml.html#vector-database","inDefinedTermSet":{"@id":"https://yusuf-gadelrab.github.io/glossary/ai-ml.html#termset"}},{"@type":"DefinedTerm","@id":"https://yusuf-gadelrab.github.io/glossary/ai-ml.html#chunking","name":"Chunking","description":"Chunking is splitting a long document into smaller pieces before embedding them, so retrieval can return a specific relevant passage instead of an entire document.","url":"https://yusuf-gadelrab.github.io/glossary/ai-ml.html#chunking","inDefinedTermSet":{"@id":"https://yusuf-gadelrab.github.io/glossary/ai-ml.html#termset"}},{"@type":"DefinedTerm","@id":"https://yusuf-gadelrab.github.io/glossary/ai-ml.html#rag","name":"Retrieval-augmented generation (RAG)","description":"Retrieval-augmented generation is a technique where relevant documents are retrieved from an external store and inserted into the model's context before it generates an answer, rather than relying only on what the model learned during training.","url":"https://yusuf-gadelrab.github.io/glossary/ai-ml.html#rag","inDefinedTermSet":{"@id":"https://yusuf-gadelrab.github.io/glossary/ai-ml.html#termset"},"alternateName":["RAG"]},{"@type":"DefinedTerm","@id":"https://yusuf-gadelrab.github.io/glossary/ai-ml.html#reranker","name":"Reranker","description":"A reranker is a second-stage model that re-scores an initial set of retrieved candidates for relevance to the query, reordering them before the top few are passed to the language model.","url":"https://yusuf-gadelrab.github.io/glossary/ai-ml.html#reranker","inDefinedTermSet":{"@id":"https://yusuf-gadelrab.github.io/glossary/ai-ml.html#termset"}},{"@type":"DefinedTerm","@id":"https://yusuf-gadelrab.github.io/glossary/ai-ml.html#inference","name":"Inference","description":"Inference is the process of running a trained model on new input to produce an output, as distinct from training, which is the earlier process of adjusting the model's weights on data.","url":"https://yusuf-gadelrab.github.io/glossary/ai-ml.html#inference","inDefinedTermSet":{"@id":"https://yusuf-gadelrab.github.io/glossary/ai-ml.html#termset"}},{"@type":"DefinedTerm","@id":"https://yusuf-gadelrab.github.io/glossary/ai-ml.html#temperature","name":"Temperature","description":"Temperature is a numeric setting that scales a language model's output probabilities before a token is sampled, where lower values concentrate probability on the most likely tokens and higher values flatten the distribution toward more options.","url":"https://yusuf-gadelrab.github.io/glossary/ai-ml.html#temperature","inDefinedTermSet":{"@id":"https://yusuf-gadelrab.github.io/glossary/ai-ml.html#termset"}},{"@type":"DefinedTerm","@id":"https://yusuf-gadelrab.github.io/glossary/ai-ml.html#hallucination","name":"Hallucination","description":"A hallucination is fluent, confidently formatted text produced by a language model that is not grounded in any actual source or fact, whether or not it happens to be true.","url":"https://yusuf-gadelrab.github.io/glossary/ai-ml.html#hallucination","inDefinedTermSet":{"@id":"https://yusuf-gadelrab.github.io/glossary/ai-ml.html#termset"}},{"@type":"DefinedTerm","@id":"https://yusuf-gadelrab.github.io/glossary/ai-ml.html#quantization","name":"Quantization","description":"Quantization is reducing the numeric precision used to store a model's weights, and sometimes its activations, in order to shrink memory use and speed up inference at some cost to accuracy.","url":"https://yusuf-gadelrab.github.io/glossary/ai-ml.html#quantization","inDefinedTermSet":{"@id":"https://yusuf-gadelrab.github.io/glossary/ai-ml.html#termset"}},{"@type":"DefinedTerm","@id":"https://yusuf-gadelrab.github.io/glossary/ai-ml.html#mixture-of-experts","name":"Mixture of experts (MoE)","description":"Mixture of experts is a model architecture where a router activates a small subset of specialized feed-forward blocks, called experts, for each token, so total parameters far exceed the parameters used per token.","url":"https://yusuf-gadelrab.github.io/glossary/ai-ml.html#mixture-of-experts","inDefinedTermSet":{"@id":"https://yusuf-gadelrab.github.io/glossary/ai-ml.html#termset"},"alternateName":["MoE"]},{"@type":"DefinedTerm","@id":"https://yusuf-gadelrab.github.io/glossary/ai-ml.html#lora","name":"LoRA","description":"LoRA is a fine-tuning method that freezes a model's original weights and trains a small pair of low-rank matrices inserted into its layers, producing a tiny adapter file instead of a full copy of the model.","url":"https://yusuf-gadelrab.github.io/glossary/ai-ml.html#lora","inDefinedTermSet":{"@id":"https://yusuf-gadelrab.github.io/glossary/ai-ml.html#termset"},"alternateName":["Low-rank adaptation"]},{"@type":"DefinedTerm","@id":"https://yusuf-gadelrab.github.io/glossary/ai-ml.html#fine-tuning","name":"Fine-tuning","description":"Fine-tuning is continuing to train an already-trained model on a smaller, task-specific dataset so its weights shift toward that task, rather than training a model from scratch.","url":"https://yusuf-gadelrab.github.io/glossary/ai-ml.html#fine-tuning","inDefinedTermSet":{"@id":"https://yusuf-gadelrab.github.io/glossary/ai-ml.html#termset"}},{"@type":"DefinedTerm","@id":"https://yusuf-gadelrab.github.io/glossary/ai-ml.html#kv-cache","name":"KV cache","description":"The KV cache stores the key and value tensors computed during attention over all previously processed tokens in a generation, so each new token does not have to recompute attention over the entire prefix from scratch.","url":"https://yusuf-gadelrab.github.io/glossary/ai-ml.html#kv-cache","inDefinedTermSet":{"@id":"https://yusuf-gadelrab.github.io/glossary/ai-ml.html#termset"},"alternateName":["Key-value cache"]},{"@type":"DefinedTerm","@id":"https://yusuf-gadelrab.github.io/glossary/ai-ml.html#prompt-caching","name":"Prompt caching","description":"Prompt caching is a provider-level feature that reuses the computed representation of a previously seen prefix across separate requests, cutting the cost and latency of reprocessing unchanged text such as a long system prompt or document.","url":"https://yusuf-gadelrab.github.io/glossary/ai-ml.html#prompt-caching","inDefinedTermSet":{"@id":"https://yusuf-gadelrab.github.io/glossary/ai-ml.html#termset"}}]},{"@type":"CollectionPage","@id":"https://yusuf-gadelrab.github.io/glossary/ai-ml.html#page","url":"https://yusuf-gadelrab.github.io/glossary/ai-ml.html","name":"AI & LLM Terms","description":"Plain definitions for token, context window, RAG, embedding, quantization, LoRA, KV cache and 9 more LLM terms, each with a worked example.","datePublished":"2026-07-31","dateModified":"2026-07-31","inLanguage":"en","isAccessibleForFree":true,"about":["Large language models","Retrieval-augmented generation","Model inference"],"author":{"@id":"https://yusuf-gadelrab.github.io/#person"},"publisher":{"@id":"https://yusuf-gadelrab.github.io/#person"},"mainEntity":{"@id":"https://yusuf-gadelrab.github.io/glossary/ai-ml.html#termset"},"breadcrumb":{"@id":"https://yusuf-gadelrab.github.io/glossary/ai-ml.html#crumbs"},"isPartOf":{"@id":"https://yusuf-gadelrab.github.io/#website"}},{"@type":"BreadcrumbList","@id":"https://yusuf-gadelrab.github.io/glossary/ai-ml.html#crumbs","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://yusuf-gadelrab.github.io/"},{"@type":"ListItem","position":2,"name":"Glossary","item":"https://yusuf-gadelrab.github.io/glossary.html"},{"@type":"ListItem","position":3,"name":"AI & LLMs"}]}]}</script>
+
+<link rel="stylesheet" href="/css/site.css">
+<style>
+  .prose{max-width:var(--maxw-prose)}
+  .prose h2{margin:var(--s7) 0 var(--s4);font-size:var(--t-h2)}
+  .prose p{color:var(--muted);margin:0 0 var(--s4)}
+  .prose ul,.prose ol{color:var(--muted);padding-left:1.2em;margin:0 0 var(--s4)}
+  .prose li{margin-bottom:var(--s2)}
+  .prose a{color:var(--gold-2)}
+  .prose strong{color:var(--fg)}
+  .formula{display:block;padding:var(--s4);margin:0 0 var(--s4);border:1px solid var(--line-soft);
+    border-radius:var(--radius);font-family:ui-monospace,SFMono-Regular,Menlo,monospace;
+    font-size:var(--t-small);color:var(--gold-2);overflow-x:auto;white-space:pre-wrap}
+  .tblwrap{overflow-x:auto;margin:0 0 var(--s4)}
+  .tbl{width:100%;border-collapse:collapse;font-size:var(--t-small)}
+  .tbl th,.tbl td{text-align:left;padding:var(--s3);border-bottom:1px solid var(--line-soft);
+    color:var(--muted);vertical-align:top}
+  .tbl th{font-family:var(--display-pro);color:var(--gold-2);font-weight:600}
+  .callout{padding:var(--s4);border:1px solid var(--line-soft);border-radius:var(--radius);
+    color:var(--muted);font-size:var(--t-small);margin:0 0 var(--s5)}
+  .callout--warn{border-color:var(--gold-2)}
+  .jump{display:flex;flex-wrap:wrap;gap:var(--s2) var(--s4);margin:var(--s5) 0 0;padding:0;list-style:none}
+  .jump li{margin:0}
+  .jump a{font-size:var(--t-small);color:var(--muted)}
+  .jump a:hover{color:var(--gold-2)}
+  .term{max-width:var(--maxw-prose);padding:var(--s6) 0;border-top:1px solid var(--line-soft);
+    scroll-margin-top:var(--s8)}
+  .term__head{display:flex;align-items:baseline;gap:var(--s3);flex-wrap:wrap;margin:0 0 var(--s4)}
+  .term__head h3{margin:0;font-size:var(--t-h3)}
+  .term__hash{font-family:var(--display-pro);font-size:var(--t-small);color:var(--gold-dim);
+    text-decoration:none;opacity:0;transition:opacity .2s var(--ease)}
+  .term:hover .term__hash,.term__hash:focus-visible{opacity:1;color:var(--gold-2)}
+  .term__aka{font-size:var(--t-small);color:var(--muted)}
+  .term__def{color:var(--fg);font-size:17px;margin:0 0 var(--s4)}
+  .term p{color:var(--muted);margin:0 0 var(--s4)}
+  .term p:last-child{margin-bottom:0}
+  .term ul,.term ol{color:var(--muted);padding-left:1.2em;margin:0 0 var(--s4)}
+  .term li{margin-bottom:var(--s2)}
+  .term a{color:var(--gold-2)}
+  .term strong{color:var(--fg)}
+  .note{font-size:var(--t-small);color:var(--muted);margin:0 0 var(--s3)}
+  .tag{font-family:var(--display-pro);font-size:var(--t-micro);font-weight:600;letter-spacing:2px;
+    text-transform:uppercase;color:var(--gold-2);margin-right:var(--s2)}
+  .az{margin:0;padding:0;list-style:none}
+  .az__group{margin:0 0 var(--s6)}
+  .az__letter{font-family:var(--display-pro);font-weight:700;font-size:var(--t-h3);
+    color:var(--gold-2);margin:0 0 var(--s3)}
+  .az__list{display:grid;gap:var(--s2) var(--s5);margin:0;padding:0;list-style:none;
+    grid-template-columns:repeat(auto-fill,minmax(min(230px,100%),1fr))}
+  .az__list li{font-size:var(--t-small);color:var(--muted)}
+  .az__list a{color:var(--muted)}
+  .az__list a:hover{color:var(--gold-2)}
+  .az__where{color:var(--gold-dim)}
+  .rail{display:flex;flex-wrap:wrap;gap:var(--s2) var(--s3);margin:var(--s5) 0 0;padding:0;list-style:none}
+  .rail a{font-family:var(--display-pro);font-weight:600;font-size:var(--t-small);
+    color:var(--gold-2);border:1px solid var(--line-soft);border-radius:var(--radius);
+    padding:6px 12px;display:inline-block}
+  .rail a:hover{border-color:var(--gold-2)}
+  .cl{display:flex;flex-direction:column;padding:var(--s5)}
+  .cl h3{margin:0 0 var(--s3);font-size:var(--t-h3)}
+  .cl p{color:var(--muted);font-size:var(--t-small);flex:1;margin:0}
+  .cl .go{margin-top:var(--s4);font-family:var(--display-pro);font-weight:600;
+    font-size:var(--t-small);color:var(--gold-2)}
+  a.cl:hover .go{color:var(--gold)}
+  .cl__n{color:var(--muted);font-size:var(--t-small);margin-top:var(--s3)}
+</style>
+</head>
+<body class="pro">
+
+<a class="skip-link" href="#main">Skip to content</a>
+
+<nav class="site-nav">
+  <a class="site-nav__brand" href="/"><img class="site-nav__lion" src="/img/brand/lion-mark.svg" alt="" width="34" height="34" decoding="async"><span>YUSUF GADELRAB</span></a>
+  <div class="site-nav__links">
+    <a href="/">Work</a>
+    <a href="/guides.html">Guides</a>
+    <a href="/glossary.html" aria-current="page">Glossary</a>
+    <a href="/apps.html">Apps</a>
+    <a href="/store.html">Store</a>
+  </div>
+</nav>
+
+<main id="main">
+
+  <header class="section">
+    <img class="page-lion" src="/img/brand/lion-mark.svg" alt="" width="46" height="46" decoding="async">
+    <p class="eyebrow">Glossary · AI</p>
+    <h1 style="margin:var(--s4) 0">AI and LLM terms, defined without the marketing</h1>
+    <p class="lead">Sixteen terms that show up in almost any conversation about running or building with a language model, from the unit a model actually reads (a token) up through the systems built around it (RAG, fine-tuning, quantization). Each one gets a one-sentence definition first, then the mechanism.</p>
+  </header>
+
+  <hr class="divider">
+
+  <section class="section section--tight">
+    <div class="prose">
+      <p>Two mechanisms get confused constantly and both live in this cluster: <strong>KV cache</strong> is what a model keeps in memory <em>during</em> one generation so it does not recompute attention over the whole prefix for every new token. <strong>Prompt caching</strong> is a provider-level feature that reuses a previously computed prefix <em>across separate requests</em>, cutting cost and latency on repeated system prompts or documents. One is an in-flight memory structure, the other is a billing and latency optimization built on top of it. They get used interchangeably in casual conversation and that is wrong often enough to matter.</p>
+      <p>A second thing worth saying up front: several terms here describe ways to make a model cheaper or faster (quantization, mixture of experts, KV cache, prompt caching) and several describe ways to make a model's output more relevant to a specific task or knowledge base (RAG, chunking, embedding, vector database, reranker, fine-tuning, LoRA). Confusing the two categories is a common source of wasted engineering time: quantizing a model does nothing to fix wrong answers about your internal documents, and building a RAG pipeline does nothing to make inference faster.</p>
+      <h2>16 terms on this page</h2>
+    </div>
+    <ul class="jump">
+      <li><a href="#token">Token</a></li>
+      <li><a href="#context-window">Context window</a></li>
+      <li><a href="#embedding">Embedding</a></li>
+      <li><a href="#vector-database">Vector database</a></li>
+      <li><a href="#chunking">Chunking</a></li>
+      <li><a href="#rag">Retrieval-augmented generation (RAG)</a></li>
+      <li><a href="#reranker">Reranker</a></li>
+      <li><a href="#inference">Inference</a></li>
+      <li><a href="#temperature">Temperature</a></li>
+      <li><a href="#hallucination">Hallucination</a></li>
+      <li><a href="#quantization">Quantization</a></li>
+      <li><a href="#mixture-of-experts">Mixture of experts (MoE)</a></li>
+      <li><a href="#lora">LoRA</a></li>
+      <li><a href="#fine-tuning">Fine-tuning</a></li>
+      <li><a href="#kv-cache">KV cache</a></li>
+      <li><a href="#prompt-caching">Prompt caching</a></li>
+    </ul>
+  </section>
+
+  <hr class="divider">
+
+  <section class="section section--tight" aria-label="Definitions">
+
+    <article class="term" id="token">
+      <div class="term__head">
+        <h3>Token</h3>
+        <a class="term__hash" href="#token" aria-label="Permalink to Token">#</a>
+      </div>
+      <p class="term__def">A token is the basic unit of text a language model reads and generates, typically a word, part of a word, or punctuation mark rather than a full sentence.</p>
+      <p>Models do not process raw characters or whole words directly. Text is first run through a tokenizer, a fixed vocabulary of chunks built ahead of time from a large text corpus, and the model's input becomes a sequence of integer IDs pointing into that vocabulary. Common English words are often a single token; rarer words, numbers, and non-English text frequently split into two or more tokens. This is why token count and word count diverge, sometimes sharply, for code, non-English languages, or unusual formatting.</p>
+      <p>Token count matters for two practical reasons. First, every published context window limit is stated in tokens, not words or characters, so the same paragraph can consume noticeably different amounts of that budget depending on language and formatting. Second, usage-based pricing for hosted models is typically metered per token for both input and output, which is why verbose prompts and long outputs both carry a direct cost, not just a speed cost.</p>
+      <p>The tokenizer is trained once as part of building the model and is fixed after that; you cannot change how a given model tokenizes text without retraining or using a different model. This is also why the same input can tokenize differently across model families, since each has its own vocabulary built from its own training process.</p>
+      <p class="note"><span class="tag">Example</span>The word "tokenization" commonly splits into two or three tokens for many tokenizers (something like "token" + "ization"), while a short common word like "the" is almost always exactly one token.</p>
+      <p class="note"><span class="tag">Common misconception</span>Assuming 1 token roughly equals 1 word for any text. It is a decent approximation for plain English prose, but it breaks down badly for code, JSON, non-English text, and anything with unusual punctuation density.</p>
+      <p class="note"><span class="tag">Go deeper</span><a href="/guides/prompt-caching.html">How token accounting actually works in a real request</a></p>
+      <p class="note"><span class="tag">See also</span><a href="#context-window">Context window</a>, <a href="#kv-cache">KV cache</a>, <a href="#prompt-caching">Prompt caching</a></p>
+    </article>
+
+    <article class="term" id="context-window">
+      <div class="term__head">
+        <h3>Context window</h3>
+        <a class="term__hash" href="#context-window" aria-label="Permalink to Context window">#</a>
+      </div>
+      <p class="term__def">The context window is the maximum number of tokens, counting both input and output together, that a model can attend to in a single request.</p>
+      <p>Every token the model has ever seen in the current request, whether it came from the system prompt, the conversation history, retrieved documents, or the model's own output so far, competes for the same fixed budget. Once that budget is exhausted, something has to give: the request fails, or an application layer has to truncate, summarize, or drop earlier content to make room for new input.</p>
+      <p>A larger context window does not mean a model reasons equally well across all of it. Published benchmarks on long-context recall have repeatedly shown that relevance and accuracy on information placed in the middle of a very long context can be worse than on information near the start or end, an effect informally called 'lost in the middle.' A big window is capacity, not a guarantee of even attention across that capacity.</p>
+      <p>This is the core reason systems like RAG exist at all: rather than stuffing an entire knowledge base into the context window on every request, a retrieval step selects only the passages likely to be relevant, keeping the window smaller, cheaper, and more reliably attended to. Context window size and specific published limits change frequently across model releases, so treat any exact number as something to verify against current documentation rather than a fact to memorize.</p>
+      <p class="note"><span class="tag">Example</span>A long customer-support transcript plus a large product manual pasted into a single prompt can silently exceed the window; the practical fix is usually retrieval or summarization, not just picking a bigger model.</p>
+      <p class="note"><span class="tag">Common misconception</span>Believing a bigger context window makes retrieval systems unnecessary. Fitting more tokens in is not the same as the model weighting all of them equally, and cost scales with tokens used regardless of window size.</p>
+      <p class="note"><span class="tag">Go deeper</span><a href="/guides/prompt-caching.html">How context length interacts with cost and caching</a></p>
+      <p class="note"><span class="tag">See also</span><a href="#token">Token</a>, <a href="#kv-cache">KV cache</a>, <a href="#rag">Retrieval-augmented generation (RAG)</a>, <a href="#chunking">Chunking</a></p>
+    </article>
+
+    <article class="term" id="embedding">
+      <div class="term__head">
+        <h3>Embedding</h3>
+        <a class="term__hash" href="#embedding" aria-label="Permalink to Embedding">#</a>
+      </div>
+      <p class="term__def">An embedding is a fixed-length list of numbers that represents a piece of text such that pieces with similar meaning end up mathematically close together.</p>
+      <p>An embedding model takes text in and outputs a vector, commonly a few hundred to a few thousand numbers, positioned in a high-dimensional space. The model is trained so that semantically similar inputs land near each other in that space and dissimilar inputs land farther apart, measured with a distance function like cosine similarity. This is what makes semantic search possible: instead of matching exact keywords, you compare the meaning of a query to the meaning of stored documents.</p>
+      <p>Embeddings are produced by a dedicated embedding model, which is typically much smaller and cheaper to run than a full generative language model, and is trained specifically for this representation task rather than for producing fluent text. The choice of embedding model matters: different models produce vectors that are not directly comparable to each other, so a database of embeddings built with one model generally has to be re-embedded if you switch models.</p>
+      <p>Embeddings are not limited to text. The same idea applies to images, audio, and other data types, and multimodal embedding models can place text and images from the same underlying subject near each other in one shared space, which is what enables searching images by text description.</p>
+      <p class="note"><span class="tag">Example</span>Embedding the sentences "the invoice is overdue" and "payment is past due" produces two vectors that land close together in the embedding space even though they share almost no words, because the model captures meaning rather than exact tokens.</p>
+      <p class="note"><span class="tag">Common misconception</span>Assuming embeddings capture factual truth or logical relationships. They capture statistical semantic similarity from training data; two vectors being close means the text was used in similar contexts, not that one implies or confirms the other.</p>
+      <p class="note"><span class="tag">Go deeper</span><a href="/guides/embedding-model-rag.html">Choosing an embedding model for RAG</a></p>
+      <p class="note"><span class="tag">See also</span><a href="#vector-database">Vector database</a>, <a href="#rag">Retrieval-augmented generation (RAG)</a>, <a href="#chunking">Chunking</a></p>
+    </article>
+
+    <article class="term" id="vector-database">
+      <div class="term__head">
+        <h3>Vector database</h3>
+        <a class="term__hash" href="#vector-database" aria-label="Permalink to Vector database">#</a>
+      </div>
+      <p class="term__def">A vector database is a data store built to hold embeddings and answer nearest-neighbor queries, returning the stored items whose vectors are mathematically closest to a query vector.</p>
+      <p>A conventional database indexes data for exact or range matches on structured fields. A vector database is built for a fundamentally different query: given a vector, find the k stored vectors closest to it by some distance metric, across a collection that can hold millions or billions of entries. Doing this by brute-force comparison against every stored vector does not scale, so vector databases use approximate nearest neighbor indexing structures that trade a small amount of accuracy for a large speed gain.</p>
+      <p>In a retrieval-augmented generation pipeline, the vector database is the component that actually stores the embedded document chunks and serves the retrieval step: a user query gets embedded, that query vector is compared against the stored chunk vectors, and the closest matches come back as the context handed to the language model. Most vector databases also support storing metadata alongside each vector (source, date, permissions) so a query can filter on that metadata in addition to similarity.</p>
+      <p>Vector databases range from dedicated products built solely for this purpose to vector search features bolted onto existing databases and search engines. The right choice depends on scale, whether you already run a database that added vector support, and whether you need hybrid search that combines vector similarity with traditional keyword matching, which in practice often outperforms pure vector search alone on precise queries.</p>
+      <p class="note"><span class="tag">Example</span>A support-ticket search tool embeds every past ticket once, stores the vectors in a vector database, and at query time embeds the new question and retrieves the handful of past tickets with the closest vectors as candidate answers.</p>
+      <p class="note"><span class="tag">Common misconception</span>Treating a vector database as a drop-in replacement for keyword search. Pure vector similarity can miss exact-match queries like part numbers or error codes that keyword search catches easily, which is why hybrid search exists.</p>
+      <p class="note"><span class="tag">Go deeper</span><a href="/guides/embedding-model-rag.html">Where the vector database fits in a RAG pipeline</a></p>
+      <p class="note"><span class="tag">See also</span><a href="#embedding">Embedding</a>, <a href="#rag">Retrieval-augmented generation (RAG)</a>, <a href="#chunking">Chunking</a></p>
+    </article>
+
+    <article class="term" id="chunking">
+      <div class="term__head">
+        <h3>Chunking</h3>
+        <a class="term__hash" href="#chunking" aria-label="Permalink to Chunking">#</a>
+      </div>
+      <p class="term__def">Chunking is splitting a long document into smaller pieces before embedding them, so retrieval can return a specific relevant passage instead of an entire document.</p>
+      <p>Embedding an entire long document as a single vector tends to produce a representation that is too diluted to match specific queries well, since the vector has to summarize everything the document covers at once. Chunking breaks the document into smaller, more topically coherent pieces, typically ranging from a couple hundred to roughly a thousand tokens each, and embeds each chunk separately. Retrieval then operates at the chunk level, returning the specific passages most relevant to a query rather than whole documents.</p>
+      <p>Chunk size is a real tradeoff, not a solved default. Chunks that are too small lose surrounding context and can be retrieved without the information needed to make sense of them; chunks that are too large dilute relevance the same way whole-document embedding does, and waste context window budget on irrelevant surrounding text. Common strategies split on natural boundaries (paragraphs, headings, sentences) rather than a fixed character count, and add a small overlap between consecutive chunks so information sitting near a boundary is not cut in a way that strands it in neither chunk.</p>
+      <p>Chunking strategy has an outsized effect on RAG quality in practice, often more than the choice of embedding model, because a retrieval system can only return what was chunked as a coherent unit in the first place. A perfectly relevant sentence buried inside a poorly cut chunk full of unrelated content can still fail to retrieve well.</p>
+      <p class="note"><span class="tag">Example</span>A 40-page policy PDF chunked by section heading, at roughly 500 tokens per chunk with a small overlap, lets a query about one specific clause retrieve just that clause instead of the whole document.</p>
+      <p class="note"><span class="tag">Common misconception</span>Assuming there is one universally correct chunk size. The right size depends on the document structure and the kind of question being asked; dense reference material and narrative prose often want different strategies entirely.</p>
+      <p class="note"><span class="tag">Go deeper</span><a href="/guides/rag-explained.html">How chunking strategy affects retrieval quality</a></p>
+      <p class="note"><span class="tag">See also</span><a href="#rag">Retrieval-augmented generation (RAG)</a>, <a href="#embedding">Embedding</a>, <a href="#vector-database">Vector database</a></p>
+    </article>
+
+    <article class="term" id="rag">
+      <div class="term__head">
+        <h3>Retrieval-augmented generation (RAG)</h3>
+        <a class="term__hash" href="#rag" aria-label="Permalink to Retrieval-augmented generation (RAG)">#</a>
+        <span class="term__aka">also: RAG</span>
+      </div>
+      <p class="term__def">Retrieval-augmented generation is a technique where relevant documents are retrieved from an external store and inserted into the model's context before it generates an answer, rather than relying only on what the model learned during training.</p>
+      <p>A language model's knowledge is frozen at whatever data it was trained on, and it has no built-in way to look up your specific documents, a database that changed an hour ago, or anything published after its training cutoff. RAG addresses this by adding a retrieval step in front of generation: a query gets embedded, a vector database (or a hybrid keyword-plus-vector search) returns the most relevant chunks, and those chunks get inserted into the prompt as context the model is instructed to ground its answer in.</p>
+      <p>This restructures the model's job from 'recall an answer from training' to 'read this specific evidence and summarize or reason over it,' which is a task language models tend to do far more reliably. It also makes the answer traceable, since the retrieved passages can be shown alongside the response as citations, and it means updating the knowledge base is as simple as re-indexing documents rather than retraining or fine-tuning a model.</p>
+      <p>RAG does not eliminate hallucination, it reduces the conditions that cause it for a specific, well-scoped class of question. If retrieval returns irrelevant or missing chunks, because of a chunking mistake, a bad embedding match, or a genuine gap in the underlying document store, the model is now reasoning over the wrong evidence, or reverting to its own general knowledge unprompted, and can still produce a confident, wrong answer. Retrieval quality is usually the actual bottleneck in a RAG system that underperforms, not the language model itself.</p>
+      <p class="note"><span class="tag">Example</span>A company wiki search assistant retrieves the three most relevant internal pages for a question and hands them to the model with instructions to answer only from those pages, rather than asking the model to answer from memory.</p>
+      <p class="note"><span class="tag">Common misconception</span>Treating RAG as a fix that makes hallucination impossible. It shrinks the space of questions where the model has to guess, but a retrieval miss or a genuinely unanswerable question can still produce a fluent, ungrounded answer.</p>
+      <p class="note"><span class="tag">Go deeper</span><a href="/guides/rag-explained.html">RAG explained end to end</a></p>
+      <p class="note"><span class="tag">See also</span><a href="#embedding">Embedding</a>, <a href="#vector-database">Vector database</a>, <a href="#chunking">Chunking</a>, <a href="#reranker">Reranker</a>, <a href="#hallucination">Hallucination</a></p>
+    </article>
+
+    <article class="term" id="reranker">
+      <div class="term__head">
+        <h3>Reranker</h3>
+        <a class="term__hash" href="#reranker" aria-label="Permalink to Reranker">#</a>
+      </div>
+      <p class="term__def">A reranker is a second-stage model that re-scores an initial set of retrieved candidates for relevance to the query, reordering them before the top few are passed to the language model.</p>
+      <p>Vector search at scale is built for speed: an approximate nearest-neighbor index returns a candidate set (often the top 20 to 100 matches) quickly, but that first pass optimizes for retrieval speed over precise relevance ordering. A reranker takes the query and each candidate together, as a pair, and scores that pair directly with a model built specifically to judge relevance, which is more accurate than the embedding-similarity score used to generate the candidates in the first place but far too slow to run against the entire document store.</p>
+      <p>The two-stage pattern, cheap broad retrieval followed by an expensive precise rerank on a small candidate set, exists because running the accurate scoring model against every document would be too slow for most applications, while running only the cheap approximate step leaves relevance quality on the table. Adding a reranking stage on top of vector search is one of the more reliable ways to improve RAG answer quality without changing the embedding model or the language model at all.</p>
+      <p>Rerankers are trained on relevance-judgment data, pairs or lists of query-and-document examples labeled by how relevant the document actually is, which lets them pick up on relevance signals that pure vector distance misses, including exact term overlap and structural cues in how the query is phrased.</p>
+      <p class="note"><span class="tag">Example</span>A search pipeline retrieves the top 50 chunks by vector similarity, then reranks that set and keeps only the top 5 to hand to the model, cutting irrelevant context that vector similarity alone had ranked too highly.</p>
+      <p class="note"><span class="tag">Common misconception</span>Assuming reranking is optional polish. On real-world document sets, the raw vector-similarity ranking is often noticeably worse than a reranked one, and skipping this stage is a common, fixable cause of mediocre RAG answers.</p>
+      <p class="note"><span class="tag">Go deeper</span><a href="/guides/rag-explained.html">Where reranking fits in a retrieval pipeline</a></p>
+      <p class="note"><span class="tag">See also</span><a href="#rag">Retrieval-augmented generation (RAG)</a>, <a href="#embedding">Embedding</a>, <a href="#vector-database">Vector database</a></p>
+    </article>
+
+    <article class="term" id="inference">
+      <div class="term__head">
+        <h3>Inference</h3>
+        <a class="term__hash" href="#inference" aria-label="Permalink to Inference">#</a>
+      </div>
+      <p class="term__def">Inference is the process of running a trained model on new input to produce an output, as distinct from training, which is the earlier process of adjusting the model's weights on data.</p>
+      <p>Training happens once, or periodically, and is extremely compute-intensive: it involves running data through the model, measuring error, and updating potentially billions of weights over many passes. Inference happens every single time the model is actually used, whether that is one API call or one locally run prompt, and uses the weights as fixed, unchanging numbers. Nothing about a normal inference request changes the model's weights; the model behaves identically on the same input unless something in the input, the sampling settings, or the software stack changes.</p>
+      <p>For a language model specifically, inference is autoregressive: the model produces one token, appends it to the sequence, and repeats, feeding its own previous output back in as input to generate the next token. This sequential dependency is why generation speed is measured in tokens per second and why techniques like the KV cache, quantization, and mixture-of-experts routing all exist specifically to make this repeated per-token computation cheaper or faster without changing what the model has learned.</p>
+      <p>Inference cost and speed depend on the hardware running it, the size of the model actually being computed per token, the length of the input and output, and whether optimizations like caching or quantization are in use. This is a separate axis entirely from model quality; a model can be highly accurate and still be too slow or too expensive to run at the volume or latency a given application needs.</p>
+      <p class="note"><span class="tag">Example</span>Asking a chatbot a question and getting an answer back is entirely an inference operation; the model's weights are exactly the same after answering as they were before.</p>
+      <p class="note"><span class="tag">Common misconception</span>Confusing inference speed problems with model quality problems. A model producing correct but slow answers needs an inference optimization (quantization, better hardware, caching), not a different or 'smarter' model.</p>
+      <p class="note"><span class="tag">Go deeper</span><a href="/guides/local-llm-ollama.html">Running inference on a local model in practice</a></p>
+      <p class="note"><span class="tag">See also</span><a href="#quantization">Quantization</a>, <a href="#kv-cache">KV cache</a>, <a href="#temperature">Temperature</a>, <a href="#mixture-of-experts">Mixture of experts (MoE)</a></p>
+    </article>
+
+    <article class="term" id="temperature">
+      <div class="term__head">
+        <h3>Temperature</h3>
+        <a class="term__hash" href="#temperature" aria-label="Permalink to Temperature">#</a>
+      </div>
+      <p class="term__def">Temperature is a numeric setting that scales a language model's output probabilities before a token is sampled, where lower values concentrate probability on the most likely tokens and higher values flatten the distribution toward more options.</p>
+      <p>At each generation step, the model produces a probability score, a logit, for every possible next token. Temperature is a divisor applied to those logits before they are converted into a probability distribution: dividing by a value below 1 sharpens the distribution, making the already-likely tokens even more dominant, while dividing by a value above 1 flattens it, giving lower-probability tokens a comparatively better chance of being sampled. A temperature of 0 is a special case that skips sampling entirely and just takes the single highest-probability token every time, known as greedy decoding, which makes output deterministic for a fixed input.</p>
+      <p>This is a mechanical description of what the setting does to a probability distribution, not a claim about the model's internal state. A model has no notion of 'creativity' that temperature dials up; what changes is purely how much of the probability mass outside the top choice gets a chance to be sampled at each step. Higher temperature increases output variety and the chance of less conventional phrasing, but it also increases the chance of picking a low-probability token that leads the generation somewhere incoherent or factually wrong.</p>
+      <p>The right setting depends entirely on the task. Deterministic tasks like code generation, data extraction, or anything requiring a single correct answer generally want temperature at or near 0, since variety is actively unwanted there. Tasks like brainstorming or creative writing, where multiple different outputs are all acceptable, tolerate or benefit from a higher setting.</p>
+      <p class="note"><span class="tag">Example</span>Asking the same factual question at temperature 0 returns the identical answer every time; asking it at a high temperature can return several differently worded answers across repeated calls, and occasionally an answer that drifts off topic.</p>
+      <p class="note"><span class="tag">Common misconception</span>Describing temperature as controlling 'creativity' or 'randomness' in some vague sense. It is a specific mathematical operation on the logits before sampling, and a temperature of 0 removes randomness entirely rather than just reducing it.</p>
+      <p class="note"><span class="tag">Go deeper</span><a href="/guides/structured-llm-output.html">Why low temperature matters for structured output</a></p>
+      <p class="note"><span class="tag">See also</span><a href="#inference">Inference</a>, <a href="#hallucination">Hallucination</a></p>
+    </article>
+
+    <article class="term" id="hallucination">
+      <div class="term__head">
+        <h3>Hallucination</h3>
+        <a class="term__hash" href="#hallucination" aria-label="Permalink to Hallucination">#</a>
+      </div>
+      <p class="term__def">A hallucination is fluent, confidently formatted text produced by a language model that is not grounded in any actual source or fact, whether or not it happens to be true.</p>
+      <p>A language model generates each token by predicting what is statistically likely to come next given everything before it, not by looking anything up or checking a fact against a source, unless a retrieval or tool-use step has explicitly provided one. When a model is asked something it was never trained on with sufficient signal, or something with no single correct answer in its training data, it still produces a fluent, well-formatted, confident-sounding response, because fluency and formatting are exactly what the model was trained to produce regardless of whether the underlying content is accurate.</p>
+      <p>This is a property of how generation works, not a bug that occasional prompting fixes. Asking a model to 'only say things you're sure about' does not give it a new capability to check its own certainty against ground truth; it can only change the style of the output, for example toward more hedging language, without changing whether the underlying claim is actually correct. The model has no separate mechanism for verifying its own output against reality at generation time.</p>
+      <p>The practical mitigations that work are structural rather than instructional: retrieval-augmented generation grounds answers in retrieved source text the model is instructed to stick to, tool use lets the model call a calculator, search, or database instead of guessing, and citations let a human verify the claim against the actual source. None of these eliminate hallucination outright, because a retrieval miss or a bad tool call can still leave the model to generate freely, but they shrink the surface area where free generation is standing in for verified fact.</p>
+      <p class="note"><span class="tag">Example</span>A model asked for a legal citation it was never trained on can produce a citation formatted exactly like a real one, with a plausible case name, year, and reporter number, none of which correspond to an actual case.</p>
+      <p class="note"><span class="tag">Common misconception</span>Believing hallucination is fixed by a better prompt, a stricter instruction, or a newer model version alone. It is reduced by grounding the model in verifiable source material at generation time, not by asking it to try harder.</p>
+      <p class="note"><span class="tag">Go deeper</span><a href="/guides/rag-explained.html">How grounding reduces hallucination in practice</a></p>
+      <p class="note"><span class="tag">See also</span><a href="#rag">Retrieval-augmented generation (RAG)</a>, <a href="#temperature">Temperature</a></p>
+    </article>
+
+    <article class="term" id="quantization">
+      <div class="term__head">
+        <h3>Quantization</h3>
+        <a class="term__hash" href="#quantization" aria-label="Permalink to Quantization">#</a>
+      </div>
+      <p class="term__def">Quantization is reducing the numeric precision used to store a model's weights, and sometimes its activations, in order to shrink memory use and speed up inference at some cost to accuracy.</p>
+      <p>A model's weights are normally trained and stored as 16-bit or 32-bit floating-point numbers. Quantization converts those numbers to a lower-precision format, commonly 8-bit or 4-bit integers, using a scaling scheme that maps the lower-precision range back to something close to the original values. Fewer bits per weight means the same model takes proportionally less memory to load and less bandwidth to move during inference, which directly translates into being able to run a larger model on the same hardware, or the same model faster.</p>
+      <p>The accuracy cost is real but is not a fixed, universal number. It depends on the quantization method, the bit width chosen, and the specific model; going from 16-bit down to 8-bit is generally a small, often hard-to-notice quality loss for most tasks, while more aggressive 4-bit and lower schemes trade off more capability, particularly on tasks requiring precise reasoning or exact numeric output. Modern quantization techniques mitigate this by quantizing more carefully, for example calibrating the scaling on representative data rather than converting weights naively, but a specific quality delta between formats depends on the exact technique and model, not a claim that generalizes.</p>
+      <p>Quantization is one of the main reasons running large models locally on consumer hardware became practical: a model too large to fit in available memory at full precision can fit comfortably once quantized, which is the whole premise behind running large open-weight models on a laptop rather than a data center GPU.</p>
+      <p class="note"><span class="tag">Example</span>A model that requires roughly 32GB of memory at 16-bit precision can often be run in something closer to 8 to 10GB once quantized to 4-bit, making it feasible on consumer hardware that could never hold the full-precision version.</p>
+      <p class="note"><span class="tag">Common misconception</span>Treating all quantization formats as interchangeable or assuming a fixed percentage quality loss applies universally. The actual accuracy impact varies by method, bit width, and model, and should be checked against the specific quantized version in use rather than assumed.</p>
+      <p class="note"><span class="tag">Go deeper</span><a href="/guides/ollama-vs-lm-studio-vs-llama-cpp.html">Quantization formats in practice, across local runtimes</a></p>
+      <p class="note"><span class="tag">See also</span><a href="#inference">Inference</a>, <a href="#mixture-of-experts">Mixture of experts (MoE)</a>, <a href="#lora">LoRA</a></p>
+    </article>
+
+    <article class="term" id="mixture-of-experts">
+      <div class="term__head">
+        <h3>Mixture of experts (MoE)</h3>
+        <a class="term__hash" href="#mixture-of-experts" aria-label="Permalink to Mixture of experts (MoE)">#</a>
+        <span class="term__aka">also: MoE</span>
+      </div>
+      <p class="term__def">Mixture of experts is a model architecture where a router activates a small subset of specialized feed-forward blocks, called experts, for each token, so total parameters far exceed the parameters used per token.</p>
+      <p>A conventional, 'dense' model runs every parameter for every token it processes. A mixture-of-experts model instead replaces certain layers with a set of multiple parallel feed-forward blocks (the experts) plus a small router network that, for each token, decides which one or few experts should process it. Only the selected experts' parameters actually do work for that token; the rest sit idle for that step. This is what makes MoE models sparse: total parameter count and active parameter count are two different numbers, and the second one is what actually determines the compute cost of processing a given token.</p>
+      <p>The appeal is that total parameter count correlates with how much distinct knowledge and capability a model can hold, while active parameter count is what determines inference speed and compute cost. An MoE architecture lets a model have a very large total capacity while keeping the per-token compute cost closer to that of a much smaller dense model, because most of the network is switched off for any given token. The tradeoff is memory: all the experts still have to be loaded and available even though only a few run per token, so MoE models are compute-cheap relative to their size but not memory-cheap relative to their size.</p>
+      <p>Router quality matters a great deal. If the router sends tokens to poorly matched experts, or if experts end up redundant with each other rather than genuinely specialized, the sparsity gains do not translate into the expected quality, which is why MoE training involves specific techniques to encourage balanced, meaningfully differentiated expert usage across the training data.</p>
+      <p class="note"><span class="tag">Example</span>A MoE model might have a large total parameter count spread across many experts while only activating a small fraction of that total for any single token, giving it dense-model-scale knowledge at closer to small-model-scale inference cost, without asserting an exact ratio for any specific named model.</p>
+      <p class="note"><span class="tag">Common misconception</span>Assuming a model's total parameter count is the number relevant to how fast or expensive it is to run. For an MoE model, the active parameter count per token is what actually drives inference cost, and it is typically a small fraction of the total.</p>
+      <p class="note"><span class="tag">Go deeper</span><a href="/guides/moe-model-macbook.html">Running a mixture-of-experts model locally</a></p>
+      <p class="note"><span class="tag">See also</span><a href="#inference">Inference</a>, <a href="#quantization">Quantization</a></p>
+    </article>
+
+    <article class="term" id="lora">
+      <div class="term__head">
+        <h3>LoRA</h3>
+        <a class="term__hash" href="#lora" aria-label="Permalink to LoRA">#</a>
+        <span class="term__aka">also: Low-rank adaptation</span>
+      </div>
+      <p class="term__def">LoRA is a fine-tuning method that freezes a model's original weights and trains a small pair of low-rank matrices inserted into its layers, producing a tiny adapter file instead of a full copy of the model.</p>
+      <p>A full fine-tune updates some or all of a model's original weights directly, which means storing a full updated copy of the model for every distinct fine-tuned variant, and updating a number of parameters equal to the layers being trained. LoRA instead leaves the original weights completely frozen and, at each targeted layer, adds a small pair of low-rank matrices whose product approximates the weight update that full fine-tuning would have made. Only those small matrices are trained, and only they need to be stored afterward.</p>
+      <p>Because the inserted matrices are low-rank, meaning they are constrained to a much smaller number of dimensions than the original weight matrix, the number of trainable parameters is a small fraction of the model's total, and the resulting adapter file is correspondingly small, often megabytes rather than the gigabytes a full fine-tuned model would require. This makes it far cheaper to train, store, and distribute a task-specific or style-specific adaptation, and it makes it practical to keep several different LoRA adapters for the same base model and swap between them without duplicating the whole model each time.</p>
+      <p>At inference time, a LoRA adapter's matrices can either be applied on top of the frozen base weights at load time, or merged into the base weights to produce a single combined model, depending on whether the deployment wants the flexibility of swapping adapters or the simplicity of one fixed model. Because the base weights never change, the original model's general capabilities are preserved underneath whatever the adapter adds.</p>
+      <p class="note"><span class="tag">Example</span>Adapting a general-purpose model to consistently follow one company's support-ticket format can be done by training a LoRA adapter on a few thousand example tickets, producing a small file that can be loaded alongside the unmodified base model.</p>
+      <p class="note"><span class="tag">Common misconception</span>Assuming LoRA produces a model as capable of deep behavioral change as a full fine-tune. It is well suited to narrow adaptations like style, format, or a specific domain vocabulary, and is a much smaller intervention than retraining the model's full weight set.</p>
+      <p class="note"><span class="tag">See also</span><a href="#fine-tuning">Fine-tuning</a>, <a href="#quantization">Quantization</a></p>
+    </article>
+
+    <article class="term" id="fine-tuning">
+      <div class="term__head">
+        <h3>Fine-tuning</h3>
+        <a class="term__hash" href="#fine-tuning" aria-label="Permalink to Fine-tuning">#</a>
+      </div>
+      <p class="term__def">Fine-tuning is continuing to train an already-trained model on a smaller, task-specific dataset so its weights shift toward that task, rather than training a model from scratch.</p>
+      <p>A base model is trained on a broad, general dataset at significant cost. Fine-tuning takes that already-trained model and runs additional training passes on a narrower dataset representative of a specific task, domain, or desired output style, adjusting the weights further rather than starting over. This is far cheaper than training from scratch because the model has already learned general language structure and broad knowledge; fine-tuning only needs to shift it toward a narrower target.</p>
+      <p>Fine-tuning changes what the model tends to produce by default, its style, its format habits, or its handling of a specific domain's vocabulary and edge cases. It is a different tool from retrieval-augmented generation, which changes what the model has access to at answer time without touching its weights at all. A common mistake is fine-tuning a model in an attempt to teach it new facts or make it 'know' a specific document set; fine-tuning is far better suited to teaching behavior and style than to reliably injecting retrievable facts, which is what RAG is built for.</p>
+      <p>A full fine-tune updates the model's original weights (or a large portion of them) directly and requires meaningfully more compute and storage than a lightweight method like LoRA, which approximates the same kind of adaptation with a small number of additional trained parameters layered on top of a frozen base model. Which approach makes sense depends on how large the target dataset is, how much the desired behavior differs from the base model's default, and how much compute and storage budget is available.</p>
+      <p class="note"><span class="tag">Example</span>A base model fine-tuned on a company's historical support transcripts will tend to answer in that company's tone and format by default, without needing that tone specified in every prompt.</p>
+      <p class="note"><span class="tag">Common misconception</span>Fine-tuning a model to try to teach it new factual knowledge it should be able to recall on demand. Fine-tuning shifts behavior and style more reliably than it reliably injects retrievable facts; RAG is the better tool for the latter.</p>
+      <p class="note"><span class="tag">See also</span><a href="#lora">LoRA</a></p>
+    </article>
+
+    <article class="term" id="kv-cache">
+      <div class="term__head">
+        <h3>KV cache</h3>
+        <a class="term__hash" href="#kv-cache" aria-label="Permalink to KV cache">#</a>
+        <span class="term__aka">also: Key-value cache</span>
+      </div>
+      <p class="term__def">The KV cache stores the key and value tensors computed during attention over all previously processed tokens in a generation, so each new token does not have to recompute attention over the entire prefix from scratch.</p>
+      <p>Generating text token by token means the model would, in the naive case, have to reprocess the entire sequence so far every single time it wants to produce the next token, since attention requires comparing the current position against every earlier position. The KV cache avoids this by storing the key and value tensors produced for every token as soon as they are computed, so that when the next token is generated, the model only has to compute attention for that one new token against the already-stored keys and values, instead of recomputing them for the whole prefix.</p>
+      <p>This is a major speed optimization, but it comes at a direct memory cost that grows linearly with sequence length: every additional token in the context adds its own key and value tensors that have to sit in memory for the rest of that generation. At long context lengths, the KV cache itself can become one of the largest consumers of memory during inference, sometimes larger than the model's own weights, which is a major reason long-context inference is more expensive than short-context inference even when the model itself is unchanged.</p>
+      <p>The KV cache is specific to a single generation or an ongoing session; it holds the working state needed to keep producing tokens without redoing prior work. This is a different thing from prompt caching, which reuses a previously computed prefix across separate, distinct requests, typically to avoid paying the compute cost of reprocessing an unchanged system prompt or document every time a new request comes in with that same prefix.</p>
+      <p class="note"><span class="tag">Example</span>Generating a 2,000-token response one token at a time relies on the KV cache holding the growing set of key and value tensors from every prior token in that same generation, rather than recomputing attention over the whole thing at every step.</p>
+      <p class="note"><span class="tag">Common misconception</span>Confusing the KV cache with prompt caching because both involve the word 'cache' and both save compute. The KV cache is an in-flight structure for one ongoing generation; prompt caching reuses a computed prefix across separate requests.</p>
+      <p class="note"><span class="tag">Go deeper</span><a href="/guides/prompt-caching.html">How the KV cache differs from prompt caching</a></p>
+      <p class="note"><span class="tag">See also</span><a href="#prompt-caching">Prompt caching</a>, <a href="#context-window">Context window</a>, <a href="#token">Token</a>, <a href="#inference">Inference</a></p>
+    </article>
+
+    <article class="term" id="prompt-caching">
+      <div class="term__head">
+        <h3>Prompt caching</h3>
+        <a class="term__hash" href="#prompt-caching" aria-label="Permalink to Prompt caching">#</a>
+      </div>
+      <p class="term__def">Prompt caching is a provider-level feature that reuses the computed representation of a previously seen prefix across separate requests, cutting the cost and latency of reprocessing unchanged text such as a long system prompt or document.</p>
+      <p>Many real applications send the same large block of text, a system prompt, a set of instructions, or a reference document, at the start of many separate requests, with only a small part of the request actually changing each time, such as the user's specific question. Without prompt caching, the model has to process that entire shared prefix from scratch on every single request, even though the result of processing it was identical the last time. Prompt caching lets a provider store the computed internal representation of that prefix after the first request and reuse it on subsequent requests that share the same prefix, skipping the recomputation.</p>
+      <p>This delivers two concrete benefits: lower latency, because less new computation is needed per request, and lower cost, since providers that offer prompt caching typically charge less for cached tokens than for freshly processed ones. The tradeoff is that the prefix has to match exactly, or at least match up to some point, for the cache to apply; changing even a small amount of text near the start of a shared prefix can invalidate the cache for everything after that change, so applications that want to benefit from prompt caching generally structure their prompts to put stable, shared content first and variable content last.</p>
+      <p>Cached content is also not kept indefinitely; providers that offer this feature generally expire a cache entry after a period of disuse, so prompt caching helps most for workloads with frequent, repeated requests sharing a stable prefix, rather than occasional or highly variable ones.</p>
+      <p class="note"><span class="tag">Example</span>An application that sends the same 3,000-token set of instructions ahead of every user question can cache that instruction block, paying the full processing cost only on the first request and a reduced cost on every subsequent request that reuses the identical prefix.</p>
+      <p class="note"><span class="tag">Common misconception</span>Assuming prompt caching and the KV cache are the same mechanism because both save recomputation. Prompt caching operates across separate requests and is a provider feature; the KV cache operates within a single ongoing generation and exists regardless of whether prompt caching is available.</p>
+      <p class="note"><span class="tag">Go deeper</span><a href="/guides/prompt-caching.html">Prompt caching and what it actually saves</a></p>
+      <p class="note"><span class="tag">See also</span><a href="#kv-cache">KV cache</a>, <a href="#context-window">Context window</a>, <a href="#token">Token</a></p>
+    </article>
+
+  </section>
+
+  <hr class="divider">
+
+  <section class="section section--tight">
+    <div class="grp-head">
+      <p class="eyebrow">Keep reading</p>
+      <h2>Other glossary clusters</h2>
+    </div>
+    <ul class="rail">
+      <li><a href="/glossary/trading-risk.html">Trading &amp; risk</a></li>
+      <li><a href="/glossary/options.html">Options</a></li>
+      <li><a href="/glossary/security.html">Security</a></li>
+      <li><a href="/glossary/web-seo.html">Web &amp; SEO</a></li>
+      <li><a href="/glossary/immigration-student.html">Student visas</a></li>
+      <li><a href="/glossary/freight.html">Freight</a></li>
+      <li><a href="/glossary/career.html">Careers</a></li>
+    </ul>
+    <p class="note" style="margin-top:var(--s5)"><a href="/glossary.html">Full A–Z index of every term</a> · <a href="/guides.html">Long-form guides</a></p>
+  </section>
+
+</main>
+
+<section aria-labelledby="compliance-h" style="max-width:1080px;margin:0 auto;padding:28px 20px 8px;border-top:1px solid rgba(212,175,55,.18)"><h2 id="compliance-h" style="font-family:Georgia,'Times New Roman',serif;font-size:15px;letter-spacing:.06em;text-transform:uppercase;color:#d4af37;margin:0 0 10px">Disclaimer</h2><p style="font-size:13.5px;line-height:1.65;color:#9a958c;margin:0 0 8px">This glossary is educational and informational only. Nothing here is financial, investment, tax, legal or immigration advice, or a recommendation to buy or sell any security. Trading carries substantial risk of loss. Any backtested or example figure is hypothetical, does not represent live trading, and past performance does not guarantee future results. Definitions of legal, regulatory and immigration terms change; verify anything time-sensitive against the primary source, your DSO, or a licensed professional before acting on it.</p><p style="font-size:13.5px;line-height:1.65;color:#9a958c;margin:0"><a style="color:#d4af37" href="/terms.html">Terms of Use</a> · <a style="color:#d4af37" href="/privacy.html">Privacy Policy</a></p></section>
+<footer class="site-footer">
+  <div class="site-footer__links">
+    <a href="/">Work</a>
+    <a href="/about.html">About</a>
+    <a href="/guides.html">Guides</a>
+    <a href="/glossary.html">Glossary</a>
+    <a href="/apps.html">Apps</a>
+    <a href="/store.html">Store</a>
+    <a href="/privacy.html">Privacy</a>
+    <a href="/terms.html">Terms</a>
+    <a href="mailto:yusuf.gadelrab06@gmail.com">yusuf.gadelrab06@gmail.com</a>
+  </div>
+</footer>
+
+<script src="/js/site.js" defer></script>
+</body>
+</html>

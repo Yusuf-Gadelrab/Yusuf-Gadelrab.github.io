@@ -2,6 +2,8 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8" />
+<meta name="referrer" content="strict-origin-when-cross-origin">
+<meta http-equiv="Content-Security-Policy" content="object-src 'none'; base-uri 'self'">
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <!-- tech:seo — managed block (SEO / social / structured data / perf / PWA) -->
 <link rel="preload" href="/css/site.css" as="style">
@@ -9,17 +11,17 @@
 <meta property="og:image" content="https://yusuf-gadelrab.github.io/og/freight-tools-card.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
-<meta property="og:image:alt" content="Free Freight Broker Calculators — Rate, Margin, Detention">
+<meta property="og:image:alt" content="Freight Broker Margin &amp; Rate Per Mile Calculator — Free">
 <meta name="twitter:image" content="https://yusuf-gadelrab.github.io/og/freight-tools-card.png">
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"Freight Broker Calculators","url":"https://yusuf-gadelrab.github.io/freight-tools.html","applicationCategory":"FinanceApplication","operatingSystem":"Any (browser)","browserRequirements":"Requires JavaScript","description":"Six free calculators for freight brokers and carriers: rate per mile, deadhead cost, broker margin, detention and accessorials, fuel surcharge, and break-even.","author":{"@id":"https://yusuf-gadelrab.github.io/#person"},"isAccessibleForFree":true,"offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"Freight Broker Calculators","url":"https://yusuf-gadelrab.github.io/freight-tools.html","applicationCategory":"FinanceApplication","operatingSystem":"Any (browser)","browserRequirements":"Requires JavaScript","description":"Six free calculators for freight brokers and carriers: rate per mile, deadhead cost, broker margin, detention and accessorials, fuel surcharge, and break-even.","author":{"@id":"https://yusuf-gadelrab.github.io/#person"},"isAccessibleForFree":true}</script>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://yusuf-gadelrab.github.io/"},{"@type":"ListItem","position":2,"name":"Apps & projects","item":"https://yusuf-gadelrab.github.io/apps.html"},{"@type":"ListItem","position":3,"name":"Free Freight Broker Calculators","item":"https://yusuf-gadelrab.github.io/freight-tools.html"}]}</script>
 <link rel="manifest" href="/manifest.webmanifest">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 <script>addEventListener("load",function(){if("serviceWorker" in navigator)navigator.serviceWorker.register("/sw.js").catch(function(){})});</script>
 <!-- /tech:seo -->
-<title>Free Freight Broker Calculators — Rate, Margin, Detention</title>
-<meta name="description" content="Six free freight calculators: rate per mile, deadhead cost, broker margin, detention, fuel surcharge, and break-even. No signup, runs in your browser.">
+<title>Freight Broker Margin &amp; Rate Per Mile Calculator — Free</title>
+<meta name="description" content="Free freight broker calculators for margin, rate per mile, deadhead, detention, fuel surcharge and break-even. Each shows the formula and a worked example.">
 <link rel="canonical" href="https://yusuf-gadelrab.github.io/freight-tools.html">
 <link rel="icon" type="image/svg+xml" href="https://yusuf-gadelrab.github.io/favicon-automation.svg">
 <link rel="apple-touch-icon" sizes="180x180" href="https://yusuf-gadelrab.github.io/apple-touch-icon.png">
@@ -27,15 +29,15 @@
 <meta name="theme-color" content="#0B0B0D">
 <meta name="author" content="Yusuf Gadelrab">
 <meta name="robots" content="index,follow">
-<meta name="keywords" content="freight rate per mile calculator, deadhead cost calculator, broker margin calculator, detention calculator, fuel surcharge calculator, break even rate per mile, freight broker tools">
+<meta name="keywords" content="freight margin calculator, freight broker margin calculator, rate per mile calculator, detention calculator trucking, fuel surcharge calculator, deadhead cost calculator, break even rate per mile">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Yusuf Gadelrab">
-<meta property="og:title" content="Free Freight Broker Calculators">
-<meta property="og:description" content="Rate per mile, deadhead cost, margin, detention, fuel surcharge and break-even — six free calculators with every formula shown.">
+<meta property="og:title" content="Free Freight Margin &amp; Rate Per Mile Calculators">
+<meta property="og:description" content="Margin, rate per mile, deadhead, detention, fuel surcharge and break-even — six free calculators, each with its formula and a worked example.">
 <meta property="og:url" content="https://yusuf-gadelrab.github.io/freight-tools.html">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Free Freight Broker Calculators">
-<meta name="twitter:description" content="Rate per mile, deadhead cost, margin, detention, fuel surcharge and break-even — six free calculators with every formula shown.">
+<meta name="twitter:title" content="Free Freight Margin &amp; Rate Per Mile Calculators">
+<meta name="twitter:description" content="Margin, rate per mile, deadhead, detention, fuel surcharge and break-even — six free calculators, each with its formula and a worked example.">
 <link rel="stylesheet" href="/css/site.css">
 <style>
   /* Page-specific only — tokens, reset, nav, buttons, cards, forms, footer
@@ -100,6 +102,17 @@
   .actions{display:flex;flex-wrap:wrap;gap:var(--s3);align-items:center;margin-top:var(--s4)}
   .copied{font-size:12.5px;color:var(--gold-2)}
 
+  /* per-calculator explainer: what it computes · formula · worked example · failure mode */
+  .expl{margin-top:var(--s5);padding-top:var(--s5);border-top:1px solid var(--line-soft)}
+  .expl__row + .expl__row{margin-top:var(--s4)}
+  .expl__k{font-family:var(--display-pro);font-weight:600;font-size:var(--t-micro);
+    letter-spacing:1.6px;text-transform:uppercase;color:var(--gold-dim);
+    margin:0 0 8px;line-height:1.4}
+  .expl__row p{color:var(--muted);font-size:var(--t-small);max-width:72ch;
+    margin:0;line-height:1.7}
+  .expl__row p b{color:var(--ink);font-weight:600}
+  .expl__row .formula{margin-top:0;max-width:none}
+
   .cta{border:1px solid var(--line);border-radius:var(--radius-lg);
     background:radial-gradient(70% 130% at 50% 0%,rgba(212,175,55,.10),transparent),
       linear-gradient(180deg,var(--panel),var(--panel2));
@@ -110,23 +123,27 @@
   .cta li+li{margin-top:6px}
   .cta .btnrow{display:flex;flex-wrap:wrap;gap:var(--s3);margin-top:var(--s5)}
 
-  .faq h3{font-size:var(--t-h3);margin-bottom:var(--s2)}
-  .faq p{color:var(--muted);font-size:var(--t-small);max-width:70ch}
-  .faq > div + div{margin-top:var(--s5)}
-
   /* iOS Safari zooms the page when a focused field is under 16px */
   input,select,textarea{font-size:16px}
 </style>
 <!-- geo:entity — canonical Person node, one entity across every page -->
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"Person","@id":"https://yusuf-gadelrab.github.io/#person","name":"Yusuf Gadelrab","url":"https://yusuf-gadelrab.github.io/"}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebPage","@id":"https://yusuf-gadelrab.github.io/freight-tools.html#webpage","url":"https://yusuf-gadelrab.github.io/freight-tools.html","inLanguage":"en","isPartOf":{"@id":"https://yusuf-gadelrab.github.io/#website"},"about":{"@id":"https://yusuf-gadelrab.github.io/#person"},"publisher":{"@id":"https://yusuf-gadelrab.github.io/#person"}}</script>
 <link rel="alternate" type="text/plain" href="https://yusuf-gadelrab.github.io/llms-full.txt" title="Plain-text profile for language models">
 <!-- geo:faq — extractable Q&A for answer engines -->
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","@id":"https://yusuf-gadelrab.github.io/freight-tools.html#faq","mainEntity":[{"@type":"Question","name":"How do you calculate rate per mile for a freight load?","acceptedAnswer":{"@type":"Answer","text":"Rate per mile = total linehaul rate / total loaded miles. A $2,400 load running 1,200 miles is $2.00 per mile. If you include deadhead miles in the denominator you get the all-in rate per mile, which is the number that actually reflects what the truck earned."}},{"@type":"Question","name":"How do you calculate a freight broker's margin?","acceptedAnswer":{"@type":"Answer","text":"Margin dollars = customer rate minus carrier pay. Margin percent = margin dollars / customer rate. A load billed at $2,400 with $2,000 to the carrier earns $400, a 16.7% margin. The free margin calculator at https://yusuf-gadelrab.github.io/freight-tools.html shows both figures."}},{"@type":"Question","name":"What is deadhead and how much does it cost?","acceptedAnswer":{"@type":"Answer","text":"Deadhead is the empty miles a truck runs to reach a pickup. Its cost is deadhead miles x operating cost per mile, and it comes straight out of the load's profit. Adding deadhead to loaded miles gives the true all-in rate per mile."}},{"@type":"Question","name":"How is a fuel surcharge (FSC) calculated?","acceptedAnswer":{"@type":"Answer","text":"FSC per mile = (current diesel price minus the base fuel price) / the truck's miles per gallon. Multiply by total miles for the surcharge on a load. The base price and MPG are set by contract, so both need to be agreed with the customer up front."}},{"@type":"Question","name":"What is detention pay in trucking?","acceptedAnswer":{"@type":"Answer","text":"Detention is what a carrier bills when a shipper or receiver holds the truck beyond the free time, usually two hours. It is billed per hour after free time, often with a daily cap. The detention calculator handles free time, hourly rate, and caps together with other accessorials."}},{"@type":"Question","name":"Are these freight calculators free?","acceptedAnswer":{"@type":"Answer","text":"Yes — six calculators, no signup, no account. The page is static and runs in your browser, so nothing you type is transmitted or stored anywhere."}}]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","@id":"https://yusuf-gadelrab.github.io/freight-tools.html#faq","mainEntity":[{"@type":"Question","name":"How do you calculate rate per mile for a freight load?","acceptedAnswer":{"@type":"Answer","text":"Rate per mile = total linehaul rate / total loaded miles. A $2,400 load running 1,200 miles is $2.00 per mile. If you include deadhead miles in the denominator you get the all-in rate per mile, which is the number that actually reflects what the truck earned."}},{"@type":"Question","name":"How do you calculate a freight broker's margin?","acceptedAnswer":{"@type":"Answer","text":"Margin dollars = customer rate minus carrier pay. Margin percent = margin dollars / customer rate. A load billed at $2,400 with $2,000 to the carrier earns $400, a 16.7% margin. The free margin calculator at https://yusuf-gadelrab.github.io/freight-tools.html shows both figures."}},{"@type":"Question","name":"What is deadhead and how much does it cost?","acceptedAnswer":{"@type":"Answer","text":"Deadhead is the empty miles a truck runs to reach a pickup. Its cost is deadhead miles x operating cost per mile, and it comes straight out of the load's profit. Adding deadhead to loaded miles gives the true all-in rate per mile."}},{"@type":"Question","name":"How is a fuel surcharge (FSC) calculated?","acceptedAnswer":{"@type":"Answer","text":"FSC per mile = (current diesel price minus the base fuel price) / the truck's miles per gallon. Multiply by total miles for the surcharge on a load. The base price and MPG are set by contract, so both need to be agreed with the customer up front."}},{"@type":"Question","name":"What is detention pay in trucking?","acceptedAnswer":{"@type":"Answer","text":"Detention is what a carrier bills when a shipper or receiver holds the truck beyond the free time, usually two hours. It is billed per hour after free time, often with a daily cap. The detention calculator handles free time, hourly rate, and caps together with other accessorials."}},{"@type":"Question","name":"What is a good broker margin percentage?","acceptedAnswer":{"@type":"Answer","text":"It depends on the lane, the mode, the season and how the freight was won, and this page does not have benchmark data — no rate index is bundled here, so any single \"industry average\" quoted without your lane and mode behind it is not worth pricing against. Use the margin calculator on loads you have actually booked and compare your own lanes to each other. Remember that gross margin is not profit: it has not yet paid the load board, factoring fees, insurance or the person who covered the load."}},{"@type":"Question","name":"Do I need a load board or TMS to use these calculators?","acceptedAnswer":{"@type":"Answer","text":"No. This is a single static page and all six calculators run in your browser, with no account, no login, no backend and no integration with any load board or TMS. You type your own numbers in by hand."}},{"@type":"Question","name":"Are these freight calculators free?","acceptedAnswer":{"@type":"Answer","text":"Yes — six calculators, no signup, no account. The page is static and runs in your browser, so nothing you type is transmitted anywhere. Your last-used inputs are saved in this browser's local storage only, and clearing site data deletes them."}}]}</script>
 <style>.geo-qa{padding:var(--s5)}.geo-qa h3{font-size:var(--t-h3);margin:0 0 var(--s3)}.geo-qa p{color:var(--muted);font-size:var(--t-small);margin:0}</style>
 </head>
 <body class="pro">
 <a class="skip-link" href="#main">Skip to content</a>
 <nav class="site-nav"><a class="site-nav__brand" href="/"><img class="site-nav__lion" src="/img/brand/lion-mark.svg" alt="" width="34" height="34" decoding="async"><span>YUSUF GADELRAB</span></a><div class="site-nav__links"><a href="/">Work</a><a href="/resume.html">Resume</a><a href="/guides.html">Guides</a><a href="/store.html">Store</a><a href="/apps.html">Apps</a><a href="/kxngsef.html">KXNG SEF</a><a href="/hire.html">Hire</a><a href="/media-kit.html">Media Kit</a></div></nav>
+
+<nav class="crumbs" aria-label="Breadcrumb">
+  <ol>
+    <li><a href="/">Home</a></li>
+    <li><a href="/apps.html">Apps &amp; projects</a></li>
+    <li><span aria-current="page">Free Freight Broker Calculators</span></li>
+  </ol>
+</nav>
 
 <main id="main">
 
@@ -185,11 +202,6 @@
         </div>
       </div>
 
-      <p class="formula"><b>Loaded RPM</b>   = linehaul ÷ loaded miles
-<b>All-in RPM</b>   = linehaul ÷ (loaded miles + deadhead miles)
-<b>Margin $</b>     = linehaul − carrier buy rate
-<b>Margin %</b>     = margin $ ÷ linehaul × 100</p>
-
       <div class="out" role="status" aria-live="polite" aria-atomic="true">
         <div class="outgrid" id="rpm_out"></div>
         <p class="interp" id="rpm_interp"></p>
@@ -197,6 +209,32 @@
       <div class="actions">
         <button type="button" class="btn btn-ghost btn-sm" data-copy="rpm">Copy result</button>
         <span class="copied" id="rpm_copied" role="status" aria-live="polite"></span>
+      </div>
+
+      <div class="expl">
+        <div class="expl__row">
+          <h3 class="expl__k">What it computes</h3>
+          <p>Two rate-per-mile figures for the same load: <b>loaded RPM</b>, which is the number on the load board, and <b>all-in RPM</b>, which spreads the same money across the empty miles you burn getting to the pickup. Drop in a carrier buy rate and it also returns the broker spread on that load.</p>
+        </div>
+        <div class="expl__row">
+          <h3 class="expl__k">The formula</h3>
+          <p class="formula"><b>Loaded RPM</b>   = linehaul ÷ loaded miles
+<b>All-in RPM</b>   = linehaul ÷ (loaded miles + deadhead miles)
+<b>Margin $</b>     = linehaul − carrier buy rate
+<b>Margin %</b>     = margin $ ÷ linehaul × 100</p>
+        </div>
+        <div class="expl__row">
+          <h3 class="expl__k">Worked example</h3>
+          <p class="formula">$2,400 linehaul · 1,200 loaded mi · 140 deadhead mi
+
+<b>Loaded RPM</b> = 2,400 ÷ 1,200 = <b>$2.000 /mi</b>
+<b>All-in RPM</b> = 2,400 ÷ 1,340 = <b>$1.791 /mi</b>
+Deadhead quietly takes $0.209 /mi off the headline rate.</p>
+        </div>
+        <div class="expl__row">
+          <h3 class="expl__k">When this number misleads you</h3>
+          <p>Loaded RPM flatters every load, and it flatters the bad ones most. The $2.00 load above is really paying $1.79 across the miles the truck actually turned — deadhead is usually the whole difference between a lane looking good and being good. Rate per mile is also blind to time: two loads at the same RPM pay very differently if one sits four hours at the dock and the other is live-unload in forty minutes. Check it against the break-even calculator below before you decide a rate is fine.</p>
+        </div>
       </div>
     </section>
 
@@ -239,11 +277,6 @@
         </div>
       </div>
 
-      <p class="formula"><b>Fuel cost</b>          = (deadhead miles ÷ MPG) × fuel price
-<b>Driver/fixed cost</b>  = deadhead miles × cost per mile
-<b>True deadhead cost</b> = fuel cost + driver/fixed cost
-<b>Break-even add-on</b>  = true deadhead cost ÷ loaded miles  ($ per loaded mile the rate must gain)</p>
-
       <div class="out" role="status" aria-live="polite" aria-atomic="true">
         <div class="outgrid" id="dh_out"></div>
         <p class="interp" id="dh_interp"></p>
@@ -251,6 +284,33 @@
       <div class="actions">
         <button type="button" class="btn btn-ghost btn-sm" data-copy="dh">Copy result</button>
         <span class="copied" id="dh_copied" role="status" aria-live="polite"></span>
+      </div>
+
+      <div class="expl">
+        <div class="expl__row">
+          <h3 class="expl__k">What it computes</h3>
+          <p>The real dollar cost of repositioning a truck empty — fuel <em>plus</em> everything that is not fuel — and how many cents per loaded mile the rate has to gain before a deadhead load lands in the same place as one that started under the trailer.</p>
+        </div>
+        <div class="expl__row">
+          <h3 class="expl__k">The formula</h3>
+          <p class="formula"><b>Fuel cost</b>          = (deadhead miles ÷ MPG) × fuel price
+<b>Driver/fixed cost</b>  = deadhead miles × cost per mile
+<b>True deadhead cost</b> = fuel cost + driver/fixed cost
+<b>Break-even add-on</b>  = true deadhead cost ÷ loaded miles  ($ per loaded mile the rate must gain)</p>
+        </div>
+        <div class="expl__row">
+          <h3 class="expl__k">Worked example</h3>
+          <p class="formula">140 deadhead mi · $3.89/gal · 6.5 MPG · $0.65/mi driver + fixed
+
+<b>Fuel</b>       = (140 ÷ 6.5) × 3.89 = 21.54 gal = <b>$83.78</b>
+<b>Driver/fix</b> = 140 × 0.65                     = <b>$91.00</b>
+<b>True cost</b>                                   = <b>$174.78</b>
+Spread over 1,200 loaded mi                 = <b>$0.146 /mi</b></p>
+        </div>
+        <div class="expl__row">
+          <h3 class="expl__k">When this number misleads you</h3>
+          <p>Pricing deadhead as "just fuel" understates it badly: fuel is $83.78 of the $174.78 above, so the fuel-only version of this load is off by more than 50%. The other trap is the direction of the empty miles. A 140-mile deadhead into a strong outbound market can be worth paying for; the same 140 miles deeper into a dead market costs you the next load as well as this one, and no per-mile figure on this page can see that. Empty miles also burn clock hours you cannot bill to anyone.</p>
+        </div>
       </div>
     </section>
 
@@ -281,10 +341,6 @@
         </div>
       </div>
 
-      <p class="formula"><b>Gross margin $</b>   = customer rate − carrier rate
-<b>Gross margin %</b>   = gross margin $ ÷ customer rate × 100
-<b>Carrier rate to hit target %</b> = customer rate × (1 − target % ÷ 100)</p>
-
       <div class="out" role="status" aria-live="polite" aria-atomic="true">
         <div class="outgrid" id="mg_out"></div>
         <p class="interp" id="mg_interp"></p>
@@ -292,6 +348,32 @@
       <div class="actions">
         <button type="button" class="btn btn-ghost btn-sm" data-copy="mg">Copy result</button>
         <span class="copied" id="mg_copied" role="status" aria-live="polite"></span>
+      </div>
+
+      <div class="expl">
+        <div class="expl__row">
+          <h3 class="expl__k">What it computes</h3>
+          <p>The broker spread on one load: what you keep in dollars, what that is as a percent of the customer rate, and — working backwards — the carrier rate you would have to book to hit a target margin on that same customer rate. Useful before you post the load, not after.</p>
+        </div>
+        <div class="expl__row">
+          <h3 class="expl__k">The formula</h3>
+          <p class="formula"><b>Gross margin $</b>   = customer rate − carrier rate
+<b>Gross margin %</b>   = gross margin $ ÷ customer rate × 100
+<b>Carrier rate to hit target %</b> = customer rate × (1 − target % ÷ 100)</p>
+        </div>
+        <div class="expl__row">
+          <h3 class="expl__k">Worked example</h3>
+          <p class="formula">Customer $2,400 · carrier $2,000 · target 18%
+
+<b>Gross margin $</b> = 2,400 − 2,000            = <b>$400.00</b>
+<b>Gross margin %</b> = 400 ÷ 2,400 × 100        = <b>16.7%</b>  (on revenue)
+Markup on cost   = 400 ÷ 2,000 × 100        = <b>20.0%</b>  (different number)
+Carrier for 18%  = 2,400 × (1 − 0.18)       = <b>$1,968.00</b></p>
+        </div>
+        <div class="expl__row">
+          <h3 class="expl__k">When this number misleads you</h3>
+          <p>Margin percent on revenue is not markup on cost, and the two get traded back and forth inside the same phone call. That $400 is a 16.7% margin and a 20% markup — both correct, 3.3 points apart, and a "20% load" means two different carrier rates depending on which one the other person meant. Every percentage on this page is measured against the customer rate, which is the brokerage P&amp;L convention. The second trap is treating gross margin as profit: it has not yet paid the load board, the factoring or quick-pay fee, contingent cargo insurance, the claim you have not heard about yet, or the person who covered the load.</p>
+        </div>
       </div>
     </section>
 
@@ -355,11 +437,6 @@
         </div>
       </div>
 
-      <p class="formula"><b>Billable hours</b>  = max(0, time on site − free time)
-<b>Detention $</b>     = billable hours × detention rate   (capped if a cap is set)
-<b>Accessorials $</b>  = lumper + layover + TONU + (extra stops × rate per stop)
-<b>Total billable</b>  = detention $ + accessorials $</p>
-
       <div class="out" role="status" aria-live="polite" aria-atomic="true">
         <div class="outgrid" id="dt_out"></div>
         <p class="interp" id="dt_interp"></p>
@@ -367,6 +444,33 @@
       <div class="actions">
         <button type="button" class="btn btn-ghost btn-sm" data-copy="dt">Copy result</button>
         <span class="copied" id="dt_copied" role="status" aria-live="polite"></span>
+      </div>
+
+      <div class="expl">
+        <div class="expl__row">
+          <h3 class="expl__k">What it computes</h3>
+          <p>Billable detention once free time is subtracted and any contractual cap is applied, plus lumper, layover, TONU and extra stops rolled into one total you can put on the invoice or paste into the dispute.</p>
+        </div>
+        <div class="expl__row">
+          <h3 class="expl__k">The formula</h3>
+          <p class="formula"><b>Billable hours</b>  = max(0, time on site − free time)
+<b>Detention $</b>     = billable hours × detention rate   (capped if a cap is set)
+<b>Accessorials $</b>  = lumper + layover + TONU + (extra stops × rate per stop)
+<b>Total billable</b>  = detention $ + accessorials $</p>
+        </div>
+        <div class="expl__row">
+          <h3 class="expl__k">Worked example</h3>
+          <p class="formula">2 hr free · 11 hr on site · $75/hr · $600/day cap
+
+<b>Billable hours</b> = 11 − 2   = <b>9.00 hr</b>
+<b>Detention</b>      = 9 × 75   = <b>$675.00</b>
+<b>Cap applied</b>               → <b>$600.00</b>
+The cap ate $75.00 — the ninth hour was free to the shipper.</p>
+        </div>
+        <div class="expl__row">
+          <h3 class="expl__k">When this number misleads you</h3>
+          <p>This calculator will happily bill you detention you cannot collect. Detention pays only when two things are already true: the accessorial and its rate were on the rate confirmation <em>before</em> the truck rolled, and you have signed in and out times on the BOL or a check-in slip to prove the hours. A driver's recollection and an ELD ping are not the same evidence as a stamped document, and that is the ground most detention claims are lost on. Caps do the rest of the damage quietly — everything past the cap is free time you did not agree to. Free time, caps, rounding and the definitions themselves live in your rate confirmation and customer contract, and when the contract disagrees with this page, the contract wins.</p>
+        </div>
       </div>
     </section>
 
@@ -403,10 +507,6 @@
         </div>
       </div>
 
-      <p class="formula"><b>FSC per mile</b> = max(0, DOE price − base price) ÷ MPG
-<b>FSC per load</b> = FSC per mile × billable miles
-Below the base price the surcharge is zero (unless your contract runs a negative FSC).</p>
-
       <div class="out" role="status" aria-live="polite" aria-atomic="true">
         <div class="outgrid" id="fs_out"></div>
         <p class="interp" id="fs_interp"></p>
@@ -414,6 +514,31 @@ Below the base price the surcharge is zero (unless your contract runs a negative
       <div class="actions">
         <button type="button" class="btn btn-ghost btn-sm" data-copy="fs">Copy result</button>
         <span class="copied" id="fs_copied" role="status" aria-live="polite"></span>
+      </div>
+
+      <div class="expl">
+        <div class="expl__row">
+          <h3 class="expl__k">What it computes</h3>
+          <p>The cents-per-mile fuel surcharge from the peg-and-divide method: how far the current diesel average sits above the base price written into your schedule, divided by the MPG that schedule assumes, then multiplied out across the billable miles.</p>
+        </div>
+        <div class="expl__row">
+          <h3 class="expl__k">The formula</h3>
+          <p class="formula"><b>FSC per mile</b> = max(0, DOE price − base price) ÷ MPG
+<b>FSC per load</b> = FSC per mile × billable miles
+Below the base price the surcharge is zero (unless your contract runs a negative FSC).</p>
+        </div>
+        <div class="expl__row">
+          <h3 class="expl__k">Worked example</h3>
+          <p class="formula">Base $1.25/gal · current DOE $3.89/gal · 6.5 MPG · 1,200 mi
+
+<b>Above base</b>   = 3.89 − 1.25   = <b>$2.640 /gal</b>
+<b>FSC per mile</b> = 2.640 ÷ 6.5   = <b>$0.406 /mi</b>
+<b>FSC per load</b> = 0.406 × 1,200 = <b>$487.38</b></p>
+        </div>
+        <div class="expl__row">
+          <h3 class="expl__k">When this number misleads you</h3>
+          <p>There is no such thing as a standard fuel surcharge, so a number produced here is only as real as the contract behind it. The base price and the assumed MPG are both negotiated terms, and moving either moves the money: the same $3.89 diesel pays <b>$0.406/mi</b> against a $1.25 peg and <b>$0.214/mi</b> against a $2.50 one — on 1,200 miles that is a $230.77 difference on identical fuel. Schedules also vary in shape. Some step in half-cent brackets instead of dividing straight through, some peg to a regional <a href="https://www.eia.gov/petroleum/gasdiesel/" target="_blank" rel="noopener" style="color:var(--gold-2)">EIA</a> average rather than the national one, some apply FSC to loaded miles only, and the MPG on paper is rarely the MPG the truck gets. Nothing on this page hardcodes a diesel price — type in the current figure yourself.</p>
+        </div>
       </div>
     </section>
 
@@ -450,12 +575,6 @@ Below the base price the surcharge is zero (unless your contract runs a negative
         </div>
       </div>
 
-      <p class="formula"><b>Total cost</b>      = fixed cost + (variable cost per mile × total miles)
-<b>Break-even rate</b> = total cost                    (margin = 0)
-<b>Minimum rate</b>    = total cost ÷ (1 − target % ÷ 100)
-<b>Minimum RPM</b>     = minimum rate ÷ total miles
-Dividing by (1 − margin) is deliberate: margin is measured against revenue, not cost.</p>
-
       <div class="out" role="status" aria-live="polite" aria-atomic="true">
         <div class="outgrid" id="be_out"></div>
         <p class="interp" id="be_interp"></p>
@@ -463,6 +582,36 @@ Dividing by (1 − margin) is deliberate: margin is measured against revenue, no
       <div class="actions">
         <button type="button" class="btn btn-ghost btn-sm" data-copy="be">Copy result</button>
         <span class="copied" id="be_copied" role="status" aria-live="polite"></span>
+      </div>
+
+      <div class="expl">
+        <div class="expl__row">
+          <h3 class="expl__k">What it computes</h3>
+          <p>The floor and the target for one trip: the rate that exactly covers it with nothing left over, the same figure expressed per mile, and the higher rate the load has to pay for the trip to clear a target margin on revenue.</p>
+        </div>
+        <div class="expl__row">
+          <h3 class="expl__k">The formula</h3>
+          <p class="formula"><b>Total cost</b>      = fixed cost + (variable cost per mile × total miles)
+<b>Break-even rate</b> = total cost                    (margin = 0)
+<b>Minimum rate</b>    = total cost ÷ (1 − target % ÷ 100)
+<b>Minimum RPM</b>     = minimum rate ÷ total miles
+Dividing by (1 − margin) is deliberate: margin is measured against revenue, not cost.</p>
+        </div>
+        <div class="expl__row">
+          <h3 class="expl__k">Worked example</h3>
+          <p class="formula">$536 fixed · $1.45/mi variable · 1,340 total mi · 15% target
+
+<b>Total cost</b>    = 536 + (1.45 × 1,340) = <b>$2,479.00</b>
+<b>Break-even/mi</b> = 2,479 ÷ 1,340        = <b>$1.850 /mi</b>
+<b>Minimum rate</b>  = 2,479 ÷ (1 − 0.15)   = <b>$2,916.47</b>
+<b>Minimum RPM</b>   = 2,916.47 ÷ 1,340     = <b>$2.176 /mi</b>
+
+The $2,400 load from calculator 01 loses $79.00 against these costs.</p>
+        </div>
+        <div class="expl__row">
+          <h3 class="expl__k">When this number misleads you</h3>
+          <p>Break-even per mile is only as honest as the fixed-cost number feeding it, and that is the figure owner-operators understate most. A truthful fixed cost per day carries the truck and trailer payments, physical damage and liability insurance, occupational accident or workers' comp, plates and permits, IFTA, the ELD subscription, parking, accounting — and it has to be spread over the days the truck actually runs, not the days on the calendar. Leave a few of those out and every load on the board looks profitable. The second thing people get wrong is the divide: margin is measured against revenue, so a 15% target means dividing $2,479 by 0.85 to get $2,916.47, not multiplying by 1.15 to get $2,850.85. Marking cost up by the margin percentage undershoots the target every time.</p>
+        </div>
       </div>
     </section>
 
@@ -488,28 +637,6 @@ Dividing by (1 − margin) is deliberate: margin is measured against revenue, no
       </div>
     </div>
   </section>
-
-  <!-- NOTES -->
-  <section class="section faq" style="padding-top:0">
-    <h2 style="margin-bottom:var(--s5)">Notes on the math</h2>
-    <div>
-      <h3>Why "all-in" rate per mile matters</h3>
-      <p>Loaded RPM flatters every load. A 400-mile run at $2.50 loaded that needed 150 empty miles to reach is really paying $1.82 across the miles the truck actually turned. Deadhead is the difference between a lane looking good and being good.</p>
-    </div>
-    <div>
-      <h3>Margin on revenue vs. markup on cost</h3>
-      <p>A $400 spread on a $2,000 customer rate is a 20% margin, but a 25% markup on the $1,600 carrier rate. Both numbers are correct and they are not the same number. Every margin figure on this page is measured against the customer rate, which is the convention on a brokerage P&amp;L.</p>
-    </div>
-    <div>
-      <h3>Fuel surcharge is a formula, not a price</h3>
-      <p>The common FSC method pegs a base diesel price, takes the amount current diesel exceeds it, and divides by an assumed MPG to get cents per mile. Nothing on this page hardcodes a diesel price — enter the current figure from the <a href="https://www.eia.gov/petroleum/gasdiesel/" target="_blank" rel="noopener" style="color:var(--gold-2)">EIA weekly on-highway diesel report</a>, which is the source most FSC schedules reference. Contracts vary: some use a regional average, some step in half-cent brackets rather than a straight divide.</p>
-    </div>
-    <div>
-      <h3>These are estimators, not your contract</h3>
-      <p>Detention rules, caps, free time, and accessorial definitions live in your rate confirmation and customer contract. When the calculator and the contract disagree, the contract wins.</p>
-    </div>
-  </section>
-
 
   <!-- geo:faq-visible — mirrors the FAQPage structured data above -->
   <hr class="divider">
@@ -541,21 +668,30 @@ Dividing by (1 − margin) is deliberate: margin is measured against revenue, no
         <p>Detention is what a carrier bills when a shipper or receiver holds the truck beyond the free time, usually two hours. It is billed per hour after free time, often with a daily cap. The detention calculator handles free time, hourly rate, and caps together with other accessorials.</p>
       </article>
       <article class="card geo-qa">
+        <h3>What is a good broker margin percentage?</h3>
+        <p>It depends on the lane, the mode, the season and how the freight was won, and this page does not have benchmark data — no rate index is bundled here, so any single "industry average" quoted without your lane and mode behind it is not worth pricing against. Use the margin calculator on loads you have actually booked and compare your own lanes to each other. Remember that gross margin is not profit: it has not yet paid the load board, factoring fees, insurance or the person who covered the load.</p>
+      </article>
+      <article class="card geo-qa">
+        <h3>Do I need a load board or TMS to use these calculators?</h3>
+        <p>No. This is a single static page and all six calculators run in your browser, with no account, no login, no backend and no integration with any load board or TMS. You type your own numbers in by hand.</p>
+      </article>
+      <article class="card geo-qa">
         <h3>Are these freight calculators free?</h3>
-        <p>Yes — six calculators, no signup, no account. The page is static and runs in your browser, so nothing you type is transmitted or stored anywhere.</p>
+        <p>Yes — six calculators, no signup, no account. The page is static and runs in your browser, so nothing you type is transmitted anywhere. Your last-used inputs are saved in this browser's local storage only, and clearing site data deletes them.</p>
       </article>
     </div>
   </section>
 
 </main>
 
-<section aria-labelledby="compliance-h" style="max-width:1080px;margin:0 auto;padding:28px 20px 8px;border-top:1px solid rgba(212,175,55,.18)"><h2 id="compliance-h" style="font-family:Georgia,'Times New Roman',serif;font-size:15px;letter-spacing:.06em;text-transform:uppercase;color:#d4af37;margin:0 0 10px">Estimates Only</h2><p style="font-size:13.5px;line-height:1.65;color:#9a958c;margin:0 0 8px">Every calculator on this page produces an estimate from the numbers you type in. Outputs are illustrative math, not a quote, a rate confirmation, an accounting figure or a projection of your results. No usage, time-savings or ROI figures here have been measured across customers. Nothing on this page is financial, tax, legal or business advice — check your own rates, costs and contracts before acting.</p><p style="font-size:13.5px;line-height:1.65;color:#9a958c;margin:0"><a style="color:#d4af37" href="/terms.html">Terms of Use</a> · <a style="color:#d4af37" href="/privacy.html">Privacy Policy</a></p></section>
+<section aria-labelledby="compliance-h" style="max-width:1080px;margin:0 auto;padding:28px 20px 8px;border-top:1px solid rgba(212,175,55,.18)"><h2 id="compliance-h" style="font-family:Georgia,'Times New Roman',serif;font-size:15px;letter-spacing:.06em;text-transform:uppercase;color:#d4af37;margin:0 0 10px">Estimates Only</h2><p style="font-size:13.5px;line-height:1.65;color:#9a958c;margin:0 0 8px">Every calculator on this page produces an estimate from the numbers you type in. Outputs are illustrative math, not a quote, a rate confirmation, an accounting figure or a projection of your results. No usage, time-savings or ROI figures here have been measured across customers. Nothing on this page is financial, tax, legal or business advice — check your own rates, costs and contracts before acting.</p><p style="font-size:13.5px;line-height:1.65;color:#9a958c;margin:0"><a style="color:#d4af37" href="/terms.html">Terms of Use</a> · <a style="color:#d4af37" href="/privacy.html">Privacy Policy</a> · <a style="color:#d4af37" href="/refunds.html">Refund Policy</a></p></section>
 <footer class="site-footer">
   <div>
     <div>© 2026 Yusuf Gadelrab · San Jose, CA</div>
     <div><a href="mailto:yusuf.gadelrab06@gmail.com">yusuf.gadelrab06@gmail.com</a></div>
   </div>
   <div class="site-footer__links">
+    <a href="/faq.html">FAQ</a>
     <a href="/writing.html">Writing</a>
     <a href="/dispatch.html">Dispatch</a>
     <a href="/eh.html">eh</a>

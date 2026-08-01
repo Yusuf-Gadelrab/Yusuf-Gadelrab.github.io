@@ -50,8 +50,8 @@
     color:var(--muted);font-size:var(--t-small);margin:0 0 var(--s5)}
   .callout--warn{border-color:var(--gold-2)}
   .faq-card{padding:var(--s5)}
-  .faq-card h3{font-size:var(--t-h3);margin:0}
-  .faq-card p{color:var(--muted);font-size:var(--t-small);margin:var(--s3) 0 0}
+  .faq-card h3{font-size:var(--t-h3);margin:0;line-height:1.3}
+  .faq-card p{color:var(--muted);font-size:var(--t-small);line-height:1.65;margin:var(--s3) 0 0}
 </style>
 </head>
 <body class="pro">
@@ -59,7 +59,7 @@
 <a class="skip-link" href="#main">Skip to content</a>
 
 <nav class="site-nav">
-  <a class="site-nav__brand" href="/"><img class="site-nav__lion" src="/img/brand/lion-mark.svg" alt="" width="34" height="34"><span>YUSUF GADELRAB</span></a>
+  <a class="site-nav__brand" href="/"><img class="site-nav__lion" src="/img/brand/lion-mark.svg" alt="" width="34" height="34" decoding="async"><span>YUSUF GADELRAB</span></a>
   <div class="site-nav__links">
     <a href="/">Work</a>
     <a href="/guides.html">Guides</a>
@@ -149,12 +149,12 @@
       <h2>Quick answers</h2>
     </div>
     <div class="grid" style="margin-top:var(--s6)">
-      <article class="card faq-card"><h3>What is RAG?</h3><p>Fetch the relevant passages from your own documents at question time and put them in the prompt, so the answer is grounded in your sources.</p></article>
-      <article class="card faq-card"><h3>RAG or fine-tuning?</h3><p>Retrieval for facts that change; fine-tuning for behaviour and format. Most &#x27;we need fine-tuning&#x27; problems are retrieval problems.</p></article>
-      <article class="card faq-card"><h3>Why does chunking matter?</h3><p>Too small loses context, too large blurs the vector. Split on structure, overlap slightly, keep tables and code intact, attach metadata.</p></article>
-      <article class="card faq-card"><h3>Why do answers come back wrong?</h3><p>Retrieval miss, adjacent-passage miss, model ignoring context, or invention on an empty retrieval. Measure retrieval separately to tell which.</p></article>
-      <article class="card faq-card"><h3>What is reranking?</h3><p>Rescoring the vector-search candidates with a stronger model and keeping only the best few. Big precision win for little work.</p></article>
-      <article class="card faq-card"><h3>When do you need a graph?</h3><p>When the question is about prerequisites, dependencies, or ordering — relationships that similarity search cannot represent.</p></article>
+      <article class="card faq-card"><h3>What is retrieval-augmented generation (RAG)?</h3><p>RAG is a pattern where relevant text is retrieved from your own documents at question time and placed into the model&#x27;s prompt, so the answer is grounded in that source material rather than in the model&#x27;s training data alone.</p></article>
+      <article class="card faq-card"><h3>What is the difference between RAG and fine-tuning?</h3><p>Retrieval supplies facts that change and can be updated by re-indexing documents. Fine-tuning changes behaviour, tone, and format by adjusting weights, and is expensive to update. Most systems that seem to need fine-tuning actually need better retrieval and a better prompt.</p></article>
+      <article class="card faq-card"><h3>What is chunking in RAG?</h3><p>Chunking is splitting documents into passages before embedding them. Chunks that are too small lose the context that made them meaningful; chunks that are too large average several topics into one vector. Splitting on document structure first, with slight overlap and attached metadata, works better than splitting purely on length.</p></article>
+      <article class="card faq-card"><h3>Why does RAG return wrong answers?</h3><p>Four common causes: the retriever never surfaced the right passage, it surfaced an adjacent passage instead of the answer, the model ignored the supplied context, or nothing relevant was retrieved and the model invented an answer. Evaluating retrieval separately from generation is what tells you which one is happening.</p></article>
+      <article class="card faq-card"><h3>What is reranking?</h3><p>Reranking takes the candidate passages returned by fast vector search and scores them with a stronger, slower model, keeping only the best few for the prompt. It substantially improves precision because vector similarity alone is a coarse relevance signal.</p></article>
+      <article class="card faq-card"><h3>When is a knowledge graph better than vector search?</h3><p>When the question is about relationships rather than similarity — prerequisites, dependencies, ordering, or hierarchy. Vector search finds passages that mention a concept; a graph can find the concepts that must come before it. Combining the two is the basis of graph-augmented retrieval.</p></article>
     </div>
   </section>
 

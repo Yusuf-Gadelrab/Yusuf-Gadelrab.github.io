@@ -2,7 +2,11 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
+<meta name="referrer" content="strict-origin-when-cross-origin">
+<meta http-equiv="Content-Security-Policy" content="object-src 'none'; base-uri 'self'">
 <title>Invoice — {{INVOICE_NUMBER}}</title>
+<meta name="robots" content="noindex,follow">
+<link rel="canonical" href="https://yusuf-gadelrab.github.io/templates.html">
 <!-- SAMPLE CONTENT: Halloway Studio billing Cascade Freight Brokers. See README.md for the exact strings to find-and-replace. -->
 <style>
 :root{
@@ -50,7 +54,7 @@ hr.top-rule{ height:2px; border:none; background:linear-gradient(90deg,var(--gol
 
 /* ===== EDIT BELOW: parties + meta ===== */
 .meta-grid{ display:grid; grid-template-columns:1fr 1fr 1fr; gap:24px; margin-bottom:34px; }
-.meta-grid .col h3{ font-size:11px; letter-spacing:2px; text-transform:uppercase; color:var(--gold-dim); margin-bottom:8px; font-weight:600; font-family:-apple-system,sans-serif; }
+.meta-grid .col h2{ font-size:11px; letter-spacing:2px; text-transform:uppercase; color:var(--gold-dim); margin-bottom:8px; font-weight:600; font-family:-apple-system,sans-serif; }
 .meta-grid .col p{ margin:0 0 2px; font-size:14px; }
 .meta-grid .name{ font-weight:700; font-size:15px; }
 .meta-row{ display:flex; justify-content:space-between; margin-bottom:3px; font-size:13px; }
@@ -135,21 +139,21 @@ input.rate-input{ width:80px; }
 
   <div class="meta-grid">
     <div class="col">
-      <h3>Billed From</h3>
+      <h2>Billed From</h2>
       <p class="name">Halloway Studio</p>
       <p>214 Ashcombe Lane, Suite 3B</p>
       <p>Portland, OR 97205</p>
       <p>hello@hallowaystudio.com</p>
     </div>
     <div class="col">
-      <h3>Billed To</h3>
+      <h2>Billed To</h2>
       <p class="name">Cascade Freight Brokers</p>
       <p>Attn: Grant Delgado</p>
       <p>880 Harborview Road, Suite 210</p>
       <p>Tacoma, WA 98402</p>
     </div>
     <div class="col">
-      <h3>Invoice Details</h3>
+      <h2>Invoice Details</h2>
       <div class="meta-row"><span class="lbl">Invoice #</span><span class="val">INV-1042</span></div>
       <div class="meta-row"><span class="lbl">Issue Date</span><span class="val">July 14, 2026</span></div>
       <div class="meta-row"><span class="lbl">Due Date</span><span class="val">July 28, 2026</span></div>

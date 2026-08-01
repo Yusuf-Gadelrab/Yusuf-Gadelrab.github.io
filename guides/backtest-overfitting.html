@@ -50,8 +50,8 @@
     color:var(--muted);font-size:var(--t-small);margin:0 0 var(--s5)}
   .callout--warn{border-color:var(--gold-2)}
   .faq-card{padding:var(--s5)}
-  .faq-card h3{font-size:var(--t-h3);margin:0}
-  .faq-card p{color:var(--muted);font-size:var(--t-small);margin:var(--s3) 0 0}
+  .faq-card h3{font-size:var(--t-h3);margin:0;line-height:1.3}
+  .faq-card p{color:var(--muted);font-size:var(--t-small);line-height:1.65;margin:var(--s3) 0 0}
 </style>
 </head>
 <body class="pro">
@@ -59,7 +59,7 @@
 <a class="skip-link" href="#main">Skip to content</a>
 
 <nav class="site-nav">
-  <a class="site-nav__brand" href="/"><img class="site-nav__lion" src="/img/brand/lion-mark.svg" alt="" width="34" height="34"><span>YUSUF GADELRAB</span></a>
+  <a class="site-nav__brand" href="/"><img class="site-nav__lion" src="/img/brand/lion-mark.svg" alt="" width="34" height="34" decoding="async"><span>YUSUF GADELRAB</span></a>
   <div class="site-nav__links">
     <a href="/">Work</a>
     <a href="/guides.html">Guides</a>
@@ -290,13 +290,13 @@ Working floors:
       <h2>Quick answers</h2>
     </div>
     <div class="grid" style="margin-top:var(--s6)">
-      <article class="card faq-card"><h3>What is backtest overfitting?</h3><p>Performance that came from fitting the specific history rather than from repeatable behaviour. It collapses on data the choices were not made on.</p></article>
-      <article class="card faq-card"><h3>Is my edge real?</h3><p>Check the parameter surface, the total configurations searched, a random-entry control, and one held-out test. Failing any one means not established.</p></article>
-      <article class="card faq-card"><h3>Why do 200 variants find a winner?</h3><p>The best of N noisy results sits in the right tail you generated. 200 variants on 5 years of data yields ~1.46 Sharpe from pure noise.</p></article>
-      <article class="card faq-card"><h3>What is a random-entry benchmark?</h3><p>Same universe, window, trade count, holding period, and risk, with random entry dates. Whatever it captures was never your signal.</p></article>
-      <article class="card faq-card"><h3>What is parameter sensitivity?</h3><p>Printing the grid around your chosen values. Plateaus are real, isolated spikes are noise. Neighbours under ~0.6 of the peak means discard.</p></article>
-      <article class="card faq-card"><h3>What is deflated Sharpe?</h3><p>Sharpe adjusted for how many variants you tested. A 2.0 from a 200-variant search haircuts to about 0.54 effective.</p></article>
-      <article class="card faq-card"><h3>How many trades are enough?</h3><p>Over 100 per free parameter, more for small edges. My own +0.117R over 4,933 trades nets to +0.030R against random entry, CI crossing zero, so not a validated edge.</p></article>
+      <article class="card faq-card"><h3>What is backtest overfitting?</h3><p>Backtest overfitting is when a strategy&#x27;s measured performance comes from fitting the specific historical data rather than from any repeatable market behaviour. It happens whenever parameters, filters, universes, or date ranges are chosen because they improved the result. The tell is that performance collapses on data the choices were not made on.</p></article>
+      <article class="card faq-card"><h3>How do you know if a trading edge is real?</h3><p>Check four things: whether the parameter surface is a broad plateau or an isolated spike, how many configurations were searched in total, whether a risk-matched random-entry benchmark captures most of the return, and whether the result survives a held-out block looked at exactly once. An edge that fails any of them is not established. Costs and slippage should be modelled pessimistically before any of this counts.</p></article>
+      <article class="card faq-card"><h3>Why does testing many strategy variants create false positives?</h3><p>Because the best of N noisy results is drawn from the right tail of a distribution you generated yourself. The expected maximum of N standard normal draws is about the square root of twice the natural log of N, so with five years of data and 200 variants tested, a Sharpe ratio of roughly 1.46 is the expected outcome even when every variant has a true edge of exactly zero. The count that matters is every configuration the search evaluated, not the number of ideas you wrote up.</p></article>
+      <article class="card faq-card"><h3>What is a random entry benchmark in backtesting?</h3><p>It is a control arm that keeps everything about the strategy except the entry timing, which is replaced with random dates. Match the universe, calendar window, trade count, holding period distribution, and risk per trade, then run it a thousand times to build a null distribution. Whatever return the random arm captures was produced by the exit logic, the holding period, and market drift, not by your signal.</p></article>
+      <article class="card faq-card"><h3>What is parameter sensitivity analysis?</h3><p>It is printing performance across a grid of neighbouring parameter values instead of reporting only the best one. A real effect produces a broad plateau where neighbouring cells perform similarly, while an overfit result produces an isolated spike surrounded by cells near zero. A useful rule of thumb is to divide the average of the eight surrounding cells by the peak cell and treat anything under about 0.6 as noise.</p></article>
+      <article class="card faq-card"><h3>What is the deflated Sharpe ratio?</h3><p>It is a Sharpe ratio adjusted for how many strategy variants were tested, comparing the observed result against the noise ceiling of your own search rather than against zero. An observed Sharpe of 2.0 from a 200-variant search on five years of data deflates to about 89% confidence and an effective Sharpe near 0.54, versus a naive p-value around one in 250,000. Same backtest, entirely different conclusion.</p></article>
+      <article class="card faq-card"><h3>How many out of sample trades do you need to trust a backtest?</h3><p>It depends on both the number of free parameters and the size of the claimed edge. A working floor is over 100 out-of-sample trades per free parameter, and far more when the claimed expectancy is small. In my own swing research the AVWAP-reclaim setup produced +0.117R over 4,933 trades on a 129-symbol 10-year universe with a 95% confidence interval of +0.057 to +0.174, but a risk-matched random entry already captured +0.086R, leaving the signal&#x27;s own contribution at +0.030R with a confidence interval that crosses zero. That is not a validated edge, and resolving a difference that small would need roughly four times the sample again.</p></article>
     </div>
   </section>
 
@@ -310,9 +310,9 @@ Working floors:
     </div>
     <div class="related__grid">
       <a class="related__item" href="/guides/walk-forward-backtest.html"><strong>How backtests lie, and what an honest one looks like</strong><span>Why in-sample backtests lie, and what an honest test looks like in code.</span></a>
+      <a class="related__item" href="/guides/quant-internship-timeline.html"><strong>Three firm types, three calendars, and a lot of wrong dates</strong><span>Market makers, banks and funds run on three different calendars. Most deadlines people repeat belong to a different…</span></a>
       <a class="related__item" href="/guides/reading-a-backtest-report.html"><strong>Reading a backtest report honestly</strong><span>Win rate, profit factor, Sharpe, drawdown, CAGR. What each number hides, with worked error bars and cost drag.</span></a>
       <a class="related__item" href="/guides/undergraduate-research.html"><strong>How undergraduates actually get into a lab</strong><span>Finding a lab, the email that gets a reply, and why publishing as an undergrad compounds.</span></a>
-      <a class="related__item" href="/guides/bilingual-coding-cs-education.html"><strong>Learning to program in your second language</strong><span>Learning to program in a second language, and what a SIGCSE 2026 study found.</span></a>
     </div>
     <p class="related__more">Every guide is indexed on <a href="/guides.html">the guides hub</a>. Or put it to work in <a href="/hire.html">what I am open to for Summer 2027</a> and <a href="/research.html">the research behind two SIGCSE 2026 papers</a>.</p>
   </section>

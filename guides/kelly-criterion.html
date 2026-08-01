@@ -50,8 +50,8 @@
     color:var(--muted);font-size:var(--t-small);margin:0 0 var(--s5)}
   .callout--warn{border-color:var(--gold-2)}
   .faq-card{padding:var(--s5)}
-  .faq-card h3{font-size:var(--t-h3);margin:0}
-  .faq-card p{color:var(--muted);font-size:var(--t-small);margin:var(--s3) 0 0}
+  .faq-card h3{font-size:var(--t-h3);margin:0;line-height:1.3}
+  .faq-card p{color:var(--muted);font-size:var(--t-small);line-height:1.65;margin:var(--s3) 0 0}
 </style>
 </head>
 <body class="pro">
@@ -59,7 +59,7 @@
 <a class="skip-link" href="#main">Skip to content</a>
 
 <nav class="site-nav">
-  <a class="site-nav__brand" href="/"><img class="site-nav__lion" src="/img/brand/lion-mark.svg" alt="" width="34" height="34"><span>YUSUF GADELRAB</span></a>
+  <a class="site-nav__brand" href="/"><img class="site-nav__lion" src="/img/brand/lion-mark.svg" alt="" width="34" height="34" decoding="async"><span>YUSUF GADELRAB</span></a>
   <div class="site-nav__links">
     <a href="/">Work</a>
     <a href="/guides.html">Guides</a>
@@ -139,12 +139,12 @@ where f* is the fraction of capital to risk,
       <h2>Quick answers</h2>
     </div>
     <div class="grid" style="margin-top:var(--s6)">
-      <article class="card faq-card"><h3>What is Kelly?</h3><p>The bet fraction that maximises long-run growth: f* = p − (1 − p) ÷ b, using win probability p and reward-to-risk b.</p></article>
-      <article class="card faq-card"><h3>What does it give for trading?</h3><p>45% win rate at 2R gives 17.5% of capital per trade — correct arithmetic, unusable in practice.</p></article>
-      <article class="card faq-card"><h3>Why fractional Kelly?</h3><p>The growth curve is flat below the peak and steep above it. Half Kelly keeps most of the growth and sheds most of the variance.</p></article>
-      <article class="card faq-card"><h3>What if you overbet?</h3><p>Growth collapses fast past the optimum. Since edges are estimated from small samples, overbetting is the likely error.</p></article>
-      <article class="card faq-card"><h3>Negative Kelly?</h3><p>The setup has negative expectancy. Correct size is zero — the most useful answer the formula gives.</p></article>
-      <article class="card faq-card"><h3>Should beginners use it?</h3><p>Mostly no. A fixed ~1% risk is more robust because it does not depend on knowing your edge precisely.</p></article>
+      <article class="card faq-card"><h3>What is the Kelly criterion?</h3><p>The Kelly criterion gives the fraction of capital that maximises the long-run growth rate of a repeated bet. For a bet winning with probability p and paying b to 1, the optimal fraction is f* = p - (1 - p) / b.</p></article>
+      <article class="card faq-card"><h3>How do you calculate Kelly for trading?</h3><p>Use your measured win rate as p and your reward-to-risk ratio as b. A setup winning 45% of the time at 2R gives f* = 0.45 - 0.55/2 = 0.175, or 17.5% of capital — a number that is mathematically correct and far too aggressive to trade.</p></article>
+      <article class="card faq-card"><h3>Why do traders use half or quarter Kelly?</h3><p>Because the growth curve is flat just below the Kelly peak and steep just above it. Half Kelly captures roughly three quarters of the growth with far lower drawdowns, and fractional sizing protects against the near-certainty that your win rate and reward-to-risk estimates are wrong.</p></article>
+      <article class="card faq-card"><h3>What happens if you bet more than full Kelly?</h3><p>Growth rate falls rapidly and drawdowns compound; overbetting past the optimum is much more damaging than underbetting by the same amount. Since edge estimates come from finite samples, overbetting is the more likely error.</p></article>
+      <article class="card faq-card"><h3>What if the Kelly fraction is negative?</h3><p>A negative Kelly fraction means the bet has negative expectancy — there is no size at which it makes money. The correct position size is zero, which is arguably the most useful thing the formula tells you.</p></article>
+      <article class="card faq-card"><h3>Should beginners use Kelly to size positions?</h3><p>Generally no. A fixed small risk per trade, typically around 1% of the account, is more robust because it does not depend on an accurate edge estimate. Kelly is more useful as a ceiling and a diagnostic than as a day-to-day sizing rule.</p></article>
     </div>
   </section>
 

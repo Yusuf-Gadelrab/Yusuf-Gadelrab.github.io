@@ -50,8 +50,8 @@
     color:var(--muted);font-size:var(--t-small);margin:0 0 var(--s5)}
   .callout--warn{border-color:var(--gold-2)}
   .faq-card{padding:var(--s5)}
-  .faq-card h3{font-size:var(--t-h3);margin:0}
-  .faq-card p{color:var(--muted);font-size:var(--t-small);margin:var(--s3) 0 0}
+  .faq-card h3{font-size:var(--t-h3);margin:0;line-height:1.3}
+  .faq-card p{color:var(--muted);font-size:var(--t-small);line-height:1.65;margin:var(--s3) 0 0}
 </style>
 </head>
 <body class="pro">
@@ -59,7 +59,7 @@
 <a class="skip-link" href="#main">Skip to content</a>
 
 <nav class="site-nav">
-  <a class="site-nav__brand" href="/"><img class="site-nav__lion" src="/img/brand/lion-mark.svg" alt="" width="34" height="34"><span>YUSUF GADELRAB</span></a>
+  <a class="site-nav__brand" href="/"><img class="site-nav__lion" src="/img/brand/lion-mark.svg" alt="" width="34" height="34" decoding="async"><span>YUSUF GADELRAB</span></a>
   <div class="site-nav__links">
     <a href="/">Work</a>
     <a href="/guides.html">Guides</a>
@@ -204,12 +204,12 @@ self.addEventListener('fetch', e =&gt; {
       <h2>Quick answers</h2>
     </div>
     <div class="grid" style="margin-top:var(--s6)">
-      <article class="card faq-card"><h3>What makes a site installable?</h3><p>HTTPS, a valid manifest with icons and start_url, and a service worker with a fetch handler. Miss one and the prompt silently never appears.</p></article>
-      <article class="card faq-card"><h3>Cache-first or network-first?</h3><p>Cache-first for the app shell — HTML, CSS, JS, icons. Network-first for anything that goes stale. No backend means almost everything is shell.</p></article>
-      <article class="card faq-card"><h3>Why is my deploy not showing up?</h3><p>The new worker is stuck waiting behind open tabs. Bump the cache name, delete old caches on activate, call skipWaiting() and clients.claim().</p></article>
-      <article class="card faq-card"><h3>localStorage or IndexedDB?</h3><p>localStorage until it hurts — a few thousand JSON records inside ~5 MB. IndexedDB for binary data, real queries, or when writes cause jank.</p></article>
-      <article class="card faq-card"><h3>How do you install on iPhone?</h3><p>Safari → Share → Add to Home Screen, done manually. iOS has no install prompt and no beforeinstallprompt event to hook.</p></article>
-      <article class="card faq-card"><h3>Can a PWA run with no server?</h3><p>Yes — state in browser storage, shell in the service worker cache. The trade is no accounts, no sync, no server-side compute.</p></article>
+      <article class="card faq-card"><h3>What makes a website installable as a PWA?</h3><p>Three things: it is served over HTTPS, it links a valid web app manifest with name, icons, start_url and display, and it registers a service worker with a fetch handler. If any one is missing the browser simply never offers installation, with no error message shown.</p></article>
+      <article class="card faq-card"><h3>What is the difference between cache-first and network-first?</h3><p>Cache-first serves from the cache and only touches the network on a miss, which suits the app shell — HTML, CSS, JS and icons that change only on deploy. Network-first tries the network and falls back to the cache, which suits data that goes stale, like prices or API responses.</p></article>
+      <article class="card faq-card"><h3>Why do users still see the old version after I deploy a PWA?</h3><p>Because the new service worker installs but stays in a waiting state until every tab controlled by the old one is closed, and reloading a tab does not close it. Fix it by bumping the cache name on every deploy, deleting old caches during the activate event, and calling skipWaiting() plus clients.claim().</p></article>
+      <article class="card faq-card"><h3>Should I use localStorage or IndexedDB?</h3><p>Use localStorage for small amounts of JSON — a few thousand records is comfortable within its roughly 5 MB limit. Move to IndexedDB when you need to store binary data, query with indexes instead of loading everything, or when synchronous writes start causing visible jank.</p></article>
+      <article class="card faq-card"><h3>How do you install a PWA on an iPhone?</h3><p>Open the site in Safari, tap the Share button, then choose Add to Home Screen. iOS provides no automatic install prompt and no beforeinstallprompt event, so the page cannot trigger it — and third-party browsers on iOS have historically not offered the option at all.</p></article>
+      <article class="card faq-card"><h3>Can a PWA work with no backend at all?</h3><p>Yes. If all state lives in the user&#x27;s browser through localStorage or IndexedDB and the service worker caches the app shell, there is nothing left for a server to do beyond serving static files. That also means no accounts, no sync, and no server-side compute.</p></article>
     </div>
   </section>
 

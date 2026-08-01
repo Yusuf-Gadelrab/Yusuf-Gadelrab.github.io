@@ -50,8 +50,8 @@
     color:var(--muted);font-size:var(--t-small);margin:0 0 var(--s5)}
   .callout--warn{border-color:var(--gold-2)}
   .faq-card{padding:var(--s5)}
-  .faq-card h3{font-size:var(--t-h3);margin:0}
-  .faq-card p{color:var(--muted);font-size:var(--t-small);margin:var(--s3) 0 0}
+  .faq-card h3{font-size:var(--t-h3);margin:0;line-height:1.3}
+  .faq-card p{color:var(--muted);font-size:var(--t-small);line-height:1.65;margin:var(--s3) 0 0}
 </style>
 </head>
 <body class="pro">
@@ -59,7 +59,7 @@
 <a class="skip-link" href="#main">Skip to content</a>
 
 <nav class="site-nav">
-  <a class="site-nav__brand" href="/"><img class="site-nav__lion" src="/img/brand/lion-mark.svg" alt="" width="34" height="34"><span>YUSUF GADELRAB</span></a>
+  <a class="site-nav__brand" href="/"><img class="site-nav__lion" src="/img/brand/lion-mark.svg" alt="" width="34" height="34" decoding="async"><span>YUSUF GADELRAB</span></a>
   <div class="site-nav__links">
     <a href="/">Work</a>
     <a href="/guides.html">Guides</a>
@@ -153,12 +153,12 @@
       <h2>Quick answers</h2>
     </div>
     <div class="grid" style="margin-top:var(--s6)">
-      <article class="card faq-card"><h3>What is a client-side-only tool?</h3><p>Runs entirely in the browser, state in localStorage or IndexedDB, no server beyond static files. No account, no database, nothing transmitted.</p></article>
-      <article class="card faq-card"><h3>Is no-account more secure?</h3><p>For user data, yes — the strongest protection is not holding it. No user table, no tokens, no reset flow to phish. It does not protect a compromised device.</p></article>
-      <article class="card faq-card"><h3>What do you give up?</h3><p>Sync, backup, recovery, collaboration, server-side compute, secret API keys, and real usage analytics. Say so rather than hiding it.</p></article>
-      <article class="card faq-card"><h3>What does it cost to run?</h3><p>Effectively zero. Static hosting is free at personal traffic, nothing to back up or patch, and cost per user falls as usage grows.</p></article>
-      <article class="card faq-card"><h3>How do users back up?</h3><p>An export button that downloads JSON or CSV. Highest-value feature in a local-only tool — clearing site data wipes everything.</p></article>
-      <article class="card faq-card"><h3>What goes in the privacy policy?</h3><p>The exact storage mechanism, no account or database, whatever hosting logs still collect, the eviction risk, and the export path. Verifiable claims only.</p></article>
+      <article class="card faq-card"><h3>What is a client-side-only tool?</h3><p>A tool that runs entirely in the browser, with all state kept in browser storage such as localStorage or IndexedDB, and no server component beyond serving static files. There is no account, no database, and no transmission of what the user enters.</p></article>
+      <article class="card faq-card"><h3>Is a tool without accounts more secure?</h3><p>For the user&#x27;s data, generally yes, because the strongest protection is not holding the data at all. There is no user table to dump, no session tokens to steal, and no password reset flow to phish. It does not make the code itself more secure, and it offers no protection if the device is compromised.</p></article>
+      <article class="card faq-card"><h3>What do you lose with no backend?</h3><p>Cross-device sync, server-side backup and recovery, collaboration between users, server-side compute, secret API keys, and any real usage analytics. For single-user tools these usually matter less than the cost of running an account system, but they are real losses and should be disclosed.</p></article>
+      <article class="card faq-card"><h3>What does it cost to run a client-side tool?</h3><p>Effectively nothing. Static files on GitHub Pages, Netlify, or Cloudflare Pages are free at personal-project traffic levels, and there is no database to back up or patch. Cost per user falls as usage grows rather than rising.</p></article>
+      <article class="card faq-card"><h3>How do users back up data in a browser-only app?</h3><p>Through an export function that downloads their data as JSON or CSV, which they store themselves. This is the single most important feature in a local-only tool, because clearing site data deletes everything and browsers can evict storage after extended non-use.</p></article>
+      <article class="card faq-card"><h3>What should a local-only privacy policy say?</h3><p>Name the exact storage mechanism, state that there is no account and no server-side database, disclose anything that is still collected such as hosting server logs or third-party fonts and analytics, explain that clearing site data deletes everything, and point at the export button. Every claim should be verifiable from the browser&#x27;s network tab.</p></article>
     </div>
   </section>
 

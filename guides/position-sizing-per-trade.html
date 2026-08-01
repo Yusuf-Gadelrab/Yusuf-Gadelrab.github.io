@@ -50,8 +50,8 @@
     color:var(--muted);font-size:var(--t-small);margin:0 0 var(--s5)}
   .callout--warn{border-color:var(--gold-2)}
   .faq-card{padding:var(--s5)}
-  .faq-card h3{font-size:var(--t-h3);margin:0}
-  .faq-card p{color:var(--muted);font-size:var(--t-small);margin:var(--s3) 0 0}
+  .faq-card h3{font-size:var(--t-h3);margin:0;line-height:1.3}
+  .faq-card p{color:var(--muted);font-size:var(--t-small);line-height:1.65;margin:var(--s3) 0 0}
 </style>
 </head>
 <body class="pro">
@@ -59,7 +59,7 @@
 <a class="skip-link" href="#main">Skip to content</a>
 
 <nav class="site-nav">
-  <a class="site-nav__brand" href="/"><img class="site-nav__lion" src="/img/brand/lion-mark.svg" alt="" width="34" height="34"><span>YUSUF GADELRAB</span></a>
+  <a class="site-nav__brand" href="/"><img class="site-nav__lion" src="/img/brand/lion-mark.svg" alt="" width="34" height="34" decoding="async"><span>YUSUF GADELRAB</span></a>
   <div class="site-nav__links">
     <a href="/">Work</a>
     <a href="/guides.html">Guides</a>
@@ -251,13 +251,13 @@ Price reaches $50.40 (+1R). Trail stop to $48.00.
       <h2>Quick answers</h2>
     </div>
     <div class="grid" style="margin-top:var(--s6)">
-      <article class="card faq-card"><h3>How much to risk per trade?</h3><p>Usually 0.5% to 1.5% of equity. Back it out of a tolerable drawdown divided across your worst plausible loss streak.</p></article>
-      <article class="card faq-card"><h3>What is the 1% rule?</h3><p>Never risk more than 1% of the account on one trade. It is roughly the level where twenty straight losses cost you about 20%.</p></article>
-      <article class="card faq-card"><h3>Risk vs position size?</h3><p>Risk is what you lose at the stop; position size is what you own. Stop distance is the only thing linking them.</p></article>
-      <article class="card faq-card"><h3>Fixed fractional or fixed dollar?</h3><p>Fixed fractional, past your first few dozen trades. It de-risks automatically in a drawdown and compounds in a run.</p></article>
-      <article class="card faq-card"><h3>How do you size with ATR?</h3><p>Stop distance = 1.5-3x ATR14, then risk budget divided by that distance. Quiet and violent names end up contributing equal risk.</p></article>
-      <article class="card faq-card"><h3>What is portfolio heat?</h3><p>Total open risk across all positions. Six trades at 1% is 6%, but a correlated cluster counts as one trade, not four.</p></article>
-      <article class="card faq-card"><h3>Does a small account change it?</h3><p>Yes. Share granularity, fixed fees, and forced concentration below roughly $10k make the percentage rule lumpier than it looks.</p></article>
+      <article class="card faq-card"><h3>How much should I risk per trade?</h3><p>Most retail traders land between 0.5% and 1.5% of account equity per trade. The defensible way to pick your number is to divide a drawdown you can genuinely tolerate by the longest losing streak you think your method will produce, using the formula 1 minus (1 minus D) to the power of 1 over L. A 20% tolerable drawdown across a 20-loss streak works out to about 1.1% per trade.</p></article>
+      <article class="card faq-card"><h3>What is the 1 percent rule in trading?</h3><p>The 1% rule says never risk more than 1% of your account on a single trade, where risk means the loss taken if the stop fills. It is not an arbitrary constant: 1% is roughly the level at which twenty consecutive losses produce a drawdown of about 20%. If your tolerable drawdown or your expected streak length differs, your number should differ too.</p></article>
+      <article class="card faq-card"><h3>What is the difference between risk per trade and position size?</h3><p>Risk per trade is what you lose if the stop is hit, and position size is the dollar value of what you own. They are linked only by the stop distance. A 300 dollar risk becomes a 6,000 dollar position with a 2.40 stop distance on a 48 dollar stock, or a 24,000 dollar position with a 0.60 stop distance, which is the same risk on paper and a very different overnight exposure.</p></article>
+      <article class="card faq-card"><h3>Is fixed fractional or fixed dollar position sizing better?</h3><p>Fixed fractional is better for almost everyone past the first few dozen trades because the dollar risk shrinks automatically in a drawdown and grows in a run, so the account decays geometrically rather than linearly. Fixed dollar sizing keeps taking the same bite from a shrinking account and never compounds a winning stretch. Fixed dollar is reasonable only as a simplification while you are learning the workflow.</p></article>
+      <article class="card faq-card"><h3>How do you size positions using ATR?</h3><p>Set the stop distance as a multiple of average true range, commonly 1.5 to 3 times ATR14, then divide your risk budget by that distance to get shares. On a 30,000 dollar account risking 0.75%, a 225 dollar budget with a 2 ATR stop buys 140 shares of a name with 0.80 ATR and only 36 shares of a name with 3.10 ATR. The result is roughly equal risk contribution from instruments with very different volatility.</p></article>
+      <article class="card faq-card"><h3>What is portfolio heat?</h3><p>Portfolio heat is the sum of all open risk across every position, expressed as a percentage of equity. Six positions each risking 1% is 6% heat, but if four of them are correlated they behave closer to a single position risking 3 to 4%, so a correlated cluster should be counted and capped as one trade. Common working caps are 6% to 8% total heat and no more than about 3% in any one sector or theme.</p></article>
+      <article class="card faq-card"><h3>Does position sizing change on a small account?</h3><p>Yes, because percentage rules stop being scale-invariant below roughly 10,000 dollars. Share granularity means a 20 dollar risk budget rounds to whole shares and cannot size high-priced stocks at all, fixed fees like options contract charges become material against a small risk budget, and you are forced into two or three concurrent positions rather than a diversified book. The percentage rule still applies, but expect a lumpier equity curve than it implies.</p></article>
     </div>
   </section>
 

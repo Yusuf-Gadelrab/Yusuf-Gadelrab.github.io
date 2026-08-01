@@ -50,8 +50,8 @@
     color:var(--muted);font-size:var(--t-small);margin:0 0 var(--s5)}
   .callout--warn{border-color:var(--gold-2)}
   .faq-card{padding:var(--s5)}
-  .faq-card h3{font-size:var(--t-h3);margin:0}
-  .faq-card p{color:var(--muted);font-size:var(--t-small);margin:var(--s3) 0 0}
+  .faq-card h3{font-size:var(--t-h3);margin:0;line-height:1.3}
+  .faq-card p{color:var(--muted);font-size:var(--t-small);line-height:1.65;margin:var(--s3) 0 0}
 </style>
 </head>
 <body class="pro">
@@ -59,7 +59,7 @@
 <a class="skip-link" href="#main">Skip to content</a>
 
 <nav class="site-nav">
-  <a class="site-nav__brand" href="/"><img class="site-nav__lion" src="/img/brand/lion-mark.svg" alt="" width="34" height="34"><span>YUSUF GADELRAB</span></a>
+  <a class="site-nav__brand" href="/"><img class="site-nav__lion" src="/img/brand/lion-mark.svg" alt="" width="34" height="34" decoding="async"><span>YUSUF GADELRAB</span></a>
   <div class="site-nav__links">
     <a href="/">Work</a>
     <a href="/guides.html">Guides</a>
@@ -250,13 +250,13 @@ At g = 12% per year:
       <h2>Quick answers</h2>
     </div>
     <div class="grid" style="margin-top:var(--s6)">
-      <article class="card faq-card"><h3>Recovering from a 50% loss?</h3><p>You need a 100% gain. The surviving half of the account has to double just to reach the old peak.</p></article>
-      <article class="card faq-card"><h3>Recovering from a 30% loss?</h3><p>42.86%. The 70% that survives must produce the whole missing 30 points, so the required gain is 1.43 times the loss.</p></article>
-      <article class="card faq-card"><h3>Why is the gain always bigger?</h3><p>The loss is a percentage of the peak, the gain is a percentage of what is left. Smaller base, bigger required percentage.</p></article>
-      <article class="card faq-card"><h3>Drawdown vs volatility?</h3><p>Volatility ignores the order of returns; drawdown depends on it entirely. Same mean and standard deviation can give 5.47% or 14.26% max drawdown.</p></article>
-      <article class="card faq-card"><h3>How long do losing streaks run?</h3><p>About six in a hundred trades at a 50% win rate, eight in a hundred at 40%. Correlated trades make real streaks longer than the model.</p></article>
-      <article class="card faq-card"><h3>Sizing from a drawdown cap?</h3><p>r = 1 - (1 - D)^(1/k). A 20% cap with a planned 10-loss streak gives 2.21% risk per trade.</p></article>
-      <article class="card faq-card"><h3>What is risk of ruin?</h3><p>Odds of losing your stake before the edge pays. At 55% wins over 20 units it is 1.81%; at 52% it is 20.17%.</p></article>
+      <article class="card faq-card"><h3>How much do you need to gain back after a 50% loss?</h3><p>You need a 100% gain. After losing half your capital, the remaining half has to double to return to the previous peak. The formula is gain required equals drawdown divided by one minus drawdown, so 0.50 divided by 0.50 equals 1.00.</p></article>
+      <article class="card faq-card"><h3>How much do you need to gain back after a 30% loss?</h3><p>A 30% drawdown requires a 42.86% gain to recover. The 70% of capital that survives must produce the entire missing 30 percentage points, and 30 divided by 70 is 0.4286. The ratio of required gain to loss is 1.43 at that depth, rising to 2.0 at a 50% drawdown.</p></article>
+      <article class="card faq-card"><h3>Why does a percentage loss need a bigger percentage gain?</h3><p>Because the two percentages are measured against different bases. The loss is a percentage of the account peak, while the recovery is a percentage of the smaller amount left after the loss. The deeper the drawdown, the smaller that base, which is why the required gain accelerates rather than rising in a straight line.</p></article>
+      <article class="card faq-card"><h3>What is the difference between drawdown and volatility?</h3><p>Volatility and standard deviation measure the dispersion of individual period returns and ignore the order those returns arrived in. Drawdown depends entirely on that order. Two series with an identical mean and an identical standard deviation can have very different maximum drawdowns, for example 5.47% when gains and losses alternate versus 14.26% when the same losses are clustered together.</p></article>
+      <article class="card faq-card"><h3>How long a losing streak should I expect?</h3><p>At a 50% win rate the expected longest losing run is about six trades in a hundred and about eight in five hundred. At a 40% win rate it is roughly eight in a hundred and eleven in five hundred. Those figures assume independent trades with a constant win rate, so real streaks tend to be longer because correlated positions and market regimes cluster losses together.</p></article>
+      <article class="card faq-card"><h3>How do I set position size from a maximum drawdown limit?</h3><p>Use r equals one minus the quantity one minus D raised to the power one over k, where D is your drawdown cap and k is the losing streak you plan for. Capping drawdown at 20% while planning for ten consecutive losses gives 2.21% risk per trade. On a 40,000 dollar account that is 884 dollars of risk per position.</p></article>
+      <article class="card faq-card"><h3>What is risk of ruin in trading?</h3><p>Risk of ruin is the probability of losing your capital before an edge has time to work. For fixed one-unit bets at even money it equals the loss rate divided by the win rate, raised to the number of units you hold. At a 55% win rate with 20 units the figure is 1.81%, but at 52% it jumps to 20.17%, which shows how sensitive the result is to a small error in your estimated win rate.</p></article>
     </div>
   </section>
 

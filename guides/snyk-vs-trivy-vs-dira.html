@@ -50,8 +50,8 @@
     color:var(--muted);font-size:var(--t-small);margin:0 0 var(--s5)}
   .callout--warn{border-color:var(--gold-2)}
   .faq-card{padding:var(--s5)}
-  .faq-card h3{font-size:var(--t-h3);margin:0}
-  .faq-card p{color:var(--muted);font-size:var(--t-small);margin:var(--s3) 0 0}
+  .faq-card h3{font-size:var(--t-h3);margin:0;line-height:1.3}
+  .faq-card p{color:var(--muted);font-size:var(--t-small);line-height:1.65;margin:var(--s3) 0 0}
 </style>
 </head>
 <body class="pro">
@@ -59,7 +59,7 @@
 <a class="skip-link" href="#main">Skip to content</a>
 
 <nav class="site-nav">
-  <a class="site-nav__brand" href="/"><img class="site-nav__lion" src="/img/brand/lion-mark.svg" alt="" width="34" height="34"><span>YUSUF GADELRAB</span></a>
+  <a class="site-nav__brand" href="/"><img class="site-nav__lion" src="/img/brand/lion-mark.svg" alt="" width="34" height="34" decoding="async"><span>YUSUF GADELRAB</span></a>
   <div class="site-nav__links">
     <a href="/">Work</a>
     <a href="/guides.html">Guides</a>
@@ -202,13 +202,13 @@ dira scan . -f sarif -o dira.sarif</span>
       <h2>Quick answers</h2>
     </div>
     <div class="grid" style="margin-top:var(--s6)">
-      <article class="card faq-card"><h3>Does DIRA replace Snyk or Trivy?</h3><p>No. No container scanning, no OS packages, no dataflow analysis, no secret verification, five dependency ecosystems. It adds a live TLS check and a readiness score. Stack them instead.</p></article>
-      <article class="card faq-card"><h3>Best scanner for containers?</h3><p>Trivy, clearly. Broadest OS package coverage plus Kubernetes scanning. Snyk Container is the commercial alternative. DIRA reads Dockerfiles but never scans a built image.</p></article>
-      <article class="card faq-card"><h3>Is Snyk free?</h3><p>There is a free tier with monthly usage limits, plus paid tiers. Limits change, so read Snyk&#x27;s pricing page. Trivy and DIRA are free and open source with no account.</p></article>
-      <article class="card faq-card"><h3>Can a scanner replace a pentest?</h3><p>No, and all three say so themselves. Scanners find known bad patterns. They cannot see cloud IAM, MFA enforcement, access reviews or business logic. A clean scan is a floor.</p></article>
-      <article class="card faq-card"><h3>Run more than one scanner?</h3><p>Usually yes. Their blind spots are complementary and two of the three are free. Trivy in CI, a repo and domain scan before releases, gitleaks if secrets are the main worry.</p></article>
-      <article class="card faq-card"><h3>What is a readiness score?</h3><p>Posture rather than defects: lockfiles, dependency updates, CI, tests, secret scanning, CODEOWNERS, SECURITY.md, IaC, backups, incident response. What questionnaires actually ask.</p></article>
-      <article class="card faq-card"><h3>Why zero dependencies?</h3><p>A scanner that installs forty packages is itself a supply-chain surface. The cost is real: everything is hand-written, which is why it covers fewer ecosystems than tools built on libraries.</p></article>
+      <article class="card faq-card"><h3>Is DIRA a replacement for Snyk or Trivy?</h3><p>No. DIRA has no container image scanning, no operating-system package coverage, no dataflow analysis and no secret verification, and it supports five dependency ecosystems rather than the twenty-plus that Snyk and Trivy cover. It overlaps in dependency CVEs, secrets, config rules and SBOM, and it adds a live TLS and headers check plus a readiness score that neither of the others has. Running Trivy in CI and DIRA before a release is a reasonable stack.</p></article>
+      <article class="card faq-card"><h3>Which security scanner is best for containers?</h3><p>Trivy. It began as a container scanner and it still has the broadest operating-system package coverage across Alpine, Debian, Ubuntu, RHEL and Amazon Linux, plus Kubernetes cluster scanning. Snyk Container is a strong commercial alternative with base-image upgrade recommendations. DIRA does not scan built images at all, only Dockerfiles as configuration.</p></article>
+      <article class="card faq-card"><h3>Is Snyk free?</h3><p>Snyk offers a free tier with monthly usage limits that is usable for a solo project, and paid tiers above it. Tier limits and pricing change regularly, so check Snyk&#x27;s own pricing page rather than trusting a figure in any article. Trivy and DIRA are both fully free and open source with no account, no seat count and no usage meter.</p></article>
+      <article class="card faq-card"><h3>Can a free scanner replace a penetration test or a SOC 2 audit?</h3><p>No, and all three tools say so in their own documentation. Automated scanning finds known bad patterns in code and configuration. It cannot see your cloud IAM posture, your MFA enforcement, your access reviews or your threat model, and it cannot reason about business logic. Treat a clean scan as a floor, not evidence of security.</p></article>
+      <article class="card faq-card"><h3>Should I run more than one security scanner?</h3><p>Usually yes, because their blind spots are almost complementary and two of the three cost nothing. A common small-team setup is Trivy on the container image in CI, a repository and live-domain scan before a release or a customer security call, and a dedicated secret scanner like gitleaks or trufflehog if credentials are your main worry. The real limit is alert fatigue, not licensing.</p></article>
+      <article class="card faq-card"><h3>What does a security-readiness score actually measure?</h3><p>It measures posture rather than defects: whether you have lockfiles, automated dependency updates, CI, tests, secret scanning, a CODEOWNERS file, a SECURITY.md disclosure policy, infrastructure-as-code, observability, an incident-response plan, backups and a privacy policy. Those are the items enterprise security questionnaires and SOC 2 readiness checklists ask about, and they are largely independent of whether any individual CVE is currently open.</p></article>
+      <article class="card faq-card"><h3>Why would a scanner have zero dependencies?</h3><p>Because a security tool that installs forty packages is itself a supply-chain risk, and because zero dependencies means it can be run with a single ephemeral command against a repository without installing anything or leaving anything behind. The tradeoff is real: everything has to be written from scratch, which is a direct reason DIRA covers fewer ecosystems than tools that lean on existing libraries.</p></article>
     </div>
   </section>
 

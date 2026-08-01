@@ -2,6 +2,8 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8" />
+<meta name="referrer" content="strict-origin-when-cross-origin">
+<meta http-equiv="Content-Security-Policy" content="object-src 'none'; base-uri 'self'">
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <!-- tech:seo — managed block (SEO / social / structured data / perf / PWA) -->
 <link rel="preload" href="/css/site.css" as="style">
@@ -38,7 +40,7 @@
 <meta name="twitter:title" content="Resume Rebuild $49 · 10 Tailored Applications $99">
 <meta name="twitter:description" content="ATS-safe rebuild in 48h, or 10 fully tailored applications in 72h. Tailored, never fabricated.">
 
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"Service","name":"Application Engine for Students","serviceType":"Resume writing and job application tailoring","url":"https://yusuf-gadelrab.github.io/resume.html","provider":{"@id":"https://yusuf-gadelrab.github.io/#person"},"areaServed":"US","audience":{"@type":"Audience","audienceType":"College students and new grads"},"hasOfferCatalog":{"@type":"OfferCatalog","name":"Packs","itemListElement":[{"@type":"Offer","name":"ATS Resume Rebuild","price":"49","priceCurrency":"USD","description":"Full single-column ATS-safe rebuild targeted at one role family, delivered as PDF + HTML in 48 hours with one revision round."},{"@type":"Offer","name":"10 Tailored Applications Pack","price":"99","priceCurrency":"USD","description":"Resume rebuild plus 10 applications tailored to 10 real postings — keyword-matched resume and written cover letter per posting, delivered in 72 hours."}]}}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Service","name":"Application Engine for Students","serviceType":"Resume writing and job application tailoring","url":"https://yusuf-gadelrab.github.io/resume.html","provider":{"@id":"https://yusuf-gadelrab.github.io/#person"},"areaServed":"US","audience":{"@type":"Audience","audienceType":"College students and new grads"},"hasOfferCatalog":{"@type":"OfferCatalog","name":"Packs","itemListElement":[{"@type":"Offer","name":"ATS Resume Rebuild","price":"49","priceCurrency":"USD","description":"Full single-column ATS-safe rebuild targeted at one role family, delivered as PDF + HTML in 48 hours with one revision round.","availability":"https://schema.org/InStock","url":"https://yusuf-gadelrab.github.io/resume.html","availabilityStarts":"2026-07-29"},{"@type":"Offer","name":"10 Tailored Applications Pack","price":"99","priceCurrency":"USD","description":"Resume rebuild plus 10 applications tailored to 10 real postings — keyword-matched resume and written cover letter per posting, delivered in 72 hours.","availability":"https://schema.org/InStock","url":"https://yusuf-gadelrab.github.io/resume.html","availabilityStarts":"2026-07-29"}]}}</script>
 <script>
   // Paste live card-checkout URLs here later (Lemon Squeezy) — same pattern as store.html.
   // While a key is empty, its button keeps the mailto fallback, so the page sells via
@@ -112,9 +114,18 @@
   .zelle{display:inline-block;margin:var(--s4) 0 var(--s1);padding:10px 22px;
     border:1px dashed var(--gold-dim);border-radius:var(--radius);
     color:var(--gold-2);font-weight:700;font-size:18px;letter-spacing:.5px}
+
+  /* One primary action per view — see hire.html for the house pattern. The two
+     pricing-card buttons stay real buttons (ghost) since they pick between two
+     products; everything else demotes to quiet text links. */
+  .alt-links{display:flex;flex-wrap:wrap;gap:var(--s2) var(--s5);margin-top:var(--s4);
+    font-size:var(--t-small);color:var(--muted);justify-content:center}
+  .alt-links a{color:var(--ink);text-decoration:underline;
+    text-decoration-color:var(--line);text-underline-offset:3px}
+  .alt-links a:hover{color:var(--gold-2)}
 </style>
 <!-- geo:entity — canonical Person node, one entity across every page -->
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"Person","@id":"https://yusuf-gadelrab.github.io/#person","name":"Yusuf Gadelrab","url":"https://yusuf-gadelrab.github.io/"}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebPage","@id":"https://yusuf-gadelrab.github.io/resume.html#webpage","url":"https://yusuf-gadelrab.github.io/resume.html","inLanguage":"en","isPartOf":{"@id":"https://yusuf-gadelrab.github.io/#website"},"about":{"@id":"https://yusuf-gadelrab.github.io/#person"},"publisher":{"@id":"https://yusuf-gadelrab.github.io/#person"}}</script>
 <link rel="alternate" type="text/plain" href="https://yusuf-gadelrab.github.io/llms-full.txt" title="Plain-text profile for language models">
 </head>
 <body class="pro">
@@ -124,6 +135,13 @@
 <nav class="site-nav">
   <a class="site-nav__brand" href="/"><img class="site-nav__lion" src="/img/brand/lion-mark.svg" alt="" width="34" height="34" decoding="async"><span>YUSUF GADELRAB</span></a>
   <div class="site-nav__links"><a href="/">Work</a><a href="/resume.html" aria-current="page">Resume</a><a href="/guides.html">Guides</a><a href="/store.html">Store</a><a href="/apps.html">Apps</a><a href="/kxngsef.html">KXNG SEF</a><a href="/hire.html">Hire</a><a href="/media-kit.html">Media Kit</a></div>
+</nav>
+
+<nav class="crumbs" aria-label="Breadcrumb">
+  <ol>
+    <li><a href="/">Home</a></li>
+    <li><span aria-current="page">Student Resume Rebuild $49</span></li>
+  </ol>
 </nav>
 
 <main id="main">
@@ -311,6 +329,7 @@
     <div><a href="mailto:yusuf.gadelrab06@gmail.com">yusuf.gadelrab06@gmail.com</a> · (669) 328-1148</div>
   </div>
   <div class="site-footer__links">
+    <a href="/faq.html">FAQ</a>
     <a href="/writing.html">Writing</a>
     <a href="/dispatch.html">Dispatch</a>
     <a href="/dira.html">DIRA</a>

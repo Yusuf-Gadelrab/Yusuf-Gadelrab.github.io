@@ -50,8 +50,8 @@
     color:var(--muted);font-size:var(--t-small);margin:0 0 var(--s5)}
   .callout--warn{border-color:var(--gold-2)}
   .faq-card{padding:var(--s5)}
-  .faq-card h3{font-size:var(--t-h3);margin:0}
-  .faq-card p{color:var(--muted);font-size:var(--t-small);margin:var(--s3) 0 0}
+  .faq-card h3{font-size:var(--t-h3);margin:0;line-height:1.3}
+  .faq-card p{color:var(--muted);font-size:var(--t-small);line-height:1.65;margin:var(--s3) 0 0}
 </style>
 </head>
 <body class="pro">
@@ -59,7 +59,7 @@
 <a class="skip-link" href="#main">Skip to content</a>
 
 <nav class="site-nav">
-  <a class="site-nav__brand" href="/"><img class="site-nav__lion" src="/img/brand/lion-mark.svg" alt="" width="34" height="34"><span>YUSUF GADELRAB</span></a>
+  <a class="site-nav__brand" href="/"><img class="site-nav__lion" src="/img/brand/lion-mark.svg" alt="" width="34" height="34" decoding="async"><span>YUSUF GADELRAB</span></a>
   <div class="site-nav__links">
     <a href="/">Work</a>
     <a href="/guides.html">Guides</a>
@@ -144,12 +144,12 @@
       <h2>Quick answers</h2>
     </div>
     <div class="grid" style="margin-top:var(--s6)">
-      <article class="card faq-card"><h3>What happens after booking?</h3><p>Rate confirmation, carrier vetting, check calls, POD collection, invoicing, carrier settlement, then AR and dunning at 30/45/60 days.</p></article>
-      <article class="card faq-card"><h3>Why do invoices get paid late?</h3><p>Missing POD, wrong invoice format for the customer&#x27;s AP system, or nobody chasing at 30 days. Each costs a full payment cycle.</p></article>
-      <article class="card faq-card"><h3>What gets chased most?</h3><p>The proof of delivery. Without it the invoice usually cannot even be submitted.</p></article>
-      <article class="card faq-card"><h3>What can AI actually do?</h3><p>Read billing email, match documents to loads, draft invoices, chase paperwork on a schedule, run AR ageing, flag expiring insurance.</p></article>
-      <article class="card faq-card"><h3>What stays human?</h3><p>Rate negotiation, customer and carrier decisions, claims, and anything where the relationship is the asset.</p></article>
-      <article class="card faq-card"><h3>Why is the inbox the problem?</h3><p>Information exists but is not queryable. &#x27;Which loads are missing a POD?&#x27; requires a human reading threads — that gap is the leak.</p></article>
+      <article class="card faq-card"><h3>What does a freight broker do after a load is booked?</h3><p>Issue and collect a signed rate confirmation, verify carrier authority and insurance, run check calls through pickup and delivery, collect the proof of delivery, generate an invoice in the customer&#x27;s required format, settle with the carrier or their factoring company, and then track the receivable to payment with dunning at 30, 45, and 60 days.</p></article>
+      <article class="card faq-card"><h3>Why do freight invoices get paid late?</h3><p>Most commonly a missing proof of delivery, an invoice submitted in a format the customer&#x27;s accounts-payable system rejects, or nobody chasing at 30 days. Each of these delays a full payment cycle, and none of them are visible until cash is already tight.</p></article>
+      <article class="card faq-card"><h3>What is the most chased document in freight?</h3><p>The proof of delivery. Without it the invoice usually cannot be submitted at all, which is why POD collection is the step most worth automating in a small brokerage.</p></article>
+      <article class="card faq-card"><h3>Which back-office tasks can AI handle in a brokerage?</h3><p>Reading billing email and extracting load references and amounts, matching documents to loads, drafting invoices in customer-specific formats, chasing missing documents on a schedule, running accounts-receivable ageing and dunning, and flagging expiring carrier insurance or authority before dispatch.</p></article>
+      <article class="card faq-card"><h3>What should stay human in a brokerage?</h3><p>Rate negotiation, decisions about which customers and carriers to keep, claims handling, and any exchange where the relationship itself is the asset. Automation should handle repetition and deadlines, not judgement.</p></article>
+      <article class="card faq-card"><h3>Why is email a bad system of record for freight?</h3><p>Because information in an inbox is not queryable. Nobody can answer &#x27;which loads are missing a POD right now&#x27; without a person reading threads, so every deadline depends on someone remembering it, which is exactly where margin leaks.</p></article>
     </div>
   </section>
 

@@ -50,8 +50,8 @@
     color:var(--muted);font-size:var(--t-small);margin:0 0 var(--s5)}
   .callout--warn{border-color:var(--gold-2)}
   .faq-card{padding:var(--s5)}
-  .faq-card h3{font-size:var(--t-h3);margin:0}
-  .faq-card p{color:var(--muted);font-size:var(--t-small);margin:var(--s3) 0 0}
+  .faq-card h3{font-size:var(--t-h3);margin:0;line-height:1.3}
+  .faq-card p{color:var(--muted);font-size:var(--t-small);line-height:1.65;margin:var(--s3) 0 0}
 </style>
 </head>
 <body class="pro">
@@ -59,7 +59,7 @@
 <a class="skip-link" href="#main">Skip to content</a>
 
 <nav class="site-nav">
-  <a class="site-nav__brand" href="/"><img class="site-nav__lion" src="/img/brand/lion-mark.svg" alt="" width="34" height="34"><span>YUSUF GADELRAB</span></a>
+  <a class="site-nav__brand" href="/"><img class="site-nav__lion" src="/img/brand/lion-mark.svg" alt="" width="34" height="34" decoding="async"><span>YUSUF GADELRAB</span></a>
   <div class="site-nav__links">
     <a href="/">Work</a>
     <a href="/guides.html">Guides</a>
@@ -217,14 +217,14 @@ $46.05 × 0.97 − (0.03 × $2.95) ≈ $44.58</span>
       <h2>Quick answers</h2>
     </div>
     <div class="grid" style="margin-top:var(--s6)">
-      <article class="card faq-card"><h3>Which platform pays out most?</h3><p>Illustratively on $49: 5% + $0.50 leaves $46.05, flat 10% leaves $44.10, a marketplace leaves about $43.90, raw Stripe leaves $47.28. About $2.40 of spread across hosted options.</p></article>
-      <article class="card faq-card"><h3>What is a merchant of record?</h3><p>A platform that becomes the legal seller, charging, remitting, and filing sales and value-added taxes. For a first international product by one person it is usually worth the extra few percent.</p></article>
-      <article class="card faq-card"><h3>Do I owe EU VAT?</h3><p>Generally yes, at the buyer&#x27;s location from the first sale, with no threshold for outside sellers. That means registration, per-country rates, location evidence, and filings — or a merchant of record.</p></article>
-      <article class="card faq-card"><h3>Why do two tiers work?</h3><p>One price is a yes-or-no decision defaulting to no. Two prices make it a which-one decision and remove zero from the comparison, while the high tier anchors the low one.</p></article>
-      <article class="card faq-card"><h3>Is $19 + $49 always better than $29?</h3><p>No. Illustratively, two tiers with no behavioural change makes $560 against $580 for a single $29, because most buyers move down. It only wins on a conversion lift or a better mix.</p></article>
-      <article class="card faq-card"><h3>What refund rate to assume?</h3><p>Low single digits. At $49 with a 6% fee and 3% refunds, effective net is about $44.58 against $46.05 — a rounding error next to a half-point conversion swing.</p></article>
-      <article class="card faq-card"><h3>How many units to break even?</h3><p>Build cost divided by blended net. Illustratively $1,200 of hours over $25.26 net is 48 units, or about 2,000 cold visitors at 2.4% conversion.</p></article>
-      <article class="card faq-card"><h3>How to test price with no stack?</h3><p>Revenue per visitor, not conversion rate. Fixed windows, not split traffic. Only large differences — $19 vs $49 is detectable, $27 vs $29 never will be.</p></article>
+      <article class="card faq-card"><h3>Which platform leaves you the most on a digital product sale?</h3><p>Illustratively on a $49 sale, a 5% plus $0.50 structure leaves about $46.05, a flat 10% leaves about $44.10, and a marketplace with a listing fee plus transaction and processing fees leaves about $43.90, while raw Stripe on your own site leaves about $47.28. The spread across hosted options is roughly $2.40 a sale, which matters far less than what each platform handles for you.</p></article>
+      <article class="card faq-card"><h3>What is a merchant of record and do I need one?</h3><p>A merchant of record becomes the legal seller of your product, so it charges, remits, and files the value-added and sales taxes and carries the compliance obligation. For a first product sold internationally by one person it is usually the right choice, and the extra few percent over raw payment processing is best understood as an insurance premium against a recurring tax job.</p></article>
+      <article class="card faq-card"><h3>Do I owe VAT on digital products sold to the EU?</h3><p>Generally yes, at the buyer&#x27;s location and from the first sale, with no small-seller threshold for a seller established outside that market, which implies registration, correct per-country rates, evidence of buyer location, periodic filings, and multi-year record retention. A merchant of record platform handles all of it. This is orientation, not tax advice — verify current rules before relying on it.</p></article>
+      <article class="card faq-card"><h3>Why do two price tiers outsell one price?</h3><p>Because a single price is a yes-or-no decision whose default answer is no, while two prices change the question to which one and quietly remove zero from the comparison. The higher tier also anchors the lower one, and buyers who were always willing to pay more are no longer handed the difference.</p></article>
+      <article class="card faq-card"><h3>Is a $19 and $49 pair always better than a single $29?</h3><p>No. Two tiers only win if they raise total conversion, shift the mix toward the higher tier, or both. Illustratively at 1,000 visitors, two tiers with no behavioural change makes about $560 against $580 for a single $29 price, because most buyers move down. With a small conversion lift the same pair makes about $666.</p></article>
+      <article class="card faq-card"><h3>What refund rate should you assume on a digital product?</h3><p>Low single digits is the usual shape, and a clear generous policy tends to raise conversion more than it raises refunds. At $49 with a 6% platform fee and a 3% refund rate the effective net is roughly $44.58 against $46.05, a 3.2% haircut — a rounding error next to a half-point swing in conversion, which is worth 25% of revenue at a 2% baseline.</p></article>
+      <article class="card faq-card"><h3>How many units does a digital product need to break even?</h3><p>Divide the build cost by the blended net per sale. Illustratively, 40 hours at a $30 opportunity cost is $1,200, and a 70/30 mix across $19 and $49 tiers nets about $25.26 after refunds, so break-even is about 48 units — which at a 2.4% conversion rate is roughly 2,000 cold visitors.</p></article>
+      <article class="card faq-card"><h3>How do you test a price without an analytics stack?</h3><p>Measure revenue per visitor rather than conversion rate, change the price for a fixed window instead of splitting traffic, and only test large differences such as $19 against $49, since $27 against $29 is undetectable at any sample size a solo product is likely to reach. Then ask buyers what nearly stopped them, because ten replies beat a dashboard with no conversions in it.</p></article>
     </div>
   </section>
 

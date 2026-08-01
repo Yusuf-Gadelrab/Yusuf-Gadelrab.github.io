@@ -50,8 +50,8 @@
     color:var(--muted);font-size:var(--t-small);margin:0 0 var(--s5)}
   .callout--warn{border-color:var(--gold-2)}
   .faq-card{padding:var(--s5)}
-  .faq-card h3{font-size:var(--t-h3);margin:0}
-  .faq-card p{color:var(--muted);font-size:var(--t-small);margin:var(--s3) 0 0}
+  .faq-card h3{font-size:var(--t-h3);margin:0;line-height:1.3}
+  .faq-card p{color:var(--muted);font-size:var(--t-small);line-height:1.65;margin:var(--s3) 0 0}
 </style>
 </head>
 <body class="pro">
@@ -59,7 +59,7 @@
 <a class="skip-link" href="#main">Skip to content</a>
 
 <nav class="site-nav">
-  <a class="site-nav__brand" href="/"><img class="site-nav__lion" src="/img/brand/lion-mark.svg" alt="" width="34" height="34"><span>YUSUF GADELRAB</span></a>
+  <a class="site-nav__brand" href="/"><img class="site-nav__lion" src="/img/brand/lion-mark.svg" alt="" width="34" height="34" decoding="async"><span>YUSUF GADELRAB</span></a>
   <div class="site-nav__links">
     <a href="/">Work</a>
     <a href="/guides.html">Guides</a>
@@ -169,12 +169,12 @@
       <h2>Quick answers</h2>
     </div>
     <div class="grid" style="margin-top:var(--s6)">
-      <article class="card faq-card"><h3>What are the patterns?</h3><p>Two pointers, sliding window, binary search on answer, BFS/DFS, topological sort, heap/top-k, intervals, DP, backtracking, union-find.</p></article>
-      <article class="card faq-card"><h3>Why not count problems?</h3><p>A count cannot tell known patterns from unknown ones. Volume without diagnosis leaves you failing anything phrased unfamiliarly.</p></article>
-      <article class="card faq-card"><h3>How do I spot the pattern?</h3><p>Input shape, what is asked, plausible complexity, then name it. Constraints alone often rule out the wrong approach.</p></article>
-      <article class="card faq-card"><h3>What do I log?</h3><p>Pattern, outcome, and where it broke — recognition, approach, implementation, or edge cases. Each needs a different fix.</p></article>
-      <article class="card faq-card"><h3>How does spaced repetition help?</h3><p>Re-solve on expanding intervals: 1 day after a fail, 3 days after a hint, 1 week, 3 weeks. Leitner boxes, review before new problems.</p></article>
-      <article class="card faq-card"><h3>When am I ready?</h3><p>When an unfamiliar problem in any pattern gets named in two minutes and the template gets written without a lookup.</p></article>
+      <article class="card faq-card"><h3>What are the main coding interview patterns?</h3><p>Two pointers, sliding window, binary search on the answer, BFS and DFS, topological sort, heap and top-k, intervals, dynamic programming, backtracking, and union-find. Most remaining interview problems are combinations of these, such as a BFS whose frontier is a heap or a binary search whose predicate runs a greedy check.</p></article>
+      <article class="card faq-card"><h3>Why is counting solved problems a bad metric?</h3><p>Because it does not distinguish between problems in patterns you already know and problems in the ones you do not. A large solved count with no per-pattern diagnosis commonly produces someone who still fails any problem phrased unfamiliarly.</p></article>
+      <article class="card faq-card"><h3>How do you identify which pattern a problem uses?</h3><p>Answer four questions before writing code: the input shape, what is being asked, the plausible complexity given the constraints, and the pattern name. Complexity does surprising work — if the constraints allow large inputs, an O(n^2) approach is not the intended one, which frequently identifies the pattern by itself.</p></article>
+      <article class="card faq-card"><h3>What should a practice log record?</h3><p>The pattern tag, the outcome, and where the attempt broke — recognition, approach, implementation, or edge cases. Those four failure locations need different fixes: missing recognition needs exposure to more problem statements, while a broken implementation needs the template rehearsed.</p></article>
+      <article class="card faq-card"><h3>How does spaced repetition apply to interview prep?</h3><p>Re-attempt solved problems on an expanding schedule instead of only solving new ones: one day after a failure, three days after a hinted solve, a week after a slow unaided solve, three weeks after a fluent one. A Leitner box system with fifteen to twenty minutes of review before new problems each session handles it.</p></article>
+      <article class="card faq-card"><h3>How do you know when you are ready?</h3><p>When you can be handed an unfamiliar problem in any of the ten patterns, name the pattern within about two minutes, and implement its canonical template without looking it up. That is a different test from any solved-problem total.</p></article>
     </div>
   </section>
 
@@ -187,10 +187,10 @@
       <h2 id="related-h">Related guides</h2>
     </div>
     <div class="related__grid">
+      <a class="related__item" href="/guides/quant-internship-timeline.html"><strong>Three firm types, three calendars, and a lot of wrong dates</strong><span>Market makers, banks and funds run on three different calendars. Most deadlines people repeat belong to a different…</span></a>
       <a class="related__item" href="/guides/portfolio-that-gets-interviews.html"><strong>Shipped and reachable beats impressive-sounding</strong><span>Shipped and reachable beats impressive-sounding. What a reviewer checks in 60 seconds.</span></a>
       <a class="related__item" href="/guides/ats-resume.html"><strong>What an ATS actually does to your resume</strong><span>What ATS software really does, what breaks parsing, and which rules are folklore.</span></a>
-      <a class="related__item" href="/guides/linkedin-profile-recruiters.html"><strong>Write the profile for how recruiters actually search</strong><span>How recruiters actually search, and what the first two lines have to do.</span></a>
-      <a class="related__item" href="/guides/scholarships-international-students.html"><strong>Eligibility first, essays second</strong><span>Where eligibility breaks, how the funding types differ, and how to run a real pipeline.</span></a>
+      <a class="related__item" href="/guides/verify-visa-sponsorship-internships.html"><strong>Verify sponsorship yourself. Every list is already wrong.</strong><span>Stop trusting sponsorship lists. Verify it yourself from req language, public disclosure data, and one written…</span></a>
     </div>
     <p class="related__more">Every guide is indexed on <a href="/guides.html">the guides hub</a>. Or put it to work in <a href="/hire.html">what I am open to for Summer 2027</a>.</p>
   </section>

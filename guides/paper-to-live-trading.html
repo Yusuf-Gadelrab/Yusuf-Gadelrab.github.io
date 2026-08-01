@@ -50,8 +50,8 @@
     color:var(--muted);font-size:var(--t-small);margin:0 0 var(--s5)}
   .callout--warn{border-color:var(--gold-2)}
   .faq-card{padding:var(--s5)}
-  .faq-card h3{font-size:var(--t-h3);margin:0}
-  .faq-card p{color:var(--muted);font-size:var(--t-small);margin:var(--s3) 0 0}
+  .faq-card h3{font-size:var(--t-h3);margin:0;line-height:1.3}
+  .faq-card p{color:var(--muted);font-size:var(--t-small);line-height:1.65;margin:var(--s3) 0 0}
 </style>
 </head>
 <body class="pro">
@@ -59,7 +59,7 @@
 <a class="skip-link" href="#main">Skip to content</a>
 
 <nav class="site-nav">
-  <a class="site-nav__brand" href="/"><img class="site-nav__lion" src="/img/brand/lion-mark.svg" alt="" width="34" height="34"><span>YUSUF GADELRAB</span></a>
+  <a class="site-nav__brand" href="/"><img class="site-nav__lion" src="/img/brand/lion-mark.svg" alt="" width="34" height="34" decoding="async"><span>YUSUF GADELRAB</span></a>
   <div class="site-nav__links">
     <a href="/">Work</a>
     <a href="/guides.html">Guides</a>
@@ -164,12 +164,12 @@ net edge                                  ≈ $63.00 per trade</span>
       <h2>Quick answers</h2>
     </div>
     <div class="grid" style="margin-top:var(--s6)">
-      <article class="card faq-card"><h3>What does paper miss?</h3><p>Slippage, partial fills, borrow, gap fills, fees — and emotion. Paper takes every signal; you will not.</p></article>
-      <article class="card faq-card"><h3>Is paper trading useful?</h3><p>For engineering, yes: it proves orders route, brackets attach, and books reconcile. It is not evidence the strategy makes money.</p></article>
-      <article class="card faq-card"><h3>What is a promotion gate?</h3><p>A pre-written rule deciding when a system may trade real money, counted in closed trades and enforced by code rather than by mood.</p></article>
-      <article class="card faq-card"><h3>How many paper trades first?</h3><p>My engine requires 60 closed paper trades with positive realised expectancy before it will connect a live broker. Currently the record is zero.</p></article>
-      <article class="card faq-card"><h3>Does slippage matter that much?</h3><p>Yes. Slippage of 0.05R per side removes 0.10R from a 0.117R edge — over 85% of it, lost purely to execution quality.</p></article>
-      <article class="card faq-card"><h3>How do you scale up?</h3><p>Stages: pass the gate, 20 trades at minimum size, 30 at quarter risk, then full risk — with a coded drawdown halt at 10%.</p></article>
+      <article class="card faq-card"><h3>What does paper trading fail to simulate?</h3><p>Slippage, partial fills, market impact, short-borrow availability, halts and gap fills, commissions and financing, and above all emotion. Paper accounts and backtests take 100% of signals, while a real trader hesitates after losses and takes discretionary exits, so realised expectancy is always lower than modelled expectancy.</p></article>
+      <article class="card faq-card"><h3>Is paper trading worth doing at all?</h3><p>Yes, but for engineering reasons rather than for proof of profitability. It verifies that orders route correctly, brackets attach, positions reconcile, and signal frequency matches the backtest, and it catches bugs such as duplicate orders and timezone errors that a backtest cannot expose.</p></article>
+      <article class="card faq-card"><h3>What is a promotion gate in trading?</h3><p>A promotion gate is a written, pre-committed rule that decides when a strategy or system may trade real money. To be useful it must be defined before the paper run begins, measured in closed trades rather than elapsed time, and enforced by code or a third party rather than by the trader&#x27;s own judgement.</p></article>
+      <article class="card faq-card"><h3>How many paper trades before going live?</h3><p>My own execution engine refuses to connect a live broker until there are 60 closed paper trades showing positive realised expectancy. Sixty is not statistically conclusive, which needs several hundred trades, but it is enough to expose engines that double-fire orders, mishandle halts, or lose quietly to fees.</p></article>
+      <article class="card faq-card"><h3>How much does slippage cost a small edge?</h3><p>Enough to matter. My own re-tested edge of +0.117R gives $35.10 per trade at a $300 risk unit, and a few ticks of slippage plus commission leaves roughly $29. But slippage of 0.05R per side removes 0.10R, which is over 85% of that edge, so execution quality is often larger than signal quality.</p></article>
+      <article class="card faq-card"><h3>How should you scale from paper to full size?</h3><p>In stages rather than with a switch. Pass the gate on paper, then trade the minimum size for about 20 trades to test fills and behaviour, then quarter risk for another 30 trades while comparing realised R against paper R per setup, and only then full risk. Pair it with a coded drawdown halt, such as stopping at 10%.</p></article>
     </div>
   </section>
 
