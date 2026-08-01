@@ -1,25 +1,16 @@
 {
-  "name": "Yusuf Gadelrab — free tools, built in public",
+  "name": "Yusuf Gadelrab — AI tools, built in public",
   "short_name": "Yusuf G",
-  "description": "Free browser tools built in public: trader and freight-broker calculators, a visa planner, an application tracker, and installable offline apps. No signup.",
+  "description": "Portfolio, free browser tools and the store: FreightDesk AI, trading systems, application and visa planners, and the Midnight Gold Vault templates.",
   "id": "/",
   "start_url": "/?src=pwa",
   "scope": "/",
   "display": "standalone",
-  "display_override": [
-    "standalone",
-    "minimal-ui",
-    "browser"
-  ],
   "orientation": "portrait-primary",
   "background_color": "#0B0B0D",
   "theme_color": "#0B0B0D",
   "lang": "en-US",
   "dir": "ltr",
-  "prefer_related_applications": false,
-  "launch_handler": {
-    "client_mode": "navigate-existing"
-  },
   "categories": [
     "productivity",
     "business",
@@ -58,28 +49,16 @@
   ],
   "shortcuts": [
     {
-      "name": "Risk calculators",
-      "short_name": "Risk tools",
-      "description": "Position sizing, R-multiples, expectancy, risk of ruin, Kelly and break-even win rate.",
-      "url": "/risk-tools.html"
-    },
-    {
-      "name": "Freight calculators",
-      "short_name": "Freight tools",
-      "description": "Rate per mile, deadhead, broker margin, detention, fuel surcharge and break-even load.",
-      "url": "/freight-tools.html"
+      "name": "Store",
+      "url": "/store.html"
     },
     {
       "name": "Apps & projects",
-      "short_name": "Apps",
-      "description": "Every installable offline app and every project, each with an honest status label.",
       "url": "/apps.html"
     },
     {
-      "name": "Store",
-      "short_name": "Store",
-      "description": "Courses, playbooks, automation tooling and premium template packs.",
-      "url": "/store.html"
+      "name": "Resume",
+      "url": "/resume.html"
     }
   ]
 }

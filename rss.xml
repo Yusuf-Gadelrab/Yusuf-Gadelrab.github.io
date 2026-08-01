@@ -1,176 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
-<channel>
-<title>Yusuf Gadelrab — Writing</title>
-<link>https://yusuf-gadelrab.github.io/writing.html</link>
+<rss version="2.0"><channel>
+<title>Yusuf Gadelrab</title><link>https://yusuf-gadelrab.github.io/writing.html</link>
 <description>Building in public: AI tooling, CS education research, trading systems, and free tools.</description>
-<atom:link href="https://yusuf-gadelrab.github.io/rss.xml" rel="self" type="application/rss+xml"/>
-<language>en-us</language>
-<lastBuildDate>Fri, 31 Jul 2026 00:00:00 +0000</lastBuildDate>
-<generator>tools/build_feeds.py</generator>
-<docs>https://www.rssboard.org/rss-specification</docs>
-<ttl>1440</ttl>
-<copyright>Copyright 2026 Yusuf Gadelrab</copyright>
-<item>
-<title>Why my portfolio has a robots.txt block list for AI crawlers that says allow</title>
-<link>https://yusuf-gadelrab.github.io/writing/why-my-robots-txt-says-allow-to-ai-crawlers.html</link>
-<guid isPermaLink="true">https://yusuf-gadelrab.github.io/writing/why-my-robots-txt-says-allow-to-ai-crawlers.html</guid>
-<pubDate>Fri, 31 Jul 2026 00:00:00 +0000</pubDate>
-<description>In mid-2026 everyone blocked GPTBot and ClaudeBot. I named 29 AI crawlers and allowed all of them. Here is the reasoning, and the part I can&#x27;t measure.</description>
-</item>
-<item>
-<title>Which AI tools I pay for, and what I run locally for free instead</title>
-<link>https://yusuf-gadelrab.github.io/writing/ai-tools-i-pay-for-vs-what-i-run-locally.html</link>
-<guid isPermaLink="true">https://yusuf-gadelrab.github.io/writing/ai-tools-i-pay-for-vs-what-i-run-locally.html</guid>
-<pubDate>Fri, 31 Jul 2026 00:00:00 +0000</pubDate>
-<description>I run a 30B model on my laptop for free. Here is exactly where that wins, where it loses badly, and which paid AI tools survived the comparison.</description>
-</item>
-<item>
-<title>TradingView vs TrendSpider vs Stock Rover: which one a swing trader actually needs</title>
-<link>https://yusuf-gadelrab.github.io/writing/tradingview-vs-trendspider-vs-stock-rover-for-swing-trading.html</link>
-<guid isPermaLink="true">https://yusuf-gadelrab.github.io/writing/tradingview-vs-trendspider-vs-stock-rover-for-swing-trading.html</guid>
-<pubDate>Fri, 31 Jul 2026 00:00:00 +0000</pubDate>
-<description>I built my own swing screener before paying for any of the 3. Here is the honest split between charting, automated backtesting and stock screening.</description>
-</item>
-<item>
-<title>The student software stack: what is free, and the four things worth paying for</title>
-<link>https://yusuf-gadelrab.github.io/writing/student-software-stack-free-first-paid-second.html</link>
-<guid isPermaLink="true">https://yusuf-gadelrab.github.io/writing/student-software-stack-free-first-paid-second.html</guid>
-<pubDate>Fri, 31 Jul 2026 00:00:00 +0000</pubDate>
-<description>Almost everything a CS student is told to buy has a free .edu tier. Here is what to claim in your first week, and the short list worth paying for.</description>
-</item>
-<item>
-<title>The internship deadline panic was mostly fictional</title>
-<link>https://yusuf-gadelrab.github.io/writing/the-internship-deadline-panic-was-mostly-fictional.html</link>
-<guid isPermaLink="true">https://yusuf-gadelrab.github.io/writing/the-internship-deadline-panic-was-mostly-fictional.html</guid>
-<pubDate>Fri, 31 Jul 2026 00:00:00 +0000</pubDate>
-<description>I re-verified 18 firms against primary sources. Only two had real deadlines. One panic-inducing date belonged to a different program entirely.</description>
-</item>
-<item>
-<title>Koyfin vs Seeking Alpha vs Simply Wall St: what each one is actually for</title>
-<link>https://yusuf-gadelrab.github.io/writing/koyfin-vs-seeking-alpha-vs-simply-wall-st.html</link>
-<guid isPermaLink="true">https://yusuf-gadelrab.github.io/writing/koyfin-vs-seeking-alpha-vs-simply-wall-st.html</guid>
-<pubDate>Fri, 31 Jul 2026 00:00:00 +0000</pubDate>
-<description>Three research tools, three different jobs: fast data, crowd opinions, visual company snapshots. Here is which 1 of the 3 is worth paying for, and why.</description>
-</item>
-<item>
-<title>I wrote 30 guides in a week and here is what the schema markup taught me</title>
-<link>https://yusuf-gadelrab.github.io/writing/what-schema-markup-taught-me-writing-30-guides.html</link>
-<guid isPermaLink="true">https://yusuf-gadelrab.github.io/writing/what-schema-markup-taught-me-writing-30-guides.html</guid>
-<pubDate>Fri, 31 Jul 2026 00:00:00 +0000</pubDate>
-<description>TechArticle vs Article vs BlogPosting, the FAQ rule most people break, and how one Person node turned 90 pages into a single entity instead of 90 authors.</description>
-</item>
-<item>
-<title>I ran a robustness test on my own trading strategy and it failed</title>
-<link>https://yusuf-gadelrab.github.io/writing/robustness-test-on-my-trading-strategy-and-it-failed.html</link>
-<guid isPermaLink="true">https://yusuf-gadelrab.github.io/writing/robustness-test-on-my-trading-strategy-and-it-failed.html</guid>
-<pubDate>Fri, 31 Jul 2026 00:00:00 +0000</pubDate>
-<description>Positive expectancy is not an edge. A risk-matched random entry captured most of mine, and what was left had a confidence interval crossing zero.</description>
-</item>
-<item>
-<title>How to check a repo for secrets before you make it public</title>
-<link>https://yusuf-gadelrab.github.io/writing/check-a-repo-for-secrets-before-you-make-it-public.html</link>
-<guid isPermaLink="true">https://yusuf-gadelrab.github.io/writing/check-a-repo-for-secrets-before-you-make-it-public.html</guid>
-<pubDate>Fri, 31 Jul 2026 00:00:00 +0000</pubDate>
-<description>Deleting a key from a file does not delete it from git. A free, dependency-free checklist for auditing a side project before you flip it to public.</description>
-</item>
-<item>
-<title>Free-first, paid-second: the build stack a broke CS student actually needs</title>
-<link>https://yusuf-gadelrab.github.io/writing/free-first-paid-second-the-build-stack.html</link>
-<guid isPermaLink="true">https://yusuf-gadelrab.github.io/writing/free-first-paid-second-the-build-stack.html</guid>
-<pubDate>Fri, 31 Jul 2026 00:00:00 +0000</pubDate>
-<description>Not licences, not AI subscriptions. The inference, hosting, data, and distribution a student needs to actually ship, for close to zero dollars.</description>
-</item>
-<item>
-<title>Building a nonprofit before you are allowed to earn money</title>
-<link>https://yusuf-gadelrab.github.io/writing/building-a-nonprofit-before-youre-allowed-to-earn.html</link>
-<guid isPermaLink="true">https://yusuf-gadelrab.github.io/writing/building-a-nonprofit-before-youre-allowed-to-earn.html</guid>
-<pubDate>Fri, 31 Jul 2026 00:00:00 +0000</pubDate>
-<description>Immigration status can restrict what you may do without restricting what you may build. Four program ideas, one entity, and nothing filed yet.</description>
-</item>
-<item>
-<title>Zero-dependency security scanner: secrets, OSV CVEs, IaC rules, git-history leaks, SBOM,...</title>
-<link>https://yusuf-gadelrab.github.io/writing/zero-dependency-security-scanner-secrets-osv-cves-iac-rules-git-histor.html</link>
-<guid isPermaLink="true">https://yusuf-gadelrab.github.io/writing/zero-dependency-security-scanner-secrets-osv-cves-iac-rules-git-histor.html</guid>
-<pubDate>Wed, 29 Jul 2026 00:00:00 +0000</pubDate>
-<description>Scanning for supply-chain risk usually means installing a large dependency tree first. DIRA v1.2.0 runs 7 scanners on pure stdlib Python, MIT licensed.</description>
-</item>
-<item>
-<title>Two SIGCSE 2026 acceptances, and what the research found</title>
-<link>https://yusuf-gadelrab.github.io/writing/two-papers-accepted-to-sigcse-2026-im-an-undergrad.html</link>
-<guid isPermaLink="true">https://yusuf-gadelrab.github.io/writing/two-papers-accepted-to-sigcse-2026-im-an-undergrad.html</guid>
-<pubDate>Wed, 29 Jul 2026 00:00:00 +0000</pubDate>
-<description>Two SIGCSE 2026 papers as an undergraduate: what happens to a student learning to code when the programming language is English and their thinking is not.</description>
-</item>
-<item>
-<title>The hardest part of an internship search isn&#x27;t the applications. It&#x27;s that nobody tells you...</title>
-<link>https://yusuf-gadelrab.github.io/writing/the-hardest-part-of-an-internship-search-isnt-the-applications-its-tha.html</link>
-<guid isPermaLink="true">https://yusuf-gadelrab.github.io/writing/the-hardest-part-of-an-internship-search-isnt-the-applications-its-tha.html</guid>
-<pubDate>Wed, 29 Jul 2026 00:00:00 +0000</pubDate>
-<description>Summer 2027 recruiting is happening in July 2026, not in the spring. Nobody tells you when the window opens, so here is the calendar I had to build.</description>
-</item>
-<item>
-<title>I wrote a security scanner with zero dependencies, on purpose</title>
-<link>https://yusuf-gadelrab.github.io/writing/i-wrote-a-security-scanner-with-zero-dependencies-on-purpose.html</link>
-<guid isPermaLink="true">https://yusuf-gadelrab.github.io/writing/i-wrote-a-security-scanner-with-zero-dependencies-on-purpose.html</guid>
-<pubDate>Wed, 29 Jul 2026 00:00:00 +0000</pubDate>
-<description>Every scanner wanted a hundred packages installed before it would look for supply-chain risk. DIRA ships 7 scanners, 98 passing tests and no dependencies.</description>
-</item>
-<item>
-<title>I spent months building trading strategies and then published the results that killed most...</title>
-<link>https://yusuf-gadelrab.github.io/writing/i-spent-months-building-trading-strategies-and-then-published-the-resu.html</link>
-<guid isPermaLink="true">https://yusuf-gadelrab.github.io/writing/i-spent-months-building-trading-strategies-and-then-published-the-resu.html</guid>
-<pubDate>Wed, 29 Jul 2026 00:00:00 +0000</pubDate>
-<description>Months of building setups, then walk-forward testing across 4,933 trades. Exactly one survived. Here is what killed the rest, and why I published it.</description>
-</item>
-<item>
-<title>I spent a day making my portfolio readable by AI instead of by humans</title>
-<link>https://yusuf-gadelrab.github.io/writing/i-spent-a-day-making-my-portfolio-readable-by-ai-instead-of-by-humans.html</link>
-<guid isPermaLink="true">https://yusuf-gadelrab.github.io/writing/i-spent-a-day-making-my-portfolio-readable-by-ai-instead-of-by-humans.html</guid>
-<pubDate>Wed, 29 Jul 2026 00:00:00 +0000</pubDate>
-<description>Recruiters ask an assistant about you before they ever open your site. Here is the llms.txt, schema and answer-first copy that made 90 pages readable.</description>
-</item>
-<item>
-<title>I skipped the App Store and shipped 3 offline PWAs instead. Here&#x27;s what that actually costs you</title>
-<link>https://yusuf-gadelrab.github.io/writing/i-skipped-the-app-store-and-shipped-3-offline-pwas-instead-heres-what-.html</link>
-<guid isPermaLink="true">https://yusuf-gadelrab.github.io/writing/i-skipped-the-app-store-and-shipped-3-offline-pwas-instead-heres-what-.html</guid>
-<pubDate>Wed, 29 Jul 2026 00:00:00 +0000</pubDate>
-<description>Apple wants $99 a year before anyone can install your thing. The honest tradeoffs of going PWA instead: what you keep, and what you genuinely give up.</description>
-</item>
-<item>
-<title>I shipped a brand across 30 pages, 3 apps, 3 book covers and a clothing line in one day,...</title>
-<link>https://yusuf-gadelrab.github.io/writing/i-shipped-a-brand-across-30-pages-3-apps-3-book-covers-and-a-clothing-.html</link>
-<guid isPermaLink="true">https://yusuf-gadelrab.github.io/writing/i-shipped-a-brand-across-30-pages-3-apps-3-book-covers-and-a-clothing-.html</guid>
-<pubDate>Wed, 29 Jul 2026 00:00:00 +0000</pubDate>
-<description>Most brand systems are a folder of PNGs that quietly drift apart. One Python script generates the mark instead, so 30 pages and 3 apps never disagree.</description>
-</item>
-<item>
-<title>I built three apps this week and put zero of them in the App Store</title>
-<link>https://yusuf-gadelrab.github.io/writing/i-built-three-apps-this-week-and-put-zero-of-them-in-the-app-store.html</link>
-<guid isPermaLink="true">https://yusuf-gadelrab.github.io/writing/i-built-three-apps-this-week-and-put-zero-of-them-in-the-app-store.html</guid>
-<pubDate>Wed, 29 Jul 2026 00:00:00 +0000</pubDate>
-<description>The App Store wants $99 a year, so I shipped 3 installable offline PWAs instead: no account, no backend, and nothing ever leaving your phone.</description>
-</item>
-<item>
-<title>I built a visa timeline planner because I got tired of being scared of a calendar</title>
-<link>https://yusuf-gadelrab.github.io/writing/i-built-a-visa-timeline-planner-because-i-got-tired-of-being-scared-of.html</link>
-<guid isPermaLink="true">https://yusuf-gadelrab.github.io/writing/i-built-a-visa-timeline-planner-because-i-got-tired-of-being-scared-of.html</guid>
-<pubDate>Wed, 29 Jul 2026 00:00:00 +0000</pubDate>
-<description>TD status ends at 21 and the filings have to happen in a strict order. This free planner maps the sequence so a calendar stops being a source of dread.</description>
-</item>
-<item>
-<title>How an undergrad with no connections gets into a research lab, specifically</title>
-<link>https://yusuf-gadelrab.github.io/writing/how-an-undergrad-with-no-connections-gets-into-a-research-lab-specific.html</link>
-<guid isPermaLink="true">https://yusuf-gadelrab.github.io/writing/how-an-undergrad-with-no-connections-gets-into-a-research-lab-specific.html</guid>
-<pubDate>Wed, 29 Jul 2026 00:00:00 +0000</pubDate>
-<description>No connections and nobody vouching for me, 2 SIGCSE 2026 papers later. Here is the actual email sequence and timeline, not the inspirational version.</description>
-</item>
-<item>
-<title>Built a position size calculator that refuses to let you round up. Free, no signup</title>
-<link>https://yusuf-gadelrab.github.io/writing/built-a-position-size-calculator-that-refuses-to-let-you-round-up-free.html</link>
-<guid isPermaLink="true">https://yusuf-gadelrab.github.io/writing/built-a-position-size-calculator-that-refuses-to-let-you-round-up-free.html</guid>
-<pubDate>Wed, 29 Jul 2026 00:00:00 +0000</pubDate>
-<description>Rounding 187 shares up to 200 quietly adds risk to every trade you take. This free calculator refuses to do it, and shows what the habit really costs.</description>
-</item>
-</channel>
-</rss>
+<language>en-us</language><lastBuildDate>Fri, 31 Jul 2026 13:34:31 +0000</lastBuildDate>
+<item><title>TradingView vs TrendSpider vs Stock Rover: which one a swing trader actually needs</title><link>https://yusuf-gadelrab.github.io/writing/tradingview-vs-trendspider-vs-stock-rover-for-swing-trading.html</link><guid isPermaLink="true">https://yusuf-gadelrab.github.io/writing/tradingview-vs-trendspider-vs-stock-rover-for-swing-trading.html</guid><pubDate>Fri, 31 Jul 2026 00:00:00 +0000</pubDate><description>I wrote my own screener before I paid for anyone else&#x27;s. That is the only reason this comparison is worth reading: I know which parts of these products do real work.</description></item>
+<item><title>Koyfin vs Seeking Alpha vs Simply Wall St: what each one is actually for</title><link>https://yusuf-gadelrab.github.io/writing/koyfin-vs-seeking-alpha-vs-simply-wall-st.html</link><guid isPermaLink="true">https://yusuf-gadelrab.github.io/writing/koyfin-vs-seeking-alpha-vs-simply-wall-st.html</guid><pubDate>Fri, 31 Jul 2026 00:00:00 +0000</pubDate><description>Every list ranks these three against each other as if they do the same thing. One is a data terminal, one is an opinion marketplace, and one is a picture.</description></item>
+<item><title>Which AI tools I pay for, and what I run locally for free instead</title><link>https://yusuf-gadelrab.github.io/writing/ai-tools-i-pay-for-vs-what-i-run-locally.html</link><guid isPermaLink="true">https://yusuf-gadelrab.github.io/writing/ai-tools-i-pay-for-vs-what-i-run-locally.html</guid><pubDate>Fri, 31 Jul 2026 00:00:00 +0000</pubDate><description>I run a 30-billion-parameter model on my own laptop and it costs nothing per token. That changes which AI subscriptions are worth paying for, and eliminates most.</description></item>
+<item><title>How to check a repo for secrets before you make it public</title><link>https://yusuf-gadelrab.github.io/writing/check-a-repo-for-secrets-before-you-make-it-public.html</link><guid isPermaLink="true">https://yusuf-gadelrab.github.io/writing/check-a-repo-for-secrets-before-you-make-it-public.html</guid><pubDate>Fri, 31 Jul 2026 00:00:00 +0000</pubDate><description>Deleting an API key from a file does not delete it from your repository. It is still in the object store, and the moment you go public it is indexed.</description></item>
+<item><title>The student software stack: what is free, and the four things worth paying for</title><link>https://yusuf-gadelrab.github.io/writing/student-software-stack-free-first-paid-second.html</link><guid isPermaLink="true">https://yusuf-gadelrab.github.io/writing/student-software-stack-free-first-paid-second.html</guid><pubDate>Fri, 31 Jul 2026 00:00:00 +0000</pubDate><description>Almost everything you are told to buy as a CS student is free for students, and most people never claim it because nobody hands you the list.</description></item>
+<item><title>I built three apps this week and put zero of them in the App Store</title><link>https://yusuf-gadelrab.github.io/writing/i-built-three-apps-this-week-and-put-zero-of-them-in-the-app-store.html</link><guid isPermaLink="true">https://yusuf-gadelrab.github.io/writing/i-built-three-apps-this-week-and-put-zero-of-them-in-the-app-store.html</guid><pubDate>Wed, 29 Jul 2026 00:00:00 +0000</pubDate><description>The App Store costs $99/year. I&#x27;m a broke CS student. So I built them as PWAs instead: you open a link on your phone, hit Share, hit Add to Home Screen, and it&#x27;s on your homescreen with an icon. Works offline. No account. No backend. Your data never leaves your phone because there is no server to se</description></item>
+<item><title>I shipped a brand across 30 pages, 3 apps, 3 book covers and a clothing line in one day</title><link>https://yusuf-gadelrab.github.io/writing/i-shipped-a-brand-across-30-pages-3-apps-3-book-covers-and-a-clothing-.html</link><guid isPermaLink="true">https://yusuf-gadelrab.github.io/writing/i-shipped-a-brand-across-30-pages-3-apps-3-book-covers-and-a-clothing-.html</guid><pubDate>Wed, 29 Jul 2026 00:00:00 +0000</pubDate><description>Most brand systems are a folder of PNGs and a PDF nobody opens. The mark drifts. Someone exports it wrong for a t-shirt, the knockout becomes ink on ink, and six months later you have four versions of your own logo and no idea which is right.</description></item>
+<item><title>I wrote a security scanner with zero dependencies, on purpose</title><link>https://yusuf-gadelrab.github.io/writing/i-wrote-a-security-scanner-with-zero-dependencies-on-purpose.html</link><guid isPermaLink="true">https://yusuf-gadelrab.github.io/writing/i-wrote-a-security-scanner-with-zero-dependencies-on-purpose.html</guid><pubDate>Wed, 29 Jul 2026 00:00:00 +0000</pubDate><description>Every security tool I looked at wanted me to install a hundred packages to go looking for supply chain risk. That struck me as funny in a way that isn&#x27;t funny.</description></item>
+<item><title>I spent a day making my portfolio readable by AI instead of by humans</title><link>https://yusuf-gadelrab.github.io/writing/i-spent-a-day-making-my-portfolio-readable-by-ai-instead-of-by-humans.html</link><guid isPermaLink="true">https://yusuf-gadelrab.github.io/writing/i-spent-a-day-making-my-portfolio-readable-by-ai-instead-of-by-humans.html</guid><pubDate>Wed, 29 Jul 2026 00:00:00 +0000</pubDate><description>Here&#x27;s the thing I noticed. When a recruiter wants to know about a candidate now, a real number of them ask an assistant first. ChatGPT, Claude, Perplexity, whatever is in the search box. If the model can&#x27;t parse you, you don&#x27;t exist in that answer.</description></item>
+<item><title>The hardest part of an internship search isn&#x27;t the applications. It&#x27;s that nobody tells you when it starts</title><link>https://yusuf-gadelrab.github.io/writing/the-hardest-part-of-an-internship-search-isnt-the-applications-its-tha.html</link><guid isPermaLink="true">https://yusuf-gadelrab.github.io/writing/the-hardest-part-of-an-internship-search-isnt-the-applications-its-tha.html</guid><pubDate>Wed, 29 Jul 2026 00:00:00 +0000</pubDate><description>I learned this the expensive way. Summer 2027 internship recruiting is happening right now, in July 2026. Not in the spring. Not in the fall. Now.</description></item>
+<item><title>Two papers accepted to SIGCSE 2026. I&#x27;m an undergrad</title><link>https://yusuf-gadelrab.github.io/writing/two-papers-accepted-to-sigcse-2026-im-an-undergrad.html</link><guid isPermaLink="true">https://yusuf-gadelrab.github.io/writing/two-papers-accepted-to-sigcse-2026-im-an-undergrad.html</guid><pubDate>Wed, 29 Jul 2026 00:00:00 +0000</pubDate><description>The first one asks a question that sounds simple and isn&#x27;t: what happens to a student learning to code when the programming language is in English and their thinking isn&#x27;t?</description></item>
+<item><title>How an undergrad with no connections gets into a research lab, specifically</title><link>https://yusuf-gadelrab.github.io/writing/how-an-undergrad-with-no-connections-gets-into-a-research-lab-specific.html</link><guid isPermaLink="true">https://yusuf-gadelrab.github.io/writing/how-an-undergrad-with-no-connections-gets-into-a-research-lab-specific.html</guid><pubDate>Wed, 29 Jul 2026 00:00:00 +0000</pubDate><description>I get asked this a lot now that I have two SIGCSE 2026 papers, so here is the actual sequence, not the inspirational version.</description></item>
+<item><title>I built a visa timeline planner because I got tired of being scared of a calendar</title><link>https://yusuf-gadelrab.github.io/writing/i-built-a-visa-timeline-planner-because-i-got-tired-of-being-scared-of.html</link><guid isPermaLink="true">https://yusuf-gadelrab.github.io/writing/i-built-a-visa-timeline-planner-because-i-got-tired-of-being-scared-of.html</guid><pubDate>Wed, 29 Jul 2026 00:00:00 +0000</pubDate><description>I&#x27;m on TD status. It ends when I turn 21. I&#x27;m 20. There&#x27;s a whole sequence of things that have to happen in a specific order before then, and every explanation of that sequence I could find was either a law firm&#x27;s marketing page or a forum post from 2019.</description></item>
+<item><title>I spent months building trading strategies and then published the results that killed most of them</title><link>https://yusuf-gadelrab.github.io/writing/i-spent-months-building-trading-strategies-and-then-published-the-resu.html</link><guid isPermaLink="true">https://yusuf-gadelrab.github.io/writing/i-spent-months-building-trading-strategies-and-then-published-the-resu.html</guid><pubDate>Wed, 29 Jul 2026 00:00:00 +0000</pubDate><description>Here&#x27;s what walk-forward testing did to my ideas.</description></item>
+<item><title>I skipped the App Store and shipped 3 offline PWAs instead. Here&#x27;s what that actually costs you</title><link>https://yusuf-gadelrab.github.io/writing/i-skipped-the-app-store-and-shipped-3-offline-pwas-instead-heres-what-.html</link><guid isPermaLink="true">https://yusuf-gadelrab.github.io/writing/i-skipped-the-app-store-and-shipped-3-offline-pwas-instead-heres-what-.html</guid><pubDate>Wed, 29 Jul 2026 00:00:00 +0000</pubDate><description>Apple wants $99/year before a single person can install your thing. I&#x27;m a student, so I went the PWA route for three small apps and want to write down the honest tradeoffs, because every PWA post I read was either a fanboy or a funeral.</description></item>
+<item><title>Zero-dependency security scanner: secrets, OSV CVEs, IaC rules, git-history leaks, SBOM</title><link>https://yusuf-gadelrab.github.io/writing/zero-dependency-security-scanner-secrets-osv-cves-iac-rules-git-histor.html</link><guid isPermaLink="true">https://yusuf-gadelrab.github.io/writing/zero-dependency-security-scanner-secrets-osv-cves-iac-rules-git-histor.html</guid><pubDate>Wed, 29 Jul 2026 00:00:00 +0000</pubDate><description>I got annoyed that scanning for supply chain risk usually means installing a large dependency tree first, so I wrote one with no dependencies at all. Pure stdlib Python, MIT.</description></item>
+<item><title>Built a position size calculator that refuses to let you round up. Free, no signup</title><link>https://yusuf-gadelrab.github.io/writing/built-a-position-size-calculator-that-refuses-to-let-you-round-up-free.html</link><guid isPermaLink="true">https://yusuf-gadelrab.github.io/writing/built-a-position-size-calculator-that-refuses-to-let-you-round-up-free.html</guid><pubDate>Wed, 29 Jul 2026 00:00:00 +0000</pubDate><description>The single most expensive habit I had was sizing by feel and then rounding the share count up to something clean. 187 shares becomes 200 because 200 looks like a number. That rounding is a silent 7% increase in risk on every trade, and it compounds against you in exactly the periods you can least af</description></item>
+</channel></rss>

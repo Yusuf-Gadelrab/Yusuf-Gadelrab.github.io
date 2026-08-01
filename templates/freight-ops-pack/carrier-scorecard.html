@@ -2,11 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="referrer" content="strict-origin-when-cross-origin">
-<meta http-equiv="Content-Security-Policy" content="object-src 'none'; base-uri 'self'">
 <title>Carrier Scorecard — {{CARRIER_NAME}} — {{QUARTER}}</title>
-<meta name="robots" content="noindex,follow">
-<link rel="canonical" href="https://yusuf-gadelrab.github.io/templates.html">
 <!-- SAMPLE CONTENT: Ridgeline Freight Partners quarterly scorecard for Copper State Carriers, LLC. See README.md for the exact strings to find-and-replace. -->
 <style>
 :root{
@@ -55,7 +51,7 @@ hr.top-rule{ height:2px; border:none; background:linear-gradient(90deg,var(--gol
 
 .two-col{ display:grid; grid-template-columns:1fr 1fr; gap:22px; margin-bottom:22px; }
 .card{ border:1px solid var(--paper-line); border-radius:10px; padding:16px 18px; break-inside:avoid; }
-.card h2,.card h3{ font-size:10px; letter-spacing:2px; text-transform:uppercase; color:var(--gold-dim); margin-bottom:10px; font-family:-apple-system,sans-serif; font-weight:700; }
+.card h3{ font-size:10px; letter-spacing:2px; text-transform:uppercase; color:var(--gold-dim); margin-bottom:10px; font-family:-apple-system,sans-serif; font-weight:700; }
 .card .stat{ display:flex; justify-content:space-between; padding:5px 0; font-size:12px; border-bottom:1px solid var(--paper-line); }
 .card .stat:last-child{ border-bottom:none; }
 .card .stat .val{ font-weight:700; }
@@ -127,7 +123,7 @@ hr.top-rule{ height:2px; border:none; background:linear-gradient(90deg,var(--gol
 
   <div class="two-col">
     <div class="card">
-      <h2>Quarter Detail</h2>
+      <h3>Quarter Detail</h3>
       <div class="stat"><span>Loads Hauled</span><span class="val">42</span></div>
       <div class="stat"><span>Loads Tendered</span><span class="val">48</span></div>
       <div class="stat"><span>Avg. Detention (min)</span><span class="val">34</span></div>

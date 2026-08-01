@@ -25,8 +25,8 @@
 <meta name="twitter:image" content="https://yusuf-gadelrab.github.io/og-card.png">
 <link rel="alternate" type="text/plain" href="https://yusuf-gadelrab.github.io/llms-full.txt" title="Plain-text profile for language models">
 
-<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"TechArticle","@id":"https://yusuf-gadelrab.github.io/guides/kelly-criterion.html#article","headline":"The Kelly Criterion, and Why Nobody Bets Full Kelly","name":"The Kelly Criterion, and Why Nobody Bets Full Kelly","description":"How the Kelly criterion works, the formula for trading with an R-multiple edge, why full Kelly is unusable in practice, and how half and quarter Kelly compare.","datePublished":"2026-07-29","dateModified":"2026-07-29","inLanguage":"en","author":{"@id":"https://yusuf-gadelrab.github.io/#person"},"publisher":{"@id":"https://yusuf-gadelrab.github.io/#person"},"about":["Kelly criterion","Position sizing","Risk management"],"mainEntityOfPage":"https://yusuf-gadelrab.github.io/guides/kelly-criterion.html","isAccessibleForFree":true,"isPartOf":{"@id":"https://yusuf-gadelrab.github.io/#website"},"proficiencyLevel":"Beginner"},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://yusuf-gadelrab.github.io/"},{"@type":"ListItem","position":2,"name":"Guides","item":"https://yusuf-gadelrab.github.io/guides.html"},{"@type":"ListItem","position":3,"name":"Kelly Criterion"}]}]}</script>
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","@id":"https://yusuf-gadelrab.github.io/guides/kelly-criterion.html#faq","mainEntity":[{"@type":"Question","name":"What is the Kelly criterion?","acceptedAnswer":{"@type":"Answer","text":"The Kelly criterion gives the fraction of capital that maximises the long-run compound growth rate of a repeated bet. It works by maximising the expected logarithm of wealth rather than expected profit, because wealth compounds multiplicatively. For a bet winning with probability p and paying b to 1, the optimal fraction is f* = p - (1 - p) / b."}},{"@type":"Question","name":"How do you calculate Kelly for trading?","acceptedAnswer":{"@type":"Answer","text":"Use your measured win rate as p and your reward-to-risk ratio as b. A setup winning 45% of the time at 2R gives f* = 0.45 - 0.55/2 = 0.175, or 17.5% of capital, which is mathematically correct and far too aggressive to trade. For a real R distribution with more than two outcomes, use the approximation f* is roughly E[R] divided by E[R squared], computed straight from your journal."}},{"@type":"Question","name":"Why do traders use half or quarter Kelly?","acceptedAnswer":{"@type":"Answer","text":"Because the growth curve is nearly flat around its peak and collapses past it. Half Kelly captures about 76% of the maximum growth rate while cutting the probability of ever halving your account from 50% down to about 12.5%. Fractional sizing also protects against the near-certainty that your win rate estimate is wrong."}},{"@type":"Question","name":"What happens if you bet more than full Kelly?","acceptedAnswer":{"@type":"Answer","text":"Growth falls quickly and drawdowns compound. At twice the Kelly fraction the growth rate drops to about 6% of its maximum, and a little further past that it turns negative even though the underlying edge is genuinely positive. Underbetting is merely slow; overbetting destroys the compounding."}},{"@type":"Question","name":"What if the Kelly fraction is negative?","acceptedAnswer":{"@type":"Answer","text":"A negative Kelly fraction means the bet has negative expectancy, so there is no size at which it makes money and the correct position size is zero. This happens whenever the win rate falls below 1 divided by (1 + b): under 50% at 1R, under 40% at 1.5R, under 33.3% at 2R. It is arguably the most useful output the formula produces."}},{"@type":"Question","name":"How many trades do you need before Kelly is meaningful?","acceptedAnswer":{"@type":"Answer","text":"More than most traders have. With 100 trades at a 45% win rate the 95% confidence interval on the win rate runs from about 35.3% to 54.8%, which turns into a Kelly fraction anywhere between 2.9% and 32.1% at 2R. At 50 trades the interval includes zero. This estimation error, not squeamishness, is the real argument for taking a small fraction of Kelly."}},{"@type":"Question","name":"Does Kelly work when you hold several positions at once?","acceptedAnswer":{"@type":"Answer","text":"Not directly, because Kelly assumes one bet resolves before the next begins. For n simultaneous positions of equal edge with pairwise correlation rho, the per-position fraction falls to the single-bet fraction divided by (1 + (n - 1) times rho). Four positions at 0.9 correlation should each be about a quarter of their standalone size, which is why a portfolio-level heat cap is the practical substitute."}},{"@type":"Question","name":"Should beginners use Kelly to size positions?","acceptedAnswer":{"@type":"Answer","text":"Generally no. A fixed small risk per trade, typically 0.5% to 1.5% of the account, is more robust because it does not depend on an accurate edge estimate. Kelly is most useful as a ceiling and a diagnostic: if your fixed rule ever exceeds quarter Kelly on your measured edge, you are oversized for the edge you can actually demonstrate."}}]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"TechArticle","@id":"https://yusuf-gadelrab.github.io/guides/kelly-criterion.html#article","headline":"The Kelly Criterion, and Why Nobody Bets Full Kelly","name":"The Kelly Criterion, and Why Nobody Bets Full Kelly","description":"How the Kelly criterion works, the formula for trading with an R-multiple edge, why full Kelly is unusable in practice, and how half and quarter Kelly compare.","datePublished":"2026-07-29","dateModified":"2026-07-29","inLanguage":"en","author":{"@id":"https://yusuf-gadelrab.github.io/#person"},"publisher":{"@id":"https://yusuf-gadelrab.github.io/#person"},"about":["Kelly criterion","Position sizing","Risk management"],"mainEntityOfPage":"https://yusuf-gadelrab.github.io/guides/kelly-criterion.html","isAccessibleForFree":true,"proficiencyLevel":"Beginner"},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://yusuf-gadelrab.github.io/"},{"@type":"ListItem","position":2,"name":"Guides","item":"https://yusuf-gadelrab.github.io/guides.html"},{"@type":"ListItem","position":3,"name":"Kelly Criterion"}]}]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","@id":"https://yusuf-gadelrab.github.io/guides/kelly-criterion.html#faq","mainEntity":[{"@type":"Question","name":"What is the Kelly criterion?","acceptedAnswer":{"@type":"Answer","text":"The Kelly criterion gives the fraction of capital that maximises the long-run growth rate of a repeated bet. For a bet winning with probability p and paying b to 1, the optimal fraction is f* = p - (1 - p) / b."}},{"@type":"Question","name":"How do you calculate Kelly for trading?","acceptedAnswer":{"@type":"Answer","text":"Use your measured win rate as p and your reward-to-risk ratio as b. A setup winning 45% of the time at 2R gives f* = 0.45 - 0.55/2 = 0.175, or 17.5% of capital — a number that is mathematically correct and far too aggressive to trade."}},{"@type":"Question","name":"Why do traders use half or quarter Kelly?","acceptedAnswer":{"@type":"Answer","text":"Because the growth curve is flat just below the Kelly peak and steep just above it. Half Kelly captures roughly three quarters of the growth with far lower drawdowns, and fractional sizing protects against the near-certainty that your win rate and reward-to-risk estimates are wrong."}},{"@type":"Question","name":"What happens if you bet more than full Kelly?","acceptedAnswer":{"@type":"Answer","text":"Growth rate falls rapidly and drawdowns compound; overbetting past the optimum is much more damaging than underbetting by the same amount. Since edge estimates come from finite samples, overbetting is the more likely error."}},{"@type":"Question","name":"What if the Kelly fraction is negative?","acceptedAnswer":{"@type":"Answer","text":"A negative Kelly fraction means the bet has negative expectancy — there is no size at which it makes money. The correct position size is zero, which is arguably the most useful thing the formula tells you."}},{"@type":"Question","name":"Should beginners use Kelly to size positions?","acceptedAnswer":{"@type":"Answer","text":"Generally no. A fixed small risk per trade, typically around 1% of the account, is more robust because it does not depend on an accurate edge estimate. Kelly is more useful as a ceiling and a diagnostic than as a day-to-day sizing rule."}}]}</script>
 
 <link rel="stylesheet" href="/css/site.css">
 <style>
@@ -50,16 +50,16 @@
     color:var(--muted);font-size:var(--t-small);margin:0 0 var(--s5)}
   .callout--warn{border-color:var(--gold-2)}
   .faq-card{padding:var(--s5)}
-  .faq-card h3{font-size:var(--t-h3);margin:0;line-height:1.3}
-  .faq-card p{color:var(--muted);font-size:var(--t-small);line-height:1.65;margin:var(--s3) 0 0}
+  .faq-card h3{font-size:var(--t-h3);margin:0}
+  .faq-card p{color:var(--muted);font-size:var(--t-small);margin:var(--s3) 0 0}
 </style>
 </head>
 <body class="pro">
 
 <a class="skip-link" href="#main">Skip to content</a>
 
-<nav class="site-nav" aria-label="Primary">
-  <a class="site-nav__brand" href="/"><img class="site-nav__lion" src="/img/brand/lion-mark.svg" alt="" width="34" height="34" decoding="async"><span>YUSUF GADELRAB</span></a>
+<nav class="site-nav">
+  <a class="site-nav__brand" href="/"><img class="site-nav__lion" src="/img/brand/lion-mark.svg" alt="" width="34" height="34"><span>YUSUF GADELRAB</span></a>
   <div class="site-nav__links">
     <a href="/">Work</a>
     <a href="/guides.html">Guides</a>
@@ -88,193 +88,38 @@
 
   <section class="section section--tight">
     <div class="prose">
-      <h2>What Kelly actually maximises</h2>
-      <p>Kelly does not maximise expected profit. If it did, the answer would always be "bet everything" for any positive-expectancy wager, and one loss would end the sequence. Kelly maximises the <strong>expected logarithm of wealth</strong>, which is the same thing as maximising the long-run compound growth rate.</p>
-      <p>The switch from arithmetic to logarithmic is the whole insight. Wealth compounds multiplicatively — a 50% loss followed by a 50% gain leaves you at 0.5 × 1.5 = 0.75, not back at 1.0 — so the quantity that adds up across trades is the log of each period's growth factor, not the percentage. The recovery asymmetry that makes this true is worked out in full in the <a href="/guides/drawdown-recovery-math.html">drawdown recovery math guide</a>.</p>
-      <span class="formula" tabindex="0" role="group" aria-label="Formula, scrolls horizontally">After n bets, wealth W_n = W_0 × Π (1 + f × R_i)
+      <h2>The formula</h2>
+      <p>For a bet that wins with probability <em>p</em> and pays <em>b</em> to 1:</p>
+      <span class="formula">f* = p − (1 − p) ÷ b
 
-Take logs:  ln(W_n / W_0) = Σ ln(1 + f × R_i)
-
-Divide by n and let n grow:
-
-  G(f) = E[ ln(1 + f × R) ]      the per-bet growth rate
-
-Kelly = the f that maximises G(f).</span>
-      <h2>Deriving the discrete formula</h2>
-      <p>Take the simplest case: risk fraction <em>f</em> of capital, win with probability <em>p</em> and receive <em>b</em> times what you risked, lose with probability <em>q</em> = 1 − <em>p</em> and lose the whole <em>f</em>. Write down G(f), differentiate, set it to zero.</p>
-      <span class="formula" tabindex="0" role="group" aria-label="Formula, scrolls horizontally">G(f) = p · ln(1 + b·f) + q · ln(1 − f)
-
-dG/df = p·b ÷ (1 + b·f)  −  q ÷ (1 − f) = 0
-
-  p·b·(1 − f) = q·(1 + b·f)
-  p·b − p·b·f = q + q·b·f
-  p·b − q     = b·f·(p + q) = b·f          since p + q = 1
-
-  f* = (p·b − q) ÷ b  =  p − (1 − p) ÷ b</span>
-      <p>That is the whole derivation. It is worth doing once by hand, because the shape of G(f) — rising steeply from zero, flattening at the top, then plunging — explains every practical rule that follows.</p>
-      <h2>A worked example</h2>
-      <p>A setup that wins 45% of the time and pays 2R on a win, taken from a journal with enough trades to estimate both:</p>
-      <span class="formula" tabindex="0" role="group" aria-label="Formula, scrolls horizontally">p = 0.45,  b = 2
-
-f* = 0.45 − (1 − 0.45) ÷ 2
-   = 0.45 − 0.55 ÷ 2
-   = 0.45 − 0.275
-   = 0.175   →  risk 17.5% of the account on this trade</span>
-      <p>Risking 17.5% of the account on one idea is not a plan, it is a countdown. The arithmetic is correct; the output is unusable. Understanding exactly why is the rest of this guide.</p>
-      <h2>The full grid</h2>
-      <p>Kelly is more legible as a surface than as a single number. Every cell below is f* = p − (1 − p) ÷ b, so it is the percentage of capital full Kelly says to put at risk on one bet:</p>
-      <div class="tblwrap" tabindex="0" role="group" aria-label="Table, scrolls horizontally"><table class="tbl">
-        <thead><tr><th scope="col">Win rate</th><th scope="col">b = 1R</th><th scope="col">b = 1.5R</th><th scope="col">b = 2R</th><th scope="col">b = 3R</th></tr></thead>
-        <tbody>
-          <tr><td>30%</td><td>−40.0%</td><td>−16.7%</td><td>−5.0%</td><td>+6.7%</td></tr>
-          <tr><td>35%</td><td>−30.0%</td><td>−8.3%</td><td>+2.5%</td><td>+13.3%</td></tr>
-          <tr><td>40%</td><td>−20.0%</td><td>0.0%</td><td>+10.0%</td><td>+20.0%</td></tr>
-          <tr><td>45%</td><td>−10.0%</td><td>+8.3%</td><td><strong>+17.5%</strong></td><td>+26.7%</td></tr>
-          <tr><td>50%</td><td>0.0%</td><td>+16.7%</td><td>+25.0%</td><td>+33.3%</td></tr>
-          <tr><td>55%</td><td>+10.0%</td><td>+25.0%</td><td>+32.5%</td><td>+40.0%</td></tr>
-          <tr><td>60%</td><td>+20.0%</td><td>+33.3%</td><td>+40.0%</td><td>+46.7%</td></tr>
-        </tbody>
-      </table></div>
-      <p>Two things fall straight out of that grid. First, <strong>the zero line is the break-even win rate</strong>: f* turns positive exactly when p exceeds 1 ÷ (1 + b) — 50% at 1R, 40% at 1.5R, 33.3% at 2R, 25% at 3R. Second, the positive numbers are absurd across the whole grid. Even a modest 40% at 2R produces a full-Kelly instruction to risk 10% of the account per trade, which is roughly ten times what a working <a href="/guides/position-sizing-per-trade.html">position sizing rule</a> would allow.</p>
-      <h2>The growth curve, and why the peak does not matter</h2>
-      <p>Plug fractions of f* back into G(f) for the same 45%/2R setup. The column that matters is the third one — how much of the theoretically available growth you actually keep.</p>
-      <div class="tblwrap" tabindex="0" role="group" aria-label="Table, scrolls horizontally"><table class="tbl">
-        <thead><tr><th scope="col">Sizing</th><th scope="col">Risk per trade</th><th scope="col">Growth per trade G(f)</th><th scope="col">% of max growth</th><th scope="col">Trades to double</th></tr></thead>
-        <tbody>
-          <tr><td>0.25× Kelly</td><td>4.38%</td><td>0.01314</td><td>44.9%</td><td>53</td></tr>
-          <tr><td>0.5× Kelly</td><td>8.75%</td><td>0.02221</td><td>75.9%</td><td>31</td></tr>
-          <tr><td>0.75× Kelly</td><td>13.13%</td><td>0.02751</td><td>94.1%</td><td>25</td></tr>
-          <tr><td>1.0× Kelly</td><td>17.50%</td><td>0.02924</td><td>100.0%</td><td>24</td></tr>
-          <tr><td>1.25× Kelly</td><td>21.88%</td><td>0.02753</td><td>94.2%</td><td>25</td></tr>
-          <tr><td>1.5× Kelly</td><td>26.25%</td><td>0.02243</td><td>76.7%</td><td>31</td></tr>
-          <tr><td>2.0× Kelly</td><td>35.00%</td><td>0.00185</td><td>6.3%</td><td>374</td></tr>
-        </tbody>
-      </table></div>
-      <p>Read the 0.5× and 1.5× rows together. They are the <em>same distance</em> from the peak and they keep almost the same growth — 75.9% versus 76.7% — but one of them roughly triples the variance of the other. If the curve is symmetric in growth terms and wildly asymmetric in risk terms, the correct side to be wrong on is obvious.</p>
-      <p>Then read the 2.0× row. Double the Kelly fraction and the growth rate collapses to 6.3% of the maximum; a little past that it goes negative and the strategy loses money despite a genuinely positive edge. <strong>Overbetting does not reduce your return proportionally, it destroys it.</strong> There is no equivalent cliff on the downside — underbetting is merely slow.</p>
-      <h2>The return-based form, for trades that are not coin flips</h2>
-      <p>Real trades do not produce two outcomes. They produce a distribution of R-multiples: a few big winners, a mass of small ones, some scratches, a stack of full stop-outs. The discrete p-and-b formula cannot represent that. For an arbitrary R distribution, maximise E[ln(1 + f·R)] directly, or use the second-order approximation, which is accurate for the magnitudes traders deal with:</p>
-      <span class="formula" tabindex="0" role="group" aria-label="Formula, scrolls horizontally">f* ≈ E[R] ÷ E[R²]
-
-  E[R]  = expectancy in R  (mean of the R column)
-  E[R²] = mean of the SQUARED R column
-
-Equivalently, in continuous form:  f* ≈ μ ÷ σ²</span>
-      <p>Sanity-check it against the discrete case first. For p = 0.45 at b = 2: E[R] = 0.45(2) + 0.55(−1) = 0.35, and E[R²] = 0.45(4) + 0.55(1) = 2.35, so f* ≈ 0.35 ÷ 2.35 = 14.9% against the exact 17.5%. The approximation runs slightly conservative, which is the correct direction for it to err.</p>
-      <p>Now a realistic hundred-trade R distribution of the kind a <a href="/guides/trading-journal.html">trading journal</a> actually produces, including the partial exits and scratches that the two-outcome model pretends do not exist:</p>
-      <div class="tblwrap" tabindex="0" role="group" aria-label="Table, scrolls horizontally"><table class="tbl">
-        <thead><tr><th scope="col">R result</th><th scope="col">Trades</th><th scope="col">Contribution to Σ R</th><th scope="col">Contribution to Σ R²</th></tr></thead>
-        <tbody>
-          <tr><td>+3.0R</td><td>12</td><td>+36.0</td><td>108.00</td></tr>
-          <tr><td>+1.5R</td><td>18</td><td>+27.0</td><td>40.50</td></tr>
-          <tr><td>+0.5R</td><td>15</td><td>+7.5</td><td>3.75</td></tr>
-          <tr><td>−0.3R</td><td>20</td><td>−6.0</td><td>1.80</td></tr>
-          <tr><td>−1.0R</td><td>35</td><td>−35.0</td><td>35.00</td></tr>
-          <tr><td><strong>Total (100 trades)</strong></td><td><strong>100</strong></td><td><strong>+29.5</strong></td><td><strong>189.05</strong></td></tr>
-        </tbody>
-      </table></div>
-      <span class="formula" tabindex="0" role="group" aria-label="Formula, scrolls horizontally">E[R]  = 29.5  ÷ 100 = 0.295 R per trade
-E[R²] = 189.05 ÷ 100 = 1.8905
-
-f* ≈ 0.295 ÷ 1.8905 = 0.156  →  15.6% of capital
-
-Quarter Kelly = 0.156 ÷ 4 = 3.9%
-
-Win rate here is 45 of 100, and the expectancy is +0.295R —
-a perfectly respectable system that still produces an
-unusable full-Kelly number.</span>
-      <p>This form is worth using because it consumes the same data you already keep. If you record entry, stop, exit and the resulting R on every trade, you can compute both columns in one pass. Where those columns come from is covered in the <a href="/guides/r-multiple-expectancy.html">R-multiple and expectancy guide</a>.</p>
-      <h2>Estimation error: how wide f* really is</h2>
-      <p>Kelly treats p as known. You have an estimate from N trades, and the standard error of a proportion is √(p(1−p)/N). Push the confidence interval on p through the Kelly formula and see how much of it survives:</p>
-      <div class="tblwrap" tabindex="0" role="group" aria-label="Table, scrolls horizontally"><table class="tbl">
-        <thead><tr><th scope="col">Trades measured</th><th scope="col">Std error of p</th><th scope="col">95% CI on win rate</th><th scope="col">95% CI on f* at b = 2</th><th scope="col">Range</th></tr></thead>
-        <tbody>
-          <tr><td>50</td><td>0.0704</td><td>31.2% to 58.8%</td><td>−3.2% to +38.2%</td><td>Includes zero — no usable answer</td></tr>
-          <tr><td>100</td><td>0.0497</td><td>35.3% to 54.8%</td><td>+2.9% to +32.1%</td><td>11× wide</td></tr>
-          <tr><td>400</td><td>0.0249</td><td>40.1% to 49.9%</td><td>+10.2% to +24.8%</td><td>2.4× wide</td></tr>
-          <tr><td>1,000</td><td>0.0157</td><td>41.9% to 48.1%</td><td>+12.9% to +22.1%</td><td>1.7× wide</td></tr>
-        </tbody>
-      </table></div>
-      <p>At 50 trades — which is more than most retail traders have per setup — the Kelly fraction for a 45%/2R system is somewhere between "do not trade this" and "risk 38% of the account". At 100 trades, the plausible range still spans a factor of eleven. And that interval assumes the win rate is stationary, which it is not.</p>
-      <p>This is the actual argument for fractional Kelly, and it is stronger than the usual one about nerves. <strong>You are not shading a known optimum down for comfort; you are sizing against the bottom of a confidence interval because the point estimate is nearly meaningless.</strong> Quarter Kelly on the 100-trade point estimate is 4.4%, which sits comfortably inside even the pessimistic end of that interval. Full Kelly on the point estimate does not.</p>
-      <h2>What each fraction costs in drawdown</h2>
-      <p>For a continuously-rebalanced Kelly bettor at fraction k of full Kelly, the probability of <em>ever</em> seeing wealth fall to a fraction α of its starting value has a clean closed form: α^(2/k − 1). It is an idealisation — real trades are discrete and gap — but the ordering it produces is right, and the full-Kelly row is the number people find most surprising.</p>
-      <div class="tblwrap" tabindex="0" role="group" aria-label="Table, scrolls horizontally"><table class="tbl">
-        <thead><tr><th scope="col">Sizing</th><th scope="col">Exponent 2/k − 1</th><th scope="col">P(ever −25%)</th><th scope="col">P(ever −50%)</th><th scope="col">P(ever −80%)</th></tr></thead>
-        <tbody>
-          <tr><td>0.25× Kelly</td><td>7.00</td><td>13.3%</td><td>0.8%</td><td>0.001%</td></tr>
-          <tr><td>0.5× Kelly</td><td>3.00</td><td>42.2%</td><td>12.5%</td><td>0.8%</td></tr>
-          <tr><td>1.0× Kelly</td><td>1.00</td><td>75.0%</td><td>50.0%</td><td>20.0%</td></tr>
-          <tr><td>1.5× Kelly</td><td>0.33</td><td>90.9%</td><td>79.4%</td><td>58.5%</td></tr>
-        </tbody>
-      </table></div>
-      <p>At full Kelly the chance of halving your account at some point is 50%. Not a tail event — a coin flip, on a strategy with a genuine positive edge, sized exactly optimally. Pair that with the growth table above and the trade becomes obvious: dropping to half Kelly costs 24% of the growth rate and takes the halving probability from 50% to 12.5%.</p>
-      <h2>Costs shrink Kelly faster than they shrink expectancy</h2>
-      <p>Slippage does not just trim the winner, it also deepens the loser. With a win paying <em>a</em> and a loss costing <em>c</em>, the generalised optimum is f* = p/c − q/a. Charge a fixed slippage per side against a nominal 2R setup and watch what happens:</p>
-      <div class="tblwrap" tabindex="0" role="group" aria-label="Table, scrolls horizontally"><table class="tbl">
-        <thead><tr><th scope="col">Slippage per side</th><th scope="col">Net win a</th><th scope="col">Net loss c</th><th scope="col">Kelly f*</th><th scope="col">Change vs frictionless</th></tr></thead>
-        <tbody>
-          <tr><td>0.00R</td><td>2.00R</td><td>1.00R</td><td>17.50%</td><td>—</td></tr>
-          <tr><td>0.05R</td><td>1.90R</td><td>1.10R</td><td>11.96%</td><td>−32%</td></tr>
-          <tr><td>0.10R</td><td>1.80R</td><td>1.20R</td><td>6.94%</td><td>−60%</td></tr>
-          <tr><td>0.15R</td><td>1.70R</td><td>1.30R</td><td>2.26%</td><td>−87%</td></tr>
-        </tbody>
-      </table></div>
-      <p>A tenth of an R per side — perfectly ordinary on an illiquid name or a fast open — removes 60% of the optimal bet size. Expectancy over the same range falls from +0.35R to +0.15R, a 57% cut, but the compounding penalty lands harder because Kelly is quadratic in the edge. <strong>Any Kelly number computed on frictionless backtest fills is roughly double the honest one.</strong> The cost assumptions that produce this are discussed in the <a href="/guides/walk-forward-backtest.html">walk-forward testing guide</a>.</p>
-      <h2>Correlation forces a portfolio-level cap</h2>
-      <p>Kelly assumes one bet resolves before the next begins. Swing trading violates that constantly: five positions open at once, four of them semiconductors. For n simultaneous positions of equal edge with pairwise correlation ρ, the per-position Kelly fraction falls to f_single ÷ (1 + (n − 1)ρ).</p>
-      <span class="formula" tabindex="0" role="group" aria-label="Formula, scrolls horizontally">f_i = f_single ÷ (1 + (n − 1)·ρ)
-
-Starting from the 17.5% single-bet answer above:</span>
-      <div class="tblwrap" tabindex="0" role="group" aria-label="Table, scrolls horizontally"><table class="tbl">
-        <thead><tr><th scope="col">Positions</th><th scope="col">Correlation ρ</th><th scope="col">Divisor</th><th scope="col">Per position</th><th scope="col">Total capital at risk</th></tr></thead>
-        <tbody>
-          <tr><td>1</td><td>—</td><td>1.00</td><td>17.50%</td><td>17.5%</td></tr>
-          <tr><td>4</td><td>0.0</td><td>1.00</td><td>17.50%</td><td>70.0%</td></tr>
-          <tr><td>4</td><td>0.3</td><td>1.90</td><td>9.21%</td><td>36.8%</td></tr>
-          <tr><td>4</td><td>0.6</td><td>2.80</td><td>6.25%</td><td>25.0%</td></tr>
-          <tr><td>4</td><td>0.9</td><td>3.70</td><td>4.73%</td><td>18.9%</td></tr>
-          <tr><td>4</td><td>1.0</td><td>4.00</td><td>4.38%</td><td>17.5%</td></tr>
-          <tr><td>6</td><td>0.6</td><td>4.00</td><td>4.38%</td><td>26.2%</td></tr>
-        </tbody>
-      </table></div>
-      <p>The last four-position row is the sanity check that makes the table land: at ρ = 1.0 the four positions collapse into exactly the single 17.5% bet, because that is what they are. The row above it says that four names at ρ = 0.9 — four US large-cap semiconductors on the same macro headline is not far off that — should each carry a quarter of the size you would give them standing alone.</p>
-      <p>In practice nobody estimates ρ per pair in real time. The workable substitute is a hard cap on total open risk plus a cluster rule: <strong>count a correlated group as one position sized at the group's combined risk</strong>. Portfolio heat caps and cluster rules are covered properly in the <a href="/guides/position-sizing-per-trade.html">position sizing guide</a>.</p>
-      <h2>When Kelly says zero</h2>
-      <p>This is the output people ignore and it is the most valuable one. f* goes non-positive whenever p ≤ 1 ÷ (1 + b), and the formula is then not saying "be careful" — it is saying <em>there is no position size at which this trade makes money</em>. A negative Kelly fraction on a long setup does not mean go short, either, unless you have separately shown the inverse has an edge after costs.</p>
+where f* is the fraction of capital to risk,
+      p is the win probability,
+      b is the reward-to-risk ratio</span>
+      <p>A setup that wins 45% of the time at 2R:</p>
+      <span class="formula">f* = 0.45 − 0.55 ÷ 2 = 0.45 − 0.275 = 0.175 → 17.5% of capital</span>
+      <p>Risking 17.5% of the account on one trade is not a plan, it is a countdown. That number is correct and unusable, and understanding why is the whole point of the guide.</p>
+      <h2>Why full Kelly is unusable</h2>
       <ul>
-        <li>b = 1R needs better than a 50% win rate. Most "I take profits at 1R to feel good" systems fail here.</li>
-        <li>b = 1.5R needs better than 40%.</li>
-        <li>b = 2R needs better than 33.3%.</li>
-        <li>b = 3R needs better than 25%.</li>
-        <li>Push the numbers from the costs table through this and the break-even win rate rises, because c grows while a shrinks.</li>
+        <li><strong>Your inputs are estimates.</strong> Kelly assumes you know p and b exactly. You know them from a finite sample, and overestimating the edge overshoots the optimum badly — the growth curve falls off much faster above full Kelly than below it.</li>
+        <li><strong>The drawdowns are brutal.</strong> At full Kelly, drawdowns of 50% or more are routine, not tail events. Mathematically survivable, behaviourally not.</li>
+        <li><strong>Trades are not independent or sequential.</strong> Kelly assumes one bet resolves before the next. Real positions overlap and correlate, which stacks risk the formula never accounted for.</li>
+        <li><strong>Edges decay.</strong> The p you measured last year is not the p in force today.</li>
       </ul>
-      <p>Run this check per setup tag rather than on the account as a whole. An account can be profitable while two of its four setups are negative-Kelly and are being subsidised by the other two. That decomposition is the single most useful thing a journal produces, and it is why the setup tag is a required field rather than a nice-to-have.</p>
-      <h2>How the fixed-percent rule compares, numerically</h2>
-      <p>Take the same 45%/2R setup and price a plain 1% rule against it. 1% is 0.057 of the 17.5% full-Kelly fraction — roughly one-seventeenth Kelly, far below even the quarter-Kelly convention.</p>
-      <div class="tblwrap" tabindex="0" role="group" aria-label="Table, scrolls horizontally"><table class="tbl">
-        <thead><tr><th scope="col">Rule</th><th scope="col">Risk per trade</th><th scope="col">As a fraction of Kelly</th><th scope="col">% of max growth</th><th scope="col">Trades to double</th></tr></thead>
+      <h2>Fractional Kelly</h2>
+      <p>Because the growth curve is flat near its peak but steep past it, taking a fraction of Kelly gives up little expected growth and removes most of the variance.</p>
+      <div class="tblwrap"><table class="tbl">
+        <thead><tr><th>Sizing</th><th>Fraction of f*</th><th>Trade-off</th></tr></thead>
         <tbody>
-          <tr><td>Fixed 1%</td><td>1.00%</td><td>0.06×</td><td>11.6%</td><td>205</td></tr>
-          <tr><td>Fixed 2%</td><td>2.00%</td><td>0.11×</td><td>22.4%</td><td>106</td></tr>
-          <tr><td>Quarter Kelly</td><td>4.38%</td><td>0.25×</td><td>44.9%</td><td>53</td></tr>
-          <tr><td>Half Kelly</td><td>8.75%</td><td>0.50×</td><td>75.9%</td><td>31</td></tr>
-          <tr><td>Full Kelly</td><td>17.50%</td><td>1.00×</td><td>100.0%</td><td>24</td></tr>
+          <tr><td>Full Kelly</td><td>100%</td><td>Maximum theoretical growth, ruinous variance, extremely sensitive to estimation error</td></tr>
+          <tr><td>Half Kelly</td><td>50%</td><td>Roughly three quarters of the growth with dramatically lower drawdown — the common practitioner choice</td></tr>
+          <tr><td>Quarter Kelly</td><td>25%</td><td>Modest growth, mild drawdowns, very tolerant of a wrong edge estimate</td></tr>
+          <tr><td>Fixed 1% risk</td><td>usually well under 25%</td><td>Ignores the edge estimate entirely; robust, simple, and what most retail traders should start with</td></tr>
         </tbody>
       </table></div>
-      <p>So a 1% rule genuinely does cost a lot of theoretical growth — about 88% of it. The honest counter is the estimation-error table: the 17.5% input has a 95% confidence interval running from +2.9% to +32.1% at 100 trades, so "100% of max growth" is a number computed from a quantity you do not actually know. The 1% rule buys robustness against being wrong about p, and it is the only column here that survives the case where your true win rate is 38% rather than 45%.</p>
-      <p>The practical reading: <strong>if your Kelly fraction says 17.5% and your rule says 1%, the rule is not being timid — it is pricing in the fact that you do not really know p.</strong> Use Kelly as a ceiling, not a target. If a fixed rule ever exceeds quarter Kelly on your measured edge, that is a real signal you are oversized.</p>
-      <h2>A workable default</h2>
-      <ol>
-        <li>Compute E[R] and E[R²] from your own journal, per setup tag, not for the account as a whole.</li>
-        <li>Get f* ≈ E[R] ÷ E[R²]. If it is zero or negative, the setup is not tradeable at any size — stop there.</li>
-        <li>Recompute it with realistic slippage baked into both the winner and the loser. Expect the answer to fall by a third to a half.</li>
-        <li>Put a confidence interval on the win rate and recompute f* at the lower bound. That is your honest ceiling.</li>
-        <li>Take at most a quarter of that, and cap the result at whatever your fixed rule allows — typically 0.5% to 1.5%.</li>
-        <li>Divide again for correlated positions, or apply a total-portfolio-heat cap instead, which is simpler and errs the right way.</li>
-        <li>Re-derive the whole thing every 50 to 100 closed trades. Edges decay, and a stale p is worse than no p.</li>
-      </ol>
-      <p>The <a href="/risk-tools.html">free risk toolkit</a> computes the Kelly fraction alongside expectancy, break-even win rate, and a Monte Carlo risk-of-ruin simulation, so you can watch all four move together as you change the inputs. <a href="/apps/tradelog/">TradeLog</a> produces the E[R] and E[R²] columns from trades you have actually taken, which is the only way to stop guessing at p. And before any of this is worth doing with real money, the honest sequencing problem is in <a href="/guides/paper-to-live-trading.html">going from paper to live</a>.</p>
+      <p>The practical reading: <strong>if your Kelly fraction says 17.5% and your rule says 1%, the rule is not being timid — it is pricing in the fact that you do not really know p.</strong></p>
+      <h2>When Kelly is genuinely useful</h2>
+      <p>Not usually as a sizing rule. It is most useful as a <em>ceiling</em> and as a diagnostic. If your fixed risk per trade is above quarter Kelly for your measured edge, you are oversized for the edge you can actually demonstrate. And if Kelly comes out negative, the formula is telling you the setup has no edge and should not be traded at all — which is the most valuable output it produces.</p>
+      <p>The <a href="/risk-tools.html">free risk toolkit</a> computes the Kelly fraction alongside expectancy, break-even win rate, and a Monte Carlo risk-of-ruin simulation, so you can see all four move together when you change the inputs.</p>
       <p class="callout">Educational content, not financial advice. No live profit-and-loss figures are claimed anywhere on this site; backtest and walk-forward results are always labelled as such. Full terms: <a href="/terms.html">/terms.html</a></p>
 
       <h2>Tools referenced in this guide</h2>
@@ -294,14 +139,12 @@ Starting from the 17.5% single-bet answer above:</span>
       <h2>Quick answers</h2>
     </div>
     <div class="grid" style="margin-top:var(--s6)">
-      <article class="card faq-card"><h3>What is the Kelly criterion?</h3><p>The Kelly criterion gives the fraction of capital that maximises the long-run compound growth rate of a repeated bet. It works by maximising the expected logarithm of wealth rather than expected profit, because wealth compounds multiplicatively. For a bet winning with probability p and paying b to 1, the optimal fraction is f* = p - (1 - p) / b.</p></article>
-      <article class="card faq-card"><h3>How do you calculate Kelly for trading?</h3><p>Use your measured win rate as p and your reward-to-risk ratio as b. A setup winning 45% of the time at 2R gives f* = 0.45 - 0.55/2 = 0.175, or 17.5% of capital, which is mathematically correct and far too aggressive to trade. For a real R distribution with more than two outcomes, use the approximation f* is roughly E[R] divided by E[R squared], computed straight from your journal.</p></article>
-      <article class="card faq-card"><h3>Why do traders use half or quarter Kelly?</h3><p>Because the growth curve is nearly flat around its peak and collapses past it. Half Kelly captures about 76% of the maximum growth rate while cutting the probability of ever halving your account from 50% down to about 12.5%. Fractional sizing also protects against the near-certainty that your win rate estimate is wrong.</p></article>
-      <article class="card faq-card"><h3>What happens if you bet more than full Kelly?</h3><p>Growth falls quickly and drawdowns compound. At twice the Kelly fraction the growth rate drops to about 6% of its maximum, and a little further past that it turns negative even though the underlying edge is genuinely positive. Underbetting is merely slow; overbetting destroys the compounding.</p></article>
-      <article class="card faq-card"><h3>What if the Kelly fraction is negative?</h3><p>A negative Kelly fraction means the bet has negative expectancy, so there is no size at which it makes money and the correct position size is zero. This happens whenever the win rate falls below 1 divided by (1 + b): under 50% at 1R, under 40% at 1.5R, under 33.3% at 2R. It is arguably the most useful output the formula produces.</p></article>
-      <article class="card faq-card"><h3>How many trades do you need before Kelly is meaningful?</h3><p>More than most traders have. With 100 trades at a 45% win rate the 95% confidence interval on the win rate runs from about 35.3% to 54.8%, which turns into a Kelly fraction anywhere between 2.9% and 32.1% at 2R. At 50 trades the interval includes zero. This estimation error, not squeamishness, is the real argument for taking a small fraction of Kelly.</p></article>
-      <article class="card faq-card"><h3>Does Kelly work when you hold several positions at once?</h3><p>Not directly, because Kelly assumes one bet resolves before the next begins. For n simultaneous positions of equal edge with pairwise correlation rho, the per-position fraction falls to the single-bet fraction divided by (1 + (n - 1) times rho). Four positions at 0.9 correlation should each be about a quarter of their standalone size, which is why a portfolio-level heat cap is the practical substitute.</p></article>
-      <article class="card faq-card"><h3>Should beginners use Kelly to size positions?</h3><p>Generally no. A fixed small risk per trade, typically 0.5% to 1.5% of the account, is more robust because it does not depend on an accurate edge estimate. Kelly is most useful as a ceiling and a diagnostic: if your fixed rule ever exceeds quarter Kelly on your measured edge, you are oversized for the edge you can actually demonstrate.</p></article>
+      <article class="card faq-card"><h3>What is Kelly?</h3><p>The bet fraction that maximises long-run growth: f* = p − (1 − p) ÷ b, using win probability p and reward-to-risk b.</p></article>
+      <article class="card faq-card"><h3>What does it give for trading?</h3><p>45% win rate at 2R gives 17.5% of capital per trade — correct arithmetic, unusable in practice.</p></article>
+      <article class="card faq-card"><h3>Why fractional Kelly?</h3><p>The growth curve is flat below the peak and steep above it. Half Kelly keeps most of the growth and sheds most of the variance.</p></article>
+      <article class="card faq-card"><h3>What if you overbet?</h3><p>Growth collapses fast past the optimum. Since edges are estimated from small samples, overbetting is the likely error.</p></article>
+      <article class="card faq-card"><h3>Negative Kelly?</h3><p>The setup has negative expectancy. Correct size is zero — the most useful answer the formula gives.</p></article>
+      <article class="card faq-card"><h3>Should beginners use it?</h3><p>Mostly no. A fixed ~1% risk is more robust because it does not depend on knowing your edge precisely.</p></article>
     </div>
   </section>
 

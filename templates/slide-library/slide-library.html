@@ -2,11 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="referrer" content="strict-origin-when-cross-origin">
-<meta http-equiv="Content-Security-Policy" content="object-src 'none'; base-uri 'self'">
 <title>Midnight Gold — Slide Library (60 Layouts)</title>
-<meta name="robots" content="noindex,follow">
-<link rel="canonical" href="https://yusuf-gadelrab.github.io/templates.html">
 <style>
   :root{
     --bg:#0a0a0b; --bg2:#111114; --panel:#141417; --panel2:#191920;
@@ -102,11 +98,11 @@
 /* ===== TWO / THREE COLUMN ===== */
 .two-col{ display:flex; gap:48px; margin-top:52px; flex:1; }
 .two-col .col{ flex:1; padding-top:20px; border-top:1px solid var(--line); }
-.two-col .col h3, .two-col .col h4{ font-size:19px; color:var(--gold-2); margin-bottom:12px; }
+.two-col .col h4{ font-size:19px; color:var(--gold-2); margin-bottom:12px; }
 .two-col .col p{ font-size:14.5px; color:var(--muted); }
 .three-col{ display:flex; gap:32px; margin-top:52px; flex:1; }
 .three-col .tc{ flex:1; padding-top:20px; border-top:1px solid var(--line); }
-.three-col .tc h3, .three-col .tc h4{ font-size:18px; color:var(--gold-2); margin-bottom:12px; }
+.three-col .tc h4{ font-size:18px; color:var(--gold-2); margin-bottom:12px; }
 .three-col .tc p{ font-size:13.5px; color:var(--muted); }
 
 /* ===== BIG QUOTE (body) ===== */
@@ -121,7 +117,7 @@
 .num-list{ list-style:none; margin:40px 0 0; padding:0; display:flex; flex-direction:column; gap:22px; max-width:860px; }
 .num-list li{ display:flex; gap:20px; align-items:flex-start; }
 .num-list .ni{ font-family:Georgia,serif; font-size:24px; min-width:36px; }
-.num-list h3, .num-list h4{ font-size:16px; color:var(--ink); margin-bottom:4px; }
+.num-list h4{ font-size:16px; color:var(--ink); margin-bottom:4px; }
 .num-list p{ font-size:13.5px; color:var(--muted); }
 
 /* ===== DEFINITION ===== */
@@ -145,8 +141,8 @@
 /* ===== DO/DONT & PROS/CONS ===== */
 .dodont{ display:flex; gap:32px; margin-top:44px; flex:1; }
 .dd-col{ flex:1; border:1px solid var(--line); border-radius:8px; padding:28px 26px; background:var(--panel); }
-.dd-col h3, .dd-col h4{ font-size:16px; display:flex; align-items:center; gap:10px; margin-bottom:16px; }
-.dd-col.do h3, .dd-col.do h4{ color:var(--gold-2); }
+.dd-col h4{ font-size:16px; display:flex; align-items:center; gap:10px; margin-bottom:16px; }
+.dd-col.do h4{ color:var(--gold-2); }
 .dd-col.dont h4{ color:var(--muted); }
 .dd-col ul{ list-style:none; margin:0; padding:0; display:flex; flex-direction:column; gap:12px; }
 .dd-col li{ font-size:13.5px; color:var(--muted); padding-left:20px; position:relative; }
@@ -289,7 +285,7 @@ table.feat-table .fx{ color:var(--muted); opacity:.5; }
 .uvt{ display:flex; gap:32px; margin-top:44px; flex:1; }
 .uvt-col{ flex:1; border:1px solid var(--line); border-radius:8px; padding:28px 26px; background:var(--panel); }
 .uvt-col.us{ border-color:var(--gold); background:var(--panel2); }
-.uvt-col h3, .uvt-col h4{ font-size:16px; margin-bottom:16px; color:var(--muted); }
+.uvt-col h4{ font-size:16px; margin-bottom:16px; color:var(--muted); }
 .uvt-col ul{ list-style:none; margin:0; padding:0; display:flex; flex-direction:column; gap:12px; }
 .uvt-col li{ font-size:13.5px; padding-left:20px; position:relative; }
 .uvt-col li.neg{ color:var(--muted); }
@@ -319,14 +315,14 @@ table.feat-table .fx{ color:var(--muted); opacity:.5; }
 .flow-line{ position:absolute; top:27px; left:60px; right:60px; height:1px; background:var(--line); z-index:0; }
 .flow-step{ flex:1; text-align:center; position:relative; z-index:1; padding:0 12px; }
 .flow-dot{ width:54px; height:54px; border-radius:50%; margin:0 auto 20px; background:var(--bg); border:1px solid var(--gold); display:flex; align-items:center; justify-content:center; font-family:Georgia,serif; font-size:20px; }
-.flow-step h3, .flow-step h4{ font-size:15.5px; color:var(--ink); margin-bottom:8px; }
+.flow-step h4{ font-size:15.5px; color:var(--ink); margin-bottom:8px; }
 .flow-step p{ font-size:12.5px; color:var(--muted); }
 
 /* ===== VERTICAL STEPS ===== */
 .vsteps{ margin-top:40px; display:flex; flex-direction:column; gap:26px; max-width:760px; }
 .vstep{ display:flex; gap:22px; align-items:flex-start; }
 .vs-dot{ width:40px; height:40px; border-radius:50%; background:var(--bg); border:1px solid var(--gold); display:flex; align-items:center; justify-content:center; font-family:Georgia,serif; font-size:17px; flex-shrink:0; }
-.vstep h3, .vstep h4{ font-size:15.5px; color:var(--ink); margin-bottom:4px; }
+.vstep h4{ font-size:15.5px; color:var(--ink); margin-bottom:4px; }
 .vstep p{ font-size:13px; color:var(--muted); }
 
 /* ===== CIRCULAR PROCESS ===== */
@@ -451,7 +447,7 @@ table.feat-table .fx{ color:var(--muted); opacity:.5; }
 /* ===== CARD GRID ===== */
 .cardgrid{ display:grid; grid-template-columns:repeat(3,1fr); gap:22px; margin-top:44px; flex:1; }
 .grid-card{ background:var(--panel); border:1px solid var(--line); border-radius:8px; padding:24px 22px; }
-.grid-card h3, .grid-card h4{ font-size:15.5px; color:var(--gold-2); margin-bottom:10px; }
+.grid-card h4{ font-size:15.5px; color:var(--gold-2); margin-bottom:10px; }
 .grid-card p{ font-size:12.5px; color:var(--muted); }
 
 /* ===== IMAGE PLACEHOLDER ===== */
@@ -461,7 +457,6 @@ table.feat-table .fx{ color:var(--muted); opacity:.5; }
 .img-ph-cap{ font-size:11.5px; color:var(--muted); }
 
 </style>
-<style>@media screen{.tbl-scroll{overflow-x:auto;-webkit-overflow-scrolling:touch}.tbl-scroll:focus-visible{outline:2px solid #D4AF37;outline-offset:2px}}</style>
 </head>
 <body>
 <svg class="defs-svg" aria-hidden="true">
@@ -505,7 +500,7 @@ table.feat-table .fx{ color:var(--muted); opacity:.5; }
 <div class="idx">3 &middot; Cover — Minimal Mark</div>
 <div class="content cover cover-min">
   <p class="eyebrow" style="text-align:center;">Sample Co.</p>
-  <h2 class="company-min gold-text">Product Roadmap<br>2026&ndash;2027</h2>
+  <h1 class="company-min gold-text">Product Roadmap<br>2026&ndash;2027</h1>
   <div class="rule" style="width:120px; margin:34px auto;"></div>
   <p class="tagline">A candid look at what shipped, what&rsquo;s next, and where we&rsquo;re placing our bets.</p>
 </div>
@@ -592,7 +587,7 @@ table.feat-table .fx{ color:var(--muted); opacity:.5; }
   <h2 class="slide-title">The shift in how we operate</h2>
   
   <div class="two-col">
-  <div class="col"><h3>Where We Started</h3><p>A five-person team running everything through spreadsheets, with no shared source of truth across sales and ops.</p></div>
+  <div class="col"><h4>Where We Started</h4><p>A five-person team running everything through spreadsheets, with no shared source of truth across sales and ops.</p></div>
   <div class="col"><h4>Where We Are Now</h4><p>A unified pipeline with real-time dashboards, automated handoffs, and a single system every team trusts.</p></div>
 </div>
 </div>
@@ -608,7 +603,7 @@ table.feat-table .fx{ color:var(--muted); opacity:.5; }
   <h2 class="slide-title">How we work through a problem</h2>
   
   <div class="three-col">
-  <div class="tc"><h3>Discover</h3><p>Interviews, data pulls, and stakeholder mapping to find the real constraint.</p></div>
+  <div class="tc"><h4>Discover</h4><p>Interviews, data pulls, and stakeholder mapping to find the real constraint.</p></div>
   <div class="tc"><h4>Design</h4><p>Prototype the fix, pressure-test it against edge cases, get sign-off.</p></div>
   <div class="tc"><h4>Deliver</h4><p>Ship in stages, measure against baseline, and lock in the gain.</p></div>
 </div>
@@ -658,7 +653,7 @@ table.feat-table .fx{ color:var(--muted); opacity:.5; }
   <h2 class="slide-title">A three-step path to less manual work</h2>
   
   <ol class="num-list">
-  <li><span class="ni gold-text">01</span><div><h3>Audit the current state</h3><p>Map every manual step in the process end to end.</p></div></li>
+  <li><span class="ni gold-text">01</span><div><h4>Audit the current state</h4><p>Map every manual step in the process end to end.</p></div></li>
   <li><span class="ni gold-text">02</span><div><h4>Remove the worst offender</h4><p>Fix the single biggest time sink first, not everything at once.</p></div></li>
   <li><span class="ni gold-text">03</span><div><h4>Automate what remains</h4><p>Everything left over gets a system, not a person.</p></div></li>
 </ol>
@@ -705,7 +700,7 @@ table.feat-table .fx{ color:var(--muted); opacity:.5; }
   <p class="eyebrow">Guidelines</p>
   <h2 class="slide-title">Working with the new intake process</h2>
   <div class="dodont">
-    <div class="dd-col do"><h3><span class="mark-ok">&#10003;</span> Do</h3>
+    <div class="dd-col do"><h4><span class="mark-ok">&#10003;</span> Do</h4>
       <ul><li>Submit requests through the shared form</li><li>Tag the correct priority level</li><li>Loop in the owning team early</li></ul>
     </div>
     <div class="dd-col dont"><h4><span class="mark-x">&#10005;</span> Don&rsquo;t</h4>
@@ -1056,14 +1051,14 @@ table.feat-table .fx{ color:var(--muted); opacity:.5; }
 <div class="content">
   <p class="eyebrow">Feature Comparison</p>
   <h2 class="slide-title">What each plan includes</h2>
-  <div class="tbl-scroll" tabindex="0" role="region" aria-label="Scrollable table"><table class="feat-table">
+  <table class="feat-table">
     <tr><th>Feature</th><th>Starter</th><th>Growth</th><th>Enterprise</th></tr>
     <tr><td>Team members</td><td>Up to 5</td><td>Up to 25</td><td>Unlimited</td></tr>
     <tr><td>Automated reporting</td><td class="fx">&#10005;</td><td class="fc gold-text">&#10003;</td><td class="fc gold-text">&#10003;</td></tr>
     <tr><td>API access</td><td class="fx">&#10005;</td><td class="fc gold-text">&#10003;</td><td class="fc gold-text">&#10003;</td></tr>
     <tr><td>Dedicated support</td><td class="fx">&#10005;</td><td class="fx">&#10005;</td><td class="fc gold-text">&#10003;</td></tr>
     <tr><td>Custom integrations</td><td class="fx">&#10005;</td><td class="fx">&#10005;</td><td class="fc gold-text">&#10003;</td></tr>
-  </table></div>
+  </table>
 </div>
 <div class="footer"><span>Sample Co. &middot; INTERNAL USE</span><span class="pagenum">36</span></div>
 </section>
@@ -1097,7 +1092,7 @@ table.feat-table .fx{ color:var(--muted); opacity:.5; }
   <h2 class="slide-title">Why teams switch to us</h2>
   
   <div class="uvt">
-  <div class="uvt-col them"><h3>Legacy Tools</h3>
+  <div class="uvt-col them"><h4>Legacy Tools</h4>
     <ul><li class="neg">Manual data entry</li><li class="neg">Weekly reporting cadence</li><li class="neg">Per-seat pricing that punishes growth</li></ul></div>
   <div class="uvt-col us"><h4 class="gold-text">Sample Co.</h4>
     <ul><li class="pos">Automated data capture</li><li class="pos">Real-time reporting</li><li class="pos">Usage-based pricing that scales fairly</li></ul></div>
@@ -1115,7 +1110,7 @@ table.feat-table .fx{ color:var(--muted); opacity:.5; }
   <h2 class="slide-title">An honest look at the tradeoffs</h2>
   
   <div class="dodont">
-  <div class="dd-col do"><h3><span class="mark-ok">+</span> Pros</h3>
+  <div class="dd-col do"><h4><span class="mark-ok">+</span> Pros</h4>
     <ul><li>Fast to implement, live in under two weeks</li><li>No engineering resources required</li><li>Transparent, predictable pricing</li></ul></div>
   <div class="dd-col dont"><h4><span class="mark-x">&minus;</span> Cons</h4>
     <ul><li>Limited custom branding on lower tiers</li><li>No offline mode yet</li></ul></div>
@@ -1131,12 +1126,12 @@ table.feat-table .fx{ color:var(--muted); opacity:.5; }
 <div class="content">
   <p class="eyebrow">Vendor Scorecard</p>
   <h2 class="slide-title">How the top three options stack up</h2>
-  <div class="tbl-scroll" tabindex="0" role="region" aria-label="Scrollable table"><table class="score-table">
+  <table class="score-table">
     <tr><th>Criteria</th><th>Sample Co.</th><th>Vendor B</th><th>Vendor C</th></tr>
     <tr><td>Implementation Speed</td><td><span class="sc-dot full"></span><span class="sc-dot full"></span><span class="sc-dot full"></span></td><td><span class="sc-dot full"></span><span class="sc-dot full"></span><span class="sc-dot"></span></td><td><span class="sc-dot full"></span><span class="sc-dot"></span><span class="sc-dot"></span></td></tr>
     <tr><td>Support Quality</td><td><span class="sc-dot full"></span><span class="sc-dot full"></span><span class="sc-dot full"></span></td><td><span class="sc-dot full"></span><span class="sc-dot"></span><span class="sc-dot"></span></td><td><span class="sc-dot full"></span><span class="sc-dot full"></span><span class="sc-dot"></span></td></tr>
     <tr><td>Price-to-Value</td><td><span class="sc-dot full"></span><span class="sc-dot full"></span><span class="sc-dot full"></span></td><td><span class="sc-dot full"></span><span class="sc-dot"></span><span class="sc-dot"></span></td><td><span class="sc-dot full"></span><span class="sc-dot full"></span><span class="sc-dot"></span></td></tr>
-  </table></div>
+  </table>
 </div>
 <div class="footer"><span>Sample Co. &middot; INTERNAL USE</span><span class="pagenum">40</span></div>
 </section>
@@ -1197,7 +1192,7 @@ table.feat-table .fx{ color:var(--muted); opacity:.5; }
   
   <div class="flow">
   <div class="flow-line"></div>
-  <div class="flow-step"><div class="flow-dot gold-text">1</div><h3>Request</h3><p>Team submits a request through the shared intake form.</p></div>
+  <div class="flow-step"><div class="flow-dot gold-text">1</div><h4>Request</h4><p>Team submits a request through the shared intake form.</p></div>
   <div class="flow-step"><div class="flow-dot gold-text">2</div><h4>Triage</h4><p>Request is scored and routed to the right owner within an hour.</p></div>
   <div class="flow-step"><div class="flow-dot gold-text">3</div><h4>Build</h4><p>Owner scopes and ships the fix against a two-week SLA.</p></div>
   <div class="flow-step"><div class="flow-dot gold-text">4</div><h4>Confirm</h4><p>Requester signs off and the ticket closes automatically.</p></div>
@@ -1214,7 +1209,7 @@ table.feat-table .fx{ color:var(--muted); opacity:.5; }
   <p class="eyebrow">Onboarding</p>
   <h2 class="slide-title">Getting a new account live</h2>
   <div class="vsteps">
-    <div class="vstep"><div class="vs-dot gold-text">1</div><div><h3>Kickoff Call</h3><p>Align on goals, timeline, and success metrics within the first week.</p></div></div>
+    <div class="vstep"><div class="vs-dot gold-text">1</div><div><h4>Kickoff Call</h4><p>Align on goals, timeline, and success metrics within the first week.</p></div></div>
     <div class="vstep"><div class="vs-dot gold-text">2</div><div><h4>Data Migration</h4><p>Historical records imported and validated against source systems.</p></div></div>
     <div class="vstep"><div class="vs-dot gold-text">3</div><div><h4>Team Training</h4><p>Live walkthrough sessions for every role that touches the system.</p></div></div>
     <div class="vstep"><div class="vs-dot gold-text">4</div><div><h4>Go Live</h4><p>Full cutover with a dedicated support window for the first 30 days.</p></div></div>
@@ -1574,7 +1569,7 @@ table.feat-table .fx{ color:var(--muted); opacity:.5; }
   <h2 class="slide-title">Six things the platform handles for you</h2>
   
   <div class="cardgrid">
-  <div class="grid-card"><h3>Automated Reporting</h3><p>Weekly rollups delivered without a single manual export.</p></div>
+  <div class="grid-card"><h4>Automated Reporting</h4><p>Weekly rollups delivered without a single manual export.</p></div>
   <div class="grid-card"><h4>Smart Routing</h4><p>Requests land with the right owner on the first try.</p></div>
   <div class="grid-card"><h4>Usage Alerts</h4><p>Get notified before a limit becomes a problem.</p></div>
   <div class="grid-card"><h4>Audit Trail</h4><p>Every change logged and searchable, forever.</p></div>

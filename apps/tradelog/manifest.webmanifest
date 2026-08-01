@@ -1,15 +1,9 @@
 {
-  "id": "/apps/tradelog/",
-  "name": "TradeLog — R-Multiple Trading Journal",
+  "name": "TradeLog — R Journal",
   "short_name": "TradeLog",
-  "description": "Free offline R-multiple trading journal. Log entry, stop and exit; get expectancy, win rate, profit factor and an equity curve. No account, no server, no tracking — everything stays in your browser.",
-  "categories": ["finance", "productivity", "utilities"],
-  "lang": "en-US",
-  "dir": "ltr",
   "start_url": "./",
   "scope": "./",
   "display": "standalone",
-  "orientation": "portrait-primary",
   "background_color": "#0a0a0a",
   "theme_color": "#0a0a0b",
   "icons": [

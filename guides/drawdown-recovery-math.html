@@ -25,7 +25,7 @@
 <meta name="twitter:image" content="https://yusuf-gadelrab.github.io/og-card.png">
 <link rel="alternate" type="text/plain" href="https://yusuf-gadelrab.github.io/llms-full.txt" title="Plain-text profile for language models">
 
-<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"TechArticle","@id":"https://yusuf-gadelrab.github.io/guides/drawdown-recovery-math.html#article","headline":"Drawdown Recovery Math: Asymmetry, Streaks, and Position Size","name":"Drawdown Recovery Math: Asymmetry, Streaks, and Position Size","description":"The recovery formula, a full table from 5% to 90%, losing-streak probabilities, risk of ruin, and how a drawdown budget sets your position size.","datePublished":"2026-07-29","dateModified":"2026-07-29","inLanguage":"en","author":{"@id":"https://yusuf-gadelrab.github.io/#person"},"publisher":{"@id":"https://yusuf-gadelrab.github.io/#person"},"about":["Drawdown","Risk management","Position sizing","Monte Carlo simulation"],"mainEntityOfPage":"https://yusuf-gadelrab.github.io/guides/drawdown-recovery-math.html","isAccessibleForFree":true,"isPartOf":{"@id":"https://yusuf-gadelrab.github.io/#website"},"proficiencyLevel":"Intermediate"},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://yusuf-gadelrab.github.io/"},{"@type":"ListItem","position":2,"name":"Guides","item":"https://yusuf-gadelrab.github.io/guides.html"},{"@type":"ListItem","position":3,"name":"Drawdown Math"}]}]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"TechArticle","@id":"https://yusuf-gadelrab.github.io/guides/drawdown-recovery-math.html#article","headline":"Drawdown Recovery Math: Asymmetry, Streaks, and Position Size","name":"Drawdown Recovery Math: Asymmetry, Streaks, and Position Size","description":"The recovery formula, a full table from 5% to 90%, losing-streak probabilities, risk of ruin, and how a drawdown budget sets your position size.","datePublished":"2026-07-29","dateModified":"2026-07-29","inLanguage":"en","author":{"@id":"https://yusuf-gadelrab.github.io/#person"},"publisher":{"@id":"https://yusuf-gadelrab.github.io/#person"},"about":["Drawdown","Risk management","Position sizing","Monte Carlo simulation"],"mainEntityOfPage":"https://yusuf-gadelrab.github.io/guides/drawdown-recovery-math.html","isAccessibleForFree":true,"proficiencyLevel":"Intermediate"},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://yusuf-gadelrab.github.io/"},{"@type":"ListItem","position":2,"name":"Guides","item":"https://yusuf-gadelrab.github.io/guides.html"},{"@type":"ListItem","position":3,"name":"Drawdown Math"}]}]}</script>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","@id":"https://yusuf-gadelrab.github.io/guides/drawdown-recovery-math.html#faq","mainEntity":[{"@type":"Question","name":"How much do you need to gain back after a 50% loss?","acceptedAnswer":{"@type":"Answer","text":"You need a 100% gain. After losing half your capital, the remaining half has to double to return to the previous peak. The formula is gain required equals drawdown divided by one minus drawdown, so 0.50 divided by 0.50 equals 1.00."}},{"@type":"Question","name":"How much do you need to gain back after a 30% loss?","acceptedAnswer":{"@type":"Answer","text":"A 30% drawdown requires a 42.86% gain to recover. The 70% of capital that survives must produce the entire missing 30 percentage points, and 30 divided by 70 is 0.4286. The ratio of required gain to loss is 1.43 at that depth, rising to 2.0 at a 50% drawdown."}},{"@type":"Question","name":"Why does a percentage loss need a bigger percentage gain?","acceptedAnswer":{"@type":"Answer","text":"Because the two percentages are measured against different bases. The loss is a percentage of the account peak, while the recovery is a percentage of the smaller amount left after the loss. The deeper the drawdown, the smaller that base, which is why the required gain accelerates rather than rising in a straight line."}},{"@type":"Question","name":"What is the difference between drawdown and volatility?","acceptedAnswer":{"@type":"Answer","text":"Volatility and standard deviation measure the dispersion of individual period returns and ignore the order those returns arrived in. Drawdown depends entirely on that order. Two series with an identical mean and an identical standard deviation can have very different maximum drawdowns, for example 5.47% when gains and losses alternate versus 14.26% when the same losses are clustered together."}},{"@type":"Question","name":"How long a losing streak should I expect?","acceptedAnswer":{"@type":"Answer","text":"At a 50% win rate the expected longest losing run is about six trades in a hundred and about eight in five hundred. At a 40% win rate it is roughly eight in a hundred and eleven in five hundred. Those figures assume independent trades with a constant win rate, so real streaks tend to be longer because correlated positions and market regimes cluster losses together."}},{"@type":"Question","name":"How do I set position size from a maximum drawdown limit?","acceptedAnswer":{"@type":"Answer","text":"Use r equals one minus the quantity one minus D raised to the power one over k, where D is your drawdown cap and k is the losing streak you plan for. Capping drawdown at 20% while planning for ten consecutive losses gives 2.21% risk per trade. On a 40,000 dollar account that is 884 dollars of risk per position."}},{"@type":"Question","name":"What is risk of ruin in trading?","acceptedAnswer":{"@type":"Answer","text":"Risk of ruin is the probability of losing your capital before an edge has time to work. For fixed one-unit bets at even money it equals the loss rate divided by the win rate, raised to the number of units you hold. At a 55% win rate with 20 units the figure is 1.81%, but at 52% it jumps to 20.17%, which shows how sensitive the result is to a small error in your estimated win rate."}}]}</script>
 
 <link rel="stylesheet" href="/css/site.css">
@@ -50,16 +50,16 @@
     color:var(--muted);font-size:var(--t-small);margin:0 0 var(--s5)}
   .callout--warn{border-color:var(--gold-2)}
   .faq-card{padding:var(--s5)}
-  .faq-card h3{font-size:var(--t-h3);margin:0;line-height:1.3}
-  .faq-card p{color:var(--muted);font-size:var(--t-small);line-height:1.65;margin:var(--s3) 0 0}
+  .faq-card h3{font-size:var(--t-h3);margin:0}
+  .faq-card p{color:var(--muted);font-size:var(--t-small);margin:var(--s3) 0 0}
 </style>
 </head>
 <body class="pro">
 
 <a class="skip-link" href="#main">Skip to content</a>
 
-<nav class="site-nav" aria-label="Primary">
-  <a class="site-nav__brand" href="/"><img class="site-nav__lion" src="/img/brand/lion-mark.svg" alt="" width="34" height="34" decoding="async"><span>YUSUF GADELRAB</span></a>
+<nav class="site-nav">
+  <a class="site-nav__brand" href="/"><img class="site-nav__lion" src="/img/brand/lion-mark.svg" alt="" width="34" height="34"><span>YUSUF GADELRAB</span></a>
   <div class="site-nav__links">
     <a href="/">Work</a>
     <a href="/guides.html">Guides</a>
@@ -90,15 +90,15 @@
     <div class="prose">
       <h2>The formula</h2>
       <p>A drawdown is a fall from a peak in account equity, expressed as a fraction of that peak. If you lose fraction <code>d</code>, the capital still standing is <code>1 - d</code>, and that survivor has to produce the entire missing piece on its own.</p>
-      <span class="formula" tabindex="0" role="group" aria-label="Formula, scrolls horizontally">Capital remaining after drawdown d = 1 - d
+      <span class="formula">Capital remaining after drawdown d = 1 - d
 Gain required to get back to peak = d / (1 - d)
 
 d = 0.20  ->  0.20 / 0.80 = 0.25  = 25%
 d = 0.50  ->  0.50 / 0.50 = 1.00  = 100%
 d = 0.90  ->  0.90 / 0.10 = 9.00  = 900%</span>
       <p>The two numbers differ because they are percentages of different bases. The loss is a percentage of the peak. The recovery is a percentage of what is left after the loss, and what is left is smaller. <strong>The deeper the hole, the smaller the shovel you have to dig with.</strong></p>
-      <div class="tblwrap" tabindex="0" role="group" aria-label="Table, scrolls horizontally"><table class="tbl">
-        <thead><tr><th scope="col">Drawdown</th><th scope="col">Capital remaining</th><th scope="col">Gain required to recover</th><th scope="col">Recovery / drawdown</th></tr></thead>
+      <div class="tblwrap"><table class="tbl">
+        <thead><tr><th>Drawdown</th><th>Capital remaining</th><th>Gain required to recover</th><th>Recovery / drawdown</th></tr></thead>
         <tbody>
           <tr><td>5%</td><td>95.0%</td><td>5.26%</td><td>1.05x</td></tr>
           <tr><td>10%</td><td>90.0%</td><td>11.11%</td><td>1.11x</td></tr>
@@ -126,14 +126,14 @@ d = 0.90  ->  0.90 / 0.10 = 9.00  = 900%</span>
       <p>This is also why a summary statistics block is not enough to judge a system. You want the equity curve, the underwater curve, and the maximum drawdown alongside the averages. What to insist on seeing is set out in <a href="/guides/reading-a-backtest-report.html">reading a backtest report</a>.</p>
       <h2>Losing streaks are longer than people expect</h2>
       <p>Drawdowns rarely arrive as a single catastrophic trade. They arrive as a run of ordinary ones. If trades are independent with win rate <code>w</code>, the probability of exactly <code>k</code> losses in a row starting at any given trade is straightforward.</p>
-      <span class="formula" tabindex="0" role="group" aria-label="Formula, scrolls horizontally">P(k losses in a row) = (1 - w)^k
+      <span class="formula">P(k losses in a row) = (1 - w)^k
 
 w = 0.55, k = 5  ->  0.45^5 = 1.85%
 w = 0.55, k = 8  ->  0.45^8 = 0.168%
 w = 0.45, k = 8  ->  0.55^8 = 0.837%</span>
       <p>Those look reassuringly small, and that is the trap. It is the probability at one specific starting point, and a hundred-trade year gives you roughly a hundred starting points. The question that matters is whether such a run appears <em>anywhere</em> in your sample, which is a much larger number.</p>
-      <div class="tblwrap" tabindex="0" role="group" aria-label="Table, scrolls horizontally"><table class="tbl">
-        <thead><tr><th scope="col">Win rate</th><th scope="col">5 losses in a row</th><th scope="col">8 losses in a row</th><th scope="col">5-run somewhere in 100 trades</th><th scope="col">8-run somewhere in 100 trades</th><th scope="col">Expected longest run (100 / 500 trades)</th></tr></thead>
+      <div class="tblwrap"><table class="tbl">
+        <thead><tr><th>Win rate</th><th>5 losses in a row</th><th>8 losses in a row</th><th>5-run somewhere in 100 trades</th><th>8-run somewhere in 100 trades</th><th>Expected longest run (100 / 500 trades)</th></tr></thead>
         <tbody>
           <tr><td>40%</td><td>7.78%</td><td>1.680%</td><td>97.6%</td><td>49.0%</td><td>7.9 / 11.0</td></tr>
           <tr><td>45%</td><td>5.03%</td><td>0.837%</td><td>92.0%</td><td>30.7%</td><td>6.9 / 9.5</td></tr>
@@ -146,7 +146,7 @@ w = 0.45, k = 8  ->  0.55^8 = 0.837%</span>
       <p>Two caveats keep this honest. The maths assumes trades are independent and the win rate is constant, and live trading violates both. Correlated positions lose together, so five open trades in the same sector can behave like one, and market regimes cluster outcomes so losses bunch more than a coin flip would. Treat the table as a floor on streak length rather than a ceiling, and check your own realised streaks in a <a href="/apps/tradelog/">trade log</a> rather than trusting the model.</p>
       <h2>Risk of ruin, and the version you actually need</h2>
       <p>Risk of ruin asks: what is the probability of losing everything before the edge has time to work? For fixed-size bets at even money it collapses to the classic gambler's ruin result, where N is how many betting units you hold.</p>
-      <span class="formula" tabindex="0" role="group" aria-label="Formula, scrolls horizontally">Fixed 1R units, 1:1 payoff, win rate w > 0.5:
+      <span class="formula">Fixed 1R units, 1:1 payoff, win rate w > 0.5:
 
   Risk of losing N units = ((1 - w) / w)^N
 
@@ -164,7 +164,7 @@ w = 0.45, k = 8  ->  0.55^8 = 0.837%</span>
       <p>For a trader this is not an abstraction about retirement portfolios. You add capital when you can and take money out when you need it, and both actions interact with where you are in the drawdown cycle. It is also the strongest practical reason not to increase size immediately after a hot streak, since the sequencing risk of a large position early in a decline is severe. The transition problem is discussed in <a href="/guides/paper-to-live-trading.html">going from paper to live</a>.</p>
       <h2>Turning a drawdown budget into a position size</h2>
       <p>This is the payoff of everything above. If you know the drawdown you refuse to exceed and you know the losing streak the maths says to expect, per-trade risk is not a preference. It falls out.</p>
-      <span class="formula" tabindex="0" role="group" aria-label="Formula, scrolls horizontally">Equity after k consecutive full losses at risk r:
+      <span class="formula">Equity after k consecutive full losses at risk r:
   (1 - r)^k
 
 Drawdown from that run:
@@ -176,8 +176,8 @@ Solve for r given a drawdown cap D and a planned streak k:
   D = 0.20, k = 10  ->  r = 1 - 0.80^0.1 = 2.21%
   D = 0.20, k = 15  ->  r = 1.48%
   D = 0.10, k = 10  ->  r = 1.05%</span>
-      <div class="tblwrap" tabindex="0" role="group" aria-label="Table, scrolls horizontally"><table class="tbl">
-        <thead><tr><th scope="col">Planned losing streak</th><th scope="col">Cap DD at 10%</th><th scope="col">Cap at 15%</th><th scope="col">Cap at 20%</th><th scope="col">Cap at 25%</th><th scope="col">Cap at 30%</th></tr></thead>
+      <div class="tblwrap"><table class="tbl">
+        <thead><tr><th>Planned losing streak</th><th>Cap DD at 10%</th><th>Cap at 15%</th><th>Cap at 20%</th><th>Cap at 25%</th><th>Cap at 30%</th></tr></thead>
         <tbody>
           <tr><td>5 losses</td><td>2.09%</td><td>3.20%</td><td>4.36%</td><td>5.59%</td><td>6.89%</td></tr>
           <tr><td>8 losses</td><td>1.31%</td><td>2.01%</td><td>2.75%</td><td>3.53%</td><td>4.36%</td></tr>
@@ -197,7 +197,7 @@ Solve for r given a drawdown cap D and a planned streak k:
       <p>You do not find your real limit by asking yourself, because the answer you give while flat is not the answer you live at down 18%. You find it by looking at what you did during your last drawdown. That requires the log to already exist, which is the least glamorous and most useful argument for keeping a <a href="/guides/trading-journal.html">trading journal</a> with a violation tag on every trade.</p>
       <h2>Depth is only half of it: time matters too</h2>
       <p>A 35% drawdown is usually described as a 53.85% recovery problem. It is better described as a time problem, because that gain has to be earned at whatever rate your system actually produces.</p>
-      <span class="formula" tabindex="0" role="group" aria-label="Formula, scrolls horizontally">Years to recover at compound rate g:
+      <span class="formula">Years to recover at compound rate g:
   t = ln(1 + d/(1 - d)) / ln(1 + g)
 
 At g = 12% per year:
@@ -211,8 +211,8 @@ At g = 12% per year:
       <p>A backtest gives you one path: the specific order in which your trades happened to occur. Since drawdown is path dependent, that single maximum drawdown figure is a sample of size one drawn from a distribution you have not looked at.</p>
       <p>Monte Carlo fixes this cheaply. Resample your trade results with replacement, or simply shuffle their order, run several thousand synthetic equity curves, record the maximum drawdown of each, and read the percentiles. The output is not a prediction. It is the range of outcomes your own trade distribution is capable of producing.</p>
       <p>Here is a simulation of a hypothetical system: 55% win rate, wins of +1.5R, losses of -1R, 200 trades per path, fixed-fractional sizing, 20,000 paths.</p>
-      <div class="tblwrap" tabindex="0" role="group" aria-label="Table, scrolls horizontally"><table class="tbl">
-        <thead><tr><th scope="col">Risk per trade</th><th scope="col">Median max DD</th><th scope="col">95th percentile</th><th scope="col">99th percentile</th><th scope="col">Worst of 20,000 paths</th><th scope="col">Median final equity</th></tr></thead>
+      <div class="tblwrap"><table class="tbl">
+        <thead><tr><th>Risk per trade</th><th>Median max DD</th><th>95th percentile</th><th>99th percentile</th><th>Worst of 20,000 paths</th><th>Median final equity</th></tr></thead>
         <tbody>
           <tr><td>0.5%</td><td>3.5%</td><td>5.9%</td><td>7.3%</td><td>11.9%</td><td>1.45x</td></tr>
           <tr><td>1.0%</td><td>6.9%</td><td>11.4%</td><td>14.2%</td><td>21.1%</td><td>2.08x</td></tr>
@@ -250,13 +250,13 @@ At g = 12% per year:
       <h2>Quick answers</h2>
     </div>
     <div class="grid" style="margin-top:var(--s6)">
-      <article class="card faq-card"><h3>How much do you need to gain back after a 50% loss?</h3><p>You need a 100% gain. After losing half your capital, the remaining half has to double to return to the previous peak. The formula is gain required equals drawdown divided by one minus drawdown, so 0.50 divided by 0.50 equals 1.00.</p></article>
-      <article class="card faq-card"><h3>How much do you need to gain back after a 30% loss?</h3><p>A 30% drawdown requires a 42.86% gain to recover. The 70% of capital that survives must produce the entire missing 30 percentage points, and 30 divided by 70 is 0.4286. The ratio of required gain to loss is 1.43 at that depth, rising to 2.0 at a 50% drawdown.</p></article>
-      <article class="card faq-card"><h3>Why does a percentage loss need a bigger percentage gain?</h3><p>Because the two percentages are measured against different bases. The loss is a percentage of the account peak, while the recovery is a percentage of the smaller amount left after the loss. The deeper the drawdown, the smaller that base, which is why the required gain accelerates rather than rising in a straight line.</p></article>
-      <article class="card faq-card"><h3>What is the difference between drawdown and volatility?</h3><p>Volatility and standard deviation measure the dispersion of individual period returns and ignore the order those returns arrived in. Drawdown depends entirely on that order. Two series with an identical mean and an identical standard deviation can have very different maximum drawdowns, for example 5.47% when gains and losses alternate versus 14.26% when the same losses are clustered together.</p></article>
-      <article class="card faq-card"><h3>How long a losing streak should I expect?</h3><p>At a 50% win rate the expected longest losing run is about six trades in a hundred and about eight in five hundred. At a 40% win rate it is roughly eight in a hundred and eleven in five hundred. Those figures assume independent trades with a constant win rate, so real streaks tend to be longer because correlated positions and market regimes cluster losses together.</p></article>
-      <article class="card faq-card"><h3>How do I set position size from a maximum drawdown limit?</h3><p>Use r equals one minus the quantity one minus D raised to the power one over k, where D is your drawdown cap and k is the losing streak you plan for. Capping drawdown at 20% while planning for ten consecutive losses gives 2.21% risk per trade. On a 40,000 dollar account that is 884 dollars of risk per position.</p></article>
-      <article class="card faq-card"><h3>What is risk of ruin in trading?</h3><p>Risk of ruin is the probability of losing your capital before an edge has time to work. For fixed one-unit bets at even money it equals the loss rate divided by the win rate, raised to the number of units you hold. At a 55% win rate with 20 units the figure is 1.81%, but at 52% it jumps to 20.17%, which shows how sensitive the result is to a small error in your estimated win rate.</p></article>
+      <article class="card faq-card"><h3>Recovering from a 50% loss?</h3><p>You need a 100% gain. The surviving half of the account has to double just to reach the old peak.</p></article>
+      <article class="card faq-card"><h3>Recovering from a 30% loss?</h3><p>42.86%. The 70% that survives must produce the whole missing 30 points, so the required gain is 1.43 times the loss.</p></article>
+      <article class="card faq-card"><h3>Why is the gain always bigger?</h3><p>The loss is a percentage of the peak, the gain is a percentage of what is left. Smaller base, bigger required percentage.</p></article>
+      <article class="card faq-card"><h3>Drawdown vs volatility?</h3><p>Volatility ignores the order of returns; drawdown depends on it entirely. Same mean and standard deviation can give 5.47% or 14.26% max drawdown.</p></article>
+      <article class="card faq-card"><h3>How long do losing streaks run?</h3><p>About six in a hundred trades at a 50% win rate, eight in a hundred at 40%. Correlated trades make real streaks longer than the model.</p></article>
+      <article class="card faq-card"><h3>Sizing from a drawdown cap?</h3><p>r = 1 - (1 - D)^(1/k). A 20% cap with a planned 10-loss streak gives 2.21% risk per trade.</p></article>
+      <article class="card faq-card"><h3>What is risk of ruin?</h3><p>Odds of losing your stake before the edge pays. At 55% wins over 20 units it is 1.81%; at 52% it is 20.17%.</p></article>
     </div>
   </section>
 

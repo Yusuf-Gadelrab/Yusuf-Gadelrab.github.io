@@ -25,8 +25,8 @@
 <meta name="twitter:image" content="https://yusuf-gadelrab.github.io/og-card.png">
 <link rel="alternate" type="text/plain" href="https://yusuf-gadelrab.github.io/llms-full.txt" title="Plain-text profile for language models">
 
-<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"TechArticle","@id":"https://yusuf-gadelrab.github.io/guides/coding-interview-patterns.html#article","headline":"Coding Interview Patterns, Not Problem Counts","name":"Coding Interview Patterns, Not Problem Counts","description":"The pattern-based approach to technical interviews: the ten recurring problem patterns, why tracking the pattern you fail beats counting, and spaced repetition.","datePublished":"2026-07-29","dateModified":"2026-07-29","inLanguage":"en","author":{"@id":"https://yusuf-gadelrab.github.io/#person"},"publisher":{"@id":"https://yusuf-gadelrab.github.io/#person"},"about":["Technical interviews","Algorithms","Deliberate practice"],"mainEntityOfPage":"https://yusuf-gadelrab.github.io/guides/coding-interview-patterns.html","isAccessibleForFree":true,"isPartOf":{"@id":"https://yusuf-gadelrab.github.io/#website"},"proficiencyLevel":"Beginner","hasPart":{"@id":"https://yusuf-gadelrab.github.io/guides/coding-interview-patterns.html#howto"}},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://yusuf-gadelrab.github.io/"},{"@type":"ListItem","position":2,"name":"Guides","item":"https://yusuf-gadelrab.github.io/guides.html"},{"@type":"ListItem","position":3,"name":"Interview Patterns"}]},{"@type":"HowTo","@id":"https://yusuf-gadelrab.github.io/guides/coding-interview-patterns.html#howto","name":"How to keep a coding-interview failure log by pattern","description":"The pattern-based approach to technical interviews: the ten recurring problem patterns, why tracking the pattern you fail beats counting, and spaced repetition.","inLanguage":"en","isAccessibleForFree":true,"author":{"@id":"https://yusuf-gadelrab.github.io/#person"},"step":[{"@type":"HowToStep","position":1,"name":"Input shape","text":"Input shape. A flat array, and the word contiguous is doing real work — it rules out anything that reorders or subsets freely.","url":"https://yusuf-gadelrab.github.io/guides/coding-interview-patterns.html#howto"},{"@type":"HowToStep","position":2,"name":"What is asked","text":"What is asked. The longest thing satisfying a condition. An optimum over contiguous ranges.","url":"https://yusuf-gadelrab.github.io/guides/coding-interview-patterns.html#howto"},{"@type":"HowToStep","position":3,"name":"Plausible complexity","text":"Plausible complexity. n is 2·10⁵, so n² is 4·10¹⁰ and is out. O(n) or O(n log n).","url":"https://yusuf-gadelrab.github.io/guides/coding-interview-patterns.html#howto"},{"@type":"HowToStep","position":4,"name":"Pattern","text":"Pattern. Contiguous, plus longest, plus a condition that only worsens as the window grows — sliding window, O(n).","url":"https://yusuf-gadelrab.github.io/guides/coding-interview-patterns.html#howto"}]}]}</script>
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","@id":"https://yusuf-gadelrab.github.io/guides/coding-interview-patterns.html#faq","mainEntity":[{"@type":"Question","name":"What are the main coding interview patterns?","acceptedAnswer":{"@type":"Answer","text":"Two pointers, sliding window, binary search on the answer, BFS and DFS, topological sort, heap and top-k, intervals, dynamic programming, backtracking, and union-find. Most remaining interview problems are combinations of these, such as a BFS whose frontier is a heap or a binary search whose predicate runs a greedy check."}},{"@type":"Question","name":"Why is counting solved problems a bad metric?","acceptedAnswer":{"@type":"Answer","text":"Because it does not distinguish between problems in patterns you already know and problems in the ones you do not. A large solved count with no per-pattern diagnosis commonly produces someone who still fails any problem phrased unfamiliarly."}},{"@type":"Question","name":"How do you identify which pattern a problem uses?","acceptedAnswer":{"@type":"Answer","text":"Answer four questions before writing code: the input shape, what is being asked, the plausible complexity given the constraints, and the pattern name. Complexity does surprising work — if the constraints allow large inputs, an O(n^2) approach is not the intended one, which frequently identifies the pattern by itself."}},{"@type":"Question","name":"What do the input constraints tell you about the solution?","acceptedAnswer":{"@type":"Answer","text":"They bound the complexity, which usually names the pattern. Roughly, n up to 12 permits factorial search, n up to 22 permits subset enumeration, n up to a few thousand permits quadratic work, and n in the millions demands linear or linearithmic. A huge value range paired with a small n is the standard signal to binary search the answer space rather than the input."}},{"@type":"Question","name":"What should a practice log record?","acceptedAnswer":{"@type":"Answer","text":"The pattern tag, the outcome, and where the attempt broke — recognition, approach, implementation, or edge cases. Those four failure locations need different fixes: missing recognition needs exposure to more problem statements, while a broken implementation needs the template rehearsed."}},{"@type":"Question","name":"How does spaced repetition apply to interview prep?","acceptedAnswer":{"@type":"Answer","text":"Re-attempt solved problems on an expanding schedule instead of only solving new ones: one day after a failure, three days after a hinted solve, a week after a slow unaided solve, three weeks after a fluent one. Because a problem in the one-day box generates about seven reviews a week, cap that box at roughly eight problems and refuse new material until something graduates."}},{"@type":"Question","name":"How much time per week does pattern-based prep take?","acceptedAnswer":{"@type":"Answer","text":"About five hours if you split it into roughly 100 minutes of review, 50 minutes of recognition drills, 90 minutes of timed solves out loud, 30 minutes of template rehearsal, and 20 minutes of log review. Over an eight-week block that is around 39 hours, against roughly 200 hours for a 300-problem grind at 40 minutes each."}},{"@type":"Question","name":"How do you know when you are ready?","acceptedAnswer":{"@type":"Answer","text":"When you can be handed an unfamiliar problem in any of the ten patterns, name the pattern within about two minutes, and implement its canonical template without looking it up. That is a different test from any solved-problem total, and it should be rehearsed out loud because the interview is verbal."}}]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"TechArticle","@id":"https://yusuf-gadelrab.github.io/guides/coding-interview-patterns.html#article","headline":"Coding Interview Patterns, Not Problem Counts","name":"Coding Interview Patterns, Not Problem Counts","description":"The pattern-based approach to technical interviews: the ten recurring problem patterns, why tracking the pattern you fail beats counting, and spaced repetition.","datePublished":"2026-07-29","dateModified":"2026-07-29","inLanguage":"en","author":{"@id":"https://yusuf-gadelrab.github.io/#person"},"publisher":{"@id":"https://yusuf-gadelrab.github.io/#person"},"about":["Technical interviews","Algorithms","Deliberate practice"],"mainEntityOfPage":"https://yusuf-gadelrab.github.io/guides/coding-interview-patterns.html","isAccessibleForFree":true,"proficiencyLevel":"Beginner"},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://yusuf-gadelrab.github.io/"},{"@type":"ListItem","position":2,"name":"Guides","item":"https://yusuf-gadelrab.github.io/guides.html"},{"@type":"ListItem","position":3,"name":"Interview Patterns"}]}]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","@id":"https://yusuf-gadelrab.github.io/guides/coding-interview-patterns.html#faq","mainEntity":[{"@type":"Question","name":"What are the main coding interview patterns?","acceptedAnswer":{"@type":"Answer","text":"Two pointers, sliding window, binary search on the answer, BFS and DFS, topological sort, heap and top-k, intervals, dynamic programming, backtracking, and union-find. Most remaining interview problems are combinations of these, such as a BFS whose frontier is a heap or a binary search whose predicate runs a greedy check."}},{"@type":"Question","name":"Why is counting solved problems a bad metric?","acceptedAnswer":{"@type":"Answer","text":"Because it does not distinguish between problems in patterns you already know and problems in the ones you do not. A large solved count with no per-pattern diagnosis commonly produces someone who still fails any problem phrased unfamiliarly."}},{"@type":"Question","name":"How do you identify which pattern a problem uses?","acceptedAnswer":{"@type":"Answer","text":"Answer four questions before writing code: the input shape, what is being asked, the plausible complexity given the constraints, and the pattern name. Complexity does surprising work — if the constraints allow large inputs, an O(n^2) approach is not the intended one, which frequently identifies the pattern by itself."}},{"@type":"Question","name":"What should a practice log record?","acceptedAnswer":{"@type":"Answer","text":"The pattern tag, the outcome, and where the attempt broke — recognition, approach, implementation, or edge cases. Those four failure locations need different fixes: missing recognition needs exposure to more problem statements, while a broken implementation needs the template rehearsed."}},{"@type":"Question","name":"How does spaced repetition apply to interview prep?","acceptedAnswer":{"@type":"Answer","text":"Re-attempt solved problems on an expanding schedule instead of only solving new ones: one day after a failure, three days after a hinted solve, a week after a slow unaided solve, three weeks after a fluent one. A Leitner box system with fifteen to twenty minutes of review before new problems each session handles it."}},{"@type":"Question","name":"How do you know when you are ready?","acceptedAnswer":{"@type":"Answer","text":"When you can be handed an unfamiliar problem in any of the ten patterns, name the pattern within about two minutes, and implement its canonical template without looking it up. That is a different test from any solved-problem total."}}]}</script>
 
 <link rel="stylesheet" href="/css/site.css">
 <style>
@@ -50,16 +50,16 @@
     color:var(--muted);font-size:var(--t-small);margin:0 0 var(--s5)}
   .callout--warn{border-color:var(--gold-2)}
   .faq-card{padding:var(--s5)}
-  .faq-card h3{font-size:var(--t-h3);margin:0;line-height:1.3}
-  .faq-card p{color:var(--muted);font-size:var(--t-small);line-height:1.65;margin:var(--s3) 0 0}
+  .faq-card h3{font-size:var(--t-h3);margin:0}
+  .faq-card p{color:var(--muted);font-size:var(--t-small);margin:var(--s3) 0 0}
 </style>
 </head>
 <body class="pro">
 
 <a class="skip-link" href="#main">Skip to content</a>
 
-<nav class="site-nav" aria-label="Primary">
-  <a class="site-nav__brand" href="/"><img class="site-nav__lion" src="/img/brand/lion-mark.svg" alt="" width="34" height="34" decoding="async"><span>YUSUF GADELRAB</span></a>
+<nav class="site-nav">
+  <a class="site-nav__brand" href="/"><img class="site-nav__lion" src="/img/brand/lion-mark.svg" alt="" width="34" height="34"><span>YUSUF GADELRAB</span></a>
   <div class="site-nav__links">
     <a href="/">Work</a>
     <a href="/guides.html">Guides</a>
@@ -92,8 +92,8 @@
       <p>"I did 300 problems" tells you nothing about readiness, because it does not distinguish between 300 problems in the patterns you already know and 300 spread across the ones you do not. Volume without a diagnosis produces a common and frustrating outcome: a large solved count and a consistent failure on any problem phrased slightly unfamiliarly.</p>
       <p>The reframe is simple. <strong>An interview problem is a pattern wearing a costume.</strong> Your job in the first two minutes is to identify the pattern; the implementation afterwards is mechanical if you have drilled it. So practice should be organised around recognising patterns and around finding the ones where your recognition fails.</p>
       <h2>The recurring patterns</h2>
-      <div class="tblwrap" tabindex="0" role="group" aria-label="Table, scrolls horizontally"><table class="tbl">
-        <thead><tr><th scope="col">Pattern</th><th scope="col">Recognition cue</th><th scope="col">Typical complexity</th></tr></thead>
+      <div class="tblwrap"><table class="tbl">
+        <thead><tr><th>Pattern</th><th>Recognition cue</th><th>Typical complexity</th></tr></thead>
         <tbody>
           <tr><td>Two pointers</td><td>Sorted array, pair or triplet sum, in-place partition, palindrome</td><td>O(n) after any sort</td></tr>
           <tr><td>Sliding window</td><td>Contiguous subarray or substring, longest or shortest satisfying a condition</td><td>O(n)</td></tr>
@@ -108,114 +108,15 @@
         </tbody>
       </table></div>
       <p>That table is most of the surface area of a standard software interview loop. The remaining problems are usually combinations — a BFS whose frontier is a heap, a DP over intervals, a binary search whose predicate runs a greedy check.</p>
-      <h3>The templates, in one place</h3>
-      <p>Recognition without a template is half a skill. For each pattern there is one canonical shape you should be able to type from memory, at which point the implementation stops consuming the working memory you need for the actual problem. These are sketches, not library code — the value is in the control flow being automatic.</p>
-      <span class="formula" tabindex="0" role="group" aria-label="Formula, scrolls horizontally">TWO POINTERS          i, j = 0, len(a)-1
-                      while i &lt; j: move the pointer that can
-                      only improve the objective
-
-SLIDING WINDOW        lo = 0
-                      for hi in range(n): add a[hi]
-                          while invalid: remove a[lo]; lo += 1
-                          best = max(best, hi - lo + 1)
-
-BINARY SEARCH ON ANS  lo, hi = min_ans, max_ans
-                      while lo &lt; hi:
-                          mid = (lo + hi) // 2
-                          if feasible(mid): hi = mid
-                          else: lo = mid + 1
-                      return lo          # feasible() must be monotone
-
-BFS                   q = deque([start]); seen = {start}
-                      while q: for each unseen neighbour: mark, push
-                      # level order = pop len(q) nodes per round
-
-DFS                   def go(u): seen.add(u)
-                          for v in adj[u]:
-                              if v not in seen: go(v)
-
-TOPOLOGICAL SORT      indeg[v] for all v; q = all v with indeg 0
-                      pop u, output u, decrement indeg of neighbours,
-                      push any that hit 0
-                      # output shorter than n means a cycle exists
-
-HEAP / TOP-K          for x in a:
-                          push(h, x)
-                          if len(h) &gt; k: pop smallest
-                      # min-heap of size k gives the k largest
-
-INTERVALS             sort by start
-                      for each iv: if iv.start &lt;= cur.end:
-                          cur.end = max(cur.end, iv.end)
-                      else: emit cur; cur = iv
-
-DP                    define state in words FIRST, then:
-                          dp[i] = f(dp[i-1], dp[i-2], ...)
-                      base cases, order of evaluation, answer cell
-
-BACKTRACKING          def go(path, choices):
-                          if complete: record; return
-                          for c in choices:
-                              if prune(c): continue
-                              apply(c); go(path+[c], rest); undo(c)
-
-UNION-FIND            find(x) with path compression
-                      union(a, b) by size or rank
-                      # answer is usually a count of distinct roots</span>
-      <p>Write each of those out from memory once a week until the week where you get all ten right. That is a much shorter project than it sounds, and it removes an entire category of interview failure — the one where you knew exactly what to do and lost eight minutes to an off-by-one in the shrink condition.</p>
       <h2>The two-minute recognition drill</h2>
       <p>Recognition is a separate skill from implementation and it is the one that fails under pressure. Drill it separately: read a problem, spend two minutes deciding the pattern and the complexity target, write it down, then check. Do not implement. You can run twenty of these in the time one full solution takes, and it trains exactly the step interviews test first.</p>
-      <span class="formula" tabindex="0" role="group" aria-label="Formula, scrolls horizontally">For each problem, before coding, answer four questions:
+      <span class="formula">For each problem, before coding, answer four questions:
 
   1. What is the input shape?        sorted / graph / intervals / string
   2. What is being asked?            exists / count / optimum / enumerate
   3. What complexity is plausible?   n log n suggests sort or heap or binary search
   4. Which pattern fits?             name it, out loud, before typing</span>
       <p>Question 3 does more work than people expect. If the constraints allow n up to 10^5, an O(n^2) solution is not the intended one, and that single observation frequently identifies the pattern on its own.</p>
-      <h2>Reading the constraints backwards</h2>
-      <p>The constraint line at the bottom of the problem statement is a hint that most candidates skim. Roughly, a machine does on the order of 10^8 simple operations per second in a compiled language and closer to 10^6 to 10^7 in Python, and interview problems are set so the intended solution fits comfortably inside a second or two. Run the table backwards from n:</p>
-      <div class="tblwrap" tabindex="0" role="group" aria-label="Table, scrolls horizontally"><table class="tbl">
-        <thead><tr><th scope="col">Constraint on n</th><th scope="col">Complexity that fits</th><th scope="col">Patterns it points at</th></tr></thead>
-        <tbody>
-          <tr><td>n ≤ 12</td><td>O(n!) or O(2ⁿ · n)</td><td>Full permutation search, travelling-salesman style brute force</td></tr>
-          <tr><td>n ≤ 22</td><td>O(2ⁿ)</td><td>Subset enumeration, bitmask DP</td></tr>
-          <tr><td>n ≤ 200</td><td>O(n³)</td><td>Floyd-Warshall, interval or matrix DP</td></tr>
-          <tr><td>n ≤ 3,000</td><td>O(n²)</td><td>Pairwise DP, two-dimensional table, edit-distance shapes</td></tr>
-          <tr><td>n ≤ 10⁶</td><td>O(n log n)</td><td>Sort, heap, binary search, divide and conquer</td></tr>
-          <tr><td>n ≤ 10⁷</td><td>O(n)</td><td>Two pointers, sliding window, counting, single pass</td></tr>
-          <tr><td>Values up to 10¹⁸, small n</td><td>O(log V) in the value range</td><td>Binary search on the answer, exponentiation, maths</td></tr>
-        </tbody>
-      </table></div>
-      <p>Two secondary reads matter as much as the primary one. <strong>A value range that is enormous while n is small</strong> is almost always telling you to search the answer space rather than the input. And <strong>a stated memory limit that is tight relative to n²</strong> rules out the two-dimensional table you were about to allocate, which usually means a rolling one-dimensional DP.</p>
-      <h2>Three worked recognition drills</h2>
-      <p>The four questions look obvious written down and are surprisingly hard to apply under time pressure. Here they are run end to end on three problem shapes you will meet in some costume or other.</p>
-      <h3>Drill one</h3>
-      <p><em>Given an array of n positive integers and an integer k, return the length of the longest contiguous subarray whose sum is at most k. 1 ≤ n ≤ 2·10⁵.</em></p>
-      <ol>
-        <li><strong>Input shape.</strong> A flat array, and the word <em>contiguous</em> is doing real work — it rules out anything that reorders or subsets freely.</li>
-        <li><strong>What is asked.</strong> The longest thing satisfying a condition. An optimum over contiguous ranges.</li>
-        <li><strong>Plausible complexity.</strong> n is 2·10⁵, so n² is 4·10¹⁰ and is out. O(n) or O(n log n).</li>
-        <li><strong>Pattern.</strong> Contiguous, plus longest, plus a condition that only worsens as the window grows — sliding window, O(n).</li>
-      </ol>
-      <p>The instructive part is the word <em>positive</em>. Sliding window works here precisely because the sum is monotone in the window size; if the values could be negative, shrinking from the left no longer reliably reduces the sum and the whole approach collapses. Saying that out loud in an interview is worth more than the solution, because it shows you know why the pattern applies rather than that it usually does.</p>
-      <h3>Drill two</h3>
-      <p><em>You have n tasks with given durations and m identical machines. Each task runs on one machine, machines run tasks sequentially, return the minimum time to finish everything. n, m ≤ 10⁴, durations up to 10⁹.</em></p>
-      <ol>
-        <li><strong>Input shape.</strong> An array of durations plus a count. No graph, no ordering, no adjacency.</li>
-        <li><strong>What is asked.</strong> A minimum value, phrased as "minimum time such that everything finishes".</li>
-        <li><strong>Plausible complexity.</strong> The answer can be as large as 10⁴ · 10⁹ = 10¹³, so you cannot iterate over candidate answers. But log₂(10¹³) is about 44, so you can bisect them.</li>
-        <li><strong>Pattern.</strong> Binary search on the answer, with a greedy feasibility check. Roughly O(n log(max answer)).</li>
-      </ol>
-      <p>The tell is the pair of facts: a <em>minimum T such that</em> phrasing, and a feasibility check that is far cheaper than the search. Confirm monotonicity before you commit — if a schedule finishes within time T, it finishes within T+1, so <code>feasible</code> is monotone and bisection is valid. When that check fails, binary search on the answer is simply wrong, and candidates apply it anyway more often than any other pattern on this list.</p>
-      <h3>Drill three</h3>
-      <p><em>Given pairs (a, b) meaning course a must be completed before course b, and no limit on how many courses you take per term, return the minimum number of terms needed. n up to 10⁵.</em></p>
-      <ol>
-        <li><strong>Input shape.</strong> Pairs with a direction. That is a directed graph, whatever the problem calls it.</li>
-        <li><strong>What is asked.</strong> A minimum number of rounds, which is a depth rather than a path or a count.</li>
-        <li><strong>Plausible complexity.</strong> 10⁵ nodes means O(V + E). Anything quadratic in V is out.</li>
-        <li><strong>Pattern.</strong> Topological sort, processed in layers — each layer is one term, and the answer is the number of layers, which is the longest chain in the graph.</li>
-      </ol>
-      <p>Two things to say out loud here. First, the answer is the length of the longest dependency chain, which is why layering works. Second, if the problem <em>did</em> cap courses per term, that is a materially harder scheduling problem and not the same exercise — noticing the difference and flagging it is a strong signal, and quietly assuming the greedy answer is correct is a weak one.</p>
       <h2>Keeping a failure log by pattern</h2>
       <p>The whole method rests on one artefact: a log where every problem you attempt is tagged with its pattern and an outcome. Not a count — a <strong>per-pattern record</strong>.</p>
       <ol>
@@ -225,24 +126,11 @@ UNION-FIND            find(x) with path compression
         <li>Review weekly and look for the pattern with the worst ratio. That is your next week.</li>
         <li>When a pattern reaches a run of clean unaided solves, stop drilling it and let spaced repetition maintain it.</li>
       </ol>
-      <h3>The failure-location taxonomy</h3>
-      <p>The failure location matters more than the failure, because each location has a different and specific remedy — and the default response of "do more problems in that pattern" is the correct fix for exactly one of them.</p>
-      <div class="tblwrap" tabindex="0" role="group" aria-label="Table, scrolls horizontally"><table class="tbl">
-        <thead><tr><th scope="col">Where it broke</th><th scope="col">What it looked like</th><th scope="col">The wrong fix</th><th scope="col">The right fix</th></tr></thead>
-        <tbody>
-          <tr><td>Recognition</td><td>Ten minutes with no candidate pattern at all</td><td>Grinding problems in patterns you already spot</td><td>Bulk recognition drills: twenty statements, name the pattern only, no code</td></tr>
-          <tr><td>Approach</td><td>Named the pattern, reduced the problem wrongly</td><td>Reading the editorial and moving on</td><td>Write the invariant in one sentence before coding, and redo the problem cold 24 hours later</td></tr>
-          <tr><td>Implementation</td><td>Right approach, buggy code, time gone</td><td>More new problems</td><td>Type the canonical template from memory five times, until the control flow is automatic</td></tr>
-          <tr><td>Edge cases</td><td>Passes the samples, fails the hidden tests</td><td>Adding ad-hoc checks after each failure</td><td>A standing checklist: empty, single element, all equal, duplicates, negatives, overflow, both ends</td></tr>
-          <tr><td>Complexity</td><td>Correct solution, too slow</td><td>Micro-optimising the same algorithm</td><td>Read the constraints first, every time, and name a target complexity before writing anything</td></tr>
-          <tr><td>Communication</td><td>Solved it silently, scored badly anyway</td><td>Assuming the code speaks for itself</td><td>Narrate every solve out loud, including the ones you do alone</td></tr>
-        </tbody>
-      </table></div>
-      <p>If you recognise sliding window instantly but keep mishandling the shrink condition, you do not need more sliding-window problems — you need the template rehearsed. If you never recognise it in the first place, the fix is the opposite. Logging the location is what lets you tell those two situations apart, and they are indistinguishable from a solved count.</p>
+      <p>The failure location matters as much as the failure. If you recognise sliding window instantly but keep mishandling the shrink condition, you do not need more sliding-window problems — you need to write the template once, correctly, and rehearse it. If you never recognise it in the first place, the fix is the opposite.</p>
       <h2>Spaced repetition, because you will forget</h2>
       <p>Algorithm knowledge decays like anything else. A problem solved cleanly in March is often a blank in June. Spaced repetition solves this cheaply: re-attempt solved problems on an expanding schedule rather than solving new ones forever.</p>
-      <div class="tblwrap" tabindex="0" role="group" aria-label="Table, scrolls horizontally"><table class="tbl">
-        <thead><tr><th scope="col">Outcome</th><th scope="col">Next review</th><th scope="col">Rationale</th></tr></thead>
+      <div class="tblwrap"><table class="tbl">
+        <thead><tr><th>Outcome</th><th>Next review</th><th>Rationale</th></tr></thead>
         <tbody>
           <tr><td>Failed</td><td>1 day</td><td>Nothing has been learned yet</td></tr>
           <tr><td>Solved with a hint</td><td>3 days</td><td>Recognition is fragile</td></tr>
@@ -251,48 +139,7 @@ UNION-FIND            find(x) with path compression
           <tr><td>Fluent twice in a row</td><td>2 months</td><td>Retired to background rotation</td></tr>
         </tbody>
       </table></div>
-      <p>The practical shape is a Leitner system: five boxes with those review intervals, a problem moves forward on a clean solve and drops back to box one on a failure.</p>
-      <h3>What the schedule actually costs</h3>
-      <p>The arithmetic below is illustrative, but it produces a rule worth having. A problem sitting in box one generates about seven reviews a week; box two about 2.3; box three one; box four about 0.33; box five about 0.12. So the review load is almost entirely determined by <strong>how many problems you are holding in box one</strong>, and nothing else on the schedule comes close.</p>
-      <span class="formula" tabindex="0" role="group" aria-label="Formula, scrolls horizontally">reviews/week per problem, by box
-  box 1  (1 day)    7.0
-  box 2  (3 days)   2.3
-  box 3  (1 week)   1.0
-  box 4  (3 weeks)  0.33
-  box 5  (2 months) 0.12
-
-Holding 8 problems in box 1 = 8 reviews/day
-  at 6 minutes each          = 48 minutes/day, before any new work
-
-RULE: cap box 1 at about 8 problems. When it is full, you are not
-allowed a new problem until something graduates. This is a feature -
-it forces you to fix what is broken instead of collecting more of it.</span>
-      <p>An eight-week block built on that cap looks like the table below. New problems are deliberately front-loaded and then throttled as the review debt accumulates, which is what actually happens rather than what a plan usually assumes.</p>
-      <div class="tblwrap" tabindex="0" role="group" aria-label="Table, scrolls horizontally"><table class="tbl">
-        <thead><tr><th scope="col">Week</th><th scope="col">Target pattern</th><th scope="col">New problems</th><th scope="col">Reviews due</th><th scope="col">Box 1 at week end</th></tr></thead>
-        <tbody>
-          <tr><td>1</td><td>Worst ratio in the log</td><td>10</td><td>0</td><td>6</td></tr>
-          <tr><td>2</td><td>Same pattern, still worst</td><td>10</td><td>~26</td><td>8 (capped)</td></tr>
-          <tr><td>3</td><td>Second worst</td><td>8</td><td>~34</td><td>7</td></tr>
-          <tr><td>4</td><td>Second worst</td><td>8</td><td>~38</td><td>5</td></tr>
-          <tr><td>5</td><td>Third worst</td><td>8</td><td>~40</td><td>5</td></tr>
-          <tr><td>6</td><td>Mixed review week, no new pattern</td><td>4</td><td>~42</td><td>3</td></tr>
-          <tr><td>7</td><td>Whatever regressed in week 6</td><td>8</td><td>~38</td><td>4</td></tr>
-          <tr><td>8</td><td>Timed full loops only</td><td>3</td><td>~35</td><td>3</td></tr>
-        </tbody>
-      </table></div>
-      <p>Week six is the one people delete from their plan, and it is the one that makes the other seven work. A week with no new pattern and no new material is where the box-one backlog clears and the earlier weeks convert into something retained rather than something attempted.</p>
-      <h2>Practising out loud, because the interview is verbal</h2>
-      <p>A silent forty-minute solve is a rehearsal for a format that does not exist. In a real loop you are assessed on the reasoning as much as the result, and an interviewer who cannot follow your thinking cannot give you credit for it or steer you when you drift. The specific things to rehearse:</p>
-      <ul>
-        <li><strong>Restate the problem in your own words</strong> and confirm one edge case before writing anything. It takes forty seconds and catches misread problems.</li>
-        <li><strong>Name the pattern out loud</strong>, along with the complexity you are targeting and why the constraints imply it.</li>
-        <li><strong>Say what you rejected.</strong> "The brute force is O(n²) which is 4·10¹⁰ here, so it has to be linear" is a complete piece of reasoning in one sentence.</li>
-        <li><strong>Narrate while typing</strong>, even badly. Silence longer than about twenty seconds reads as being stuck, which changes what the interviewer does next.</li>
-        <li><strong>Ask before assuming.</strong> Duplicates allowed? Sorted? Can it be empty? Fits in memory? Each answer removes a branch.</li>
-        <li><strong>Test out loud at the end</strong> with a small case, walking the values rather than staring at the code.</li>
-      </ul>
-      <p class="callout">Record one practice solve on your phone and watch it back. It is unpleasant and it is the single highest-yield twenty minutes in this guide — nearly everyone discovers they narrate far less than they believe, and that the long silences land exactly where they are least confident.</p>
+      <p>The practical shape is a Leitner system: boxes with review intervals, a problem moves forward on a clean solve and drops back to box one on a failure. Twenty minutes of review before new problems each session is a better use of the hour than another fresh problem.</p>
       <h2>A weekly structure that works</h2>
       <ul>
         <li><strong>Start every session with review</strong>, not new material. Fifteen to twenty minutes on due problems.</li>
@@ -302,20 +149,8 @@ it forces you to fix what is broken instead of collecting more of it.</span>
         <li><strong>Write the template once per pattern</strong> — the canonical implementation, from memory, until it is automatic.</li>
         <li><strong>Stop tracking total solved.</strong> It is the metric that feels like progress and measures nothing.</li>
       </ul>
-      <div class="tblwrap" tabindex="0" role="group" aria-label="Table, scrolls horizontally"><table class="tbl">
-        <thead><tr><th scope="col">Activity</th><th scope="col">Sessions per week</th><th scope="col">Minutes each</th><th scope="col">Weekly total</th></tr></thead>
-        <tbody>
-          <tr><td>Review of due problems</td><td>5</td><td>20</td><td>100</td></tr>
-          <tr><td>Recognition drills, no coding</td><td>2</td><td>25</td><td>50</td></tr>
-          <tr><td>Full timed solves, out loud</td><td>2</td><td>45</td><td>90</td></tr>
-          <tr><td>Template rehearsal from memory</td><td>2</td><td>15</td><td>30</td></tr>
-          <tr><td>Log review and next-week planning</td><td>1</td><td>20</td><td>20</td></tr>
-          <tr><td>Total</td><td></td><td></td><td>290 min ≈ 4h50m</td></tr>
-        </tbody>
-      </table></div>
-      <p>That is under five hours a week, which is a load a full course schedule can absorb — and over an eight-week block it comes to roughly 39 hours. Compare it with the implicit plan behind "I'll do 300 problems": at a conservative 40 minutes each that is 200 hours, most of it spent re-solving patterns you already own. <strong>The pattern method is not merely more effective, it is about five times cheaper</strong>, and the cost difference is the entire reason it survives a semester.</p>
       <p class="callout">The honest test of readiness is not a solved count. It is whether you can be handed an unfamiliar problem in any of the ten patterns and name the pattern within two minutes, then implement its template without looking it up.</p>
-      <p>The rest of the search — which roles, which deadlines, and the sponsorship questions if you need them — is covered in the <a href="/guides/swe-internship-international-student.html">internship guide</a>, with the quant and trading variant on a different clock in the <a href="/guides/quant-internship-timeline.html">quant internship timeline</a>. The pipeline itself lives in <a href="/apply.html">Apply OS</a>, the projects you will be asked about are covered in the <a href="/guides/portfolio-that-gets-interviews.html">portfolio guide</a>, and unfamiliar terminology is defined in the <a href="/glossary.html">glossary</a>.</p>
+      <p>The rest of the search — which roles, which deadlines, and the sponsorship questions if you need them — is covered in the <a href="/guides/swe-internship-international-student.html">internship guide</a>, and the pipeline itself lives in <a href="/apply.html">Apply OS</a>.</p>
 
       <h2>Tools referenced in this guide</h2>
       <ul>
@@ -334,14 +169,12 @@ it forces you to fix what is broken instead of collecting more of it.</span>
       <h2>Quick answers</h2>
     </div>
     <div class="grid" style="margin-top:var(--s6)">
-      <article class="card faq-card"><h3>What are the main coding interview patterns?</h3><p>Two pointers, sliding window, binary search on the answer, BFS and DFS, topological sort, heap and top-k, intervals, dynamic programming, backtracking, and union-find. Most remaining interview problems are combinations of these, such as a BFS whose frontier is a heap or a binary search whose predicate runs a greedy check.</p></article>
-      <article class="card faq-card"><h3>Why is counting solved problems a bad metric?</h3><p>Because it does not distinguish between problems in patterns you already know and problems in the ones you do not. A large solved count with no per-pattern diagnosis commonly produces someone who still fails any problem phrased unfamiliarly.</p></article>
-      <article class="card faq-card"><h3>How do you identify which pattern a problem uses?</h3><p>Answer four questions before writing code: the input shape, what is being asked, the plausible complexity given the constraints, and the pattern name. Complexity does surprising work — if the constraints allow large inputs, an O(n^2) approach is not the intended one, which frequently identifies the pattern by itself.</p></article>
-      <article class="card faq-card"><h3>What do the input constraints tell you about the solution?</h3><p>They bound the complexity, which usually names the pattern. Roughly, n up to 12 permits factorial search, n up to 22 permits subset enumeration, n up to a few thousand permits quadratic work, and n in the millions demands linear or linearithmic. A huge value range paired with a small n is the standard signal to binary search the answer space rather than the input.</p></article>
-      <article class="card faq-card"><h3>What should a practice log record?</h3><p>The pattern tag, the outcome, and where the attempt broke — recognition, approach, implementation, or edge cases. Those four failure locations need different fixes: missing recognition needs exposure to more problem statements, while a broken implementation needs the template rehearsed.</p></article>
-      <article class="card faq-card"><h3>How does spaced repetition apply to interview prep?</h3><p>Re-attempt solved problems on an expanding schedule instead of only solving new ones: one day after a failure, three days after a hinted solve, a week after a slow unaided solve, three weeks after a fluent one. Because a problem in the one-day box generates about seven reviews a week, cap that box at roughly eight problems and refuse new material until something graduates.</p></article>
-      <article class="card faq-card"><h3>How much time per week does pattern-based prep take?</h3><p>About five hours if you split it into roughly 100 minutes of review, 50 minutes of recognition drills, 90 minutes of timed solves out loud, 30 minutes of template rehearsal, and 20 minutes of log review. Over an eight-week block that is around 39 hours, against roughly 200 hours for a 300-problem grind at 40 minutes each.</p></article>
-      <article class="card faq-card"><h3>How do you know when you are ready?</h3><p>When you can be handed an unfamiliar problem in any of the ten patterns, name the pattern within about two minutes, and implement its canonical template without looking it up. That is a different test from any solved-problem total, and it should be rehearsed out loud because the interview is verbal.</p></article>
+      <article class="card faq-card"><h3>What are the patterns?</h3><p>Two pointers, sliding window, binary search on answer, BFS/DFS, topological sort, heap/top-k, intervals, DP, backtracking, union-find.</p></article>
+      <article class="card faq-card"><h3>Why not count problems?</h3><p>A count cannot tell known patterns from unknown ones. Volume without diagnosis leaves you failing anything phrased unfamiliarly.</p></article>
+      <article class="card faq-card"><h3>How do I spot the pattern?</h3><p>Input shape, what is asked, plausible complexity, then name it. Constraints alone often rule out the wrong approach.</p></article>
+      <article class="card faq-card"><h3>What do I log?</h3><p>Pattern, outcome, and where it broke — recognition, approach, implementation, or edge cases. Each needs a different fix.</p></article>
+      <article class="card faq-card"><h3>How does spaced repetition help?</h3><p>Re-solve on expanding intervals: 1 day after a fail, 3 days after a hint, 1 week, 3 weeks. Leitner boxes, review before new problems.</p></article>
+      <article class="card faq-card"><h3>When am I ready?</h3><p>When an unfamiliar problem in any pattern gets named in two minutes and the template gets written without a lookup.</p></article>
     </div>
   </section>
 
@@ -354,10 +187,10 @@ it forces you to fix what is broken instead of collecting more of it.</span>
       <h2 id="related-h">Related guides</h2>
     </div>
     <div class="related__grid">
-      <a class="related__item" href="/guides/technical-interview-study-system.html"><strong>The schedule is the skill, not the problem count</strong><span>Volume without review fails. Here is the Leitner schedule, the review protocol, the timebox, and the stuck ladder.</span></a>
-      <a class="related__item" href="/guides/quant-internship-timeline.html"><strong>Three firm types, three calendars, and a lot of wrong dates</strong><span>Market makers, banks and funds run on three different calendars. Most deadlines people repeat belong to a different…</span></a>
       <a class="related__item" href="/guides/portfolio-that-gets-interviews.html"><strong>Shipped and reachable beats impressive-sounding</strong><span>Shipped and reachable beats impressive-sounding. What a reviewer checks in 60 seconds.</span></a>
-      <a class="related__item" href="/guides/technical-portfolio-8-seconds.html"><strong>The first pass is eight seconds, on a phone, by a non-engineer</strong><span>Before an engineer ever reads your code, a recruiter gives your link eight seconds on a phone. Build for that pass…</span></a>
+      <a class="related__item" href="/guides/ats-resume.html"><strong>What an ATS actually does to your resume</strong><span>What ATS software really does, what breaks parsing, and which rules are folklore.</span></a>
+      <a class="related__item" href="/guides/linkedin-profile-recruiters.html"><strong>Write the profile for how recruiters actually search</strong><span>How recruiters actually search, and what the first two lines have to do.</span></a>
+      <a class="related__item" href="/guides/scholarships-international-students.html"><strong>Eligibility first, essays second</strong><span>Where eligibility breaks, how the funding types differ, and how to run a real pipeline.</span></a>
     </div>
     <p class="related__more">Every guide is indexed on <a href="/guides.html">the guides hub</a>. Or put it to work in <a href="/hire.html">what I am open to for Summer 2027</a>.</p>
   </section>

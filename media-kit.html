@@ -2,14 +2,12 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="referrer" content="strict-origin-when-cross-origin">
-<meta http-equiv="Content-Security-Policy" content="object-src 'none'; base-uri 'self'">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <!-- tech:seo — managed block (SEO / social / structured data / perf / PWA) -->
 <link rel="preload" href="/css/site.css" as="style">
 <meta name="robots" content="index,follow,max-image-preview:large">
 <meta property="og:locale" content="en_US">
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://yusuf-gadelrab.github.io/"},{"@type":"ListItem","position":2,"name":"Media Kit","item":"https://yusuf-gadelrab.github.io/media-kit.html"}]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://yusuf-gadelrab.github.io/"},{"@type":"ListItem","position":2,"name":"Yusuf Gadelrab","item":"https://yusuf-gadelrab.github.io/media-kit.html"}]}</script>
 <link rel="manifest" href="/manifest.webmanifest">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
@@ -90,39 +88,6 @@
     border-left:2px solid var(--gold);background:rgba(212,175,55,.05);
     color:var(--ink);font-size:var(--t-small);max-width:var(--maxw-prose)}
 
-  /* One primary action per view. Secondary routes are quiet text links so the
-     gold button is never competing with two other gold-weight things. */
-  .alt-links{display:flex;flex-wrap:wrap;gap:var(--s2) var(--s5);margin-top:var(--s4);
-    font-size:var(--t-small);color:var(--muted)}
-  .alt-links a{color:var(--ink);text-decoration:underline;
-    text-decoration-color:var(--line);text-underline-offset:3px}
-  .alt-links a:hover{color:var(--gold-2)}
-
-  /* Objection cards — same numbered "mk" pattern as hire.html's "before you email". */
-  .next{display:grid;gap:var(--s5);grid-template-columns:repeat(auto-fit,minmax(min(260px,100%),1fr));
-    margin-top:var(--s6)}
-  .next div{border:1px solid var(--line-soft);border-radius:var(--radius-lg);padding:var(--s5)}
-  .next .mk{font-family:var(--display-pro);font-size:11px;letter-spacing:.12em;text-transform:uppercase;
-    color:var(--gold-2);display:block;margin-bottom:var(--s2)}
-  .next p{color:var(--muted);font-size:var(--t-small);margin:0}
-  .next b{color:var(--ink)}
-
-  /* Visible FAQ cards — mirrors the FAQPage JSON-LD in <head> verbatim. */
-  .qa{padding:var(--s5)}
-  .qa h3{font-size:var(--t-h3);margin:0 0 var(--s3)}
-  .qa p{color:var(--muted);font-size:var(--t-small);margin:0}
-  .qa a{color:var(--gold-2)}
-
-  /* Quiet capture rail — the fallback for a brand not ready to book today.
-     Deliberately smaller and ghost-styled so it never competes with the
-     primary gold booking CTA. */
-  form.mini{display:flex;gap:8px;flex-wrap:wrap;max-width:380px;margin:var(--s4) auto 0}
-  form.mini input{flex:1 1 190px;min-width:0;background:var(--panel2);border:1px solid var(--line);
-    border-radius:var(--radius);color:var(--bone);padding:11px 12px;font-family:var(--body-font);font-size:13px}
-  form.mini input:focus{border-color:var(--gold)}
-  form.mini input:focus-visible{outline:2px solid var(--gold-2);outline-offset:2px}
-  .offer-note{margin-top:9px;font-size:11px;color:var(--faint)}
-
   /* Collaboration-format cards — equal heights, bottom-pinned CTA. No pricing lives here. */
   .collab-card{display:flex;flex-direction:column;text-align:center;position:relative}
   .collab-card--featured{border-color:var(--line);
@@ -135,7 +100,7 @@
   .collab-card ul{list-style:none;margin:var(--s4) 0 var(--s5);text-align:left;flex:1}
   .collab-card li{padding:4px 0 4px 24px;position:relative;font-size:var(--t-small)}
   .collab-card li::before{content:"✓";position:absolute;left:0;color:var(--gold-2);font-weight:700}
-  .collab-card .alt-links{margin-top:auto;justify-content:center}
+  .collab-card .btn{margin-top:auto}
   .collab-note{color:var(--muted);font-size:var(--t-small);text-align:center;margin-top:var(--s4)}
 
   /* Lightbox — vanilla, no deps. Shared pattern with modeling.html. */
@@ -179,11 +144,10 @@
   /* The reveal observer below stamps `.in` (not the system's `.is-in`), so map it. */
   .reveal.in{opacity:1;transform:none}
 </style>
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"ProfilePage","mainEntity":{"@id":"https://yusuf-gadelrab.github.io/#person"},"image":[{"@type":"ImageObject","contentUrl":"https://yusuf-gadelrab.github.io/img/yusuf-headshot.jpg","caption":"Studio-style headshot, suit, gold frame border","width":700,"height":749},{"@type":"ImageObject","contentUrl":"https://yusuf-gadelrab.github.io/img/yusuf-candid.jpg","caption":"Natural-light candid, unretouched","width":825,"height":1100}],"@id":"https://yusuf-gadelrab.github.io/media-kit.html#webpage","url":"https://yusuf-gadelrab.github.io/media-kit.html","inLanguage":"en","isPartOf":{"@id":"https://yusuf-gadelrab.github.io/#website"}}</script>
-
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"ProfilePage","mainEntity":{"@id":"https://yusuf-gadelrab.github.io/#person"},"image":[{"@type":"ImageObject","contentUrl":"https://yusuf-gadelrab.github.io/img/yusuf-headshot.jpg","caption":"Studio-style headshot, suit, gold frame border","width":700,"height":749},{"@type":"ImageObject","contentUrl":"https://yusuf-gadelrab.github.io/img/yusuf-candid.jpg","caption":"Natural-light candid, unretouched","width":825,"height":1100}]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Person","@id":"https://yusuf-gadelrab.github.io/#person","name":"Yusuf Gadelrab","url":"https://yusuf-gadelrab.github.io/"}</script>
 <!-- geo:entity — canonical Person node, one entity across every page -->
 <link rel="alternate" type="text/plain" href="https://yusuf-gadelrab.github.io/llms-full.txt" title="Plain-text profile for language models">
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","@id":"https://yusuf-gadelrab.github.io/media-kit.html#faq","mainEntity":[{"@type":"Question","name":"Who is this, and is the audience real?","acceptedAnswer":{"@type":"Answer","text":"The 650K+ Instagram number is what the account shows publicly — check it yourself. What's independently checkable beyond that: 705 LinkedIn followers and 500+ connections, two co-authored SIGCSE Technical Symposium 2026 papers out of the SJSU CSEd Research Lab, 52 published guides, and 3 shipped installable apps, all linked and dated. This isn't a persona built for brand deals."}},{"@type":"Question","name":"What exactly would I get, and when?","acceptedAnswer":{"@type":"Answer","text":"One of three fixed formats: a Concept Reel (one scripted, filmed and edited piece with organic usage rights), a 3-Reel Story Arc (a multi-week before/after series), or a 30-Day Feature (eight reels and daily-routine integration across a full month, with a bio link for the run). Turnaround is scoped to your timeline in the first reply — tell me your launch date and I'll say if it's realistic before anything is agreed. Custom challenges get scoped the same way."}},{"@type":"Question","name":"What does it cost?","acceptedAnswer":{"@type":"Answer","text":"Rates on request. I'll give you a number in the first reply rather than after a discovery call — no agency markup, no funnel, you deal with me directly."}},{"@type":"Question","name":"How fast do you reply, and do I need to get on a call?","acceptedAnswer":{"@type":"Answer","text":"Within 24 hours, and no call is required — email is enough to get a scope and, once we're aligned, a rate."}},{"@type":"Question","name":"Can I set a custom challenge instead of picking a format?","acceptedAnswer":{"@type":"Answer","text":"Yes — name it: a fitness test, a 30-day product protocol, a torture test. I'll scope it to your brief the same way as the three formats above."}}]}</script>
 </head>
 <body class="pro">
 
@@ -194,32 +158,24 @@
   <div class="site-nav__links"><a href="/">Work</a><a href="/resume.html">Resume</a><a href="/guides.html">Guides</a><a href="/store.html">Store</a><a href="/apps.html">Apps</a><a href="/kxngsef.html">KXNG SEF</a><a href="/hire.html">Hire</a><a href="/media-kit.html" aria-current="page">Media Kit</a></div>
 </nav>
 
-<nav class="crumbs" aria-label="Breadcrumb">
-  <ol>
-    <li><a href="/">Home</a></li>
-    <li><span aria-current="page">Media Kit</span></li>
-  </ol>
-</nav>
-
 <main id="main">
 
   <header class="section hero">
     <img class="page-lion" src="/img/brand/lion-mark.svg" alt="" width="46" height="46" decoding="async">
     <p class="eyebrow">Creator Media Kit</p>
     <button type="button" class="zoomable" style="border:0;background:none;padding:0" data-lb-index="0" aria-label="View headshot full size">
-      <img class="portrait" src="img/yusuf-headshot.webp" alt="Yusuf Gadelrab, professional headshot in a suit with a gold frame border" width="700" height="749" fetchpriority="high" decoding="async">
+      <picture>
+        <source srcset="img/yusuf-headshot.webp" type="image/webp">
+        <img class="portrait" src="img/yusuf-headshot.jpg" alt="Yusuf Gadelrab, professional headshot in a suit with a gold frame border" width="700" height="749" fetchpriority="high" decoding="async">
+      </picture>
     </button>
     <h1>Yusuf Gadelrab</h1>
-    <p class="lead" style="margin-top:var(--s3)"><b>A media kit for brands evaluating a collaboration with @_kxng_sef</b> — fitness-transformation and student-athlete-builder content, posted daily, for a college-age and young-professional audience mid-transformation themselves. Three fixed collaboration formats below, or name your own challenge.</p>
+    <p class="lead" style="margin-top:var(--s3)">Fitness transformation × college life × tech builder — documented daily on camera. Set any challenge; I'll turn it into content.</p>
     <div class="hero-cta">
-      <a class="btn btn-gold" href="mailto:yusuf.gadelrab06@gmail.com?subject=Partnership%20Inquiry%20-%20%5BYour%20Brand%5D&amp;body=Role%2Fcampaign%3A%20%0ATimeline%3A%20%0ADeliverables%20you%20have%20in%20mind%3A%20">Start a partnership inquiry →</a>
+      <a class="btn btn-gold" href="#collab">Partnership options ↓</a>
+      <a class="btn btn-ghost" href="https://www.instagram.com/_kxng_sef" target="_blank" rel="noopener">@_kxng_sef</a>
     </div>
-    <p class="muted" style="font-size:var(--t-micro);margin-top:var(--s3)">Opens a pre-filled email · replies within 24 hours · you deal with me directly, no agency</p>
-    <p class="alt-links" style="justify-content:center">
-      <a href="#collab">See the 3 collaboration formats</a>
-      <a href="https://www.instagram.com/_kxng_sef" target="_blank" rel="noopener">@_kxng_sef on Instagram</a>
-      <a href="#faq">FAQ</a>
-    </p>
+    <span class="micro">Three collaboration formats · reach me by email · replies within 24 hours</span>
 
     <div class="stats-grid">
       <div class="stat">
@@ -231,8 +187,8 @@
         <span class="stat__label">Documented transformation (260→200)</span>
       </div>
       <div class="stat">
-        <span class="stat__value"><span data-count="705" data-suffix="">705</span></span>
-        <span class="stat__label">LinkedIn followers · 500+ connections</span>
+        <span class="stat__value"><span data-count="700" data-suffix="+">700+</span></span>
+        <span class="stat__label">LinkedIn followers · active weekly</span>
       </div>
       <div class="stat">
         <span class="stat__value"><span data-count="7" data-suffix="/wk">7/wk</span></span>
@@ -249,7 +205,7 @@
     <div class="story-row">
       <div class="story-copy">
         <p>I'm Yusuf — 20, computer-science student at <strong>San Jose State</strong>, former football team captain (<strong>league MVP</strong>) and wrestler. I cut from <strong>260 lb to 200 lb</strong> while adding muscle, and documented every step on camera.</p>
-        <p>My content just crossed <strong>650,000+ views in the last 30 days</strong> and it's compounding — because I treat content like an engineering project: consistent, measurable, shipped on schedule. I'm also a co-author on <a href="https://doi.org/10.1145/3770761.3777339" class="gold" target="_blank" rel="noopener">two SIGCSE Technical Symposium 2026 papers</a> out of the SJSU CSEd Research Lab, and a full-stack developer — so the "student athlete × builder" audience is genuinely mine, not a persona.</p>
+        <p>My content just crossed <strong>650,000+ views in the last 30 days</strong> and it's compounding — because I treat content like an engineering project: consistent, measurable, shipped on schedule. I'm also a <a href="https://doi.org/10.1145/3770761.3777339" class="gold" target="_blank" rel="noopener">published researcher (SIGCSE 2026)</a> and full-stack developer, so the "student athlete × builder" audience is genuinely mine.</p>
       </div>
       <div class="story-ba" role="img" aria-label="Weight transformation: 260 pounds before, 200 pounds after">
         <div class="ba">
@@ -268,9 +224,9 @@
       <h2>Who's on the other side of the screen</h2>
     </div>
     <div class="grid">
-      <article class="card"><h3>Who</h3><p class="muted"><b>College-age and young professionals, majority male, US-based</b> — people mid-transformation themselves.</p></article>
-      <article class="card"><h3>Where</h3><p class="muted"><b>Instagram (@_kxng_sef) is home base</b>, amplified on LinkedIn where I post consistently to 705 followers and 500+ connections.</p></article>
-      <article class="card"><h3>Why they follow</h3><p class="muted"><b>Real before/after proof, no-excuses training, and honest product takes</b> — not polished ad reads.</p></article>
+      <article class="card"><h3>Who</h3><p class="muted">College-age and young professionals, majority male, US-based — people mid-transformation themselves.</p></article>
+      <article class="card"><h3>Where</h3><p class="muted">Instagram (@_kxng_sef) as home base, amplified on LinkedIn where I post consistently to 700+ followers.</p></article>
+      <article class="card"><h3>Why they follow</h3><p class="muted">Real before/after proof, no-excuses training, and honest product takes — not polished ad reads.</p></article>
     </div>
   </section>
 
@@ -278,7 +234,6 @@
     <div class="sec-head">
       <p class="eyebrow">What I Deliver</p>
       <h2>Formats that already work on my grid</h2>
-      <p class="muted" style="max-width:var(--maxw-prose);margin-top:var(--s3)"><b>Pick a fixed format or name your own challenge — every piece ships as native content, not a scripted ad read.</b></p>
     </div>
     <div class="grid">
       <article class="card"><h3>Reels</h3><p class="muted">Product-in-routine, training clips, transformation storytelling — native, not scripted.</p></article>
@@ -316,7 +271,8 @@
           <li>Your product inside a real routine</li>
           <li>Organic usage rights included</li>
         </ul>
-        <p class="alt-links"><a href="mailto:yusuf.gadelrab06@gmail.com?subject=Partnership%20Inquiry%20-%20Concept%20Reel&amp;body=Role%2Fcampaign%3A%20Concept%20Reel%20for%20%5BBrand%5D%0ATimeline%3A%20%0ADeliverables%20you%20have%20in%20mind%3A%20">Ask about this format →</a></p>
+        <a class="btn btn-ghost" href="mailto:yusuf.gadelrab06@gmail.com?subject=Collab%20Inquiry%20-%20Concept%20Reel">Ask about this →</a>
+        <span class="micro">By email · no call required</span>
       </article>
       <article class="card collab-card collab-card--featured">
         <span class="collab-card__badge">★ Most requested</span>
@@ -326,7 +282,8 @@
           <li>Before/after receipts included</li>
           <li>Every piece echoed to LinkedIn</li>
         </ul>
-        <p class="alt-links"><a href="mailto:yusuf.gadelrab06@gmail.com?subject=Partnership%20Inquiry%20-%203-Reel%20Story%20Arc&amp;body=Role%2Fcampaign%3A%203-Reel%20Story%20Arc%20for%20%5BBrand%5D%0ATimeline%3A%20%0ADeliverables%20you%20have%20in%20mind%3A%20">Ask about this format →</a></p>
+        <a class="btn btn-gold" href="mailto:yusuf.gadelrab06@gmail.com?subject=Collab%20Inquiry%20-%203-Reel%20Story%20Arc">Ask about this →</a>
+        <span class="micro">Full arc, one continuous thread</span>
       </article>
       <article class="card collab-card">
         <h3>30-Day Feature</h3>
@@ -335,79 +292,12 @@
           <li>Daily-routine integration + stories</li>
           <li>Link in bio for the full month</li>
         </ul>
-        <p class="alt-links"><a href="mailto:yusuf.gadelrab06@gmail.com?subject=Partnership%20Inquiry%20-%2030-Day%20Feature&amp;body=Role%2Fcampaign%3A%2030-Day%20Feature%20for%20%5BBrand%5D%0ATimeline%3A%20%0ADeliverables%20you%20have%20in%20mind%3A%20">Ask about this format →</a></p>
+        <a class="btn btn-ghost" href="mailto:yusuf.gadelrab06@gmail.com?subject=Collab%20Inquiry%20-%2030-Day%20Feature">Ask about this →</a>
+        <span class="micro">One feature slot at a time</span>
       </article>
     </div>
     <p class="collab-note">Custom challenge? Name it — fitness test, 30-day protocol, product torture test. I'll scope it to your brief.</p>
     <p class="collab-note">I keep bandwidth open for a small number of brand partnerships at a time alongside a full-time CS degree — quality over volume.</p>
-  </section>
-
-  <section class="section section--tight reveal" id="objections">
-    <div class="sec-head">
-      <p class="eyebrow">Before You Book</p>
-      <h2>The three things brands want to know</h2>
-    </div>
-    <div class="next">
-      <div>
-        <span class="mk">01 · Who is this, and is the audience real?</span>
-        <p><b>The professional record is public and independently checkable, even where platform numbers can't be third-party audited.</b> 705 LinkedIn followers, 500+ connections, two co-authored SIGCSE Technical Symposium 2026 papers out of the SJSU CSEd Research Lab, 52 published guides, and 3 shipped installable apps — all linked, all dated, none of it built for a pitch deck.</p>
-      </div>
-      <div>
-        <span class="mk">02 · What exactly would I get, and when?</span>
-        <p><b>One of three fixed formats, scoped to your timeline in the first reply.</b> A Concept Reel is one scripted, filmed and edited piece with usage rights included. The 3-Reel Story Arc runs across several weeks so a before/after has room to show. The 30-Day Feature is eight reels and daily-routine integration across a full month. Name a custom challenge instead and it gets scoped the same way.</p>
-      </div>
-      <div>
-        <span class="mk">03 · What does it cost?</span>
-        <p><b>Rates on request — I'll give you a number in the first reply, not after a call.</b> No discovery-call funnel, no agency markup: send the brief, get a reply from me directly.</p>
-      </div>
-    </div>
-    <div class="row" style="justify-content:center;margin-top:var(--s6)">
-      <a class="btn btn-gold" href="mailto:yusuf.gadelrab06@gmail.com?subject=Partnership%20Inquiry%20-%20%5BYour%20Brand%5D&amp;body=Role%2Fcampaign%3A%20%0ATimeline%3A%20%0ADeliverables%20you%20have%20in%20mind%3A%20">Start a partnership inquiry →</a>
-    </div>
-  </section>
-
-  <!-- geo:faq-visible — mirrors the FAQPage structured data in <head> verbatim -->
-  <section class="section section--tight reveal" id="faq">
-    <div class="sec-head">
-      <p class="eyebrow">FAQ</p>
-      <h2>Common questions</h2>
-    </div>
-    <div class="grid">
-      <article class="card qa">
-        <h3>Who is this, and is the audience real?</h3>
-        <p>The 650K+ Instagram number is what the account shows publicly — check it yourself. What's independently checkable beyond that: 705 LinkedIn followers and 500+ connections, two co-authored SIGCSE Technical Symposium 2026 papers out of the SJSU CSEd Research Lab, 52 published guides, and 3 shipped installable apps, all linked and dated. This isn't a persona built for brand deals.</p>
-      </article>
-      <article class="card qa">
-        <h3>What exactly would I get, and when?</h3>
-        <p>One of three fixed formats: a Concept Reel (one scripted, filmed and edited piece with organic usage rights), a 3-Reel Story Arc (a multi-week before/after series), or a 30-Day Feature (eight reels and daily-routine integration across a full month, with a bio link for the run). Turnaround is scoped to your timeline in the first reply — tell me your launch date and I'll say if it's realistic before anything is agreed. Custom challenges get scoped the same way.</p>
-      </article>
-      <article class="card qa">
-        <h3>What does it cost?</h3>
-        <p>Rates on request. I'll give you a number in the first reply rather than after a discovery call — no agency markup, no funnel, you deal with me directly.</p>
-      </article>
-      <article class="card qa">
-        <h3>How fast do you reply, and do I need to get on a call?</h3>
-        <p>Within 24 hours, and no call is required — email is enough to get a scope and, once we're aligned, a rate.</p>
-      </article>
-      <article class="card qa">
-        <h3>Can I set a custom challenge instead of picking a format?</h3>
-        <p>Yes — name it: a fitness test, a 30-day product protocol, a torture test. I'll scope it to your brief the same way as the three formats above.</p>
-      </article>
-    </div>
-  </section>
-
-  <section class="section section--tight reveal">
-    <div class="card card--flat" style="max-width:520px;margin:0 auto;text-align:center;padding:var(--s6)">
-      <p class="eyebrow">Not Booking Today?</p>
-      <h2 style="margin:var(--s2) 0 var(--s3);font-size:var(--t-h3)">Get on the list instead</h2>
-      <p class="muted" style="font-size:var(--t-small);max-width:44ch;margin:0 auto">One email when a new partnership slot opens. No pitch, no spam.</p>
-      <form id="f-brand" novalidate class="mini" style="justify-content:center">
-        <label class="sr-only" for="e-brand">Your email address</label>
-        <input type="email" id="e-brand" placeholder="you@brand.com" autocomplete="email" required>
-        <button class="btn btn-ghost btn-sm" type="submit">Keep me posted</button>
-      </form>
-      <p class="offer-note" id="n-brand" style="text-align:center">One email when this opens. Nothing else, ever.</p>
-    </div>
   </section>
 
   <section class="section section--tight reveal">
@@ -415,7 +305,10 @@
       <div class="cta-row">
         <figure class="cta-photo">
           <button type="button" class="zoomable" style="border:0;background:none;padding:0;display:block" data-lb-index="1" aria-label="View candid photo full size">
-            <img src="img/yusuf-candid.webp" alt="Yusuf Gadelrab, casual selfie in a plant-filled atrium" width="825" height="1100" loading="lazy" decoding="async">
+            <picture>
+              <source srcset="img/yusuf-candid.webp" type="image/webp">
+              <img src="img/yusuf-candid.jpg" alt="Yusuf Gadelrab, casual selfie in a plant-filled atrium" width="825" height="1100" loading="lazy" decoding="async">
+            </picture>
           </button>
           <figcaption>Off camera — San Jose</figcaption>
         </figure>
@@ -423,7 +316,7 @@
           <p class="eyebrow">Collaborate</p>
           <h2>Let's build something</h2>
           <p>650K+ Instagram views in the last 30 days — your product in the next 30.</p>
-          <a class="btn btn-gold" href="mailto:yusuf.gadelrab06@gmail.com?subject=Partnership%20Inquiry%20-%20%5BYour%20Brand%5D&amp;body=Role%2Fcampaign%3A%20%0ATimeline%3A%20%0ADeliverables%20you%20have%20in%20mind%3A%20">Start a partnership inquiry →</a>
+          <a class="btn btn-gold" href="mailto:yusuf.gadelrab06@gmail.com?subject=Collab%20Inquiry%20-%20%5BYour%20Brand%5D&amp;body=Brand%3A%20%0AProduct%3A%20%0AFormat%20(reel%20%2F%20story%20arc%20%2F%20feature)%3A%20%0ATimeline%3A%20">Start a conversation →</a>
           <span class="micro">Replies within 24 hours · you deal with me directly — no agency</span>
           <div class="cta-links">
             <a href="https://www.instagram.com/_kxng_sef" target="_blank" rel="noopener">Instagram</a>
@@ -451,7 +344,6 @@
     <div><a href="mailto:yusuf.gadelrab06@gmail.com">yusuf.gadelrab06@gmail.com</a></div>
   </div>
   <div class="site-footer__links">
-    <a href="/faq.html">FAQ</a>
     <a href="/writing.html">Writing</a>
     <a href="/dispatch.html">Dispatch</a>
     <a href="/dira.html">DIRA</a>
@@ -525,13 +417,6 @@
   lb.addEventListener('click', e => { if (e.target === lb) close(); });
   document.addEventListener('keydown', e => { if (!lb.hidden && e.key === 'Escape') close(); });
 })();
-</script>
-<script src="/js/waitlist.js" defer></script>
-<script>
-addEventListener("DOMContentLoaded", function () {
-  if (!window.YGWaitlist) return;
-  YGWaitlist.attach("f-brand", "e-brand", "n-brand", "Brand & Sponsor Inbox");
-});
 </script>
 <script src="/js/site.js" defer></script>
 </body>

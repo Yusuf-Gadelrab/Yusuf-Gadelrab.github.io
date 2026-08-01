@@ -25,8 +25,8 @@
 <meta name="twitter:image" content="https://yusuf-gadelrab.github.io/og-card.png">
 <link rel="alternate" type="text/plain" href="https://yusuf-gadelrab.github.io/llms-full.txt" title="Plain-text profile for language models">
 
-<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"TechArticle","@id":"https://yusuf-gadelrab.github.io/guides/trading-journal.html#article","headline":"What to Log in a Trading Journal, and What to Ignore","name":"What to Log in a Trading Journal, and What to Ignore","description":"The fields that change behaviour in a trading journal — R-multiple, setup tag, mistake tag, MAE/MFE — and how to review without lying to yourself.","datePublished":"2026-07-29","dateModified":"2026-07-29","inLanguage":"en","author":{"@id":"https://yusuf-gadelrab.github.io/#person"},"publisher":{"@id":"https://yusuf-gadelrab.github.io/#person"},"about":["Trading journal","Trade review","Risk management"],"mainEntityOfPage":"https://yusuf-gadelrab.github.io/guides/trading-journal.html","isAccessibleForFree":true,"isPartOf":{"@id":"https://yusuf-gadelrab.github.io/#website"},"proficiencyLevel":"Beginner","hasPart":{"@id":"https://yusuf-gadelrab.github.io/guides/trading-journal.html#howto"}},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://yusuf-gadelrab.github.io/"},{"@type":"ListItem","position":2,"name":"Guides","item":"https://yusuf-gadelrab.github.io/guides.html"},{"@type":"ListItem","position":3,"name":"Trading Journal"}]},{"@type":"HowTo","@id":"https://yusuf-gadelrab.github.io/guides/trading-journal.html#howto","name":"How to run a weekly trading-journal review","description":"The fields that change behaviour in a trading journal — R-multiple, setup tag, mistake tag, MAE/MFE — and how to review without lying to yourself.","inLanguage":"en","isAccessibleForFree":true,"author":{"@id":"https://yusuf-gadelrab.github.io/#person"},"step":[{"@type":"HowToStep","position":1,"name":"Data quality first","text":"Data quality first. Every closed trade has a mistake tag, and every R × dollar-risk check reconciles. Fix that before reading a single number.","url":"https://yusuf-gadelrab.github.io/guides/trading-journal.html#howto"},{"@type":"HowToStep","position":2,"name":"Rank mistake tags by R lost for the trailing 20 trades","text":"Rank mistake tags by R lost for the trailing 20 trades. One line, no commentary.","url":"https://yusuf-gadelrab.github.io/guides/trading-journal.html#howto"},{"@type":"HowToStep","position":3,"name":"Compare planned versus actual risk percentage","text":"Compare planned versus actual risk percentage. Any trade over the rule gets named, regardless of outcome.","url":"https://yusuf-gadelrab.github.io/guides/trading-journal.html#howto"},{"@type":"HowToStep","position":4,"name":"Note the sample size of each setup and write 'insufficient' next to any","text":"Note the sample size of each setup and write 'insufficient' next to any under 30. That word is doing real work.","url":"https://yusuf-gadelrab.github.io/guides/trading-journal.html#howto"},{"@type":"HowToStep","position":5,"name":"Pick exactly one process change for the next 20 trades","text":"Pick exactly one process change for the next 20 trades. One. Two changes at once makes the result uninterpretable.","url":"https://yusuf-gadelrab.github.io/guides/trading-journal.html#howto"},{"@type":"HowToStep","position":6,"name":"Write one sentence, not one page","text":"Write one sentence, not one page. What changes next week and how you will know it worked.","url":"https://yusuf-gadelrab.github.io/guides/trading-journal.html#howto"}]}]}</script>
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","@id":"https://yusuf-gadelrab.github.io/guides/trading-journal.html#faq","mainEntity":[{"@type":"Question","name":"What should you log in a trading journal?","acceptedAnswer":{"@type":"Answer","text":"Six fields do most of the work: setup tag, planned risk in dollars (your 1R), entry, stop and exit prices, the resulting R-multiple, a mistake tag from a fixed short list, and maximum adverse and favourable excursion. Everything else is optional decoration."}},{"@type":"Question","name":"Why record trades in R instead of dollars?","acceptedAnswer":{"@type":"Answer","text":"Dollars mix idea quality with position size. R normalises for size, so a +2R trade is comparable whether you risked $50 or $500, which makes setups comparable across time and as the account grows."}},{"@type":"Question","name":"What are MAE and MFE?","acceptedAnswer":{"@type":"Answer","text":"Maximum adverse excursion is the worst unrealised loss during a trade; maximum favourable excursion is the best unrealised gain. Together they show whether stops are too tight, targets too far, or exits too early — high MFE with low realised R means you are leaving the edge on the table."}},{"@type":"Question","name":"How often should you review a trading journal?","acceptedAnswer":{"@type":"Answer","text":"Weekly for mistake tags and once every 30 or more trades per setup for expectancy. Reviewing expectancy weekly on a handful of trades produces noise-driven changes, which is worse than not reviewing at all."}},{"@type":"Question","name":"Why use mistake tags instead of written notes?","acceptedAnswer":{"@type":"Answer","text":"A fixed short list can be counted and ranked by dollars lost, so patterns surface after 50 trades. Free-text notes contain the same information but are never re-read in aggregate, so the pattern never appears."}},{"@type":"Question","name":"Is win rate a useful journal metric?","acceptedAnswer":{"@type":"Answer","text":"Only alongside reward-to-risk. Winning 70% of trades at +0.3R while losing 30% at -1R works out to -0.09R per trade, which is a losing system with a flattering win rate. Expectancy is the metric that decides, and it is why the highest-win-rate setup in a book is quite often the one that should be retired."}},{"@type":"Question","name":"How many trades before journal expectancy means anything?","acceptedAnswer":{"@type":"Answer","text":"It depends on the size of the edge you are trying to detect. With a typical R standard deviation of about 1.2, distinguishing a +0.35R edge from zero at 95% confidence needs about 46 trades, a +0.20R edge needs about 139, and a +0.10R edge needs about 554. Always report expectancy with its standard error attached rather than as a bare point estimate."}},{"@type":"Question","name":"What fields should a trading journal CSV have?","acceptedAnswer":{"@type":"Answer","text":"One row per closed trade with trade ID, open and close dates in ISO-8601, symbol, direction, setup tag, planned and actual entry, initial stop, exit, quantity, R per share, R-multiple, MAE and MFE in R, and a mistake tag from a fixed list. Store the initial stop rather than the current stop, keep enums lowercase, and avoid currency symbols so every numeric column stays numeric."}}]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"TechArticle","@id":"https://yusuf-gadelrab.github.io/guides/trading-journal.html#article","headline":"What to Log in a Trading Journal, and What to Ignore","name":"What to Log in a Trading Journal, and What to Ignore","description":"The fields that change behaviour in a trading journal — R-multiple, setup tag, mistake tag, MAE/MFE — and how to review without lying to yourself.","datePublished":"2026-07-29","dateModified":"2026-07-29","inLanguage":"en","author":{"@id":"https://yusuf-gadelrab.github.io/#person"},"publisher":{"@id":"https://yusuf-gadelrab.github.io/#person"},"about":["Trading journal","Trade review","Risk management"],"mainEntityOfPage":"https://yusuf-gadelrab.github.io/guides/trading-journal.html","isAccessibleForFree":true,"proficiencyLevel":"Beginner"},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://yusuf-gadelrab.github.io/"},{"@type":"ListItem","position":2,"name":"Guides","item":"https://yusuf-gadelrab.github.io/guides.html"},{"@type":"ListItem","position":3,"name":"Trading Journal"}]}]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","@id":"https://yusuf-gadelrab.github.io/guides/trading-journal.html#faq","mainEntity":[{"@type":"Question","name":"What should you log in a trading journal?","acceptedAnswer":{"@type":"Answer","text":"Six fields do most of the work: setup tag, planned risk in dollars (your 1R), entry, stop and exit prices, the resulting R-multiple, a mistake tag from a fixed short list, and maximum adverse and favourable excursion. Everything else is optional decoration."}},{"@type":"Question","name":"Why record trades in R instead of dollars?","acceptedAnswer":{"@type":"Answer","text":"Dollars mix idea quality with position size. R normalises for size, so a +2R trade is comparable whether you risked $50 or $500, which makes setups comparable across time and as the account grows."}},{"@type":"Question","name":"What are MAE and MFE?","acceptedAnswer":{"@type":"Answer","text":"Maximum adverse excursion is the worst unrealised loss during a trade; maximum favourable excursion is the best unrealised gain. Together they show whether stops are too tight, targets too far, or exits too early — high MFE with low realised R means you are leaving the edge on the table."}},{"@type":"Question","name":"How often should you review a trading journal?","acceptedAnswer":{"@type":"Answer","text":"Weekly for mistake tags and once every 30 or more trades per setup for expectancy. Reviewing expectancy weekly on a handful of trades produces noise-driven changes, which is worse than not reviewing at all."}},{"@type":"Question","name":"Why use mistake tags instead of written notes?","acceptedAnswer":{"@type":"Answer","text":"A fixed short list can be counted and ranked by dollars lost, so patterns surface after 50 trades. Free-text notes contain the same information but are never re-read in aggregate, so the pattern never appears."}},{"@type":"Question","name":"Is win rate a useful journal metric?","acceptedAnswer":{"@type":"Answer","text":"Only alongside reward-to-risk. Winning 70% of trades at +0.3R while losing 30% at -1R is -0.09R per trade — a losing system with a flattering win rate. Expectancy is the metric that decides."}}]}</script>
 
 <link rel="stylesheet" href="/css/site.css">
 <style>
@@ -50,16 +50,16 @@
     color:var(--muted);font-size:var(--t-small);margin:0 0 var(--s5)}
   .callout--warn{border-color:var(--gold-2)}
   .faq-card{padding:var(--s5)}
-  .faq-card h3{font-size:var(--t-h3);margin:0;line-height:1.3}
-  .faq-card p{color:var(--muted);font-size:var(--t-small);line-height:1.65;margin:var(--s3) 0 0}
+  .faq-card h3{font-size:var(--t-h3);margin:0}
+  .faq-card p{color:var(--muted);font-size:var(--t-small);margin:var(--s3) 0 0}
 </style>
 </head>
 <body class="pro">
 
 <a class="skip-link" href="#main">Skip to content</a>
 
-<nav class="site-nav" aria-label="Primary">
-  <a class="site-nav__brand" href="/"><img class="site-nav__lion" src="/img/brand/lion-mark.svg" alt="" width="34" height="34" decoding="async"><span>YUSUF GADELRAB</span></a>
+<nav class="site-nav">
+  <a class="site-nav__brand" href="/"><img class="site-nav__lion" src="/img/brand/lion-mark.svg" alt="" width="34" height="34"><span>YUSUF GADELRAB</span></a>
   <div class="site-nav__links">
     <a href="/">Work</a>
     <a href="/guides.html">Guides</a>
@@ -88,198 +88,44 @@
 
   <section class="section section--tight">
     <div class="prose">
-      <h2>The test a journal has to pass</h2>
-      <p>A journal is useful if, and only if, it can answer this question: <strong>which of the things I do loses money, and how much.</strong> Everything in the schema below exists to make that query computable. Everything not in the schema is there because it felt like work.</p>
-      <p>That framing kills a lot of popular journal features immediately. Screenshots cannot be aggregated. Emotional narration cannot be ranked. A field you fill in but never group by is a field you should delete. The bar for including anything is that you can name the sentence it will let you write at the end of the quarter.</p>
-      <h2>The full field schema</h2>
-      <p>Fourteen fields, of which six are computed rather than typed. The type column matters more than it looks — anything stored as free text is a field you cannot sort, filter, or average, which means it is a field that will never change your behaviour.</p>
-      <div class="tblwrap" tabindex="0" role="group" aria-label="Table, scrolls horizontally"><table class="tbl">
-        <thead><tr><th scope="col">Field</th><th scope="col">Type</th><th scope="col">Entered or computed</th><th scope="col">Why it exists</th></tr></thead>
+      <h2>The minimum viable journal</h2>
+      <p>Six fields per trade will out-perform a page of prose, because they can be aggregated:</p>
+      <div class="tblwrap"><table class="tbl">
+        <thead><tr><th>Field</th><th>Why it earns its place</th></tr></thead>
         <tbody>
-          <tr><td>Trade ID</td><td>Integer</td><td>Auto</td><td>Stable key for linking scale-ins, partial exits, and screenshots to one trade.</td></tr>
-          <tr><td>Date opened / closed</td><td>Date</td><td>Entered</td><td>Lets you group by regime, by month, and by day of week. Also the only way to measure holding period.</td></tr>
-          <tr><td>Symbol</td><td>Text</td><td>Entered</td><td>Cheap, and it is what lets you find the correlated-cluster problem later.</td></tr>
-          <tr><td>Direction</td><td>Enum: long / short</td><td>Entered</td><td>Short expectancy is usually worse than long expectancy and almost nobody separates them.</td></tr>
-          <tr><td>Setup tag</td><td>Enum, fixed list</td><td>Entered</td><td>The single most important field. Expectancy per setup is the whole point; expectancy per account tells you nothing actionable.</td></tr>
-          <tr><td>Planned entry</td><td>Decimal</td><td>Entered</td><td>Distinguishes the trade you intended from the trade you took. The gap between the two is a mistake tag.</td></tr>
-          <tr><td>Actual entry</td><td>Decimal</td><td>Entered</td><td>Feeds R and, differenced against planned entry, measures slippage and chasing.</td></tr>
-          <tr><td>Initial stop</td><td>Decimal</td><td>Entered before entry</td><td>Defines 1R. Entered before the fill or it is fiction.</td></tr>
-          <tr><td>Exit</td><td>Decimal</td><td>Entered</td><td>Weighted average if you scaled out.</td></tr>
-          <tr><td>Shares / contracts</td><td>Integer</td><td>Entered</td><td>Turns R into dollars and lets you check size against your own rule.</td></tr>
-          <tr><td>1R per share</td><td>Decimal</td><td>Computed</td><td>entry − stop. The unit everything else is denominated in.</td></tr>
-          <tr><td>R-multiple result</td><td>Decimal</td><td>Computed</td><td>The output the whole system exists to produce.</td></tr>
-          <tr><td>MAE / MFE in R</td><td>Decimal ×2</td><td>Entered or fed</td><td>Maximum adverse and favourable excursion. Diagnoses stops and exits separately.</td></tr>
-          <tr><td>Mistake tag</td><td>Enum, fixed list</td><td>Entered</td><td>One value from a short controlled list, including an explicit 'none'.</td></tr>
+          <tr><td>Setup tag</td><td>The only way to compute expectancy per setup instead of per account.</td></tr>
+          <tr><td>Planned risk (1R in dollars)</td><td>Makes every result comparable. Without it there are no R-multiples.</td></tr>
+          <tr><td>Entry, stop, exit</td><td>Lets the journal compute R rather than trusting your memory of it.</td></tr>
+          <tr><td>R-multiple result</td><td>The output that everything else exists to produce.</td></tr>
+          <tr><td>Mistake tag</td><td>One of a fixed, short list. Free text hides patterns; a fixed list surfaces them.</td></tr>
+          <tr><td>MAE / MFE</td><td>Maximum adverse and favourable excursion — tells you whether your stops and targets are in the wrong place.</td></tr>
         </tbody>
       </table></div>
-      <p>Two optional fields earn their place once you have a few hundred trades: <strong>planned risk percentage</strong> at entry, which lets you audit whether you actually followed your own <a href="/guides/position-sizing-per-trade.html">position sizing rule</a>, and <strong>market regime</strong> as a coarse enum, which lets you check whether a setup only works in one environment.</p>
-      <h2>A completed row, worked</h2>
-      <p>One real-shaped trade, filled out end to end, with every computed field shown as arithmetic rather than as a result:</p>
-      <span class="formula" tabindex="0" role="group" aria-label="Formula, scrolls horizontally">Symbol      NVDA          Direction   long
-Setup       AVWAP reclaim (earnings anchor)
-Planned in  48.00         Actual in   48.00
-Initial stop 45.60        Exit        53.28
-Shares      125
-
-Computed:
-  1R per share = 48.00 − 45.60        = 2.40
-  Dollar risk  = 125 × 2.40           = 300.00
-  Gain/share   = 53.28 − 48.00        = 5.28
-  R-multiple   = 5.28 ÷ 2.40          = +2.20R
-  Dollar P/L   = 125 × 5.28           = +660.00
-  Check        = 2.20R × 300.00       = +660.00   OK
-
-  MAE  −0.55R   (dipped to 46.68 before working)
-  MFE  +2.45R   (tagged 53.88 before the exit)
-  Mistake tag   none</span>
-      <p>Note the check line. R × dollar risk must equal the dollar P/L, and if it does not, one of your inputs is wrong — usually the stop was moved and never re-recorded. Build that assertion into whatever tool you use. It catches the most common data-quality failure in a trading journal, which is a stop that quietly changed after entry.</p>
       <h2>Why R, not dollars</h2>
-      <p>Dollars mix two different questions — was the idea good, and was the size right — into one number. R separates them. A +2R trade is a +2R trade whether you risked $50 or $500, so setups become comparable across account sizes, across instruments, and across time as the account grows.</p>
-      <span class="formula" tabindex="0" role="group" aria-label="Formula, scrolls horizontally">R-multiple = (exit − entry) ÷ (entry − stop)          long
-R-multiple = (entry − exit) ÷ (stop − entry)          short
-
-Expectancy  = Σ R ÷ number of trades
-            = (win rate × avg win R) − (loss rate × avg loss R)</span>
-      <p>The arithmetic behind sizing, expectancy, and break-even win rates is in the <a href="/guides/r-multiple-expectancy.html">R-multiple guide</a>, and it is worth reading before you design the schema, because R is what makes the schema aggregatable at all.</p>
-      <h2>Per-setup expectancy, computed from a sample</h2>
-      <p>Here is why the setup tag is non-negotiable. Take 120 closed trades across three setups. The figures below are an illustrative worked example, not a record of any account:</p>
-      <div class="tblwrap" tabindex="0" role="group" aria-label="Table, scrolls horizontally"><table class="tbl">
-        <thead><tr><th scope="col">Setup</th><th scope="col">Trades</th><th scope="col">Wins</th><th scope="col">Avg win</th><th scope="col">Losses</th><th scope="col">Avg loss</th><th scope="col">Total R</th><th scope="col">Expectancy</th></tr></thead>
-        <tbody>
-          <tr><td>AVWAP reclaim</td><td>46</td><td>20</td><td>+1.90R</td><td>26</td><td>−0.85R</td><td>+15.90R</td><td><strong>+0.346R</strong></td></tr>
-          <tr><td>Breakout continuation</td><td>44</td><td>15</td><td>+2.40R</td><td>29</td><td>−0.95R</td><td>+8.45R</td><td>+0.192R</td></tr>
-          <tr><td>Mean reversion</td><td>30</td><td>21</td><td>+0.55R</td><td>9</td><td>−1.40R</td><td>−1.05R</td><td><strong>−0.035R</strong></td></tr>
-          <tr><td>All trades</td><td>120</td><td>56</td><td>—</td><td>64</td><td>—</td><td>+23.30R</td><td>+0.194R</td></tr>
-        </tbody>
-      </table></div>
-      <span class="formula" tabindex="0" role="group" aria-label="Formula, scrolls horizontally">AVWAP:  (20 × 1.90) + (26 × −0.85) = 38.00 − 22.10 = +15.90R
-        15.90 ÷ 46 = +0.346R per trade
-
-Breakout: (15 × 2.40) + (29 × −0.95) = 36.00 − 27.55 = +8.45R
-        8.45 ÷ 44 = +0.192R per trade
-
-Mean rev: (21 × 0.55) + (9 × −1.40) = 11.55 − 12.60 = −1.05R
-        −1.05 ÷ 30 = −0.035R per trade
-
-Whole account: 23.30 ÷ 120 = +0.194R per trade
-
-Drop mean reversion:
-        24.35 ÷ 90 = +0.271R per trade   (+39% on the survivors)</span>
-      <p>The account-level number, +0.194R, is fine. It is also useless, because it is an average of a good setup, a mediocre one, and a losing one. The mean-reversion setup has the <em>highest win rate in the book</em> at 70% and is the only one losing money — exactly the trap a win-rate-headline journal walks into. Retiring it lifts expectancy on the remaining trades by 39% without learning a single new thing about the market.</p>
-      <h2>Sample size, with the arithmetic</h2>
-      <p>Before acting on any of those numbers, check whether they are real. Expectancy is a sample mean, so it carries a standard error of σ_R ÷ √N, where σ_R is the standard deviation of your R column. For a typical swing book σ_R lands around 1.2R. Applying that to the +0.346R AVWAP figure:</p>
-      <div class="tblwrap" tabindex="0" role="group" aria-label="Table, scrolls horizontally"><table class="tbl">
-        <thead><tr><th scope="col">Closed trades</th><th scope="col">Standard error</th><th scope="col">95% CI on +0.346R</th><th scope="col">What you may conclude</th></tr></thead>
-        <tbody>
-          <tr><td>10</td><td>0.380</td><td>−0.399 to +1.089</td><td>Nothing at all.</td></tr>
-          <tr><td>30</td><td>0.219</td><td>−0.084 to +0.774</td><td>Still cannot rule out zero.</td></tr>
-          <tr><td>50</td><td>0.170</td><td>+0.012 to +0.678</td><td>Barely positive. Do not resize on this.</td></tr>
-          <tr><td>100</td><td>0.120</td><td>+0.110 to +0.580</td><td>Probably a real edge, magnitude unknown.</td></tr>
-          <tr><td>200</td><td>0.085</td><td>+0.179 to +0.511</td><td>Usable for sizing decisions.</td></tr>
-          <tr><td>400</td><td>0.060</td><td>+0.227 to +0.463</td><td>Tight enough to act on confidently.</td></tr>
-        </tbody>
-      </table></div>
-      <p>Turn it around and the guidance gets sharper. The number of trades needed to distinguish an edge of size E from zero at 95% confidence is N = (1.96 × σ_R ÷ E)²:</p>
-      <span class="formula" tabindex="0" role="group" aria-label="Formula, scrolls horizontally">σ_R = 1.2
-
-  E = +0.35R  →  N = (1.96 × 1.2 ÷ 0.35)² =   46 trades
-  E = +0.20R  →  N = (1.96 × 1.2 ÷ 0.20)² =  139 trades
-  E = +0.10R  →  N = (1.96 × 1.2 ÷ 0.10)² =  554 trades
-  E = +0.05R  →  N = (1.96 × 1.2 ÷ 0.05)² = 2213 trades</span>
-      <p>Small edges need enormous samples. This is not an abstraction — it is why the only setup that survived my own <a href="/guides/walk-forward-backtest.html">walk-forward testing</a> needed 4,933 trades across a 129-symbol, 10-year universe to produce a defensible interval, and why the honest read on that result is still that it is not a validated edge. A discretionary trader taking three trades a week reaches 139 trades in about eleven months. <strong>Plan your review cadence around that arithmetic, not around the calendar.</strong></p>
-      <h2>Mistake tags: a taxonomy that stays countable</h2>
-      <p>The rule is that the list is closed. Adding a new tag mid-quarter breaks every historical comparison, so define them once, define them tightly enough that you would tag the same trade the same way twice, and include an explicit <strong>none</strong> so that leaving the field blank is always a data error rather than a judgement.</p>
-      <div class="tblwrap" tabindex="0" role="group" aria-label="Table, scrolls horizontally"><table class="tbl">
-        <thead><tr><th scope="col">Tag</th><th scope="col">Definition (the test you apply)</th><th scope="col">Typical cause</th></tr></thead>
-        <tbody>
-          <tr><td>chased entry</td><td>Actual entry worse than planned entry by more than 0.2R.</td><td>Fear of missing the move; no limit order.</td></tr>
-          <tr><td>moved stop</td><td>Stop widened after entry, in any amount, for any reason.</td><td>Refusing to take the planned loss.</td></tr>
-          <tr><td>oversized</td><td>Dollar risk exceeded the planned risk percentage by more than 25%.</td><td>Conviction override; arithmetic done in your head.</td></tr>
-          <tr><td>no setup</td><td>The entry does not satisfy the written criteria of any tag in your setup list.</td><td>Boredom; screen time without candidates.</td></tr>
-          <tr><td>early exit</td><td>Exited above the stop and below the planned target with no rule triggering it.</td><td>Discomfort with open profit.</td></tr>
-          <tr><td>late exit</td><td>Held past a rule-defined exit signal by more than one bar.</td><td>Hoping for a round number.</td></tr>
-          <tr><td>revenge trade</td><td>Entered within 30 minutes of a loss, in the same or a correlated name.</td><td>Trying to get it back.</td></tr>
-          <tr><td>none</td><td>The trade followed the plan. Losses tagged 'none' are the good kind.</td><td>—</td></tr>
-        </tbody>
-      </table></div>
-      <p>Then rank by R lost, not by frequency. Over the same 120-trade sample, the frequency ranking and the cost ranking disagree completely:</p>
-      <div class="tblwrap" tabindex="0" role="group" aria-label="Table, scrolls horizontally"><table class="tbl">
-        <thead><tr><th scope="col">Tag</th><th scope="col">Occurrences</th><th scope="col">Total R lost</th><th scope="col">R lost per occurrence</th><th scope="col">Share of tagged loss</th></tr></thead>
-        <tbody>
-          <tr><td>Moved stop</td><td>9</td><td>−14.6R</td><td>−1.62R</td><td>31.7%</td></tr>
-          <tr><td>Chased entry</td><td>14</td><td>−11.2R</td><td>−0.80R</td><td>24.3%</td></tr>
-          <tr><td>Oversized</td><td>3</td><td>−6.9R</td><td><strong>−2.30R</strong></td><td>15.0%</td></tr>
-          <tr><td>No setup</td><td>7</td><td>−5.1R</td><td>−0.73R</td><td>11.1%</td></tr>
-          <tr><td>Early exit</td><td>12</td><td>−4.8R</td><td>−0.40R</td><td>10.4%</td></tr>
-          <tr><td>Revenge trade</td><td>2</td><td>−3.4R</td><td>−1.70R</td><td>7.4%</td></tr>
-          <tr><td>Total</td><td>47</td><td>−46.0R</td><td>—</td><td>100%</td></tr>
-        </tbody>
-      </table></div>
-      <p>Chasing is the most frequent mistake and the third most expensive. Oversizing happened three times in 120 trades and cost 15% of all tagged losses, because <strong>a sizing error scales the entire outcome rather than shifting it</strong>. If you only reviewed frequency you would spend a quarter fixing your entries and never notice that three trades did most of the damage. That is also the strongest practical argument for treating the <a href="/guides/kelly-criterion.html">Kelly fraction</a> as a hard ceiling rather than a target.</p>
-      <h2>What MAE and MFE actually tell you</h2>
-      <p>Maximum adverse excursion is the worst unrealised loss during the trade; maximum favourable excursion is the best unrealised gain. Recorded in R and grouped by outcome, they separate an entry problem from an exit problem, which is the distinction most traders never manage to make.</p>
-      <div class="tblwrap" tabindex="0" role="group" aria-label="Table, scrolls horizontally"><table class="tbl">
-        <thead><tr><th scope="col">Pattern</th><th scope="col">What it means</th><th scope="col">Action</th></tr></thead>
-        <tbody>
-          <tr><td>High MAE on winners (past −0.7R routinely)</td><td>Stops sit inside normal noise; you are being shaken out of trades that work.</td><td>Widen the stop using structure or an ATR multiple, then cut share count to hold risk constant.</td></tr>
-          <tr><td>Low MFE on losers (under +0.3R)</td><td>The idea never worked at all. This is an entry problem, not an exit problem.</td><td>Tighten setup criteria or drop the setup. Do not touch the stop.</td></tr>
-          <tr><td>High MFE on losers (over +1.5R)</td><td>Trades that were working gave it all back.</td><td>Add a trailing or break-even rule. This is where scaling out genuinely helps.</td></tr>
-          <tr><td>High MFE, low realised R on winners</td><td>You are exiting early and leaving the edge behind.</td><td>Set exits by rule before entry and log deviations as 'early exit'.</td></tr>
-          <tr><td>MAE clustered just past 1R</td><td>Your stop is parked in a common reversal zone others are also using.</td><td>Re-anchor the stop off structure, not off a round percentage.</td></tr>
-          <tr><td>MAE near zero on most winners</td><td>Entries are unusually clean, or your sample is too small.</td><td>Check N before believing it. Under 30 trades this is noise.</td></tr>
-        </tbody>
-      </table></div>
-      <p>Where the stop should sit in the first place is a separate problem with its own logic, covered in the <a href="/guides/stop-loss-placement.html">stop loss placement guide</a>. MAE data tells you whether the answer you chose is working; it does not tell you what the answer should be.</p>
-      <h2>The weekly review</h2>
-      <p>Twenty minutes, same slot every week, with the numbers already computed before you sit down. If you are computing during the review, the review becomes a data-entry session and you will stop doing it.</p>
-      <ol>
-        <li><strong>Data quality first.</strong> Every closed trade has a mistake tag, and every R × dollar-risk check reconciles. Fix that before reading a single number.</li>
-        <li><strong>Rank mistake tags by R lost</strong> for the trailing 20 trades. One line, no commentary.</li>
-        <li><strong>Compare planned versus actual risk percentage.</strong> Any trade over the rule gets named, regardless of outcome.</li>
-        <li><strong>Note the sample size of each setup</strong> and write 'insufficient' next to any under 30. That word is doing real work.</li>
-        <li><strong>Pick exactly one process change</strong> for the next 20 trades. One. Two changes at once makes the result uninterpretable.</li>
-        <li><strong>Write one sentence</strong>, not one page. What changes next week and how you will know it worked.</li>
-      </ol>
-      <h2>The monthly review</h2>
-      <p>The monthly pass is the one that touches strategy, and it looks at things that are meaningless at weekly cadence.</p>
-      <ol>
-        <li>Recompute expectancy per setup tag with the standard error attached. Not the point estimate on its own — ever.</li>
-        <li>Split long versus short expectancy. They usually differ, and most journals silently average them.</li>
-        <li>Compare this month's per-setup expectancy against the trailing figure. A setup decaying over three consecutive months is a real signal.</li>
-        <li>Check MAE and MFE distributions for drift. Widening MAE on winners often means the volatility regime moved, not that you got worse.</li>
-        <li>Audit realised risk against planned risk across the whole month, and compute total open risk at the worst point.</li>
-        <li>Retire or halve exactly one setup if the evidence supports it, and write the reason down so you cannot silently reinstate it.</li>
-      </ol>
-      <h2>When two setups disagree</h2>
-      <p>Sooner or later a candidate satisfies two setup tags at once, or one setup says long while another says short on a correlated name. This is a schema problem before it is a trading problem, and the wrong fix is a new hybrid tag, which destroys the comparability of both histories.</p>
+      <p>Dollars mix two different questions — was the idea good, and was the size right — into one number. R separates them. A +2R trade is a +2R trade whether you risked $50 or $500, so setups become comparable across account sizes and across time as the account grows.</p>
+      <span class="formula">R-multiple = (exit − entry) ÷ (entry − stop)</span>
+      <p>The arithmetic behind sizing, expectancy, and break-even win rates is in the <a href="/guides/r-multiple-expectancy.html">R-multiple guide</a>.</p>
+      <h2>Mistake tags beat journal entries</h2>
+      <p>Keep the list short enough to be honest and fixed enough to count. Something like: <strong>chased entry</strong>, <strong>moved stop</strong>, <strong>oversized</strong>, <strong>no setup</strong>, <strong>early exit</strong>, <strong>revenge trade</strong>, <strong>none</strong>.</p>
+      <p>After 50 trades this list does something no paragraph can: it tells you that, say, 60% of your losses beyond −1R came from moving stops. That is a rule change, not a feeling. A free-text journal containing the same information will never surface it, because you will never re-read fifty paragraphs.</p>
+      <h2>What MAE and MFE tell you</h2>
       <ul>
-        <li><strong>Define a precedence order in advance</strong> and write it into the setup list. The trade gets exactly one tag, decided by rule, not by outcome.</li>
-        <li><strong>Never create a combined tag retroactively.</strong> A tag that only exists after you saw the result is a curve fit with a filing system.</li>
-        <li><strong>If two setups fire in opposite directions on correlated names, take neither.</strong> The disagreement is information: your criteria are not as independent as you believed.</li>
-        <li><strong>If the overlap happens often, the two setups are one setup.</strong> Merge them and re-tag the history, once, with a note recording the date you did it.</li>
-        <li><strong>Log the road not taken.</strong> A 'skipped, conflicting signals' row costs nothing and tells you within a quarter whether the precedence rule is helping or costing you.</li>
+        <li><strong>High MAE on winners</strong> — your stop is tighter than the trade needs; you are getting shaken out of good ideas.</li>
+        <li><strong>Low MFE on losers</strong> — the setup never worked at all, so entries, not exits, are the problem.</li>
+        <li><strong>High MFE, low realised R</strong> — you are exiting early. The edge exists and you are not collecting it.</li>
+        <li><strong>MAE approaching 1R on most winners</strong> — the stop is in a common noise zone; consider a different anchor for it.</li>
       </ul>
-      <h2>Export and portability</h2>
-      <p>Whatever you use, the data must be yours in a format that outlives the tool. That means a flat CSV with one row per closed trade, ISO-8601 dates, and no formatting inside the values.</p>
-      <span class="formula" tabindex="0" role="group" aria-label="Formula, scrolls horizontally">trade_id,date_open,date_close,symbol,direction,setup,
-planned_entry,actual_entry,stop,exit,qty,r_per_share,
-r_multiple,mae_r,mfe_r,mistake,notes
-
-1,2026-03-04,2026-03-11,NVDA,long,avwap_reclaim,
-48.00,48.00,45.60,53.28,125,2.40,
-2.20,-0.55,2.45,none,earnings anchor 02-26</span>
-      <ul>
-        <li><strong>One row per closed trade.</strong> Scale-ins and partial exits get their own table keyed on trade_id, not extra columns.</li>
-        <li><strong>Store the initial stop, never the current stop.</strong> Overwriting it destroys the R denominator and hides the 'moved stop' tag.</li>
-        <li><strong>Enums lowercase with underscores.</strong> 'AVWAP Reclaim' and 'avwap_reclaim' will become two setups the moment you group by that column.</li>
-        <li><strong>No currency symbols, no thousands separators, no percent signs.</strong> Every one of them turns a number into a string.</li>
-        <li><strong>Export monthly and keep the file.</strong> Broker statements reconcile to it; a hosted journal that shuts down does not.</li>
-      </ul>
-      <p>Your broker's own export is the reconciliation source, not the journal — it has fills and fees but no planned stop, no setup tag, and no intent, which is where all the diagnostic value lives. The broker comparison in the <a href="/guides/alpaca-vs-interactive-brokers-vs-robinhood.html">Alpaca vs Interactive Brokers vs Robinhood guide</a> covers which ones give you usable programmatic history.</p>
+      <h2>The weekly review that works</h2>
+      <ol>
+        <li>Compute expectancy per setup tag. Not per week, per setup.</li>
+        <li>Rank mistake tags by dollars lost, not by frequency.</li>
+        <li>Cut or halve the size of the worst setup for the next 20 trades. One change at a time.</li>
+        <li>Check sample size before concluding anything — under 30 trades in a setup, note it and wait.</li>
+        <li>Write one sentence, not one page: what changes next week.</li>
+      </ol>
       <h2>What to ignore</h2>
-      <p>Screenshots of every chart, hour-by-hour emotional narration, indicator settings you never vary, and win rate as a headline number. Win rate without reward-to-risk is decoration: 70% at +0.3R against 30% at −1R works out to (0.70 × 0.3) − (0.30 × 1.0) = −0.09R per trade. That is a losing system, and a journal that celebrates the 70% is actively harmful.</p>
-      <p>Also skip: daily profit-and-loss as a tracked metric, which encourages you to judge process by a one-day sample; equity-curve screenshots, which are decoration; and any field whose only consumer is your own sense of diligence. Consistency beats completeness. A six-field journal you fill in for 300 consecutive trades beats a twenty-field one you abandon in week five, because <strong>the entire value is in the aggregate, and an aggregate with gaps in it is not an aggregate.</strong></p>
-      <p>I built <a href="/apps/tradelog/">TradeLog</a> for exactly this shape: log the trade, get expectancy per setup with the sample size attached, no account, no server, data stays in your browser and exports to CSV. The <a href="/risk-tools.html">risk toolkit</a> takes the same numbers and turns them into a position size and a risk-of-ruin figure, and the transition problem — journalling paper trades before any of it touches real money — is covered in <a href="/guides/paper-to-live-trading.html">going from paper to live</a>.</p>
+      <p>Screenshots of every chart, hour-by-hour emotional narration, indicator settings you never vary, and win-rate as a headline number. Win rate without reward-to-risk is decoration — 70% at +0.3R against 30% at −1R is a losing system, and the journal that celebrates the 70% is actively harmful.</p>
+      <p>I built <a href="/apps/tradelog/">TradeLog</a> for exactly this shape: log the trade, get expectancy per setup, no account, no server, data stays in your browser.</p>
       <p class="callout">Educational content, not financial advice. No live profit-and-loss figures are claimed anywhere on this site; backtest and walk-forward results are always labelled as such. Full terms: <a href="/terms.html">/terms.html</a></p>
 
       <h2>Tools referenced in this guide</h2>
@@ -299,14 +145,12 @@ r_multiple,mae_r,mfe_r,mistake,notes
       <h2>Quick answers</h2>
     </div>
     <div class="grid" style="margin-top:var(--s6)">
-      <article class="card faq-card"><h3>What should you log in a trading journal?</h3><p>Six fields do most of the work: setup tag, planned risk in dollars (your 1R), entry, stop and exit prices, the resulting R-multiple, a mistake tag from a fixed short list, and maximum adverse and favourable excursion. Everything else is optional decoration.</p></article>
-      <article class="card faq-card"><h3>Why record trades in R instead of dollars?</h3><p>Dollars mix idea quality with position size. R normalises for size, so a +2R trade is comparable whether you risked $50 or $500, which makes setups comparable across time and as the account grows.</p></article>
-      <article class="card faq-card"><h3>What are MAE and MFE?</h3><p>Maximum adverse excursion is the worst unrealised loss during a trade; maximum favourable excursion is the best unrealised gain. Together they show whether stops are too tight, targets too far, or exits too early — high MFE with low realised R means you are leaving the edge on the table.</p></article>
-      <article class="card faq-card"><h3>How often should you review a trading journal?</h3><p>Weekly for mistake tags and once every 30 or more trades per setup for expectancy. Reviewing expectancy weekly on a handful of trades produces noise-driven changes, which is worse than not reviewing at all.</p></article>
-      <article class="card faq-card"><h3>Why use mistake tags instead of written notes?</h3><p>A fixed short list can be counted and ranked by dollars lost, so patterns surface after 50 trades. Free-text notes contain the same information but are never re-read in aggregate, so the pattern never appears.</p></article>
-      <article class="card faq-card"><h3>Is win rate a useful journal metric?</h3><p>Only alongside reward-to-risk. Winning 70% of trades at +0.3R while losing 30% at -1R works out to -0.09R per trade, which is a losing system with a flattering win rate. Expectancy is the metric that decides, and it is why the highest-win-rate setup in a book is quite often the one that should be retired.</p></article>
-      <article class="card faq-card"><h3>How many trades before journal expectancy means anything?</h3><p>It depends on the size of the edge you are trying to detect. With a typical R standard deviation of about 1.2, distinguishing a +0.35R edge from zero at 95% confidence needs about 46 trades, a +0.20R edge needs about 139, and a +0.10R edge needs about 554. Always report expectancy with its standard error attached rather than as a bare point estimate.</p></article>
-      <article class="card faq-card"><h3>What fields should a trading journal CSV have?</h3><p>One row per closed trade with trade ID, open and close dates in ISO-8601, symbol, direction, setup tag, planned and actual entry, initial stop, exit, quantity, R per share, R-multiple, MAE and MFE in R, and a mistake tag from a fixed list. Store the initial stop rather than the current stop, keep enums lowercase, and avoid currency symbols so every numeric column stays numeric.</p></article>
+      <article class="card faq-card"><h3>What should you log?</h3><p>Setup tag, 1R in dollars, entry/stop/exit, resulting R, a mistake tag from a fixed list, and MAE/MFE. Six fields beat six paragraphs.</p></article>
+      <article class="card faq-card"><h3>Why R instead of dollars?</h3><p>R strips out position size, so a +2R trade is comparable whether you risked $50 or $500 — and setups become comparable to each other.</p></article>
+      <article class="card faq-card"><h3>What are MAE and MFE?</h3><p>Worst and best unrealised excursion during the trade. High MFE with low realised R means you are exiting early and leaving edge behind.</p></article>
+      <article class="card faq-card"><h3>Why fixed mistake tags?</h3><p>They can be counted. After 50 trades a list says &#x27;60% of big losses came from moving stops&#x27; — a paragraph never will.</p></article>
+      <article class="card faq-card"><h3>How often to review?</h3><p>Mistake tags weekly; expectancy only once a setup has 30+ trades. Weekly expectancy on five trades is noise.</p></article>
+      <article class="card faq-card"><h3>Is win rate useful?</h3><p>Only with reward-to-risk attached. 70% at +0.3R against 30% at −1R is a losing system with a flattering headline.</p></article>
     </div>
   </section>
 

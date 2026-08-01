@@ -2,11 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="referrer" content="strict-origin-when-cross-origin">
-<meta http-equiv="Content-Security-Policy" content="object-src 'none'; base-uri 'self'">
 <title>Client Proposal &amp; Statement of Work — Cascade Freight Brokers</title>
-<meta name="robots" content="noindex,follow">
-<link rel="canonical" href="https://yusuf-gadelrab.github.io/templates.html">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <style>
   /* ============================================================
@@ -213,11 +209,10 @@
   .approve-box p{ font-size:12.5px; color:var(--paper-muted); margin:0 0 4px; }
   .approve-box .total{ font-family:Georgia,serif; font-size:22px; margin:10px 0 0; }
 
-  h2.title{ font-size:27px; letter-spacing:-.4px; margin:0 0 6px; }
+  h1.title{ font-size:27px; letter-spacing:-.4px; margin:0 0 6px; }
   .lede{ font-size:14px; color:var(--paper-muted); max-width:520px; margin:0 0 28px; }
   p.body-copy{ font-size:13.5px; color:var(--paper-ink); max-width:540px; margin:0 0 16px; }
 </style>
-<style>@media screen{.tbl-scroll{overflow-x:auto;-webkit-overflow-scrolling:touch}.tbl-scroll:focus-visible{outline:2px solid #D4AF37;outline-offset:2px}}</style>
 </head>
 <body>
 
@@ -255,7 +250,7 @@
   <div class="monogram"><svg viewBox="0 0 28 28"><path d="M14 1 L27 14 L14 27 L1 14 Z" fill="none" stroke="#8a7328" stroke-width="1.3"/></svg></div>
   <p class="eyebrow on-paper">Executive Summary</p>
   <hr class="accent-bar">
-  <h2 class="title">A 90-day path to a self-running back office</h2>
+  <h1 class="title">A 90-day path to a self-running back office</h1>
   <p class="lede">Cascade Freight Brokers moves 340+ loads a month with a three-person back office still keying rate confirmations and check calls by hand. This proposal outlines a focused pilot to remove that manual layer without disrupting live freight.</p>
 
   <p class="body-copy">FreightDesk AI reads inbound rate confirmations, carrier check-in emails, and factoring paperwork, then writes clean, structured data directly into Cascade's existing TMS and accounting stack — no rip-and-replace, no new software for dispatchers to learn.</p>
@@ -279,7 +274,7 @@
   <div class="monogram"><svg viewBox="0 0 28 28"><path d="M14 1 L27 14 L14 27 L1 14 Z" fill="none" stroke="#8a7328" stroke-width="1.3"/></svg></div>
   <p class="eyebrow on-paper">Understanding Your Operation</p>
   <hr class="accent-bar">
-  <h2 class="title">Three bottlenecks costing Cascade time and margin</h2>
+  <h1 class="title">Three bottlenecks costing Cascade time and margin</h1>
   <p class="lede">Findings below are drawn from the July 22 operations walkthrough with Marcus Reyes and two dispatchers.</p>
 
   <div class="finding">
@@ -315,7 +310,7 @@
   <div class="monogram"><svg viewBox="0 0 28 28"><path d="M14 1 L27 14 L14 27 L1 14 Z" fill="none" stroke="#8a7328" stroke-width="1.3"/></svg></div>
   <p class="eyebrow on-paper">Proposed Solution</p>
   <hr class="accent-bar">
-  <h2 class="title">A phased rollout, built to de-risk change</h2>
+  <h1 class="title">A phased rollout, built to de-risk change</h1>
   <p class="lede">No dispatcher workflow changes until your team has approved the automation's output in a live sandbox. Each phase ends with a go/no-go checkpoint.</p>
 
   <div class="rail">
@@ -351,30 +346,30 @@
   <div class="monogram"><svg viewBox="0 0 28 28"><path d="M14 1 L27 14 L14 27 L1 14 Z" fill="none" stroke="#8a7328" stroke-width="1.3"/></svg></div>
   <p class="eyebrow on-paper">Scope of Work</p>
   <hr class="accent-bar">
-  <h2 class="title">What's included — and what isn't</h2>
+  <h1 class="title">What's included — and what isn't</h1>
   <p class="lede">We'd rather over-communicate boundaries now than surprise you at invoice time.</p>
 
   <div class="table-block">
     <div class="subhead"><span class="dot dot-in"></span><h3>In Scope</h3></div>
-    <div class="tbl-scroll" tabindex="0" role="region" aria-label="Scrollable table"><table>
+    <table>
       <tr><th style="width:34%;">Workstream</th><th>Description</th></tr>
       <tr><td>Rate-con parsing</td><td>Automated extraction of rate, lane, reference #, and accessorials from PDF/email rate confirmations into the TMS.</td></tr>
       <tr><td>Check-call unification</td><td>Single status feed combining carrier email, SMS, and phone-logged check-ins into one load-status record.</td></tr>
       <tr><td>Invoice matching</td><td>Automated 3-way match of rate confirmation, signed BOL, and carrier invoice, flagging discrepancies for review.</td></tr>
       <tr><td>TMS &amp; accounting integration</td><td>Read/write integration with Cascade's existing TMS and accounting platform via named APIs identified in Discovery.</td></tr>
       <tr><td>Dispatcher training</td><td>One live walkthrough session and a written quick-reference guide for the dispatch team.</td></tr>
-    </table></div>
+    </table>
   </div>
 
   <div class="table-block">
     <div class="subhead"><span class="dot dot-out"></span><h3>Out of Scope</h3></div>
-    <div class="tbl-scroll" tabindex="0" role="region" aria-label="Scrollable table"><table>
+    <table>
       <tr><th style="width:34%;">Item</th><th>Why it's excluded</th></tr>
       <tr><td>Custom TMS development</td><td>This pilot integrates with your existing TMS — it does not modify or extend the TMS platform itself.</td></tr>
       <tr><td>Carrier-side integrations beyond the 3 named APIs</td><td>Additional carrier or broker-network integrations can be scoped as a change order once Discovery confirms demand.</td></tr>
       <tr><td>After-hours live support</td><td>Pilot support is business-hours (8am–6pm PT). 24/7 monitoring is available as a post-pilot add-on.</td></tr>
       <tr><td>Historical data backfill beyond 90 days</td><td>Keeps Discovery scoped to a two-week window; older records can be migrated separately if needed.</td></tr>
-    </table></div>
+    </table>
   </div>
 
   <div class="pagefoot"><span>Cascade Freight Brokers · Confidential</span><span class="pnum">05</span></div>
@@ -385,10 +380,10 @@
   <div class="monogram"><svg viewBox="0 0 28 28"><path d="M14 1 L27 14 L14 27 L1 14 Z" fill="none" stroke="#8a7328" stroke-width="1.3"/></svg></div>
   <p class="eyebrow on-paper">Deliverables &amp; Milestones</p>
   <hr class="accent-bar">
-  <h2 class="title">What ships, and when</h2>
+  <h1 class="title">What ships, and when</h1>
   <p class="lede">Dates assume a signed proposal and Discovery kickoff by August 4, 2026.</p>
 
-  <div class="tbl-scroll" tabindex="0" role="region" aria-label="Scrollable table"><table>
+  <table>
     <tr><th style="width:20%;">Milestone</th><th style="width:26%;">Deliverable</th><th style="width:16%;">Target Date</th><th>Acceptance Criteria</th></tr>
     <tr><td>Kickoff</td><td>Signed access &amp; document-format catalog</td><td>Aug 4, 2026</td><td>TMS/accounting API credentials issued; 20 sample rate-cons collected</td></tr>
     <tr><td>Discovery complete</td><td>Exception-case log &amp; success-metric sign-off</td><td>Aug 15, 2026</td><td>Marcus Reyes approves scope-of-automation document in writing</td></tr>
@@ -396,7 +391,7 @@
     <tr><td>UAT sign-off</td><td>Parallel-run report vs. manual process</td><td>Sep 12, 2026</td><td>Dispatch team confirms zero missed or misrouted loads across parallel-run window</td></tr>
     <tr><td>Go-live</td><td>Production cutover</td><td>Sep 19, 2026</td><td>Live traffic routed through FreightDesk AI; manual fallback documented</td></tr>
     <tr><td>30-day tuning review</td><td>Performance report &amp; tuning adjustments</td><td>Oct 19, 2026</td><td>Accuracy and turnaround metrics reviewed jointly; open items closed</td></tr>
-  </table></div>
+  </table>
 
   <div class="pagefoot"><span>Cascade Freight Brokers · Confidential</span><span class="pnum">06</span></div>
 </section>
@@ -406,7 +401,7 @@
   <div class="monogram"><svg viewBox="0 0 28 28"><path d="M14 1 L27 14 L14 27 L1 14 Z" fill="none" stroke="#8a7328" stroke-width="1.3"/></svg></div>
   <p class="eyebrow on-paper">Investment</p>
   <hr class="accent-bar">
-  <h2 class="title">Three ways to engage</h2>
+  <h1 class="title">Three ways to engage</h1>
   <p class="lede">All tiers include the full Discovery → Build → Launch pilot. Tiers differ in integration depth and post-launch support.</p>
 
   <div class="tiers">
@@ -448,12 +443,12 @@
   </div>
 
   <p class="body-copy" style="margin-bottom:10px;font-weight:600;">Payment Schedule — Growth Partner Tier</p>
-  <div class="tbl-scroll" tabindex="0" role="region" aria-label="Scrollable table"><table>
+  <table>
     <tr><th style="width:34%;">Milestone</th><th style="width:22%;">Amount</th><th>Due Date</th></tr>
     <tr><td>Signing / Kickoff</td><td>$499.50 (50% of setup)</td><td>Aug 4, 2026</td></tr>
     <tr><td>Go-live</td><td>$499.50 (50% of setup)</td><td>Sep 19, 2026</td></tr>
     <tr><td>Monthly service fee</td><td>$249/mo</td><td>Billed monthly starting Sep 19, 2026</td></tr>
-  </table></div>
+  </table>
 
   <div class="pagefoot"><span>Cascade Freight Brokers · Confidential</span><span class="pnum">07</span></div>
 </section>
@@ -463,7 +458,7 @@
   <div class="monogram"><svg viewBox="0 0 28 28"><path d="M14 1 L27 14 L14 27 L1 14 Z" fill="none" stroke="#8a7328" stroke-width="1.3"/></svg></div>
   <p class="eyebrow on-paper">Terms</p>
   <hr class="accent-bar">
-  <h2 class="title">The fine print, in plain language</h2>
+  <h1 class="title">The fine print, in plain language</h1>
 
   <div class="term-block">
     <h3>Timeline assumptions</h3>
@@ -502,7 +497,7 @@
   <div class="monogram"><svg viewBox="0 0 28 28"><path d="M14 1 L27 14 L14 27 L1 14 Z" fill="none" stroke="#8a7328" stroke-width="1.3"/></svg></div>
   <p class="eyebrow on-paper">Approval</p>
   <hr class="accent-bar">
-  <h2 class="title">Ready to move on this?</h2>
+  <h1 class="title">Ready to move on this?</h1>
   <p class="lede">Signing below approves the Growth Partner tier ($999 setup + $249/mo) and authorizes Discovery kickoff on Aug 4, 2026.</p>
 
   <div class="approve-box">

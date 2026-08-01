@@ -611,6 +611,42 @@
   }
 
   /* =======================================================================
+     7. SCROLL REVEALS
+     ===================================================================== */
+  function initReveals() {
+    if (reduced()) return;
+    
+    var autoAnim = d.querySelectorAll('.card, .panel, h2, h3, .grid > div, img');
+    for (var i = 0; i < autoAnim.length; i++) {
+       if (!autoAnim[i].classList.contains('reveal') && 
+           !autoAnim[i].classList.contains('reveal-zoom') &&
+           !autoAnim[i].classList.contains('reveal-left') &&
+           !autoAnim[i].classList.contains('reveal-right') &&
+           !autoAnim[i].closest('.site-nav, .yg-pal')) {
+           autoAnim[i].classList.add('reveal');
+       }
+    }
+
+    if (!w.IntersectionObserver) {
+      var r = d.querySelectorAll('.reveal, .reveal-zoom, .reveal-left, .reveal-right');
+      for (var j = 0; j < r.length; j++) r[j].classList.add('is-in');
+      return;
+    }
+
+    var observer = new IntersectionObserver(function(entries) {
+      for (var i = 0; i < entries.length; i++) {
+        if (entries[i].isIntersecting) {
+          entries[i].target.classList.add('is-in');
+          observer.unobserve(entries[i].target);
+        }
+      }
+    }, { rootMargin: '0px 0px -40px 0px', threshold: 0.05 });
+    
+    var reveals = d.querySelectorAll('.reveal, .reveal-zoom, .reveal-left, .reveal-right');
+    for (var k = 0; k < reveals.length; k++) observer.observe(reveals[k]);
+  }
+
+  /* =======================================================================
      BOOT
      ===================================================================== */
   function boot() {
@@ -620,6 +656,7 @@
     initAnchors();
     initTop();
     initMeta();
+    initReveals();
     w.addEventListener('scroll', onScroll, { passive: true });
     w.addEventListener('resize', onScroll, { passive: true });
     onScroll();
