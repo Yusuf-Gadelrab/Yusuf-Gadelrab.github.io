@@ -1,9 +1,15 @@
 {
-  "name": "Cut — Weight Tracker",
+  "id": "/apps/cut/",
+  "name": "Cut — Offline Weight Tracker",
   "short_name": "Cut",
+  "description": "A private, offline weight tracker for cutting and body recomposition. Daily weigh-ins, a 7-day trend line, a goal line and streaks, stored on your own device with no account and no server.",
+  "categories": ["health", "fitness", "lifestyle"],
+  "lang": "en-US",
+  "dir": "ltr",
   "start_url": "./",
   "scope": "./",
   "display": "standalone",
+  "orientation": "portrait-primary",
   "background_color": "#0a0a0a",
   "theme_color": "#0a0a0b",
   "icons": [

@@ -1,6 +1,10 @@
 # yusuf-gadelrab.github.io
 # Everything public is crawlable. The only disallows are utility endpoints that
 # would waste crawl budget or surface a non-page in search results.
+#
+# Usage terms for AI systems: https://yusuf-gadelrab.github.io/ai.txt
+# Machine-readable index:     https://yusuf-gadelrab.github.io/llms.txt
+# Full plain-text profile:    https://yusuf-gadelrab.github.io/llms-full.txt
 
 User-agent: *
 Allow: /
@@ -9,7 +13,11 @@ Disallow: /404.html
 Disallow: /*?src=pwa
 
 # Template pack files are live previews of paid deliverables — reachable by link
-# on purpose, but they must not out-rank /templates.html in search.
+# on purpose, but they must not out-rank /templates.html in search, and the paid
+# HTML is not free training material. The named block below repeats this line on
+# purpose: a crawler that matches its own user-agent ignores the * group
+# entirely, so omitting it there would silently open /templates/ to exactly the
+# agents it matters most for.
 Disallow: /templates/
 
 # ---------------------------------------------------------------------------
@@ -19,40 +27,84 @@ Disallow: /templates/
 # this content may be used in AI answers at all.
 # ---------------------------------------------------------------------------
 
+# Search indexers get their own group so /templates/ is CRAWLABLE for them.
+# Those 32 pages carry <meta name="robots" content="noindex"> plus a canonical
+# to /templates.html, but Disallow blocks crawling rather than indexing — a
+# blocked URL can still be listed bare, and the noindex is never read. Letting
+# these three fetch the pages is what actually purges them from the index.
+# Google-Extended / Applebot-Extended stay in the AI-training block below, so
+# allowing this does NOT open the paid HTML to model training.
+User-agent: Googlebot
+User-agent: Bingbot
+User-agent: Applebot
+Allow: /
+Disallow: /offline.html
+Disallow: /404.html
+Disallow: /*?src=pwa
+
+# OpenAI
 User-agent: GPTBot
 User-agent: OAI-SearchBot
 User-agent: ChatGPT-User
+# Anthropic
 User-agent: ClaudeBot
 User-agent: Claude-Web
 User-agent: Claude-User
 User-agent: Claude-SearchBot
 User-agent: anthropic-ai
+# Perplexity
 User-agent: PerplexityBot
 User-agent: Perplexity-User
+# Google
 User-agent: Google-Extended
 User-agent: GoogleOther
-User-agent: Googlebot
-User-agent: Bingbot
-User-agent: Applebot
+User-agent: Google-CloudVertexBot
+# Apple (Applebot itself is in the search-indexer group above)
 User-agent: Applebot-Extended
+# Meta
 User-agent: meta-externalagent
 User-agent: meta-externalfetcher
 User-agent: FacebookBot
+# ByteDance / TikTok
+User-agent: Bytespider
+User-agent: TikTokSpider
+# Common Crawl — the corpus a large share of open models train on
+User-agent: CCBot
+# Allen Institute for AI (OLMo / Dolma)
+User-agent: AI2Bot
+User-agent: Ai2Bot-Dolma
+# Other model builders and answer engines
 User-agent: cohere-ai
 User-agent: cohere-training-data-crawler
+User-agent: MistralAI-User
 User-agent: DuckAssistBot
 User-agent: YouBot
+User-agent: LinerBot
 User-agent: Amazonbot
-User-agent: MistralAI-User
+User-agent: PanguBot
+User-agent: iaskspider/2.0
+User-agent: ICC-Crawler
+User-agent: PetalBot
+# Agent browsers, retrieval infrastructure, and dataset builders
+User-agent: FirecrawlAgent
 User-agent: Diffbot
 User-agent: Timpibot
 User-agent: omgili
-User-agent: PetalBot
+User-agent: omgilibot
+User-agent: Webzio-Extended
+User-agent: VelenPublicWebCrawler
+User-agent: SemrushBot-OCOB
+User-agent: Kangaroo Bot
+User-agent: FriendlyCrawler
+User-agent: Sidetrade indexer bot
+User-agent: ImagesiftBot
+User-agent: img2dataset
 Allow: /
 Disallow: /offline.html
 Disallow: /404.html
+Disallow: /*?src=pwa
+Disallow: /templates/
 
+# One sitemap index covering four section sitemaps (pages, guides, writing, apps).
+# An index is sufficient; the section files must not be listed separately.
 Sitemap: https://yusuf-gadelrab.github.io/sitemap.xml
-
-# Machine-readable index for language models: https://yusuf-gadelrab.github.io/llms.txt
-# Full plain-text profile: https://yusuf-gadelrab.github.io/llms-full.txt

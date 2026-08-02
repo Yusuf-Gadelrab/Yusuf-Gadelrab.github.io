@@ -2,10 +2,12 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
+<meta name="referrer" content="strict-origin-when-cross-origin">
+<meta http-equiv="Content-Security-Policy" content="object-src 'none'; base-uri 'self'">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="robots" content="index,follow,max-image-preview:large,max-snippet:-1">
-<title>TradingView vs TrendSpider vs Stock Rover</title>
-<meta name="description" content="I built my own swing screener before paying for one. Here is the honest split between charting, automated backtesting, and fundamental screening.">
+<title>TradingView vs TrendSpider vs Stock Rover for swing trading</title>
+<meta name="description" content="I built my own swing screener before paying for any of the 3. Here is the honest split between charting, automated backtesting and stock screening.">
 <link rel="canonical" href="https://yusuf-gadelrab.github.io/writing/tradingview-vs-trendspider-vs-stock-rover-for-swing-trading.html">
 <link rel="icon" type="image/svg+xml" href="/favicon.svg">
 <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
@@ -13,18 +15,19 @@
 <meta name="author" content="Yusuf Gadelrab">
 <meta property="og:type" content="article">
 <meta property="og:site_name" content="Yusuf Gadelrab">
-<meta property="og:title" content="TradingView vs TrendSpider vs Stock Rover">
-<meta property="og:description" content="I built my own swing screener before paying for one. Here is the honest split between charting, automated backtesting, and fundamental screening.">
+<meta property="og:title" content="I built my own swing screener before paying for any of these 3. The honest comparison.">
+<meta property="og:description" content="I built my own swing screener before paying for any of the 3. Here is the honest split between charting, automated backtesting and stock screening.">
 <meta property="og:url" content="https://yusuf-gadelrab.github.io/writing/tradingview-vs-trendspider-vs-stock-rover-for-swing-trading.html">
 <meta property="og:image" content="https://yusuf-gadelrab.github.io/og-card.png">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="TradingView vs TrendSpider vs Stock Rover">
-<meta name="twitter:description" content="I built my own swing screener before paying for one. Here is the honest split between charting, automated backtesting, and fundamental screening.">
+<meta name="twitter:title" content="I built my own swing screener before paying for any of these 3. The honest comparison.">
+<meta name="twitter:description" content="I built my own swing screener before paying for any of the 3. Here is the honest split between charting, automated backtesting and stock screening.">
 <meta name="twitter:image" content="https://yusuf-gadelrab.github.io/og-card.png">
 <link rel="alternate" type="application/rss+xml" title="Yusuf Gadelrab" href="/rss.xml">
 <link rel="alternate" type="text/plain" href="https://yusuf-gadelrab.github.io/llms-full.txt">
-<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "TradingView vs TrendSpider vs Stock Rover: which one a swing trader actually needs", "datePublished": "2026-07-31", "dateModified": "2026-07-31", "url": "https://yusuf-gadelrab.github.io/writing/tradingview-vs-trendspider-vs-stock-rover-for-swing-trading.html", "mainEntityOfPage": "https://yusuf-gadelrab.github.io/writing/tradingview-vs-trendspider-vs-stock-rover-for-swing-trading.html", "description": "I built my own swing screener before paying for one. Here is the honest split between charting, automated backtesting, and fundamental screening.", "image": "https://yusuf-gadelrab.github.io/og-card.png", "author": {"@id": "https://yusuf-gadelrab.github.io/#person"}, "publisher": {"@id": "https://yusuf-gadelrab.github.io/#person"}, "isPartOf": {"@type": "Blog", "@id": "https://yusuf-gadelrab.github.io/writing.html#blog", "name": "Yusuf Gadelrab \u2014 Writing"}}</script>
-<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Person", "@id": "https://yusuf-gadelrab.github.io/#person", "name": "Yusuf Gadelrab", "url": "https://yusuf-gadelrab.github.io/"}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"TradingView vs TrendSpider vs Stock Rover: which one a swing trader actually needs","datePublished":"2026-07-31","dateModified":"2026-07-31","url":"https://yusuf-gadelrab.github.io/writing/tradingview-vs-trendspider-vs-stock-rover-for-swing-trading.html","mainEntityOfPage":"https://yusuf-gadelrab.github.io/writing/tradingview-vs-trendspider-vs-stock-rover-for-swing-trading.html","description":"I built my own swing screener before paying for one. Here is the honest split between charting, automated backtesting, and fundamental screening.","image":"https://yusuf-gadelrab.github.io/og-card.png","author":{"@id":"https://yusuf-gadelrab.github.io/#person"},"publisher":{"@id":"https://yusuf-gadelrab.github.io/#person"},"isPartOf":{"@type":"Blog","@id":"https://yusuf-gadelrab.github.io/writing.html#blog"}}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebPage","@id":"https://yusuf-gadelrab.github.io/writing/tradingview-vs-trendspider-vs-stock-rover-for-swing-trading.html#webpage","url":"https://yusuf-gadelrab.github.io/writing/tradingview-vs-trendspider-vs-stock-rover-for-swing-trading.html","inLanguage":"en","isPartOf":{"@id":"https://yusuf-gadelrab.github.io/#website"},"about":{"@id":"https://yusuf-gadelrab.github.io/#person"},"publisher":{"@id":"https://yusuf-gadelrab.github.io/#person"}}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://yusuf-gadelrab.github.io/"},{"@type":"ListItem","position":2,"name":"Writing","item":"https://yusuf-gadelrab.github.io/writing.html"},{"@type":"ListItem","position":3,"name":"TradingView vs TrendSpider vs Stock Rover"}]}</script>
 <link rel="stylesheet" href="/css/site.css">
 <style>
   .art{max-width:44rem;margin:0 auto;padding:var(--s6) var(--s5)}
@@ -72,7 +75,8 @@
 </style>
 </head>
 <body>
-<nav class="site-nav">
+<a class="skip-link" href="#main">Skip to content</a>
+<nav class="site-nav" aria-label="Primary">
   <a class="site-nav__brand" href="/"><img class="site-nav__lion" src="/img/brand/lion-mark.svg" alt="" width="34" height="34" decoding="async"><span>YUSUF GADELRAB</span></a>
   <div class="site-nav__links">
     <a href="/">Work</a>
@@ -81,6 +85,15 @@
     <a href="/about.html">About</a>
   </div>
 </nav>
+
+<nav class="crumbs" aria-label="Breadcrumb">
+  <ol>
+    <li><a href="/">Home</a></li>
+    <li><a href="/writing.html">Writing</a></li>
+    <li><span aria-current="page">TradingView vs TrendSpider vs Stock Rover</span></li>
+  </ol>
+</nav>
+<main id="main">
 <article class="art">
   <h1>TradingView vs TrendSpider vs Stock Rover: which one a swing trader actually needs</h1>
   <p class="meta">2026-07-31 &middot; Yusuf Gadelrab</p>
@@ -254,6 +267,7 @@
   Open to Summer 2027 software engineering, AI/ML, and quant internships.</p>
 </div>
 </article>
+</main>
 <footer class="site-footer">
   <div class="site-footer__links">
     <a href="/">Work</a>

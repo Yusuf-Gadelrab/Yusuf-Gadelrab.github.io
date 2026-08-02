@@ -25,8 +25,8 @@
 <meta name="twitter:image" content="https://yusuf-gadelrab.github.io/og-card.png">
 <link rel="alternate" type="text/plain" href="https://yusuf-gadelrab.github.io/llms-full.txt" title="Plain-text profile for language models">
 
-<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"TechArticle","@id":"https://yusuf-gadelrab.github.io/guides/ai-automation-small-business.html#article","headline":"Where AI Automation Actually Pays Off in a Small Business","name":"Where AI Automation Actually Pays Off in a Small Business","description":"A practical filter for which small-business tasks AI should handle, the two-tier local plus frontier pattern, and why the quality gate is the product.","datePublished":"2026-07-29","dateModified":"2026-07-29","inLanguage":"en","author":{"@id":"https://yusuf-gadelrab.github.io/#person"},"publisher":{"@id":"https://yusuf-gadelrab.github.io/#person"},"about":["Business automation","Applied AI","Operations"],"mainEntityOfPage":"https://yusuf-gadelrab.github.io/guides/ai-automation-small-business.html","isAccessibleForFree":true,"proficiencyLevel":"Beginner"},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://yusuf-gadelrab.github.io/"},{"@type":"ListItem","position":2,"name":"Guides","item":"https://yusuf-gadelrab.github.io/guides.html"},{"@type":"ListItem","position":3,"name":"AI Automation"}]}]}</script>
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","@id":"https://yusuf-gadelrab.github.io/guides/ai-automation-small-business.html#faq","mainEntity":[{"@type":"Question","name":"Which business tasks are worth automating with AI?","acceptedAnswer":{"@type":"Answer","text":"Tasks that are repetitive, structured, deadline-driven, and cheap to verify — drafting first versions, extracting fields from documents, classifying and routing messages, chasing paperwork on a schedule, summarising threads, and monitoring expiry dates. If verifying the output costs as much as doing the work, automation has moved the work rather than removed it."}},{"@type":"Question","name":"What should stay human in an automated workflow?","acceptedAnswer":{"@type":"Answer","text":"Anything that commits you or depends on a relationship: sending final communications, negotiating price, handling complaints or claims, and deciding what to do when something the system flagged actually happens."}},{"@type":"Question","name":"What is the two-tier model pattern?","acceptedAnswer":{"@type":"Answer","text":"A cheap local model handles high-volume, low-difficulty work such as drafting, tagging, and extraction at zero marginal cost, while a frontier model handles judgement, hard reasoning, and anything customer-facing. An automated quality gate sits between them."}},{"@type":"Question","name":"Why does an automation pipeline need a quality gate?","acceptedAnswer":{"@type":"Answer","text":"Because generation at volume always has a non-zero failure rate, and one bad artefact reaching a customer can cost more than the entire batch saved. A gate checks hard invariants in code — required fields, no placeholder text, exact matches for names and amounts, deduplication — and quarantines anything that fails."}},{"@type":"Question","name":"How should you sequence an AI automation build?","acceptedAnswer":{"@type":"Answer","text":"Instrument the task first to confirm the volume justifies it, write the quality gate before the generator, run in shadow mode without sending to measure the pass rate, ship one high-volume workflow end to end, and keep a human at the irreversible step until the pass rate is proven stable."}},{"@type":"Question","name":"What does AI automation actually cost?","acceptedAnswer":{"@type":"Answer","text":"Less than expected on model inference, especially with a local model on hardware you already own, and more than expected on integration — connecting data sources, defining invariants, handling exceptions, and maintaining it when an upstream format changes. The model is the cheap part."}}]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"TechArticle","@id":"https://yusuf-gadelrab.github.io/guides/ai-automation-small-business.html#article","headline":"Where AI Automation Actually Pays Off in a Small Business","name":"Where AI Automation Actually Pays Off in a Small Business","description":"A practical filter for which small-business tasks AI should handle, the two-tier local plus frontier pattern, and why the quality gate is the product.","datePublished":"2026-07-29","dateModified":"2026-07-29","inLanguage":"en","author":{"@id":"https://yusuf-gadelrab.github.io/#person"},"publisher":{"@id":"https://yusuf-gadelrab.github.io/#person"},"about":["Business automation","Applied AI","Operations"],"mainEntityOfPage":"https://yusuf-gadelrab.github.io/guides/ai-automation-small-business.html","isAccessibleForFree":true,"isPartOf":{"@id":"https://yusuf-gadelrab.github.io/#website"},"proficiencyLevel":"Beginner","hasPart":{"@id":"https://yusuf-gadelrab.github.io/guides/ai-automation-small-business.html#howto"}},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://yusuf-gadelrab.github.io/"},{"@type":"ListItem","position":2,"name":"Guides","item":"https://yusuf-gadelrab.github.io/guides.html"},{"@type":"ListItem","position":3,"name":"AI Automation"}]},{"@type":"HowTo","@id":"https://yusuf-gadelrab.github.io/guides/ai-automation-small-business.html#howto","name":"How to sequence an AI automation build for a small business","description":"A practical filter for which small-business tasks AI should handle, the two-tier local plus frontier pattern, and why the quality gate is the product.","inLanguage":"en","isAccessibleForFree":true,"author":{"@id":"https://yusuf-gadelrab.github.io/#person"},"step":[{"@type":"HowToStep","position":1,"name":"Run at least 200 real items through generation and the gate","text":"Run at least 200 real items through generation and the gate. Real inputs, not test fixtures.","url":"https://yusuf-gadelrab.github.io/guides/ai-automation-small-business.html#howto"},{"@type":"HowToStep","position":2,"name":"Record the gate pass rate","text":"Record the gate pass rate. The proportion of generated items that clear every invariant.","url":"https://yusuf-gadelrab.github.io/guides/ai-automation-small-business.html#howto"},{"@type":"HowToStep","position":3,"name":"Human-audit a random sample of the passes","text":"Human-audit a random sample of the passes. Thirty is a workable number. You are looking for escapes: items the gate approved that a human would not have sent.","url":"https://yusuf-gadelrab.github.io/guides/ai-automation-small-business.html#howto"},{"@type":"HowToStep","position":4,"name":"Human-audit all the failures too, at least early","text":"Human-audit all the failures too, at least early. Failures that a human would have approved are false positives, and a gate with a high false-positive rate quietly gets switched off.","url":"https://yusuf-gadelrab.github.io/guides/ai-automation-small-business.html#howto"},{"@type":"HowToStep","position":5,"name":"Set the exit condition in advance","text":"Set the exit condition in advance. A reasonable one: gate pass rate at or above 95 percent, and zero escapes in 30 audited passes, sustained across three consecutive batches.","url":"https://yusuf-gadelrab.github.io/guides/ai-automation-small-business.html#howto"},{"@type":"HowToStep","position":6,"name":"Keep shadow mode running after go-live on a sample","text":"Keep shadow mode running after go-live on a sample. It becomes your regression test for the day an upstream format changes.","url":"https://yusuf-gadelrab.github.io/guides/ai-automation-small-business.html#howto"}]}]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","@id":"https://yusuf-gadelrab.github.io/guides/ai-automation-small-business.html#faq","mainEntity":[{"@type":"Question","name":"Which business tasks are worth automating with AI?","acceptedAnswer":{"@type":"Answer","text":"Tasks that are repetitive, structured, deadline-driven, and cheap to verify — drafting first versions, extracting fields from documents, classifying and routing messages, chasing paperwork on a schedule, summarising threads, and monitoring expiry dates. If verifying the output costs as much as doing the work, automation has moved the work rather than removed it."}},{"@type":"Question","name":"How do you decide which task to automate first?","acceptedAnswer":{"@type":"Answer","text":"Score candidates on frequency, input structure, verification cost, reversibility if wrong, and format stability, with frequency and structure weighted heaviest. Build anything scoring high, and leave low scorers alone regardless of how annoying they are. Resentment is not a prioritisation signal, which is why founders build the monthly board narrative instead of the daily document extraction."}},{"@type":"Question","name":"How do you calculate the ROI of an automation?","acceptedAnswer":{"@type":"Answer","text":"Multiply frequency by minutes saved per item to get weekly hours, subtract the review time that still exists after automation, and divide build hours by the weekly saving to get payback in weeks. A payback measured in weeks is a build and a payback measured in years is a hobby. Never model review time as zero."}},{"@type":"Question","name":"What should stay human in an automated workflow?","acceptedAnswer":{"@type":"Answer","text":"Anything that commits you or depends on a relationship: sending final communications, negotiating price, handling complaints or claims, and deciding what to do when something the system flagged actually happens."}},{"@type":"Question","name":"What is the two-tier model pattern?","acceptedAnswer":{"@type":"Answer","text":"A cheap local model handles high-volume, low-difficulty work such as drafting, tagging, and extraction at zero marginal cost, while a frontier model handles judgement, hard reasoning, and anything customer-facing. An automated quality gate sits between them and decides which items need the expensive tier."}},{"@type":"Question","name":"Why does an automation pipeline need a quality gate?","acceptedAnswer":{"@type":"Answer","text":"Because generation at volume always has a non-zero failure rate, and one bad artefact reaching a customer can cost more than the entire batch saved. A gate checks hard invariants in code — required fields, no placeholder text, exact string matches for names and amounts, deduplication — and quarantines anything that fails."}},{"@type":"Question","name":"What is shadow mode and when can you turn it off?","acceptedAnswer":{"@type":"Answer","text":"Shadow mode runs generation and the gate end to end while sending nothing, so the go-live decision is made against data. A workable exit condition is a gate pass rate at or above 95 percent with zero escapes in 30 audited passes, sustained across three consecutive batches, and even then the next step is human-fired sends rather than full automation."}},{"@type":"Question","name":"What does AI automation actually cost?","acceptedAnswer":{"@type":"Answer","text":"Less than expected on model inference, especially with a local model on hardware you already own, and more than expected on integration — connecting data sources, defining invariants, handling exceptions, and maintaining it when an upstream format changes. Budget half an hour to two hours a month of maintenance forever. The model is the cheap part."}}]}</script>
 
 <link rel="stylesheet" href="/css/site.css">
 <style>
@@ -50,16 +50,16 @@
     color:var(--muted);font-size:var(--t-small);margin:0 0 var(--s5)}
   .callout--warn{border-color:var(--gold-2)}
   .faq-card{padding:var(--s5)}
-  .faq-card h3{font-size:var(--t-h3);margin:0}
-  .faq-card p{color:var(--muted);font-size:var(--t-small);margin:var(--s3) 0 0}
+  .faq-card h3{font-size:var(--t-h3);margin:0;line-height:1.3}
+  .faq-card p{color:var(--muted);font-size:var(--t-small);line-height:1.65;margin:var(--s3) 0 0}
 </style>
 </head>
 <body class="pro">
 
 <a class="skip-link" href="#main">Skip to content</a>
 
-<nav class="site-nav">
-  <a class="site-nav__brand" href="/"><img class="site-nav__lion" src="/img/brand/lion-mark.svg" alt="" width="34" height="34"><span>YUSUF GADELRAB</span></a>
+<nav class="site-nav" aria-label="Primary">
+  <a class="site-nav__brand" href="/"><img class="site-nav__lion" src="/img/brand/lion-mark.svg" alt="" width="34" height="34" decoding="async"><span>YUSUF GADELRAB</span></a>
   <div class="site-nav__links">
     <a href="/">Work</a>
     <a href="/guides.html">Guides</a>
@@ -90,8 +90,8 @@
     <div class="prose">
       <h2>The filter</h2>
       <p>A task is a good automation candidate when it is <strong>repetitive, structured, deadline-driven, and cheap to verify</strong>. That last one carries most of the weight: if checking the output takes as long as producing it, automation has moved the work rather than removed it.</p>
-      <div class="tblwrap"><table class="tbl">
-        <thead><tr><th>Automate</th><th>Keep human</th></tr></thead>
+      <div class="tblwrap" tabindex="0" role="group" aria-label="Table, scrolls horizontally"><table class="tbl">
+        <thead><tr><th scope="col">Automate</th><th scope="col">Keep human</th></tr></thead>
         <tbody>
           <tr><td>Drafting a first version</td><td>Sending anything that commits you</td></tr>
           <tr><td>Extracting fields from documents</td><td>Deciding what the fields mean for the relationship</td></tr>
@@ -101,31 +101,215 @@
           <tr><td>Monitoring dates and flagging expiry</td><td>Deciding what to do when something expires</td></tr>
         </tbody>
       </table></div>
+      <h2>A scoring rubric, so the decision is not a mood</h2>
+      <p>Everyone has an intuition about what to automate and the intuition is usually wrong, because it is driven by which task is most annoying rather than which is most valuable. Score candidates on five criteria, weighted. Maximum score is 55.</p>
+      <div class="tblwrap" tabindex="0" role="group" aria-label="Table, scrolls horizontally"><table class="tbl">
+        <thead><tr><th scope="col">Criterion</th><th scope="col">Weight</th><th scope="col">Score 1</th><th scope="col">Score 3</th><th scope="col">Score 5</th></tr></thead>
+        <tbody>
+          <tr><td>Frequency</td><td>×3</td><td>Monthly or less</td><td>A few times a week</td><td>Many times a day</td></tr>
+          <tr><td>Structure of the input</td><td>×3</td><td>Free-form, no pattern</td><td>Semi-structured, varies by source</td><td>Consistent shape every time</td></tr>
+          <tr><td>Verification cost</td><td>×2</td><td>Checking takes as long as doing</td><td>Checking takes half the time</td><td>Checking is a glance or a code assertion</td></tr>
+          <tr><td>Reversibility if wrong</td><td>×2</td><td>Irreversible and customer-facing</td><td>Recoverable with an apology</td><td>Nothing leaves the building</td></tr>
+          <tr><td>Input-format stability</td><td>×1</td><td>Upstream format changes constantly</td><td>Changes a couple of times a year</td><td>Has not changed in years</td></tr>
+        </tbody>
+      </table></div>
+      <p>Then apply thresholds: <strong>38 or above, build it. 28 to 37, build it but run it in shadow mode indefinitely. Below 28, leave it alone.</strong> Three worked scores, on tasks that look superficially similar:</p>
+      <span class="formula" tabindex="0" role="group" aria-label="Formula, scrolls horizontally">CANDIDATE A - drafting follow-up emails to a lead list
+
+  Frequency          5 x3 = 15   (dozens per day)
+  Structure          4 x3 = 12   (lead record fields, consistent)
+  Verification       4 x2 =  8   (skim against the record)
+  Reversibility      2 x2 =  4   (it reaches a real person)
+  Format stability   4 x1 =  4
+  ---------------------------------------------
+  TOTAL                    43/55  →  BUILD
+
+
+CANDIDATE B - writing the monthly board narrative
+
+  Frequency          1 x3 =  3   (12 times a year)
+  Structure          2 x3 =  6   (different story every month)
+  Verification       2 x2 =  4   (you must read every word anyway)
+  Reversibility      2 x2 =  4
+  Format stability   3 x1 =  3
+  ---------------------------------------------
+  TOTAL                    20/55  →  LEAVE IT ALONE
+
+
+CANDIDATE C - extracting fields from inbound invoice PDFs
+
+  Frequency          5 x3 = 15
+  Structure          5 x3 = 15   (invoices have a fixed vocabulary)
+  Verification       5 x2 = 10   (assert totals match line items)
+  Reversibility      4 x2 =  8   (writes to a record, nothing sent)
+  Format stability   3 x1 =  3   (each vendor redesigns eventually)
+  ---------------------------------------------
+  TOTAL                    51/55  →  BUILD THIS FIRST</span>
+      <p>Candidate B is the one people build, because writing the board narrative is the task the founder resents most. Candidate C is the one that pays, because verification is nearly free and nothing it produces can embarrass anyone. <strong>Resentment is not a prioritisation signal.</strong></p>
+      <h2>The ROI calculation, worked end to end</h2>
+      <p>Illustrative numbers throughout — substitute your own. The point is the shape of the calculation, in particular that the review time after automation is never zero and the maintenance line is never zero either.</p>
+      <span class="formula" tabindex="0" role="group" aria-label="Formula, scrolls horizontally">TASK: drafting outreach follow-ups
+
+  BEFORE
+    Frequency                     60 per week
+    Manual time per item          6 minutes
+    Weekly time                   60 x 6 = 360 min = 6.0 h
+    Annual time                   6.0 x 52 = 312 hours
+    Error rate (sent wrong)       ~3%  =  1.8 items/week
+
+  AFTER
+    Review time per item          1.5 minutes
+    Weekly time                   60 x 1.5 = 90 min = 1.5 h
+    Annual time                   1.5 x 52 = 78 hours
+
+  SAVING
+    Weekly                        6.0 - 1.5 = 4.5 hours
+    Annual                        4.5 x 52 = 234 hours
+
+  COST
+    Build                         28 hours
+    Maintenance                   1 h/month = 12 h/year
+    Inference (local model)       ~0 marginal
+
+  PAYBACK
+    Build hours / weekly saving
+      28 / 4.5                    = 6.2 weeks
+
+  NET, at an illustrative internal value of $30/hour
+    Value of hours saved          234 x 30  =  $7,020
+    Less build (one-off)           28 x 30  =    $840
+    Less maintenance (annual)      12 x 30  =    $360
+    ---------------------------------------------------
+    Year one net                              $5,820
+    Year two onward                           $6,660</span>
+      <p>Three things this calculation catches that hand-waving does not. A payback measured in weeks is a build; a payback measured in years is a hobby. A review time of zero is a lie, and pretending otherwise is how projects come in at half the promised saving. And a task that occurs twice a month cannot clear any reasonable build cost no matter how much you dislike it.</p>
       <h2>The two-tier pattern</h2>
       <p>The architecture that consistently works is two-tier. A cheap local model does the volume — drafting, tagging, extraction, overnight batches — at zero marginal cost. A frontier model does the judgement: the final pass, the hard reasoning, anything customer-facing. Between them sits the piece most people skip.</p>
+      <div class="tblwrap" tabindex="0" role="group" aria-label="Table, scrolls horizontally"><table class="tbl">
+        <thead><tr><th scope="col">Tier</th><th scope="col">What it does</th><th scope="col">Marginal cost</th><th scope="col">What it must never do</th></tr></thead>
+        <tbody>
+          <tr><td>Local model on your own hardware</td><td>Bulk drafting, tagging, extraction, classification, overnight batches</td><td>Electricity only</td><td>Be trusted without a gate; be the final word on anything sent</td></tr>
+          <tr><td>Automated quality gate (code, no model)</td><td>Hard invariants, deterministic checks, quarantine</td><td>Effectively zero</td><td>Contain judgement. Every rule must be a boolean</td></tr>
+          <tr><td>Frontier model</td><td>Hard reasoning, final polish, ambiguous cases, anything customer-visible</td><td>Per token, meaningful at volume</td><td>Run on every item when 90 percent of items are easy</td></tr>
+          <tr><td>Human</td><td>Exceptions, irreversible actions, relationships</td><td>The scarce resource</td><td>See the whole queue. They should see only what the gate could not resolve</td></tr>
+        </tbody>
+      </table></div>
+      <p>The economics of the split are the point: the cheap tier absorbs the volume, the expensive tier absorbs the difficulty, and the gate decides which is which. Running the frontier model on everything is the most common way to make a working pipeline uneconomic. Setting the cheap tier up is covered in <a href="/guides/local-llm-ollama.html">the local LLM guide</a>, keeping its output machine-checkable in <a href="/guides/structured-llm-output.html">the structured output guide</a>, and cutting the cost of the expensive tier in <a href="/guides/prompt-caching.html">the prompt caching guide</a>.</p>
       <h2>The quality gate is the product</h2>
       <p>Generated output at volume is worthless without an automated check, because the failure rate is never zero and one bad artefact reaching a customer costs more than the whole batch saved. A gate is a set of hard invariants, checked in code, that quarantines anything failing them.</p>
-      <ul>
-        <li>Required fields present and non-empty.</li>
-        <li>No placeholder text — no unfilled template variables, no leftover brackets.</li>
-        <li>Names, amounts, and dates match the source record exactly, checked by string comparison rather than by vibes.</li>
-        <li>Length and format within bounds.</li>
-        <li>Banned-phrase list for anything that would embarrass you.</li>
-        <li>Deduplication against what has already been sent, so nobody gets the same message twice.</li>
-      </ul>
+      <div class="tblwrap" tabindex="0" role="group" aria-label="Table, scrolls horizontally"><table class="tbl">
+        <thead><tr><th scope="col">Invariant</th><th scope="col">What it catches</th><th scope="col">How it is checked</th></tr></thead>
+        <tbody>
+          <tr><td>Required fields present and non-empty</td><td>Truncated generations, silent API failures</td><td>Presence and length assertion per field</td></tr>
+          <tr><td>No placeholder text or unfilled template variables</td><td>Leaked brackets, XX, TODO, lorem ipsum, [NAME]</td><td>Regex blocklist over the rendered output</td></tr>
+          <tr><td>Names, amounts, and dates match the source record exactly</td><td>The single most damaging class of error: confident wrong specifics</td><td>String equality against the source record, not similarity</td></tr>
+          <tr><td>Length and format within bounds</td><td>Rambling output, missing structure, wrong file type</td><td>Character and line counts; schema validation</td></tr>
+          <tr><td>Banned-phrase list</td><td>Anything that would embarrass you, plus spam-filter triggers</td><td>Case-insensitive substring match</td></tr>
+          <tr><td>Deduplication against what has already been sent</td><td>The same person receiving the same message twice</td><td>Hash or key lookup against a send log</td></tr>
+          <tr><td>Recipient and identifier sanity</td><td>Wrong record joined to right template</td><td>Cross-field consistency check between record and rendered text</td></tr>
+          <tr><td>Encoding and whitespace clean</td><td>Mojibake, doubled spaces, stray markdown artefacts</td><td>Normalisation pass plus a character-class assertion</td></tr>
+        </tbody>
+      </table></div>
       <p>Everything failing the gate goes to a quarantine folder rather than out the door. <strong>Volume without a gate is not throughput, it is liability at scale.</strong></p>
-      <h2>Sequencing a real build</h2>
+      <h3>A worked pass and fail</h3>
+      <span class="formula" tabindex="0" role="group" aria-label="Formula, scrolls horizontally">SOURCE RECORD
+  company    = Ridgeline Logistics
+  contact    = Dana Osei
+  city       = Reno
+  last_load  = 2026-06-14
+
+CANDIDATE 1
+  "Hi Dana - saw Ridgeline Logistics is running out of Reno. We last
+   worked together in June. Worth a short call this week?"
+
+  required fields present ......... PASS
+  no placeholders ................. PASS
+  names match source .............. PASS  (Dana, Ridgeline Logistics, Reno)
+  length within bounds ............ PASS  (168 chars, limit 600)
+  banned phrases .................. PASS
+  dedup against send log .......... PASS
+  ------------------------------------------------
+  RESULT: SEND-ELIGIBLE
+
+
+CANDIDATE 2
+  "Hi Dana - saw Ridgeline Logistics is running out of Sacramento. We
+   last worked together in [MONTH]. Worth a short call this week?"
+
+  required fields present ......... PASS
+  no placeholders ................. FAIL  ([MONTH] survived rendering)
+  names match source .............. FAIL  (Sacramento not in record)
+  ------------------------------------------------
+  RESULT: QUARANTINED, 2 violations</span>
+      <p>Candidate 2 is the important one, because a human skimming a batch of eighty would very likely catch <code>[MONTH]</code> and would very likely miss <code>Sacramento</code>. The city is plausible, well-formed, and completely invented. That is precisely the failure class a string-equality check catches for free and human review does not.</p>
+      <h2>Shadow mode, and how to measure it</h2>
+      <p>Shadow mode means the pipeline runs end to end — generate, gate, log — and sends nothing. It exists so that the decision to go live is made against data rather than against optimism. Give it a defined exit condition before you start, or it runs forever or ends the first time you get impatient.</p>
       <ol>
-        <li><strong>Instrument first.</strong> Count how often the task happens and how long it takes. Automating something that occurs twice a month is a hobby.</li>
-        <li><strong>Write the gate before the generator.</strong> If you cannot specify what correct output looks like in code, you are not ready to generate it.</li>
-        <li><strong>Run it in shadow mode.</strong> Generate, gate, and inspect — but do not send. Measure the pass rate.</li>
-        <li><strong>Ship the highest-volume slice only.</strong> One workflow, end to end, beats five half-built ones.</li>
-        <li><strong>Keep a human at the point of irreversibility</strong> until the pass rate has been stable for long enough that you would bet on it.</li>
+        <li><strong>Run at least 200 real items</strong> through generation and the gate. Real inputs, not test fixtures.</li>
+        <li><strong>Record the gate pass rate.</strong> The proportion of generated items that clear every invariant.</li>
+        <li><strong>Human-audit a random sample of the passes.</strong> Thirty is a workable number. You are looking for escapes: items the gate approved that a human would not have sent.</li>
+        <li><strong>Human-audit all the failures too</strong>, at least early. Failures that a human would have approved are false positives, and a gate with a high false-positive rate quietly gets switched off.</li>
+        <li><strong>Set the exit condition in advance.</strong> A reasonable one: gate pass rate at or above 95 percent, and zero escapes in 30 audited passes, sustained across three consecutive batches.</li>
+        <li><strong>Keep shadow mode running after go-live</strong> on a sample. It becomes your regression test for the day an upstream format changes.</li>
       </ol>
-      <h2>What it actually costs</h2>
-      <p>Less than people expect on tokens and more than they expect on plumbing. A local model on hardware you already own is free per call, so the recurring cost of a high-volume drafting pipeline can be genuinely near zero. The real expense is the boring part: connecting the data sources, defining the invariants, handling the exceptions, and maintaining it when a format changes upstream.</p>
+      <div class="tblwrap" tabindex="0" role="group" aria-label="Table, scrolls horizontally"><table class="tbl">
+        <thead><tr><th scope="col">Measurement</th><th scope="col">What it tells you</th><th scope="col">Bad result means</th></tr></thead>
+        <tbody>
+          <tr><td>Gate pass rate</td><td>How good the generator is</td><td>Below 85 percent: fix the prompt or the inputs, not the gate</td></tr>
+          <tr><td>Escape rate in audited passes</td><td>How good the gate is</td><td>Anything above zero: add an invariant, do not go live</td></tr>
+          <tr><td>False-positive rate in audited failures</td><td>Whether the gate is too strict</td><td>Above 20 percent: you are quarantining good work and will start ignoring the queue</td></tr>
+          <tr><td>Time per human review</td><td>Whether the saving is real</td><td>If review is not much faster than doing it manually, the ROI was fiction</td></tr>
+          <tr><td>Distribution of failure reasons</td><td>Where to spend the next hour</td><td>One reason dominating usually means one prompt fix removes most failures</td></tr>
+        </tbody>
+      </table></div>
+      <h2>A failure taxonomy</h2>
+      <p>Every one of these will happen. Knowing the list in advance is the difference between a gate designed against reality and a gate designed against imagination.</p>
+      <div class="tblwrap" tabindex="0" role="group" aria-label="Table, scrolls horizontally"><table class="tbl">
+        <thead><tr><th scope="col">Failure</th><th scope="col">What it looks like</th><th scope="col">Detection</th><th scope="col">Mitigation</th></tr></thead>
+        <tbody>
+          <tr><td>Confident invention</td><td>A plausible city, date, or figure that appears nowhere in the source</td><td>String equality against the source record</td><td>Never allow a specific to originate in the model</td></tr>
+          <tr><td>Placeholder leakage</td><td>[NAME], XX, TODO, lorem ipsum surviving into output</td><td>Regex blocklist</td><td>Fail closed; never strip and send</td></tr>
+          <tr><td>Wrong record joined</td><td>Right template, wrong customer's details</td><td>Cross-field consistency assertion</td><td>Pass one record object, never loose variables</td></tr>
+          <tr><td>Silent truncation</td><td>Output stops mid-sentence at a token limit</td><td>Minimum length plus terminal-punctuation check</td><td>Raise limits; assert on completion reason</td></tr>
+          <tr><td>Upstream format drift</td><td>A vendor redesigns a PDF and extraction returns nulls</td><td>Sudden change in gate pass rate</td><td>Alert on pass-rate deltas, not just on absolute failures</td></tr>
+          <tr><td>Duplicate send</td><td>The same recipient contacted twice in a week</td><td>Send-log key lookup before dispatch</td><td>Dedup at dispatch time, not at generation time</td></tr>
+          <tr><td>Encoding damage</td><td>Smart quotes turning into mojibake in a plain-text channel</td><td>Character-class assertion</td><td>Normalise to a known character set at render</td></tr>
+          <tr><td>Partial batch</td><td>A run dies halfway and is re-run from the start</td><td>Idempotency key per item</td><td>Make every write idempotent before you make it automatic</td></tr>
+          <tr><td>Tone drift</td><td>Technically valid output that does not sound like you</td><td>Human sample review only</td><td>This one genuinely cannot be automated. Keep sampling</td></tr>
+        </tbody>
+      </table></div>
+      <h2>Sequencing a real build</h2>
+      <div class="tblwrap" tabindex="0" role="group" aria-label="Table, scrolls horizontally"><table class="tbl">
+        <thead><tr><th scope="col">Phase</th><th scope="col">What you do</th><th scope="col">Time</th><th scope="col">Exit condition</th></tr></thead>
+        <tbody>
+          <tr><td>1. Instrument</td><td>Count occurrences, time the manual version, price an error</td><td>3–5 h</td><td>You have frequency, minutes, and error rate written down</td></tr>
+          <tr><td>2. Specify the gate</td><td>Write the invariants as assertions before any generation exists</td><td>2–4 h</td><td>Every rule is a boolean a machine can evaluate</td></tr>
+          <tr><td>3. Build the data path</td><td>Get the source records into a structured form the generator can read</td><td>8–20 h</td><td>One record object, all fields, no scraping at generation time</td></tr>
+          <tr><td>4. Build the generator</td><td>Prompt, template, render. Cheap tier only</td><td>4–10 h</td><td>It produces plausible output on 20 real records</td></tr>
+          <tr><td>5. Shadow mode</td><td>Run, gate, log, audit, iterate</td><td>1–3 weeks elapsed</td><td>Pass rate and escape thresholds met across three batches</td></tr>
+          <tr><td>6. Human-fired sends</td><td>Output goes out only when a person clicks</td><td>Ongoing</td><td>Weeks of clean batches and a reviewer who is bored</td></tr>
+          <tr><td>7. Selective automation</td><td>Auto-send only the highest-confidence slice, humans keep the rest</td><td>Ongoing</td><td>You would bet your own money on the pass rate</td></tr>
+        </tbody>
+      </table></div>
+      <p>Two rules that hold across all seven phases. <strong>Write the gate before the generator</strong> — if you cannot specify what correct output looks like in code, you are not ready to generate it. And <strong>keep a human at the point of irreversibility</strong> until the pass rate has been stable for long enough that you would bet on it. Most of the value arrives at phase 6, not phase 7, and phase 6 carries a fraction of the risk.</p>
+      <h2>What it actually costs, itemised</h2>
+      <p>Less than people expect on tokens and more than they expect on plumbing. Illustrative figures for a single high-volume drafting pipeline built by one person on hardware they already own.</p>
+      <div class="tblwrap" tabindex="0" role="group" aria-label="Table, scrolls horizontally"><table class="tbl">
+        <thead><tr><th scope="col">Line item</th><th scope="col">One-off</th><th scope="col">Recurring</th><th scope="col">Notes</th></tr></thead>
+        <tbody>
+          <tr><td>Model inference, local tier</td><td>$0</td><td>Electricity, effectively noise</td><td>Requires hardware you already have. If you do not, this line becomes a purchase</td></tr>
+          <tr><td>Model inference, frontier tier</td><td>$0</td><td>Per token; material only if you route everything through it</td><td>The gate exists partly to keep this line small</td></tr>
+          <tr><td>Integration and data plumbing</td><td>8–20 h of build</td><td>—</td><td>The largest genuine cost, and the one nobody budgets</td></tr>
+          <tr><td>Gate specification and testing</td><td>2–6 h</td><td>—</td><td>Cheap, and the highest-return hours in the project</td></tr>
+          <tr><td>Storage and logging</td><td>~$0</td><td>Pennies</td><td>A send log and a quarantine folder. Do not skip because it is cheap</td></tr>
+          <tr><td>Monitoring and alerting</td><td>1–3 h</td><td>—</td><td>Alert on pass-rate change, not just on crashes</td></tr>
+          <tr><td>Maintenance</td><td>—</td><td>0.5–2 h/month</td><td>Upstream formats change. Budget for it or the pipeline rots</td></tr>
+          <tr><td>Human review time</td><td>—</td><td>Scales with volume until the gate is trusted</td><td>This is the line that determines whether the ROI was real</td></tr>
+          <tr><td>The first bad artefact that escapes</td><td>—</td><td>Unbounded</td><td>Which is the entire argument for the gate</td></tr>
+        </tbody>
+      </table></div>
       <p>Which is the honest summary of this whole field right now — <strong>the model is the cheap part.</strong></p>
-      <p>A worked example of all of this in production is <a href="/freightdesk.html">FreightDesk AI</a>: local model drafts overnight, an automated audit quarantines anything failing its checks, a human sees only exceptions. The generation half is covered in the <a href="/guides/local-llm-ollama.html">local LLM guide</a>, and the retrieval half in the <a href="/guides/rag-explained.html">RAG guide</a>.</p>
+      <p>A worked example of all of this in production is <a href="/freightdesk.html">FreightDesk AI</a>: local model drafts overnight, an automated audit quarantines anything failing its checks, a human sees only exceptions. The freight-specific version of the same problem is in <a href="/guides/freight-back-office.html">the back office guide</a>, the retrieval half is in <a href="/guides/rag-explained.html">the RAG guide</a>, and if you want the build done rather than described, that is <a href="/services.html">the services page</a>.</p>
 
       <h2>Tools referenced in this guide</h2>
       <ul>
@@ -144,12 +328,14 @@
       <h2>Quick answers</h2>
     </div>
     <div class="grid" style="margin-top:var(--s6)">
-      <article class="card faq-card"><h3>What is worth automating?</h3><p>Repetitive, structured, deadline-driven work that is cheap to verify. If checking costs as much as doing, you moved the work rather than removed it.</p></article>
-      <article class="card faq-card"><h3>What stays human?</h3><p>Anything that commits you: final sends, price negotiation, complaints, and deciding what to do when a flag fires.</p></article>
-      <article class="card faq-card"><h3>What is the two-tier pattern?</h3><p>Cheap local model for volume drafting and extraction, frontier model for judgement and anything customer-facing, gate in between.</p></article>
-      <article class="card faq-card"><h3>Why a quality gate?</h3><p>Failure rate is never zero, and one bad artefact costs more than the batch saved. Volume without a gate is liability at scale.</p></article>
-      <article class="card faq-card"><h3>How do I sequence a build?</h3><p>Instrument, write the gate first, run in shadow mode, ship one workflow end to end, keep a human at the irreversible step.</p></article>
-      <article class="card faq-card"><h3>What does it cost?</h3><p>Little on inference, a lot on plumbing — integration, invariants, exceptions, maintenance. The model is the cheap part.</p></article>
+      <article class="card faq-card"><h3>Which business tasks are worth automating with AI?</h3><p>Tasks that are repetitive, structured, deadline-driven, and cheap to verify — drafting first versions, extracting fields from documents, classifying and routing messages, chasing paperwork on a schedule, summarising threads, and monitoring expiry dates. If verifying the output costs as much as doing the work, automation has moved the work rather than removed it.</p></article>
+      <article class="card faq-card"><h3>How do you decide which task to automate first?</h3><p>Score candidates on frequency, input structure, verification cost, reversibility if wrong, and format stability, with frequency and structure weighted heaviest. Build anything scoring high, and leave low scorers alone regardless of how annoying they are. Resentment is not a prioritisation signal, which is why founders build the monthly board narrative instead of the daily document extraction.</p></article>
+      <article class="card faq-card"><h3>How do you calculate the ROI of an automation?</h3><p>Multiply frequency by minutes saved per item to get weekly hours, subtract the review time that still exists after automation, and divide build hours by the weekly saving to get payback in weeks. A payback measured in weeks is a build and a payback measured in years is a hobby. Never model review time as zero.</p></article>
+      <article class="card faq-card"><h3>What should stay human in an automated workflow?</h3><p>Anything that commits you or depends on a relationship: sending final communications, negotiating price, handling complaints or claims, and deciding what to do when something the system flagged actually happens.</p></article>
+      <article class="card faq-card"><h3>What is the two-tier model pattern?</h3><p>A cheap local model handles high-volume, low-difficulty work such as drafting, tagging, and extraction at zero marginal cost, while a frontier model handles judgement, hard reasoning, and anything customer-facing. An automated quality gate sits between them and decides which items need the expensive tier.</p></article>
+      <article class="card faq-card"><h3>Why does an automation pipeline need a quality gate?</h3><p>Because generation at volume always has a non-zero failure rate, and one bad artefact reaching a customer can cost more than the entire batch saved. A gate checks hard invariants in code — required fields, no placeholder text, exact string matches for names and amounts, deduplication — and quarantines anything that fails.</p></article>
+      <article class="card faq-card"><h3>What is shadow mode and when can you turn it off?</h3><p>Shadow mode runs generation and the gate end to end while sending nothing, so the go-live decision is made against data. A workable exit condition is a gate pass rate at or above 95 percent with zero escapes in 30 audited passes, sustained across three consecutive batches, and even then the next step is human-fired sends rather than full automation.</p></article>
+      <article class="card faq-card"><h3>What does AI automation actually cost?</h3><p>Less than expected on model inference, especially with a local model on hardware you already own, and more than expected on integration — connecting data sources, defining invariants, handling exceptions, and maintaining it when an upstream format changes. Budget half an hour to two hours a month of maintenance forever. The model is the cheap part.</p></article>
     </div>
   </section>
 

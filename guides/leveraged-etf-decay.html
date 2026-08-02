@@ -25,8 +25,8 @@
 <meta name="twitter:image" content="https://yusuf-gadelrab.github.io/og-card.png">
 <link rel="alternate" type="text/plain" href="https://yusuf-gadelrab.github.io/llms-full.txt" title="Plain-text profile for language models">
 
-<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"TechArticle","@id":"https://yusuf-gadelrab.github.io/guides/leveraged-etf-decay.html#article","headline":"Why Leveraged ETFs Decay: Daily Rebalancing and Volatility Drag","name":"Why Leveraged ETFs Decay: Daily Rebalancing and Volatility Drag","description":"Daily rebalancing, volatility drag, and a worked two-day example where a 3x ETF loses on a flat round trip. When they fit, and why sizing must be tighter.","datePublished":"2026-07-29","dateModified":"2026-07-29","inLanguage":"en","author":{"@id":"https://yusuf-gadelrab.github.io/#person"},"publisher":{"@id":"https://yusuf-gadelrab.github.io/#person"},"about":["Leveraged ETFs","Volatility drag","Risk management"],"mainEntityOfPage":"https://yusuf-gadelrab.github.io/guides/leveraged-etf-decay.html","isAccessibleForFree":true,"proficiencyLevel":"Beginner"},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://yusuf-gadelrab.github.io/"},{"@type":"ListItem","position":2,"name":"Guides","item":"https://yusuf-gadelrab.github.io/guides.html"},{"@type":"ListItem","position":3,"name":"Leveraged ETF Decay"}]}]}</script>
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","@id":"https://yusuf-gadelrab.github.io/guides/leveraged-etf-decay.html#faq","mainEntity":[{"@type":"Question","name":"Why do leveraged ETFs lose money over time?","acceptedAnswer":{"@type":"Answer","text":"Because they target a multiple of the underlying's return over a single day and rebalance nightly to maintain it, so the daily returns compound. In an oscillating market this compounding works against the holder, and the fund can lose money even when the underlying index finishes exactly flat."}},{"@type":"Question","name":"Can you show an example of leveraged ETF decay?","acceptedAnswer":{"@type":"Answer","text":"Start an index and a 3x fund both at 100. The index rises 10% to 110, so the fund gains 30% to 130. The index then falls 9.0909% back to exactly 100, so the fund falls 27.2727% to 94.55. The index round trip is 0% and the fund round trip is -5.45%, entirely from arithmetic rather than fees."}},{"@type":"Question","name":"What is volatility drag?","acceptedAnswer":{"@type":"Answer","text":"Volatility drag is the gap between a leveraged fund's compounded return and the simple multiple of the underlying's return, caused by daily rebalancing. It scales approximately as one half times L times (L minus 1) times the variance of daily returns, so it grows with the square of volatility and faster than linearly with the leverage factor."}},{"@type":"Question","name":"Are leveraged ETFs ever appropriate?","acceptedAnswer":{"@type":"Answer","text":"They suit short, directional holding periods in low-volatility trends and short-term hedging where capital efficiency matters. In a smooth uptrend compounding actually helps: five consecutive 2% index days give the index 10.4% while a 3x fund returns 33.8%. They are unsuitable for buy and hold, choppy ranges, and long-horizon accounts."}},{"@type":"Question","name":"How should you size a leveraged ETF position?","acceptedAnswer":{"@type":"Answer","text":"Shrink the position by roughly the leverage factor so that dollar risk stays constant. A $30,000 account risking 1% is a $300 budget, which buys 125 shares at a $2.40 stop distance but only about 42 shares when the equivalent stop distance triples to $7.20 in a 3x fund. A blunt half-size cap on leveraged instruments is a reasonable standing rule."}},{"@type":"Question","name":"Do leveraged ETFs always underperform their multiple?","acceptedAnswer":{"@type":"Answer","text":"No. Path matters more than direction. In a smoothly trending, low-volatility market compounding can push a leveraged fund past the simple multiple of the period return. It is choppy, high-variance paths that produce underperformance, which is why holding period and market conditions decide the outcome."}}]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"TechArticle","@id":"https://yusuf-gadelrab.github.io/guides/leveraged-etf-decay.html#article","headline":"Why Leveraged ETFs Decay: Daily Rebalancing and Volatility Drag","name":"Why Leveraged ETFs Decay: Daily Rebalancing and Volatility Drag","description":"Daily rebalancing, volatility drag, and a worked two-day example where a 3x ETF loses on a flat round trip. When they fit, and why sizing must be tighter.","datePublished":"2026-07-29","dateModified":"2026-07-29","inLanguage":"en","author":{"@id":"https://yusuf-gadelrab.github.io/#person"},"publisher":{"@id":"https://yusuf-gadelrab.github.io/#person"},"about":["Leveraged ETFs","Volatility drag","Risk management"],"mainEntityOfPage":"https://yusuf-gadelrab.github.io/guides/leveraged-etf-decay.html","isAccessibleForFree":true,"isPartOf":{"@id":"https://yusuf-gadelrab.github.io/#website"},"proficiencyLevel":"Beginner"},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://yusuf-gadelrab.github.io/"},{"@type":"ListItem","position":2,"name":"Guides","item":"https://yusuf-gadelrab.github.io/guides.html"},{"@type":"ListItem","position":3,"name":"Leveraged ETF Decay"}]}]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","@id":"https://yusuf-gadelrab.github.io/guides/leveraged-etf-decay.html#faq","mainEntity":[{"@type":"Question","name":"Why do leveraged ETFs lose money over time?","acceptedAnswer":{"@type":"Answer","text":"Because they target a multiple of the underlying's return over a single day and rebalance nightly to maintain it, so the daily returns compound. In an oscillating market this compounding works against the holder, and the fund can lose money even when the underlying index finishes exactly flat."}},{"@type":"Question","name":"Can you show an example of leveraged ETF decay?","acceptedAnswer":{"@type":"Answer","text":"Start an index and a 3x fund both at 100. The index rises 10% to 110, so the fund gains 30% to 130. The index then falls 9.0909% back to exactly 100, so the fund falls 27.2727% to 94.55. The index round trip is 0% and the fund round trip is -5.45%, entirely from arithmetic rather than fees."}},{"@type":"Question","name":"Is there a formula for leveraged ETF decay?","acceptedAnswer":{"@type":"Answer","text":"For a round trip that returns the index to flat, the exact result is minus L times (L minus 1) times d squared, divided by (1 plus d), where L is the daily multiple and d is the up-day move. At L of 3 and d of 10% that gives minus 5.45%, matching the worked example. Drag therefore grows with the square of the daily move and with L times (L minus 1), so a 3x fund carries three times the drag of a 2x on the same path."}},{"@type":"Question","name":"Do inverse ETFs decay too?","acceptedAnswer":{"@type":"Answer","text":"Yes, and more than people expect. The L times (L minus 1) term equals 2 for a plain minus 1x fund, exactly the same as a plus 2x fund, so an unleveraged inverse product already behaves like a leveraged one. A minus 3x fund carries 12 units of drag against a plus 3x fund's 6, and loses about 10.9% on a flat round trip built from 10% daily swings."}},{"@type":"Question","name":"What do leveraged ETFs cost besides the expense ratio?","acceptedAnswer":{"@type":"Answer","text":"An embedded financing cost, because a 3x fund funds two borrowed units of exposure at short rates. On illustrative figures of a 0.95% expense ratio and a 4.5% short rate, total carry is about 9.95% a year or 0.04% a trading day. That is real but secondary: at 2% daily volatility the volatility drag on a 3x fund runs about 0.12% a day, roughly three times the carry."}},{"@type":"Question","name":"Are leveraged ETFs ever appropriate?","acceptedAnswer":{"@type":"Answer","text":"They suit short, directional holding periods in low-volatility trends and short-term hedging where capital efficiency matters. In a smooth uptrend compounding actually helps: five consecutive 2% index days give the index 10.41% while a 3x fund returns 33.82%, beating three times the index return by 2.6 points. They are unsuitable for buy and hold, choppy ranges, inverse long-term hedges, and long-horizon accounts."}},{"@type":"Question","name":"How should you size a leveraged ETF position?","acceptedAnswer":{"@type":"Answer","text":"Shrink the position by roughly the leverage factor so that dollar risk stays constant. A 30,000 dollar account risking 1% is a 300 dollar budget, which buys 125 shares at a 2.40 stop distance but only 41 shares when the equivalent stop distance triples to 7.20 in a 3x fund. A blunt half-size cap on leveraged instruments is a reasonable standing rule, and it takes that 41 down to 20."}},{"@type":"Question","name":"Do leveraged ETFs always underperform their multiple?","acceptedAnswer":{"@type":"Answer","text":"No. Path matters more than direction. In a smoothly trending, low-volatility market compounding can push a leveraged fund past the simple multiple of the period return. It is choppy, high-variance paths that produce underperformance, which is why holding period and market conditions decide the outcome, and why multi-day deviation from the multiple is the product working as designed rather than tracking error."}}]}</script>
 
 <link rel="stylesheet" href="/css/site.css">
 <style>
@@ -50,16 +50,16 @@
     color:var(--muted);font-size:var(--t-small);margin:0 0 var(--s5)}
   .callout--warn{border-color:var(--gold-2)}
   .faq-card{padding:var(--s5)}
-  .faq-card h3{font-size:var(--t-h3);margin:0}
-  .faq-card p{color:var(--muted);font-size:var(--t-small);margin:var(--s3) 0 0}
+  .faq-card h3{font-size:var(--t-h3);margin:0;line-height:1.3}
+  .faq-card p{color:var(--muted);font-size:var(--t-small);line-height:1.65;margin:var(--s3) 0 0}
 </style>
 </head>
 <body class="pro">
 
 <a class="skip-link" href="#main">Skip to content</a>
 
-<nav class="site-nav">
-  <a class="site-nav__brand" href="/"><img class="site-nav__lion" src="/img/brand/lion-mark.svg" alt="" width="34" height="34"><span>YUSUF GADELRAB</span></a>
+<nav class="site-nav" aria-label="Primary">
+  <a class="site-nav__brand" href="/"><img class="site-nav__lion" src="/img/brand/lion-mark.svg" alt="" width="34" height="34" decoding="async"><span>YUSUF GADELRAB</span></a>
   <div class="site-nav__links">
     <a href="/">Work</a>
     <a href="/guides.html">Guides</a>
@@ -93,8 +93,8 @@
       <p>To hold that daily multiple, the fund rebalances its exposure at the end of every session. If the index rises, the fund must add exposure to keep the ratio; if the index falls, it must cut exposure. The mechanical consequence is that <strong>the fund buys after up days and sells after down days</strong>, which is exactly the wrong behaviour in a market that oscillates.</p>
       <h2>The worked two-day example</h2>
       <p>Take an index at 100 and a 3x fund at 100. Day one the index rises 10%; day two it falls 9.0909%, which returns it exactly to 100.</p>
-      <div class="tblwrap"><table class="tbl">
-        <thead><tr><th></th><th>Index</th><th>Index level</th><th>3x daily move</th><th>3x fund value</th></tr></thead>
+      <div class="tblwrap" tabindex="0" role="group" aria-label="Table, scrolls horizontally"><table class="tbl">
+        <thead><tr><th scope="col"></th><th scope="col">Index</th><th scope="col">Index level</th><th scope="col">3x daily move</th><th scope="col">3x fund value</th></tr></thead>
         <tbody>
           <tr><td>Start</td><td>—</td><td>100.00</td><td>—</td><td>100.00</td></tr>
           <tr><td>Day 1</td><td>+10.00%</td><td>110.00</td><td>+30.00%</td><td>130.00</td></tr>
@@ -102,44 +102,123 @@
           <tr><td>Net</td><td>0.00%</td><td>100.00</td><td>—</td><td>−5.45%</td></tr>
         </tbody>
       </table></div>
-      <span class="formula">Day 2 fund value = 130.00 × (1 − 0.272727) = 130.00 × 0.727273 = 94.55
+      <span class="formula" tabindex="0" role="group" aria-label="Formula, scrolls horizontally">Day 2 fund value = 130.00 × (1 − 0.272727) = 130.00 × 0.727273 = 94.55
 
 Index round trip:  0.00%
 3x fund round trip: −5.45%</span>
       <p>The index finished exactly flat. The 3x fund lost 5.45%. Nobody made a bad decision and no fee caused it. The loss is pure arithmetic: a −27.27% day requires a +37.5% day to recover, and the fund never got one.</p>
-      <h2>Volatility drag, generalised</h2>
-      <p>The same effect exists in any leveraged compounding sequence, and it scales roughly with the square of the leverage factor and with variance:</p>
-      <span class="formula">drag ≈ ½ × L × (L − 1) × σ²
+      <h2>The closed form, and why it is exact</h2>
+      <p>That example is not a special case, and the drag on a flat round trip has an exact solution rather than an approximation. Let <em>d</em> be the up-day return and <em>L</em> the daily multiple:</p>
+      <span class="formula" tabindex="0" role="group" aria-label="Formula, scrolls horizontally">A round trip that returns the index to flat needs a down leg of d ÷ (1 + d).
 
-where L is the leverage multiple
-      σ² is the variance of daily returns</span>
-      <p>The two things to take from that expression: drag rises with the <em>square</em> of volatility, so a choppy market is disproportionately punishing, and it rises faster than linearly with L, so a 3x fund suffers roughly three times the drag of a 2x fund on the same underlying, not one and a half times.</p>
-      <p>A second worked case makes the asymmetry clear. Run the same round trip with a 1% daily swing instead of a 10% one: index up 1% then down 0.9901% returns to 100, while the 3x fund goes to 103.00 then down 2.9703% to 99.94, a loss of only 0.06%. <strong>Same structure, a hundred times smaller bill, because volatility is what you are paying.</strong></p>
-      <h2>The trending exception</h2>
-      <p>Compounding is not only a tax. In a smoothly trending market with low daily volatility, compounding works in your favour and a 3x fund can beat 3x the underlying's period return. Five consecutive 2% up days give an index +10.4% while a 3x fund returns +33.8%, which is more than three times the index's period gain.</p>
-      <p>This is the honest version of the trade-off. <strong>Leveraged ETFs are instruments for short, directional, low-chop periods.</strong> They are not broken products; they are products whose behaviour depends on the path, not just the endpoint.</p>
+Fund = (1 + Ld) × (1 − L·d ÷ (1 + d))
+     = (1 + Ld)(1 + d − Ld) ÷ (1 + d)
+     = (1 + d − L(L − 1)d²) ÷ (1 + d)
+
+  Round-trip return = − L(L − 1) × d² ÷ (1 + d)
+
+Check, L = 3 and d = 10%:
+  −(3)(2)(0.01) ÷ 1.10 = −0.06 ÷ 1.10 = −5.4545%   ✓ matches the table</span>
+      <p>Everything worth knowing about decay falls out of that one expression. Drag scales with <strong>d squared</strong>, so doubling daily volatility quadruples the bill. It scales with <strong>L(L−1)</strong>, so a 3x fund carries 6 units of drag against a 2x fund's 2 — three times as much, not one and a half times. And it is completely independent of direction: the same formula applies whether the round trip goes up first or down first.</p>
+      <div class="tblwrap" tabindex="0" role="group" aria-label="Table, scrolls horizontally"><table class="tbl">
+        <thead><tr><th scope="col">Daily swing d</th><th scope="col">2x round trip</th><th scope="col">3x round trip</th><th scope="col">−1x round trip</th><th scope="col">−2x round trip</th><th scope="col">−3x round trip</th></tr></thead>
+        <tbody>
+          <tr><td>1%</td><td>−0.020%</td><td>−0.059%</td><td>−0.020%</td><td>−0.059%</td><td>−0.119%</td></tr>
+          <tr><td>2%</td><td>−0.078%</td><td>−0.235%</td><td>−0.078%</td><td>−0.235%</td><td>−0.471%</td></tr>
+          <tr><td>3%</td><td>−0.175%</td><td>−0.524%</td><td>−0.175%</td><td>−0.524%</td><td>−1.049%</td></tr>
+          <tr><td>5%</td><td>−0.476%</td><td>−1.429%</td><td>−0.476%</td><td>−1.429%</td><td>−2.857%</td></tr>
+          <tr><td>10%</td><td>−1.818%</td><td>−5.455%</td><td>−1.818%</td><td>−5.455%</td><td>−10.909%</td></tr>
+        </tbody>
+      </table></div>
+      <p>Two results in that table surprise people. First, <strong>a plain −1x inverse fund has exactly the same drag as a +2x fund</strong>, because L(L−1) equals 2 for both. An inverse ETF is not a mild product; the moment you invert, you inherit leveraged-style decay even at a stated multiple of one. Second, a −3x fund carries 12 units of drag, double the 3x long, and loses nearly 11% on a flat 10% round trip. Inverse-leveraged products are the most path-sensitive instruments on the list.</p>
+      <p>A useful sanity check on the squared term: at 10% swings the 3x loses 5.455% and at 1% swings it loses 0.059%, a ratio of 91.8 rather than the 100 the d² term alone suggests. The gap is exactly the (1 + d) denominator — 100 × (1.01 ÷ 1.10) = 91.8. The approximation people quote, drag ≈ ½ × L × (L − 1) × σ², is that same result with the denominator dropped, which is fine at small daily moves and increasingly optimistic at large ones.</p>
+      <h2>Path, not direction: a five-day comparison</h2>
+      <p>The daily-reset mechanic is not only a tax. Compare two five-day paths, both with more up days than down.</p>
+      <div class="tblwrap" tabindex="0" role="group" aria-label="Table, scrolls horizontally"><table class="tbl">
+        <thead><tr><th scope="col">Path</th><th scope="col">Daily returns</th><th scope="col">Index period return</th><th scope="col">3x fund return</th><th scope="col">3 × index return</th><th scope="col">Fund vs 3 × index</th></tr></thead>
+        <tbody>
+          <tr><td>Smooth trend</td><td>+2% five times</td><td>+10.41%</td><td>+33.82%</td><td>+31.22%</td><td>+2.60pp better</td></tr>
+          <tr><td>Oscillating</td><td>+2, −2, +2, −2, +2</td><td>+1.92%</td><td>+5.24%</td><td>+5.75%</td><td>−0.52pp worse</td></tr>
+        </tbody>
+      </table></div>
+      <span class="formula" tabindex="0" role="group" aria-label="Formula, scrolls horizontally">Smooth trend
+  index  = 1.02^5      = 1.10408  → +10.41%
+  3x     = 1.06^5      = 1.33823  → +33.82%
+  3 × index return     = 31.22%   → fund beats it by 2.60 points
+
+Oscillating
+  index  = 1.02×0.98×1.02×0.98×1.02 = 1.01918 → +1.92%
+  3x     = 1.06×0.94×1.06×0.94×1.06 = 1.05238 → +5.24%
+  3 × index return     = 5.75%    → fund trails it by 0.52 points</span>
+      <p>Both paths had three up days. The trending path had compounding working <em>for</em> the holder and beat the naive multiple; the oscillating path had it working against and fell short. <strong>Leveraged ETFs are instruments for short, directional, low-chop periods.</strong> They are not broken products; they are products whose behaviour depends on the path, not just the endpoint.</p>
+      <h2>The fees you do not see on the fact sheet</h2>
+      <p>Drag is the headline cost and it is not the only one. A leveraged fund also pays an expense ratio and an embedded financing cost, because a 3x fund holding three units of exposure per unit of net assets is funding the other two units at short rates through swaps or futures.</p>
+      <span class="formula" tabindex="0" role="group" aria-label="Formula, scrolls horizontally">Illustrative 3x fund, figures chosen to show the shape of the arithmetic:
+
+  expense ratio                 0.95%/yr
+  financing: 2 borrowed units × 4.5% short rate  =  9.00%/yr
+  total carry                                    =  9.95%/yr
+                                                 ≈  0.0395% per trading day</span>
+      <div class="tblwrap" tabindex="0" role="group" aria-label="Table, scrolls horizontally"><table class="tbl">
+        <thead><tr><th scope="col">Holding period</th><th scope="col">Carry cost</th><th scope="col">Drag at 2% daily volatility</th><th scope="col">Combined</th></tr></thead>
+        <tbody>
+          <tr><td>1 day</td><td>0.04%</td><td>0.12%</td><td>0.16%</td></tr>
+          <tr><td>5 days</td><td>0.20%</td><td>0.60%</td><td>0.80%</td></tr>
+          <tr><td>10 days</td><td>0.39%</td><td>1.20%</td><td>1.59%</td></tr>
+          <tr><td>21 days (1 month)</td><td>0.83%</td><td>2.52%</td><td>3.35%</td></tr>
+          <tr><td>63 days (1 quarter)</td><td>2.49%</td><td>7.56%</td><td>10.05%</td></tr>
+          <tr><td>252 days (1 year)</td><td>9.95%</td><td>30.24%</td><td>40.19%</td></tr>
+        </tbody>
+      </table></div>
+      <p>The drag column uses ½ × 3 × 2 × 0.02² = 0.12% per day. At that volatility drag is roughly three times the carry, which is the right order of priority: <strong>if you are worried about the expense ratio on a leveraged ETF, you are worried about the wrong number.</strong> The rates and expense ratio above are illustrative — check the actual prospectus and the current short rate, because the financing component moves with policy and was materially smaller in a zero-rate era than it is now.</p>
+      <h2>Rebalance flow near the close</h2>
+      <p>The nightly rebalance is not abstract. It is a real order that has to be executed, and its size has a closed form too.</p>
+      <span class="formula" tabindex="0" role="group" aria-label="Formula, scrolls horizontally">Rebalance trade = L × (L − 1) × NAV × d
+
+  a 3x fund with $1B NAV after a +2% index day
+  = 3 × 2 × $1B × 0.02 = $120M of exposure to BUY into the close
+
+  aggregate across an illustrative $30B of 3x long AUM, on a −3% day
+  = 6 × $30B × 0.03 = $5.4B to SELL into the close</span>
+      <p>The direction is always the same as the day's move, which is why leveraged funds are structurally momentum-amplifying in the last half hour. The AUM figure above is illustrative — I do not have a verified current number and I am not going to invent one. The mechanism is what matters: it is real, it is mechanical, it is predictable, and it means the closing auction on a big directional day contains flow that has nothing to do with anyone's opinion of value.</p>
+      <p>Two practical consequences. Do not judge your fill quality against the close on a violent day, and do not assume the last thirty minutes carries the same information as the rest of the session.</p>
+      <h2>Tracking error against the stated multiple</h2>
+      <p>Over one day these funds do their job well; deviation from the stated multiple is typically small and comes from fee accrual, swap pricing, and the mechanics of tracking the index. Over any longer window, deviation is not error at all — it is the product working correctly. A 3x fund that returned 5.24% while the index returned 1.92% did not miss its target, because it never had a multi-day target.</p>
+      <p>This is why "the ETF is broken" complaints are usually a reading failure rather than a product failure. The one genuine warning sign is a fund whose <em>single-day</em> return persistently diverges from the multiple, which points at liquidity or swap-counterparty problems and is worth taking seriously. Compare the fund's daily return against the multiple for a week before you size anything meaningful in it.</p>
       <h2>When they fit and when they do not</h2>
-      <div class="tblwrap"><table class="tbl">
-        <thead><tr><th>Situation</th><th>Verdict</th><th>Why</th></tr></thead>
+      <div class="tblwrap" tabindex="0" role="group" aria-label="Table, scrolls horizontally"><table class="tbl">
+        <thead><tr><th scope="col">Situation</th><th scope="col">Verdict</th><th scope="col">Why</th></tr></thead>
         <tbody>
           <tr><td>Multi-day trend trade with a defined stop</td><td>Reasonable</td><td>Path is short and the daily rebalancing has little time to compound against you</td></tr>
           <tr><td>Hedging an existing position for a few days</td><td>Reasonable</td><td>Capital-efficient; a small position covers a large exposure</td></tr>
           <tr><td>Buy and hold for months</td><td>No</td><td>Volatility drag compounds indefinitely and the underlying can round-trip while you lose</td></tr>
           <tr><td>Choppy, range-bound market</td><td>No</td><td>This is the exact condition the drag formula punishes hardest</td></tr>
+          <tr><td>Inverse or inverse-leveraged as a long-term hedge</td><td>No</td><td>Inverse products carry drag equal to or greater than their long counterparts. A −3x loses nearly 11% on a flat 10% round trip</td></tr>
           <tr><td>Retirement or core account holdings</td><td>No</td><td>Nothing about a daily-reset product suits a multi-year horizon</td></tr>
         </tbody>
       </table></div>
       <h2>Sizing must be tighter, not the same</h2>
-      <p>The naive mistake is to size a 3x position the same way you size a normal one and treat the extra leverage as extra upside. Run the risk arithmetic instead.</p>
-      <p>A $30,000 account risking 1% has a $300 budget. On a normal stock with a $2.40 stop distance that is 125 shares. On a 3x ETF, the same percentage stop distance in the underlying becomes three times as large in the fund, so the equivalent stop distance is roughly $7.20 and the same $300 budget buys about 42 shares. <strong>The position must shrink by roughly the leverage factor for the risk to stay identical.</strong></p>
-      <p>My own execution rules encode this as a hard <strong>half-cap on leveraged ETF positions</strong>: whatever normal sizing produces, a leveraged instrument gets half of it. That is a deliberately blunt rule, and blunt rules survive contact with a bad week better than clever ones do.</p>
+      <p>The naive mistake is to size a 3x position the same way you size a normal one and treat the extra leverage as extra upside. Run the risk arithmetic instead. Take a $30,000 account risking 1%, a $300 budget, and a stop set at 5% of the underlying's price in every case.</p>
+      <div class="tblwrap" tabindex="0" role="group" aria-label="Table, scrolls horizontally"><table class="tbl">
+        <thead><tr><th scope="col">Instrument</th><th scope="col">Price</th><th scope="col">Stop distance in the fund</th><th scope="col">1R per share</th><th scope="col">Shares (rounded down)</th><th scope="col">Actual risk</th><th scope="col">Notional</th><th scope="col">% of account</th></tr></thead>
+        <tbody>
+          <tr><td>1x stock</td><td>$48.00</td><td>5.0%</td><td>$2.40</td><td>125</td><td>$300.00</td><td>$6,000</td><td>20.0%</td></tr>
+          <tr><td>2x ETF</td><td>$48.00</td><td>10.0%</td><td>$4.80</td><td>62</td><td>$297.60</td><td>$2,976</td><td>9.9%</td></tr>
+          <tr><td>3x ETF</td><td>$48.00</td><td>15.0%</td><td>$7.20</td><td>41</td><td>$295.20</td><td>$1,968</td><td>6.6%</td></tr>
+          <tr><td>3x ETF with half-cap</td><td>$48.00</td><td>15.0%</td><td>$7.20</td><td>20</td><td>$144.00</td><td>$960</td><td>3.2%</td></tr>
+        </tbody>
+      </table></div>
+      <p><strong>The position must shrink by roughly the leverage factor for the risk to stay identical.</strong> That is the whole result, and it is the opposite of how leveraged products get used in practice, where the leverage is treated as a way to control more exposure with the same share count.</p>
+      <p>My own execution rules encode this as a hard <strong>half-cap on leveraged ETF positions</strong>: whatever normal sizing produces, a leveraged instrument gets half of it. That is a deliberately blunt rule, and blunt rules survive contact with a bad week better than clever ones do. The bottom row shows what it actually costs — 20 shares and $144 of risk instead of $295 — which is the price of not being the person who discovers path dependence with real money.</p>
       <ul>
-        <li>Compute the stop from the fund's own ATR, not from the underlying's chart.</li>
-        <li>Treat overnight gaps as materially worse, because a gap is also multiplied by the leverage factor.</li>
-        <li>Set a maximum holding period in days and honour it, because drag is a function of time in the instrument.</li>
+        <li>Compute the stop from the fund's own ATR, not from the underlying's chart. The <a href="/guides/stop-loss-placement.html">stop placement guide</a> covers the true-range arithmetic, and gaps matter more here because a gap is multiplied by the leverage factor too.</li>
+        <li>Set a maximum holding period in days and honour it, because both drag and carry are functions of time in the instrument, not of being right.</li>
         <li>Never hold two correlated leveraged positions and count them as separate risk. They are one position with a bigger number.</li>
+        <li>Never treat an inverse fund as the safe version of a short. A −1x carries the same drag as a +2x, and a −3x carries double a +3x.</li>
+        <li>Recompute size on the day you enter, not the day you found the idea, because leveraged ETF ATR moves fast.</li>
+        <li>If the thesis genuinely needs weeks, use a defined-risk structure instead — <a href="/guides/options-vertical-spreads.html">vertical spreads</a> have known decay rather than path-dependent decay.</li>
       </ul>
-      <p>Position sizing arithmetic, break-even win rates, and risk of ruin are all in the <a href="/risk-tools.html">free risk toolkit</a>.</p>
+      <p>One last framing. Leverage does not change expectancy, it multiplies both the expectancy and the variance, and variance is what determines whether you survive long enough to collect the expectancy. That asymmetry is the whole subject of <a href="/guides/drawdown-recovery-math.html">drawdown recovery math</a> — a 50% loss needs a 100% gain to undo — and it is why <a href="/guides/kelly-criterion.html">Kelly</a> argues for smaller size, not larger, whenever the edge estimate is uncertain. Measure your leveraged trades as a separate tag in <a href="/guides/trading-journal.html">your journal</a> and compare their realised R against your unleveraged trades. Position sizing arithmetic, break-even win rates, and risk of ruin are all in the <a href="/risk-tools.html">free risk toolkit</a>, and the general sizing framework is in <a href="/guides/position-sizing-per-trade.html">position sizing per trade</a>.</p>
       <p class="callout">Educational content, not financial advice. No live profit-and-loss figures are claimed anywhere on this site; backtest and walk-forward results are always labelled as such. Full terms: <a href="/terms.html">/terms.html</a></p>
 
       <h2>Tools referenced in this guide</h2>
@@ -159,12 +238,14 @@ where L is the leverage multiple
       <h2>Quick answers</h2>
     </div>
     <div class="grid" style="margin-top:var(--s6)">
-      <article class="card faq-card"><h3>Why do leveraged ETFs decay?</h3><p>They target a daily multiple and rebalance nightly, so returns compound. Oscillating markets make that compounding work against you.</p></article>
-      <article class="card faq-card"><h3>Worked example?</h3><p>Index 100 to 110 to 100 is flat. A 3x fund goes 100 to 130 to 94.55 — down 5.45% on a flat round trip, from arithmetic alone.</p></article>
-      <article class="card faq-card"><h3>What is volatility drag?</h3><p>Roughly ½ × L × (L−1) × variance. It grows with the square of volatility and faster than linearly with the leverage factor.</p></article>
-      <article class="card faq-card"><h3>When are they appropriate?</h3><p>Short directional holds in low-chop trends, and brief hedges. Never buy-and-hold, never in a choppy range, never in a core account.</p></article>
-      <article class="card faq-card"><h3>How do you size them?</h3><p>Divide by roughly the leverage factor to hold dollar risk constant. A blunt half-size cap on leveraged instruments works well.</p></article>
-      <article class="card faq-card"><h3>Do they always lag the multiple?</h3><p>No. In a smooth trend compounding can beat it — five 2% up days give the index 10.4% and a 3x fund 33.8%. Path decides, not direction.</p></article>
+      <article class="card faq-card"><h3>Why do leveraged ETFs lose money over time?</h3><p>Because they target a multiple of the underlying&#x27;s return over a single day and rebalance nightly to maintain it, so the daily returns compound. In an oscillating market this compounding works against the holder, and the fund can lose money even when the underlying index finishes exactly flat.</p></article>
+      <article class="card faq-card"><h3>Can you show an example of leveraged ETF decay?</h3><p>Start an index and a 3x fund both at 100. The index rises 10% to 110, so the fund gains 30% to 130. The index then falls 9.0909% back to exactly 100, so the fund falls 27.2727% to 94.55. The index round trip is 0% and the fund round trip is -5.45%, entirely from arithmetic rather than fees.</p></article>
+      <article class="card faq-card"><h3>Is there a formula for leveraged ETF decay?</h3><p>For a round trip that returns the index to flat, the exact result is minus L times (L minus 1) times d squared, divided by (1 plus d), where L is the daily multiple and d is the up-day move. At L of 3 and d of 10% that gives minus 5.45%, matching the worked example. Drag therefore grows with the square of the daily move and with L times (L minus 1), so a 3x fund carries three times the drag of a 2x on the same path.</p></article>
+      <article class="card faq-card"><h3>Do inverse ETFs decay too?</h3><p>Yes, and more than people expect. The L times (L minus 1) term equals 2 for a plain minus 1x fund, exactly the same as a plus 2x fund, so an unleveraged inverse product already behaves like a leveraged one. A minus 3x fund carries 12 units of drag against a plus 3x fund&#x27;s 6, and loses about 10.9% on a flat round trip built from 10% daily swings.</p></article>
+      <article class="card faq-card"><h3>What do leveraged ETFs cost besides the expense ratio?</h3><p>An embedded financing cost, because a 3x fund funds two borrowed units of exposure at short rates. On illustrative figures of a 0.95% expense ratio and a 4.5% short rate, total carry is about 9.95% a year or 0.04% a trading day. That is real but secondary: at 2% daily volatility the volatility drag on a 3x fund runs about 0.12% a day, roughly three times the carry.</p></article>
+      <article class="card faq-card"><h3>Are leveraged ETFs ever appropriate?</h3><p>They suit short, directional holding periods in low-volatility trends and short-term hedging where capital efficiency matters. In a smooth uptrend compounding actually helps: five consecutive 2% index days give the index 10.41% while a 3x fund returns 33.82%, beating three times the index return by 2.6 points. They are unsuitable for buy and hold, choppy ranges, inverse long-term hedges, and long-horizon accounts.</p></article>
+      <article class="card faq-card"><h3>How should you size a leveraged ETF position?</h3><p>Shrink the position by roughly the leverage factor so that dollar risk stays constant. A 30,000 dollar account risking 1% is a 300 dollar budget, which buys 125 shares at a 2.40 stop distance but only 41 shares when the equivalent stop distance triples to 7.20 in a 3x fund. A blunt half-size cap on leveraged instruments is a reasonable standing rule, and it takes that 41 down to 20.</p></article>
+      <article class="card faq-card"><h3>Do leveraged ETFs always underperform their multiple?</h3><p>No. Path matters more than direction. In a smoothly trending, low-volatility market compounding can push a leveraged fund past the simple multiple of the period return. It is choppy, high-variance paths that produce underperformance, which is why holding period and market conditions decide the outcome, and why multi-day deviation from the multiple is the product working as designed rather than tracking error.</p></article>
     </div>
   </section>
 

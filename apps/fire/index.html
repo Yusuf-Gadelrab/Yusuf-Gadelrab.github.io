@@ -5,7 +5,10 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="theme-color" content="#0a0a0b">
 <meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="Fire">
+<meta name="application-name" content="Fire">
 <link rel="manifest" href="manifest.webmanifest">
 <link rel="icon" type="image/svg+xml" href="/favicon.svg">
 <link rel="apple-touch-icon" href="/apple-touch-icon.png">
@@ -14,7 +17,7 @@
 <link rel="apple-touch-startup-image" href="/img/brand/kit/splash-1290x2796.png" media="(device-width:430px) and (device-height:932px) and (-webkit-device-pixel-ratio:3)">
 <link rel="apple-touch-startup-image" href="/img/brand/kit/splash-828x1792.png" media="(device-width:414px) and (device-height:896px) and (-webkit-device-pixel-ratio:2)">
 <link rel="apple-touch-startup-image" href="/img/brand/kit/splash-1536x2048.png" media="(device-width:768px) and (device-height:1024px) and (-webkit-device-pixel-ratio:2)">
-<title>Fire — Free Daily Ritual &amp; Checklist App</title>
+<title>Fire — Offline Habit Tracker &amp; Daily Ritual Checklist</title>
 <style>
 :root{--bg:#0a0a0a;--text:#f2f2f2;--dim:#9a9a9a;--gold:#d4af37;--gold-soft:#e8c96a;--border:rgba(212,175,55,.22);--serif:ui-serif,"New York",Georgia,"Times New Roman",serif;--divider:rgba(255,255,255,.06)}
 *{margin:0;padding:0;box-sizing:border-box}
@@ -120,28 +123,48 @@ footer a:hover{text-decoration:underline}
 .studio p{color:#cfcfcf;font-size:.92rem;margin:8px 0 12px;line-height:1.55}
 .studio a.golink{display:inline-block;background:linear-gradient(135deg,#d4af37,#e8c96a);color:#000;
  font-weight:700;padding:11px 24px;border-radius:10px;text-decoration:none;font-size:.92rem}
+
+/* ---- marketing blocks: install / privacy / faq ---- */
+.mkt{margin-top:1.6rem;scroll-margin-top:70px}
+.mkt h2{font-family:var(--serif);font-size:1.18rem;color:var(--text);text-transform:none;letter-spacing:-.01em;margin:0 0 .55rem}
+.mkt h3{font-family:var(--serif);font-size:.95rem;font-weight:600;color:var(--gold-soft);text-transform:none;letter-spacing:0;margin:1.15rem 0 .45rem}
+.mkt > p{color:var(--dim);font-size:.88rem;line-height:1.7;margin:0 0 .5rem}
+.mkt ol,.mkt ul{margin:.3rem 0 .3rem 1.15rem;color:var(--dim);font-size:.88rem;line-height:1.7}
+.mkt li{padding:.22rem 0}
+.mkt li b{color:var(--text);font-weight:600}
+.mkt .tradeoff{margin-top:1.05rem;padding:.85rem 1rem;border:1px solid var(--border);border-radius:12px;color:var(--dim);font-size:.85rem;line-height:1.7}
+.mkt .tradeoff b{color:var(--gold-soft)}
+.mkt .faq-a{color:var(--dim);font-size:.88rem;line-height:1.7;margin:0}
+.mkt .links{display:flex;flex-wrap:wrap;gap:.55rem;margin-top:.9rem}
+.mkt .links a{display:inline-block;border:1px solid var(--border);border-radius:12px;padding:.6rem .9rem;color:var(--gold-soft);text-decoration:none;font-size:.82rem;letter-spacing:.02em;transition:border-color .15s,box-shadow .15s}
+.mkt .links a:hover{border-color:rgba(212,175,55,.45);box-shadow:0 6px 20px rgba(212,175,55,.18)}
 </style>
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"Fire — Daily Execution Checklist","url":"https://yusuf-gadelrab.github.io/apps/fire/","applicationCategory":"ProductivityApplication","operatingSystem":"Any","browserRequirements":"Requires JavaScript","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"description":"Free offline daily checklist that resets each morning and tracks 100%-day streaks. Data stays on your device.","author":{"@id":"https://yusuf-gadelrab.github.io/#person"},"publisher":{"@type":"Organization","name":"DHAHAB"}}</script>
-<meta name="description" content="Free daily execution checklist app that resets every morning and tracks your 100%-day streaks. Works offline, private, no account needed.">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"SoftwareApplication","@id":"https://yusuf-gadelrab.github.io/apps/fire/#app","name":"Fire — Offline Daily Ritual Tracker","url":"https://yusuf-gadelrab.github.io/apps/fire/","description":"A free offline habit tracker and daily ritual checklist. It resets each morning, tracks 100%-day streaks, and runs entirely in the browser with no account and no server — every task, tick and streak is stored in localStorage on the device.","applicationCategory":"LifestyleApplication","operatingSystem":"iOS, Android, Windows, macOS, Linux — any modern browser","browserRequirements":"Requires JavaScript and localStorage","softwareVersion":"1.0","isAccessibleForFree":true,"featureList":["Daily ritual checklist that clears itself at local midnight","Animated progress ring showing the percentage of today's list completed","Consecutive 100%-day streak counter with an all-time best","Fourteen-day completion grid with a perfect-day count","A once-a-day \"Shipped.\" moment when the list reaches 100%","Add, rename, reorder and delete your own tasks","Export and import all data as a JSON backup file","Installable offline PWA with no account, no server and no tracking"],"offers":{"@type":"Offer","price":"0","priceCurrency":"USD","availability":"https://schema.org/OnlineOnly"},"author":{"@id":"https://yusuf-gadelrab.github.io/#person"},"publisher":{"@type":"Organization","name":"DHAHAB"}}</script>
+<meta name="description" content="A free offline habit tracker and daily ritual checklist. It resets each morning, tracks 100%-day streaks, and needs no account, no server and no signup.">
 <link rel="canonical" href="https://yusuf-gadelrab.github.io/apps/fire/">
 <meta property="og:type" content="website">
-<meta property="og:title" content="Fire — Free Daily Checklist App">
-<meta property="og:description" content="Free daily execution checklist app that resets every morning and tracks your 100%-day streaks. Works offline, private, no account needed.">
+<meta property="og:title" content="Fire — Offline Habit Tracker &amp; Daily Ritual Checklist">
+<meta property="og:description" content="A free offline habit tracker and daily ritual checklist. It resets each morning, tracks 100%-day streaks, and needs no account, no server and no signup.">
 <meta property="og:url" content="https://yusuf-gadelrab.github.io/apps/fire/">
 <meta property="og:image" content="https://yusuf-gadelrab.github.io/apple-touch-icon.png">
 <meta name="twitter:card" content="summary">
 <meta property="og:site_name" content="Yusuf Gadelrab">
 <meta property="og:locale" content="en_US">
-<meta property="og:image:alt" content="Fire app screen — daily execution checklist with 100%-day streaks">
-<meta name="twitter:title" content="Fire — Free Daily Checklist App">
-<meta name="twitter:description" content="Free daily execution checklist app that resets every morning and tracks your 100%-day streaks. Works offline, private, no account needed.">
+<meta property="og:image:alt" content="Fire app screen — daily ritual checklist with 100%-day streaks">
+<meta name="twitter:title" content="Fire — Offline Habit Tracker &amp; Daily Ritual Checklist">
+<meta name="twitter:description" content="A free offline habit tracker and daily ritual checklist. It resets each morning, tracks 100%-day streaks, and needs no account, no server and no signup.">
 <meta name="twitter:image" content="https://yusuf-gadelrab.github.io/apple-touch-icon.png">
-<meta name="twitter:image:alt" content="Fire app screen — daily execution checklist with 100%-day streaks">
+<meta name="twitter:image:alt" content="Fire app screen — daily ritual checklist with 100%-day streaks">
 <!-- geo:entity — canonical Person node, one entity across every page -->
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"Person","@id":"https://yusuf-gadelrab.github.io/#person","name":"Yusuf Gadelrab","url":"https://yusuf-gadelrab.github.io/"}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebPage","@id":"https://yusuf-gadelrab.github.io/apps/fire/#webpage","url":"https://yusuf-gadelrab.github.io/apps/fire/","inLanguage":"en","isPartOf":{"@id":"https://yusuf-gadelrab.github.io/#website"},"about":{"@id":"https://yusuf-gadelrab.github.io/#person"},"publisher":{"@id":"https://yusuf-gadelrab.github.io/#person"}}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://yusuf-gadelrab.github.io/"},{"@type":"ListItem","position":2,"name":"Apps","item":"https://yusuf-gadelrab.github.io/apps.html"},{"@type":"ListItem","position":3,"name":"Fire"}]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"HowTo","name":"Add Fire to your Home Screen","description":"Install Fire, a free offline habit tracker and daily ritual checklist, straight from the browser on iPhone, iPad, Android or desktop. No App Store, no download, no signup.","totalTime":"PT1M","tool":[{"@type":"HowToTool","name":"Safari on iPhone or iPad"},{"@type":"HowToTool","name":"Chrome on Android"},{"@type":"HowToTool","name":"Chrome or Edge on desktop"}],"step":[{"@type":"HowToStep","name":"Open Fire in the right browser.","text":"On an iPhone or iPad, open this page in Safari — iOS only allows a web app onto the Home Screen from Safari, not from Chrome and not from an in-app browser. On Android, open it in Chrome. On a desktop computer, open it in Chrome or Edge.","url":"https://yusuf-gadelrab.github.io/apps/fire/#install"},{"@type":"HowToStep","name":"Open your browser’s install control.","text":"In Safari on iPhone or iPad, tap the Share button in the bottom toolbar — the square with an arrow pointing up out of it. In Chrome on Android, tap the three-dot menu in the top corner. In Chrome or Edge on desktop, click the install icon at the right-hand end of the address bar, or open the three-dot menu.","url":"https://yusuf-gadelrab.github.io/apps/fire/#install"},{"@type":"HowToStep","name":"Choose “Add to Home Screen” or “Install app”.","text":"Safari lists it as “Add to Home Screen”, a little way down the share sheet under the row of share targets. Chrome on Android calls it “Install app”, or “Add to Home screen” on older versions, and may also raise its own install banner on the page. Chrome and Edge on desktop call it “Install…”.","url":"https://yusuf-gadelrab.github.io/apps/fire/#install"},{"@type":"HowToStep","name":"Confirm the install.","text":"Tap “Add” in Safari, or confirm the prompt in Chrome or Edge. Fire then lands on your Home Screen, in your app drawer or on your desktop, and opens full screen with no address bar around it.","url":"https://yusuf-gadelrab.github.io/apps/fire/#install"}]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","@id":"https://yusuf-gadelrab.github.io/apps/fire/#faq","mainEntity":[{"@type":"Question","name":"Does Fire work offline?","acceptedAnswer":{"@type":"Answer","text":"Yes. After the first load a service worker keeps the whole app cached on your device, so it opens and runs with no connection at all. The daily reset, the progress ring and the streak are all computed on the device itself, so airplane mode changes nothing."}},{"@type":"Question","name":"Do I need an account to use Fire?","acceptedAnswer":{"@type":"Answer","text":"No. There is no signup, no login, no email address and no password. Open the page, edit the list, and start ticking things off."}},{"@type":"Question","name":"Where is my data stored?","acceptedAnswer":{"@type":"Answer","text":"In your browser’s localStorage, on the one device you typed it into. Fire has no backend, so nothing is uploaded, nothing is analysed and nobody — including me — can see your list."}},{"@type":"Question","name":"What happens if I clear my browser data?","acceptedAnswer":{"@type":"Answer","text":"Your tasks, your ticks and your streak history are deleted, because that is the only place they live. Nothing syncs to another device and there is no cloud copy to restore from. If the streak matters to you, press Export JSON now and then and keep the file somewhere safe — Import JSON loads it straight back."}},{"@type":"Question","name":"Can I use Fire on my iPhone?","acceptedAnswer":{"@type":"Answer","text":"Yes. Open the page in Safari and add it to your Home Screen, and it behaves like an installed app — its own icon, full screen, no App Store account and no download. On iOS this only works from Safari."}},{"@type":"Question","name":"Does Fire send notifications or reminders?","acceptedAnswer":{"@type":"Answer","text":"No. Fire never asks for notification permission and has no push, no reminders and no badges. You open it when you sit down to work and the list is waiting."}},{"@type":"Question","name":"Is Fire free?","acceptedAnswer":{"@type":"Answer","text":"Yes. It is free, with no trial, no paid tier, no ads and nothing locked behind a purchase. I built it to run my own day and left it open for anyone who wants it."}}]}</script>
 <link rel="alternate" type="text/plain" href="https://yusuf-gadelrab.github.io/llms-full.txt" title="Plain-text profile for language models">
+<style>.skip-link{position:absolute;left:12px;top:-60px;z-index:1000;padding:10px 16px;background:#D4AF37;color:#0a0a0a;font:600 14px/1 system-ui,sans-serif;text-decoration:none;border-radius:6px;transition:top .2s ease}.skip-link:focus{top:12px}@media print{.skip-link{display:none!important}}</style>
 </head>
 <body>
+<a class="skip-link" href="#main">Skip to content</a>
 <div id="topbar" aria-hidden="true">
   <div class="bar-inner">
     <span class="bar-brand">DHAHAB · Fire</span>
@@ -156,6 +179,15 @@ footer a:hover{text-decoration:underline}
 <div class="subtitle">The Golden Standard · ship the list, every day</div>
 </header>
 
+
+  <nav class="crumbs" aria-label="Breadcrumb">
+    <ol>
+      <li><a href="/">Home</a></li>
+      <li><a href="/apps.html">Apps</a></li>
+      <li><span aria-current="page">Fire</span></li>
+    </ol>
+  </nav>
+<div id="main" role="main" tabindex="-1">
 <div class="card">
   <div class="hero">
     <div class="stat-tile">
@@ -193,7 +225,7 @@ footer a:hover{text-decoration:underline}
 
 <div class="card">
   <div class="row" style="margin-top:0">
-    <input id="newTask" placeholder="Add task…" enterkeyhint="done">
+    <input id="newTask" aria-label="New task" placeholder="Add task…" enterkeyhint="done">
     <button class="btn" id="addBtn">Add</button>
   </div>
 </div>
@@ -210,13 +242,84 @@ footer a:hover{text-decoration:underline}
   <div class="dimtxt">All data stays on this device (localStorage).</div>
 </div>
 
+<section class="card mkt" id="how" aria-labelledby="how-h">
+  <h2 id="how-h">How the daily ritual works</h2>
+  <p>Fire is one list, run once a day. It opens with six sample tasks so the page is never empty — rename them, reorder them or delete them until the list is yours, then work it every morning.</p>
+  <ul>
+    <li><b>Tick as you go.</b> Tap a row to mark it done. The ring fills to the percentage of today’s list you have finished, and that number follows you in the bar at the top of the screen once you scroll.</li>
+    <li><b>100% is the moment.</b> When the last item turns gold the ring pulses and <i>Shipped.</i> appears — once a day, the first time you get there, not every time you glance at the app.</li>
+    <li><b>Midnight resets the list, not the record.</b> The first time you open Fire on a new day, yesterday’s percentage is filed into your history and every tick clears, so you start again from zero.</li>
+    <li><b>The streak counts perfect days only.</b> Your current streak is the unbroken run of days finished at 100%; anything less ends it. Your best streak is kept separately and never falls.</li>
+    <li><b>Fourteen days at a glance.</b> The grid under the list shows the last two weeks — solid gold for a perfect day, faint for a partial one, empty for a miss — with a count of how many were perfect.</li>
+    <li><b>Your data, in a file.</b> Export JSON writes your tasks, ticks, history and best streak to a dated backup. Import JSON reads one straight back in.</li>
+  </ul>
+</section>
+
+<section class="card mkt" id="offline" aria-labelledby="offline-h">
+  <h2 id="offline-h">An offline habit tracker with no account and no server</h2>
+  <p>Fire is a single HTML file that runs entirely inside your browser. Load it once and a service worker keeps it on the device, so this is a streak tracker that works offline — on a plane, on the subway, on dead hotel wifi, in airplane mode. Nothing about the daily checklist needs a network after that first load.</p>
+  <ul>
+    <li><b>No account.</b> No signup, no login, no email address, no password — a daily checklist app you simply open and use.</li>
+    <li><b>No server.</b> No backend, no analytics, no tracking scripts, no cookies, no third-party requests.</li>
+    <li><b>No notification spam.</b> Fire never asks for permission to notify you and cannot send you anything.</li>
+    <li><b>Local storage only.</b> Your tasks, your ticks and your streak history live in your browser’s localStorage on that one device. Nothing leaves it.</li>
+  </ul>
+  <div class="tradeoff"><b>The honest tradeoff:</b> local-only means there is no sync and no cloud backup, so your morning ritual app on your phone and the same page on your laptop keep separate lists. Clearing this site’s data, using a private window or deleting the installed app erases the streak, and nothing is encrypted because there is no server to send it to and no key for anyone to hold. If the streak matters, press <b>Export JSON</b> in the Last 14 days card every so often and keep the file somewhere safe — <b>Import JSON</b> restores it.</div>
+</section>
+
+<section class="card mkt" id="install" aria-labelledby="install-h">
+  <h2 id="install-h">Add Fire to your Home Screen</h2>
+  <p>Fire installs straight from the browser on iPhone, iPad, Android and desktop. There is no App Store listing, no download and no account — about a minute, start to finish.</p>
+  <ol>
+    <li><b>Open Fire in the right browser.</b> On an iPhone or iPad, open this page in Safari — iOS only allows a web app onto the Home Screen from Safari, not from Chrome and not from an in-app browser. On Android, open it in Chrome. On a desktop computer, open it in Chrome or Edge.</li>
+    <li><b>Open your browser’s install control.</b> In Safari on iPhone or iPad, tap the Share button in the bottom toolbar — the square with an arrow pointing up out of it. In Chrome on Android, tap the three-dot menu in the top corner. In Chrome or Edge on desktop, click the install icon at the right-hand end of the address bar, or open the three-dot menu.</li>
+    <li><b>Choose “Add to Home Screen” or “Install app”.</b> Safari lists it as “Add to Home Screen”, a little way down the share sheet under the row of share targets. Chrome on Android calls it “Install app”, or “Add to Home screen” on older versions, and may also raise its own install banner on the page. Chrome and Edge on desktop call it “Install…”.</li>
+    <li><b>Confirm the install.</b> Tap “Add” in Safari, or confirm the prompt in Chrome or Edge. Fire then lands on your Home Screen, in your app drawer or on your desktop, and opens full screen with no address bar around it.</li>
+  </ol>
+  <h3>What installing actually gets you</h3>
+  <ul>
+    <li>A real home-screen icon you tap like any other app — no store account, no download, no update queue.</li>
+    <li>Full screen, with no address bar and no browser chrome around the list.</li>
+    <li>The app cached on the device, so it opens with no connection at all after that first load.</li>
+  </ul>
+</section>
+
+<section class="card mkt" id="faq" aria-labelledby="faq-h">
+  <h2 id="faq-h">Questions people ask</h2>
+  <h3>Does Fire work offline?</h3>
+  <p class="faq-a">Yes. After the first load a service worker keeps the whole app cached on your device, so it opens and runs with no connection at all. The daily reset, the progress ring and the streak are all computed on the device itself, so airplane mode changes nothing.</p>
+  <h3>Do I need an account to use Fire?</h3>
+  <p class="faq-a">No. There is no signup, no login, no email address and no password. Open the page, edit the list, and start ticking things off.</p>
+  <h3>Where is my data stored?</h3>
+  <p class="faq-a">In your browser’s localStorage, on the one device you typed it into. Fire has no backend, so nothing is uploaded, nothing is analysed and nobody — including me — can see your list.</p>
+  <h3>What happens if I clear my browser data?</h3>
+  <p class="faq-a">Your tasks, your ticks and your streak history are deleted, because that is the only place they live. Nothing syncs to another device and there is no cloud copy to restore from. If the streak matters to you, press Export JSON now and then and keep the file somewhere safe — Import JSON loads it straight back.</p>
+  <h3>Can I use Fire on my iPhone?</h3>
+  <p class="faq-a">Yes. Open the page in Safari and add it to your Home Screen, and it behaves like an installed app — its own icon, full screen, no App Store account and no download. On iOS this only works from Safari.</p>
+  <h3>Does Fire send notifications or reminders?</h3>
+  <p class="faq-a">No. Fire never asks for notification permission and has no push, no reminders and no badges. You open it when you sit down to work and the list is waiting.</p>
+  <h3>Is Fire free?</h3>
+  <p class="faq-a">Yes. It is free, with no trial, no paid tier, no ads and nothing locked behind a purchase. I built it to run my own day and left it open for anyone who wants it.</p>
+</section>
+
+<section class="card mkt" id="more" aria-labelledby="more-h">
+  <h2 id="more-h">The rest of the kit</h2>
+  <p>Fire is one of three offline apps in the DHAHAB set. Same rules for all of them: free, installable, no account, all data on your device.</p>
+  <div class="links">
+    <a href="/apps/tradelog/">TradeLog · R-multiple trade journal</a>
+    <a href="/apps/cut/">Cut · weight and cut tracker</a>
+    <a href="/apps.html">All apps and tools</a>
+    <a href="/store.html">The studio</a>
+  </div>
+</section>
+
 <div class="studio">
   <div class="eyebrow2">From the Studio</div>
   <p>This list runs my whole operation. The tools that automate the rest of it live in the studio.</p>
   <a class="golink" href="https://yusuf-gadelrab.github.io/store.html">Automation Studio &rarr;</a>
 </div>
 <footer>
-  <a href="https://yusuf-gadelrab.github.io/">Yusuf Gadelrab</a> · <a href="https://yusuf-gadelrab.github.io/apps.html">All apps</a> · <a href="/privacy.html">Privacy</a> · <a href="/terms.html">Terms</a> · © 2026 DHAHAB · Yusuf Gadelrab
+  <a href="https://yusuf-gadelrab.github.io/">Yusuf Gadelrab</a> · <a href="https://yusuf-gadelrab.github.io/apps.html">All apps</a> · <a href="/privacy.html">Privacy</a> · <a href="/terms.html">Terms</a> · <a href="/refunds.html">Refunds</a> · © 2026 DHAHAB · Yusuf Gadelrab
 </footer>
 </div>
 
@@ -438,5 +541,6 @@ try{
   if('serviceWorker' in navigator) navigator.serviceWorker.register('sw.js');
 }catch(e){}
 </script>
+</div>
 </body>
 </html>

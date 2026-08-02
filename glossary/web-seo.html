@@ -1,0 +1,431 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="preload" href="/css/site.css" as="style">
+<meta name="robots" content="index,follow,max-image-preview:large,max-snippet:-1">
+<meta property="og:locale" content="en_US">
+<title>Web &amp; SEO Glossary: Core Web Vitals, Schema, robots.txt</title>
+<meta name="description" content="Plain definitions of canonical tags, schema markup, Core Web Vitals, robots.txt and answer engine optimization, plus the misconception each one attracts.">
+<link rel="canonical" href="https://yusuf-gadelrab.github.io/glossary/web-seo.html">
+<link rel="icon" type="image/svg+xml" href="https://yusuf-gadelrab.github.io/favicon.svg">
+<link rel="apple-touch-icon" sizes="180x180" href="https://yusuf-gadelrab.github.io/apple-touch-icon.png">
+<meta name="theme-color" content="#0B0B0D">
+<meta name="author" content="Yusuf Gadelrab">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Yusuf Gadelrab">
+<meta property="og:title" content="Web &amp; SEO Glossary: Vitals, Schema, Crawling, AEO">
+<meta property="og:description" content="15 terms on technical SEO and answer engine optimization, defined precisely, with the common mistake named for each.">
+<meta property="og:url" content="https://yusuf-gadelrab.github.io/glossary/web-seo.html">
+<meta property="og:image" content="https://yusuf-gadelrab.github.io/og-card.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Web &amp; SEO Glossary: Vitals, Schema, Crawling, AEO">
+<meta name="twitter:description" content="15 terms on technical SEO and answer engine optimization, defined precisely, with the common mistake named for each.">
+<meta name="twitter:image" content="https://yusuf-gadelrab.github.io/og-card.png">
+<link rel="alternate" type="text/plain" href="https://yusuf-gadelrab.github.io/llms-full.txt" title="Plain-text profile for language models">
+
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"DefinedTermSet","@id":"https://yusuf-gadelrab.github.io/glossary/web-seo.html#termset","name":"Web and SEO Glossary","description":"Plain definitions of canonical tags, schema markup, Core Web Vitals, robots.txt and answer engine optimization, plus the misconception each one attracts.","url":"https://yusuf-gadelrab.github.io/glossary/web-seo.html","inLanguage":"en","author":{"@id":"https://yusuf-gadelrab.github.io/#person"},"publisher":{"@id":"https://yusuf-gadelrab.github.io/#person"},"hasDefinedTerm":[{"@type":"DefinedTerm","@id":"https://yusuf-gadelrab.github.io/glossary/web-seo.html#canonical-tag","name":"Canonical tag","description":"A canonical tag is an HTML link element that names the URL a site owner prefers a search engine index as the authoritative version among duplicate or near-duplicate pages.","url":"https://yusuf-gadelrab.github.io/glossary/web-seo.html#canonical-tag","inDefinedTermSet":{"@id":"https://yusuf-gadelrab.github.io/glossary/web-seo.html#termset"},"alternateName":["rel=canonical"]},{"@type":"DefinedTerm","@id":"https://yusuf-gadelrab.github.io/glossary/web-seo.html#schema-markup","name":"Schema markup","description":"Schema markup is structured data added to a web page, using the shared vocabulary at schema.org, that describes what a piece of content is in a machine-readable form rather than relying on a search engine to infer it from prose.","url":"https://yusuf-gadelrab.github.io/glossary/web-seo.html#schema-markup","inDefinedTermSet":{"@id":"https://yusuf-gadelrab.github.io/glossary/web-seo.html#termset"},"alternateName":["structured data"]},{"@type":"DefinedTerm","@id":"https://yusuf-gadelrab.github.io/glossary/web-seo.html#json-ld","name":"JSON-LD","description":"JSON-LD is a JSON-based format for encoding schema markup as a self-contained script block in a page's HTML, which is why it is the format search engines and framework tooling generally recommend over inline microdata.","url":"https://yusuf-gadelrab.github.io/glossary/web-seo.html#json-ld","inDefinedTermSet":{"@id":"https://yusuf-gadelrab.github.io/glossary/web-seo.html#termset"},"alternateName":["JavaScript Object Notation for Linked Data"]},{"@type":"DefinedTerm","@id":"https://yusuf-gadelrab.github.io/glossary/web-seo.html#serp","name":"SERP","description":"A SERP, or search engine results page, is the full page a search engine returns for a query, including organic listings, paid ads, and any enhanced features like a knowledge panel, image carousel, or AI-generated summary.","url":"https://yusuf-gadelrab.github.io/glossary/web-seo.html#serp","inDefinedTermSet":{"@id":"https://yusuf-gadelrab.github.io/glossary/web-seo.html#termset"},"alternateName":["Search Engine Results Page"]},{"@type":"DefinedTerm","@id":"https://yusuf-gadelrab.github.io/glossary/web-seo.html#crawl-budget","name":"Crawl budget","description":"Crawl budget is the number of URLs on a site a search engine's crawler is willing and able to fetch within a given time period, determined by the site's perceived crawl demand and the crawler's own rate-limiting decisions.","url":"https://yusuf-gadelrab.github.io/glossary/web-seo.html#crawl-budget","inDefinedTermSet":{"@id":"https://yusuf-gadelrab.github.io/glossary/web-seo.html#termset"}},{"@type":"DefinedTerm","@id":"https://yusuf-gadelrab.github.io/glossary/web-seo.html#robots-txt","name":"robots.txt","description":"robots.txt is a plain-text file at a site's root that tells well-behaved crawlers which URL paths they may or may not fetch, following the Robots Exclusion Protocol, without any power to remove a URL from a search index.","url":"https://yusuf-gadelrab.github.io/glossary/web-seo.html#robots-txt","inDefinedTermSet":{"@id":"https://yusuf-gadelrab.github.io/glossary/web-seo.html#termset"},"alternateName":["Robots Exclusion Protocol"]},{"@type":"DefinedTerm","@id":"https://yusuf-gadelrab.github.io/glossary/web-seo.html#indexnow","name":"IndexNow","description":"IndexNow is a protocol that lets a website push an instant notification to participating search engines whenever a URL is added, updated, or deleted, instead of waiting for the engine's crawler to discover the change on its own schedule.","url":"https://yusuf-gadelrab.github.io/glossary/web-seo.html#indexnow","inDefinedTermSet":{"@id":"https://yusuf-gadelrab.github.io/glossary/web-seo.html#termset"}},{"@type":"DefinedTerm","@id":"https://yusuf-gadelrab.github.io/glossary/web-seo.html#core-web-vitals","name":"Core Web Vitals","description":"Core Web Vitals are a set of three page-experience metrics, currently LCP, CLS, and INP, that Google measures from real-user visits and publishes thresholds for, using them as one of many inputs into search ranking.","url":"https://yusuf-gadelrab.github.io/glossary/web-seo.html#core-web-vitals","inDefinedTermSet":{"@id":"https://yusuf-gadelrab.github.io/glossary/web-seo.html#termset"}},{"@type":"DefinedTerm","@id":"https://yusuf-gadelrab.github.io/glossary/web-seo.html#lcp","name":"Largest Contentful Paint (LCP)","description":"Largest Contentful Paint is a Core Web Vitals metric that records the render time of the largest text block or image visible within the viewport during a page load, used as a proxy for how quickly the main content feels available.","url":"https://yusuf-gadelrab.github.io/glossary/web-seo.html#lcp","inDefinedTermSet":{"@id":"https://yusuf-gadelrab.github.io/glossary/web-seo.html#termset"},"alternateName":["LCP"]},{"@type":"DefinedTerm","@id":"https://yusuf-gadelrab.github.io/glossary/web-seo.html#cls","name":"Cumulative Layout Shift (CLS)","description":"Cumulative Layout Shift is a Core Web Vitals metric that scores unexpected movement of visible page elements during load, calculated by multiplying how much of the viewport shifted by how far it moved, summed across every unstable frame.","url":"https://yusuf-gadelrab.github.io/glossary/web-seo.html#cls","inDefinedTermSet":{"@id":"https://yusuf-gadelrab.github.io/glossary/web-seo.html#termset"},"alternateName":["CLS"]},{"@type":"DefinedTerm","@id":"https://yusuf-gadelrab.github.io/glossary/web-seo.html#inp","name":"Interaction to Next Paint (INP)","description":"Interaction to Next Paint is a Core Web Vitals metric that measures the latency between a user interaction and the browser's next visual update, taking a high percentile across all interactions on a page rather than judging just the first one.","url":"https://yusuf-gadelrab.github.io/glossary/web-seo.html#inp","inDefinedTermSet":{"@id":"https://yusuf-gadelrab.github.io/glossary/web-seo.html#termset"},"alternateName":["INP"]},{"@type":"DefinedTerm","@id":"https://yusuf-gadelrab.github.io/glossary/web-seo.html#answer-engine-optimization","name":"Answer engine optimization (AEO)","description":"Answer engine optimization is the practice of structuring content so it is likely to be retrieved, quoted, and cited inside an AI-generated answer, shifting the goal from earning a click on a blue link to earning a mention inside the answer itself.","url":"https://yusuf-gadelrab.github.io/glossary/web-seo.html#answer-engine-optimization","inDefinedTermSet":{"@id":"https://yusuf-gadelrab.github.io/glossary/web-seo.html#termset"},"alternateName":["AEO","generative engine optimization","GEO"]},{"@type":"DefinedTerm","@id":"https://yusuf-gadelrab.github.io/glossary/web-seo.html#llms-txt","name":"llms.txt","description":"llms.txt is a proposed convention, not an adopted standard, for a plain-Markdown file at a site's root that lists and links its most important pages in a format meant to be easy for a language model to consume.","url":"https://yusuf-gadelrab.github.io/glossary/web-seo.html#llms-txt","inDefinedTermSet":{"@id":"https://yusuf-gadelrab.github.io/glossary/web-seo.html#termset"}},{"@type":"DefinedTerm","@id":"https://yusuf-gadelrab.github.io/glossary/web-seo.html#pwa","name":"Progressive web app (PWA)","description":"A progressive web app is a website built with a web app manifest and a service worker so it can be installed to a device's home screen, launch in its own window, and continue functioning offline or on a poor connection.","url":"https://yusuf-gadelrab.github.io/glossary/web-seo.html#pwa","inDefinedTermSet":{"@id":"https://yusuf-gadelrab.github.io/glossary/web-seo.html#termset"},"alternateName":["PWA"]},{"@type":"DefinedTerm","@id":"https://yusuf-gadelrab.github.io/glossary/web-seo.html#service-worker","name":"Service worker","description":"A service worker is a JavaScript file that runs on a separate background thread from the page, able to intercept network requests, serve cached responses, and run tasks like push notifications even when no tab for the site is open.","url":"https://yusuf-gadelrab.github.io/glossary/web-seo.html#service-worker","inDefinedTermSet":{"@id":"https://yusuf-gadelrab.github.io/glossary/web-seo.html#termset"}}]},{"@type":"CollectionPage","@id":"https://yusuf-gadelrab.github.io/glossary/web-seo.html#page","url":"https://yusuf-gadelrab.github.io/glossary/web-seo.html","name":"Web and SEO Glossary","description":"Plain definitions of canonical tags, schema markup, Core Web Vitals, robots.txt and answer engine optimization, plus the misconception each one attracts.","datePublished":"2026-08-01","dateModified":"2026-08-01","inLanguage":"en","isAccessibleForFree":true,"about":["Technical SEO","Core Web Vitals","Answer engine optimization","Progressive web apps"],"author":{"@id":"https://yusuf-gadelrab.github.io/#person"},"publisher":{"@id":"https://yusuf-gadelrab.github.io/#person"},"mainEntity":{"@id":"https://yusuf-gadelrab.github.io/glossary/web-seo.html#termset"},"breadcrumb":{"@id":"https://yusuf-gadelrab.github.io/glossary/web-seo.html#crumbs"},"isPartOf":{"@id":"https://yusuf-gadelrab.github.io/#website"}},{"@type":"BreadcrumbList","@id":"https://yusuf-gadelrab.github.io/glossary/web-seo.html#crumbs","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://yusuf-gadelrab.github.io/"},{"@type":"ListItem","position":2,"name":"Glossary","item":"https://yusuf-gadelrab.github.io/glossary.html"},{"@type":"ListItem","position":3,"name":"Web & SEO"}]}]}</script>
+
+<link rel="stylesheet" href="/css/site.css">
+<style>
+  .prose{max-width:var(--maxw-prose)}
+  .prose h2{margin:var(--s7) 0 var(--s4);font-size:var(--t-h2)}
+  .prose p{color:var(--muted);margin:0 0 var(--s4)}
+  .prose ul,.prose ol{color:var(--muted);padding-left:1.2em;margin:0 0 var(--s4)}
+  .prose li{margin-bottom:var(--s2)}
+  .prose a{color:var(--gold-2)}
+  .prose strong{color:var(--fg)}
+  .formula{display:block;padding:var(--s4);margin:0 0 var(--s4);border:1px solid var(--line-soft);
+    border-radius:var(--radius);font-family:ui-monospace,SFMono-Regular,Menlo,monospace;
+    font-size:var(--t-small);color:var(--gold-2);overflow-x:auto;white-space:pre-wrap}
+  .tblwrap{overflow-x:auto;margin:0 0 var(--s4)}
+  .tbl{width:100%;border-collapse:collapse;font-size:var(--t-small)}
+  .tbl th,.tbl td{text-align:left;padding:var(--s3);border-bottom:1px solid var(--line-soft);
+    color:var(--muted);vertical-align:top}
+  .tbl th{font-family:var(--display-pro);color:var(--gold-2);font-weight:600}
+  .callout{padding:var(--s4);border:1px solid var(--line-soft);border-radius:var(--radius);
+    color:var(--muted);font-size:var(--t-small);margin:0 0 var(--s5)}
+  .callout--warn{border-color:var(--gold-2)}
+  .jump{display:flex;flex-wrap:wrap;gap:var(--s2) var(--s4);margin:var(--s5) 0 0;padding:0;list-style:none}
+  .jump li{margin:0}
+  .jump a{font-size:var(--t-small);color:var(--muted)}
+  .jump a:hover{color:var(--gold-2)}
+  .term{max-width:var(--maxw-prose);padding:var(--s6) 0;border-top:1px solid var(--line-soft);
+    scroll-margin-top:var(--s8)}
+  .term__head{display:flex;align-items:baseline;gap:var(--s3);flex-wrap:wrap;margin:0 0 var(--s4)}
+  .term__head h3{margin:0;font-size:var(--t-h3)}
+  .term__hash{font-family:var(--display-pro);font-size:var(--t-small);color:var(--gold-dim);
+    text-decoration:none;opacity:0;transition:opacity .2s var(--ease)}
+  .term:hover .term__hash,.term__hash:focus-visible{opacity:1;color:var(--gold-2)}
+  .term__aka{font-size:var(--t-small);color:var(--muted)}
+  .term__def{color:var(--fg);font-size:17px;margin:0 0 var(--s4)}
+  .term p{color:var(--muted);margin:0 0 var(--s4)}
+  .term p:last-child{margin-bottom:0}
+  .term ul,.term ol{color:var(--muted);padding-left:1.2em;margin:0 0 var(--s4)}
+  .term li{margin-bottom:var(--s2)}
+  .term a{color:var(--gold-2)}
+  .term strong{color:var(--fg)}
+  .note{font-size:var(--t-small);color:var(--muted);margin:0 0 var(--s3)}
+  .tag{font-family:var(--display-pro);font-size:var(--t-micro);font-weight:600;letter-spacing:2px;
+    text-transform:uppercase;color:var(--gold-2);margin-right:var(--s2)}
+  .az{margin:0;padding:0;list-style:none}
+  .az__group{margin:0 0 var(--s6)}
+  .az__letter{font-family:var(--display-pro);font-weight:700;font-size:var(--t-h3);
+    color:var(--gold-2);margin:0 0 var(--s3)}
+  .az__list{display:grid;gap:var(--s2) var(--s5);margin:0;padding:0;list-style:none;
+    grid-template-columns:repeat(auto-fill,minmax(min(230px,100%),1fr))}
+  .az__list li{font-size:var(--t-small);color:var(--muted)}
+  .az__list a{color:var(--muted)}
+  .az__list a:hover{color:var(--gold-2)}
+  .az__where{color:var(--gold-dim)}
+  .rail{display:flex;flex-wrap:wrap;gap:var(--s2) var(--s3);margin:var(--s5) 0 0;padding:0;list-style:none}
+  .rail a{font-family:var(--display-pro);font-weight:600;font-size:var(--t-small);
+    color:var(--gold-2);border:1px solid var(--line-soft);border-radius:var(--radius);
+    padding:6px 12px;display:inline-block}
+  .rail a:hover{border-color:var(--gold-2)}
+  .cl{display:flex;flex-direction:column;padding:var(--s5)}
+  .cl h3{margin:0 0 var(--s3);font-size:var(--t-h3)}
+  .cl p{color:var(--muted);font-size:var(--t-small);flex:1;margin:0}
+  .cl .go{margin-top:var(--s4);font-family:var(--display-pro);font-weight:600;
+    font-size:var(--t-small);color:var(--gold-2)}
+  a.cl:hover .go{color:var(--gold)}
+  .cl__n{color:var(--muted);font-size:var(--t-small);margin-top:var(--s3)}
+</style>
+</head>
+<body class="pro">
+
+<a class="skip-link" href="#main">Skip to content</a>
+
+<nav class="site-nav">
+  <a class="site-nav__brand" href="/"><img class="site-nav__lion" src="/img/brand/lion-mark.svg" alt="" width="34" height="34" decoding="async"><span>YUSUF GADELRAB</span></a>
+  <div class="site-nav__links">
+    <a href="/">Work</a>
+    <a href="/guides.html">Guides</a>
+    <a href="/glossary.html" aria-current="page">Glossary</a>
+    <a href="/apps.html">Apps</a>
+    <a href="/store.html">Store</a>
+  </div>
+</nav>
+
+<nav class="crumbs" aria-label="Breadcrumb">
+  <ol>
+    <li><a href="/">Home</a></li>
+    <li><a href="/glossary.html">Glossary</a></li>
+    <li><span aria-current="page">Web &amp; SEO</span></li>
+  </ol>
+</nav>
+
+<main id="main">
+
+  <header class="section">
+    <img class="page-lion" src="/img/brand/lion-mark.svg" alt="" width="46" height="46">
+    <p class="eyebrow">Glossary · Web</p>
+    <h1 style="margin:var(--s4) 0">Web and SEO terms, defined without the marketing gloss</h1>
+    <p class="lead">Technical SEO has a vocabulary problem: half the terms below get used as synonyms for each other, and the other half get treated as levers that matter far more than they do. This set defines each one precisely and names where the common understanding goes wrong, including the two or three that are genuinely small factors dressed up as ranking secrets.</p>
+  </header>
+
+  <hr class="divider">
+
+  <section class="section section--tight">
+    <div class="prose">
+      <p>Two different audiences read a modern web page: a crawler deciding whether to index it, and increasingly, a language model deciding whether to cite it in a generated answer. Most of the terms in this cluster exist to control or measure one of those two processes. <a href="/guides/static-site-ai-search.html">Structured data and crawl control</a> feed the first. <a href="/guides/ai-search-optimization.html">Answer engine optimization</a> is the emerging name for working toward the second.</p>
+      <p>The other half of this list is Core Web Vitals: Google's attempt to turn "does this page feel fast and stable" into three numbers it can measure at scale across real visits. They are genuinely useful engineering targets and a comparatively small ranking signal, and the two claims are not in tension.</p>
+      <p>A theme runs through several entries here: a mechanism gets summarized into folk wisdom that overstates what it does. A canonical tag is a request, not a command. robots.txt blocks crawling, not indexing. Crawl budget matters for sites with millions of URLs and is close to irrelevant for everyone else. Each of those gets called out explicitly rather than left as an implied nuance.</p>
+      <h2>15 terms on this page</h2>
+    </div>
+    <ul class="jump">
+      <li><a href="#canonical-tag">Canonical tag</a></li>
+      <li><a href="#schema-markup">Schema markup</a></li>
+      <li><a href="#json-ld">JSON-LD</a></li>
+      <li><a href="#serp">SERP</a></li>
+      <li><a href="#crawl-budget">Crawl budget</a></li>
+      <li><a href="#robots-txt">robots.txt</a></li>
+      <li><a href="#indexnow">IndexNow</a></li>
+      <li><a href="#core-web-vitals">Core Web Vitals</a></li>
+      <li><a href="#lcp">Largest Contentful Paint (LCP)</a></li>
+      <li><a href="#cls">Cumulative Layout Shift (CLS)</a></li>
+      <li><a href="#inp">Interaction to Next Paint (INP)</a></li>
+      <li><a href="#answer-engine-optimization">Answer engine optimization (AEO)</a></li>
+      <li><a href="#llms-txt">llms.txt</a></li>
+      <li><a href="#pwa">Progressive web app (PWA)</a></li>
+      <li><a href="#service-worker">Service worker</a></li>
+    </ul>
+  </section>
+
+  <hr class="divider">
+
+  <section class="section section--tight" aria-label="Definitions">
+
+    <article class="term" id="canonical-tag">
+      <div class="term__head">
+        <h3>Canonical tag</h3>
+        <a class="term__hash" href="#canonical-tag" aria-label="Permalink to Canonical tag">#</a>
+        <span class="term__aka">also: rel=canonical</span>
+      </div>
+      <p class="term__def">A canonical tag is an HTML link element that names the URL a site owner prefers a search engine index as the authoritative version among duplicate or near-duplicate pages.</p>
+      <p>Duplicate content is normal on a real website. The same product page might be reachable through three different URL parameters, a print view, and both an http and https address before anyone does anything wrong. Without guidance, a search engine has to guess which of those near-identical URLs to treat as the real one and how to divide any ranking signal between them. The canonical tag, a <code>&lt;link rel="canonical" href="..."&gt;</code> element in the page head, is the site owner's way of naming a preference.</p>
+      <p>The tag consolidates signals rather than hiding pages. Links and engagement pointed at the duplicate URLs get folded into the canonical URL's profile instead of being split across near-identical copies competing with each other. That consolidation is the entire value: it stops a site from diluting its own ranking signal against itself.</p>
+      <p>Self-referencing canonicals, where a page points to itself, are the default correct state for most URLs and are worth setting explicitly rather than leaving to inference. The failure mode worth watching for is a canonical pointing at the wrong URL by accident, often from a templating bug, which can quietly tell a search engine to ignore a page a site actually wants indexed.</p>
+      <p class="note"><span class="tag">Example</span>A store with /shoes?color=red, /shoes?color=blue, and /shoes?sort=price all canonicalize to /shoes, so the plain listing page accumulates the ranking signal instead of splitting it three ways.</p>
+      <p class="note"><span class="tag">Common misconception</span>A canonical tag is treated as a directive the search engine must obey. It is a hint. Google states plainly that it may choose a different URL as canonical than the one a site names, based on other signals like redirects, internal linking, and a sitemap entry that disagrees with the tag.</p>
+      <p class="note"><span class="tag">See also</span><a href="#schema-markup">Schema markup</a>, <a href="#serp">SERP</a></p>
+    </article>
+
+    <article class="term" id="schema-markup">
+      <div class="term__head">
+        <h3>Schema markup</h3>
+        <a class="term__hash" href="#schema-markup" aria-label="Permalink to Schema markup">#</a>
+        <span class="term__aka">also: structured data</span>
+      </div>
+      <p class="term__def">Schema markup is structured data added to a web page, using the shared vocabulary at schema.org, that describes what a piece of content is in a machine-readable form rather than relying on a search engine to infer it from prose.</p>
+      <p>A search engine's crawler can read a page's text, but inferring that a block of numbers is a price, that a name is an author, or that a set of steps is a recipe is imprecise work done at enormous scale. Schema markup removes the inference step by labeling the data directly: this string is a <code>Product</code> name, this number is a <code>price</code>, this array is <code>step</code> instructions, using the shared vocabulary maintained at schema.org.</p>
+      <p>The markup itself does not appear anywhere a visitor sees it. It lives in the page's underlying code, most commonly as a JSON-LD block, and its only audience is machines: search engine crawlers, and increasingly the retrieval systems behind AI answer engines. Its payoff, when it shows up at all, is a richer search result, an eligibility gate for certain result types, or a cleaner extraction for a model summarizing the page.</p>
+      <p>Coverage varies a lot by content type. Article, Product, FAQPage, HowTo, Organization, and Person schemas are common and well supported. Marking up content that does not match its actual type, or marking up content invisible to a visitor, violates Google's structured data guidelines and can cost a site the very features the markup was meant to earn.</p>
+      <p class="note"><span class="tag">Example</span>A recipe page marked up with Recipe schema, listing prep time, ingredients, and yield as structured fields, is what makes a star-rating snippet or a recipe carousel entry possible in the first place.</p>
+      <p class="note"><span class="tag">Common misconception</span>Adding schema markup is assumed to directly boost rankings. It does not, on its own; it is an eligibility mechanism for enhanced result formats and a clarity aid for machine readers, not a ranking factor in itself.</p>
+      <p class="note"><span class="tag">Go deeper</span><a href="/guides/static-site-ai-search.html">Structured data for a static site</a></p>
+      <p class="note"><span class="tag">See also</span><a href="#json-ld">JSON-LD</a>, <a href="#serp">SERP</a>, <a href="#canonical-tag">Canonical tag</a></p>
+    </article>
+
+    <article class="term" id="json-ld">
+      <div class="term__head">
+        <h3>JSON-LD</h3>
+        <a class="term__hash" href="#json-ld" aria-label="Permalink to JSON-LD">#</a>
+        <span class="term__aka">also: JavaScript Object Notation for Linked Data</span>
+      </div>
+      <p class="term__def">JSON-LD is a JSON-based format for encoding schema markup as a self-contained script block in a page's HTML, which is why it is the format search engines and framework tooling generally recommend over inline microdata.</p>
+      <p>Structured data can be written three ways: microdata attributes scattered through the visible HTML, RDFa attributes doing something similar, or JSON-LD, a single self-contained block of JSON sitting inside a <code>&lt;script type="application/ld+json"&gt;</code> tag. JSON-LD wins on practicality: it does not touch the visible markup at all, so a template can inject or update it without risking the layout, and a developer can validate the whole block in isolation.</p>
+      <p>The format follows the JSON-LD specification, a general way of adding linked-data semantics to plain JSON using an <code>@context</code> key to point at a vocabulary, most often <code>https://schema.org</code>, and a <code>@type</code> key to name the entity. Everything else is ordinary JSON: strings, numbers, nested objects, and arrays.</p>
+      <p>Because the block is separate from the rendered page, JSON-LD is also the practical choice for content generated or hydrated client-side, and for any site that wants one canonical source of structured data per page rather than markup interleaved through a dozen HTML elements. Google's own documentation recommends it as the preferred format for exactly this reason.</p>
+      <p class="note"><span class="tag">Example</span><code>{&quot;@context&quot;:&quot;https://schema.org&quot;,&quot;@type&quot;:&quot;Article&quot;,&quot;headline&quot;:&quot;...&quot;,&quot;author&quot;:{&quot;@type&quot;:&quot;Person&quot;,&quot;name&quot;:&quot;...&quot;}}</code> dropped into the page head is a complete, valid JSON-LD block.</p>
+      <p class="note"><span class="tag">Common misconception</span>JSON-LD is sometimes assumed to be a different vocabulary from microdata's schema.org markup. It is the same schema.org types and properties in a different container format; the vocabulary does not change, only the syntax carrying it.</p>
+      <p class="note"><span class="tag">Go deeper</span><a href="/guides/static-site-ai-search.html">Structured data for a static site</a></p>
+      <p class="note"><span class="tag">See also</span><a href="#schema-markup">Schema markup</a></p>
+    </article>
+
+    <article class="term" id="serp">
+      <div class="term__head">
+        <h3>SERP</h3>
+        <a class="term__hash" href="#serp" aria-label="Permalink to SERP">#</a>
+        <span class="term__aka">also: Search Engine Results Page</span>
+      </div>
+      <p class="term__def">A SERP, or search engine results page, is the full page a search engine returns for a query, including organic listings, paid ads, and any enhanced features like a knowledge panel, image carousel, or AI-generated summary.</p>
+      <p>The acronym predates all the features that now compete for space on it. A SERP used to mean, roughly, ten blue links. It now routinely includes paid ads above and around the organic results, a knowledge panel pulled from a structured data source, image or video carousels, a "people also ask" accordion, local map packs for location queries, and, increasingly, an AI-generated summary sitting above everything else.</p>
+      <p>This matters for anyone doing SEO because "ranking on page one" no longer describes a fixed shape of outcome. A page can rank first among organic results and still sit visually below three ad slots, a featured snippet, and an AI summary, all of which can satisfy the searcher's need without a single click reaching any website. SERP layout is also query-dependent: a navigational query, a local query, and an informational query each pull a different mix of features.</p>
+      <p>Because the AI summary sits at the top of many SERPs now and answers the query directly, being cited inside that summary has become a competing goal alongside classic ranking, which is the premise behind <a href="/guides/ai-search-optimization.html">answer engine optimization</a> as a distinct discipline from traditional SEO.</p>
+      <p class="note"><span class="tag">Example</span>Searching a specific product name can return a SERP with a shopping ad row, an AI overview, three organic listings, and a "people also ask" box, all before the fourth actual blue link.</p>
+      <p class="note"><span class="tag">Common misconception</span>SERP position is treated as a single, stable number. The same query can return a different SERP layout, and a different rank, based on location, device, search history, and time of day, which is why rank-tracking tools report an approximation rather than a fact.</p>
+      <p class="note"><span class="tag">See also</span><a href="#canonical-tag">Canonical tag</a>, <a href="#answer-engine-optimization">Answer engine optimization (AEO)</a></p>
+    </article>
+
+    <article class="term" id="crawl-budget">
+      <div class="term__head">
+        <h3>Crawl budget</h3>
+        <a class="term__hash" href="#crawl-budget" aria-label="Permalink to Crawl budget">#</a>
+      </div>
+      <p class="term__def">Crawl budget is the number of URLs on a site a search engine's crawler is willing and able to fetch within a given time period, determined by the site's perceived crawl demand and the crawler's own rate-limiting decisions.</p>
+      <p>A crawler cannot fetch every URL on the internet every day, so it allocates its attention. Crawl budget is the combination of crawl rate limit, how fast a crawler is willing to hit a given host without overloading its server, and crawl demand, how much a search engine actually wants to revisit a site's content based on its perceived value and freshness. Together they cap how many pages get crawled, and how often.</p>
+      <p>The concept is real and Google documents it, but its practical relevance scales with site size. A site with a few dozen or a few hundred pages is not going to exhaust a search engine's willingness to crawl it; Google has said directly that crawl budget is not something most site owners need to worry about. It becomes an operational concern on sites with hundreds of thousands or millions of URLs, where wasted crawl activity on low-value pages, like faceted-navigation duplicates or infinite calendar pages, can measurably delay a crawler reaching the pages that matter.</p>
+      <p>The honest framing for a small or mid-sized site is that crawl budget is very unlikely to be the reason a page is not indexed. Slow server response times, thin or duplicate content, a robots.txt block, or the page simply not being linked from anywhere are all far more common and far more fixable causes.</p>
+      <p class="note"><span class="tag">Example</span>A large e-commerce site generating millions of filter-combination URLs can burn its crawl budget on pages nobody searches for, leaving genuinely new product pages undiscovered for weeks.</p>
+      <p class="note"><span class="tag">Common misconception</span>Crawl budget gets cited as an explanation for a small site's indexing problems. For the overwhelming majority of sites it is not the bottleneck at all, and treating it as one distracts from causes like broken internal linking or accidental robots.txt blocks that actually explain the missing page.</p>
+      <p class="note"><span class="tag">Go deeper</span><a href="/guides/static-site-ai-search.html">Structured data for a static site</a></p>
+      <p class="note"><span class="tag">See also</span><a href="#robots-txt">robots.txt</a>, <a href="#indexnow">IndexNow</a></p>
+    </article>
+
+    <article class="term" id="robots-txt">
+      <div class="term__head">
+        <h3>robots.txt</h3>
+        <a class="term__hash" href="#robots-txt" aria-label="Permalink to robots.txt">#</a>
+        <span class="term__aka">also: Robots Exclusion Protocol</span>
+      </div>
+      <p class="term__def">robots.txt is a plain-text file at a site's root that tells well-behaved crawlers which URL paths they may or may not fetch, following the Robots Exclusion Protocol, without any power to remove a URL from a search index.</p>
+      <p>The file sits at a fixed, predictable location, <code>/robots.txt</code>, and uses a small syntax of <code>User-agent</code>, <code>Disallow</code>, and <code>Allow</code> lines to grant or deny specific crawlers access to specific URL paths. It is a voluntary protocol: a crawler has to choose to read and respect it, which the major search engines do, and which plenty of scrapers simply ignore.</p>
+      <p>What the file actually controls is fetching, not appearing in results. A crawler that respects a Disallow rule will not request that URL's content at all. That is a narrower power than it sounds like, and the gap between "not crawled" and "not indexed" is where the file's most common misuse happens.</p>
+      <p>robots.txt is also the conventional home of a sitemap pointer (<code>Sitemap: https://example.com/sitemap.xml</code>), which helps a crawler discover URLs faster even though it has nothing to do with the exclusion rules themselves.</p>
+      <p class="note"><span class="tag">Example</span>Disallow: /admin/ tells a compliant crawler never to request anything under /admin/, but it does nothing to remove an already-indexed /admin/login page from search results.</p>
+      <p class="note"><span class="tag">Common misconception</span>Blocking a URL in robots.txt is assumed to keep it out of search results. It does not. If that URL is linked from somewhere else on the web, a search engine can still index the URL itself, showing it in results with no title or description, precisely because the crawler was blocked from ever fetching the page to see a noindex tag. The correct way to keep a page out of results is a noindex meta tag or header on a page the crawler is allowed to fetch, or password-protecting it outright.</p>
+      <p class="note"><span class="tag">Go deeper</span><a href="/guides/static-site-ai-search.html">Structured data for a static site</a></p>
+      <p class="note"><span class="tag">See also</span><a href="#crawl-budget">Crawl budget</a>, <a href="#indexnow">IndexNow</a></p>
+    </article>
+
+    <article class="term" id="indexnow">
+      <div class="term__head">
+        <h3>IndexNow</h3>
+        <a class="term__hash" href="#indexnow" aria-label="Permalink to IndexNow">#</a>
+      </div>
+      <p class="term__def">IndexNow is a protocol that lets a website push an instant notification to participating search engines whenever a URL is added, updated, or deleted, instead of waiting for the engine's crawler to discover the change on its own schedule.</p>
+      <p>Traditional crawling is pull-based: a search engine decides when to revisit a URL and finds out about changes whenever it happens to crawl again. IndexNow flips that to push-based. A site pings a simple API endpoint with the changed URL and an API key it hosts to prove ownership, and any participating search engine sharing that same IndexNow network learns about the change immediately, without needing its own separate notification.</p>
+      <p>The protocol was introduced by Microsoft and Yandex, and it is genuinely supported by Bing, Yandex, Seznam, and Naver, which share submissions across the network so a single ping can reach all of them. That is real, functioning infrastructure, not vaporware.</p>
+      <p>The gap that matters for anyone deciding whether to bother: Google, the search engine most sites care most about, has stated publicly that it does not use IndexNow. A site can implement it correctly and see faster pickup on Bing while seeing no change at all in Google's crawl behavior, because Google relies on its own discovery and crawling systems instead.</p>
+      <p class="note"><span class="tag">Example</span>A publisher pings IndexNow after fixing a factual error in a live article; Bing can reflect the correction within hours, while Google discovers it on its own normal recrawl schedule.</p>
+      <p class="note"><span class="tag">Common misconception</span>IndexNow support is assumed to mean faster indexing everywhere, including Google. As of writing, Google has said it does not consume IndexNow submissions, so the protocol's benefit is real but confined to the search engines that actually participate in it.</p>
+      <p class="note"><span class="tag">See also</span><a href="#robots-txt">robots.txt</a>, <a href="#crawl-budget">Crawl budget</a></p>
+    </article>
+
+    <article class="term" id="core-web-vitals">
+      <div class="term__head">
+        <h3>Core Web Vitals</h3>
+        <a class="term__hash" href="#core-web-vitals" aria-label="Permalink to Core Web Vitals">#</a>
+      </div>
+      <p class="term__def">Core Web Vitals are a set of three page-experience metrics, currently LCP, CLS, and INP, that Google measures from real-user visits and publishes thresholds for, using them as one of many inputs into search ranking.</p>
+      <p>Google introduced Core Web Vitals to convert a vague idea, "this page feels fast and stable to use," into a small number of specific, measurable signals rather than the dozens of raw performance metrics available in a tool like Lighthouse. The current set covers three moments in a page's life: how long the biggest visible element takes to render (LCP), how much the layout jumps around unexpectedly while loading (CLS), and how responsive the page feels when a visitor actually interacts with it (INP).</p>
+      <p>The metrics are field data, not lab data: Google gathers them from real Chrome users through the Chrome User Experience Report rather than from a single simulated test run, and reports them at the 75th percentile of visits so a handful of great or terrible sessions cannot skew the picture. That percentile choice and the specific pass/fail thresholds are Google's own published guidance, and Google has revised both the metric set and the thresholds before, most notably retiring one of the original three vitals entirely.</p>
+      <p>Core Web Vitals are also a genuinely small ranking factor. Google has described page experience signals as a tiebreaker among pages of otherwise comparable relevance and quality, not something that overrides thin or poorly matched content. The engineering value of chasing good scores, a faster and more stable page for actual visitors, stands on its own regardless of how much weight a ranking algorithm assigns it.</p>
+      <p class="note"><span class="tag">Example</span>A page can pass every Core Web Vitals threshold and still rank behind a slower competitor whose content simply answers the query better, because relevance dominates the ranking decision.</p>
+      <p class="note"><span class="tag">Common misconception</span>Good Core Web Vitals scores are treated as a major or guaranteed ranking boost. Google frames them as a minor factor that can help break ties between similarly relevant pages, not a lever capable of outranking better content on its own.</p>
+      <p class="note"><span class="tag">See also</span><a href="#lcp">Largest Contentful Paint (LCP)</a>, <a href="#cls">Cumulative Layout Shift (CLS)</a>, <a href="#inp">Interaction to Next Paint (INP)</a></p>
+    </article>
+
+    <article class="term" id="lcp">
+      <div class="term__head">
+        <h3>Largest Contentful Paint (LCP)</h3>
+        <a class="term__hash" href="#lcp" aria-label="Permalink to Largest Contentful Paint (LCP)">#</a>
+        <span class="term__aka">also: LCP</span>
+      </div>
+      <p class="term__def">Largest Contentful Paint is a Core Web Vitals metric that records the render time of the largest text block or image visible within the viewport during a page load, used as a proxy for how quickly the main content feels available.</p>
+      <p>Earlier load-speed metrics like "time to first byte" or "first paint" tell you when something appeared on screen, not when the thing a visitor actually came for appeared. LCP targets that gap directly: the browser tracks candidate elements as they render, typically a hero image, a large heading, or a big block of text, and reports the point at which the single largest one finished painting inside the visible viewport.</p>
+      <p>Because LCP looks at the largest element rather than the first one, it is much harder to game with a fast-loading but irrelevant element, like a tiny logo that paints instantly while the actual hero image lags for seconds behind a slow server response or an unoptimized file.</p>
+      <p>Google publishes a good threshold of 2.5 seconds or less, measured at the 75th percentile of real-user page loads, with anything past 4 seconds classified as poor and the range between as needing improvement. Those specific cutoffs are Google's own published guidance and are subject to revision, so they are worth reconfirming against current documentation rather than treated as fixed forever.</p>
+      <p class="note"><span class="tag">Example</span>A blog post's LCP element is usually its featured image; compressing that one image and serving it at the right dimensions often improves LCP more than any other single change on the page.</p>
+      <p class="note"><span class="tag">Common misconception</span>LCP is sometimes assumed to measure full page load. It measures one specific render event, the largest element in the viewport, and a page can have a fast LCP while other elements below the fold or off-screen are still loading.</p>
+      <p class="note"><span class="tag">See also</span><a href="#core-web-vitals">Core Web Vitals</a>, <a href="#cls">Cumulative Layout Shift (CLS)</a>, <a href="#inp">Interaction to Next Paint (INP)</a></p>
+    </article>
+
+    <article class="term" id="cls">
+      <div class="term__head">
+        <h3>Cumulative Layout Shift (CLS)</h3>
+        <a class="term__hash" href="#cls" aria-label="Permalink to Cumulative Layout Shift (CLS)">#</a>
+        <span class="term__aka">also: CLS</span>
+      </div>
+      <p class="term__def">Cumulative Layout Shift is a Core Web Vitals metric that scores unexpected movement of visible page elements during load, calculated by multiplying how much of the viewport shifted by how far it moved, summed across every unstable frame.</p>
+      <p>The problem CLS measures is a familiar one: a page starts loading, text appears, and then an ad or an image loads in above it and shoves everything down right as a visitor was about to tap something. CLS turns that annoyance into a number by multiplying an <em>impact fraction</em>, the proportion of the viewport affected by the shift, by a <em>distance fraction</em>, how far the affected content moved relative to the viewport, for every unexpected layout shift, and summing the results.</p>
+      <span class="formula">Layout shift score = impact fraction × distance fraction
+CLS = sum of layout shift scores across the page's unstable frames</span>
+      <p>CLS is unitless by design, which is part of why it reads as an odd number the first time someone sees it. It is not seconds, pixels, or a percentage; it is a relative score meant to be compared against Google's published thresholds rather than interpreted on its own.</p>
+      <p>Google publishes a good threshold of 0.1 or less, with anything above 0.25 classified as poor, again measured at the 75th percentile of real-user visits. As with the other vitals, these thresholds are Google's current published guidance and have been revised before, so they should be reconfirmed against current documentation rather than assumed permanent.</p>
+      <p class="note"><span class="tag">Example</span>A cookie-consent banner that injects itself above the page content half a second after the initial render is one of the most common real-world causes of a bad CLS score.</p>
+      <p class="note"><span class="tag">Common misconception</span>All layout movement is treated as equally bad for CLS. The metric explicitly excludes shifts triggered within 500ms of a user interaction, like a menu expanding after a tap, since that motion is expected and desired rather than unexpected.</p>
+      <p class="note"><span class="tag">See also</span><a href="#core-web-vitals">Core Web Vitals</a>, <a href="#lcp">Largest Contentful Paint (LCP)</a>, <a href="#inp">Interaction to Next Paint (INP)</a></p>
+    </article>
+
+    <article class="term" id="inp">
+      <div class="term__head">
+        <h3>Interaction to Next Paint (INP)</h3>
+        <a class="term__hash" href="#inp" aria-label="Permalink to Interaction to Next Paint (INP)">#</a>
+        <span class="term__aka">also: INP</span>
+      </div>
+      <p class="term__def">Interaction to Next Paint is a Core Web Vitals metric that measures the latency between a user interaction and the browser's next visual update, taking a high percentile across all interactions on a page rather than judging just the first one.</p>
+      <p>INP replaced First Input Delay (FID) as the third official Core Web Vital in March 2024. FID only measured the delay before the browser began processing the very first interaction on a page, which said nothing about whether the tenth click, five minutes into a session, still felt instant. INP was built to close that gap.</p>
+      <p>The metric observes every click, tap, and key press on a page for as long as the visitor stays on it, measuring the full time from the interaction to the browser's next rendered frame, not just the moment processing starts. Rather than reporting every single interaction, it takes a high percentile across all of them, which surfaces the interactions that actually frustrated a visitor instead of getting averaged away by a page full of fast ones.</p>
+      <p>Google publishes a good threshold of 200 milliseconds or less, with anything above 500 milliseconds classified as poor, measured, like the other vitals, at the 75th percentile of real-user visits. Those thresholds are Google's own current published guidance and are subject to revision over time, so treat them as the state of play rather than a permanent constant.</p>
+      <p class="note"><span class="tag">Example</span>A page that responds instantly to its first button click but stutters for 600 milliseconds on a filter dropdown deep in a session will show that stutter in its INP score, where FID would have missed it entirely.</p>
+      <p class="note"><span class="tag">Common misconception</span>INP is assumed to be a renamed version of FID measuring the same thing. It is a different measurement altogether: full interaction-to-paint latency across the entire page lifecycle at a high percentile, not just the delay before the first interaction begins processing.</p>
+      <p class="note"><span class="tag">See also</span><a href="#core-web-vitals">Core Web Vitals</a>, <a href="#lcp">Largest Contentful Paint (LCP)</a>, <a href="#cls">Cumulative Layout Shift (CLS)</a></p>
+    </article>
+
+    <article class="term" id="answer-engine-optimization">
+      <div class="term__head">
+        <h3>Answer engine optimization (AEO)</h3>
+        <a class="term__hash" href="#answer-engine-optimization" aria-label="Permalink to Answer engine optimization (AEO)">#</a>
+        <span class="term__aka">also: AEO, generative engine optimization, GEO</span>
+      </div>
+      <p class="term__def">Answer engine optimization is the practice of structuring content so it is likely to be retrieved, quoted, and cited inside an AI-generated answer, shifting the goal from earning a click on a blue link to earning a mention inside the answer itself.</p>
+      <p>Classic SEO optimizes for a ranked list of links a person then chooses to click. AI-powered search results and standalone answer engines change the unit of success: a well-optimized page can now satisfy the searcher's need entirely inside a generated summary, with no click to the source at all, or a small citation link buried among several competitors. AEO is the still-forming set of practices aimed at being one of the sources that summary draws from and credits.</p>
+      <p>The practical overlap with existing technical SEO is large and worth being honest about: clear structure, direct and quotable factual statements, accurate schema markup, and a crawlable, fast, well-linked site all help both a traditional crawler and a retrieval system behind a language model. Much of what gets marketed as a new "AEO strategy" is technical SEO fundamentals, applied with the awareness that a model is now one of the readers.</p>
+      <p>What is genuinely new and genuinely unproven is the growing list of speculative tactics, specific formatting tricks, particular phrasing patterns, claimed FAQ-schema shortcuts, that circulate without independent verification that they change citation behavior. Because these systems are opaque and each vendor's retrieval process differs, treat any confident claim of a proven AEO tactic with real skepticism until it is verified against the model provider's own documentation or reproducible testing, not a blog post asserting it works.</p>
+      <p class="note"><span class="tag">Example</span>A glossary page that states a definition in one clear, self-contained sentence near the top of the entry is easier for a retrieval system to lift directly than the same fact buried in the third paragraph of a narrative explanation.</p>
+      <p class="note"><span class="tag">Common misconception</span>AEO gets sold as a distinct, fully-formed discipline with its own settled best practices. As of writing it is closer to an extension of existing content and technical SEO fundamentals applied to a new kind of reader, with a long tail of unverified tactics attached to the name.</p>
+      <p class="note"><span class="tag">Go deeper</span><a href="/guides/ai-search-optimization.html">AI search optimization for a small site</a></p>
+      <p class="note"><span class="tag">See also</span><a href="#llms-txt">llms.txt</a>, <a href="#serp">SERP</a>, <a href="#schema-markup">Schema markup</a>, <a href="/glossary/ai-ml.html#rag">Retrieval-augmented generation (RAG)</a>, <a href="/glossary/ai-ml.html#embedding">Embedding</a></p>
+    </article>
+
+    <article class="term" id="llms-txt">
+      <div class="term__head">
+        <h3>llms.txt</h3>
+        <a class="term__hash" href="#llms-txt" aria-label="Permalink to llms.txt">#</a>
+      </div>
+      <p class="term__def">llms.txt is a proposed convention, not an adopted standard, for a plain-Markdown file at a site's root that lists and links its most important pages in a format meant to be easy for a language model to consume.</p>
+      <p>The idea, proposed publicly in 2024, borrows the shape of robots.txt and sitemap.xml: one predictable file at <code>/llms.txt</code>, written in Markdown, giving a short site summary followed by a curated list of links to the pages a site owner considers most important for a language model to read. Some proposals also describe an <code>llms-full.txt</code> variant containing the actual page content inline rather than just links.</p>
+      <p>The honest status of this file, stated plainly: it is a voluntary convention put forward by one party, not a standard ratified by any search engine or model provider, and there is no confirmed public evidence that any major AI provider's crawler or retrieval pipeline actually reads or acts on it. Some tooling and a number of sites have adopted the format anyway, which creates the appearance of momentum without confirming that anything downstream consumes it.</p>
+      <p>Publishing an llms.txt file is low-cost and does not conflict with anything else on a site, so there is little downside to adding one. The mistake is treating it as a lever with confirmed effect, the way robots.txt or a sitemap demonstrably is. Until a major provider documents that it consumes the file, its value is speculative, and any claim otherwise should be checked against that provider's own current documentation before being repeated.</p>
+      <p class="note"><span class="tag">Example</span>A documentation site publishing /llms.txt with a one-paragraph summary and links to its ten most-referenced pages is a real, cheap experiment, not a confirmed indexing channel.</p>
+      <p class="note"><span class="tag">Common misconception</span>llms.txt is described as something AI models "read" the way a browser reads robots.txt. As of writing there is no confirmed evidence that any major language model provider's system consumes the file at all; it remains a proposed convention rather than an adopted standard.</p>
+      <p class="note"><span class="tag">Go deeper</span><a href="/guides/ai-search-optimization.html">AI search optimization for a small site</a></p>
+      <p class="note"><span class="tag">See also</span><a href="#answer-engine-optimization">Answer engine optimization (AEO)</a>, <a href="#robots-txt">robots.txt</a></p>
+    </article>
+
+    <article class="term" id="pwa">
+      <div class="term__head">
+        <h3>Progressive web app (PWA)</h3>
+        <a class="term__hash" href="#pwa" aria-label="Permalink to Progressive web app (PWA)">#</a>
+        <span class="term__aka">also: PWA</span>
+      </div>
+      <p class="term__def">A progressive web app is a website built with a web app manifest and a service worker so it can be installed to a device's home screen, launch in its own window, and continue functioning offline or on a poor connection.</p>
+      <p>A PWA is not a separate technology from a normal website; it is a normal website that has opted into a small set of browser APIs that unlock app-like behavior. The two required pieces are a web app manifest, a JSON file declaring the app's name, icons, and launch behavior, and a service worker, a background script that intercepts network requests and can serve cached responses when the network is unavailable.</p>
+      <p>Meeting those requirements lets a browser offer an install prompt that adds the site to a phone or desktop's home screen or app list, launches it in its own window without browser chrome, and lets it keep working, at least partially, without a live connection. None of that requires an app-store submission or review process, since the app is still just a website being served over HTTPS.</p>
+      <p>The tradeoff against a native app is real and worth naming honestly: a PWA has more limited access to device hardware and OS-level features than a native app built with the platform's own SDK, and on iOS specifically, installation support and available APIs have historically lagged behind Android. For a tool that is mostly UI and local data rather than deep hardware integration, that limitation rarely matters in practice.</p>
+      <p class="note"><span class="tag">Example</span>A habit-tracking tool that installs to a home screen, opens in its own window, and still lets a visitor log an entry with no signal is a PWA doing exactly what the manifest and service worker are for.</p>
+      <p class="note"><span class="tag">Common misconception</span>A PWA is assumed to require app-store distribution like a native app. It does not; it installs directly from the browser over HTTPS, with no app-store account, review process, or approval needed.</p>
+      <p class="note"><span class="tag">Go deeper</span><a href="/guides/offline-pwa.html">Building an offline-first PWA</a></p>
+      <p class="note"><span class="tag">See also</span><a href="#service-worker">Service worker</a></p>
+    </article>
+
+    <article class="term" id="service-worker">
+      <div class="term__head">
+        <h3>Service worker</h3>
+        <a class="term__hash" href="#service-worker" aria-label="Permalink to Service worker">#</a>
+      </div>
+      <p class="term__def">A service worker is a JavaScript file that runs on a separate background thread from the page, able to intercept network requests, serve cached responses, and run tasks like push notifications even when no tab for the site is open.</p>
+      <p>A normal script on a web page runs on the main thread, tied to that one tab, and stops the moment the tab closes. A service worker is registered separately and runs in its own thread outside any specific page, which is what lets it intercept every network request the site makes, decide whether to serve a cached response or go to the network, and keep running certain tasks in the background even after every tab for the site has closed.</p>
+      <p>That request-interception ability is what makes offline functionality and reliable caching possible at all: the service worker sits between the page and the network as a programmable proxy, deciding per request whether a cached asset is good enough or a fresh network fetch is required. It is also the mechanism behind background sync and push notifications on the web.</p>
+      <p>Browsers require HTTPS to register a service worker, with an explicit exception for localhost during development, because a script with this much control over network traffic is a serious target if it can be tampered with over an insecure connection.</p>
+      <p>The classic failure mode is stale content: a service worker's cache is keyed to a cache name a developer controls, and if that name does not change when the underlying assets do, the service worker keeps serving the old cached version indefinitely, even to visitors who reload the page. The fix is a versioned cache name, bumped on every deploy that changes cached assets, so the service worker's install step recognizes the old cache as stale and replaces it.</p>
+      <p class="note"><span class="tag">Example</span>A team ships a CSS fix but forgets to bump the cache version string in their service worker, so returning visitors keep seeing the old broken layout until they manually clear site data.</p>
+      <p class="note"><span class="tag">Common misconception</span>A service worker is assumed to update itself automatically whenever the site's files change. It does not; the browser only re-fetches the service worker script periodically and only replaces the cache when the developer changes the cache's version identifier, so an unversioned cache can serve stale assets indefinitely.</p>
+      <p class="note"><span class="tag">Go deeper</span><a href="/guides/offline-pwa.html">Building an offline-first PWA</a></p>
+      <p class="note"><span class="tag">See also</span><a href="#pwa">Progressive web app (PWA)</a></p>
+    </article>
+
+  </section>
+
+  <hr class="divider">
+
+  <section class="section section--tight">
+    <div class="grp-head">
+      <p class="eyebrow">Keep reading</p>
+      <h2>Other glossary clusters</h2>
+    </div>
+    <ul class="rail">
+      <li><a href="/glossary/trading-risk.html">Trading &amp; risk</a></li>
+      <li><a href="/glossary/options.html">Options</a></li>
+      <li><a href="/glossary/ai-ml.html">AI &amp; LLMs</a></li>
+      <li><a href="/glossary/security.html">Security</a></li>
+      <li><a href="/glossary/immigration-student.html">Student visas</a></li>
+      <li><a href="/glossary/freight.html">Freight</a></li>
+      <li><a href="/glossary/career.html">Careers</a></li>
+    </ul>
+    <p class="note" style="margin-top:var(--s5)"><a href="/glossary.html">Full A–Z index of every term</a> · <a href="/guides.html">Long-form guides</a></p>
+  </section>
+
+</main>
+
+<section aria-labelledby="compliance-h" style="max-width:1080px;margin:0 auto;padding:28px 20px 8px;border-top:1px solid rgba(212,175,55,.18)"><h2 id="compliance-h" style="font-family:Georgia,'Times New Roman',serif;font-size:15px;letter-spacing:.06em;text-transform:uppercase;color:#d4af37;margin:0 0 10px">Disclaimer</h2><p style="font-size:13.5px;line-height:1.65;color:#9a958c;margin:0 0 8px">This glossary is educational and informational only. Nothing here is financial, investment, tax, legal or immigration advice, or a recommendation to buy or sell any security. Trading carries substantial risk of loss. Any backtested or example figure is hypothetical, does not represent live trading, and past performance does not guarantee future results. Definitions of legal, regulatory and immigration terms change; verify anything time-sensitive against the primary source, your DSO, or a licensed professional before acting on it.</p><p style="font-size:13.5px;line-height:1.65;color:#9a958c;margin:0"><a style="color:#d4af37" href="/terms.html">Terms of Use</a> · <a style="color:#d4af37" href="/privacy.html">Privacy Policy</a></p></section>
+<footer class="site-footer">
+  <div class="site-footer__links">
+    <a href="/">Work</a>
+    <a href="/about.html">About</a>
+    <a href="/guides.html">Guides</a>
+    <a href="/glossary.html">Glossary</a>
+    <a href="/apps.html">Apps</a>
+    <a href="/store.html">Store</a>
+    <a href="/privacy.html">Privacy</a>
+    <a href="/terms.html">Terms</a>
+    <a href="mailto:yusuf.gadelrab06@gmail.com">yusuf.gadelrab06@gmail.com</a>
+  </div>
+</footer>
+
+<script src="/js/site.js" defer></script>
+</body>
+</html>

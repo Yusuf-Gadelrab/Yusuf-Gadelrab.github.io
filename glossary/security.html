@@ -1,0 +1,435 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="preload" href="/css/site.css" as="style">
+<meta name="robots" content="index,follow,max-image-preview:large,max-snippet:-1">
+<meta property="og:locale" content="en_US">
+<title>Security Glossary: CVE, CVSS, SBOM, CORS, CSP Defined</title>
+<meta name="description" content="Plain definitions for CVE, CVSS, OSV, SBOM, SARIF, secret scanning, dependency confusion, CSP, HSTS, CORS, IaC and least privilege.">
+<link rel="canonical" href="https://yusuf-gadelrab.github.io/glossary/security.html">
+<link rel="icon" type="image/svg+xml" href="https://yusuf-gadelrab.github.io/favicon.svg">
+<link rel="apple-touch-icon" sizes="180x180" href="https://yusuf-gadelrab.github.io/apple-touch-icon.png">
+<meta name="theme-color" content="#0B0B0D">
+<meta name="author" content="Yusuf Gadelrab">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Yusuf Gadelrab">
+<meta property="og:title" content="Security Glossary: CVE, CVSS, SBOM, SARIF, CSP, CORS Explained">
+<meta property="og:description" content="14 security terms defined in one sentence each, then explained properly: CVE, CVSS, OSV, SBOM, SARIF, secret scanning, CSP, HSTS, CORS and more.">
+<meta property="og:url" content="https://yusuf-gadelrab.github.io/glossary/security.html">
+<meta property="og:image" content="https://yusuf-gadelrab.github.io/og-card.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Security Glossary: CVE, CVSS, SBOM, SARIF, CSP, CORS Explained">
+<meta name="twitter:description" content="14 security terms defined in one sentence each, then explained properly: CVE, CVSS, OSV, SBOM, SARIF, secret scanning, CSP, HSTS, CORS and more.">
+<meta name="twitter:image" content="https://yusuf-gadelrab.github.io/og-card.png">
+<link rel="alternate" type="text/plain" href="https://yusuf-gadelrab.github.io/llms-full.txt" title="Plain-text profile for language models">
+
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"DefinedTermSet","@id":"https://yusuf-gadelrab.github.io/glossary/security.html#termset","name":"Security Terms","description":"Plain definitions for CVE, CVSS, OSV, SBOM, SARIF, secret scanning, dependency confusion, CSP, HSTS, CORS, IaC and least privilege.","url":"https://yusuf-gadelrab.github.io/glossary/security.html","inLanguage":"en","author":{"@id":"https://yusuf-gadelrab.github.io/#person"},"publisher":{"@id":"https://yusuf-gadelrab.github.io/#person"},"hasDefinedTerm":[{"@type":"DefinedTerm","@id":"https://yusuf-gadelrab.github.io/glossary/security.html#cve","name":"CVE","description":"A CVE is a unique identifier assigned to one specific, publicly disclosed vulnerability by a CVE Numbering Authority, and it is a catalogue entry, not a severity rating or a class of bug.","url":"https://yusuf-gadelrab.github.io/glossary/security.html#cve","inDefinedTermSet":{"@id":"https://yusuf-gadelrab.github.io/glossary/security.html#termset"},"alternateName":["Common Vulnerabilities and Exposures"]},{"@type":"DefinedTerm","@id":"https://yusuf-gadelrab.github.io/glossary/security.html#cvss","name":"CVSS","description":"CVSS is a scoring framework that converts a vulnerability's attack vector, complexity, required privileges, and impact into a single base severity number from 0.0 to 10.0.","url":"https://yusuf-gadelrab.github.io/glossary/security.html#cvss","inDefinedTermSet":{"@id":"https://yusuf-gadelrab.github.io/glossary/security.html#termset"},"alternateName":["Common Vulnerability Scoring System"]},{"@type":"DefinedTerm","@id":"https://yusuf-gadelrab.github.io/glossary/security.html#osv","name":"OSV","description":"OSV is an open vulnerability database and schema at osv.dev that maps each known vulnerability to the exact affected package versions and ecosystems, which is what makes automated matching precise.","url":"https://yusuf-gadelrab.github.io/glossary/security.html#osv","inDefinedTermSet":{"@id":"https://yusuf-gadelrab.github.io/glossary/security.html#termset"},"alternateName":["Open Source Vulnerabilities"]},{"@type":"DefinedTerm","@id":"https://yusuf-gadelrab.github.io/glossary/security.html#sbom","name":"SBOM","description":"An SBOM is a machine-readable inventory of every component and version that went into a build, most commonly formatted as CycloneDX or SPDX, that lists what shipped without telling you whether any of it is exploitable.","url":"https://yusuf-gadelrab.github.io/glossary/security.html#sbom","inDefinedTermSet":{"@id":"https://yusuf-gadelrab.github.io/glossary/security.html#termset"},"alternateName":["Software Bill of Materials"]},{"@type":"DefinedTerm","@id":"https://yusuf-gadelrab.github.io/glossary/security.html#sarif","name":"SARIF","description":"SARIF is a standardized JSON output format for static analysis findings that lets a scanner's results appear as inline annotations directly in a pull request or code-review interface.","url":"https://yusuf-gadelrab.github.io/glossary/security.html#sarif","inDefinedTermSet":{"@id":"https://yusuf-gadelrab.github.io/glossary/security.html#termset"},"alternateName":["Static Analysis Results Interchange Format"]},{"@type":"DefinedTerm","@id":"https://yusuf-gadelrab.github.io/glossary/security.html#secret-scanning","name":"Secret scanning","description":"Secret scanning is the automated detection of credentials, API keys, tokens, and private keys accidentally committed into source code, configuration files, or git history.","url":"https://yusuf-gadelrab.github.io/glossary/security.html#secret-scanning","inDefinedTermSet":{"@id":"https://yusuf-gadelrab.github.io/glossary/security.html#termset"}},{"@type":"DefinedTerm","@id":"https://yusuf-gadelrab.github.io/glossary/security.html#dependency-confusion","name":"Dependency confusion","description":"Dependency confusion is a supply-chain attack where a public registry package is published under the exact same name as an internal, private package so a misconfigured build resolves to the attacker's public one.","url":"https://yusuf-gadelrab.github.io/glossary/security.html#dependency-confusion","inDefinedTermSet":{"@id":"https://yusuf-gadelrab.github.io/glossary/security.html#termset"}},{"@type":"DefinedTerm","@id":"https://yusuf-gadelrab.github.io/glossary/security.html#supply-chain-attack","name":"Supply-chain attack","description":"A supply-chain attack compromises software by tampering with something upstream, a dependency, a build tool, a CI pipeline, or a distribution channel, so malicious code arrives bundled inside a package the victim already trusts.","url":"https://yusuf-gadelrab.github.io/glossary/security.html#supply-chain-attack","inDefinedTermSet":{"@id":"https://yusuf-gadelrab.github.io/glossary/security.html#termset"}},{"@type":"DefinedTerm","@id":"https://yusuf-gadelrab.github.io/glossary/security.html#iac","name":"Infrastructure as code (IaC)","description":"Infrastructure as code is the practice of defining servers, networks, and cloud resources in version-controlled configuration files, such as Terraform, CloudFormation, or Kubernetes manifests, instead of clicking through a console.","url":"https://yusuf-gadelrab.github.io/glossary/security.html#iac","inDefinedTermSet":{"@id":"https://yusuf-gadelrab.github.io/glossary/security.html#termset"}},{"@type":"DefinedTerm","@id":"https://yusuf-gadelrab.github.io/glossary/security.html#csp","name":"Content Security Policy (CSP)","description":"Content Security Policy is a response header that tells a browser which sources of script, style, image, frame, and network connection a page is allowed to load from, mainly to blunt cross-site scripting.","url":"https://yusuf-gadelrab.github.io/glossary/security.html#csp","inDefinedTermSet":{"@id":"https://yusuf-gadelrab.github.io/glossary/security.html#termset"}},{"@type":"DefinedTerm","@id":"https://yusuf-gadelrab.github.io/glossary/security.html#hsts","name":"HSTS","description":"HSTS is a response header that instructs a browser to only ever connect to that exact host over HTTPS for a stated number of seconds, refusing any future plain-HTTP attempt without asking the user.","url":"https://yusuf-gadelrab.github.io/glossary/security.html#hsts","inDefinedTermSet":{"@id":"https://yusuf-gadelrab.github.io/glossary/security.html#termset"},"alternateName":["HTTP Strict Transport Security"]},{"@type":"DefinedTerm","@id":"https://yusuf-gadelrab.github.io/glossary/security.html#cors","name":"CORS","description":"CORS is a browser mechanism that relaxes the same-origin policy under conditions a server declares, letting a page on one origin have its own JavaScript read certain responses from a server on a different origin.","url":"https://yusuf-gadelrab.github.io/glossary/security.html#cors","inDefinedTermSet":{"@id":"https://yusuf-gadelrab.github.io/glossary/security.html#termset"},"alternateName":["Cross-Origin Resource Sharing"]},{"@type":"DefinedTerm","@id":"https://yusuf-gadelrab.github.io/glossary/security.html#hashing-vs-encryption","name":"Hashing vs encryption","description":"Hashing is a one-way transformation into a fixed-length digest that cannot be reversed to recover the input, while encryption is a two-way transformation that uses a key to convert data back and forth between plaintext and ciphertext.","url":"https://yusuf-gadelrab.github.io/glossary/security.html#hashing-vs-encryption","inDefinedTermSet":{"@id":"https://yusuf-gadelrab.github.io/glossary/security.html#termset"}},{"@type":"DefinedTerm","@id":"https://yusuf-gadelrab.github.io/glossary/security.html#least-privilege","name":"Least privilege","description":"Least privilege is the principle that any user, service, or process should hold only the minimum permissions required to do its specific job, and nothing more.","url":"https://yusuf-gadelrab.github.io/glossary/security.html#least-privilege","inDefinedTermSet":{"@id":"https://yusuf-gadelrab.github.io/glossary/security.html#termset"}}]},{"@type":"CollectionPage","@id":"https://yusuf-gadelrab.github.io/glossary/security.html#page","url":"https://yusuf-gadelrab.github.io/glossary/security.html","name":"Security Terms","description":"Plain definitions for CVE, CVSS, OSV, SBOM, SARIF, secret scanning, dependency confusion, CSP, HSTS, CORS, IaC and least privilege.","datePublished":"2026-08-01","dateModified":"2026-08-01","inLanguage":"en","isAccessibleForFree":true,"about":["Vulnerability management","Software supply chain security","Web security headers","Access control"],"author":{"@id":"https://yusuf-gadelrab.github.io/#person"},"publisher":{"@id":"https://yusuf-gadelrab.github.io/#person"},"mainEntity":{"@id":"https://yusuf-gadelrab.github.io/glossary/security.html#termset"},"breadcrumb":{"@id":"https://yusuf-gadelrab.github.io/glossary/security.html#crumbs"},"isPartOf":{"@id":"https://yusuf-gadelrab.github.io/#website"}},{"@type":"BreadcrumbList","@id":"https://yusuf-gadelrab.github.io/glossary/security.html#crumbs","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://yusuf-gadelrab.github.io/"},{"@type":"ListItem","position":2,"name":"Glossary","item":"https://yusuf-gadelrab.github.io/glossary.html"},{"@type":"ListItem","position":3,"name":"Security"}]}]}</script>
+
+<link rel="stylesheet" href="/css/site.css">
+<style>
+  .prose{max-width:var(--maxw-prose)}
+  .prose h2{margin:var(--s7) 0 var(--s4);font-size:var(--t-h2)}
+  .prose p{color:var(--muted);margin:0 0 var(--s4)}
+  .prose ul,.prose ol{color:var(--muted);padding-left:1.2em;margin:0 0 var(--s4)}
+  .prose li{margin-bottom:var(--s2)}
+  .prose a{color:var(--gold-2)}
+  .prose strong{color:var(--fg)}
+  .formula{display:block;padding:var(--s4);margin:0 0 var(--s4);border:1px solid var(--line-soft);
+    border-radius:var(--radius);font-family:ui-monospace,SFMono-Regular,Menlo,monospace;
+    font-size:var(--t-small);color:var(--gold-2);overflow-x:auto;white-space:pre-wrap}
+  .tblwrap{overflow-x:auto;margin:0 0 var(--s4)}
+  .tbl{width:100%;border-collapse:collapse;font-size:var(--t-small)}
+  .tbl th,.tbl td{text-align:left;padding:var(--s3);border-bottom:1px solid var(--line-soft);
+    color:var(--muted);vertical-align:top}
+  .tbl th{font-family:var(--display-pro);color:var(--gold-2);font-weight:600}
+  .callout{padding:var(--s4);border:1px solid var(--line-soft);border-radius:var(--radius);
+    color:var(--muted);font-size:var(--t-small);margin:0 0 var(--s5)}
+  .callout--warn{border-color:var(--gold-2)}
+  .jump{display:flex;flex-wrap:wrap;gap:var(--s2) var(--s4);margin:var(--s5) 0 0;padding:0;list-style:none}
+  .jump li{margin:0}
+  .jump a{font-size:var(--t-small);color:var(--muted)}
+  .jump a:hover{color:var(--gold-2)}
+  .term{max-width:var(--maxw-prose);padding:var(--s6) 0;border-top:1px solid var(--line-soft);
+    scroll-margin-top:var(--s8)}
+  .term__head{display:flex;align-items:baseline;gap:var(--s3);flex-wrap:wrap;margin:0 0 var(--s4)}
+  .term__head h3{margin:0;font-size:var(--t-h3)}
+  .term__hash{font-family:var(--display-pro);font-size:var(--t-small);color:var(--gold-dim);
+    text-decoration:none;opacity:0;transition:opacity .2s var(--ease)}
+  .term:hover .term__hash,.term__hash:focus-visible{opacity:1;color:var(--gold-2)}
+  .term__aka{font-size:var(--t-small);color:var(--muted)}
+  .term__def{color:var(--fg);font-size:17px;margin:0 0 var(--s4)}
+  .term p{color:var(--muted);margin:0 0 var(--s4)}
+  .term p:last-child{margin-bottom:0}
+  .term ul,.term ol{color:var(--muted);padding-left:1.2em;margin:0 0 var(--s4)}
+  .term li{margin-bottom:var(--s2)}
+  .term a{color:var(--gold-2)}
+  .term strong{color:var(--fg)}
+  .note{font-size:var(--t-small);color:var(--muted);margin:0 0 var(--s3)}
+  .tag{font-family:var(--display-pro);font-size:var(--t-micro);font-weight:600;letter-spacing:2px;
+    text-transform:uppercase;color:var(--gold-2);margin-right:var(--s2)}
+  .az{margin:0;padding:0;list-style:none}
+  .az__group{margin:0 0 var(--s6)}
+  .az__letter{font-family:var(--display-pro);font-weight:700;font-size:var(--t-h3);
+    color:var(--gold-2);margin:0 0 var(--s3)}
+  .az__list{display:grid;gap:var(--s2) var(--s5);margin:0;padding:0;list-style:none;
+    grid-template-columns:repeat(auto-fill,minmax(min(230px,100%),1fr))}
+  .az__list li{font-size:var(--t-small);color:var(--muted)}
+  .az__list a{color:var(--muted)}
+  .az__list a:hover{color:var(--gold-2)}
+  .az__where{color:var(--gold-dim)}
+  .rail{display:flex;flex-wrap:wrap;gap:var(--s2) var(--s3);margin:var(--s5) 0 0;padding:0;list-style:none}
+  .rail a{font-family:var(--display-pro);font-weight:600;font-size:var(--t-small);
+    color:var(--gold-2);border:1px solid var(--line-soft);border-radius:var(--radius);
+    padding:6px 12px;display:inline-block}
+  .rail a:hover{border-color:var(--gold-2)}
+  .cl{display:flex;flex-direction:column;padding:var(--s5)}
+  .cl h3{margin:0 0 var(--s3);font-size:var(--t-h3)}
+  .cl p{color:var(--muted);font-size:var(--t-small);flex:1;margin:0}
+  .cl .go{margin-top:var(--s4);font-family:var(--display-pro);font-weight:600;
+    font-size:var(--t-small);color:var(--gold-2)}
+  a.cl:hover .go{color:var(--gold)}
+  .cl__n{color:var(--muted);font-size:var(--t-small);margin-top:var(--s3)}
+</style>
+</head>
+<body class="pro">
+
+<a class="skip-link" href="#main">Skip to content</a>
+
+<nav class="site-nav">
+  <a class="site-nav__brand" href="/"><img class="site-nav__lion" src="/img/brand/lion-mark.svg" alt="" width="34" height="34" decoding="async"><span>YUSUF GADELRAB</span></a>
+  <div class="site-nav__links">
+    <a href="/">Work</a>
+    <a href="/guides.html">Guides</a>
+    <a href="/glossary.html" aria-current="page">Glossary</a>
+    <a href="/apps.html">Apps</a>
+    <a href="/store.html">Store</a>
+  </div>
+</nav>
+
+<nav class="crumbs" aria-label="Breadcrumb">
+  <ol>
+    <li><a href="/">Home</a></li>
+    <li><a href="/glossary.html">Glossary</a></li>
+    <li><span aria-current="page">Security</span></li>
+  </ol>
+</nav>
+
+<main id="main">
+
+  <header class="section">
+    <img class="page-lion" src="/img/brand/lion-mark.svg" alt="" width="46" height="46">
+    <p class="eyebrow">Glossary · Security</p>
+    <h1 style="margin:var(--s4) 0">Security terms, defined without the marketing</h1>
+    <p class="lead">Fourteen terms behind vulnerability scanning, supply-chain defense, and the security headers a browser actually enforces. Each one opens with a sentence that stands alone, then the mechanism, then the specific way people get it wrong.</p>
+  </header>
+
+  <hr class="divider">
+
+  <section class="section section--tight">
+    <div class="prose">
+      <p>Security tooling produces a lot of acronyms and very little clarity about what each one actually promises. A CVE is not a severity. A CORS header does not protect a server. An SBOM does not tell you whether you are exploitable. Getting these wrong changes what a team actually spends its time patching, not just how it talks about the work.</p>
+      <h2>How the fourteen terms group</h2>
+      <p>The first six, CVE, CVSS, OSV, SBOM, SARIF, and secret scanning, cover how a vulnerability gets identified, scored, matched against your dependencies, and surfaced as an inline finding. That is also roughly the pipeline a scanner like <a href="/dira.html">Dira</a>, a zero-dependency, MIT-licensed Python security scanner, runs in one pass: dependency CVEs matched through OSV.dev, secrets caught by pattern and git-history scanning, config and infrastructure-as-code rules, and results emitted as terminal, HTML, JSON, SARIF and Markdown reports plus CycloneDX and SPDX SBOMs.</p>
+      <p>The rest covers where trust breaks upstream of your own code (dependency confusion, supply-chain attacks, infrastructure as code) and where a browser is doing more, or less, security work than people assume (CSP, HSTS, CORS), closing with two access-control ideas, hashing versus encryption and least privilege, that the earlier terms keep leaning on.</p>
+      <h2>14 terms on this page</h2>
+    </div>
+    <ul class="jump">
+      <li><a href="#cve">CVE</a></li>
+      <li><a href="#cvss">CVSS</a></li>
+      <li><a href="#osv">OSV</a></li>
+      <li><a href="#sbom">SBOM</a></li>
+      <li><a href="#sarif">SARIF</a></li>
+      <li><a href="#secret-scanning">Secret scanning</a></li>
+      <li><a href="#dependency-confusion">Dependency confusion</a></li>
+      <li><a href="#supply-chain-attack">Supply-chain attack</a></li>
+      <li><a href="#iac">Infrastructure as code (IaC)</a></li>
+      <li><a href="#csp">Content Security Policy (CSP)</a></li>
+      <li><a href="#hsts">HSTS</a></li>
+      <li><a href="#cors">CORS</a></li>
+      <li><a href="#hashing-vs-encryption">Hashing vs encryption</a></li>
+      <li><a href="#least-privilege">Least privilege</a></li>
+    </ul>
+  </section>
+
+  <hr class="divider">
+
+  <section class="section section--tight" aria-label="Definitions">
+
+    <article class="term" id="cve">
+      <div class="term__head">
+        <h3>CVE</h3>
+        <a class="term__hash" href="#cve" aria-label="Permalink to CVE">#</a>
+        <span class="term__aka">also: Common Vulnerabilities and Exposures</span>
+      </div>
+      <p class="term__def">A CVE is a unique identifier assigned to one specific, publicly disclosed vulnerability by a CVE Numbering Authority, and it is a catalogue entry, not a severity rating or a class of bug.</p>
+      <p>The CVE program exists to solve a coordination problem: before it, the same vulnerability could get a different name from every vendor, researcher, and scanner that wrote about it, making it hard to tell whether two reports described the same flaw. A CVE Numbering Authority, a role delegated to vendors, researchers, and coordination bodies, assigns an ID in the format <code>CVE-YYYY-NNNNN</code> to a specific flaw in a specific product, and that ID becomes the shared reference everyone else points to.</p>
+      <p>The entry itself is thin by design: a short description and the affected product. It carries no severity number and no exploit detail on its own. Those live in companion records, most commonly a CVSS score and, where one exists, links to advisories or exploit data, which is exactly why a CVE ID and a CVSS score are two different things that get quoted together so often.</p>
+      <p>Because the ID is just a name, tooling built on top of it, dependency scanners, vulnerability databases, patch management systems, uses the CVE as the join key to connect a disclosure to the specific package versions it affects. That precise version-to-vulnerability mapping is a separate job, handled by structured databases such as OSV, not by the CVE record itself.</p>
+      <p class="note"><span class="tag">Example</span>CVE-2021-44228 identifies the specific Log4j deserialization flaw known as Log4Shell. The ID names the flaw; a separately assigned CVSS base score of 10.0 is what communicated how severe it was.</p>
+      <p class="note"><span class="tag">Common misconception</span>"We have 40 open CVEs" gets treated as a risk figure. A CVE count says nothing on its own, since one of those 40 could be a 2.1 on a code path nothing ever calls and another a 9.8 on a public login handler. Weight by CVSS and by whether the vulnerable code actually runs in your application before triaging anything by count.</p>
+      <p class="note"><span class="tag">Go deeper</span><a href="/guides/snyk-vs-trivy-vs-dira.html">Snyk vs Trivy vs DIRA: choosing a scanner</a></p>
+      <p class="note"><span class="tag">See also</span><a href="#cvss">CVSS</a>, <a href="#osv">OSV</a>, <a href="#sarif">SARIF</a></p>
+    </article>
+
+    <article class="term" id="cvss">
+      <div class="term__head">
+        <h3>CVSS</h3>
+        <a class="term__hash" href="#cvss" aria-label="Permalink to CVSS">#</a>
+        <span class="term__aka">also: Common Vulnerability Scoring System</span>
+      </div>
+      <p class="term__def">CVSS is a scoring framework that converts a vulnerability's attack vector, complexity, required privileges, and impact into a single base severity number from 0.0 to 10.0.</p>
+      <p>A CVSS base score is calculated from a fixed set of metrics, commonly attack vector, attack complexity, privileges required, user interaction, and the impact on confidentiality, integrity, and availability, combined by a published formula into one number and one short vector string such as <code>AV:N/AC:L/PR:N/UI:N/C:H/I:H/A:H</code>. Databases typically bucket that number into a qualitative label: roughly 0.1 to 3.9 low, 4.0 to 6.9 medium, 7.0 to 8.9 high, and 9.0 to 10.0 critical, though the exact cutoffs belong to a specific CVSS version and should be checked against the version a given score was computed under.</p>
+      <p>The real limitation is what the base score deliberately leaves out: whether the vulnerable code path is actually reachable in your application. The base score assumes worst-case reachability, so it treats a flaw in a function nobody calls the same as one sitting on a public endpoint. A 9.8 in a dependency your build never invokes is frequently less urgent to fix today than a 5.3 on your own internet-facing login route.</p>
+      <p>This is why mature triage does not stop at the base score. Temporal and environmental metrics exist specifically to adjust the base number for real-world exploit availability and for how the component is actually deployed, and practices like checking a known-exploited-vulnerabilities list or simply confirming the code path is reachable do the same job informally. Treat the base score as one prioritization input, not a verdict on what to patch first.</p>
+      <div class="tblwrap"><table class="tbl">
+        <thead><tr><th>CVSS v3.x score range</th><th>Commonly used label</th></tr></thead>
+        <tbody>
+          <tr><td>0.0</td><td>None</td></tr>
+          <tr><td>0.1 to 3.9</td><td>Low</td></tr>
+          <tr><td>4.0 to 6.9</td><td>Medium</td></tr>
+          <tr><td>7.0 to 8.9</td><td>High</td></tr>
+          <tr><td>9.0 to 10.0</td><td>Critical</td></tr>
+        </tbody>
+      </table></div>
+      <p class="note"><span class="tag">Example</span>Log4Shell (CVE-2021-44228) scored 10.0 under CVSS v3.1 because it needed no privileges and no user interaction and gave full remote code execution over the network, which is exactly the combination the formula treats as maximum severity.</p>
+      <p class="note"><span class="tag">Common misconception</span>A high CVSS base score gets read as "fix this first," full stop. The base score assumes the worst case for reachability and exploitability; it has no idea whether your code ever calls the vulnerable function. A 9.8 in a dependency you never invoke is often less urgent than a 5.3 sitting on a public login form.</p>
+      <p class="note"><span class="tag">Go deeper</span><a href="/guides/snyk-vs-trivy-vs-dira.html">Snyk vs Trivy vs DIRA: choosing a scanner</a></p>
+      <p class="note"><span class="tag">See also</span><a href="#cve">CVE</a>, <a href="#osv">OSV</a></p>
+    </article>
+
+    <article class="term" id="osv">
+      <div class="term__head">
+        <h3>OSV</h3>
+        <a class="term__hash" href="#osv" aria-label="Permalink to OSV">#</a>
+        <span class="term__aka">also: Open Source Vulnerabilities</span>
+      </div>
+      <p class="term__def">OSV is an open vulnerability database and schema at osv.dev that maps each known vulnerability to the exact affected package versions and ecosystems, which is what makes automated matching precise.</p>
+      <p>Vulnerability advisories historically lived as free-text descriptions, forcing a scanner to guess which package versions a paragraph of prose was actually describing. OSV instead publishes each entry as structured JSON: an ecosystem field (PyPI, npm, crates.io, Go, RubyGems, and others), a package name, and precise affected version ranges or commits. A scanner can diff that structured range directly against a lockfile instead of parsing sentences.</p>
+      <p>OSV aggregates advisories from many upstream sources, including GitHub Security Advisories, language-specific databases like PyPA's and RustSec's, and government and vendor feeds, and it cross-references a CVE ID where one has been assigned. It is maintained as an open, freely queryable project with Google's backing, and it exposes both a public API and bulk data exports.</p>
+      <p>Consuming OSV is what a dependency-CVE scanner is actually doing under the hood: it takes your manifest or lockfile, queries OSV for each package and version, and reports the ones that fall inside a published affected range. Dira's dependency scanner queries OSV.dev directly for this matching rather than shipping a static, aging bundle of CVE data with the tool itself.</p>
+      <p class="note"><span class="tag">Example</span>A project pinned to a Django release gets flagged the moment OSV publishes an entry whose affected range includes that exact version, without anyone reading a paragraph of prose to work out whether that version counts.</p>
+      <p class="note"><span class="tag">Common misconception</span>OSV gets treated as a replacement for CVE. They sit at different layers: a CVE is just an identifier, OSV's job is precise version-to-vulnerability mapping, and many OSV entries reference a CVE ID for cross-database linking. A vulnerability can have an OSV entry before it ever receives a CVE ID.</p>
+      <p class="note"><span class="tag">Go deeper</span><a href="/guides/snyk-vs-trivy-vs-dira.html">Snyk vs Trivy vs DIRA: choosing a scanner</a></p>
+      <p class="note"><span class="tag">See also</span><a href="#cve">CVE</a>, <a href="#sbom">SBOM</a></p>
+    </article>
+
+    <article class="term" id="sbom">
+      <div class="term__head">
+        <h3>SBOM</h3>
+        <a class="term__hash" href="#sbom" aria-label="Permalink to SBOM">#</a>
+        <span class="term__aka">also: Software Bill of Materials</span>
+      </div>
+      <p class="term__def">An SBOM is a machine-readable inventory of every component and version that went into a build, most commonly formatted as CycloneDX or SPDX, that lists what shipped without telling you whether any of it is exploitable.</p>
+      <p>An SBOM generated at build time captures direct dependencies, the full transitive tree beneath them, and their exact versions, ideally reflecting what actually got compiled or bundled rather than what a manifest file merely intended, since lockfile drift and vendored code can both cause a real build to differ from the source manifest. A thorough SBOM also records package identifiers, licenses, and sometimes cryptographic hashes for each component.</p>
+      <p>Two formats dominate. CycloneDX, an OWASP project, leans toward security use cases and can carry vulnerability and exploitability (VEX) data alongside the component list. SPDX, from the Linux Foundation and now also an ISO/IEC standard, leans toward license compliance and provenance. Both are typically produced as JSON and many tools export both from the same run.</p>
+      <p>What an SBOM does not do matters as much as what it does: it is an inventory, not an assessment. It tells you what you shipped, not whether any component is exploitable in your deployment, not whether it is misconfigured, and not whether the vulnerable code path is ever reached. It only becomes a risk signal once that component list is checked against a vulnerability feed such as OSV or paired with a VEX statement, which is why SBOM generation and dependency-CVE scanning are usually run as one combined step rather than two separate concerns.</p>
+      <p class="note"><span class="tag">Example</span>A CycloneDX SBOM for a small web app can easily list a few hundred total dependencies against a dozen the developer actually installed by hand. That gap, the unread transitive tree, is exactly the thing an SBOM exists to make visible.</p>
+      <p class="note"><span class="tag">Common misconception</span>Producing an SBOM is treated as equivalent to being secure. An SBOM is inventory, not a verdict: it lists what shipped, and someone still has to run that list against a vulnerability database, check the licenses, and confirm the flagged code is reachable before it means anything operationally.</p>
+      <p class="note"><span class="tag">Go deeper</span><a href="/guides/snyk-vs-trivy-vs-dira.html">Snyk vs Trivy vs DIRA: choosing a scanner</a></p>
+      <p class="note"><span class="tag">See also</span><a href="#osv">OSV</a>, <a href="#sarif">SARIF</a></p>
+    </article>
+
+    <article class="term" id="sarif">
+      <div class="term__head">
+        <h3>SARIF</h3>
+        <a class="term__hash" href="#sarif" aria-label="Permalink to SARIF">#</a>
+        <span class="term__aka">also: Static Analysis Results Interchange Format</span>
+      </div>
+      <p class="term__def">SARIF is a standardized JSON output format for static analysis findings that lets a scanner's results appear as inline annotations directly in a pull request or code-review interface.</p>
+      <p>Before SARIF, every linter and static analysis tool shipped its own bespoke output shape, so wiring N tools into one CI dashboard meant writing N separate parsers. SARIF replaces that with one schema: a file made of one or more <code>runs</code>, each carrying a tool descriptor and a list of <code>results</code>, and each result carrying a rule ID, a message, a severity level, and a precise location down to file, line, and column range.</p>
+      <p>Code-hosting platforms that accept a SARIF upload from a CI job render each result as an inline annotation on the relevant line of a diff, plus a repository-wide alerts view that deduplicates the same finding across runs by a stable fingerprint. That inline-comment experience is what a custom integration would otherwise have to build per tool, and SARIF makes it a one-time integration instead.</p>
+      <p>Because it is only an output shape and carries no opinion about what counts as a finding, tools across very different categories, static analysis, secret scanners, infrastructure-as-code scanners, dependency-CVE scanners, all target SARIF as one of their export formats purely for this interoperability. Dira emits SARIF alongside its terminal, HTML, JSON, and Markdown reports for exactly this reason: so its findings land in the same review surface as everything else scanning the same repository.</p>
+      <p class="note"><span class="tag">Example</span>A secret-scanning job and a dependency-CVE job in the same CI pipeline can both emit SARIF, and the code-hosting platform merges both into one alerts list on the same pull request instead of two separately formatted reports nobody reads.</p>
+      <p class="note"><span class="tag">Common misconception</span>SARIF gets assumed to be a scanner or a rule set in its own right. It is neither, it is only the output shape. Two completely different tools scanning for completely different things can both speak SARIF, and the format itself makes no claim about what should count as a finding.</p>
+      <p class="note"><span class="tag">Go deeper</span><a href="/guides/snyk-vs-trivy-vs-dira.html">Snyk vs Trivy vs DIRA: choosing a scanner</a></p>
+      <p class="note"><span class="tag">See also</span><a href="#cve">CVE</a>, <a href="#sbom">SBOM</a></p>
+    </article>
+
+    <article class="term" id="secret-scanning">
+      <div class="term__head">
+        <h3>Secret scanning</h3>
+        <a class="term__hash" href="#secret-scanning" aria-label="Permalink to Secret scanning">#</a>
+      </div>
+      <p class="term__def">Secret scanning is the automated detection of credentials, API keys, tokens, and private keys accidentally committed into source code, configuration files, or git history.</p>
+      <p>Secrets leak in a small number of predictable ways: a hardcoded API key left in source, an <code>.env</code> file committed by mistake, a token pasted into a config or infrastructure-as-code file, or a private key checked in during a rushed setup. The dangerous case is the one that looks fixed: a secret removed from the latest commit is not removed from the repository, because git history is content-addressed and the old commit objects still hold it in plaintext until they are actually rewritten and force-pushed, which means anyone who already cloned the repository keeps a permanent copy regardless.</p>
+      <p>Detection combines pattern and entropy matching, recognizing known credential formats such as cloud provider key prefixes and flagging high-entropy strings that resemble tokens, with provider-side verification on some platforms, which checks whether a matched string is still a live, valid credential against the issuing service and turns a maybe into a confirmed hit. A scan that only checks the current working tree misses anything sitting a few commits back, so real coverage has to scan full git history as well as the tip of the branch.</p>
+      <p>Remediation is not deleting the line. A leaked secret has to be rotated or revoked at the source, the service that issued it, because removing it from a later commit does not invalidate the credential and does not remove it from any existing clone. The two enforcement points that matter are a pre-commit hook, catching a secret before it ever leaves a laptop, and a CI gate, catching one before a pull request merges. Dira's secret scanner covers both the working tree and git history against a set of dedicated pattern rules for exactly this reason.</p>
+      <p class="note"><span class="tag">Example</span>A <code>.env</code> file with a live API key gets committed, then deleted in the next commit. The key is still sitting in the git history one commit back, exposed to anyone who has ever cloned the repository. Deleting the file did nothing; rotating the key at the provider is the only fix.</p>
+      <p class="note"><span class="tag">Common misconception</span>Deleting the file in a follow-up commit is treated as fixing the leak. The old commit still contains the secret in plaintext until it is purged and force-pushed, and by then anyone who already pulled has a permanent copy. Rotating the credential at the provider is the only real fix.</p>
+      <p class="note"><span class="tag">Go deeper</span><a href="/guides/snyk-vs-trivy-vs-dira.html">Snyk vs Trivy vs DIRA: choosing a scanner</a></p>
+      <p class="note"><span class="tag">See also</span><a href="#supply-chain-attack">Supply-chain attack</a>, <a href="#least-privilege">Least privilege</a></p>
+    </article>
+
+    <article class="term" id="dependency-confusion">
+      <div class="term__head">
+        <h3>Dependency confusion</h3>
+        <a class="term__hash" href="#dependency-confusion" aria-label="Permalink to Dependency confusion">#</a>
+      </div>
+      <p class="term__def">Dependency confusion is a supply-chain attack where a public registry package is published under the exact same name as an internal, private package so a misconfigured build resolves to the attacker's public one.</p>
+      <p>Many build tools, when a package name exists on both a private, internal registry and a public one, resolve it by some default priority rule, often simply the highest available version number across whichever registries are configured. If an attacker publishes a public package under the exact same name as a company's internal package, at a higher version number than the internal one, a build configured to check the public registry can pull the attacker's package into a production build instead of the internal one, running the attacker's install-time code inside the company's own pipeline.</p>
+      <p>This attack pattern became widely known after 2021 research demonstrated it working against numerous large companies by guessing internal package names from leaked manifests, job postings, and public code fragments, then registering matching public packages and watching builds pull them in automatically.</p>
+      <p>It is a distinct failure mode from typosquatting, which relies on a human or a tool making a spelling mistake, such as installing a package one letter off from the real one. Dependency confusion needs no typo at all: the name is exactly correct, and the attack lives entirely in resolution order and version priority across two registries. Mitigations follow from that distinction: reserving scoped namespaces for internal packages, explicitly pinning which registry each package should come from rather than relying on a default search order, and configuring internal registries to refuse falling through to a public one for any reserved internal scope.</p>
+      <p class="note"><span class="tag">Example</span>A company keeps an internal package named acme-auth-utils on its private registry. An attacker publishes a public package with the identical name at a much higher version number. A build server configured to check the public registry for the highest available version pulls the attacker's package and runs its install script inside the company's own CI pipeline.</p>
+      <p class="note"><span class="tag">Common misconception</span>Dependency confusion gets conflated with typosquatting. Typosquatting depends on someone mistyping a name; dependency confusion uses the exact correct name and exploits resolution order between a private and a public registry instead, so no typo, and often no human error at all, is involved.</p>
+      <p class="note"><span class="tag">Go deeper</span><a href="/guides/student-founder-security-checklist.html">The Student Founder's Security Checklist</a></p>
+      <p class="note"><span class="tag">See also</span><a href="#supply-chain-attack">Supply-chain attack</a>, <a href="#iac">Infrastructure as code (IaC)</a></p>
+    </article>
+
+    <article class="term" id="supply-chain-attack">
+      <div class="term__head">
+        <h3>Supply-chain attack</h3>
+        <a class="term__hash" href="#supply-chain-attack" aria-label="Permalink to Supply-chain attack">#</a>
+      </div>
+      <p class="term__def">A supply-chain attack compromises software by tampering with something upstream, a dependency, a build tool, a CI pipeline, or a distribution channel, so malicious code arrives bundled inside a package the victim already trusts.</p>
+      <p>These attacks fall into a few recurring shapes: a compromised dependency, where a maintainer account is taken over or a malicious package is published under a spoofed or confusable name; a compromised build or CI system, where an attacker injects code during the build step itself so even a clean source tree produces a tampered artifact; and a compromised distribution channel, where a registry or CDN is made to serve a tampered binary instead of the real one.</p>
+      <p>What makes this class of attack unusually effective is that ordinary code review only ever looks at a project's own code, never at the hundreds of transitive dependencies pulled in automatically at install time, so trust is inherited without being re-audited on every release. A single popular package with one poisoned patch release can compromise every downstream application that updates to it within the same release cycle, which is a fundamentally different blast radius from an attacker having to break into each victim individually.</p>
+      <p>Defenses tie directly back into the rest of this cluster: an SBOM so you actually know what shipped, dependency-CVE and secret scanning wired into CI, lockfiles pinning exact versions and hashes instead of open version ranges, registry configuration that closes the dependency-confusion gap, and least-privilege scoping on CI credentials so that a compromised build step cannot reach everything the pipeline happens to have access to.</p>
+      <p class="note"><span class="tag">Example</span>The 2020 SolarWinds compromise inserted malicious code into a legitimate, signed build of the company's Orion network-management software and shipped it through the vendor's own official update channel, so victims installed it believing it was a routine update from a trusted supplier.</p>
+      <p class="note"><span class="tag">Common misconception</span>A supply-chain attack is assumed to mean "my own code got hacked." Usually the victim's own code is untouched; the compromise sits one or more layers upstream, in a dependency, a build step, or a distribution channel, which is exactly why reviewing only your own commits misses it.</p>
+      <p class="note"><span class="tag">Go deeper</span><a href="/guides/student-founder-security-checklist.html">The Student Founder's Security Checklist</a></p>
+      <p class="note"><span class="tag">See also</span><a href="#dependency-confusion">Dependency confusion</a>, <a href="#sbom">SBOM</a>, <a href="#secret-scanning">Secret scanning</a></p>
+    </article>
+
+    <article class="term" id="iac">
+      <div class="term__head">
+        <h3>Infrastructure as code (IaC)</h3>
+        <a class="term__hash" href="#iac" aria-label="Permalink to Infrastructure as code (IaC)">#</a>
+      </div>
+      <p class="term__def">Infrastructure as code is the practice of defining servers, networks, and cloud resources in version-controlled configuration files, such as Terraform, CloudFormation, or Kubernetes manifests, instead of clicking through a console.</p>
+      <p>IaC replaces manually clicking through a cloud console to provision a server, a security group, or a storage bucket with a declarative file describing the desired end state. A tool, Terraform, Pulumi, CloudFormation, or a Kubernetes manifest applied through its own tooling, reconciles the real infrastructure to match that file. The payoff is a reviewable diff on every change, a repeatable environment that can be recreated identically, and a rollback path through ordinary git history instead of someone remembering which console setting to undo.</p>
+      <p>That same mechanism creates a new risk surface. A misconfiguration is no longer a one-off console mistake, it is a template applied identically across every environment that consumes it, so one wrong line, an open <code>0.0.0.0/0</code> security-group rule, a public-read storage bucket policy, an overly broad role attached to every function by default, becomes a systemic finding instead of an isolated one. This is exactly why IaC scanning exists as its own tooling category: static analysis of the configuration files themselves, before anything is ever applied, checking for insecure defaults like open ports, public storage, and wildcard permission grants.</p>
+      <p>This scanning happens pre-apply in CI, catching a bad security-group rule during pull-request review rather than during a post-breach audit, and is complementary to runtime cloud-posture checks that verify what is actually deployed, since live configuration can drift from the IaC source the moment anyone makes a manual console change outside the pipeline. Dira runs configuration and IaC checks as one of its scanner categories aimed at exactly these insecure-default patterns before merge.</p>
+      <p class="note"><span class="tag">Example</span>A single Terraform module sets a storage bucket policy with a wildcard principal. Twenty environments that import that module all inherit the same publicly readable bucket, a fact discovered only when someone finally scans the templates rather than auditing each of the twenty buckets individually.</p>
+      <p class="note"><span class="tag">Common misconception</span>IaC is assumed to be inherently more secure just because it is version controlled. Version control gives you a diff and a rollback, not a correct default. A bad security rule reviewed and merged like any other code change ships to every environment using that template exactly as fast as a good one would.</p>
+      <p class="note"><span class="tag">Go deeper</span><a href="/guides/student-founder-security-checklist.html">The Student Founder's Security Checklist</a></p>
+      <p class="note"><span class="tag">See also</span><a href="#supply-chain-attack">Supply-chain attack</a>, <a href="#least-privilege">Least privilege</a></p>
+    </article>
+
+    <article class="term" id="csp">
+      <div class="term__head">
+        <h3>Content Security Policy (CSP)</h3>
+        <a class="term__hash" href="#csp" aria-label="Permalink to Content Security Policy (CSP)">#</a>
+      </div>
+      <p class="term__def">Content Security Policy is a response header that tells a browser which sources of script, style, image, frame, and network connection a page is allowed to load from, mainly to blunt cross-site scripting.</p>
+      <p>A server sends a <code>Content-Security-Policy</code> header carrying directives such as <code>script-src</code>, <code>style-src</code>, <code>img-src</code>, <code>frame-src</code>, and <code>connect-src</code>, each naming the origins allowed for that category, with <code>default-src</code> acting as the fallback for anything not listed explicitly. The browser enforces this client-side: any script tag, inline script, or outgoing fetch call targeting an origin not on the allow-list is blocked rather than executed, and the violation is typically logged to the console.</p>
+      <p>Its real value shows up after an XSS injection has already partly succeeded. Cross-site scripting classically works by getting attacker-controlled markup or script rendered into a trusted page, usually through unescaped user input. Even if that injection lands, a strict policy that disallows inline script and restricts script sources to a fixed allow-list means the injected <code>&lt;script&gt;</code> tag simply does not run, or a call trying to exfiltrate data to an attacker-controlled domain gets blocked by <code>connect-src</code>. CSP is a second line of defense sitting behind proper output encoding, not a replacement for it.</p>
+      <p>The common failure mode is <code>script-src 'unsafe-inline'</code>, added because an application has inline script blocks or inline event handlers scattered through its markup and removing them is inconvenient. That single directive value reopens close to the exact hole CSP exists to close, since it lets any injected inline script execute exactly as it would with no policy at all. The stronger pattern is a nonce- or hash-based <code>script-src</code>, where the server issues a fresh random value with each response and only script tags carrying that matching value are allowed to run.</p>
+      <p class="note"><span class="tag">Example</span><code>Content-Security-Policy: default-src 'self'; script-src 'self' https://cdn.example.com</code> allows scripts only from the site's own origin and one named CDN. A script tag injected by a reflected-XSS bug and pointed at an attacker's domain gets blocked by the browser before it ever runs.</p>
+      <p class="note"><span class="tag">Common misconception</span>A policy that includes <code>unsafe-inline</code> in <code>script-src</code> is assumed to still provide meaningful XSS protection because a CSP header is present at all. <code>unsafe-inline</code> allows exactly the kind of injected inline script CSP was built to stop, so a policy leaning on it is largely decorative against XSS.</p>
+      <p class="note"><span class="tag">Go deeper</span><a href="/guides/student-founder-security-checklist.html">The Student Founder's Security Checklist</a></p>
+      <p class="note"><span class="tag">See also</span><a href="#hsts">HSTS</a>, <a href="#cors">CORS</a></p>
+    </article>
+
+    <article class="term" id="hsts">
+      <div class="term__head">
+        <h3>HSTS</h3>
+        <a class="term__hash" href="#hsts" aria-label="Permalink to HSTS">#</a>
+        <span class="term__aka">also: HTTP Strict Transport Security</span>
+      </div>
+      <p class="term__def">HSTS is a response header that instructs a browser to only ever connect to that exact host over HTTPS for a stated number of seconds, refusing any future plain-HTTP attempt without asking the user.</p>
+      <p>A server sends <code>Strict-Transport-Security: max-age=&lt;seconds&gt;; includeSubDomains</code> over an HTTPS response. Once a browser has seen that header for a host, it remembers it for the stated duration and silently upgrades, or outright refuses, any later plain <code>http://</code> navigation to that host, never making the insecure request at all. That closes the specific window where a user typing a bare domain, or clicking an old plain-HTTP link, would otherwise get served a plain-HTTP response that a network attacker on the same network could intercept before any redirect to HTTPS happens.</p>
+      <p>The gap that remains is the very first visit: before a browser has ever received the header for a given host, it has no prior knowledge to enforce, so that first connection is not protected. That is the specific hole the HSTS preload list exists to close.</p>
+      <p>Browsers ship a hardcoded preload list, maintained through hstspreload.org and baked directly into browser builds, that enforces HTTPS for listed domains from the very first connection with no trust-on-first-use gap at all. Submission is a slow, largely one-way commitment: preload generally requires the <code>includeSubDomains</code> flag, meaning every subdomain must serve valid HTTPS indefinitely, and getting removed once browsers have already shipped the list is slow and not guaranteed. It should only be submitted once HTTPS is solid across the entire domain and every subdomain, permanently, not as an early hardening step.</p>
+      <p class="note"><span class="tag">Example</span>A site sends <code>Strict-Transport-Security: max-age=31536000; includeSubDomains</code> for a year. A user on public wifi who types the bare domain into the address bar six months later is sent straight to HTTPS by their own browser, without a plaintext request ever leaving the machine for an attacker to intercept.</p>
+      <p class="note"><span class="tag">Common misconception</span>HSTS is assumed to protect the very first visit to a site. It only takes effect after a browser has already received the header once over a successful HTTPS connection; the first-ever connection to a host that has never set it, and is not on the preload list, gets no HSTS protection at all.</p>
+      <p class="note"><span class="tag">Go deeper</span><a href="/guides/student-founder-security-checklist.html">The Student Founder's Security Checklist</a></p>
+      <p class="note"><span class="tag">See also</span><a href="#csp">Content Security Policy (CSP)</a>, <a href="#cors">CORS</a></p>
+    </article>
+
+    <article class="term" id="cors">
+      <div class="term__head">
+        <h3>CORS</h3>
+        <a class="term__hash" href="#cors" aria-label="Permalink to CORS">#</a>
+        <span class="term__aka">also: Cross-Origin Resource Sharing</span>
+      </div>
+      <p class="term__def">CORS is a browser mechanism that relaxes the same-origin policy under conditions a server declares, letting a page on one origin have its own JavaScript read certain responses from a server on a different origin.</p>
+      <p>By default, a browser's same-origin policy blocks a script running on one origin from reading the response of a request it makes to a different origin, where protocol, host, and port must all match to count as the same origin. That default exists to stop a malicious page from silently reading data from another site using the victim's own logged-in session and cookies. CORS is the declared escape hatch: a server can respond with an <code>Access-Control-Allow-Origin</code> header, plus related headers, explicitly naming which other origins are permitted to read its responses from browser JavaScript, and browsers honor that declaration.</p>
+      <p>This is the single most common misconception about CORS: it is a permission the browser grants to other websites to read a server's responses, not a wall around the server itself. The server still receives and fully processes the request no matter what the CORS headers say; CORS only controls whether the calling page's own JavaScript is subsequently allowed to read the response back. Anything that is not a browser enforcing this policy, curl, a backend service, Postman, a script run outside a browser sandbox, ignores CORS headers entirely and reads the response regardless. A wide-open <code>Access-Control-Allow-Origin: *</code> does not let an attacker into a server; it means any website's own client-side JavaScript can read that endpoint's response inside a victim's browser, which matters specifically when the response is sensitive and relies on the victim's own cookies or session for authentication.</p>
+      <p>What actually protects a server is authentication and authorization checked on every request, server-side. CORS headers have zero effect on a request made by anything other than a browser executing page JavaScript. The preflight <code>OPTIONS</code> request a browser sends ahead of certain cross-origin requests is a check-before-you-leap step on the page's behalf, not a security boundary either, it is simply the browser asking the server's permission before sending the real request.</p>
+      <p class="note"><span class="tag">Example</span>An API sets <code>Access-Control-Allow-Origin: *</code>. A non-browser client, a script calling the same endpoint directly, gets the full response whether that header is present or not, because CORS is enforced by browsers reading the header, not by the server refusing the request.</p>
+      <p class="note"><span class="tag">Common misconception</span>CORS is treated as a security control protecting the server, as in "we locked it down with CORS." CORS only tells a browser whether a given page's JavaScript may read the response back; the server executes the request either way, and any non-browser client ignores CORS entirely. Real protection has to come from authentication and authorization on the server.</p>
+      <p class="note"><span class="tag">Go deeper</span><a href="/guides/student-founder-security-checklist.html">The Student Founder's Security Checklist</a></p>
+      <p class="note"><span class="tag">See also</span><a href="#csp">Content Security Policy (CSP)</a>, <a href="#hsts">HSTS</a>, <a href="#least-privilege">Least privilege</a></p>
+    </article>
+
+    <article class="term" id="hashing-vs-encryption">
+      <div class="term__head">
+        <h3>Hashing vs encryption</h3>
+        <a class="term__hash" href="#hashing-vs-encryption" aria-label="Permalink to Hashing vs encryption">#</a>
+      </div>
+      <p class="term__def">Hashing is a one-way transformation into a fixed-length digest that cannot be reversed to recover the input, while encryption is a two-way transformation that uses a key to convert data back and forth between plaintext and ciphertext.</p>
+      <p>A hash function is deterministic: the same input always produces the same fixed-length digest, but there is no operation that goes from digest back to input, only re-hashing a candidate input and comparing the result. That property makes hashing useful for verifying integrity, confirming a downloaded file matches a published digest, and for storing something you only ever need to verify later without ever needing to recover the original, which is exactly the shape of a password check.</p>
+      <p>Encryption is reversible by design and requires a key: symmetric encryption uses the same key in both directions (AES is the standard example), asymmetric encryption uses a public key to encrypt and a matching private key to decrypt (RSA and elliptic-curve schemes are the standard examples). It is the right tool whenever the original plaintext needs to be recoverable later by someone holding the correct key, a database column, a file at rest, or data moving over a network connection.</p>
+      <p>Passwords sit at the exact seam between these two tools, and the seam is where people get it wrong. Passwords must never be encrypted, since reversibility means a single stolen key recovers every plaintext password at once, and they must never be hashed with a fast, general-purpose hash like plain SHA-256 either, because a fast hash lets an attacker who steals the hash database attempt billions of guesses per second on ordinary hardware. Passwords need a hash function built deliberately to be slow and memory-hard, and salted per user so identical passwords do not produce identical hashes. Name the category rather than exact parameters: bcrypt, scrypt, and Argon2 are the standard purpose-built choices, and the right cost and memory settings for any of them should be tuned against current hardware and the library's own current guidance rather than a number that goes stale.</p>
+      <div class="tblwrap"><table class="tbl">
+        <thead><tr><th></th><th>Hashing</th><th>Encryption</th></tr></thead>
+        <tbody>
+          <tr><td>Reversible</td><td>No, one-way only</td><td>Yes, with the correct key</td></tr>
+          <tr><td>Needs a key</td><td>No</td><td>Yes, symmetric or asymmetric</td></tr>
+          <tr><td>Typical use</td><td>Password storage, integrity checks, file digests</td><td>Data at rest, data in transit, anything that must be read again later</td></tr>
+          <tr><td>Example primitives</td><td>SHA-256 for integrity; bcrypt, scrypt, Argon2 for passwords</td><td>AES (symmetric); RSA, elliptic curve (asymmetric)</td></tr>
+        </tbody>
+      </table></div>
+      <p class="note"><span class="tag">Example</span>A stolen database of plain SHA-256 password hashes can be brute-forced at billions of guesses per second on a single consumer GPU, because SHA-256 was designed to be fast. The same database hashed with bcrypt or Argon2 forces each guess to cost meaningfully more compute and memory, which is the entire point of choosing a slow function for this one job.</p>
+      <p class="note"><span class="tag">Common misconception</span>Hashing and encryption get used interchangeably, as in "we encrypt passwords." Encryption is reversible with a key, which is exactly the property you do not want for password storage. Passwords should be hashed with a slow, salted, purpose-built function so that even a full database breach does not hand over usable plaintext passwords.</p>
+      <p class="note"><span class="tag">See also</span><a href="#secret-scanning">Secret scanning</a>, <a href="#least-privilege">Least privilege</a></p>
+    </article>
+
+    <article class="term" id="least-privilege">
+      <div class="term__head">
+        <h3>Least privilege</h3>
+        <a class="term__hash" href="#least-privilege" aria-label="Permalink to Least privilege">#</a>
+      </div>
+      <p class="term__def">Least privilege is the principle that any user, service, or process should hold only the minimum permissions required to do its specific job, and nothing more.</p>
+      <p>Every additional permission granted to an identity is a permission an attacker inherits for free the moment that identity is compromised, whether through a stolen credential, a leaked API key, or a hijacked CI job. A service account holding broad administrative rights across an entire cloud account turns any single compromise of that one credential into a compromise of everything the account can touch. The same service account scoped down to only the permissions it actually needs turns the identical compromise into a contained incident instead.</p>
+      <p>This principle is why the rest of this cluster keeps circling back to it. A leaked secret is only as dangerous as what it is allowed to do, so narrowly scoped tokens limit the blast radius even when a leak happens. A compromised build step in a supply-chain attack can only reach what its CI credentials can reach, so least-privilege service accounts contain a build compromise instead of letting it walk the whole cloud account. An IaC template that grants a wildcard permission just to make something work bakes that over-broad grant into every environment that imports it.</p>
+      <p>In practice this looks like role-based access scoped per task rather than one shared administrative credential, short-lived or expiring tokens instead of long-lived static keys, separate credentials per environment so a compromised staging key cannot reach production, and a recurring habit of reviewing and revoking permissions nobody is actually using rather than only ever adding new ones.</p>
+      <p class="note"><span class="tag">Example</span>A CI pipeline that deploys a static site is given a token scoped to write only to that one storage bucket. If that token leaks in a build log, the exposure is one bucket, not the entire cloud account the pipeline happened to run under.</p>
+      <p class="note"><span class="tag">Common misconception</span>Broad permissions get granted upfront "to avoid friction later" and are never revisited. Permissions accumulate in one direction if nobody audits them, so a credential meant for one narrow task quietly ends up able to touch everything it was ever convenient to grant it, long after the original reason is forgotten.</p>
+      <p class="note"><span class="tag">Go deeper</span><a href="/guides/student-founder-security-checklist.html">The Student Founder's Security Checklist</a></p>
+      <p class="note"><span class="tag">See also</span><a href="#secret-scanning">Secret scanning</a>, <a href="#iac">Infrastructure as code (IaC)</a>, <a href="#cors">CORS</a></p>
+    </article>
+
+  </section>
+
+  <hr class="divider">
+
+  <section class="section section--tight">
+    <div class="grp-head">
+      <p class="eyebrow">Keep reading</p>
+      <h2>Other glossary clusters</h2>
+    </div>
+    <ul class="rail">
+      <li><a href="/glossary/trading-risk.html">Trading &amp; risk</a></li>
+      <li><a href="/glossary/options.html">Options</a></li>
+      <li><a href="/glossary/ai-ml.html">AI &amp; LLMs</a></li>
+      <li><a href="/glossary/web-seo.html">Web &amp; SEO</a></li>
+      <li><a href="/glossary/immigration-student.html">Student visas</a></li>
+      <li><a href="/glossary/freight.html">Freight</a></li>
+      <li><a href="/glossary/career.html">Careers</a></li>
+    </ul>
+    <p class="note" style="margin-top:var(--s5)"><a href="/glossary.html">Full A–Z index of every term</a> · <a href="/guides.html">Long-form guides</a></p>
+  </section>
+
+</main>
+
+<section aria-labelledby="compliance-h" style="max-width:1080px;margin:0 auto;padding:28px 20px 8px;border-top:1px solid rgba(212,175,55,.18)"><h2 id="compliance-h" style="font-family:Georgia,'Times New Roman',serif;font-size:15px;letter-spacing:.06em;text-transform:uppercase;color:#d4af37;margin:0 0 10px">Disclaimer</h2><p style="font-size:13.5px;line-height:1.65;color:#9a958c;margin:0 0 8px">This glossary is educational and informational only. Nothing here is financial, investment, tax, legal or immigration advice, or a recommendation to buy or sell any security. Trading carries substantial risk of loss. Any backtested or example figure is hypothetical, does not represent live trading, and past performance does not guarantee future results. Definitions of legal, regulatory and immigration terms change; verify anything time-sensitive against the primary source, your DSO, or a licensed professional before acting on it.</p><p style="font-size:13.5px;line-height:1.65;color:#9a958c;margin:0"><a style="color:#d4af37" href="/terms.html">Terms of Use</a> · <a style="color:#d4af37" href="/privacy.html">Privacy Policy</a></p></section>
+<footer class="site-footer">
+  <div class="site-footer__links">
+    <a href="/">Work</a>
+    <a href="/about.html">About</a>
+    <a href="/guides.html">Guides</a>
+    <a href="/glossary.html">Glossary</a>
+    <a href="/apps.html">Apps</a>
+    <a href="/store.html">Store</a>
+    <a href="/privacy.html">Privacy</a>
+    <a href="/terms.html">Terms</a>
+    <a href="mailto:yusuf.gadelrab06@gmail.com">yusuf.gadelrab06@gmail.com</a>
+  </div>
+</footer>
+
+<script src="/js/site.js" defer></script>
+</body>
+</html>

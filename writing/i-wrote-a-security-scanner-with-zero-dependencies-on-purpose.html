@@ -4,8 +4,8 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="robots" content="index,follow,max-image-preview:large,max-snippet:-1">
-<title>I wrote a security scanner with zero dependencies</title>
-<meta name="description" content="Every security tool wanted a hundred packages installed before it would go looking for supply-chain risk. That was funny in a way that is not funny.">
+<title>Why I wrote a security scanner with zero dependencies</title>
+<meta name="description" content="Every scanner wanted a hundred packages installed before it would look for supply-chain risk. DIRA ships 7 scanners, 98 passing tests and no dependencies.">
 <link rel="canonical" href="https://yusuf-gadelrab.github.io/writing/i-wrote-a-security-scanner-with-zero-dependencies-on-purpose.html">
 <link rel="icon" type="image/svg+xml" href="/favicon.svg">
 <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
@@ -13,18 +13,19 @@
 <meta name="author" content="Yusuf Gadelrab">
 <meta property="og:type" content="article">
 <meta property="og:site_name" content="Yusuf Gadelrab">
-<meta property="og:title" content="I wrote a security scanner with zero dependencies">
-<meta property="og:description" content="Every security tool wanted a hundred packages installed before it would go looking for supply-chain risk. That was funny in a way that is not funny.">
+<meta property="og:title" content="Every supply-chain scanner wanted a hundred dependencies first. So I wrote one with none.">
+<meta property="og:description" content="Every scanner wanted a hundred packages installed before it would look for supply-chain risk. DIRA ships 7 scanners, 98 passing tests and no dependencies.">
 <meta property="og:url" content="https://yusuf-gadelrab.github.io/writing/i-wrote-a-security-scanner-with-zero-dependencies-on-purpose.html">
 <meta property="og:image" content="https://yusuf-gadelrab.github.io/og-card.png">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="I wrote a security scanner with zero dependencies">
-<meta name="twitter:description" content="Every security tool wanted a hundred packages installed before it would go looking for supply-chain risk. That was funny in a way that is not funny.">
+<meta name="twitter:title" content="Every supply-chain scanner wanted a hundred dependencies first. So I wrote one with none.">
+<meta name="twitter:description" content="Every scanner wanted a hundred packages installed before it would look for supply-chain risk. DIRA ships 7 scanners, 98 passing tests and no dependencies.">
 <meta name="twitter:image" content="https://yusuf-gadelrab.github.io/og-card.png">
 <link rel="alternate" type="application/rss+xml" title="Yusuf Gadelrab" href="/rss.xml">
 <link rel="alternate" type="text/plain" href="https://yusuf-gadelrab.github.io/llms-full.txt">
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","headline":"I wrote a security scanner with zero dependencies","datePublished":"2026-07-29","dateModified":"2026-07-29","url":"https://yusuf-gadelrab.github.io/writing/i-wrote-a-security-scanner-with-zero-dependencies-on-purpose.html","mainEntityOfPage":"https://yusuf-gadelrab.github.io/writing/i-wrote-a-security-scanner-with-zero-dependencies-on-purpose.html","description":"Every security tool wanted a hundred packages installed before it would go looking for supply-chain risk. That was funny in a way that is not funny.","image":"https://yusuf-gadelrab.github.io/og-card.png","author":{"@id":"https://yusuf-gadelrab.github.io/#person"},"publisher":{"@id":"https://yusuf-gadelrab.github.io/#person"},"isPartOf":{"@type":"Blog","@id":"https://yusuf-gadelrab.github.io/writing.html#blog","name":"Yusuf Gadelrab \u2014 Writing"}}</script>
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"Person","@id":"https://yusuf-gadelrab.github.io/#person","name":"Yusuf Gadelrab","url":"https://yusuf-gadelrab.github.io/"}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BlogPosting", "headline": "I wrote a security scanner with zero dependencies, on purpose", "datePublished": "2026-07-29", "dateModified": "2026-07-29", "url": "https://yusuf-gadelrab.github.io/writing/i-wrote-a-security-scanner-with-zero-dependencies-on-purpose.html", "mainEntityOfPage": "https://yusuf-gadelrab.github.io/writing/i-wrote-a-security-scanner-with-zero-dependencies-on-purpose.html", "description": "Every security tool I looked at wanted me to install a hundred packages to go looking for supply chain risk. That struck me as funny in a way that isn't fu", "image": "https://yusuf-gadelrab.github.io/og-card.png", "author": {"@id": "https://yusuf-gadelrab.github.io/#person"}, "publisher": {"@id": "https://yusuf-gadelrab.github.io/#person"}, "isPartOf": {"@type": "Blog", "@id": "https://yusuf-gadelrab.github.io/writing.html#blog"}}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Person","@id":"https://yusuf-gadelrab.github.io/#person"}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://yusuf-gadelrab.github.io/"},{"@type":"ListItem","position":2,"name":"Writing","item":"https://yusuf-gadelrab.github.io/writing.html"},{"@type":"ListItem","position":3,"name":"I wrote a security scanner with zero dependencies"}]}</script>
 <link rel="stylesheet" href="/css/site.css">
 <style>
   .art{max-width:44rem;margin:0 auto;padding:var(--s6) var(--s5)}
@@ -49,8 +50,9 @@
 </style>
 </head>
 <body>
-<nav class="site-nav">
-  <a class="site-nav__brand" href="/"><img class="site-nav__lion" src="/img/brand/lion-mark.svg" alt="" width="34" height="34" decoding="async"><span>YUSUF GADELRAB</span></a>
+<a class="skip-link" href="#main">Skip to content</a>
+<nav class="site-nav" aria-label="Primary">
+  <a class="site-nav__brand" href="/"><img class="site-nav__lion" src="/img/brand/lion-mark.svg" alt="" width="34" height="34"><span>YUSUF GADELRAB</span></a>
   <div class="site-nav__links">
     <a href="/">Work</a>
     <a href="/writing.html">Writing</a>
@@ -58,6 +60,15 @@
     <a href="/about.html">About</a>
   </div>
 </nav>
+
+<nav class="crumbs" aria-label="Breadcrumb">
+  <ol>
+    <li><a href="/">Home</a></li>
+    <li><a href="/writing.html">Writing</a></li>
+    <li><span aria-current="page">I wrote a security scanner with zero dependencies</span></li>
+  </ol>
+</nav>
+<main id="main">
 <article class="art">
   <h1>I wrote a security scanner with zero dependencies, on purpose</h1>
   <p class="meta">2026-07-29 &middot; Yusuf Gadelrab</p>
@@ -72,7 +83,7 @@
   <p>Live TLS and header checks against the deployed thing, since half of real exposure is config, not code.</p>
   <p>It outputs SARIF, so it drops into GitHub code scanning. There&#x27;s a diff mode for pull request gating, an SBOM exporter in CycloneDX and SPDX, a safe auto-remediation pass, and an 18 point readiness score for the moment an enterprise customer sends you a security questionnaire and you realize you have no idea what the answers are.</p>
   <p>37 tests. Free forever.</p>
-  <p><a href="https://yusuf-gadelrab.github.io/dira.html">https://yusuf-gadelrab.github.io/dira.html</a></p>
+  <p><a href="https://yusuf-gadelrab.github.io/dira.html">DIRA</a></p>
   <p>If you run it on something real and it misses something it should have caught, that&#x27;s the feedback I want most.</p>
   <div class="cta">
     <strong>Built by one CS student in San Jose.</strong>
@@ -81,6 +92,7 @@
     Open to Summer 2027 software engineering, AI/ML, and quant internships.</p>
   </div>
 </article>
+</main>
 <footer class="site-footer">
   <div class="site-footer__links">
     <a href="/">Work</a>

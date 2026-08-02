@@ -25,7 +25,7 @@
 <meta name="twitter:image" content="https://yusuf-gadelrab.github.io/og-card.png">
 <link rel="alternate" type="text/plain" href="https://yusuf-gadelrab.github.io/llms-full.txt" title="Plain-text profile for language models">
 
-<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"TechArticle","@id":"https://yusuf-gadelrab.github.io/guides/options-vertical-spreads.html#article","headline":"Options Vertical Spreads: Structure, Payoff Math, and Assignment Risk","name":"Options Vertical Spreads: Structure, Payoff Math, and Assignment Risk","description":"The four verticals, max profit and max loss formulas with worked dollar examples, buying power reduction, break-even win rates, and assignment risk.","datePublished":"2026-07-29","dateModified":"2026-07-29","inLanguage":"en","author":{"@id":"https://yusuf-gadelrab.github.io/#person"},"publisher":{"@id":"https://yusuf-gadelrab.github.io/#person"},"about":["Options trading","Vertical spreads","Risk management"],"mainEntityOfPage":"https://yusuf-gadelrab.github.io/guides/options-vertical-spreads.html","isAccessibleForFree":true,"proficiencyLevel":"Intermediate"},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://yusuf-gadelrab.github.io/"},{"@type":"ListItem","position":2,"name":"Guides","item":"https://yusuf-gadelrab.github.io/guides.html"},{"@type":"ListItem","position":3,"name":"Vertical Spreads"}]}]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"TechArticle","@id":"https://yusuf-gadelrab.github.io/guides/options-vertical-spreads.html#article","headline":"Options Vertical Spreads: Structure, Payoff Math, and Assignment Risk","name":"Options Vertical Spreads: Structure, Payoff Math, and Assignment Risk","description":"The four verticals, max profit and max loss formulas with worked dollar examples, buying power reduction, break-even win rates, and assignment risk.","datePublished":"2026-07-29","dateModified":"2026-07-29","inLanguage":"en","author":{"@id":"https://yusuf-gadelrab.github.io/#person"},"publisher":{"@id":"https://yusuf-gadelrab.github.io/#person"},"about":["Options trading","Vertical spreads","Risk management"],"mainEntityOfPage":"https://yusuf-gadelrab.github.io/guides/options-vertical-spreads.html","isAccessibleForFree":true,"isPartOf":{"@id":"https://yusuf-gadelrab.github.io/#website"},"proficiencyLevel":"Intermediate"},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://yusuf-gadelrab.github.io/"},{"@type":"ListItem","position":2,"name":"Guides","item":"https://yusuf-gadelrab.github.io/guides.html"},{"@type":"ListItem","position":3,"name":"Vertical Spreads"}]}]}</script>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","@id":"https://yusuf-gadelrab.github.io/guides/options-vertical-spreads.html#faq","mainEntity":[{"@type":"Question","name":"What is a vertical spread in options?","acceptedAnswer":{"@type":"Answer","text":"A vertical spread is two options on the same underlying with the same expiry and the same type, one bought and one sold at different strikes. The distance between strikes is the width, and because equity options carry a 100-share multiplier a 5-point width is a 500-dollar object. The structure caps both the maximum profit and the maximum loss, and every payoff figure is some split of that width."}},{"@type":"Question","name":"What is the max loss on a credit spread?","acceptedAnswer":{"@type":"Answer","text":"The max loss on a credit spread is the width of the strikes multiplied by 100, minus the credit received. Selling a 95/90 put spread for 0.90 has a width of 500 dollars and a credit of 90 dollars, so the max loss is 410 dollars per contract. That is also the amount the broker holds as buying power reduction, because the long leg makes the worst case exactly knowable."}},{"@type":"Question","name":"How do you calculate breakeven on a vertical spread?","acceptedAnswer":{"@type":"Answer","text":"For a debit call spread, breakeven is the lower strike plus the net debit, so a 100/105 call spread bought for 2.20 breaks even at 102.20. For a credit put spread, breakeven is the short strike minus the net credit, so a 95/90 put spread sold for 0.90 breaks even at 94.10. Commissions push both figures slightly further away from you."}},{"@type":"Question","name":"Why does a credit spread with a 75 percent win rate lose money?","acceptedAnswer":{"@type":"Answer","text":"Break-even win rate equals max loss divided by the sum of max loss and max profit. Risking 410 dollars to make 90 dollars gives 410 divided by 500, which is 82 percent, so a 75 percent win rate is below the threshold. Over 100 binary trades that is 6,750 dollars of wins against 10,250 dollars of losses, a net loss of 3,500 dollars, with three quarters of the trade log showing green."}},{"@type":"Question","name":"Can you get assigned early on a vertical spread?","acceptedAnswer":{"@type":"Answer","text":"Yes, if the options are American style, which US listed equity options are. Short calls are most often assigned the day before an ex-dividend date when their remaining extrinsic value is worth less than the dividend, and short puts are assigned when they are deep in the money with almost no time value left. You then hold a real stock position, long or short, with overnight gap exposure that the spread was designed to prevent."}},{"@type":"Question","name":"Is a vertical spread affected by implied volatility?","acceptedAnswer":{"@type":"Answer","text":"Much less than a single long option, but not zero. The two legs have vega of opposite sign so they largely cancel, though the leg closer to the money always has the larger vega, leaving a small residual. A debit spread keeps slightly positive vega and a credit spread slightly negative vega, and the residual grows as the strikes are placed further apart."}},{"@type":"Question","name":"When is a spread better than buying a call outright?","acceptedAnswer":{"@type":"Answer","text":"A spread tends to suit high implied volatility, meaningful time decay, limited capital, or a thesis that targets a specific price level rather than an open-ended move. It suits poorly when the whole idea is a large tail move such as a takeover, when implied volatility is already low so the short leg returns little, or when the option chain is illiquid and four bid-ask crossings cost more than the strategy saves."}},{"@type":"Question","name":"How much do commissions cost on a vertical spread?","acceptedAnswer":{"@type":"Answer","text":"Commissions are charged per contract per leg, so a one-contract vertical at 0.65 per leg costs 1.30 to open and 2.60 round trip, and ten contracts cost 26 dollars round trip. Against a 900 dollar max profit on ten credit spreads that is 2.89 percent. The bid-ask spread usually costs far more: giving up a nickel on each side of a vertical is 20 dollars per contract round trip, roughly eight times the commission."}}]}</script>
 
 <link rel="stylesheet" href="/css/site.css">
@@ -50,16 +50,16 @@
     color:var(--muted);font-size:var(--t-small);margin:0 0 var(--s5)}
   .callout--warn{border-color:var(--gold-2)}
   .faq-card{padding:var(--s5)}
-  .faq-card h3{font-size:var(--t-h3);margin:0}
-  .faq-card p{color:var(--muted);font-size:var(--t-small);margin:var(--s3) 0 0}
+  .faq-card h3{font-size:var(--t-h3);margin:0;line-height:1.3}
+  .faq-card p{color:var(--muted);font-size:var(--t-small);line-height:1.65;margin:var(--s3) 0 0}
 </style>
 </head>
 <body class="pro">
 
 <a class="skip-link" href="#main">Skip to content</a>
 
-<nav class="site-nav">
-  <a class="site-nav__brand" href="/"><img class="site-nav__lion" src="/img/brand/lion-mark.svg" alt="" width="34" height="34"><span>YUSUF GADELRAB</span></a>
+<nav class="site-nav" aria-label="Primary">
+  <a class="site-nav__brand" href="/"><img class="site-nav__lion" src="/img/brand/lion-mark.svg" alt="" width="34" height="34" decoding="async"><span>YUSUF GADELRAB</span></a>
   <div class="site-nav__links">
     <a href="/">Work</a>
     <a href="/guides.html">Guides</a>
@@ -100,8 +100,8 @@
       <p>The distance between the strikes is the <strong>width</strong>, and width is the single most important number in the position. Because equity options carry a 100-share multiplier, a $5 wide spread is a $500 object. Every max profit and max loss figure in this guide resolves to some split of that $500.</p>
       <h2>The four verticals</h2>
       <p>There are exactly four, formed by two directions crossed with two option types. Two are paid for up front (debit), two are sold up front (credit).</p>
-      <div class="tblwrap"><table class="tbl">
-        <thead><tr><th>Spread</th><th>Bias</th><th>Construction (same expiry)</th><th>Cash at open</th><th>Max profit</th><th>Max loss</th></tr></thead>
+      <div class="tblwrap" tabindex="0" role="group" aria-label="Table, scrolls horizontally"><table class="tbl">
+        <thead><tr><th scope="col">Spread</th><th scope="col">Bias</th><th scope="col">Construction (same expiry)</th><th scope="col">Cash at open</th><th scope="col">Max profit</th><th scope="col">Max loss</th></tr></thead>
         <tbody>
           <tr><td>Bull call spread</td><td>Bullish</td><td>Buy lower-strike call, sell higher-strike call</td><td>Debit paid</td><td>Width − debit</td><td>Debit</td></tr>
           <tr><td>Bear put spread</td><td>Bearish</td><td>Buy higher-strike put, sell lower-strike put</td><td>Debit paid</td><td>Width − debit</td><td>Debit</td></tr>
@@ -113,15 +113,15 @@
       <p>A useful shorthand: in a debit spread the leg you buy is closer to the money than the leg you sell. In a credit spread the leg you sell is closer to the money than the leg you buy. That one sentence determines the sign of theta, the sign of vega, and where assignment shows up.</p>
       <h2>Debit spread arithmetic, worked</h2>
       <p>Take a stock trading at $100.00. A 100/105 bull call spread: buy the $100 call at $4.20, sell the $105 call at $2.00. Net debit $2.20 per share, which is $220 per contract.</p>
-      <span class="formula">Width         = 105.00 − 100.00 = 5.00  → $500 per contract
+      <span class="formula" tabindex="0" role="group" aria-label="Formula, scrolls horizontally">Width         = 105.00 − 100.00 = 5.00  → $500 per contract
 Net debit     = 4.20 − 2.00 = 2.20     → $220 paid
 Max profit    = width − debit = 5.00 − 2.20 = 2.80 → $280
 Max loss      = debit                          = $220
 Breakeven     = lower strike + debit = 100.00 + 2.20 = $102.20</span>
       <p>The $220 leaves the account the moment the order fills, and it is the entire risk. Nothing the stock does can cost more than that, which is the defining feature of the structure. The $280 upside is reached and then frozen the instant the stock touches $105.00, whether that happens on day one or at the closing bell on expiry.</p>
       <p>Here is the payoff at expiry across a range of prices. Spread value is the long call's intrinsic value minus the short call's intrinsic value, and profit is that value times 100 minus the $220 paid.</p>
-      <div class="tblwrap"><table class="tbl">
-        <thead><tr><th>Price at expiry</th><th>$100 call intrinsic</th><th>$105 call intrinsic</th><th>Spread value</th><th>Position P/L</th></tr></thead>
+      <div class="tblwrap" tabindex="0" role="group" aria-label="Table, scrolls horizontally"><table class="tbl">
+        <thead><tr><th scope="col">Price at expiry</th><th scope="col">$100 call intrinsic</th><th scope="col">$105 call intrinsic</th><th scope="col">Spread value</th><th scope="col">Position P/L</th></tr></thead>
         <tbody>
           <tr><td>$90.00</td><td>0.00</td><td>0.00</td><td>0.00</td><td>−$220</td></tr>
           <tr><td>$95.00</td><td>0.00</td><td>0.00</td><td>0.00</td><td>−$220</td></tr>
@@ -138,14 +138,14 @@ Breakeven     = lower strike + debit = 100.00 + 2.20 = $102.20</span>
       <p>The last three rows are the trade-off in plain sight. A $20 move and a $5 move pay identically. You sold the tail in exchange for a cheaper entry, and if the underlying is the kind of instrument that occasionally travels 20% in a week, you have sold something expensive. This is the same reasoning that makes <a href="/guides/leveraged-etf-decay.html">leveraged instruments</a> behave differently from what a simple directional view suggests.</p>
       <h2>Credit spread arithmetic, worked</h2>
       <p>Same stock at $100.00. A 95/90 bull put spread: sell the $95 put at $1.60, buy the $90 put at $0.70. Net credit $0.90 per share, $90 per contract, on the same $5 width.</p>
-      <span class="formula">Width         = 95.00 − 90.00 = 5.00   → $500 per contract
+      <span class="formula" tabindex="0" role="group" aria-label="Formula, scrolls horizontally">Width         = 95.00 − 90.00 = 5.00   → $500 per contract
 Net credit    = 1.60 − 0.70 = 0.90     → $90 received
 Max profit    = credit                  = $90
 Max loss      = width − credit = 5.00 − 0.90 = 4.10 → $410
 Breakeven     = short strike − credit = 95.00 − 0.90 = $94.10
 Return on risk = 90 ÷ 410 = 21.95%</span>
-      <div class="tblwrap"><table class="tbl">
-        <thead><tr><th>Price at expiry</th><th>Short $95 put liability</th><th>Long $90 put value</th><th>Net owed</th><th>Position P/L</th></tr></thead>
+      <div class="tblwrap" tabindex="0" role="group" aria-label="Table, scrolls horizontally"><table class="tbl">
+        <thead><tr><th scope="col">Price at expiry</th><th scope="col">Short $95 put liability</th><th scope="col">Long $90 put value</th><th scope="col">Net owed</th><th scope="col">Position P/L</th></tr></thead>
         <tbody>
           <tr><td>$110.00</td><td>0.00</td><td>0.00</td><td>0.00</td><td>+$90 (max)</td></tr>
           <tr><td>$100.00</td><td>0.00</td><td>0.00</td><td>0.00</td><td>+$90</td></tr>
@@ -161,7 +161,7 @@ Return on risk = 90 ÷ 410 = 21.95%</span>
       <p>The shape is the point. You win a small amount across a wide band of outcomes and lose a large amount in a narrow one. <strong>Risking $410 to make $90 means you need to be right far more often than you are wrong just to break even.</strong></p>
       <h2>Buying power reduction</h2>
       <p>Sell a naked $95 put and the broker wants the account to survive the stock going to zero. Cash-secured, that is $9,500 minus the $160 credit, so $9,340 held against one contract. Add the long $90 put and the required capital collapses.</p>
-      <span class="formula">Credit spread BPR = (width × 100) − credit received
+      <span class="formula" tabindex="0" role="group" aria-label="Formula, scrolls horizontally">Credit spread BPR = (width × 100) − credit received
                   = (5.00 × 100) − 90
                   = $500 − $90
                   = $410 held per contract</span>
@@ -169,8 +169,8 @@ Return on risk = 90 ÷ 410 = 21.95%</span>
       <p>That is a large capital effect: $410 held versus $9,340 for the cash-secured naked put. Return on capital for the same $90 goes from 1.71% to 21.95%. The catch is that the higher percentage is computed on a much smaller base, and it is not free money. Both positions carry the same short $95 put and the same probability of being wrong. The long leg buys you a floor, and you paid $70 for it out of a $160 gross credit, which is 44% of the premium spent on insurance.</p>
       <p>Buying power reduction is also what limits how many spreads an account can carry at once, which makes it a position sizing constraint rather than an accounting detail. The <a href="/guides/position-sizing-per-trade.html">per-trade sizing arithmetic</a> applies with max loss standing in for the stop distance, and the <a href="/risk-tools.html#position-sizer">position sizer</a> handles the division.</p>
       <h2>Debit versus credit, side by side</h2>
-      <div class="tblwrap"><table class="tbl">
-        <thead><tr><th></th><th>Debit spread (100/105 call)</th><th>Credit spread (95/90 put)</th></tr></thead>
+      <div class="tblwrap" tabindex="0" role="group" aria-label="Table, scrolls horizontally"><table class="tbl">
+        <thead><tr><th scope="col"></th><th scope="col">Debit spread (100/105 call)</th><th scope="col">Credit spread (95/90 put)</th></tr></thead>
         <tbody>
           <tr><td>Cash at open</td><td>−$220 paid</td><td>+$90 received</td></tr>
           <tr><td>Max profit</td><td>$280</td><td>$90</td></tr>
@@ -188,12 +188,12 @@ Return on risk = 90 ÷ 410 = 21.95%</span>
       <p>Neither column is better. They are two ways of being paid for the same opinion, and the arithmetic in the last four rows is what actually differs.</p>
       <h2>The 75% win rate that still loses money</h2>
       <p>Credit spreads are marketed on win rate, and the win rate is genuinely high. It has to be. The break-even win rate for any binary payoff is fixed by the ratio, not by the strategy's reputation.</p>
-      <span class="formula">Break-even win rate = max loss ÷ (max loss + max profit)
+      <span class="formula" tabindex="0" role="group" aria-label="Formula, scrolls horizontally">Break-even win rate = max loss ÷ (max loss + max profit)
 
 Credit spread: 410 ÷ (410 + 90) = 410 ÷ 500 = 82.0%
 Debit spread:  220 ÷ (220 + 280) = 220 ÷ 500 = 44.0%</span>
       <p>So a 95/90 credit spread must win more than 82 times in 100 to make a cent. Run it at 75%, a win rate most traders would call excellent, over 100 all-or-nothing trades:</p>
-      <span class="formula">75 wins  × $90  = +$6,750
+      <span class="formula" tabindex="0" role="group" aria-label="Formula, scrolls horizontally">75 wins  × $90  = +$6,750
 25 losses × $410 = −$10,250
 Net             = −$3,500
 
@@ -220,7 +220,7 @@ At 82%: (82 × 90) − (18 × 410) = 7,380 − 7,380 = $0</span>
       <h2>Implied volatility: why vega mostly cancels</h2>
       <p>A long option is a long volatility position. If implied volatility drops after you buy, the option loses value even if the stock does exactly what you predicted. That is IV crush, and it is why so many correct earnings calls still lose money.</p>
       <p>In a vertical the two legs have vega of opposite sign because one is long and one is short. They largely cancel. They do not cancel completely, because vega peaks at the money and falls off in both directions, so the leg closer to the money always has the larger vega.</p>
-      <span class="formula">Long $100 call vega   = 0.10 per share per vol point
+      <span class="formula" tabindex="0" role="group" aria-label="Formula, scrolls horizontally">Long $100 call vega   = 0.10 per share per vol point
 Short $105 call vega  = 0.07 per share per vol point
 Net vertical vega     = +0.03  → $3 per contract per vol point
 
@@ -248,7 +248,7 @@ Net vertical vega     = +0.03  → $3 per contract per vol point
       <h2>Liquidity is the real cost</h2>
       <p>Commissions are visible and small. The bid-ask spread is invisible and large.</p>
       <p>Suppose the 100/105 vertical is quoted $2.10 bid, $2.30 ask, with a $2.20 mid. Paying the ask to open and hitting the bid to close gives up $0.10 each way, $0.20 per share, $20 per contract round trip.</p>
-      <span class="formula">Slippage (paying ask, selling bid) = 0.20 × 100 = $20 per contract
+      <span class="formula" tabindex="0" role="group" aria-label="Formula, scrolls horizontally">Slippage (paying ask, selling bid) = 0.20 × 100 = $20 per contract
 Commissions at $0.65/leg           = 4 legs × 0.65 = $2.60
 
 Slippage ÷ commissions = 20 ÷ 2.60 ≈ 7.7×
@@ -256,7 +256,7 @@ Slippage ÷ max risk    = 20 ÷ 220  = 9.1% of the trade's entire risk</span>
       <p>Slippage here is nearly eight times the commission and consumes over 9% of the risk before the stock moves at all. On the credit spread it is worse in relative terms: $20 against a $90 max profit is 22% of the best possible outcome. This is why the option chain liquidity matters more than the strategy's name, and why an idea that tests well on mid prices can be flat or negative on real fills. Any <a href="/guides/walk-forward-backtest.html">backtest of an options strategy</a> priced at the mid is describing a market you cannot trade in.</p>
       <h2>Commissions per leg</h2>
       <p>Options commissions are charged per contract per leg, so a vertical costs twice what a single option costs, both opening and closing. At a common $0.65 per contract:</p>
-      <span class="formula">1 contract:  open 2 × 0.65 = $1.30   round trip = $2.60
+      <span class="formula" tabindex="0" role="group" aria-label="Formula, scrolls horizontally">1 contract:  open 2 × 0.65 = $1.30   round trip = $2.60
 10 contracts: open 20 × 0.65 = $13.00  round trip = $26.00
 
 $26 against $2,800 max profit (10 debit spreads) = 0.93%
@@ -292,14 +292,14 @@ $26 against $900 max profit (10 credit spreads)  = 2.89%</span>
       <h2>Quick answers</h2>
     </div>
     <div class="grid" style="margin-top:var(--s6)">
-      <article class="card faq-card"><h3>What is a vertical spread?</h3><p>Two options, same underlying, same expiry, same type, different strikes, one long and one short. Both profit and loss are capped by the width.</p></article>
-      <article class="card faq-card"><h3>Max loss on a credit spread?</h3><p>Width times 100 minus the credit. A 5-wide spread sold for 0.90 risks 410 dollars, which is also what the broker holds.</p></article>
-      <article class="card faq-card"><h3>How to find breakeven?</h3><p>Debit call spread: lower strike plus debit (100 + 2.20 = 102.20). Credit put spread: short strike minus credit (95 - 0.90 = 94.10).</p></article>
-      <article class="card faq-card"><h3>Why can 75% winners lose?</h3><p>Break-even win rate is 410/500 = 82%. At 75% over 100 trades that is +6,750 against -10,250, a 3,500 dollar loss with a green-looking log.</p></article>
-      <article class="card faq-card"><h3>Early assignment possible?</h3><p>Yes on American-style equity options. Short calls before ex-dividend, short puts when deep in the money, leaving you holding real stock overnight.</p></article>
-      <article class="card faq-card"><h3>Does IV affect a spread?</h3><p>Far less than a naked long, because the legs&#x27; vega mostly cancels. Not zero: the nearer-the-money leg has more vega, leaving a small residual.</p></article>
-      <article class="card faq-card"><h3>Spread or outright call?</h3><p>Spread suits high IV, limited capital, and a level-based target. Outright suits a possible huge move, low IV, or an illiquid chain.</p></article>
-      <article class="card faq-card"><h3>What do commissions cost?</h3><p>Per leg, so double a single option: 2.60 round trip on one contract, 26 on ten. Bid-ask slippage usually costs about eight times more.</p></article>
+      <article class="card faq-card"><h3>What is a vertical spread in options?</h3><p>A vertical spread is two options on the same underlying with the same expiry and the same type, one bought and one sold at different strikes. The distance between strikes is the width, and because equity options carry a 100-share multiplier a 5-point width is a 500-dollar object. The structure caps both the maximum profit and the maximum loss, and every payoff figure is some split of that width.</p></article>
+      <article class="card faq-card"><h3>What is the max loss on a credit spread?</h3><p>The max loss on a credit spread is the width of the strikes multiplied by 100, minus the credit received. Selling a 95/90 put spread for 0.90 has a width of 500 dollars and a credit of 90 dollars, so the max loss is 410 dollars per contract. That is also the amount the broker holds as buying power reduction, because the long leg makes the worst case exactly knowable.</p></article>
+      <article class="card faq-card"><h3>How do you calculate breakeven on a vertical spread?</h3><p>For a debit call spread, breakeven is the lower strike plus the net debit, so a 100/105 call spread bought for 2.20 breaks even at 102.20. For a credit put spread, breakeven is the short strike minus the net credit, so a 95/90 put spread sold for 0.90 breaks even at 94.10. Commissions push both figures slightly further away from you.</p></article>
+      <article class="card faq-card"><h3>Why does a credit spread with a 75 percent win rate lose money?</h3><p>Break-even win rate equals max loss divided by the sum of max loss and max profit. Risking 410 dollars to make 90 dollars gives 410 divided by 500, which is 82 percent, so a 75 percent win rate is below the threshold. Over 100 binary trades that is 6,750 dollars of wins against 10,250 dollars of losses, a net loss of 3,500 dollars, with three quarters of the trade log showing green.</p></article>
+      <article class="card faq-card"><h3>Can you get assigned early on a vertical spread?</h3><p>Yes, if the options are American style, which US listed equity options are. Short calls are most often assigned the day before an ex-dividend date when their remaining extrinsic value is worth less than the dividend, and short puts are assigned when they are deep in the money with almost no time value left. You then hold a real stock position, long or short, with overnight gap exposure that the spread was designed to prevent.</p></article>
+      <article class="card faq-card"><h3>Is a vertical spread affected by implied volatility?</h3><p>Much less than a single long option, but not zero. The two legs have vega of opposite sign so they largely cancel, though the leg closer to the money always has the larger vega, leaving a small residual. A debit spread keeps slightly positive vega and a credit spread slightly negative vega, and the residual grows as the strikes are placed further apart.</p></article>
+      <article class="card faq-card"><h3>When is a spread better than buying a call outright?</h3><p>A spread tends to suit high implied volatility, meaningful time decay, limited capital, or a thesis that targets a specific price level rather than an open-ended move. It suits poorly when the whole idea is a large tail move such as a takeover, when implied volatility is already low so the short leg returns little, or when the option chain is illiquid and four bid-ask crossings cost more than the strategy saves.</p></article>
+      <article class="card faq-card"><h3>How much do commissions cost on a vertical spread?</h3><p>Commissions are charged per contract per leg, so a one-contract vertical at 0.65 per leg costs 1.30 to open and 2.60 round trip, and ten contracts cost 26 dollars round trip. Against a 900 dollar max profit on ten credit spreads that is 2.89 percent. The bid-ask spread usually costs far more: giving up a nickel on each side of a vertical is 20 dollars per contract round trip, roughly eight times the commission.</p></article>
     </div>
   </section>
 

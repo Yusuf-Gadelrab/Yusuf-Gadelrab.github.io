@@ -22,7 +22,7 @@
    whose name is not in the current set, so one reload fully retires the old one.
    ========================================================================= */
 
-var VERSION = "v4";
+var VERSION = "v6";
 var SHELL = "yg-shell-" + VERSION;   // precached offline fallback + chrome
 var RUNTIME = "yg-runtime-" + VERSION; // opportunistic assets
 var PAGES = "yg-pages-" + VERSION;     // last-known-good HTML, offline only

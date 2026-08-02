@@ -2,8 +2,12 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
+<meta name="referrer" content="strict-origin-when-cross-origin">
+<meta http-equiv="Content-Security-Policy" content="object-src 'none'; base-uri 'self'">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Business OS — Freelance Command Center</title>
+<meta name="robots" content="noindex,follow">
+<link rel="canonical" href="https://yusuf-gadelrab.github.io/templates.html">
 <style>
 :root{
   --bg:#0a0a0b; --bg2:#111114; --panel:#141417; --panel2:#191920;
@@ -60,7 +64,7 @@ label{font-size:12.5px; color:var(--muted); display:block; margin-bottom:4px;}
 .topbar{display:flex; align-items:center; justify-content:space-between; gap:16px; flex-wrap:wrap; margin-bottom:28px;}
 .brand{display:flex; align-items:center; gap:12px;}
 .mark{width:30px; height:30px; flex:none;}
-.brand-name{font-family:Georgia,serif; font-size:20px; letter-spacing:-.3px;}
+.brand-name{font-family:Georgia,serif; font-size:20px; letter-spacing:-.3px; font-weight:400; margin:0;}
 .brand-sub{font-size:11px; letter-spacing:2px; text-transform:uppercase; color:var(--muted);}
 .topbar-actions{display:flex; gap:8px; flex-wrap:wrap;}
 
@@ -159,6 +163,7 @@ tr.total-row td{border-top:1px solid var(--gold-dim); font-weight:700; color:var
   th,td{padding:8px 6px;}
 }
 </style>
+<style>@media screen{.tbl-scroll{overflow-x:auto;-webkit-overflow-scrolling:touch}.tbl-scroll:focus-visible{outline:2px solid #D4AF37;outline-offset:2px}}</style>
 </head>
 <body>
 <div class="shell">
@@ -167,7 +172,7 @@ tr.total-row td{border-top:1px solid var(--gold-dim); font-weight:700; color:var
     <div class="brand">
       <svg class="mark" viewBox="0 0 28 28" aria-hidden="true"><rect x="1" y="1" width="26" height="26" rx="4" fill="none" stroke="#d4af37" stroke-width="1.2"/><path d="M14 5 L21 14 L14 23 L7 14 Z" fill="none" stroke="#f4d47a" stroke-width="1.2"/></svg>
       <div>
-        <div class="brand-name gold-text">Business OS</div>
+        <h1 class="brand-name gold-text">Business OS</h1>
         <div class="brand-sub">Freelance Command Center</div>
       </div>
     </div>
@@ -642,7 +647,7 @@ function clientTable(rows){
       '</div></td>' +
     '</tr>';
   }).join("");
-  return '<div style="overflow-x:auto;"><table><thead><tr>'+head+'</tr></thead><tbody>'+body+'</tbody></table></div>';
+  return '<div style="overflow-x:auto;"><div class="tbl-scroll" tabindex="0" role="region" aria-label="Scrollable table"><table><thead><tr>'+head+'</tr></thead><tbody>'+body+'</tbody></table></div></div>';
 }
 function statusTagClass(s){
   if (s==="active") return "good";
@@ -845,7 +850,7 @@ function projectTable(){
         '<span class="del-zone" data-zone="'+p.id+'"><button class="small danger" data-del="'+p.id+'" type="button">Delete</button></span></div></td>' +
     '</tr>';
   }).join("");
-  return '<div style="overflow-x:auto;"><table><thead><tr><th>Project</th><th>Client</th><th>Deadline</th><th>Progress</th><th>Status</th><th></th></tr></thead><tbody>'+rows+'</tbody></table></div>';
+  return '<div style="overflow-x:auto;"><div class="tbl-scroll" tabindex="0" role="region" aria-label="Scrollable table"><table><thead><tr><th>Project</th><th>Client</th><th>Deadline</th><th>Progress</th><th>Status</th><th></th></tr></thead><tbody>'+rows+'</tbody></table></div></div>';
 }
 function wireProjectTable(el){
   el.querySelectorAll("[data-percent]").forEach(function(r){
@@ -950,9 +955,9 @@ function invoiceTable(totalAmount, totalPaid, totalOutstanding){
       '</div></td>' +
     '</tr>';
   }).join("");
-  return '<div style="overflow-x:auto;"><table><thead><tr><th>#</th><th>Client</th><th>Amount</th><th>Issued</th><th>Due</th><th>Status</th><th></th></tr></thead><tbody>'+rows+
+  return '<div style="overflow-x:auto;"><div class="tbl-scroll" tabindex="0" role="region" aria-label="Scrollable table"><table><thead><tr><th>#</th><th>Client</th><th>Amount</th><th>Issued</th><th>Due</th><th>Status</th><th></th></tr></thead><tbody>'+rows+
     '<tr class="total-row"><td colspan="2">Totals</td><td>'+fmtMoney(totalAmount)+'</td><td colspan="2"></td><td colspan="2">Paid '+fmtMoney(totalPaid)+' · Outstanding '+fmtMoney(totalOutstanding)+'</td></tr>' +
-    '</tbody></table></div>';
+    '</tbody></table></div></div>';
 }
 function wireInvoiceTable(el){
   el.querySelectorAll("[data-markpaid]").forEach(function(b){
@@ -1042,7 +1047,7 @@ function timeTable(){
         '<span class="del-zone" data-zone="'+t.id+'"><button class="small danger" data-del="'+t.id+'" type="button">Delete</button></span></div></td>' +
     '</tr>';
   }).join("");
-  return '<div style="overflow-x:auto;"><table><thead><tr><th>Date</th><th>Client</th><th>Hours</th><th>Rate</th><th>Value</th><th>Billable</th><th></th></tr></thead><tbody>'+rows+'</tbody></table></div>';
+  return '<div style="overflow-x:auto;"><div class="tbl-scroll" tabindex="0" role="region" aria-label="Scrollable table"><table><thead><tr><th>Date</th><th>Client</th><th>Hours</th><th>Rate</th><th>Value</th><th>Billable</th><th></th></tr></thead><tbody>'+rows+'</tbody></table></div></div>';
 }
 function wireTimeTable(el){
   el.querySelectorAll("[data-edit]").forEach(function(b){

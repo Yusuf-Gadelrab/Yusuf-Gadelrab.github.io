@@ -25,8 +25,8 @@
 <meta name="twitter:image" content="https://yusuf-gadelrab.github.io/og-card.png">
 <link rel="alternate" type="text/plain" href="https://yusuf-gadelrab.github.io/llms-full.txt" title="Plain-text profile for language models">
 
-<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"TechArticle","@id":"https://yusuf-gadelrab.github.io/guides/stop-loss-placement.html#article","headline":"Stop Loss Placement: Structure, Volatility, and Sizing","name":"Stop Loss Placement: Structure, Volatility, and Sizing","description":"Structure-based, ATR-based, or percentage stops. Why the stop sets position size rather than the other way round, and the places never to put one.","datePublished":"2026-07-29","dateModified":"2026-07-29","inLanguage":"en","author":{"@id":"https://yusuf-gadelrab.github.io/#person"},"publisher":{"@id":"https://yusuf-gadelrab.github.io/#person"},"about":["Stop loss","Position sizing","Risk management"],"mainEntityOfPage":"https://yusuf-gadelrab.github.io/guides/stop-loss-placement.html","isAccessibleForFree":true,"proficiencyLevel":"Beginner"},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://yusuf-gadelrab.github.io/"},{"@type":"ListItem","position":2,"name":"Guides","item":"https://yusuf-gadelrab.github.io/guides.html"},{"@type":"ListItem","position":3,"name":"Stop Loss Placement"}]}]}</script>
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","@id":"https://yusuf-gadelrab.github.io/guides/stop-loss-placement.html#faq","mainEntity":[{"@type":"Question","name":"Where should you place a stop loss?","acceptedAnswer":{"@type":"Answer","text":"Place it just beyond the price that would prove the trade idea wrong, which is usually a structural level such as the low of a base, a consolidation floor, or the anchored VWAP that generated the signal. Then check that this distance is at least about one average true range, because anything tighter sits inside normal noise and will be hit at random."}},{"@type":"Question","name":"Does the stop determine position size, or the other way round?","acceptedAnswer":{"@type":"Answer","text":"The stop determines position size. Find the invalidation price first, treat the entry-to-stop distance as 1R per share, then divide your account risk budget by that distance to get the share count. A $30,000 account risking 1% has a $300 budget, so a $2.40 stop distance allows 125 shares."}},{"@type":"Question","name":"What is an ATR-based stop?","acceptedAnswer":{"@type":"Answer","text":"An ATR stop sets the distance as a multiple of average true range, commonly 1.5 to 3 times ATR14 for swing timeframes. Because ATR measures the instrument's own typical movement including gaps, the stop widens automatically in volatile names and the resulting position size shrinks to match."}},{"@type":"Question","name":"Are percentage stops any good?","acceptedAnswer":{"@type":"Answer","text":"A fixed 7% or 8% stop ignores both structure and volatility, so it is far too wide for a low-volatility stock and far too tight for a leveraged ETF or a small-cap. Its only real virtue is that it cannot be rationalised away, which makes it a reasonable outer cap or a beginner's starting rule."}},{"@type":"Question","name":"Where should you never put a stop?","acceptedAnswer":{"@type":"Answer","text":"Avoid exact round numbers such as $50.00 or $100.00, and avoid sitting exactly at the obvious swing low that every chart reader can see, because price frequently trades a few cents through those levels and reverses. Also avoid any distance inside roughly one ATR, and avoid setting the stop at a dollar amount you find comfortable rather than at a level the chart justifies."}},{"@type":"Question","name":"Should you ever move a stop loss?","acceptedAnswer":{"@type":"Answer","text":"Move it in the direction of reduced risk only. Trailing a stop up in a long position, or to breakeven, is fine when the rule was defined before entry. Widening a stop converts a known 1R loss into an unknown one and always happens under pressure, which is why it is the most damaging habit in retail trading."}}]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"TechArticle","@id":"https://yusuf-gadelrab.github.io/guides/stop-loss-placement.html#article","headline":"Stop Loss Placement: Structure, Volatility, and Sizing","name":"Stop Loss Placement: Structure, Volatility, and Sizing","description":"Structure-based, ATR-based, or percentage stops. Why the stop sets position size rather than the other way round, and the places never to put one.","datePublished":"2026-07-29","dateModified":"2026-07-29","inLanguage":"en","author":{"@id":"https://yusuf-gadelrab.github.io/#person"},"publisher":{"@id":"https://yusuf-gadelrab.github.io/#person"},"about":["Stop loss","Position sizing","Risk management"],"mainEntityOfPage":"https://yusuf-gadelrab.github.io/guides/stop-loss-placement.html","isAccessibleForFree":true,"isPartOf":{"@id":"https://yusuf-gadelrab.github.io/#website"},"proficiencyLevel":"Beginner"},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://yusuf-gadelrab.github.io/"},{"@type":"ListItem","position":2,"name":"Guides","item":"https://yusuf-gadelrab.github.io/guides.html"},{"@type":"ListItem","position":3,"name":"Stop Loss Placement"}]}]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","@id":"https://yusuf-gadelrab.github.io/guides/stop-loss-placement.html#faq","mainEntity":[{"@type":"Question","name":"Where should you place a stop loss?","acceptedAnswer":{"@type":"Answer","text":"Place it just beyond the price that would prove the trade idea wrong, which is usually a structural level such as the low of a base, a consolidation floor, or the anchored VWAP that generated the signal. Then check that this distance is at least about one average true range, because anything tighter sits inside normal noise and will be hit at random."}},{"@type":"Question","name":"Does the stop determine position size, or the other way round?","acceptedAnswer":{"@type":"Answer","text":"The stop determines position size. Find the invalidation price first, treat the entry-to-stop distance as 1R per share, then divide your account risk budget by that distance to get the share count. A $30,000 account risking 1% has a $300 budget, so a $2.40 stop distance allows 125 shares and a $0.60 stop distance allows 500."}},{"@type":"Question","name":"How do you calculate ATR for a stop?","acceptedAnswer":{"@type":"Answer","text":"True range for a bar is the largest of the high minus low, the absolute high minus previous close, and the absolute low minus previous close, which is what makes ATR account for gaps. Wilder's ATR14 then smooths it as previous ATR times 13 plus today's true range, all divided by 14. That smoothing is slow on purpose: a day with a true range two and a half times normal moves an ATR of 1.20 only to about 1.34."}},{"@type":"Question","name":"Are percentage stops any good?","acceptedAnswer":{"@type":"Answer","text":"A fixed 7% or 8% stop ignores both structure and volatility, so it is far too wide for a low-volatility stock and far too tight for a leveraged ETF or a small-cap. Its only real virtue is that it cannot be rationalised away, which makes it a reasonable outer cap or a beginner's starting rule."}},{"@type":"Question","name":"Can a stop loss lose more than you planned?","acceptedAnswer":{"@type":"Answer","text":"Yes, and this is the assumption most sizing arithmetic quietly makes. A 125-share position with a planned 300 dollar risk that gaps from an entry of 48.00 to a fill at 40.95 loses 881 dollars, or 2.94R. The same event on a 500-share version with a tighter stop and identical planned risk loses 3,525 dollars, or 11.75R, because gap damage scales with shares held rather than with stop distance."}},{"@type":"Question","name":"Where should you never put a stop?","acceptedAnswer":{"@type":"Answer","text":"Avoid exact round numbers such as 50.00 or 100.00, avoid sitting exactly at the obvious swing low that every chart reader can see, and avoid placing one inside a high volume area where ordinary two-sided trade will hit it. Also avoid any distance inside roughly one ATR, and avoid setting the stop at a dollar amount you find comfortable rather than at a level the chart justifies."}},{"@type":"Question","name":"What is the best way to trail a stop?","acceptedAnswer":{"@type":"Answer","text":"There is no free method, only different things given up. Fixed-R trailing converts normal pullbacks into scratches, an ATR chandelier at three times ATR22 returns a large slice of the open gain before exiting, structure trailing is hard to define consistently, and a moving-average exit lags at turns. Pick based on whether your returns come from a fat right tail, in which case wider is usually correct."}},{"@type":"Question","name":"Should you ever move a stop loss?","acceptedAnswer":{"@type":"Answer","text":"Move it in the direction of reduced risk only. Trailing a stop up in a long position, or to breakeven, is fine when the rule was defined before entry. Widening a stop converts a known 1R loss into an unknown one and always happens under pressure, which is why it is the most damaging habit in retail trading."}}]}</script>
 
 <link rel="stylesheet" href="/css/site.css">
 <style>
@@ -50,16 +50,16 @@
     color:var(--muted);font-size:var(--t-small);margin:0 0 var(--s5)}
   .callout--warn{border-color:var(--gold-2)}
   .faq-card{padding:var(--s5)}
-  .faq-card h3{font-size:var(--t-h3);margin:0}
-  .faq-card p{color:var(--muted);font-size:var(--t-small);margin:var(--s3) 0 0}
+  .faq-card h3{font-size:var(--t-h3);margin:0;line-height:1.3}
+  .faq-card p{color:var(--muted);font-size:var(--t-small);line-height:1.65;margin:var(--s3) 0 0}
 </style>
 </head>
 <body class="pro">
 
 <a class="skip-link" href="#main">Skip to content</a>
 
-<nav class="site-nav">
-  <a class="site-nav__brand" href="/"><img class="site-nav__lion" src="/img/brand/lion-mark.svg" alt="" width="34" height="34"><span>YUSUF GADELRAB</span></a>
+<nav class="site-nav" aria-label="Primary">
+  <a class="site-nav__brand" href="/"><img class="site-nav__lion" src="/img/brand/lion-mark.svg" alt="" width="34" height="34" decoding="async"><span>YUSUF GADELRAB</span></a>
   <div class="site-nav__links">
     <a href="/">Work</a>
     <a href="/guides.html">Guides</a>
@@ -97,43 +97,145 @@
         <li>Decide the account risk for this trade — commonly 0.5% to 1%.</li>
         <li>Divide. That gives share count. You do not get to choose it.</li>
       </ol>
-      <span class="formula">1R per share = entry − stop
+      <span class="formula" tabindex="0" role="group" aria-label="Formula, scrolls horizontally">1R per share = entry − stop
 Risk budget  = account × risk %
 Shares       = risk budget ÷ 1R per share</span>
       <p>Worked: a $30,000 account risking 1% is a $300 budget. Entry $48.00 with a structural stop at $45.60 gives 1R of $2.40 per share, so 125 shares, a $6,000 position. Move that stop to $47.40 and 1R is $0.60, so the same $300 budget buys 500 shares and a $24,000 position. <strong>Same risk, four times the exposure, purely because the structure was tighter.</strong></p>
-      <p class="callout callout--warn">This is also the trap. A tight stop lets you carry a large position, and a large position on a stop that was tight for cosmetic rather than structural reasons is how a normal loss becomes several. Tighten the stop only when the chart genuinely offers a tighter invalidation, never to justify more shares.</p>
+      <h3>The full sizing table</h3>
+      <p>Hold the risk budget at $300 and move only the stop. Share counts are always rounded <em>down</em>, so the realised risk sits at or just under budget rather than over it.</p>
+      <div class="tblwrap" tabindex="0" role="group" aria-label="Table, scrolls horizontally"><table class="tbl">
+        <thead><tr><th scope="col">Entry</th><th scope="col">Stop</th><th scope="col">1R per share</th><th scope="col">Shares</th><th scope="col">Actual risk</th><th scope="col">Position</th><th scope="col">% of a $30k account</th></tr></thead>
+        <tbody>
+          <tr><td>$48.00</td><td>$47.40</td><td>$0.60</td><td>500</td><td>$300.00</td><td>$24,000</td><td>80.0%</td></tr>
+          <tr><td>$48.00</td><td>$46.80</td><td>$1.20</td><td>250</td><td>$300.00</td><td>$12,000</td><td>40.0%</td></tr>
+          <tr><td>$48.00</td><td>$45.60</td><td>$2.40</td><td>125</td><td>$300.00</td><td>$6,000</td><td>20.0%</td></tr>
+          <tr><td>$48.00</td><td>$43.20</td><td>$4.80</td><td>62</td><td>$297.60</td><td>$2,976</td><td>9.9%</td></tr>
+          <tr><td>$48.00</td><td>$38.40</td><td>$9.60</td><td>31</td><td>$297.60</td><td>$1,488</td><td>5.0%</td></tr>
+          <tr><td>$152.00</td><td>$143.80</td><td>$8.20</td><td>36</td><td>$295.20</td><td>$5,472</td><td>18.2%</td></tr>
+        </tbody>
+      </table></div>
+      <p class="callout callout--warn">The top row is the trap. A tight stop lets you carry a large position, and a large position on a stop that was tight for cosmetic rather than structural reasons is how a normal loss becomes several. Tighten the stop only when the chart genuinely offers a tighter invalidation, never to justify more shares. The gap arithmetic further down prices exactly what that row costs when the stop is jumped.</p>
       <h2>Structure-based stops</h2>
       <p>Place the stop just beyond the price level that would prove the idea wrong: below the low of the base, below the anchored VWAP that generated the signal, below the consolidation floor, beyond the pattern's defining swing.</p>
       <p>The advantage is that the exit means something. When a structural stop fills, the reason you entered has been invalidated, so the exit carries information rather than just recording a bad hour. <strong>Signal and invalidation should be defined by the same object</strong> wherever possible.</p>
+      <p>This is the cleanest reason to trade structures that define their own invalidation. The final contraction of a <a href="/guides/vcp-base-patterns.html">base pattern</a> gives you a low to sit under. An <a href="/guides/anchored-vwap.html">anchored VWAP</a> gives you a cost-basis line to sit under. A <a href="/guides/volume-profile.html">volume profile</a> gives you a low volume node to sit beyond, which is arguably the best of the three because price crossing back through a thin shelf is unusually informative — the market moved through that price quickly on the way up precisely because nobody wanted to trade there.</p>
       <h2>Volatility-based stops (ATR)</h2>
       <p>Average true range measures how far an instrument typically moves in a period, including gaps. An ATR stop scales the distance to the instrument's own noise level instead of to a fixed percentage.</p>
-      <span class="formula">Stop = entry − (k × ATR14)
+      <span class="formula" tabindex="0" role="group" aria-label="Formula, scrolls horizontally">True range for one bar:
+  TR = max( high − low,
+            |high − previous close|,
+            |low  − previous close| )
 
-common k values: 1.5 to 3.0 for swing timeframes</span>
+Wilder smoothing (the standard ATR14):
+  ATR = (previous ATR × 13 + today's TR) ÷ 14
+
+Stop = entry − (k × ATR14)      k typically 1.5 to 3.0 for swings</span>
+      <p>The second and third terms in the true range are the whole reason ATR exists rather than just using the bar's range. Work through five illustrative bars:</p>
+      <div class="tblwrap" tabindex="0" role="group" aria-label="Table, scrolls horizontally"><table class="tbl">
+        <thead><tr><th scope="col">Bar</th><th scope="col">High</th><th scope="col">Low</th><th scope="col">Prev close</th><th scope="col">High − Low</th><th scope="col">|H − prevC|</th><th scope="col">|L − prevC|</th><th scope="col">TR</th></tr></thead>
+        <tbody>
+          <tr><td>1</td><td>$50.20</td><td>$48.90</td><td>$49.60</td><td>$1.30</td><td>$0.60</td><td>$0.70</td><td>$1.30</td></tr>
+          <tr><td>2</td><td>$51.40</td><td>$49.80</td><td>$50.10</td><td>$1.60</td><td>$1.30</td><td>$0.30</td><td>$1.60</td></tr>
+          <tr><td>3</td><td>$50.60</td><td>$47.90</td><td>$51.00</td><td>$2.70</td><td>$0.40</td><td>$3.10</td><td>$3.10</td></tr>
+          <tr><td>4</td><td>$49.10</td><td>$48.20</td><td>$48.30</td><td>$0.90</td><td>$0.80</td><td>$0.10</td><td>$0.90</td></tr>
+          <tr><td>5</td><td>$49.80</td><td>$48.60</td><td>$48.90</td><td>$1.20</td><td>$0.90</td><td>$0.30</td><td>$1.20</td></tr>
+        </tbody>
+      </table></div>
+      <p>Bar 3 is the instructive one. The bar's own range was $2.70, but it gapped down from a $51.00 close, so the true distance travelled from the last agreed price was $3.10. A stop sized on the bar range would have understated the day's actual movement by 13%. Averaged across these five bars, mean TR is $1.62.</p>
+      <p>Wilder smoothing deliberately reacts slowly. If yesterday's ATR14 was $1.20 and today's TR is $3.10, the new ATR is (1.20 × 13 + 3.10) ÷ 14 = $1.34. A single day that was two and a half times normal moved the ATR by 14 cents. That lag is a feature when you want a stable sizing input and a liability when volatility genuinely regime-shifts, which is exactly when you need the input to move.</p>
       <p>Worked: entry $48.00, ATR14 of $1.20, k of 2 gives a stop at $45.60 and 1R of $2.40. If that stock's ATR later rises to $2.00, the same k puts the stop at $44.00 and the same risk budget buys fewer shares automatically. That auto-adjustment is the point: <strong>the position shrinks as the instrument gets noisier</strong>, without you having to remember to shrink it.</p>
       <h2>Percentage stops</h2>
       <p>A flat 7% or 8% stop is the simplest rule and the weakest one, because it ignores both structure and volatility. A 7% stop on a low-volatility utility is enormous; on a leveraged ETF or a small-cap biotech it is inside a normal Tuesday. It has exactly one virtue: it is impossible to rationalise away, which for a beginner is worth something.</p>
-      <div class="tblwrap"><table class="tbl">
-        <thead><tr><th>Method</th><th>Adapts to volatility</th><th>Carries information</th><th>Best used for</th></tr></thead>
+      <div class="tblwrap" tabindex="0" role="group" aria-label="Table, scrolls horizontally"><table class="tbl">
+        <thead><tr><th scope="col">Method</th><th scope="col">Adapts to volatility</th><th scope="col">Carries information</th><th scope="col">Best used for</th></tr></thead>
         <tbody>
           <tr><td>Structure</td><td>Indirectly</td><td>Yes — invalidates the thesis</td><td>Pattern and level-based swing trades</td></tr>
           <tr><td>ATR multiple</td><td>Yes, directly</td><td>Partly</td><td>Systematic entries, mixed-volatility universes</td></tr>
           <tr><td>Fixed percentage</td><td>No</td><td>No</td><td>Beginners, or as an outer cap on the other two</td></tr>
         </tbody>
       </table></div>
-      <p>In practice the useful combination is structure first, with an ATR check: if the structural stop is under 1 ATR away, it is inside noise and will be hit at random. Widen it to at least 1 ATR and take fewer shares, or skip the trade.</p>
+      <h2>The noise-floor check, worked</h2>
+      <p>In practice the useful combination is structure first, with an ATR check: if the structural stop is under 1 ATR away, it is inside noise and will be hit at random regardless of whether the idea was right. Here is what that costs when you skip the check.</p>
+      <span class="formula" tabindex="0" role="group" aria-label="Formula, scrolls horizontally">Entry $48.00, structural stop $47.55, ATR14 $1.20
+
+  stop distance = $0.45
+  as ATR        = 0.45 ÷ 1.20 = 0.375 ATR   ← inside the noise floor
+  shares        = $300 ÷ $0.45 = 666
+  position      = 666 × $48.00 = $31,968
+                = 106% of a $30,000 account  ← needs margin
+
+Widen to 1.0 ATR:
+  stop          = $46.80, distance $1.20
+  shares        = $300 ÷ $1.20 = 250
+  position      = $12,000 = 40% of the account</span>
+      <p>The arithmetic says $300 of risk in both cases. The first version puts more than the entire account into one name overnight on a stop that random intraday movement will hit roughly at chance, which means you will take the loss without ever learning whether the idea was right. <strong>Widen to at least 1 ATR and take fewer shares, or skip the trade.</strong> Never keep the tight stop and the large share count together.</p>
+      <h2>A stop is not a guarantee</h2>
+      <p>Everything above assumes the stop fills at the stop price. Overnight gaps, halts, and fast opens do not honour that assumption, and when they fail the loss is set by the share count, not by the plan.</p>
+      <span class="formula" tabindex="0" role="group" aria-label="Formula, scrolls horizontally">125 shares, entry $48.00, planned stop $45.60
+  planned 1R    = $2.40/share = $300 total
+
+Overnight news. Opens at $41.00, market stop fills $40.95.
+  realised loss = 125 × ($48.00 − $40.95) = $881.25
+                = 2.94R      (excess over plan: $581.25)
+
+Same gap on the tight-stop version from the table:
+  500 shares    = 500 × $7.05 = $3,525
+                = 11.75R      ← 11.75% of a $30,000 account, one trade</span>
+      <p>That contrast is the entire case for a notional cap that has nothing to do with your stop. Two positions with identical $300 planned risk produced a $881 loss and a $3,525 loss on the same event, because gap risk scales with shares held and not with stop distance. Cap position notional at something like 20% to 25% of equity regardless of how tight the stop is, never hold full size through scheduled earnings, and treat any leveraged instrument as multiplying gap risk by its leverage factor — the mechanics are in the <a href="/guides/leveraged-etf-decay.html">leveraged ETF decay guide</a>.</p>
       <h2>Where not to put a stop</h2>
       <ul>
         <li><strong>On a round number.</strong> $50.00, $100.00, and $250.00 attract resting orders from everyone else. Sit a little beyond, not exactly on it.</li>
         <li><strong>Exactly at the obvious swing low.</strong> Every chart reader sees the same low. Price routinely trades a few cents through it and reverses. A small buffer beyond the obvious level costs a little R and avoids a lot of undercut-and-rally.</li>
         <li><strong>Inside the noise.</strong> Anything under roughly 1 ATR of the entry will be hit by random movement regardless of whether the idea was right.</li>
         <li><strong>At a dollar figure you can tolerate losing.</strong> The market does not know your comfort level. If the structural stop is bigger than your tolerance, cut share count, not the stop.</li>
+        <li><strong>Inside a high volume node.</strong> Price chops inside heavy-inventory areas, so a stop there gets hit by ordinary two-sided trade rather than by directional failure.</li>
         <li><strong>Nowhere.</strong> A mental stop is a stop you will renegotiate at the worst possible moment.</li>
       </ul>
+      <h2>Trailing: four methods and what each gives up</h2>
+      <p>The initial stop answers "am I wrong?". A trailing stop answers a different question — "is this still working?" — and no method answers it for free.</p>
+      <div class="tblwrap" tabindex="0" role="group" aria-label="Table, scrolls horizontally"><table class="tbl">
+        <thead><tr><th scope="col">Method</th><th scope="col">Rule</th><th scope="col">Gives up</th><th scope="col">Suits</th></tr></thead>
+        <tbody>
+          <tr><td>Fixed R</td><td>Move to breakeven at +1R, then trail one R behind</td><td>Stops out of trades that pull back normally after the first push. Converts winners into scratches</td><td>High win-rate, quick-resolution setups</td></tr>
+          <tr><td>ATR chandelier</td><td>Stop = highest high since entry − (3 × ATR22)</td><td>Wide by design, so it returns a large slice of an open gain before exiting</td><td>Trend-following, fat-right-tail systems</td></tr>
+          <tr><td>Structure</td><td>Trail behind each successive higher low or consolidation floor</td><td>Discretionary — two people see different structures, so it is hard to test</td><td>Discretionary swing trading with a written definition</td></tr>
+          <tr><td>Moving average</td><td>Exit on a close below the 10-day or 21-day</td><td>Lags badly at turns and whipsaws in a range. Says nothing about your entry</td><td>Simple mechanical trend exits</td></tr>
+        </tbody>
+      </table></div>
+      <p>Worked chandelier: entry $48.00 with a $2.40 initial 1R. Price runs to $58.00 and ATR is $1.60, so the trail sits at $58.00 − (3 × $1.60) = $53.20. If it fills there, the realised result is ($53.20 − $48.00) ÷ $2.40 = <strong>+2.17R</strong>, having given back $4.80 per share from the high. That giveback is not a flaw, it is the premium you pay for staying in the trades that run four and five R — and those are the trades that pay for everything else.</p>
+      <p>Scaling out interacts badly with this. Selling a third at +1R reliably raises your win rate and reliably lowers expectancy on any system whose returns come from the right tail, because you have capped the only trades that matter. If you do it, log it as a deliberate cost rather than as risk management. The <a href="/guides/r-multiple-expectancy.html">R-multiple and expectancy guide</a> shows why the tail dominates the average.</p>
+      <h3>Time stops</h3>
+      <p>A price stop asks whether the idea is wrong. A time stop asks whether it is <em>doing anything</em>. If your own record shows the median winner reaches +1R within eight bars, then a trade sitting flat at bar fifteen is not behaving like a winner — it is behaving like something that will eventually stop out while occupying risk budget and attention the whole time.</p>
+      <p>Time stops are unusually cheap to test because they need no new data: take your closed trades, bucket them by bars-held-before-first-1R, and compare expectancy for trades that were still flat past your candidate cutoff. If that bucket is negative, the cutoff pays for itself. If it is not, drop the rule rather than keeping it because it feels tidy.</p>
+      <h2>Stops across positions, not just within one</h2>
+      <p>Per-trade stops answer one question. The one that actually empties accounts is what happens when several stops fill on the same morning.</p>
+      <span class="formula" tabindex="0" role="group" aria-label="Formula, scrolls horizontally">Cluster risk, n positions at 1% each, pairwise correlation ρ
+
+  variance = n + 2 × C(n,2) × ρ
+  σ_cluster = √variance   (in units of 1%)
+
+  n = 3, ρ = 0.8 → √(3 + 4.8)  = 2.79%   (uncorrelated: 1.73%)
+  n = 4, ρ = 0.8 → √(4 + 9.6)  = 3.69%   (uncorrelated: 2.00%)
+
+Tail case — one headline, every stop fills:
+  n = 4 → the full 4.00%</span>
+      <p>Four semiconductor names at 1% each are not four 1% trades. On a variance basis they behave like a single 3.7% position, and on the day that actually matters — one sector headline, one gap, four simultaneous stop-outs — they behave like a single 4% position. <strong>Size a correlated cluster as one trade at its combined risk.</strong> The variance figure understates the tail, so use the sum, not the square root, when you are setting the cap.</p>
+      <p>The same logic covers different expressions of one view: long the stock, long the leveraged ETF, and long a call spread on the same name are one position wearing three costumes. Options add their own wrinkle because the stop is not a price level in the same sense — see <a href="/guides/options-vertical-spreads.html">vertical spreads</a> for how defined-risk structures change the arithmetic.</p>
       <h2>Never move a stop down</h2>
       <p>Moving a stop further away converts a defined 1R loss into an undefined one, and it always happens under pressure, which is exactly when judgement is worst. It is the single most destructive habit available to a retail trader, because one widened stop can erase the gains from a dozen disciplined trades.</p>
       <p>Moving a stop <em>up</em> in a long, to breakeven or behind a trailing structure, is a different action entirely and is fine, provided the rule was written before the trade. The asymmetry is deliberate: risk may only be reduced, never increased, after entry.</p>
       <p>Log a <strong>moved stop</strong> mistake tag every single time it happens. After 50 trades that tag usually explains most of the losses beyond −1R, and that is a rule change rather than a feeling. <a href="/guides/trading-journal.html">Journal fields that surface it →</a></p>
+      <h2>The decision procedure</h2>
+      <ol>
+        <li>Identify the price that invalidates the thesis. Write it down before you look at share counts.</li>
+        <li>Add a small buffer beyond the obvious level and off any round number.</li>
+        <li>Compute the distance as a multiple of ATR14. If it is under 1.0 ATR, widen it to 1.0 ATR or skip the trade — do not keep the tight stop.</li>
+        <li>Divide your risk budget by the distance. Round the share count <strong>down</strong>.</li>
+        <li>Check the resulting notional against a cap of roughly 20% to 25% of equity. If it breaches, cut shares, never the stop.</li>
+        <li>Check the position against open correlated exposure. Treat a cluster as one trade at its summed risk.</li>
+        <li>Write the trailing rule and any time stop <em>now</em>, before entry, not while the trade is open.</li>
+        <li>Log planned stop, planned 1R, and ATR at entry, so realised R can be compared to planned R later. The <a href="/risk-tools.html">risk toolkit</a> runs the arithmetic and <a href="/guides/drawdown-recovery-math.html">drawdown recovery math</a> shows what happens if you skip step five.</li>
+      </ol>
       <p class="callout">Educational content, not financial advice. No live profit-and-loss figures are claimed anywhere on this site; backtest and walk-forward results are always labelled as such. Full terms: <a href="/terms.html">/terms.html</a></p>
 
       <h2>Tools referenced in this guide</h2>
@@ -153,12 +255,14 @@ common k values: 1.5 to 3.0 for swing timeframes</span>
       <h2>Quick answers</h2>
     </div>
     <div class="grid" style="margin-top:var(--s6)">
-      <article class="card faq-card"><h3>Where does the stop go?</h3><p>Just beyond the level that proves the idea wrong, and at least about 1 ATR away so noise alone cannot hit it.</p></article>
-      <article class="card faq-card"><h3>Stop first or size first?</h3><p>Stop first, always. Entry minus stop is 1R per share; risk budget divided by 1R gives the share count. You do not choose the size.</p></article>
-      <article class="card faq-card"><h3>What is an ATR stop?</h3><p>Distance set as 1.5-3x ATR14, so it scales to the instrument&#x27;s own noise. Volatile names get wider stops and automatically smaller positions.</p></article>
-      <article class="card faq-card"><h3>Are percentage stops fine?</h3><p>Weakest option — they ignore structure and volatility. Useful only as a beginner rule or an outer cap on a structural stop.</p></article>
-      <article class="card faq-card"><h3>Where not to put one?</h3><p>Not on round numbers, not exactly at the obvious swing low, not inside 1 ATR, and never at a dollar figure that merely feels tolerable.</p></article>
-      <article class="card faq-card"><h3>Can you move a stop?</h3><p>Only tighter. Trailing up is fine if the rule pre-existed. Widening turns a defined 1R loss into an undefined one, under pressure.</p></article>
+      <article class="card faq-card"><h3>Where should you place a stop loss?</h3><p>Place it just beyond the price that would prove the trade idea wrong, which is usually a structural level such as the low of a base, a consolidation floor, or the anchored VWAP that generated the signal. Then check that this distance is at least about one average true range, because anything tighter sits inside normal noise and will be hit at random.</p></article>
+      <article class="card faq-card"><h3>Does the stop determine position size, or the other way round?</h3><p>The stop determines position size. Find the invalidation price first, treat the entry-to-stop distance as 1R per share, then divide your account risk budget by that distance to get the share count. A $30,000 account risking 1% has a $300 budget, so a $2.40 stop distance allows 125 shares and a $0.60 stop distance allows 500.</p></article>
+      <article class="card faq-card"><h3>How do you calculate ATR for a stop?</h3><p>True range for a bar is the largest of the high minus low, the absolute high minus previous close, and the absolute low minus previous close, which is what makes ATR account for gaps. Wilder&#x27;s ATR14 then smooths it as previous ATR times 13 plus today&#x27;s true range, all divided by 14. That smoothing is slow on purpose: a day with a true range two and a half times normal moves an ATR of 1.20 only to about 1.34.</p></article>
+      <article class="card faq-card"><h3>Are percentage stops any good?</h3><p>A fixed 7% or 8% stop ignores both structure and volatility, so it is far too wide for a low-volatility stock and far too tight for a leveraged ETF or a small-cap. Its only real virtue is that it cannot be rationalised away, which makes it a reasonable outer cap or a beginner&#x27;s starting rule.</p></article>
+      <article class="card faq-card"><h3>Can a stop loss lose more than you planned?</h3><p>Yes, and this is the assumption most sizing arithmetic quietly makes. A 125-share position with a planned 300 dollar risk that gaps from an entry of 48.00 to a fill at 40.95 loses 881 dollars, or 2.94R. The same event on a 500-share version with a tighter stop and identical planned risk loses 3,525 dollars, or 11.75R, because gap damage scales with shares held rather than with stop distance.</p></article>
+      <article class="card faq-card"><h3>Where should you never put a stop?</h3><p>Avoid exact round numbers such as 50.00 or 100.00, avoid sitting exactly at the obvious swing low that every chart reader can see, and avoid placing one inside a high volume area where ordinary two-sided trade will hit it. Also avoid any distance inside roughly one ATR, and avoid setting the stop at a dollar amount you find comfortable rather than at a level the chart justifies.</p></article>
+      <article class="card faq-card"><h3>What is the best way to trail a stop?</h3><p>There is no free method, only different things given up. Fixed-R trailing converts normal pullbacks into scratches, an ATR chandelier at three times ATR22 returns a large slice of the open gain before exiting, structure trailing is hard to define consistently, and a moving-average exit lags at turns. Pick based on whether your returns come from a fat right tail, in which case wider is usually correct.</p></article>
+      <article class="card faq-card"><h3>Should you ever move a stop loss?</h3><p>Move it in the direction of reduced risk only. Trailing a stop up in a long position, or to breakeven, is fine when the rule was defined before entry. Widening a stop converts a known 1R loss into an unknown one and always happens under pressure, which is why it is the most damaging habit in retail trading.</p></article>
     </div>
   </section>
 

@@ -25,8 +25,8 @@
 <meta name="twitter:image" content="https://yusuf-gadelrab.github.io/og-card.png">
 <link rel="alternate" type="text/plain" href="https://yusuf-gadelrab.github.io/llms-full.txt" title="Plain-text profile for language models">
 
-<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"TechArticle","@id":"https://yusuf-gadelrab.github.io/guides/anchored-vwap.html#article","headline":"Anchored VWAP Explained: Anchors, Reclaims, and What the Data Said","name":"Anchored VWAP Explained: Anchors, Reclaims, and What the Data Said","description":"What anchored VWAP is, how it differs from session VWAP, where to anchor, what a reclaim means, and the walk-forward result behind it.","datePublished":"2026-07-29","dateModified":"2026-07-29","inLanguage":"en","author":{"@id":"https://yusuf-gadelrab.github.io/#person"},"publisher":{"@id":"https://yusuf-gadelrab.github.io/#person"},"about":["Anchored VWAP","Technical analysis","Swing trading"],"mainEntityOfPage":"https://yusuf-gadelrab.github.io/guides/anchored-vwap.html","isAccessibleForFree":true,"proficiencyLevel":"Beginner"},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://yusuf-gadelrab.github.io/"},{"@type":"ListItem","position":2,"name":"Guides","item":"https://yusuf-gadelrab.github.io/guides.html"},{"@type":"ListItem","position":3,"name":"Anchored VWAP"}]}]}</script>
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","@id":"https://yusuf-gadelrab.github.io/guides/anchored-vwap.html#faq","mainEntity":[{"@type":"Question","name":"What is anchored VWAP?","acceptedAnswer":{"@type":"Answer","text":"Anchored VWAP is a volume-weighted average price calculated from a specific bar you choose rather than from the session open. It represents the average price paid by everyone who has traded since that anchor event, so price above the line means that cohort is collectively in profit and below means it is underwater."}},{"@type":"Question","name":"How is anchored VWAP different from regular VWAP?","acceptedAnswer":{"@type":"Answer","text":"Regular VWAP resets at the start of each session and is mostly used intraday. Anchored VWAP starts at an event you select — an earnings gap, a 52-week high, the start of a base — and keeps running for as long as that event stays relevant, which makes it usable on swing and position timeframes."}},{"@type":"Question","name":"Where should you anchor a VWAP?","acceptedAnswer":{"@type":"Answer","text":"Anchor to bars where ownership genuinely changed: earnings gaps, 52-week highs or lows, major news, index inclusion, the start of a consolidation, or a prior failed breakout. If you cannot state in one sentence why that bar mattered, it is not a valid anchor."}},{"@type":"Question","name":"What does an AVWAP reclaim mean?","acceptedAnswer":{"@type":"Answer","text":"A reclaim is price crossing back above an anchored VWAP it had been trading below, and holding there. It signals that the average buyer since the anchor event has moved from a loss to breakeven, which removes overhead supply from traders who were waiting to exit flat."}},{"@type":"Question","name":"Does the AVWAP reclaim setup actually work?","acceptedAnswer":{"@type":"Answer","text":"In my own walk-forward testing it was the only setup that survived, but the headline shrank under re-testing. An early +0.23R over 101 trades on 8 names was not reproducible; on a 129-symbol, 10-year universe it is +0.117R over 4,933 trades (95% CI +0.057 to +0.174), and a risk-matched random entry already captures +0.086R of that. A VCP-style contraction came out roughly breakeven and a gap/opening-range-breakout proxy came out at -0.28R and was dropped. That is a marginal edge at best, and it is educational information rather than advice."}},{"@type":"Question","name":"Who popularised anchored VWAP?","acceptedAnswer":{"@type":"Answer","text":"Brian Shannon is the practitioner most associated with popularising anchored VWAP for swing and position trading, framing it around what participants actually paid rather than around indicator signals."}}]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"TechArticle","@id":"https://yusuf-gadelrab.github.io/guides/anchored-vwap.html#article","headline":"Anchored VWAP Explained: Anchors, Reclaims, and What the Data Said","name":"Anchored VWAP Explained: Anchors, Reclaims, and What the Data Said","description":"What anchored VWAP is, how it differs from session VWAP, where to anchor, what a reclaim means, and the walk-forward result behind it.","datePublished":"2026-07-29","dateModified":"2026-07-29","inLanguage":"en","author":{"@id":"https://yusuf-gadelrab.github.io/#person"},"publisher":{"@id":"https://yusuf-gadelrab.github.io/#person"},"about":["Anchored VWAP","Technical analysis","Swing trading"],"mainEntityOfPage":"https://yusuf-gadelrab.github.io/guides/anchored-vwap.html","isAccessibleForFree":true,"isPartOf":{"@id":"https://yusuf-gadelrab.github.io/#website"},"proficiencyLevel":"Beginner","hasPart":{"@id":"https://yusuf-gadelrab.github.io/guides/anchored-vwap.html#howto"}},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://yusuf-gadelrab.github.io/"},{"@type":"ListItem","position":2,"name":"Guides","item":"https://yusuf-gadelrab.github.io/guides.html"},{"@type":"ListItem","position":3,"name":"Anchored VWAP"}]},{"@type":"HowTo","@id":"https://yusuf-gadelrab.github.io/guides/anchored-vwap.html#howto","name":"How to use anchored VWAP without fooling yourself","description":"What anchored VWAP is, how it differs from session VWAP, where to anchor, what a reclaim means, and the walk-forward result behind it.","inLanguage":"en","isAccessibleForFree":true,"author":{"@id":"https://yusuf-gadelrab.github.io/#person"},"step":[{"@type":"HowToStep","position":1,"name":"Pick the anchor before you look at the outcome, and score it against","text":"Pick the anchor before you look at the outcome, and score it against fixed criteria. Anchoring after the fact is how every chart becomes a winning chart.","url":"https://yusuf-gadelrab.github.io/guides/anchored-vwap.html#howto"},{"@type":"HowToStep","position":2,"name":"Use one anchor per thesis, capped at three lines","text":"Use one anchor per thesis, capped at three lines. Eight anchors put a line near price a third of the time for no reason at all.","url":"https://yusuf-gadelrab.github.io/guides/anchored-vwap.html#howto"},{"@type":"HowToStep","position":3,"name":"Define the stop as part of the signal, not after entry","text":"Define the stop as part of the signal, not after entry. If the AVWAP generated the entry, the AVWAP defines the invalidation.","url":"https://yusuf-gadelrab.github.io/guides/anchored-vwap.html#howto"},{"@type":"HowToStep","position":4,"name":"Fill on the bar after confirmation, never on the close that produced","text":"Fill on the bar after confirmation, never on the close that produced the signal. That single index is the difference between a test and a fantasy.","url":"https://yusuf-gadelrab.github.io/guides/anchored-vwap.html#howto"},{"@type":"HowToStep","position":5,"name":"Fix the session, bar interval, price input and anchor-inclusion","text":"Fix the session, bar interval, price input and anchor-inclusion settings once, and reconcile them between your platform and any testing tool.","url":"https://yusuf-gadelrab.github.io/guides/anchored-vwap.html#howto"},{"@type":"HowToStep","position":6,"name":"Log every trade in R and judge the setup on hundreds of trades, not five","text":"Log every trade in R and judge the setup on hundreds of trades, not five. A +0.20R edge needs several hundred trades before it is distinguishable from zero.","url":"https://yusuf-gadelrab.github.io/guides/anchored-vwap.html#howto"},{"@type":"HowToStep","position":7,"name":"Assume your edge is smaller than the backtest says, because costs,","text":"Assume your edge is smaller than the backtest says, because costs, slippage, and your own hesitation are not in the backtest — and because on this setup a random entry captured most of it.","url":"https://yusuf-gadelrab.github.io/guides/anchored-vwap.html#howto"}]}]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","@id":"https://yusuf-gadelrab.github.io/guides/anchored-vwap.html#faq","mainEntity":[{"@type":"Question","name":"What is anchored VWAP?","acceptedAnswer":{"@type":"Answer","text":"Anchored VWAP is a volume-weighted average price calculated from a specific bar you choose rather than from the session open. It represents the average price paid by everyone who has traded since that anchor event, so price above the line means that cohort is collectively in profit and below means it is underwater."}},{"@type":"Question","name":"How is anchored VWAP different from regular VWAP?","acceptedAnswer":{"@type":"Answer","text":"Regular VWAP resets at the start of each session and is mostly used intraday. Anchored VWAP starts at an event you select, such as an earnings gap, a 52-week high or the start of a base, and keeps running for as long as that event stays relevant, which makes it usable on swing and position timeframes."}},{"@type":"Question","name":"Where should you anchor a VWAP?","acceptedAnswer":{"@type":"Answer","text":"Anchor to bars where ownership genuinely changed: earnings gaps, 52-week highs or lows, major news, index inclusion, the start of a consolidation, or a prior failed breakout. If you cannot state in one sentence why that bar mattered, it is not a valid anchor."}},{"@type":"Question","name":"What does an AVWAP reclaim mean?","acceptedAnswer":{"@type":"Answer","text":"A reclaim is price crossing back above an anchored VWAP it had been trading below, and holding there. It signals that the average buyer since the anchor event has moved from a loss to breakeven, which removes overhead supply from traders who were waiting to exit flat."}},{"@type":"Question","name":"Does the AVWAP reclaim setup actually work?","acceptedAnswer":{"@type":"Answer","text":"In my own walk-forward testing it was the only setup that survived, but it is not a validated edge. On a 129-symbol, 10-year universe the result is +0.117R over 4,933 trades with a 95% confidence interval of +0.057 to +0.174, and a risk-matched random entry using the same exits and sizing already captures +0.086R of that, leaving the signal's own contribution at about +0.030R with a confidence interval that crosses zero. An earlier +0.23R over 101 trades is retired because it failed my own adversarial re-test. This is educational information rather than advice."}},{"@type":"Question","name":"How do you calculate anchored VWAP?","acceptedAnswer":{"@type":"Answer","text":"Sum typical price times volume from the anchor bar to the current bar, then divide by the summed volume over the same span, where typical price is high plus low plus close divided by three. Both sums are cumulative and never reset, so the line becomes progressively less sensitive to each new bar. It is dragged toward whatever price actually transacted the most volume, which is what distinguishes it from a moving average."}},{"@type":"Question","name":"Where do you put the stop on an AVWAP trade?","acceptedAnswer":{"@type":"Answer","text":"Just below the anchored VWAP itself, offset by a volatility buffer such as half of ATR14, so the signal and the invalidation are the same object. With the line at 50.31 and ATR14 at 1.60, the stop is 50.31 minus 0.80, or 49.51, and an entry at 51.50 makes 1R equal 1.99 per share. Because the line rises as price rises on volume, the stop trails automatically without you choosing a percentage."}},{"@type":"Question","name":"How many anchored VWAPs should you have on a chart?","acceptedAnswer":{"@type":"Answer","text":"One per thesis, capped at about three. If a stock trades in a 20 dollar range and you count anything within 1% of price as confluence, a single anchor lands there 5% of the time by chance but eight anchors land there 33.7% of the time. Eight lines guarantee that one of them looks meaningful, which is the same multiple-comparisons problem that ruins backtests, applied to a chart."}},{"@type":"Question","name":"Who popularised anchored VWAP?","acceptedAnswer":{"@type":"Answer","text":"Brian Shannon is the practitioner most associated with popularising anchored VWAP for swing and position trading, framing it around what participants actually paid rather than around indicator signals."}}]}</script>
 
 <link rel="stylesheet" href="/css/site.css">
 <style>
@@ -50,16 +50,16 @@
     color:var(--muted);font-size:var(--t-small);margin:0 0 var(--s5)}
   .callout--warn{border-color:var(--gold-2)}
   .faq-card{padding:var(--s5)}
-  .faq-card h3{font-size:var(--t-h3);margin:0}
-  .faq-card p{color:var(--muted);font-size:var(--t-small);margin:var(--s3) 0 0}
+  .faq-card h3{font-size:var(--t-h3);margin:0;line-height:1.3}
+  .faq-card p{color:var(--muted);font-size:var(--t-small);line-height:1.65;margin:var(--s3) 0 0}
 </style>
 </head>
 <body class="pro">
 
 <a class="skip-link" href="#main">Skip to content</a>
 
-<nav class="site-nav">
-  <a class="site-nav__brand" href="/"><img class="site-nav__lion" src="/img/brand/lion-mark.svg" alt="" width="34" height="34"><span>YUSUF GADELRAB</span></a>
+<nav class="site-nav" aria-label="Primary">
+  <a class="site-nav__brand" href="/"><img class="site-nav__lion" src="/img/brand/lion-mark.svg" alt="" width="34" height="34" decoding="async"><span>YUSUF GADELRAB</span></a>
   <div class="site-nav__links">
     <a href="/">Work</a>
     <a href="/guides.html">Guides</a>
@@ -90,41 +90,200 @@
     <div class="prose">
       <h2>What is anchored VWAP?</h2>
       <p>VWAP — volume-weighted average price — is the average price paid per share over a period, weighting each price by the volume traded there. Standard VWAP resets every session. <strong>Anchored VWAP (AVWAP) starts from a bar you choose</strong> and keeps running from there.</p>
-      <span class="formula">VWAP = Σ(price × volume) ÷ Σ(volume), summed from the anchor bar to now</span>
+      <span class="formula" tabindex="0" role="group" aria-label="Formula, scrolls horizontally">VWAP = Σ(price × volume) ÷ Σ(volume), summed from the anchor bar to now</span>
       <p>That choice is the whole idea. Anchor to an earnings gap and the line tracks the average cost basis of everyone who has traded since that earnings report. When price sits above it, that cohort is collectively in profit; below it, collectively underwater. The technique was popularised by Brian Shannon, whose framing is that price and volume tell you what participants actually did, not what they said.</p>
+      <h2>The running calculation, bar by bar</h2>
+      <p>AVWAP is a cumulative statistic, not a rolling one. Both sums run from the anchor and never reset, which is why the line gets progressively less sensitive to any single new bar — a hundred bars after the anchor, one day's volume moves it very little. Typical price is the standard input: (high + low + close) ÷ 3.</p>
+      <p>Eight daily bars, anchored on bar 1, which is the earnings gap. Volumes are in millions and every column is shown so the arithmetic is reproducible:</p>
+      <div class="tblwrap" tabindex="0" role="group" aria-label="Table, scrolls horizontally"><table class="tbl">
+        <thead><tr><th scope="col">Bar</th><th scope="col">High</th><th scope="col">Low</th><th scope="col">Close</th><th scope="col">Typical price</th><th scope="col">Vol (M)</th><th scope="col">TP × Vol</th><th scope="col">Cum TP×Vol</th><th scope="col">Cum Vol</th><th scope="col">AVWAP</th><th scope="col">Close vs line</th></tr></thead>
+        <tbody>
+          <tr><td>1</td><td>52.40</td><td>49.10</td><td>51.80</td><td>51.1000</td><td>18.0</td><td>919.800</td><td>919.800</td><td>18.0</td><td>51.1000</td><td>above</td></tr>
+          <tr><td>2</td><td>52.10</td><td>50.60</td><td>50.90</td><td>51.2000</td><td>9.0</td><td>460.800</td><td>1,380.600</td><td>27.0</td><td>51.1333</td><td>below</td></tr>
+          <tr><td>3</td><td>51.20</td><td>49.40</td><td>49.60</td><td>50.0667</td><td>11.0</td><td>550.733</td><td>1,931.333</td><td>38.0</td><td>50.8246</td><td>below</td></tr>
+          <tr><td>4</td><td>50.00</td><td>48.20</td><td>48.50</td><td>48.9000</td><td>14.0</td><td>684.600</td><td>2,615.933</td><td>52.0</td><td>50.3064</td><td>below</td></tr>
+          <tr><td>5</td><td>49.60</td><td>47.90</td><td>49.40</td><td>48.9667</td><td>8.0</td><td>391.733</td><td>3,007.667</td><td>60.0</td><td>50.1278</td><td>below</td></tr>
+          <tr><td>6</td><td>50.80</td><td>49.20</td><td>50.60</td><td>50.2000</td><td>12.0</td><td>602.400</td><td>3,610.067</td><td>72.0</td><td>50.1398</td><td><strong>above — reclaim</strong></td></tr>
+          <tr><td>7</td><td>51.60</td><td>50.30</td><td>51.40</td><td>51.1000</td><td>16.0</td><td>817.600</td><td>4,427.667</td><td>88.0</td><td>50.3144</td><td><strong>above — confirms</strong></td></tr>
+          <tr><td>8</td><td>52.20</td><td>51.00</td><td>52.00</td><td>51.7333</td><td>13.0</td><td>672.533</td><td>5,100.200</td><td>101.0</td><td>50.4970</td><td>above</td></tr>
+        </tbody>
+      </table></div>
+      <span class="formula" tabindex="0" role="group" aria-label="Formula, scrolls horizontally">Bar 6, worked in full:
+
+  typical price = (50.80 + 49.20 + 50.60) ÷ 3 = 150.60 ÷ 3 = 50.2000
+  TP × volume   = 50.2000 × 12.0 = 602.400
+  cumulative    = 3,007.667 + 602.400 = 3,610.067
+  cum volume    = 60.0 + 12.0 = 72.0
+  AVWAP         = 3,610.067 ÷ 72.0 = 50.1398
+
+  close 50.60 is above 50.1398  →  the line is reclaimed</span>
+      <p>Two structural things are visible in that table. Price lost the line on bar 2 and spent four bars underneath it, so everyone who bought since the earnings gap was collectively underwater for four sessions. And the AVWAP itself drifted <em>down</em> from 51.13 to 50.13 while price fell, because the heavy volume on bars 3 and 4 traded below the existing average. <strong>The line is not a fixed level; it is dragged toward wherever the volume actually transacts.</strong> That is the property that makes it different from a moving average, which weights a quiet day and a capitulation day identically.</p>
       <h2>Where do you anchor?</h2>
       <p>An anchor is only meaningful if the event changed who owns the stock. Useful anchors:</p>
       <ul>
-        <li>The earnings gap — the most common one, because it resets the story</li>
+        <li>The earnings gap — the most common one, because it resets the story and usually prints the highest volume bar of the quarter</li>
         <li>A 52-week high or low, where a lot of positioning changed hands</li>
-        <li>The first bar of a major news event, index inclusion, or guidance change</li>
+        <li>The first bar of a major news event, index inclusion, guidance change, or an analyst-day repricing</li>
         <li>The start of a base or consolidation, to see whether the base is being absorbed or distributed</li>
         <li>The exact bar of a prior failed breakout, to measure whether trapped buyers are back to breakeven</li>
+        <li>A capitulation bar — the highest-volume down day of a decline — which anchors to the cohort most likely to sell into any bounce</li>
       </ul>
       <p>Anchoring to a random Tuesday produces a line that looks meaningful and means nothing. If you cannot say in one sentence why that bar mattered, it is not an anchor.</p>
-      <h2>What is an AVWAP reclaim?</h2>
-      <p>A reclaim is price crossing back above an anchored VWAP it had been trading under, and then holding. The reading is simple: the average buyer since that event has gone from losing to breaking even. Supply that was overhead — people waiting to get out flat — is either gone or has stopped pressing.</p>
-      <p>The mechanical version I test looks for three things: price closes back above the AVWAP from a defined anchor, the reclaim holds for a confirming bar rather than wicking through, and the stop goes just below the AVWAP so the invalidation is the same line that generated the signal. That last part matters — <strong>the setup and the risk are defined by the same object</strong>, which is what makes it sizeable.</p>
-      <h2>Does it actually work?</h2>
-      <p>Some of it does. I built a screener and a no-lookahead backtest engine, then ran my own swing setups through walk-forward testing rather than a curve-fit in-sample check. Most of them did not survive.</p>
-      <div class="tblwrap"><table class="tbl">
-        <thead><tr><th>Setup</th><th>Walk-forward result</th><th>Verdict</th></tr></thead>
+      <h3>Scoring a candidate anchor</h3>
+      <p>The discipline that stops anchor selection from becoming after-the-fact chart drawing is to score candidates on criteria fixed in advance, before you look at where the resulting line sits. Four criteria, 0 to 2 each:</p>
+      <div class="tblwrap" tabindex="0" role="group" aria-label="Table, scrolls horizontally"><table class="tbl">
+        <thead><tr><th scope="col">Criterion</th><th scope="col">0 points</th><th scope="col">1 point</th><th scope="col">2 points</th></tr></thead>
         <tbody>
-          <tr><td>AVWAP reclaim</td><td>+0.117R over 4,933 trades (95% CI +0.057 to +0.174)</td><td>Kept — the only survivor. An earlier +0.23R on 101 trades did not survive my own re-test</td></tr>
-          <tr><td>VCP-style contraction</td><td>≈ breakeven</td><td>Neutral, not traded mechanically</td></tr>
-          <tr><td>Gap / opening-range-breakout proxy</td><td>−0.28R</td><td>Dropped</td></tr>
+          <tr><td>Volume at the anchor bar</td><td>Below the 50-day average</td><td>1–2× average</td><td>More than 2× average</td></tr>
+          <tr><td>Did the story change?</td><td>No identifiable event</td><td>Technical event only (new high, base start)</td><td>A named fundamental event: earnings, guidance, index inclusion</td></tr>
+          <tr><td>Age of the anchor</td><td>Older than about a year, or fewer than 10 bars ago</td><td>3–12 months</td><td>1–3 months, still the dominant narrative</td></tr>
+          <tr><td>Has price respected the line?</td><td>Price has crossed it repeatedly with no reaction</td><td>One or two clean reactions</td><td>Three or more clean touches or rejections</td></tr>
         </tbody>
       </table></div>
-      <p>+0.117R per trade is not a windfall. It is a marginal edge that only shows up over thousands of trades and gets erased by sloppy execution or oversized positions — and against a risk-matched random entry, only about +0.030R of it is attributable to the AVWAP trigger at all, with a confidence interval that crosses zero. My first version of this number was +0.23R over 101 trades; it did not survive my own adversarial re-test. I published that alongside it, because a strategy write-up without the failures is marketing.</p>
-      <p>Two filters I expected to help — a market-regime filter and a normalised-momentum-lag filter — were tested on the same data and <strong>cut expectancy</strong>, so both were rejected. <a href="/swing-screener.html">The full write-up is here →</a></p>
+      <p>Six or more out of eight is worth trading. Below four, the line is decoration. The fourth criterion is the one people skip and it is the most informative: <strong>an anchor nobody is trading against is just a curve on a chart</strong>, and the evidence that participants care is that price has already reacted to it more than once.</p>
+      <p>The age criterion cuts both ways for a reason. A very fresh anchor has too little volume behind it, so the line whips around on every new bar and generates signals that reverse the next day. A very old one has so much cumulative volume that a full day of trading barely moves it, and the cohort it represents has largely turned over anyway.</p>
+      <h2>Multi-anchor confluence, and why it is mostly an illusion</h2>
+      <p>The seductive pattern is two or three AVWAPs from different anchors converging at the same price. The claim is that this marks a level where several cohorts share a breakeven. Sometimes that is real. Usually it is a counting artefact, and the arithmetic shows why.</p>
+      <p>Suppose a stock trades in a $20 range around $50 and you call it confluence when an AVWAP sits within ±1% of current price — a $1.00-wide band out of a $20 range, so roughly a 5% chance per anchor if the lines were placed at random:</p>
+      <div class="tblwrap" tabindex="0" role="group" aria-label="Table, scrolls horizontally"><table class="tbl">
+        <thead><tr><th scope="col">Anchors on the chart</th><th scope="col">P(at least one within ±0.5%)</th><th scope="col">P(at least one within ±1%)</th></tr></thead>
+        <tbody>
+          <tr><td>1</td><td>2.5%</td><td>5.0%</td></tr>
+          <tr><td>3</td><td>7.3%</td><td>14.3%</td></tr>
+          <tr><td>5</td><td>11.9%</td><td>22.6%</td></tr>
+          <tr><td>8</td><td>18.3%</td><td>33.7%</td></tr>
+        </tbody>
+      </table></div>
+      <p>Put eight anchors on a chart and a third of the time one of them is sitting near price for no reason at all. That is the same multiple-comparisons problem that ruins backtests, applied to a chart — the treatment is identical and it is covered properly in the <a href="/guides/backtest-overfitting.html">backtest overfitting guide</a>. The working rules:</p>
+      <ul>
+        <li><strong>One anchor per thesis, chosen before entry.</strong> If the thesis is "buyers since the Q2 gap are back to breakeven", there is exactly one line that tests it.</li>
+        <li><strong>Confluence only counts if each anchor was independently scored above the threshold.</strong> Two 7-out-of-8 anchors converging is information. A 7 and a 2 converging is one anchor and a coincidence.</li>
+        <li><strong>Never add an anchor after seeing where price is.</strong> That is drawing the target around the arrow.</li>
+        <li><strong>Cap the chart at three lines.</strong> Not because three is magic, but because a hard cap forces the selection decision to happen consciously.</li>
+      </ul>
+      <h2>What is an AVWAP reclaim?</h2>
+      <p>A reclaim is price crossing back above an anchored VWAP it had been trading under, and then holding. The reading is simple: the average buyer since that event has gone from losing to breaking even. Supply that was overhead — people waiting to get out flat — is either gone or has stopped pressing.</p>
+      <p>Stated mechanically enough to code, which is the only version that can be tested:</p>
+      <span class="formula" tabindex="0" role="group" aria-label="Formula, scrolls horizontally">ENTRY CONDITIONS  (all must hold)
+
+  1. anchor is defined and scored 6 of 8 or better,
+     and it was defined before this bar existed
+  2. price closed BELOW the AVWAP for at least N bars
+     (N = 3 in my tests; fewer and it is noise, not a reclaim)
+  3. current bar CLOSES above the AVWAP
+  4. next bar also closes above the AVWAP        -- confirmation
+     and does not close below the reclaim bar's low
+  5. volume on the reclaim bar is at or above its 20-bar average
+  6. fill is the OPEN of the bar after confirmation,
+     never the close that generated the signal
+
+INVALIDATION
+
+  stop = AVWAP at entry − (0.5 × ATR14)
+  exit if price closes below the AVWAP for 2 consecutive bars
+
+Everything above is knowable at the time it is used.
+That is the property that makes it testable.</span>
+      <p>Condition 6 is the one that silently invents edges when you get it wrong. The reclaim is only known once the bar has closed, so the earliest honest fill is the following open. Filling at the signal close is the textbook <a href="/guides/walk-forward-backtest.html">lookahead bias</a>, and on a mean-reverting signal it can flip a losing system into a spectacular one.</p>
+      <p>Condition 2 is the one that separates a reclaim from a routine oscillation. Without a minimum number of bars beneath the line, every intraday wiggle across a flat AVWAP registers as a signal, and you end up with hundreds of trades that are measuring nothing but the spread.</p>
+      <h2>Stop placement, worked</h2>
+      <p>The design property that makes this setup sizeable is that <strong>the signal and the invalidation are the same object</strong>. If the thesis is "the average buyer since the anchor is no longer underwater", then the thesis is wrong precisely when price is back below that line. You do not need a second, unrelated rule to tell you when to leave.</p>
+      <p>Continuing the worked example. Confirmation came on bar 7, so entry is the bar 8 open at $51.50, with the AVWAP at $50.3144 and ATR14 at $1.60:</p>
+      <span class="formula" tabindex="0" role="group" aria-label="Formula, scrolls horizontally">buffer  = 0.5 × ATR14 = 0.5 × 1.60 = 0.80
+stop    = 50.3144 − 0.80 = 49.5144  →  49.51
+
+1R per share = 51.50 − 49.51 = 1.99   (3.86% of price)
+
+$30,000 account at 1% risk = $300 budget
+  shares   = 300 ÷ 1.99 = 150.75 → round DOWN to 150
+  risk     = 150 × 1.99 = $298.50
+  position = 150 × 51.50 = $7,725 = 25.75% of the account
+
+Targets:  1R = 53.49   2R = 55.48   3R = 57.47
+
+Trailing, once bar 8 closes:
+  AVWAP has risen to 50.4970
+  new stop = 50.4970 − 0.80 = 49.70   (tightened $0.19)</span>
+      <p>Three things in that arithmetic are worth arguing with. The buffer must scale with volatility — a fixed cent amount gets run over on a wide-range name and sits too far away on a quiet one, which is why it is expressed as an ATR multiple. The share count rounds <em>down</em>, always, so the realised risk is $298.50 rather than something above the budget. And the position works out to 25.75% of the account, which is over the notional cap most sizing rules apply on top of the risk rule — that conflict is resolved by cutting share count, never by tightening the stop, and the logic is in the <a href="/guides/position-sizing-per-trade.html">position sizing guide</a>.</p>
+      <p>The trailing behaviour is a genuine feature of the technique. Because AVWAP rises when price rises on volume, a stop pinned to it tightens automatically without you choosing a percentage — the line does the trailing. The cost is that in a fast advance the line lags far behind, so it gives back a lot before stopping out. Pairing it with a structural stop from the <a href="/guides/stop-loss-placement.html">stop placement guide</a>, and taking whichever is tighter once you are past 1R, is the usual compromise.</p>
+      <h2>AVWAP and volume profile</h2>
+      <p>These two tools answer adjacent questions and are strongest together. AVWAP gives you <em>one number</em>: the average price paid since a specific event. Volume profile gives you the <em>whole distribution</em>: how much volume traded at each price over a period, regardless of when.</p>
+      <div class="tblwrap" tabindex="0" role="group" aria-label="Table, scrolls horizontally"><table class="tbl">
+        <thead><tr><th scope="col"></th><th scope="col">Anchored VWAP</th><th scope="col">Volume profile</th></tr></thead>
+        <tbody>
+          <tr><td>What it summarises</td><td>The mean of a cohort's cost basis</td><td>The full shape of transacted volume by price</td></tr>
+          <tr><td>Time dimension</td><td>Central — the anchor defines the cohort</td><td>Absent — it aggregates across the whole window</td></tr>
+          <tr><td>Answers</td><td>Is this cohort in profit?</td><td>Where is acceptance, and where is the gap?</td></tr>
+          <tr><td>Best signal</td><td>A reclaim of the line</td><td>A rejection at a low-volume node, or acceptance into a high-volume node</td></tr>
+          <tr><td>Weakness</td><td>A single number hides a bimodal distribution</td><td>Says nothing about who is holding, or when they bought</td></tr>
+        </tbody>
+      </table></div>
+      <p>The combination that carries real information is <strong>an AVWAP reclaim happening at the lower edge of a high-volume node</strong>. The AVWAP says the cohort has stopped losing; the profile says there is enough transacted volume at that price for the level to be defended rather than sliced through. The combination that should make you suspicious is an AVWAP sitting in a low-volume gap, because almost nothing changed hands there, so almost nobody has a decision to make at that price.</p>
+      <p>This is also the honest limit of AVWAP as a concept. A mean is a poor summary of a bimodal distribution: if half the volume since the anchor traded at $45 and half at $56, the AVWAP reads about $50 and describes precisely nobody. Overlaying the <a href="/guides/volume-profile.html">volume profile</a> is how you find out whether the average you are trading against actually represents a real cluster of participants. When the same anchor sits inside a tightening range, the <a href="/guides/vcp-base-patterns.html">VCP base structure</a> is often the better read of what is happening.</p>
+      <h2>Timeframe and session inclusion</h2>
+      <p>Two configuration choices change the line materially and neither has a universally correct answer, which means both must be fixed in advance and applied consistently.</p>
+      <ul>
+        <li><strong>Bar interval.</strong> AVWAP computed from daily bars and from 5-minute bars over the same span will not match, because typical price is an approximation and the approximation error differs with bar size. Finer bars are more accurate and vastly more data. Pick the interval you will actually trade on and never mix them within one study.</li>
+        <li><strong>Extended hours.</strong> Including pre- and post-market volume changes both sums. Most large caps trade a modest share of volume outside regular hours, but it is concentrated around news and therefore at prices away from the regular-hours average, so it pulls the line disproportionately.</li>
+        <li><strong>Anchor bar inclusion.</strong> Does the anchor bar itself count, or does the sum start on the bar after? On a huge earnings gap this is not a rounding difference — the gap bar is often the largest single volume contribution in the whole series.</li>
+        <li><strong>Price input.</strong> Typical price (H+L+C)/3 is standard; some platforms use the close, others use (H+L)/2. On a wide-range bar these differ by a meaningful amount and the difference compounds through the cumulative sum.</li>
+        <li><strong>Adjustments.</strong> Splits and dividends must be applied consistently to prices and volumes across the whole series, or the cumulative sums are silently wrong from the adjustment date backwards.</li>
+      </ul>
+      <span class="formula" tabindex="0" role="group" aria-label="Formula, scrolls horizontally">Illustrative sensitivity to extended-hours inclusion:
+
+  shift in AVWAP ≈ (share of volume outside RTH)
+                   × (its average price offset)
+
+  8% of volume trading 1.5% away from the RTH average
+    → 0.08 × 1.5% = 0.12% shift = $0.06 on a $50 stock
+
+  15% of volume trading 3.0% away
+    → 0.15 × 3.0% = 0.45% shift = $0.23 on a $50 stock
+
+Against a stop buffer of $0.80, the first is noise and the
+second is not. It is a configuration decision, not a detail.</span>
+      <p>The practical consequence: <strong>your platform's AVWAP and your backtest engine's AVWAP will disagree unless you have checked all five settings.</strong> Reconcile them on one symbol, one anchor, one date before you trust any result that spans the two, because a systematic offset of even a few cents changes which bars register as reclaims.</p>
+      <h2>Does it actually work?</h2>
+      <p>Partly, and less than the headline suggests. I built a screener and a no-lookahead backtest engine, then ran my own swing setups through walk-forward testing rather than a curve-fit in-sample check. Most of them did not survive.</p>
+      <div class="tblwrap" tabindex="0" role="group" aria-label="Table, scrolls horizontally"><table class="tbl">
+        <thead><tr><th scope="col">Setup</th><th scope="col">Walk-forward result</th><th scope="col">Verdict</th></tr></thead>
+        <tbody>
+          <tr><td>AVWAP reclaim</td><td>+0.117R over 4,933 trades, 129-symbol 10-year universe, 95% CI [+0.057, +0.174]</td><td>The only survivor — but see the random-entry control below. An earlier +0.23R on 101 trades is retired: it failed my own adversarial re-test</td></tr>
+          <tr><td>VCP-style contraction</td><td>≈ breakeven</td><td>Neutral, not traded mechanically</td></tr>
+          <tr><td>Gap / opening-range-breakout proxy</td><td>−0.28R</td><td>Dropped</td></tr>
+          <tr><td>Market-regime filter</td><td>Reduced expectancy</td><td>Rejected</td></tr>
+          <tr><td>Normalised-momentum-lag filter</td><td>Reduced expectancy</td><td>Rejected</td></tr>
+        </tbody>
+      </table></div>
+      <p>The control is the part that matters, and it is the part most write-ups omit. Running the same universe, the same dates, the same stops, the same exits and the same sizing with a <strong>risk-matched random entry</strong> instead of the AVWAP trigger already captured +0.086R:</p>
+      <span class="formula" tabindex="0" role="group" aria-label="Formula, scrolls horizontally">AVWAP reclaim, walk-forward:  +0.117R over 4,933 trades
+Risk-matched random entry:    +0.086R   (73% of the headline)
+─────────────────────────────────────────────────────────
+Signal's own contribution:    +0.030R
+
+Implied σ_R from the published interval ≈ 2.10
+SE of the difference = 2.10 × √(2 ÷ 4,933) = 0.042
+95% CI on the difference = [−0.052, +0.114]
+
+That interval CROSSES ZERO.
+The AVWAP reclaim is NOT a validated edge.
+
+For scale: detecting a genuine +0.030R at 95% confidence
+would need roughly 18,758 trades.</span>
+      <p>So: nearly three quarters of a positive-looking result was available to a coin flip using the same exits and the same risk management. Whatever is working is mostly the exit discipline and the drift of a long-biased universe, not the trigger. <strong>+0.117R was never a windfall, and +0.030R with a confidence interval crossing zero is not an edge at all</strong> — it is a result consistent with there being no effect. It also gets erased entirely by ordinary costs: at five cents of slippage per side on a stock where 1R is $2.40, the round trip alone is 0.0417R, more than the whole residual.</p>
+      <p>The retired figure deserves an explicit label rather than quiet deletion. An earlier version of this result read <strong>+0.23R over 101 trades</strong>. It did not survive my own adversarial re-test, it did not reproduce on a wider universe, and it should never be cited as a valid edge. It is here as an example of what a small sample plus an unstated number of variants produces.</p>
+      <p>Two filters I expected to help — a market-regime filter and a normalised-momentum-lag filter — were tested on the same data and <strong>cut expectancy</strong>, so both were rejected rather than retuned. That is the whole discipline: an honest test is one that is allowed to say no. <a href="/swing-screener.html">The full write-up is here →</a></p>
       <h2>How to use it without fooling yourself</h2>
       <ol>
-        <li>Pick the anchor before you look at the outcome. Anchoring after the fact is how every chart becomes a winning chart.</li>
-        <li>Use one anchor per thesis. Five AVWAPs on one chart means one of them will always look right.</li>
-        <li>Define the stop as part of the signal, not after entry.</li>
-        <li>Log every trade in R and judge the setup over 100 trades, not five.</li>
-        <li>Assume your edge is smaller than the backtest says, because costs, slippage, and your own hesitation are not in the backtest.</li>
+        <li>Pick the anchor before you look at the outcome, and score it against fixed criteria. Anchoring after the fact is how every chart becomes a winning chart.</li>
+        <li>Use one anchor per thesis, capped at three lines. Eight anchors put a line near price a third of the time for no reason at all.</li>
+        <li>Define the stop as part of the signal, not after entry. If the AVWAP generated the entry, the AVWAP defines the invalidation.</li>
+        <li>Fill on the bar after confirmation, never on the close that produced the signal. That single index is the difference between a test and a fantasy.</li>
+        <li>Fix the session, bar interval, price input and anchor-inclusion settings once, and reconcile them between your platform and any testing tool.</li>
+        <li>Log every trade in R and judge the setup on hundreds of trades, not five. A +0.20R edge needs several hundred trades before it is distinguishable from zero.</li>
+        <li>Assume your edge is smaller than the backtest says, because costs, slippage, and your own hesitation are not in the backtest — and because on this setup a random entry captured most of it.</li>
       </ol>
+      <p>Everything above is a process for finding out whether something works, not a claim that this one does. The measurement side lives in the <a href="/guides/trading-journal.html">trading journal guide</a> and <a href="/apps/tradelog/">TradeLog</a>, the sizing side in the <a href="/guides/r-multiple-expectancy.html">R-multiple and expectancy guide</a>, and the step nobody should skip is <a href="/guides/paper-to-live-trading.html">paper to live</a> — my own execution gate requires 60 closed paper trades with positive realised expectancy before any live broker, and the current record against that gate is zero.</p>
       <p class="callout">Educational content, not financial advice. No live profit-and-loss figures are claimed anywhere on this site; backtest and walk-forward results are always labelled as such. Full terms: <a href="/terms.html">/terms.html</a></p>
 
       <h2>Tools referenced in this guide</h2>
@@ -144,12 +303,15 @@
       <h2>Quick answers</h2>
     </div>
     <div class="grid" style="margin-top:var(--s6)">
-      <article class="card faq-card"><h3>What is anchored VWAP?</h3><p>A volume-weighted average price running from a bar you choose, not from the session open. It tracks the average cost basis of everyone who traded since that event.</p></article>
-      <article class="card faq-card"><h3>How is it different from session VWAP?</h3><p>Session VWAP resets daily and is an intraday tool. Anchored VWAP persists from its anchor, so it works on swing and position timeframes.</p></article>
-      <article class="card faq-card"><h3>Where do you anchor it?</h3><p>Bars where ownership changed: earnings gaps, 52-week highs or lows, major news, the start of a base, or a prior failed breakout.</p></article>
-      <article class="card faq-card"><h3>What is a reclaim?</h3><p>Price crossing back above an AVWAP it was under, and holding. The average buyer since the anchor is back to breakeven, so overhead supply thins out.</p></article>
-      <article class="card faq-card"><h3>Does it work?</h3><p>It was the only setup that survived my walk-forward test, at +0.117R over 4,933 trades. Marginal, not a windfall — my earlier +0.23R on 101 trades did not survive re-testing. Not advice.</p></article>
-      <article class="card faq-card"><h3>Do regime filters help?</h3><p>Not in my data. A market-regime filter and a normalised-momentum-lag filter were both tested and both cut expectancy, so both were rejected.</p></article>
+      <article class="card faq-card"><h3>What is anchored VWAP?</h3><p>Anchored VWAP is a volume-weighted average price calculated from a specific bar you choose rather than from the session open. It represents the average price paid by everyone who has traded since that anchor event, so price above the line means that cohort is collectively in profit and below means it is underwater.</p></article>
+      <article class="card faq-card"><h3>How is anchored VWAP different from regular VWAP?</h3><p>Regular VWAP resets at the start of each session and is mostly used intraday. Anchored VWAP starts at an event you select, such as an earnings gap, a 52-week high or the start of a base, and keeps running for as long as that event stays relevant, which makes it usable on swing and position timeframes.</p></article>
+      <article class="card faq-card"><h3>Where should you anchor a VWAP?</h3><p>Anchor to bars where ownership genuinely changed: earnings gaps, 52-week highs or lows, major news, index inclusion, the start of a consolidation, or a prior failed breakout. If you cannot state in one sentence why that bar mattered, it is not a valid anchor.</p></article>
+      <article class="card faq-card"><h3>What does an AVWAP reclaim mean?</h3><p>A reclaim is price crossing back above an anchored VWAP it had been trading below, and holding there. It signals that the average buyer since the anchor event has moved from a loss to breakeven, which removes overhead supply from traders who were waiting to exit flat.</p></article>
+      <article class="card faq-card"><h3>Does the AVWAP reclaim setup actually work?</h3><p>In my own walk-forward testing it was the only setup that survived, but it is not a validated edge. On a 129-symbol, 10-year universe the result is +0.117R over 4,933 trades with a 95% confidence interval of +0.057 to +0.174, and a risk-matched random entry using the same exits and sizing already captures +0.086R of that, leaving the signal&#x27;s own contribution at about +0.030R with a confidence interval that crosses zero. An earlier +0.23R over 101 trades is retired because it failed my own adversarial re-test. This is educational information rather than advice.</p></article>
+      <article class="card faq-card"><h3>How do you calculate anchored VWAP?</h3><p>Sum typical price times volume from the anchor bar to the current bar, then divide by the summed volume over the same span, where typical price is high plus low plus close divided by three. Both sums are cumulative and never reset, so the line becomes progressively less sensitive to each new bar. It is dragged toward whatever price actually transacted the most volume, which is what distinguishes it from a moving average.</p></article>
+      <article class="card faq-card"><h3>Where do you put the stop on an AVWAP trade?</h3><p>Just below the anchored VWAP itself, offset by a volatility buffer such as half of ATR14, so the signal and the invalidation are the same object. With the line at 50.31 and ATR14 at 1.60, the stop is 50.31 minus 0.80, or 49.51, and an entry at 51.50 makes 1R equal 1.99 per share. Because the line rises as price rises on volume, the stop trails automatically without you choosing a percentage.</p></article>
+      <article class="card faq-card"><h3>How many anchored VWAPs should you have on a chart?</h3><p>One per thesis, capped at about three. If a stock trades in a 20 dollar range and you count anything within 1% of price as confluence, a single anchor lands there 5% of the time by chance but eight anchors land there 33.7% of the time. Eight lines guarantee that one of them looks meaningful, which is the same multiple-comparisons problem that ruins backtests, applied to a chart.</p></article>
+      <article class="card faq-card"><h3>Who popularised anchored VWAP?</h3><p>Brian Shannon is the practitioner most associated with popularising anchored VWAP for swing and position trading, framing it around what participants actually paid rather than around indicator signals.</p></article>
     </div>
   </section>
 

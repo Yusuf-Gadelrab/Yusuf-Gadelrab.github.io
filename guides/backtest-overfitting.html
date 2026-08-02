@@ -25,7 +25,7 @@
 <meta name="twitter:image" content="https://yusuf-gadelrab.github.io/og-card.png">
 <link rel="alternate" type="text/plain" href="https://yusuf-gadelrab.github.io/llms-full.txt" title="Plain-text profile for language models">
 
-<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"TechArticle","@id":"https://yusuf-gadelrab.github.io/guides/backtest-overfitting.html#article","headline":"Backtest Overfitting: How to Tell a Real Edge From a Fitted One","name":"Backtest Overfitting: How to Tell a Real Edge From a Fitted One","description":"In-sample vs held-out testing, parameter plateaus vs spikes, the multiple-testing arithmetic, and the random-entry control that kills most edges.","datePublished":"2026-07-29","dateModified":"2026-07-29","inLanguage":"en","author":{"@id":"https://yusuf-gadelrab.github.io/#person"},"publisher":{"@id":"https://yusuf-gadelrab.github.io/#person"},"about":["Backtest overfitting","Multiple testing","Quantitative research","Strategy validation"],"mainEntityOfPage":"https://yusuf-gadelrab.github.io/guides/backtest-overfitting.html","isAccessibleForFree":true,"proficiencyLevel":"Advanced"},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://yusuf-gadelrab.github.io/"},{"@type":"ListItem","position":2,"name":"Guides","item":"https://yusuf-gadelrab.github.io/guides.html"},{"@type":"ListItem","position":3,"name":"Backtest Overfitting"}]}]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"TechArticle","@id":"https://yusuf-gadelrab.github.io/guides/backtest-overfitting.html#article","headline":"Backtest Overfitting: How to Tell a Real Edge From a Fitted One","name":"Backtest Overfitting: How to Tell a Real Edge From a Fitted One","description":"In-sample vs held-out testing, parameter plateaus vs spikes, the multiple-testing arithmetic, and the random-entry control that kills most edges.","datePublished":"2026-07-29","dateModified":"2026-07-29","inLanguage":"en","author":{"@id":"https://yusuf-gadelrab.github.io/#person"},"publisher":{"@id":"https://yusuf-gadelrab.github.io/#person"},"about":["Backtest overfitting","Multiple testing","Quantitative research","Strategy validation"],"mainEntityOfPage":"https://yusuf-gadelrab.github.io/guides/backtest-overfitting.html","isAccessibleForFree":true,"isPartOf":{"@id":"https://yusuf-gadelrab.github.io/#website"},"proficiencyLevel":"Advanced","hasPart":{"@id":"https://yusuf-gadelrab.github.io/guides/backtest-overfitting.html#howto"}},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://yusuf-gadelrab.github.io/"},{"@type":"ListItem","position":2,"name":"Guides","item":"https://yusuf-gadelrab.github.io/guides.html"},{"@type":"ListItem","position":3,"name":"Backtest Overfitting"}]},{"@type":"HowTo","@id":"https://yusuf-gadelrab.github.io/guides/backtest-overfitting.html#howto","name":"How to run an honest backtest robustness protocol","description":"In-sample vs held-out testing, parameter plateaus vs spikes, the multiple-testing arithmetic, and the random-entry control that kills most edges.","inLanguage":"en","isAccessibleForFree":true,"author":{"@id":"https://yusuf-gadelrab.github.io/#person"},"step":[{"@type":"HowToStep","position":1,"name":"Pre-register","text":"Pre-register. Before touching data, write down the hypothesis, the parameters you will tune, the ranges, the success threshold, and the held-out block. Date the file.","url":"https://yusuf-gadelrab.github.io/guides/backtest-overfitting.html#howto"},{"@type":"HowToStep","position":2,"name":"Build the universe first, including delisted tickers, and freeze it","text":"Build the universe first, including delisted tickers, and freeze it. Document how it was constructed.","url":"https://yusuf-gadelrab.github.io/guides/backtest-overfitting.html#howto"},{"@type":"HowToStep","position":3,"name":"Fit in-sample only","text":"Fit in-sample only. Do not look at anything else. Count and log every configuration evaluated.","url":"https://yusuf-gadelrab.github.io/guides/backtest-overfitting.html#howto"},{"@type":"HowToStep","position":4,"name":"Print the parameter surface","text":"Print the parameter surface. Reject spikes outright. Choose the centre of the plateau, not the peak.","url":"https://yusuf-gadelrab.github.io/guides/backtest-overfitting.html#howto"},{"@type":"HowToStep","position":5,"name":"Run walk-forward so every reported trade came from parameters chosen","text":"Run walk-forward so every reported trade came from parameters chosen without seeing it.","url":"https://yusuf-gadelrab.github.io/guides/backtest-overfitting.html#howto"},{"@type":"HowToStep","position":6,"name":"Run the random-entry benchmark at matched count, holding period, risk,","text":"Run the random-entry benchmark at matched count, holding period, risk, universe, and window, 1,000 iterations. Report the strategy's percentile within that null distribution.","url":"https://yusuf-gadelrab.github.io/guides/backtest-overfitting.html#howto"},{"@type":"HowToStep","position":7,"name":"Apply the multiple-testing haircut using your logged configuration","text":"Apply the multiple-testing haircut using your logged configuration count, not the number of ideas you liked.","url":"https://yusuf-gadelrab.github.io/guides/backtest-overfitting.html#howto"},{"@type":"HowToStep","position":8,"name":"Check degrees of freedom against trade count and state trades per","text":"Check degrees of freedom against trade count and state trades per parameter explicitly.","url":"https://yusuf-gadelrab.github.io/guides/backtest-overfitting.html#howto"},{"@type":"HowToStep","position":9,"name":"Add realistic costs","text":"Add realistic costs: slippage, commission, financing, partial fills, borrow. Then re-check that the edge survives.","url":"https://yusuf-gadelrab.github.io/guides/backtest-overfitting.html#howto"},{"@type":"HowToStep","position":10,"name":"Run the held-out final test once","text":"Run the held-out final test once. Accept the answer. If it fails, the strategy is dead, and revising it converts the held-out block into training data forever.","url":"https://yusuf-gadelrab.github.io/guides/backtest-overfitting.html#howto"},{"@type":"HowToStep","position":11,"name":"Paper trade to a pre-committed gate before any real capital, because","text":"Paper trade to a pre-committed gate before any real capital, because execution reality is a separate test from statistical reality.","url":"https://yusuf-gadelrab.github.io/guides/backtest-overfitting.html#howto"},{"@type":"HowToStep","position":12,"name":"Publish the failures alongside the survivor","text":"Publish the failures alongside the survivor. A research file with no rejected variants is a sales page.","url":"https://yusuf-gadelrab.github.io/guides/backtest-overfitting.html#howto"}]}]}</script>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","@id":"https://yusuf-gadelrab.github.io/guides/backtest-overfitting.html#faq","mainEntity":[{"@type":"Question","name":"What is backtest overfitting?","acceptedAnswer":{"@type":"Answer","text":"Backtest overfitting is when a strategy's measured performance comes from fitting the specific historical data rather than from any repeatable market behaviour. It happens whenever parameters, filters, universes, or date ranges are chosen because they improved the result. The tell is that performance collapses on data the choices were not made on."}},{"@type":"Question","name":"How do you know if a trading edge is real?","acceptedAnswer":{"@type":"Answer","text":"Check four things: whether the parameter surface is a broad plateau or an isolated spike, how many configurations were searched in total, whether a risk-matched random-entry benchmark captures most of the return, and whether the result survives a held-out block looked at exactly once. An edge that fails any of them is not established. Costs and slippage should be modelled pessimistically before any of this counts."}},{"@type":"Question","name":"Why does testing many strategy variants create false positives?","acceptedAnswer":{"@type":"Answer","text":"Because the best of N noisy results is drawn from the right tail of a distribution you generated yourself. The expected maximum of N standard normal draws is about the square root of twice the natural log of N, so with five years of data and 200 variants tested, a Sharpe ratio of roughly 1.46 is the expected outcome even when every variant has a true edge of exactly zero. The count that matters is every configuration the search evaluated, not the number of ideas you wrote up."}},{"@type":"Question","name":"What is a random entry benchmark in backtesting?","acceptedAnswer":{"@type":"Answer","text":"It is a control arm that keeps everything about the strategy except the entry timing, which is replaced with random dates. Match the universe, calendar window, trade count, holding period distribution, and risk per trade, then run it a thousand times to build a null distribution. Whatever return the random arm captures was produced by the exit logic, the holding period, and market drift, not by your signal."}},{"@type":"Question","name":"What is parameter sensitivity analysis?","acceptedAnswer":{"@type":"Answer","text":"It is printing performance across a grid of neighbouring parameter values instead of reporting only the best one. A real effect produces a broad plateau where neighbouring cells perform similarly, while an overfit result produces an isolated spike surrounded by cells near zero. A useful rule of thumb is to divide the average of the eight surrounding cells by the peak cell and treat anything under about 0.6 as noise."}},{"@type":"Question","name":"What is the deflated Sharpe ratio?","acceptedAnswer":{"@type":"Answer","text":"It is a Sharpe ratio adjusted for how many strategy variants were tested, comparing the observed result against the noise ceiling of your own search rather than against zero. An observed Sharpe of 2.0 from a 200-variant search on five years of data deflates to about 89% confidence and an effective Sharpe near 0.54, versus a naive p-value around one in 250,000. Same backtest, entirely different conclusion."}},{"@type":"Question","name":"How many out of sample trades do you need to trust a backtest?","acceptedAnswer":{"@type":"Answer","text":"It depends on both the number of free parameters and the size of the claimed edge. A working floor is over 100 out-of-sample trades per free parameter, and far more when the claimed expectancy is small. In my own swing research the AVWAP-reclaim setup produced +0.117R over 4,933 trades on a 129-symbol 10-year universe with a 95% confidence interval of +0.057 to +0.174, but a risk-matched random entry already captured +0.086R, leaving the signal's own contribution at +0.030R with a confidence interval that crosses zero. That is not a validated edge, and resolving a difference that small would need roughly four times the sample again."}}]}</script>
 
 <link rel="stylesheet" href="/css/site.css">
@@ -50,16 +50,16 @@
     color:var(--muted);font-size:var(--t-small);margin:0 0 var(--s5)}
   .callout--warn{border-color:var(--gold-2)}
   .faq-card{padding:var(--s5)}
-  .faq-card h3{font-size:var(--t-h3);margin:0}
-  .faq-card p{color:var(--muted);font-size:var(--t-small);margin:var(--s3) 0 0}
+  .faq-card h3{font-size:var(--t-h3);margin:0;line-height:1.3}
+  .faq-card p{color:var(--muted);font-size:var(--t-small);line-height:1.65;margin:var(--s3) 0 0}
 </style>
 </head>
 <body class="pro">
 
 <a class="skip-link" href="#main">Skip to content</a>
 
-<nav class="site-nav">
-  <a class="site-nav__brand" href="/"><img class="site-nav__lion" src="/img/brand/lion-mark.svg" alt="" width="34" height="34"><span>YUSUF GADELRAB</span></a>
+<nav class="site-nav" aria-label="Primary">
+  <a class="site-nav__brand" href="/"><img class="site-nav__lion" src="/img/brand/lion-mark.svg" alt="" width="34" height="34" decoding="async"><span>YUSUF GADELRAB</span></a>
   <div class="site-nav__links">
     <a href="/">Work</a>
     <a href="/guides.html">Guides</a>
@@ -100,8 +100,8 @@
       <h2>Parameter sensitivity: the plateau and the spike</h2>
       <p>A real effect is broad. If a 40-bar lookback works and a 39-bar lookback does not, you have not found a market property, you have found a coincidence in a specific price series. The single cheapest overfitting test is to look at the neighbourhood of your chosen parameters rather than the parameters themselves.</p>
       <p>Take a strategy with two knobs, a lookback length and an ATR stop multiple, and print out-of-sample expectancy in R for every combination. Here is what a result worth keeping looks like:</p>
-      <div class="tblwrap"><table class="tbl">
-        <thead><tr><th>Lookback \ ATR stop</th><th>1.5×</th><th>2.0×</th><th>2.5×</th><th>3.0×</th></tr></thead>
+      <div class="tblwrap" tabindex="0" role="group" aria-label="Table, scrolls horizontally"><table class="tbl">
+        <thead><tr><th scope="col">Lookback \ ATR stop</th><th scope="col">1.5×</th><th scope="col">2.0×</th><th scope="col">2.5×</th><th scope="col">3.0×</th></tr></thead>
         <tbody>
           <tr><td>20 bars</td><td>+0.06</td><td>+0.09</td><td>+0.10</td><td>+0.08</td></tr>
           <tr><td>30 bars</td><td>+0.08</td><td>+0.11</td><td>+0.12</td><td>+0.10</td></tr>
@@ -111,8 +111,8 @@
       </table></div>
       <p>Every cell is positive, the surface changes smoothly, and the best cell is barely better than its neighbours. Nothing about that grid depends on picking the right number. You could be wrong about the lookback by 20 bars and still have roughly the same system.</p>
       <p>Here is the same grid for a strategy that should be thrown away:</p>
-      <div class="tblwrap"><table class="tbl">
-        <thead><tr><th>Lookback \ ATR stop</th><th>1.5×</th><th>2.0×</th><th>2.5×</th><th>3.0×</th></tr></thead>
+      <div class="tblwrap" tabindex="0" role="group" aria-label="Table, scrolls horizontally"><table class="tbl">
+        <thead><tr><th scope="col">Lookback \ ATR stop</th><th scope="col">1.5×</th><th scope="col">2.0×</th><th scope="col">2.5×</th><th scope="col">3.0×</th></tr></thead>
         <tbody>
           <tr><td>20 bars</td><td>−0.02</td><td>+0.03</td><td>−0.04</td><td>+0.01</td></tr>
           <tr><td>30 bars</td><td>+0.05</td><td>−0.06</td><td><strong>+0.31</strong></td><td>−0.03</td></tr>
@@ -121,7 +121,7 @@
         </tbody>
       </table></div>
       <p>The headline number is far better: +0.31R against +0.12R. It is also completely isolated. Its immediate neighbours average slightly below zero, which means the strategy is a coin flip everywhere except one cell, and that cell is the one you would have reported. <strong>A parameter spike is not a strong result, it is a measurement of how much noise your data set contains.</strong></p>
-      <span class="formula">Plateau ratio = mean(8 surrounding cells) ÷ peak cell
+      <span class="formula" tabindex="0" role="group" aria-label="Formula, scrolls horizontally">Plateau ratio = mean(8 surrounding cells) ÷ peak cell
 
 Good grid:  +0.108 ÷ +0.12  =  0.90
 Bad grid:   −0.010 ÷ +0.31  =  −0.03
@@ -131,7 +131,7 @@ Rule of thumb: below about 0.6, treat the peak as noise.</span>
       <h2>Why testing 200 variants guarantees a winner</h2>
       <p>This is the piece of arithmetic that ends most backtests, and it is almost never shown. Suppose every variant you test has a true edge of exactly zero. Their measured Sharpe ratios are still scattered around zero by sampling noise. Take the best of the batch and you have not found skill, you have found the right tail of a distribution you generated yourself.</p>
       <p>The expected maximum of N independent standard normal draws is approximately the square root of twice the natural log of N. Multiply that by the standard error of a Sharpe estimate and you get the number you should expect to see from pure noise:</p>
-      <span class="formula">SE(Sharpe)  ≈ √(1 ÷ years of data)
+      <span class="formula" tabindex="0" role="group" aria-label="Formula, scrolls horizontally">SE(Sharpe)  ≈ √(1 ÷ years of data)
 E[best of N] ≈ SE(Sharpe) × √(2 · ln N)
 
 Worked, 5 years of data, 200 variants tested:
@@ -140,8 +140,8 @@ Worked, 5 years of data, 200 variants tested:
   E[best]  = 0.447 × 3.256   = 1.46
 
 A 1.46 Sharpe is the EXPECTED winner when every variant is worthless.</span>
-      <div class="tblwrap"><table class="tbl">
-        <thead><tr><th>Variants tested</th><th>√(2 · ln N)</th><th>Expected best Sharpe under a true zero edge (5y data)</th></tr></thead>
+      <div class="tblwrap" tabindex="0" role="group" aria-label="Table, scrolls horizontally"><table class="tbl">
+        <thead><tr><th scope="col">Variants tested</th><th scope="col">√(2 · ln N)</th><th scope="col">Expected best Sharpe under a true zero edge (5y data)</th></tr></thead>
         <tbody>
           <tr><td>5</td><td>1.79</td><td>0.80</td></tr>
           <tr><td>10</td><td>2.15</td><td>0.96</td></tr>
@@ -151,7 +151,7 @@ A 1.46 Sharpe is the EXPECTED winner when every variant is worthless.</span>
         </tbody>
       </table></div>
       <p>Read the bottom row again. Run a grid search over a thousand configurations on five years of data and a Sharpe of 1.66 is the <em>average</em> outcome of testing nothing but garbage. Most retail backtesting projects sail past a thousand configurations without counting, because the count is not the number of ideas you wrote up, it is the number of configurations the search actually evaluated.</p>
-      <span class="formula">Configurations searched = (values per parameter) ^ (number of parameters)
+      <span class="formula" tabindex="0" role="group" aria-label="Formula, scrolls horizontally">Configurations searched = (values per parameter) ^ (number of parameters)
 
   5 parameters × 6 candidate values each
   = 6^5
@@ -162,7 +162,7 @@ You tested 7,776 hypotheses, not one.</span>
       <p>Bonferroni is deliberately conservative and your variants are correlated rather than independent, so the true penalty sits somewhere between no correction and the full one. That is an argument for estimating the penalty, not for skipping it. The practical version: keep a log of every configuration evaluated across the whole project, and treat that running total as N.</p>
       <h2>Deflated Sharpe and the haircut</h2>
       <p>Once you have an expected best-under-the-null, you can subtract it. That is the whole idea behind deflated Sharpe ratios: compare the observed result against the noise ceiling produced by your own search rather than against zero.</p>
-      <span class="formula">Deflated z = (observed Sharpe − E[best of N]) ÷ SE(Sharpe)
+      <span class="formula" tabindex="0" role="group" aria-label="Formula, scrolls horizontally">Deflated z = (observed Sharpe − E[best of N]) ÷ SE(Sharpe)
 
 Observed 2.00, N = 200, 5 years:
   z = (2.00 − 1.46) ÷ 0.447 = 1.21
@@ -187,7 +187,7 @@ Effective Sharpe after haircut = 2.00 − 1.46 = 0.54</span>
       </ol>
       <p>What comes back is a null distribution for your own system. If the strategy's expectancy sits inside that distribution, the signal added nothing measurable and you have been paying commissions for a random number generator wearing a chart pattern.</p>
       <p>Here is that test run against my own research, which is the reason this section exists:</p>
-      <span class="formula">Signal contribution = strategy expectancy − matched random-entry expectancy
+      <span class="formula" tabindex="0" role="group" aria-label="Formula, scrolls horizontally">Signal contribution = strategy expectancy − matched random-entry expectancy
 
 AVWAP-reclaim swing setup, 129 symbols, 10-year universe:
   strategy expectancy   = +0.117R over 4,933 trades
@@ -197,7 +197,7 @@ AVWAP-reclaim swing setup, 129 symbols, 10-year universe:
   signal contribution   = +0.030R,  CI crosses zero</span>
       <p>The headline figure is +0.117R over 4,933 trades with a confidence interval that clears zero, which looks like a result. A risk-matched random entry on the same universe, same window, same holding periods, and same risk already captures +0.086R of it. <strong>The signal's own contribution is +0.030R, with a confidence interval that crosses zero, so this is not a validated edge.</strong> It is a stop-loss and holding-period policy applied to a long-biased universe during a period when that universe went up, plus a signal whose marginal contribution cannot be distinguished from noise at this sample size.</p>
       <p>That is the honest reading of my best surviving setup, and it is worth more than a flattering one. An earlier and much smaller sample from the same project looked considerably better and did not survive re-testing, which is the ordinary fate of results built on a hundred-ish trades.</p>
-      <span class="formula">SE(expectancy) = σ_R ÷ √n
+      <span class="formula" tabindex="0" role="group" aria-label="Formula, scrolls horizontally">SE(expectancy) = σ_R ÷ √n
 
   σ_R ≈ 2.10R  (R outcomes are fat-tailed)
   n   = 4,933
@@ -209,7 +209,7 @@ To halve that interval you need roughly 4× the trades: ~19,700.</span>
       <p>That last line is the part people skip. Precision improves with the square root of sample size, so the sample needed to resolve a 0.03R difference is enormous. If a small edge is what you have, you need patience and volume, and you should be running <a href="/guides/paper-to-live-trading.html">paper trading with a hard promotion gate</a> rather than sizing up on a backtest.</p>
       <h2>Degrees of freedom against sample size</h2>
       <p>Every tunable choice is a degree of freedom, and the count is always larger than people admit. It includes the obvious knobs, but also the universe filter, the holding cap, the regime switch you added and removed, the two indicators you tried and abandoned, and the start date you nudged because 2008 looked ugly.</p>
-      <span class="formula">Trades per free parameter = out-of-sample trades ÷ free parameters
+      <span class="formula" tabindex="0" role="group" aria-label="Formula, scrolls horizontally">Trades per free parameter = out-of-sample trades ÷ free parameters
 
   240 OOS trades ÷ 6 free parameters = 40 per parameter
 
@@ -245,8 +245,8 @@ Working floors:
         <li><strong>Paper trade</strong> to a pre-committed gate before any real capital, because execution reality is a separate test from statistical reality.</li>
         <li><strong>Publish the failures</strong> alongside the survivor. A research file with no rejected variants is a sales page.</li>
       </ol>
-      <div class="tblwrap"><table class="tbl">
-        <thead><tr><th>Signal</th><th>Fitted result</th><th>Result worth trusting</th></tr></thead>
+      <div class="tblwrap" tabindex="0" role="group" aria-label="Table, scrolls horizontally"><table class="tbl">
+        <thead><tr><th scope="col">Signal</th><th scope="col">Fitted result</th><th scope="col">Result worth trusting</th></tr></thead>
         <tbody>
           <tr><td>Parameter surface</td><td>Isolated spike, neighbours near zero</td><td>Broad plateau, neighbours within ~10%</td></tr>
           <tr><td>Configurations searched</td><td>Unknown or uncounted</td><td>Logged, and used in the haircut</td></tr>
@@ -290,13 +290,13 @@ Working floors:
       <h2>Quick answers</h2>
     </div>
     <div class="grid" style="margin-top:var(--s6)">
-      <article class="card faq-card"><h3>What is backtest overfitting?</h3><p>Performance that came from fitting the specific history rather than from repeatable behaviour. It collapses on data the choices were not made on.</p></article>
-      <article class="card faq-card"><h3>Is my edge real?</h3><p>Check the parameter surface, the total configurations searched, a random-entry control, and one held-out test. Failing any one means not established.</p></article>
-      <article class="card faq-card"><h3>Why do 200 variants find a winner?</h3><p>The best of N noisy results sits in the right tail you generated. 200 variants on 5 years of data yields ~1.46 Sharpe from pure noise.</p></article>
-      <article class="card faq-card"><h3>What is a random-entry benchmark?</h3><p>Same universe, window, trade count, holding period, and risk, with random entry dates. Whatever it captures was never your signal.</p></article>
-      <article class="card faq-card"><h3>What is parameter sensitivity?</h3><p>Printing the grid around your chosen values. Plateaus are real, isolated spikes are noise. Neighbours under ~0.6 of the peak means discard.</p></article>
-      <article class="card faq-card"><h3>What is deflated Sharpe?</h3><p>Sharpe adjusted for how many variants you tested. A 2.0 from a 200-variant search haircuts to about 0.54 effective.</p></article>
-      <article class="card faq-card"><h3>How many trades are enough?</h3><p>Over 100 per free parameter, more for small edges. My own +0.117R over 4,933 trades nets to +0.030R against random entry, CI crossing zero, so not a validated edge.</p></article>
+      <article class="card faq-card"><h3>What is backtest overfitting?</h3><p>Backtest overfitting is when a strategy&#x27;s measured performance comes from fitting the specific historical data rather than from any repeatable market behaviour. It happens whenever parameters, filters, universes, or date ranges are chosen because they improved the result. The tell is that performance collapses on data the choices were not made on.</p></article>
+      <article class="card faq-card"><h3>How do you know if a trading edge is real?</h3><p>Check four things: whether the parameter surface is a broad plateau or an isolated spike, how many configurations were searched in total, whether a risk-matched random-entry benchmark captures most of the return, and whether the result survives a held-out block looked at exactly once. An edge that fails any of them is not established. Costs and slippage should be modelled pessimistically before any of this counts.</p></article>
+      <article class="card faq-card"><h3>Why does testing many strategy variants create false positives?</h3><p>Because the best of N noisy results is drawn from the right tail of a distribution you generated yourself. The expected maximum of N standard normal draws is about the square root of twice the natural log of N, so with five years of data and 200 variants tested, a Sharpe ratio of roughly 1.46 is the expected outcome even when every variant has a true edge of exactly zero. The count that matters is every configuration the search evaluated, not the number of ideas you wrote up.</p></article>
+      <article class="card faq-card"><h3>What is a random entry benchmark in backtesting?</h3><p>It is a control arm that keeps everything about the strategy except the entry timing, which is replaced with random dates. Match the universe, calendar window, trade count, holding period distribution, and risk per trade, then run it a thousand times to build a null distribution. Whatever return the random arm captures was produced by the exit logic, the holding period, and market drift, not by your signal.</p></article>
+      <article class="card faq-card"><h3>What is parameter sensitivity analysis?</h3><p>It is printing performance across a grid of neighbouring parameter values instead of reporting only the best one. A real effect produces a broad plateau where neighbouring cells perform similarly, while an overfit result produces an isolated spike surrounded by cells near zero. A useful rule of thumb is to divide the average of the eight surrounding cells by the peak cell and treat anything under about 0.6 as noise.</p></article>
+      <article class="card faq-card"><h3>What is the deflated Sharpe ratio?</h3><p>It is a Sharpe ratio adjusted for how many strategy variants were tested, comparing the observed result against the noise ceiling of your own search rather than against zero. An observed Sharpe of 2.0 from a 200-variant search on five years of data deflates to about 89% confidence and an effective Sharpe near 0.54, versus a naive p-value around one in 250,000. Same backtest, entirely different conclusion.</p></article>
+      <article class="card faq-card"><h3>How many out of sample trades do you need to trust a backtest?</h3><p>It depends on both the number of free parameters and the size of the claimed edge. A working floor is over 100 out-of-sample trades per free parameter, and far more when the claimed expectancy is small. In my own swing research the AVWAP-reclaim setup produced +0.117R over 4,933 trades on a 129-symbol 10-year universe with a 95% confidence interval of +0.057 to +0.174, but a risk-matched random entry already captured +0.086R, leaving the signal&#x27;s own contribution at +0.030R with a confidence interval that crosses zero. That is not a validated edge, and resolving a difference that small would need roughly four times the sample again.</p></article>
     </div>
   </section>
 
@@ -310,9 +310,9 @@ Working floors:
     </div>
     <div class="related__grid">
       <a class="related__item" href="/guides/walk-forward-backtest.html"><strong>How backtests lie, and what an honest one looks like</strong><span>Why in-sample backtests lie, and what an honest test looks like in code.</span></a>
+      <a class="related__item" href="/guides/quant-internship-timeline.html"><strong>Three firm types, three calendars, and a lot of wrong dates</strong><span>Market makers, banks and funds run on three different calendars. Most deadlines people repeat belong to a different…</span></a>
       <a class="related__item" href="/guides/reading-a-backtest-report.html"><strong>Reading a backtest report honestly</strong><span>Win rate, profit factor, Sharpe, drawdown, CAGR. What each number hides, with worked error bars and cost drag.</span></a>
       <a class="related__item" href="/guides/undergraduate-research.html"><strong>How undergraduates actually get into a lab</strong><span>Finding a lab, the email that gets a reply, and why publishing as an undergrad compounds.</span></a>
-      <a class="related__item" href="/guides/bilingual-coding-cs-education.html"><strong>Learning to program in your second language</strong><span>Learning to program in a second language, and what a SIGCSE 2026 study found.</span></a>
     </div>
     <p class="related__more">Every guide is indexed on <a href="/guides.html">the guides hub</a>. Or put it to work in <a href="/hire.html">what I am open to for Summer 2027</a> and <a href="/research.html">the research behind two SIGCSE 2026 papers</a>.</p>
   </section>

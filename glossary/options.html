@@ -1,0 +1,492 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="preload" href="/css/site.css" as="style">
+<meta name="robots" content="index,follow,max-image-preview:large,max-snippet:-1">
+<meta property="og:locale" content="en_US">
+<title>Options Glossary: Greeks, Spreads, Assignment</title>
+<meta name="description" content="Plain-English definitions of strike, premium, implied volatility, delta, gamma, theta, vega, vertical spreads, iron condors, straddles, PMCC and assignment.">
+<link rel="canonical" href="https://yusuf-gadelrab.github.io/glossary/options.html">
+<link rel="icon" type="image/svg+xml" href="https://yusuf-gadelrab.github.io/favicon.svg">
+<link rel="apple-touch-icon" sizes="180x180" href="https://yusuf-gadelrab.github.io/apple-touch-icon.png">
+<meta name="theme-color" content="#0B0B0D">
+<meta name="author" content="Yusuf Gadelrab">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Yusuf Gadelrab">
+<meta property="og:title" content="Options Glossary: Greeks, Spreads, Assignment, Exercise">
+<meta property="og:description" content="Fourteen options terms defined precisely: what delta and gamma actually measure, why vega is not a Greek letter, and the max-loss arithmetic.">
+<meta property="og:url" content="https://yusuf-gadelrab.github.io/glossary/options.html">
+<meta property="og:image" content="https://yusuf-gadelrab.github.io/og-card.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Options Glossary: Greeks, Spreads, Assignment, Exercise">
+<meta name="twitter:description" content="Fourteen options terms defined precisely: what delta and gamma actually measure, why vega is not a Greek letter, and the max-loss arithmetic.">
+<meta name="twitter:image" content="https://yusuf-gadelrab.github.io/og-card.png">
+<link rel="alternate" type="text/plain" href="https://yusuf-gadelrab.github.io/llms-full.txt" title="Plain-text profile for language models">
+
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"DefinedTermSet","@id":"https://yusuf-gadelrab.github.io/glossary/options.html#termset","name":"Options Trading Terms","description":"Plain-English definitions of strike, premium, implied volatility, delta, gamma, theta, vega, vertical spreads, iron condors, straddles, PMCC and assignment.","url":"https://yusuf-gadelrab.github.io/glossary/options.html","inLanguage":"en","author":{"@id":"https://yusuf-gadelrab.github.io/#person"},"publisher":{"@id":"https://yusuf-gadelrab.github.io/#person"},"hasDefinedTerm":[{"@type":"DefinedTerm","@id":"https://yusuf-gadelrab.github.io/glossary/options.html#strike-price","name":"Strike price","description":"A strike price is the fixed price at which an option contract lets its holder buy the underlying, for a call, or sell it, for a put, if the option is exercised.","url":"https://yusuf-gadelrab.github.io/glossary/options.html#strike-price","inDefinedTermSet":{"@id":"https://yusuf-gadelrab.github.io/glossary/options.html#termset"},"alternateName":["Exercise price"]},{"@type":"DefinedTerm","@id":"https://yusuf-gadelrab.github.io/glossary/options.html#option-premium","name":"Premium","description":"An option premium is the price the buyer pays the seller for the contract, quoted per share and multiplied by the contract size, commonly 100 shares for a standard US listed equity option.","url":"https://yusuf-gadelrab.github.io/glossary/options.html#option-premium","inDefinedTermSet":{"@id":"https://yusuf-gadelrab.github.io/glossary/options.html#termset"},"alternateName":["Option price","Contract price"]},{"@type":"DefinedTerm","@id":"https://yusuf-gadelrab.github.io/glossary/options.html#implied-volatility","name":"Implied volatility (IV)","description":"Implied volatility is the annualised volatility figure that, fed into an option pricing model, makes the model output the option's observed market price, so it reads as a market-implied expectation rather than a forecast.","url":"https://yusuf-gadelrab.github.io/glossary/options.html#implied-volatility","inDefinedTermSet":{"@id":"https://yusuf-gadelrab.github.io/glossary/options.html#termset"},"alternateName":["IV"]},{"@type":"DefinedTerm","@id":"https://yusuf-gadelrab.github.io/glossary/options.html#delta","name":"Delta","description":"Delta is the rate of change in an option's value per one dollar move in the underlying, so a 0.40 delta call gains roughly 40 cents per share when the stock rises one dollar.","url":"https://yusuf-gadelrab.github.io/glossary/options.html#delta","inDefinedTermSet":{"@id":"https://yusuf-gadelrab.github.io/glossary/options.html#termset"}},{"@type":"DefinedTerm","@id":"https://yusuf-gadelrab.github.io/glossary/options.html#gamma","name":"Gamma","description":"Gamma is the rate of change of delta per one dollar move in the underlying, the second derivative of option value with respect to price, and it is largest for near-the-money options close to expiry.","url":"https://yusuf-gadelrab.github.io/glossary/options.html#gamma","inDefinedTermSet":{"@id":"https://yusuf-gadelrab.github.io/glossary/options.html#termset"}},{"@type":"DefinedTerm","@id":"https://yusuf-gadelrab.github.io/glossary/options.html#theta","name":"Theta","description":"Theta is the change in an option's value per day attributable to the passage of time alone, holding the underlying price and implied volatility constant, and it is normally negative for long option positions.","url":"https://yusuf-gadelrab.github.io/glossary/options.html#theta","inDefinedTermSet":{"@id":"https://yusuf-gadelrab.github.io/glossary/options.html#termset"},"alternateName":["Time decay"]},{"@type":"DefinedTerm","@id":"https://yusuf-gadelrab.github.io/glossary/options.html#vega","name":"Vega","description":"Vega is the change in an option's value for a one percentage point change in implied volatility, and despite the name it is not a Greek letter, unlike delta, gamma and theta.","url":"https://yusuf-gadelrab.github.io/glossary/options.html#vega","inDefinedTermSet":{"@id":"https://yusuf-gadelrab.github.io/glossary/options.html#termset"}},{"@type":"DefinedTerm","@id":"https://yusuf-gadelrab.github.io/glossary/options.html#vertical-spread","name":"Vertical spread","description":"A vertical spread is a two-leg option position that buys one strike and sells another strike of the same type, same underlying and same expiry, capping both the maximum profit and the maximum loss.","url":"https://yusuf-gadelrab.github.io/glossary/options.html#vertical-spread","inDefinedTermSet":{"@id":"https://yusuf-gadelrab.github.io/glossary/options.html#termset"},"alternateName":["Debit spread","Credit spread"]},{"@type":"DefinedTerm","@id":"https://yusuf-gadelrab.github.io/glossary/options.html#iron-condor","name":"Iron condor","description":"An iron condor is a four-leg, net-credit option position combining a short put spread below the market with a short call spread above it, all on the same underlying and expiry.","url":"https://yusuf-gadelrab.github.io/glossary/options.html#iron-condor","inDefinedTermSet":{"@id":"https://yusuf-gadelrab.github.io/glossary/options.html#termset"}},{"@type":"DefinedTerm","@id":"https://yusuf-gadelrab.github.io/glossary/options.html#straddle","name":"Straddle","description":"A straddle is an option position holding a call and a put at the same strike and expiry, so it profits from a large move in either direction and loses if the underlying sits still.","url":"https://yusuf-gadelrab.github.io/glossary/options.html#straddle","inDefinedTermSet":{"@id":"https://yusuf-gadelrab.github.io/glossary/options.html#termset"}},{"@type":"DefinedTerm","@id":"https://yusuf-gadelrab.github.io/glossary/options.html#pmcc","name":"Poor man's covered call (PMCC)","description":"A poor man's covered call is a diagonal calendar spread that sells a short-dated out-of-the-money call against a long-dated, deep in-the-money call used in place of 100 shares of stock.","url":"https://yusuf-gadelrab.github.io/glossary/options.html#pmcc","inDefinedTermSet":{"@id":"https://yusuf-gadelrab.github.io/glossary/options.html#termset"},"alternateName":["Diagonal call spread","Long call diagonal"]},{"@type":"DefinedTerm","@id":"https://yusuf-gadelrab.github.io/glossary/options.html#collar","name":"Collar","description":"A collar is a three-part position holding 100 shares of stock, a protective put below the current price and a short call above it, usually struck so the premiums roughly cancel.","url":"https://yusuf-gadelrab.github.io/glossary/options.html#collar","inDefinedTermSet":{"@id":"https://yusuf-gadelrab.github.io/glossary/options.html#termset"},"alternateName":["Protective collar","Zero-cost collar"]},{"@type":"DefinedTerm","@id":"https://yusuf-gadelrab.github.io/glossary/options.html#assignment","name":"Assignment","description":"Assignment is what happens to the seller of an option when a holder exercises: the short is selected, usually at random through the clearing house, and must deliver on the contract's obligation.","url":"https://yusuf-gadelrab.github.io/glossary/options.html#assignment","inDefinedTermSet":{"@id":"https://yusuf-gadelrab.github.io/glossary/options.html#termset"}},{"@type":"DefinedTerm","@id":"https://yusuf-gadelrab.github.io/glossary/options.html#exercise","name":"Exercise","description":"Exercise is the act by which the holder of an option invokes the contract's right, converting a call into a long position in the underlying, or a put into a short position or a sale.","url":"https://yusuf-gadelrab.github.io/glossary/options.html#exercise","inDefinedTermSet":{"@id":"https://yusuf-gadelrab.github.io/glossary/options.html#termset"}}]},{"@type":"CollectionPage","@id":"https://yusuf-gadelrab.github.io/glossary/options.html#page","url":"https://yusuf-gadelrab.github.io/glossary/options.html","name":"Options Trading Terms","description":"Plain-English definitions of strike, premium, implied volatility, delta, gamma, theta, vega, vertical spreads, iron condors, straddles, PMCC and assignment.","datePublished":"2026-08-01","dateModified":"2026-08-01","inLanguage":"en","isAccessibleForFree":true,"about":["Options trading","Option Greeks","Derivatives","Risk management"],"author":{"@id":"https://yusuf-gadelrab.github.io/#person"},"publisher":{"@id":"https://yusuf-gadelrab.github.io/#person"},"mainEntity":{"@id":"https://yusuf-gadelrab.github.io/glossary/options.html#termset"},"breadcrumb":{"@id":"https://yusuf-gadelrab.github.io/glossary/options.html#crumbs"},"isPartOf":{"@id":"https://yusuf-gadelrab.github.io/#website"}},{"@type":"BreadcrumbList","@id":"https://yusuf-gadelrab.github.io/glossary/options.html#crumbs","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://yusuf-gadelrab.github.io/"},{"@type":"ListItem","position":2,"name":"Glossary","item":"https://yusuf-gadelrab.github.io/glossary.html"},{"@type":"ListItem","position":3,"name":"Options"}]}]}</script>
+
+<link rel="stylesheet" href="/css/site.css">
+<style>
+  .prose{max-width:var(--maxw-prose)}
+  .prose h2{margin:var(--s7) 0 var(--s4);font-size:var(--t-h2)}
+  .prose p{color:var(--muted);margin:0 0 var(--s4)}
+  .prose ul,.prose ol{color:var(--muted);padding-left:1.2em;margin:0 0 var(--s4)}
+  .prose li{margin-bottom:var(--s2)}
+  .prose a{color:var(--gold-2)}
+  .prose strong{color:var(--fg)}
+  .formula{display:block;padding:var(--s4);margin:0 0 var(--s4);border:1px solid var(--line-soft);
+    border-radius:var(--radius);font-family:ui-monospace,SFMono-Regular,Menlo,monospace;
+    font-size:var(--t-small);color:var(--gold-2);overflow-x:auto;white-space:pre-wrap}
+  .tblwrap{overflow-x:auto;margin:0 0 var(--s4)}
+  .tbl{width:100%;border-collapse:collapse;font-size:var(--t-small)}
+  .tbl th,.tbl td{text-align:left;padding:var(--s3);border-bottom:1px solid var(--line-soft);
+    color:var(--muted);vertical-align:top}
+  .tbl th{font-family:var(--display-pro);color:var(--gold-2);font-weight:600}
+  .callout{padding:var(--s4);border:1px solid var(--line-soft);border-radius:var(--radius);
+    color:var(--muted);font-size:var(--t-small);margin:0 0 var(--s5)}
+  .callout--warn{border-color:var(--gold-2)}
+  .jump{display:flex;flex-wrap:wrap;gap:var(--s2) var(--s4);margin:var(--s5) 0 0;padding:0;list-style:none}
+  .jump li{margin:0}
+  .jump a{font-size:var(--t-small);color:var(--muted)}
+  .jump a:hover{color:var(--gold-2)}
+  .term{max-width:var(--maxw-prose);padding:var(--s6) 0;border-top:1px solid var(--line-soft);
+    scroll-margin-top:var(--s8)}
+  .term__head{display:flex;align-items:baseline;gap:var(--s3);flex-wrap:wrap;margin:0 0 var(--s4)}
+  .term__head h3{margin:0;font-size:var(--t-h3)}
+  .term__hash{font-family:var(--display-pro);font-size:var(--t-small);color:var(--gold-dim);
+    text-decoration:none;opacity:0;transition:opacity .2s var(--ease)}
+  .term:hover .term__hash,.term__hash:focus-visible{opacity:1;color:var(--gold-2)}
+  .term__aka{font-size:var(--t-small);color:var(--muted)}
+  .term__def{color:var(--fg);font-size:17px;margin:0 0 var(--s4)}
+  .term p{color:var(--muted);margin:0 0 var(--s4)}
+  .term p:last-child{margin-bottom:0}
+  .term ul,.term ol{color:var(--muted);padding-left:1.2em;margin:0 0 var(--s4)}
+  .term li{margin-bottom:var(--s2)}
+  .term a{color:var(--gold-2)}
+  .term strong{color:var(--fg)}
+  .note{font-size:var(--t-small);color:var(--muted);margin:0 0 var(--s3)}
+  .tag{font-family:var(--display-pro);font-size:var(--t-micro);font-weight:600;letter-spacing:2px;
+    text-transform:uppercase;color:var(--gold-2);margin-right:var(--s2)}
+  .az{margin:0;padding:0;list-style:none}
+  .az__group{margin:0 0 var(--s6)}
+  .az__letter{font-family:var(--display-pro);font-weight:700;font-size:var(--t-h3);
+    color:var(--gold-2);margin:0 0 var(--s3)}
+  .az__list{display:grid;gap:var(--s2) var(--s5);margin:0;padding:0;list-style:none;
+    grid-template-columns:repeat(auto-fill,minmax(min(230px,100%),1fr))}
+  .az__list li{font-size:var(--t-small);color:var(--muted)}
+  .az__list a{color:var(--muted)}
+  .az__list a:hover{color:var(--gold-2)}
+  .az__where{color:var(--gold-dim)}
+  .rail{display:flex;flex-wrap:wrap;gap:var(--s2) var(--s3);margin:var(--s5) 0 0;padding:0;list-style:none}
+  .rail a{font-family:var(--display-pro);font-weight:600;font-size:var(--t-small);
+    color:var(--gold-2);border:1px solid var(--line-soft);border-radius:var(--radius);
+    padding:6px 12px;display:inline-block}
+  .rail a:hover{border-color:var(--gold-2)}
+  .cl{display:flex;flex-direction:column;padding:var(--s5)}
+  .cl h3{margin:0 0 var(--s3);font-size:var(--t-h3)}
+  .cl p{color:var(--muted);font-size:var(--t-small);flex:1;margin:0}
+  .cl .go{margin-top:var(--s4);font-family:var(--display-pro);font-weight:600;
+    font-size:var(--t-small);color:var(--gold-2)}
+  a.cl:hover .go{color:var(--gold)}
+  .cl__n{color:var(--muted);font-size:var(--t-small);margin-top:var(--s3)}
+</style>
+</head>
+<body class="pro">
+
+<a class="skip-link" href="#main">Skip to content</a>
+
+<nav class="site-nav">
+  <a class="site-nav__brand" href="/"><img class="site-nav__lion" src="/img/brand/lion-mark.svg" alt="" width="34" height="34" decoding="async"><span>YUSUF GADELRAB</span></a>
+  <div class="site-nav__links">
+    <a href="/">Work</a>
+    <a href="/guides.html">Guides</a>
+    <a href="/glossary.html" aria-current="page">Glossary</a>
+    <a href="/apps.html">Apps</a>
+    <a href="/store.html">Store</a>
+  </div>
+</nav>
+
+<nav class="crumbs" aria-label="Breadcrumb">
+  <ol>
+    <li><a href="/">Home</a></li>
+    <li><a href="/glossary.html">Glossary</a></li>
+    <li><span aria-current="page">Options</span></li>
+  </ol>
+</nav>
+
+<main id="main">
+
+  <header class="section">
+    <img class="page-lion" src="/img/brand/lion-mark.svg" alt="" width="46" height="46">
+    <p class="eyebrow">Glossary · Options</p>
+    <h1 style="margin:var(--s4) 0">The options vocabulary, defined without hand-waving</h1>
+    <p class="lead">Fourteen terms that cover contract mechanics, the four Greeks people quote most and get wrong most often, the three structures worth knowing the arithmetic for, and the two words that decide who is obligated to do what at expiry. Every maximum profit, maximum loss and breakeven on this page is worked out in full rather than asserted.</p>
+  </header>
+
+  <hr class="divider">
+
+  <section class="section section--tight">
+    <div class="prose">
+      <p class="callout callout--warn"><strong>Educational only. Not investment advice.</strong> Options carry substantial risk. A long option can expire worthless, losing 100% of the premium paid, and some structures, including uncovered short options, can lose more than the initial outlay. Assignment and early exercise are real risks that can arrive without warning and can require capital you did not plan to commit. Contract specifications, settlement style, exercise thresholds, multipliers and margin treatment vary by product and by broker: verify every one of them against your broker's own contract specifications and the exchange rulebook before you trade. Nothing here is a recommendation to buy or sell any security.</p>
+      <p>Options vocabulary gets defined badly in public more than almost any other trading topic, and the Greeks are the worst offenders. Delta gets called a probability. Gamma gets called "the acceleration" with no statement of what is accelerating. Theta gets described as a fixed daily bleed. Vega gets listed as a Greek letter, which it is not. Each of those errors is small on its own and each one produces a position sized wrong.</p>
+      <p>Everything below assumes standard US listed equity options, which deliver <strong>100 shares per contract</strong> and are quoted per share. A premium of $3.00 therefore costs $300 plus commission for one contract. That multiplier is where most arithmetic mistakes start, so it is written into every worked example on this page rather than assumed. Contracts adjusted for splits, spin-offs or special dividends can carry a non-standard deliverable: check the contract adjustment memo before assuming 100.</p>
+      <div class="tblwrap"><table class="tbl">
+        <thead><tr><th>Greek</th><th>Measures the change in</th><th>Per one unit change in</th></tr></thead>
+        <tbody>
+          <tr><td>Delta</td><td>Option value</td><td>One dollar of underlying price</td></tr>
+          <tr><td>Gamma</td><td>Delta</td><td>One dollar of underlying price</td></tr>
+          <tr><td>Theta</td><td>Option value</td><td>One day of elapsed time</td></tr>
+          <tr><td>Vega</td><td>Option value</td><td>One percentage point of implied volatility</td></tr>
+        </tbody>
+      </table></div>
+      <p>Read that table as the definition and the rest of this page as the detail. Every Greek is a partial derivative: it holds everything else constant, which is precisely the assumption that fails in a real market where price, volatility and time all move at once.</p>
+      <h2>14 terms on this page</h2>
+    </div>
+    <ul class="jump">
+      <li><a href="#strike-price">Strike price</a></li>
+      <li><a href="#option-premium">Premium</a></li>
+      <li><a href="#implied-volatility">Implied volatility (IV)</a></li>
+      <li><a href="#delta">Delta</a></li>
+      <li><a href="#gamma">Gamma</a></li>
+      <li><a href="#theta">Theta</a></li>
+      <li><a href="#vega">Vega</a></li>
+      <li><a href="#vertical-spread">Vertical spread</a></li>
+      <li><a href="#iron-condor">Iron condor</a></li>
+      <li><a href="#straddle">Straddle</a></li>
+      <li><a href="#pmcc">Poor man's covered call (PMCC)</a></li>
+      <li><a href="#collar">Collar</a></li>
+      <li><a href="#assignment">Assignment</a></li>
+      <li><a href="#exercise">Exercise</a></li>
+    </ul>
+  </section>
+
+  <hr class="divider">
+
+  <section class="section section--tight" aria-label="Definitions">
+
+    <article class="term" id="strike-price">
+      <div class="term__head">
+        <h3>Strike price</h3>
+        <a class="term__hash" href="#strike-price" aria-label="Permalink to Strike price">#</a>
+        <span class="term__aka">also: Exercise price</span>
+      </div>
+      <p class="term__def">A strike price is the fixed price at which an option contract lets its holder buy the underlying, for a call, or sell it, for a put, if the option is exercised.</p>
+      <p>The strike is the one number in an option contract that never moves. Everything else about the position, the premium, the Greeks, the probability of finishing in the money, is a function of where the underlying sits relative to that fixed reference. Strikes are set by the exchange, not negotiated between buyer and seller, which is what makes listed options fungible: your 105 call is interchangeable with everyone else's 105 call of the same expiry.</p>
+      <p>Strike spacing is standardised and varies by underlying price and by the exchange's listing programme, commonly running in $1.00, $2.50, $5.00 or $10.00 intervals with tighter spacing on lower-priced and heavily traded names. Wider spacing means fewer choices near the money and wider bid-ask spreads on the strikes that do exist. Verify the actual chain rather than assuming an interval.</p>
+      <p>Strike relative to spot defines <strong>moneyness</strong>, which drives the entire risk profile:</p>
+      <div class="tblwrap"><table class="tbl">
+        <thead><tr><th>Moneyness</th><th>Call</th><th>Put</th><th>Intrinsic value</th></tr></thead>
+        <tbody>
+          <tr><td>In the money (ITM)</td><td>Strike below spot</td><td>Strike above spot</td><td>Positive</td></tr>
+          <tr><td>At the money (ATM)</td><td>Strike at spot</td><td>Strike at spot</td><td>Zero, at the boundary</td></tr>
+          <tr><td>Out of the money (OTM)</td><td>Strike above spot</td><td>Strike below spot</td><td>Zero</td></tr>
+        </tbody>
+      </table></div>
+      <p>Two consequences follow directly. First, an out-of-the-money option is made entirely of time value, so it decays to zero if the underlying does not move, and it can lose money on a favourable move that arrives too slowly. Second, exercising an option requires the capital to transact at the strike: exercising one 200 call means buying 100 shares at $200, which is $20,000, not the $400 you paid for the contract. Brokers do check for that capital, and the check happens at the worst possible moment.</p>
+      <p class="note"><span class="tag">Example</span>Stock trades at $103. The 100 call is in the money by $3.00 of intrinsic value ($300 per contract). The 105 call is out of the money and holds zero intrinsic value: every cent of its price is time value that will be gone at expiry unless the stock clears $105.</p>
+      <p class="note"><span class="tag">Common misconception</span>That a lower strike is "cheaper" on a call. A lower-strike call costs more premium because it carries more intrinsic value. What is cheaper in dollars is the far out-of-the-money strike, and it is cheaper because it is far more likely to expire worthless.</p>
+      <p class="note"><span class="tag">See also</span><a href="#option-premium">Premium</a>, <a href="#delta">Delta</a>, <a href="#exercise">Exercise</a></p>
+    </article>
+
+    <article class="term" id="option-premium">
+      <div class="term__head">
+        <h3>Premium</h3>
+        <a class="term__hash" href="#option-premium" aria-label="Permalink to Premium">#</a>
+        <span class="term__aka">also: Option price, Contract price</span>
+      </div>
+      <p class="term__def">An option premium is the price the buyer pays the seller for the contract, quoted per share and multiplied by the contract size, commonly 100 shares for a standard US listed equity option.</p>
+      <p>Premium splits cleanly into two parts, and keeping them separate is the difference between understanding a position and guessing at it.</p>
+      <span class="formula">Premium  =  intrinsic value  +  extrinsic value
+
+Intrinsic (call)  =  max(spot - strike, 0)
+Intrinsic (put)   =  max(strike - spot, 0)
+Extrinsic         =  premium - intrinsic</span>
+      <p><strong>Intrinsic value</strong> is what the contract would be worth if it were exercised right now. It cannot be negative and it cannot be taken away by time. <strong>Extrinsic value</strong>, also called time value, is everything else: the market's payment for the possibility that the option finishes further in the money than it is today. Extrinsic value is a decaying asset. At expiry it is exactly zero, always, for every contract, with no exceptions. That single fact is why long option positions with no directional move lose money and why the sellers on the other side collect.</p>
+      <p>Extrinsic value is largest at the money, shrinks in both directions as the strike moves away from spot, rises with implied volatility, and rises with time to expiry, though not proportionally. It is what the four Greeks are actually describing: delta and gamma track how intrinsic value will change, while theta and vega track how the extrinsic component erodes or reprices.</p>
+      <p>Premium is quoted per share. Multiply by the contract multiplier to get cash. Commissions and, on the sell side, exchange and regulatory fees come out of that number, and on a $0.30 credit spread the fees are a material fraction of the trade rather than a rounding error.</p>
+      <p class="note"><span class="tag">Example</span>Stock at $103, the 100 call is offered at $4.50. Intrinsic value is $103 &minus; $100 = $3.00. Extrinsic value is $4.50 &minus; $3.00 = $1.50. Buying one contract costs $4.50 &times; 100 = $450, and $150 of that is time value that goes to zero by expiry unless the stock keeps climbing.</p>
+      <p class="note"><span class="tag">Common misconception</span>That a cheap premium means a cheap position. A $0.15 out-of-the-money call is cheap in dollars and expensive in expected value, because it is priced at fifteen cents precisely because the market assigns it a low probability of ever being worth anything.</p>
+      <p class="note"><span class="tag">See also</span><a href="#strike-price">Strike price</a>, <a href="#implied-volatility">Implied volatility (IV)</a>, <a href="#theta">Theta</a></p>
+    </article>
+
+    <article class="term" id="implied-volatility">
+      <div class="term__head">
+        <h3>Implied volatility (IV)</h3>
+        <a class="term__hash" href="#implied-volatility" aria-label="Permalink to Implied volatility (IV)">#</a>
+        <span class="term__aka">also: IV</span>
+      </div>
+      <p class="term__def">Implied volatility is the annualised volatility figure that, fed into an option pricing model, makes the model output the option's observed market price, so it reads as a market-implied expectation rather than a forecast.</p>
+      <p>Implied volatility is solved for, not measured. Take a pricing model, feed it spot, strike, time to expiry, interest rate and dividend, and it returns a price for any volatility input you give it. Now invert the problem: the option is trading at $4.50, so what volatility number would the model need in order to output $4.50? That number is the implied volatility. It is a restatement of the price in a unit that can be compared across strikes, expiries and underlyings.</p>
+      <p>Two properties get lost constantly. First, IV is <strong>annualised</strong>. An IV of 32% is a one standard deviation move of 32% over a year, not over the life of the contract. To scale it to a shorter horizon, multiply by the square root of the time fraction, so a 30-day horizon at 32% IV implies roughly 32% &times; sqrt(30/365), about 9.2%, as a one standard deviation move. Second, IV is <strong>model-dependent</strong>: the same market price implies slightly different volatilities under Black-Scholes and under a binomial model with discrete dividends, so "the IV" is really "the IV under this model with these inputs."</p>
+      <p>IV is not a forecast and it is not the market's best guess at future realised volatility. It is a price, and it embeds a risk premium: option sellers demand compensation for carrying convexity risk, which is why implied volatility has historically tended to sit above subsequently realised volatility on broad indices more often than not. It also embeds supply and demand for specific strikes, which is why a chain shows a <strong>volatility skew</strong> rather than one flat number. That skew is direct evidence that the constant-volatility assumption inside Black-Scholes is false, and traders keep using the model anyway because it is a convenient quoting convention rather than a belief about the world.</p>
+      <p>Because absolute IV levels differ wildly between a utility and a biotech, most traders read IV in relative terms: IV rank and IV percentile compare today's implied volatility to that underlying's own trailing range. Those are different measures and are frequently confused. Rank places today between the trailing high and low. Percentile counts what fraction of trailing days sat below today.</p>
+      <p class="note"><span class="tag">Example</span>A stock is at $100 with 30 days to expiry and 32% IV. The one standard deviation expected move over that window is roughly $100 &times; 0.32 &times; sqrt(30/365) = $9.17. That is the number an option seller is being paid to be wrong about, and it is a model output, not a promise.</p>
+      <p class="note"><span class="tag">Common misconception</span>That high IV means the stock is going up, or that IV predicts direction. Implied volatility is directionless: it prices the size of the expected move, not the sign. High IV before earnings means the market expects a big move either way, and it means the option you are buying is expensive in exactly the way that punishes you when IV collapses after the announcement.</p>
+      <p class="note"><span class="tag">See also</span><a href="#vega">Vega</a>, <a href="#option-premium">Premium</a>, <a href="#straddle">Straddle</a></p>
+    </article>
+
+    <article class="term" id="delta">
+      <div class="term__head">
+        <h3>Delta</h3>
+        <a class="term__hash" href="#delta" aria-label="Permalink to Delta">#</a>
+      </div>
+      <p class="term__def">Delta is the rate of change in an option's value per one dollar move in the underlying, so a 0.40 delta call gains roughly 40 cents per share when the stock rises one dollar.</p>
+      <p>Delta is the first derivative of option value with respect to the underlying price. Call deltas run from 0 to +1, put deltas from &minus;1 to 0. Deep in the money, an option's delta approaches 1 in absolute value because the contract is behaving like the stock itself. Far out of the money, delta approaches zero because a one dollar move changes almost nothing about a contract that is going to expire worthless.</p>
+      <p>The practical use is position sizing. Multiply delta by the contract multiplier to get share equivalents: a 0.40 delta call on a standard contract carries the directional exposure of 40 shares. That is the number to compare against a stock position, and it is the number that makes an option position honestly comparable to the cash position it is supposedly replacing. A trader who thinks a 0.20 delta call is "the same trade in smaller size" is holding a fifth of the directional exposure and a completely different risk profile.</p>
+      <p>Delta is also used as a rough proxy for the probability of finishing in the money, and this is where it needs a warning. Under a standard Black-Scholes framing on a non-dividend-paying underlying, a call's delta equals N(d1) while the model's risk-neutral probability of finishing in the money equals N(d2), and d1 is larger than d2 by exactly one factor of volatility times the square root of time. So <strong>call delta sits above that probability, and the absolute delta of a put sits below it.</strong> The gap is negligible for a one-week, low-volatility contract and substantial for a two-year contract on a high-volatility name.</p>
+      <p>There is a second, deeper problem: the risk-neutral probability is not the real-world probability. It is computed under a measure where the underlying drifts at the risk-free rate, not at whatever return you actually expect. Delta is a hedge ratio that happens to look like a probability. If you genuinely want the market-implied chance of finishing above a strike, the price of a tight call spread divided by its width is a closer read than delta is, because it prices the actual distribution the market is quoting, skew included.</p>
+      <p class="note"><span class="tag">Example</span>You hold three 0.35 delta calls. Share-equivalent exposure is 0.35 &times; 100 &times; 3 = 105 shares. If the stock rises $2.00 and nothing else changes, the position gains roughly 105 &times; $2.00 = $210, though gamma means the real gain is slightly more than that because delta itself rises on the way up.</p>
+      <p class="note"><span class="tag">Common misconception</span>That a 0.30 delta option has a 30% chance of finishing in the money. It is a usable back-of-envelope approximation and a biased one, in a direction that differs between calls and puts, under a probability measure that is not the real-world one. Treat it as a hedge ratio that is rough enough to quote at a desk and too rough to size a portfolio on.</p>
+      <p class="note"><span class="tag">See also</span><a href="#gamma">Gamma</a>, <a href="#strike-price">Strike price</a>, <a href="#vertical-spread">Vertical spread</a></p>
+    </article>
+
+    <article class="term" id="gamma">
+      <div class="term__head">
+        <h3>Gamma</h3>
+        <a class="term__hash" href="#gamma" aria-label="Permalink to Gamma">#</a>
+      </div>
+      <p class="term__def">Gamma is the rate of change of delta per one dollar move in the underlying, the second derivative of option value with respect to price, and it is largest for near-the-money options close to expiry.</p>
+      <p>Delta tells you your current directional exposure. Gamma tells you how fast that exposure is about to change. It is the second derivative, and it is the reason an option position is not a stock position with a discount attached: 100 shares have a delta of exactly 100 and a gamma of exactly zero, forever. An option's delta is a moving target.</p>
+      <p>Long options, calls and puts alike, have <strong>positive gamma</strong>. That is the entire appeal of being long premium: as the underlying moves in your favour, delta grows and you make money faster, and as it moves against you, delta shrinks and you lose money slower. Short options have <strong>negative gamma</strong>, which is the mirror image and the real hazard of premium selling. The short position gets shorter into a rally and longer into a selloff, so the position leans harder into the move at exactly the moment it should be getting out of the way.</p>
+      <p>Gamma is concentrated. It peaks near the money and falls away in both directions, and for a near-the-money contract it grows sharply as expiry approaches, because the same one dollar move flips the contract from worthless to intrinsic in a shrinking window. For a far out-of-the-money contract the opposite happens: gamma fades toward expiry, since nothing short of a gap changes that contract's fate. The practical translation is that <strong>a short near-the-money option in its final week is the highest-gamma risk most retail traders ever carry</strong>, and it is routinely carried by people who describe the trade as "collecting a little theta."</p>
+      <p>Gamma is also what makes delta hedging a continuous activity rather than a one-time adjustment. A delta-neutral book with positive gamma has to be re-hedged as price moves, and the re-hedging systematically buys low and sells high, which is what the long option position is paying theta for. A negative-gamma book re-hedges in the other direction: buying strength and selling weakness, which is what the short position is being paid theta to endure.</p>
+      <p class="note"><span class="tag">Example</span>A 0.50 delta call with 0.06 gamma. The stock rises $1.00: delta moves to roughly 0.56. It rises another dollar: delta moves toward 0.62. Over a $4.00 rally the position's share-equivalent exposure climbs from 50 to roughly 74, so the last dollar of the move earns close to half again what the first dollar did.</p>
+      <p class="note"><span class="tag">Common misconception</span>That gamma measures the option's price acceleration directly. Gamma measures the change in <em>delta</em>. The price effect is second-order and follows from it. Quoting gamma as "how fast the option gains" conflates the first and second derivatives and produces sizing that is wrong in the direction that hurts.</p>
+      <p class="note"><span class="tag">See also</span><a href="#delta">Delta</a>, <a href="#theta">Theta</a>, <a href="#assignment">Assignment</a></p>
+    </article>
+
+    <article class="term" id="theta">
+      <div class="term__head">
+        <h3>Theta</h3>
+        <a class="term__hash" href="#theta" aria-label="Permalink to Theta">#</a>
+        <span class="term__aka">also: Time decay</span>
+      </div>
+      <p class="term__def">Theta is the change in an option's value per day attributable to the passage of time alone, holding the underlying price and implied volatility constant, and it is normally negative for long option positions.</p>
+      <p>Theta prices the fact that an option is a wasting asset. Extrinsic value must be exactly zero at expiry, so every day that passes without a compensating move in price or volatility removes a slice of it. A theta of &minus;0.08 means the contract is modelled to lose about eight cents per share, or $8 per standard contract, per calendar day, if literally nothing else changes. Nothing else ever stays the same, which is why theta is a modelled attribution rather than an observed loss.</p>
+      <p>The critical property is that <strong>theta is not linear in time to expiry</strong>. For an at-the-money option, decay accelerates as expiry approaches, roughly in proportion to one over the square root of remaining time. A 90-day option does not lose one ninetieth of its extrinsic value per day. It loses very little early and a great deal in the final two weeks. This is why calendar structures exist at all: the near leg decays faster than the far leg, and that differential is the trade.</p>
+      <p>Out-of-the-money options behave differently. Their decay profile peaks somewhere before expiry and then falls, because once a strike is clearly unreachable there is very little value left to lose. Applying the at-the-money acceleration story to a far out-of-the-money contract produces a completely wrong expectation of how the position bleeds.</p>
+      <p>Theta is also not universally negative, though it is for essentially every long position a retail trader holds. The standard counterexample is a deep in-the-money European put on a non-dividend-paying underlying: its value approaches the discounted strike minus spot, and as expiry approaches that discount unwinds, so the contract can gain value purely from the passage of time. Deep in-the-money European calls on a high-dividend underlying can show the same sign flip for the mirror reason. These are edge cases, not a loophole, and they do not rescue a long out-of-the-money position.</p>
+      <p>The honest framing of a short-premium strategy is that it collects theta and pays for it with negative gamma. The income is steady and the payout profile is not. Any description of premium selling that mentions the theta and not the gamma is describing half of the trade.</p>
+      <p class="note"><span class="tag">Example</span>You buy a 30-day at-the-money call for $3.20 with theta of &minus;0.05. In week one it decays around $0.05 a day. In the final week, with the same strike still at the money, daily decay can run several times that. Holding "to see what happens" into expiry week is where most of the premium disappears.</p>
+      <p class="note"><span class="tag">Common misconception</span>That theta is a fixed daily charge you can budget for, like rent. Theta is itself a function of time, moneyness and implied volatility, and it changes every day. A position quoted at &minus;0.05 today can be at &minus;0.20 in three weeks without the stock having moved a cent.</p>
+      <p class="note"><span class="tag">See also</span><a href="#option-premium">Premium</a>, <a href="#gamma">Gamma</a>, <a href="#pmcc">Poor man's covered call (PMCC)</a></p>
+    </article>
+
+    <article class="term" id="vega">
+      <div class="term__head">
+        <h3>Vega</h3>
+        <a class="term__hash" href="#vega" aria-label="Permalink to Vega">#</a>
+      </div>
+      <p class="term__def">Vega is the change in an option's value for a one percentage point change in implied volatility, and despite the name it is not a Greek letter, unlike delta, gamma and theta.</p>
+      <p>Vega is the odd one out in the standard set. Delta, gamma, theta and rho are all genuine Greek letters. Vega is not: no such letter exists in the Greek alphabet. It is a trading-desk coinage, and academic texts sometimes use kappa or tau for the same quantity. This is trivia until someone confidently lists "the Greeks" and it becomes a quick test of whether they learned the material or the vocabulary.</p>
+      <p>The quoting convention matters more than the name. The raw analytic derivative of option value with respect to volatility is expressed per 1.00 of volatility, meaning per 100 percentage points, which is a useless unit at a desk. Platforms divide it by 100 and quote vega <strong>per one percentage point of implied volatility</strong>. A vega of 0.12 means the contract gains about twelve cents per share, or $12 per standard contract, if IV rises from 30% to 31% with price and time held constant.</p>
+      <p>Vega is positive for every long option, call or put, because more volatility means a wider distribution of outcomes and a long option only benefits from the favourable tail. It is largest at the money and it <strong>grows with time to expiry</strong>: a two-year option carries far more vega than a two-week option on the same strike. That term structure is the mechanism behind most calendar and diagonal risk. The long-dated leg is the volatility position whether or not the trader intended one.</p>
+      <p>The most common way vega costs money is an implied volatility crush. Buy an at-the-money straddle into an earnings announcement, get the direction right, and still lose, because IV was 85% before the print and 40% after it. The stock moved, delta paid, and vega took more than delta gave. Any options position held across a scheduled binary event is a volatility trade first and a directional trade second, and the size should be set accordingly.</p>
+      <p class="note"><span class="tag">Example</span>You are long a straddle with combined vega of 0.30 and IV at 78% going into earnings. IV settles at 41% the next morning: a 37 point drop. The modelled vega loss alone is 0.30 &times; 37 = $11.10 per share, or $1,110 per contract pair, before counting whatever the stock actually did.</p>
+      <p class="note"><span class="tag">Common misconception</span>That vega is a Greek letter. It is not, and the reason to know that is that the people repeating it usually also repeat the quoting convention wrong, describing vega per whole unit of volatility rather than per percentage point, which is off by a factor of 100.</p>
+      <p class="note"><span class="tag">See also</span><a href="#implied-volatility">Implied volatility (IV)</a>, <a href="#straddle">Straddle</a>, <a href="#pmcc">Poor man's covered call (PMCC)</a></p>
+    </article>
+
+    <article class="term" id="vertical-spread">
+      <div class="term__head">
+        <h3>Vertical spread</h3>
+        <a class="term__hash" href="#vertical-spread" aria-label="Permalink to Vertical spread">#</a>
+        <span class="term__aka">also: Debit spread, Credit spread</span>
+      </div>
+      <p class="term__def">A vertical spread is a two-leg option position that buys one strike and sells another strike of the same type, same underlying and same expiry, capping both the maximum profit and the maximum loss.</p>
+      <p>"Vertical" refers to the option chain: both legs sit in the same expiry column and differ only by strike, moving vertically down the page. Four variants exist, and they reduce to two directional views and two cash flows.</p>
+      <div class="tblwrap"><table class="tbl">
+        <thead><tr><th>Structure</th><th>Legs</th><th>Cash flow</th><th>Profits when</th></tr></thead>
+        <tbody>
+          <tr><td>Bull call spread</td><td>Buy lower call, sell higher call</td><td>Net debit</td><td>Underlying rises</td></tr>
+          <tr><td>Bear call spread</td><td>Sell lower call, buy higher call</td><td>Net credit</td><td>Underlying falls or stalls</td></tr>
+          <tr><td>Bull put spread</td><td>Sell higher put, buy lower put</td><td>Net credit</td><td>Underlying rises or stalls</td></tr>
+          <tr><td>Bear put spread</td><td>Buy higher put, sell lower put</td><td>Net debit</td><td>Underlying falls</td></tr>
+        </tbody>
+      </table></div>
+      <p>The arithmetic is fixed and worth memorising, because it is the whole reason to use the structure. Every quantity is per share; multiply by the contract multiplier for cash.</p>
+      <span class="formula">Width  =  higher strike - lower strike
+
+DEBIT SPREAD
+  Max profit    =  width - net debit
+  Max loss      =  net debit
+  Breakeven     =  long strike + net debit      (call spread)
+                =  long strike - net debit      (put spread)
+
+CREDIT SPREAD
+  Max profit    =  net credit
+  Max loss      =  width - net credit
+  Breakeven     =  short strike + net credit    (call spread)
+                =  short strike - net credit    (put spread)</span>
+      <p>The short leg does two jobs. It cuts the cost of the position, and it cuts the vega and theta exposure, because the two legs partially offset. That is why a vertical spread survives an implied volatility crush far better than a naked long option: the leg you sold reprices in the same direction as the leg you bought. The price of that protection is a hard ceiling on the profit. A stock that triples pays exactly the same as a stock that clears the short strike by a cent.</p>
+      <p>The failure mode specific to credit spreads is a psychology problem dressed as an arithmetic one. Collecting $0.75 on a $5.00-wide spread wins often and pays $75 when it does, while the loss is $425. That distribution produces a long run of green days followed by one that erases them, which is fine if the position is sized against the $425 and a disaster if it is sized against the $75. Size credit spreads on maximum loss, always, and check the assignment risk on the short leg before expiry week rather than during it.</p>
+      <p class="note"><span class="tag">Example</span>Stock at $100. Buy the 100 call at $5.00, sell the 110 call at $2.00, for a net debit of $3.00, which is $300 per contract. Width is $10.00. Max loss is the $300 paid. Max profit is $10.00 &minus; $3.00 = $7.00, or $700, reached anywhere at or above $110 at expiry. Breakeven is $100 + $3.00 = $103.00. Risk $300 to make $700, and you need a 3% move just to break even.</p>
+      <p class="note"><span class="tag">Common misconception</span>That a credit spread's risk is the credit received. The risk is the width minus the credit, and it is typically several times the credit. A trader tracking "premium collected" as the position size is understating exposure by a factor of five or more on a typical spread.</p>
+      <p class="note"><span class="tag">Go deeper</span><a href="/guides/options-vertical-spreads.html">Full guide: options vertical spreads, worked end to end</a></p>
+      <p class="note"><span class="tag">See also</span><a href="#iron-condor">Iron condor</a>, <a href="#delta">Delta</a>, <a href="#assignment">Assignment</a>, <a href="/glossary/trading-risk.html#r-multiple">R-multiple</a>, <a href="/glossary/trading-risk.html#position-sizing">Position sizing</a></p>
+    </article>
+
+    <article class="term" id="iron-condor">
+      <div class="term__head">
+        <h3>Iron condor</h3>
+        <a class="term__hash" href="#iron-condor" aria-label="Permalink to Iron condor">#</a>
+      </div>
+      <p class="term__def">An iron condor is a four-leg, net-credit option position combining a short put spread below the market with a short call spread above it, all on the same underlying and expiry.</p>
+      <p>An iron condor is two vertical credit spreads worn as one trade. Sell an out-of-the-money put spread beneath the current price, sell an out-of-the-money call spread above it, and collect both credits. The position profits if the underlying stays between the two short strikes through expiry, which makes it a bet on range and on falling implied volatility rather than on direction.</p>
+      <p>The arithmetic follows from the vertical spread arithmetic, with one wrinkle that catches people: <strong>only one side can finish in the money</strong>. The underlying cannot simultaneously be below the short put and above the short call. So the maximum loss is set by the wider of the two wings, not by their sum.</p>
+      <span class="formula">Net credit   =  put spread credit + call spread credit
+
+Max profit   =  net credit
+               (underlying finishes between the short strikes)
+
+Max loss     =  widest wing width - net credit
+
+Upper BE     =  short call strike + net credit
+Lower BE     =  short put strike  - net credit</span>
+      <p>The structure is short gamma and short vega. Both of those are the point: the trade is being paid to carry the risk that the underlying moves further than the market's implied distribution says it will, and it makes money when implied volatility falls or when realised volatility comes in under implied. It is also short gamma at its worst near the short strikes in expiry week, which is when a modest move produces an outsized change in the position's delta.</p>
+      <p>The honest description of the payout profile is a high win rate paired with a loss several times the size of a win. That is not a flaw and it is not free money: it is the shape the market pays for taking the other side of tail risk. The strategy fails in practice for two reasons, both avoidable. Traders size against the credit rather than the max loss, and traders add contracts after a run of winners, so the position is largest exactly when the eventual large move arrives.</p>
+      <p class="note"><span class="tag">Example</span>Stock at $100. Sell the 95 put and buy the 90 put for $1.20 credit. Sell the 105 call and buy the 110 call for $1.30 credit. Net credit is $2.50, which is $250 per contract set. Each wing is $5.00 wide. Max profit is $250, kept if the stock finishes between $95 and $105. Max loss is $5.00 &minus; $2.50 = $2.50, or $250. Breakevens are $92.50 and $107.50. Risking $250 to make $250 on a roughly 15-point window.</p>
+      <p class="note"><span class="tag">Common misconception</span>That the maximum loss is both wings added together. Only one wing can finish in the money, so the loss is capped by the wider single wing minus the credit. Getting this wrong in the other direction, by adding the wings, makes the trade look worse than it is; getting it wrong by using the credit as the risk makes it look far better than it is, which is the more expensive error.</p>
+      <p class="note"><span class="tag">Go deeper</span><a href="/guides/options-vertical-spreads.html">The vertical spread guide, since a condor is two of them</a></p>
+      <p class="note"><span class="tag">See also</span><a href="#vertical-spread">Vertical spread</a>, <a href="#implied-volatility">Implied volatility (IV)</a>, <a href="#gamma">Gamma</a></p>
+    </article>
+
+    <article class="term" id="straddle">
+      <div class="term__head">
+        <h3>Straddle</h3>
+        <a class="term__hash" href="#straddle" aria-label="Permalink to Straddle">#</a>
+      </div>
+      <p class="term__def">A straddle is an option position holding a call and a put at the same strike and expiry, so it profits from a large move in either direction and loses if the underlying sits still.</p>
+      <p>A long straddle buys both legs at the same strike, usually at the money. The position starts close to delta neutral, because a roughly +0.50 call delta and a roughly &minus;0.50 put delta cancel, and it is long gamma, long vega and short theta. Translated: it wants a big move, it wants implied volatility to rise, and it pays for both by bleeding time value every day it waits. A short straddle is the exact mirror and carries theoretically unlimited risk on the call side, which is why it demands margin and an exit plan written before entry rather than after.</p>
+      <span class="formula">LONG STRADDLE
+  Cost         =  call premium + put premium
+  Upper BE     =  strike + total cost
+  Lower BE     =  strike - total cost
+  Max loss     =  total cost, at expiry with spot exactly at the strike
+  Max profit   =  unbounded upside, strike minus cost on the downside</span>
+      <p>The breakeven pair is the whole analysis. A long straddle does not need direction, it needs magnitude, and the required magnitude is printed on the ticket the moment you pay for it. If the total cost is 8% of spot, the underlying has to move more than 8% by expiry in one direction or the other just to get back to flat. The correct question before entering is not "will it move" but "will it move more than the market has already priced," because the market set that 8% figure deliberately.</p>
+      <p>This is where the vega risk bites. Straddles are the standard earnings trade and the standard earnings disappointment. Implied volatility is elevated before an announcement precisely because everyone knows a move is coming, so the straddle is expensive, and the breakevens are wide. The announcement lands, uncertainty resolves, implied volatility collapses, and the vega loss frequently exceeds the delta gain even when the direction was right. A straddle bought into a scheduled event is a bet that the realised move beats the implied move, nothing else.</p>
+      <p>A strangle is the same idea with the call and put at different out-of-the-money strikes: cheaper to put on, wider breakevens, and a higher probability of losing the entire premium.</p>
+      <p class="note"><span class="tag">Example</span>Stock at $100. The 100 call costs $4.20 and the 100 put costs $3.80, so the straddle costs $8.00, which is $800 for the pair. Breakevens are $92.00 and $108.00. The stock must move at least 8% by expiry for the position to be worth anything above its cost. Finishing at exactly $100 loses the full $800.</p>
+      <p class="note"><span class="tag">Common misconception</span>That a straddle is a low-risk way to trade earnings because "it wins either way." It wins in either direction only if the move exceeds the cost, and that cost is inflated by the same event everyone is anticipating. Getting the direction right and still losing money is the normal outcome, not the unlucky one.</p>
+      <p class="note"><span class="tag">See also</span><a href="#implied-volatility">Implied volatility (IV)</a>, <a href="#vega">Vega</a>, <a href="#option-premium">Premium</a></p>
+    </article>
+
+    <article class="term" id="pmcc">
+      <div class="term__head">
+        <h3>Poor man's covered call (PMCC)</h3>
+        <a class="term__hash" href="#pmcc" aria-label="Permalink to Poor man's covered call (PMCC)">#</a>
+        <span class="term__aka">also: Diagonal call spread, Long call diagonal</span>
+      </div>
+      <p class="term__def">A poor man's covered call is a diagonal calendar spread that sells a short-dated out-of-the-money call against a long-dated, deep in-the-money call used in place of 100 shares of stock.</p>
+      <p>The motivation is capital. A covered call on a $200 stock ties up $20,000 per contract. A deep in-the-money long-dated call with a delta near 0.85 might cost $5,000 and provide most of the same directional exposure, so the short call can be written against it for a fraction of the outlay. "Diagonal" because the two legs differ in both strike and expiry, moving diagonally across the option chain.</p>
+      <p>There is one structural rule that has to be checked before entry, and skipping it is the most common way the trade is put on wrong. If the underlying rallies far above the short strike, the long call is worth at least its intrinsic value and the short call obligation is worth its own, so the net converges on the difference between the strikes. Therefore:</p>
+      <span class="formula">Net debit  =  long call cost - short call premium received
+
+REQUIRE:  net debit  <  (short strike - long strike)
+
+Otherwise a large move above the short strike locks in a loss
+no matter how far the underlying rallies.</span>
+      <p>Now the failure modes the marketing leaves out. <strong>The long leg is not stock.</strong> It carries vega and theta that 100 shares do not. A long-dated call holds the most vega on the chain, so a broad decline in implied volatility drains the long leg faster than the short leg gains, and the position loses money with the stock completely flat. The long leg also decays, so "income" from the short call is partly being paid for out of the long leg's own erosion rather than being additive. And the long call pays no dividend, which quietly removes part of the return a real covered call would have collected.</p>
+      <p>The other failure mode is the gap. If the underlying jumps far above the short strike, the short call is deep in the money and can be assigned, while the long call, at a delta below 1.00, has not gained the full dollar-for-dollar amount that 100 shares would have. Upside is capped at a level that is often lower than the trader assumed, and if assignment arrives the choice is between exercising the long call, which throws away all of its remaining extrinsic value, or buying shares in the market to deliver. Meanwhile on the downside the leverage runs the other way: a 30% drop in the stock can be a 60% or worse loss on the long call, because there is no share position underneath to hold the floor.</p>
+      <p class="note"><span class="tag">Example</span>Stock at $200. Buy the 12-month 150 call for $58.00 and sell the 30-day 220 call for $4.00, so net debit is $54.00, or $5,400. Strike width is 220 &minus; 150 = $70.00. Since $54.00 is less than $70.00, the structural rule passes. Had the long call cost $76.00 instead, the net debit of $72.00 would exceed the $70.00 width and a large rally would guarantee a loss.</p>
+      <p class="note"><span class="tag">Common misconception</span>That a PMCC is "a covered call with less capital." It is a different position with different Greeks. A covered call has zero vega on its stock leg and no expiry on it either. The PMCC replaces the share position with a decaying, volatility-sensitive contract, which is why it can lose on a flat tape while a real covered call would have collected the premium and moved on.</p>
+      <p class="note"><span class="tag">See also</span><a href="#theta">Theta</a>, <a href="#vega">Vega</a>, <a href="#collar">Collar</a>, <a href="#assignment">Assignment</a></p>
+    </article>
+
+    <article class="term" id="collar">
+      <div class="term__head">
+        <h3>Collar</h3>
+        <a class="term__hash" href="#collar" aria-label="Permalink to Collar">#</a>
+        <span class="term__aka">also: Protective collar, Zero-cost collar</span>
+      </div>
+      <p class="term__def">A collar is a three-part position holding 100 shares of stock, a protective put below the current price and a short call above it, usually struck so the premiums roughly cancel.</p>
+      <p>A collar is what someone does with a concentrated position they cannot or will not sell. Buy an out-of-the-money put to establish a floor. Fund it by selling an out-of-the-money call, which establishes a ceiling. When the two premiums offset closely enough, the structure is called a zero-cost collar, and the phrase is honest about the cash flow and dishonest about the cost: <strong>the cost is the upside above the call strike, which you have sold.</strong></p>
+      <span class="formula">Per share, holding to expiry:
+
+  Net premium  =  call premium received - put premium paid
+
+  Max loss     =  spot - put strike - net premium
+  Max gain     =  call strike - spot + net premium
+
+  (net premium is negative if the put cost more than the call)</span>
+      <p>The trade is worth understanding because it is one of the few option structures where the motive is usually not speculation. Typical users are holders of a large single-stock position: a founder, an employee after a vest, or anyone whose portfolio has become one ticker by accident. A collar converts an open-ended risk into a defined band for a defined period, without triggering a sale.</p>
+      <p>Three things to check before treating it as free. First, the width is asymmetric on most equities because of skew: downside puts trade at higher implied volatility than equidistant upside calls, so financing a put 10% below spot usually requires selling a call closer than 10% above. The band is not centred. Second, the short call is a real obligation: a takeover bid or a strong rally can mean assignment and a forced sale at the call strike, which is exactly the outcome a holder who wanted to keep the shares was trying to avoid. Third, and most important for anyone collaring an appreciated position in a taxable account, <strong>hedging an unrealised gain can have tax consequences.</strong> The constructive-sale rules and the straddle and qualified-covered-call rules can affect whether the position is treated as sold and whether the holding period continues to run. The specifics depend on how tight the collar is and on your own circumstances: get this checked by a tax professional before you put it on, not after.</p>
+      <p class="note"><span class="tag">Example</span>You hold 100 shares at $100. Buy the 90 put for $2.20 and sell the 110 call for $2.30, a net credit of $0.10. Max loss is $100 &minus; $90 &minus; $0.10 = $9.90 per share, or $990. Max gain is $110 &minus; $100 + $0.10 = $10.10, or $1,010. The position is now boxed into a $20 band for the life of the options, for a dime.</p>
+      <p class="note"><span class="tag">Common misconception</span>That a zero-cost collar is free protection. The premium nets to zero and the cost is paid in upside: every dollar above the call strike belongs to the option buyer. On a position that then doubles, the collar was one of the most expensive trades in the account, and the bill arrives as opportunity cost rather than as a debit.</p>
+      <p class="note"><span class="tag">See also</span><a href="#strike-price">Strike price</a>, <a href="#pmcc">Poor man's covered call (PMCC)</a>, <a href="#assignment">Assignment</a></p>
+    </article>
+
+    <article class="term" id="assignment">
+      <div class="term__head">
+        <h3>Assignment</h3>
+        <a class="term__hash" href="#assignment" aria-label="Permalink to Assignment">#</a>
+      </div>
+      <p class="term__def">Assignment is what happens to the seller of an option when a holder exercises: the short is selected, usually at random through the clearing house, and must deliver on the contract's obligation.</p>
+      <p>Assignment and exercise are the same event seen from opposite sides of the contract. The long holder exercises. The short holder gets assigned. The short holder does not choose, does not get advance notice, and cannot decline. For US listed equity options the clearing house allocates the exercise notice to a clearing member firm at random, and that firm then allocates to its own customers under a published procedure that is commonly either random selection or first in, first out. Confirm which one your broker uses, because it is disclosed and it determines your actual exposure when you hold multiple short contracts.</p>
+      <p>Settlement style governs when assignment is possible. <strong>American-style</strong> options can be exercised on any business day up to expiry, and US listed equity options are American style. <strong>European-style</strong> options can only be exercised at expiry, and most broad-based cash-settled US index options are European style. That difference is the single most important contract specification to check before selling anything, and it is the one most often assumed rather than verified.</p>
+      <p>Early assignment is not random in practice, and the pattern is worth internalising. On a <strong>short call, early assignment risk clusters immediately before an ex-dividend date.</strong> The holder of a call gets no dividend, so when the dividend exceeds the remaining extrinsic value in the call, exercising early to capture the dividend becomes the rational move, and rational moves happen. The specific window is the day before the ex-dividend date. On a <strong>short put</strong>, early assignment becomes likely when the put is deep in the money and its extrinsic value has collapsed, since the holder can put the shares now and start earning interest on the proceeds.</p>
+      <p>The mechanical consequences are the ones that hurt. An assigned short call in a spread leaves you short 100 shares against a long call, a position with margin requirements and borrow risk that the spread's stated maximum loss did not describe. An assigned short put means buying 100 shares at the strike, which requires the cash, and getting that notice over a weekend on a position sized against the option premium rather than the share cost is a well-worn way to receive a margin call. Check every short leg for extrinsic value below the next dividend, every week, before expiry week rather than during it.</p>
+      <p class="note"><span class="tag">Example</span>You are short a 100 call with $0.12 of extrinsic value left, and the stock goes ex-dividend tomorrow for $0.45. Exercising early nets the holder $0.45 and costs them $0.12 of surrendered time value, so exercise is rational. Expect assignment, and expect to wake up short 100 shares and owing the dividend.</p>
+      <p class="note"><span class="tag">Common misconception</span>That a short option is safe from assignment until expiry because it is only slightly in the money. American-style contracts can be assigned on any business day, and the day before an ex-dividend date is when it actually happens. The relevant number is remaining extrinsic value versus the dividend, not how far in the money the strike sits.</p>
+      <p class="note"><span class="tag">See also</span><a href="#exercise">Exercise</a>, <a href="#vertical-spread">Vertical spread</a>, <a href="#collar">Collar</a></p>
+    </article>
+
+    <article class="term" id="exercise">
+      <div class="term__head">
+        <h3>Exercise</h3>
+        <a class="term__hash" href="#exercise" aria-label="Permalink to Exercise">#</a>
+      </div>
+      <p class="term__def">Exercise is the act by which the holder of an option invokes the contract's right, converting a call into a long position in the underlying, or a put into a short position or a sale.</p>
+      <p>Exercise is a right and it belongs to the long side only. Sellers never exercise; they get assigned. On a physically settled equity contract, exercising a call means buying 100 shares at the strike and exercising a put means selling 100 shares at the strike. On a cash-settled contract, typically a broad-based index option, no shares change hands and the in-the-money amount is paid in cash instead. Which of those applies is a contract specification, not a convention you can infer from the ticker.</p>
+      <p>The rule that saves the most money is this: <strong>selling the option is almost always better than exercising it early.</strong> Exercising captures intrinsic value and discards every cent of remaining extrinsic value, which is a gift to the person on the other side. Selling to close captures both. The classical result is stronger than a rule of thumb: for an American call on a non-dividend-paying underlying, early exercise is never optimal. Dividends are the exception that creates the one genuine early-exercise case, and puts have their own case once extrinsic value is gone and the interest on the proceeds is worth more than the optionality.</p>
+      <p>At expiry, exercise is largely automatic. The clearing house operates an exercise-by-exception process that exercises contracts finishing in the money by more than a small threshold, commonly cited as one cent, unless the holder files contrary instructions. Confirm the current threshold and your broker's own cutoff time for contrary instructions: brokers set their own deadlines ahead of the clearing house's and they are earlier than people expect. Brokers also routinely close out positions that would exercise into shares the account cannot pay for, at whatever price the market offers at that moment.</p>
+      <p><strong>Pin risk</strong> is the residual hazard. When the underlying settles almost exactly at the strike, a short holder does not learn whether they were assigned until after the close, and the long holder's decision is genuinely uncertain. The result is an unhedged share position discovered over the weekend, with Monday's gap risk attached. The fix is unglamorous and reliable: close near-the-money short positions before expiry rather than harvesting the last few cents of premium.</p>
+      <p class="note"><span class="tag">Example</span>You hold a 100 call worth $6.40 with the stock at $105 and two weeks left. Intrinsic value is $5.00, extrinsic is $1.40. Exercising nets $5.00 per share and burns the $1.40, which is $140 per contract thrown away. Selling to close nets $6.40. The only reason to prefer exercise here is a dividend larger than $1.40 before expiry.</p>
+      <p class="note"><span class="tag">Common misconception</span>That an out-of-the-money option needs to be sold before expiry to avoid a loss. It expires worthless on its own, and the loss was already taken when the premium was paid. The real expiry hazard runs the other way: an in-the-money long option you forgot about will be auto-exercised into a share position your account may not be able to fund.</p>
+      <p class="note"><span class="tag">See also</span><a href="#assignment">Assignment</a>, <a href="#strike-price">Strike price</a>, <a href="#option-premium">Premium</a></p>
+    </article>
+
+  </section>
+
+  <hr class="divider">
+
+  <section class="section section--tight">
+    <div class="grp-head">
+      <p class="eyebrow">Keep reading</p>
+      <h2>Other glossary clusters</h2>
+    </div>
+    <ul class="rail">
+      <li><a href="/glossary/trading-risk.html">Trading &amp; risk</a></li>
+      <li><a href="/glossary/ai-ml.html">AI &amp; LLMs</a></li>
+      <li><a href="/glossary/security.html">Security</a></li>
+      <li><a href="/glossary/web-seo.html">Web &amp; SEO</a></li>
+      <li><a href="/glossary/immigration-student.html">Student visas</a></li>
+      <li><a href="/glossary/freight.html">Freight</a></li>
+      <li><a href="/glossary/career.html">Careers</a></li>
+    </ul>
+    <p class="note" style="margin-top:var(--s5)"><a href="/glossary.html">Full A–Z index of every term</a> · <a href="/guides.html">Long-form guides</a></p>
+  </section>
+
+</main>
+
+<section aria-labelledby="compliance-h" style="max-width:1080px;margin:0 auto;padding:28px 20px 8px;border-top:1px solid rgba(212,175,55,.18)"><h2 id="compliance-h" style="font-family:Georgia,'Times New Roman',serif;font-size:15px;letter-spacing:.06em;text-transform:uppercase;color:#d4af37;margin:0 0 10px">Disclaimer</h2><p style="font-size:13.5px;line-height:1.65;color:#9a958c;margin:0 0 8px">This glossary is educational and informational only. Nothing here is financial, investment, tax, legal or immigration advice, or a recommendation to buy or sell any security. Trading carries substantial risk of loss. Any backtested or example figure is hypothetical, does not represent live trading, and past performance does not guarantee future results. Definitions of legal, regulatory and immigration terms change; verify anything time-sensitive against the primary source, your DSO, or a licensed professional before acting on it.</p><p style="font-size:13.5px;line-height:1.65;color:#9a958c;margin:0"><a style="color:#d4af37" href="/terms.html">Terms of Use</a> · <a style="color:#d4af37" href="/privacy.html">Privacy Policy</a></p></section>
+<footer class="site-footer">
+  <div class="site-footer__links">
+    <a href="/">Work</a>
+    <a href="/about.html">About</a>
+    <a href="/guides.html">Guides</a>
+    <a href="/glossary.html">Glossary</a>
+    <a href="/apps.html">Apps</a>
+    <a href="/store.html">Store</a>
+    <a href="/privacy.html">Privacy</a>
+    <a href="/terms.html">Terms</a>
+    <a href="mailto:yusuf.gadelrab06@gmail.com">yusuf.gadelrab06@gmail.com</a>
+  </div>
+</footer>
+
+<script src="/js/site.js" defer></script>
+</body>
+</html>

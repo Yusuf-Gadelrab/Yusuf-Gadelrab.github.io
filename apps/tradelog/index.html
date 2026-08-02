@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>TradeLog — Free R-Multiple Trade Journal</title>
+<title>TradeLog — Free Offline R-Multiple Trading Journal App</title>
 <link rel="manifest" href="manifest.webmanifest">
 <meta name="theme-color" content="#0a0a0b">
 <link rel="icon" type="image/svg+xml" href="/favicon.svg">
@@ -15,6 +15,9 @@
 <link rel="apple-touch-startup-image" href="/img/brand/kit/splash-1536x2048.png" media="(device-width:768px) and (device-height:1024px) and (-webkit-device-pixel-ratio:2)">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="TradeLog">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="application-name" content="TradeLog">
 <style>
 :root{
   --bg:#0a0a0a;
@@ -347,29 +350,45 @@ footer a:hover{text-decoration:underline}
 .studio p{color:#cfcfcf;font-size:.92rem;margin:8px 0 12px;line-height:1.55}
 .studio a.golink{display:inline-block;background:linear-gradient(135deg,#d4af37,#e8c96a);color:#000;
  font-weight:700;padding:11px 24px;border-radius:10px;text-decoration:none;font-size:.92rem}
+
+/* ---- marketing blocks: install / privacy / faq ---- */
+.mkt{margin-top:1.6rem;scroll-margin-top:70px}
+.mkt h2{font-family:var(--serif);font-size:1.18rem;color:var(--text);text-transform:none;letter-spacing:-.01em;margin:0 0 .55rem}
+.mkt h3{font-family:var(--serif);font-size:.95rem;font-weight:600;color:var(--gold-soft);text-transform:none;letter-spacing:0;margin:1.15rem 0 .45rem}
+.mkt > p{color:var(--dim);font-size:.88rem;line-height:1.7;margin:0 0 .5rem}
+.mkt ol,.mkt ul{margin:.3rem 0 .3rem 1.15rem;color:var(--dim);font-size:.88rem;line-height:1.7}
+.mkt li{padding:.22rem 0}
+.mkt li b{color:var(--text);font-weight:600}
+.mkt .tradeoff{margin-top:1.05rem;padding:.85rem 1rem;border:1px solid var(--border);border-radius:12px;color:var(--dim);font-size:.85rem;line-height:1.7}
+.mkt .tradeoff b{color:var(--gold-soft)}
+.mkt .faq-a{color:var(--dim);font-size:.88rem;line-height:1.7;margin:0}
 </style>
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"TradeLog — R-Multiple Trade Journal","url":"https://yusuf-gadelrab.github.io/apps/tradelog/","applicationCategory":"ProductivityApplication","operatingSystem":"Any","browserRequirements":"Requires JavaScript","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"description":"Free offline trade journal: log swing trades and get expectancy, win rate, profit factor, and an equity curve. Data stays on your device.","author":{"@id":"https://yusuf-gadelrab.github.io/#person"},"publisher":{"@type":"Organization","name":"DHAHAB"}}</script>
-<meta name="description" content="Free R-multiple trade journal app: log swing trades, get expectancy, win rate, profit factor, and an equity curve. Offline, private, no account needed.">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"SoftwareApplication","@id":"https://yusuf-gadelrab.github.io/apps/tradelog/#app","name":"TradeLog — R-Multiple Trading Journal","url":"https://yusuf-gadelrab.github.io/apps/tradelog/","description":"A free, offline-first R-multiple trading journal. Log entry, stop and exit; TradeLog computes R per trade, expectancy, win rate, profit factor and a cumulative-R equity curve. Entries live in your browser's localStorage — no account, no server, no tracking.","applicationCategory":"FinanceApplication","operatingSystem":"iOS, Android, Windows, macOS, Linux — any modern browser","browserRequirements":"Requires JavaScript and localStorage","softwareVersion":"1.0","featureList":["Log a trade with date, symbol, setup, entry, stop, exit and a free-text note","Automatic R-multiple per trade calculated from entry, stop and exit","Live R preview that updates as you type entry, stop and exit","Expectancy in R per trade, shown as the headline number","Win rate, profit factor and current win/loss streak","Cumulative-R equity curve with a crosshair tooltip per trade","Export the whole journal to CSV and import a CSV back in, with duplicate detection","Installable to the Home Screen and fully usable offline after the first load","All data stored in browser localStorage — no account, no server, no analytics"],"isAccessibleForFree":true,"offers":{"@type":"Offer","price":"0","priceCurrency":"USD","availability":"https://schema.org/OnlineOnly"},"author":{"@id":"https://yusuf-gadelrab.github.io/#person"},"publisher":{"@type":"Organization","name":"DHAHAB"}}</script>
+<meta name="description" content="Free offline trading journal: log R-multiple swing trades and see expectancy, win rate, profit factor and an equity curve. No account, no server, no tracking.">
 <link rel="canonical" href="https://yusuf-gadelrab.github.io/apps/tradelog/">
 <meta property="og:type" content="website">
-<meta property="og:title" content="TradeLog — Free R-Multiple Trade Journal">
-<meta property="og:description" content="Free R-multiple trade journal app: log swing trades, get expectancy, win rate, profit factor, and an equity curve. Offline, private, no account needed.">
+<meta property="og:title" content="TradeLog — Free Offline R-Multiple Trading Journal App">
+<meta property="og:description" content="Free offline trading journal: log R-multiple swing trades and see expectancy, win rate, profit factor and an equity curve. No account, no server, no tracking.">
 <meta property="og:url" content="https://yusuf-gadelrab.github.io/apps/tradelog/">
 <meta property="og:image" content="https://yusuf-gadelrab.github.io/apple-touch-icon.png">
 <meta name="twitter:card" content="summary">
 <meta property="og:site_name" content="Yusuf Gadelrab">
 <meta property="og:locale" content="en_US">
 <meta property="og:image:alt" content="TradeLog app screen — R-multiple trade journal with equity curve">
-<meta name="twitter:title" content="TradeLog — Free R-Multiple Trade Journal">
-<meta name="twitter:description" content="Free R-multiple trade journal app: log swing trades, get expectancy, win rate, profit factor, and an equity curve. Offline, private, no account needed.">
+<meta name="twitter:title" content="TradeLog — Free Offline R-Multiple Trading Journal App">
+<meta name="twitter:description" content="Free offline trading journal: log R-multiple swing trades and see expectancy, win rate, profit factor and an equity curve. No account, no server, no tracking.">
 <meta name="twitter:image" content="https://yusuf-gadelrab.github.io/apple-touch-icon.png">
 <meta name="twitter:image:alt" content="TradeLog app screen — R-multiple trade journal with equity curve">
 <!-- geo:entity — canonical Person node, one entity across every page -->
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"Person","@id":"https://yusuf-gadelrab.github.io/#person","name":"Yusuf Gadelrab","url":"https://yusuf-gadelrab.github.io/"}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebPage","@id":"https://yusuf-gadelrab.github.io/apps/tradelog/#webpage","url":"https://yusuf-gadelrab.github.io/apps/tradelog/","inLanguage":"en","isPartOf":{"@id":"https://yusuf-gadelrab.github.io/#website"},"about":{"@id":"https://yusuf-gadelrab.github.io/#person"},"publisher":{"@id":"https://yusuf-gadelrab.github.io/#person"}}</script>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://yusuf-gadelrab.github.io/"},{"@type":"ListItem","position":2,"name":"Apps","item":"https://yusuf-gadelrab.github.io/apps.html"},{"@type":"ListItem","position":3,"name":"TradeLog"}]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"HowTo","name":"Add TradeLog to your Home Screen","description":"Install TradeLog, a free offline R-multiple trading journal, on an iPhone or iPad from Safari, on Android from Chrome, or on a desktop from Chrome or Edge. No App Store, no download, no account.","totalTime":"PT1M","tool":[{"@type":"HowToTool","name":"Safari on iPhone or iPad"},{"@type":"HowToTool","name":"Chrome on Android"},{"@type":"HowToTool","name":"Chrome or Edge on desktop"}],"step":[{"@type":"HowToStep","name":"Open TradeLog in Safari.","text":"Open TradeLog in Safari. On iPhone and iPad only Safari can add a web app to the Home Screen — Chrome, Firefox and the in-app browsers inside other apps cannot.","url":"https://yusuf-gadelrab.github.io/apps/tradelog/#install"},{"@type":"HowToStep","name":"Tap the Share button.","text":"Tap the Share button. It is the square with an arrow pointing up out of it, in the toolbar at the bottom of the screen.","url":"https://yusuf-gadelrab.github.io/apps/tradelog/#install"},{"@type":"HowToStep","name":"Scroll down and tap “Add to Home Screen.”","text":"Scroll down and tap “Add to Home Screen.” It sits under the row of share targets, in the list of actions.","url":"https://yusuf-gadelrab.github.io/apps/tradelog/#install"},{"@type":"HowToStep","name":"Tap “Add.”","text":"Tap “Add.” The TradeLog icon lands on your Home Screen and opens like any other app.","url":"https://yusuf-gadelrab.github.io/apps/tradelog/#install"},{"@type":"HowToStep","name":"Open the three-dot menu in Chrome.","text":"Open the three-dot menu in Chrome. It is at the top right, on the end of the address bar.","url":"https://yusuf-gadelrab.github.io/apps/tradelog/#install"},{"@type":"HowToStep","name":"Tap “Install app,” or “Add to Home screen” on older versions of Chrome.","text":"Tap “Install app,” or “Add to Home screen” on older versions of Chrome. Chrome may also offer its own install banner along the bottom of the screen, which does exactly the same thing.","url":"https://yusuf-gadelrab.github.io/apps/tradelog/#install"},{"@type":"HowToStep","name":"Confirm, and TradeLog lands in your app drawer.","text":"Confirm, and TradeLog lands in your app drawer. It sits on your home screen too, and opens full screen with no address bar around it.","url":"https://yusuf-gadelrab.github.io/apps/tradelog/#install"},{"@type":"HowToStep","name":"Click the install icon in the address bar.","text":"Click the install icon in the address bar. It is a small screen with a downward arrow in it, at the right-hand end of the bar. If it is not showing, open the three-dot menu and choose “Install…” instead.","url":"https://yusuf-gadelrab.github.io/apps/tradelog/#install"},{"@type":"HowToStep","name":"Confirm, and TradeLog gets its own window.","text":"Confirm, and TradeLog gets its own window. You also get an icon in your dock, taskbar or Start menu, kept separate from your browser tabs.","url":"https://yusuf-gadelrab.github.io/apps/tradelog/#install"}]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","@id":"https://yusuf-gadelrab.github.io/apps/tradelog/#faq","mainEntity":[{"@type":"Question","name":"Does TradeLog need an internet connection?","acceptedAnswer":{"@type":"Answer","text":"Only for the very first load. After that the app is cached on your device and opens and runs with no connection at all. Trades, the equity curve and every statistic are computed on your own phone, so airplane mode changes nothing."}},{"@type":"Question","name":"Do I need an account to use TradeLog?","acceptedAnswer":{"@type":"Answer","text":"No. There is no signup, no login, no email address and no password. Open the page and start logging trades."}},{"@type":"Question","name":"Where is my trade data stored?","acceptedAnswer":{"@type":"Answer","text":"In your browser’s localStorage, on the one device you typed it into. There is no server behind this app, so nothing is uploaded and nobody, including me, can see your trades."}},{"@type":"Question","name":"Does TradeLog sync between my phone and my laptop?","acceptedAnswer":{"@type":"Answer","text":"No. There is no sync and no cloud backup, so each device keeps its own separate journal. To move a journal across, use Export CSV on one device and Import CSV on the other."}},{"@type":"Question","name":"Is TradeLog free?","acceptedAnswer":{"@type":"Answer","text":"Yes. It is free, with no trial, no paid tier, no ads and nothing locked behind a purchase. I built it for my own trading and left it open for anyone who wants it."}},{"@type":"Question","name":"How do I export my trades or get the app off my phone?","acceptedAnswer":{"@type":"Answer","text":"Press Export CSV in the Trades card to download every trade as a spreadsheet file, and Import CSV to load one back in. To remove the app, press and hold its Home Screen icon and delete it, or clear this site’s data in your browser — either one erases the journal on that device."}}]}</script>
 <link rel="alternate" type="text/plain" href="https://yusuf-gadelrab.github.io/llms-full.txt" title="Plain-text profile for language models">
+<style>.skip-link{position:absolute;left:12px;top:-60px;z-index:1000;padding:10px 16px;background:#D4AF37;color:#0a0a0a;font:600 14px/1 system-ui,sans-serif;text-decoration:none;border-radius:6px;transition:top .2s ease}.skip-link:focus{top:12px}@media print{.skip-link{display:none!important}}</style>
 </head>
 <body>
+<a class="skip-link" href="#main">Skip to content</a>
 <div class="topbar" id="topbar" aria-hidden="true">
   <div class="brand">DHAHAB <span>&middot;</span> TradeLog</div>
 </div>
@@ -388,6 +407,7 @@ footer a:hover{text-decoration:underline}
     <li><span aria-current="page">TradeLog</span></li>
   </ol>
 </nav>
+<div id="main" role="main" tabindex="-1">
 
 <div class="card hero">
   <div class="hero-label">Expectancy</div>
@@ -410,18 +430,98 @@ footer a:hover{text-decoration:underline}
   <div class="io">
     <button type="button" class="btn-ghost" id="exportBtn">Export CSV</button>
     <button type="button" class="btn-ghost" id="importBtn">Import CSV</button>
-    <input type="file" id="importFile" accept=".csv,text/csv">
+    <input type="file" id="importFile" accept=".csv,text/csv" aria-label="Import CSV file" hidden>
   </div>
 </div>
 
+<section class="card mkt" id="install" aria-labelledby="install-h">
+  <h2 id="install-h">Add TradeLog to your Home Screen</h2>
+  <p>TradeLog installs straight from the browser. There is no App Store listing, no download and no account — the whole thing takes about a minute.</p>
+  <h3>iPhone or iPad — Safari</h3>
+  <ol>
+    <li><b>Open TradeLog in Safari.</b> On iPhone and iPad only Safari can add a web app to the Home Screen — Chrome, Firefox and the in-app browsers inside other apps cannot.</li>
+    <li><b>Tap the Share button.</b> It is the square with an arrow pointing up out of it, in the toolbar at the bottom of the screen.</li>
+    <li><b>Scroll down and tap “Add to Home Screen.”</b> It sits under the row of share targets, in the list of actions.</li>
+    <li><b>Tap “Add.”</b> The TradeLog icon lands on your Home Screen and opens like any other app.</li>
+  </ol>
+  <h3>Android — Chrome</h3>
+  <ol>
+    <li><b>Open the three-dot menu in Chrome.</b> It is at the top right, on the end of the address bar.</li>
+    <li><b>Tap “Install app,” or “Add to Home screen” on older versions of Chrome.</b> Chrome may also offer its own install banner along the bottom of the screen, which does exactly the same thing.</li>
+    <li><b>Confirm, and TradeLog lands in your app drawer.</b> It sits on your home screen too, and opens full screen with no address bar around it.</li>
+  </ol>
+  <h3>Desktop — Chrome or Edge</h3>
+  <ol>
+    <li><b>Click the install icon in the address bar.</b> It is a small screen with a downward arrow in it, at the right-hand end of the bar. If it is not showing, open the three-dot menu and choose “Install…” instead.</li>
+    <li><b>Confirm, and TradeLog gets its own window.</b> You also get an icon in your dock, taskbar or Start menu, kept separate from your browser tabs.</li>
+  </ol>
+  <h3>What installing actually gets you</h3>
+  <ul>
+    <li>A real home-screen icon you tap like any other app — no App Store, no download, no install prompt from a store.</li>
+    <li>Full screen, with no address bar and no browser chrome around it.</li>
+    <li>It opens and works with no connection at all after the first load. The whole app is cached on the device, so logging a trade on a plane, on the subway or on dead hotel wifi works exactly the same.</li>
+  </ul>
+</section>
+
+<section class="card mkt" id="no-account" aria-labelledby="no-account-h">
+  <h2 id="no-account-h">A private trading journal with no account</h2>
+  <p>Most journals want an email address before they will let you log a single trade. TradeLog is one HTML file that runs entirely inside your browser — a trading journal that works offline, with nothing behind it. That is a deliberate design choice, and it cuts both ways, so here is the whole trade.</p>
+  <h3>What it does not have</h3>
+  <ul>
+    <li><b>No account.</b> No signup, no login, no email address, no password.</li>
+    <li><b>No server.</b> There is no backend at all — nothing to send your trades to, and no database anywhere holding them.</li>
+    <li><b>No tracking.</b> No analytics script, no tag manager, no cookies, no third-party requests of any kind.</li>
+    <li><b>No paywall.</b> Free, with no trial, no tier and no ads.</li>
+  </ul>
+  <h3>Where your data actually lives</h3>
+  <p>Every trade you log is written to your browser’s <b>localStorage</b> under a single key, on the one device you typed it into. Expectancy, win rate, profit factor and the equity curve are all computed in that browser from those entries. Nothing is uploaded, so nobody — including me — can read your journal.</p>
+  <h3>Why it still works with no signal</h3>
+  <p>On first load a service worker caches the app itself. After that the page opens from that cache, so an offline trading journal on a plane, on the subway or on dead hotel wifi behaves exactly like one at your desk. The only thing the network was ever needed for was fetching the page.</p>
+  <div class="tradeoff"><b>The honest tradeoff:</b> local-only data means nothing syncs between devices, nothing is backed up, and clearing your browser data or deleting the app erases every entry on that device. Your trades are not encrypted either, because there is no server to send them to and no key for anyone to hold — the protection here is that the data never leaves. If the history matters to you, press <b>Export CSV</b> in the Trades card every so often and keep the file somewhere safe. <b>Import CSV</b> reads it straight back in, and skips rows you already have.</div>
+</section>
+
+<section class="card mkt" id="more" aria-labelledby="more-h">
+  <h2 id="more-h">If R-multiples are new to you</h2>
+  <p>TradeLog assumes you size every position off a stop, so one loss equals one R. If that is not how you currently trade, these read first — all free, all on this site.</p>
+  <ul>
+    <li><a href="/guides/r-multiple-expectancy.html">R-multiple &amp; expectancy</a> — what the headline number on this page actually means, and how many trades it takes before it means anything.</li>
+    <li><a href="/guides/trading-journal.html">How to keep a trading journal</a> — what to record, and what is noise.</li>
+    <li><a href="/guides/position-sizing-per-trade.html">Position sizing per trade</a> — turning a stop distance into a share count.</li>
+    <li><a href="/guides/stop-loss-placement.html">Stop-loss placement</a> — where the 1R denominator should sit.</li>
+    <li><a href="/guides/offline-pwa.html">How offline PWAs work</a> — the service-worker mechanics behind this app.</li>
+  </ul>
+  <h3>Other tools here</h3>
+  <ul>
+    <li><a href="/risk-tools.html">Risk tools</a> — position sizer, R calculator and drawdown math in the browser.</li>
+    <li><a href="/swing-screener.html">Swing screener</a> — the open-source scanner and its walk-forward results, including the setups that failed.</li>
+    <li><a href="/apps.html">All apps</a> — the rest of the installable offline PWAs.</li>
+  </ul>
+</section>
+
+<section class="card mkt" id="faq" aria-labelledby="faq-h">
+  <h2 id="faq-h">Questions people ask</h2>
+  <h3>Does TradeLog need an internet connection?</h3>
+  <p class="faq-a">Only for the very first load. After that the app is cached on your device and opens and runs with no connection at all. Trades, the equity curve and every statistic are computed on your own phone, so airplane mode changes nothing.</p>
+  <h3>Do I need an account to use TradeLog?</h3>
+  <p class="faq-a">No. There is no signup, no login, no email address and no password. Open the page and start logging trades.</p>
+  <h3>Where is my trade data stored?</h3>
+  <p class="faq-a">In your browser’s localStorage, on the one device you typed it into. There is no server behind this app, so nothing is uploaded and nobody, including me, can see your trades.</p>
+  <h3>Does TradeLog sync between my phone and my laptop?</h3>
+  <p class="faq-a">No. There is no sync and no cloud backup, so each device keeps its own separate journal. To move a journal across, use Export CSV on one device and Import CSV on the other.</p>
+  <h3>Is TradeLog free?</h3>
+  <p class="faq-a">Yes. It is free, with no trial, no paid tier, no ads and nothing locked behind a purchase. I built it for my own trading and left it open for anyone who wants it.</p>
+  <h3>How do I export my trades or get the app off my phone?</h3>
+  <p class="faq-a">Press Export CSV in the Trades card to download every trade as a spreadsheet file, and Import CSV to load one back in. To remove the app, press and hold its Home Screen icon and delete it, or clear this site’s data in your browser — either one erases the journal on that device.</p>
+</section>
+
 <div class="studio">
   <div class="eyebrow2">From the Studio</div>
-  <p>The journal tracks the edge. The system builds it. My full 8-module swing framework, built on walk-forward-tested rules.</p>
-  <a class="golink" href="https://yusuf-gadelrab.github.io/store.html">Swing Trading OS &rarr;</a>
+  <p>The journal tracks the process. The system defines it. My full swing framework &mdash; 8 modules, 154 pages across 10 PDFs, written around walk-forward-tested rules and the setups that failed them. An education product, not a signal service: it promises you a method, never a return.</p>
+  <a class="golink" href="/store.html">Swing Trading OS &rarr;</a>
 </div>
 <footer>
-  <div>TradeLog is a record-keeping tool &mdash; educational only, not financial advice and not a recommendation to trade. Trading carries substantial risk of loss, and past performance does not guarantee future results.</div>
-  <div><a href="https://yusuf-gadelrab.github.io/">Yusuf Gadelrab</a> · <a href="https://yusuf-gadelrab.github.io/apps.html">All apps</a> · <a href="/privacy.html">Privacy</a> &middot; <a href="/terms.html">Terms</a></div>
+  <div><b>Risk disclaimer.</b> TradeLog is a record-keeping tool for education only. It is not financial, investment or tax advice, not a recommendation to buy or sell anything, and not a signal service. Past results and backtested results do not indicate future results. Trading carries a substantial risk of loss, including the total loss of your principal &mdash; only risk capital you can afford to lose. Any statistic this app shows is computed solely from the trades you typed in, so it inherits every error in them.</div>
+  <div><a href="https://yusuf-gadelrab.github.io/">Yusuf Gadelrab</a> · <a href="https://yusuf-gadelrab.github.io/apps.html">All apps</a> · <a href="/privacy.html">Privacy</a> &middot; <a href="/terms.html">Terms</a> &middot; <a href="/refunds.html">Refunds</a></div>
   <div><a href="https://yusuf-gadelrab.github.io/guides.html">Guides</a> &middot; <a href="https://yusuf-gadelrab.github.io/guides/trading-journal.html">Trading Journal guide</a> &middot; <a href="https://yusuf-gadelrab.github.io/guides/r-multiple-expectancy.html">R-Multiple &amp; Expectancy</a></div>
   <div>&copy; 2026 DHAHAB &middot; Yusuf Gadelrab</div>
 </footer>
@@ -924,5 +1024,6 @@ try{
 }catch(e){}
 })();
 </script>
+</div>
 </body>
 </html>
