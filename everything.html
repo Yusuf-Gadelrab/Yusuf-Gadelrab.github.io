@@ -40,6 +40,7 @@
 <meta name="twitter:description" content="One page for everything: projects, research, trading, and content — built in public by Yusuf Gadelrab.">
 
 <link rel="stylesheet" href="/css/site.css">
+<link rel="stylesheet" href="/css/lux-motion.css">
 <style>
   /* ---- page-specific only ---- */
   #progress{position:fixed;top:0;left:0;height:2px;width:0;z-index:60;
@@ -142,9 +143,9 @@
 
 <header class="section hero-all">
   <img class="portrait reveal" fetchpriority="high" src="img/yusuf-headshot.webp" alt="Yusuf Gadelrab, professional headshot in a suit with a gold frame border" width="700" height="749" decoding="async">
-  <img class="page-lion" src="/img/brand/lion-mark.svg" alt="" width="46" height="46" decoding="async">
+  <img class="page-lion" data-lux-parallax=".1" src="/img/brand/lion-mark.svg" alt="" width="46" height="46" decoding="async">
     <p class="eyebrow reveal">San Jose, CA · CS @ SJSU · Building in public</p>
-  <h1 class="reveal">Everything I do, <span class="gold-fill">one gold map.</span></h1>
+  <h1 class="reveal">Everything I do, <span class="gold-fill" data-lux-shimmer>one gold map.</span></h1>
   <p class="lead reveal">Most people know me for one thing. This page is the whole picture: peer-reviewed research, AI products, quant trading systems, club leadership, and the students I teach along the way. Deep dives live on my personal site.</p>
   <div class="row reveal" style="margin-top:var(--s6)">
     <a class="btn btn-gold" href="#products">See what's launching ↓</a>
@@ -344,6 +345,7 @@
     <p>The AR and billing automation I built inside a real freight brokerage, productized: invoice chasing, POD prep, and inbox AI that runs 100% locally — no data leaves your machine. Founding-client pilots are $999 one-time setup + $249/mo — a part-time AR clerk runs $1,800–2,200 a month. Launch pricing ends August 15.</p>
     <div class="row">
       <a class="btn btn-gold" href="/freightdesk.html">Book a founding pilot →</a>
+      <a class="btn btn-ghost" href="/freight.html">DHAHAB Freight, the brokerage →</a>
       <a class="btn btn-ghost" href="/store.html">Browse the store →</a>
     </div>
   </div>
@@ -484,5 +486,6 @@
 </script>
 
 <script src="/js/site.js" defer></script>
+<script src="/js/lux-motion.js" defer></script>
 </body>
 </html>

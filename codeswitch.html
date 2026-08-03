@@ -39,6 +39,7 @@
 
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"EducationalOrganization","name":"CODESWITCH","alternateName":["Codeswitch CS","CodeBridge"],"url":"https://yusuf-gadelrab.github.io/codeswitch.html","description":"A free bilingual introductory computer science program for high school students who are English learners, taught by trained near-peer tutors who share the students' home languages.","disambiguatingDescription":"Program in design. No cohort has run, no school partnership is signed and no tutors are cleared. CODESWITCH is not an incorporated organization, is not a registered charity, has filed no 501(c)(3) application, has no application pending, and contributions are not tax-deductible. It is the program now being developed as CodeBridge under the planned Miftah Foundation, which is itself not yet incorporated.","founder":{"@id":"https://yusuf-gadelrab.github.io/#person"},"areaServed":{"@type":"City","name":"San Jose, California"},"knowsLanguage":["en","es","vi","ar"]}</script>
 <link rel="stylesheet" href="/css/site.css">
+<link rel="stylesheet" href="/css/lux-motion.css">
 <style>
   .wordmark{font-family:var(--display-pro);font-weight:700;letter-spacing:.22em;font-size:13px;
     color:var(--gold-2);text-transform:uppercase}
@@ -103,7 +104,7 @@
 
   <header class="section">
     <p class="wordmark">CODESWITCH · A bilingual CS education program</p>
-    <h1 style="margin:var(--s5) 0">Learn to code in the <span class="gold-fill">language you think in.</span></h1>
+    <h1 style="margin:var(--s5) 0">Learn to code in the <span class="gold-fill" data-lux-shimmer>language you think in.</span></h1>
     <p class="lead">Every programming language is written in English. <span class="kw">if</span> <span class="kw">while</span> <span class="kw">return</span> <span class="kw">class</span> — the keywords are English words and every error message is an English sentence. So a student who's still learning English is asked to learn two languages at once, and then graded as though they were only learning one.</p>
     <p class="lead" style="margin-top:var(--s4)">They aren't less capable. They're being tested on vocabulary while we tell them we're testing them on logic. <b class="gold">CODESWITCH fixes the room, not the student.</b></p>
     <div class="row" style="margin-top:var(--s6)">
@@ -337,6 +338,7 @@
 
 <script src="/js/waitlist.js" defer></script>
 <script src="/js/site.js" defer></script>
+<script src="/js/lux-motion.js" defer></script>
 <script>
 addEventListener("DOMContentLoaded", function () {
   if (!window.YGWaitlist) return;

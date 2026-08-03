@@ -35,6 +35,7 @@
 <meta name="twitter:description" content="Athletic/commercial model, San Jose CA. Digitals, measurements, and booking inside.">
 <meta name="twitter:image" content="https://yusuf-gadelrab.github.io/og/modeling-card.png">
 <link rel="stylesheet" href="/css/site.css">
+<link rel="stylesheet" href="/css/lux-motion.css">
 <link rel="preload" as="image" href="img/yusuf-headshot.webp" type="image/webp" fetchpriority="high">
 <style>
   /* page-specific only — everything else comes from site.css */
@@ -114,17 +115,17 @@
 <main id="main">
 
 <section class="section center">
-  <img class="page-lion" src="/img/brand/lion-mark.svg" alt="" width="46" height="46" decoding="async">
+  <img class="page-lion" data-lux-parallax=".1" src="/img/brand/lion-mark.svg" alt="" width="46" height="46" decoding="async">
     <div class="eyebrow">Model Portfolio &amp; Digitals</div>
   <img class="portrait" src="img/yusuf-headshot.webp" alt="Yusuf Gadelrab, professional headshot in a suit with a gold frame border" width="700" height="749" fetchpriority="high" decoding="async">
-  <h1 class="hero-type gold-fill">Yusuf Gadelrab</h1>
+  <h1 class="hero-type gold-fill" data-lux-shimmer>Yusuf Gadelrab</h1>
   <p class="lead" style="margin:var(--s4) auto 0">Athletic &amp; commercial model — San Jose / Bay Area. Student-athlete build with a documented 260→200 lb transformation, comfortable on camera every day.</p>
 
   <div class="grid" style="margin:var(--s7) 0">
     <div class="card card--flat stat center"><span class="stat__value">5'10"</span><span class="stat__label">Height</span></div>
     <div class="card card--flat stat center"><span class="stat__value">40"</span><span class="stat__label">Chest</span></div>
     <div class="card card--flat stat center"><span class="stat__value">60 lb</span><span class="stat__label">Documented cut (260→200)</span></div>
-    <div class="card card--flat stat center"><span class="stat__value">650K+</span><span class="stat__label">IG views · last 30 days</span></div>
+    <div class="card card--flat stat center"><span class="stat__value" data-countup>650K+</span><span class="stat__label">IG views · last 30 days</span></div>
   </div>
 
   <div class="row" style="justify-content:center">
@@ -314,5 +315,6 @@
 </script>
 
 <script src="/js/site.js" defer></script>
+<script src="/js/lux-motion.js" defer></script>
 </body>
 </html>

@@ -39,6 +39,7 @@
 
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"Organization","name":"DHAHAB Circle","alternateName":"The Golden Standard","url":"https://yusuf-gadelrab.github.io/circle.html","description":"A free community for people who build software, trade markets, pursue internships, and run creative brands. Members post proof of work rather than opinions.","founder":{"@id":"https://yusuf-gadelrab.github.io/#person"},"logo":"https://yusuf-gadelrab.github.io/img/brand/lion-mark.svg"}</script>
 <link rel="stylesheet" href="/css/site.css">
+<link rel="stylesheet" href="/css/lux-motion.css">
 <style>
   .lane{display:flex;flex-direction:column;padding:var(--s5)}
   .lane h3{margin:var(--s3) 0 var(--s3);font-size:var(--t-h3)}
@@ -101,9 +102,9 @@
 <main id="main">
 
   <header class="section">
-    <img class="page-lion" src="/img/brand/lion-mark.svg" alt="" width="46" height="46" decoding="async">
+    <img class="page-lion" data-lux-parallax=".1" src="/img/brand/lion-mark.svg" alt="" width="46" height="46" decoding="async">
     <p class="eyebrow">DHAHAB Circle · ذهب</p>
-    <h1 style="margin:var(--s4) 0">Receipts over opinions. <span class="gold-fill">That's the whole rule.</span></h1>
+    <h1 style="margin:var(--s4) 0">Receipts over opinions. <span class="gold-fill" data-lux-shimmer>That's the whole rule.</span></h1>
     <p class="lead"><b>A free private community for people who build software, trade markets, chase internships, and run a brand</b> — usually all at once. Four lanes, one house. You post what you actually did, not what you think about it.</p>
     <p class="lead" style="margin-top:var(--s3)">There's no public invite link yet. <b>Join the list below and you get it the hour the server opens, before it's posted anywhere else</b> — plus a permanent founding role if you're one of the first 50. It's free, with no course or upsell at the end.</p>
     <div class="row" style="margin-top:var(--s6)">
@@ -308,6 +309,7 @@ var CIRCLE_INVITE = "";
 </script>
 <script src="/js/waitlist.js" defer></script>
 <script src="/js/site.js" defer></script>
+<script src="/js/lux-motion.js" defer></script>
 <script>
 addEventListener("DOMContentLoaded", function () {
   var btns = [document.getElementById("joinBtn"), document.getElementById("inviteBtn")];

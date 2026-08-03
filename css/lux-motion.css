@@ -1,0 +1,94 @@
+/* ============================================================================
+   lux-motion.css — DHAHAB shared luxury motion layer
+   Loaded AFTER /css/site.css, paired with /js/lux-motion.js (defer, loaded
+   after /js/site.js). Additive only:
+     - Nothing here is required for the page to read correctly. Every rule
+       either targets a class lux-motion.js adds at runtime, or a [data-lux-*]
+       attribute a page opts into — if the JS never runs, none of these
+       classes/attrs exist to select and the page looks exactly as it did
+       before this file shipped.
+     - Uses site.css tokens (--gold, --gold-2, --ease, etc.) so it always
+       matches the page it's dropped into instead of shipping its own palette.
+     - Distinct class names on purpose: site.js already owns a scroll-reveal
+       system (.reveal/.is-in, applied to .card/.panel/h2/h3/.grid>div/img).
+       This file's reveal system uses .lux-reveal/.lux-in for the elements
+       site.js does not cover (<section>, opt-in [data-lux-reveal]) and only
+       ever ADDS a transition-delay (.lux-d1..d6) to elements site.js already
+       owns — never a competing opacity/transform rule on the same element.
+   ========================================================================= */
+
+/* ---------- own reveal system (sections + opt-in) ---------- */
+.lux-reveal{
+  opacity:0;transform:translateY(18px);
+  transition:opacity .7s var(--ease,cubic-bezier(.22,.61,.36,1)),
+             transform .7s var(--ease,cubic-bezier(.22,.61,.36,1));
+  will-change:opacity,transform;
+}
+.lux-reveal.lux-in{opacity:1;transform:none}
+
+/* Stagger utility. Safe to add alongside EITHER .lux-reveal or site.js's own
+   .reveal — it only ever sets transition-delay, never opacity/transform, so
+   it can never fight the rule that actually animates the element. */
+.lux-d1{transition-delay:.07s}
+.lux-d2{transition-delay:.14s}
+.lux-d3{transition-delay:.21s}
+.lux-d4{transition-delay:.28s}
+.lux-d5{transition-delay:.35s}
+.lux-d6{transition-delay:.42s}
+
+/* ---------- gold shimmer sweep — opt-in via [data-lux-shimmer] ---------- */
+/* Self-contained text-gradient + sweep. Only applied where a page explicitly
+   opts a heading/span in, so it never repaints copy the page didn't ask for. */
+[data-lux-shimmer]{
+  background-image:linear-gradient(100deg,
+    var(--gold-2) 20%, var(--gold) 38%, #f8ecc0 50%, var(--gold) 62%, var(--gold-2) 80%);
+  background-size:220% 100%;
+  -webkit-background-clip:text;background-clip:text;
+  -webkit-text-fill-color:transparent;color:var(--gold-2);
+  animation:lux-shimmer 7s ease-in-out infinite;
+}
+@keyframes lux-shimmer{
+  0%{background-position:150% 0}
+  55%{background-position:-60% 0}
+  100%{background-position:-60% 0}
+}
+
+/* ---------- card hover tilt ---------- */
+/* Base transition only — the rotate/translate values themselves are inline
+   styles set by lux-motion.js on pointermove, cleared on pointerleave, so a
+   plain .card with no JS keeps its existing site.css :hover lift untouched. */
+.lux-tilt{
+  transition:transform .4s var(--ease,cubic-bezier(.22,.61,.36,1));
+  transform-style:preserve-3d;
+  will-change:transform;
+}
+
+/* ---------- magnetic buttons ---------- */
+.lux-magnet{transition:transform .25s var(--ease,cubic-bezier(.22,.61,.36,1))}
+
+/* ---------- hero parallax ---------- */
+[data-lux-parallax]{will-change:transform}
+
+/* ---------- count-up ---------- */
+/* Tabular figures only — no visual change to the number itself, just keeps
+   digit width constant while it counts so surrounding layout never shifts. */
+[data-countup]{font-variant-numeric:tabular-nums}
+
+/* ---------- reduced motion: belt-and-suspenders ---------- */
+/* site.css already forces every transition/animation to ~0 and .reveal to its
+   settled state under prefers-reduced-motion. lux-motion.js also never adds
+   any of these classes/inline styles when the media query matches, so this
+   block only guards the case where this file loads without lux-motion.js
+   (e.g. a future page links the CSS before the JS ships). */
+@media(prefers-reduced-motion:reduce){
+  .lux-reveal{opacity:1!important;transform:none!important;transition:none!important}
+  [data-lux-shimmer]{animation:none!important;background-position:0 0!important}
+  .lux-tilt,.lux-magnet{transition:none!important}
+}
+
+/* Touch/no-hover devices never get a cursor to tilt or magnet toward — the JS
+   already skips attaching these listeners on such devices, this just keeps
+   the base surfaces inert if a class ever ends up applied anyway. */
+@media(hover:none){
+  .lux-tilt,.lux-magnet{transform:none!important}
+}

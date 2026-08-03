@@ -41,6 +41,7 @@
 <link rel="icon" type="image/svg+xml" href="/favicon.svg">
 
 <link rel="stylesheet" href="/css/site.css">
+<link rel="stylesheet" href="/css/lux-motion.css">
 <link rel="preload" as="image" href="img/yusuf-headshot.webp" type="image/webp" fetchpriority="high">
 <style>
   /* Page-specific only. Tokens, reset, nav, buttons, cards, stats, footer and
@@ -204,12 +205,12 @@
 <main id="main">
 
   <header class="section hero">
-    <img class="page-lion" src="/img/brand/lion-mark.svg" alt="" width="46" height="46" decoding="async">
+    <img class="page-lion" data-lux-parallax=".1" src="/img/brand/lion-mark.svg" alt="" width="46" height="46" decoding="async">
     <p class="eyebrow">Creator Media Kit</p>
     <button type="button" class="zoomable" style="border:0;background:none;padding:0" data-lb-index="0" aria-label="View headshot full size">
       <img class="portrait" src="img/yusuf-headshot.webp" alt="Yusuf Gadelrab, professional headshot in a suit with a gold frame border" width="700" height="749" fetchpriority="high" decoding="async">
     </button>
-    <h1>Yusuf Gadelrab</h1>
+    <h1 data-lux-shimmer>Yusuf Gadelrab</h1>
     <p class="lead" style="margin-top:var(--s3)"><b>A media kit for brands evaluating a collaboration with @_kxng_sef</b> — fitness-transformation and student-athlete-builder content, posted daily, for a college-age and young-professional audience mid-transformation themselves. Three fixed collaboration formats below, or name your own challenge.</p>
     <div class="hero-cta">
       <a class="btn btn-gold" href="mailto:yusuf.gadelrab06@gmail.com?subject=Partnership%20Inquiry%20-%20%5BYour%20Brand%5D&amp;body=Role%2Fcampaign%3A%20%0ATimeline%3A%20%0ADeliverables%20you%20have%20in%20mind%3A%20">Start a partnership inquiry →</a>
@@ -534,5 +535,6 @@ addEventListener("DOMContentLoaded", function () {
 });
 </script>
 <script src="/js/site.js" defer></script>
+<script src="/js/lux-motion.js" defer></script>
 </body>
 </html>
