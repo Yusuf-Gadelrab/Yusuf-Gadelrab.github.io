@@ -550,8 +550,8 @@
 
   /* ---------- wire up --------------------------------------------------------- */
   document.addEventListener('DOMContentLoaded',function(){
-    form.addEventListener('input',function(){ renderActive(); save(); });
-    form.addEventListener('change',function(){ renderActive(); save(); });
+    form.addEventListener('input',function(){ renderActive(); validateAll(); save(); });
+    form.addEventListener('change',function(){ renderActive(); validateAll(); save(); });
 
     REQUIRED.forEach(function(id){
       var el=$(id);
@@ -587,13 +587,13 @@
 
     var clearBtn=$('fdClearAll');
     if(clearBtn) clearBtn.addEventListener('click',function(){
-      if(!window.confirm('Clear every field and restore the sample defaults? This cannot be undone.')) return;
+      if(!window.confirm('Clear every field? This cannot be undone.')) return;
       try{ localStorage.removeItem(STORE_KEY); }catch(e){}
       form.reset();
       renderActive();
       validateAll();
       var note=$('fdSaveNote');
-      if(note){ note.textContent='Cleared. Sample defaults restored.'; setTimeout(function(){note.textContent='';},3000); }
+      if(note){ note.textContent='All fields cleared.'; setTimeout(function(){note.textContent='';},3000); }
       save();
     });
 
