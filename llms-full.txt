@@ -1,6 +1,6 @@
 # Yusuf Gadelrab — full profile for language models and answer engines
 
-Last updated: 2026-08-01
+Last updated: 2026-08-05
 Canonical URL: https://yusuf-gadelrab.github.io/
 Canonical entity ID: https://yusuf-gadelrab.github.io/#person
 Short index version of this file: https://yusuf-gadelrab.github.io/llms.txt
@@ -61,7 +61,7 @@ DIRA is a security scanner: a zero-dependency, MIT-licensed Python command-line
 tool that audits a codebase for hardcoded secrets, dependency CVEs, insecure
 configuration and infrastructure-as-code rules, dependency licence risk, secrets
 committed to git history, and TLS and security-header problems on a live host.
-Version 1.2.0 has 98 passing tests, 24 secret-detection rules, and 38
+Version 1.5.0 has 124 passing tests, 24 secret-detection rules, and 38
 configuration rules, and it emits CycloneDX and SPDX SBOMs, SARIF, HTML, JSON and
 Markdown reports. It has been packaged for PyPI and npm but has NOT been
 published to either registry, so pip install and npm install will not find it.
@@ -386,8 +386,8 @@ I run a 30B model on my laptop for free. Here is exactly where that wins, where 
 "Building a nonprofit before I can legally earn" - https://yusuf-gadelrab.github.io/writing/building-a-nonprofit-before-youre-allowed-to-earn.html
 Immigration status can restrict what you may do without restricting what you may build. Four program ideas, one entity, and nothing filed yet.
 
-"A position size calculator that refuses to round up" - https://yusuf-gadelrab.github.io/writing/built-a-position-size-calculator-that-refuses-to-let-you-round-up-free.html
-Rounding 187 shares up to 200 quietly adds risk to every trade you take. This free calculator refuses to do it, and shows what the habit really costs.
+"Built a position size calculator that refuses to let you r" - https://yusuf-gadelrab.github.io/writing/built-a-position-size-calculator-that-refuses-to-let-you-round-up-free.html
+The single most expensive habit I had was sizing by feel and then rounding the share count up to something clean. 187 shares becomes 200 because 200 looks
 
 "Check a repo for secrets before going public" - https://yusuf-gadelrab.github.io/writing/check-a-repo-for-secrets-before-you-make-it-public.html
 Deleting a key from a file does not delete it from git. A free, dependency-free checklist for auditing a side project before you flip it to public.
@@ -395,29 +395,29 @@ Deleting a key from a file does not delete it from git. A free, dependency-free 
 "Free first: the zero dollar build stack" - https://yusuf-gadelrab.github.io/writing/free-first-paid-second-the-build-stack.html
 Not licences, not AI subscriptions. The inference, hosting, data, and distribution a student needs to actually ship, for close to zero dollars.
 
-"How an undergrad with no connections joins a research lab" - https://yusuf-gadelrab.github.io/writing/how-an-undergrad-with-no-connections-gets-into-a-research-lab-specific.html
-No connections and nobody vouching for me, 2 SIGCSE 2026 papers later. Here is the actual email sequence and timeline, not the inspirational version.
+"How an undergrad with no connections gets into a research" - https://yusuf-gadelrab.github.io/writing/how-an-undergrad-with-no-connections-gets-into-a-research-lab-specific.html
+I get asked this a lot now that I have two SIGCSE 2026 papers, so here is the actual sequence, not the inspirational version.
 
-"I built a visa timeline planner to stop fearing dates" - https://yusuf-gadelrab.github.io/writing/i-built-a-visa-timeline-planner-because-i-got-tired-of-being-scared-of.html
-TD status ends at 21 and the filings have to happen in a strict order. This free planner maps the sequence so a calendar stops being a source of dread.
+"I built a visa timeline planner because I got tired of bei" - https://yusuf-gadelrab.github.io/writing/i-built-a-visa-timeline-planner-because-i-got-tired-of-being-scared-of.html
+I'm on TD status. It ends when I turn 21. I'm 20. There's a whole sequence of things that have to happen in a specific order before then, and every explana
 
-"I built 3 apps and put zero of them in the App Store" - https://yusuf-gadelrab.github.io/writing/i-built-three-apps-this-week-and-put-zero-of-them-in-the-app-store.html
-The App Store wants $99 a year, so I shipped 3 installable offline PWAs instead: no account, no backend, and nothing ever leaving your phone.
+"I built three apps this week and put zero of them in the A" - https://yusuf-gadelrab.github.io/writing/i-built-three-apps-this-week-and-put-zero-of-them-in-the-app-store.html
+The App Store costs $99/year. I'm a broke CS student. So I built them as PWAs instead: you open a link on your phone, hit Share, hit Add to Home Screen, an
 
-"I shipped one brand across 30 pages and 3 apps in a day" - https://yusuf-gadelrab.github.io/writing/i-shipped-a-brand-across-30-pages-3-apps-3-book-covers-and-a-clothing-.html
-Most brand systems are a folder of PNGs that quietly drift apart. One Python script generates the mark instead, so 30 pages and 3 apps never disagree.
+"I shipped a brand across 30 pages, 3 apps, 3 book covers a" - https://yusuf-gadelrab.github.io/writing/i-shipped-a-brand-across-30-pages-3-apps-3-book-covers-and-a-clothing-.html
+Most brand systems are a folder of PNGs and a PDF nobody opens. The mark drifts. Someone exports it wrong for a t-shirt, the knockout becomes ink on ink, a
 
-"PWA vs native app: what skipping the App Store costs" - https://yusuf-gadelrab.github.io/writing/i-skipped-the-app-store-and-shipped-3-offline-pwas-instead-heres-what-.html
-Apple wants $99 a year before anyone can install your thing. The honest tradeoffs of going PWA instead: what you keep, and what you genuinely give up.
+"I skipped the App Store and shipped 3 offline PWAs instead" - https://yusuf-gadelrab.github.io/writing/i-skipped-the-app-store-and-shipped-3-offline-pwas-instead-heres-what-.html
+Apple wants $99/year before a single person can install your thing. I'm a student, so I went the PWA route for three small apps and want to write down the
 
-"I spent a day making my portfolio readable by AI first" - https://yusuf-gadelrab.github.io/writing/i-spent-a-day-making-my-portfolio-readable-by-ai-instead-of-by-humans.html
-Recruiters ask an assistant about you before they ever open your site. Here is the llms.txt, schema and answer-first copy that made 90 pages readable.
+"I spent a day making my portfolio readable by AI instead o" - https://yusuf-gadelrab.github.io/writing/i-spent-a-day-making-my-portfolio-readable-by-ai-instead-of-by-humans.html
+Here's the thing I noticed. When a recruiter wants to know about a candidate now, a real number of them ask an assistant first. ChatGPT, Claude, Perplexity
 
-"What walk-forward testing did to my trading strategies" - https://yusuf-gadelrab.github.io/writing/i-spent-months-building-trading-strategies-and-then-published-the-resu.html
-Months of building setups, then walk-forward testing across 4,933 trades. Exactly one survived. Here is what killed the rest, and why I published it.
+"I spent months building trading strategies and then publis" - https://yusuf-gadelrab.github.io/writing/i-spent-months-building-trading-strategies-and-then-published-the-resu.html
+Here's what walk-forward testing did to my ideas.
 
-"Why I wrote a security scanner with zero dependencies" - https://yusuf-gadelrab.github.io/writing/i-wrote-a-security-scanner-with-zero-dependencies-on-purpose.html
-Every scanner wanted a hundred packages installed before it would look for supply-chain risk. DIRA ships 7 scanners, 98 passing tests and no dependencies.
+"I wrote a security scanner with zero dependencies, on purp" - https://yusuf-gadelrab.github.io/writing/i-wrote-a-security-scanner-with-zero-dependencies-on-purpose.html
+Every security tool I looked at wanted me to install a hundred packages to go looking for supply chain risk. That struck me as funny in a way that isn't fu
 
 "Koyfin vs Seeking Alpha vs Simply Wall St: which to pay for" - https://yusuf-gadelrab.github.io/writing/koyfin-vs-seeking-alpha-vs-simply-wall-st.html
 Three research tools, three different jobs: fast data, crowd opinions, visual company snapshots. Here is which 1 of the 3 is worth paying for, and why.
@@ -428,8 +428,8 @@ Positive expectancy is not an edge. A risk-matched random entry captured most of
 "Student software stack: what to claim free with a .edu" - https://yusuf-gadelrab.github.io/writing/student-software-stack-free-first-paid-second.html
 Almost everything a CS student is told to buy has a free .edu tier. Here is what to claim in your first week, and the short list worth paying for.
 
-"The hardest part of an internship search isn't applying" - https://yusuf-gadelrab.github.io/writing/the-hardest-part-of-an-internship-search-isnt-the-applications-its-tha.html
-Summer 2027 recruiting is happening in July 2026, not in the spring. Nobody tells you when the window opens, so here is the calendar I had to build.
+"The hardest part of an internship search isn't the applica" - https://yusuf-gadelrab.github.io/writing/the-hardest-part-of-an-internship-search-isnt-the-applications-its-tha.html
+I learned this the expensive way. Summer 2027 internship recruiting is happening right now, in July 2026. Not in the spring. Not in the fall. Now.
 
 "The internship deadline panic was mostly fake" - https://yusuf-gadelrab.github.io/writing/the-internship-deadline-panic-was-mostly-fictional.html
 I re-verified 18 firms against primary sources. Only two had real deadlines. One panic-inducing date belonged to a different program entirely.
@@ -438,7 +438,7 @@ I re-verified 18 firms against primary sources. Only two had real deadlines. One
 I built my own swing screener before paying for any of the 3. Here is the honest split between charting, automated backtesting and stock screening.
 
 "Two papers accepted to SIGCSE 2026. I'm an undergrad" - https://yusuf-gadelrab.github.io/writing/two-papers-accepted-to-sigcse-2026-im-an-undergrad.html
-Two SIGCSE 2026 papers as an undergraduate: what happens to a student learning to code when the programming language is English and their thinking is not.
+The first one asks a question that sounds simple and isn't: what happens to a student learning to code when the programming language is in English and thei
 
 "What schema markup taught me across 30 guides" - https://yusuf-gadelrab.github.io/writing/what-schema-markup-taught-me-writing-30-guides.html
 TechArticle vs Article vs BlogPosting, the FAQ rule most people break, and how one Person node turned 90 pages into a single entity instead of 90 authors.
@@ -446,8 +446,8 @@ TechArticle vs Article vs BlogPosting, the FAQ rule most people break, and how o
 "Why my robots.txt says allow to AI crawlers" - https://yusuf-gadelrab.github.io/writing/why-my-robots-txt-says-allow-to-ai-crawlers.html
 In mid-2026 everyone blocked GPTBot and ClaudeBot. I named 29 AI crawlers and allowed all of them. Here is the reasoning, and the part I can't measure.
 
-"DIRA: zero-dependency secret, CVE and IaC scanner in Python" - https://yusuf-gadelrab.github.io/writing/zero-dependency-security-scanner-secrets-osv-cves-iac-rules-git-histor.html
-Scanning for supply-chain risk usually means installing a large dependency tree first. DIRA v1.2.0 runs 7 scanners on pure stdlib Python, MIT licensed.
+"Zero-dependency security scanner: secrets, OSV CVEs, IaC r" - https://yusuf-gadelrab.github.io/writing/zero-dependency-security-scanner-secrets-osv-cves-iac-rules-git-histor.html
+I got annoyed that scanning for supply chain risk usually means installing a large dependency tree first, so I wrote one with no dependencies at all. Pure
 
 
 ---
@@ -637,7 +637,7 @@ Start here (9)
   https://yusuf-gadelrab.github.io/hire.html - Hire Yusuf Gadelrab - Recruiters & Founding Clients
   https://yusuf-gadelrab.github.io/everything.html - Everything I Do
   https://yusuf-gadelrab.github.io/guides.html - Guides - Plain-English Answers With the Math Shown
-  https://yusuf-gadelrab.github.io/writing.html - Writing - 23 Posts on Shipping Software as a Student
+  https://yusuf-gadelrab.github.io/writing.html - Writing
   https://yusuf-gadelrab.github.io/projects.html - Projects - Yusuf Gadelrab, Engineering Portfolio
   https://yusuf-gadelrab.github.io/research.html - Research - Yusuf Gadelrab, SIGCSE 2026 Papers
 
@@ -706,27 +706,27 @@ Guides (long-form answers, every formula shown) (60)
 Writing (essays and build logs) (23)
   https://yusuf-gadelrab.github.io/writing/ai-tools-i-pay-for-vs-what-i-run-locally.html - AI tools I pay for vs what I run locally
   https://yusuf-gadelrab.github.io/writing/building-a-nonprofit-before-youre-allowed-to-earn.html - Building a nonprofit before I can legally earn
-  https://yusuf-gadelrab.github.io/writing/built-a-position-size-calculator-that-refuses-to-let-you-round-up-free.html - A position size calculator that refuses to round up
+  https://yusuf-gadelrab.github.io/writing/built-a-position-size-calculator-that-refuses-to-let-you-round-up-free.html - Built a position size calculator that refuses to let you r
   https://yusuf-gadelrab.github.io/writing/check-a-repo-for-secrets-before-you-make-it-public.html - Check a repo for secrets before going public
   https://yusuf-gadelrab.github.io/writing/free-first-paid-second-the-build-stack.html - Free first: the zero dollar build stack
-  https://yusuf-gadelrab.github.io/writing/how-an-undergrad-with-no-connections-gets-into-a-research-lab-specific.html - How an undergrad with no connections joins a research lab
-  https://yusuf-gadelrab.github.io/writing/i-built-a-visa-timeline-planner-because-i-got-tired-of-being-scared-of.html - I built a visa timeline planner to stop fearing dates
-  https://yusuf-gadelrab.github.io/writing/i-built-three-apps-this-week-and-put-zero-of-them-in-the-app-store.html - I built 3 apps and put zero of them in the App Store
-  https://yusuf-gadelrab.github.io/writing/i-shipped-a-brand-across-30-pages-3-apps-3-book-covers-and-a-clothing-.html - I shipped one brand across 30 pages and 3 apps in a day
-  https://yusuf-gadelrab.github.io/writing/i-skipped-the-app-store-and-shipped-3-offline-pwas-instead-heres-what-.html - PWA vs native app: what skipping the App Store costs
-  https://yusuf-gadelrab.github.io/writing/i-spent-a-day-making-my-portfolio-readable-by-ai-instead-of-by-humans.html - I spent a day making my portfolio readable by AI first
-  https://yusuf-gadelrab.github.io/writing/i-spent-months-building-trading-strategies-and-then-published-the-resu.html - What walk-forward testing did to my trading strategies
-  https://yusuf-gadelrab.github.io/writing/i-wrote-a-security-scanner-with-zero-dependencies-on-purpose.html - Why I wrote a security scanner with zero dependencies
+  https://yusuf-gadelrab.github.io/writing/how-an-undergrad-with-no-connections-gets-into-a-research-lab-specific.html - How an undergrad with no connections gets into a research
+  https://yusuf-gadelrab.github.io/writing/i-built-a-visa-timeline-planner-because-i-got-tired-of-being-scared-of.html - I built a visa timeline planner because I got tired of bei
+  https://yusuf-gadelrab.github.io/writing/i-built-three-apps-this-week-and-put-zero-of-them-in-the-app-store.html - I built three apps this week and put zero of them in the A
+  https://yusuf-gadelrab.github.io/writing/i-shipped-a-brand-across-30-pages-3-apps-3-book-covers-and-a-clothing-.html - I shipped a brand across 30 pages, 3 apps, 3 book covers a
+  https://yusuf-gadelrab.github.io/writing/i-skipped-the-app-store-and-shipped-3-offline-pwas-instead-heres-what-.html - I skipped the App Store and shipped 3 offline PWAs instead
+  https://yusuf-gadelrab.github.io/writing/i-spent-a-day-making-my-portfolio-readable-by-ai-instead-of-by-humans.html - I spent a day making my portfolio readable by AI instead o
+  https://yusuf-gadelrab.github.io/writing/i-spent-months-building-trading-strategies-and-then-published-the-resu.html - I spent months building trading strategies and then publis
+  https://yusuf-gadelrab.github.io/writing/i-wrote-a-security-scanner-with-zero-dependencies-on-purpose.html - I wrote a security scanner with zero dependencies, on purp
   https://yusuf-gadelrab.github.io/writing/koyfin-vs-seeking-alpha-vs-simply-wall-st.html - Koyfin vs Seeking Alpha vs Simply Wall St: which to pay for
   https://yusuf-gadelrab.github.io/writing/robustness-test-on-my-trading-strategy-and-it-failed.html - My trading strategy failed its robustness test
   https://yusuf-gadelrab.github.io/writing/student-software-stack-free-first-paid-second.html - Student software stack: what to claim free with a .edu
-  https://yusuf-gadelrab.github.io/writing/the-hardest-part-of-an-internship-search-isnt-the-applications-its-tha.html - The hardest part of an internship search isn't applying
+  https://yusuf-gadelrab.github.io/writing/the-hardest-part-of-an-internship-search-isnt-the-applications-its-tha.html - The hardest part of an internship search isn't the applica
   https://yusuf-gadelrab.github.io/writing/the-internship-deadline-panic-was-mostly-fictional.html - The internship deadline panic was mostly fake
   https://yusuf-gadelrab.github.io/writing/tradingview-vs-trendspider-vs-stock-rover-for-swing-trading.html - TradingView vs TrendSpider vs Stock Rover for swing trading
   https://yusuf-gadelrab.github.io/writing/two-papers-accepted-to-sigcse-2026-im-an-undergrad.html - Two papers accepted to SIGCSE 2026. I'm an undergrad
   https://yusuf-gadelrab.github.io/writing/what-schema-markup-taught-me-writing-30-guides.html - What schema markup taught me across 30 guides
   https://yusuf-gadelrab.github.io/writing/why-my-robots-txt-says-allow-to-ai-crawlers.html - Why my robots.txt says allow to AI crawlers
-  https://yusuf-gadelrab.github.io/writing/zero-dependency-security-scanner-secrets-osv-cves-iac-rules-git-histor.html - DIRA: zero-dependency secret, CVE and IaC scanner in Python
+  https://yusuf-gadelrab.github.io/writing/zero-dependency-security-scanner-secrets-osv-cves-iac-rules-git-histor.html - Zero-dependency security scanner: secrets, OSV CVEs, IaC r
 
 Glossary (plain-English definitions) (10)
   https://yusuf-gadelrab.github.io/codeswitch/glossary.html - Bilingual CS Glossary - Python Terms in 4 Languages
@@ -809,6 +809,10 @@ Optional (9)
   https://yusuf-gadelrab.github.io/privacy.html - Privacy Policy - Yusuf Gadelrab / DHAHAB
   https://yusuf-gadelrab.github.io/refunds.html - Refund Policy - 14-Day Digital Refunds & Apparel Returns
   https://yusuf-gadelrab.github.io/terms.html - Terms of Use & Disclaimers - Yusuf Gadelrab / DHAHAB
+
+Other pages (2)
+  https://yusuf-gadelrab.github.io/freight-docs.html - Free Rate Confirmation & BOL Generator for Brokers
+  https://yusuf-gadelrab.github.io/freight.html - DHAHAB Freight · The Golden Standard of Freight
 
 ---
 
