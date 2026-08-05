@@ -302,7 +302,7 @@
   .ar-watermark{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);
     font-size:clamp(220px,42vw,560px);color:var(--bone);opacity:.05;line-height:1;pointer-events:none;
     user-select:none;z-index:0;font-family:"Geeza Pro","Damascus","Al Bayan",Tahoma,Arial,sans-serif}
-  .hero>*{position:relative;z-index:1}
+  .hero>*:not(.ar-watermark){position:relative;z-index:1}
   .wordmark{font-family:var(--display);text-transform:uppercase;line-height:.86;
     margin:var(--s5) 0 var(--s3);display:flex;flex-direction:column;align-items:center}
   .wordmark span{display:block}
