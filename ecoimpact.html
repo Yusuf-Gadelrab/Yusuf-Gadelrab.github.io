@@ -51,6 +51,13 @@
   .callout{border-left:3px solid var(--gold)}
   .callout b{color:var(--gold-2)}
   .card p{color:var(--muted);font-size:var(--t-small);margin-top:var(--s3)}
+  form.mini{display:flex;gap:8px;margin-top:var(--s4);flex-wrap:wrap}
+  form.mini input{flex:1 1 220px;min-width:0;background:var(--panel2);border:1px solid var(--line);
+    border-radius:var(--radius);color:var(--bone);padding:10px 12px;font-family:var(--body-font);font-size:13px}
+  form.mini input:focus{border-color:var(--gold)}
+  form.mini input:focus-visible{outline:2px solid var(--gold-2);outline-offset:2px}
+  form.mini button{white-space:nowrap}
+  .note{margin-top:8px;font-size:11px;color:var(--faint)}
 </style>
 <!-- geo:entity — page-level WebPage node (resolves the mainEntityOfPage @id above), plus a bare reference to the canonical Person entity defined in full on index.html -->
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebPage","@id":"https://yusuf-gadelrab.github.io/ecoimpact.html#webpage","url":"https://yusuf-gadelrab.github.io/ecoimpact.html","name":"EcoImpact — Trash Map & Impact Meter","description":"Case study: a community trash map with a quantified impact meter — FastAPI, SQLite and Leaflet, designed privacy-first from the schema up.","inLanguage":"en","isPartOf":{"@id":"https://yusuf-gadelrab.github.io/#website"},"about":{"@id":"https://yusuf-gadelrab.github.io/#person"},"publisher":{"@id":"https://yusuf-gadelrab.github.io/#person"}}</script>
@@ -170,6 +177,22 @@
     </div>
   </section>
 
+  <hr class="divider">
+
+  <section class="section section--tight">
+    <div class="panel" id="early-access" style="border-left:3px solid var(--gold)">
+      <p class="eyebrow">Get In</p>
+      <h2 style="margin:var(--s2) 0 var(--s3)">Want first access when this opens up?</h2>
+      <p class="muted" style="font-size:var(--t-small);max-width:56ch">EcoImpact isn't public yet — the moderation and minors questions need real answers before anyone outside my own testing reports a pin. Join the list and I'll email you the day it opens to a campus or a city, or ask for a live walkthrough now.</p>
+      <form class="mini" id="f-ei" novalidate>
+        <label class="sr-only" for="e-ei">Your email address</label>
+        <input type="email" id="e-ei" placeholder="you@email.com" autocomplete="email" required>
+        <button class="btn btn-gold" type="submit">Get early access</button>
+      </form>
+      <p class="note" id="n-ei">One email when it opens, nothing else. <a href="/waitlist.html">See every list I run →</a></p>
+    </div>
+  </section>
+
 </main>
 
 <footer class="site-footer">
@@ -206,6 +229,12 @@
   </div>
 </footer>
 
+<script src="/js/waitlist.js" defer></script>
 <script src="/js/site.js" defer></script>
+<script>
+addEventListener("DOMContentLoaded", function () {
+  if (window.YGWaitlist) YGWaitlist.attach("f-ei", "e-ei", "n-ei", "EcoImpact Early Access");
+});
+</script>
 </body>
 </html>
