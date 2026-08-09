@@ -17,6 +17,20 @@
        owns — never a competing opacity/transform rule on the same element.
    ========================================================================= */
 
+/* ---------- page-load fade ---------- */
+/* Driven by a single html.lux-boot class the JS adds at eval time (never
+   under reduced motion). One-shot keyframe with fill:both — self-completing,
+   so no second class is needed and the page can never be stranded hidden.
+   Opacity only: no layout shift, sticky/fixed chrome unaffected. */
+html.lux-boot body{animation:lux-pagein .45s ease-out both}
+@keyframes lux-pagein{from{opacity:.001}to{opacity:1}}
+
+/* ---------- gold divider ---------- */
+/* CSS-only: plain <hr> reads as a hairline gold gradient wherever this file
+   is linked. Static styling, not motion — safe under reduced motion. */
+hr{border:0;height:1px;margin:2rem 0;
+  background:linear-gradient(90deg,transparent,rgba(212,175,55,.45),transparent)}
+
 /* ---------- own reveal system (sections + opt-in) ---------- */
 .lux-reveal{
   opacity:0;transform:translateY(18px);
@@ -58,13 +72,28 @@
    styles set by lux-motion.js on pointermove, cleared on pointerleave, so a
    plain .card with no JS keeps its existing site.css :hover lift untouched. */
 .lux-tilt{
-  transition:transform .4s var(--ease,cubic-bezier(.22,.61,.36,1));
+  transition:transform .4s var(--ease,cubic-bezier(.22,.61,.36,1)),
+             border-color .4s var(--ease,cubic-bezier(.22,.61,.36,1)),
+             box-shadow .4s var(--ease,cubic-bezier(.22,.61,.36,1));
   transform-style:preserve-3d;
   will-change:transform;
 }
+/* Gold edge glow on hover. Keyed on the runtime-added .lux-tilt class, so a
+   page without the JS keeps its stock site.css :hover exactly as shipped. */
+.lux-tilt:hover{
+  border-color:rgba(212,175,55,.4);
+  box-shadow:0 18px 44px rgba(0,0,0,.5),
+             0 0 0 1px rgba(212,175,55,.14),
+             0 0 26px rgba(212,175,55,.09);
+}
 
 /* ---------- magnetic buttons ---------- */
-.lux-magnet{transition:transform .25s var(--ease,cubic-bezier(.22,.61,.36,1))}
+.lux-magnet{transition:transform .25s var(--ease,cubic-bezier(.22,.61,.36,1)),
+                       box-shadow .25s var(--ease,cubic-bezier(.22,.61,.36,1))}
+.lux-magnet:hover{box-shadow:0 6px 22px rgba(212,175,55,.16)}
+/* Press feedback — stylesheet !important beats the inline magnet transform
+   for the duration of the press, then releases back to it. */
+.lux-magnet:active{transform:scale(.97)!important;transition-duration:.08s}
 
 /* ---------- hero parallax ---------- */
 [data-lux-parallax]{will-change:transform}
@@ -81,9 +110,11 @@
    block only guards the case where this file loads without lux-motion.js
    (e.g. a future page links the CSS before the JS ships). */
 @media(prefers-reduced-motion:reduce){
+  html.lux-boot body{animation:none!important;opacity:1!important}
   .lux-reveal{opacity:1!important;transform:none!important;transition:none!important}
   [data-lux-shimmer]{animation:none!important;background-position:0 0!important}
   .lux-tilt,.lux-magnet{transition:none!important}
+  .lux-magnet:active{transform:none!important}
 }
 
 /* Touch/no-hover devices never get a cursor to tilt or magnet toward — the JS

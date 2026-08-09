@@ -38,6 +38,12 @@
   var fineMQ = w.matchMedia ? w.matchMedia('(hover: hover) and (pointer: fine)') : null;
   var FINE_POINTER = !!(fineMQ && fineMQ.matches);
 
+  /* PAGE-LOAD FADE — one class on <html> drives a one-shot, self-completing
+     CSS keyframe on <body> (animation-fill: both). Because the animation
+     finishes on its own, an error anywhere after this line can never strand
+     the page invisible. Opacity only — zero layout shift. */
+  if (!REDUCED) { try { d.documentElement.classList.add('lux-boot'); } catch (e) {} }
+
   /* Elements/regions this file never touches — nav, footer, the command
      palette and its trigger, the sticky CTA bar, copy-link buttons. Matches
      site.js's own exclusion list so the two files agree on what "chrome"
@@ -237,7 +243,27 @@
         from whatever number the page actually shipped with.
      ===================================================================== */
   function initCountUp() {
-    var els = scope.querySelectorAll('[data-countup]');
+    var els = [];
+    var optIn = scope.querySelectorAll('[data-countup]');
+    for (var a = 0; a < optIn.length; a++) els.push(optIn[a]);
+
+    /* Auto-target common stat markup, conservatively:
+       - never an element a page-owned counter drives ([data-count] on the
+         element or an ancestor — store/freightdesk/modeling ship their own)
+       - only short, digit-bearing text; animate() re-validates the format
+         and bails harmlessly on anything it can't parse, and its final
+         frame always restores the exact original string. */
+    var auto = scope.querySelectorAll('.stat__value, .stat b, .stat strong, .op-stat b');
+    for (var c = 0; c < auto.length; c++) {
+      var cand = auto[c];
+      if (skip(cand) || cand.hasAttribute('data-countup') || cand.hasAttribute('data-count')) continue;
+      if (cand.closest && cand.closest('[data-count]')) continue;
+      if (cand.children.length) continue;
+      var txt = (cand.textContent || '').trim();
+      if (txt.length < 2 || txt.length > 14 || !/\d/.test(txt)) continue;
+      cand.setAttribute('data-countup', ''); /* also picks up the tabular-nums CSS */
+      els.push(cand);
+    }
     if (!els.length) return;
 
     function animate(el) {
@@ -311,17 +337,34 @@
   }
 
   /* =======================================================================
-     BOOT
+     8. GOLD SHIMMER — auto-mark the page's primary <h1> so the CSS sweep
+        applies. Text-only headings, sane length; anything else left alone.
+        Pages can still opt other elements in by hand via [data-lux-shimmer].
      ===================================================================== */
+  function initShimmer() {
+    var h = scope.querySelector('h1');
+    if (!h || skip(h) || h.hasAttribute('data-lux-shimmer')) return;
+    if (h.querySelector('img,svg,picture,video')) return;
+    var t = (h.textContent || '').replace(/\s+/g, ' ').trim();
+    if (!t || t.length > 90) return;
+    h.setAttribute('data-lux-shimmer', '');
+  }
+
+  /* =======================================================================
+     BOOT — every init isolated: one failing effect can never take down the
+     rest of the layer or anything the page itself runs.
+     ===================================================================== */
+  function safe(fn) { try { fn(); } catch (e) {} }
   function boot() {
     if (!REDUCED) {
-      initReveal();
-      initStagger();
-      if (FINE_POINTER) { initTilt(); initMagnet(); }
-      initParallax();
-      initCountUp();
+      safe(initReveal);
+      safe(initStagger);
+      if (FINE_POINTER) { safe(initTilt); safe(initMagnet); }
+      safe(initParallax);
+      safe(initCountUp);
+      safe(initShimmer);
     }
-    initSmoothAnchor();
+    safe(initSmoothAnchor);
   }
 
   if (d.readyState === 'loading') d.addEventListener('DOMContentLoaded', boot);
