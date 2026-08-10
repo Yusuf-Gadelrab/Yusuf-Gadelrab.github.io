@@ -640,7 +640,7 @@
           observer.unobserve(entries[i].target);
         }
       }
-    }, { rootMargin: '0px 0px -40px 0px', threshold: 0.05 });
+    }, { rootMargin: '0px 0px -40px 0px', threshold: 0 });
     
     var reveals = d.querySelectorAll('.reveal, .reveal-zoom, .reveal-left, .reveal-right');
     for (var k = 0; k < reveals.length; k++) observer.observe(reveals[k]);

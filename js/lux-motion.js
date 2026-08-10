@@ -58,7 +58,7 @@
      ===================================================================== */
   function initReveal() {
     var io = w.IntersectionObserver
-      ? new IntersectionObserver(onIntersect, { rootMargin: '0px 0px -10% 0px', threshold: 0.08 })
+      ? new IntersectionObserver(onIntersect, { rootMargin: '0px 0px -10% 0px', threshold: 0 })
       : null;
 
     function onIntersect(entries) {
