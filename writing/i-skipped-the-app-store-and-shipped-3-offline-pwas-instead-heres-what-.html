@@ -74,14 +74,17 @@
   <h1>I skipped the App Store and shipped 3 offline PWAs instead. Here&#x27;s what that actually costs you</h1>
   <p class="meta">2026-07-29 &middot; Yusuf Gadelrab</p>
   <p>Apple wants $99/year before a single person can install your thing. I&#x27;m a student, so I went the PWA route for three small apps and want to write down the honest tradeoffs, because every PWA post I read was either a fanboy or a funeral.</p>
+  <h2 style="margin:var(--s7) 0 var(--s4)">What actually worked</h2>
   <p>What actually worked:
 - Install prompt on Android is genuinely one tap. On iOS it&#x27;s Share &gt; Add to Home Screen, which is three taps and a sentence of explanation on the page. Not free, but not fatal.
 - Offline via service worker was maybe 40 lines. Cache the shell, version the cache, bump the version on deploy or you will ship a ghost of your old app to everyone who already installed it. I learned that one the expensive way.
 - localStorage only, no backend. This killed my hosting bill, my privacy policy anxiety, and about 80% of the code I thought I&#x27;d need.</p>
+  <h2 style="margin:var(--s7) 0 var(--s4)">What actually hurt</h2>
   <p>What actually hurt:
 - No push on iOS unless the user installs it first. So your retention loop has to live inside the app.
 - No store surface means no discovery. You are 100% responsible for distribution. This is the real cost, not the $99.
 - Debugging an installed PWA on iOS is miserable compared to the browser.</p>
+  <h2 style="margin:var(--s7) 0 var(--s4)">Would I do it again?</h2>
   <p>Would I do it again for a small utility app? Yes, immediately. Would I do it for something that needs push, payments, or discovery? No.</p>
   <p>Happy to answer anything about the service worker setup.</p>
   <div class="cta">

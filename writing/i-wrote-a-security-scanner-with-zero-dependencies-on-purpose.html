@@ -75,6 +75,7 @@
   <p class="meta">2026-07-29 &middot; Yusuf Gadelrab</p>
   <p>Every security tool I looked at wanted me to install a hundred packages to go looking for supply chain risk. That struck me as funny in a way that isn&#x27;t funny.</p>
   <p>So DIRA has no dependencies. Pure Python, MIT licensed, runs anywhere Python runs.</p>
+  <h2 style="margin:var(--s7) 0 var(--s4)">Seven scanners</h2>
   <p>Seven scanners:</p>
   <p>Secrets, across 23 provider patterns plus an entropy-gated generic rule. Not just the obvious AWS key shapes, the boring ones too.</p>
   <p>Dependency CVEs, resolved through OSV.dev, which is free and public and doesn&#x27;t require an account.</p>
@@ -82,9 +83,11 @@
   <p>Dependency license risk, because a GPL transitive dep in a product you plan to sell is a business problem disguised as a technical one.</p>
   <p>Git history leaks. This is the one people don&#x27;t expect. Deleting a secret from a file does not delete it from the repository. It&#x27;s still in the objects, and it is still findable.</p>
   <p>Live TLS and header checks against the deployed thing, since half of real exposure is config, not code.</p>
+  <h2 style="margin:var(--s7) 0 var(--s4)">What it outputs</h2>
   <p>It outputs SARIF, so it drops into GitHub code scanning. There&#x27;s a diff mode for pull request gating, an SBOM exporter in CycloneDX and SPDX, a safe auto-remediation pass, and an 18 point readiness score for the moment an enterprise customer sends you a security questionnaire and you realize you have no idea what the answers are.</p>
   <p>208 tests. Free forever.</p>
   <p><a href="https://yusuf-gadelrab.github.io/dira.html">https://yusuf-gadelrab.github.io/dira.html</a></p>
+  <h2 style="margin:var(--s7) 0 var(--s4)">What it misses</h2>
   <p>If you run it on something real and it misses something it should have caught, that&#x27;s the feedback I want most.</p>
   <div class="cta">
     <strong>Built by one CS student in San Jose.</strong>
