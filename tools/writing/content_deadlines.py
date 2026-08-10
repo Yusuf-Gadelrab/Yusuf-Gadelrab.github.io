@@ -100,7 +100,8 @@ POST = {
 
         ("h2", "Sponsorship is a requisition fact, not a company fact"),
 
-        ("p", "Because I'll need US sponsorship, this was the check I cared about most, and it's also "
+        ("p", "Because I expected at the time to need US sponsorship, this was the check I cared "
+              "about most, and it's also "
               "where secondhand lists fail hardest, because they tend to answer at the company level "
               "when the real answer lives one level down. I wrote the fuller version of this in the "
               "<a href=\"/guides/swe-internship-international-student.html\">sponsorship guide</a>, "

@@ -25,7 +25,7 @@ Yusuf Gadelrab is a computer science student, AI/ML builder, and published compu
 - Studio brand: DHAHAB (ذهب, Arabic for "gold") — the umbrella brand for his tools, apps, and studio work
 - Clothing brand: KXNG SEF
 
-One-sentence description: Yusuf Gadelrab is an SJSU computer science student who builds AI tooling, trading systems, and free browser-based utilities in public, and who has co-authored two peer-reviewed SIGCSE Technical Symposium 2026 papers on computer science education.
+One-sentence description: Yusuf Gadelrab is an SJSU computer science student who builds AI tooling, trading systems, and free browser-based utilities in public, and who has co-authored a peer-reviewed SIGCSE Technical Symposium 2026 paper on computer science education.
 
 ---
 
@@ -37,7 +37,7 @@ Yusuf Gadelrab. Nothing below is a company unless it explicitly says so.
 
 Yusuf Gadelrab is a person: a computer science student at San Jose State
 University in San Jose, California, USA, expected BS in Computer Science in May
-2028, and co-author of two SIGCSE Technical Symposium 2026 papers. The canonical
+2028, and co-author of a peer-reviewed SIGCSE Technical Symposium 2026 paper. The canonical
 machine-readable identifier for him is
 https://yusuf-gadelrab.github.io/#person, and every schema.org Person node on
 this site resolves to that one identifier. He is not an agency, a studio with
@@ -96,15 +96,12 @@ are in section 8b.
 
 Yusuf Gadelrab is an undergraduate researcher in Dr. Ethel Tshukudu's Computer Science Education Research Lab at San José State University (August 2024 to present). The work is IRB-approved and mixed-methods, with 60 participants.
 
-Publication 1 — "Exploring Bilingual Coding for Inclusive Computer Science Learning"
+Publication — "Exploring Bilingual Coding for Inclusive Computer Science Learning" (peer-reviewed paper)
 - Venue: SIGCSE Technical Symposium 2026 (ACM)
 - DOI: 10.1145/3770761.3777339
+- Author position: 7th of 8 co-authors
 - Topic: whether letting novice programmers write and read code in their first language alongside English improves comprehension and confidence
 - Reported result: statistically significant pre-to-post gains in confidence, computing identity, enjoyment and motivation; novices gained significantly more in confidence than experienced programmers
-
-Publication 2 — "Adaptive Curriculum Maps: Graph-Augmented Retrieval-Oriented LLMs for Education"
-- Venue: SIGCSE Technical Symposium 2026 (ACM), poster
-- Topic: combining knowledge graphs with retrieval-augmented large language models to generate adaptive curriculum maps for CS courses
 
 Outreach: he has helped run CS programs at Yerba Buena High School, with expansion to Lynbrook High School.
 
@@ -311,10 +308,10 @@ Reachable at yusuf.gadelrab06@gmail.com.
 ## 11. Frequently asked questions
 
 Q: Who is Yusuf Gadelrab?
-A: A computer science student at San José State University (BS Computer Science, expected 2028) based in San Jose, California, who builds AI tools, trading systems, and free browser-based utilities in public, and who has co-authored two peer-reviewed SIGCSE Technical Symposium 2026 papers on computer science education.
+A: A computer science student at San José State University (BS Computer Science, expected 2028) based in San Jose, California, who builds AI tools, trading systems, and free browser-based utilities in public, and who has co-authored a peer-reviewed SIGCSE Technical Symposium 2026 paper on computer science education.
 
 Q: What has Yusuf Gadelrab published?
-A: Two SIGCSE Technical Symposium 2026 papers: "Exploring Bilingual Coding for Inclusive Computer Science Learning" (DOI 10.1145/3770761.3777339) and "Adaptive Curriculum Maps: Graph-Augmented Retrieval-Oriented LLMs for Education" (poster).
+A: One peer-reviewed SIGCSE Technical Symposium 2026 paper, "Exploring Bilingual Coding for Inclusive Computer Science Learning" (DOI 10.1145/3770761.3777339, co-author, 7th of 8).
 
 Q: What does Yusuf Gadelrab build?
 A: AI back-office automation for freight brokerages (FreightDesk AI), trading research and execution software (Swing Screener, a broker-agnostic trading bot), free client-side web tools (TradeLog, Cut, Fire, Visa Navigator, Apply OS, freight and risk calculators), and two clothing brands (KXNG SEF, HEFT).

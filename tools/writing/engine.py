@@ -95,7 +95,7 @@ FOOTER = """<footer class="site-footer">
 
 CTA = """<div class="cta">
   <strong>Built by one CS student in San Jose.</strong>
-  <p>Free tools, three installable offline apps, and two SIGCSE 2026 papers.
+  <p>Free tools, three installable offline apps, and a SIGCSE 2026 paper and poster.
   <a href="/">See the work</a> or <a href="/about.html">read the facts</a>.
   Open to Summer 2027 software engineering, AI/ML, and quant internships.</p>
 </div>"""

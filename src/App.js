@@ -57,7 +57,7 @@ const siteData = {
   about: {
     bio: [
       "I study CS at San José State (graduating 2028) and spend most of my time where AI/ML and finance overlap — building models, running backtests, and trading my own account in equities, options, and futures.",
-      "On the research side, I co-authored a paper at ACM SIGCSE 2026 on bilingual coding education and presented a second poster on LLM-driven curriculum mapping. The IBM project is probably the best example of my technical work right now: an NLP model that pulls sentiment from 50+ live market sources daily and scores equities across five factors — 78% directional accuracy on six-month backtests.",
+      "On the research side, I co-authored a paper at ACM SIGCSE 2026 on bilingual coding education. The IBM project is probably the best example of my technical work right now: an NLP model that pulls sentiment from 50+ live market sources daily and scores equities across five factors — 78% directional accuracy on six-month backtests.",
       "Outside of that, I grew up between cultures (Arabic is my first language), played varsity football and wrestled, and spoke at my graduation. I tend to approach things the same way I competed — show up prepared and go hard.",
     ],
     education: [
@@ -186,7 +186,7 @@ const siteData = {
   research: [
     {
       title: 'Exploring Bilingual Coding for Inclusive Computer Science Learning',
-      venue: 'SIGCSE TS 2026 · ACM · pp. 1559–1560',
+      venue: 'SIGCSE TS 2026 · ACM · 2 pages',
       role: 'Co-Author',
       image: '',
       link: 'https://dl.acm.org/doi/10.1145/3770761.3777339',
@@ -194,17 +194,6 @@ const siteData = {
         'Investigated how bilingual programming workshops influence student attitudes, perceived understanding, and comfort. Across 60 SJSU participants (40 novice, 20 experienced) using the multilingual Hedy platform, novice learners showed the largest gains in confidence and enjoyment. Contributed to survey design and mixed-methods analysis; pre-to-post gains in confidence, computing identity, enjoyment and motivation were statistically significant.',
       citation:
         'Tshukudu, E., Shah, N., Kieu, T., Deeb, L., Venkateswaran, H., Ghai, A., Gadelrab, Y., & Hada, P. (2026). "Exploring Bilingual Coding for Inclusive Computer Science Learning." SIGCSE TS 2026, ACM. doi.org/10.1145/3770761.3777339',
-    },
-    {
-      title: 'Adaptive Curriculum Maps: Graph-Augmented Retrieval-Oriented LLMs for Education',
-      venue: 'SIGCSE TS 2026 · ACM · St. Louis, MO',
-      role: 'Poster Co-Presenter',
-      image: '',
-      link: '',
-      abstract:
-        'Co-presented research on using graph-augmented retrieval with large language models to generate adaptive curriculum maps, exploring how LLMs can personalize and structure educational pathways.',
-      citation:
-        '"Adaptive Curriculum Maps: Graph-Augmented Retrieval-Oriented LLMs for Education." Poster, SIGCSE TS 2026, ACM, Feb 2026. Poster contribution, no DOI assigned.',
     },
   ],
   projects: [
@@ -374,7 +363,7 @@ const siteData = {
       { label: 'Finance / fintech résumé', url: '/Yusuf_Gadelrab_Resume.pdf' },
     ],
     summary:
-      'CS undergraduate at SJSU (B.S., 2028) with applied work in AI/ML, quantitative finance, and inclusive-computing research. Co-author of a peer-reviewed ACM SIGCSE 2026 publication and conference poster presenter. Two résumés below — one tuned for software/AI roles, one for finance and fintech.',
+      'CS undergraduate at SJSU (B.S., 2028) with applied work in AI/ML, quantitative finance, and inclusive-computing research. Co-author of a peer-reviewed ACM SIGCSE 2026 publication, plus a poster contribution. Two résumés below — one tuned for software/AI roles, one for finance and fintech.',
   },
 };
 
@@ -454,16 +443,6 @@ const PROFESSIONAL = {
       url: 'https://doi.org/10.1145/3770761.3777339',
       note:
         'A 60-participant, IRB-approved mixed-methods study run in Dr. Ethel Tshukudu’s CS-education lab at San José State. Participants showed statistically significant pre-to-post gains in programming confidence, computing identity, enjoyment and motivation, and novice learners gained significantly more than experienced programmers. I contributed to survey design and mixed-methods analysis.',
-    },
-    {
-      kind: 'Poster',
-      role: 'Poster co-presenter',
-      title: 'Adaptive Curriculum Maps: Graph-Augmented Retrieval-Oriented LLMs for Education',
-      venue: 'SIGCSE TS 2026 · ACM · poster session, St. Louis, MO',
-      doi: '',
-      url: '',
-      note:
-        'Co-presented work on pairing graph-augmented retrieval with large language models to generate adaptive curriculum maps — how an LLM can structure and personalise a learning pathway rather than just answer questions. This was a poster rather than an archival paper, so no DOI is claimed for it.',
     },
   ],
   ventures: [
@@ -1441,8 +1420,8 @@ function HomeResearch({ d, go }) {
   if (!papers.length) return null;
   return (
     <HomeBand
-      eyebrow="Peer-Reviewed Research"
-      title="Two papers at ACM SIGCSE 2026"
+      eyebrow="Research & Publications"
+      title="A peer-reviewed paper at ACM SIGCSE 2026, plus a poster"
       intro="Written as an undergraduate in Dr. Ethel Tshukudu's CS-education lab at SJSU, under IRB protocol."
     >
       <div className="grid grid--2" style={{ marginTop: 'var(--s5)' }}>
@@ -1673,7 +1652,7 @@ function About({ d }) {
 function Research({ d }) {
   return (
     <section className="section">
-      <SectionTitle eyebrow="Publications & Presentations" title="Research" />
+      <SectionTitle eyebrow="Publications & Poster" title="Research" />
       <div className="stack-lg" style={{ marginTop: 'var(--s5)' }}>
         {d.research.map((r, i) => (
           <article className="card reveal" key={i} style={{ transitionDelay: `${i * 80}ms` }}>

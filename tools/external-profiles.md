@@ -23,7 +23,7 @@ locations across profiles; mismatches weaken entity resolution.
 - School: **San José State University** — BS Computer Science, class of **2028**
 - Canonical URL: **https://yusuf-gadelrab.github.io**
 - GitHub: `Yusuf-Gadelrab` · LinkedIn: `yusuf-gadelrab-76246b221` · Instagram: `_kxng_sef`
-- Publication DOI (paper 1): `10.1145/3770761.3777339`
+- Publication DOI: `10.1145/3770761.3777339`
 
 ---
 
@@ -32,7 +32,7 @@ locations across profiles; mismatches weaken entity resolution.
 **Paste into** Settings → Public profile → Bio:
 
 ```
-CS @ SJSU '28. AI/ML + quant. 2x SIGCSE TS 2026 co-author. Building FreightDesk AI, trading tooling, and offline-first web apps.
+CS @ SJSU '28. AI/ML + quant. SIGCSE TS 2026 co-author. Building FreightDesk AI, trading tooling, and offline-first web apps.
 ```
 
 **Company field:** `San José State University`
@@ -56,9 +56,8 @@ Create a repo named exactly `Yusuf-Gadelrab` (same as the username), add `README
 CS undergrad at **San José State University** (class of 2028), applied math + CS.
 I build AI systems for markets and classrooms — and I publish the parts that failed.
 
-- 2× co-author, **ACM SIGCSE TS 2026** — including *Exploring Bilingual Coding for
+- Co-author, **ACM SIGCSE TS 2026** — *Exploring Bilingual Coding for
   Inclusive Computer Science Learning* ([DOI 10.1145/3770761.3777339](https://doi.org/10.1145/3770761.3777339))
-  and *Adaptive Curriculum Maps* (poster)
 - Built an NLP equity-scoring platform through **IBM SkillsBuild** (IBM Watson) —
   78% directional accuracy
 - Ex-**HwyHaul** — AI freight back office covering 18 AR/billing workflows, run entirely
@@ -96,7 +95,7 @@ as destinations rather than as leaf pages.
 **Headline** (220 char limit — this is the single most-indexed line on LinkedIn):
 
 ```
-CS @ San José State '28 | AI/ML + Quantitative Finance | 2× ACM SIGCSE TS 2026 co-author | Building FreightDesk AI & trading systems in public
+CS @ San José State '28 | AI/ML + Quantitative Finance | ACM SIGCSE TS 2026 co-author | Building FreightDesk AI & trading systems in public
 ```
 
 **About:**
@@ -109,8 +108,8 @@ math and computer science.
 
 What that has looked like so far:
 
-· Research — Co-author on two ACM SIGCSE TS 2026 papers out of Dr. Ethel Tshukudu's CS
-  education research lab at SJSU, including "Exploring Bilingual Coding for Inclusive Computer Science
+· Research — Co-author on a peer-reviewed ACM SIGCSE TS 2026 paper out of Dr. Ethel Tshukudu's CS
+  education research lab at SJSU, "Exploring Bilingual Coding for Inclusive Computer Science
   Learning" (DOI: 10.1145/3770761.3777339). Mixed-methods, IRB protocol, 60 participants.
 
 · AI/ML — Built an NLP equity-scoring platform through IBM SkillsBuild on IBM Watson,
@@ -151,7 +150,7 @@ The headline is what Google shows as the snippet, so it must carry the searchabl
 **Bio (max ~200 chars):**
 
 ```
-CS @ SJSU '28. I build AI systems for markets and classrooms — and write up the parts that failed. 2x SIGCSE TS 2026 co-author.
+CS @ SJSU '28. I build AI systems for markets and classrooms — and write up the parts that failed. SIGCSE TS 2026 co-author.
 ```
 
 **Website:** `https://yusuf-gadelrab.github.io`
@@ -194,7 +193,7 @@ party. Even without that, it's a second high-authority profile in the name clust
 **Bio:**
 
 ```
-CS @ SJSU '28. Research (2x SIGCSE TS 2026), AI freight tooling, trading systems, and a
+CS @ SJSU '28. Research (SIGCSE TS 2026), AI freight tooling, trading systems, and a
 streetwear brand. I build in public and label what's shipped vs. what's a prototype.
 ```
 
@@ -216,8 +215,11 @@ Register at https://orcid.org — free, takes ~5 minutes.
 - Keywords: `computer science education`, `natural language processing`, `machine learning`
 - Websites: `https://yusuf-gadelrab.github.io`, `https://github.com/Yusuf-Gadelrab`
 - Employment/Education: `San José State University` (student)
-- Works → add by DOI: `10.1145/3770761.3777339`, plus the *Adaptive Curriculum Maps*
-  poster once its DOI is issued
+- Works → add by DOI: `10.1145/3770761.3777339`. Do **not** add *Adaptive Curriculum
+  Maps* (DOI `10.1145/3770761.3777346`) — it is not his work. Crossref registers that
+  DOI to four Pace University authors (Bainapalepu, Mondal, Desai, Bathula). If ORCID's
+  auto-suggest ever offers it as a match, reject it; accepting it would be a
+  research-integrity error, not a typo.
 
 **Why it helps:** ORCID is the canonical author identifier in academic indexing. Adding
 the DOI links your name permanently to the SIGCSE paper in Crossref's graph, which is
@@ -239,7 +241,9 @@ to get the verified badge — use it).
   `Human-Computer Interaction`
 - Homepage: `https://yusuf-gadelrab.github.io`
 - Profile visibility: **Public**
-- Add the SIGCSE TS 2026 paper(s); turn on "Automatically update my articles"
+- Add the SIGCSE TS 2026 paper (DOI `10.1145/3770761.3777339`); turn on "Automatically
+  update my articles" but do **not** accept an auto-suggested match for *Adaptive
+  Curriculum Maps* — it belongs to four Pace University authors, not him
 
 **Why it helps:** A public Scholar profile frequently outranks everything except LinkedIn
 for an academic name, and it's the only profile that will surface you for topic queries
@@ -356,6 +360,7 @@ repository, so no copy above uses them. Add them back only with a source you can
   KXNG SEF. The site describes pilots as *open*, not as *closed* — no customer claims.
 - GPA, awards, athletic honors, or high-school credentials. None are on the site, so none
   are in this copy.
-- A second DOI. Only `10.1145/3770761.3777339` is published on the site; *Adaptive
-  Curriculum Maps* is referenced as a poster, so it is described as a poster and given
-  no DOI.
+- A second publication. `10.1145/3770761.3777339` is the only paper he co-authored.
+  *Adaptive Curriculum Maps* (DOI `10.1145/3770761.3777346`) is a different SIGCSE TS
+  2026 work belonging to four Pace University authors — he did not write it, co-author
+  it, present it, or contribute to it, and no copy anywhere should imply otherwise.

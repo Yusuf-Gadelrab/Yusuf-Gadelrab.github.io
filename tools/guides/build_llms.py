@@ -46,8 +46,8 @@ SKIP_DIRS = ("templates/",)
 
 SUMMARY = (
     "Computer science student at San Jose State University (BS Computer Science, expected May 2028, "
-    "dual track applied mathematics and computer science), AI/ML builder, and co-author of two "
-    "peer-reviewed SIGCSE Technical Symposium 2026 papers on computer science education, based in "
+    "dual track applied mathematics and computer science), AI/ML builder, and co-author of a "
+    "peer-reviewed SIGCSE Technical Symposium 2026 paper on computer science education, based in "
     "San Jose, California. Builds AI tools, trading systems, and free browser-based utilities in "
     "public, and publishes them at yusuf-gadelrab.github.io under the DHAHAB studio brand."
 )
@@ -162,9 +162,6 @@ EXTRAS = {
          "confidence. Mixed-methods, IRB-approved, 60 participants. Reported statistically significant "
          "pre-to-post gains in programming confidence, computing identity, enjoyment and motivation, with "
          "novices gaining significantly more than experienced programmers."),
-        ("Adaptive Curriculum Maps: Graph-Augmented Retrieval-Oriented LLMs for Education (SIGCSE TS 2026, poster)",
-         None,
-         "Knowledge-graph-augmented retrieval for adaptive CS curricula."),
     ],
 }
 

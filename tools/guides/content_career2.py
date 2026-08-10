@@ -533,7 +533,7 @@ GUIDES = [
    "<strong>Say when you are stuck, within a day.</strong> The failure mode that ends undergraduate research positions is not being stuck. It is being silently stuck for three weeks.",
    "<strong>Ask about authorship norms early and directly, once.</strong> It is a normal question, and asking about it in month one is far better than assuming for a year.",
   ]),
-  ("p", "That trajectory is what turns a cold email into something that appears on a resume, and eventually into published work: my own path into two SIGCSE Technical Symposium 2026 papers with the SJSU CSEd Research Lab under Dr. Ethel Tshukudu started as exactly this kind of conversation, and the first task was small and unglamorous. What the position actually looks like from the inside, and how to choose between labs once you have options, is covered in <a href=\"/guides/undergraduate-research.html\">the undergraduate research guide</a> and on <a href=\"/research.html\">the research page</a>."),
+  ("p", "That trajectory is what turns a cold email into something that appears on a resume, and eventually into published work: my own path into a peer-reviewed SIGCSE Technical Symposium 2026 paper (plus a poster contribution) with the SJSU CSEd Research Lab under Dr. Ethel Tshukudu started as exactly this kind of conversation, and the first task was small and unglamorous. What the position actually looks like from the inside, and how to choose between labs once you have options, is covered in <a href=\"/guides/undergraduate-research.html\">the undergraduate research guide</a> and on <a href=\"/research.html\">the research page</a>."),
   ("h2", "The killers, listed plainly"),
   ("ul", [
    "<strong>Wrong name, wrong lab, wrong paper.</strong> Instant delete, and correctly so. Proofread the salutation last, every single time.",
@@ -549,7 +549,7 @@ GUIDES = [
   ("p", "Six carefully researched emails commonly produce one to three replies and often one meeting. Forty generic ones commonly produce zero. That is not a motivational claim, it is a consequence of the filter: the only thing being evaluated in the first two seconds is whether this email could have been sent to someone else."),
   ("p", "And if a first round returns nothing, the response is not a longer email. It is more specific reading, a smaller ask, and a better-chosen list, then a second round next term with one new thing to show. The same discipline of tracking who you contacted, when, and what came back applies here exactly as it does to job applications, which is what <a href=\"/apply.html\">the Apply OS tracker</a> is for."),
  ],
- "tools": [("/research.html", "Research", "the two SIGCSE 2026 papers and the lab work behind them."),
+ "tools": [("/research.html", "Research", "the SIGCSE 2026 paper and poster, and the lab work behind them."),
            ("/guides/undergraduate-research.html", "Undergraduate research guide", "what the position looks like from the inside, and how to choose between labs."),
            ("/apply.html", "Apply OS", "tracking who you contacted, when, and what came back."),
            ("/resume.html", "Resume", "the one-page format that attaches to this email.")],

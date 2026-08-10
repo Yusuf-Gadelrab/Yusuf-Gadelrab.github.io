@@ -98,7 +98,7 @@ CROSS_SILO = [
      "/templates.html", "the business document templates"),
     (("undergraduate research", "computer science education", "inclusive pedagogy",
       "research", "student projects"),
-     "/research.html", "the research behind two SIGCSE 2026 papers"),
+     "/research.html", "the research behind the SIGCSE 2026 paper and poster"),
     (("calorie", "body", "nutrition", "weight"),
      "/apps/cut/", "Cut, the offline weight tracker"),
     (("technical seo", "structured data", "search"),
