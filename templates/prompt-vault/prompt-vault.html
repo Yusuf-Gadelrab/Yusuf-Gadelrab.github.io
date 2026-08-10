@@ -11,7 +11,12 @@
 <style>
 :root{
   --bg:#0a0a0b; --bg2:#111114; --panel:#141417; --panel2:#191920;
-  --gold:#d4af37; --gold-2:#f4d47a; --gold-dim:#967d2b;
+  --gold:#d4af37; --gold-2:#f4d47a; --gold-dim:#9E832E;
+
+/* --gold-dim #9E832E is 5.4:1 on the dark page but only 3.5:1 on --paper.
+   Inside a paper surface the token re-points to #836d26 (4.81:1 on #fbfaf7).
+   Same hue family, so the brand does not change — only the luminance. */
+.page,.page-paper,.logo-cell.paper,.fd-doc,.paper{--gold-dim:#836d26;--gold-paper-scope:1}
   --ink:#f5f2e8; --muted:#a39f94;
   --line:rgba(212,175,55,.16); --glow:rgba(212,175,55,.35);
   --paper:#fbfaf7; --paper-ink:#14140f; --paper-muted:#6b675c; --paper-line:rgba(20,20,15,.12);

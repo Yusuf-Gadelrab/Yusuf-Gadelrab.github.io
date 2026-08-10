@@ -10,7 +10,12 @@
 <style>
 :root{
   --bg:#0a0a0b; --bg2:#111114; --panel:#141417; --panel2:#191920;
-  --gold:#d4af37; --gold-2:#f4d47a; --gold-dim:#836d26;
+  --gold:#d4af37; --gold-2:#f4d47a; --gold-dim:#9E832E;
+
+/* --gold-dim #9E832E is 5.4:1 on the dark page but only 3.5:1 on --paper.
+   Inside a paper surface the token re-points to #836d26 (4.81:1 on #fbfaf7).
+   Same hue family, so the brand does not change — only the luminance. */
+.page,.page-paper,.logo-cell.paper,.fd-doc,.paper{--gold-dim:#836d26;--gold-paper-scope:1}
   --ink:#f5f2e8; --muted:#a39f94;
   --line:rgba(212,175,55,.16); --glow:rgba(212,175,55,.35);
   --paper:#fbfaf7; --paper-ink:#14140f; --paper-muted:#6b675c; --paper-line:rgba(20,20,15,.12);
@@ -38,9 +43,9 @@ hr.top-rule{ height:2px; border:none; background:linear-gradient(90deg,var(--gol
 
 .stamp-wrap{ position:absolute; top:56px; right:56px; }
 .stamp{
-  width:132px; height:132px; border:3px solid var(--gold); border-radius:50%;
+  width:132px; height:132px; border:3px solid var(--gold-dim); border-radius:50%;
   display:flex; align-items:center; justify-content:center; transform:rotate(-14deg);
-  color:var(--gold); font-family:Georgia,serif; font-weight:700; font-size:26px; letter-spacing:3px;
+  color:var(--gold-dim); font-family:Georgia,serif; font-weight:700; font-size:26px; letter-spacing:3px;
   box-shadow:0 0 0 3px rgba(212,175,55,.15) inset; opacity:.92;
 }
 .stamp::before{ content:""; position:absolute; width:112px; height:112px; border:1px solid var(--gold); border-radius:50%; }

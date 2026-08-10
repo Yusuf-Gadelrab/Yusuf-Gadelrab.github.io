@@ -218,8 +218,10 @@
           '<div class="a-range-out"><span>' + (f.format === 'money' ? money(f.min) : f.min) +
           '</span><span data-out="' + esc(f.key) + '">' +
           (f.format === 'money' ? money(hi) : hi) + '</span></div>' +
-          '<input type="range" data-facet="' + esc(f.key) + '" min="' + f.min + '" max="' + f.max +
-          '" step="' + (f.step || 1) + '" value="' + hi + '"></div>';
+          '<input type="range" aria-label="' + esc(f.label || f.key) + ' — maximum" ' +
+          'data-facet="' + esc(f.key) + '" min="' + f.min + '" max="' + f.max +
+          '" step="' + (f.step || 1) + '" value="' + hi + '"' +
+          ' aria-valuemin="' + f.min + '" aria-valuemax="' + f.max + '" aria-valuenow="' + hi + '"></div>';
       } else if (f.kind === 'toggle') {
         body = '<label class="a-check"><input type="checkbox" data-facet="' + esc(f.key) + '"' +
           (sel[f.key] ? ' checked' : '') + '><span>' + esc(f.label) + '</span></label>';

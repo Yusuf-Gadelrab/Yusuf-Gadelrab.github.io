@@ -165,8 +165,12 @@
     font-family:var(--display-pro);font-weight:700;font-size:var(--t-small);
     box-shadow:var(--shadow),0 0 22px var(--glow);
     transform:translateY(calc(100% + 24px));opacity:0;pointer-events:none;
-    transition:transform .35s var(--ease),opacity .35s var(--ease)}
-  .vaultbar.show{transform:none;opacity:1;pointer-events:auto}
+    /* visibility:hidden (not just opacity:0) also pulls it out of the tab order,
+       so it can carry aria-hidden without being a focusable hidden control. */
+    visibility:hidden;
+    transition:transform .35s var(--ease),opacity .35s var(--ease),visibility 0s linear .35s}
+  .vaultbar.show{transform:none;opacity:1;pointer-events:auto;visibility:visible;
+    transition:transform .35s var(--ease),opacity .35s var(--ease),visibility 0s}
   @media(min-width:761px){.vaultbar{left:auto;right:26px;bottom:22px}}
 
   /* ---------- which pack table ---------- */
@@ -860,7 +864,7 @@
 
 </main>
 
-<a class="vaultbar" id="vaultBar" href="#vault" aria-hidden="true">The Complete Vault — all 12 packs · $199 →</a>
+<a class="vaultbar" id="vaultBar" href="#vault" aria-hidden="true" tabindex="-1">The Complete Vault — all 12 packs · $199 →</a>
 
 <footer class="site-footer">
   <div>
@@ -931,6 +935,7 @@
     var show = (window.scrollY||0) > 800 && !vVis;
     vb.classList.toggle('show', show);
     vb.setAttribute('aria-hidden', show ? 'false' : 'true');
+    if(show) vb.removeAttribute('tabindex'); else vb.setAttribute('tabindex','-1');
   }
   if(vsec && window.IntersectionObserver){
     new IntersectionObserver(function(en){ vVis = en[0].isIntersecting; vbar(); }, {threshold:.15}).observe(vsec);

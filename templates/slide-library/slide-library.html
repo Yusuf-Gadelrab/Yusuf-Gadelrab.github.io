@@ -10,7 +10,12 @@
 <style>
   :root{
     --bg:#0a0a0b; --bg2:#111114; --panel:#141417; --panel2:#191920;
-    --gold:#d4af37; --gold-2:#f4d47a; --gold-dim:#8a7328;
+    --gold:#d4af37; --gold-2:#f4d47a; --gold-dim:#9E832E;
+
+/* --gold-dim #9E832E is 5.4:1 on the dark page but only 3.5:1 on --paper.
+   Inside a paper surface the token re-points to #836d26 (4.81:1 on #fbfaf7).
+   Same hue family, so the brand does not change — only the luminance. */
+.page,.page-paper,.logo-cell.paper,.fd-doc,.paper{--gold-dim:#836d26;--gold-paper-scope:1}
     --ink:#f5f2e8; --muted:#a39f94;
     --line:rgba(212,175,55,.16); --glow:rgba(212,175,55,.35);
     --paper:#fbfaf7; --paper-ink:#14140f; --paper-muted:#6b675c; --paper-line:rgba(20,20,15,.12);
@@ -269,7 +274,7 @@ table.feat-table, table.score-table{ border-collapse:collapse; margin-top:44px; 
 table.feat-table th, table.feat-table td, table.score-table th, table.score-table td{ padding:14px 18px; text-align:left; font-size:13.5px; border-bottom:1px solid var(--line); }
 table.feat-table th, table.score-table th{ color:var(--gold-2); font-size:11px; letter-spacing:1px; text-transform:uppercase; font-weight:400; }
 table.feat-table .fc{ font-size:16px; }
-table.feat-table .fx{ color:var(--muted); opacity:.5; }
+table.feat-table .fx{ color:var(--muted); }
 .sc-dot{ display:inline-block; width:9px; height:9px; border-radius:50%; background:var(--panel2); border:1px solid var(--line); margin-right:5px; }
 .sc-dot.full{ background:var(--gold); border-color:var(--gold); }
 

@@ -195,13 +195,13 @@
     <h2 class="reveal">Two products, one philosophy: AI drafts, a human decides.</h2>
     <p class="lead reveal" style="margin:var(--s3) 0 var(--s6)">Tap a module to see what's inside. Everything runs locally on a FastAPI server and sends real email through the desktop mail account — no cloud, no leaked data.</p>
 
-    <div class="tabs" role="tablist">
-      <button class="tab active" data-tab="intake">LoadLink Intake</button>
-      <button class="tab" data-tab="billing">Billing Ops</button>
-      <button class="tab" data-tab="ar">AR Ops</button>
+    <div class="tabs" role="tablist" aria-label="HwyHaul workstreams">
+      <button class="tab active" type="button" role="tab" id="tab-intake" aria-controls="intake" aria-selected="true" data-tab="intake">LoadLink Intake</button>
+      <button class="tab" type="button" role="tab" id="tab-billing" aria-controls="billing" aria-selected="false" tabindex="-1" data-tab="billing">Billing Ops</button>
+      <button class="tab" type="button" role="tab" id="tab-ar" aria-controls="ar" aria-selected="false" tabindex="-1" data-tab="ar">AR Ops</button>
     </div>
 
-    <div class="tabpanel active" id="intake">
+    <div class="tabpanel active" id="intake" role="tabpanel" tabindex="0" aria-labelledby="tab-intake">
       <div class="panel callout"><b>The core loop.</b> A carrier texts a load request over WhatsApp or email. The system reads it, extracts the structured load (equipment type, target price, lane, reefer mode, driver combo), and drafts a reply in the brokerage's voice — always replying, even on a partial message, so no carrier is left hanging.</div>
       <div style="margin-top:var(--s5)">
         <div class="feat"><span class="fic">✓</span><span><b>Structured extraction</b> — pulls equipment_type, target_price, lane, load_size, reefer_mode and driver_combination out of messy free-text messages.</span></div>
@@ -210,7 +210,7 @@
       </div>
     </div>
 
-    <div class="tabpanel" id="billing">
+    <div class="tabpanel" id="billing" role="tabpanel" tabindex="0" aria-labelledby="tab-billing">
       <div class="panel callout"><b>Billing Ops.</b> Back-office checks rendered as clean tables plus ready-to-send emails. A local agent flags what's off and drafts the outreach — you review and send. <b>25/25 tests green.</b></div>
       <div style="margin-top:var(--s5)">
         <div class="feat"><span class="fic">1</span><span><b>Stale bank-info detection</b> &amp; false-delay flagging (catching the ~40% of delay flags that were false).</span></div>
@@ -219,7 +219,7 @@
       </div>
     </div>
 
-    <div class="tabpanel" id="ar">
+    <div class="tabpanel" id="ar" role="tabpanel" tabindex="0" aria-labelledby="tab-ar">
       <div class="panel callout"><b>AR Ops.</b> Accounts-receivable routing and the messy per-customer document rules, handled. <b>29/29 tests green.</b></div>
       <div style="margin-top:var(--s5)">
         <div class="feat"><span class="fic">1</span><span><b>Invoice routing &amp; rate reconciliation</b> — fuel-surcharge corrections per customer contract, plus sales sign-off.</span></div>
@@ -372,12 +372,32 @@
   window.addEventListener('scroll',onScroll,{passive:true}); onScroll();
 
   // tabs
-  document.querySelectorAll('.tab').forEach(function(t){
-    t.addEventListener('click',function(){
-      document.querySelectorAll('.tab').forEach(function(x){x.classList.remove('active')});
-      document.querySelectorAll('.tabpanel').forEach(function(x){x.classList.remove('active')});
-      t.classList.add('active');
-      document.getElementById(t.dataset.tab).classList.add('active');
+  // WAI-ARIA tabs pattern: roving tabindex + arrow keys, aria-selected mirrors .active
+  var tabs=[].slice.call(document.querySelectorAll('[role="tab"]'));
+  function selectTab(t,focus){
+    tabs.forEach(function(x){
+      x.classList.remove('active');
+      x.setAttribute('aria-selected','false');
+      x.setAttribute('tabindex','-1');
+      var xp=document.getElementById(x.dataset.tab);
+      if(xp) xp.classList.remove('active');
+    });
+    t.classList.add('active');
+    t.setAttribute('aria-selected','true');
+    t.setAttribute('tabindex','0');
+    var p=document.getElementById(t.dataset.tab);
+    if(p) p.classList.add('active');
+    if(focus) t.focus();
+  }
+  tabs.forEach(function(t,i){
+    t.addEventListener('click',function(){selectTab(t,false)});
+    t.addEventListener('keydown',function(e){
+      var k=e.key,n=null;
+      if(k==='ArrowRight'||k==='ArrowDown') n=tabs[(i+1)%tabs.length];
+      else if(k==='ArrowLeft'||k==='ArrowUp') n=tabs[(i-1+tabs.length)%tabs.length];
+      else if(k==='Home') n=tabs[0];
+      else if(k==='End') n=tabs[tabs.length-1];
+      if(n){e.preventDefault();selectTab(n,true);}
     });
   });
 
