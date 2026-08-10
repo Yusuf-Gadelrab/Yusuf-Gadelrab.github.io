@@ -100,6 +100,42 @@ def changed_urls(ref: str, known: set[str]) -> list[str]:
     return urls
 
 
+def removed_urls(candidates: list[str]) -> list[str]:
+    """URLs to signal as DELETED. Each is verified to actually be gone.
+
+    IndexNow is the only push channel that accepts a removal: submitting a URL
+    that now answers 404/410 is what makes Bing, Copilot, DuckDuckGo, Yandex and
+    Seznam recrawl it and drop it, instead of waiting out an organic recrawl.
+
+    The normal paths deliberately cannot do this — `sitemap_urls()` only knows
+    live pages and `changed_urls()` intersects with that set precisely so a
+    deleted file can never be pinged. That safety rail is right for publishes and
+    wrong for retractions, so this path exists separately and pays for itself by
+    checking the wire: a URL that still returns 200 is refused, because claiming
+    a live page is gone is a worse error than leaving a dead one indexed.
+    """
+    out: list[str] = []
+    for u in dict.fromkeys(candidates):
+        if not u.startswith(BASE + "/"):
+            print(f"  ! not on {HOST}, skipped: {u}", file=sys.stderr)
+            continue
+        try:
+            code = urllib.request.urlopen(
+                urllib.request.Request(u, method="HEAD"), timeout=20).status
+        except urllib.error.HTTPError as exc:
+            code = exc.code
+        except Exception as exc:
+            print(f"  ! could not check {u} ({exc}), skipped", file=sys.stderr)
+            continue
+        if code in (404, 410):
+            out.append(u)
+            print(f"  gone ({code}): {u}")
+        else:
+            print(f"  ! still live ({code}), refusing to report as removed: {u}",
+                  file=sys.stderr)
+    return out
+
+
 def submit(urls: list[str], dry: bool) -> int:
     if not urls:
         print("IndexNow: 0 URLs, nothing to submit")
@@ -136,10 +172,24 @@ def main() -> int:
     ap.add_argument("--changed", nargs="?", const="HEAD~1", metavar="REF",
                     help="submit only URLs touched by `git diff <REF>` "
                          "(default REF: HEAD~1)")
+    ap.add_argument("--removed", nargs="+", metavar="URL",
+                    help="signal these URLs as DELETED (each must already 404/410)")
+    ap.add_argument("--removed-file", metavar="PATH",
+                    help="same as --removed, one URL per line ('#' comments ok)")
     ap.add_argument("--dry-run", action="store_true",
                     help="print the payload, submit nothing")
     a = ap.parse_args()
     dry = a.dry_run or os.environ.get("INDEXNOW_DRY_RUN") == "1"
+
+    if a.removed or a.removed_file:
+        cands = list(a.removed or [])
+        if a.removed_file:
+            cands += [ln.split("#", 1)[0].strip()
+                      for ln in open(a.removed_file, encoding="utf-8")
+                      if ln.split("#", 1)[0].strip()]
+        gone = removed_urls(cands)
+        print(f"removal submit: {len(gone)} of {len(cands)} candidate URL(s) confirmed gone")
+        return submit(gone, dry)
 
     known = sitemap_urls()
     urls = list(dict.fromkeys(known + [f"{BASE}/{p}" for p in EXTRAS

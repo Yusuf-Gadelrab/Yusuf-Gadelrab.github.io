@@ -276,3 +276,12 @@ body.aurum{
   .a-grid{grid-template-columns:repeat(auto-fill,minmax(min(160px,100%),1fr));gap:var(--a-3)}
   .a-card-body{padding:var(--a-3)}
 }
+
+/* Base link colour. Without this, any <a> that no module rule matches falls back
+   to the user-agent default #0000EE, which measures 2.08:1 on --a-bg — a WCAG
+   1.4.3 failure that automated checks miss because the ancestor carries a
+   background-image and the contrast rule returns "incomplete" instead. */
+a{color:var(--a-gold)}
+a:hover{color:var(--a-gold-lift)}
+.crumbs a{color:var(--a-ink-dim)}
+.crumbs a:hover{color:var(--a-gold)}

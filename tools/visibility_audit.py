@@ -45,6 +45,29 @@ def rx(pat, s, default=""):
     return m.group(1).strip() if m else default
 
 
+def sitemap_page_urls(sm_path):
+    """Page <loc>s, walking a <sitemapindex> into its child sitemaps.
+
+    sitemap.xml is an index, not a urlset. Reading <loc> off the top level
+    returns the four child *sitemap files* — so every real page then looks
+    absent and the audit reports 62 phantom `not-in-sitemap` errors, which is
+    exactly loud enough that people learn to ignore the whole check.
+    """
+    if not os.path.exists(sm_path):
+        return []
+    text = open(sm_path).read()
+    locs = re.findall(r"<loc>([^<]+)</loc>", text)
+    if "<sitemapindex" not in text:
+        return locs
+    out = []
+    for child in locs:
+        rel = child[len(HOST):].lstrip("/") if child.startswith(HOST) else child
+        cp = os.path.join(BUILD, rel.replace("/", os.sep))
+        if os.path.exists(cp):
+            out += re.findall(r"<loc>([^<]+)</loc>", open(cp).read())
+    return out
+
+
 def audit():
     findings = []          # (level, page, code, detail)
     def err(p, c, d): findings.append(("ERROR", p, c, d))
@@ -56,9 +79,11 @@ def audit():
 
     sm_path = os.path.join(BUILD, "sitemap.xml")
     sm = open(sm_path).read() if os.path.exists(sm_path) else ""
-    sm_urls = re.findall(r"<loc>([^<]+)</loc>", sm)
+    sm_urls = sitemap_page_urls(sm_path)
     if not sm:
         err("-", "no-sitemap", "build/sitemap.xml missing")
+    elif not sm_urls:
+        err("sitemap.xml", "empty-sitemap", "index resolved to zero page URLs")
 
     llms = ""
     for n in ("llms.txt", "llms-full.txt"):

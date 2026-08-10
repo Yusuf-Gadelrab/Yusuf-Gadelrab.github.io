@@ -40,7 +40,7 @@
 
 <meta name="keywords" content="freight broker automation, freight broker software, AI for freight brokers, AR automation, billing automation, POD request automation, invoice dispute software, back office automation, logistics email automation, local AI freight software">
 <meta name="robots" content="index,follow">
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"SoftwareApplication","name":"FreightDesk AI","applicationCategory":"BusinessApplication","operatingSystem":"macOS, Windows","url":"https://yusuf-gadelrab.github.io/freightdesk.html","description":"AI back-office clerk for small freight brokerages: reads the billing/AR inbox, classifies every email (POD requests, invoice disputes, rate reconciliation, W9 chasing, past-due follow-up) and drafts the correct reply on a local AI model — zero API fees, data never leaves the building.","author":{"@id":"https://yusuf-gadelrab.github.io/#person"},"offers":{"@type":"Offer","availability":"https://schema.org/LimitedAvailability","price":"999","priceCurrency":"USD","description":"$999 one-time setup + $249/mo, founding-client pilot pricing"},"slogan":"We automate what you want — then we automate what you need."}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"SoftwareApplication","name":"FreightDesk AI","applicationCategory":"BusinessApplication","operatingSystem":"macOS, Windows","url":"https://yusuf-gadelrab.github.io/freightdesk.html","description":"AI back-office clerk for small freight brokerages: reads the billing/AR inbox, classifies every email (POD requests, invoice disputes, rate reconciliation, W9 chasing, past-due follow-up) and drafts the correct reply on a local AI model — zero API fees, data never leaves the building.","author":{"@id":"https://yusuf-gadelrab.github.io/#person"},"offers":{"@type":"Offer","availability":"https://schema.org/LimitedAvailability","price":"999","priceCurrency":"USD","description":"$999 one-time setup + $249/mo, founding-client pilot pricing"},"alternativeHeadline":"We automate what you want — then we automate what you need."}</script>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"What does FreightDesk AI automate?","acceptedAnswer":{"@type":"Answer","text":"FreightDesk covers the full 18-point workload of a small-freight financial controller: POD requests and verification, invoice disputes, rate reconciliation, advance reconciliation, W9 tracking, 30-day past-due follow-up, release-list generation, AR aging, and reply drafting for every incoming billing/AR email."}},{"@type":"Question","name":"Will FreightDesk AI send emails without my approval?","acceptedAnswer":{"@type":"Answer","text":"Not unless you enable it. Every draft starts in one-click-approval mode — you read it, you send it. Once you trust a category, such as routine POD replies, you can flip that category to auto-send. You decide per workflow, never all-or-nothing."}},{"@type":"Question","name":"Does my data go to the cloud?","acceptedAnswer":{"@type":"Answer","text":"No. FreightDesk runs on a local AI model on your own machine. Rates, margins, customer lists, and disputes never leave your building, and there are no per-message API fees."}},{"@type":"Question","name":"What do I need to install it?","acceptedAnswer":{"@type":"Answer","text":"A computer in your office and access to the billing/AR inbox. Install takes 3 days — connected, tuned to your customers' document rules, and drafting live replies by Friday."}},{"@type":"Question","name":"What if it doesn't work on my inbox — is the $999 wasted?","acceptedAnswer":{"@type":"Answer","text":"If FreightDesk isn't drafting real replies on your real inbox by day 14, the $999 setup fee comes back in full — no questions, no forms."}},{"@type":"Question","name":"Can I cancel the monthly plan?","acceptedAnswer":{"@type":"Answer","text":"Yes, any time. The install stays yours — the local model and workflows keep running on your machine; cancelling only stops updates and tuning support."}}]}</script>
 <link rel="stylesheet" href="/css/site.css">
 <link rel="stylesheet" href="/css/lux-motion.css">
@@ -714,13 +714,13 @@ input,select,textarea{font-size:16px}</style>
       </svg>
     </div>
 
-    <div class="tabs" role="tablist">
-      <button class="tab active" data-tab="billing">💰 Billing Ops</button>
-      <button class="tab" data-tab="ar">📊 AR Ops</button>
-      <button class="tab" data-tab="reply">✉️ Reply Automation</button>
+    <div class="tabs" role="tablist" aria-label="FreightDesk capabilities">
+      <button class="tab active" type="button" role="tab" id="tab-billing" aria-controls="billing" aria-selected="true" data-tab="billing">💰 Billing Ops</button>
+      <button class="tab" type="button" role="tab" id="tab-ar" aria-controls="ar" aria-selected="false" tabindex="-1" data-tab="ar">📊 AR Ops</button>
+      <button class="tab" type="button" role="tab" id="tab-reply" aria-controls="reply" aria-selected="false" tabindex="-1" data-tab="reply">✉️ Reply Automation</button>
     </div>
 
-    <div class="panel active" id="billing">
+    <div class="panel active" id="billing" role="tabpanel" tabindex="0" aria-labelledby="tab-billing">
       <div class="callout reveal" style="margin-bottom:16px"><b>Billing Ops.</b> Eight billing workflows that normally live in someone's head and a dozen spreadsheet tabs — flagged, reconciled, and drafted automatically.</div>
       <div class="feat-list">
         <div class="feat reveal"><span class="fic">✓</span><span><b>Stale bank / payment status flags</b> — catches out-of-date payment info before a check goes to the wrong place.</span></div>
@@ -734,7 +734,7 @@ input,select,textarea{font-size:16px}</style>
       </div>
     </div>
 
-    <div class="panel" id="ar">
+    <div class="panel" id="ar" role="tabpanel" tabindex="0" aria-labelledby="tab-ar">
       <div class="callout reveal" style="margin-bottom:16px"><b>AR Ops.</b> Ten accounts-receivable workflows — from invoice queue to ready-for-payment — including the messy per-customer document rules.</div>
       <div class="feat-list">
         <div class="feat reveal"><span class="fic">✓</span><span><b>Invoice queue management</b> — every invoice tracked from created to collected.</span></div>
@@ -750,7 +750,7 @@ input,select,textarea{font-size:16px}</style>
       </div>
     </div>
 
-    <div class="panel" id="reply">
+    <div class="panel" id="reply" role="tabpanel" tabindex="0" aria-labelledby="tab-reply">
       <div class="callout reveal" style="margin-bottom:16px"><b>Reply Automation.</b> The engine underneath it all — an AI back-office clerk that never sleeps, plugged straight into your billing / AR / dispatch inbox.</div>
       <div class="feat-list">
         <div class="feat reveal"><span class="fic">✓</span><span><b>Reads</b> every incoming email the moment it lands.</span></div>
@@ -1071,15 +1071,36 @@ input,select,textarea{font-size:16px}</style>
   menuBtn.addEventListener('click',function(){navLinks.classList.toggle('open')});
   navLinks.querySelectorAll('a').forEach(function(a){a.addEventListener('click',function(){navLinks.classList.remove('open')})});
 
-  // tabs
-  document.querySelectorAll('.tab').forEach(function(t){
-    t.addEventListener('click',function(){
-      document.querySelectorAll('.tab').forEach(function(x){x.classList.remove('active')});
-      document.querySelectorAll('.panel').forEach(function(x){x.classList.remove('active')});
-      t.classList.add('active');
-      var p=document.getElementById(t.dataset.tab);
+  // tabs — WAI-ARIA tabs pattern: roving tabindex + arrow keys, aria-selected
+  // tracks the visual .active state so a screen reader is told which tab is on.
+  var tabs=[].slice.call(document.querySelectorAll('[role="tab"]'));
+  function selectTab(t,focus){
+    tabs.forEach(function(x){
+      x.classList.remove('active');
+      x.setAttribute('aria-selected','false');
+      x.setAttribute('tabindex','-1');
+      var xp=document.getElementById(x.dataset.tab);
+      if(xp) xp.classList.remove('active');
+    });
+    t.classList.add('active');
+    t.setAttribute('aria-selected','true');
+    t.setAttribute('tabindex','0');
+    var p=document.getElementById(t.dataset.tab);
+    if(p){
       p.classList.add('active');
       p.querySelectorAll('.reveal').forEach(function(el){el.classList.add('in')});
+    }
+    if(focus) t.focus();
+  }
+  tabs.forEach(function(t,i){
+    t.addEventListener('click',function(){selectTab(t,false)});
+    t.addEventListener('keydown',function(e){
+      var k=e.key,n=null;
+      if(k==='ArrowRight'||k==='ArrowDown') n=tabs[(i+1)%tabs.length];
+      else if(k==='ArrowLeft'||k==='ArrowUp') n=tabs[(i-1+tabs.length)%tabs.length];
+      else if(k==='Home') n=tabs[0];
+      else if(k==='End') n=tabs[tabs.length-1];
+      if(n){e.preventDefault();selectTab(n,true);}
     });
   });
 

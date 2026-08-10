@@ -508,7 +508,9 @@ body.yg-has-cta #yg-top{bottom:calc(62px + env(safe-area-inset-bottom,0px))}
   margin-top:var(--s3);color:var(--faint);font-size:var(--t-micro);
   font-family:var(--mono);letter-spacing:.4px;
 }
-.yg-meta__sep{color:var(--line)}
+/* was var(--line) = rgba(212,175,55,.18), 1.35:1 — the separator did not render.
+   --faint is 5.42:1. It is aria-hidden either way, so this is a legibility fix. */
+.yg-meta__sep{color:var(--faint)}
 
 /* ---------- micro-interactions (refinements to existing components) --------
    Faster and flatter than before: 3px of lift reads as responsive, 6px reads
