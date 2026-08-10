@@ -74,12 +74,15 @@
   <h1>I spent months building trading strategies and then published the results that killed most...</h1>
   <p class="meta">2026-07-29 &middot; Yusuf Gadelrab</p>
   <p>Here&#x27;s what walk-forward testing did to my ideas.</p>
+  <h2 style="margin:var(--s7) 0 var(--s4)">The strategies that did not survive</h2>
   <p>The gap and opening range breakout proxy: negative expectancy, minus 0.28R. Dropped it.</p>
   <p>VCP, the volatility contraction pattern, which is the setup I most wanted to work because the literature is beautiful: roughly breakeven. Not tradeable.</p>
   <p>Anchored VWAP reclaim: plus 0.23R over 101 trades. One survivor. <em>(Retired &mdash; that number failed a harder re-test. See the update below.)</em></p>
   <p>Then I tested two filters I was sure would improve things. A market regime filter and a new market leader filter, both standard advice, both intuitively obvious. Both made expectancy worse on my own data. I removed them.</p>
   <p>The reason I&#x27;m writing this down is that almost nobody publishes the negative results, and the absence of negative results is exactly why retail traders keep rediscovering the same dead ideas. If every writeup you read is a winner, you will conclude that finding winners is easy, and you will interpret your own losses as a personal failing rather than as the base rate.</p>
+  <h2 style="margin:var(--s7) 0 var(--s4)">The harder re-test</h2>
   <p><strong>Update:</strong> plus 0.23R over 101 trades did not survive a harder re-test. I re-ran it on a 129-symbol, 10-year universe instead of the handful of names I&#x27;d picked myself, and across 4,933 trades the edge came out to plus 0.117R (95% CI +0.057 to +0.174) &mdash; and a risk-matched random entry using the same exits and sizing already captures +0.086R of that, leaving the signal&#x27;s own contribution at about +0.030R with a confidence interval that crosses zero. I&#x27;m leaving the original number above rather than quietly deleting it, because the point of this post was publishing negative results, and this is one more of them: a small sample felt like evidence and didn&#x27;t survive a universe I hadn&#x27;t hand-picked. It is why the engine has a hard gate: no real broker connection until 60 closed paper trades with positive realized expectancy. The gate is in the code, not in my willpower, because willpower is not a risk control.</p>
+  <h2 style="margin:var(--s7) 0 var(--s4)">The promotion gate</h2>
   <p>I have not turned it on. The paper account isn&#x27;t even funded with keys yet.</p>
   <p>If you build systems, put your promotion gates in the code. The version of you that wants to skip them is not a hypothetical.</p>
   <div class="cta">

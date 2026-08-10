@@ -74,13 +74,16 @@
   <h1>I spent a day making my portfolio readable by AI instead of by humans</h1>
   <p class="meta">2026-07-29 &middot; Yusuf Gadelrab</p>
   <p>Here&#x27;s the thing I noticed. When a recruiter wants to know about a candidate now, a real number of them ask an assistant first. ChatGPT, Claude, Perplexity, whatever is in the search box. If the model can&#x27;t parse you, you don&#x27;t exist in that answer.</p>
+  <h2 style="margin:var(--s7) 0 var(--s4)">Treating models as a first-class audience</h2>
   <p>So I treated the models as a first-class audience:</p>
+  <h2 style="margin:var(--s7) 0 var(--s4)">What changed on the site</h2>
   <p>robots.txt now names 49 crawlers explicitly. This matters more than people think. Google-Extended and Applebot-Extended use separate user agents and separately gate whether your content can show up in AI generated answers. A wildcard Allow does not cover them.</p>
   <p>llms.txt and llms-full.txt, a plain text profile written to be quoted, not crawled.</p>
   <p>One canonical schema.org Person node with a persistent @id, injected across every page on the site (161 of them today), so I&#x27;m one entity instead of 161 fragments.</p>
   <p>Visible FAQ sections with matching FAQPage schema. Answer-first, so the answer is liftable verbatim.</p>
   <p>IndexNow, which pings Bing, Copilot and DuckDuckGo the moment something changes instead of waiting weeks for a crawl.</p>
   <p>427 structured data blocks, all valid.</p>
+  <h2 style="margin:var(--s7) 0 var(--s4)">The actual first impression</h2>
   <p>None of this is a growth hack. It&#x27;s just noticing that the index changed and the resume didn&#x27;t.</p>
   <p><a href="https://yusuf-gadelrab.github.io/">https://yusuf-gadelrab.github.io/</a></p>
   <p>If you&#x27;re job hunting in 2026, go ask an assistant about yourself. Whatever it says back is your actual first impression.</p>
