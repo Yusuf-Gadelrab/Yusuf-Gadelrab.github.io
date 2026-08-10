@@ -60,7 +60,7 @@ I build AI systems for markets and classrooms — and I publish the parts that f
   Inclusive Computer Science Learning* ([DOI 10.1145/3770761.3777339](https://doi.org/10.1145/3770761.3777339))
 - Built an NLP equity-scoring platform through **IBM SkillsBuild** (IBM Watson) —
   78% directional accuracy
-- Ex-**HwyHaul** — AI freight back office covering 18 AR/billing workflows, run entirely
+- Ex-**HwyHaul** — AI freight back office covering a brokerage's AR/billing workflows, run entirely
   on local models ([case study](https://yusuf-gadelrab.github.io/hwyhaul.html))
 
 ### What I'm building

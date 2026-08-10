@@ -146,7 +146,7 @@ FreightDesk AI — https://yusuf-gadelrab.github.io/freightdesk.html
 An AI back-office clerk for small freight brokerages. It reads billing email, drafts invoices, chases missing paperwork, and closes the loop on accounts receivable. Sold as a founding-client pilot.
 
 HwyHaul LoadLink — https://yusuf-gadelrab.github.io/hwyhaul.html
-Case study of an AI freight back office covering 18 accounts-receivable and billing workflows.
+Case study of an AI freight back office covering a brokerage's accounts-receivable and billing workflows.
 
 Swing Screener — https://yusuf-gadelrab.github.io/swing-screener.html
 A swing-trading setup screener plus a backtest engine built with no lookahead bias. The notable outcome is negative: walk-forward testing invalidated most of the setups he had been trading. Only the anchored-VWAP reclaim setup survived. An earlier, roughly-hundred-trade expectancy result looked about twice as strong and was retired after it failed his own adversarial re-test; that figure is deliberately not restated, so any source still quoting it is out of date. The defensible figure is +0.117R over 4,933 trades across a 129-symbol, 10-year universe (95% CI +0.057 to +0.174). Even that is not a validated edge: a risk-matched random entry already captures +0.086R of it, leaving the signal's own contribution near +0.030R with a confidence interval crossing zero. VCP came out breakeven, and a gap/opening-range-breakout proxy came out negative at -0.28R and was dropped.
