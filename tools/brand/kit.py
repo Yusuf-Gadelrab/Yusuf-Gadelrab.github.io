@@ -283,7 +283,7 @@ CARD_BACK = """<!doctype html><html><head><meta charset="utf-8"><style>{css}</st
       <div><b>mail</b>&nbsp;{email}</div>
       <div><b>tel</b>&nbsp;&nbsp;{phone}</div>
       <div><b>git</b>&nbsp;&nbsp;github.com/Yusuf-Gadelrab</div>
-      <div><b>in</b>&nbsp;&nbsp;&nbsp;in/yusuf-gadelrab-76246b221</div>
+      <div><b>in</b>&nbsp;&nbsp;&nbsp;in/yusuf-gadelrab</div>
     </div>
   </div>
   <img class="qr" src="{qr}">

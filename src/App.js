@@ -348,7 +348,7 @@ const siteData = {
     email: 'yusuf.gadelrab06@gmail.com',
     phone: '(669) 328-1148',
     links: [
-      { label: 'LinkedIn', url: 'https://www.linkedin.com/in/yusuf-gadelrab-76246b221' },
+      { label: 'LinkedIn', url: 'https://www.linkedin.com/in/yusuf-gadelrab' },
       { label: 'GitHub', url: 'https://github.com/Yusuf-Gadelrab' },
       { label: 'Instagram', url: 'https://www.instagram.com/_kxng_sef/' },
       { label: 'Hudl', url: 'https://www.hudl.com/profile/18612951/Yusuf-Gadelrab' },
@@ -403,9 +403,9 @@ const PROFESSIONAL = {
   presence: [
     {
       label: 'LinkedIn',
-      handle: 'in/yusuf-gadelrab-76246b221',
+      handle: 'in/yusuf-gadelrab',
       meta: '705 followers · 500+ connections',
-      url: 'https://www.linkedin.com/in/yusuf-gadelrab-76246b221',
+      url: 'https://www.linkedin.com/in/yusuf-gadelrab',
       cta: 'Connect →',
       icon: 'M6.94 5a2 2 0 11-4-.02 2 2 0 014 .02zM7 8.48H3V21h4V8.48zm6.32 0H9.34V21h3.94v-6.57c0-3.66 4.77-4 4.77 0V21H22v-7.93c0-6.17-7.06-5.94-8.72-2.91l.04-1.68z',
     },
@@ -1304,7 +1304,7 @@ function SiteFooter({ contact, brand }) {
         <a href="/media-kit.html">Media Kit</a>
         <a href="/brand.html">Brand</a>
         <a href="https://github.com/Yusuf-Gadelrab" target="_blank" rel="noopener noreferrer">GitHub</a>
-        <a href="https://www.linkedin.com/in/yusuf-gadelrab-76246b221" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+        <a href="https://www.linkedin.com/in/yusuf-gadelrab" target="_blank" rel="noopener noreferrer">LinkedIn</a>
         <a href="/privacy.html">Privacy</a>
         <a href="/terms.html">Terms</a>
       </div>
@@ -1344,7 +1344,7 @@ function Home({ d, go }) {
             <a href="https://doi.org/10.1145/3770761.3777339">Co-author, SIGCSE TS 2026 — DOI: 10.1145/3770761.3777339</a> ·{' '}
             <a href="hwyhaul.html">ex-HwyHaul — case study</a> ·{' '}
             <a href="https://github.com/Yusuf-Gadelrab">GitHub</a> ·{' '}
-            <a href="https://www.linkedin.com/in/yusuf-gadelrab-76246b221">LinkedIn</a>
+            <a href="https://www.linkedin.com/in/yusuf-gadelrab">LinkedIn</a>
           </p>
         </div>
         {d.home.heroImage && (

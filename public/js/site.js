@@ -71,7 +71,7 @@
     { t: 'Email Yusuf',      u: 'mailto:' + EMAIL, g: 'Actions', k: 'contact hire reach out message', ext: 1 },
     { t: 'Call', u: 'tel:+1', g: 'Actions', k: 'phone contact', ext: 1 },
     { t: 'GitHub',           u: 'https://github.com/Yusuf-Gadelrab', g: 'Actions', k: 'code repos source', ext: 1 },
-    { t: 'LinkedIn',         u: 'https://www.linkedin.com/in/yusuf-gadelrab-76246b221', g: 'Actions', k: 'social profile connect', ext: 1 },
+    { t: 'LinkedIn',         u: 'https://www.linkedin.com/in/yusuf-gadelrab', g: 'Actions', k: 'social profile connect', ext: 1 },
     { t: 'Copy link to this page', g: 'Actions', k: 'share url clipboard', fn: function () { copyText(location.href); } },
     { t: 'Print this page',  g: 'Actions', k: 'pdf save export', fn: function () { w.print(); } },
     { t: 'Back to top',      g: 'Actions', k: 'scroll up start', fn: function () { scrollToTop(); } }

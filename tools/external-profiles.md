@@ -22,7 +22,7 @@ locations across profiles; mismatches weaken entity resolution.
 - Location: **San Jose, CA**
 - School: **San José State University** — BS Computer Science, class of **2028**
 - Canonical URL: **https://yusuf-gadelrab.github.io**
-- GitHub: `Yusuf-Gadelrab` · LinkedIn: `yusuf-gadelrab-76246b221` · Instagram: `_kxng_sef`
+- GitHub: `Yusuf-Gadelrab` · LinkedIn: `yusuf-gadelrab` · Instagram: `_kxng_sef`
 - Publication DOI: `10.1145/3770761.3777339`
 
 ---
@@ -79,7 +79,7 @@ I build AI systems for markets and classrooms — and I publish the parts that f
 - [Apply OS](https://yusuf-gadelrab.github.io/apply.html) — internship & scholarship deadline tracker
 - [Visa Navigator](https://yusuf-gadelrab.github.io/visa.html) — change-of-status & CPT/OPT timeline planner
 
-**Site:** https://yusuf-gadelrab.github.io · **LinkedIn:** https://www.linkedin.com/in/yusuf-gadelrab-76246b221
+**Site:** https://yusuf-gadelrab.github.io · **LinkedIn:** https://www.linkedin.com/in/yusuf-gadelrab
 ```
 
 **Why it helps:** A profile README renders on `github.com/Yusuf-Gadelrab`, which is
@@ -131,7 +131,7 @@ Everything I've built, with an honest label on each one:
 https://yusuf-gadelrab.github.io/apps.html
 ```
 
-**Custom URL:** already set to `yusuf-gadelrab-76246b221`. Consider claiming
+**Custom URL:** already set to `yusuf-gadelrab`. Consider claiming
 `linkedin.com/in/yusufgadelrab` if free — a clean vanity slug ranks better for the name
 than one with a random digit suffix. Changing it will break existing inbound links, so
 only do it if you'll update the site's footers and the `sameAs` array at the same time.
