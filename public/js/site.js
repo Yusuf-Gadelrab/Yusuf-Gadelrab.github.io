@@ -69,7 +69,7 @@
   var EMAIL = 'yusuf.gadelrab06@gmail.com';
   var ACTIONS = [
     { t: 'Email Yusuf',      u: 'mailto:' + EMAIL, g: 'Actions', k: 'contact hire reach out message', ext: 1 },
-    { t: 'Call (669) 328-1148', u: 'tel:+16693281148', g: 'Actions', k: 'phone contact', ext: 1 },
+    { t: 'Call', u: 'tel:+1', g: 'Actions', k: 'phone contact', ext: 1 },
     { t: 'GitHub',           u: 'https://github.com/Yusuf-Gadelrab', g: 'Actions', k: 'code repos source', ext: 1 },
     { t: 'LinkedIn',         u: 'https://www.linkedin.com/in/yusuf-gadelrab-76246b221', g: 'Actions', k: 'social profile connect', ext: 1 },
     { t: 'Copy link to this page', g: 'Actions', k: 'share url clipboard', fn: function () { copyText(location.href); } },
