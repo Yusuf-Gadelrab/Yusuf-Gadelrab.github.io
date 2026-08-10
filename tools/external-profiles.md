@@ -215,11 +215,11 @@ Register at https://orcid.org — free, takes ~5 minutes.
 - Keywords: `computer science education`, `natural language processing`, `machine learning`
 - Websites: `https://yusuf-gadelrab.github.io`, `https://github.com/Yusuf-Gadelrab`
 - Employment/Education: `San José State University` (student)
-- Works → add by DOI: `10.1145/3770761.3777339`. Do **not** add *Adaptive Curriculum
-  Maps* (DOI `10.1145/3770761.3777346`) — it is not his work. Crossref registers that
-  DOI to four Pace University authors (Bainapalepu, Mondal, Desai, Bathula). If ORCID's
-  auto-suggest ever offers it as a match, reject it; accepting it would be a
-  research-integrity error, not a typo.
+- Works → add by DOI: `10.1145/3770761.3777339` — and add nothing else. Do **not**
+  accept any other SIGCSE TS 2026 work ORCID's auto-suggest offers as a possible match,
+  even one that looks close by title or venue: it was checked against Crossref and
+  belongs to a different, unrelated set of authors, not him. Accepting a suggested
+  match without checking it first would be a research-integrity error, not a typo.
 
 **Why it helps:** ORCID is the canonical author identifier in academic indexing. Adding
 the DOI links your name permanently to the SIGCSE paper in Crossref's graph, which is
@@ -242,8 +242,8 @@ to get the verified badge — use it).
 - Homepage: `https://yusuf-gadelrab.github.io`
 - Profile visibility: **Public**
 - Add the SIGCSE TS 2026 paper (DOI `10.1145/3770761.3777339`); turn on "Automatically
-  update my articles" but do **not** accept an auto-suggested match for *Adaptive
-  Curriculum Maps* — it belongs to four Pace University authors, not him
+  update my articles" but do **not** accept any other auto-suggested SIGCSE TS 2026
+  match — a similarly-titled one exists and belongs to different authors, not him
 
 **Why it helps:** A public Scholar profile frequently outranks everything except LinkedIn
 for an academic name, and it's the only profile that will surface you for topic queries
@@ -361,6 +361,6 @@ repository, so no copy above uses them. Add them back only with a source you can
 - GPA, awards, athletic honors, or high-school credentials. None are on the site, so none
   are in this copy.
 - A second publication. `10.1145/3770761.3777339` is the only paper he co-authored.
-  *Adaptive Curriculum Maps* (DOI `10.1145/3770761.3777346`) is a different SIGCSE TS
-  2026 work belonging to four Pace University authors — he did not write it, co-author
-  it, present it, or contribute to it, and no copy anywhere should imply otherwise.
+  A similarly-named SIGCSE TS 2026 work was investigated and confirmed to belong to a
+  different, unrelated set of authors — he did not write it, co-author it, present it,
+  or contribute to it in any way, and no copy anywhere should imply otherwise.
