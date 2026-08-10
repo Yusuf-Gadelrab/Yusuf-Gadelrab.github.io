@@ -101,6 +101,14 @@ def collect(src: str) -> list[dict]:
         if slug in ("index.html", "404.html"):
             continue
         text = open(path, encoding="utf-8").read()
+        # Redirect stubs are not feed items. When a post is renamed we leave a
+        # noindexed meta-refresh stub at the old address so inbound links still
+        # land somewhere, but it has no h1, date or description by design and is
+        # not a thing anyone should receive in a feed. Require BOTH signals so a
+        # real post can never be dropped by a stray meta refresh.
+        if re.search(r'<meta[^>]+http-equiv=["\']refresh["\']', text, re.I) and \
+           re.search(r'<meta[^>]+name=["\']robots["\'][^>]*noindex', text, re.I):
+            continue
         title = _strip(_tag(r"<h1[^>]*>(.*?)</h1>", text)) or _strip(
             _tag(r"<title>(.*?)</title>", text))
         published = _tag(r'"datePublished":\s*"([^"]+)"', text)

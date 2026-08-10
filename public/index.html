@@ -133,7 +133,7 @@
         <div style="max-width:760px;margin:var(--s7) auto 0">
           <h2 style="margin:0 0 var(--s4)">An AI back office that a human still signs off on</h2>
           <p>In summer 2026 I was an AI Automation &amp; Agents Engineering Intern at <a href="/hwyhaul.html">Hwy Haul</a>, where I built FreightDesk AI / LoadLink — an AI freight back office running entirely on-premise.</p>
-          <p>A small brokerage's AR team spends most of the day retyping the same messages: POD requests, invoice disputes, W9 chases, past-due nudges, all while reconciling several disconnected systems by hand. The system takes WhatsApp and email intake, extracts structured load details out of free text, and drafts a reply in the brokerage's own voice — then holds it for one-click human approval. FastAPI, a local LLM, 77 automated tests, 18 finance and accounts-receivable pain points, zero third-party API cost, and no data leaving the building.</p>
+          <p>A small brokerage's AR team spends most of the day retyping the same messages: POD requests, invoice disputes, W9 chases, past-due nudges, all while reconciling several disconnected systems by hand. The system takes WhatsApp and email intake, extracts structured load details out of free text, and drafts a reply in the brokerage's own voice — then holds it for one-click human approval. FastAPI, a local LLM, a green automated regression suite, 18 finance and accounts-receivable pain points, zero third-party API cost, and no data leaving the building.</p>
           <p>The lesson wasn't the model. Any competent local LLM handles this. The reliability lived in the boring parts: process management, retry logic, VPN-aware degradation, and an always-reply design so no carrier is left waiting on an ambiguous &ldquo;SJ/LA?&rdquo;. The right question about an AI product isn't which model — it's whether the people in the loop trust it enough to hit Send.</p>
 
           <h2 style="margin:var(--s7) 0 var(--s4)">Does the language you think in change how you learn to code?</h2>
@@ -296,7 +296,7 @@ function injectFinal(){
   var f=d.querySelector('footer.site-footer');
   if(!f||d.getElementById('yg-final-cta'))return;
   var b=d.createElement('div');b.id='yg-final-cta';
-  b.innerHTML='<div class="yg-proof"><b>SIGCSE TS 2026</b> co-author · <b>77 automated tests</b> shipped in a freight-brokerage internship · building in public</div><a class="yg-cta" href="/hire.html">Work with me →</a><div class="yg-trigger">Reply within two business days · or <a href="/freightdesk.html">FreightDesk — founding pilots →</a></div>';
+  b.innerHTML='<div class="yg-proof"><b>SIGCSE TS 2026</b> co-author · <b>a green regression suite</b> shipped in a freight-brokerage internship · building in public</div><a class="yg-cta" href="/hire.html">Work with me →</a><div class="yg-trigger">Reply within two business days · or <a href="/freightdesk.html">FreightDesk — founding pilots →</a></div>';
   f.insertBefore(b,f.firstChild);
 }
 function inject(){injectAbout();injectHero();injectFinal();}
