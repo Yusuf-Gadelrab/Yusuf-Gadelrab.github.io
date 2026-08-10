@@ -22,7 +22,8 @@ locations across profiles; mismatches weaken entity resolution.
 - Location: **San Jose, CA**
 - School: **San José State University** — BS Computer Science, class of **2028**
 - Canonical URL: **https://yusuf-gadelrab.github.io**
-- GitHub: `Yusuf-Gadelrab` · LinkedIn: `yusuf-gadelrab` · Instagram: `_kxng_sef`
+- GitHub: `Yusuf-Gadelrab` · LinkedIn: `yusuf-gadelrab` · Instagram: `goldarabmans`
+- YouTube: https://www.youtube.com/channel/UCJJ7se0I0fnlgDO5rmlybiw
 - Publication DOI: `10.1145/3770761.3777339`
 
 ---

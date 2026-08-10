@@ -21,7 +21,8 @@ Yusuf Gadelrab is a computer science student, AI/ML builder, and published compu
 - Email: yusuf.gadelrab06@gmail.com
 - GitHub: https://github.com/Yusuf-Gadelrab
 - LinkedIn: https://www.linkedin.com/in/yusuf-gadelrab
-- Instagram: https://www.instagram.com/_kxng_sef/
+- Instagram: https://www.instagram.com/goldarabmans/
+- YouTube: https://www.youtube.com/channel/UCJJ7se0I0fnlgDO5rmlybiw
 - Studio brand: DHAHAB (ذهب, Arabic for "gold") — the umbrella brand for his tools, apps, and studio work
 - Clothing brand: KXNG SEF
 
