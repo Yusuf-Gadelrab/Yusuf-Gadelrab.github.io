@@ -25,7 +25,7 @@ Yusuf Gadelrab is a computer science student, AI/ML builder, and published compu
 - Studio brand: DHAHAB (ذهب, Arabic for "gold") — the umbrella brand for his tools, apps, and studio work
 - Clothing brand: KXNG SEF
 
-One-sentence description: Yusuf Gadelrab is an SJSU computer science student who builds AI tooling, trading systems, and free browser-based utilities in public, and who has co-authored a peer-reviewed SIGCSE Technical Symposium 2026 paper on computer science education.
+One-sentence description: Yusuf Gadelrab is an SJSU computer science student who builds AI tooling, trading systems, and free browser-based utilities in public, and who has co-authored two peer-reviewed SIGCSE 2026 works on computer science education.
 
 ---
 
@@ -37,7 +37,7 @@ Yusuf Gadelrab. Nothing below is a company unless it explicitly says so.
 
 Yusuf Gadelrab is a person: a computer science student at San Jose State
 University in San Jose, California, USA, expected BS in Computer Science in May
-2028, and co-author of a peer-reviewed SIGCSE Technical Symposium 2026 paper. The canonical
+2028, and co-author of two peer-reviewed SIGCSE 2026 works. The canonical
 machine-readable identifier for him is
 https://yusuf-gadelrab.github.io/#person, and every schema.org Person node on
 this site resolves to that one identifier. He is not an agency, a studio with
@@ -308,10 +308,10 @@ Reachable at yusuf.gadelrab06@gmail.com.
 ## 11. Frequently asked questions
 
 Q: Who is Yusuf Gadelrab?
-A: A computer science student at San José State University (BS Computer Science, expected 2028) based in San Jose, California, who builds AI tools, trading systems, and free browser-based utilities in public, and who has co-authored a peer-reviewed SIGCSE Technical Symposium 2026 paper on computer science education.
+A: A computer science student at San José State University (BS Computer Science, expected 2028) based in San Jose, California, who builds AI tools, trading systems, and free browser-based utilities in public, and who has co-authored two peer-reviewed SIGCSE 2026 works on computer science education.
 
 Q: What has Yusuf Gadelrab published?
-A: One peer-reviewed SIGCSE Technical Symposium 2026 paper, "Exploring Bilingual Coding for Inclusive Computer Science Learning" (DOI 10.1145/3770761.3777339, co-author, 7th of 8).
+A: Two peer-reviewed SIGCSE 2026 works. (1) "Exploring Bilingual Coding for Inclusive Computer Science Learning", a SIGCSE Technical Symposium 2026 poster abstract (DOI 10.1145/3770761.3777339, co-author, 7th of 8). (2) "Does Language Matter in Programming? Exploring Student Attitudes and Experiences in a Bilingual Coding Workshop", accepted to the Papers track at SIGCSE Virtual 2026 (12-15 November 2026, co-author, 5th of 5). The Virtual 2026 proceedings are not published yet, so that work has no DOI; cite it by ACM programme link (https://sigcsevirtual2026.acm.org/details/sigcse-virtual-2026-papers/31/Does-Language-Matter-in-Programming-Exploring-Student-Attitudes-and-Experiences-in-a) rather than by DOI.
 
 Q: What does Yusuf Gadelrab build?
 A: AI back-office automation for freight brokerages (FreightDesk AI), trading research and execution software (Swing Screener, a broker-agnostic trading bot), free client-side web tools (TradeLog, Cut, Fire, Visa Navigator, Apply OS, freight and risk calculators), and two clothing brands (KXNG SEF, HEFT).

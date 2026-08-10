@@ -47,7 +47,7 @@ SKIP_DIRS = ("templates/",)
 SUMMARY = (
     "Computer science student at San Jose State University (BS Computer Science, expected May 2028, "
     "dual track applied mathematics and computer science), AI/ML builder, and co-author of a "
-    "peer-reviewed SIGCSE Technical Symposium 2026 paper on computer science education, based in "
+    "two peer-reviewed SIGCSE 2026 works on computer science education, based in "
     "San Jose, California. Builds AI tools, trading systems, and free browser-based utilities in "
     "public, and publishes them at yusuf-gadelrab.github.io under the DHAHAB studio brand."
 )
