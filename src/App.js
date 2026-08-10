@@ -1421,7 +1421,7 @@ function HomeResearch({ d, go }) {
   return (
     <HomeBand
       eyebrow="Research & Publications"
-      title="A peer-reviewed paper at ACM SIGCSE 2026, plus a poster"
+      title="A peer-reviewed publication at ACM SIGCSE 2026"
       intro="Written as an undergraduate in Dr. Ethel Tshukudu's CS-education lab at SJSU, under IRB protocol."
     >
       <div className="grid grid--2" style={{ marginTop: 'var(--s5)' }}>
@@ -1784,7 +1784,7 @@ function Professional({ d, go }) {
       <hr className="divider" />
       <h2>Research</h2>
       <p className="muted" style={{ margin: 'var(--s3) 0 var(--s5)', maxWidth: 'var(--maxw-prose)' }}>
-        Two accepted contributions at the ACM SIGCSE Technical Symposium 2026, written as an
+        A peer-reviewed publication at the ACM SIGCSE Technical Symposium 2026, written as an
         undergraduate in the CS-education lab at San José State under IRB protocol.
       </p>
       <div className="stack-lg">
