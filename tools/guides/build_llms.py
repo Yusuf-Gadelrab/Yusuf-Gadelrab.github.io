@@ -287,7 +287,7 @@ def build():
            "Canonical entity: %s/#person" % BASE,
            "Contact: yusuf.gadelrab06@gmail.com",
            "GitHub: https://github.com/Yusuf-Gadelrab",
-           "LinkedIn: https://www.linkedin.com/in/yusuf-gadelrab-76246b221",
+           "LinkedIn: https://www.linkedin.com/in/yusuf-gadelrab",
            "Instagram: https://www.instagram.com/_kxng_sef/",
            "Full plain-text profile for retrieval: %s/llms-full.txt" % BASE,
            "Sitemap index: %s/sitemap.xml" % BASE,
