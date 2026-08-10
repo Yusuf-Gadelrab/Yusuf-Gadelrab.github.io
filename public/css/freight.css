@@ -1,0 +1,615 @@
+/* ============================================================================
+   DHAHAB Freight — flagship brokerage page
+   Loaded AFTER /css/site.css, which owns the palette, spacing scale and the
+   shared components. Nothing here redefines a token; everything is either a
+   page-local component (fr-*) or a deliberate override of a site.css default.
+
+   Two deliberate overrides, both scoped to .freight so no other page moves:
+     1. Display type becomes a serif. site.css defaults h1-h4 to Impact, which
+        reads as a flyer. A brokerage selling six-figure freight spend needs the
+        register of a bank, so the page runs an old-style serif stack.
+     2. Reveal state. site.js auto-tags every h2/h3/img/.card with .reveal, and
+        .reveal.is-in would win the cascade over this file's staggered system.
+        [data-fr]:not(.is-fr-in) matches that specificity and wins on source
+        order, so the stagger survives the shared script.
+   ========================================================================= */
+
+.freight{
+  --fr-serif:"Iowan Old Style","Palatino Linotype",Palatino,"Book Antiqua",Georgia,"Times New Roman",serif;
+  --fr-ease:cubic-bezier(.22,.61,.36,1);
+  --fr-ease-out:cubic-bezier(.16,1,.3,1);
+  --fr-rule:rgba(212,175,55,.22);
+  --fr-panel:linear-gradient(168deg,rgba(23,23,26,.94),rgba(13,13,16,.94));
+  --fr-hero-h:clamp(560px,calc(100svh - 92px),920px);
+  background:var(--bg);
+}
+
+/* ---------- display type ------------------------------------------------- */
+.freight h1,.freight h2,.freight h3,.freight h4{
+  font-family:var(--fr-serif);
+  text-transform:none;
+  font-weight:400;
+  letter-spacing:-.012em;
+  line-height:1.08;
+}
+.freight h2{font-size:clamp(30px,4.4vw,52px)}
+.freight h3{font-size:clamp(19px,1.9vw,23px);letter-spacing:-.005em}
+.freight .fr-eyebrow{
+  font-family:var(--body-font);
+  font-size:11.5px;letter-spacing:.30em;text-transform:uppercase;
+  color:var(--gold-2);display:block;margin-bottom:var(--s4);
+}
+.freight .fr-eyebrow--dim{color:var(--faint)}
+.freight .fr-lead{
+  font-family:var(--body-font);
+  font-size:clamp(16.5px,1.5vw,20px);line-height:1.7;color:var(--muted);
+  max-width:62ch;
+}
+.freight .fr-rule{
+  height:1px;border:0;margin:0;
+  background:linear-gradient(90deg,transparent,var(--fr-rule) 18%,var(--fr-rule) 82%,transparent);
+}
+
+/* Gold shimmer for display headings. The sweep is the only thing on the page
+   that loops forever, so it stays slow and low-contrast enough to read as
+   material rather than as a banner ad. */
+.freight .fr-shimmer{
+  background-image:linear-gradient(100deg,
+    #9E832E 0%,#D4AF37 26%,#FFF3CE 44%,#e9c96a 56%,#D4AF37 70%,#9E832E 100%);
+  background-size:260% 100%;
+  background-position:150% 0;
+  -webkit-background-clip:text;background-clip:text;
+  -webkit-text-fill-color:transparent;
+  color:var(--gold-2);
+  animation:fr-shimmer 9s linear infinite;
+}
+@keyframes fr-shimmer{to{background-position:-110% 0}}
+
+/* ---------- section shell ------------------------------------------------ */
+.freight .fr-sec{
+  padding:clamp(72px,10vw,148px) var(--section-x);
+  max-width:var(--maxw);margin:0 auto;
+  scroll-margin-top:96px;
+}
+.freight .fr-sec--flush{padding-top:clamp(40px,5vw,72px)}
+.freight .fr-head{max-width:70ch;margin-bottom:clamp(36px,5vw,64px)}
+.freight .fr-head h2+.fr-lead{margin-top:var(--s5)}
+
+/* ---------- grain + vignette --------------------------------------------- */
+/* Fixed, never scrolls, never intercepts a click, sits under the nav (z 50). */
+.fr-grain{
+  position:fixed;inset:0;z-index:49;pointer-events:none;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='160' height='160' filter='url(%23n)' opacity='.5'/%3E%3C/svg%3E");
+  opacity:.05;mix-blend-mode:overlay;
+}
+.fr-vignette{
+  position:fixed;inset:0;z-index:48;pointer-events:none;
+  background:radial-gradient(120% 90% at 50% 42%,transparent 42%,rgba(0,0,0,.55) 100%);
+}
+
+/* ============================================================================
+   1. HERO
+   ========================================================================= */
+.fr-hero{
+  position:relative;
+  min-height:var(--fr-hero-h);
+  display:flex;align-items:flex-end;
+  overflow:hidden;
+  isolation:isolate;
+  background:
+    radial-gradient(120% 70% at 50% 100%,rgba(212,175,55,.10),transparent 62%),
+    linear-gradient(180deg,#07070a 0%,#0B0B0D 46%,#121016 78%,#0B0B0D 100%);
+}
+.fr-hero__stars,.fr-hero__canvas,.fr-hero__layer,.fr-hero__glowline,.fr-hero__scrim{
+  position:absolute;left:0;right:0;pointer-events:none;
+}
+/* star field: two tiny radial-gradient tiles, no image request */
+.fr-hero__stars{
+  top:0;height:62%;
+  background-image:
+    radial-gradient(1.2px 1.2px at 18% 22%,rgba(242,237,228,.55),transparent),
+    radial-gradient(1px 1px at 62% 12%,rgba(242,237,228,.40),transparent),
+    radial-gradient(1.4px 1.4px at 82% 34%,rgba(233,201,106,.45),transparent),
+    radial-gradient(1px 1px at 34% 44%,rgba(242,237,228,.30),transparent),
+    radial-gradient(1px 1px at 8% 58%,rgba(242,237,228,.25),transparent),
+    radial-gradient(1.2px 1.2px at 92% 8%,rgba(242,237,228,.35),transparent),
+    radial-gradient(1px 1px at 48% 28%,rgba(233,201,106,.30),transparent);
+  opacity:.9;
+}
+/* horizon bloom sitting behind the ridges */
+.fr-hero__glowline{
+  bottom:26%;height:min(46vh,340px);
+  background:radial-gradient(58% 100% at 50% 100%,rgba(212,175,55,.24),rgba(212,175,55,.06) 46%,transparent 74%);
+  filter:blur(2px);
+}
+.fr-hero__canvas{top:0;bottom:0;width:100%;height:100%;opacity:1;
+  -webkit-mask-image:linear-gradient(180deg,transparent 6%,#000 34%,#000 100%);
+  mask-image:linear-gradient(180deg,transparent 6%,#000 34%,#000 100%)}
+.fr-hero__layer{
+  bottom:0;width:100%;height:auto;display:block;
+  object-fit:cover;
+  will-change:transform;
+  /* site.js tags every <img> with .reveal; the hero layers manage their own
+     transform, so they opt out of that state entirely. */
+  opacity:1!important;
+}
+.fr-hero__layer--skyline{bottom:20%;opacity:.75!important}
+.fr-hero__layer--far{bottom:12%;opacity:.9!important}
+.fr-hero__layer--near{bottom:0;opacity:1!important}
+
+.fr-hero__road{
+  position:absolute;left:-10%;right:-10%;bottom:0;height:34%;
+  background:
+    linear-gradient(180deg,transparent,rgba(0,0,0,.6) 40%,#050507 100%);
+  pointer-events:none;
+}
+/* The rig is scenery, not the headline. It sits bottom-right so the copy owns
+   the left third, and the scrim below keeps body text off the trailer panel. */
+.fr-hero__rig{
+  position:absolute;bottom:4%;right:-5%;left:auto;
+  width:min(900px,64%);
+  opacity:.6!important;
+  will-change:transform;
+  pointer-events:none;
+}
+.fr-hero__scrim{
+  position:absolute;inset:0;z-index:2;pointer-events:none;
+  background:linear-gradient(100deg,
+    rgba(8,8,10,.94) 0%,rgba(8,8,10,.86) 30%,rgba(8,8,10,.5) 52%,transparent 74%);
+}
+
+.fr-hero__inner{
+  position:relative;z-index:3;
+  width:100%;max-width:var(--maxw);
+  margin:0 auto;
+  padding:clamp(96px,13vh,150px) var(--section-x) clamp(48px,8vh,92px);
+}
+.fr-hero__plate{max-width:min(760px,72vw)}
+.fr-hero h1{
+  font-family:var(--fr-serif);
+  /* ch resolves against the element's own font-size, so this has to live on the
+     h1 and not on a wrapper whose font-size is body copy. */
+  max-width:13ch;
+  font-size:clamp(42px,7.4vw,94px);
+  line-height:.96;letter-spacing:-.03em;
+  margin:0;
+}
+.fr-hero h1 em{font-style:normal;display:block}
+.fr-hero__sub{
+  margin-top:var(--s5);max-width:52ch;
+  font-size:clamp(16px,1.55vw,20px);line-height:1.65;color:var(--muted);
+}
+.fr-hero__cta{display:flex;flex-wrap:wrap;gap:var(--s4);margin-top:var(--s7)}
+.fr-hero__cta .btn{font-family:var(--body-font);text-transform:none;
+  letter-spacing:.01em;font-weight:600;font-size:15.5px;padding:16px 30px}
+.fr-hero__meta{
+  margin-top:var(--s6);display:flex;flex-wrap:wrap;gap:var(--s3) var(--s5);
+  font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--faint);
+}
+.fr-hero__meta span{display:inline-flex;align-items:center;gap:8px}
+.fr-hero__meta span::before{
+  content:"";width:5px;height:5px;background:var(--gold);
+  box-shadow:0 0 8px var(--glow);flex:none;
+}
+.fr-hero__cue{
+  position:absolute;left:50%;bottom:18px;z-index:4;
+  transform:translateX(-50%);
+  display:flex;flex-direction:column;align-items:center;gap:8px;
+  font-size:10px;letter-spacing:.28em;text-transform:uppercase;color:var(--faint);
+}
+.fr-hero__cue i{
+  display:block;width:1px;height:44px;
+  background:linear-gradient(180deg,transparent,var(--gold));
+  animation:fr-cue 2.4s var(--fr-ease) infinite;
+  transform-origin:50% 0;
+}
+@keyframes fr-cue{0%{transform:scaleY(.2);opacity:0}35%{opacity:1}100%{transform:scaleY(1);opacity:0}}
+@media(max-width:860px){
+  .fr-hero__plate{max-width:none}
+  .fr-hero h1{max-width:11ch}
+  .fr-hero__rig{width:150%;right:-30%;bottom:7%;opacity:.42!important}
+  .fr-hero__cue{display:none}
+}
+
+/* ---------- corridor marquee (between hero and problem) ------------------ */
+.fr-strip{
+  position:relative;overflow:hidden;
+  border-top:1px solid var(--fr-rule);border-bottom:1px solid var(--fr-rule);
+  background:linear-gradient(90deg,rgba(212,175,55,.05),rgba(212,175,55,.01));
+  padding:14px 0;
+}
+.fr-strip__track{display:flex;width:max-content;animation:fr-marquee 46s linear infinite}
+.fr-strip__track>span{
+  display:inline-flex;align-items:center;gap:var(--s5);padding:0 var(--s5);
+  font-size:12px;letter-spacing:.22em;text-transform:uppercase;color:var(--faint);
+  white-space:nowrap;
+}
+.fr-strip__track b{color:var(--gold-2);font-weight:400;letter-spacing:.18em}
+.fr-strip__track i{
+  font-style:normal;color:var(--gold-dim);
+}
+@keyframes fr-marquee{to{transform:translate3d(-50%,0,0)}}
+.fr-strip::before,.fr-strip::after{
+  content:"";position:absolute;top:0;bottom:0;width:clamp(40px,9vw,120px);z-index:2;pointer-events:none;
+}
+.fr-strip::before{left:0;background:linear-gradient(90deg,var(--bg),transparent)}
+.fr-strip::after{right:0;background:linear-gradient(270deg,var(--bg),transparent)}
+
+/* ============================================================================
+   2. WHY WE EXIST
+   ========================================================================= */
+.fr-why{display:grid;gap:clamp(28px,4vw,56px);grid-template-columns:1fr}
+@media(min-width:900px){.fr-why{grid-template-columns:0.9fr 1.1fr;align-items:start}}
+.fr-why__list{display:grid;gap:0;border-top:1px solid var(--line-soft)}
+.fr-fault{
+  display:grid;grid-template-columns:auto 1fr;gap:var(--s4) var(--s5);
+  padding:clamp(22px,3vw,34px) 0;
+  border-bottom:1px solid var(--line-soft);
+  transition:background .35s var(--fr-ease);
+}
+.fr-fault:hover{background:linear-gradient(90deg,rgba(212,175,55,.045),transparent 72%)}
+.fr-fault__n{
+  font-family:var(--mono);font-size:11px;letter-spacing:.18em;color:var(--gold-dim);
+  padding-top:.5em;
+}
+.fr-fault h3{margin:0 0 10px;color:var(--ink)}
+.fr-fault p{margin:0;color:var(--muted);font-size:15px;line-height:1.72;max-width:56ch}
+.fr-fault__fix{
+  grid-column:2;margin-top:14px;padding-left:16px;
+  border-left:2px solid var(--gold-dim);
+  color:var(--gold-2);font-size:14px;line-height:1.65;max-width:54ch;
+}
+
+/* ============================================================================
+   3. SERVICES — tilt cards
+   ========================================================================= */
+.fr-svcs{
+  display:grid;gap:var(--s4);
+  grid-template-columns:repeat(auto-fit,minmax(min(272px,100%),1fr));
+  perspective:1400px;
+}
+.fr-svc{
+  position:relative;
+  display:flex;flex-direction:column;
+  padding:clamp(24px,2.6vw,34px);
+  background:var(--fr-panel);
+  border:1px solid var(--line-soft);
+  border-radius:var(--radius-lg);
+  overflow:hidden;
+  transform-style:preserve-3d;
+  transition:border-color .35s var(--fr-ease),box-shadow .45s var(--fr-ease),transform .5s var(--fr-ease-out);
+  will-change:transform;
+}
+.fr-svc::before{
+  content:"";position:absolute;inset:-1px;border-radius:inherit;pointer-events:none;
+  background:radial-gradient(280px 200px at var(--px,50%) var(--py,0%),rgba(212,175,55,.16),transparent 70%);
+  opacity:0;transition:opacity .35s var(--fr-ease);
+}
+.fr-svc:hover,.fr-svc:focus-within{border-color:var(--fr-rule);box-shadow:0 26px 60px -26px rgba(0,0,0,.9),0 0 0 1px rgba(212,175,55,.10)}
+.fr-svc:hover::before,.fr-svc:focus-within::before{opacity:1}
+.fr-svc__icon{
+  width:52px;height:52px;margin-bottom:var(--s5);
+  color:var(--gold);
+  transform:translateZ(28px);
+}
+.fr-svc__icon svg{width:100%;height:100%;display:block;overflow:visible}
+.fr-svc h3{margin:0 0 10px;color:var(--ink);transform:translateZ(18px)}
+.fr-svc p{margin:0;color:var(--muted);font-size:14.5px;line-height:1.7;transform:translateZ(10px)}
+.fr-svc__tags{
+  margin:var(--s5) 0 0;padding:0;list-style:none;
+  display:flex;flex-wrap:wrap;gap:7px;
+}
+.fr-svc__tags li{
+  font-family:var(--mono);font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;
+  color:var(--gold-dim);border:1px solid var(--line-soft);border-radius:2px;padding:4px 8px;
+}
+/* stroke-draw on the icons, fired by the reveal observer */
+.fr-svc__icon [data-draw]{
+  stroke-dasharray:var(--len,300);stroke-dashoffset:var(--len,300);
+  transition:stroke-dashoffset 1.4s var(--fr-ease-out);
+}
+.fr-svc.is-drawn .fr-svc__icon [data-draw]{stroke-dashoffset:0}
+
+/* ============================================================================
+   4. TECHNOLOGY EDGE
+   ========================================================================= */
+.fr-tech{
+  display:grid;gap:clamp(28px,4vw,56px);grid-template-columns:1fr;align-items:start;
+}
+@media(min-width:960px){.fr-tech{grid-template-columns:1.05fr .95fr}}
+.fr-tech__points{display:grid;gap:var(--s5);margin-top:var(--s6)}
+.fr-point{display:grid;grid-template-columns:auto 1fr;gap:var(--s4);align-items:start}
+.fr-point__mark{
+  width:38px;height:38px;flex:none;color:var(--gold);
+  border:1px solid var(--fr-rule);border-radius:var(--radius);
+  display:grid;place-items:center;background:rgba(212,175,55,.05);
+}
+.fr-point__mark svg{width:20px;height:20px;display:block}
+.fr-point h3{margin:0 0 6px;font-size:17px;color:var(--ink);letter-spacing:0}
+.fr-point p{margin:0;color:var(--muted);font-size:14.5px;line-height:1.7;max-width:52ch}
+
+/* the FreightDesk cross-link, styled as a plate rather than a card so it does
+   not compete with the service grid above it */
+.fr-plate{
+  position:relative;overflow:hidden;
+  padding:clamp(28px,3.4vw,40px);
+  background:var(--fr-panel);
+  border:1px solid var(--fr-rule);
+  border-radius:var(--radius-lg);
+  box-shadow:0 30px 70px -34px rgba(0,0,0,.9);
+}
+.fr-plate::after{
+  content:"";position:absolute;top:0;left:0;right:0;height:1px;
+  background:linear-gradient(90deg,transparent,var(--gold),transparent);
+  opacity:.65;
+}
+.fr-plate__eyebrow{
+  font-family:var(--mono);font-size:10.5px;letter-spacing:.2em;text-transform:uppercase;
+  color:var(--gold-2);display:block;margin-bottom:var(--s4);
+}
+.fr-plate h3{margin:0 0 var(--s3);font-size:clamp(21px,2.3vw,27px)}
+.fr-plate p{color:var(--muted);font-size:14.5px;line-height:1.72;margin:0 0 var(--s4)}
+.fr-plate__link{
+  display:inline-flex;align-items:center;gap:9px;
+  color:var(--gold-2);font-size:14px;letter-spacing:.02em;
+  border-bottom:1px solid var(--fr-rule);padding-bottom:3px;
+  transition:gap .25s var(--fr-ease),border-color .25s var(--fr-ease);
+}
+.fr-plate__link:hover{gap:15px;border-color:var(--gold)}
+
+/* a small terminal-ish console, purely illustrative of the workflow */
+.fr-console{
+  margin-top:var(--s5);border:1px solid var(--line-soft);border-radius:var(--radius);
+  background:#0a0a0c;overflow:hidden;
+}
+.fr-console__bar{
+  display:flex;align-items:center;gap:7px;padding:10px 14px;
+  border-bottom:1px solid var(--line-soft);
+}
+.fr-console__bar i{width:8px;height:8px;border-radius:50%;background:#26262b;display:block}
+.fr-console__bar b{
+  margin-left:8px;font-family:var(--mono);font-size:10.5px;letter-spacing:.16em;
+  text-transform:uppercase;color:var(--faint);font-weight:400;
+}
+.fr-console ol{
+  list-style:none;margin:0;padding:16px 18px;display:grid;gap:11px;
+  font-family:var(--mono);font-size:12.5px;line-height:1.6;color:var(--muted);
+}
+.fr-console li{display:grid;grid-template-columns:auto 8.5em 1fr;gap:10px;align-items:baseline}
+.fr-console li::before{content:"›";color:var(--gold-dim)}
+.fr-console b{font-weight:400;color:var(--muted)}
+.fr-console em{font-style:normal;color:var(--gold-2)}
+@media(max-width:420px){
+  .fr-console li{grid-template-columns:auto 1fr}
+  .fr-console em{grid-column:2}
+}
+
+/* ============================================================================
+   5. LANE MAP
+   ========================================================================= */
+.fr-map{
+  position:relative;
+  margin-top:clamp(24px,4vw,48px);
+  border:1px solid var(--line-soft);border-radius:var(--radius-lg);
+  background:
+    radial-gradient(70% 70% at 50% 40%,rgba(212,175,55,.05),transparent 70%),
+    linear-gradient(180deg,#0e0e12,#0a0a0c);
+  padding:clamp(12px,3vw,34px);
+  overflow:hidden;
+}
+.lanemap{width:100%;height:auto;display:block;overflow:visible}
+.lanemap__land{
+  fill:#141419;stroke:rgba(212,175,55,.28);stroke-width:1;
+  stroke-linejoin:round;
+}
+.lane__arc{
+  fill:none;stroke:url(#lmArc);stroke-width:1.9;stroke-linecap:round;
+  stroke-dasharray:var(--len,1200);stroke-dashoffset:var(--len,1200);
+  transition:stroke-dashoffset 2.4s var(--fr-ease-out);
+}
+.is-lanes-in .lane__arc{stroke-dashoffset:0}
+.lane__node{fill:#7e7869}
+.lane__node--home{fill:#e9c96a}
+.lane__pulse{fill:#FFF3CE;opacity:0}
+.is-lanes-in .lane__pulse{opacity:.95}
+.fr-map__legend{
+  display:flex;flex-wrap:wrap;gap:var(--s3) var(--s5);
+  margin-top:var(--s5);padding-top:var(--s4);border-top:1px solid var(--line-soft);
+  font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:var(--faint);
+}
+.fr-map__legend b{color:var(--gold-2);font-weight:400}
+.fr-map__note{margin-top:var(--s4);color:var(--faint);font-size:13px;line-height:1.7;max-width:70ch}
+
+/* ============================================================================
+   6. PROCESS TIMELINE — scroll-driven progress line
+   ========================================================================= */
+.fr-proc{position:relative;padding-left:clamp(30px,5vw,58px)}
+.fr-proc__rail,.fr-proc__fill{
+  position:absolute;left:0;top:10px;bottom:10px;width:2px;border-radius:2px;
+}
+.fr-proc__rail{background:var(--line-soft)}
+.fr-proc__fill{
+  background:linear-gradient(180deg,var(--gold-2),var(--gold) 45%,var(--gold-dim));
+  box-shadow:0 0 18px rgba(212,175,55,.5);
+  transform:scaleY(var(--p,0));transform-origin:50% 0;
+  will-change:transform;
+}
+.fr-step{position:relative;padding:0 0 clamp(38px,5vw,64px)}
+.fr-step:last-child{padding-bottom:0}
+.fr-step__dot{
+  position:absolute;left:calc(-1 * clamp(30px,5vw,58px));top:6px;
+  width:14px;height:14px;transform:translateX(-6px);
+  border:1px solid var(--fr-rule);border-radius:50%;
+  background:var(--bg);
+  transition:background .4s var(--fr-ease),box-shadow .4s var(--fr-ease),border-color .4s var(--fr-ease);
+}
+.fr-step.is-lit .fr-step__dot{
+  background:var(--gold);border-color:var(--gold-2);
+  box-shadow:0 0 0 4px rgba(212,175,55,.14),0 0 22px rgba(212,175,55,.6);
+}
+.fr-step__n{
+  font-family:var(--mono);font-size:11px;letter-spacing:.2em;color:var(--gold-dim);
+  display:block;margin-bottom:10px;
+}
+.fr-step h3{margin:0 0 10px;color:var(--ink);font-size:clamp(20px,2.2vw,26px)}
+.fr-step p{margin:0;color:var(--muted);font-size:15px;line-height:1.72;max-width:60ch}
+.fr-step__aside{
+  margin-top:var(--s4);font-family:var(--mono);font-size:12px;letter-spacing:.06em;
+  color:var(--faint);line-height:1.7;
+}
+
+.fr-dockband{
+  display:block;width:100%;height:auto;margin-top:clamp(36px,5vw,64px);
+  opacity:.5!important;
+  -webkit-mask-image:linear-gradient(180deg,transparent,#000 42%,#000 78%,transparent);
+  mask-image:linear-gradient(180deg,transparent,#000 42%,#000 78%,transparent);
+}
+
+/* ============================================================================
+   7. FOUNDING PROGRAM — dual waitlist
+   ========================================================================= */
+.fr-join{
+  display:grid;gap:var(--s5);
+  grid-template-columns:repeat(auto-fit,minmax(min(320px,100%),1fr));
+  margin-top:clamp(28px,4vw,48px);
+}
+.fr-lane{
+  position:relative;overflow:hidden;
+  display:flex;flex-direction:column;
+  padding:clamp(28px,3.2vw,40px);
+  background:var(--fr-panel);
+  border:1px solid var(--line-soft);border-radius:var(--radius-lg);
+  transition:border-color .35s var(--fr-ease),transform .35s var(--fr-ease);
+}
+.fr-lane:hover{border-color:var(--fr-rule);transform:translateY(-3px)}
+.fr-lane--shipper{border-color:var(--fr-rule);background:linear-gradient(168deg,rgba(212,175,55,.06),rgba(13,13,16,.94))}
+.fr-lane__tag{
+  font-family:var(--mono);font-size:10.5px;letter-spacing:.2em;text-transform:uppercase;
+  color:var(--gold-2);display:block;margin-bottom:var(--s4);
+}
+.fr-lane h3{margin:0 0 var(--s3);font-size:clamp(22px,2.4vw,28px)}
+.fr-lane>p{color:var(--muted);font-size:14.5px;line-height:1.72;margin:0}
+.fr-lane ul{list-style:none;margin:var(--s5) 0 0;padding:0;display:grid;gap:11px}
+.fr-lane li{position:relative;padding-left:22px;color:var(--muted);font-size:14px;line-height:1.65}
+.fr-lane li::before{
+  content:"";position:absolute;left:0;top:.5em;width:8px;height:8px;
+  border-left:1.5px solid var(--gold);border-bottom:1.5px solid var(--gold);
+  transform:rotate(-45deg) translateY(-1px);
+}
+.fr-lane li b{color:var(--ink);font-weight:600}
+.fr-lane form{margin-top:auto;padding-top:var(--s6);display:grid;gap:var(--s3)}
+.fr-lane form .row{display:flex;gap:var(--s3);flex-wrap:wrap}
+.fr-lane form input{flex:1 1 200px;min-width:0}
+.fr-lane form .btn{flex:0 0 auto;font-family:var(--body-font);text-transform:none;
+  font-weight:600;letter-spacing:0;font-size:15px}
+.fr-lane__note{margin:0;color:var(--faint);font-size:12.5px;line-height:1.6}
+
+/* compliance / honesty note — deliberately not styled as a warning, because it
+   is not a caveat we are hiding. It is the reason to trust the rest. */
+.fr-compliance{
+  margin-top:clamp(32px,4vw,52px);
+  display:grid;gap:var(--s5);align-items:start;
+  grid-template-columns:1fr;
+  padding:clamp(26px,3vw,36px);
+  border:1px solid var(--line-soft);border-left:2px solid var(--gold-dim);
+  border-radius:var(--radius-lg);
+  background:rgba(212,175,55,.035);
+}
+@media(min-width:760px){.fr-compliance{grid-template-columns:auto 1fr;gap:var(--s6)}}
+.fr-compliance__seal{width:88px;height:88px;opacity:.9!important;flex:none}
+.fr-compliance h3{margin:0 0 var(--s3);font-size:19px;color:var(--ink)}
+.fr-compliance p{margin:0 0 var(--s3);color:var(--muted);font-size:14px;line-height:1.72;max-width:74ch}
+.fr-compliance p:last-child{margin-bottom:0}
+.fr-compliance b{color:var(--gold-2);font-weight:400}
+
+/* ---------- who is behind this -------------------------------------------- */
+.fr-builder{
+  display:grid;gap:var(--s5);grid-template-columns:1fr;
+  margin-top:clamp(32px,4vw,52px);
+  padding-top:clamp(32px,4vw,52px);border-top:1px solid var(--line-soft);
+}
+@media(min-width:820px){.fr-builder{grid-template-columns:.8fr 1.2fr;gap:var(--s7)}}
+.fr-builder h3{margin:0 0 var(--s3)}
+.fr-builder p{margin:0 0 var(--s4);color:var(--muted);font-size:14.5px;line-height:1.74;max-width:64ch}
+.fr-builder p:last-child{margin-bottom:0}
+.fr-builder a{color:var(--gold-2);border-bottom:1px solid var(--fr-rule)}
+.fr-builder a:hover{border-color:var(--gold)}
+
+/* ============================================================================
+   8. FAQ (extends the shared .yg-faq)
+   ========================================================================= */
+.freight .yg-faq summary{font-family:var(--fr-serif);font-size:1.1rem;letter-spacing:-.005em;padding:var(--s5)}
+.freight .yg-faq .a{font-size:14.5px;line-height:1.75}
+
+/* ---------- closing band -------------------------------------------------- */
+.fr-close{
+  position:relative;overflow:hidden;text-align:center;
+  padding:clamp(72px,10vw,132px) var(--section-x);
+  border-top:1px solid var(--fr-rule);
+  background:
+    radial-gradient(70% 130% at 50% 120%,rgba(212,175,55,.14),transparent 66%),
+    linear-gradient(180deg,#0B0B0D,#0e0d10);
+}
+.fr-close h2{margin:0 auto var(--s5);max-width:18ch}
+.fr-close p{margin:0 auto;max-width:56ch;color:var(--muted);font-size:16px;line-height:1.7}
+.fr-close .fr-hero__cta{justify-content:center;margin-top:var(--s7)}
+.fr-close__lion{width:46px;height:46px;margin:0 auto var(--s5);opacity:.85!important}
+
+/* ============================================================================
+   MOTION — reveal system + opt-out
+   ========================================================================= */
+/* :not(.is-fr-in) matches the specificity of site.css's `.reveal.is-in`, and
+   this file loads later, so the staggered state wins the tie. */
+[data-fr]:not(.is-fr-in){
+  opacity:0;
+  transform:translate3d(0,26px,0);
+}
+[data-fr]{
+  transition:opacity .85s var(--fr-ease-out),transform .85s var(--fr-ease-out);
+  transition-delay:var(--d,0ms);
+}
+[data-fr="left"]:not(.is-fr-in){transform:translate3d(-32px,0,0)}
+[data-fr="right"]:not(.is-fr-in){transform:translate3d(32px,0,0)}
+[data-fr="zoom"]:not(.is-fr-in){transform:scale(.955)}
+[data-fr="mask"]:not(.is-fr-in){opacity:0;transform:translate3d(0,38px,0)}
+.is-fr-in{opacity:1;transform:none}
+
+/* An element parked 32px to the right of its resting place is 32px of page
+   width until the observer fires. On desktop the centred --maxw gutter absorbs
+   it; on a phone there is no gutter, so it became real horizontal overflow.
+   Two independent guards, because a page that scrolls sideways on a phone is
+   the one bug that is never acceptable:
+     a) below the two-column breakpoint the reveal is vertical anyway, since
+        there are no columns left to slide between;
+     b) overflow-x:clip on the section boxes the rest in without turning any
+        ancestor into a scroll container (which overflow:hidden would). */
+@media(max-width:960px){
+  [data-fr="left"]:not(.is-fr-in),[data-fr="right"]:not(.is-fr-in){transform:translate3d(0,26px,0)}
+}
+/* .fr-hero and .fr-close already carry overflow:hidden and are left alone —
+   mixing overflow-x:clip with overflow-y:hidden on one box is not worth the
+   cross-engine risk for zero gain. */
+.freight .fr-sec{overflow-x:clip}
+
+@media(prefers-reduced-motion:reduce){
+  [data-fr]:not(.is-fr-in),[data-fr]{opacity:1!important;transform:none!important;transition:none!important}
+  .freight .fr-shimmer{animation:none;background-position:0 0}
+  .fr-strip__track{animation:none}
+  .fr-hero__cue i{animation:none}
+  .fr-hero__canvas{display:none}
+  .lane__arc{stroke-dashoffset:0!important;transition:none!important}
+  .lane__pulse{display:none}
+  .fr-svc__icon [data-draw]{stroke-dashoffset:0!important;transition:none!important}
+  .fr-proc__fill{transform:scaleY(1)!important}
+  .fr-step__dot{background:var(--gold)!important;border-color:var(--gold-2)!important}
+  .fr-grain,.fr-vignette{display:none}
+  .fr-svc:hover,.fr-lane:hover{transform:none!important}
+}
+
+@media print{
+  .fr-hero__canvas,.fr-hero__layer,.fr-hero__rig,.fr-grain,.fr-vignette,
+  .fr-strip,.fr-dockband,.fr-hero__cue{display:none!important}
+  .fr-hero{min-height:0;background:none}
+  .fr-hero__inner{padding:0}
+  [data-fr]:not(.is-fr-in){opacity:1;transform:none}
+}

@@ -63,7 +63,7 @@ Lockup canvases size themselves to the word, so a longer name never overflows th
 4. **Never** recolour the mane per-shard, add an outline, place the mark on a busy photo, or
    stretch it non-uniformly.
 5. **KXNG SEF garments keep the brand's one-hero-element rule.** The lion prints gold only when
-   it is the largest graphic in the piece with no competing hero word (design 15). Beside a giant
+   it is the largest graphic in the piece with no competing hero word (design 23). Beside a giant
    word, the lion prints bone like any other supporting element.
 
 ## The kit (`kit.py`)
@@ -96,6 +96,7 @@ reads as a flyer rather than correspondence.
 
 - Site: nav brand and page header on 29 pages, SPA footer, favicon, OG card.
 - PWAs: TradeLog / Cut / Fire manifests + apple-touch-icon (caches bumped to v6).
-- KXNG SEF: `designs/15-lion-dhahab-{dark,light}.svg`, 4500×5400 POD print area.
+- KXNG SEF: `designs/23-lion-dhahab-{dark,light}.svg`, 4500×5400 POD print area.
   Outline the text before POD upload — the condensed stack will not embed.
+  (Renumbered 15→23 in the 2026-07-31 designs.json renumber; print plates cut 2026-08-01.)
 - Products: cover stamp via `digital-products/_assets/engine`.

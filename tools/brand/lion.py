@@ -310,7 +310,7 @@ KX_BONE = "#F2EDE4"
 
 
 def kxngsef_print(dark=True):
-    """Design 15 — Lion of Dhahab back print, 4500x5400 POD print area.
+    """Design 23 — Lion of Dhahab back print, 4500x5400 POD print area.
 
     Follows the KXNG SEF one-hero-element rule: the lion IS the largest graphic
     here and no wordmark competes with it, so on dark garments the lion carries

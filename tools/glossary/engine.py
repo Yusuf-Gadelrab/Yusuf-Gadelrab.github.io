@@ -28,7 +28,7 @@ HERE = os.path.dirname(os.path.abspath(__file__))
 ROOT = os.path.normpath(os.path.join(HERE, "..", ".."))
 OUT = os.path.join(ROOT, "public", "glossary")
 HUB = os.path.join(ROOT, "public", "glossary.html")
-DATE = "2026-07-31"
+DATE = "2026-08-01"
 
 NAV = [("/", "Work"), ("/guides.html", "Guides"), ("/glossary.html", "Glossary"),
        ("/apps.html", "Apps"), ("/store.html", "Store")]
@@ -207,7 +207,7 @@ def _head(*, title, desc, url, og_title, og_desc, og_type, ld, extra_style=""):
 <a class="skip-link" href="#main">Skip to content</a>
 
 <nav class="site-nav">
-  <a class="site-nav__brand" href="/"><img class="site-nav__lion" src="/img/brand/lion-mark.svg" alt="" width="34" height="34"><span>YUSUF GADELRAB</span></a>
+  <a class="site-nav__brand" href="/"><img class="site-nav__lion" src="/img/brand/lion-mark.svg" alt="" width="34" height="34" decoding="async"><span>YUSUF GADELRAB</span></a>
   <div class="site-nav__links">
 """ + "\n".join(
         f'    <a href="{h}"{" aria-current=\"page\"" if h == url.replace(BASE, "") or (h == "/glossary.html" and "/glossary" in url) else ""}>{t}</a>'
@@ -292,7 +292,7 @@ def render_cluster(c, index):
          "publisher": {"@id": f"{BASE}/#person"},
          "mainEntity": {"@id": f"{url}#termset"},
          "breadcrumb": {"@id": f"{url}#crumbs"},
-         "isPartOf": {"@type": "WebSite", "name": "Yusuf Gadelrab", "url": f"{BASE}/"}},
+         "isPartOf": {"@id": f"{BASE}/#website"}},
         {"@type": "BreadcrumbList",
          "@id": f"{url}#crumbs",
          "itemListElement": [
@@ -386,7 +386,7 @@ def render_hub(clusters, index):
          "url": url,
          "name": "Glossary",
          "description": desc,
-         "datePublished": "2026-07-31",
+         "datePublished": DATE,
          "dateModified": DATE,
          "inLanguage": "en",
          "isAccessibleForFree": True,
@@ -395,10 +395,9 @@ def render_hub(clusters, index):
          "mainEntity": {"@id": f"{url}#terms"},
          "breadcrumb": {"@id": f"{url}#crumbs"},
          "hasPart": [{"@type": "DefinedTermSet",
-                      "@id": f"{BASE}/glossary/{c['slug']}.html#termset",
-                      "name": c["set_name"],
-                      "url": f"{BASE}/glossary/{c['slug']}.html"} for c in clusters],
-         "isPartOf": {"@type": "WebSite", "name": "Yusuf Gadelrab", "url": f"{BASE}/"}},
+                      "@id": f"{BASE}/glossary/{c['slug']}.html#termset"}
+                     for c in clusters],
+         "isPartOf": {"@id": f"{BASE}/#website"}},
         {"@type": "ItemList", "@id": f"{url}#terms",
          "name": f"{total} defined terms", "numberOfItems": total,
          "itemListOrder": "https://schema.org/ItemListOrderAscending",
@@ -455,7 +454,7 @@ def render_hub(clusters, index):
     <img class="page-lion" src="/img/brand/lion-mark.svg" alt="" width="46" height="46">
     <p class="eyebrow">DHAHAB · ذهب</p>
     <h1 style="margin:var(--s4) 0">Glossary</h1>
-    <p class="lead">{total} terms across {len(clusters)} fields I actually work in. Every entry opens with one sentence that stands on its own, then explains the thing properly, shows a worked example where the arithmetic matters, and names the misconception that trips most people up. No definition here is a guess — anything I could not state accurately was cut instead.</p>
+    <p class="lead">{total} terms across {len(clusters)} fields I actually work in. Every entry opens with one sentence that stands on its own, then explains the thing properly, shows a worked example where the arithmetic matters, and names the misconception that trips most people up. Nothing here is a guess: a definition I could not state accurately would be dropped rather than hedged.</p>
   </header>
 
   <hr class="divider">

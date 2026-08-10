@@ -2,6 +2,8 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8" />
+<meta name="referrer" content="strict-origin-when-cross-origin">
+<meta http-equiv="Content-Security-Policy" content="object-src 'none'; base-uri 'self'">
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <link rel="canonical" href="https://yusuf-gadelrab.github.io/eh.html">
 <title>eh — the unserious page | Yusuf Gadelrab</title>
@@ -18,6 +20,7 @@
 <link rel="apple-touch-icon" sizes="180x180" href="https://yusuf-gadelrab.github.io/apple-touch-icon.png">
 <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#d4af37">
 <link rel="stylesheet" href="/css/site.css">
+<link rel="stylesheet" href="/css/lux-motion.css">
 <style>
   .eh-hero{text-align:center;padding-block:var(--s6,42px) var(--s5,30px)}
   .eh-hero h1{font-size:var(--t-hero);line-height:1.02}
@@ -62,7 +65,7 @@
   @media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
 </style>
 <!-- geo:entity — canonical Person node, one entity across every page -->
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"Person","@id":"https://yusuf-gadelrab.github.io/#person","name":"Yusuf Gadelrab","url":"https://yusuf-gadelrab.github.io/"}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebPage","@id":"https://yusuf-gadelrab.github.io/eh.html#webpage","url":"https://yusuf-gadelrab.github.io/eh.html","inLanguage":"en","isPartOf":{"@id":"https://yusuf-gadelrab.github.io/#website"},"about":{"@id":"https://yusuf-gadelrab.github.io/#person"},"publisher":{"@id":"https://yusuf-gadelrab.github.io/#person"}}</script>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://yusuf-gadelrab.github.io/"},{"@type":"ListItem","position":2,"name":"eh"}]}</script>
 <link rel="alternate" type="text/plain" href="https://yusuf-gadelrab.github.io/llms-full.txt" title="Plain-text profile for language models">
 </head>
@@ -125,10 +128,10 @@
         <span class="punch">Peaked at 18 and have been recovering by shipping software since.</span></p>
     </div>
     <div class="bit">
-      <h3><span>⑤</span> My visa expires because of my birthday</h3>
-      <p>TD status ends at 21. Not a rule I broke, just arithmetic slowly happening to me.
-        <span class="punch">I built a web app to plan the paperwork, because of course I did.</span>
-        It's on this site. It's the least funny page here and by far the most useful to me.</p>
+      <h3><span>⑤</span> My visa used to expire because of my birthday</h3>
+      <p>TD status would've ended at 21 — pure arithmetic, not a rule I broke. Green card cleared first (Aug 2026), so the clock stopped mattering.
+        <span class="punch">I'd already built a web app to plan the paperwork, because of course I did.</span>
+        It's on this site. It's the least funny page here and by far the most useful to whoever's still on that clock.</p>
     </div>
     <div class="bit">
       <h3><span>⑥</span> I named my habit app after a Japanese word and ranked it like karate</h3>
@@ -194,6 +197,7 @@
 <footer class="site-footer">
   <div>© 2026 Yusuf Gadelrab · San Jose, CA · originally Canadian</div>
   <div class="site-footer__links">
+    <a href="/faq.html">FAQ</a>
     <a href="/writing.html">Writing</a>
     <a href="/dispatch.html">Dispatch</a>
     <a href="/">Work</a>
@@ -212,6 +216,7 @@
 </footer>
 
 <script src="/js/site.js" defer></script>
+<script src="/js/lux-motion.js" defer></script>
 <script>
 (function(){
   "use strict";

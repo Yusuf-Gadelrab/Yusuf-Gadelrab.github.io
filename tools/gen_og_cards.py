@@ -14,12 +14,25 @@ every card, and the headline block grows upward from a fixed bottom. That is
 what makes 1-line and 2-line cards read as one set, and it removes the
 subtitle/rule collision the old freightdesk + store cards had.
 
-Usage:  uv run tools/gen_og_cards.py [--out public/og] [--only store,visa]
+Two sources of cards:
+
+  CARDS       hand-written specs for the top-level marketing pages, where the
+              headline is copy, not the page title.
+  derived()   every page in public/guides/ and public/writing/, read straight
+              off disk. A new guide gets a card on the next run with nothing to
+              register — the same filesystem-as-registry rule the hub builders
+              and the sitemap use.
+
+Usage:  uv run tools/gen_og_cards.py [--out public/og] [--only store,guides]
+        uv run tools/gen_og_cards.py --missing     # only cards not on disk yet
+        uv run tools/gen_og_cards.py --manifest    # print og:image URL per page
 """
 
 from __future__ import annotations
 
 import argparse
+import html
+import re
 from pathlib import Path
 
 from PIL import Image, ImageDraw, ImageFont
@@ -188,6 +201,12 @@ CARDS: dict[str, dict] = {
         sub="FreightDesk AI reads the billing inbox and drafts every reply — locally.",
         url="yusuf-gadelrab.github.io/freightdesk",
     ),
+    "freight-card": dict(
+        icon="F",
+        head=["The golden standard", "of freight"],
+        sub="DHAHAB Freight. An AI-native brokerage built for founding shippers.",
+        url="yusuf-gadelrab.github.io/freight",
+    ),
     "heft-card": dict(
         icon="H",
         head=["Weight is", "the design"],
@@ -251,6 +270,71 @@ CARDS: dict[str, dict] = {
 }
 
 
+# ------------------------------------------------------- derived (per-page)
+# Sections whose cards come from the pages themselves. Icons reuse glyphs
+# already proven to render in Arial Unicode elsewhere in this file.
+SECTIONS = {"guides": "§", "writing": "✦"}
+BASE_URL = "yusuf-gadelrab.github.io"
+
+# Top-level pages that are legal/utility surfaces. Nobody shares a refund
+# policy, and a card for one is dead weight in the repo.
+ROOT_SKIP = {
+    "404", "offline", "googlebb78e2fba04aed48", "legal", "dmca", "refunds",
+    "accessibility", "privacy", "terms", "dhahab-prompt-vault-privacy",
+    "index",  # the homepage keeps the house card, og-card.png
+}
+ROOT_ICON = "◆"
+
+
+def _meta(text: str, prop: str, attr: str = "property") -> str:
+    m = re.search(rf'<meta {attr}="{prop}" content="(.*?)"\s*/?>', text, re.S)
+    return html.unescape(m.group(1)).strip() if m else ""
+
+
+def _h1(text: str) -> str:
+    m = re.search(r"<h1[^>]*>(.*?)</h1>", text, re.S)
+    return html.unescape(re.sub(r"<[^>]+>", "", m.group(1))).strip() if m else ""
+
+
+def derived() -> dict[str, dict]:
+    """One spec per rendered page in each derived section.
+
+    og:title is preferred over <h1> because it is already written short for a
+    social card; the h1 is the long SEO headline and would wrap to four lines.
+    """
+    out: dict[str, dict] = {}
+    for section, icon in SECTIONS.items():
+        for path in sorted((ROOT / "public" / section).glob("*.html")):
+            if path.name in ("index.html", "404.html"):
+                continue
+            text = path.read_text(encoding="utf-8")
+            head = _meta(text, "og:title") or _h1(text) or path.stem
+            sub = (_meta(text, "og:description")
+                   or _meta(text, "description", attr="name"))
+            head = re.sub(r"\s*[—|-]\s*Yusuf Gadelrab\s*$", "", head).strip()
+            out[f"{section}/{path.stem}-card"] = dict(
+                icon=icon, headline=head, sub=sub,
+                url=f"{BASE_URL}/{section}/{path.stem}",
+                page=f"/{section}/{path.name}",
+            )
+
+    # Top-level pages with no hand-written spec fall back to their own meta,
+    # so a new page ships with a real card instead of the generic one.
+    for path in sorted((ROOT / "public").glob("*.html")):
+        name = f"{path.stem}-card"
+        if path.stem in ROOT_SKIP or name in CARDS:
+            continue
+        text = path.read_text(encoding="utf-8")
+        head = _meta(text, "og:title") or _h1(text) or path.stem
+        sub = _meta(text, "og:description") or _meta(text, "description",
+                                                     attr="name")
+        head = re.sub(r"\s*[—|-]\s*Yusuf Gadelrab\s*$", "", head).strip()
+        out[name] = dict(icon=ROOT_ICON, headline=head, sub=sub,
+                         url=f"{BASE_URL}/{path.stem}",
+                         page=f"/{path.name}")
+    return out
+
+
 # ---------------------------------------------------------------- painting
 
 
@@ -289,6 +373,73 @@ def fit_headline(lines: list[str], max_w: int):
         if all(f.getlength(t) <= max_w * SS for t in lines):
             return f, size
     return font(F_HEAD, F_HEAD_IDX, 42), 42
+
+
+MAX_LINES = 3
+
+
+def _wrap(text: str, f: ImageFont.FreeTypeFont, max_w: int) -> list[str]:
+    lines, cur = [], ""
+    for word in text.split():
+        trial = f"{cur} {word}".strip()
+        if not cur or f.getlength(trial) <= max_w * SS:
+            cur = trial
+        else:
+            lines.append(cur)
+            cur = word
+    if cur:
+        lines.append(cur)
+    return lines
+
+
+def _balance(text: str, f: ImageFont.FreeTypeFont, max_w: int,
+             n: int) -> list[str]:
+    """Re-break the same text into n lines using the narrowest measure that
+    still fits in n lines. Greedy wrapping leaves widows — a headline ending on
+    a single short word reads as a mistake at thumbnail size."""
+    if n < 2:
+        return _wrap(text, f, max_w)
+    lo, hi, best = 1, max_w, max_w
+    while lo <= hi:
+        mid = (lo + hi) // 2
+        if len(_wrap(text, f, mid)) <= n:
+            best, hi = mid, mid - 1
+        else:
+            lo = mid + 1
+    return _wrap(text, f, best)
+
+
+def wrap_headline(text: str, max_w: int):
+    """Wrap a page title to at most three lines at the largest size that fits.
+
+    Derived cards start one step smaller than the hand-written ones (52 vs 56)
+    because a page title is prose, not a two-word slogan, and matching the
+    slogan size would push every guide card to three tight lines.
+    """
+    for size in range(52, 33, -1):
+        f = font(F_HEAD, F_HEAD_IDX, size)
+        lines = _wrap(text, f, max_w)
+        if len(lines) <= MAX_LINES and all(
+                f.getlength(t) <= max_w * SS for t in lines):
+            return f, size, _balance(text, f, max_w, len(lines))
+    f = font(F_HEAD, F_HEAD_IDX, 34)
+    lines = _wrap(text, f, max_w)[:MAX_LINES]
+    if lines:
+        lines[-1] = _ellipsize(lines[-1], f, max_w)
+    return f, 34, lines
+
+
+def _ellipsize(text: str, f: ImageFont.FreeTypeFont, max_w: int) -> str:
+    """Trim at a word boundary until it fits, then mark the cut."""
+    if f.getlength(text) <= max_w * SS:
+        return text
+    words = text.split()
+    while words:
+        words.pop()
+        trial = " ".join(words) + "…"
+        if f.getlength(trial) <= max_w * SS:
+            return trial
+    return "…"
 
 
 LION_PNG = ROOT / "public" / "img" / "brand" / "lion-mark-1024.png"
@@ -341,17 +492,25 @@ def build(spec: dict) -> Image.Image:
            glyph, font=gf, fill=GOLD_2)
 
     # headline — bottom-anchored so the footer never moves
-    lines = spec["head"]
-    hf, hsize = fit_headline(lines, W - PAD * 2 - 24)
+    measure = W - PAD * 2 - 24
+    if "headline" in spec:
+        hf, hsize, lines = wrap_headline(spec["headline"], measure)
+    else:
+        lines = spec["head"]
+        hf, hsize = fit_headline(lines, measure)
     leading = int(hsize * 1.16)
     y = HEAD_BOTTOM - leading * (len(lines) - 1)
+    last = len(lines) - 1
     for i, text in enumerate(lines):
+        # last line gold: on a 2-line card that is the existing bone/gold
+        # split, and it still reads as one system at 1 or 3 lines.
         d.text((PAD * SS, (y + i * leading) * SS), text, font=hf,
-               fill=BONE if i == 0 else GOLD, anchor="ls")
+               fill=GOLD if (i == last and last > 0) else BONE, anchor="ls")
 
-    # subtitle
+    # subtitle — one line only; the rule sits 28px below it
     sf = font(F_SANS, F_SANS_IDX, 25)
-    d.text((PAD * SS, SUB_BASE * SS), spec["sub"], font=sf, fill=MUTED, anchor="ls")
+    d.text((PAD * SS, SUB_BASE * SS), _ellipsize(spec["sub"], sf, measure),
+           font=sf, fill=MUTED, anchor="ls")
 
     # hairline + url
     d.line([(PAD * SS, RULE_Y * SS), ((W - PAD) * SS, RULE_Y * SS)],
@@ -365,22 +524,45 @@ def build(spec: dict) -> Image.Image:
 def main() -> None:
     ap = argparse.ArgumentParser()
     ap.add_argument("--out", default=str(OUT))
-    ap.add_argument("--only", default="")
+    ap.add_argument("--only", default="",
+                    help="card names, or a section: --only guides,store")
+    ap.add_argument("--missing", action="store_true",
+                    help="skip cards whose PNG already exists")
+    ap.add_argument("--manifest", action="store_true",
+                    help="print page -> og:image URL for every derived card")
     a = ap.parse_args()
     out = Path(a.out)
-    out.mkdir(parents=True, exist_ok=True)
     keep = {s.strip() for s in a.only.split(",") if s.strip()}
 
-    for name in sorted(CARDS):
-        if keep and name not in keep and name.removesuffix("-card") not in keep:
+    specs = dict(CARDS)
+    specs.update(derived())
+
+    if a.manifest:
+        for name, spec in sorted(specs.items()):
+            if "page" in spec:
+                print(f"{spec['page']}\thttps://{BASE_URL}/og/{name}.png")
+        return
+
+    made = skipped = 0
+    for name in sorted(specs):
+        section = name.split("/")[0] if "/" in name else ""
+        if keep and not (name in keep
+                         or name.removesuffix("-card") in keep
+                         or section in keep):
             continue
-        img = build(CARDS[name])
+        p = out / f"{name}.png"
+        if a.missing and p.exists():
+            skipped += 1
+            continue
+        p.parent.mkdir(parents=True, exist_ok=True)
+        img = build(specs[name])
         # adaptive palette: these are flat brand graphics, 256 colours is
         # indistinguishable here and roughly halves the byte count.
         q = img.convert("RGB").quantize(colors=256, method=Image.MEDIANCUT, dither=Image.FLOYDSTEINBERG)
-        p = out / f"{name}.png"
         q.save(p, format="PNG", optimize=True)
-        print(f"{p.name}  {p.stat().st_size:,} B")
+        made += 1
+        print(f"{name}.png  {p.stat().st_size:,} B")
+    print(f"\n{made} written, {skipped} already present")
 
 
 if __name__ == "__main__":

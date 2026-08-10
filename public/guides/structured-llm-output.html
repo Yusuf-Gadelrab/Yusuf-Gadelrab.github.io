@@ -25,10 +25,11 @@
 <meta name="twitter:image" content="https://yusuf-gadelrab.github.io/og-card.png">
 <link rel="alternate" type="text/plain" href="https://yusuf-gadelrab.github.io/llms-full.txt" title="Plain-text profile for language models">
 
-<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"TechArticle","@id":"https://yusuf-gadelrab.github.io/guides/structured-llm-output.html#article","headline":"Structured Output From an LLM Without Regret: JSON Mode, Tool Calling, Constrained Decoding, and the Retry Loop You Still Need","name":"Structured Output From an LLM Without Regret: JSON Mode, Tool Calling, Constrained Decoding, and the Retry Loop You Still Need","description":"JSON mode vs tool calling vs constrained decoding vs schema validation with retry, why parsing free text fails, and idempotency for partial LLM output.","datePublished":"2026-07-29","dateModified":"2026-07-29","inLanguage":"en","author":{"@id":"https://yusuf-gadelrab.github.io/#person"},"publisher":{"@id":"https://yusuf-gadelrab.github.io/#person"},"about":["Large language models","JSON Schema","API design","Software reliability"],"mainEntityOfPage":"https://yusuf-gadelrab.github.io/guides/structured-llm-output.html","isAccessibleForFree":true,"proficiencyLevel":"Intermediate"},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://yusuf-gadelrab.github.io/"},{"@type":"ListItem","position":2,"name":"Guides","item":"https://yusuf-gadelrab.github.io/guides.html"},{"@type":"ListItem","position":3,"name":"Structured Output"}]}]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"TechArticle","@id":"https://yusuf-gadelrab.github.io/guides/structured-llm-output.html#article","headline":"Structured Output From an LLM Without Regret: JSON Mode, Tool Calling, Constrained Decoding, and the Retry Loop You Still Need","name":"Structured Output From an LLM Without Regret: JSON Mode, Tool Calling, Constrained Decoding, and the Retry Loop You Still Need","description":"JSON mode vs tool calling vs constrained decoding vs schema validation with retry, why parsing free text fails, and idempotency for partial LLM output.","datePublished":"2026-07-29","dateModified":"2026-07-29","inLanguage":"en","author":{"@id":"https://yusuf-gadelrab.github.io/#person"},"publisher":{"@id":"https://yusuf-gadelrab.github.io/#person"},"about":["Large language models","JSON Schema","API design","Software reliability"],"mainEntityOfPage":"https://yusuf-gadelrab.github.io/guides/structured-llm-output.html","isAccessibleForFree":true,"isPartOf":{"@id":"https://yusuf-gadelrab.github.io/#website"},"proficiencyLevel":"Intermediate"},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://yusuf-gadelrab.github.io/"},{"@type":"ListItem","position":2,"name":"Guides","item":"https://yusuf-gadelrab.github.io/guides.html"},{"@type":"ListItem","position":3,"name":"Structured Output"}]}]}</script>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","@id":"https://yusuf-gadelrab.github.io/guides/structured-llm-output.html#faq","mainEntity":[{"@type":"Question","name":"What is the difference between JSON mode and tool calling?","acceptedAnswer":{"@type":"Answer","text":"JSON mode only guarantees that the response parses as valid JSON — it says nothing about which fields are present or what types they hold. Tool calling has you define a JSON Schema for a function's parameters and the model returns a structured call shaped to that schema, which is far closer to what you actually want. Tool calling is the better default because models are heavily trained on emitting well-formed tool calls."}},{"@type":"Question","name":"What is constrained decoding and why is it stronger?","acceptedAnswer":{"@type":"Answer","text":"Constrained decoding masks the model's token choices at every generation step so that only tokens keeping the output valid against your schema are sampleable. The model is structurally unable to emit invalid output, rather than being asked to avoid it. Ollama exposes this through the format field, llama.cpp through GBNF grammars, and libraries like Outlines and XGrammar over other runtimes."}},{"@type":"Question","name":"Do I still need schema validation if the provider enforces the schema?","acceptedAnswer":{"@type":"Answer","text":"Yes. Schema enforcement guarantees shape, not semantics — it cannot check that a date is in the past, that a total equals the sum of its line items, or that an ID exists in your database. A validation layer also gives you a place to catch the failure and feed a specific error message back to the model for one corrective attempt."}},{"@type":"Question","name":"How should I handle a truncated LLM response?","acceptedAnswer":{"@type":"Answer","text":"Check the response's stop or finish reason before you check the parse. If generation hit the token limit, that is a configuration failure and retrying the identical request will truncate identically — raise the limit, request less output, or split the task into batches. Treating truncation as a parse error is the most common way to burn money on a loop that cannot succeed."}},{"@type":"Question","name":"How do I stop retries from writing the same record twice?","acceptedAnswer":{"@type":"Answer","text":"Keep every side effect outside the retry loop. The model call and validation belong inside; the database write happens once after the loop returns, keyed by an idempotency key you derive deterministically, such as a hash of the source document plus the extraction version. Never let the model generate the key — it will produce a different one on retry."}},{"@type":"Question","name":"Does temperature 0 make structured output deterministic?","acceptedAnswer":{"@type":"Answer","text":"No. Temperature 0 makes sampling greedy, which reduces variation, but it does not guarantee byte-identical outputs across runs — batching, hardware, and kernel differences all introduce nondeterminism. Design for the possibility that the same input produces a different valid object, and validate every response rather than assuming a cached earlier result still applies."}},{"@type":"Question","name":"How can I design a schema that reduces validation failures?","acceptedAnswer":{"@type":"Answer","text":"Give every enum an explicit unknown or other value so the model is not forced to guess, put a reasoning string field before the answer field so it can work through the problem in-output, write a description on every field, keep the structure flat, and mark genuinely optional fields optional so the model is never asked to fabricate a value it cannot find."}},{"@type":"Question","name":"Should I ever ask for structured output from a free-text task?","acceptedAnswer":{"@type":"Answer","text":"No. Structured output exists to serve machine consumers. If the result is prose a human reads, wrapping it in JSON adds token overhead and a failure mode with no corresponding benefit. Reach for a schema when something downstream needs to branch on a field, not by default."}}]}</script>
 
 <link rel="stylesheet" href="/css/site.css">
+<link rel="stylesheet" href="/css/lux-motion.css">
 <style>
   .prose{max-width:68ch}
   .prose h2{margin:var(--s7) 0 var(--s4);font-size:var(--t-h2)}
@@ -50,16 +51,16 @@
     color:var(--muted);font-size:var(--t-small);margin:0 0 var(--s5)}
   .callout--warn{border-color:var(--gold-2)}
   .faq-card{padding:var(--s5)}
-  .faq-card h3{font-size:var(--t-h3);margin:0}
-  .faq-card p{color:var(--muted);font-size:var(--t-small);margin:var(--s3) 0 0}
+  .faq-card h3{font-size:var(--t-h3);margin:0;line-height:1.3}
+  .faq-card p{color:var(--muted);font-size:var(--t-small);line-height:1.65;margin:var(--s3) 0 0}
 </style>
 </head>
 <body class="pro">
 
 <a class="skip-link" href="#main">Skip to content</a>
 
-<nav class="site-nav">
-  <a class="site-nav__brand" href="/"><img class="site-nav__lion" src="/img/brand/lion-mark.svg" alt="" width="34" height="34"><span>YUSUF GADELRAB</span></a>
+<nav class="site-nav" aria-label="Primary">
+  <a class="site-nav__brand" href="/"><img class="site-nav__lion" src="/img/brand/lion-mark.svg" alt="" width="34" height="34" decoding="async"><span>YUSUF GADELRAB</span></a>
   <div class="site-nav__links">
     <a href="/">Work</a>
     <a href="/guides.html">Guides</a>
@@ -101,8 +102,8 @@
       </ul>
       <p>Each of these is individually fixable with a regex, and the regex pile is exactly how you end up with a 200-line parser that is itself the least reliable component in the system. The fix is not a better parser. The fix is to stop letting the model emit invalid output in the first place, and then to validate what it does emit anyway.</p>
       <h2>The four mechanisms, from worst to best</h2>
-      <div class="tblwrap"><table class="tbl">
-        <thead><tr><th>Mechanism</th><th>What it guarantees</th><th>What it does not</th></tr></thead>
+      <div class="tblwrap" tabindex="0" role="group" aria-label="Table, scrolls horizontally"><table class="tbl">
+        <thead><tr><th scope="col">Mechanism</th><th scope="col">What it guarantees</th><th scope="col">What it does not</th></tr></thead>
         <tbody>
           <tr><td>Prompt and parse</td><td>Nothing.</td><td>Everything. Do not build on this.</td></tr>
           <tr><td>JSON mode</td><td>The output is syntactically valid JSON.</td><td>That it matches your schema, has your fields, or uses your types.</td></tr>
@@ -118,7 +119,7 @@
       <h3>Constrained decoding</h3>
       <p>Constrained decoding is the strongest mechanism and the one most people do not know they have. At each generation step, the model produces a probability distribution over the entire vocabulary; a grammar engine masks out every token that would make the partial output invalid against your schema, and sampling happens only over what remains. The model is not asked nicely to produce valid JSON — it is structurally incapable of producing anything else.</p>
       <p>This is available locally for free. Ollama accepts a JSON Schema in the <code>format</code> field and enforces it during generation; llama.cpp exposes the same capability as GBNF grammars; libraries like Outlines and XGrammar implement it over other runtimes. If you are running <a href="/guides/local-llm-ollama.html">a model locally</a>, this is the single highest-leverage feature you are probably not using:</p>
-      <span class="formula">curl -s http://localhost:11434/api/chat -d '{
+      <span class="formula" tabindex="0" role="group" aria-label="Formula, scrolls horizontally">curl -s http://localhost:11434/api/chat -d '{
   "model": "qwen3",
   "stream": false,
   "messages": [{"role": "user", "content": "Extract the load details: ..."}],
@@ -136,7 +137,7 @@
       <h2>You still need validation with retry</h2>
       <p>Whichever mechanism you use, a validation layer belongs in front of your business logic. It is the only place that can enforce the constraints schemas cannot express — that a date is in the past, that a total equals the sum of the line items, that an ID exists in your database — and it is the layer that gives the model a second chance with a useful error message instead of dying.</p>
       <p>The pattern is short. Validate; on failure, feed the validation error back as a new turn and try once more; cap the attempts and fail loudly.</p>
-      <span class="formula">from pydantic import BaseModel, ValidationError, Field
+      <span class="formula" tabindex="0" role="group" aria-label="Formula, scrolls horizontally">from pydantic import BaseModel, ValidationError, Field
 from typing import Literal
 
 class Load(BaseModel):
@@ -170,7 +171,7 @@ def extract(text: str, max_attempts: int = 3) -> Load:
       <h2>Idempotency: the retry loop's real cost</h2>
       <p>Here is the failure that reaches production: extraction succeeds, the write succeeds, the response times out on the way back, the retry logic fires, and the same record is written twice. The model behaved perfectly. The retry loop did the damage.</p>
       <p>The rule is simple and easy to violate: <strong>the retry loop must never contain a side effect.</strong> Structure the code so the model call and validation happen inside the loop and the write happens strictly after it returns.</p>
-      <span class="formula"># wrong — a validation retry can re-run the insert
+      <span class="formula" tabindex="0" role="group" aria-label="Formula, scrolls horizontally"># wrong — a validation retry can re-run the insert
 for attempt in range(3):
     data = call_model(...)
     db.insert(data)          # side effect INSIDE the loop
@@ -193,8 +194,8 @@ db.upsert(data, key=idempotency_key(source_document_id))</span>
       <p>Structured output failures are close to impossible to debug after the fact without the raw string. Log, on every failure: the raw model output before parsing, the stop reason, the validation error, the attempt number, and the schema version. That last one matters more than it sounds — schemas drift, and "this used to work" is usually "the schema changed and nothing recorded which version produced this row."</p>
       <p>Track your retry rate as an actual metric. A stable 2% is the system working. A rate climbing over weeks means your inputs are drifting away from what your prompt and schema were built for, and the retry loop is quietly absorbing it until the day it cannot. This is the same discipline as the automated quality gates I use for <a href="/guides/ai-automation-small-business.html">generated outreach drafts</a>: the model produces, a deterministic checker validates, and nothing ships that fails the check.</p>
       <h2>A short decision list</h2>
-      <div class="tblwrap"><table class="tbl">
-        <thead><tr><th>Situation</th><th>Use</th></tr></thead>
+      <div class="tblwrap" tabindex="0" role="group" aria-label="Table, scrolls horizontally"><table class="tbl">
+        <thead><tr><th scope="col">Situation</th><th scope="col">Use</th></tr></thead>
         <tbody>
           <tr><td>Local model, any structured task</td><td>Constrained decoding — Ollama's <code>format</code> field with a JSON Schema. Free, strongest guarantee available.</td></tr>
           <tr><td>Hosted API, extraction or classification</td><td>Tool calling with strict mode if the provider has it, plus a validation layer.</td></tr>
@@ -224,14 +225,14 @@ db.upsert(data, key=idempotency_key(source_document_id))</span>
       <h2>Quick answers</h2>
     </div>
     <div class="grid" style="margin-top:var(--s6)">
-      <article class="card faq-card"><h3>JSON mode vs tool calling?</h3><p>JSON mode only guarantees valid JSON — not your fields or types. Tool calling shapes the output to a JSON Schema you define, and models are trained heavily on emitting well-formed calls.</p></article>
-      <article class="card faq-card"><h3>What is constrained decoding?</h3><p>Token-level masking so only schema-valid tokens can be sampled — invalid output becomes unrepresentable, not just discouraged. Ollama&#x27;s format field, llama.cpp GBNF, Outlines, XGrammar.</p></article>
-      <article class="card faq-card"><h3>Still need validation?</h3><p>Yes. Schemas guarantee shape, not semantics — they can&#x27;t check a date is in the past or an ID exists. Validation is also where you catch failure and give the model one corrective retry.</p></article>
-      <article class="card faq-card"><h3>Handling a truncated response?</h3><p>Check the stop reason before the parse. Hitting the token limit is a config failure; retrying identically truncates identically. Raise the limit, request less, or batch it.</p></article>
-      <article class="card faq-card"><h3>Stopping duplicate writes?</h3><p>Keep side effects out of the retry loop. Write once after it returns, keyed by an idempotency key you derive from the source — never one the model generates.</p></article>
-      <article class="card faq-card"><h3>Is temperature 0 deterministic?</h3><p>No. It makes sampling greedy but does not guarantee byte-identical output — batching and hardware introduce nondeterminism. Validate every response rather than assuming.</p></article>
-      <article class="card faq-card"><h3>Schema tips that cut failures?</h3><p>An unknown value on every enum, a reasoning field before the answer, descriptions on every field, flat over nested, optional fields marked optional so nothing gets fabricated.</p></article>
-      <article class="card faq-card"><h3>Always use structured output?</h3><p>No — only when a machine consumes it. For prose a human reads, a schema adds token overhead and a failure mode with no benefit.</p></article>
+      <article class="card faq-card"><h3>What is the difference between JSON mode and tool calling?</h3><p>JSON mode only guarantees that the response parses as valid JSON — it says nothing about which fields are present or what types they hold. Tool calling has you define a JSON Schema for a function&#x27;s parameters and the model returns a structured call shaped to that schema, which is far closer to what you actually want. Tool calling is the better default because models are heavily trained on emitting well-formed tool calls.</p></article>
+      <article class="card faq-card"><h3>What is constrained decoding and why is it stronger?</h3><p>Constrained decoding masks the model&#x27;s token choices at every generation step so that only tokens keeping the output valid against your schema are sampleable. The model is structurally unable to emit invalid output, rather than being asked to avoid it. Ollama exposes this through the format field, llama.cpp through GBNF grammars, and libraries like Outlines and XGrammar over other runtimes.</p></article>
+      <article class="card faq-card"><h3>Do I still need schema validation if the provider enforces the schema?</h3><p>Yes. Schema enforcement guarantees shape, not semantics — it cannot check that a date is in the past, that a total equals the sum of its line items, or that an ID exists in your database. A validation layer also gives you a place to catch the failure and feed a specific error message back to the model for one corrective attempt.</p></article>
+      <article class="card faq-card"><h3>How should I handle a truncated LLM response?</h3><p>Check the response&#x27;s stop or finish reason before you check the parse. If generation hit the token limit, that is a configuration failure and retrying the identical request will truncate identically — raise the limit, request less output, or split the task into batches. Treating truncation as a parse error is the most common way to burn money on a loop that cannot succeed.</p></article>
+      <article class="card faq-card"><h3>How do I stop retries from writing the same record twice?</h3><p>Keep every side effect outside the retry loop. The model call and validation belong inside; the database write happens once after the loop returns, keyed by an idempotency key you derive deterministically, such as a hash of the source document plus the extraction version. Never let the model generate the key — it will produce a different one on retry.</p></article>
+      <article class="card faq-card"><h3>Does temperature 0 make structured output deterministic?</h3><p>No. Temperature 0 makes sampling greedy, which reduces variation, but it does not guarantee byte-identical outputs across runs — batching, hardware, and kernel differences all introduce nondeterminism. Design for the possibility that the same input produces a different valid object, and validate every response rather than assuming a cached earlier result still applies.</p></article>
+      <article class="card faq-card"><h3>How can I design a schema that reduces validation failures?</h3><p>Give every enum an explicit unknown or other value so the model is not forced to guess, put a reasoning string field before the answer field so it can work through the problem in-output, write a description on every field, keep the structure flat, and mark genuinely optional fields optional so the model is never asked to fabricate a value it cannot find.</p></article>
+      <article class="card faq-card"><h3>Should I ever ask for structured output from a free-text task?</h3><p>No. Structured output exists to serve machine consumers. If the result is prose a human reads, wrapping it in JSON adds token overhead and a failure mode with no corresponding benefit. Reach for a schema when something downstream needs to branch on a field, not by default.</p></article>
     </div>
   </section>
 
@@ -269,5 +270,6 @@ db.upsert(data, key=idempotency_key(source_document_id))</span>
 </footer>
 
 <script src="/js/site.js" defer></script>
+<script src="/js/lux-motion.js" defer></script>
 </body>
 </html>

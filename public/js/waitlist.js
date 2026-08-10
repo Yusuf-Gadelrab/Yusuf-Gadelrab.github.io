@@ -252,7 +252,7 @@
       input.value = email;
 
       if (!valid(email)) {
-        say("That email doesn’t look right — check it and try again.", true);
+        say("That email doesn’t look right. Check it and try again.", true);
         input.focus();
         input.select();
         return;

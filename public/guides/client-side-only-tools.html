@@ -25,10 +25,11 @@
 <meta name="twitter:image" content="https://yusuf-gadelrab.github.io/og-card.png">
 <link rel="alternate" type="text/plain" href="https://yusuf-gadelrab.github.io/llms-full.txt" title="Plain-text profile for language models">
 
-<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"TechArticle","@id":"https://yusuf-gadelrab.github.io/guides/client-side-only-tools.html#article","headline":"The Case for Client-Side-Only Tools","name":"The Case for Client-Side-Only Tools","description":"No account means no breach surface. What you gain from browser-only tools, what you give up in sync and compute, what it costs to run, and how to say so.","datePublished":"2026-07-29","dateModified":"2026-07-29","inLanguage":"en","author":{"@id":"https://yusuf-gadelrab.github.io/#person"},"publisher":{"@id":"https://yusuf-gadelrab.github.io/#person"},"about":["Local-first software","Privacy by design","Static hosting"],"mainEntityOfPage":"https://yusuf-gadelrab.github.io/guides/client-side-only-tools.html","isAccessibleForFree":true,"proficiencyLevel":"Beginner"},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://yusuf-gadelrab.github.io/"},{"@type":"ListItem","position":2,"name":"Guides","item":"https://yusuf-gadelrab.github.io/guides.html"},{"@type":"ListItem","position":3,"name":"Client-Side Tools"}]}]}</script>
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","@id":"https://yusuf-gadelrab.github.io/guides/client-side-only-tools.html#faq","mainEntity":[{"@type":"Question","name":"What is a client-side-only tool?","acceptedAnswer":{"@type":"Answer","text":"A tool that runs entirely in the browser, with all state kept in browser storage such as localStorage or IndexedDB, and no server component beyond serving static files. There is no account, no database, and no transmission of what the user enters."}},{"@type":"Question","name":"Is a tool without accounts more secure?","acceptedAnswer":{"@type":"Answer","text":"For the user's data, generally yes, because the strongest protection is not holding the data at all. There is no user table to dump, no session tokens to steal, and no password reset flow to phish. It does not make the code itself more secure, and it offers no protection if the device is compromised."}},{"@type":"Question","name":"What do you lose with no backend?","acceptedAnswer":{"@type":"Answer","text":"Cross-device sync, server-side backup and recovery, collaboration between users, server-side compute, secret API keys, and any real usage analytics. For single-user tools these usually matter less than the cost of running an account system, but they are real losses and should be disclosed."}},{"@type":"Question","name":"What does it cost to run a client-side tool?","acceptedAnswer":{"@type":"Answer","text":"Effectively nothing. Static files on GitHub Pages, Netlify, or Cloudflare Pages are free at personal-project traffic levels, and there is no database to back up or patch. Cost per user falls as usage grows rather than rising."}},{"@type":"Question","name":"How do users back up data in a browser-only app?","acceptedAnswer":{"@type":"Answer","text":"Through an export function that downloads their data as JSON or CSV, which they store themselves. This is the single most important feature in a local-only tool, because clearing site data deletes everything and browsers can evict storage after extended non-use."}},{"@type":"Question","name":"What should a local-only privacy policy say?","acceptedAnswer":{"@type":"Answer","text":"Name the exact storage mechanism, state that there is no account and no server-side database, disclose anything that is still collected such as hosting server logs or third-party fonts and analytics, explain that clearing site data deletes everything, and point at the export button. Every claim should be verifiable from the browser's network tab."}}]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"TechArticle","@id":"https://yusuf-gadelrab.github.io/guides/client-side-only-tools.html#article","headline":"The Case for Client-Side-Only Tools","name":"The Case for Client-Side-Only Tools","description":"No account means no breach surface. What you gain from browser-only tools, what you give up in sync and compute, what it costs to run, and how to say so.","datePublished":"2026-07-29","dateModified":"2026-07-29","inLanguage":"en","author":{"@id":"https://yusuf-gadelrab.github.io/#person"},"publisher":{"@id":"https://yusuf-gadelrab.github.io/#person"},"about":["Local-first software","Privacy by design","Static hosting"],"mainEntityOfPage":"https://yusuf-gadelrab.github.io/guides/client-side-only-tools.html","isAccessibleForFree":true,"isPartOf":{"@id":"https://yusuf-gadelrab.github.io/#website"},"proficiencyLevel":"Beginner","hasPart":{"@id":"https://yusuf-gadelrab.github.io/guides/client-side-only-tools.html#howto"}},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://yusuf-gadelrab.github.io/"},{"@type":"ListItem","position":2,"name":"Guides","item":"https://yusuf-gadelrab.github.io/guides.html"},{"@type":"ListItem","position":3,"name":"Client-Side Tools"}]},{"@type":"HowTo","@id":"https://yusuf-gadelrab.github.io/guides/client-side-only-tools.html#howto","name":"How to keep a client-side-only tool trustworthy","description":"No account means no breach surface. What you gain from browser-only tools, what you give up in sync and compute, what it costs to run, and how to say so.","inLanguage":"en","isAccessibleForFree":true,"author":{"@id":"https://yusuf-gadelrab.github.io/#person"},"step":[{"@type":"HowToStep","position":1,"name":"Ship export and import","text":"Ship export and import. A JSON or CSV download turns 'no backup' into 'your backup, your file'. This is the single highest-value feature in a local-only tool.","url":"https://yusuf-gadelrab.github.io/guides/client-side-only-tools.html#howto"},{"@type":"HowToStep","position":2,"name":"Warn before destructive actions and never auto-clear storage on version","text":"Warn before destructive actions and never auto-clear storage on version change.","url":"https://yusuf-gadelrab.github.io/guides/client-side-only-tools.html#howto"},{"@type":"HowToStep","position":3,"name":"Make the storage key stable across deploys, and migrate schemas forward","text":"Make the storage key stable across deploys, and migrate schemas forward rather than resetting them.","url":"https://yusuf-gadelrab.github.io/guides/client-side-only-tools.html#howto"},{"@type":"HowToStep","position":4,"name":"Say where the data lives, in the app, not only in the privacy policy","text":"Say where the data lives, in the app, not only in the privacy policy. One line under the form does more than a page nobody opens.","url":"https://yusuf-gadelrab.github.io/guides/client-side-only-tools.html#howto"},{"@type":"HowToStep","position":5,"name":"If sync is genuinely needed later, add it as an opt-in layer over the","text":"If sync is genuinely needed later, add it as an opt-in layer over the same local store rather than rewriting around a server.","url":"https://yusuf-gadelrab.github.io/guides/client-side-only-tools.html#howto"}]}]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","@id":"https://yusuf-gadelrab.github.io/guides/client-side-only-tools.html#faq","mainEntity":[{"@type":"Question","name":"What is a client-side-only tool?","acceptedAnswer":{"@type":"Answer","text":"A tool that runs entirely in the browser, with all state kept in browser storage such as localStorage or IndexedDB, and no server component beyond serving static files. There is no account, no database, and no transmission of what the user enters."}},{"@type":"Question","name":"Is a tool without accounts more secure?","acceptedAnswer":{"@type":"Answer","text":"For the user's data, generally yes, because the strongest protection is not holding the data at all. There is no user table to dump, no session tokens to steal, and no password reset flow to phish. It does not make the code itself more secure, and it offers no protection if the device is compromised."}},{"@type":"Question","name":"What do you lose with no backend?","acceptedAnswer":{"@type":"Answer","text":"Cross-device sync, server-side backup and recovery, collaboration between users, server-side compute, secret API keys, and any real usage analytics. For single-user tools these usually matter less than the cost of running an account system, but they are real losses and should be disclosed."}},{"@type":"Question","name":"What does it cost to run a client-side tool?","acceptedAnswer":{"@type":"Answer","text":"Effectively nothing. Static files on GitHub Pages, Netlify, or Cloudflare Pages are free at personal-project traffic levels, and there is no database to back up or patch. Cost per user falls as usage grows rather than rising."}},{"@type":"Question","name":"How do users back up data in a browser-only app?","acceptedAnswer":{"@type":"Answer","text":"Through an export function that downloads their data as JSON or CSV, which they store themselves. This is the single most important feature in a local-only tool, because clearing site data deletes everything and browsers can evict storage after extended non-use."}},{"@type":"Question","name":"What should a local-only privacy policy say?","acceptedAnswer":{"@type":"Answer","text":"Name the exact storage mechanism, state that there is no account and no server-side database, disclose anything that is still collected such as hosting server logs or third-party fonts and analytics, explain that clearing site data deletes everything, and point at the export button. Every claim should be verifiable from the browser's network tab."}},{"@type":"Question","name":"Does a client-side-only tool protect against XSS?","acceptedAnswer":{"@type":"Answer","text":"No. Cross-site scripting on your own domain reads localStorage and IndexedDB with the same access your own code has, so a local-only architecture protects against a server-side breach but not against a script injected into the page. That defence is ordinary web hygiene — a strict Content-Security-Policy, subresource integrity, and sanitising anything rendered as HTML — not something local-first replaces."}},{"@type":"Question","name":"How do you add sync to a local-only tool without rewriting it?","acceptedAnswer":{"@type":"Answer","text":"Keep local storage as the source of truth, add sync as an explicit opt-in rather than a silent upload, push only records changed since the last sync using a timestamp on each record, and pick a conflict rule upfront — last-write-wins is enough for single-user data edited one device at a time. The server side can be a single endpoint that stores a JSON blob per user; it does not need to become a product."}}]}</script>
 
 <link rel="stylesheet" href="/css/site.css">
+<link rel="stylesheet" href="/css/lux-motion.css">
 <style>
   .prose{max-width:68ch}
   .prose h2{margin:var(--s7) 0 var(--s4);font-size:var(--t-h2)}
@@ -50,16 +51,16 @@
     color:var(--muted);font-size:var(--t-small);margin:0 0 var(--s5)}
   .callout--warn{border-color:var(--gold-2)}
   .faq-card{padding:var(--s5)}
-  .faq-card h3{font-size:var(--t-h3);margin:0}
-  .faq-card p{color:var(--muted);font-size:var(--t-small);margin:var(--s3) 0 0}
+  .faq-card h3{font-size:var(--t-h3);margin:0;line-height:1.3}
+  .faq-card p{color:var(--muted);font-size:var(--t-small);line-height:1.65;margin:var(--s3) 0 0}
 </style>
 </head>
 <body class="pro">
 
 <a class="skip-link" href="#main">Skip to content</a>
 
-<nav class="site-nav">
-  <a class="site-nav__brand" href="/"><img class="site-nav__lion" src="/img/brand/lion-mark.svg" alt="" width="34" height="34"><span>YUSUF GADELRAB</span></a>
+<nav class="site-nav" aria-label="Primary">
+  <a class="site-nav__brand" href="/"><img class="site-nav__lion" src="/img/brand/lion-mark.svg" alt="" width="34" height="34" decoding="async"><span>YUSUF GADELRAB</span></a>
   <div class="site-nav__links">
     <a href="/">Work</a>
     <a href="/guides.html">Guides</a>
@@ -91,6 +92,22 @@
       <h2>The default is heavier than the problem</h2>
       <p>Most small utilities get built with an account system, a database, a session store, and a hosting bill — for a calculator. The reflex is so automatic that nobody asks whether the server is doing anything the browser could not.</p>
       <p>For a large class of tools, it is not. A position sizer, a trade journal, a weight tracker, a habit checklist, a unit converter, a text formatter: all of these are pure functions plus a little state. The browser has a JavaScript engine and persistent storage. That is the entire requirement.</p>
+      <h2>Which tools actually need a server</h2>
+      <p>The honest test is not "can this be a website" — almost anything can. It is whether the feature the tool provides is possible without a second party holding state. A decision table, run once per tool, saves the account system nobody needed.</p>
+      <div class="tblwrap" tabindex="0" role="group" aria-label="Table, scrolls horizontally"><table class="tbl">
+        <thead><tr><th scope="col">Tool type</th><th scope="col">Needs a server</th><th scope="col">Why</th></tr></thead>
+        <tbody>
+          <tr><td>Calculator, converter, position sizer</td><td>No</td><td>Pure function of the inputs. Nothing to persist across a session at all.</td></tr>
+          <tr><td>Trade journal, habit tracker, weight log</td><td>No</td><td>State is single-user and can live entirely in browser storage.</td></tr>
+          <tr><td>Unit or file conversion (images, text, small media)</td><td>No</td><td>JavaScript or WebAssembly can do the transform in the browser.</td></tr>
+          <tr><td>Team task board, shared document</td><td>Yes</td><td>Multiple people must see the same state, which requires a relay.</td></tr>
+          <tr><td>Chat or messaging</td><td>Yes</td><td>Delivery to someone else's device requires a server in the middle.</td></tr>
+          <tr><td>Marketplace or listings app</td><td>Yes</td><td>Inventory must stay consistent across every buyer viewing it.</td></tr>
+          <tr><td>Anything calling a paid API with a secret key</td><td>Yes</td><td>A key embedded in browser JS is public the moment the page loads.</td></tr>
+          <tr><td>Anything that must survive a lost or wiped device</td><td>Yes, or strict export discipline</td><td>A server-side copy is the only unconditional guarantee.</td></tr>
+          <tr><td>Cross-device sync as a hard requirement</td><td>Yes, or an opt-in sync layer</td><td>Covered later — this does not have to mean starting over.</td></tr>
+        </tbody>
+      </table></div>
       <h2>What you gain</h2>
       <h3>No breach surface</h3>
       <p>The strongest security property available is <strong>not holding the data.</strong> No user table means no credential dump, no password reset flow to phish, no session tokens to steal, no compliance obligation around personal data you never received. You cannot be forced to hand over records that were never on your server, and an attacker who fully compromises the host gets a folder of static files.</p>
@@ -99,11 +116,24 @@
       <h3>It costs nothing to run</h3>
       <p>Static files on GitHub Pages, Netlify, or Cloudflare Pages cost nothing at realistic personal-project traffic. There is no database to back up, no dependency to patch at 2am, no bill that grows with users. A client-side tool that gets popular gets <em>cheaper</em> per user, not more expensive.</p>
       <h3>It keeps working</h3>
-      <p>No server means no outage, no rate limit, no deprecation. Offline through a service worker, it works on a plane. A tool built this way in 2020 still runs today with no maintenance, which is not a claim most SaaS side projects can make.</p>
+      <p>No server means no outage, no rate limit, no deprecation. Offline through a service worker, it works on a plane — the mechanics of that are in the <a href="/guides/offline-pwa.html">offline PWA guide</a>. A tool built this way in 2020 still runs today with no maintenance, which is not a claim most SaaS side projects can make.</p>
+      <h3>Choosing a storage mechanism</h3>
+      <p>"Browser storage" is not one thing. Picking the wrong one shows up later as either a size ceiling or a jank problem, both avoidable up front.</p>
+      <div class="tblwrap" tabindex="0" role="group" aria-label="Table, scrolls horizontally"><table class="tbl">
+        <thead><tr><th scope="col">Mechanism</th><th scope="col">Persists after tab close</th><th scope="col">Practical size</th><th scope="col">Sync to server</th><th scope="col">Use it for</th></tr></thead>
+        <tbody>
+          <tr><td>Cookies</td><td>Yes</td><td>About 4 KB per cookie</td><td>Sent automatically on every request</td><td>Server communication, not app state — the wrong tool for local-only data</td></tr>
+          <tr><td>sessionStorage</td><td>No, cleared on tab close</td><td>About 5 MB</td><td>None</td><td>Transient in-page state, never saved data</td></tr>
+          <tr><td>localStorage</td><td>Yes</td><td>About 5 MB per origin</td><td>None</td><td>Small JSON — journals, logs, settings, a few thousand records</td></tr>
+          <tr><td>IndexedDB</td><td>Yes</td><td>Large, a share of free disk</td><td>None</td><td>Structured or binary data, real queries, anything past a couple MB</td></tr>
+          <tr><td>Cache API</td><td>Yes</td><td>Large</td><td>None</td><td>Network responses and assets behind a service worker, not app data</td></tr>
+          <tr><td>Origin Private File System</td><td>Yes</td><td>Large</td><td>None</td><td>Fast binary file access; newer, support still catching up</td></tr>
+        </tbody>
+      </table></div>
       <h2>What you give up</h2>
       <p>This is the part most local-first pitches skip, so here it is plainly.</p>
-      <div class="tblwrap"><table class="tbl">
-        <thead><tr><th>You lose</th><th>What that means in practice</th></tr></thead>
+      <div class="tblwrap" tabindex="0" role="group" aria-label="Table, scrolls horizontally"><table class="tbl">
+        <thead><tr><th scope="col">You lose</th><th scope="col">What that means in practice</th></tr></thead>
         <tbody>
           <tr><td>Cross-device sync</td><td>Data logged on the laptop is not on the phone. Two devices means two separate datasets.</td></tr>
           <tr><td>Backup</td><td>Clearing browser data deletes everything. On iOS, storage can be evicted after long non-use.</td></tr>
@@ -114,6 +144,22 @@
         </tbody>
       </table></div>
       <p>The honest framing is not that these do not matter. It is that <strong>for single-user tools they usually matter less than the ongoing cost of an account system</strong> — for the builder and for the user, who has one more password and one more breach notification in their future.</p>
+      <h2>The honest threat model</h2>
+      <p>"Local-only" is not a synonym for "secure." State plainly what the architecture protects against and what it does not — overclaiming here is exactly the kind of promise that erodes trust the moment someone technical tests it.</p>
+      <div class="tblwrap" tabindex="0" role="group" aria-label="Table, scrolls horizontally"><table class="tbl">
+        <thead><tr><th scope="col">Threat</th><th scope="col">Protected?</th><th scope="col">Why</th></tr></thead>
+        <tbody>
+          <tr><td>Server-side data breach</td><td>Yes</td><td>There is no server-side copy of user data to breach</td></tr>
+          <tr><td>Database credential leak</td><td>Yes</td><td>There is no database</td></tr>
+          <tr><td>Password reuse or credential stuffing</td><td>Yes</td><td>There is no password, because there is no account</td></tr>
+          <tr><td>XSS on your own domain</td><td>No</td><td>A script injected into the page reads localStorage and IndexedDB with the same access your own code has</td></tr>
+          <tr><td>Malicious or compromised browser extension</td><td>No</td><td>Extensions with broad permissions can read page-accessible storage like any other script</td></tr>
+          <tr><td>Shared or public device</td><td>No</td><td>Anyone with access to the browser profile can open DevTools and read everything stored</td></tr>
+          <tr><td>Physical device theft, unencrypted disk</td><td>No</td><td>Browser storage is not encrypted by the browser itself; disk encryption is a separate, OS-level setting</td></tr>
+          <tr><td>Compromised third-party script or CDN dependency</td><td>No</td><td>A compromised script runs with the same privileges as the rest of the page</td></tr>
+        </tbody>
+      </table></div>
+      <p>The defence against every "No" row is ordinary web security hygiene, not anything specific to local-first: a strict Content-Security-Policy, subresource integrity on third-party scripts, sanitising anything rendered as HTML, and treating browser extensions as ambient risk outside your control. None of that becomes optional just because there is no server to also secure — the client is now the entire attack surface rather than a thin layer in front of one, which is exactly the case a tool like <a href="/dira.html">DIRA</a> is built to scan for.</p>
       <h2>Mitigations that keep the model intact</h2>
       <ol>
         <li><strong>Ship export and import.</strong> A JSON or CSV download turns 'no backup' into 'your backup, your file'. This is the single highest-value feature in a local-only tool.</li>
@@ -122,6 +168,73 @@
         <li><strong>Say where the data lives, in the app,</strong> not only in the privacy policy. One line under the form does more than a page nobody opens.</li>
         <li><strong>If sync is genuinely needed later,</strong> add it as an opt-in layer over the same local store rather than rewriting around a server.</li>
       </ol>
+      <h2>Schema versioning, worked</h2>
+      <p>"Migrate schemas forward" above is the mitigation people skip, because it sounds like more work than it is. Here is what it looks like end to end, for a tracker that adds a <code>unit</code> field in version 2 that version 1 records never had.</p>
+      <span class="formula" tabindex="0" role="group" aria-label="Formula, scrolls horizontally">const STORE_KEY = 'cut-tracker';
+const CURRENT_VERSION = 2;
+
+const MIGRATIONS = {
+  1: (data) =&gt; data, // baseline, nothing to do
+  2: (data) =&gt; ({
+    ...data,
+    entries: data.entries.map(e =&gt; ({ ...e, unit: e.unit || 'lb' })),
+  }),
+};
+
+function load() {
+  const raw = localStorage.getItem(STORE_KEY);
+  if (!raw) return { version: CURRENT_VERSION, entries: [] };
+
+  let data = JSON.parse(raw);
+  let v = data.version || 1;
+
+  while (v &lt; CURRENT_VERSION) {
+    v += 1;
+    data = MIGRATIONS[v](data);
+  }
+
+  if (v !== (data.version || 1)) {
+    data.version = v;
+    localStorage.setItem(STORE_KEY, JSON.stringify(data));
+  }
+  return data;
+}</span>
+      <p>Two rules make this safe. Migrations run forward, one version at a time, so a jump from version 1 to version 4 replays three small, individually testable steps instead of one large rewrite. And the migration writes back to storage immediately, so the very next load is already current — which means the migration code for an old version can eventually be deleted once you are confident nobody is still on it.</p>
+      <h2>Adding sync later, without a rewrite</h2>
+      <p>The last mitigation above deserves the full explanation, because "add sync later" sounds harder than it is if the local store was treated as the source of truth from day one.</p>
+      <ol>
+        <li><strong>Local storage stays the source of truth</strong> even after sync exists. Sync is a mirror, not a replacement — the app must keep working with the network off.</li>
+        <li><strong>Sync is an explicit opt-in,</strong> never a silent background upload. A user who never enables it is running the exact same app as before sync existed.</li>
+        <li><strong>Sync diffs, not the whole dataset.</strong> Timestamp every record on write, and push only what changed since the last successful sync.</li>
+        <li><strong>Pick a conflict rule before you need one.</strong> Last-write-wins by timestamp is simple and fine for single-user data edited from one device at a time; genuinely concurrent editing needs a CRDT or operational-transform library, which is real added complexity, not a checkbox.</li>
+        <li><strong>The server side can be minimal.</strong> One authenticated endpoint that accepts and returns a JSON blob per user is enough for years of a single-user tool. It does not need to become a product.</li>
+      </ol>
+      <span class="formula" tabindex="0" role="group" aria-label="Formula, scrolls horizontally">async function sync() {
+  if (!syncEnabled()) return;
+  const last = localStorage.getItem('lastSyncAt') || 0;
+  const dirty = getEntries().filter(e =&gt; e.updatedAt &gt; last);
+
+  if (dirty.length) {
+    await fetch('/api/sync', { method: 'POST', body: JSON.stringify({ entries: dirty }) });
+  }
+  const remote = await fetch('/api/sync?since=' + last).then(r =&gt; r.json());
+  mergeByTimestamp(remote.entries); // last-write-wins on updatedAt
+  localStorage.setItem('lastSyncAt', Date.now());
+}</span>
+      <p>Nothing about this touches the local storage schema, the UI, or any code path a non-syncing user exercises. That is the actual payoff of designing local-first from day one: sync becomes an addition, not a rewrite.</p>
+      <h2>What client-side hosting actually costs</h2>
+      <p>The zero-cost claim made earlier is worth pricing out explicitly, against the alternative, as an illustrative comparison rather than a quote from any specific host.</p>
+      <div class="tblwrap" tabindex="0" role="group" aria-label="Table, scrolls horizontally"><table class="tbl">
+        <thead><tr><th scope="col">Host</th><th scope="col">Free tier</th><th scope="col">What it costs at real personal-project traffic</th><th scope="col">Best for</th></tr></thead>
+        <tbody>
+          <tr><td>GitHub Pages</td><td>Unlimited for public repos</td><td>Effectively $0</td><td>Personal tools, portfolios, static guides</td></tr>
+          <tr><td>Cloudflare Pages</td><td>Unlimited bandwidth on the free plan</td><td>Effectively $0</td><td>Same as GitHub Pages, with a faster edge network</td></tr>
+          <tr><td>Netlify</td><td>100 GB bandwidth per month free</td><td>$0 until traffic passes the free allowance, then billed per GB</td><td>Static tools that also want form handling</td></tr>
+          <tr><td>Vercel</td><td>Generous free tier tuned for frameworks</td><td>$0 until usage forces an upgrade</td><td>If you are already building with a framework it favours</td></tr>
+          <tr><td>Any backend (VM plus managed database)</td><td>Rarely a real free tier</td><td>Roughly $5 to $50+ per month minimum, before any traffic</td><td>Only once a specific feature has proven it needs a server</td></tr>
+        </tbody>
+      </table></div>
+      <p>The comparison is not close. Static hosting is not merely cheaper than a backend, it is frequently exactly $0 at the traffic a personal tool actually receives, while a backend carries a monthly floor whether or not anyone opens the tool that day.</p>
       <h2>Writing the privacy policy honestly</h2>
       <p>A local-only tool makes for a short, unusually credible privacy policy — but only if it is specific. Vague reassurance reads exactly like every policy that turned out to be false.</p>
       <ul>
@@ -133,7 +246,7 @@
       </ul>
       <p>The test I use: could a technically literate user verify every claim in the policy from the network tab in under a minute? If yes, it is honest. If a claim requires trusting me, it should be softened or removed. <a href="/privacy.html">Mine is here →</a></p>
       <h2>When you actually do need a backend</h2>
-      <p>Not every tool fits. You need a server when the data is genuinely shared between people, when compute exceeds what a phone browser can do, when an API key must stay secret, when the data must survive a lost device, or when a regulation requires audit trails you can produce. Those are real requirements — the point is to check whether you have one, not to assume you do.</p>
+      <p>Not every tool fits. You need a server when the data is genuinely shared between people, when compute exceeds what a phone browser can do, when an API key must stay secret, when the data must survive a lost device, or when a regulation requires audit trails you can produce. Those are real requirements — the point is to check whether you have one, not to assume you do. <a href="/apps/cut/">Cut</a>, on the <a href="/stack.html">stack</a> described here, is the small end of the local-only case: a weight tracker with nothing behind it but a browser.</p>
 
       <h2>Tools referenced in this guide</h2>
       <ul>
@@ -153,12 +266,14 @@
       <h2>Quick answers</h2>
     </div>
     <div class="grid" style="margin-top:var(--s6)">
-      <article class="card faq-card"><h3>What is a client-side-only tool?</h3><p>Runs entirely in the browser, state in localStorage or IndexedDB, no server beyond static files. No account, no database, nothing transmitted.</p></article>
-      <article class="card faq-card"><h3>Is no-account more secure?</h3><p>For user data, yes — the strongest protection is not holding it. No user table, no tokens, no reset flow to phish. It does not protect a compromised device.</p></article>
-      <article class="card faq-card"><h3>What do you give up?</h3><p>Sync, backup, recovery, collaboration, server-side compute, secret API keys, and real usage analytics. Say so rather than hiding it.</p></article>
-      <article class="card faq-card"><h3>What does it cost to run?</h3><p>Effectively zero. Static hosting is free at personal traffic, nothing to back up or patch, and cost per user falls as usage grows.</p></article>
-      <article class="card faq-card"><h3>How do users back up?</h3><p>An export button that downloads JSON or CSV. Highest-value feature in a local-only tool — clearing site data wipes everything.</p></article>
-      <article class="card faq-card"><h3>What goes in the privacy policy?</h3><p>The exact storage mechanism, no account or database, whatever hosting logs still collect, the eviction risk, and the export path. Verifiable claims only.</p></article>
+      <article class="card faq-card"><h3>What is a client-side-only tool?</h3><p>A tool that runs entirely in the browser, with all state kept in browser storage such as localStorage or IndexedDB, and no server component beyond serving static files. There is no account, no database, and no transmission of what the user enters.</p></article>
+      <article class="card faq-card"><h3>Is a tool without accounts more secure?</h3><p>For the user&#x27;s data, generally yes, because the strongest protection is not holding the data at all. There is no user table to dump, no session tokens to steal, and no password reset flow to phish. It does not make the code itself more secure, and it offers no protection if the device is compromised.</p></article>
+      <article class="card faq-card"><h3>What do you lose with no backend?</h3><p>Cross-device sync, server-side backup and recovery, collaboration between users, server-side compute, secret API keys, and any real usage analytics. For single-user tools these usually matter less than the cost of running an account system, but they are real losses and should be disclosed.</p></article>
+      <article class="card faq-card"><h3>What does it cost to run a client-side tool?</h3><p>Effectively nothing. Static files on GitHub Pages, Netlify, or Cloudflare Pages are free at personal-project traffic levels, and there is no database to back up or patch. Cost per user falls as usage grows rather than rising.</p></article>
+      <article class="card faq-card"><h3>How do users back up data in a browser-only app?</h3><p>Through an export function that downloads their data as JSON or CSV, which they store themselves. This is the single most important feature in a local-only tool, because clearing site data deletes everything and browsers can evict storage after extended non-use.</p></article>
+      <article class="card faq-card"><h3>What should a local-only privacy policy say?</h3><p>Name the exact storage mechanism, state that there is no account and no server-side database, disclose anything that is still collected such as hosting server logs or third-party fonts and analytics, explain that clearing site data deletes everything, and point at the export button. Every claim should be verifiable from the browser&#x27;s network tab.</p></article>
+      <article class="card faq-card"><h3>Does a client-side-only tool protect against XSS?</h3><p>No. Cross-site scripting on your own domain reads localStorage and IndexedDB with the same access your own code has, so a local-only architecture protects against a server-side breach but not against a script injected into the page. That defence is ordinary web hygiene — a strict Content-Security-Policy, subresource integrity, and sanitising anything rendered as HTML — not something local-first replaces.</p></article>
+      <article class="card faq-card"><h3>How do you add sync to a local-only tool without rewriting it?</h3><p>Keep local storage as the source of truth, add sync as an explicit opt-in rather than a silent upload, push only records changed since the last sync using a timestamp on each record, and pick a conflict rule upfront — last-write-wins is enough for single-user data edited one device at a time. The server side can be a single endpoint that stores a JSON blob per user; it does not need to become a product.</p></article>
     </div>
   </section>
 
@@ -196,5 +311,6 @@
 </footer>
 
 <script src="/js/site.js" defer></script>
+<script src="/js/lux-motion.js" defer></script>
 </body>
 </html>

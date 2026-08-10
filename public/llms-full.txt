@@ -384,7 +384,7 @@ Writing index: https://yusuf-gadelrab.github.io/writing.html
 I run a 30B model on my laptop for free. Here is exactly where that wins, where it loses badly, and which paid AI tools survived the comparison.
 
 "Building a nonprofit before I can legally earn" - https://yusuf-gadelrab.github.io/writing/building-a-nonprofit-before-youre-allowed-to-earn.html
-Immigration status can restrict what you may do without restricting what you may build. Four program ideas, one entity, and nothing filed yet.
+Written while my status did not authorize employment. Update: I am now a US permanent resident. Four program ideas, one entity, and nothing filed yet.
 
 "Built a position size calculator that refuses to let you r" - https://yusuf-gadelrab.github.io/writing/built-a-position-size-calculator-that-refuses-to-let-you-round-up-free.html
 The single most expensive habit I had was sizing by feel and then rounding the share count up to something clean. 187 shares becomes 200 because 200 looks
@@ -422,17 +422,11 @@ Every security tool I looked at wanted me to install a hundred packages to go lo
 "Koyfin vs Seeking Alpha vs Simply Wall St: which to pay for" - https://yusuf-gadelrab.github.io/writing/koyfin-vs-seeking-alpha-vs-simply-wall-st.html
 Three research tools, three different jobs: fast data, crowd opinions, visual company snapshots. Here is which 1 of the 3 is worth paying for, and why.
 
-"My first startup got hacked before launch. Last month, m" - https://yusuf-gadelrab.github.io/writing/my-first-startup-got-hacked-before-launch-last-month-my-classmates-dem.html
-DIRA scans your entire codebase in seconds, no dependencies, no setup. It’s not for big corps, it’s for founders like us who need to know if we’re secure *
-
 "My trading strategy failed its robustness test" - https://yusuf-gadelrab.github.io/writing/robustness-test-on-my-trading-strategy-and-it-failed.html
 Positive expectancy is not an edge. A risk-matched random entry captured most of mine, and what was left had a confidence interval crossing zero.
 
 "Student software stack: what to claim free with a .edu" - https://yusuf-gadelrab.github.io/writing/student-software-stack-free-first-paid-second.html
 Almost everything a CS student is told to buy has a free .edu tier. Here is what to claim in your first week, and the short list worth paying for.
-
-"Studied for 12 hours straight before realizing I could aut" - https://yusuf-gadelrab.github.io/writing/studied-for-12-hours-straight-before-realizing-i-could-automate-this-s.html
-Risk calculator cuts my equity research from 2 hours to 40 minutes (60% faster). Visa timeline saved me from missing my flight last month. Swing screener’s
 
 "The hardest part of an internship search isn't the applica" - https://yusuf-gadelrab.github.io/writing/the-hardest-part-of-an-internship-search-isnt-the-applications-its-tha.html
 I learned this the expensive way. Summer 2027 internship recruiting is happening right now, in July 2026. Not in the spring. Not in the fall. Now.
@@ -709,7 +703,7 @@ Guides (long-form answers, every formula shown) (60)
   https://yusuf-gadelrab.github.io/guides/walk-forward-backtest.html - Walk-Forward Testing and Lookahead Bias: How Backtests Lie
   https://yusuf-gadelrab.github.io/guides/weight-tracking-signal-vs-noise.html - Tracking Weight Without Losing Your Mind: Signal vs Noise
 
-Writing (essays and build logs) (25)
+Writing (essays and build logs) (23)
   https://yusuf-gadelrab.github.io/writing/ai-tools-i-pay-for-vs-what-i-run-locally.html - AI tools I pay for vs what I run locally
   https://yusuf-gadelrab.github.io/writing/building-a-nonprofit-before-youre-allowed-to-earn.html - Building a nonprofit before I can legally earn
   https://yusuf-gadelrab.github.io/writing/built-a-position-size-calculator-that-refuses-to-let-you-round-up-free.html - Built a position size calculator that refuses to let you r
@@ -724,10 +718,8 @@ Writing (essays and build logs) (25)
   https://yusuf-gadelrab.github.io/writing/i-spent-months-building-trading-strategies-and-then-published-the-resu.html - I spent months building trading strategies and then publis
   https://yusuf-gadelrab.github.io/writing/i-wrote-a-security-scanner-with-zero-dependencies-on-purpose.html - I wrote a security scanner with zero dependencies, on purp
   https://yusuf-gadelrab.github.io/writing/koyfin-vs-seeking-alpha-vs-simply-wall-st.html - Koyfin vs Seeking Alpha vs Simply Wall St: which to pay for
-  https://yusuf-gadelrab.github.io/writing/my-first-startup-got-hacked-before-launch-last-month-my-classmates-dem.html - My first startup got hacked before launch. Last month, m
   https://yusuf-gadelrab.github.io/writing/robustness-test-on-my-trading-strategy-and-it-failed.html - My trading strategy failed its robustness test
   https://yusuf-gadelrab.github.io/writing/student-software-stack-free-first-paid-second.html - Student software stack: what to claim free with a .edu
-  https://yusuf-gadelrab.github.io/writing/studied-for-12-hours-straight-before-realizing-i-could-automate-this-s.html - Studied for 12 hours straight before realizing I could aut
   https://yusuf-gadelrab.github.io/writing/the-hardest-part-of-an-internship-search-isnt-the-applications-its-tha.html - The hardest part of an internship search isn't the applica
   https://yusuf-gadelrab.github.io/writing/the-internship-deadline-panic-was-mostly-fictional.html - The internship deadline panic was mostly fake
   https://yusuf-gadelrab.github.io/writing/tradingview-vs-trendspider-vs-stock-rover-for-swing-trading.html - TradingView vs TrendSpider vs Stock Rover for swing trading

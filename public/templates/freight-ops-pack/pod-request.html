@@ -2,7 +2,11 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
+<meta name="referrer" content="strict-origin-when-cross-origin">
+<meta http-equiv="Content-Security-Policy" content="object-src 'none'; base-uri 'self'">
 <title>POD Request &amp; Escalation — {{LOAD_NUMBER}}</title>
+<meta name="robots" content="noindex,follow">
+<link rel="canonical" href="https://yusuf-gadelrab.github.io/templates.html">
 <!-- SAMPLE CONTENT: Ridgeline Freight Partners requesting POD from Copper State Carriers for load RFP-58231, then escalating. See README.md for the exact strings to find-and-replace. -->
 <style>
 :root{
@@ -32,7 +36,7 @@ h1,h2,h3{ font-family:Georgia,"Times New Roman",serif; margin:0; }
 hr.top-rule{ height:2px; border:none; background:linear-gradient(90deg,var(--gold-2),var(--gold),var(--gold-dim)); margin:0 0 26px; }
 
 .doc-title{ margin-bottom:20px; }
-.doc-title h1{ font-size:28px; letter-spacing:-.5px; }
+.doc-title h1, .doc-title h2{ font-size:28px; letter-spacing:-.5px; }
 .doc-title .sub{ color:var(--paper-muted); font-size:12px; margin-top:4px; }
 
 .meta-bar{ display:grid; grid-template-columns:repeat(4,1fr); gap:14px; margin-bottom:22px; border:1px solid var(--paper-line); border-radius:8px; padding:12px 16px; }
@@ -42,7 +46,7 @@ hr.top-rule{ height:2px; border:none; background:linear-gradient(90deg,var(--gol
 .body-copy p{ font-size:13px; margin:0 0 14px; }
 
 .card{ border:1px solid var(--paper-line); border-radius:10px; padding:16px 18px; margin-bottom:20px; break-inside:avoid; }
-.card h3{ font-size:10px; letter-spacing:2px; text-transform:uppercase; color:var(--gold-dim); margin-bottom:8px; font-family:-apple-system,sans-serif; font-weight:700; }
+.card h2{ font-size:10px; letter-spacing:2px; text-transform:uppercase; color:var(--gold-dim); margin-bottom:8px; font-family:-apple-system,sans-serif; font-weight:700; }
 .card ul{ margin:0; padding-left:18px; }
 .card li{ font-size:12.5px; margin-bottom:4px; }
 
@@ -56,6 +60,8 @@ hr.top-rule{ height:2px; border:none; background:linear-gradient(90deg,var(--gol
 .footer{ position:absolute; left:60px; right:60px; bottom:34px; display:flex; justify-content:space-between; font-size:10px; color:var(--paper-muted); padding-top:8px; border-top:1px solid var(--paper-line); }
 .footer .pg{ color:var(--gold-dim); font-weight:700; }
 </style>
+<style>@media screen{.tbl-scroll{overflow-x:auto;-webkit-overflow-scrolling:touch}.tbl-scroll:focus-visible{outline:2px solid #D4AF37;outline-offset:2px}}</style>
+<style>th[scope=row]{font-weight:inherit;text-transform:none;letter-spacing:inherit;text-align:left}</style>
 </head>
 <body>
 
@@ -91,7 +97,7 @@ hr.top-rule{ height:2px; border:none; background:linear-gradient(90deg,var(--gol
   </div>
 
   <div class="card">
-    <h3>What We Need</h3>
+    <h2>What We Need</h2>
     <ul>
       <li>Signed POD with consignee printed name, signature, and delivery time-stamp</li>
       <li>Signed Bill of Lading (front and back if annotated)</li>
@@ -100,7 +106,7 @@ hr.top-rule{ height:2px; border:none; background:linear-gradient(90deg,var(--gol
   </div>
 
   <div class="card">
-    <h3>How to Send</h3>
+    <h2>How to Send</h2>
     <ul>
       <li>Email: ap@ridgelinefreight.com — reference Load #RFP-58231 in the subject line</li>
       <li>Upload: carrierportal.ridgelinefreight.com/docs</li>
@@ -129,7 +135,7 @@ hr.top-rule{ height:2px; border:none; background:linear-gradient(90deg,var(--gol
   <hr class="top-rule">
 
   <div class="doc-title">
-    <h1><span class="gold-text">POD-Missing Escalation</span></h1>
+    <h2><span class="gold-text">POD-Missing Escalation</span></h2>
     <div class="sub">Second notice — Load #RFP-58231 remains undocumented after 4 business days</div>
   </div>
 
@@ -140,15 +146,15 @@ hr.top-rule{ height:2px; border:none; background:linear-gradient(90deg,var(--gol
     <p>To keep this load moving toward payment, please send the documents within 2 business days of this notice. If there is an issue on the receiving end (refused signature, damaged freight, disputed shortage), let us know immediately — that changes our next step and needs to be documented separately.</p>
   </div>
 
-  <table class="escalation-table">
-    <tr><td class="lbl">First Request Sent</td><td>July 31, 2026 — email + portal notice</td></tr>
-    <tr><td class="lbl">Second Request (this notice)</td><td>August 4, 2026</td></tr>
-    <tr><td class="lbl">Resolution Deadline</td><td>August 6, 2026, 5:00 PM PT</td></tr>
-    <tr><td class="lbl">If Unresolved</td><td>Load flagged for dispute review; future tenders paused; may affect Carrier Scorecard rating</td></tr>
-  </table>
+  <div class="tbl-scroll" tabindex="0" role="region" aria-label="Scrollable table"><table class="escalation-table">
+    <tr><th scope="row" class="lbl">First Request Sent</th><td>July 31, 2026 — email + portal notice</td></tr>
+    <tr><th scope="row" class="lbl">Second Request (this notice)</th><td>August 4, 2026</td></tr>
+    <tr><th scope="row" class="lbl">Resolution Deadline</th><td>August 6, 2026, 5:00 PM PT</td></tr>
+    <tr><th scope="row" class="lbl">If Unresolved</th><td>Load flagged for dispute review; future tenders paused; may affect Carrier Scorecard rating</td></tr>
+  </table></div>
 
   <div class="card">
-    <h3>Fastest Path to Resolution</h3>
+    <h2>Fastest Path to Resolution</h2>
     <ul>
       <li>Text a clear photo of the signed POD to (408) 555-0173 — this alone is enough to lift the hold</li>
       <li>Reply to this email with the document attached</li>

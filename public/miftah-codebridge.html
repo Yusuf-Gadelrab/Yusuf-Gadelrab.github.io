@@ -2,12 +2,14 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8" />
+<meta name="referrer" content="strict-origin-when-cross-origin">
+<meta http-equiv="Content-Security-Policy" content="object-src 'none'; base-uri 'self'">
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <!-- tech:seo — managed block (SEO / social / structured data / perf / PWA) -->
 <link rel="preload" href="/css/site.css" as="style">
 <meta name="robots" content="index,follow,max-image-preview:large">
 <meta property="og:locale" content="en_US">
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"Project","@id":"https://yusuf-gadelrab.github.io/miftah-codebridge.html#program","name":"CodeBridge","url":"https://yusuf-gadelrab.github.io/miftah-codebridge.html","description":"Free bilingual computer science education in Spanish and Arabic alongside English, for high-school and first-year college students. A program of Miftah Foundation.","disambiguatingDescription":"Program in design. No cohort has run. The parent organization is not yet incorporated, no 501(c)(3) application has been filed, and contributions are not tax-deductible.","parentOrganization":{"@type":"NGO","@id":"https://yusuf-gadelrab.github.io/miftah.html#org","name":"Miftah Foundation","url":"https://yusuf-gadelrab.github.io/miftah.html"},"founder":{"@id":"https://yusuf-gadelrab.github.io/#person"},"areaServed":{"@type":"City","name":"San José, California"}}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Project","@id":"https://yusuf-gadelrab.github.io/miftah-codebridge.html#program","name":"CodeBridge","url":"https://yusuf-gadelrab.github.io/miftah-codebridge.html","description":"Free bilingual computer science education in Spanish and Arabic alongside English, for high-school and first-year college students. A program of Miftah Foundation.","disambiguatingDescription":"Program in design. No cohort has run. The parent organization is not yet incorporated, no 501(c)(3) application has been filed, and contributions are not tax-deductible.","parentOrganization":{"@type":"NGO","@id":"https://yusuf-gadelrab.github.io/miftah.html#org"},"founder":{"@id":"https://yusuf-gadelrab.github.io/#person"},"areaServed":{"@type":"City","name":"San José, California"}}</script>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://yusuf-gadelrab.github.io/"},{"@type":"ListItem","position":2,"name":"Miftah Foundation","item":"https://yusuf-gadelrab.github.io/miftah.html"},{"@type":"ListItem","position":3,"name":"CodeBridge","item":"https://yusuf-gadelrab.github.io/miftah-codebridge.html"}]}</script>
 <link rel="manifest" href="/manifest.webmanifest">
 <meta name="apple-mobile-web-app-capable" content="yes">
@@ -34,6 +36,7 @@
 <meta name="twitter:description" content="Free computer science taught in a learner's own language. A program of Miftah Foundation.">
 <meta name="twitter:image" content="https://yusuf-gadelrab.github.io/og-card.png">
 <link rel="stylesheet" href="/css/site.css">
+<link rel="stylesheet" href="/css/lux-motion.css">
 <style>
   .callout{border-left:3px solid var(--gold)}
   .callout b{color:var(--gold-2)}
@@ -54,7 +57,7 @@
   .siblings a:hover{border-color:var(--line);color:var(--ink)}
 </style>
 <!-- geo:entity — canonical Person node, one entity across every page -->
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"Person","@id":"https://yusuf-gadelrab.github.io/#person","name":"Yusuf Gadelrab","url":"https://yusuf-gadelrab.github.io/"}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebPage","@id":"https://yusuf-gadelrab.github.io/miftah-codebridge.html#webpage","url":"https://yusuf-gadelrab.github.io/miftah-codebridge.html","inLanguage":"en","isPartOf":{"@id":"https://yusuf-gadelrab.github.io/#website"},"about":{"@id":"https://yusuf-gadelrab.github.io/#person"},"publisher":{"@id":"https://yusuf-gadelrab.github.io/#person"}}</script>
 <link rel="alternate" type="text/plain" href="https://yusuf-gadelrab.github.io/llms-full.txt" title="Plain-text profile for language models">
 </head>
 <body class="pro">
@@ -64,6 +67,14 @@
 <nav class="site-nav">
   <a class="site-nav__brand" href="/"><img class="site-nav__lion" src="/img/brand/lion-mark.svg" alt="" width="34" height="34" decoding="async"><span>YUSUF GADELRAB</span></a>
   <div class="site-nav__links"><a href="/">Work</a><a href="/resume.html">Resume</a><a href="/guides.html">Guides</a><a href="/store.html">Store</a><a href="/apps.html">Apps</a><a href="/kxngsef.html">KXNG SEF</a><a href="/hire.html">Hire</a><a href="/media-kit.html">Media Kit</a></div>
+</nav>
+
+<nav class="crumbs" aria-label="Breadcrumb">
+  <ol>
+    <li><a href="/">Home</a></li>
+    <li><a href="/miftah.html">Miftah Foundation</a></li>
+    <li><span aria-current="page">CodeBridge</span></li>
+  </ol>
 </nav>
 
 <main id="main">
@@ -100,7 +111,7 @@
       </div>
     </div>
     <div class="panel callout" style="margin-top:var(--s6)">
-      <b>Where the approach comes from.</b> The design follows the founder's peer-reviewed research on bilingual coding for inclusive CS learning, accepted to SIGCSE TS 2026 (DOI 10.1145/3770761.3777339). That study measured statistically significant pre-to-post gains in learner confidence across 60 participants, largest among novices. To be exact about it: <strong>that is a research result from a university study, not a CodeBridge outcome.</strong> CodeBridge has not run a cohort and has no results of its own.
+      <b>Where the approach comes from.</b> The design follows the founder's peer-reviewed research on bilingual coding for inclusive computer science learning, accepted to SIGCSE TS 2026 (DOI 10.1145/3770761.3777339). That study measured statistically significant pre-to-post gains in learner confidence across 60 participants, largest among novices. To be exact about it: <strong>that is a research result from a university study, not a CodeBridge outcome.</strong> CodeBridge has not run a cohort and has no results of its own.
     </div>
   </section>
 
@@ -194,6 +205,7 @@
 <footer class="site-footer">
   <div>Miftah Foundation · CodeBridge · program in design, nothing filed yet</div>
   <div class="site-footer__links">
+    <a href="/faq.html">FAQ</a>
     <a href="/miftah.html">Miftah</a>
     <a href="/miftah-codebridge.html">CodeBridge</a>
     <a href="/miftah-passage.html">Passage</a>
@@ -221,5 +233,6 @@
 </footer>
 
 <script src="/js/site.js" defer></script>
+<script src="/js/lux-motion.js" defer></script>
 </body>
 </html>

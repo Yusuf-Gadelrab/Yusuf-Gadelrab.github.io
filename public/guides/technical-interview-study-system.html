@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="preload" href="/css/site.css" as="style">
+<meta name="robots" content="index,follow,max-image-preview:large,max-snippet:-1">
+<meta property="og:locale" content="en_US">
+<title>How to Actually Study for a Technical Interview</title>
+<meta name="description" content="The study system, not the problem list: Leitner spaced repetition, how to review a solved problem, timeboxing, and a hint ladder for when you are stuck.">
+<link rel="canonical" href="https://yusuf-gadelrab.github.io/guides/technical-interview-study-system.html">
+<link rel="icon" type="image/svg+xml" href="https://yusuf-gadelrab.github.io/favicon.svg">
+<link rel="apple-touch-icon" sizes="180x180" href="https://yusuf-gadelrab.github.io/apple-touch-icon.png">
+<meta name="theme-color" content="#0B0B0D">
+<meta name="author" content="Yusuf Gadelrab">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="Yusuf Gadelrab">
+<meta property="og:title" content="How to Actually Study for a Technical Interview">
+<meta property="og:description" content="Volume without review fails. Here is the Leitner schedule, the review protocol, the timebox, and the stuck ladder.">
+<meta property="og:url" content="https://yusuf-gadelrab.github.io/guides/technical-interview-study-system.html">
+<meta property="og:image" content="https://yusuf-gadelrab.github.io/og-card.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="How to Actually Study for a Technical Interview">
+<meta name="twitter:description" content="Volume without review fails. Here is the Leitner schedule, the review protocol, the timebox, and the stuck ladder.">
+<meta name="twitter:image" content="https://yusuf-gadelrab.github.io/og-card.png">
+<link rel="alternate" type="text/plain" href="https://yusuf-gadelrab.github.io/llms-full.txt" title="Plain-text profile for language models">
+
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"TechArticle","@id":"https://yusuf-gadelrab.github.io/guides/technical-interview-study-system.html#article","headline":"How to Actually Study for a Technical Interview","name":"How to Actually Study for a Technical Interview","description":"The study system, not the problem list: Leitner spaced repetition, how to review a solved problem, timeboxing, and a hint ladder for when you are stuck.","datePublished":"2026-07-29","dateModified":"2026-07-29","inLanguage":"en","author":{"@id":"https://yusuf-gadelrab.github.io/#person"},"publisher":{"@id":"https://yusuf-gadelrab.github.io/#person"},"about":["Technical interviews","Spaced repetition","Deliberate practice","Algorithms"],"mainEntityOfPage":"https://yusuf-gadelrab.github.io/guides/technical-interview-study-system.html","isAccessibleForFree":true,"isPartOf":{"@id":"https://yusuf-gadelrab.github.io/#website"},"proficiencyLevel":"Beginner"},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://yusuf-gadelrab.github.io/"},{"@type":"ListItem","position":2,"name":"Guides","item":"https://yusuf-gadelrab.github.io/guides.html"},{"@type":"ListItem","position":3,"name":"Interview Study System"}]}]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","@id":"https://yusuf-gadelrab.github.io/guides/technical-interview-study-system.html#faq","mainEntity":[{"@type":"Question","name":"Why does solving lots of problems not work?","acceptedAnswer":{"@type":"Answer","text":"Because memory for a solved problem decays steeply without review, so a large solved count mostly measures what you did in the last few weeks. The second reason is the fluency illusion: reading a solution and understanding it feels like learning but produces almost no retrievable memory, since comprehension while reading is a different operation from generating a solution from a blank page."}},{"@type":"Question","name":"What is the Leitner system and how do you use it for coding?","acceptedAnswer":{"@type":"Answer","text":"Items live in numbered boxes with review intervals of roughly 1 day, 3 days, 1 week, 3 weeks, and 8 weeks. A clean recall promotes an item one box and a failure sends it back to box one. For coding, the card is not the whole problem but the recognition cue on the front and the pattern name, template, complexity target, and your specific pitfall on the back."}},{"@type":"Question","name":"How do you review a coding problem you already solved?","acceptedAnswer":{"@type":"Answer","text":"Read only the cue and name the pattern and complexity from memory, write the template from a blank page with autocomplete off, then diff it against your previous solution and investigate every difference. Then state the loop invariant out loud, name one edge case that would break it, and log where the attempt broke. About ten minutes per problem."}},{"@type":"Question","name":"How long should you spend on a problem before looking at the solution?","acceptedAnswer":{"@type":"Answer","text":"Around 45 minutes total, split as five minutes to understand, ten to name an approach, twenty to implement, and ten to verify. If fifteen minutes pass with no named pattern, the problem is above your current level and the useful move is to take a hint and turn it into a study item rather than rediscovering the pattern by brute force."}},{"@type":"Question","name":"What should you do when you are stuck on a problem?","acceptedAnswer":{"@type":"Answer","text":"Escalate in the smallest steps: re-read the constraints, say the brute force out loud and ask what it repeats, work a five-element case by hand, ask what invariant must hold, then look at the tags only, then read one sentence of the editorial and close it. Never copy code, and always turn the problem into a card afterwards."}},{"@type":"Question","name":"How much of a study session should be review versus new problems?","acceptedAnswer":{"@type":"Answer","text":"Review first, always, taking roughly the first 20 minutes of a 90-minute session, followed by recognition drills and one or two timed solves. If you only have 30 minutes, do the reviews and skip the new problem. Reviews scheduled last do not happen, which is the most common way a spaced repetition system quietly dies."}},{"@type":"Question","name":"How long does it take to prepare for technical interviews?","acceptedAnswer":{"@type":"Answer","text":"A workable structure is 10 to 12 weeks: two weeks on complexity and data structures, four on acquiring patterns one per week, three on mixed practice with no advance label, and two to three on timed verbal mocks. The phase-two to phase-three transition is where performance visibly drops, and that drop is the honest measurement of pattern recognition."}},{"@type":"Question","name":"What should you measure instead of problems solved?","acceptedAnswer":{"@type":"Answer","text":"Due-card clear rate, which should stay above roughly 80 percent or the schedule is too aggressive; unaided first-attempt rate computed per pattern rather than overall; and median time to a correct named approach, where under five minutes is a strong signal. That last number predicts interview performance better than any total does."}}]}</script>
+
+<link rel="stylesheet" href="/css/site.css">
+<link rel="stylesheet" href="/css/lux-motion.css">
+<style>
+  .prose{max-width:68ch}
+  .prose h2{margin:var(--s7) 0 var(--s4);font-size:var(--t-h2)}
+  .prose h3{margin:var(--s6) 0 var(--s3);font-size:var(--t-h3)}
+  .prose p{color:var(--muted);margin:0 0 var(--s4)}
+  .prose ul,.prose ol{color:var(--muted);padding-left:1.2em;margin:0 0 var(--s4)}
+  .prose li{margin-bottom:var(--s2)}
+  .prose a{color:var(--gold-2)}
+  .prose strong{color:var(--fg)}
+  .formula{display:block;padding:var(--s4);margin:0 0 var(--s4);border:1px solid var(--line-soft);
+    border-radius:var(--radius);font-family:ui-monospace,SFMono-Regular,Menlo,monospace;
+    font-size:var(--t-small);color:var(--gold-2);overflow-x:auto;white-space:pre-wrap}
+  .tblwrap{overflow-x:auto;margin:0 0 var(--s4)}
+  .tbl{width:100%;border-collapse:collapse;font-size:var(--t-small)}
+  .tbl th,.tbl td{text-align:left;padding:var(--s3);border-bottom:1px solid var(--line-soft);
+    color:var(--muted);vertical-align:top}
+  .tbl th{font-family:var(--display-pro);color:var(--gold-2);font-weight:600}
+  .callout{padding:var(--s4);border:1px solid var(--line-soft);border-radius:var(--radius);
+    color:var(--muted);font-size:var(--t-small);margin:0 0 var(--s5)}
+  .callout--warn{border-color:var(--gold-2)}
+  .faq-card{padding:var(--s5)}
+  .faq-card h3{font-size:var(--t-h3);margin:0;line-height:1.3}
+  .faq-card p{color:var(--muted);font-size:var(--t-small);line-height:1.65;margin:var(--s3) 0 0}
+</style>
+</head>
+<body class="pro">
+
+<a class="skip-link" href="#main">Skip to content</a>
+
+<nav class="site-nav" aria-label="Primary">
+  <a class="site-nav__brand" href="/"><img class="site-nav__lion" src="/img/brand/lion-mark.svg" alt="" width="34" height="34" decoding="async"><span>YUSUF GADELRAB</span></a>
+  <div class="site-nav__links">
+    <a href="/">Work</a>
+    <a href="/guides.html">Guides</a>
+    <a href="/resume.html">Resume</a>
+    <a href="/apply.html">Apply OS</a>
+  </div>
+</nav>
+
+<nav class="crumbs" aria-label="Breadcrumb">
+  <ol>
+    <li><a href="/">Home</a></li>
+    <li><a href="/guides.html">Guides</a></li>
+    <li><span aria-current="page">Interview Study System</span></li>
+  </ol>
+</nav>
+
+<main id="main">
+
+  <header class="section">
+    <p class="eyebrow">Guide · Career</p>
+    <h1 style="margin:var(--s4) 0">The schedule is the skill, not the problem count</h1>
+    <p class="lead">Most people preparing for technical interviews have a list of problems and no system for retaining them. Three months later the early problems are gone, the count looks impressive, and the interview goes badly for reasons that feel mysterious and are not.</p>
+  </header>
+
+  <hr class="divider">
+
+  <section class="section section--tight">
+    <div class="prose">
+      <h2>Two different guides, on purpose</h2>
+      <p><a href="/guides/coding-interview-patterns.html">The interview patterns guide</a> covers <em>what</em> to study: the ten recurring problem shapes, the recognition cues, and why tagging failures by pattern beats counting solves. This guide covers <em>how</em> to study, which is a separate problem with separate failure modes. If you have never seen the pattern taxonomy, start there and come back.</p>
+      <h2>Why volume without review reliably fails</h2>
+      <p>The default plan is a list and a streak: solve a problem a day, keep going, feel prepared. It fails for a reason that has nothing to do with effort. Memory for a solved problem decays on a curve, and the curve is steeper than anyone expects. A problem you solved cleanly in March, with no intervening contact, is frequently a blank page in June. Not "a bit rusty." Blank.</p>
+      <p>So the person who solved 300 problems over four months and never revisited one has not banked 300 problems. They have banked whatever survives from the last few weeks, plus a general sense of familiarity that evaporates the moment a whiteboard is involved. The count is real and the retention is not.</p>
+      <p>The second failure is subtler and worse, because it feels like studying. Reading a solution and thinking "yes, that makes sense" produces a strong feeling of understanding and almost no retrievable memory. This is the fluency illusion: comprehension while reading is not the same operation as generation from a blank page, and only the second one is what an interview tests. <strong>If you did not produce it yourself, you did not learn it, no matter how clearly you followed it.</strong></p>
+      <p>Both failures have the same fix, which is uncomfortable and cheap: spend a substantial fraction of your study time re-solving things you have already solved, from memory, on a schedule.</p>
+      <h2>The Leitner system, operationally</h2>
+      <p>Leitner is the simplest workable implementation of spaced repetition. Items live in numbered boxes; each box has a review interval; a clean recall promotes an item one box, a failure sends it back to box one. That is the whole algorithm and it needs no software.</p>
+      <div class="tblwrap" tabindex="0" role="group" aria-label="Table, scrolls horizontally"><table class="tbl">
+        <thead><tr><th scope="col">Box</th><th scope="col">Review interval</th><th scope="col">Meaning</th><th scope="col">On success / on failure</th></tr></thead>
+        <tbody>
+          <tr><td>1</td><td>1 day</td><td>Failed recently, or never solved unaided</td><td>→ box 2 / stays in box 1</td></tr>
+          <tr><td>2</td><td>3 days</td><td>Solved with a hint</td><td>→ box 3 / back to box 1</td></tr>
+          <tr><td>3</td><td>1 week</td><td>Solved unaided but slowly</td><td>→ box 4 / back to box 1</td></tr>
+          <tr><td>4</td><td>3 weeks</td><td>Solved unaided and fluently</td><td>→ box 5 / back to box 2</td></tr>
+          <tr><td>5</td><td>8 weeks</td><td>Retired to maintenance</td><td>stays in box 5 / back to box 2</td></tr>
+        </tbody>
+      </table></div>
+      <p>Two details do most of the work and both get skipped.</p>
+      <p><strong>A failure demotes hard, not gently.</strong> From boxes 1 through 3, a failure goes all the way back to box one. That is the mechanism that concentrates your time on exactly the material you cannot do, which is the only material worth studying. A system that demotes by one box lets weak items drift forever.</p>
+      <p><strong>Box one has a size limit.</strong> If box one holds forty items, you are not studying, you are drowning, and you will start skipping reviews, which breaks the whole system. Cap it at around ten. When it is full, you do not add new problems that day. New material waits until the backlog clears. This rule feels like it slows you down and it is the single highest-leverage constraint in the system.</p>
+      <h3>What is actually on a card</h3>
+      <p>This is where most people implement it wrong. The card is not the problem statement, because re-solving a full problem takes 30 minutes and you cannot review 15 of those in a session. The card is the retrievable unit.</p>
+      <span class="formula" tabindex="0" role="group" aria-label="Formula, scrolls horizontally">Front:  the recognition cue
+        "Contiguous subarray, longest satisfying a condition"
+
+Back:   1. pattern name           sliding window
+        2. the template, written from memory, not pasted
+        3. the complexity target   O(n)
+        4. the pitfall that got you  "shrink condition ran before the
+                                      update, off-by-one on the answer"
+
+Review = write 2 from a blank page in under 5 minutes, then diff.</span>
+      <p>With cards shaped like that, a review is five minutes and a session can clear ten to fifteen of them. You periodically re-solve a full problem end to end, but that is a different activity with a different budget, not your review mechanism.</p>
+      <h3>Implementing it without buying anything</h3>
+      <ul>
+        <li><strong>Index cards and five physical boxes.</strong> Genuinely fine, and the tactile version has a compliance advantage most people underrate.</li>
+        <li><strong>A spreadsheet.</strong> Columns: cue, pattern, box, last reviewed, next due. Sort by due date. That is the entire application.</li>
+        <li><strong>Anki.</strong> Free on desktop and Android, uses a more sophisticated scheduler than Leitner, and works well if you already use it. It is not required.</li>
+        <li><strong>A script and a text file.</strong> I ended up writing a small drill runner for my own prep with problems tagged by pattern and Leitner boxes over a plain file, mostly because the review step needed to be one command with no friction. The tooling matters far less than doing the reviews.</li>
+      </ul>
+      <h2>How to review a solved problem</h2>
+      <p>"Review" usually means re-reading an old solution, nodding, and closing the tab. That produces the fluency illusion described above and close to zero retention. Here is a protocol that takes ten minutes and actually works.</p>
+      <ol>
+        <li><strong>Read only the cue, then look away.</strong> Name the pattern and the complexity target out loud before anything else. If you cannot, that is the failure and the card goes to box one. Stop here and re-learn it rather than pushing through.</li>
+        <li><strong>Write the template from a blank page.</strong> Not the full problem solution, the canonical implementation of the pattern. Handwritten or in an editor with autocomplete off. This is the actual retrieval event, and everything else in this list is support for it.</li>
+        <li><strong>Diff it against your previous solution.</strong> Not to see if it looks similar, but to find every place they differ. Differences are where your memory is reconstructing rather than recalling, and that is exactly what will break under pressure.</li>
+        <li><strong>Say the invariant out loud.</strong> One sentence: what is true at every step of the loop. "The window always contains at most k distinct characters." If you cannot state the invariant, you have memorised syntax rather than the idea, and syntax does not transfer to a variant.</li>
+        <li><strong>Name the edge case that would break it.</strong> Empty input, a single element, all duplicates, integer overflow, a cycle. One is enough. This is the step that separates people who pass from people who nearly pass.</li>
+        <li><strong>Write one line in the log.</strong> What broke, and where — recognition, approach, implementation, or edge cases. Those four locations need four different fixes, and by the end of a month the log tells you what to work on without any guessing.</li>
+      </ol>
+      <p class="callout">The diff step is the one to protect when time is short. A template you can nearly write is worth much less than one you can write exactly, and "nearly" is invisible until you compare the two side by side. Most people who feel prepared and then blank in an interview were living in the gap between nearly and exactly.</p>
+      <h2>Timeboxing, and what to do when the box expires</h2>
+      <p>Unbounded struggle is the most common way study time gets wasted. Ninety minutes on one problem feels like commitment and mostly produces frustration plus one data point. A timebox converts the same ninety minutes into three problems and three diagnoses.</p>
+      <div class="tblwrap" tabindex="0" role="group" aria-label="Table, scrolls horizontally"><table class="tbl">
+        <thead><tr><th scope="col">Phase</th><th scope="col">Budget</th><th scope="col">What must exist when the timer ends</th></tr></thead>
+        <tbody>
+          <tr><td>Understand</td><td>0–5 min</td><td>The input shape, the output, and two examples worked by hand</td></tr>
+          <tr><td>Approach</td><td>5–15 min</td><td>A named pattern and a complexity target, said out loud</td></tr>
+          <tr><td>Implement</td><td>15–35 min</td><td>Working code, or a specific known blocker</td></tr>
+          <tr><td>Verify</td><td>35–45 min</td><td>Edge cases walked manually, complexity stated</td></tr>
+          <tr><td>Hard stop</td><td>45 min</td><td>Escalate to the hint ladder — do not extend the timer</td></tr>
+        </tbody>
+      </table></div>
+      <p>The approach phase is the one to enforce ruthlessly. Fifteen minutes with no named pattern means the problem is currently above your level, and the useful move is to get a hint and turn it into a study item, not to spend another forty minutes rediscovering the pattern by brute force. <strong>An interview gives you about 35 minutes. Practising in unbounded time trains a skill you will not be allowed to use.</strong></p>
+      <h2>The stuck ladder</h2>
+      <p>When the timer expires, escalate in the smallest possible steps. The goal is to take the least amount of help that unblocks you, because every rung you climb without help is a rung you can climb alone next time.</p>
+      <ol>
+        <li><strong>Re-read the constraints.</strong> If n is up to 10^5, an O(n²) approach is not intended, and that observation alone identifies the pattern surprisingly often.</li>
+        <li><strong>Say the brute force out loud, then ask what it repeats.</strong> Nearly every optimisation is the elimination of repeated work. Naming the repetition names the data structure.</li>
+        <li><strong>Do a small case entirely by hand.</strong> Four or five elements, on paper. The mechanism you use by hand is usually the algorithm, and people skip this step because it feels beneath them.</li>
+        <li><strong>Ask what has to stay true.</strong> The invariant question again. Being unable to answer it usually means the state you are tracking is wrong, not that the code is wrong.</li>
+        <li><strong>Look at the tags only.</strong> Not the editorial, the tags. Knowing it is a heap problem and finishing it yourself is worth vastly more than reading the solution.</li>
+        <li><strong>Read only the first sentence of the editorial.</strong> Then close it and try again. This is the highest-value rung on the ladder and almost nobody stops there.</li>
+        <li><strong>Read the full approach, close it, implement from memory.</strong> Never copy code. If you cannot implement it after reading the approach, you did not understand it, and copying it will hide that fact from you.</li>
+        <li><strong>Write the card.</strong> Mandatory. A problem you needed help on and did not turn into a card is a problem you will need help on again in six weeks.</li>
+      </ol>
+      <h2>A session template</h2>
+      <p>Ninety minutes, in this order, every time. The order matters more than the durations.</p>
+      <ol>
+        <li><strong>0–20 min, due reviews.</strong> Clear whatever the box schedule says is due. Reviews come first because if they come last they do not happen.</li>
+        <li><strong>20–35 min, recognition drills.</strong> Read problem statements, name the pattern and the complexity, do not implement. Ten to fifteen of these in fifteen minutes. This trains the step interviews test first and it is absurdly cheap.</li>
+        <li><strong>35–80 min, one or two timed solves.</strong> Full timebox, out loud, from a blank page.</li>
+        <li><strong>80–90 min, write the cards and the log lines.</strong> Non-negotiable. This is the step that makes today's work exist next month.</li>
+      </ol>
+      <p>If you only have thirty minutes, do the first block and stop. Twenty minutes of reviews with no new problem beats a new problem with no reviews, every single time, and the fact that it feels like less progress is exactly why people get this backwards.</p>
+      <h2>A schedule that fits a semester</h2>
+      <div class="tblwrap" tabindex="0" role="group" aria-label="Table, scrolls horizontally"><table class="tbl">
+        <thead><tr><th scope="col">Phase</th><th scope="col">Weeks</th><th scope="col">Focus</th><th scope="col">The honest signal you are ready to move on</th></tr></thead>
+        <tbody>
+          <tr><td>Foundations</td><td>1–2</td><td>Complexity analysis, the language's data structures cold, two or three patterns</td><td>You can state the complexity of any built-in operation you use without checking</td></tr>
+          <tr><td>Pattern acquisition</td><td>3–6</td><td>One new pattern per week; template written from memory; deck fills up</td><td>Box one clears most days without a backlog</td></tr>
+          <tr><td>Mixed practice</td><td>7–9</td><td>Random problems across all patterns, no advance warning of the pattern</td><td>Unaided first-attempt rate above roughly two thirds on mixed sets</td></tr>
+          <tr><td>Interview simulation</td><td>10–12</td><td>Timed, verbal, with another person, plus behavioural answers</td><td>You can talk continuously through a solve without losing the thread</td></tr>
+        </tbody>
+      </table></div>
+      <p>The transition from phase two to phase three is where most preparation quietly breaks. Studying one pattern per week means every problem that week arrives pre-labelled, and pattern recognition is never tested. Mixed practice removes the label, performance drops sharply, and that drop is the honest measurement. It is supposed to be uncomfortable. It is also the closest thing to the real conditions you will get before the real conditions.</p>
+      <h2>Talking while you think</h2>
+      <p>Interviews are verbal, and silence reads as being stuck even when it is not. This is a separate skill from solving and it degrades solving performance the first several times you attempt both at once, which is precisely why it needs its own practice.</p>
+      <ul>
+        <li><strong>Solve out loud, alone, from the beginning.</strong> Narrate the four approach questions every time until it is automatic.</li>
+        <li><strong>Record one solve a week and watch it back.</strong> Uncomfortable and unreasonably effective. You will find long silent stretches you had no idea were there.</li>
+        <li><strong>Do real mocks with a person.</strong> Peers are free; interviewing another student is as instructive as being interviewed. The pressure of another human being present is the variable that no amount of solo practice reproduces.</li>
+        <li><strong>Practise the recovery script.</strong> "Let me restate what I have, then try a different angle" is a sentence worth having ready, because the moment you need it is the moment you are least able to compose it.</li>
+      </ul>
+      <h2>What to measure</h2>
+      <p>Total problems solved is the metric that feels like progress and measures almost nothing. Three alternatives that actually track readiness:</p>
+      <ul>
+        <li><strong>Due-card clear rate.</strong> The share of scheduled reviews you actually complete. Below about 80 percent, the schedule is too aggressive and everything downstream is unreliable.</li>
+        <li><strong>Unaided first-attempt rate, by pattern.</strong> Computed per pattern, not overall, because the overall number hides the one pattern that will end the interview.</li>
+        <li><strong>Median time to a correct named approach.</strong> Under five minutes is a strong signal. This is the number that most directly predicts interview performance, and it is the one nobody tracks.</li>
+      </ul>
+      <h2>The week before</h2>
+      <ol>
+        <li>Stop adding new material. Nothing learned in the final week will be retrievable under pressure anyway, and the attempt costs you review time.</li>
+        <li>Clear the deck. Every box, once, even the eight-week ones.</li>
+        <li>Re-write every template once from memory, in one sitting. It takes about an hour and it is the highest-value hour of the whole final week.</li>
+        <li>Two full mocks, with a person, at the actual interview time of day.</li>
+        <li>Prepare the non-algorithmic half: the project walkthrough, the behavioural answers, the questions you ask them. A strong solve with a vague project story is still a mixed signal, and <a href="/guides/portfolio-that-gets-interviews.html">the portfolio guide</a> covers how to make that half land.</li>
+        <li>Sleep. Genuinely load-bearing, and the first thing people trade away in the final 48 hours.</li>
+      </ol>
+      <h2>The uncomfortable summary</h2>
+      <p>The system is not clever. Review before new material, cap the backlog, write templates from a blank page instead of reading them, timebox everything, escalate in the smallest steps when stuck, and measure per-pattern rather than in total. None of that is a secret and almost nobody does it, because every part of it feels slower than grinding through a fresh problem list.</p>
+      <p>It is slower per week and much faster per month. That trade is the entire point, and it is the same trade in every skill worth having. Getting to the interview in the first place is a separate pipeline problem, handled in <a href="/guides/ats-resume.html">the resume guide</a> and tracked in <a href="/apply.html">Apply OS</a>; the international-student timing and sponsorship layer is in <a href="/guides/swe-internship-international-student.html">the internship guide</a>.</p>
+
+      <h2>Tools referenced in this guide</h2>
+      <ul>
+        <li><a href="/guides/coding-interview-patterns.html">Interview patterns</a> — the companion guide: what to study, and the ten recurring problem shapes.</li>
+        <li><a href="/apply.html">Apply OS</a> — application pipeline and deadline tracking, free and browser-only.</li>
+        <li><a href="/guides/portfolio-that-gets-interviews.html">Portfolio guide</a> — the non-algorithmic half of the loop: projects that survive a walkthrough.</li>
+      </ul>
+    </div>
+  </section>
+
+  <hr class="divider">
+
+  <section class="section section--tight" id="faq">
+    <div class="grp-head">
+      <p class="eyebrow">FAQ</p>
+      <h2>Quick answers</h2>
+    </div>
+    <div class="grid" style="margin-top:var(--s6)">
+      <article class="card faq-card"><h3>Why does solving lots of problems not work?</h3><p>Because memory for a solved problem decays steeply without review, so a large solved count mostly measures what you did in the last few weeks. The second reason is the fluency illusion: reading a solution and understanding it feels like learning but produces almost no retrievable memory, since comprehension while reading is a different operation from generating a solution from a blank page.</p></article>
+      <article class="card faq-card"><h3>What is the Leitner system and how do you use it for coding?</h3><p>Items live in numbered boxes with review intervals of roughly 1 day, 3 days, 1 week, 3 weeks, and 8 weeks. A clean recall promotes an item one box and a failure sends it back to box one. For coding, the card is not the whole problem but the recognition cue on the front and the pattern name, template, complexity target, and your specific pitfall on the back.</p></article>
+      <article class="card faq-card"><h3>How do you review a coding problem you already solved?</h3><p>Read only the cue and name the pattern and complexity from memory, write the template from a blank page with autocomplete off, then diff it against your previous solution and investigate every difference. Then state the loop invariant out loud, name one edge case that would break it, and log where the attempt broke. About ten minutes per problem.</p></article>
+      <article class="card faq-card"><h3>How long should you spend on a problem before looking at the solution?</h3><p>Around 45 minutes total, split as five minutes to understand, ten to name an approach, twenty to implement, and ten to verify. If fifteen minutes pass with no named pattern, the problem is above your current level and the useful move is to take a hint and turn it into a study item rather than rediscovering the pattern by brute force.</p></article>
+      <article class="card faq-card"><h3>What should you do when you are stuck on a problem?</h3><p>Escalate in the smallest steps: re-read the constraints, say the brute force out loud and ask what it repeats, work a five-element case by hand, ask what invariant must hold, then look at the tags only, then read one sentence of the editorial and close it. Never copy code, and always turn the problem into a card afterwards.</p></article>
+      <article class="card faq-card"><h3>How much of a study session should be review versus new problems?</h3><p>Review first, always, taking roughly the first 20 minutes of a 90-minute session, followed by recognition drills and one or two timed solves. If you only have 30 minutes, do the reviews and skip the new problem. Reviews scheduled last do not happen, which is the most common way a spaced repetition system quietly dies.</p></article>
+      <article class="card faq-card"><h3>How long does it take to prepare for technical interviews?</h3><p>A workable structure is 10 to 12 weeks: two weeks on complexity and data structures, four on acquiring patterns one per week, three on mixed practice with no advance label, and two to three on timed verbal mocks. The phase-two to phase-three transition is where performance visibly drops, and that drop is the honest measurement of pattern recognition.</p></article>
+      <article class="card faq-card"><h3>What should you measure instead of problems solved?</h3><p>Due-card clear rate, which should stay above roughly 80 percent or the schedule is too aggressive; unaided first-attempt rate computed per pattern rather than overall; and median time to a correct named approach, where under five minutes is a strong signal. That last number predicts interview performance better than any total does.</p></article>
+    </div>
+  </section>
+
+<!-- related:auto:start -->
+  <hr class="divider">
+
+  <section class="section section--tight related" id="related" aria-labelledby="related-h">
+    <div class="grp-head">
+      <p class="eyebrow">Keep reading</p>
+      <h2 id="related-h">Related guides</h2>
+    </div>
+    <div class="related__grid">
+      <a class="related__item" href="/guides/coding-interview-patterns.html"><strong>Track which pattern you fail, not how many problems you did</strong><span>Ten recurring patterns, and why tracking failures by pattern beats grinding problem counts.</span></a>
+      <a class="related__item" href="/guides/quant-internship-timeline.html"><strong>Three firm types, three calendars, and a lot of wrong dates</strong><span>Market makers, banks and funds run on three different calendars. Most deadlines people repeat belong to a different…</span></a>
+      <a class="related__item" href="/guides/technical-portfolio-8-seconds.html"><strong>The first pass is eight seconds, on a phone, by a non-engineer</strong><span>Before an engineer ever reads your code, a recruiter gives your link eight seconds on a phone. Build for that pass…</span></a>
+      <a class="related__item" href="/guides/portfolio-that-gets-interviews.html"><strong>Shipped and reachable beats impressive-sounding</strong><span>Shipped and reachable beats impressive-sounding. What a reviewer checks in 60 seconds.</span></a>
+    </div>
+    <p class="related__more">Every guide is indexed on <a href="/guides.html">the guides hub</a>. Or put it to work in <a href="/hire.html">what I am open to for Summer 2027</a>.</p>
+  </section>
+<!-- related:auto:end -->
+
+</main>
+
+<footer class="site-footer">
+  <div class="site-footer__links">
+    <a href="/">Work</a>
+    <a href="/about.html">About</a>
+    <a href="/guides.html">Guides</a>
+    <a href="/apps.html">Apps</a>
+    <a href="/store.html">Store</a>
+    <a href="/privacy.html">Privacy</a>
+    <a href="/terms.html">Terms</a>
+    <a href="mailto:yusuf.gadelrab06@gmail.com">yusuf.gadelrab06@gmail.com</a>
+  </div>
+</footer>
+
+<script src="/js/site.js" defer></script>
+<script src="/js/lux-motion.js" defer></script>
+</body>
+</html>

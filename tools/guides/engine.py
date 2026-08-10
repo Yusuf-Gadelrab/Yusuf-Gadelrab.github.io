@@ -6,6 +6,11 @@ TechArticle/Article + FAQPage + BreadcrumbList, a visible FAQ that mirrors the
 FAQPage node exactly (schema-only FAQ markup violates Google's guidelines), and a
 canonical reference back to the one Person entity.
 
+`faqs` is the single source of truth for the FAQ: the same (question, answer)
+pairs feed the FAQPage JSON-LD *and* the visible FAQ cards, so the two can never
+drift. A spec may still carry a legacy `faq_cards` field — the engine ignores it,
+and content modules are free to drop it.
+
 Usage: python3 tools/guides/engine.py    (writes public/guides/*.html + the hub)
 """
 import html
@@ -13,6 +18,9 @@ import json
 import os
 import re
 import sys
+
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+from howto import HOWTO  # noqa: E402  (slug -> visible ordered procedure)
 
 BASE = "https://yusuf-gadelrab.github.io"
 OUT = os.path.join(os.path.dirname(__file__), "..", "..", "public", "guides")
@@ -238,8 +246,8 @@ STYLES = """  .prose{max-width:68ch}
     color:var(--muted);font-size:var(--t-small);margin:0 0 var(--s5)}
   .callout--warn{border-color:var(--gold-2)}
   .faq-card{padding:var(--s5)}
-  .faq-card h3{font-size:var(--t-h3);margin:0}
-  .faq-card p{color:var(--muted);font-size:var(--t-small);margin:var(--s3) 0 0}"""
+  .faq-card h3{font-size:var(--t-h3);margin:0;line-height:1.3}
+  .faq-card p{color:var(--muted);font-size:var(--t-small);line-height:1.65;margin:var(--s3) 0 0}"""
 
 
 def _blocks(body):
@@ -252,7 +260,10 @@ def _blocks(body):
         elif kind == "p":
             out.append(f"      <p>{val}</p>")
         elif kind == "formula":
-            out.append(f'      <span class="formula">{val}</span>')
+            # .formula sets overflow-x:auto, so it needs to be focusable for the
+            # same reason .tblwrap does.
+            out.append(f'      <span class="formula" tabindex="0" role="group" '
+                       f'aria-label="Formula, scrolls horizontally">{val}</span>')
         elif kind == "ul":
             li = "\n".join(f"        <li>{x}</li>" for x in val)
             out.append(f"      <ul>\n{li}\n      </ul>")
@@ -261,9 +272,14 @@ def _blocks(body):
             out.append(f"      <ol>\n{li}\n      </ol>")
         elif kind == "table":
             heads, rows = val
-            th = "".join(f"<th>{h}</th>" for h in heads)
+            # scope="col" so a screen reader announces the right header with each
+            # cell; tabindex+role on the wrapper because a scroll container that
+            # cannot take focus cannot be scrolled without a mouse (Chrome and
+            # Firefox disagree on making overflow boxes focusable automatically).
+            th = "".join(f'<th scope="col">{h}</th>' for h in heads)
             tr = "\n".join("          <tr>" + "".join(f"<td>{c}</td>" for c in r) + "</tr>" for r in rows)
-            out.append('      <div class="tblwrap"><table class="tbl">\n        <thead><tr>'
+            out.append('      <div class="tblwrap" tabindex="0" role="group" '
+                       'aria-label="Table, scrolls horizontally"><table class="tbl">\n        <thead><tr>'
                        + th + "</tr></thead>\n        <tbody>\n" + tr
                        + "\n        </tbody>\n      </table></div>")
         elif kind == "callout":
@@ -273,6 +289,54 @@ def _blocks(body):
         else:
             raise ValueError(f"unknown block: {kind}")
     return "\n".join(out)
+
+
+def _plain(s):
+    """Visible text of a body fragment: tags stripped, entities resolved."""
+    return re.sub(r"\s+", " ", html.unescape(re.sub(r"<[^>]+>", "", s))).strip()
+
+
+def howto_node(g, url):
+    """Build a HowTo from a guide's own visible <ol>.
+
+    Returns None unless tools/guides/howto.py explicitly registers this slug.
+    Steps are read straight out of the referenced ("ol", [...]) block, so the
+    markup always describes steps a reader can actually see. If the registry
+    points at an index the guide no longer has, this raises rather than
+    silently emitting a HowTo with no basis on the page.
+    """
+    entry = HOWTO.get(g["slug"])
+    if not entry:
+        return None
+    idx, name, total_time = entry
+    ols = [v for kind, v in g["body"] if kind == "ol"]
+    if idx >= len(ols):
+        raise SystemExit(
+            f"howto.py: {g['slug']} references ol[{idx}] but the guide has "
+            f"{len(ols)} ordered list(s)")
+    items = ols[idx]
+    if len(items) < 2:
+        raise SystemExit(f"howto.py: {g['slug']} ol[{idx}] has fewer than 2 steps")
+
+    steps = []
+    for i, raw in enumerate(items, 1):
+        text = _plain(raw)
+        # Step name = the leading clause, which is how these lists are written
+        # ("Rotate first, investigate second. Then ...").
+        head = re.split(r"(?<=[.:;])\s", text)[0].rstrip(".:;")
+        if len(head) > 75 or not head:
+            head = text[:72].rsplit(" ", 1)[0]
+        steps.append({"@type": "HowToStep", "position": i,
+                      "name": head, "text": text, "url": f"{url}#howto"})
+
+    node = {"@type": "HowTo", "@id": f"{url}#howto", "name": name,
+            "description": g["desc"], "inLanguage": "en",
+            "isAccessibleForFree": True,
+            "author": {"@id": f"{BASE}/#person"},
+            "step": steps}
+    if total_time:
+        node["totalTime"] = total_time
+    return node
 
 
 def render(g, pool=()):
@@ -292,18 +356,25 @@ def render(g, pool=()):
         "about": g["about"],
         "mainEntityOfPage": url,
         "isAccessibleForFree": True,
+        # Wire every guide into the one site node instead of restating it.
+        "isPartOf": {"@id": f"{BASE}/#website"},
     }
     if schema_type == "TechArticle":
         article["proficiencyLevel"] = g.get("level", "Beginner")
     if g.get("citation"):
         article["citation"] = g["citation"]
-    graph = {"@context": "https://schema.org", "@graph": [article, {
+    nodes = [article, {
         "@type": "BreadcrumbList",
         "itemListElement": [
             {"@type": "ListItem", "position": 1, "name": "Home", "item": f"{BASE}/"},
             {"@type": "ListItem", "position": 2, "name": "Guides", "item": f"{BASE}/guides.html"},
             {"@type": "ListItem", "position": 3, "name": g["crumb"]},
-        ]}]}
+        ]}]
+    howto = howto_node(g, url)
+    if howto:
+        nodes.append(howto)
+        article["hasPart"] = {"@id": f"{url}#howto"}
+    graph = {"@context": "https://schema.org", "@graph": nodes}
     faq = {"@context": "https://schema.org", "@type": "FAQPage", "@id": f"{url}#faq",
            "mainEntity": [{"@type": "Question", "name": q,
                            "acceptedAnswer": {"@type": "Answer", "text": a}} for q, a in g["faqs"]]}
@@ -313,10 +384,12 @@ def render(g, pool=()):
         f'        <li><a href="{h}">{t}</a> — {d}</li>' for h, t, d in g.get("tools", []))
     tools_block = (f"      <h2>Tools referenced in this guide</h2>\n      <ul>\n{tools}\n      </ul>\n"
                    if tools else "")
+    # Rendered from `faqs`, the same list that builds the FAQPage node above, so
+    # every schema answer string is literally present on the page.
     cards = "\n".join(
-        f'      <article class="card faq-card"><h3>{html.escape(short)}</h3>'
-        f"<p>{html.escape(ans)}</p></article>"
-        for short, ans in g["faq_cards"])
+        f'      <article class="card faq-card"><h3>{html.escape(q)}</h3>'
+        f"<p>{html.escape(a)}</p></article>"
+        for q, a in g["faqs"])
     related = related_block(g, pool) if pool else ""
     related_section = f"\n{RELATED_START}\n{related}{RELATED_END}\n" if related else ""
     crumbs = crumbs_block(g["crumb"])
@@ -360,8 +433,8 @@ def render(g, pool=()):
 
 <a class="skip-link" href="#main">Skip to content</a>
 
-<nav class="site-nav">
-  <a class="site-nav__brand" href="/"><img class="site-nav__lion" src="/img/brand/lion-mark.svg" alt="" width="34" height="34"><span>YUSUF GADELRAB</span></a>
+<nav class="site-nav" aria-label="Primary">
+  <a class="site-nav__brand" href="/"><img class="site-nav__lion" src="/img/brand/lion-mark.svg" alt="" width="34" height="34" decoding="async"><span>YUSUF GADELRAB</span></a>
   <div class="site-nav__links">
 {nav}
   </div>
@@ -432,8 +505,53 @@ def registry():
     return guides
 
 
+_LDJSON_RE = re.compile(r'<script type="application/ld\+json">(.*?)</script>', re.S)
+_FAQ_GRID_RE = re.compile(
+    r'(<section[^>]*id="faq"[^>]*>.*?<div class="grid"[^>]*>)(.*?)(\n\s*</div>\s*</section>)',
+    re.S)
+
+
+def _faq_pairs(src):
+    """Every (question, answer) in a page's FAQPage node, in document order."""
+    pairs = []
+    for raw in _LDJSON_RE.findall(src):
+        try:
+            data = json.loads(raw)
+        except ValueError:
+            continue
+        nodes = data.get("@graph", [data]) if isinstance(data, dict) else data
+        for node in nodes:
+            if isinstance(node, dict) and node.get("@type") == "FAQPage":
+                for qa in node.get("mainEntity", []):
+                    pairs.append((qa.get("name", ""),
+                                  qa.get("acceptedAnswer", {}).get("text", "")))
+    return pairs
+
+
+def sync_legacy_faq(src):
+    """Rewrite a hand-written guide's visible FAQ cards from its own FAQPage node.
+
+    The legacy pages were authored with condensed card copy that did not match
+    their schema answers — the same divergence the generated guides had. Their
+    JSON-LD is the source of truth here, so the cards are regenerated from it;
+    the markup keeps the pages' existing inline-styled card shape. Idempotent.
+    """
+    pairs = _faq_pairs(src)
+    m = _FAQ_GRID_RE.search(src)
+    if not pairs or not m:
+        return src
+    cards = "\n".join(
+        '      <article class="card" style="padding:var(--s5)">'
+        f"<h3>{html.escape(q)}</h3>"
+        '<p style="color:var(--muted);font-size:var(--t-small);line-height:1.65;'
+        f'margin:var(--s3) 0 0">{html.escape(a)}</p></article>'
+        for q, a in pairs)
+    return src[:m.start()] + m.group(1) + "\n" + cards + m.group(3) + src[m.end():]
+
+
 def patch_legacy(pool):
-    """Inject the same related block into the three hand-written guides.
+    """Inject the same related block into the three hand-written guides, and keep
+    their visible FAQ in sync with their FAQPage JSON-LD.
 
     They are not rendered by this engine, so the block is written between
     markers and replaced wholesale on every build. Markers are created on first
@@ -444,7 +562,7 @@ def patch_legacy(pool):
         path = os.path.join(OUT, meta["slug"] + ".html")
         if not os.path.exists(path):
             continue
-        src = open(path, encoding="utf-8").read()
+        src = sync_legacy_faq(open(path, encoding="utf-8").read())
         block = f"{RELATED_START}\n{related_block(meta, pool)}{RELATED_END}"
         if RELATED_START in src and RELATED_END in src:
             src = re.sub(re.escape(RELATED_START) + r".*?" + re.escape(RELATED_END),
@@ -467,12 +585,40 @@ def main():
     os.makedirs(OUT, exist_ok=True)
     for g in guides:
         path = os.path.join(OUT, g["slug"] + ".html")
+        # Render BEFORE opening the file. `open(..., "w")` truncates on entry,
+        # so rendering inside the with-block meant any render-time SystemExit
+        # (a stale howto.py index, say) left a 0-byte page on disk that then
+        # failed validate.py with a confusing "missing h1".
+        html_out = render(g, pool)
         with open(path, "w", encoding="utf-8") as fh:
-            fh.write(render(g, pool))
+            fh.write(html_out)
         print("wrote", os.path.relpath(path))
     n = patch_legacy(pool)
     print(f"{len(guides)} guides generated, {n} legacy guides patched, "
           f"{len(pool)} in the related graph")
+
+    # Guide-to-guide links are written by hand inside the content modules, so a
+    # typo or a link to a guide someone planned but never registered ships as a
+    # 404. Cheapest place to catch it is right here, against the registry.
+    known = {g["slug"] for g in pool}
+    dangling = {}
+    for g in guides:
+        # only real hrefs — a slug shown inside a <code> prose example is not a link
+        for m in re.finditer(r'href=\\?"/guides/([a-z0-9-]+)\.html', json.dumps(g, default=str)):
+            if m.group(1) not in known:
+                dangling.setdefault(m.group(1), []).append(g["slug"])
+    if dangling:
+        print("\n!! dangling guide links — these slugs are linked but not registered:")
+        for slug, srcs in sorted(dangling.items()):
+            print(f"   /guides/{slug}.html  <- {', '.join(sorted(set(srcs)))}")
+
+    # tools/validate.py fails the build on these, so say it here where the fix is.
+    over = [(g["slug"], f, len(g.get(f, ""))) for g in guides
+            for f, cap in (("title", 60), ("desc", 160)) if len(g.get(f, "")) > cap]
+    if over:
+        print("\n!! over-length metadata (title>60, desc>160) — trim in the content module:")
+        for slug, field, n in sorted(over):
+            print(f"   {slug}: {field} is {n} chars")
 
 
 if __name__ == "__main__":

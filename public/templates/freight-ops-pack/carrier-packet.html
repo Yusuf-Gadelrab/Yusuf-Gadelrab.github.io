@@ -3,7 +3,11 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
+<meta name="referrer" content="strict-origin-when-cross-origin">
+<meta http-equiv="Content-Security-Policy" content="object-src 'none'; base-uri 'self'">
 <title>Carrier Onboarding Packet — {{COMPANY_NAME}}</title>
+<meta name="robots" content="noindex,follow">
+<link rel="canonical" href="https://yusuf-gadelrab.github.io/templates.html">
 <!-- SAMPLE CONTENT: Ridgeline Freight Partners onboarding packet for a new carrier, Copper State Carriers, LLC. See README.md for the exact strings to find-and-replace. -->
 <style>
 :root{
@@ -23,7 +27,7 @@ body{ margin:0; background:#e9e7e1; color:var(--paper-ink); font-family:-apple-s
 
 h1,h2,h3{ font-family:Georgia,"Times New Roman",serif; margin:0; }
 .gold-text{ background:linear-gradient(120deg,var(--gold-2),var(--gold) 40%,#c99b1e); -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text; }
-.eyebrow{ font-size:10.5px; letter-spacing:2px; text-transform:uppercase; color:var(--gold-dim); font-weight:700; }
+.eyebrow{ font-size:10.5px; letter-spacing:2px; text-transform:uppercase; color:var(--gold-dim); font-weight:700; font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Inter,system-ui,sans-serif; }
 .hairline{ border:none; border-top:1px solid var(--paper-line); }
 
 .letterhead{ display:flex; justify-content:space-between; align-items:center; margin-bottom:18px; }
@@ -33,7 +37,7 @@ h1,h2,h3{ font-family:Georgia,"Times New Roman",serif; margin:0; }
 hr.top-rule{ height:2px; border:none; background:linear-gradient(90deg,var(--gold-2),var(--gold),var(--gold-dim)); margin:0 0 24px; }
 
 .doc-title{ margin-bottom:6px; }
-.doc-title h1{ font-size:24px; letter-spacing:-.4px; }
+.doc-title h2{ font-size:24px; letter-spacing:-.4px; }
 .doc-title .sub{ color:var(--paper-muted); font-size:11.5px; margin-top:4px; }
 
 .field-grid{ display:grid; grid-template-columns:1fr 1fr; gap:16px 20px; margin-bottom:18px; }
@@ -44,8 +48,8 @@ hr.top-rule{ height:2px; border:none; background:linear-gradient(90deg,var(--gol
 .field.wide{ grid-column:1 / -1; }
 
 section.clause{ margin-bottom:18px; break-inside:avoid; }
-section.clause h2{ font-size:14px; margin-bottom:8px; display:flex; align-items:baseline; gap:8px; }
-section.clause h2 .num{ color:var(--gold-dim); font-family:-apple-system,sans-serif; font-weight:700; font-size:11.5px; }
+section.clause h3{ font-size:14px; margin-bottom:8px; display:flex; align-items:baseline; gap:8px; }
+section.clause h3 .num{ color:var(--gold-dim); font-family:-apple-system,sans-serif; font-weight:700; font-size:11.5px; }
 section.clause p, section.clause li{ font-size:12px; margin:0 0 7px; }
 section.clause ul, section.clause ol{ margin:0 0 7px; padding-left:18px; }
 
@@ -68,6 +72,8 @@ section.clause ul, section.clause ol{ margin:0 0 7px; padding-left:18px; }
 .footer{ position:absolute; left:56px; right:56px; bottom:34px; display:flex; justify-content:space-between; font-size:10px; color:var(--paper-muted); padding-top:8px; border-top:1px solid var(--paper-line); }
 .footer .pg{ color:var(--gold-dim); font-weight:700; }
 </style>
+<style>@media screen{.tbl-scroll{overflow-x:auto;-webkit-overflow-scrolling:touch}.tbl-scroll:focus-visible{outline:2px solid #D4AF37;outline-offset:2px}}</style>
+<style>th[scope=row]{font-weight:inherit;text-transform:none;letter-spacing:inherit;text-align:left}</style>
 </head>
 <body>
 
@@ -81,12 +87,12 @@ section.clause ul, section.clause ol{ margin:0 0 7px; padding-left:18px; }
       </svg>
       <div class="brand-name">Ridgeline Freight Partners</div>
     </div>
-    <div class="eyebrow">Carrier Onboarding Packet</div>
+    <h1 class="eyebrow">Carrier Onboarding Packet</h1>
   </div>
   <hr class="top-rule">
 
   <div class="doc-title">
-    <h1><span class="gold-text">Carrier Profile</span></h1>
+    <h2><span class="gold-text">Carrier Profile</span></h2>
     <div class="sub">Complete every field below. This form is required before any load is tendered.</div>
   </div>
 
@@ -138,7 +144,7 @@ section.clause ul, section.clause ol{ margin:0 0 7px; padding-left:18px; }
   <hr class="top-rule">
 
   <div class="doc-title">
-    <h1><span class="gold-text">W-9 Request</span></h1>
+    <h2><span class="gold-text">W-9 Request</span></h2>
     <div class="sub">Required for 1099 reporting before the first payment is issued.</div>
   </div>
 
@@ -184,26 +190,26 @@ section.clause ul, section.clause ol{ margin:0 0 7px; padding-left:18px; }
   <hr class="top-rule">
 
   <div class="doc-title">
-    <h1><span class="gold-text">Insurance Requirements</span></h1>
+    <h2><span class="gold-text">Insurance Requirements</span></h2>
     <div class="sub">Certificates of insurance must be current and on file before the first dispatch, and kept current for the life of the relationship.</div>
   </div>
 
-  <table class="terms-table">
-    <tr><td class="lbl">Auto Liability</td><td>Minimum $1,000,000 combined single limit, covering all owned/leased/non-owned vehicles used to transport Broker freight</td></tr>
-    <tr><td class="lbl">Motor Truck Cargo</td><td>Minimum $100,000 per occurrence, naming Ridgeline Freight Partners as certificate holder / loss payee where applicable</td></tr>
-    <tr><td class="lbl">Workers' Compensation</td><td>Statutory limits per state of domicile, or valid owner-operator exemption on file if applicable</td></tr>
-    <tr><td class="lbl">General Liability</td><td>Recommended minimum $1,000,000 per occurrence (not required for dispatch, but preferred for drop-yard/dock access)</td></tr>
-    <tr><td class="lbl">Certificate Holder</td><td>Ridgeline Freight Partners, 4400 Newport Ave, Suite 220, San Jose, CA 95118</td></tr>
-    <tr><td class="lbl">Cancellation Notice</td><td>30 days' written notice to Broker required before any policy cancellation or material change takes effect</td></tr>
-  </table>
+  <div class="tbl-scroll" tabindex="0" role="region" aria-label="Scrollable table"><table class="terms-table">
+    <tr><th scope="row" class="lbl">Auto Liability</th><td>Minimum $1,000,000 combined single limit, covering all owned/leased/non-owned vehicles used to transport Broker freight</td></tr>
+    <tr><th scope="row" class="lbl">Motor Truck Cargo</th><td>Minimum $100,000 per occurrence, naming Ridgeline Freight Partners as certificate holder / loss payee where applicable</td></tr>
+    <tr><th scope="row" class="lbl">Workers' Compensation</th><td>Statutory limits per state of domicile, or valid owner-operator exemption on file if applicable</td></tr>
+    <tr><th scope="row" class="lbl">General Liability</th><td>Recommended minimum $1,000,000 per occurrence (not required for dispatch, but preferred for drop-yard/dock access)</td></tr>
+    <tr><th scope="row" class="lbl">Certificate Holder</th><td>Ridgeline Freight Partners, 4400 Newport Ave, Suite 220, San Jose, CA 95118</td></tr>
+    <tr><th scope="row" class="lbl">Cancellation Notice</th><td>30 days' written notice to Broker required before any policy cancellation or material change takes effect</td></tr>
+  </table></div>
 
   <section class="clause">
-    <h2><span class="num">1.</span> Certificate Submission</h2>
+    <h3><span class="num">1.</span> Certificate Submission</h3>
     <p>Carrier's insurance agent should email the Certificate of Insurance (COI) directly to insurance@ridgelinefreight.com, with Ridgeline Freight Partners listed as certificate holder. Self-submitted certificates are accepted but subject to verification with the issuing carrier.</p>
   </section>
 
   <section class="clause">
-    <h2><span class="num">2.</span> Ongoing Compliance</h2>
+    <h3><span class="num">2.</span> Ongoing Compliance</h3>
     <p>Carrier is responsible for submitting a renewed COI at least 5 business days before any listed policy expires. Lapsed coverage suspends load tenders automatically until a current certificate is received and verified.</p>
   </section>
 
@@ -228,32 +234,32 @@ section.clause ul, section.clause ol{ margin:0 0 7px; padding-left:18px; }
   <hr class="top-rule">
 
   <div class="doc-title">
-    <h1><span class="gold-text">Broker-Carrier Agreement — Summary</span></h1>
+    <h2><span class="gold-text">Broker-Carrier Agreement — Summary</span></h2>
     <div class="sub">Key terms of the full agreement. The complete Broker-Carrier Agreement, executed separately, governs in the event of any conflict.</div>
   </div>
 
   <section class="clause">
-    <h2><span class="num">1.</span> Relationship</h2>
+    <h3><span class="num">1.</span> Relationship</h3>
     <p>Carrier is an independent contractor, not an employee or agent of Broker. Carrier retains full control over the manner and means of transportation, subject to shipper/consignee delivery windows and applicable law.</p>
   </section>
 
   <section class="clause">
-    <h2><span class="num">2.</span> Rate &amp; Payment</h2>
+    <h3><span class="num">2.</span> Rate &amp; Payment</h3>
     <p>Each load is governed by its individually issued Rate Confirmation, which sets the agreed rate and is incorporated into this Agreement by reference. Standard payment terms are Net 30 from receipt of a complete, clean paperwork packet (signed BOL + POD); QuickPay at a 2% fee is available on request.</p>
   </section>
 
   <section class="clause">
-    <h2><span class="num">3.</span> No Double-Brokering</h2>
+    <h3><span class="num">3.</span> No Double-Brokering</h3>
     <p>Carrier may not re-broker, interline, or subcontract any load tendered under this Agreement to another motor carrier without Broker's prior written consent. Violation is grounds for immediate termination and forfeiture of payment on the load in question.</p>
   </section>
 
   <section class="clause">
-    <h2><span class="num">4.</span> Claims &amp; Liability</h2>
+    <h3><span class="num">4.</span> Claims &amp; Liability</h3>
     <p>Carrier is liable for loss or damage to cargo while in its care, custody, and control, subject to the Carmack Amendment and the cargo insurance limits stated in Page 3. Claims must be reported within 24 hours of discovery.</p>
   </section>
 
   <section class="clause">
-    <h2><span class="num">5.</span> Term &amp; Termination</h2>
+    <h3><span class="num">5.</span> Term &amp; Termination</h3>
     <p>This Agreement remains in effect until terminated by either party with 30 days' written notice, or immediately for cause (safety violation, insurance lapse, double-brokering, repeated service failure).</p>
   </section>
 
@@ -280,7 +286,7 @@ section.clause ul, section.clause ol{ margin:0 0 7px; padding-left:18px; }
   <hr class="top-rule">
 
   <div class="doc-title">
-    <h1><span class="gold-text">Banking &amp; Notice of Assignment</span></h1>
+    <h2><span class="gold-text">Banking &amp; Notice of Assignment</span></h2>
     <div class="sub">Complete this page only if Carrier uses a factoring company. Skip to Page 6 if paid directly.</div>
   </div>
 
@@ -294,12 +300,12 @@ section.clause ul, section.clause ol{ margin:0 0 7px; padding-left:18px; }
   </div>
 
   <section class="clause">
-    <h2><span class="num">1.</span> Notice of Assignment (if factoring)</h2>
+    <h3><span class="num">1.</span> Notice of Assignment (if factoring)</h3>
     <p>If Carrier has assigned its right to payment to a factoring company, an original, signed Notice of Assignment (NOA) on the factoring company's letterhead must be received and verified before that assignment takes effect. Until a valid NOA is on file, payment will be issued directly to Carrier per the banking details above.</p>
   </section>
 
   <section class="clause">
-    <h2><span class="num">2.</span> Conflicting Instructions</h2>
+    <h3><span class="num">2.</span> Conflicting Instructions</h3>
     <p>If Broker receives conflicting payment instructions from Carrier and a factoring company, Broker will withhold payment and request written clarification signed by an authorized representative of Carrier before releasing funds. This protects Carrier against fraudulent factoring takeovers, a common scheme in freight brokerage.</p>
   </section>
 
@@ -331,7 +337,7 @@ section.clause ul, section.clause ol{ margin:0 0 7px; padding-left:18px; }
   <hr class="top-rule">
 
   <div class="doc-title">
-    <h1><span class="gold-text">Safety Attestation</span></h1>
+    <h2><span class="gold-text">Safety Attestation</span></h2>
     <div class="sub">Carrier certifies the following as a condition of receiving load tenders from Broker.</div>
   </div>
 

@@ -2,12 +2,14 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8" />
+<meta name="referrer" content="strict-origin-when-cross-origin">
+<meta http-equiv="Content-Security-Policy" content="object-src 'none'; base-uri 'self'">
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <!-- tech:seo — managed block (SEO / social / structured data / perf / PWA) -->
 <link rel="preload" href="/css/site.css" as="style">
 <meta name="robots" content="index,follow,max-image-preview:large">
 <meta property="og:locale" content="en_US">
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"TechArticle","headline":"EcoImpact — a community trash map with a quantified impact meter","url":"https://yusuf-gadelrab.github.io/ecoimpact.html","description":"Case study: a community trash map with a quantified impact meter — FastAPI, SQLite and Leaflet, designed privacy-first from the schema up.","author":{"@id":"https://yusuf-gadelrab.github.io/#person"},"publisher":{"@id":"https://yusuf-gadelrab.github.io/#person"},"datePublished":"2026-07-29","dateModified":"2026-07-29","mainEntityOfPage":{"@type":"WebPage","@id":"https://yusuf-gadelrab.github.io/ecoimpact.html"}}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"TechArticle","headline":"EcoImpact — a community trash map with a quantified impact meter","url":"https://yusuf-gadelrab.github.io/ecoimpact.html","description":"Case study: a community trash map with a quantified impact meter — FastAPI, SQLite and Leaflet, designed privacy-first from the schema up.","author":{"@id":"https://yusuf-gadelrab.github.io/#person"},"publisher":{"@id":"https://yusuf-gadelrab.github.io/#person"},"datePublished":"2026-07-29","dateModified":"2026-07-29","mainEntityOfPage":{"@type":"WebPage","@id":"https://yusuf-gadelrab.github.io/ecoimpact.html#webpage"}}</script>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://yusuf-gadelrab.github.io/"},{"@type":"ListItem","position":2,"name":"Case studies","item":"https://yusuf-gadelrab.github.io/apps.html"},{"@type":"ListItem","position":3,"name":"EcoImpact","item":"https://yusuf-gadelrab.github.io/ecoimpact.html"}]}</script>
 <link rel="manifest" href="/manifest.webmanifest">
 <meta name="apple-mobile-web-app-capable" content="yes">
@@ -34,6 +36,7 @@
 <meta name="twitter:description" content="A community trash map with a quantified impact meter, designed privacy-first from the schema up.">
 <meta name="twitter:image" content="https://yusuf-gadelrab.github.io/og/ecoimpact-card.png">
 <link rel="stylesheet" href="/css/site.css">
+<link rel="stylesheet" href="/css/lux-motion.css">
 <style>
   .shot{width:100%;aspect-ratio:16/10;object-fit:cover;border-radius:var(--radius-lg);
     border:1px solid var(--line);box-shadow:var(--shadow)}
@@ -49,9 +52,17 @@
   .callout{border-left:3px solid var(--gold)}
   .callout b{color:var(--gold-2)}
   .card p{color:var(--muted);font-size:var(--t-small);margin-top:var(--s3)}
+  form.mini{display:flex;gap:8px;margin-top:var(--s4);flex-wrap:wrap}
+  form.mini input{flex:1 1 220px;min-width:0;background:var(--panel2);border:1px solid var(--line);
+    border-radius:var(--radius);color:var(--bone);padding:10px 12px;font-family:var(--body-font);font-size:13px}
+  form.mini input:focus{border-color:var(--gold)}
+  form.mini input:focus-visible{outline:2px solid var(--gold-2);outline-offset:2px}
+  form.mini button{white-space:nowrap}
+  .note{margin-top:8px;font-size:11px;color:var(--faint)}
 </style>
-<!-- geo:entity — canonical Person node, one entity across every page -->
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"Person","@id":"https://yusuf-gadelrab.github.io/#person","name":"Yusuf Gadelrab","url":"https://yusuf-gadelrab.github.io/"}</script>
+<!-- geo:entity — page-level WebPage node (resolves the mainEntityOfPage @id above), plus a bare reference to the canonical Person entity defined in full on index.html -->
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebPage","@id":"https://yusuf-gadelrab.github.io/ecoimpact.html#webpage","url":"https://yusuf-gadelrab.github.io/ecoimpact.html","name":"EcoImpact — Trash Map & Impact Meter","description":"Case study: a community trash map with a quantified impact meter — FastAPI, SQLite and Leaflet, designed privacy-first from the schema up.","inLanguage":"en","isPartOf":{"@id":"https://yusuf-gadelrab.github.io/#website"},"about":{"@id":"https://yusuf-gadelrab.github.io/#person"},"publisher":{"@id":"https://yusuf-gadelrab.github.io/#person"}}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Person","@id":"https://yusuf-gadelrab.github.io/#person"}</script>
 <link rel="alternate" type="text/plain" href="https://yusuf-gadelrab.github.io/llms-full.txt" title="Plain-text profile for language models">
 </head>
 <body class="pro">
@@ -61,6 +72,14 @@
 <nav class="site-nav">
   <a class="site-nav__brand" href="/"><img class="site-nav__lion" src="/img/brand/lion-mark.svg" alt="" width="34" height="34" decoding="async"><span>YUSUF GADELRAB</span></a>
   <div class="site-nav__links"><a href="/">Work</a><a href="/resume.html">Resume</a><a href="/guides.html">Guides</a><a href="/store.html">Store</a><a href="/apps.html">Apps</a><a href="/kxngsef.html">KXNG SEF</a><a href="/hire.html">Hire</a><a href="/media-kit.html">Media Kit</a></div>
+</nav>
+
+<nav class="crumbs" aria-label="Breadcrumb">
+  <ol>
+    <li><a href="/">Home</a></li>
+    <li><a href="/apps.html">Case studies</a></li>
+    <li><span aria-current="page">EcoImpact</span></li>
+  </ol>
 </nav>
 
 <main id="main">
@@ -159,11 +178,28 @@
     </div>
   </section>
 
+  <hr class="divider">
+
+  <section class="section section--tight">
+    <div class="panel" id="early-access" style="border-left:3px solid var(--gold)">
+      <p class="eyebrow">Get In</p>
+      <h2 style="margin:var(--s2) 0 var(--s3)">Want first access when this opens up?</h2>
+      <p class="muted" style="font-size:var(--t-small);max-width:56ch">EcoImpact isn't public yet — the moderation and minors questions need real answers before anyone outside my own testing reports a pin. Join the list and I'll email you the day it opens to a campus or a city, or ask for a live walkthrough now.</p>
+      <form class="mini" id="f-ei" novalidate>
+        <label class="sr-only" for="e-ei">Your email address</label>
+        <input type="email" id="e-ei" placeholder="you@email.com" autocomplete="email" required>
+        <button class="btn btn-gold" type="submit">Get early access</button>
+      </form>
+      <p class="note" id="n-ei">One email when it opens, nothing else. <a href="/waitlist.html">See every list I run →</a></p>
+    </div>
+  </section>
+
 </main>
 
 <footer class="site-footer">
   <div>Yusuf Gadelrab · CS @ SJSU · EcoImpact project page</div>
   <div class="site-footer__links">
+    <a href="/faq.html">FAQ</a>
     <a href="/writing.html">Writing</a>
     <a href="/dispatch.html">Dispatch</a>
     <a href="/eh.html">eh</a>
@@ -194,6 +230,13 @@
   </div>
 </footer>
 
+<script src="/js/waitlist.js" defer></script>
 <script src="/js/site.js" defer></script>
+<script src="/js/lux-motion.js" defer></script>
+<script>
+addEventListener("DOMContentLoaded", function () {
+  if (window.YGWaitlist) YGWaitlist.attach("f-ei", "e-ei", "n-ei", "EcoImpact Early Access");
+});
+</script>
 </body>
 </html>

@@ -44,6 +44,11 @@ GROUP_OF = {
     "portfolio-that-gets-interviews": 2, "coding-interview-patterns": 2,
     "undergraduate-research": 2, "bilingual-coding-cs-education": 2,
     "scholarships-international-students": 2,
+    "verify-visa-sponsorship-internships": 2,
+    "quant-internship-timeline": 2,
+    "f1-cpt-one-year-rule": 2,
+    "cold-email-professor-research": 2,
+    "technical-portfolio-8-seconds": 2,
     "freight-broker-margin": 3, "freight-back-office": 3,
     "print-on-demand-economics": 3,
     "sharpe-and-risk-metrics": 0,
@@ -62,6 +67,12 @@ GROUP_OF = {
     "backtest-overfitting": 0,
     "reading-a-backtest-report": 0,
     "options-vertical-spreads": 0,
+    "snyk-vs-trivy-vs-dira": 1,
+    "ollama-vs-lm-studio-vs-llama-cpp": 1,
+    "notion-vs-obsidian-vs-markdown-files": 1,
+    "lemon-squeezy-vs-gumroad-vs-payhip-vs-etsy": 3,
+    "alpaca-vs-interactive-brokers-vs-robinhood": 0,
+    "free-vs-paid-student-tools": 2,
 }
 
 # The three hand-written guides that predate the generator.

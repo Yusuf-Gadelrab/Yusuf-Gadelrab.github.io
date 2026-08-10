@@ -57,7 +57,7 @@ CS undergrad at **San José State University** (class of 2028), applied math + C
 I build AI systems for markets and classrooms — and I publish the parts that failed.
 
 - 2× co-author, **ACM SIGCSE TS 2026** — including *Exploring Bilingual Coding for
-  Inclusive CS Learning* ([DOI 10.1145/3770761.3777339](https://doi.org/10.1145/3770761.3777339))
+  Inclusive Computer Science Learning* ([DOI 10.1145/3770761.3777339](https://doi.org/10.1145/3770761.3777339))
   and *Adaptive Curriculum Maps* (poster)
 - Built an NLP equity-scoring platform through **IBM SkillsBuild** (IBM Watson) —
   78% directional accuracy

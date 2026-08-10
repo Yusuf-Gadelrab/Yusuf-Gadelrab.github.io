@@ -2,6 +2,8 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
+<meta name="referrer" content="strict-origin-when-cross-origin">
+<meta http-equiv="Content-Security-Policy" content="object-src 'none'; base-uri 'self'">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <!-- tech:seo — managed block (SEO / social / structured data / perf / PWA) -->
 <link rel="preload" href="/css/site.css" as="style">
@@ -33,6 +35,7 @@
 <meta name="twitter:description" content="A student-run food delivery app concept for SJSU. Campus-priced delivery, built by Spartans for Spartans.">
 <meta name="twitter:image" content="https://yusuf-gadelrab.github.io/og/spartaneats-card.png">
 <link rel="stylesheet" href="/css/site.css">
+<link rel="stylesheet" href="/css/lux-motion.css">
 <style>
   /* ============================================================================
      Page-specific CSS only.
@@ -184,7 +187,7 @@
    This page's own CSS overrides the shared floor, so pin it here. */
 input,textarea,select{font-size:16px!important}</style>
 <!-- geo:entity — canonical Person node, one entity across every page -->
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"Person","@id":"https://yusuf-gadelrab.github.io/#person","name":"Yusuf Gadelrab","url":"https://yusuf-gadelrab.github.io/"}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebPage","@id":"https://yusuf-gadelrab.github.io/spartaneats.html#webpage","url":"https://yusuf-gadelrab.github.io/spartaneats.html","inLanguage":"en","isPartOf":{"@id":"https://yusuf-gadelrab.github.io/#website"},"about":{"@id":"https://yusuf-gadelrab.github.io/#person"},"publisher":{"@id":"https://yusuf-gadelrab.github.io/#person"}}</script>
 <link rel="alternate" type="text/plain" href="https://yusuf-gadelrab.github.io/llms-full.txt" title="Plain-text profile for language models">
 </head>
 <body class="pro">
@@ -194,6 +197,14 @@ input,textarea,select{font-size:16px!important}</style>
 <nav class="site-nav">
   <a class="site-nav__brand" href="/"><img class="site-nav__lion" src="/img/brand/lion-mark.svg" alt="" width="34" height="34" decoding="async"><span>YUSUF GADELRAB</span></a>
   <div class="site-nav__links"><a href="/">Work</a><a href="/resume.html">Resume</a><a href="/guides.html">Guides</a><a href="/store.html">Store</a><a href="/apps.html">Apps</a><a href="/kxngsef.html">KXNG SEF</a><a href="/hire.html">Hire</a><a href="/media-kit.html">Media Kit</a></div>
+</nav>
+
+<nav class="crumbs" aria-label="Breadcrumb">
+  <ol>
+    <li><a href="/">Home</a></li>
+    <li><a href="/apps.html">Case studies</a></li>
+    <li><span aria-current="page">SpartanEats</span></li>
+  </ol>
 </nav>
 
 <main id="main" class="section landing">
@@ -241,6 +252,7 @@ input,textarea,select{font-size:16px!important}</style>
     <span class="faint">Not affiliated with San José State University.</span>
   </div>
   <div class="site-footer__links">
+    <a href="/faq.html">FAQ</a>
     <a href="/writing.html">Writing</a>
     <a href="/dispatch.html">Dispatch</a>
     <a href="/eh.html">eh</a>
@@ -647,5 +659,6 @@ function wireView(){ if(view.name==='checkout'){coPay='cash';coTip=0;} }
 render();
 </script>
 <script src="/js/site.js" defer></script>
+<script src="/js/lux-motion.js" defer></script>
 </body>
 </html>

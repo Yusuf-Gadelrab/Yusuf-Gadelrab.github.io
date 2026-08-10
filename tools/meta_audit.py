@@ -106,14 +106,24 @@ def headings(src):
     return out
 
 
+def is_noindex(src):
+    """A page that tells search engines not to index it is not a SERP surface.
+    Its title/description are UI chrome (browser tab, saved-PDF name), not ad copy,
+    so click-through rules do not apply — but heading structure still does."""
+    m = re.search(r'<meta\s+name=["\']robots["\']\s+content=["\']([^"\']*)["\']', src, re.I)
+    return bool(m and "noindex" in m.group(1).lower())
+
+
 def audit_file(path):
     rel = os.path.relpath(path, PUB).replace(os.sep, "/")
     src = open(path, encoding="utf-8").read()
     t = re.search(r"<title>(.*?)</title>", src, re.S)
     title = txt(t.group(1)) if t else None
     desc = meta(src, "name", "description")
+    noindex = is_noindex(src)
     r = {
         "file": rel,
+        "noindex": noindex,
         "scope": scope_of(rel),
         "title": title,
         "title_len": len(title) if title else 0,
@@ -130,7 +140,10 @@ def audit_file(path):
     r["h1"] = h1s
     f = r["flags"]
 
-    if not title:
+    if noindex:
+        # Skip every click-through check; still audit heading structure below.
+        pass
+    elif not title:
         f.append("TITLE_MISSING")
     else:
         if r["title_len"] > TITLE_MAX:
@@ -142,7 +155,9 @@ def audit_file(path):
         if kws and not any(k in low or k.rstrip("s") in low for k in kws):
             f.append("TITLE_NO_KEYWORD(%s)" % "/".join(kws))
 
-    if not desc:
+    if noindex:
+        pass
+    elif not desc:
         f.append("DESC_MISSING")
     else:
         if r["desc_len"] > DESC_MAX:
@@ -155,23 +170,37 @@ def audit_file(path):
             f.append("DESC_NO_HOOK")
         if title and desc.lower().startswith(title.lower()[:28]):
             f.append("DESC_ECHOES_TITLE")
-        if desc.endswith(("...", "…")) or (len(desc) > DESC_MAX - 2 and not desc.endswith((".", "!", "?"))):
+        # A machine-truncated description is body text cut at a char budget, so it
+        # stops mid-sentence (often mid-word) instead of ending like written copy.
+        if desc.endswith(("...", "…")) or (len(desc) >= 140 and not desc.rstrip().endswith((".", "!", "?", '"', "'"))):
             f.append("DESC_TRUNCATED")
 
-    if not r["og_title"]:
-        f.append("OG_TITLE_MISSING")
-    if not r["og_desc"]:
-        f.append("OG_DESC_MISSING")
-    if not r["tw_title"]:
-        f.append("TW_TITLE_MISSING")
-    if not r["tw_desc"]:
-        f.append("TW_DESC_MISSING")
+    if not noindex:
+        if not r["og_title"]:
+            f.append("OG_TITLE_MISSING")
+        if not r["og_desc"]:
+            f.append("OG_DESC_MISSING")
+        if not r["tw_title"]:
+            f.append("TW_TITLE_MISSING")
+        if not r["tw_desc"]:
+            f.append("TW_DESC_MISSING")
+
+    # A title that is a prefix of the h1 and stops mid-word is a hard character-budget
+    # cut, not an edit — "...and then publis", "...tired of bei". Cutting at a real word
+    # boundary (h1 continues with a space or punctuation) is a legitimate shortening.
+    if title and not noindex and h1s:
+        h1 = h1s[0].strip()
+        t = title.strip()
+        if len(t) < len(h1) and h1.startswith(t) and h1[len(t)].isalnum():
+            f.append("TITLE_TRUNCATED")
 
     if len(h1s) == 0:
         f.append("H1_MISSING")
     elif len(h1s) > 1:
         f.append(f"H1_MULTIPLE({len(h1s)})")
-    elif title and h1s[0].strip() == title.strip():
+    elif title and not noindex and h1s[0].strip() == title.strip():
+        # Wanting the h1 to differ from the title is a SERP-snippet concern. On a
+        # noindex page (e.g. a template document) an identical heading is correct.
         f.append("H1_EQUALS_TITLE")
 
     # heading hierarchy: no level jumps > 1 going down
@@ -206,7 +235,8 @@ def main():
     for key, flag in (("title", "TITLE_DUPLICATE"), ("desc", "DESC_DUPLICATE")):
         seen = defaultdict(list)
         for r in rows:
-            if r[key]:
+            # noindex pages cannot collide in a SERP, so they cannot be duplicates.
+            if r[key] and not r.get("noindex"):
                 seen[r[key].strip().lower()].append(r)
         for v, group in seen.items():
             if len(group) > 1:

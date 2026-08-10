@@ -86,12 +86,20 @@ def main():
     text = open(HUB, encoding="utf-8").read()
 
     new_list = render_list(posts)
-    text, n_list = re.subn(r"  <ol>.*?  </ol>", lambda _: new_list, text, count=1, flags=re.S)
+    # Anchor to the <main> list. A bare "first <ol>" match silently ate the
+    # breadcrumb nav's <ol>, which sits earlier in the document.
+    text, n_list = re.subn(r"(<main\b[^>]*>.*?)  <ol>.*?  </ol>",
+                           lambda m: m.group(1) + new_list, text, count=1, flags=re.S)
     if not n_list:
-        raise SystemExit("could not find the <ol> post list in writing.html")
+        raise SystemExit("could not find the <ol> post list inside <main> in writing.html")
+    if "crumbs" not in text.split("<main", 1)[0]:
+        raise SystemExit("breadcrumb nav went missing — refusing to write writing.html")
 
     new_schema = render_schema(posts)
-    pattern = r'<script type="application/ld\+json">\{"@context": "https://schema\.org", "@type": "Blog".*?</script>'
+    # Whitespace-tolerant: a later minify pass strips the spaces json.dumps emits,
+    # and a strict pattern silently breaks every future hub rebuild.
+    pattern = (r'<script type="application/ld\+json">\s*\{\s*"@context":\s*"https://schema\.org",'
+               r'\s*"@type":\s*"Blog".*?</script>')
     text, n_schema = re.subn(pattern, lambda _: new_schema, text, count=1, flags=re.S)
     if not n_schema:
         raise SystemExit("could not find the Blog JSON-LD block in writing.html")

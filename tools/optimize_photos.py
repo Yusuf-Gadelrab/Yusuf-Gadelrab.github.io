@@ -75,7 +75,19 @@ MAX_EDGE = {
 #   og/          social-card scrapers (LinkedIn/X still prefer png/jpg)
 #   splash-      iOS apple-touch-startup-image
 #   icon-        web app manifest / apple-touch-icon
-WEBP_SKIP = ("og/", "img/brand/kit/splash-", "icon-", "apple-touch-icon")
+#
+# Split by match kind on purpose. A bare `s in rel` substring test silently
+# swallowed every `16-lexicon-*.jpg` in the KXNG SEF lookbook, because
+# "lexicon-" contains "icon-". Directory rules match on the path prefix and
+# icon rules match on the basename only, so a word can never collide with a
+# filename-prefix rule again.
+WEBP_SKIP_DIRS = ("og/", "img/brand/kit/splash-")
+WEBP_SKIP_NAMES = ("icon-", "apple-touch-icon")
+
+
+def webp_skipped(rel: str) -> bool:
+    name = rel.rsplit("/", 1)[-1]
+    return rel.startswith(WEBP_SKIP_DIRS) or name.startswith(WEBP_SKIP_NAMES)
 
 REF_RE = re.compile(r"(?:^|[\"'(/])((?:img|projects|og)/[A-Za-z0-9_./-]+\.(?:jpg|jpeg|png))")
 
@@ -89,7 +101,7 @@ def referenced_rasters() -> list[str]:
             continue
         for m in REF_RE.finditer(f.read_text(encoding="utf-8", errors="ignore")):
             rel = m.group(1)
-            if rel.startswith(WEBP_SKIP) or any(s in rel for s in WEBP_SKIP):
+            if webp_skipped(rel):
                 continue
             if (PUB / rel).exists():
                 seen.add(rel)

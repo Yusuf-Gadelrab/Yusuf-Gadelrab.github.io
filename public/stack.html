@@ -2,6 +2,8 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
+<meta name="referrer" content="strict-origin-when-cross-origin">
+<meta http-equiv="Content-Security-Policy" content="object-src 'none'; base-uri 'self'">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link rel="preload" href="/css/site.css" as="style">
 <meta name="robots" content="index,follow,max-image-preview:large">
@@ -9,8 +11,8 @@
 <meta property="og:image" content="https://yusuf-gadelrab.github.io/og/stack-card.png">
 <meta property="og:image:alt" content="My Stack — Yusuf Gadelrab">
 <meta name="twitter:image" content="https://yusuf-gadelrab.github.io/og/stack-card.png">
-<title>My Stack — Tools I Actually Use · Yusuf Gadelrab</title>
-<meta name="description" content="The tools Yusuf Gadelrab actually uses daily: Python and uv, Bun, React, local LLMs via Ollama, Claude Code, and the trading and automation stack behind it.">
+<title>My Dev Stack: AI, Coding &amp; Trading Tools I Actually Use</title>
+<meta name="description" content="Every tool in my daily stack with the honest version: what it replaced, why it stayed, and what it costs. Most of it is free. Here is where the money goes.">
 <link rel="canonical" href="https://yusuf-gadelrab.github.io/stack.html">
 <link rel="icon" type="image/svg+xml" href="https://yusuf-gadelrab.github.io/favicon.svg">
 <link rel="apple-touch-icon" sizes="180x180" href="https://yusuf-gadelrab.github.io/apple-touch-icon.png">
@@ -19,16 +21,17 @@
 <meta name="author" content="Yusuf Gadelrab">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Yusuf Gadelrab">
-<meta property="og:title" content="My Stack — Tools I Actually Use">
-<meta property="og:description" content="The tools Yusuf Gadelrab actually uses daily: Python and uv, Bun, React, local LLMs via Ollama, Claude Code, and the trading and automation stack behind it.">
+<meta property="og:title" content="My Dev Stack: AI, Coding &amp; Trading Tools I Actually Use">
+<meta property="og:description" content="Every tool in my daily stack with the honest version: what it replaced, why it stayed, and what it costs. Most of it is free. Here is where the money goes.">
 <meta property="og:url" content="https://yusuf-gadelrab.github.io/stack.html">
 
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="My Stack — Tools I Actually Use">
-<meta name="twitter:description" content="The tools Yusuf Gadelrab actually uses daily: Python and uv, Bun, React, local LLMs via Ollama, Claude Code, and the trading and automation stack behind it.">
+<meta name="twitter:title" content="My Dev Stack: AI, Coding &amp; Trading Tools I Actually Use">
+<meta name="twitter:description" content="Every tool in my daily stack with the honest version: what it replaced, why it stayed, and what it costs. Most of it is free. Here is where the money goes.">
 
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"ItemList","name":"My Stack — Yusuf Gadelrab","url":"https://yusuf-gadelrab.github.io/stack.html","itemListElement":[{"@type":"ListItem","position":1,"name":"TradingView","url":"https://www.tradingview.com/"},{"@type":"ListItem","position":2,"name":"Alpaca","url":"https://alpaca.markets/"},{"@type":"ListItem","position":3,"name":"Swing Screener","url":"https://yusuf-gadelrab.github.io/swing-screener.html"},{"@type":"ListItem","position":4,"name":"Claude Code","url":"https://claude.com/claude-code"},{"@type":"ListItem","position":5,"name":"Ollama + qwen3","url":"https://ollama.com/"},{"@type":"ListItem","position":6,"name":"uv","url":"https://docs.astral.sh/uv/"},{"@type":"ListItem","position":7,"name":"Bun","url":"https://bun.sh/"},{"@type":"ListItem","position":8,"name":"Creatine Monohydrate","url":"https://www.amazon.com/s?k=creatine+monohydrate"},{"@type":"ListItem","position":9,"name":"Whey Protein","url":"https://www.amazon.com/s?k=whey+protein"},{"@type":"ListItem","position":10,"name":"Fish Oil","url":"https://www.amazon.com/s?k=fish+oil+omega+3"},{"@type":"ListItem","position":11,"name":"Magnesium Glycinate","url":"https://www.amazon.com/s?k=magnesium+glycinate"}]}</script>
 <link rel="stylesheet" href="/css/site.css">
+<link rel="stylesheet" href="/css/lux-motion.css">
 <style>
   /* ---- page-specific only ---- */
   .tool{display:flex;flex-direction:column;padding:var(--s5)}
@@ -40,10 +43,28 @@
   .disclosure{margin-top:var(--s5);padding:var(--s4);border:1px solid var(--line-soft);
     border-radius:var(--radius);color:var(--muted);font-size:var(--t-small)}
   .grp-head p{color:var(--muted);font-size:var(--t-small);max-width:56ch}
+  .tool .meta{margin-top:var(--s3);font-family:var(--mono);font-size:var(--t-micro);
+    line-height:1.7;color:var(--faint)}
+  .tool .meta b{color:var(--muted);font-weight:600}
+  .ledger{width:100%;border-collapse:collapse;font-size:var(--t-small);min-width:640px}
+  .ledger th,.ledger td{padding:var(--s3) var(--s4);text-align:left;
+    border-bottom:1px solid var(--line-soft);vertical-align:top}
+  .ledger th{font-family:var(--display-pro);font-size:var(--t-micro);letter-spacing:2px;
+    text-transform:uppercase;color:var(--gold-2);white-space:nowrap}
+  .ledger td{color:var(--muted)}
+  .ledger td:first-child{color:var(--ink);white-space:nowrap}
+  .geo-qa{padding:var(--s5)}
+  .geo-qa h3{font-size:var(--t-h3);margin:0 0 var(--s3)}
+  .geo-qa p{color:var(--muted);font-size:var(--t-small);margin:0}
+  .note{margin-top:var(--s5);padding:var(--s4);border-left:3px solid var(--gold-dim);
+    color:var(--muted);font-size:var(--t-small)}
+  .note a,.disclosure a,.grp-head a,.tool-links a{color:var(--gold-2)}
+  .tool-links{margin-top:var(--s5);font-size:var(--t-small);color:var(--muted)}
 </style>
 <!-- geo:entity — canonical Person node, one entity across every page -->
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"Person","@id":"https://yusuf-gadelrab.github.io/#person","name":"Yusuf Gadelrab","url":"https://yusuf-gadelrab.github.io/"}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebPage","@id":"https://yusuf-gadelrab.github.io/stack.html#webpage","url":"https://yusuf-gadelrab.github.io/stack.html","inLanguage":"en","isPartOf":{"@id":"https://yusuf-gadelrab.github.io/#website"},"about":{"@id":"https://yusuf-gadelrab.github.io/#person"},"publisher":{"@id":"https://yusuf-gadelrab.github.io/#person"}}</script>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://yusuf-gadelrab.github.io/"},{"@type":"ListItem","position":2,"name":"Stack"}]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","@id":"https://yusuf-gadelrab.github.io/stack.html#faq","mainEntity":[{"@type":"Question","name":"What tools do you actually use every day?","acceptedAnswer":{"@type":"Answer","text":"Trading runs on TradingView for charts, Alpaca for the broker API, and a screener I wrote myself. Code runs on Claude Code, a local model served by Ollama, uv for Python, and Bun for JavaScript. Everything else on this page is a supplement, not software."}},{"@type":"Question","name":"Why use uv instead of pip?","acceptedAnswer":{"@type":"Answer","text":"Speed, and one less decision. uv resolves and installs an environment in seconds where pip took minutes, and a single binary covers what pip, venv and pyenv used to do separately. Every Python project I own now starts with uv, and nothing has made me want pip back."}},{"@type":"Question","name":"Why use Bun instead of Node and npm?","acceptedAnswer":{"@type":"Answer","text":"One binary covers install, run, test and bundle, so there is no separate package manager, test runner and bundler to keep in sync. It is fast enough that install time stopped being something I think about, which is the whole point of a runtime choice."}},{"@type":"Question","name":"Why run a local LLM instead of paying for an API?","acceptedAnswer":{"@type":"Answer","text":"Because the bulk of the work is not hard, it is just long. Drafting and rewriting passes run overnight on a mixture-of-experts model served by Ollama on my own machine: nothing per token, and the data never leaves the laptop. Frontier reasoning still goes to a hosted model. The local one handles volume, not judgement."}},{"@type":"Question","name":"How much does this stack cost to run?","acceptedAnswer":{"@type":"Answer","text":"Most of it is free. uv, Bun, Ollama and the open-weight models cost nothing, Alpaca's API and paper environment are free, TradingView has a free plan, and the screener is mine. The line that genuinely costs money is the coding agent, which has no free tier. Money is tight, so the rule is simple: stay on the free tier until it blocks something real."}},{"@type":"Question","name":"What broker API do you use for automated trading?","acceptedAnswer":{"@type":"Answer","text":"Alpaca. The paper environment is real and free, the REST endpoints are clean, and it is an official API rather than a reverse-engineered one. That last part matters: unofficial brokerage APIs get accounts restricted and usually have no paper mode at all."}},{"@type":"Question","name":"Are the links on this page affiliate links?","acceptedAnswer":{"@type":"Answer","text":"Some of them may become affiliate links, which means I could earn a commission at no extra cost to you. Nothing is on this list because of a payout. Every item is something I already use, and the free-versus-paid note next to each one stays honest either way."}}]}</script>
 <link rel="alternate" type="text/plain" href="https://yusuf-gadelrab.github.io/llms-full.txt" title="Plain-text profile for language models">
 </head>
 <body class="pro">
@@ -68,7 +89,8 @@
     <p class="eyebrow">DHAHAB · ذهب</p>
     <h1 style="margin:var(--s4) 0">My Stack</h1>
     <p class="lead">The real tools behind the trading, the code, and the cut — no fluff, only what I use daily.</p>
-    <p class="disclosure">Some links may become affiliate links, meaning I may earn a commission at no extra cost to you. I only list what I genuinely use. Details: <a href="/terms.html">/terms.html</a></p>
+    <p style="color:var(--muted);max-width:62ch;margin-top:var(--s4)">Most "my stack" pages are a logo wall. This one is the honest version: for every tool, what it replaced, why it stayed, and what it costs. Money is tight, so the default is the free tier until it blocks something real — and the ledger further down shows exactly where that rule breaks.</p>
+    <p class="disclosure">Some links may become affiliate links, meaning I may earn a commission at no extra cost to you. I only list what I genuinely use, and the free-versus-paid note stays honest either way. Details: <a href="/terms.html">Terms</a> · <a href="/privacy.html">Privacy</a></p>
   </header>
 
   <hr class="divider">
@@ -85,23 +107,30 @@
 
       <a class="card tool" data-link="tradingview" href="https://www.tradingview.com/" target="_blank" rel="noopener">
         <h3>TradingView</h3>
-        <p>Every chart I post starts here — it's the only platform where my anchored-VWAP workflows feel native instead of bolted on.</p>
+        <p>Every chart I post starts here — it's the only platform where my anchored-VWAP workflows feel native instead of bolted on. The free plan already covers the workflow; the paid tiers mostly buy more indicators per chart and better alerting, neither of which has blocked me yet.</p>
+        <span class="meta"><b>Replaced:</b> broker-native charting<br><b>Cost:</b> free plan, paid tiers optional</span>
         <span class="go">tradingview.com →</span>
       </a>
 
       <a class="card tool" data-link="alpaca" href="https://alpaca.markets/" target="_blank" rel="noopener">
         <h3>Alpaca</h3>
-        <p>The broker API behind my automated paper-trading engine — clean REST endpoints and a free paper environment, so I can test execution logic without risking a dollar.</p>
+        <p>The broker API behind my automated paper-trading engine — clean REST endpoints and a real free paper environment, so I can test execution logic without risking a dollar. The part that decided it: it's an <em>official</em> API. Reverse-engineered brokerage APIs get accounts restricted and usually have no paper mode at all.</p>
+        <span class="meta"><b>Replaced:</b> unofficial broker APIs<br><b>Cost:</b> free API, free paper trading</span>
         <span class="go">alpaca.markets →</span>
       </a>
 
       <a class="card tool" data-link="screener" href="/swing-screener.html">
         <h3>Swing Screener</h3>
-        <p>My own CLI: scans a watchlist for AVWAP-reclaim setups and backtests them with no lookahead — I built it, then used it to break my own edge.</p>
+        <p>My own CLI: scans a watchlist for AVWAP-reclaim setups and backtests them with no lookahead — I built it, then used it to break my own edge. The walk-forward result is on the build page, including the part where the headline number did not survive.</p>
+        <span class="meta"><b>Replaced:</b> paid stock screeners<br><b>Cost:</b> free — I wrote it</span>
         <span class="go">Read the build →</span>
       </a>
 
     </div>
+
+    <p class="tool-links">Deeper on this section: <a href="/guides/alpaca-vs-interactive-brokers-vs-robinhood.html">Alpaca vs Interactive Brokers vs Robinhood</a> · <a href="/guides/anchored-vwap.html">Anchored VWAP</a> · <a href="/guides/walk-forward-backtest.html">Walk-forward backtesting</a> · <a href="/guides/paper-to-live-trading.html">Paper to live</a> · <a href="/trading-bot.html">the execution engine</a> · <a href="/risk-tools.html">free risk calculators</a></p>
+
+    <p class="note"><b>Risk disclaimer:</b> nothing on this page is financial advice. The trading tools listed here are what I use for research and paper trading; markets carry real risk of loss and past results — mine included — do not predict future ones. My own AVWAP-reclaim result is <b>not</b> a validated edge: +0.117R over 4,933 trades, 95% CI [+0.057R, +0.174R], against a risk-matched random entry that already captured +0.086R, leaving the signal's own contribution at +0.030R with a confidence interval crossing zero.</p>
   </section>
 
   <hr class="divider">
@@ -118,29 +147,35 @@
 
       <a class="card tool" data-link="claudecode" href="https://claude.com/claude-code" target="_blank" rel="noopener">
         <h3>Claude Code</h3>
-        <p>My daily driver for agent workflows — it runs my nightly automation, drafts my outreach pipelines, and ships most of the code on this site.</p>
+        <p>My daily driver for agent workflows — it runs my nightly automation, drafts my outreach pipelines, and ships most of the code on this site. It is also the only line on this page with no free tier, which is precisely why the local model exists: anything that is volume rather than judgement gets routed away from it.</p>
+        <span class="meta"><b>Replaced:</b> writing boilerplate by hand<br><b>Cost:</b> paid — no free tier</span>
         <span class="go">claude.com/claude-code →</span>
       </a>
 
       <a class="card tool" data-link="ollama" href="https://ollama.com/" target="_blank" rel="noopener">
         <h3>Ollama + qwen3</h3>
-        <p>A local 30B model on my own machine handles the bulk drafting work overnight — $0 in API bills, and the data never leaves my laptop.</p>
+        <p>A local 30B mixture-of-experts model on my own machine handles the bulk drafting work overnight — nothing per token, the data never leaves my laptop, and it keeps running when the network doesn't. It is not as sharp as a frontier model. That's the trade, and I make it on purpose for work that is long rather than hard.</p>
+        <span class="meta"><b>Replaced:</b> metered API calls for bulk drafting<br><b>Cost:</b> free — open weights, runs on hardware I own</span>
         <span class="go">ollama.com →</span>
       </a>
 
       <a class="card tool" data-link="uv" href="https://docs.astral.sh/uv/" target="_blank" rel="noopener">
         <h3>uv</h3>
-        <p>Replaced pip entirely for me — environments and installs resolve in seconds instead of minutes, which matters when every project is Python.</p>
+        <p>Replaced pip entirely for me — environments and installs resolve in seconds instead of minutes, which matters when every project is Python. One binary now covers what pip, venv and pyenv used to do separately. Nothing since has made me want pip back.</p>
+        <span class="meta"><b>Replaced:</b> pip + venv + pyenv<br><b>Cost:</b> free, open source</span>
         <span class="go">astral.sh/uv →</span>
       </a>
 
       <a class="card tool" data-link="bun" href="https://bun.sh/" target="_blank" rel="noopener">
         <h3>Bun</h3>
-        <p>My default JS runtime and package manager — one binary covers install, run, test, and bundle, and it's fast enough that I stopped thinking about it.</p>
+        <p>My default JS runtime and package manager — one binary covers install, run, test, and bundle, and it's fast enough that I stopped thinking about it. No separate package manager, test runner and bundler to keep in version-sync with each other.</p>
+        <span class="meta"><b>Replaced:</b> Node + npm on my own projects<br><b>Cost:</b> free, open source</span>
         <span class="go">bun.sh →</span>
       </a>
 
     </div>
+
+    <p class="tool-links">How the local half of this works, in full: <a href="/guides/local-llm-ollama.html">running a local LLM with Ollama</a> · <a href="/guides/ollama-vs-lm-studio-vs-llama-cpp.html">Ollama vs LM Studio vs llama.cpp</a> · <a href="/guides/moe-model-macbook.html">running a MoE model on a MacBook</a> · <a href="/guides/structured-llm-output.html">getting structured output</a> · <a href="/guides/prompt-caching.html">prompt caching</a></p>
   </section>
 
   <hr class="divider">
@@ -157,28 +192,108 @@
 
       <a class="card tool" data-link="creatine" href="https://www.amazon.com/s?k=creatine+monohydrate" target="_blank" rel="noopener">
         <h3>Creatine Monohydrate</h3>
-        <p>The one supplement I never skip — 5g daily kept my lifts from falling off a cliff while cutting hard.</p>
+        <p>The one supplement I never skip — 5g daily kept my lifts from falling off a cliff while cutting hard. Plain monohydrate, not a branded blend; the fancier forms cost more per gram to do the same job.</p>
+        <span class="meta"><b>Replaced:</b> nothing — it was always first<br><b>Cost:</b> paid, cheapest item on the page per month</span>
         <span class="go">Shop creatine →</span>
       </a>
 
       <a class="card tool" data-link="whey" href="https://www.amazon.com/s?k=whey+protein" target="_blank" rel="noopener">
         <h3>Whey Protein</h3>
-        <p>Hitting protein targets in a deficit is the whole game — a shake covers the gap on days when food alone can't.</p>
+        <p>Hitting protein targets in a deficit is the whole game — a shake covers the gap on days when food alone can't. It is a convenience, not a requirement: if you can hit the number with food, skip it and save the money.</p>
+        <span class="meta"><b>Replaced:</b> nothing food couldn't do, on a good day<br><b>Cost:</b> paid, the largest monthly line here</span>
         <span class="go">Shop whey →</span>
       </a>
 
       <a class="card tool" data-link="fishoil" href="https://www.amazon.com/s?k=fish+oil+omega+3" target="_blank" rel="noopener">
         <h3>Fish Oil</h3>
-        <p>Cheap insurance for joints that take a beating from lifting and years of football and wrestling.</p>
+        <p>Cheap insurance for joints that take a beating from lifting and years of football and wrestling. This is the one I would drop first if the budget got tighter — I keep it because it is a few dollars a month, not because I can point at a measurement.</p>
+        <span class="meta"><b>Replaced:</b> nothing<br><b>Cost:</b> paid, a few dollars a month</span>
         <span class="go">Shop fish oil →</span>
       </a>
 
       <a class="card tool" data-link="magnesium" href="https://www.amazon.com/s?k=magnesium+glycinate" target="_blank" rel="noopener">
         <h3>Magnesium Glycinate</h3>
-        <p>Taken before bed for sleep quality — the glycinate form because it doesn't wreck my stomach like the cheap oxide stuff.</p>
+        <p>Taken before bed for sleep quality — the glycinate form because it doesn't wreck my stomach like the cheap oxide stuff. That difference is the whole reason to pay a little more here instead of buying the biggest bottle.</p>
+        <span class="meta"><b>Replaced:</b> magnesium oxide<br><b>Cost:</b> paid, modest</span>
         <span class="go">Shop magnesium →</span>
       </a>
 
+    </div>
+
+    <p class="tool-links">The part that actually moved the number: <a href="/guides/cut-calorie-math.html">the calorie math behind the cut</a> · <a href="/guides/weight-tracking-signal-vs-noise.html">weight tracking, signal vs noise</a> · <a href="/apps/cut/">the free offline weight tracker I built</a></p>
+
+    <p class="note"><b>Not medical advice.</b> This is what I take, not a recommendation for you. Supplements are the smallest lever in a cut — sleep, calories and protein do the work. Talk to a doctor before adding anything, especially if you take medication.</p>
+  </section>
+
+  <hr class="divider">
+
+  <!-- ============ THE LEDGER ============ -->
+  <section class="section section--tight">
+    <div class="grp-head">
+      <p class="eyebrow">04 · The money</p>
+      <h2>Free vs paid — the actual ledger</h2>
+      <p>Every tool above, with what it replaced and whether it costs anything. No "pro tier recommended" hedging.</p>
+    </div>
+
+    <div class="table-wrap" style="margin-top:var(--s6)">
+      <table class="ledger">
+        <thead>
+          <tr><th scope="col">Tool</th><th scope="col">What it replaced</th><th scope="col">Free tier</th><th scope="col">What paying actually buys</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>TradingView</td><td>Broker-native charting</td><td>Yes</td><td>More indicators per chart, better alerting. Has not blocked me yet.</td></tr>
+          <tr><td>Alpaca</td><td>Unofficial broker APIs</td><td>Yes — API and paper trading are free</td><td>Higher market-data tiers. Not needed for daily-bar research.</td></tr>
+          <tr><td>Swing Screener</td><td>Paid stock screeners</td><td>Free — I wrote it</td><td>Nothing. It is mine.</td></tr>
+          <tr><td>Claude Code</td><td>Writing boilerplate by hand</td><td>No</td><td>This is the subscription. There is no free version, and it is the one place I break my own rule.</td></tr>
+          <tr><td>Ollama + qwen3</td><td>Metered API calls for bulk drafting</td><td>Free and open source</td><td>Nothing. You pay in hardware you already own and electricity.</td></tr>
+          <tr><td>uv</td><td>pip, venv, pyenv</td><td>Free and open source</td><td>Nothing.</td></tr>
+          <tr><td>Bun</td><td>Node and npm on my own projects</td><td>Free and open source</td><td>Nothing.</td></tr>
+          <tr><td>Supplements</td><td>Magnesium oxide, in one case</td><td>No</td><td>The only genuinely recurring cost on this page, and the first thing cut when money is tight.</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <p class="note"><b>The rule:</b> stay on the free tier until it blocks something real. Most "pro" upgrades buy convenience, not capability, and convenience is the cheapest thing to live without when you are a student. The one exception is the coding agent — and even there, everything that is volume rather than judgement gets routed to the local model so it never touches a metered API. Longer version: <a href="/guides/free-vs-paid-student-tools.html">free vs paid tools for students</a>.</p>
+  </section>
+
+  <hr class="divider">
+
+  <!-- geo:faq-visible — mirrors the FAQPage structured data in the head -->
+  <section class="section section--tight" id="faq">
+    <div class="grp-head">
+      <p class="eyebrow">05 · FAQ</p>
+      <h2>Questions I get about this stack</h2>
+      <p>More of the reasoning is written up in the <a href="/guides.html">guides</a>, and the things I built with this stack are on the <a href="/apps.html">apps page</a>.</p>
+    </div>
+    <div class="grid" style="margin-top:var(--s6)">
+      <article class="card geo-qa">
+        <h3>What tools do you actually use every day?</h3>
+        <p>Trading runs on TradingView for charts, Alpaca for the broker API, and a screener I wrote myself. Code runs on Claude Code, a local model served by Ollama, uv for Python, and Bun for JavaScript. Everything else on this page is a supplement, not software.</p>
+      </article>
+      <article class="card geo-qa">
+        <h3>Why use uv instead of pip?</h3>
+        <p>Speed, and one less decision. uv resolves and installs an environment in seconds where pip took minutes, and a single binary covers what pip, venv and pyenv used to do separately. Every Python project I own now starts with uv, and nothing has made me want pip back.</p>
+      </article>
+      <article class="card geo-qa">
+        <h3>Why use Bun instead of Node and npm?</h3>
+        <p>One binary covers install, run, test and bundle, so there is no separate package manager, test runner and bundler to keep in sync. It is fast enough that install time stopped being something I think about, which is the whole point of a runtime choice.</p>
+      </article>
+      <article class="card geo-qa">
+        <h3>Why run a local LLM instead of paying for an API?</h3>
+        <p>Because the bulk of the work is not hard, it is just long. Drafting and rewriting passes run overnight on a mixture-of-experts model served by Ollama on my own machine: nothing per token, and the data never leaves the laptop. Frontier reasoning still goes to a hosted model. The local one handles volume, not judgement.</p>
+      </article>
+      <article class="card geo-qa">
+        <h3>How much does this stack cost to run?</h3>
+        <p>Most of it is free. uv, Bun, Ollama and the open-weight models cost nothing, Alpaca's API and paper environment are free, TradingView has a free plan, and the screener is mine. The line that genuinely costs money is the coding agent, which has no free tier. Money is tight, so the rule is simple: stay on the free tier until it blocks something real.</p>
+      </article>
+      <article class="card geo-qa">
+        <h3>What broker API do you use for automated trading?</h3>
+        <p>Alpaca. The paper environment is real and free, the REST endpoints are clean, and it is an official API rather than a reverse-engineered one. That last part matters: unofficial brokerage APIs get accounts restricted and usually have no paper mode at all.</p>
+      </article>
+      <article class="card geo-qa">
+        <h3>Are the links on this page affiliate links?</h3>
+        <p>Some of them may become affiliate links, which means I could earn a commission at no extra cost to you. Nothing is on this list because of a payout. Every item is something I already use, and the free-versus-paid note next to each one stays honest either way.</p>
+      </article>
     </div>
   </section>
 
@@ -187,6 +302,7 @@
 <footer class="site-footer">
   <div>© 2026 Yusuf Gadelrab · CS @ SJSU · San Jose, CA</div>
   <div class="site-footer__links">
+    <a href="/faq.html">FAQ</a>
     <a href="/writing.html">Writing</a>
     <a href="/dispatch.html">Dispatch</a>
     <a href="/eh.html">eh</a>
@@ -230,5 +346,6 @@
   });
 </script>
 <script src="/js/site.js" defer></script>
+<script src="/js/lux-motion.js" defer></script>
 </body>
 </html>

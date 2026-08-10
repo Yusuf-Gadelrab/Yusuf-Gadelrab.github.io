@@ -25,10 +25,11 @@
 <meta name="twitter:image" content="https://yusuf-gadelrab.github.io/og-card.png">
 <link rel="alternate" type="text/plain" href="https://yusuf-gadelrab.github.io/llms-full.txt" title="Plain-text profile for language models">
 
-<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"TechArticle","@id":"https://yusuf-gadelrab.github.io/guides/local-llm-ollama.html#article","headline":"Running a Local LLM With Ollama: A Practical Setup","name":"Running a Local LLM With Ollama: A Practical Setup","description":"Running a local LLM with Ollama: picking a model for your RAM, the HTTP API, quantisation, context limits, and when local beats a cloud API.","datePublished":"2026-07-29","dateModified":"2026-07-29","inLanguage":"en","author":{"@id":"https://yusuf-gadelrab.github.io/#person"},"publisher":{"@id":"https://yusuf-gadelrab.github.io/#person"},"about":["Ollama","Local large language models","Developer tooling"],"mainEntityOfPage":"https://yusuf-gadelrab.github.io/guides/local-llm-ollama.html","isAccessibleForFree":true,"proficiencyLevel":"Beginner"},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://yusuf-gadelrab.github.io/"},{"@type":"ListItem","position":2,"name":"Guides","item":"https://yusuf-gadelrab.github.io/guides.html"},{"@type":"ListItem","position":3,"name":"Local LLM With Ollama"}]}]}</script>
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","@id":"https://yusuf-gadelrab.github.io/guides/local-llm-ollama.html#faq","mainEntity":[{"@type":"Question","name":"What is Ollama?","acceptedAnswer":{"@type":"Answer","text":"Ollama is a tool for running large language models locally on your own machine. It manages model downloads and serves them behind a local HTTP API on port 11434, so applications can call a local model the same way they would call a cloud API."}},{"@type":"Question","name":"How much RAM do you need to run a local LLM?","acceptedAnswer":{"@type":"Answer","text":"Roughly: 8 GB handles 3B-7B quantised models for classification and short rewrites, 16 GB handles 7B-14B for drafting and extraction, 32 GB handles 14B-32B or a small mixture-of-experts model, and 64 GB or more is where local models start feeling genuinely capable."}},{"@type":"Question","name":"Should you call Ollama from the CLI or the HTTP API?","acceptedAnswer":{"@type":"Answer","text":"Always the HTTP API for anything automated. The interactive CLI writes progress and control characters to stdout, so capturing its output from a script produces subtly corrupted text. Scripts should POST to http://localhost:11434 instead."}},{"@type":"Question","name":"What is quantisation?","acceptedAnswer":{"@type":"Answer","text":"Quantisation stores model weights at lower numeric precision, most commonly 4-bit or 5-bit, cutting memory use several-fold for a modest quality loss. At a fixed memory budget, a larger model at 4-bit usually outperforms a smaller model at 8-bit."}},{"@type":"Question","name":"When is a local LLM better than a cloud API?","acceptedAnswer":{"@type":"Answer","text":"When the work is high-volume and low-difficulty, when the data cannot leave the machine, when jobs run unattended overnight, or when there is no connection. Frontier APIs remain better for long multi-step reasoning, large contexts, and complex code generation."}},{"@type":"Question","name":"Why does a local model sometimes seem to hang?","acceptedAnswer":{"@type":"Answer","text":"Usually an extended reasoning or thinking mode is enabled, so the model spends a long time deliberating on a task that did not need it. Disabling thinking for mechanical high-volume work typically returns response times to seconds."}}]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"TechArticle","@id":"https://yusuf-gadelrab.github.io/guides/local-llm-ollama.html#article","headline":"Running a Local LLM With Ollama: A Practical Setup","name":"Running a Local LLM With Ollama: A Practical Setup","description":"Running a local LLM with Ollama: picking a model for your RAM, the HTTP API, quantisation, context limits, and when local beats a cloud API.","datePublished":"2026-07-29","dateModified":"2026-07-29","inLanguage":"en","author":{"@id":"https://yusuf-gadelrab.github.io/#person"},"publisher":{"@id":"https://yusuf-gadelrab.github.io/#person"},"about":["Ollama","Local large language models","Developer tooling"],"mainEntityOfPage":"https://yusuf-gadelrab.github.io/guides/local-llm-ollama.html","isAccessibleForFree":true,"isPartOf":{"@id":"https://yusuf-gadelrab.github.io/#website"},"proficiencyLevel":"Beginner"},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://yusuf-gadelrab.github.io/"},{"@type":"ListItem","position":2,"name":"Guides","item":"https://yusuf-gadelrab.github.io/guides.html"},{"@type":"ListItem","position":3,"name":"Local LLM With Ollama"}]}]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","@id":"https://yusuf-gadelrab.github.io/guides/local-llm-ollama.html#faq","mainEntity":[{"@type":"Question","name":"What is Ollama?","acceptedAnswer":{"@type":"Answer","text":"Ollama is a tool for running large language models locally on your own machine. It manages model downloads and serves them behind a local HTTP API on port 11434, so applications can call a local model the same way they would call a cloud API."}},{"@type":"Question","name":"How much RAM do you need to run a local LLM?","acceptedAnswer":{"@type":"Answer","text":"Roughly: 8 GB handles 3B-7B quantised models for classification and short rewrites, 16 GB handles 7B-14B for drafting and extraction, 32 GB handles 14B-32B or a small mixture-of-experts model, and 64 GB or more is where local models start feeling genuinely capable."}},{"@type":"Question","name":"Should you call Ollama from the CLI or the HTTP API?","acceptedAnswer":{"@type":"Answer","text":"Always the HTTP API for anything automated. The interactive CLI writes progress and control characters to stdout, so capturing its output from a script produces subtly corrupted text. Scripts should POST to http://localhost:11434 instead."}},{"@type":"Question","name":"What is quantisation?","acceptedAnswer":{"@type":"Answer","text":"Quantisation stores model weights at lower numeric precision, most commonly 4-bit or 5-bit, cutting memory use several-fold for a modest quality loss. At a fixed memory budget, a larger model at 4-bit usually outperforms a smaller model at 8-bit."}},{"@type":"Question","name":"When is a local LLM better than a cloud API?","acceptedAnswer":{"@type":"Answer","text":"When the work is high-volume and low-difficulty, when the data cannot leave the machine, when jobs run unattended overnight, or when there is no connection. Frontier APIs remain better for long multi-step reasoning, large contexts, and complex code generation."}},{"@type":"Question","name":"Why does a local model sometimes seem to hang?","acceptedAnswer":{"@type":"Answer","text":"Usually an extended reasoning or thinking mode is enabled, so the model spends a long time deliberating on a task that did not need it. Disabling thinking for mechanical high-volume work typically returns response times to seconds. Set a maximum-tokens cap as a backstop so a single bad prompt cannot run for minutes."}},{"@type":"Question","name":"How fast will a local LLM run on my machine?","acceptedAnswer":{"@type":"Answer","text":"Token generation is memory-bandwidth-bound, so a good estimate is bandwidth divided by the size of the active weights, times about 0.65 for real-world efficiency. An 8B model at 4-bit is about 4.8 GB, so on 400 GB/s unified memory the ceiling is roughly 83 tokens per second and you should expect around 54. Adding RAM without adding bandwidth only lets you load a bigger model that runs slowly."}},{"@type":"Question","name":"How much memory does the context window use?","acceptedAnswer":{"@type":"Answer","text":"KV cache bytes per token equal 2 times layers times KV heads times head dimension times bytes per element. For a typical 8B model with grouped-query attention that is about 128 KiB per token, so 8k context costs 1 GiB and 128k context costs 16 GiB, which is more than the weights themselves. Set the context to what the job needs rather than to the model maximum, and consider quantising the KV cache to halve it."}},{"@type":"Question","name":"Is running an LLM locally actually cheaper?","acceptedAnswer":{"@type":"Answer","text":"On marginal cost, yes: one million tokens at 60 tokens per second takes 4.63 hours, and a laptop drawing about 60 watts uses 0.278 kWh, which is roughly 8 cents at 30 cents per kWh. If you are buying hardware specifically to save on tokens the payback runs into years, so local is cheap when the machine already exists and the decision is really about capability and privacy rather than price."}}]}</script>
 
 <link rel="stylesheet" href="/css/site.css">
+<link rel="stylesheet" href="/css/lux-motion.css">
 <style>
   .prose{max-width:68ch}
   .prose h2{margin:var(--s7) 0 var(--s4);font-size:var(--t-h2)}
@@ -50,16 +51,16 @@
     color:var(--muted);font-size:var(--t-small);margin:0 0 var(--s5)}
   .callout--warn{border-color:var(--gold-2)}
   .faq-card{padding:var(--s5)}
-  .faq-card h3{font-size:var(--t-h3);margin:0}
-  .faq-card p{color:var(--muted);font-size:var(--t-small);margin:var(--s3) 0 0}
+  .faq-card h3{font-size:var(--t-h3);margin:0;line-height:1.3}
+  .faq-card p{color:var(--muted);font-size:var(--t-small);line-height:1.65;margin:var(--s3) 0 0}
 </style>
 </head>
 <body class="pro">
 
 <a class="skip-link" href="#main">Skip to content</a>
 
-<nav class="site-nav">
-  <a class="site-nav__brand" href="/"><img class="site-nav__lion" src="/img/brand/lion-mark.svg" alt="" width="34" height="34"><span>YUSUF GADELRAB</span></a>
+<nav class="site-nav" aria-label="Primary">
+  <a class="site-nav__brand" href="/"><img class="site-nav__lion" src="/img/brand/lion-mark.svg" alt="" width="34" height="34" decoding="async"><span>YUSUF GADELRAB</span></a>
   <div class="site-nav__links">
     <a href="/">Work</a>
     <a href="/guides.html">Guides</a>
@@ -90,46 +91,236 @@
     <div class="prose">
       <h2>When local wins</h2>
       <ul>
-        <li><strong>High-volume, low-difficulty work</strong> — drafting, classifying, tagging, extracting fields, first-pass summarising. Thousands of calls a night cost nothing.</li>
+        <li><strong>High-volume, low-difficulty work</strong> — drafting, classifying, tagging, extracting fields, first-pass summarising. Thousands of calls a night cost nothing beyond electricity.</li>
         <li><strong>Data that must not leave the machine</strong> — anything under an NDA, personal records, or client material.</li>
         <li><strong>Batch jobs that run unattended</strong> — no rate limits, no API outage, no bill that scales with a runaway loop.</li>
         <li><strong>Offline environments</strong> — flights, bad connections, air-gapped work.</li>
+        <li><strong>Anything you want to run a hundred times to test</strong> — the cost of iterating on a prompt drops to zero, which changes how much you are willing to experiment.</li>
       </ul>
-      <p>When local loses: long multi-step reasoning, large-context work, anything where a subtle mistake is expensive, and code generation of any real complexity. Use the frontier API there and stop being precious about it.</p>
+      <p>When local loses: long multi-step reasoning, large-context work, anything where a subtle mistake is expensive, and code generation of any real complexity. Use the frontier API there and stop being precious about it. The failure mode of a local model is not obvious wrongness — it is plausible, well-formatted wrongness, which is much more expensive to catch.</p>
       <h2>Picking a model for your hardware</h2>
-      <p>The binding constraint is memory. A rough guide for quantised weights:</p>
-      <div class="tblwrap"><table class="tbl">
-        <thead><tr><th>RAM / VRAM</th><th>Realistic model size</th><th>What it is good for</th></tr></thead>
+      <p>The binding constraint is memory, and the arithmetic is not mysterious. Weight size in bytes is roughly parameters × bits-per-weight ÷ 8. A 4-bit quantised 7B model is 7.0 × 10⁹ × 4.83 ÷ 8 ≈ 4.2 GB, and you need room for that plus the KV cache plus the operating system.</p>
+      <div class="tblwrap" tabindex="0" role="group" aria-label="Table, scrolls horizontally"><table class="tbl">
+        <thead><tr><th scope="col">Unified RAM / VRAM</th><th scope="col">Comfortable model</th><th scope="col">Weights at Q4_K_M</th><th scope="col">Realistic tokens/sec</th><th scope="col">What it is good for</th></tr></thead>
         <tbody>
-          <tr><td>8 GB</td><td>3B–7B quantised</td><td>Classification, tagging, short rewrites</td></tr>
-          <tr><td>16 GB</td><td>7B–14B quantised</td><td>Drafting, summarising, structured extraction</td></tr>
-          <tr><td>32 GB</td><td>14B–32B, or a small MoE</td><td>Solid general drafting, light code assistance</td></tr>
-          <tr><td>64 GB+</td><td>30B+ or mixture-of-experts models</td><td>The point where local starts feeling genuinely useful</td></tr>
+          <tr><td>8 GB</td><td>3B</td><td>1.8 GB</td><td>20–40</td><td>Classification, tagging, short rewrites, keyword extraction</td></tr>
+          <tr><td>16 GB</td><td>7B–8B</td><td>4.2–4.8 GB</td><td>25–60</td><td>Drafting, summarising, structured field extraction</td></tr>
+          <tr><td>24 GB</td><td>14B</td><td>8.5 GB</td><td>15–35</td><td>Better drafting, light code assistance, longer contexts</td></tr>
+          <tr><td>32 GB</td><td>14B, or a 30B-class MoE</td><td>8.5–18 GB</td><td>15–70</td><td>Solid general drafting; MoE is the sweet spot here</td></tr>
+          <tr><td>64 GB</td><td>32B dense or larger MoE</td><td>19 GB+</td><td>10–30</td><td>The point where local starts feeling genuinely useful</td></tr>
+          <tr><td>128 GB</td><td>70B dense</td><td>42 GB</td><td>5–15</td><td>Capable but slow; usually a batch tool, not an interactive one</td></tr>
         </tbody>
       </table></div>
-      <p>Mixture-of-experts models are worth knowing about: they hold a large parameter count in memory but only activate a fraction per token, so throughput feels much closer to a small model than the parameter count suggests. That is the sweet spot on a well-specced laptop.</p>
-      <h2>Quantisation, briefly</h2>
-      <p>Quantisation stores weights at lower precision — 4-bit and 5-bit variants being the common choices — which shrinks memory use several-fold for a modest quality loss. Practical rule: <strong>a larger model at 4-bit usually beats a smaller model at 8-bit</strong> at the same memory budget. Below 4-bit, quality degrades quickly.</p>
+      <p>The tokens-per-second bands are wide because they depend almost entirely on memory bandwidth, not on the processor. Do not treat them as promises — treat them as the range you should expect before you tune anything.</p>
+      <h2>The speed arithmetic</h2>
+      <p>Token generation is memory-bandwidth-bound, not compute-bound. Every generated token requires reading the active weights out of memory once, so the ceiling is straightforward:</p>
+      <span class="formula" tabindex="0" role="group" aria-label="Formula, scrolls horizontally">tokens/sec (ceiling) ≈ memory bandwidth ÷ bytes of active weights
+
+real throughput ≈ 55% to 70% of that ceiling
+
+Worked: 8B model at Q4_K_M = 4.83 GB of weights
+        on 400 GB/s unified memory
+
+  ceiling = 400 ÷ 4.83 = 82.8 tokens/sec
+  realistic = 82.8 × 0.65 ≈ 54 tokens/sec</span>
+      <p>Applied across common hardware classes, using the 65% efficiency factor, this is what to expect. Bandwidth figures are the published specifications for each class:</p>
+      <div class="tblwrap" tabindex="0" role="group" aria-label="Table, scrolls horizontally"><table class="tbl">
+        <thead><tr><th scope="col">Memory bandwidth</th><th scope="col">7B Q4</th><th scope="col">14B Q4</th><th scope="col">32B Q4</th><th scope="col">70B Q4</th></tr></thead>
+        <tbody>
+          <tr><td>~100 GB/s (DDR5 desktop, CPU only)</td><td>15 t/s</td><td>8 t/s</td><td>3 t/s</td><td>2 t/s</td></tr>
+          <tr><td>~200 GB/s (laptop-class unified memory)</td><td>31 t/s</td><td>15 t/s</td><td>7 t/s</td><td>3 t/s</td></tr>
+          <tr><td>~400 GB/s (high-end laptop unified memory)</td><td>62 t/s</td><td>31 t/s</td><td>13 t/s</td><td>6 t/s</td></tr>
+          <tr><td>~800 GB/s (desktop unified memory)</td><td>123 t/s</td><td>62 t/s</td><td>27 t/s</td><td>12 t/s</td></tr>
+          <tr><td>~1,000 GB/s (high-end discrete GPU)</td><td>154 t/s</td><td>77 t/s</td><td>34 t/s</td><td>15 t/s</td></tr>
+        </tbody>
+      </table></div>
+      <p>Two conclusions fall out of that table. First, <strong>buying more RAM without more bandwidth lets you load a bigger model that runs unusably slowly</strong>. Second, the useful comparison between two machines is their bandwidth ratio, not their core count or their benchmark score.</p>
+      <h3>Why mixture-of-experts changes the answer</h3>
+      <p>A mixture-of-experts model holds all its parameters in memory but activates only a fraction per token. The memory cost tracks the total; the speed tracks the active subset. That breaks the usual trade-off in a way that matters enormously on a laptop.</p>
+      <span class="formula" tabindex="0" role="group" aria-label="Formula, scrolls horizontally">30B total / 3B active, at Q4_K_M:
+
+  resident in memory    = 30e9 × 4.83 ÷ 8 = 18.1 GB
+  read per token        =  3e9 × 4.83 ÷ 8 =  1.8 GB
+
+On 400 GB/s at 65% efficiency:
+
+  a dense 30B would run at 400 ÷ 18.1 × 0.65 ≈  14 tokens/sec
+  the MoE runs at         400 ÷  1.8 × 0.65 ≈ 144 tokens/sec
+
+Same memory footprint. Roughly ten times the throughput.</span>
+      <p>That is why a 30B-class MoE is the practical recommendation on a 32 GB machine even though a dense 30B technically fits. The trade is that MoE models are generally a little weaker per parameter than a dense model of the same total size — you are buying speed with quality, not getting it free. The hardware specifics are in the <a href="/guides/moe-model-macbook.html">MoE on a MacBook guide</a>.</p>
+      <h2>Quantisation, in numbers</h2>
+      <p>Quantisation stores weights at lower numeric precision. The naming looks arcane but decodes simply: the number is the nominal bit width, K denotes the k-quant family, and the _M or _S suffix indicates how much of the model is kept at higher precision. Sizes below are for a 7.0B-parameter model.</p>
+      <div class="tblwrap" tabindex="0" role="group" aria-label="Table, scrolls horizontally"><table class="tbl">
+        <thead><tr><th scope="col">Level</th><th scope="col">Bits per weight</th><th scope="col">Size at 7B</th><th scope="col">Share of FP16</th><th scope="col">Practical read</th></tr></thead>
+        <tbody>
+          <tr><td>F16</td><td>16.00</td><td>14.0 GB</td><td>100%</td><td>Reference quality. Almost never worth the memory locally.</td></tr>
+          <tr><td>Q8_0</td><td>8.50</td><td>7.4 GB</td><td>53%</td><td>Effectively lossless. Use only if memory is free.</td></tr>
+          <tr><td>Q6_K</td><td>6.56</td><td>5.7 GB</td><td>41%</td><td>Very close to Q8 at a real saving. Good default when it fits.</td></tr>
+          <tr><td>Q5_K_M</td><td>5.67</td><td>5.0 GB</td><td>35%</td><td>Quality loss is hard to detect on most tasks.</td></tr>
+          <tr><td>Q4_K_M</td><td>4.83</td><td>4.2 GB</td><td>30%</td><td><strong>The default.</strong> Best quality-per-byte for almost everyone.</td></tr>
+          <tr><td>Q3_K_M</td><td>3.91</td><td>3.4 GB</td><td>24%</td><td>Noticeable degradation. Instruction-following starts slipping.</td></tr>
+          <tr><td>Q2_K</td><td>3.35</td><td>2.9 GB</td><td>21%</td><td>Usually broken for real work. Avoid.</td></tr>
+        </tbody>
+      </table></div>
+      <p>The rule that follows from those numbers: <strong>a larger model at Q4_K_M beats a smaller model at Q8_0 at the same memory budget</strong>. A 14B at Q4 is 8.5 GB against a 7B at Q8 at 7.4 GB, and the 14B wins comfortably. Below 4 bits the curve turns, and the degradation shows up first in exactly the places you will not notice: schema adherence, instruction following, and long-context recall rather than obvious gibberish.</p>
+      <h2>Context length versus KV-cache memory</h2>
+      <p>This is the arithmetic people miss, and it is the usual reason a model that loaded fine yesterday is now swapping. Attention caches a key and a value vector per token per layer, and that cache scales linearly with the context you configured — whether or not you actually use it.</p>
+      <span class="formula" tabindex="0" role="group" aria-label="Formula, scrolls horizontally">KV bytes per token = 2 × layers × kv_heads × head_dim × bytes_per_element
+
+Worked, an 8B model with grouped-query attention:
+  32 layers, 8 KV heads, head_dim 128, fp16 (2 bytes)
+
+  = 2 × 32 × 8 × 128 × 2
+  = 131,072 bytes = 128 KiB per token
+
+  4k context   →  0.50 GiB
+  8k context   →  1.00 GiB
+  32k context  →  4.00 GiB
+  128k context → 16.00 GiB</span>
+      <p>Sixteen gigabytes of KV cache on a model whose weights are under five. That is why setting the context window to the maximum the model advertises is a memory decision disguised as a quality decision. Older architectures without grouped-query attention are far worse: a 7B using full multi-head attention with 32 KV heads costs 512 KiB per token, four times as much, so a 32k context alone needs 16 GiB.</p>
+      <div class="tblwrap" tabindex="0" role="group" aria-label="Table, scrolls horizontally"><table class="tbl">
+        <thead><tr><th scope="col">Context configured</th><th scope="col">Weights (8B Q4)</th><th scope="col">KV cache (fp16)</th><th scope="col">Total</th><th scope="col">Verdict on a 16 GB machine</th></tr></thead>
+        <tbody>
+          <tr><td>4,096</td><td>4.83 GB</td><td>0.54 GB</td><td>5.37 GB</td><td>Comfortable.</td></tr>
+          <tr><td>8,192</td><td>4.83 GB</td><td>1.07 GB</td><td>5.90 GB</td><td>Comfortable. A good default.</td></tr>
+          <tr><td>32,768</td><td>4.83 GB</td><td>4.29 GB</td><td>9.12 GB</td><td>Workable, but leaves little headroom.</td></tr>
+          <tr><td>131,072</td><td>4.83 GB</td><td>17.18 GB</td><td>22.01 GB</td><td>Does not fit. This is where the swapping starts.</td></tr>
+        </tbody>
+      </table></div>
+      <p>Two mitigations are worth knowing. Quantising the KV cache to 8-bit halves it, taking the 32k case from 4.0 GiB to 2.0 GiB for a quality cost that is negligible on most tasks. And flash attention reduces the peak working memory during the forward pass, though not the cache itself. <strong>Set the context to what the job needs and no more</strong> — a classification prompt does not need 32k, and configuring it anyway costs you gigabytes for nothing.</p>
       <h2>Use the HTTP API, not the CLI</h2>
       <p>Ollama exposes a local HTTP endpoint on port 11434. Scripts should call that, not shell out to the interactive command.</p>
-      <span class="formula">curl http://localhost:11434/api/generate -d '{
+      <div class="tblwrap" tabindex="0" role="group" aria-label="Table, scrolls horizontally"><table class="tbl">
+        <thead><tr><th scope="col">Endpoint</th><th scope="col">Method</th><th scope="col">What it does</th><th scope="col">When you need it</th></tr></thead>
+        <tbody>
+          <tr><td>/api/generate</td><td>POST</td><td>Single-turn completion from a raw prompt</td><td>Extraction, classification, one-shot transforms</td></tr>
+          <tr><td>/api/chat</td><td>POST</td><td>Multi-turn completion from a messages array</td><td>Anything with a system prompt or conversation state</td></tr>
+          <tr><td>/api/embed</td><td>POST</td><td>Returns embedding vectors for one or more inputs</td><td>Building a retrieval index</td></tr>
+          <tr><td>/api/tags</td><td>GET</td><td>Lists locally installed models</td><td>Health checks; verifying a deploy</td></tr>
+          <tr><td>/api/show</td><td>POST</td><td>Model metadata: context length, parameters, template</td><td>Finding out the real max context before you set one</td></tr>
+          <tr><td>/api/ps</td><td>GET</td><td>Which models are currently loaded in memory</td><td>Debugging cold starts and eviction</td></tr>
+          <tr><td>/api/pull</td><td>POST</td><td>Downloads a model, streaming progress</td><td>Provisioning a new machine from a script</td></tr>
+        </tbody>
+      </table></div>
+      <span class="formula" tabindex="0" role="group" aria-label="Formula, scrolls horizontally">curl http://localhost:11434/api/chat -d '{
   "model": "your-model",
-  "prompt": "Summarise this in one sentence: ...",
+  "messages": [
+    {"role": "system", "content": "You extract fields. Reply with JSON only."},
+    {"role": "user", "content": "..."}
+  ],
   "stream": false,
-  "options": {"temperature": 0.2}
+  "keep_alive": "30m",
+  "options": {
+    "temperature": 0.2,
+    "num_ctx": 8192,
+    "num_predict": 512,
+    "seed": 42
+  }
 }'</span>
-      <p>This matters more than it sounds. The interactive CLI writes progress and control characters to stdout; capturing that from a script produces output that is subtly corrupted in ways that only show up in production. <strong>Automations should always talk to the HTTP API.</strong> I learned that the annoying way, and it is now a standing rule in my own tooling.</p>
-      <h2>Settings that actually matter</h2>
+      <p>This matters more than it sounds. The interactive CLI writes progress indicators and terminal control characters to stdout; capturing that from a script produces output that is subtly corrupted in ways that only show up in production, usually as stray escape sequences embedded in a field you are about to write to a database. <strong>Automations should always talk to the HTTP API.</strong> I learned that the annoying way, and it is now a standing rule in my own tooling.</p>
+      <h2>The options that actually matter</h2>
+      <div class="tblwrap" tabindex="0" role="group" aria-label="Table, scrolls horizontally"><table class="tbl">
+        <thead><tr><th scope="col">Option</th><th scope="col">Sensible value</th><th scope="col">What it controls</th></tr></thead>
+        <tbody>
+          <tr><td>temperature</td><td>0.1–0.3 for extraction, 0.7+ for variety</td><td>Randomness of sampling. Low is not 'boring', it is reproducible.</td></tr>
+          <tr><td>num_ctx</td><td>The smallest that fits the job</td><td>Context window. Directly sets KV-cache memory, per the arithmetic above.</td></tr>
+          <tr><td>num_predict</td><td>A hard cap you actually want</td><td>Maximum tokens generated. Without it, one bad prompt runs for minutes.</td></tr>
+          <tr><td>seed</td><td>Any fixed integer</td><td>Makes runs reproducible at temperature 0, which is essential for evaluating a prompt change.</td></tr>
+          <tr><td>stop</td><td>Your delimiter</td><td>Sequences that end generation. Cheaper and more reliable than post-hoc trimming.</td></tr>
+          <tr><td>repeat_penalty</td><td>1.1 default; lower for structured output</td><td>Too high breaks JSON, because repeated braces and quotes get penalised.</td></tr>
+          <tr><td>keep_alive</td><td>'30m' or '-1' for a daemon</td><td>How long the model stays resident after a call.</td></tr>
+          <tr><td>think / reasoning mode</td><td>Off for mechanical work</td><td>Extended deliberation. Left on for a batch job, it turns seconds into minutes.</td></tr>
+        </tbody>
+      </table></div>
+      <p>The reasoning-mode item deserves emphasis because it is the most common cause of a local setup that appears to be broken. If the model supports an extended-thinking mode, it will happily spend a long time deliberating on a job that did not need it, and from the outside a request that used to take two seconds simply looks hung. Turn it off for classification, tagging, and extraction.</p>
+      <h2>Keep-alive and cold-start latency</h2>
+      <p>Loading a multi-gigabyte model into memory takes several seconds. If the model is evicted between calls, you pay that on every request, and in a batch job the load time can dominate the actual generation.</p>
+      <span class="formula" tabindex="0" role="group" aria-label="Formula, scrolls horizontally">Assume an 8-second load and 1,000 tokens generated at 60 tok/s
+(16.7 seconds of generation per call).
+
+  100 calls, model evicted each time:
+    100 × (16.7 + 8) = 2,470 s = 41.2 minutes
+
+  100 calls, model kept resident:
+    8 + (100 × 16.7) = 1,678 s = 28.0 minutes
+
+  Overhead removed: 13.2 minutes, about 47% of the generation time.</span>
+      <p>Set keep_alive per request, or set the server-wide default via the environment. For a machine that runs scheduled batch work, keeping the model resident indefinitely is usually correct — the memory is doing nothing else at 4am. For a laptop you also use for other things, a 5- to 30-minute window is the better trade. If a model is being evicted unexpectedly, check whether something else asked for a different model and forced it out; the loaded-model limit is a separate setting from keep-alive.</p>
+      <h2>Structured output and validation</h2>
+      <p>Local models drift from a schema more than frontier models do, so treat the output as untrusted input from a flaky service. Three layers, in order of how much they buy you:</p>
+      <ol>
+        <li><strong>Constrain generation.</strong> Ollama accepts a format parameter set either to the string json or to a full JSON schema object. A schema is strictly better, because it constrains decoding rather than merely asking nicely.</li>
+        <li><strong>Validate against the schema anyway.</strong> Constrained decoding gets you syntactically valid JSON with the right keys; it does not get you a date that parses, an enum value from your list, or a number in range.</li>
+        <li><strong>Retry with the error attached.</strong> Feed the validation failure back as a message and ask for a correction. Cap it at two retries and then fail loudly, because a third attempt almost never succeeds and an infinite retry loop on a free local model is the one way it can still cost you something.</li>
+      </ol>
+      <span class="formula" tabindex="0" role="group" aria-label="Formula, scrolls horizontally">"format": {
+  "type": "object",
+  "properties": {
+    "company":   {"type": "string"},
+    "intent":    {"type": "string", "enum": ["quote", "support", "spam"]},
+    "confidence":{"type": "number"}
+  },
+  "required": ["company", "intent", "confidence"]
+}
+
+Then, in code:
+  1. parse    -- fails on truncation and stray prose
+  2. validate -- fails on wrong enum, out-of-range number
+  3. retry once with the validation error in the prompt
+  4. on second failure, quarantine the record for a human</span>
+      <p>Two practical notes. Lower repeat_penalty when generating JSON, because structural characters repeat by definition and penalising them is how you get malformed output. And set a num_predict cap that comfortably exceeds your largest expected object, since a truncated response is indistinguishable from a malformed one at the parser. The general pattern across providers is covered in the <a href="/guides/structured-llm-output.html">structured LLM output guide</a>.</p>
+      <h2>Batching and concurrency</h2>
+      <p>One local model serving many requests behaves differently from an API. Because generation is bandwidth-bound, running several requests in parallel against the same loaded model costs almost nothing extra per additional request — the weights are read once per step regardless of how many sequences are decoding. Up to a point, concurrency is nearly free.</p>
       <ul>
-        <li><strong>temperature</strong> — 0.1–0.3 for extraction and classification, higher only when you want variety.</li>
-        <li><strong>context length</strong> — bigger contexts cost memory and speed. Set it to what the job needs, not to the maximum.</li>
-        <li><strong>reasoning / thinking modes</strong> — if the model supports an extended-thinking mode, it will happily spend a long time on a job that did not need it. Disable it for high-volume mechanical work; a request that used to take seconds can otherwise appear to hang.</li>
-        <li><strong>keep-alive</strong> — reloading weights per call dominates latency in batch jobs. Keep the model resident.</li>
-        <li><strong>structured output</strong> — ask for JSON and validate it. Local models drift from a schema more than frontier models do, so parse defensively and retry.</li>
+        <li><strong>Parallel requests against one model:</strong> good. Set the parallel-request limit to 2–4 and total throughput rises noticeably while per-request latency worsens only slightly.</li>
+        <li><strong>Multiple different models loaded at once:</strong> usually bad. Each one occupies its own memory, and on a laptop you will hit swap. Keep the loaded-model limit at 1 unless you have obvious headroom.</li>
+        <li><strong>KV cache scales with parallelism.</strong> Four concurrent slots at 8k context each need four times the KV cache. Re-run the arithmetic above before raising the limit.</li>
+        <li><strong>Queue rather than fan out.</strong> A simple worker pool of 2–4 against one resident model beats spawning a process per item, which reloads weights and thrashes memory.</li>
+        <li><strong>Batch by prompt shape.</strong> Grouping similar-length prompts together reduces wasted padding and makes throughput predictable enough to schedule around.</li>
       </ul>
+      <h2>Troubleshooting</h2>
+      <div class="tblwrap" tabindex="0" role="group" aria-label="Table, scrolls horizontally"><table class="tbl">
+        <thead><tr><th scope="col">Symptom</th><th scope="col">Most likely cause</th><th scope="col">Fix</th></tr></thead>
+        <tbody>
+          <tr><td>Request appears to hang for minutes</td><td>Extended reasoning or thinking mode is enabled</td><td>Disable it for mechanical work; set a num_predict cap as a backstop</td></tr>
+          <tr><td>First call slow, later calls fast</td><td>Cold start — weights loading from disk</td><td>Raise keep_alive, or warm the model on service start</td></tr>
+          <tr><td>Fast at first, then progressively slower</td><td>KV cache growing as the context fills</td><td>Lower num_ctx; truncate history; quantise the KV cache</td></tr>
+          <tr><td>Whole machine becomes unresponsive</td><td>Model plus KV cache exceeds physical memory, so it is swapping</td><td>Smaller model, smaller num_ctx, or fewer loaded models</td></tr>
+          <tr><td>Captured output contains stray escape characters</td><td>Script is shelling out to the interactive CLI</td><td>Call the HTTP API on port 11434 instead</td></tr>
+          <tr><td>JSON output is malformed or truncated</td><td>num_predict too low, or repeat_penalty too high</td><td>Raise num_predict, lower repeat_penalty, pass a JSON schema in format</td></tr>
+          <tr><td>Model unloads between scheduled jobs</td><td>keep_alive expired, or another model evicted it</td><td>Set keep_alive to -1 and cap loaded models at 1</td></tr>
+          <tr><td>Works interactively, fails under a scheduler</td><td>Service is not running, or the environment differs from your shell</td><td>Run the server as a supervised background service with its tuning variables baked into the service definition, not exported from a shell profile</td></tr>
+        </tbody>
+      </table></div>
+      <p>That last row is worth a sentence of its own. Environment variables exported in a login shell do not exist for a job started by a system scheduler, and a model server started by hand does not survive a reboot. If a nightly batch silently produces nothing, check that the server is actually running and that its tuning variables are set <em>in the service definition</em> before you debug anything in the prompt.</p>
+      <h2>Cost, as arithmetic</h2>
+      <p>"Local is free" is not quite true and the real number is worth computing, because it settles the argument in both directions. Generating one million tokens at 60 tokens per second takes 4.63 hours. A laptop under sustained inference load draws roughly 60 watts, so:</p>
+      <span class="formula" tabindex="0" role="group" aria-label="Formula, scrolls horizontally">1,000,000 ÷ 60 tok/s = 16,667 s = 4.63 hours
+60 W × 4.63 h = 278 Wh = 0.278 kWh
+0.278 kWh × $0.30/kWh = $0.083 per million tokens
+
+At 15 tok/s on a bigger model: 18.5 h, 1.11 kWh = $0.33 per million.
+
+Against an illustrative hosted rate of $3.00 per million output
+tokens, local runs roughly 36x cheaper per token on the marginal cost.
+
+But on a $3,000 machine bought FOR this:
+  $3,000 ÷ $3.00 per million = 1,000 million tokens to break even
+  at 8 hours a day of continuous 60 tok/s generation
+  = 1.73M tokens/day  →  about 579 days.</span>
+      <p>The hosted rate above is illustrative and provider pricing changes; substitute the current figure for whatever you actually use. The structural conclusion holds regardless: <strong>if the machine already exists, local is close to free and the decision is purely about capability. If you are buying hardware to save on tokens, the payback period is measured in years and the frontier model will have moved on before you get there.</strong></p>
+      <p>One honest caveat on the comparison: a local 8B and a frontier model are not interchangeable units, so cost per token is not a like-for-like price. The fair comparison is cost per <em>completed task at acceptable quality</em>, and on hard tasks the local model's cost per completed task is infinite because it never completes them. On the volume tier of work where it does succeed, the arithmetic above is real. For hosted work, <a href="/guides/prompt-caching.html">prompt caching</a> is usually the larger lever on the bill than model choice.</p>
       <h2>A realistic architecture</h2>
       <p>The pattern that works is a two-tier one. A local model does the volume: drafting, tagging, first-pass extraction, overnight batches. A frontier model does the judgement: the final pass, the hard reasoning, anything that ships to a customer. A quality gate sits in between and rejects bad local output before it reaches the expensive step.</p>
-      <p>That is how my own outreach and automation pipelines run — local model drafts overnight, an automated quality audit quarantines anything that fails its checks, and only the passing output moves forward. <a href="/stack.html">The rest of the stack is here →</a></p>
+      <ol>
+        <li>Local model drafts, tags, or extracts on a schedule, writing to a staging area rather than to anything live.</li>
+        <li>An automated audit runs deterministic checks — schema validity, required phrases present, banned phrases absent, length bounds, duplicate detection.</li>
+        <li>Failures are quarantined with the reason recorded, not silently dropped. The quarantine rate is your quality metric.</li>
+        <li>Survivors go to the expensive tier, or straight to a human, depending on the stakes.</li>
+        <li>Nothing is sent, published, or committed by the pipeline itself. The last step stays manual by design.</li>
+      </ol>
+      <p>The quarantine rate is the number to watch: if it climbs, either the model was swapped, the prompt drifted, or the input distribution changed, and all three are worth knowing about before the output reaches anyone. That is how my own outreach and automation pipelines run. <a href="/freightdesk.html">FreightDesk</a> is a production example of the same shape, the <a href="/guides/ai-automation-small-business.html">small-business AI automation guide</a> covers where this pattern pays off commercially, and <a href="/guides/rag-explained.html">RAG</a> is how you give the local half of it access to your own documents. <a href="/stack.html">The rest of the stack is here →</a></p>
 
       <h2>Tools referenced in this guide</h2>
       <ul>
@@ -148,12 +339,15 @@
       <h2>Quick answers</h2>
     </div>
     <div class="grid" style="margin-top:var(--s6)">
-      <article class="card faq-card"><h3>What is Ollama?</h3><p>A local model runner that serves LLMs behind an HTTP API on port 11434, so your code calls a local model like a cloud one.</p></article>
-      <article class="card faq-card"><h3>How much RAM?</h3><p>8 GB for 3–7B, 16 GB for 7–14B, 32 GB for 14–32B or a small MoE, 64 GB+ before local really feels capable.</p></article>
-      <article class="card faq-card"><h3>CLI or HTTP API?</h3><p>HTTP API, always, for automation. The interactive CLI emits control characters that quietly corrupt captured output.</p></article>
-      <article class="card faq-card"><h3>What is quantisation?</h3><p>Lower-precision weights — usually 4-bit or 5-bit. At the same memory, a bigger 4-bit model usually beats a smaller 8-bit one.</p></article>
-      <article class="card faq-card"><h3>When does local win?</h3><p>High-volume simple work, private data, unattended batches, offline. Frontier APIs still win on hard reasoning and complex code.</p></article>
-      <article class="card faq-card"><h3>Why does it hang?</h3><p>Extended thinking mode left on for a mechanical task. Turn it off for batch work and responses drop back to seconds.</p></article>
+      <article class="card faq-card"><h3>What is Ollama?</h3><p>Ollama is a tool for running large language models locally on your own machine. It manages model downloads and serves them behind a local HTTP API on port 11434, so applications can call a local model the same way they would call a cloud API.</p></article>
+      <article class="card faq-card"><h3>How much RAM do you need to run a local LLM?</h3><p>Roughly: 8 GB handles 3B-7B quantised models for classification and short rewrites, 16 GB handles 7B-14B for drafting and extraction, 32 GB handles 14B-32B or a small mixture-of-experts model, and 64 GB or more is where local models start feeling genuinely capable.</p></article>
+      <article class="card faq-card"><h3>Should you call Ollama from the CLI or the HTTP API?</h3><p>Always the HTTP API for anything automated. The interactive CLI writes progress and control characters to stdout, so capturing its output from a script produces subtly corrupted text. Scripts should POST to http://localhost:11434 instead.</p></article>
+      <article class="card faq-card"><h3>What is quantisation?</h3><p>Quantisation stores model weights at lower numeric precision, most commonly 4-bit or 5-bit, cutting memory use several-fold for a modest quality loss. At a fixed memory budget, a larger model at 4-bit usually outperforms a smaller model at 8-bit.</p></article>
+      <article class="card faq-card"><h3>When is a local LLM better than a cloud API?</h3><p>When the work is high-volume and low-difficulty, when the data cannot leave the machine, when jobs run unattended overnight, or when there is no connection. Frontier APIs remain better for long multi-step reasoning, large contexts, and complex code generation.</p></article>
+      <article class="card faq-card"><h3>Why does a local model sometimes seem to hang?</h3><p>Usually an extended reasoning or thinking mode is enabled, so the model spends a long time deliberating on a task that did not need it. Disabling thinking for mechanical high-volume work typically returns response times to seconds. Set a maximum-tokens cap as a backstop so a single bad prompt cannot run for minutes.</p></article>
+      <article class="card faq-card"><h3>How fast will a local LLM run on my machine?</h3><p>Token generation is memory-bandwidth-bound, so a good estimate is bandwidth divided by the size of the active weights, times about 0.65 for real-world efficiency. An 8B model at 4-bit is about 4.8 GB, so on 400 GB/s unified memory the ceiling is roughly 83 tokens per second and you should expect around 54. Adding RAM without adding bandwidth only lets you load a bigger model that runs slowly.</p></article>
+      <article class="card faq-card"><h3>How much memory does the context window use?</h3><p>KV cache bytes per token equal 2 times layers times KV heads times head dimension times bytes per element. For a typical 8B model with grouped-query attention that is about 128 KiB per token, so 8k context costs 1 GiB and 128k context costs 16 GiB, which is more than the weights themselves. Set the context to what the job needs rather than to the model maximum, and consider quantising the KV cache to halve it.</p></article>
+      <article class="card faq-card"><h3>Is running an LLM locally actually cheaper?</h3><p>On marginal cost, yes: one million tokens at 60 tokens per second takes 4.63 hours, and a laptop drawing about 60 watts uses 0.278 kWh, which is roughly 8 cents at 30 cents per kWh. If you are buying hardware specifically to save on tokens the payback runs into years, so local is cheap when the machine already exists and the decision is really about capability and privacy rather than price.</p></article>
     </div>
   </section>
 
@@ -191,5 +385,6 @@
 </footer>
 
 <script src="/js/site.js" defer></script>
+<script src="/js/lux-motion.js" defer></script>
 </body>
 </html>

@@ -2,6 +2,8 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8" />
+<meta name="referrer" content="strict-origin-when-cross-origin">
+<meta http-equiv="Content-Security-Policy" content="object-src 'none'; base-uri 'self'">
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <!-- tech:seo — managed block (SEO / social / structured data / perf / PWA) -->
 <link rel="preload" href="/css/site.css" as="style">
@@ -38,6 +40,7 @@
 
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"TechArticle","headline":"HwyHaul LoadLink — building an AI freight back office","url":"https://yusuf-gadelrab.github.io/hwyhaul.html","author":{"@id":"https://yusuf-gadelrab.github.io/#person"},"image":"https://yusuf-gadelrab.github.io/og-card.png","datePublished":"2026-07-03"}</script>
 <link rel="stylesheet" href="/css/site.css">
+<link rel="stylesheet" href="/css/lux-motion.css">
 <style>
   /* ---- page-specific only ---- */
   #progress{position:fixed;top:0;left:0;height:2px;width:0;z-index:60;
@@ -112,7 +115,7 @@
   .final .row{justify-content:center}
 </style>
 <!-- geo:entity — canonical Person node, one entity across every page -->
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"Person","@id":"https://yusuf-gadelrab.github.io/#person","name":"Yusuf Gadelrab","url":"https://yusuf-gadelrab.github.io/"}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebPage","@id":"https://yusuf-gadelrab.github.io/hwyhaul.html#webpage","url":"https://yusuf-gadelrab.github.io/hwyhaul.html","inLanguage":"en","isPartOf":{"@id":"https://yusuf-gadelrab.github.io/#website"},"about":{"@id":"https://yusuf-gadelrab.github.io/#person"},"publisher":{"@id":"https://yusuf-gadelrab.github.io/#person"}}</script>
 <link rel="alternate" type="text/plain" href="https://yusuf-gadelrab.github.io/llms-full.txt" title="Plain-text profile for language models">
 </head>
 <body class="pro">
@@ -124,6 +127,14 @@
 <nav class="site-nav">
   <a class="site-nav__brand" href="/"><img class="site-nav__lion" src="/img/brand/lion-mark.svg" alt="" width="34" height="34" decoding="async"><span>YUSUF GADELRAB</span></a>
   <div class="site-nav__links"><a href="/">Work</a><a href="/resume.html">Resume</a><a href="/guides.html">Guides</a><a href="/store.html">Store</a><a href="/apps.html">Apps</a><a href="/kxngsef.html">KXNG SEF</a><a href="/hire.html">Hire</a><a href="/media-kit.html">Media Kit</a></div>
+</nav>
+
+<nav class="crumbs" aria-label="Breadcrumb">
+  <ol>
+    <li><a href="/">Home</a></li>
+    <li><a href="/apps.html">Case studies</a></li>
+    <li><span aria-current="page">HwyHaul LoadLink</span></li>
+  </ol>
 </nav>
 
 <main id="main">
@@ -319,6 +330,7 @@
 <footer class="site-footer">
   <div>Yusuf Gadelrab · CS @ SJSU · Case study of internship work at HwyHaul</div>
   <div class="site-footer__links">
+    <a href="/faq.html">FAQ</a>
     <a href="/writing.html">Writing</a>
     <a href="/dispatch.html">Dispatch</a>
     <a href="/eh.html">eh</a>
@@ -395,5 +407,6 @@
 </script>
 
 <script src="/js/site.js" defer></script>
+<script src="/js/lux-motion.js" defer></script>
 </body>
 </html>

@@ -40,7 +40,7 @@ const siteData = {
       { value: '78%', label: 'Model directional accuracy · 6-mo backtest' },
       { value: '60', label: 'Research study participants' },
       { value: '40%', label: 'Web engagement lift · SVEC' },
-      { value: '+0.117R', label: 'Edge over 4,933 trades, 129-symbol 10-yr universe (95% CI +0.057-+0.174)' },
+      { value: '+0.117R', label: 'Walk-forward result over 4,933 trades, 129-symbol 10-yr universe (95% CI +0.057-+0.174; mostly market drift)' },
     ],
   },
   now: {
@@ -259,8 +259,9 @@ const siteData = {
       title: 'EventReels — Your Night, Already Edited',
       stack: 'Python · ffmpeg · FastAPI · Scene + Audio Analysis',
       image: process.env.PUBLIC_URL + '/projects/eventreels.webp',
-      link: 'https://github.com/Yusuf-Gadelrab/eventreels',
-      linkLabel: 'View on GitHub →',
+      link: process.env.PUBLIC_URL + '/eventreels.html',
+      linkLabel: 'Explore the case study →',
+      privateRepo: true,
       desc:
         'Drop in raw event footage, get back a finished 9:16 highlight reel. The pipeline watches (scene-change detection) and listens (per-half-second loudness) to find the best moments, then cuts a vertical reel normalized to -14 LUFS for IG/TikTok. 100% local, zero API keys, zero Python dependencies — just ffmpeg. CLI plus a gold/black web studio with a live four-stage pipeline view.',
     },
@@ -277,8 +278,9 @@ const siteData = {
       title: 'EcoImpact — Fix the World, See the Proof',
       stack: 'FastAPI · Leaflet · OpenStreetMap · SQLite',
       image: process.env.PUBLIC_URL + '/projects/ecoimpact.webp',
-      link: 'https://github.com/Yusuf-Gadelrab/ecoimpact',
-      linkLabel: 'View on GitHub →',
+      link: process.env.PUBLIC_URL + '/ecoimpact.html',
+      linkLabel: 'Explore the case study →',
+      privateRepo: true,
       desc:
         'A trash map with a "world fixed" meter: report litter, claim cleanups, log daily eco actions, and watch quantified impact (kg waste diverted, kg CO₂e avoided) climb — with streaks and a campus leaderboard. EPA/DOE-based impact factors; user GPS never collected.',
     },
@@ -379,7 +381,9 @@ const siteData = {
 
 // nav order matters — put the most important stuff first so recruiters don't have to hunt
 // 'Blog' is hidden until I actually write something, empty pages look bad
-const PAGES = ['Home', 'About', 'Working On', 'Research', 'Projects', 'Resume', 'Legal'];
+// 'Professional' sits third because it is the page a recruiter actually wants;
+// 'Goofy Corner' sits second-to-last because it is the page a human actually wants.
+const PAGES = ['Home', 'About', 'Professional', 'Working On', 'Research', 'Projects', 'Resume', 'Goofy Corner', 'Legal'];
 
 // in-app section tabs read better with an accent on the résumé page, which is the
 // PDF viewer — /resume.html in the site nav is the separate services page.
@@ -395,6 +399,275 @@ const SITE_LINKS = [
   { label: 'Hire', href: '/hire.html' },
   { label: 'Media Kit', href: '/media-kit.html' },
 ];
+
+// ---------- Professional page content ----------
+// Deliberately NOT part of `siteData`: that object round-trips through
+// localStorage via the admin panel, so an older saved copy in someone's browser
+// would arrive here missing these keys and take the page down. Module constants
+// can't be stale. Every number below is one of the five figures I can show a
+// method for — nothing else goes on this page.
+const PROFESSIONAL = {
+  eyebrow: 'The Professional File',
+  title: 'Everything a recruiter asks for, on one page',
+  lead:
+    'Profiles, publications, the things I have actually shipped, and the roles I hold — with the measurement behind every number. No figure appears here unless I can tell you the window it was measured over.',
+  presence: [
+    {
+      label: 'LinkedIn',
+      handle: 'in/yusuf-gadelrab-76246b221',
+      meta: '705 followers · 500+ connections',
+      url: 'https://www.linkedin.com/in/yusuf-gadelrab-76246b221',
+      cta: 'Connect →',
+      icon: 'M6.94 5a2 2 0 11-4-.02 2 2 0 014 .02zM7 8.48H3V21h4V8.48zm6.32 0H9.34V21h3.94v-6.57c0-3.66 4.77-4 4.77 0V21H22v-7.93c0-6.17-7.06-5.94-8.72-2.91l.04-1.68z',
+    },
+    {
+      label: 'GitHub',
+      handle: '@Yusuf-Gadelrab',
+      meta: 'EventReels · EcoImpact · EdgeLog · swing-screener',
+      url: 'https://github.com/Yusuf-Gadelrab',
+      cta: 'View the code →',
+      icon: 'M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 00-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0019.4 5a5.07 5.07 0 00-.09-3.77S18.09.65 15.5 2.4a13.4 13.4 0 00-7 0C5.91.65 4.69 1.23 4.69 1.23A5.07 5.07 0 004.6 5a5.44 5.44 0 00-1.1 3.55c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 009 18.13V22',
+    },
+    {
+      label: 'ORCID',
+      handle: '0009-0001-6579-1179',
+      meta: 'Persistent researcher identifier',
+      url: 'https://orcid.org/0009-0001-6579-1179',
+      cta: 'Open the record →',
+      icon: 'M12 2a10 10 0 100 20 10 10 0 000-20zM8 8v9M8 5.6v.1M12 8h2.4a4.5 4.5 0 010 9H12V8z',
+    },
+  ],
+  metrics: [
+    { value: '78%', label: 'Directional accuracy — NLP equity-scoring model, six-month backtest on IBM Watson' },
+    { value: '60%', label: 'Reduction in manual equity-research time once the signal pipeline shipped' },
+    { value: '40%', label: 'Lift in monthly web engagement after rebuilding the SVEC site end to end' },
+    { value: '60', label: 'Participants in the IRB-approved bilingual-coding study, with statistically significant pre-to-post confidence gains' },
+    { value: '35%', label: 'Operational budget expansion at SVEC, via four corporate technology sponsors' },
+  ],
+  publications: [
+    {
+      kind: 'Peer-reviewed paper',
+      role: 'Co-author',
+      title: 'Exploring Bilingual Coding for Inclusive Computer Science Learning',
+      venue: 'SIGCSE TS 2026 · 57th ACM Technical Symposium on Computer Science Education',
+      doi: '10.1145/3770761.3777339',
+      url: 'https://doi.org/10.1145/3770761.3777339',
+      note:
+        'A 60-participant, IRB-approved mixed-methods study run in Dr. Ethel Tshukudu’s CS-education lab at San José State. Participants showed statistically significant pre-to-post gains in programming confidence, computing identity, enjoyment and motivation, and novice learners gained significantly more than experienced programmers. I contributed to survey design and mixed-methods analysis.',
+    },
+    {
+      kind: 'Poster',
+      role: 'Poster co-presenter',
+      title: 'Adaptive Curriculum Maps: Graph-Augmented Retrieval-Oriented LLMs for Education',
+      venue: 'SIGCSE TS 2026 · ACM · poster session, St. Louis, MO',
+      doi: '',
+      url: '',
+      note:
+        'Co-presented work on pairing graph-augmented retrieval with large language models to generate adaptive curriculum maps — how an LLM can structure and personalise a learning pathway rather than just answer questions. This was a poster rather than an archival paper, so no DOI is claimed for it.',
+    },
+  ],
+  ventures: [
+    {
+      name: 'DHAHAB Studio',
+      tag: 'Productized services',
+      href: '/services.html',
+      desc:
+        'Three fixed-scope builds for early founders: a conversion-ready launch site in about a week, a Shield security audit with a scored report in 48 hours, and an AI automation build shipped with a QC gate and a runbook. One builder end to end.',
+    },
+    {
+      name: 'DIRA',
+      tag: 'Security scanner · Python',
+      href: '/dira.html',
+      desc:
+        'A seven-scanner security audit for small teams — secrets, dependency CVEs, config and IaC rules, license risk, git-history leaks, and live TLS and headers — with SBOM output, safe auto-remediation, PR diff gating, and a startup-readiness score.',
+    },
+    {
+      name: 'FreightDesk AI',
+      tag: 'Flagship product',
+      href: '/freightdesk.html',
+      desc:
+        'An AR and billing copilot that freight brokerages install on their own machine. It drafts POD-chasing, dispute, reconciliation and past-due email with a local LLM, so there are no per-seat SaaS fees and no metered API bills.',
+    },
+    {
+      name: 'KXNG SEF',
+      tag: 'Clothing brand',
+      href: '/kxngsef.html',
+      desc:
+        'The streetwear side of the house: a full brand kit and garment prints generated from the same lion mark that runs everything else, with a storefront currently taking waitlist signups.',
+    },
+    {
+      name: 'EventReels',
+      tag: 'Prototype · Python + ffmpeg',
+      href: '/eventreels.html',
+      desc:
+        'Raw event footage in, finished 9:16 highlight reel out. Scene-change detection plus per-half-second loudness analysis picks the moments, and the output is normalised to −14 LUFS for social. No API keys, no Python dependencies — just ffmpeg.',
+    },
+    {
+      name: 'Automation Studio',
+      tag: 'Digital product store',
+      href: '/store.html',
+      desc:
+        'The storefront: interactive, fillable playbooks and template kits across trading systems, Claude workflows, resumes and internship prep — all built from one PDF engine and sold from one place.',
+    },
+  ],
+  leadership: [
+    {
+      role: 'Technical Operations & Web Lead',
+      org: 'Silicon Valley Entrepreneurship Club',
+      meta: 'Dec 2025 – Present',
+      note:
+        'Own the club’s website and technical operations end to end. Monthly visitor engagement up 40%, four corporate technology sponsors signed, operational budget expanded 35%.',
+    },
+    {
+      role: 'Board Treasurer',
+      org: 'Kappa Sigma at San José State University',
+      meta: 'Aug 2025 – Present',
+      note: '',
+    },
+    {
+      role: 'CS Tutor & Curriculum Lead',
+      org: 'SJSU Coding Warriors + Computer Science Department',
+      meta: 'Aug 2024 – Present',
+      note:
+        'Design challenge-based programming events and run Python and Java workshops for beginners, translating advanced concepts into formats that land at every skill level.',
+    },
+    {
+      role: 'Undergraduate Researcher',
+      org: 'CSEd Research Lab, SJSU — Dr. Ethel Tshukudu',
+      meta: 'Aug 2024 – Present',
+      note:
+        'Mixed-methods research under IRB protocol, plus CS programming at Yerba Buena High School and an expansion into Lynbrook High School.',
+    },
+    {
+      role: 'Campus Ambassador',
+      org: 'Mathos AI',
+      meta: 'Feb 2025 – Present',
+      note: '',
+    },
+  ],
+  docs: [
+    { label: 'Hire me', href: '/hire.html', note: 'Scope, engagement shapes, and how I work with founders and teams.' },
+    { label: 'Resume services', href: '/resume.html', note: 'The public resume page — services, packages and turnaround.' },
+    { label: 'Media kit', href: '/media-kit.html', note: 'Creator reach, digitals, and everything brand-facing in one PDF-ready page.' },
+    { label: 'Brand system', href: '/brand.html', note: 'The DHAHAB lion mark, its variants, and the rules that keep it consistent.' },
+  ],
+  integrity:
+    'On measurement: every figure above has a method behind it — a backtest window, a participant count, or a documented before-and-after. My swing-trading research is where that line gets tested hardest. The defensible figure is +0.117R over 4,933 trades across a 129-symbol, ten-year universe (95% CI +0.057 to +0.174), and I do not present it as a validated standalone edge: a risk-matched random entry already captures most of it, so the signal’s own contribution has a confidence interval that crosses zero. An earlier, far smaller-sample result did not survive my own adversarial re-test and was pulled from this site rather than quietly left up.',
+};
+
+// ---------- Goofy Corner content ----------
+// Same brand, lower blood pressure. Rule for anything added here: self-deprecating
+// or wholesome only — the joke is always on me.
+const GOOFY = {
+  lore: [
+    {
+      chapter: 'Chapter I',
+      title: 'Confidently wrong in two languages',
+      body:
+        'Arabic first, English second. Which sounds impressive on a résumé and mostly meant that as a kid I got to be completely certain about the wrong thing twice as often as everybody else.',
+    },
+    {
+      chapter: 'Chapter II',
+      title: 'League MVP, three positions, one huddle problem',
+      body:
+        'Wide receiver, running back, outside linebacker. League MVP. I was fast and I was fearless and I once ran an immaculate route on a play that had been audibled out of in the huddle. Nobody threw it. I have thought about it since.',
+    },
+    {
+      chapter: 'Chapter III',
+      title: 'Valedictorian, 4.0, graduation speaker',
+      body:
+        'I stood in front of an entire football field of people and gave a speech I had rehearsed about ninety times. I still brought the notes. I still looked at the notes.',
+    },
+    {
+      chapter: 'Chapter IV',
+      title: 'And then I chose spreadsheets',
+      body:
+        'Every direction available and I picked cell references, R-multiples, and a backtest harness that tells me my ideas are bad. Genuinely love it here. I have the CSV to prove it.',
+    },
+    {
+      chapter: 'Chapter V',
+      title: 'Building in public, one green test suite at a time',
+      body:
+        'Now I ship things with names like FreightDesk and DIRA, and the single best feeling available to me on any given day is a terminal full of passing tests. This is who I am now. I have made peace with it.',
+    },
+    {
+      chapter: 'Chapter VI',
+      title: 'Present day',
+      body:
+        'Somewhere in San José, explaining a race condition out loud to a small plastic duck, at an hour that no longer qualifies as either night or morning.',
+    },
+  ],
+  duck: [
+    'So the function works. The function definitely works. Why does the function not work.',
+    'Okay, walk me through it. No, you can’t talk. That is the entire premise of you.',
+    'It was a typo. It was a typo the whole time. We are never speaking of this again.',
+    'I am going to explain this to you very slowly, so that I understand it.',
+    'This is either a caching issue or a character flaw. Possibly both. Probably both.',
+    'If I rename the variable, do you think the bug will feel differently about itself?',
+    'I fixed it. I do not know what I did. We do not touch it. We back away slowly.',
+    'You are the only member of this team who has never once introduced a regression.',
+    'I know it is 3am. I know. I have one more idea and then I promise I will sleep.',
+    'The tests pass locally. Which means the tests are lying locally.',
+    'Let the record show that I read the error message. Just... not all the way to the end.',
+    'What if the bug is not in the code. What if the bug is in me.',
+  ],
+  takes: [
+    { heat: 1, text: 'Nobody in the history of software has ever regretted naming the variable properly.' },
+    { heat: 2, text: 'Reading the error message all the way to the end is, and I say this with love, an advanced technique.' },
+    { heat: 3, text: 'The best debugging tool is a walk around the block. The second best is a rubber duck. The IDE is a distant third.' },
+    { heat: 4, text: '“It works on my machine” is a perfectly valid finding. It is simply not a valid fix.' },
+    { heat: 5, text: 'Commenting what the code does is optional. Commenting why it does it is the actual job.' },
+    { heat: 6, text: 'Football taught me more about shipping software than any lecture: show up prepared, run the route, get hit, run it again.' },
+    { heat: 7, text: 'Dark mode is not a personality — a thing I say while shipping exclusively black-and-gold pages, so take it up with me later.' },
+    { heat: 8, text: 'A four-hour backtest that says “no edge” is worth more than a four-minute one that says “yes”. The second one is just a compliment.' },
+    { heat: 9, text: 'If a number on a portfolio has no method attached to it, it is decoration. Decoration is fine — just don’t call it evidence.' },
+  ],
+};
+
+// A caveman-mode "translator" that is, transparently, a lookup table and two
+// regexes. Half the joke is how obviously dumb it is; the other half is that it
+// still mostly works.
+const CAVE_WORDS = {
+  i: 'me', "i'm": 'me be', "i've": 'me', "i'll": 'me', "i'd": 'me', my: 'me', mine: 'me', myself: 'me',
+  we: 'us', our: 'us', ours: 'us', "we're": 'us be',
+  am: 'be', is: 'be', are: 'be', was: 'be', were: 'be', been: 'be', "isn't": 'no be', "aren't": 'no be',
+  "don't": 'no', "doesn't": 'no', "didn't": 'no', not: 'no', never: 'no', cannot: 'no can', "can't": 'no can',
+  the: '', a: '', an: '', of: '', to: '', that: '', which: '', would: '', could: '', should: '',
+  very: 'much', really: 'much', extremely: 'much', entire: 'big', entirely: 'much', completely: 'much',
+  computer: 'thinking rock', laptop: 'glow rock', machine: 'metal box', terminal: 'black window',
+  code: 'rock word', coding: 'rock word', codebase: 'rock word pile', software: 'rock word',
+  algorithm: 'rock magic', function: 'rock spell', variable: 'name box', bug: 'bad bug', bugs: 'bad bug',
+  debugging: 'bug hunt', internet: 'sky web', spreadsheet: 'number grid', data: 'numbers',
+  research: 'thinking work', paper: 'thinking scroll', publication: 'thinking scroll', resume: 'brag scroll',
+  portfolio: 'brag cave', backtest: 'past-check', money: 'shiny', budget: 'shiny pile', gold: 'shiny',
+  luxury: 'shiny', football: 'run-ball', wrestling: 'ground fight', speech: 'loud talk', duck: 'small bird',
+  sleep: 'cave nap', night: 'dark time', morning: 'light time', hour: 'sun move',
+  understand: 'get it', explain: 'point and grunt', genuinely: 'for real', probably: 'maybe',
+  yes: 'ugh yes', no: 'ugh no', hello: 'ugh hello', because: 'so', however: 'but', therefore: 'so',
+};
+
+function cavemanize(text) {
+  if (!text) return text;
+  return String(text)
+    .split(/(\s+)/)
+    .map((tok) => {
+      if (!tok || /^\s+$/.test(tok)) return tok;
+      const m = tok.match(/^([^A-Za-z']*)([A-Za-z']*)([^A-Za-z']*)$/);
+      if (!m) return tok;
+      const [, pre, word, post] = m;
+      const key = word.toLowerCase().replace(/[’]/g, "'");
+      if (!Object.prototype.hasOwnProperty.call(CAVE_WORDS, key)) return pre + word + post;
+      const rep = CAVE_WORDS[key];
+      if (!rep) return pre + post; // dropped word — keep its punctuation
+      const cased = /^[A-Z]/.test(word) ? rep.charAt(0).toUpperCase() + rep.slice(1) : rep;
+      return pre + cased + post;
+    })
+    .join('')
+    .replace(/\s{2,}/g, ' ')
+    .replace(/\s+([.,;:!?…])/g, '$1')
+    .replace(/^\s+/, '')
+    .trim();
+}
 
 // ---------- Styles ----------
 // Tokens, reset, nav, footer, buttons, cards, badges, stat tiles, grid, type scale,
@@ -459,6 +732,139 @@ const StyleTag = () => (
       color:var(--muted);border-radius:var(--radius);padding:5px 10px;cursor:pointer;font-family:inherit}
     .mini:hover{color:var(--gold-2);border-color:var(--line)}
     .mini.danger:hover{color:var(--bad);border-color:var(--bad)}
+
+    /* ================= motion polish (SPA-wide) =================
+       Everything here is additive and token-driven. The site-wide
+       prefers-reduced-motion block in site.css already flattens transitions;
+       the explicit guards below kill the looping keyframes too, because a
+       .01ms duration on an infinite animation still repaints forever. */
+
+    /* page-transition choreography — the section content lifts in behind the
+       existing opacity crossfade in <main>, keyed on the page name so React
+       remounts it and the animation actually replays. */
+    .page-swap{animation:pageIn .55s var(--ease) both}
+    @keyframes pageIn{from{opacity:0;transform:translateY(22px)}to{opacity:1;transform:none}}
+
+    /* gold shimmer — sweeps the existing .gold-fill gradient rather than
+       introducing a second one, so the colour ramp can never drift */
+    .gold-fill.shimmer{background-size:260% 100%;animation:goldShimmer 6.5s linear infinite}
+    @keyframes goldShimmer{from{background-position:190% 0}to{background-position:-90% 0}}
+
+    /* pointer-driven magnetism/tilt: usePointerMotion writes an inline transform
+       while the pointer is inside an element, so it needs a fast transition to
+       track; on leave the class comes off and the stylesheet's slower ease
+       returns it to rest. */
+    .pm-live{transition:transform .09s linear}
+
+    /* link-styled button — for inline "go to page" affordances inside prose */
+    .linkish{background:none;border:0;padding:0;font:inherit;cursor:pointer;color:var(--gold-2);
+      text-decoration:underline;text-underline-offset:3px;text-decoration-color:var(--line)}
+    .linkish:hover{text-decoration-color:var(--gold)}
+
+    /* ================= Professional ================= */
+    .pres{display:grid;gap:var(--s4);grid-template-columns:repeat(auto-fit,minmax(min(260px,100%),1fr));
+      margin-top:var(--s5)}
+    .pres-card{display:flex;flex-direction:column;gap:var(--s2)}
+    .pres-top{display:flex;align-items:center;gap:var(--s3)}
+    .pres-handle{font-family:var(--mono);font-size:var(--t-small);color:var(--ink);word-break:break-all}
+    .doi{display:inline-flex;align-items:center;gap:var(--s2);font-family:var(--mono);
+      font-size:var(--t-micro);letter-spacing:.04em;color:var(--gold-2);
+      border:1px solid var(--line);border-radius:var(--radius);padding:5px 10px;background:rgba(212,175,55,.06)}
+    .no-doi{border-style:dashed;color:var(--faint);background:none}
+    /* column flex stretches children to full width — badges must hug their text */
+    .venture{display:flex;flex-direction:column}
+    .venture>.badge{align-self:flex-start}
+    .venture h3{margin-top:var(--s3)}
+    .lead-list{list-style:none;margin-top:var(--s5);display:grid;gap:var(--s3)}
+    .lead-row{display:flex;flex-wrap:wrap;align-items:baseline;gap:var(--s2) var(--s4);
+      padding:var(--s4) 0;border-bottom:1px solid var(--line-soft)}
+    .lead-row:last-child{border-bottom:0}
+    .lead-role{font-weight:600;color:var(--ink);flex:1 1 260px}
+    .lead-meta{font-size:var(--t-small);color:var(--faint);font-family:var(--mono)}
+    .lead-note{flex:1 1 100%;font-size:var(--t-small);color:var(--muted);margin-top:var(--s1)}
+    .rail{display:grid;gap:var(--s3);grid-template-columns:repeat(auto-fit,minmax(min(230px,100%),1fr));
+      margin-top:var(--s5)}
+    .rail a{display:block;padding:var(--s4);border:1px solid var(--line-soft);border-radius:var(--radius-lg);
+      background:var(--bg2);transition:border-color .3s var(--ease),transform .3s var(--ease)}
+    .rail a:hover{border-color:var(--gold);transform:translateY(-3px)}
+    .rail strong{color:var(--gold-2);display:block;margin-bottom:var(--s1)}
+    .rail span{font-size:var(--t-small);color:var(--muted)}
+
+    /* ================= Goofy Corner ================= */
+    /* Per-letter gradient rather than wrapping the whole thing in .gold-fill:
+       background-clip:text on a parent whose children are individually
+       transformed is unreliable across engines (the letters can clip away to
+       nothing). Each <b> owning its own background box cannot do that. */
+    .wobble{display:inline-block}
+    .wobble-w{display:inline-block;white-space:nowrap}
+    .wobble b{display:inline-block;font-weight:inherit;transform-origin:50% 85%;
+      background:linear-gradient(120deg,var(--gold-2),var(--gold) 45%,var(--gold-dim));
+      background-size:260% 100%;
+      -webkit-background-clip:text;background-clip:text;
+      -webkit-text-fill-color:transparent;color:var(--gold);
+      animation:wobbleLetter 2.8s var(--ease) infinite,goldShimmer 6.5s linear infinite}
+    @keyframes wobbleLetter{0%,100%{transform:none}
+      22%{transform:translateY(-9px) rotate(-5deg)}
+      50%{transform:translateY(0) rotate(0)}
+      74%{transform:translateY(5px) rotate(4deg)}}
+
+    .goof-hero{display:flex;flex-wrap:wrap;align-items:center;gap:var(--s7);margin-top:var(--s5)}
+    .goof-hero>div{flex:1 1 340px;min-width:min(100%,280px)}
+
+    /* googly lion — pupil offsets are written inline by GooglyLion. Eye centres
+       (41.7% / 58.3% x, 41.2% y) are measured off lion-mark.svg's own eye paths
+       after its translate/scale group transform, not eyeballed. */
+    .googly{position:relative;flex:0 0 auto;width:min(230px,54vw);margin:0 auto;
+      filter:drop-shadow(0 14px 38px rgba(212,175,55,.22))}
+    .googly img{width:100%;height:auto;display:block}
+    .eye{position:absolute;width:17%;aspect-ratio:1;border-radius:50%;
+      background:#f6f2e8;border:2px solid #0a0a0b;box-shadow:inset 0 3px 6px rgba(0,0,0,.4)}
+    .eye--l{left:33.2%;top:32.7%}
+    .eye--r{left:49.8%;top:32.7%}
+    .pupil{position:absolute;left:50%;top:50%;width:46%;aspect-ratio:1;border-radius:50%;
+      background:#0a0a0b;transform:translate(-50%,-50%);transition:transform .09s linear}
+    .party .googly{animation:partySpin 1.5s var(--ease) infinite}
+    @keyframes partySpin{0%,100%{transform:rotate(0) scale(1)}
+      25%{transform:rotate(8deg) scale(1.05)}
+      50%{transform:rotate(0) scale(1)}
+      75%{transform:rotate(-8deg) scale(1.05)}}
+
+    .lore{list-style:none;margin-top:var(--s6);border-left:2px solid var(--line);padding-left:var(--s6)}
+    .lore li{position:relative;padding-bottom:var(--s6)}
+    .lore li:last-child{padding-bottom:0}
+    .lore li::before{content:"";position:absolute;left:calc(var(--s6) * -1 - 9px);top:8px;
+      width:12px;height:12px;border-radius:50%;background:var(--bg);
+      border:2px solid var(--gold);box-shadow:0 0 12px var(--glow)}
+    .lore h3{font-size:var(--t-h3)}
+
+    .duck{display:flex;flex-wrap:wrap;align-items:center;gap:var(--s5)}
+    .duck-quote{flex:1 1 320px;font-size:clamp(17px,1.9vw,22px);line-height:1.55;color:var(--ink);
+      font-style:italic;min-height:3.2em}
+    .duck-mark{font-size:44px;line-height:1;color:var(--gold-2);font-family:var(--display)}
+
+    .deck{position:relative;margin-top:var(--s5)}
+    /* Deliberately NOT .reveal: the card remounts on every take, and useReveal
+       only re-runs on page change, so a fresh .reveal node would sit at
+       opacity:0 forever. A keyed entry animation is the right tool here. */
+    .hot-card{min-height:220px;display:flex;flex-direction:column;justify-content:space-between;
+      animation:pageIn .35s var(--ease) both}
+    .heat{display:flex;gap:3px;margin-top:var(--s3)}
+    .heat i{width:16px;height:5px;border-radius:1px;background:var(--line-soft);font-style:normal}
+    .heat i.on{background:linear-gradient(90deg,var(--gold-dim),var(--gold-2))}
+    .deck-nav{display:flex;flex-wrap:wrap;align-items:center;gap:var(--s3);margin-top:var(--s4)}
+    .tally{font-family:var(--mono);font-size:var(--t-micro);color:var(--faint);margin-left:auto}
+
+    .toast{position:fixed;left:50%;bottom:26px;transform:translateX(-50%);z-index:95;
+      max-width:min(460px,92vw);padding:var(--s4) var(--s5);text-align:center;
+      background:var(--panel);border:1px solid var(--gold);border-radius:var(--radius-lg);
+      box-shadow:0 18px 50px -10px var(--glow);font-size:var(--t-small);color:var(--ink);
+      animation:toastIn .45s var(--ease) both}
+    @keyframes toastIn{from{opacity:0;transform:translate(-50%,18px)}to{opacity:1;transform:translate(-50%,0)}}
+
+    @media(prefers-reduced-motion:reduce){
+      .page-swap,.wobble b,.gold-fill.shimmer,.party .googly,.toast,.hot-card{animation:none!important}
+      .pupil{transition:none}
+    }
   `}</style>
 );
 
@@ -490,6 +896,68 @@ const reducedMotion = () =>
   typeof window !== 'undefined' &&
   window.matchMedia &&
   window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+// Staggered-reveal delay, so the cadence is identical everywhere instead of
+// each page picking its own number out of the air.
+const stagger = (i, step = 80) => ({ transitionDelay: `${i * step}ms` });
+
+// ---------- Magnetic buttons + subtle card tilt ----------
+// ONE delegated pointermove for the whole document, rAF-throttled, rather than
+// listeners per node — the Projects page alone has 14 cards. The element gets an
+// inline transform while the pointer is inside it (inline beats the stylesheet's
+// :hover transform, so the hover lift is folded into the same matrix instead of
+// fighting it) and hands control back to CSS on leave.
+// Skipped entirely for reduced-motion and for coarse pointers: a tilt that keys
+// off cursor position is meaningless on a touchscreen and just costs battery.
+function usePointerMotion(dep) {
+  useEffect(() => {
+    if (typeof window === 'undefined' || reducedMotion()) return;
+    if (!window.matchMedia || !window.matchMedia('(hover: hover) and (pointer: fine)').matches) return;
+
+    let active = null, raf = 0, last = null;
+
+    const release = () => {
+      if (!active) return;
+      active.style.transform = '';
+      active.classList.remove('pm-live');
+      active = null;
+    };
+
+    const paint = () => {
+      raf = 0;
+      if (!active || !last) return;
+      const r = active.getBoundingClientRect();
+      if (!r.width || !r.height) return;
+      const dx = (last.clientX - (r.left + r.width / 2)) / (r.width / 2);
+      const dy = (last.clientY - (r.top + r.height / 2)) / (r.height / 2);
+      active.style.transform = active.classList.contains('btn')
+        // magnetic: the button leans toward the cursor, keeping site.css's -3px lift
+        ? `translate3d(${(dx * 7).toFixed(2)}px, ${(dy * 4 - 3).toFixed(2)}px, 0)`
+        // tilt: capped at ~3deg. Anything more and text starts to look bent.
+        : `perspective(900px) rotateX(${(-dy * 3).toFixed(2)}deg) rotateY(${(dx * 3).toFixed(2)}deg) translateY(-4px)`;
+    };
+
+    const onMove = (e) => {
+      const t = e.target;
+      const el = t && t.closest ? t.closest('.btn, .card, .rail a, .hot-card') : null;
+      if (el !== active) { release(); active = el; if (el) el.classList.add('pm-live'); }
+      if (!active) return;
+      last = e;
+      if (!raf) raf = requestAnimationFrame(paint);
+    };
+
+    document.addEventListener('pointermove', onMove, { passive: true });
+    document.addEventListener('pointerleave', release);
+    window.addEventListener('blur', release);
+    return () => {
+      document.removeEventListener('pointermove', onMove);
+      document.removeEventListener('pointerleave', release);
+      window.removeEventListener('blur', release);
+      if (raf) cancelAnimationFrame(raf);
+      release();
+    };
+  }, [dep]);
+}
 
 // deterministic PRNG so the generative artwork renders the same every time
 function mulberry32(seed) {
@@ -556,7 +1024,10 @@ function Headline({ text, highlight }) {
   return (
     <>
       {text.slice(0, i)}
-      <span className="gold-fill">{highlight}</span>
+      {/* `shimmer` only animates background-position on the gradient that is
+          already there — no new colours, no layout, so the boot snapshot's
+          static .gold-fill and this one occupy identical pixels on hydration. */}
+      <span className="gold-fill shimmer">{highlight}</span>
       {text.slice(i + highlight.length)}
     </>
   );
@@ -694,12 +1165,20 @@ export default function App() {
   const [admin, setAdmin] = useState(false); // Ctrl+Shift+E to open, not shown to visitors
   const [data, setData] = useState(siteData);
   useReveal(visible);
+  usePointerMotion(visible);
 
   // goTo must be declared before useCommandPalette call; function hoisting handles it
   function goTo(p) {
     if (p === visible) return;
     setFading(true);
-    setTimeout(() => { setVisible(p); setFading(false); window.scrollTo(0, 0); }, 220);
+    setTimeout(() => {
+      setVisible(p);
+      setFading(false);
+      // Smooth only when motion is welcome — an instant jump is the correct
+      // behaviour under prefers-reduced-motion, not a slower animation.
+      try { window.scrollTo({ top: 0, behavior: reducedMotion() ? 'auto' : 'smooth' }); }
+      catch (e) { window.scrollTo(0, 0); }
+    }, 220);
     try { window.history.replaceState(null, '', `#${p.toLowerCase().replace(/\s+/g, '-')}`); } catch (e) {}
   }
 
@@ -741,14 +1220,20 @@ export default function App() {
       <PageTabs page={visible} go={goTo} />
       {Palette}
       <main id="main" style={{ opacity: fading ? 0 : 1, transition: 'opacity .22s ease' }}>
-        {visible === 'Home' && <Home d={data} go={goTo} />}
-        {visible === 'About' && <About d={data} />}
-        {visible === 'Working On' && <Now d={data} />}
-        {visible === 'Research' && <Research d={data} />}
-        {visible === 'Projects' && <Projects d={data} />}
-        {visible === 'Resume' && <Resume d={data} />}
-        {visible === 'Blog' && <Blog d={data} />}
-        {visible === 'Legal' && <Legal />}
+        {/* keyed on the page name so React tears the subtree down and remounts it —
+            without that the CSS entry animation only ever plays once, on load */}
+        <div className="page-swap" key={visible}>
+          {visible === 'Home' && <Home d={data} go={goTo} />}
+          {visible === 'About' && <About d={data} />}
+          {visible === 'Professional' && <Professional d={data} go={goTo} />}
+          {visible === 'Working On' && <Now d={data} />}
+          {visible === 'Research' && <Research d={data} />}
+          {visible === 'Projects' && <Projects d={data} />}
+          {visible === 'Resume' && <Resume d={data} />}
+          {visible === 'Goofy Corner' && <Goofy go={goTo} />}
+          {visible === 'Blog' && <Blog d={data} />}
+          {visible === 'Legal' && <Legal />}
+        </div>
       </main>
       <SiteFooter contact={data.contact} brand={data.brand} />
       <StyleTag />
@@ -1006,8 +1491,14 @@ function HomeClose({ d, go }) {
     >
       <div className="row" style={{ marginTop: 'var(--s5)' }}>
         {email && <a className="btn btn-gold" href={`mailto:${email}`}>Get in touch →</a>}
+        <button className="btn btn-ghost" onClick={() => go('Professional')}>The professional file →</button>
         <button className="btn btn-ghost" onClick={() => go('Resume')}>See my resume →</button>
       </div>
+      <p className="faint" style={{ marginTop: 'var(--s5)', fontSize: 'var(--t-small)', maxWidth: 'var(--maxw-prose)' }}>
+        Still scrolling? There is a{' '}
+        <button type="button" className="linkish" onClick={() => go('Goofy Corner')}>Goofy Corner</button>{' '}
+        on this site. Same gold, considerably less composure.
+      </p>
     </HomeBand>
   );
 }
@@ -1223,6 +1714,387 @@ function Projects({ d }) {
       <div className="grid grid--2" style={{ marginTop: 'var(--s5)' }}>
         {d.projects.map((p, i) => <ProjectCard key={i} p={p} i={i} />)}
       </div>
+    </section>
+  );
+}
+
+// ---------- Professional ----------
+// The page a recruiter is actually looking for: profiles, publications, the
+// things that exist and have users, and the roles I hold. Content lives in the
+// PROFESSIONAL constant at the top of this file, not in siteData — see the note
+// there for why.
+
+function PresenceCard({ p, i }) {
+  // LinkedIn's glyph is a solid mark; the other two are line icons. One flag
+  // beats maintaining two icon components.
+  const filled = p.label === 'LinkedIn';
+  return (
+    <a className="card pres-card reveal" style={stagger(i)} href={p.url} target="_blank" rel="noreferrer">
+      <span className="pres-top">
+        <span className="card-ic" aria-hidden="true">
+          <svg width="18" height="18" viewBox="0 0 24 24"
+            fill={filled ? 'currentColor' : 'none'} stroke={filled ? 'none' : 'currentColor'}
+            strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"><path d={p.icon} /></svg>
+        </span>
+        <span className="badge">{p.label}</span>
+      </span>
+      <span className="pres-handle">{p.handle}</span>
+      <span className="muted" style={{ fontSize: 'var(--t-small)' }}>{p.meta}</span>
+      <span className="gold" style={{ marginTop: 'var(--s3)', fontSize: 'var(--t-small)' }}>{p.cta}</span>
+    </a>
+  );
+}
+
+function PublicationCard({ p, i }) {
+  return (
+    <article className="card reveal" style={stagger(i)}>
+      <div className="row" style={{ gap: 'var(--s3)' }}>
+        <CardIcon kind="Publication" />
+        <span className="badge">{p.kind}</span>
+        <span className="muted" style={{ fontSize: 'var(--t-small)' }}>{p.role}</span>
+      </div>
+      <h3 style={{ marginTop: 'var(--s4)' }}>{p.title}</h3>
+      <div className="gold" style={{ fontSize: 'var(--t-small)', marginTop: 'var(--s2)' }}>{p.venue}</div>
+      <p className="muted" style={{ marginTop: 'var(--s3)' }}>{p.note}</p>
+      <div className="row" style={{ marginTop: 'var(--s4)' }}>
+        {p.doi
+          ? <span className="doi">DOI {p.doi}</span>
+          : <span className="doi no-doi">Poster — no DOI claimed</span>}
+        {p.url && (
+          <a className="btn btn-ghost btn-sm" href={p.url} target="_blank" rel="noreferrer">Read on ACM →</a>
+        )}
+      </div>
+    </article>
+  );
+}
+
+function Professional({ d, go }) {
+  const P = PROFESSIONAL;
+  return (
+    <section className="section">
+      <SectionTitle eyebrow={P.eyebrow} title={P.title} />
+      <p className="lead">{P.lead}</p>
+
+      <div className="pres">
+        {P.presence.map((p, i) => <PresenceCard key={p.label} p={p} i={i} />)}
+      </div>
+
+      <hr className="divider" />
+      <h2>The numbers, with their methods</h2>
+      <p className="muted" style={{ margin: 'var(--s3) 0 var(--s5)', maxWidth: 'var(--maxw-prose)' }}>
+        Five figures. Each one names the thing it was measured on, because a percentage
+        without a denominator is just a mood.
+      </p>
+      {/* maxWidth override: .stat-grid is capped at 960px for the homepage's four
+          tiles. Five tiles under that cap leave a lone orphan on the second row. */}
+      <div className="stat-grid" style={{ marginTop: 0, maxWidth: 'none' }}>
+        {P.metrics.map((m, i) => (
+          <div className="card stat reveal" key={m.value + i} style={stagger(i, 90)}>
+            <span className="stat__value"><CountUp value={m.value} /></span>
+            <span className="stat__label">{m.label}</span>
+          </div>
+        ))}
+      </div>
+
+      <hr className="divider" />
+      <h2>Research</h2>
+      <p className="muted" style={{ margin: 'var(--s3) 0 var(--s5)', maxWidth: 'var(--maxw-prose)' }}>
+        Two accepted contributions at the ACM SIGCSE Technical Symposium 2026, written as an
+        undergraduate in the CS-education lab at San José State under IRB protocol.
+      </p>
+      <div className="stack-lg">
+        {P.publications.map((p, i) => <PublicationCard key={p.title} p={p} i={i} />)}
+      </div>
+      <div className="row" style={{ marginTop: 'var(--s5)' }}>
+        <button className="btn btn-ghost" onClick={() => go('Research')}>Full research page →</button>
+      </div>
+
+      <hr className="divider" />
+      <h2>What I build and run</h2>
+      <p className="muted" style={{ margin: 'var(--s3) 0 var(--s5)', maxWidth: 'var(--maxw-prose)' }}>
+        Six things with names, surfaces and users — under one studio brand, DHAHAB.
+      </p>
+      <div className="grid grid--2">
+        {P.ventures.map((v, i) => (
+          <article className="card venture reveal" key={v.name} style={stagger(i)}>
+            <span className="badge">{v.tag}</span>
+            <h3>{v.name}</h3>
+            <p className="muted" style={{ marginTop: 'var(--s3)' }}>{v.desc}</p>
+            <p style={{ marginTop: 'var(--s4)' }}>
+              <a className="btn btn-ghost btn-sm" href={v.href}
+                {...(v.external ? { target: '_blank', rel: 'noreferrer' } : {})}>
+                {v.external ? 'View on GitHub →' : `Visit ${v.name} →`}
+              </a>
+            </p>
+          </article>
+        ))}
+      </div>
+
+      <hr className="divider" />
+      <h2>Leadership &amp; roles</h2>
+      <ul className="lead-list">
+        {P.leadership.map((l, i) => (
+          <li className="lead-row reveal" key={l.role + l.org} style={stagger(i, 60)}>
+            <span className="lead-role">{l.role}</span>
+            <span className="gold" style={{ fontSize: 'var(--t-small)' }}>{l.org}</span>
+            <span className="lead-meta">{l.meta}</span>
+            {l.note && <span className="lead-note">{l.note}</span>}
+          </li>
+        ))}
+      </ul>
+
+      <hr className="divider" />
+      <h2>Documents &amp; surfaces</h2>
+      <div className="rail">
+        {P.docs.map((doc, i) => (
+          <a key={doc.href} href={doc.href} className="reveal" style={stagger(i, 60)}>
+            <strong>{doc.label}</strong>
+            <span>{doc.note}</span>
+          </a>
+        ))}
+      </div>
+      <div className="row" style={{ marginTop: 'var(--s5)' }}>
+        <button className="btn btn-gold" onClick={() => go('Resume')}>Both résumés, in-page →</button>
+        {d.contact?.email && (
+          <a className="btn btn-ghost" href={`mailto:${d.contact.email}`}>Email me →</a>
+        )}
+      </div>
+
+      <hr className="divider" />
+      <div className="panel">
+        <span className="badge">Measurement note</span>
+        <p className="muted" style={{ marginTop: 'var(--s3)', maxWidth: 'var(--maxw-prose)' }}>{P.integrity}</p>
+      </div>
+
+      <p className="faint" style={{ marginTop: 'var(--s6)', fontSize: 'var(--t-small)' }}>
+        That is the composed version.{' '}
+        <button type="button" className="linkish" onClick={() => go('Goofy Corner')}>
+          The Goofy Corner
+        </button>{' '}
+        is where the rest of me lives.
+      </p>
+    </section>
+  );
+}
+
+// ---------- Goofy Corner ----------
+// Rule for anything that goes here: the joke is on me, and it stays wholesome.
+// Still the brand palette — this is a wink, not a different website.
+
+const KONAMI = ['ArrowUp', 'ArrowUp', 'ArrowDown', 'ArrowDown', 'ArrowLeft', 'ArrowRight', 'ArrowLeft', 'ArrowRight', 'b', 'a'];
+
+// Cursor-following pupils on the house lion. Pupil travel is clamped to a small
+// radius so the eyes never leave their whites, and the whole thing no-ops for
+// reduced-motion (a jittering mascot is exactly the kind of thing that guard is for).
+function GooglyLion({ party }) {
+  const wrap = useRef(null);
+  const [off, setOff] = useState({ x: 0, y: 0 });
+
+  useEffect(() => {
+    if (reducedMotion()) return;
+    let raf = 0, last = null;
+    const paint = () => {
+      raf = 0;
+      const el = wrap.current;
+      if (!el || !last) return;
+      const r = el.getBoundingClientRect();
+      const dx = last.clientX - (r.left + r.width / 2);
+      const dy = last.clientY - (r.top + r.height / 2);
+      const dist = Math.hypot(dx, dy) || 1;
+      const reach = Math.min(1, dist / 260) * (r.width * 0.026); // px of travel
+      setOff({ x: (dx / dist) * reach, y: (dy / dist) * reach });
+    };
+    const onMove = (e) => { last = e; if (!raf) raf = requestAnimationFrame(paint); };
+    window.addEventListener('pointermove', onMove, { passive: true });
+    return () => { window.removeEventListener('pointermove', onMove); if (raf) cancelAnimationFrame(raf); };
+  }, []);
+
+  const pupil = { transform: `translate(calc(-50% + ${off.x.toFixed(1)}px), calc(-50% + ${off.y.toFixed(1)}px))` };
+  return (
+    <div className={`googly${party ? ' party' : ''}`} ref={wrap}>
+      <img src="/img/brand/lion-mark.svg" alt="The DHAHAB lion mark, wearing googly eyes" width="256" height="256" />
+      <span className="eye eye--l" aria-hidden="true"><span className="pupil" style={pupil} /></span>
+      <span className="eye eye--r" aria-hidden="true"><span className="pupil" style={pupil} /></span>
+    </div>
+  );
+}
+
+// Per-letter wobble. Words are grouped and nowrap'd on purpose: inline-block
+// letters are individually breakable, so without this the headline happily
+// wraps as "Certified G / oofy". The only break opportunities are the real
+// space text nodes sitting between the word groups.
+function WobbleType({ text }) {
+  const words = text.split(' ');
+  let n = 0;
+  return (
+    <span className="wobble" aria-label={text}>
+      {words.map((word, w) => (
+        <React.Fragment key={w}>
+          {w > 0 ? ' ' : null}
+          <span className="wobble-w" aria-hidden="true">
+            {word.split('').map((ch, i) => (
+              <b key={i} style={{ animationDelay: `${(n++ * 90) % 1400}ms` }}>{ch}</b>
+            ))}
+          </span>
+        </React.Fragment>
+      ))}
+    </span>
+  );
+}
+
+function DuckDeck({ T }) {
+  const [i, setI] = useState(0);
+  const q = GOOFY.duck;
+  return (
+    <div className="card duck reveal">
+      <span className="duck-mark" aria-hidden="true">“</span>
+      <p className="duck-quote">{T(q[i])}</p>
+      <button className="btn btn-ghost btn-sm"
+        onClick={() => setI((n) => (n + 1) % q.length)}>
+        {T('Another one')} ({i + 1}/{q.length})
+      </button>
+    </div>
+  );
+}
+
+function HotTakes({ T }) {
+  const [i, setI] = useState(0);
+  const [tally, setTally] = useState({ fair: 0, hot: 0 });
+  const takes = GOOFY.takes;
+  const t = takes[i];
+  const next = (key) => {
+    setTally((s) => ({ ...s, [key]: s[key] + 1 }));
+    setI((n) => (n + 1) % takes.length);
+  };
+  return (
+    <div className="deck">
+      <article className="card hot-card reveal" key={i}>
+        <div>
+          <span className="badge">Take {i + 1} of {takes.length}</span>
+          <p style={{ marginTop: 'var(--s4)', fontSize: 'clamp(17px,1.7vw,21px)', lineHeight: 1.5 }}>{T(t.text)}</p>
+        </div>
+        <div>
+          <p className="faint" style={{ fontSize: 'var(--t-micro)', letterSpacing: '.14em', textTransform: 'uppercase' }}>
+            {T('Spice level')}
+          </p>
+          <div className="heat" aria-label={`Spice level ${t.heat} of 9`}>
+            {Array.from({ length: 9 }, (_, n) => <i key={n} className={n < t.heat ? 'on' : ''} />)}
+          </div>
+        </div>
+      </article>
+      <div className="deck-nav">
+        <button className="btn btn-ghost btn-sm" onClick={() => next('fair')}>{T('Fair enough')}</button>
+        <button className="btn btn-ghost btn-sm" onClick={() => next('hot')}>{T('Absolutely not')}</button>
+        <span className="tally">fair {tally.fair} · nope {tally.hot}</span>
+      </div>
+    </div>
+  );
+}
+
+function Goofy({ go }) {
+  const [caveman, setCaveman] = useState(false);
+  const [party, setParty] = useState(false);
+  const T = useCallback((s) => (caveman ? cavemanize(s) : s), [caveman]);
+
+  // Konami code. There is no reward. That is the bit.
+  useEffect(() => {
+    let hit = 0;
+    const onKey = (e) => {
+      if (!e.key) return;
+      const want = KONAMI[hit];
+      if (e.key === want || e.key.toLowerCase() === want) {
+        hit += 1;
+        if (hit === KONAMI.length) { hit = 0; setParty(true); }
+      } else {
+        hit = e.key === KONAMI[0] ? 1 : 0;
+      }
+    };
+    window.addEventListener('keydown', onKey);
+    return () => window.removeEventListener('keydown', onKey);
+  }, []);
+
+  useEffect(() => {
+    if (!party) return;
+    const t = setTimeout(() => setParty(false), 7000);
+    return () => clearTimeout(t);
+  }, [party]);
+
+  return (
+    <section className="section">
+      <p className="eyebrow">{T('Off the record · still gold, just goofier')}</p>
+
+      <div className="goof-hero">
+        <div>
+          <h1 className="hero-type" style={{ margin: 'var(--s4) 0 var(--s5)' }}>
+            <WobbleType text={caveman ? 'ME GOOFY' : 'Certified Goofy'} />
+          </h1>
+          <p className="lead">
+            {T('The rest of this site is measured, sourced and defensible. This page is where I keep the personality. Everything here is true, which is somehow worse.')}
+          </p>
+          <div className="row" style={{ marginTop: 'var(--s6)' }}>
+            <button className="btn btn-gold" onClick={() => setCaveman((c) => !c)}>
+              {caveman ? 'Ugh. Words back to normal' : 'Caveman mode'}
+            </button>
+            <button className="btn btn-ghost" onClick={() => go('Professional')}>
+              {T('Take me back to the serious page')}
+            </button>
+          </div>
+          {caveman && (
+            <p className="faint" style={{ marginTop: 'var(--s4)', fontSize: 'var(--t-small)', maxWidth: 'var(--maxw-prose)' }}>
+              Caveman mode be one lookup table and two regexes. No AI. It do its best. Sometimes it just delete word and walk away.
+            </p>
+          )}
+        </div>
+        <GooglyLion party={party} />
+      </div>
+
+      <hr className="divider" />
+      <h2>{T('The lore')}</h2>
+      <p className="muted" style={{ marginTop: 'var(--s3)', maxWidth: 'var(--maxw-prose)' }}>
+        {T('A valedictorian who was also the League MVP at three positions, and who then looked at every available path and chose, freely and with enthusiasm, spreadsheets.')}
+      </p>
+      <ul className="lore">
+        {GOOFY.lore.map((l, i) => (
+          <li key={l.chapter} className="reveal" style={stagger(i, 70)}>
+            <p className="eyebrow">{l.chapter}</p>
+            <h3 style={{ marginTop: 'var(--s2)' }}>{T(l.title)}</h3>
+            <p className="muted" style={{ marginTop: 'var(--s3)', maxWidth: 'var(--maxw-prose)' }}>{T(l.body)}</p>
+          </li>
+        ))}
+      </ul>
+
+      <hr className="divider" />
+      <h2>{T('Things I have said out loud to a rubber duck')}</h2>
+      <p className="muted" style={{ margin: 'var(--s3) 0 var(--s5)', maxWidth: 'var(--maxw-prose)' }}>
+        {T('Rubber duck debugging works. It works so well that I have stopped being embarrassed about it, which is its own kind of milestone.')}
+      </p>
+      <DuckDeck T={T} />
+
+      <hr className="divider" />
+      <h2>{T('Hot takes, sorted by spice')}</h2>
+      <p className="muted" style={{ margin: 'var(--s3) 0 0', maxWidth: 'var(--maxw-prose)' }}>
+        {T('Opinions I will defend at a whiteboard. The counter is local to your browser and I will never see it, which is probably for the best.')}
+      </p>
+      <HotTakes T={T} />
+
+      <hr className="divider" />
+      <div className="panel">
+        <span className="badge">{T('There is an easter egg')}</span>
+        <p className="muted" style={{ marginTop: 'var(--s3)', maxWidth: 'var(--maxw-prose)' }}>
+          {T('Up, up, down, down, left, right, left, right, B, A. It does not unlock anything. It never has. Nintendo has been getting away with that for forty years and I respect it enormously.')}
+        </p>
+      </div>
+
+      <p className="faint" style={{ marginTop: 'var(--s7)', fontSize: 'var(--t-small)' }}>
+        {T('Still gold. Just goofier.')}{' '}
+        <button type="button" className="linkish" onClick={() => go('Home')}>{T('Back to the front')}</button>
+      </p>
+
+      {party && (
+        <div className="toast" role="status">
+          🦁 <b>DHAHAB DISCO MODE.</b> There is no reward. That was the reward.
+        </div>
+      )}
     </section>
   );
 }

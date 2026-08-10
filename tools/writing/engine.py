@@ -67,8 +67,8 @@ STYLES = """  .art{max-width:44rem;margin:0 auto;padding:var(--s6) var(--s5)}
   .related strong{font-family:var(--display-pro);color:var(--gold-2);display:block;margin-bottom:var(--s3)}
   .related ul{list-style:none;padding:0;margin:0}"""
 
-NAV = """<nav class="site-nav">
-  <a class="site-nav__brand" href="/"><img class="site-nav__lion" src="/img/brand/lion-mark.svg" alt="" width="34" height="34"><span>YUSUF GADELRAB</span></a>
+NAV = """<nav class="site-nav" aria-label="Primary">
+  <a class="site-nav__brand" href="/"><img class="site-nav__lion" src="/img/brand/lion-mark.svg" alt="" width="34" height="34" decoding="async"><span>YUSUF GADELRAB</span></a>
   <div class="site-nav__links">
     <a href="/">Work</a>
     <a href="/writing.html">Writing</a>
@@ -132,9 +132,16 @@ def _blocks(body):
             out.append(f'  <div class="verdict">\n    <strong>{label}</strong>\n{ps}\n  </div>')
         elif kind == "table":
             head, rows = val
-            th = "".join(f"<th>{h}</th>" for h in head)
+            # Header row was a bare <tr> outside any <thead> and carried no
+            # scope, so the header cells were never associated with their column.
+            # .tw sets overflow-x:auto over a min-width:34rem table, so it also
+            # needs to be focusable to be scrollable without a mouse.
+            th = "".join(f'<th scope="col">{h}</th>' for h in head)
             trs = "\n".join("    <tr>" + "".join(f"<td>{c}</td>" for c in r) + "</tr>" for r in rows)
-            out.append(f'  <div class="tw">\n  <table>\n    <tr>{th}</tr>\n{trs}\n  </table>\n  </div>')
+            out.append(f'  <div class="tw" tabindex="0" role="group" '
+                       f'aria-label="Table, scrolls horizontally">\n  <table>\n'
+                       f'    <thead><tr>{th}</tr></thead>\n    <tbody>\n{trs}\n    </tbody>\n'
+                       f'  </table>\n  </div>')
         else:
             raise SystemExit(f"unknown block kind: {kind}")
     return "\n\n".join(out)
@@ -159,7 +166,6 @@ def render(post):
         "isPartOf": {
             "@type": "Blog",
             "@id": f"{BASE}/writing.html#blog",
-            "name": "Yusuf Gadelrab — Writing",
         },
     }
     if post.get("keywords"):
@@ -168,9 +174,27 @@ def render(post):
         "@context": "https://schema.org",
         "@type": "Person",
         "@id": f"{BASE}/#person",
-        "name": "Yusuf Gadelrab",
-        "url": f"{BASE}/",
     }
+    # Google treats the VISIBLE breadcrumb as ground truth that the markup has to
+    # match, so the JSON-LD node and the rendered trail are always emitted
+    # together from this one pair of values. These used to be hand-patched into
+    # the generated files, which meant any rebuild silently dropped both.
+    trail = [("Home", f"{BASE}/"), ("Writing", f"{BASE}/writing.html")]
+    crumbs_ld = {
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+            {"@type": "ListItem", "position": i, "name": name, "item": href}
+            for i, (name, href) in enumerate(trail, 1)
+        ] + [{"@type": "ListItem", "position": len(trail) + 1,
+              "name": post["headline"], "item": url}],
+    }
+    crumb_lis = "\n".join(
+        f'    <li><a href="{href.replace(BASE, "") or "/"}">{name}</a></li>'
+        for name, href in trail)
+    crumbs = (f'<nav class="crumbs" aria-label="Breadcrumb">\n  <ol>\n{crumb_lis}\n'
+              f'    <li><span aria-current="page">'
+              f'{html.escape(post["headline"])}</span></li>\n  </ol>\n</nav>')
     related = ""
     if post.get("related"):
         items = "\n".join(f'    <li><a href="{h}">{lab}</a></li>' for h, lab in post["related"])
@@ -203,6 +227,7 @@ def render(post):
 <link rel="alternate" type="application/rss+xml" title="Yusuf Gadelrab" href="/rss.xml">
 <link rel="alternate" type="text/plain" href="{BASE}/llms-full.txt">
 <script type="application/ld+json">{json.dumps(ld)}</script>
+<script type="application/ld+json">{json.dumps(crumbs_ld)}</script>
 <script type="application/ld+json">{json.dumps(person)}</script>
 <link rel="stylesheet" href="/css/site.css">
 <style>
@@ -210,7 +235,10 @@ def render(post):
 </style>
 </head>
 <body>
+<a class="skip-link" href="#main">Skip to content</a>
 {NAV}
+{crumbs}
+<main id="main">
 <article class="art">
   <h1>{post['headline']}</h1>
   <p class="meta">{post['date']} &middot; Yusuf Gadelrab</p>
@@ -219,6 +247,7 @@ def render(post):
 
 {related}{CTA}
 </article>
+</main>
 {FOOTER}
 <script src="/js/site.js" defer></script>
 </body>

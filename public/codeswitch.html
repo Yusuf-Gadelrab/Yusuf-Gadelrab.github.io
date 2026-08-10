@@ -2,6 +2,8 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
+<meta name="referrer" content="strict-origin-when-cross-origin">
+<meta http-equiv="Content-Security-Policy" content="object-src 'none'; base-uri 'self'">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <!-- tech:seo — managed block (SEO / social / structured data / perf / PWA) -->
 <link rel="preload" href="/css/site.css" as="style">
@@ -37,6 +39,7 @@
 
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"EducationalOrganization","name":"CODESWITCH","alternateName":["Codeswitch CS","CodeBridge"],"url":"https://yusuf-gadelrab.github.io/codeswitch.html","description":"A free bilingual introductory computer science program for high school students who are English learners, taught by trained near-peer tutors who share the students' home languages.","disambiguatingDescription":"Program in design. No cohort has run, no school partnership is signed and no tutors are cleared. CODESWITCH is not an incorporated organization, is not a registered charity, has filed no 501(c)(3) application, has no application pending, and contributions are not tax-deductible. It is the program now being developed as CodeBridge under the planned Miftah Foundation, which is itself not yet incorporated.","founder":{"@id":"https://yusuf-gadelrab.github.io/#person"},"areaServed":{"@type":"City","name":"San Jose, California"},"knowsLanguage":["en","es","vi","ar"]}</script>
 <link rel="stylesheet" href="/css/site.css">
+<link rel="stylesheet" href="/css/lux-motion.css">
 <style>
   .wordmark{font-family:var(--display-pro);font-weight:700;letter-spacing:.22em;font-size:13px;
     color:var(--gold-2);text-transform:uppercase}
@@ -77,9 +80,9 @@
   .stat-row span{font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--faint)}
 </style>
 <!-- geo:entity — canonical Person node, one entity across every page -->
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"Person","@id":"https://yusuf-gadelrab.github.io/#person","name":"Yusuf Gadelrab","url":"https://yusuf-gadelrab.github.io/"}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebPage","@id":"https://yusuf-gadelrab.github.io/codeswitch.html#webpage","url":"https://yusuf-gadelrab.github.io/codeswitch.html","inLanguage":"en","isPartOf":{"@id":"https://yusuf-gadelrab.github.io/#website"},"about":{"@id":"https://yusuf-gadelrab.github.io/#person"},"publisher":{"@id":"https://yusuf-gadelrab.github.io/#person"}}</script>
 <link rel="alternate" type="text/plain" href="https://yusuf-gadelrab.github.io/llms-full.txt" title="Plain-text profile for language models">
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","@id":"https://yusuf-gadelrab.github.io/codeswitch.html#faq","mainEntity":[{"@type":"Question","name":"What is CODESWITCH?","acceptedAnswer":{"@type":"Answer","text":"A free eight-week introductory computer science program for high school students who are still learning English. Sessions are taught bilingually by trained near-peer tutors who speak the students' home languages — concepts are introduced in the home language first, and English keywords are attached to ideas the student already holds."}},{"@type":"Question","name":"Why teach computer science bilingually instead of just translating the materials?","acceptedAnswer":{"@type":"Answer","text":"Translating an English curriculum produces a translated curriculum with English-language pedagogy underneath it. Bilingual teaching changes the instruction itself: the concept is explained in the language the student thinks in, English keywords are treated as symbols to recognise rather than vocabulary to master, and students may ask and answer in whichever language they choose."}},{"@type":"Question","name":"What does it cost, and who pays?","acceptedAnswer":{"@type":"Answer","text":"It is free for students and for partner schools. Delivering one cohort costs roughly two hundred dollars, or about ninety-two dollars per student across a full year, because the tutors are trained volunteers rather than paid staff."}},{"@type":"Question","name":"How do volunteers work with students safely?","acceptedAnswer":{"@type":"Answer","text":"Every tutor completes the partner district's volunteer clearance, background check, TB screening where required, and mandated-reporter training before their first session. Two adults are present at all times, sessions happen only in school spaces, and there is no private contact between tutors and students."}},{"@type":"Question","name":"Which languages does CODESWITCH support?","acceptedAnswer":{"@type":"Answer","text":"The first cohorts are planned in Spanish and Vietnamese, the largest English-learner populations in the target San Jose schools, with Arabic following. Language coverage is set by which bilingual tutors are trained and cleared."}},{"@type":"Question","name":"How will you know whether it worked?","acceptedAnswer":{"@type":"Answer","text":"Three measures: persistence, meaning whether students enrol in a computer science course afterwards; self-efficacy, measured with a short pre and post survey administered in the student's home language; and conceptual understanding, assessed through a bilingual concept check and a final project the student can explain. Results are published whether or not they support the hypothesis."}}]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","@id":"https://yusuf-gadelrab.github.io/codeswitch.html#faq","mainEntity":[{"@type":"Question","name":"What is CODESWITCH?","acceptedAnswer":{"@type":"Answer","text":"A free eight-week introductory computer science program for high school students who are still learning English. Sessions are taught bilingually by trained near-peer tutors who speak the students' home languages — concepts are introduced in the home language first, and English keywords are attached to ideas the student already holds."}},{"@type":"Question","name":"Why bilingual instead of just translating the materials?","acceptedAnswer":{"@type":"Answer","text":"Translating an English curriculum produces a translated curriculum with English-language pedagogy underneath it. Bilingual teaching changes the instruction itself: the concept is explained in the language the student thinks in, English keywords are treated as symbols to recognise rather than vocabulary to master, and students may ask and answer in whichever language they choose."}},{"@type":"Question","name":"What does it cost, and who pays?","acceptedAnswer":{"@type":"Answer","text":"It is free for students and for partner schools. Delivering one cohort costs roughly two hundred dollars, or about ninety-two dollars per student across a full year, because the tutors are trained volunteers rather than paid staff."}},{"@type":"Question","name":"How do volunteers work with students safely?","acceptedAnswer":{"@type":"Answer","text":"Every tutor completes the partner district's volunteer clearance, background check, TB screening where required, and mandated-reporter training before their first session. Two adults are present at all times, sessions happen only in school spaces, and there is no private contact between tutors and students."}},{"@type":"Question","name":"Which languages does CODESWITCH support?","acceptedAnswer":{"@type":"Answer","text":"The first cohorts are planned in Spanish and Vietnamese, the largest English-learner populations in the target San Jose schools, with Arabic following. Language coverage is set by which bilingual tutors are trained and cleared."}},{"@type":"Question","name":"How will you know whether it worked?","acceptedAnswer":{"@type":"Answer","text":"Three measures: persistence, meaning whether students enrol in a computer science course afterwards; self-efficacy, measured with a short pre and post survey administered in the student's home language; and conceptual understanding, assessed through a bilingual concept check and a final project the student can explain. Results are published whether or not they support the hypothesis."}}]}</script>
 </head>
 <body class="pro">
 
@@ -90,11 +93,18 @@
   <div class="site-nav__links"><a href="/">Work</a><a href="/resume.html">Resume</a><a href="/guides.html">Guides</a><a href="/store.html">Store</a><a href="/apps.html">Apps</a><a href="/kxngsef.html">KXNG SEF</a><a href="/hire.html">Hire</a><a href="/media-kit.html">Media Kit</a></div>
 </nav>
 
+<nav class="crumbs" aria-label="Breadcrumb">
+  <ol>
+    <li><a href="/">Home</a></li>
+    <li><span aria-current="page">CODESWITCH</span></li>
+  </ol>
+</nav>
+
 <main id="main">
 
   <header class="section">
     <p class="wordmark">CODESWITCH · A bilingual CS education program</p>
-    <h1 style="margin:var(--s5) 0">Learn to code in the <span class="gold-fill">language you think in.</span></h1>
+    <h1 style="margin:var(--s5) 0">Learn to code in the <span class="gold-fill" data-lux-shimmer>language you think in.</span></h1>
     <p class="lead">Every programming language is written in English. <span class="kw">if</span> <span class="kw">while</span> <span class="kw">return</span> <span class="kw">class</span> — the keywords are English words and every error message is an English sentence. So a student who's still learning English is asked to learn two languages at once, and then graded as though they were only learning one.</p>
     <p class="lead" style="margin-top:var(--s4)">They aren't less capable. They're being tested on vocabulary while we tell them we're testing them on logic. <b class="gold">CODESWITCH fixes the room, not the student.</b></p>
     <div class="row" style="margin-top:var(--s6)">
@@ -264,7 +274,7 @@
   <section class="section section--tight">
     <p class="eyebrow">07 · Why this, from me</p>
     <h2>I co-wrote the paper, then realised I hadn't done anything about it.</h2>
-    <p class="lead" style="margin-top:var(--s3)">I'm Yusuf Gadelrab — CS at San José State, and an undergraduate researcher in Dr. Ethel Tshukudu's CS education lab. This year I co-authored a mixed-methods study on bilingual programming environments and inclusive CS learning, accepted at SIGCSE TS 2026. I already tutor CS at SJSU and help run CS programming at a San Jose high school with a large English-learner population. I'm bilingual myself — Arabic and English.</p>
+    <p class="lead" style="margin-top:var(--s3)">I'm Yusuf Gadelrab — CS at San José State, and an undergraduate researcher in Dr. Ethel Tshukudu's CS education lab. This year I co-authored a mixed-methods study on bilingual programming environments and inclusive computer science learning, accepted at SIGCSE TS 2026. I already tutor CS at SJSU and help run CS programming at a San Jose high school with a large English-learner population. I'm bilingual myself — Arabic and English.</p>
     <p class="lead" style="margin-top:var(--s4)">The finding was clear and the paper is published. A published finding that changes nothing in a classroom isn't worth much. This is the attempt to change something.</p>
     <div class="row" style="margin-top:var(--s6)">
       <a class="btn btn-ghost" href="https://doi.org/10.1145/3770761.3777339" target="_blank" rel="noopener">Read the study →</a>
@@ -311,6 +321,7 @@
 <footer class="site-footer">
   <div>CODESWITCH · a program by Yusuf Gadelrab · San Jose, CA · not yet an incorporated nonprofit</div>
   <div class="site-footer__links">
+    <a href="/faq.html">FAQ</a>
     <a href="/">Work</a>
     <a href="/codeswitch.html">CODESWITCH</a>
     <a href="/resume.html">Resume</a>
@@ -327,6 +338,7 @@
 
 <script src="/js/waitlist.js" defer></script>
 <script src="/js/site.js" defer></script>
+<script src="/js/lux-motion.js" defer></script>
 <script>
 addEventListener("DOMContentLoaded", function () {
   if (!window.YGWaitlist) return;

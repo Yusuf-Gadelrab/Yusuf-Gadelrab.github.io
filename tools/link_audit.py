@@ -35,9 +35,14 @@ SKIP_FILES = {
 }
 # Whole subtrees that are product artifacts / previews, not site pages.
 # public/templates/ is the noindex document vault shipped with the templates
-# product; its files are deliverables, not pages meant to rank or be crawled.
-SKIP_PREFIXES = ("templates/",)
+# product and public/downloads/ holds sample deliverables; their files are
+# artifacts, not pages meant to rank or be crawled.
+SKIP_PREFIXES = ("templates/", "downloads/")
 
+# Only read hrefs that sit inside a real tag. An href written as escaped text —
+# `&lt;link rel="canonical" href="..."&gt;` in a <code> sample — is documentation,
+# not a link, and a bare attribute regex would flag it as broken.
+TAG_RE = re.compile(r"<[a-zA-Z][^>]*>")
 HREF_RE = re.compile(r'(?:href|src)\s*=\s*"([^"]+)"', re.I)
 # hrefs built inside <script>/<style> are runtime template strings, not crawlable links
 INLINE_RE = re.compile(r"<(script|style)\b[^>]*>.*?</\1>", re.S | re.I)
@@ -94,7 +99,7 @@ def load(pages):
         title = TITLE_RE.search(src)
         markup = INLINE_RE.sub(" ", src)
         links = []
-        for raw in HREF_RE.findall(markup):
+        for raw in (h for tag in TAG_RE.findall(markup) for h in HREF_RE.findall(tag)):
             t = normalize(raw, r)
             if t is not None:
                 links.append((t, raw))

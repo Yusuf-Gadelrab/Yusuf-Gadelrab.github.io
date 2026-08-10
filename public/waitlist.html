@@ -2,6 +2,8 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
+<meta name="referrer" content="strict-origin-when-cross-origin">
+<meta http-equiv="Content-Security-Policy" content="object-src 'none'; base-uri 'self'">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <!-- tech:seo — managed block (SEO / social / structured data / perf / PWA) -->
 <link rel="preload" href="/css/site.css" as="style">
@@ -35,6 +37,7 @@
 <meta name="twitter:title" content="Waitlists — First Access to Everything I'm Launching">
 <meta name="twitter:description" content="Pick what you want to hear about. Nothing else.">
 <link rel="stylesheet" href="/css/site.css">
+<link rel="stylesheet" href="/css/lux-motion.css">
 <style>
   .wl{display:flex;flex-direction:column;padding:var(--s5)}
   .wl h3{margin:var(--s3) 0 var(--s2);font-size:var(--t-h3)}
@@ -50,7 +53,13 @@
   form.mini{display:flex;gap:8px;margin-top:var(--s4);flex-wrap:wrap}
   form.mini input{flex:1 1 150px;min-width:0;background:var(--panel2);border:1px solid var(--line);
     border-radius:var(--radius);color:var(--bone);padding:10px 12px;font-family:var(--body-font);font-size:13px}
-  form.mini input:focus{outline:none;border-color:var(--gold-dim)}
+  form.mini input:focus{border-color:var(--gold)}
+  form.mini input:focus-visible{outline:2px solid var(--gold-2);outline-offset:2px}
+  .alt-links{display:flex;flex-wrap:wrap;gap:var(--s2) var(--s5);margin-top:var(--s4);
+    font-size:var(--t-small);color:var(--muted)}
+  .alt-links a{color:var(--ink);text-decoration:underline;
+    text-decoration-color:var(--line);text-underline-offset:3px}
+  .alt-links a:hover{color:var(--gold-2)}
   form.mini button{white-space:nowrap}
   .note{margin-top:8px;font-size:11px;color:var(--faint)}
   .geo-qa{padding:var(--s5)}
@@ -58,9 +67,9 @@
   .geo-qa p{color:var(--muted);font-size:var(--t-small);margin:0}
 </style>
 <!-- geo:entity — canonical Person node, one entity across every page -->
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"Person","@id":"https://yusuf-gadelrab.github.io/#person","name":"Yusuf Gadelrab","url":"https://yusuf-gadelrab.github.io/"}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebPage","@id":"https://yusuf-gadelrab.github.io/waitlist.html#webpage","url":"https://yusuf-gadelrab.github.io/waitlist.html","inLanguage":"en","isPartOf":{"@id":"https://yusuf-gadelrab.github.io/#website"},"about":{"@id":"https://yusuf-gadelrab.github.io/#person"},"publisher":{"@id":"https://yusuf-gadelrab.github.io/#person"}}</script>
 <link rel="alternate" type="text/plain" href="https://yusuf-gadelrab.github.io/llms-full.txt" title="Plain-text profile for language models">
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","@id":"https://yusuf-gadelrab.github.io/waitlist.html#faq","mainEntity":[{"@type":"Question","name":"What happens after I join a waitlist?","acceptedAnswer":{"@type":"Answer","text":"You get exactly one email when that specific thing launches, and early access before it goes public. Joining one list never subscribes you to the others, and there is no newsletter."}},{"@type":"Question","name":"Will my email be sold or shared?","acceptedAnswer":{"@type":"Answer","text":"No. Emails are used only to notify you about the thing you signed up for. There is no list rental, no ad retargeting, and no third-party sharing. Reply once to any message to be removed."}},{"@type":"Question","name":"Do waitlist members get a discount?","acceptedAnswer":{"@type":"Answer","text":"Where a product is paid, waitlist members get access before the public and the lowest price offered. For the KXNG SEF drop that means an early-bird tier; for the trading cohort it means founding-cohort pricing."}},{"@type":"Question","name":"Which things are free?","acceptedAnswer":{"@type":"Answer","text":"The DHAHAB Circle community, the DIRA security scanner, and all of the installable apps and calculators are free. FreightDesk, the KXNG SEF drop, and the trading cohort are paid."}}]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","@id":"https://yusuf-gadelrab.github.io/waitlist.html#faq","mainEntity":[{"@type":"Question","name":"What happens after I join a waitlist?","acceptedAnswer":{"@type":"Answer","text":"You get exactly one email when that specific thing launches, and early access before it goes public. Joining one list never subscribes you to the others, and there is no newsletter."}},{"@type":"Question","name":"Will my email be sold or shared?","acceptedAnswer":{"@type":"Answer","text":"No. Emails are used only to notify you about the thing you signed up for. There is no list rental, no ad retargeting, and no third-party sharing. Reply once to any message to be removed."}},{"@type":"Question","name":"Do waitlist members get a discount?","acceptedAnswer":{"@type":"Answer","text":"Where a product is paid, waitlist members get access before the public and the lowest price offered. For the KXNG SEF drop that means an early-bird tier; for the trading cohort it means founding-cohort pricing."}},{"@type":"Question","name":"Which things are free?","acceptedAnswer":{"@type":"Answer","text":"The DHAHAB Circle community, the DIRA security scanner, and all of the installable apps and calculators are free. FreightDesk, the KXNG SEF drop, and the trading cohort are paid."}},{"@type":"Question","name":"Is any of this actually live, or is it all pre-launch?","acceptedAnswer":{"@type":"Answer","text":"Some of it, yes. Three installable offline PWAs (TradeLog, Cut, Fire), 52 published guides, and DIRA v1.5.0 are live today — DIRA is open source on GitHub with 124 passing tests. FreightDesk founding-client pilots are open right now too. What's still ahead is the DHAHAB Circle server, the KXNG SEF drop, the Swing OS cohort, and DIRA's PyPI/npm release — these lists are how you hear the moment each one opens."}}]}</script>
 </head>
 <body class="pro">
 
@@ -71,34 +80,54 @@
   <div class="site-nav__links"><a href="/">Work</a><a href="/resume.html">Resume</a><a href="/guides.html">Guides</a><a href="/store.html">Store</a><a href="/apps.html">Apps</a><a href="/kxngsef.html">KXNG SEF</a><a href="/hire.html">Hire</a><a href="/media-kit.html">Media Kit</a></div>
 </nav>
 
+<nav class="crumbs" aria-label="Breadcrumb">
+  <ol>
+    <li><a href="/">Home</a></li>
+    <li><span aria-current="page">Waitlists</span></li>
+  </ol>
+</nav>
+
 <main id="main">
 
   <header class="section">
     <img class="page-lion" src="/img/brand/lion-mark.svg" alt="" width="46" height="46" decoding="async">
     <p class="eyebrow">First access</p>
-    <h1 style="margin:var(--s4) 0">Pick what you want to hear about. <span class="gold-fill">Nothing else gets sent.</span></h1>
-    <p class="lead">I build across four lanes and I'd rather not email you about a hoodie when you came for the trading system. So each thing has its own list, joining one never joins you to another, and there's no newsletter behind any of them — just one message when the thing you asked about is real.</p>
+    <h1 style="margin:var(--s4) 0">Seven free lists. <span class="gold-fill">One email each, when it's real.</span></h1>
+    <p class="lead"><b>This page is seven separate waitlists — a community, a clothing drop, freight software, a trading cohort, a security scanner, a volunteer program, and new apps — and joining any of them costs nothing.</b> Each one sends exactly one email, the day that specific thing opens, and nothing else. Joining one list never subscribes you to another, and there's no newsletter behind any of them.</p>
+
+    <div class="panel" id="circle-join" style="margin-top:var(--s6);border-left:3px solid var(--gold)">
+      <p class="eyebrow">Recommended first stop</p>
+      <h2 style="margin:var(--s2) 0 var(--s3)">DHAHAB Circle — the free community</h2>
+      <p class="muted" style="font-size:var(--t-small);max-width:56ch">Building, trading, internship-hunting, and brand — one free room, opening soon. <b>The first 50 people to join keep a permanent founding role.</b></p>
+      <form class="mini" id="f-circle" novalidate>
+        <label class="sr-only" for="e-circle">Your email address</label>
+        <input type="email" id="e-circle" placeholder="you@email.com" autocomplete="email" required>
+        <button class="btn btn-gold" type="submit">Save my spot</button>
+      </form>
+      <p class="note" id="n-circle">One email when it opens, nothing else. <a href="/circle.html">What the Circle is →</a></p>
+    </div>
+
+    <p class="alt-links">
+      <a href="#lists">Browse the other six lists</a>
+      <a href="#faq">Is any of this real yet?</a>
+      <a href="mailto:yusuf.gadelrab06@gmail.com">Email me directly</a>
+    </p>
   </header>
 
   <hr class="divider">
 
   <section class="section section--tight">
+    <p class="eyebrow">Before you scroll</p>
+    <p class="lead"><b>Live right now:</b> 3 installable offline PWAs (TradeLog, Cut, Fire), 52 published guides, DIRA v1.5.0 — MIT-licensed and open source on GitHub with 124 passing tests — and FreightDesk founding-client pilots, open today. <b>Still ahead:</b> the DHAHAB Circle server, the KXNG SEF drop, the Swing OS cohort, and DIRA's PyPI/npm release. That gap is exactly what these lists are for.</p>
+  </section>
+
+  <hr class="divider">
+
+  <section class="section section--tight" id="lists">
     <p class="eyebrow">Open lists</p>
-    <h2>Seven things launching next</h2>
+    <h2>Six more, the same deal</h2>
 
     <div class="grid" style="margin-top:var(--s6)">
-
-      <article class="card wl">
-        <span class="st st--soon"><i></i>Opening soon</span>
-        <h3>DHAHAB Circle</h3>
-        <p>A private community for people who build, trade, chase internships, and run a brand. One rule: receipts over opinions. Free, and it stays free.</p>
-        <p class="perk">→ First 50 keep a permanent founding role</p>
-        <form class="mini" id="f-circle" novalidate>
-          <input type="email" id="e-circle" placeholder="you@email.com" autocomplete="email" aria-label="Email for the DHAHAB Circle waitlist" required>
-          <button class="btn btn-gold btn-sm" type="submit">Save my spot</button>
-        </form>
-        <p class="note" id="n-circle"><a href="/circle.html">What the Circle is →</a></p>
-      </article>
 
       <article class="card wl">
         <span class="st st--soon"><i></i>Drop 01 pending</span>
@@ -106,10 +135,11 @@
         <p>Gold lion on black, on heavyweight blanks. One colourway, one drop, made to order after the drop closes so nothing gets wasted. Tee and hoodie.</p>
         <p class="perk">→ Early-bird tier, 48h before public</p>
         <form class="mini" id="f-sef" novalidate>
-          <input type="email" id="e-sef" placeholder="you@email.com" autocomplete="email" aria-label="Email for the KXNG SEF drop waitlist" required>
-          <button class="btn btn-gold btn-sm" type="submit">Notify me</button>
+          <label class="sr-only" for="e-sef">Your email address</label>
+          <input type="email" id="e-sef" placeholder="you@email.com" autocomplete="email" required>
+          <button class="btn btn-ghost btn-sm" type="submit">Notify me</button>
         </form>
-        <p class="note" id="n-sef"><a href="/kxngsef.html">See the brand →</a></p>
+        <p class="note" id="n-sef">One email at launch. <a href="/kxngsef.html">See the brand →</a></p>
       </article>
 
       <article class="card wl">
@@ -118,10 +148,11 @@
         <p>AI quoting and lane intelligence for freight brokers. Founding-client pilots are open now — I take a small number so each one gets built around a real desk.</p>
         <p class="perk">→ Founding-client pricing, locked for a year</p>
         <form class="mini" id="f-fd" novalidate>
-          <input type="email" id="e-fd" placeholder="work@brokerage.com" autocomplete="email" aria-label="Email for FreightDesk pilots" required>
-          <button class="btn btn-gold btn-sm" type="submit">Request a pilot</button>
+          <label class="sr-only" for="e-fd">Your work email address</label>
+          <input type="email" id="e-fd" placeholder="work@brokerage.com" autocomplete="email" required>
+          <button class="btn btn-ghost btn-sm" type="submit">Request a pilot</button>
         </form>
-        <p class="note" id="n-fd"><a href="/freightdesk.html">How it works →</a></p>
+        <p class="note" id="n-fd">One reply, fast. <a href="/freightdesk.html">How it works →</a></p>
       </article>
 
       <article class="card wl">
@@ -130,8 +161,9 @@
         <p>The Swing Trading Operating System, run as a cohort instead of a course you never finish: weekly sessions, journals reviewed, and the walk-forward results shown honestly — including the setups that failed.</p>
         <p class="perk">→ Founding-cohort price, capped seats</p>
         <form class="mini" id="f-swing" novalidate>
-          <input type="email" id="e-swing" placeholder="you@email.com" autocomplete="email" aria-label="Email for the Swing OS cohort waitlist" required>
-          <button class="btn btn-gold btn-sm" type="submit">Join the list</button>
+          <label class="sr-only" for="e-swing">Your email address</label>
+          <input type="email" id="e-swing" placeholder="you@email.com" autocomplete="email" required>
+          <button class="btn btn-ghost btn-sm" type="submit">Join the list</button>
         </form>
         <p class="note" id="n-swing">Educational only — not financial advice. <a href="/store.html">The course →</a></p>
       </article>
@@ -142,10 +174,11 @@
         <p>A zero-dependency scanner for startup codebases: secrets, dependency CVEs, config and IaC rules, git-history leaks, and a live TLS check. Free and open source when it ships.</p>
         <p class="perk">→ Told the day it hits PyPI and npm</p>
         <form class="mini" id="f-dira" novalidate>
-          <input type="email" id="e-dira" placeholder="you@email.com" autocomplete="email" aria-label="Email for the DIRA release list" required>
-          <button class="btn btn-gold btn-sm" type="submit">Tell me at launch</button>
+          <label class="sr-only" for="e-dira">Your email address</label>
+          <input type="email" id="e-dira" placeholder="you@email.com" autocomplete="email" required>
+          <button class="btn btn-ghost btn-sm" type="submit">Tell me at launch</button>
         </form>
-        <p class="note" id="n-dira"><a href="/dira.html">What it scans →</a></p>
+        <p class="note" id="n-dira">One email, at release. <a href="/dira.html">What it scans →</a></p>
       </article>
 
       <article class="card wl">
@@ -154,10 +187,11 @@
         <p>The nonprofit side: free bilingual intro CS for high schoolers still learning English. We need tutors who speak Spanish, Vietnamese, or Arabic and are comfortable with loops and functions. Unpaid, eight weeks, district background check required.</p>
         <p class="perk">→ Handbook and clearance steps sent on signup</p>
         <form class="mini" id="f-cs" novalidate>
-          <input type="email" id="e-cs" placeholder="you@email.com" autocomplete="email" aria-label="Email to volunteer as a CODESWITCH tutor" required>
-          <button class="btn btn-gold btn-sm" type="submit">I'll tutor</button>
+          <label class="sr-only" for="e-cs">Your email address</label>
+          <input type="email" id="e-cs" placeholder="you@email.com" autocomplete="email" required>
+          <button class="btn btn-ghost btn-sm" type="submit">I'll tutor</button>
         </form>
-        <p class="note" id="n-cs"><a href="/codeswitch.html">What CODESWITCH is →</a></p>
+        <p class="note" id="n-cs">Handbook comes by email. <a href="/codeswitch.html">What CODESWITCH is →</a></p>
       </article>
 
       <article class="card wl">
@@ -166,10 +200,11 @@
         <p>The free stuff: installable offline apps, risk and freight calculators, the visa planner, the application tracker. One short email when a new one goes live.</p>
         <p class="perk">→ A few emails a year, at most</p>
         <form class="mini" id="f-apps" novalidate>
-          <input type="email" id="e-apps" placeholder="you@email.com" autocomplete="email" aria-label="Email for new app announcements" required>
-          <button class="btn btn-gold btn-sm" type="submit">Keep me posted</button>
+          <label class="sr-only" for="e-apps">Your email address</label>
+          <input type="email" id="e-apps" placeholder="you@email.com" autocomplete="email" required>
+          <button class="btn btn-ghost btn-sm" type="submit">Keep me posted</button>
         </form>
-        <p class="note" id="n-apps"><a href="/apps.html">What's already live →</a></p>
+        <p class="note" id="n-apps">A few emails a year. <a href="/apps.html">What's already live →</a></p>
       </article>
 
     </div>
@@ -182,10 +217,13 @@
       <p class="muted" style="font-size:var(--t-small)"><b class="gold">The deal, in one line.</b> Your email is used for the one thing you signed up for and nothing else. No newsletter, no list rental, no retargeting, no cross-posting between lists. Reply once to any message and you're off it permanently. Full terms in the <a href="/privacy.html">privacy policy</a>.</p>
     </div>
     <div class="row" style="margin-top:var(--s6)">
-      <a class="btn btn-gold" href="/circle.html">Join the Circle →</a>
-      <a class="btn btn-ghost" href="/apps.html">Free apps</a>
-      <a class="btn btn-ghost" href="mailto:yusuf.gadelrab06@gmail.com">Email me directly</a>
+      <a class="btn btn-gold" href="#circle-join">Join the Circle →</a>
     </div>
+    <p class="alt-links">
+      <a href="/circle.html">What the Circle is</a>
+      <a href="/apps.html">Free apps</a>
+      <a href="mailto:yusuf.gadelrab06@gmail.com">Email me directly</a>
+    </p>
   </section>
 
   <hr class="divider">
@@ -211,6 +249,29 @@
         <h3>Which things are free?</h3>
         <p>The DHAHAB Circle community, the DIRA security scanner, and all of the installable apps and calculators are free. FreightDesk, the KXNG SEF drop, and the trading cohort are paid.</p>
       </article>
+      <article class="card geo-qa">
+        <h3>Is any of this actually live, or is it all pre-launch?</h3>
+        <p>Some of it, yes. Three installable offline PWAs (TradeLog, Cut, Fire), 52 published guides, and DIRA v1.5.0 are live today — DIRA is open source on GitHub with 124 passing tests. FreightDesk founding-client pilots are open right now too. What's still ahead is the DHAHAB Circle server, the KXNG SEF drop, the Swing OS cohort, and DIRA's PyPI/npm release — these lists are how you hear the moment each one opens.</p>
+      </article>
+    </div>
+  </section>
+
+  <hr class="divider">
+
+  <section class="section section--tight">
+    <div class="row" style="justify-content:space-between">
+      <div>
+        <p class="eyebrow">Start with one</p>
+        <h2 style="margin-top:var(--s2)">If you only join one, make it the Circle.</h2>
+        <p class="muted" style="font-size:var(--t-small);margin-top:var(--s3);max-width:48ch">Free, one email at launch, nothing else. The other six are right above if a specific one fits better.</p>
+      </div>
+      <div>
+        <a class="btn btn-gold" href="#circle-join">Join the Circle →</a>
+        <p class="alt-links">
+          <a href="#lists">The other six</a>
+          <a href="mailto:yusuf.gadelrab06@gmail.com">Email me directly</a>
+        </p>
+      </div>
     </div>
   </section>
 
@@ -219,6 +280,7 @@
 <footer class="site-footer">
   <div>© 2026 Yusuf Gadelrab · CS @ SJSU · San Jose, CA</div>
   <div class="site-footer__links">
+    <a href="/faq.html">FAQ</a>
     <a href="/writing.html">Writing</a>
     <a href="/dispatch.html">Dispatch</a>
     <a href="/">Work</a>
@@ -241,6 +303,7 @@
 
 <script src="/js/waitlist.js" defer></script>
 <script src="/js/site.js" defer></script>
+<script src="/js/lux-motion.js" defer></script>
 <script>
 addEventListener("DOMContentLoaded", function () {
   if (!window.YGWaitlist) return;

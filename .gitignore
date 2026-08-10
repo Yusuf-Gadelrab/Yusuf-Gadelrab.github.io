@@ -7,3 +7,10 @@ public/__*.html
 
 .indexnow-key
 .dira-cache.json
+
+# Internal planning/scratch — this repo is PUBLIC, its source branch is world-readable.
+# Business plans live in ~/Desktop/Ops/ instead.
+WEB-EXCELLENCE-PLAN.md
+*-PLAN.md
+dblp*.json
+devpost*.json

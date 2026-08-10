@@ -1,0 +1,435 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+<channel>
+<title>Yusuf Gadelrab — Guides</title>
+<link>https://yusuf-gadelrab.github.io/guides.html</link>
+<description>Long-form guides on trading risk, AI tooling, freight brokerage, security and the student career stack. Every formula shown.</description>
+<atom:link href="https://yusuf-gadelrab.github.io/guides.xml" rel="self" type="application/rss+xml"/>
+<language>en-us</language>
+<lastBuildDate>Wed, 29 Jul 2026 00:00:00 +0000</lastBuildDate>
+<generator>tools/build_feeds.py</generator>
+<docs>https://www.rssboard.org/rss-specification</docs>
+<ttl>1440</ttl>
+<copyright>Copyright 2026 Yusuf Gadelrab</copyright>
+<item>
+<title>Write the profile for how recruiters actually search</title>
+<link>https://yusuf-gadelrab.github.io/guides/linkedin-profile-recruiters.html</link>
+<guid isPermaLink="true">https://yusuf-gadelrab.github.io/guides/linkedin-profile-recruiters.html</guid>
+<pubDate>Wed, 29 Jul 2026 00:00:00 +0000</pubDate>
+<description>How recruiters actually search LinkedIn, what belongs in the headline and About, why the first two lines decide everything, and what costs replies.</description>
+</item>
+<item>
+<title>Where the stop goes, and what it decides</title>
+<link>https://yusuf-gadelrab.github.io/guides/stop-loss-placement.html</link>
+<guid isPermaLink="true">https://yusuf-gadelrab.github.io/guides/stop-loss-placement.html</guid>
+<pubDate>Wed, 29 Jul 2026 00:00:00 +0000</pubDate>
+<description>Structure-based, ATR-based, or percentage stops. Why the stop sets position size rather than the other way round, and the places never to put one.</description>
+</item>
+<item>
+<title>Where every dollar of a $32 tee actually goes</title>
+<link>https://yusuf-gadelrab.github.io/guides/clothing-brand-pod-margins.html</link>
+<guid isPermaLink="true">https://yusuf-gadelrab.github.io/guides/clothing-brand-pod-margins.html</guid>
+<pubDate>Wed, 29 Jul 2026 00:00:00 +0000</pubDate>
+<description>Blank cost, print cost and platform cut separated, a $32 tee and a $58 hoodie worked end to end, plus shipping, returns and the pre-order break-even.</description>
+</item>
+<item>
+<title>What an answer engine actually fetches from your site</title>
+<link>https://yusuf-gadelrab.github.io/guides/static-site-ai-search.html</link>
+<guid isPermaLink="true">https://yusuf-gadelrab.github.io/guides/static-site-ai-search.html</guid>
+<pubDate>Wed, 29 Jul 2026 00:00:00 +0000</pubDate>
+<description>llms.txt, robots.txt rules for named AI crawlers, JSON-LD entity graphs with @id, mirrored FAQ schema, and what an answer engine cannot see in an SPA.</description>
+</item>
+<item>
+<title>What an ATS actually does to your resume</title>
+<link>https://yusuf-gadelrab.github.io/guides/ats-resume.html</link>
+<guid isPermaLink="true">https://yusuf-gadelrab.github.io/guides/ats-resume.html</guid>
+<pubDate>Wed, 29 Jul 2026 00:00:00 +0000</pubDate>
+<description>What applicant tracking systems really do to a resume, the formatting rules that matter, how to mirror a job description honestly, and the myths.</description>
+</item>
+<item>
+<title>Volume profile, and what the histogram at the bottom cannot tell you</title>
+<link>https://yusuf-gadelrab.github.io/guides/volume-profile.html</link>
+<guid isPermaLink="true">https://yusuf-gadelrab.github.io/guides/volume-profile.html</guid>
+<pubDate>Wed, 29 Jul 2026 00:00:00 +0000</pubDate>
+<description>How volume profile differs from a volume-by-time histogram, what POC and the value area mean, how to read volume nodes, and how it pairs with anchored VWAP.</description>
+</item>
+<item>
+<title>Vet the carrier before the load, not after the claim</title>
+<link>https://yusuf-gadelrab.github.io/guides/carrier-vetting-checklist.html</link>
+<guid isPermaLink="true">https://yusuf-gadelrab.github.io/guides/carrier-vetting-checklist.html</guid>
+<pubDate>Wed, 29 Jul 2026 00:00:00 +0000</pubDate>
+<description>How to verify FMCSA authority, read a certificate of insurance, spot double-brokering, and build a vetting file that survives a cargo claim.</description>
+</item>
+<item>
+<title>Vertical spreads, from the arithmetic up</title>
+<link>https://yusuf-gadelrab.github.io/guides/options-vertical-spreads.html</link>
+<guid isPermaLink="true">https://yusuf-gadelrab.github.io/guides/options-vertical-spreads.html</guid>
+<pubDate>Wed, 29 Jul 2026 00:00:00 +0000</pubDate>
+<description>The four verticals, max profit and max loss formulas with worked dollar examples, buying power reduction, break-even win rates, and assignment risk.</description>
+</item>
+<item>
+<title>Verify sponsorship yourself. Every list is already wrong.</title>
+<link>https://yusuf-gadelrab.github.io/guides/verify-visa-sponsorship-internships.html</link>
+<guid isPermaLink="true">https://yusuf-gadelrab.github.io/guides/verify-visa-sponsorship-internships.html</guid>
+<pubDate>Wed, 29 Jul 2026 00:00:00 +0000</pubDate>
+<description>A repeatable method for verifying visa sponsorship yourself: req language, H-1B and LCA disclosure data, careers-page patterns, and what none of it proves.</description>
+</item>
+<item>
+<title>VCP and bases, described honestly</title>
+<link>https://yusuf-gadelrab.github.io/guides/vcp-base-patterns.html</link>
+<guid isPermaLink="true">https://yusuf-gadelrab.github.io/guides/vcp-base-patterns.html</guid>
+<pubDate>Wed, 29 Jul 2026 00:00:00 +0000</pubDate>
+<description>What a base is, how contractions are counted, why volume dry-up matters, where the pivot sits, and the walk-forward result that came out breakeven.</description>
+</item>
+<item>
+<title>Turning long footage into clips, automatically</title>
+<link>https://yusuf-gadelrab.github.io/guides/ffmpeg-auto-editing.html</link>
+<guid isPermaLink="true">https://yusuf-gadelrab.github.io/guides/ffmpeg-auto-editing.html</guid>
+<pubDate>Wed, 29 Jul 2026 00:00:00 +0000</pubDate>
+<description>Scene-change detection, audio-energy highlights, lossless cutting and concatenation, 9:16 vertical conversion, and why a local pipeline beats a cloud API.</description>
+</item>
+<item>
+<title>Track which pattern you fail, not how many problems you did</title>
+<link>https://yusuf-gadelrab.github.io/guides/coding-interview-patterns.html</link>
+<guid isPermaLink="true">https://yusuf-gadelrab.github.io/guides/coding-interview-patterns.html</guid>
+<pubDate>Wed, 29 Jul 2026 00:00:00 +0000</pubDate>
+<description>The pattern-based approach to technical interviews: the ten recurring problem patterns, why tracking the pattern you fail beats counting, and spaced repetition.</description>
+</item>
+<item>
+<title>Tools with no backend, and the honest trade</title>
+<link>https://yusuf-gadelrab.github.io/guides/client-side-only-tools.html</link>
+<guid isPermaLink="true">https://yusuf-gadelrab.github.io/guides/client-side-only-tools.html</guid>
+<pubDate>Wed, 29 Jul 2026 00:00:00 +0000</pubDate>
+<description>No account means no breach surface. What you gain from browser-only tools, what you give up in sync and compute, what it costs to run, and how to say so.</description>
+</item>
+<item>
+<title>Three firm types, three calendars, and a lot of wrong dates</title>
+<link>https://yusuf-gadelrab.github.io/guides/quant-internship-timeline.html</link>
+<guid isPermaLink="true">https://yusuf-gadelrab.github.io/guides/quant-internship-timeline.html</guid>
+<pubDate>Wed, 29 Jul 2026 00:00:00 +0000</pubDate>
+<description>When quant internships actually open by firm type, rolling versus hard deadlines, how OAs and superdays sequence, and why most circulating deadlines are wrong.</description>
+</item>
+<item>
+<title>The schedule is the skill, not the problem count</title>
+<link>https://yusuf-gadelrab.github.io/guides/technical-interview-study-system.html</link>
+<guid isPermaLink="true">https://yusuf-gadelrab.github.io/guides/technical-interview-study-system.html</guid>
+<pubDate>Wed, 29 Jul 2026 00:00:00 +0000</pubDate>
+<description>The study system, not the problem list: Leitner spaced repetition, how to review a solved problem, timeboxing, and a hint ladder for when you are stuck.</description>
+</item>
+<item>
+<title>The scale is a noisy instrument. Treat it like one.</title>
+<link>https://yusuf-gadelrab.github.io/guides/weight-tracking-signal-vs-noise.html</link>
+<guid isPermaLink="true">https://yusuf-gadelrab.github.io/guides/weight-tracking-signal-vs-noise.html</guid>
+<pubDate>Wed, 29 Jul 2026 00:00:00 +0000</pubDate>
+<description>Why a daily weigh-in is mostly noise, how big that noise actually is, what a moving average recovers, and how long to wait before a trend means anything.</description>
+</item>
+<item>
+<title>The price is a decision. The take-home is arithmetic.</title>
+<link>https://yusuf-gadelrab.github.io/guides/pricing-a-digital-product.html</link>
+<guid isPermaLink="true">https://yusuf-gadelrab.github.io/guides/pricing-a-digital-product.html</guid>
+<pubDate>Wed, 29 Jul 2026 00:00:00 +0000</pubDate>
+<description>Platform take-home compared on the same list price, VAT and merchant of record, tier design, refund assumptions, and the break-even unit math.</description>
+</item>
+<item>
+<title>The margin is fine. The volume is the problem.</title>
+<link>https://yusuf-gadelrab.github.io/guides/print-on-demand-economics.html</link>
+<guid isPermaLink="true">https://yusuf-gadelrab.github.io/guides/print-on-demand-economics.html</guid>
+<pubDate>Wed, 29 Jul 2026 00:00:00 +0000</pubDate>
+<description>Base cost, retail, platform fees, and net per unit on a tee and a hoodie — plus the costs people forget: returns, samples, artwork time, and ads.</description>
+</item>
+<item>
+<title>The linehaul is the quote. The accessorials are the profit.</title>
+<link>https://yusuf-gadelrab.github.io/guides/detention-demurrage-accessorials.html</link>
+<guid isPermaLink="true">https://yusuf-gadelrab.github.io/guides/detention-demurrage-accessorials.html</guid>
+<pubDate>Wed, 29 Jul 2026 00:00:00 +0000</pubDate>
+<description>What each charge is, who owes it, how to document time in and out so a claim survives, typical free time, and how unbilled accessorials eat a load&#x27;s margin.</description>
+</item>
+<item>
+<title>The internship search, run as a system</title>
+<link>https://yusuf-gadelrab.github.io/guides/swe-internship-international-student.html</link>
+<guid isPermaLink="true">https://yusuf-gadelrab.github.io/guides/swe-internship-international-student.html</guid>
+<pubDate>Wed, 29 Jul 2026 00:00:00 +0000</pubDate>
+<description>How international students should run a SWE internship search: the timeline, the sponsorship question, who to target, and how work authorization fits.</description>
+</item>
+<item>
+<title>The gap between paper and real money</title>
+<link>https://yusuf-gadelrab.github.io/guides/paper-to-live-trading.html</link>
+<guid isPermaLink="true">https://yusuf-gadelrab.github.io/guides/paper-to-live-trading.html</guid>
+<pubDate>Wed, 29 Jul 2026 00:00:00 +0000</pubDate>
+<description>What paper does not simulate: slippage, partial fills, borrow, emotion. Why a promotion gate matters, and the 60-trade rule my engine enforces in code.</description>
+</item>
+<item>
+<title>The first pass is eight seconds, on a phone, by a non-engineer</title>
+<link>https://yusuf-gadelrab.github.io/guides/technical-portfolio-8-seconds.html</link>
+<guid isPermaLink="true">https://yusuf-gadelrab.github.io/guides/technical-portfolio-8-seconds.html</guid>
+<pubDate>Wed, 29 Jul 2026 00:00:00 +0000</pubDate>
+<description>What recruiters and applicant tracking systems actually parse, why three projects beat ten, quantified outcomes, README as landing page, and the live-demo rule.</description>
+</item>
+<item>
+<title>The arithmetic of digging out</title>
+<link>https://yusuf-gadelrab.github.io/guides/drawdown-recovery-math.html</link>
+<guid isPermaLink="true">https://yusuf-gadelrab.github.io/guides/drawdown-recovery-math.html</guid>
+<pubDate>Wed, 29 Jul 2026 00:00:00 +0000</pubDate>
+<description>The recovery formula, a full table from 5% to 90%, losing-streak probabilities, risk of ruin, and how a drawdown budget sets your position size.</description>
+</item>
+<item>
+<title>Snyk vs Trivy vs DIRA: choosing a security scanner</title>
+<link>https://yusuf-gadelrab.github.io/guides/snyk-vs-trivy-vs-dira.html</link>
+<guid isPermaLink="true">https://yusuf-gadelrab.github.io/guides/snyk-vs-trivy-vs-dira.html</guid>
+<pubDate>Wed, 29 Jul 2026 00:00:00 +0000</pubDate>
+<description>An honest matrix across three security scanners, written by the author of one of them: coverage, container scanning, licensing, cost, and where each one loses.</description>
+</item>
+<item>
+<title>Shipped and reachable beats impressive-sounding</title>
+<link>https://yusuf-gadelrab.github.io/guides/portfolio-that-gets-interviews.html</link>
+<guid isPermaLink="true">https://yusuf-gadelrab.github.io/guides/portfolio-that-gets-interviews.html</guid>
+<pubDate>Wed, 29 Jul 2026 00:00:00 +0000</pubDate>
+<description>What a student software portfolio needs: a live URL, a README that pitches, three strong projects instead of ten weak ones, and case studies reviewers finish.</description>
+</item>
+<item>
+<title>Running a local LLM, and when it is actually the right call</title>
+<link>https://yusuf-gadelrab.github.io/guides/local-llm-ollama.html</link>
+<guid isPermaLink="true">https://yusuf-gadelrab.github.io/guides/local-llm-ollama.html</guid>
+<pubDate>Wed, 29 Jul 2026 00:00:00 +0000</pubDate>
+<description>Running a local LLM with Ollama: picking a model for your RAM, the HTTP API, quantisation, context limits, and when local beats a cloud API.</description>
+</item>
+<item>
+<title>Reading a backtest report honestly</title>
+<link>https://yusuf-gadelrab.github.io/guides/reading-a-backtest-report.html</link>
+<guid isPermaLink="true">https://yusuf-gadelrab.github.io/guides/reading-a-backtest-report.html</guid>
+<pubDate>Wed, 29 Jul 2026 00:00:00 +0000</pubDate>
+<description>Stat by stat: what win rate, profit factor, Sharpe, max drawdown and CAGR hide, with worked confidence intervals and cost maths.</description>
+</item>
+<item>
+<title>Read it out of order, and check the effect size first</title>
+<link>https://yusuf-gadelrab.github.io/guides/reading-a-scientific-paper.html</link>
+<guid isPermaLink="true">https://yusuf-gadelrab.github.io/guides/reading-a-scientific-paper.html</guid>
+<pubDate>Wed, 29 Jul 2026 00:00:00 +0000</pubDate>
+<description>The order to read sections in, how to judge a sample size, what p-values and effect sizes actually mean, and how to spot a claim the data does not support.</description>
+</item>
+<item>
+<title>RAG, without the diagram everyone reposts</title>
+<link>https://yusuf-gadelrab.github.io/guides/rag-explained.html</link>
+<guid isPermaLink="true">https://yusuf-gadelrab.github.io/guides/rag-explained.html</guid>
+<pubDate>Wed, 29 Jul 2026 00:00:00 +0000</pubDate>
+<description>What retrieval-augmented generation is, how chunking, embeddings and reranking fit together, where RAG breaks, and when a graph beats vector search.</description>
+</item>
+<item>
+<title>R-multiple and expectancy, explained</title>
+<link>https://yusuf-gadelrab.github.io/guides/r-multiple-expectancy.html</link>
+<guid isPermaLink="true">https://yusuf-gadelrab.github.io/guides/r-multiple-expectancy.html</guid>
+<pubDate>Wed, 29 Jul 2026 00:00:00 +0000</pubDate>
+<description>What an R-multiple is, how to calculate expectancy, the break-even win rate for any R:R, and why a 70% win rate can still lose money. Free calculator.</description>
+</item>
+<item>
+<title>Prompt caching, and the traffic pattern where it costs you more</title>
+<link>https://yusuf-gadelrab.github.io/guides/prompt-caching.html</link>
+<guid isPermaLink="true">https://yusuf-gadelrab.github.io/guides/prompt-caching.html</guid>
+<pubDate>Wed, 29 Jul 2026 00:00:00 +0000</pubDate>
+<description>How LLM prefix caching works, cache TTL and break-even math, ordering a prompt so the stable part comes first, and when caching costs you more.</description>
+</item>
+<item>
+<title>Picking an embedding model, and why it matters less than you think</title>
+<link>https://yusuf-gadelrab.github.io/guides/embedding-model-rag.html</link>
+<guid isPermaLink="true">https://yusuf-gadelrab.github.io/guides/embedding-model-rag.html</guid>
+<pubDate>Wed, 29 Jul 2026 00:00:00 +0000</pubDate>
+<description>How to pick an embedding model for RAG: dimensions vs cost, local vs API, chunking interactions, recall@k evaluation, and when a reranker wins.</description>
+</item>
+<item>
+<title>One full academic year, full-time, in F-1 status</title>
+<link>https://yusuf-gadelrab.github.io/guides/f1-cpt-one-year-rule.html</link>
+<guid isPermaLink="true">https://yusuf-gadelrab.github.io/guides/f1-cpt-one-year-rule.html</guid>
+<pubDate>Wed, 29 Jul 2026 00:00:00 +0000</pubDate>
+<description>What one full academic year of full-time enrollment means for CPT, how the clock is counted, CPT versus OPT versus day-1 CPT, and what breaks eligibility.</description>
+</item>
+<item>
+<title>Ollama vs LM Studio vs llama.cpp</title>
+<link>https://yusuf-gadelrab.github.io/guides/ollama-vs-lm-studio-vs-llama-cpp.html</link>
+<guid isPermaLink="true">https://yusuf-gadelrab.github.io/guides/ollama-vs-lm-studio-vs-llama-cpp.html</guid>
+<pubDate>Wed, 29 Jul 2026 00:00:00 +0000</pubDate>
+<description>A practical comparison of Ollama, LM Studio, and llama.cpp for running local LLMs on Apple Silicon: setup, model management, APIs, and quantization.</description>
+</item>
+<item>
+<title>Notion vs Obsidian vs a Folder of Markdown Files</title>
+<link>https://yusuf-gadelrab.github.io/guides/notion-vs-obsidian-vs-markdown-files.html</link>
+<guid isPermaLink="true">https://yusuf-gadelrab.github.io/guides/notion-vs-obsidian-vs-markdown-files.html</guid>
+<pubDate>Wed, 29 Jul 2026 00:00:00 +0000</pubDate>
+<description>A second brain comparison for students: where your notes really live, what leaving each tool costs you, and which one actually fits how you work.</description>
+</item>
+<item>
+<title>Memory like a 30B, speed like a 3B</title>
+<link>https://yusuf-gadelrab.github.io/guides/moe-model-macbook.html</link>
+<guid isPermaLink="true">https://yusuf-gadelrab.github.io/guides/moe-model-macbook.html</guid>
+<pubDate>Wed, 29 Jul 2026 00:00:00 +0000</pubDate>
+<description>What mixture-of-experts changes about RAM, quantization levels, KV cache math, Ollama tuning, and realistic tokens per second on Apple Silicon.</description>
+</item>
+<item>
+<title>Leveraged ETFs, and the arithmetic nobody reads</title>
+<link>https://yusuf-gadelrab.github.io/guides/leveraged-etf-decay.html</link>
+<guid isPermaLink="true">https://yusuf-gadelrab.github.io/guides/leveraged-etf-decay.html</guid>
+<pubDate>Wed, 29 Jul 2026 00:00:00 +0000</pubDate>
+<description>Daily rebalancing, volatility drag, and a worked two-day example where a 3x ETF loses on a flat round trip. When they fit, and why sizing must be tighter.</description>
+</item>
+<item>
+<title>Lemon Squeezy vs Gumroad vs Payhip vs Etsy</title>
+<link>https://yusuf-gadelrab.github.io/guides/lemon-squeezy-vs-gumroad-vs-payhip-vs-etsy.html</link>
+<guid isPermaLink="true">https://yusuf-gadelrab.github.io/guides/lemon-squeezy-vs-gumroad-vs-payhip-vs-etsy.html</guid>
+<pubDate>Wed, 29 Jul 2026 00:00:00 +0000</pubDate>
+<description>Take-home arithmetic on one list price across four digital product platforms, plus merchant of record, VAT, payouts, and when discovery is worth the cut.</description>
+</item>
+<item>
+<title>Learning to program in your second language</title>
+<link>https://yusuf-gadelrab.github.io/guides/bilingual-coding-cs-education.html</link>
+<guid isPermaLink="true">https://yusuf-gadelrab.github.io/guides/bilingual-coding-cs-education.html</guid>
+<pubDate>Wed, 29 Jul 2026 00:00:00 +0000</pubDate>
+<description>What bilingual coding is, why second-language load hurts novice programmers, and what a 60-participant SIGCSE 2026 study found about confidence.</description>
+</item>
+<item>
+<title>Kelly, fractional Kelly, and the gap between them</title>
+<link>https://yusuf-gadelrab.github.io/guides/kelly-criterion.html</link>
+<guid isPermaLink="true">https://yusuf-gadelrab.github.io/guides/kelly-criterion.html</guid>
+<pubDate>Wed, 29 Jul 2026 00:00:00 +0000</pubDate>
+<description>How the Kelly criterion works, the formula for trading with an R-multiple edge, why full Kelly is unusable in practice, and how half and quarter Kelly compare.</description>
+</item>
+<item>
+<title>How undergraduates actually get into a lab</title>
+<link>https://yusuf-gadelrab.github.io/guides/undergraduate-research.html</link>
+<guid isPermaLink="true">https://yusuf-gadelrab.github.io/guides/undergraduate-research.html</guid>
+<pubDate>Wed, 29 Jul 2026 00:00:00 +0000</pubDate>
+<description>How to find a lab, email a professor, survive the first task, and why publishing as an undergraduate is disproportionately valuable.</description>
+</item>
+<item>
+<title>How to tell whether your edge is fake</title>
+<link>https://yusuf-gadelrab.github.io/guides/backtest-overfitting.html</link>
+<guid isPermaLink="true">https://yusuf-gadelrab.github.io/guides/backtest-overfitting.html</guid>
+<pubDate>Wed, 29 Jul 2026 00:00:00 +0000</pubDate>
+<description>In-sample vs held-out testing, parameter plateaus vs spikes, the multiple-testing arithmetic, and the random-entry control that kills most edges.</description>
+</item>
+<item>
+<title>How much to risk per trade</title>
+<link>https://yusuf-gadelrab.github.io/guides/position-sizing-per-trade.html</link>
+<guid isPermaLink="true">https://yusuf-gadelrab.github.io/guides/position-sizing-per-trade.html</guid>
+<pubDate>Wed, 29 Jul 2026 00:00:00 +0000</pubDate>
+<description>Fixed-fractional, fixed-dollar, and ATR-adjusted sizing with worked arithmetic. Where the 1% rule comes from, portfolio heat, and notional caps.</description>
+</item>
+<item>
+<title>How backtests lie, and what an honest one looks like</title>
+<link>https://yusuf-gadelrab.github.io/guides/walk-forward-backtest.html</link>
+<guid isPermaLink="true">https://yusuf-gadelrab.github.io/guides/walk-forward-backtest.html</guid>
+<pubDate>Wed, 29 Jul 2026 00:00:00 +0000</pubDate>
+<description>Why in-sample backtests lie, what lookahead and survivorship bias look like in code, how walk-forward works, and how to spot a curve fit.</description>
+</item>
+<item>
+<title>Getting cited when the answer replaces the click</title>
+<link>https://yusuf-gadelrab.github.io/guides/ai-search-optimization.html</link>
+<guid isPermaLink="true">https://yusuf-gadelrab.github.io/guides/ai-search-optimization.html</guid>
+<pubDate>Wed, 29 Jul 2026 00:00:00 +0000</pubDate>
+<description>Entity consolidation, llms.txt, robots.txt rules for named AI crawlers, FAQPage that mirrors visible text, answer-first writing, and IndexNow for fast recrawl.</description>
+</item>
+<item>
+<title>Getting JSON out of a language model, reliably</title>
+<link>https://yusuf-gadelrab.github.io/guides/structured-llm-output.html</link>
+<guid isPermaLink="true">https://yusuf-gadelrab.github.io/guides/structured-llm-output.html</guid>
+<pubDate>Wed, 29 Jul 2026 00:00:00 +0000</pubDate>
+<description>JSON mode vs tool calling vs constrained decoding vs schema validation with retry, why parsing free text fails, and idempotency for partial LLM output.</description>
+</item>
+<item>
+<title>Freight broker margin, rate per mile, and the rest of the math</title>
+<link>https://yusuf-gadelrab.github.io/guides/freight-broker-margin.html</link>
+<guid isPermaLink="true">https://yusuf-gadelrab.github.io/guides/freight-broker-margin.html</guid>
+<pubDate>Wed, 29 Jul 2026 00:00:00 +0000</pubDate>
+<description>Calculate freight broker margin, rate per mile, deadhead, fuel surcharge, detention, and break-even on a load. Every formula worked out, free calculator.</description>
+</item>
+<item>
+<title>Free vs Paid: What a CS Student Should Actually Pay For</title>
+<link>https://yusuf-gadelrab.github.io/guides/free-vs-paid-student-tools.html</link>
+<guid isPermaLink="true">https://yusuf-gadelrab.github.io/guides/free-vs-paid-student-tools.html</guid>
+<pubDate>Wed, 29 Jul 2026 00:00:00 +0000</pubDate>
+<description>A decision framework and scored table across 15 tool categories for CS students on what deserves money and what free option is already enough.</description>
+</item>
+<item>
+<title>Five sentences, one paper, one small ask</title>
+<link>https://yusuf-gadelrab.github.io/guides/cold-email-professor-research.html</link>
+<guid isPermaLink="true">https://yusuf-gadelrab.github.io/guides/cold-email-professor-research.html</guid>
+<pubDate>Wed, 29 Jul 2026 00:00:00 +0000</pubDate>
+<description>What actually gets a reply: reading the lab&#x27;s recent papers, a five-sentence structure, what to attach, follow-up cadence, and two complete examples.</description>
+</item>
+<item>
+<title>Eligibility first, essays second</title>
+<link>https://yusuf-gadelrab.github.io/guides/scholarships-international-students.html</link>
+<guid isPermaLink="true">https://yusuf-gadelrab.github.io/guides/scholarships-international-students.html</guid>
+<pubDate>Wed, 29 Jul 2026 00:00:00 +0000</pubDate>
+<description>How international students find and win scholarships, where eligibility usually breaks, and how to run an application pipeline that survives deadlines.</description>
+</item>
+<item>
+<title>CPT vs OPT, without the acronym soup</title>
+<link>https://yusuf-gadelrab.github.io/guides/cpt-vs-opt.html</link>
+<guid isPermaLink="true">https://yusuf-gadelrab.github.io/guides/cpt-vs-opt.html</guid>
+<pubDate>Wed, 29 Jul 2026 00:00:00 +0000</pubDate>
+<description>CPT vs OPT for F-1 students: eligibility, who authorizes what, the one-year rule, the 12-month limit, STEM extension, unemployment days. Plan backwards.</description>
+</item>
+<item>
+<title>Automate the deadline work, not the thinking</title>
+<link>https://yusuf-gadelrab.github.io/guides/ai-automation-small-business.html</link>
+<guid isPermaLink="true">https://yusuf-gadelrab.github.io/guides/ai-automation-small-business.html</guid>
+<pubDate>Wed, 29 Jul 2026 00:00:00 +0000</pubDate>
+<description>A practical filter for which small-business tasks AI should handle, the two-tier local plus frontier pattern, and why the quality gate is the product.</description>
+</item>
+<item>
+<title>Anchored VWAP, and the one setup that survived testing</title>
+<link>https://yusuf-gadelrab.github.io/guides/anchored-vwap.html</link>
+<guid isPermaLink="true">https://yusuf-gadelrab.github.io/guides/anchored-vwap.html</guid>
+<pubDate>Wed, 29 Jul 2026 00:00:00 +0000</pubDate>
+<description>What anchored VWAP is, how it differs from session VWAP, where to anchor, what a reclaim means, and the walk-forward result behind it.</description>
+</item>
+<item>
+<title>An installable app, no backend, no app store</title>
+<link>https://yusuf-gadelrab.github.io/guides/offline-pwa.html</link>
+<guid isPermaLink="true">https://yusuf-gadelrab.github.io/guides/offline-pwa.html</guid>
+<pubDate>Wed, 29 Jul 2026 00:00:00 +0000</pubDate>
+<description>How to build an installable offline PWA with no backend: manifest fields, service worker caching, cache versioning, and how iOS install differs.</description>
+</item>
+<item>
+<title>Alpaca vs Interactive Brokers vs Robinhood for algo trading</title>
+<link>https://yusuf-gadelrab.github.io/guides/alpaca-vs-interactive-brokers-vs-robinhood.html</link>
+<guid isPermaLink="true">https://yusuf-gadelrab.github.io/guides/alpaca-vs-interactive-brokers-vs-robinhood.html</guid>
+<pubDate>Wed, 29 Jul 2026 00:00:00 +0000</pubDate>
+<description>API quality, real paper trading, data access and costs across three brokers, plus why unofficial reverse-engineered trading APIs get accounts restricted.</description>
+</item>
+<item>
+<title>After the load books, the real work starts</title>
+<link>https://yusuf-gadelrab.github.io/guides/freight-back-office.html</link>
+<guid isPermaLink="true">https://yusuf-gadelrab.github.io/guides/freight-back-office.html</guid>
+<pubDate>Wed, 29 Jul 2026 00:00:00 +0000</pubDate>
+<description>What a small brokerage does after the load books: confirmations, check calls, POD chasing, invoicing and AR — and what automates cleanly.</description>
+</item>
+<item>
+<title>A trading journal that changes behaviour</title>
+<link>https://yusuf-gadelrab.github.io/guides/trading-journal.html</link>
+<guid isPermaLink="true">https://yusuf-gadelrab.github.io/guides/trading-journal.html</guid>
+<pubDate>Wed, 29 Jul 2026 00:00:00 +0000</pubDate>
+<description>The fields that change behaviour in a trading journal — R-multiple, setup tag, mistake tag, MAE/MFE — and how to review without lying to yourself.</description>
+</item>
+<item>
+<title>A stranger, on a phone, with four seconds</title>
+<link>https://yusuf-gadelrab.github.io/guides/landing-page-that-converts.html</link>
+<guid isPermaLink="true">https://yusuf-gadelrab.github.io/guides/landing-page-that-converts.html</guid>
+<pubDate>Wed, 29 Jul 2026 00:00:00 +0000</pubDate>
+<description>The one-job rule, above-the-fold structure, specificity over adjectives, proof when you have none, and how to measure a page without a tracking stack.</description>
+</item>
+<item>
+<title>260 to 200, and the arithmetic that got there</title>
+<link>https://yusuf-gadelrab.github.io/guides/cut-calorie-math.html</link>
+<guid isPermaLink="true">https://yusuf-gadelrab.github.io/guides/cut-calorie-math.html</guid>
+<pubDate>Wed, 29 Jul 2026 00:00:00 +0000</pubDate>
+<description>How a calorie deficit actually works: maintenance estimation, deficit size, protein, why the scale lies week to week, and how to track it without obsessing.</description>
+</item>
+<item>
+<title>18 things to fix before your first real user</title>
+<link>https://yusuf-gadelrab.github.io/guides/student-founder-security-checklist.html</link>
+<guid isPermaLink="true">https://yusuf-gadelrab.github.io/guides/student-founder-security-checklist.html</guid>
+<pubDate>Wed, 29 Jul 2026 00:00:00 +0000</pubDate>
+<description>An 18-point security checklist for student founders shipping their first product: secrets, dependency CVEs, config, TLS, backups, and more.</description>
+</item>
+</channel>
+</rss>

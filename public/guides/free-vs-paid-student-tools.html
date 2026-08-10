@@ -25,10 +25,11 @@
 <meta name="twitter:image" content="https://yusuf-gadelrab.github.io/og-card.png">
 <link rel="alternate" type="text/plain" href="https://yusuf-gadelrab.github.io/llms-full.txt" title="Plain-text profile for language models">
 
-<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"TechArticle","@id":"https://yusuf-gadelrab.github.io/guides/free-vs-paid-student-tools.html#article","headline":"Free vs Paid: What a CS Student Should Actually Pay For","name":"Free vs Paid: What a CS Student Should Actually Pay For","description":"A decision framework and scored table across 15 tool categories for CS students on what deserves money and what free option is already enough.","datePublished":"2026-07-29","dateModified":"2026-07-29","inLanguage":"en","author":{"@id":"https://yusuf-gadelrab.github.io/#person"},"publisher":{"@id":"https://yusuf-gadelrab.github.io/#person"},"about":["Student budgeting","Free vs paid software","Developer tools","Subscription audits"],"mainEntityOfPage":"https://yusuf-gadelrab.github.io/guides/free-vs-paid-student-tools.html","isAccessibleForFree":true,"proficiencyLevel":"Beginner"},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://yusuf-gadelrab.github.io/"},{"@type":"ListItem","position":2,"name":"Guides","item":"https://yusuf-gadelrab.github.io/guides.html"},{"@type":"ListItem","position":3,"name":"Free vs Paid"}]}]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"TechArticle","@id":"https://yusuf-gadelrab.github.io/guides/free-vs-paid-student-tools.html#article","headline":"Free vs Paid: What a CS Student Should Actually Pay For","name":"Free vs Paid: What a CS Student Should Actually Pay For","description":"A decision framework and scored table across 15 tool categories for CS students on what deserves money and what free option is already enough.","datePublished":"2026-07-29","dateModified":"2026-07-29","inLanguage":"en","author":{"@id":"https://yusuf-gadelrab.github.io/#person"},"publisher":{"@id":"https://yusuf-gadelrab.github.io/#person"},"about":["Student budgeting","Free vs paid software","Developer tools","Subscription audits"],"mainEntityOfPage":"https://yusuf-gadelrab.github.io/guides/free-vs-paid-student-tools.html","isAccessibleForFree":true,"isPartOf":{"@id":"https://yusuf-gadelrab.github.io/#website"},"proficiencyLevel":"Beginner"},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://yusuf-gadelrab.github.io/"},{"@type":"ListItem","position":2,"name":"Guides","item":"https://yusuf-gadelrab.github.io/guides.html"},{"@type":"ListItem","position":3,"name":"Free vs Paid"}]}]}</script>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","@id":"https://yusuf-gadelrab.github.io/guides/free-vs-paid-student-tools.html#faq","mainEntity":[{"@type":"Question","name":"What's the single most important test before buying a student tool?","acceptedAnswer":{"@type":"Answer","text":"Check whether a free tier or substitute already gets you within about 20 percent of the quality; if it does, the free option almost always wins, especially early in school when your needs are still changing."}},{"@type":"Question","name":"Should I buy an annual subscription to save money over monthly?","acceptedAnswer":{"@type":"Answer","text":"Only if you're confident you'll still be using the tool in eleven months, because annual plans are the easiest place for a forgotten subscription to quietly drain a full year of an irregular student income."}},{"@type":"Question","name":"Is a local LLM actually a good substitute for a paid AI subscription?","acceptedAnswer":{"@type":"Answer","text":"For repetitive, low-stakes, or background tasks, yes, a local model running on your own machine has no per-token cost, and pairing it with a free-tier hosted assistant covers most of what a student needs day to day."}},{"@type":"Question","name":"How do I know if my university already provides a tool for free?","acceptedAnswer":{"@type":"Answer","text":"Check your university IT department's software page before buying anything; many schools hold site licenses for design, office, and developer tools that students never think to look for."}},{"@type":"Question","name":"What should I actually spend real money on as a CS student?","acceptedAnswer":{"@type":"Answer","text":"A domain name for your portfolio, a short focused interview-prep window right before you start interviewing, and any cloud compute a specific project genuinely requires; all three have a clear, bounded return."}},{"@type":"Question","name":"How often should I audit my subscriptions?","acceptedAnswer":{"@type":"Answer","text":"Once a year is enough for most students: list every recurring charge, note when you last actually used it, and cancel anything you can't justify in one sentence."}},{"@type":"Question","name":"Do I need a paid VPN as a student?","acceptedAnswer":{"@type":"Answer","text":"Usually not; most day-to-day student risk is better addressed with good password hygiene and your university's network than with a VPN, so pay for one only if you have a specific, named need."}},{"@type":"Question","name":"Why skip a mobile developer program fee for a personal project?","acceptedAnswer":{"@type":"Answer","text":"Because an installable web app can reach the same users without an ongoing yearly fee, and paying only makes sense once you have an actual store-distribution reason, not just because the app works."}}]}</script>
 
 <link rel="stylesheet" href="/css/site.css">
+<link rel="stylesheet" href="/css/lux-motion.css">
 <style>
   .prose{max-width:68ch}
   .prose h2{margin:var(--s7) 0 var(--s4);font-size:var(--t-h2)}
@@ -50,16 +51,16 @@
     color:var(--muted);font-size:var(--t-small);margin:0 0 var(--s5)}
   .callout--warn{border-color:var(--gold-2)}
   .faq-card{padding:var(--s5)}
-  .faq-card h3{font-size:var(--t-h3);margin:0}
-  .faq-card p{color:var(--muted);font-size:var(--t-small);margin:var(--s3) 0 0}
+  .faq-card h3{font-size:var(--t-h3);margin:0;line-height:1.3}
+  .faq-card p{color:var(--muted);font-size:var(--t-small);line-height:1.65;margin:var(--s3) 0 0}
 </style>
 </head>
 <body class="pro">
 
 <a class="skip-link" href="#main">Skip to content</a>
 
-<nav class="site-nav">
-  <a class="site-nav__brand" href="/"><img class="site-nav__lion" src="/img/brand/lion-mark.svg" alt="" width="34" height="34"><span>YUSUF GADELRAB</span></a>
+<nav class="site-nav" aria-label="Primary">
+  <a class="site-nav__brand" href="/"><img class="site-nav__lion" src="/img/brand/lion-mark.svg" alt="" width="34" height="34" decoding="async"><span>YUSUF GADELRAB</span></a>
   <div class="site-nav__links">
     <a href="/">Work</a>
     <a href="/guides.html">Guides</a>
@@ -101,7 +102,7 @@
         <li>Is it a recurring subscription, and would you actually notice if it silently renewed for another year?</li>
       </ol>
       <p>None of these require perfect information, just an honest guess. The goal is to catch the two failure modes that drain a student budget fastest: paying for convenience you could get free anyway, and paying for a subscription you forgot you had.</p>
-      <span class="formula">Break-even test
+      <span class="formula" tabindex="0" role="group" aria-label="Formula, scrolls horizontally">Break-even test
 
 hours saved per month x your effective hourly rate   vs.   monthly cost
 
@@ -124,8 +125,8 @@ The arithmetic doesn't change much. Your honesty about 'hours saved' does.</span
       <p>The same instinct shows up elsewhere in how I work. I run a local Qwen model through Ollama on my own machine for background automation specifically so I'm not paying per token for routine work, the setup is in the <a href="/guides/local-llm-ollama.html">local LLM guide</a>. And instead of paying for a commercial code security scanner, I built and publish my own free, MIT-licensed one, <a href="/dira.html">DIRA</a>. None of that is frugality for its own sake. It's the same filter, applied consistently, category after category.</p>
       <h2>The scored table: about 15 categories</h2>
       <p>Every 'Pay' or 'Conditional' verdict below assumes you check the vendor's current pricing page yourself before deciding. Prices and discount terms change often enough that quoting a number here would be stale the day this page ships, so none are quoted. Treat the 'Why' column as reasoning, not a price list.</p>
-      <div class="tblwrap"><table class="tbl">
-        <thead><tr><th>Category</th><th>Free option that's actually good enough</th><th>Verdict</th><th>Why</th></tr></thead>
+      <div class="tblwrap" tabindex="0" role="group" aria-label="Table, scrolls horizontally"><table class="tbl">
+        <thead><tr><th scope="col">Category</th><th scope="col">Free option that's actually good enough</th><th scope="col">Verdict</th><th scope="col">Why</th></tr></thead>
         <tbody>
           <tr><td>Code editor / IDE</td><td>VS Code, or a free-tier JetBrains IDE if your school licenses one</td><td>Skip paid</td><td>A free editor covers nearly all coursework and internship-prep work; check university IT before assuming you need a personal license</td></tr>
           <tr><td>AI coding assistant</td><td>Free tier of a coding assistant, backed by a local model for routine completions</td><td>Conditional</td><td>Worth a modest subscription once you're shipping real projects on a weekly cadence; skip it while you're mostly doing homework, the free tier covers that</td></tr>
@@ -190,14 +191,14 @@ The arithmetic doesn't change much. Your honesty about 'hours saved' does.</span
       <h2>Quick answers</h2>
     </div>
     <div class="grid" style="margin-top:var(--s6)">
-      <article class="card faq-card"><h3>Most important test?</h3><p>Check whether a free tier or substitute already gets you within about 20 percent of the quality; if it does, the free option almost always wins, especially early in school when your needs are still changing.</p></article>
-      <article class="card faq-card"><h3>Annual vs monthly?</h3><p>Only if you&#x27;re confident you&#x27;ll still be using the tool in eleven months, because annual plans are the easiest place for a forgotten subscription to quietly drain a full year of an irregular student income.</p></article>
-      <article class="card faq-card"><h3>Is a local LLM a good substitute?</h3><p>For repetitive, low-stakes, or background tasks, yes, a local model running on your own machine has no per-token cost, and pairing it with a free-tier hosted assistant covers most of what a student needs day to day.</p></article>
-      <article class="card faq-card"><h3>How to check university licenses?</h3><p>Check your university IT department&#x27;s software page before buying anything; many schools hold site licenses for design, office, and developer tools that students never think to look for.</p></article>
-      <article class="card faq-card"><h3>What should I actually pay for?</h3><p>A domain name for your portfolio, a short focused interview-prep window right before you start interviewing, and any cloud compute a specific project genuinely requires; all three have a clear, bounded return.</p></article>
-      <article class="card faq-card"><h3>How often to audit subscriptions?</h3><p>Once a year is enough for most students: list every recurring charge, note when you last actually used it, and cancel anything you can&#x27;t justify in one sentence.</p></article>
-      <article class="card faq-card"><h3>Need a paid VPN?</h3><p>Usually not; most day-to-day student risk is better addressed with good password hygiene and your university&#x27;s network than with a VPN, so pay for one only if you have a specific, named need.</p></article>
-      <article class="card faq-card"><h3>Skip mobile developer fee?</h3><p>Because an installable web app can reach the same users without an ongoing yearly fee, and paying only makes sense once you have an actual store-distribution reason, not just because the app works.</p></article>
+      <article class="card faq-card"><h3>What&#x27;s the single most important test before buying a student tool?</h3><p>Check whether a free tier or substitute already gets you within about 20 percent of the quality; if it does, the free option almost always wins, especially early in school when your needs are still changing.</p></article>
+      <article class="card faq-card"><h3>Should I buy an annual subscription to save money over monthly?</h3><p>Only if you&#x27;re confident you&#x27;ll still be using the tool in eleven months, because annual plans are the easiest place for a forgotten subscription to quietly drain a full year of an irregular student income.</p></article>
+      <article class="card faq-card"><h3>Is a local LLM actually a good substitute for a paid AI subscription?</h3><p>For repetitive, low-stakes, or background tasks, yes, a local model running on your own machine has no per-token cost, and pairing it with a free-tier hosted assistant covers most of what a student needs day to day.</p></article>
+      <article class="card faq-card"><h3>How do I know if my university already provides a tool for free?</h3><p>Check your university IT department&#x27;s software page before buying anything; many schools hold site licenses for design, office, and developer tools that students never think to look for.</p></article>
+      <article class="card faq-card"><h3>What should I actually spend real money on as a CS student?</h3><p>A domain name for your portfolio, a short focused interview-prep window right before you start interviewing, and any cloud compute a specific project genuinely requires; all three have a clear, bounded return.</p></article>
+      <article class="card faq-card"><h3>How often should I audit my subscriptions?</h3><p>Once a year is enough for most students: list every recurring charge, note when you last actually used it, and cancel anything you can&#x27;t justify in one sentence.</p></article>
+      <article class="card faq-card"><h3>Do I need a paid VPN as a student?</h3><p>Usually not; most day-to-day student risk is better addressed with good password hygiene and your university&#x27;s network than with a VPN, so pay for one only if you have a specific, named need.</p></article>
+      <article class="card faq-card"><h3>Why skip a mobile developer program fee for a personal project?</h3><p>Because an installable web app can reach the same users without an ongoing yearly fee, and paying only makes sense once you have an actual store-distribution reason, not just because the app works.</p></article>
     </div>
   </section>
 
@@ -235,5 +236,6 @@ The arithmetic doesn't change much. Your honesty about 'hours saved' does.</span
 </footer>
 
 <script src="/js/site.js" defer></script>
+<script src="/js/lux-motion.js" defer></script>
 </body>
 </html>

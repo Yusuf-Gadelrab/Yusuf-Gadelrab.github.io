@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="preload" href="/css/site.css" as="style">
+<meta name="robots" content="index,follow,max-image-preview:large,max-snippet:-1">
+<meta property="og:locale" content="en_US">
+<title>Reading a Scientific Paper as a Non-Researcher</title>
+<meta name="description" content="The order to read sections in, how to judge a sample size, what p-values and effect sizes actually mean, and how to spot a claim the data does not support.">
+<link rel="canonical" href="https://yusuf-gadelrab.github.io/guides/reading-a-scientific-paper.html">
+<link rel="icon" type="image/svg+xml" href="https://yusuf-gadelrab.github.io/favicon.svg">
+<link rel="apple-touch-icon" sizes="180x180" href="https://yusuf-gadelrab.github.io/apple-touch-icon.png">
+<meta name="theme-color" content="#0B0B0D">
+<meta name="author" content="Yusuf Gadelrab">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="Yusuf Gadelrab">
+<meta property="og:title" content="Reading a Scientific Paper as a Non-Researcher">
+<meta property="og:description" content="Read it out of order, check the effect size before the p-value, and find the limitations section first.">
+<meta property="og:url" content="https://yusuf-gadelrab.github.io/guides/reading-a-scientific-paper.html">
+<meta property="og:image" content="https://yusuf-gadelrab.github.io/og-card.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Reading a Scientific Paper as a Non-Researcher">
+<meta name="twitter:description" content="Read it out of order, check the effect size before the p-value, and find the limitations section first.">
+<meta name="twitter:image" content="https://yusuf-gadelrab.github.io/og-card.png">
+<link rel="alternate" type="text/plain" href="https://yusuf-gadelrab.github.io/llms-full.txt" title="Plain-text profile for language models">
+
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"TechArticle","@id":"https://yusuf-gadelrab.github.io/guides/reading-a-scientific-paper.html#article","headline":"Reading a Scientific Paper When You Are Not a Researcher","name":"Reading a Scientific Paper When You Are Not a Researcher","description":"The order to read sections in, how to judge a sample size, what p-values and effect sizes actually mean, and how to spot a claim the data does not support.","datePublished":"2026-07-29","dateModified":"2026-07-29","inLanguage":"en","author":{"@id":"https://yusuf-gadelrab.github.io/#person"},"publisher":{"@id":"https://yusuf-gadelrab.github.io/#person"},"about":["Research literacy","Statistics","Peer review","Undergraduate research"],"mainEntityOfPage":"https://yusuf-gadelrab.github.io/guides/reading-a-scientific-paper.html","isAccessibleForFree":true,"isPartOf":{"@id":"https://yusuf-gadelrab.github.io/#website"},"proficiencyLevel":"Beginner","hasPart":{"@id":"https://yusuf-gadelrab.github.io/guides/reading-a-scientific-paper.html#howto"}},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://yusuf-gadelrab.github.io/"},{"@type":"ListItem","position":2,"name":"Guides","item":"https://yusuf-gadelrab.github.io/guides.html"},{"@type":"ListItem","position":3,"name":"Reading a Paper"}]},{"@type":"HowTo","@id":"https://yusuf-gadelrab.github.io/guides/reading-a-scientific-paper.html#howto","name":"How to read a scientific paper in the order that works","description":"The order to read sections in, how to judge a sample size, what p-values and effect sizes actually mean, and how to spot a claim the data does not support.","inLanguage":"en","isAccessibleForFree":true,"author":{"@id":"https://yusuf-gadelrab.github.io/#person"},"step":[{"@type":"HowToStep","position":1,"name":"Title and abstract","text":"Title and abstract. Two minutes. You are extracting one thing: what did they claim, and on whom. If the abstract does not tell you the population and the sample size, that is already a small signal.","url":"https://yusuf-gadelrab.github.io/guides/reading-a-scientific-paper.html#howto"},{"@type":"HowToStep","position":2,"name":"Figures and tables","text":"Figures and tables. Before any prose. The figures are the paper's actual results, and a good figure is legible without its section. Read the captions in full; captions are where authors state what a chart shows more precisely than the body text usually does.","url":"https://yusuf-gadelrab.github.io/guides/reading-a-scientific-paper.html#howto"},{"@type":"HowToStep","position":3,"name":"The limitations section","text":"The limitations section. Yes, this early. It is usually near the end of the discussion, sometimes labelled \"threats to validity.\" It is the most honest paragraph in most papers and it tells you exactly how far the claim can be carried.","url":"https://yusuf-gadelrab.github.io/guides/reading-a-scientific-paper.html#howto"},{"@type":"HowToStep","position":4,"name":"Methods","text":"Methods. Now that you know what was found and what the authors admit is shaky, methods becomes a targeted read: who were the participants, how were they assigned, what was measured, and what was compared against what.","url":"https://yusuf-gadelrab.github.io/guides/reading-a-scientific-paper.html#howto"},{"@type":"HowToStep","position":5,"name":"Results","text":"Results. Match every number in the results to a claim. This is where you check whether the effect sizes are meaningful, not just whether the p-values are small.","url":"https://yusuf-gadelrab.github.io/guides/reading-a-scientific-paper.html#howto"},{"@type":"HowToStep","position":6,"name":"Discussion and conclusion","text":"Discussion and conclusion. Read last and read sceptically. This is where a modest finding most often gets promoted into a broad claim.","url":"https://yusuf-gadelrab.github.io/guides/reading-a-scientific-paper.html#howto"},{"@type":"HowToStep","position":7,"name":"Introduction and related work","text":"Introduction and related work. Only if you need the field context. Frequently you do not.","url":"https://yusuf-gadelrab.github.io/guides/reading-a-scientific-paper.html#howto"}]}]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","@id":"https://yusuf-gadelrab.github.io/guides/reading-a-scientific-paper.html#faq","mainEntity":[{"@type":"Question","name":"What order should you read a scientific paper in?","acceptedAnswer":{"@type":"Answer","text":"Abstract, then figures and their captions, then the limitations section, then methods, then results, then the discussion, and the introduction only if you need field context. Reading front to back spends your freshest attention on the two sections least likely to change your mind. If you only have five minutes, read the abstract, the figures, and the limitations."}},{"@type":"Question","name":"Is a sample size of 60 participants enough?","acceptedAnswer":{"@type":"Answer","text":"It depends entirely on the effect being looked for and the population being claimed about. A small sample can only detect large effects, so a small study reporting a small significant result deserves more scrutiny than one reporting a large effect. Check whether a power analysis was done in advance and whether the participants represent the population in the conclusion."}},{"@type":"Question","name":"What does a p-value actually mean?","acceptedAnswer":{"@type":"Answer","text":"It is the probability of observing data at least this extreme if the null hypothesis were true. It is not the probability that the hypothesis is true, not the probability the result was a fluke, and not a measure of how large the effect is. A small p-value says data this striking would be unusual if there were no effect, which is a statement about surprise, not about magnitude."}},{"@type":"Question","name":"What is the difference between statistical significance and effect size?","acceptedAnswer":{"@type":"Answer","text":"Significance answers whether an effect is distinguishable from zero; effect size answers how big it is. With a large enough sample a trivial difference becomes significant, and in a small sample a meaningful effect can fail to reach significance. Read the effect size and its confidence interval first and treat the p-value as a footnote."}},{"@type":"Question","name":"Does a non-significant result mean there is no effect?","acceptedAnswer":{"@type":"Answer","text":"No. It means this study could not distinguish the effect from zero, which is a statement about the study's resolving power as much as about reality. One of the papers I co-authored found a Cohen's d of roughly 0.25 to 0.40 on a bilingual-versus-English comparison that was not statistically significant, which is a small-to-moderate effect a larger sample might have resolved."}},{"@type":"Question","name":"How do you tell if a paper's claim goes beyond its data?","acceptedAnswer":{"@type":"Answer","text":"Read the abstract's last sentence and the limitations section back to back. The usual gaps are causal language on observational data, generalising past the sample that was actually studied, treating an immediate post-test as evidence of durable learning, and confusing a self-reported confidence measure with measured ability."}},{"@type":"Question","name":"What does peer review actually catch?","acceptedAnswer":{"@type":"Answer","text":"It checks reasoning and reporting, not data. Reviewers catch claims that outrun the results, missing methodological detail, inappropriate statistical tests, and unacknowledged limitations. They do not re-run the study, usually never see the raw data, and cannot tell you whether the finding replicates. Peer reviewed means the argument survived scrutiny, not that the conclusion is true."}},{"@type":"Question","name":"How can you read a paywalled paper legally?","acceptedAnswer":{"@type":"Answer","text":"Check arXiv and the author's own website first, since most venues permit an author-hosted version. Use an institutional login through a university library proxy for the ACM Digital Library, IEEE Xplore, and the major publishers. Look for an open-access flag. Failing all of that, email the author, which works far more often than people expect."}}]}</script>
+
+<link rel="stylesheet" href="/css/site.css">
+<link rel="stylesheet" href="/css/lux-motion.css">
+<style>
+  .prose{max-width:68ch}
+  .prose h2{margin:var(--s7) 0 var(--s4);font-size:var(--t-h2)}
+  .prose h3{margin:var(--s6) 0 var(--s3);font-size:var(--t-h3)}
+  .prose p{color:var(--muted);margin:0 0 var(--s4)}
+  .prose ul,.prose ol{color:var(--muted);padding-left:1.2em;margin:0 0 var(--s4)}
+  .prose li{margin-bottom:var(--s2)}
+  .prose a{color:var(--gold-2)}
+  .prose strong{color:var(--fg)}
+  .formula{display:block;padding:var(--s4);margin:0 0 var(--s4);border:1px solid var(--line-soft);
+    border-radius:var(--radius);font-family:ui-monospace,SFMono-Regular,Menlo,monospace;
+    font-size:var(--t-small);color:var(--gold-2);overflow-x:auto;white-space:pre-wrap}
+  .tblwrap{overflow-x:auto;margin:0 0 var(--s4)}
+  .tbl{width:100%;border-collapse:collapse;font-size:var(--t-small)}
+  .tbl th,.tbl td{text-align:left;padding:var(--s3);border-bottom:1px solid var(--line-soft);
+    color:var(--muted);vertical-align:top}
+  .tbl th{font-family:var(--display-pro);color:var(--gold-2);font-weight:600}
+  .callout{padding:var(--s4);border:1px solid var(--line-soft);border-radius:var(--radius);
+    color:var(--muted);font-size:var(--t-small);margin:0 0 var(--s5)}
+  .callout--warn{border-color:var(--gold-2)}
+  .faq-card{padding:var(--s5)}
+  .faq-card h3{font-size:var(--t-h3);margin:0;line-height:1.3}
+  .faq-card p{color:var(--muted);font-size:var(--t-small);line-height:1.65;margin:var(--s3) 0 0}
+</style>
+</head>
+<body class="pro">
+
+<a class="skip-link" href="#main">Skip to content</a>
+
+<nav class="site-nav" aria-label="Primary">
+  <a class="site-nav__brand" href="/"><img class="site-nav__lion" src="/img/brand/lion-mark.svg" alt="" width="34" height="34" decoding="async"><span>YUSUF GADELRAB</span></a>
+  <div class="site-nav__links">
+    <a href="/">Work</a>
+    <a href="/guides.html">Guides</a>
+    <a href="/research.html">Research</a>
+    <a href="/about.html">About</a>
+  </div>
+</nav>
+
+<nav class="crumbs" aria-label="Breadcrumb">
+  <ol>
+    <li><a href="/">Home</a></li>
+    <li><a href="/guides.html">Guides</a></li>
+    <li><span aria-current="page">Reading a Paper</span></li>
+  </ol>
+</nav>
+
+<main id="main">
+
+  <header class="section">
+    <p class="eyebrow">Guide · Career</p>
+    <h1 style="margin:var(--s4) 0">Read it out of order, and check the effect size first</h1>
+    <p class="lead">A paper is not written to be read front to back by someone outside the field. It is written to survive review by four specialists. Once you know which sections are load-bearing and which are ceremony, most papers become readable in twenty minutes.</p>
+  </header>
+
+  <hr class="divider">
+
+  <section class="section section--tight">
+    <div class="prose">
+      <h2>The problem is the format, not you</h2>
+      <p>Papers are hard to read for a specific and non-obvious reason: the audience is not a curious outsider, it is a reviewer deciding whether to reject. Every section is optimised for that. The introduction exists partly to pre-empt "this has been done before." The methods section exists to answer "could this be replicated and did they do it properly." The related-work section is often as much about citing the right people as informing the reader.</p>
+      <p>That means reading front to back is close to the worst possible order. You spend the first fifteen minutes on the two sections least likely to change your mind about anything, and you arrive at the numbers already tired.</p>
+      <p>I have been on the writing side of this twice, as a co-author on two papers accepted to SIGCSE TS 2026. What that experience mostly taught me is how much of a finished paper is shaped by anticipating objections, and how much genuinely useful information gets pushed into the two sections nobody reads: methods and limitations.</p>
+      <h2>The order that actually works</h2>
+      <ol>
+        <li><strong>Title and abstract.</strong> Two minutes. You are extracting one thing: what did they claim, and on whom. If the abstract does not tell you the population and the sample size, that is already a small signal.</li>
+        <li><strong>Figures and tables.</strong> Before any prose. The figures are the paper's actual results, and a good figure is legible without its section. Read the captions in full; captions are where authors state what a chart shows more precisely than the body text usually does.</li>
+        <li><strong>The limitations section.</strong> Yes, this early. It is usually near the end of the discussion, sometimes labelled "threats to validity." It is the most honest paragraph in most papers and it tells you exactly how far the claim can be carried.</li>
+        <li><strong>Methods.</strong> Now that you know what was found and what the authors admit is shaky, methods becomes a targeted read: who were the participants, how were they assigned, what was measured, and what was compared against what.</li>
+        <li><strong>Results.</strong> Match every number in the results to a claim. This is where you check whether the effect sizes are meaningful, not just whether the p-values are small.</li>
+        <li><strong>Discussion and conclusion.</strong> Read last and read sceptically. This is where a modest finding most often gets promoted into a broad claim.</li>
+        <li><strong>Introduction and related work.</strong> Only if you need the field context. Frequently you do not.</li>
+      </ol>
+      <p class="callout">If you have five minutes and not twenty: abstract, figures, limitations. That triple tells you what was claimed, what was actually observed, and what the authors themselves say it does not prove. It is a startling amount of a paper for five minutes of work.</p>
+      <h2>How to judge a sample size</h2>
+      <p>There is no universal threshold, which is why "n = 60, is that a lot?" has no answer in isolation. The right question is whether the sample is large enough to detect an effect of the size the authors are looking for, and whether it is representative of the population the claim is about.</p>
+      <div class="tblwrap" tabindex="0" role="group" aria-label="Table, scrolls horizontally"><table class="tbl">
+        <thead><tr><th scope="col">Question</th><th scope="col">What a good answer looks like</th><th scope="col">What should worry you</th></tr></thead>
+        <tbody>
+          <tr><td>How many participants, and in each condition?</td><td>Stated plainly in the abstract or early methods, with the per-group split</td><td>Only a total, with the group sizes buried or absent</td></tr>
+          <tr><td>Was there a power analysis?</td><td>A stated target effect size and the sample needed to detect it, decided before data collection</td><td>No mention, especially alongside a barely-significant result</td></tr>
+          <tr><td>Who are the participants?</td><td>Described specifically: setting, background, recruitment method</td><td>"Undergraduates" with a claim generalised to "learners"</td></tr>
+          <tr><td>How many dropped out?</td><td>Reported, with a comparison of who left versus who stayed</td><td>A final n noticeably smaller than the recruited n, unexplained</td></tr>
+          <tr><td>How many outcomes were measured?</td><td>A small number, ideally pre-registered</td><td>Fifteen measures, one of which is significant and features in the title</td></tr>
+        </tbody>
+      </table></div>
+      <p>A small sample is not automatically bad. A carefully instrumented study of 20 people can be more informative than a sloppy survey of 5,000, and in fields like computing education the constraint is usually access to real classrooms rather than laziness. What a small sample does mean is that <strong>only large effects will show up at all</strong>, so a small study reporting a small significant effect deserves more scrutiny than a small study reporting a large one.</p>
+      <p>The subtler failure is representativeness. A sample drawn entirely from one university's introductory course is a fine basis for a claim about that population and a weak basis for a claim about students generally. Most overreach in papers happens at exactly this joint, and the limitations section usually admits it in one sentence that the abstract does not.</p>
+      <h2>What a p-value actually means</h2>
+      <p>The formal definition is genuinely awkward, so here it is precisely and then in plain terms.</p>
+      <span class="formula" tabindex="0" role="group" aria-label="Formula, scrolls horizontally">p = P(observing data at least this extreme | the null hypothesis is true)
+
+It is NOT:  the probability the null hypothesis is true
+It is NOT:  the probability the result was a fluke
+It is NOT:  a measure of how big or important the effect is</span>
+      <p>Plainly: a small p-value says "if there were genuinely no effect here, data this striking would be unusual." That is a statement about surprise under an assumption, not a statement about truth, and definitely not a statement about magnitude.</p>
+      <p>The 0.05 convention is a convention. It was never a law of nature, and treating it as a hard line produces two symmetric errors: dismissing p = 0.06 as nothing, and treating p = 0.04 as proof. Both readings ignore the number that actually matters, which is the effect size.</p>
+      <h3>The traps worth recognising</h3>
+      <ul>
+        <li><strong>Multiple comparisons.</strong> Test twenty independent things at p &lt; 0.05 and roughly one comes back significant by chance alone. If a paper reports many outcomes and highlights one, ask whether any correction (Bonferroni, Holm, false discovery rate) was applied.</li>
+        <li><strong>"Trending toward significance."</strong> This phrase means the result was not significant. It is not wrong to report a non-significant trend, but it should not be doing load-bearing work in a conclusion.</li>
+        <li><strong>Outcome switching.</strong> A pre-registered study declares its primary outcome in advance. If the reported primary outcome differs from the registered one, the paper is reporting the winner of a search rather than a test.</li>
+        <li><strong>Subgroup mining.</strong> "No overall effect, but a significant effect among first-year women in the evening section" is a hypothesis for a future study, not a finding.</li>
+        <li><strong>Significance from sheer size.</strong> With a large enough n, a trivially small difference becomes statistically significant. Significance answers "is it distinguishable from zero," not "is it big enough to care about."</li>
+      </ul>
+      <h2>Effect size is the number you actually wanted</h2>
+      <p>An effect size says how big the difference is, in units that survive comparison across studies. For a difference between two group means, the standard measure is Cohen's d.</p>
+      <span class="formula" tabindex="0" role="group" aria-label="Formula, scrolls horizontally">Cohen's d = (mean_A - mean_B) / pooled standard deviation
+
+Rough conventions (and they are only conventions):
+  d ≈ 0.2   small
+  d ≈ 0.5   medium
+  d ≈ 0.8   large
+
+Also common: r and R² for correlation, odds ratios for binary outcomes,
+and confidence intervals, which carry more information than any of them.</span>
+      <p>The confidence interval deserves special attention because it does two jobs at once: it gives the estimate and it gives the uncertainty. An interval of [0.05, 0.90] and an interval of [0.44, 0.52] can have the same midpoint and mean entirely different things. And an interval that crosses zero is telling you the same thing a non-significant p-value would, but with the added and useful information of how large the effect could plausibly be in either direction.</p>
+      <p><strong>The practical rule: read the effect size and the interval first, and let the p-value be a footnote.</strong> A significant result with a tiny effect and a wide interval is a weaker finding than a non-significant result with a moderate effect in a small sample, even though the first one is the one that gets a headline.</p>
+      <h2>A worked example from a paper I co-authored</h2>
+      <p>Concrete beats abstract, and it is easier to be honest about a paper with my own name on it. One of the two SIGCSE TS 2026 papers studied bilingual coding as a support for computer science learners, with 60 participants.</p>
+      <p>The paper reports statistically significant pre-to-post gains in programming confidence, computing identity, enjoyment, and motivation across those 60 participants, with novices gaining significantly more than experienced programmers. That is the real result and it is a good one.</p>
+      <p>Now the part that a casual reader would get wrong. The obvious headline someone would want from a bilingual coding study is "bilingual instruction beats English-only instruction." The paper does not support that. <strong>The bilingual-versus-English comparison produced a Cohen's d in the range of 0.25 to 0.40 and was not statistically significant.</strong> A d of 0.25 to 0.40 is a small-to-moderate effect in the direction you might hope for, and with this sample it is not distinguishable from no effect at all.</p>
+      <p>Two useful lessons come out of that, and they generalise well beyond this paper:</p>
+      <ul>
+        <li><strong>A non-significant effect is not a zero effect.</strong> It means this study could not distinguish it from zero. A larger sample might; that is precisely why the effect size is reported alongside the null result rather than the finding being buried.</li>
+        <li><strong>The significant result and the interesting result are often different results.</strong> The significant finding here is about pre-to-post growth across the whole cohort. The comparison people care about is the one that came back inconclusive. Anyone reading only the abstract could easily blur those two into a claim the data does not make.</li>
+      </ul>
+      <p>This is also a decent illustration of why exact numbers matter more than remembered impressions. A percentage figure attached to this study in casual retelling would be an invention, because the paper reports no percentage figures at all. If you cannot point to the number in the paper, do not repeat the number. The broader context of that work is in <a href="/guides/bilingual-coding-cs-education.html">the bilingual coding guide</a>, and both papers are described on <a href="/research.html">the research page</a>.</p>
+      <h2>Spotting a claim the data does not support</h2>
+      <p>Most overreach is not fraud. It is a chain of small, individually defensible steps that ends somewhere the evidence never went. These are the joints where the chain usually slips.</p>
+      <div class="tblwrap" tabindex="0" role="group" aria-label="Table, scrolls horizontally"><table class="tbl">
+        <thead><tr><th scope="col">What the paper shows</th><th scope="col">What the discussion says</th><th scope="col">The gap</th></tr></thead>
+        <tbody>
+          <tr><td>A correlation in observational data</td><td>"X improves Y"</td><td>Causal language on non-causal data. Look for random assignment; without it, be suspicious of any verb implying causation.</td></tr>
+          <tr><td>An effect in one specific population</td><td>"Students benefit from…"</td><td>Generalisation past the sample. Check who was actually enrolled.</td></tr>
+          <tr><td>A short-term outcome, measured immediately</td><td>"Improves learning"</td><td>Durability was never measured. Post-tests taken minutes after an intervention frequently do not survive a delayed re-test.</td></tr>
+          <tr><td>A self-reported survey measure</td><td>"Increases ability"</td><td>Confidence and competence are different constructs, and interventions routinely move one without the other.</td></tr>
+          <tr><td>One significant outcome among many</td><td>Headlined in the abstract</td><td>Multiple comparisons. Ask what else was measured and did not make the abstract.</td></tr>
+          <tr><td>A statistically significant tiny difference</td><td>"Substantially better"</td><td>Significance mistaken for magnitude. Go find the effect size.</td></tr>
+        </tbody>
+      </table></div>
+      <p>One quick heuristic that catches a surprising share of this: <strong>read the abstract's final sentence and the limitations section back to back.</strong> They are written by the same authors about the same study, and when they disagree in tone, the limitations section is the one telling the truth.</p>
+      <h2>What peer review actually catches</h2>
+      <p>Having been through the process, the useful correction to most people's mental model is this: peer review is a check on <em>reasoning and reporting</em>, not a verification of the data. Reviewers do not re-run the study. They usually do not see the raw data at all.</p>
+      <div class="tblwrap" tabindex="0" role="group" aria-label="Table, scrolls horizontally"><table class="tbl">
+        <thead><tr><th scope="col">Peer review reliably catches</th><th scope="col">Peer review does not catch</th></tr></thead>
+        <tbody>
+          <tr><td>Claims not supported by the reported results</td><td>Fabricated or mistaken data</td></tr>
+          <tr><td>Missing methodological detail that blocks replication</td><td>Whether the study replicates</td></tr>
+          <tr><td>Inappropriate statistical tests for the design</td><td>Analyses that were tried and abandoned before submission</td></tr>
+          <tr><td>Unacknowledged limitations and threats to validity</td><td>Whether the sample generalises in practice</td></tr>
+          <tr><td>Missing related work and mis-stated prior findings</td><td>Whether the effect matters in the real world</td></tr>
+        </tbody>
+      </table></div>
+      <p>So "peer reviewed" means a few knowledgeable people agreed the argument follows from the reported evidence and that the paper is worth the field's attention. It does not mean true. Replication, not review, is what does that job, and it happens on a much longer timescale than publication does.</p>
+      <p>Venue matters more than the phrase "peer reviewed" does. In computer science, top conferences are frequently the primary venue rather than journals, with acceptance rates and review processes that are public information. A preprint on arXiv has had no review at all, which is not disqualifying but is worth knowing before citing it. And any journal that solicits submissions by email with a fast fee-based turnaround should be treated as a marketing operation until proven otherwise.</p>
+      <h2>Getting past the paywall, legitimately</h2>
+      <ul>
+        <li><strong>Check arXiv and the author's own page first.</strong> Most venues permit an author-hosted preprint or accepted version, and authors post them.</li>
+        <li><strong>Use your institution.</strong> A university login usually covers the ACM Digital Library, IEEE Xplore, and the major publishers, and it works off campus through the library proxy.</li>
+        <li><strong>Look for an open-access flag.</strong> A growing share of papers are open by default, including via the ACM Open programme.</li>
+        <li><strong>Email the author.</strong> This works far more often than people expect. Authors are generally delighted that someone outside the field wants to read the paper, and sending a copy is entirely normal practice.</li>
+      </ul>
+      <h2>A checklist for the next paper you open</h2>
+      <ol>
+        <li>What exactly is claimed, and about whom?</li>
+        <li>How many participants, split how, and how many dropped out?</li>
+        <li>Was assignment random? If not, treat every causal verb as a hypothesis.</li>
+        <li>What is the effect size, and how wide is the confidence interval?</li>
+        <li>How many outcomes were measured, and was any correction applied?</li>
+        <li>What does the limitations section admit that the abstract does not?</li>
+        <li>Does the conclusion stay inside the population that was actually studied?</li>
+        <li>Has anyone replicated it, and if not, is it being cited as if they had?</li>
+      </ol>
+      <p>That list takes a couple of minutes and it is most of what a reviewer does on a first pass. It will not make you a specialist in the field, and it does not need to. It is enough to tell a solid result from a stretched one, which is the entire practical skill. If you are heading in the other direction and want to be on the writing side, <a href="/guides/undergraduate-research.html">the undergraduate research guide</a> covers how to get into a lab and what the first year actually looks like.</p>
+      <h2>The same statistics, somewhere else entirely</h2>
+      <p>Multiple comparisons, effect sizes, and confidence intervals are not academic trivia. They are the same machinery that decides whether a trading strategy is real or a coincidence found by testing hundreds of parameter combinations against the same data. The failure mode is identical, and it is written up in exactly those terms in <a href="/guides/backtest-overfitting.html">the backtest overfitting guide</a>. If you understand why a paper that measured fifteen outcomes and reported one is weak evidence, you already understand why a strategy chosen from a thousand backtests is too.</p>
+
+      <h2>Tools referenced in this guide</h2>
+      <ul>
+        <li><a href="/research.html">Research</a> — the two SIGCSE TS 2026 papers and what the lab actually does.</li>
+        <li><a href="/guides/undergraduate-research.html">Undergraduate research guide</a> — how to get into a lab and what the first year looks like.</li>
+        <li><a href="/guides/backtest-overfitting.html">Backtest overfitting</a> — the same statistics, applied to trading strategies instead of studies.</li>
+      </ul>
+    </div>
+  </section>
+
+  <hr class="divider">
+
+  <section class="section section--tight" id="faq">
+    <div class="grp-head">
+      <p class="eyebrow">FAQ</p>
+      <h2>Quick answers</h2>
+    </div>
+    <div class="grid" style="margin-top:var(--s6)">
+      <article class="card faq-card"><h3>What order should you read a scientific paper in?</h3><p>Abstract, then figures and their captions, then the limitations section, then methods, then results, then the discussion, and the introduction only if you need field context. Reading front to back spends your freshest attention on the two sections least likely to change your mind. If you only have five minutes, read the abstract, the figures, and the limitations.</p></article>
+      <article class="card faq-card"><h3>Is a sample size of 60 participants enough?</h3><p>It depends entirely on the effect being looked for and the population being claimed about. A small sample can only detect large effects, so a small study reporting a small significant result deserves more scrutiny than one reporting a large effect. Check whether a power analysis was done in advance and whether the participants represent the population in the conclusion.</p></article>
+      <article class="card faq-card"><h3>What does a p-value actually mean?</h3><p>It is the probability of observing data at least this extreme if the null hypothesis were true. It is not the probability that the hypothesis is true, not the probability the result was a fluke, and not a measure of how large the effect is. A small p-value says data this striking would be unusual if there were no effect, which is a statement about surprise, not about magnitude.</p></article>
+      <article class="card faq-card"><h3>What is the difference between statistical significance and effect size?</h3><p>Significance answers whether an effect is distinguishable from zero; effect size answers how big it is. With a large enough sample a trivial difference becomes significant, and in a small sample a meaningful effect can fail to reach significance. Read the effect size and its confidence interval first and treat the p-value as a footnote.</p></article>
+      <article class="card faq-card"><h3>Does a non-significant result mean there is no effect?</h3><p>No. It means this study could not distinguish the effect from zero, which is a statement about the study&#x27;s resolving power as much as about reality. One of the papers I co-authored found a Cohen&#x27;s d of roughly 0.25 to 0.40 on a bilingual-versus-English comparison that was not statistically significant, which is a small-to-moderate effect a larger sample might have resolved.</p></article>
+      <article class="card faq-card"><h3>How do you tell if a paper&#x27;s claim goes beyond its data?</h3><p>Read the abstract&#x27;s last sentence and the limitations section back to back. The usual gaps are causal language on observational data, generalising past the sample that was actually studied, treating an immediate post-test as evidence of durable learning, and confusing a self-reported confidence measure with measured ability.</p></article>
+      <article class="card faq-card"><h3>What does peer review actually catch?</h3><p>It checks reasoning and reporting, not data. Reviewers catch claims that outrun the results, missing methodological detail, inappropriate statistical tests, and unacknowledged limitations. They do not re-run the study, usually never see the raw data, and cannot tell you whether the finding replicates. Peer reviewed means the argument survived scrutiny, not that the conclusion is true.</p></article>
+      <article class="card faq-card"><h3>How can you read a paywalled paper legally?</h3><p>Check arXiv and the author&#x27;s own website first, since most venues permit an author-hosted version. Use an institutional login through a university library proxy for the ACM Digital Library, IEEE Xplore, and the major publishers. Look for an open-access flag. Failing all of that, email the author, which works far more often than people expect.</p></article>
+    </div>
+  </section>
+
+<!-- related:auto:start -->
+  <hr class="divider">
+
+  <section class="section section--tight related" id="related" aria-labelledby="related-h">
+    <div class="grp-head">
+      <p class="eyebrow">Keep reading</p>
+      <h2 id="related-h">Related guides</h2>
+    </div>
+    <div class="related__grid">
+      <a class="related__item" href="/guides/cold-email-professor-research.html"><strong>Five sentences, one paper, one small ask</strong><span>Five sentences, one specific paper, one small ask, and one follow-up. Two complete example emails included.</span></a>
+      <a class="related__item" href="/guides/undergraduate-research.html"><strong>How undergraduates actually get into a lab</strong><span>Finding a lab, the email that gets a reply, and why publishing as an undergrad compounds.</span></a>
+      <a class="related__item" href="/guides/quant-internship-timeline.html"><strong>Three firm types, three calendars, and a lot of wrong dates</strong><span>Market makers, banks and funds run on three different calendars. Most deadlines people repeat belong to a different…</span></a>
+      <a class="related__item" href="/guides/ats-resume.html"><strong>What an ATS actually does to your resume</strong><span>What ATS software really does, what breaks parsing, and which rules are folklore.</span></a>
+    </div>
+    <p class="related__more">Every guide is indexed on <a href="/guides.html">the guides hub</a>. Or put it to work in <a href="/research.html">the research behind two SIGCSE 2026 papers</a> and <a href="/hire.html">what I am open to for Summer 2027</a>.</p>
+  </section>
+<!-- related:auto:end -->
+
+</main>
+
+<footer class="site-footer">
+  <div class="site-footer__links">
+    <a href="/">Work</a>
+    <a href="/about.html">About</a>
+    <a href="/guides.html">Guides</a>
+    <a href="/apps.html">Apps</a>
+    <a href="/store.html">Store</a>
+    <a href="/privacy.html">Privacy</a>
+    <a href="/terms.html">Terms</a>
+    <a href="mailto:yusuf.gadelrab06@gmail.com">yusuf.gadelrab06@gmail.com</a>
+  </div>
+</footer>
+
+<script src="/js/site.js" defer></script>
+<script src="/js/lux-motion.js" defer></script>
+</body>
+</html>

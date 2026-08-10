@@ -25,10 +25,11 @@
 <meta name="twitter:image" content="https://yusuf-gadelrab.github.io/og-card.png">
 <link rel="alternate" type="text/plain" href="https://yusuf-gadelrab.github.io/llms-full.txt" title="Plain-text profile for language models">
 
-<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"TechArticle","@id":"https://yusuf-gadelrab.github.io/guides/notion-vs-obsidian-vs-markdown-files.html#article","headline":"Notion vs Obsidian vs a Folder of Markdown Files: Choosing a Second Brain That Survives You Changing Your Mind","name":"Notion vs Obsidian vs a Folder of Markdown Files: Choosing a Second Brain That Survives You Changing Your Mind","description":"A second brain comparison for students: where your notes really live, what leaving each tool costs you, and which one actually fits how you work.","datePublished":"2026-07-29","dateModified":"2026-07-29","inLanguage":"en","author":{"@id":"https://yusuf-gadelrab.github.io/#person"},"publisher":{"@id":"https://yusuf-gadelrab.github.io/#person"},"about":["Notion","Obsidian","Plain Markdown files","Second brain systems"],"mainEntityOfPage":"https://yusuf-gadelrab.github.io/guides/notion-vs-obsidian-vs-markdown-files.html","isAccessibleForFree":true,"proficiencyLevel":"Beginner"},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://yusuf-gadelrab.github.io/"},{"@type":"ListItem","position":2,"name":"Guides","item":"https://yusuf-gadelrab.github.io/guides.html"},{"@type":"ListItem","position":3,"name":"Notion vs Obsidian vs Files"}]}]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"TechArticle","@id":"https://yusuf-gadelrab.github.io/guides/notion-vs-obsidian-vs-markdown-files.html#article","headline":"Notion vs Obsidian vs a Folder of Markdown Files: Choosing a Second Brain That Survives You Changing Your Mind","name":"Notion vs Obsidian vs a Folder of Markdown Files: Choosing a Second Brain That Survives You Changing Your Mind","description":"A second brain comparison for students: where your notes really live, what leaving each tool costs you, and which one actually fits how you work.","datePublished":"2026-07-29","dateModified":"2026-07-29","inLanguage":"en","author":{"@id":"https://yusuf-gadelrab.github.io/#person"},"publisher":{"@id":"https://yusuf-gadelrab.github.io/#person"},"about":["Notion","Obsidian","Plain Markdown files","Second brain systems"],"mainEntityOfPage":"https://yusuf-gadelrab.github.io/guides/notion-vs-obsidian-vs-markdown-files.html","isAccessibleForFree":true,"isPartOf":{"@id":"https://yusuf-gadelrab.github.io/#website"},"proficiencyLevel":"Beginner"},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://yusuf-gadelrab.github.io/"},{"@type":"ListItem","position":2,"name":"Guides","item":"https://yusuf-gadelrab.github.io/guides.html"},{"@type":"ListItem","position":3,"name":"Notion vs Obsidian vs Files"}]}]}</script>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","@id":"https://yusuf-gadelrab.github.io/guides/notion-vs-obsidian-vs-markdown-files.html#faq","mainEntity":[{"@type":"Question","name":"Can I use Notion and Obsidian at the same time?","acceptedAnswer":{"@type":"Answer","text":"Yes, plenty of people run Notion for shared team or club work and Obsidian or plain files for personal notes. The friction shows up if you try to make one system the source of truth for both, since Notion's database features do not export cleanly and Obsidian's plugin syntax does not import into Notion."}},{"@type":"Question","name":"Is Obsidian really free to use?","acceptedAnswer":{"@type":"Answer","text":"The core app is free for both personal and commercial use, since Obsidian removed its separate commercial-use license requirement in 2024. The paid parts are the first-party Sync and Publish add-ons, so check Obsidian's own pricing page for current rates rather than trusting an old number."}},{"@type":"Question","name":"Does Notion have a student discount?","acceptedAnswer":{"@type":"Answer","text":"Notion has offered education plans for students with a school email address in the past, but terms and pricing change over time, so check Notion's own pricing page instead of relying on outdated information."}},{"@type":"Question","name":"What happens to my notes if Obsidian disappears tomorrow?","acceptedAnswer":{"@type":"Answer","text":"Nothing happens to the notes themselves, because they are already plain Markdown files sitting in a folder on your disk. You would lose the app's search, graph view, and plugins, but every note still opens in any text editor on any computer."}},{"@type":"Question","name":"What happens to my notes if Notion disappears tomorrow?","acceptedAnswer":{"@type":"Answer","text":"You would need to export first, and that export is lossy for anything shaped like a database, since relations, rollups, and custom views do not survive as those things. Simple pages export to Markdown reasonably well, but a linked project tracker built on relational databases does not."}},{"@type":"Question","name":"Do I need to know git to keep notes in a plain folder?","acceptedAnswer":{"@type":"Answer","text":"No, git is optional. A folder synced through iCloud or Dropbox works fine for most students. Git is worth learning if you want real version history and are already comfortable with a terminal, but it is an addition, not a requirement."}},{"@type":"Question","name":"Which one should a CS student actually pick?","acceptedAnswer":{"@type":"Answer","text":"If you already live in a terminal and want notes that outlive every app you will ever install, start with a plain Markdown folder. If you want backlinks and a graph without giving up local files, use Obsidian. If your notes are really project management with relational data and live collaboration, use Notion."}}]}</script>
 
 <link rel="stylesheet" href="/css/site.css">
+<link rel="stylesheet" href="/css/lux-motion.css">
 <style>
   .prose{max-width:68ch}
   .prose h2{margin:var(--s7) 0 var(--s4);font-size:var(--t-h2)}
@@ -50,16 +51,16 @@
     color:var(--muted);font-size:var(--t-small);margin:0 0 var(--s5)}
   .callout--warn{border-color:var(--gold-2)}
   .faq-card{padding:var(--s5)}
-  .faq-card h3{font-size:var(--t-h3);margin:0}
-  .faq-card p{color:var(--muted);font-size:var(--t-small);margin:var(--s3) 0 0}
+  .faq-card h3{font-size:var(--t-h3);margin:0;line-height:1.3}
+  .faq-card p{color:var(--muted);font-size:var(--t-small);line-height:1.65;margin:var(--s3) 0 0}
 </style>
 </head>
 <body class="pro">
 
 <a class="skip-link" href="#main">Skip to content</a>
 
-<nav class="site-nav">
-  <a class="site-nav__brand" href="/"><img class="site-nav__lion" src="/img/brand/lion-mark.svg" alt="" width="34" height="34"><span>YUSUF GADELRAB</span></a>
+<nav class="site-nav" aria-label="Primary">
+  <a class="site-nav__brand" href="/"><img class="site-nav__lion" src="/img/brand/lion-mark.svg" alt="" width="34" height="34" decoding="async"><span>YUSUF GADELRAB</span></a>
   <div class="site-nav__links">
     <a href="/">Work</a>
     <a href="/guides.html">Guides</a>
@@ -101,8 +102,8 @@
       <h3>A Plain Folder of Markdown Files: No App at All</h3>
       <p>The third option skips the app entirely. A folder, a text editor, and nothing else. Every note is a <code>.md</code> file you can open in literally any editor, on any operating system, for the rest of your life. There is no vendor, no login, no subscription, and no risk of a company pivoting your notebook into something it was never meant to be. This sounds primitive next to Notion's databases or Obsidian's graph view, and in terms of features, it is. What it buys back is total control: zero cost, zero lock-in, instant search with a tool like ripgrep, and perfect version history if you put the folder under git.</p>
       <h2>The Head-to-Head Matrix</h2>
-      <div class="tblwrap"><table class="tbl">
-        <thead><tr><th>Dimension</th><th>Notion</th><th>Obsidian</th><th>Plain Markdown Folder</th></tr></thead>
+      <div class="tblwrap" tabindex="0" role="group" aria-label="Table, scrolls horizontally"><table class="tbl">
+        <thead><tr><th scope="col">Dimension</th><th scope="col">Notion</th><th scope="col">Obsidian</th><th scope="col">Plain Markdown Folder</th></tr></thead>
         <tbody>
           <tr><td>Where data lives</td><td>Notion's cloud database, not files on your disk</td><td>Local files on your disk, Markdown in a folder called a vault</td><td>Local files on your disk, exactly as you left them</td></tr>
           <tr><td>File format & portability</td><td>Proprietary blocks, exported to Markdown/CSV/HTML on demand</td><td>Plain Markdown natively, plus optional plugin-specific syntax</td><td>Plain Markdown or plain text, nothing else</td></tr>
@@ -117,8 +118,8 @@
       </table></div>
       <h2>What Actually Survives an Export</h2>
       <p>The question that matters is not whether a tool has an export button, it is what the export button actually preserves. This is where the three options diverge the most, and it is worth looking at directly rather than trusting a features page.</p>
-      <div class="tblwrap"><table class="tbl">
-        <thead><tr><th>Tool</th><th>What exports cleanly</th><th>What breaks or is lost</th><th>Rough effort to fully leave</th></tr></thead>
+      <div class="tblwrap" tabindex="0" role="group" aria-label="Table, scrolls horizontally"><table class="tbl">
+        <thead><tr><th scope="col">Tool</th><th scope="col">What exports cleanly</th><th scope="col">What breaks or is lost</th><th scope="col">Rough effort to fully leave</th></tr></thead>
         <tbody>
           <tr><td>Notion</td><td>Simple pages, headings, basic text, images, to Markdown or HTML</td><td>Relations, rollups, linked databases, and custom views do not survive as those things</td><td>Days to weeks, depending on how database-shaped your workspace is</td></tr>
           <tr><td>Obsidian</td><td>Every note, since it was already a Markdown file on disk</td><td>Plugin-specific syntax such as Dataview query blocks stops working without the plugin</td><td>Hours, mostly spent replacing plugin syntax with plain Markdown or nothing</td></tr>
@@ -128,7 +129,7 @@
       <h2>The Real Case for a Plain Folder of Files</h2>
       <p>It is easy to dismiss the plain-files option as something only a certain kind of terminal-obsessed CS student would pick, but the argument for it is concrete, not aesthetic. Take a folder of Markdown notes, add ripgrep for search and git for history, and you have a system with no app to break, no subscription to lapse, and no format to convert two years from now.</p>
       <p>Ripgrep is fast enough that searching a few thousand notes feels instant, and because it is a general-purpose command-line tool, it works the exact same way whether you are searching class notes, project logs, or a journal. Git gives you something no app-based tool offers by default: a real, inspectable history of every edit you ever made to a note, plus free syncing between machines if you push to a private repository. Here is what that actually looks like in a terminal, not in theory.</p>
-      <span class="formula"># search every note for a phrase, case-insensitive, with line numbers
+      <span class="formula" tabindex="0" role="group" aria-label="Formula, scrolls horizontally"># search every note for a phrase, case-insensitive, with line numbers
 rg -i -n "spaced repetition" ~/notes
 
 # find every note that mentions two different topics
@@ -139,7 +140,7 @@ git -C ~/notes log --follow -p -- courses/cs146-notes.md
 
 # a one-line history of everything you touched this week
 git -C ~/notes log --since="1 week ago" --oneline</span>
-      <p>That is the entire toolchain: a folder, an editor, ripgrep, and git. Nothing about it is exotic, and nothing about it requires you to trust that a company will still exist, still be free, or still support your file format five years from now. If you like the idea of software that keeps working with no server behind it, this same instinct is worth applying beyond note-taking, see the guide on <a href='/guides/client-side-only-tools.html'>tools that run entirely in the browser</a> for the broader pattern.</p>
+      <p>That is the entire toolchain: a folder, an editor, ripgrep, and git. Nothing about it is exotic, and nothing about it requires you to trust that a company will still exist, still be free, or still support your file format five years from now. If you like the idea of software that keeps working with no server behind it, this same instinct is worth applying beyond note-taking, see the guide on <a href="/guides/client-side-only-tools.html">tools that run entirely in the browser</a> for the broader pattern.</p>
       <p class="callout">The plain-files approach is not a purity test. You can still get search, backlinks, and rendered previews on top of a plain folder, either by using an editor that supports Markdown preview or by layering Obsidian on top of the exact same files later. The folder does not lock you out of convenience, it just refuses to lock the convenience into the data itself.</p>
       <h2>Where Each One Loses</h2>
       <h3>Where Notion Loses</h3>
@@ -162,9 +163,9 @@ git -C ~/notes log --since="1 week ago" --oneline</span>
       <h3>Pick Obsidian If</h3>
       <p>You want backlinks, a graph of how your ideas connect, and a large plugin ecosystem, but you are not willing to give up owning your files to get it. This is the middle path, and for most students building a genuine second brain out of lecture notes, reading summaries, and project logs, it is the most balanced default. Just keep an eye on how much plugin-specific syntax creeps into your notes over time.</p>
       <h3>Pick a Plain Folder of Files If</h3>
-      <p>You already live comfortably in a terminal, you want a system that will still open in forty years with zero conversion step, and you are willing to build your own conveniences instead of buying them pre-assembled. This is the option that scores closest to zero on both lock-in and exit cost, at the price of doing more setup work yourself. It pairs naturally with the same offline-first mindset behind building an <a href='/guides/offline-pwa.html'>offline-first progressive web app</a>, where the whole point is that the data has to survive without a server.</p>
+      <p>You already live comfortably in a terminal, you want a system that will still open in forty years with zero conversion step, and you are willing to build your own conveniences instead of buying them pre-assembled. This is the option that scores closest to zero on both lock-in and exit cost, at the price of doing more setup work yourself. It pairs naturally with the same offline-first mindset behind building an <a href="/guides/offline-pwa.html">offline-first progressive web app</a>, where the whole point is that the data has to survive without a server.</p>
       <h2>What I Actually Use</h2>
-      <p>For what it is worth, my own setup leans toward the local-first end of this spectrum. I keep a generated Obsidian vault of notes and project state on disk, and the tool I actually reach for most when I need to find something is plain text search over that folder, not any specific app feature. The same instinct shows up in the apps I build: the free offline tools linked from <a href='/apps.html'>my apps page</a> store their data in the browser instead of on a server, for the same reason I keep my notes as files instead of database rows. I want the data to still be there when the vendor is not. You can see the rest of the tools I actually use, and why, on the <a href='/stack.html'>stack page</a>, and if you are weighing this decision against other student tool spend, the companion guide on <a href='/guides/free-vs-paid-student-tools.html'>what is actually worth paying for as a CS student</a> covers the same ownership-versus-convenience tradeoff from a budget angle.</p>
+      <p>For what it is worth, my own setup leans toward the local-first end of this spectrum. I keep a generated Obsidian vault of notes and project state on disk, and the tool I actually reach for most when I need to find something is plain text search over that folder, not any specific app feature. The same instinct shows up in the apps I build: the free offline tools linked from <a href="/apps.html">my apps page</a> store their data in the browser instead of on a server, for the same reason I keep my notes as files instead of database rows. I want the data to still be there when the vendor is not. You can see the rest of the tools I actually use, and why, on the <a href="/stack.html">stack page</a>, and if you are weighing this decision against other student tool spend, the companion guide on <a href="/guides/free-vs-paid-student-tools.html">what is actually worth paying for as a CS student</a> covers the same ownership-versus-convenience tradeoff from a budget angle.</p>
       <p>None of this means Notion is wrong or that plain files are morally superior. It means the decision is really about which cost you would rather pay: a monthly fee and a database you do not fully own, a bit of plugin discipline, or a weekend spent building your own conveniences. Pick the one whose cost you are actually willing to pay for the next four years, not the one with the best onboarding video.</p>
 
       <h2>Tools referenced in this guide</h2>
@@ -184,13 +185,13 @@ git -C ~/notes log --since="1 week ago" --oneline</span>
       <h2>Quick answers</h2>
     </div>
     <div class="grid" style="margin-top:var(--s6)">
-      <article class="card faq-card"><h3>Using Notion and Obsidian together?</h3><p>Common for team work in Notion plus personal notes in Obsidian or files, as long as one is not forced to be the source of truth for both.</p></article>
-      <article class="card faq-card"><h3>Is Obsidian free?</h3><p>The core app is free for personal and commercial use since 2024. Sync and Publish are paid add-ons, check Obsidian&#x27;s pricing page for current rates.</p></article>
-      <article class="card faq-card"><h3>Student discount for Notion?</h3><p>Education plans have existed before, but terms change, so check Notion&#x27;s own pricing page rather than an old number.</p></article>
-      <article class="card faq-card"><h3>Obsidian disappears tomorrow?</h3><p>Your notes are unaffected, they are already plain Markdown files on your disk that open in any editor.</p></article>
-      <article class="card faq-card"><h3>Notion disappears tomorrow?</h3><p>You must export first, and relations, rollups, and custom views do not survive the export as structured data.</p></article>
-      <article class="card faq-card"><h3>Need git for a plain folder?</h3><p>No, iCloud or Dropbox sync works fine. Git is worth adding later for real version history if you want it.</p></article>
-      <article class="card faq-card"><h3>Which one should I pick?</h3><p>Plain files for long-term ownership, Obsidian for backlinks without losing files, Notion for database-shaped team work.</p></article>
+      <article class="card faq-card"><h3>Can I use Notion and Obsidian at the same time?</h3><p>Yes, plenty of people run Notion for shared team or club work and Obsidian or plain files for personal notes. The friction shows up if you try to make one system the source of truth for both, since Notion&#x27;s database features do not export cleanly and Obsidian&#x27;s plugin syntax does not import into Notion.</p></article>
+      <article class="card faq-card"><h3>Is Obsidian really free to use?</h3><p>The core app is free for both personal and commercial use, since Obsidian removed its separate commercial-use license requirement in 2024. The paid parts are the first-party Sync and Publish add-ons, so check Obsidian&#x27;s own pricing page for current rates rather than trusting an old number.</p></article>
+      <article class="card faq-card"><h3>Does Notion have a student discount?</h3><p>Notion has offered education plans for students with a school email address in the past, but terms and pricing change over time, so check Notion&#x27;s own pricing page instead of relying on outdated information.</p></article>
+      <article class="card faq-card"><h3>What happens to my notes if Obsidian disappears tomorrow?</h3><p>Nothing happens to the notes themselves, because they are already plain Markdown files sitting in a folder on your disk. You would lose the app&#x27;s search, graph view, and plugins, but every note still opens in any text editor on any computer.</p></article>
+      <article class="card faq-card"><h3>What happens to my notes if Notion disappears tomorrow?</h3><p>You would need to export first, and that export is lossy for anything shaped like a database, since relations, rollups, and custom views do not survive as those things. Simple pages export to Markdown reasonably well, but a linked project tracker built on relational databases does not.</p></article>
+      <article class="card faq-card"><h3>Do I need to know git to keep notes in a plain folder?</h3><p>No, git is optional. A folder synced through iCloud or Dropbox works fine for most students. Git is worth learning if you want real version history and are already comfortable with a terminal, but it is an addition, not a requirement.</p></article>
+      <article class="card faq-card"><h3>Which one should a CS student actually pick?</h3><p>If you already live in a terminal and want notes that outlive every app you will ever install, start with a plain Markdown folder. If you want backlinks and a graph without giving up local files, use Obsidian. If your notes are really project management with relational data and live collaboration, use Notion.</p></article>
     </div>
   </section>
 
@@ -228,5 +229,6 @@ git -C ~/notes log --since="1 week ago" --oneline</span>
 </footer>
 
 <script src="/js/site.js" defer></script>
+<script src="/js/lux-motion.js" defer></script>
 </body>
 </html>
