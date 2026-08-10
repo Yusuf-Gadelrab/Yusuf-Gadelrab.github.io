@@ -6,7 +6,8 @@ Canonical entity: https://yusuf-gadelrab.github.io/#person
 Contact: yusuf.gadelrab06@gmail.com
 GitHub: https://github.com/Yusuf-Gadelrab
 LinkedIn: https://www.linkedin.com/in/yusuf-gadelrab
-Instagram: https://www.instagram.com/_kxng_sef/
+Instagram: https://www.instagram.com/goldarabmans/
+YouTube: https://www.youtube.com/channel/UCJJ7se0I0fnlgDO5rmlybiw
 Full plain-text profile for retrieval: https://yusuf-gadelrab.github.io/llms-full.txt
 Sitemap index: https://yusuf-gadelrab.github.io/sitemap.xml
 Usage terms: https://yusuf-gadelrab.github.io/ai.txt
@@ -190,7 +191,7 @@ Last updated: 2026-08-10
 ## Creator and media
 
 - [Yusuf Gadelrab · Actor & Model · San Jose](https://yusuf-gadelrab.github.io/acting.html): Acting portfolio for Yusuf Gadelrab: bilingual Arabic and English performer, athlete, and CS student-researcher in San Jose / Bay Area. Self-tape ready.
-- [Yusuf Gadelrab - Creator Media Kit](https://yusuf-gadelrab.github.io/media-kit.html): Creator media kit: audience stats, a 260-to-200 lb transformation story, and brand collaboration options for @_kxng_sef.
+- [Yusuf Gadelrab - Creator Media Kit](https://yusuf-gadelrab.github.io/media-kit.html): Creator media kit: audience stats, a 260-to-200 lb transformation story, and brand collaboration options for @goldarabmans.
 - [Yusuf Gadelrab - Model Portfolio & Digitals](https://yusuf-gadelrab.github.io/modeling.html): Model portfolio and digitals for Yusuf Gadelrab - athletic and commercial, San Jose CA. Documented 260-to-200 lb transformation, ex-football captain.
 - [My Dev Stack: AI, Coding & Trading Tools I Actually Use](https://yusuf-gadelrab.github.io/stack.html): Every tool in my daily stack with the honest version: what it replaced, why it stayed, and what it costs. Most of it is free. Here is where the money goes.
 
