@@ -12,7 +12,7 @@ Method: static parse of every file (title, description, canonical, OG/Twitter, `
 
 **This site does not have a technical SEO problem.** It has an *authority and indexing* problem.
 
-The metadata layer is already better than the overwhelming majority of personal sites. Before I touched anything: 130/131 pages had a unique title, zero duplicate titles site-wide, 102/131 had descriptions, 96/131 had canonicals, `<html lang="en">` was correct on 130/131, every `og:url` matched its canonical, and there were **zero broken internal links and zero broken asset references** across 131 files. The `Person` JSON-LD on the homepage is genuinely well-built — `sameAs`, `alumniOf`, `knowsAbout`, and `subjectOf` with the SIGCSE paper and poster contribution and the real DOI.
+The metadata layer is already better than the overwhelming majority of personal sites. Before I touched anything: 130/131 pages had a unique title, zero duplicate titles site-wide, 102/131 had descriptions, 96/131 had canonicals, `<html lang="en">` was correct on 130/131, every `og:url` matched its canonical, and there were **zero broken internal links and zero broken asset references** across 131 files. The `Person` JSON-LD on the homepage is genuinely well-built — `sameAs`, `alumniOf`, `knowsAbout`, and `subjectOf` with the SIGCSE paper and the real DOI.
 
 So the fixes below are real but small. **They will not, on their own, move you up a single position for "Yusuf Gadelrab."** For a new personal site on a `github.io` subdomain, the binding constraints are, in order:
 
@@ -160,10 +160,10 @@ Every one of these must use the identical name, city, school, and canonical URL 
 
 The static boot snapshot only contains the **Home** section (286 words). So the rendered Research and Projects sections — including the SIGCSE work, which is your best E-E-A-T signal — exist only inside the JS bundle at a URL that can never rank independently.
 
-Partly mitigated already, which is why this is orange not red: the paper and the poster contribution appear in the homepage `Person` JSON-LD `subjectOf` array with the DOI, and `about.html`, `resume.html`, `apps.html`, and `everything.html` cover the same ground as real crawlable URLs.
+Partly mitigated already, which is why this is orange not red: the paper appears in the homepage `Person` JSON-LD `subjectOf` array with the DOI, and `about.html`, `resume.html`, `apps.html`, and `everything.html` cover the same ground as real crawlable URLs.
 
 **Fix (cheapest first):**
-- **Do nothing structural.** Instead make sure `about.html` carries the full research narrative in visible HTML — it is the page your `Person` schema names as `mainEntityOfPage`, so it is the one Google will treat as canonical for the entity. Verify the paper title, the poster title, and the DOI appear as visible text there, not only in JSON-LD.
+- **Do nothing structural.** Instead make sure `about.html` carries the full research narrative in visible HTML — it is the page your `Person` schema names as `mainEntityOfPage`, so it is the one Google will treat as canonical for the entity. Verify the paper title and the DOI appear as visible text there, not only in JSON-LD.
 - Optional, larger: extend the boot snapshot in `public/index.html` to include a short static Research block. This is the only change here that touches layout, so it's your call, not mine.
 
 ### 🟠 4. Keyword cannibalization — two pairs of near-duplicate posts
@@ -232,7 +232,7 @@ Every post uses `og-card.png`. Per-post cards would lift click-through when thes
 
 **Then, on-site, only after the above:**
 
-10. Verify `about.html` states the paper title, the poster title, and the DOI as **visible text**, not just JSON-LD (§3.3).
+10. Verify `about.html` states the paper title and the DOI as **visible text**, not just JSON-LD (§3.3).
 11. Resolve the two cannibalization pairs with canonical tags (§3.4).
 12. Deploy. `npm run deploy` from the repo root — `predeploy` rebuilds, so `public/` edits ship. Committing to `main` alone does **not** publish; the live site serves from `gh-pages`.
 

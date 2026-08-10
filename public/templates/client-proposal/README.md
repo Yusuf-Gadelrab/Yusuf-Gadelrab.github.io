@@ -5,7 +5,7 @@ Two self-contained HTML files. No build step, no internet connection required �
 - **`client-proposal.html`** — the full 9-page sell-and-close proposal (cover → executive summary → problem → solution → scope → deliverables → investment → terms → signature).
 - **`sow-standalone.html`** — a tighter 3-page SOW-only version (scope → deliverables/timeline → terms/signature) for a client who has already agreed on price and just needs the paperwork.
 
-Both ship pre-filled with a believable sample engagement — **FreightDesk AI back-office pilot for Cascade Freight Brokers** ($999 setup + $249/mo, Growth Partner tier) — so you can see real spacing and line lengths instead of lorem ipsum. Dates, tiers, and totals are internally consistent; use them as your editing reference.
+Both ship pre-filled with a believable sample engagement — **Haulwright AI back-office pilot for Cascade Freight Brokers** (an entirely fictional vendor, product and client) ($999 setup + $249/mo, Growth Partner tier) — so you can see real spacing and line lengths instead of lorem ipsum. Dates, tiers, and totals are internally consistent; use them as your editing reference.
 
 ## How to edit
 
@@ -15,7 +15,7 @@ Every editable field lives inside an `<!-- ===== EDIT BELOW ===== -->` comment b
 |---|---|
 | `Cascade Freight Brokers` | Your client's company name (appears in cover, footers, sig block) |
 | `Marcus Reyes, Director of Operations` | Your client contact's name & title |
-| `FreightDesk AI` / `Back-Office Automation Pilot` | Your project/product name |
+| `Haulwright AI` / `Back-Office Automation Pilot` | Your project/product name |
 | `Devin Marsh` / `Halloway Studio` | Your name / studio name |
 | `hello@hallowaystudio.com`, `(503) 555-0182`, `hallowaystudio.com` | Your contact details |
 | `July 31, 2026` | Proposal date |

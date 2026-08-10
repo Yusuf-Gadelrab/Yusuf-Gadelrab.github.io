@@ -160,8 +160,8 @@ POST = {
               "bilingual condition and the English-only condition produced an effect size in the "
               "range of Cohen's d 0.25 to 0.40 and was <strong>not</strong> statistically "
               "significant. So the honest claim is that the intervention moved students, not that "
-              "bilingual instruction beat English instruction. Two of our papers were accepted to "
-              "SIGCSE 2026, and I would rather represent them accurately than usefully. More on the "
+              "bilingual instruction beat English instruction. Our paper was accepted to "
+              "SIGCSE 2026, and I would rather represent it accurately than usefully. More on the "
               "research is on <a href=\"/research.html\">the research page</a> and in "
               "<a href=\"/guides/bilingual-coding-cs-education.html\">the bilingual coding guide</a>."),
 

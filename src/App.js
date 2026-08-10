@@ -363,7 +363,7 @@ const siteData = {
       { label: 'Finance / fintech résumé', url: '/Yusuf_Gadelrab_Resume.pdf' },
     ],
     summary:
-      'CS undergraduate at SJSU (B.S., 2028) with applied work in AI/ML, quantitative finance, and inclusive-computing research. Co-author of a peer-reviewed ACM SIGCSE 2026 publication, plus a poster contribution. Two résumés below — one tuned for software/AI roles, one for finance and fintech.',
+      'CS undergraduate at SJSU (B.S., 2028) with applied work in AI/ML, quantitative finance, and inclusive-computing research. Co-author of a peer-reviewed ACM SIGCSE 2026 publication. Two résumés below — one tuned for software/AI roles, one for finance and fintech.',
   },
 };
 
