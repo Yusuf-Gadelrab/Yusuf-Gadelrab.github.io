@@ -2,6 +2,8 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
+<meta name="referrer" content="strict-origin-when-cross-origin">
+<meta http-equiv="Content-Security-Policy" content="object-src 'none'; base-uri 'self'">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <!-- tech:seo — managed block (SEO / social / structured data / perf / PWA) -->
 <link rel="preload" href="/css/site.css" as="style">
@@ -35,15 +37,11 @@
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Hire Yusuf Gadelrab — Recruiters &amp; Founding Clients">
 <meta name="twitter:description" content="Recruiters: internship-ready SWE/AI/ML/quant talent. Founders: a freelance builder for automation and AI tooling.">
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","@id":"https://yusuf-gadelrab.github.io/hire.html#faq","mainEntity":[{"@type":"Question","name":"Is Yusuf Gadelrab available for a Summer 2027 internship?","acceptedAnswer":{"@type":"Answer","text":"Yes. He is targeting software engineering, AI/ML, fintech and quantitative finance, data science, product/strategy, and developer advocacy roles for Summer 2027. He is a Canadian citizen on TD status and will need US work sponsorship. Open to San Francisco, Remote, New York City, Seattle, Austin, and Toronto."}},{"@type":"Question","name":"Does he do freelance or contract work?","acceptedAnswer":{"@type":"Answer","text":"Yes, solo. He scopes, builds and ships it himself — no agency handoff. Productised options include FreightDesk AI founding-client pilots for freight brokerages, a 48-hour LinkedIn profile rewrite, ATS-safe resume rebuilds, and black-and-gold template packs. Anything outside those, email a brief."}},{"@type":"Question","name":"What is the fastest way to reach him?","acceptedAnswer":{"@type":"Answer","text":"Email yusuf.gadelrab06@gmail.com with what you need in the first line. LinkedIn works too. He replies to serious inquiries within a couple of days."}},{"@type":"Question","name":"Does he do brand partnerships or sponsorships?","acceptedAnswer":{"@type":"Answer","text":"Yes, that runs through a separate media kit with audience numbers and past collaborations, not through this page."}},{"@type":"Question","name":"Does he need visa sponsorship?","acceptedAnswer":{"@type":"Answer","text":"Yes. He is a Canadian citizen and will need US work sponsorship for full-time employment. He would rather say that up front than have it surface after two interview rounds. For freelance and contract work he only takes engagements that fit his current status, and he says so before scoping rather than after."}},{"@type":"Question","name":"How long does he take to reply?","acceptedAnswer":{"@type":"Answer","text":"Within two business days, written by him rather than a template. If it is not a fit he says so in the reply instead of going quiet."}},{"@type":"Question","name":"Is this page written by AI?","acceptedAnswer":{"@type":"Answer","text":"Drafted with tools, edited and fact-checked by Yusuf. Every number on this page links back to where it was first published, so it can be checked rather than trusted."}}]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","@id":"https://yusuf-gadelrab.github.io/hire.html#faq","mainEntity":[{"@type":"Question","name":"Is he available for a Summer 2027 internship?","acceptedAnswer":{"@type":"Answer","text":"Yes — software engineering, AI/ML, fintech and quantitative finance, data science, product/strategy, and developer advocacy. US permanent resident (Green Card), authorized to work with no sponsorship required. Open to SF, Remote, NYC, Seattle, Austin, Toronto."}},{"@type":"Question","name":"Does he do freelance or contract work?","acceptedAnswer":{"@type":"Answer","text":"Yes, solo — he scopes, builds and ships it himself. Productised options above; anything else, email a brief and he'll say honestly whether it's a fit."}},{"@type":"Question","name":"What's the fastest way to reach him?","acceptedAnswer":{"@type":"Answer","text":"yusuf.gadelrab06@gmail.com — put what you need in the first line. LinkedIn works too. Replies to serious inquiries within a couple of days."}},{"@type":"Question","name":"Does he do brand partnerships or sponsorships?","acceptedAnswer":{"@type":"Answer","text":"Yes — that runs through the media kit , with audience numbers and past collaborations, not through this page."}},{"@type":"Question","name":"Does he need visa sponsorship?","acceptedAnswer":{"@type":"Answer","text":"No. He is a US permanent resident (Green Card holder) and is authorized to work for any US employer with no sponsorship required, now or in the future. He would rather say that up front than have it surface after two interview rounds."}},{"@type":"Question","name":"How long does he take to reply?","acceptedAnswer":{"@type":"Answer","text":"Within two business days, written by him rather than a template. If it is not a fit he says so in the reply instead of going quiet."}},{"@type":"Question","name":"Is this page written by AI?","acceptedAnswer":{"@type":"Answer","text":"Drafted with tools, edited and fact-checked by Yusuf. Every number here links back to where it was first published, so it can be checked rather than trusted."}}]}</script>
 <link rel="stylesheet" href="/css/site.css">
+<link rel="stylesheet" href="/css/lux-motion.css">
 <style>
   /* ---- page-specific only ---- */
-  .path{border:1px solid var(--line-soft);border-radius:var(--radius-lg);padding:var(--s6)}
-  .path .num{font-family:var(--display-pro);font-weight:800;color:var(--gold-dim);
-    font-size:var(--t-small);letter-spacing:1px}
-  .path h2{margin:var(--s2) 0 var(--s3)}
-  .path>p.lead{font-size:1.02rem}
   .proof{display:flex;gap:var(--s4);align-items:flex-start;padding:var(--s4) 0;
     border-bottom:1px solid var(--line-soft)}
   .proof:last-child{border-bottom:none}
@@ -88,11 +86,22 @@
     color:var(--gold-2);display:block;margin-bottom:var(--s2)}
   .next p{color:var(--muted);font-size:var(--t-small);margin:0}
   .next b{color:var(--ink)}
+
+  /* Quiet bounce-capture. Deliberately ghost-weight, below the closing gold
+     button, so it never competes with the one action this page is for. */
+  form.mini{display:flex;flex-wrap:wrap;gap:var(--s2);max-width:440px;margin-top:var(--s4)}
+  form.mini input{flex:1 1 200px;min-width:0;background:var(--panel2);
+    border:1px solid var(--line-soft);border-radius:var(--radius);color:var(--ink);
+    font-family:var(--body-font);font-size:var(--t-small);padding:11px 14px}
+  form.mini input::placeholder{color:var(--faint)}
+  form.mini input:focus{border-color:var(--gold)}
+  form.mini input:focus-visible{outline:2px solid var(--gold-2);outline-offset:2px}
+  .capture-note{color:var(--muted);font-size:var(--t-micro);margin-top:var(--s3)}
 </style>
 <!-- geo:entity — canonical Person node, one entity across every page -->
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"Person","@id":"https://yusuf-gadelrab.github.io/#person","name":"Yusuf Gadelrab","url":"https://yusuf-gadelrab.github.io/"}</script>
+
 <link rel="alternate" type="text/plain" href="https://yusuf-gadelrab.github.io/llms-full.txt" title="Plain-text profile for language models">
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"CollectionPage","name":"Hire Yusuf Gadelrab","url":"https://yusuf-gadelrab.github.io/hire.html","author":{"@id":"https://yusuf-gadelrab.github.io/#person"}}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"CollectionPage","name":"Hire Yusuf Gadelrab","url":"https://yusuf-gadelrab.github.io/hire.html","author":{"@id":"https://yusuf-gadelrab.github.io/#person"},"@id":"https://yusuf-gadelrab.github.io/hire.html#webpage","inLanguage":"en","isPartOf":{"@id":"https://yusuf-gadelrab.github.io/#website"},"speakable":{"@type":"SpeakableSpecification","cssSelector":[".lead","h1"]}}</script>
 </head>
 <body class="pro">
 
@@ -101,6 +110,13 @@
 <nav class="site-nav">
   <a class="site-nav__brand" href="/"><img class="site-nav__lion" src="/img/brand/lion-mark.svg" alt="" width="34" height="34" decoding="async"><span>YUSUF GADELRAB</span></a>
   <div class="site-nav__links"><a href="/">Work</a><a href="/resume.html">Resume</a><a href="/guides.html">Guides</a><a href="/store.html">Store</a><a href="/apps.html">Apps</a><a href="/kxngsef.html">KXNG SEF</a><a href="/hire.html" aria-current="page">Hire</a><a href="/media-kit.html">Media Kit</a></div>
+</nav>
+
+<nav class="crumbs" aria-label="Breadcrumb">
+  <ol>
+    <li><a href="/">Home</a></li>
+    <li><span aria-current="page">Hire</span></li>
+  </ol>
 </nav>
 
 <main id="main">
@@ -133,14 +149,15 @@
         <p class="eyebrow">01 · For Recruiters</p>
         <h2>Internship-ready for Summer 2027</h2>
       </div>
-      <p>Canadian citizen on TD status — will need US work sponsorship. Open to relocation.</p>
+      <p>US permanent resident (Green Card) — authorized to work with no sponsorship required. Open to relocation.</p>
+      <p style="margin-top:var(--s3)">If you are a student reading this rather than hiring: I wrote up the parts that took me longest to work out — <a href="/guides/swe-internship-international-student.html">landing a SWE internship as an international student</a>, <a href="/guides/verify-visa-sponsorship-internships.html">checking whether a posting actually sponsors</a>, <a href="/guides/portfolio-that-gets-interviews.html">building a portfolio that gets interviews</a>, and <a href="/guides/ats-resume.html">getting a resume through an ATS</a>.</p>
     </div>
 
     <div class="grid" style="margin-top:var(--s6)">
       <div class="card stat"><span class="stat__value">78%</span><span class="stat__label">Directional accuracy, 6-month NLP backtest built on IBM Watson</span></div>
       <div class="card stat"><span class="stat__value">60%</span><span class="stat__label">Manual research time cut, same IBM SkillsBuild project</span></div>
       <div class="card stat"><span class="stat__value">2×</span><span class="stat__label">SIGCSE TS 2026 papers co-authored as an undergrad</span></div>
-      <div class="card stat"><span class="stat__value">+0.117R</span><span class="stat__label">Trading edge over 4,933 trades on a 129-symbol, 10-year universe (95% CI +0.057–+0.174) — after my own re-test killed the +0.23R headline I started with</span></div>
+      <div class="card stat"><span class="stat__value">+0.117R</span><span class="stat__label">Backtested expectancy over 4,933 trades on a 129-symbol, 10-year universe (95% CI +0.057–+0.174) — a risk-matched random entry already captures +0.086R of it, and my own re-test killed the +0.23R headline I started with</span></div>
     </div>
 
     <p style="margin-top:var(--s6);color:var(--muted);max-width:var(--maxw-prose)">Target roles: software engineering, AI/ML, fintech and quantitative finance, data science, product/strategy, and developer advocacy. Stack: Python, Java, JavaScript, SQL, React, full-stack, RAG/LLMs, local models via Ollama. Relocate OK: San Francisco, Remote, New York City, Seattle, Austin, Toronto.</p>
@@ -230,11 +247,11 @@
       </div>
       <div>
         <span class="mk">02 · Can a student really deliver this?</span>
-        <p><b>The work is checkable, which is the point of this whole site.</b> 18 finance workflows and 77 passing tests shipped inside a real freight brokerage. DIRA v1.2.0: 98 passing tests, zero dependencies, MIT-licensed on GitHub. Two peer-reviewed SIGCSE TS 2026 papers. Three installable PWAs and 100+ pages live right now. Every number links to where it came from.</p>
+        <p><b>The work is checkable, which is the point of this whole site.</b> 18 finance workflows and 77 passing tests shipped inside a real freight brokerage. DIRA v1.5.0: 124 passing tests, zero dependencies, MIT-licensed on GitHub. Two peer-reviewed SIGCSE TS 2026 papers. 52 published guides and three installable offline PWAs, live right now. Every number links to where it came from.</p>
       </div>
       <div>
-        <span class="mk">03 · Does the visa make this a dead end?</span>
-        <p><b>Not for an internship, and I'd rather you hear it from me than a screening form.</b> I'm a Canadian citizen and I will need US work sponsorship. For freelance and contract work I only take engagements that fit my status, and I say so before scoping rather than after.</p>
+        <span class="mk">03 · Does work authorization make this a dead end?</span>
+        <p><b>No, and I'd rather you hear it from me than a screening form.</b> I'm a Canadian citizen and a US lawful permanent resident (Green Card) — authorized to work for any US employer, with no sponsorship required now or in the future. That applies to internships, full-time roles, freelance and contract work alike.</p>
       </div>
     </div>
 
@@ -248,8 +265,11 @@
   <!-- ============ PROOF OF EXECUTION ============ -->
   <section class="section section--tight" id="proof">
     <div class="grp-head">
-      <p class="eyebrow">03 · How I actually work</p>
-      <h2>Tested, not just shipped</h2>
+      <div>
+        <p class="eyebrow">03 · How I actually work</p>
+        <h2>Tested, not just shipped</h2>
+      </div>
+      <p>Six pieces of work, each with the number that makes it checkable.</p>
     </div>
 
     <div class="panel" style="margin-top:var(--s6)">
@@ -257,13 +277,19 @@
         <div><b>HwyHaul LoadLink</b><span>AI intake and AR automation built during a freight-brokerage internship — 18 finance workflows, 77 passing tests, entirely on local models.</span></div>
       </div>
       <div class="proof">
+        <div><b>IBM SkillsBuild equity-scoring platform</b><span>NLP sentiment pipeline on IBM Watson reading 50+ live market sources a day — 78% directional accuracy on a 6-month backtest, 60% less manual research time.</span></div>
+      </div>
+      <div class="proof">
         <div><b>Broker-agnostic trading bot</b><span>Deterministic order IDs, a claimed-before-every-call journal, idempotent reconciliation — 48 tests, no live capital until the promotion gate clears.</span></div>
       </div>
       <div class="proof">
-        <div><b>DIRA security scanner</b><span>Zero-dependency Python, MIT-licensed, seven scanners plus SBOM and safe auto-remediation — v1.2.0, 98 passing tests, open source on GitHub.</span></div>
+        <div><b>DIRA security scanner</b><span>Zero-dependency Python, MIT-licensed, seven scanners plus SBOM and safe auto-remediation — v1.5.0, 124 passing tests, open source on GitHub.</span></div>
       </div>
       <div class="proof">
-        <div><b>SIGCSE CS-education research</b><span>Two peer-reviewed papers, IRB-approved mixed methods, 60 participants — under Dr. Ethel Tshukudu's CSEd Research Lab at SJSU.</span></div>
+        <div><b>SIGCSE CS-education research</b><span>Two peer-reviewed papers, IRB-approved mixed methods, 60 participants — under Dr. Ethel Tshukudu's CSEd Research Lab at SJSU. <a href="https://doi.org/10.1145/3770761.3777339" target="_blank" rel="noopener">DOI 10.1145/3770761.3777339</a>.</span></div>
+      </div>
+      <div class="proof">
+        <div><b>SVEC technical ops</b><span>Technical Ops &amp; Web Lead at the Silicon Valley Entrepreneurship Club — +40% engagement, 4 sponsors landed, +35% budget.</span></div>
       </div>
     </div>
 
@@ -275,13 +301,16 @@
   <!-- geo:faq-visible — mirrors the FAQPage structured data above -->
   <section class="section section--tight" id="faq">
     <div class="grp-head">
-      <p class="eyebrow">FAQ</p>
-      <h2>Common questions</h2>
+      <div>
+        <p class="eyebrow">FAQ</p>
+        <h2>Common questions</h2>
+      </div>
+      <p>The seven that come up most, answered before you have to ask.</p>
     </div>
     <div class="grid" style="margin-top:var(--s6)">
       <article class="card qa">
         <h3>Is he available for a Summer 2027 internship?</h3>
-        <p>Yes — software engineering, AI/ML, fintech and quantitative finance, data science, product/strategy, and developer advocacy. Canadian citizen on TD status, will need US work sponsorship. Open to SF, Remote, NYC, Seattle, Austin, Toronto.</p>
+        <p>Yes — software engineering, AI/ML, fintech and quantitative finance, data science, product/strategy, and developer advocacy. US permanent resident (Green Card), authorized to work with no sponsorship required. Open to SF, Remote, NYC, Seattle, Austin, Toronto.</p>
       </article>
       <article class="card qa">
         <h3>Does he do freelance or contract work?</h3>
@@ -297,7 +326,7 @@
       </article>
       <article class="card qa">
         <h3>Does he need visa sponsorship?</h3>
-        <p>Yes. He is a Canadian citizen and will need US work sponsorship for full-time employment. He would rather say that up front than have it surface after two interview rounds. For freelance and contract work he only takes engagements that fit his current status, and he says so before scoping rather than after.</p>
+        <p>No. He is a US permanent resident (Green Card holder) and is authorized to work for any US employer with no sponsorship required, now or in the future. He would rather say that up front than have it surface after two interview rounds.</p>
       </article>
       <article class="card qa">
         <h3>How long does he take to reply?</h3>
@@ -329,6 +358,22 @@
     </div>
   </section>
 
+  <hr class="divider">
+
+  <!-- Bounce capture. Not the goal of this page — the goal is the email above —
+       so it stays ghost-weight and sits below the closing CTA. -->
+  <section class="section section--tight" id="stay-in-touch">
+    <p class="eyebrow">Not hiring this cycle?</p>
+    <h2 style="margin-top:var(--s2);max-width:20ch">Get told when I'm free.</h2>
+    <p class="muted" style="font-size:var(--t-small);margin-top:var(--s3);max-width:56ch">One email when I open a new internship cycle or take on client work again. No newsletter, no drip sequence, no sharing your address with anyone.</p>
+    <form id="f-hire" novalidate class="mini">
+      <label class="sr-only" for="e-hire">Your email address</label>
+      <input type="email" id="e-hire" placeholder="you@company.com" autocomplete="email" required>
+      <button class="btn btn-ghost" type="submit">Keep me posted</button>
+    </form>
+    <p class="capture-note" id="n-hire">Goes straight to my inbox. Reply to that email any time and it reaches me directly.</p>
+  </section>
+
 </main>
 
 <footer class="site-footer">
@@ -354,5 +399,13 @@
 </footer>
 
 <script src="/js/site.js" defer></script>
+<script src="/js/lux-motion.js" defer></script>
+<script src="/js/waitlist.js" defer></script>
+<script>
+addEventListener("DOMContentLoaded", function () {
+  if (!window.YGWaitlist) return;
+  YGWaitlist.attach("f-hire", "e-hire", "n-hire", "Hiring & Availability");
+});
+</script>
 </body>
 </html>
