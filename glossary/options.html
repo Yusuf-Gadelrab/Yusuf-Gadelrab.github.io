@@ -386,7 +386,7 @@ Lower BE     =  short put strike  - net credit</span>
       <p>There is one structural rule that has to be checked before entry, and skipping it is the most common way the trade is put on wrong. If the underlying rallies far above the short strike, the long call is worth at least its intrinsic value and the short call obligation is worth its own, so the net converges on the difference between the strikes. Therefore:</p>
       <span class="formula">Net debit  =  long call cost - short call premium received
 
-REQUIRE:  net debit  <  (short strike - long strike)
+REQUIRE:  net debit  &lt;  (short strike - long strike)
 
 Otherwise a large move above the short strike locks in a loss
 no matter how far the underlying rallies.</span>

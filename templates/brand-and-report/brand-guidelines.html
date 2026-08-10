@@ -67,6 +67,9 @@
   .logo-cell.mono-w{background:#000}
   .logo-cell.mono-g{background:radial-gradient(circle,#1a1a0d,#0a0a05)}
   .logo-cell .cap{position:absolute;bottom:10px;left:0;right:0;text-align:center;font-size:10px;letter-spacing:1.5px;text-transform:uppercase;color:var(--muted)}
+  /* --muted is 2.53:1 on the light --paper swatch cell (it is tuned for the dark
+     surface, where it is fine). Same hue, dropped in lightness to 4.60:1. */
+  .logo-cell.paper .cap{color:#767266}
   .section-h{font-size:22px;margin-bottom:4px}
   .dont-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:20px;margin-top:16px}
   .dont-cell{height:120px;border-radius:6px;background:var(--panel2);border:1px solid rgba(212,175,55,.1);

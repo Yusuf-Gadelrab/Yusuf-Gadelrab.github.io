@@ -14,7 +14,10 @@
      ============================================================ */
   :root{
     --bg:#0a0a0b; --bg2:#111114; --panel:#141417; --panel2:#191920;
-    --gold:#d4af37; --gold-2:#f4d47a; --gold-dim:#8a7328;
+    /* --gold-dim is 4.41:1 on --paper and 4.30:1 on --bg, both under the 4.5
+       AA floor. No single lightness clears both a near-white and a near-black
+       surface, so the paper value lives here and .page-dark lifts it below. */
+    --gold:#d4af37; --gold-2:#f4d47a; --gold-dim:#836d26;
     --ink:#f5f2e8; --muted:#a39f94;
     --line:rgba(212,175,55,.16); --glow:rgba(212,175,55,.35);
     --paper:#fbfaf7; --paper-ink:#14140f; --paper-muted:#6b675c; --paper-line:rgba(20,20,15,.12);
@@ -52,7 +55,7 @@
     break-after:page;
   }
   .page:last-of-type{ break-after:auto; }
-  .page-dark{ background:var(--bg); color:var(--ink); }
+  .page-dark{ background:var(--bg); color:var(--ink); --gold-dim:#967d2b; }
   .page-paper{ background:var(--paper); color:var(--paper-ink); }
 
   @media print{

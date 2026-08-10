@@ -181,8 +181,7 @@
     <div class="grid grid--2" style="margin-top:var(--s6)">
       <div class="card">
         <h3>What's real</h3>
-        <!-- corrected 2026-08-09: was "v1.1.0 ... six scanners ... 37 passing tests"; measured v1.5.0 via cat dira/_version.py, 7 scanner modules via ls dira/scanners/*.py | grep -v __init__ | wc -l -->
-        <!-- corrected again 2026-08-09 (adversarial verifier): the interim fix said "134 passing tests", which was already false 7 minutes after it was written — `cd ~/Startups/dira && uv run pytest --collect-only -q | tail -1` returned "134 tests collected" at 21:44 PT after tests/test_dira.py gained 2 parametrized tests. An exact test count on a marketing page goes stale within hours, so this now uses a floor claim that stays true as tests are added. Re-check before deploy: the sentence must remain true at the measured count. -->
+        <!-- Claims below are measured, not estimated. The test count is stated as a floor so it stays true as tests are added; re-measure before changing the version, scanner count or floor. -->
         <p>The scanner exists and works. DIRA v1.5.0 is MIT-licensed and zero-dependency, with seven scanners, SBOM output in CycloneDX and SPDX, safe auto-remediation, diff-based gating and over 130 automated tests. The technical capability behind this program is not hypothetical.</p>
       </div>
       <div class="card">
