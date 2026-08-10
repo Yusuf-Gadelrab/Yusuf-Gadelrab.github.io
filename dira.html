@@ -37,7 +37,7 @@
 <meta name="keywords" content="secret scanning, startup security audit, SBOM generator, SOC 2 readiness, dependency CVE scanner, SARIF, devsecops, open source security tool">
 <meta name="robots" content="index,follow">
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"SoftwareApplication","name":"DIRA","alternateName":"dira-scan","applicationCategory":"DeveloperApplication","operatingSystem":"macOS, Linux, Windows","url":"https://yusuf-gadelrab.github.io/dira.html","description":"Zero-dependency security audit for startup codebases: secret scanning, dependency CVEs via OSV.dev, 38 misconfiguration rules, dependency license classification, git-history leak detection, live TLS and security-header checks, SBOM generation, and an 18-point startup security-readiness score.","author":{"@id":"https://yusuf-gadelrab.github.io/#person"},"license":"https://opensource.org/licenses/MIT","offers":{"@type":"Offer","price":"0","priceCurrency":"USD","availability":"https://schema.org/InStock"},"alternativeHeadline":"Find it before your first enterprise customer does."}</script>
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"What does DIRA scan for?","acceptedAnswer":{"@type":"Answer","text":"Seven scanners: leaked credentials (23 provider patterns plus an entropy-gated generic rule), dependency vulnerabilities resolved against OSV.dev, 38 misconfiguration rules across Docker, Kubernetes, Terraform, GitHub Actions, cloud IAM, frontend code and LLM applications, dependency license risk, secrets buried in git history, the live domain's TLS and security headers, and an 18-point startup security-readiness score."}},{"@type":"Question","name":"Does DIRA send my code anywhere?","acceptedAnswer":{"@type":"Answer","text":"No. Scanning happens entirely on your machine. The only network calls are anonymous package-name lookups to OSV.dev and the public npm and PyPI registries, plus requests to a domain you explicitly pass with --target . The --offline flag disables all of them. Detected secrets are redacted before they reach any report or cache."}},{"@type":"Question","name":"How much does DIRA cost?","acceptedAnswer":{"@type":"Answer","text":"The scanner is free forever. MIT-licensed open source, installable from source with pipx install git+https://github.com/Yusuf-Gadelrab/dira , with PyPI and npm packages on the way. There is no paid tier of the tool and no feature held back. Two optional paid services exist if you want the output turned into a client-ready document — a $149 Startup Readiness Report and a $499 Deep Audit , both human-reviewed. Neither is required to use DIRA."}},{"@type":"Question","name":"Can DIRA replace a penetration test or a SOC 2 audit?","acceptedAnswer":{"@type":"Answer","text":"No. DIRA is automated pattern analysis. It can't see your cloud IAM, your MFA enforcement, or your access reviews — those appear in the report as manual attestations. A clean run means no known bad patterns in the repository, not that the product is secure."}},{"@type":"Question","name":"Is DIRA on PyPI or npm yet?","acceptedAnswer":{"@type":"Answer","text":"Not yet. v1.5.0 installs from source on GitHub today with pipx install git+https://github.com/Yusuf-Gadelrab/dira@v1.5.0 , then dira scan . PyPI and npm packages are on the way — the email list below pings the day either lands."}}],"@id":"https://yusuf-gadelrab.github.io/dira.html#faq"}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"What does DIRA scan for?","acceptedAnswer":{"@type":"Answer","text":"Seven scanners: leaked credentials (23 provider patterns plus an entropy-gated generic rule), dependency vulnerabilities resolved against OSV.dev, 38 misconfiguration rules across Docker, Kubernetes, Terraform, GitHub Actions, cloud IAM, frontend code and LLM applications, dependency license risk, secrets buried in git history, the live domain's TLS and security headers, and an 18-point startup security-readiness score."}},{"@type":"Question","name":"Does DIRA send my code anywhere?","acceptedAnswer":{"@type":"Answer","text":"No. Scanning happens entirely on your machine. The only network calls are anonymous package-name lookups to OSV.dev and the public npm and PyPI registries, plus requests to a domain you explicitly pass with --target . The --offline flag disables all of them. Detected secrets are redacted before they reach any report or cache."}},{"@type":"Question","name":"How much does DIRA cost?","acceptedAnswer":{"@type":"Answer","text":"The scanner is free forever. MIT-licensed open source, installable from source with pipx install git+https://github.com/Yusuf-Gadelrab/dira , with PyPI and npm packages on the way. All seven scanners, every detection rule, the SBOM output, dira fix, baseline and --diff gating are free and unrestricted. Two features are reserved for the paid tier: --policy (per-rule severity overrides) and dira report (the client-ready readiness document). Neither is needed to find or fix anything. Two optional paid services exist if you want the output turned into a reviewed document — a $149 Startup Readiness Report and a $499 Deep Audit , both human-reviewed. Neither is required to use DIRA."}},{"@type":"Question","name":"Can DIRA replace a penetration test or a SOC 2 audit?","acceptedAnswer":{"@type":"Answer","text":"No. DIRA is automated pattern analysis. It can't see your cloud IAM, your MFA enforcement, or your access reviews — those appear in the report as manual attestations. A clean run means no known bad patterns in the repository, not that the product is secure."}},{"@type":"Question","name":"Is DIRA on PyPI or npm yet?","acceptedAnswer":{"@type":"Answer","text":"Not yet. v1.5.0 installs from source on GitHub today with pipx install git+https://github.com/Yusuf-Gadelrab/dira , then dira scan . PyPI and npm packages are on the way — the email list below pings the day either lands."}}],"@id":"https://yusuf-gadelrab.github.io/dira.html#faq"}</script>
 <link rel="stylesheet" href="/css/site.css">
 <link rel="stylesheet" href="/css/lux-motion.css">
 <style>
@@ -186,7 +186,7 @@
     <div class="eyebrow">Dhahab · Open Source · v1.5.0</div>
     <h1 style="margin:14px 0 8px">DIRA <span style="color:#8a857d;font-size:.5em">درع</span></h1>
     <p class="lead" style="margin:0 auto 10px;max-width:660px">
-      <b>A zero-dependency Python security scanner for your codebase — 138 passing tests,
+      <b>A zero-dependency Python security scanner for your codebase — 208 passing tests,
       MIT licensed, one command.</b>
     </p>
     <p style="color:#8a857d;max-width:620px;margin:0 auto 30px">
@@ -275,7 +275,7 @@
       <div><b>7</b><span>Scanners</span></div>
       <div><b>62</b><span>Detection rules</span></div>
       <div><b>0</b><span>Dependencies</span></div>
-      <div><b>138</b><span>Passing tests</span></div>
+      <div><b>208</b><span>Passing tests</span></div>
       <div><b>0.9s</b><span>Warm re-scan</span></div>
     </div>
   </div>
@@ -339,7 +339,7 @@
     <div class="next" style="margin-top:30px">
       <div>
         <span class="mk">01 · Why trust a student's security tool?</span>
-        <p><b>The audit trail is the whole pitch: 138 passing tests, and zero dependencies means
+        <p><b>The audit trail is the whole pitch: 208 passing tests, and zero dependencies means
         there is nothing to audit but the source itself.</b> It's MIT licensed on GitHub — read
         every rule yourself instead of taking my word for it.</p>
       </div>
@@ -419,7 +419,7 @@
         <ul>
           <li><b>All seven scanners</b> — secrets, dependency CVEs, 38 config/IaC rules, license
           risk, git-history leaks, live TLS &amp; headers, readiness score.</li>
-          <li><b>62 detection rules</b>, 138 passing tests, zero dependencies.</li>
+          <li><b>62 detection rules</b>, 208 passing tests, zero dependencies.</li>
           <li><b>Your own reports</b> — <code class="inline">-f html</code>,
           <code class="inline">-f sarif</code>, <code class="inline">-f json</code>, plus
           CycloneDX/SPDX SBOM output.</li>
@@ -527,7 +527,7 @@
     <h2>Three minutes to your first report</h2>
     <div class="steps" style="margin-top:26px">
       <div class="step"><h3>Scan</h3>
-        <p><code class="inline">pipx install git+https://github.com/Yusuf-Gadelrab/dira@v1.5.0</code>,
+        <p><code class="inline">pipx install git+https://github.com/Yusuf-Gadelrab/dira</code>,
         then <code class="inline">dira scan .</code> — PyPI and npm packages are on the way.</p></div>
       <div class="step"><h3>Share</h3>
         <p><code class="inline">-f html -o report.html</code> produces a client-shareable audit.
@@ -589,10 +589,14 @@
         <h3>How much does DIRA cost?</h3>
         <p><b>The scanner is free forever.</b> MIT-licensed open source, installable from source
         with <code class="inline">pipx install git+https://github.com/Yusuf-Gadelrab/dira</code>,
-        with PyPI and npm packages on the way. There is no paid tier of the tool and no feature
-        held back. Two optional paid services exist if you want the output turned into a
-        client-ready document — a <a class="gold" href="#pricing">$149 Startup Readiness Report and
-        a $499 Deep Audit</a>, both human-reviewed. Neither is required to use DIRA.</p>
+        with PyPI and npm packages on the way. All seven scanners, every detection rule, the SBOM
+        output, <code class="inline">dira fix</code>, baseline and <code class="inline">--diff</code>
+        gating are free and unrestricted. Two features are reserved for the paid tier:
+        <code class="inline">--policy</code> (per-rule severity overrides) and
+        <code class="inline">dira report</code> (the client-ready readiness document). Neither is
+        needed to find or fix anything. Two optional paid services exist if you want the output
+        turned into a reviewed document — a <a class="gold" href="#pricing">$149 Startup Readiness
+        Report and a $499 Deep Audit</a>, both human-reviewed. Neither is required to use DIRA.</p>
       </article>
       <article class="card qa">
         <h3>Can DIRA replace a penetration test or a SOC 2 audit?</h3>
@@ -603,7 +607,7 @@
       <article class="card qa">
         <h3>Is DIRA on PyPI or npm yet?</h3>
         <p>Not yet. v1.5.0 installs from source on GitHub today with
-        <code class="inline">pipx install git+https://github.com/Yusuf-Gadelrab/dira@v1.5.0</code>,
+        <code class="inline">pipx install git+https://github.com/Yusuf-Gadelrab/dira</code>,
         then <code class="inline">dira scan .</code> PyPI and npm packages are on the way — the
         email list below pings the day either lands.</p>
       </article>
