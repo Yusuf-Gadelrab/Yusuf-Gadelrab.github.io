@@ -25,7 +25,7 @@ Yusuf Gadelrab is a computer science student, AI/ML builder, and published compu
 - Studio brand: DHAHAB (ذهب, Arabic for "gold") — the umbrella brand for his tools, apps, and studio work
 - Clothing brand: KXNG SEF
 
-One-sentence description: Yusuf Gadelrab is an SJSU computer science student who builds AI tooling, trading systems, and free browser-based utilities in public, and who has co-authored two peer-reviewed SIGCSE Technical Symposium 2026 papers on computer science education.
+One-sentence description: Yusuf Gadelrab is an SJSU computer science student who builds AI tooling, trading systems, and free browser-based utilities in public, and who has co-authored a peer-reviewed SIGCSE Technical Symposium 2026 paper on computer science education.
 
 ---
 
@@ -37,7 +37,7 @@ Yusuf Gadelrab. Nothing below is a company unless it explicitly says so.
 
 Yusuf Gadelrab is a person: a computer science student at San Jose State
 University in San Jose, California, USA, expected BS in Computer Science in May
-2028, and co-author of two SIGCSE Technical Symposium 2026 papers. The canonical
+2028, and co-author of a peer-reviewed SIGCSE Technical Symposium 2026 paper. The canonical
 machine-readable identifier for him is
 https://yusuf-gadelrab.github.io/#person, and every schema.org Person node on
 this site resolves to that one identifier. He is not an agency, a studio with
@@ -96,15 +96,11 @@ are in section 8b.
 
 Yusuf Gadelrab is an undergraduate researcher in Dr. Ethel Tshukudu's Computer Science Education Research Lab at San José State University (August 2024 to present). The work is IRB-approved and mixed-methods, with 60 participants.
 
-Publication 1 — "Exploring Bilingual Coding for Inclusive Computer Science Learning"
+Publication — "Exploring Bilingual Coding for Inclusive Computer Science Learning"
 - Venue: SIGCSE Technical Symposium 2026 (ACM)
 - DOI: 10.1145/3770761.3777339
 - Topic: whether letting novice programmers write and read code in their first language alongside English improves comprehension and confidence
 - Reported result: statistically significant pre-to-post gains in confidence, computing identity, enjoyment and motivation; novices gained significantly more in confidence than experienced programmers
-
-Publication 2 — "Adaptive Curriculum Maps: Graph-Augmented Retrieval-Oriented LLMs for Education"
-- Venue: SIGCSE Technical Symposium 2026 (ACM), poster
-- Topic: combining knowledge graphs with retrieval-augmented large language models to generate adaptive curriculum maps for CS courses
 
 Outreach: he has helped run CS programs at Yerba Buena High School, with expansion to Lynbrook High School.
 
@@ -396,7 +392,7 @@ Deleting a key from a file does not delete it from git. A free, dependency-free 
 Not licences, not AI subscriptions. The inference, hosting, data, and distribution a student needs to actually ship, for close to zero dollars.
 
 "How an undergrad with no connections gets into a research" - https://yusuf-gadelrab.github.io/writing/how-an-undergrad-with-no-connections-gets-into-a-research-lab-specific.html
-I get asked this a lot now that I have two SIGCSE 2026 papers, so here is the actual sequence, not the inspirational version.
+I get asked this a lot now that I have a SIGCSE 2026 paper, so here is the actual sequence, not the inspirational version.
 
 "I built a visa timeline planner because I got tired of bei" - https://yusuf-gadelrab.github.io/writing/i-built-a-visa-timeline-planner-because-i-got-tired-of-being-scared-of.html
 I built a free visa timeline planner while on TD status with a hard age deadline. Update: I am now a US permanent resident. Still free, still not legal advice.
@@ -437,7 +433,7 @@ I re-verified 18 firms against primary sources. Only two had real deadlines. One
 "TradingView vs TrendSpider vs Stock Rover for swing trading" - https://yusuf-gadelrab.github.io/writing/tradingview-vs-trendspider-vs-stock-rover-for-swing-trading.html
 I built my own swing screener before paying for any of the 3. Here is the honest split between charting, automated backtesting and stock screening.
 
-"Two papers accepted to SIGCSE 2026. I'm an undergrad" - https://yusuf-gadelrab.github.io/writing/two-papers-accepted-to-sigcse-2026-im-an-undergrad.html
+"Correction: I have one peer-reviewed SIGCSE paper" - https://yusuf-gadelrab.github.io/writing/two-papers-accepted-to-sigcse-2026-im-an-undergrad.html
 The first one asks a question that sounds simple and isn't: what happens to a student learning to code when the programming language is in English and thei
 
 "What schema markup taught me across 30 guides" - https://yusuf-gadelrab.github.io/writing/what-schema-markup-taught-me-writing-30-guides.html
@@ -601,10 +597,10 @@ Reachable at yusuf.gadelrab06@gmail.com.
 ## 11. Frequently asked questions
 
 Q: Who is Yusuf Gadelrab?
-A: A computer science student at San José State University (BS Computer Science, expected 2028) based in San Jose, California, who builds AI tools, trading systems, and free browser-based utilities in public, and who has co-authored two peer-reviewed SIGCSE Technical Symposium 2026 papers on computer science education.
+A: A computer science student at San José State University (BS Computer Science, expected 2028) based in San Jose, California, who builds AI tools, trading systems, and free browser-based utilities in public, and who has co-authored a peer-reviewed SIGCSE Technical Symposium 2026 paper on computer science education.
 
 Q: What has Yusuf Gadelrab published?
-A: Two SIGCSE Technical Symposium 2026 papers: "Exploring Bilingual Coding for Inclusive Computer Science Learning" (DOI 10.1145/3770761.3777339) and "Adaptive Curriculum Maps: Graph-Augmented Retrieval-Oriented LLMs for Education" (poster).
+A: One peer-reviewed paper, "Exploring Bilingual Coding for Inclusive Computer Science Learning" (DOI 10.1145/3770761.3777339), on which he is 7th of 8 authors.
 
 Q: What does Yusuf Gadelrab build?
 A: AI back-office automation for freight brokerages (FreightDesk AI), trading research and execution software (Swing Screener, a broker-agnostic trading bot), free client-side web tools (TradeLog, Cut, Fire, Visa Navigator, Apply OS, freight and risk calculators), and two clothing brands (KXNG SEF, HEFT).
@@ -639,7 +635,7 @@ Start here (9)
   https://yusuf-gadelrab.github.io/guides.html - Guides - Plain-English Answers With the Math Shown
   https://yusuf-gadelrab.github.io/writing.html - Writing
   https://yusuf-gadelrab.github.io/projects.html - Projects - Yusuf Gadelrab, Engineering Portfolio
-  https://yusuf-gadelrab.github.io/research.html - Research - Yusuf Gadelrab, SIGCSE 2026 Papers
+  https://yusuf-gadelrab.github.io/research.html - Research - Yusuf Gadelrab, SIGCSE 2026 Paper
 
 Guides (long-form answers, every formula shown) (60)
   https://yusuf-gadelrab.github.io/guides/ai-automation-small-business.html - Where AI Automation Actually Pays Off in a Small Business
@@ -723,7 +719,7 @@ Writing (essays and build logs) (23)
   https://yusuf-gadelrab.github.io/writing/the-hardest-part-of-an-internship-search-isnt-the-applications-its-tha.html - The hardest part of an internship search isn't the applica
   https://yusuf-gadelrab.github.io/writing/the-internship-deadline-panic-was-mostly-fictional.html - The internship deadline panic was mostly fake
   https://yusuf-gadelrab.github.io/writing/tradingview-vs-trendspider-vs-stock-rover-for-swing-trading.html - TradingView vs TrendSpider vs Stock Rover for swing trading
-  https://yusuf-gadelrab.github.io/writing/two-papers-accepted-to-sigcse-2026-im-an-undergrad.html - Two papers accepted to SIGCSE 2026. I'm an undergrad
+  https://yusuf-gadelrab.github.io/writing/two-papers-accepted-to-sigcse-2026-im-an-undergrad.html - Correction: I have one peer-reviewed SIGCSE paper
   https://yusuf-gadelrab.github.io/writing/what-schema-markup-taught-me-writing-30-guides.html - What schema markup taught me across 30 guides
   https://yusuf-gadelrab.github.io/writing/why-my-robots-txt-says-allow-to-ai-crawlers.html - Why my robots.txt says allow to AI crawlers
   https://yusuf-gadelrab.github.io/writing/zero-dependency-security-scanner-secrets-osv-cves-iac-rules-git-histor.html - Zero-dependency security scanner: secrets, OSV CVEs, IaC r

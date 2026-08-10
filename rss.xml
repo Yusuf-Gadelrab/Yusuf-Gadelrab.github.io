@@ -6,7 +6,7 @@
 <description>Building in public: AI tooling, CS education research, trading systems, and free tools.</description>
 <atom:link href="https://yusuf-gadelrab.github.io/rss.xml" rel="self" type="application/rss+xml"/>
 <language>en-us</language>
-<lastBuildDate>Sun, 09 Aug 2026 00:00:00 +0000</lastBuildDate>
+<lastBuildDate>Mon, 10 Aug 2026 00:00:00 +0000</lastBuildDate>
 <generator>tools/build_feeds.py</generator>
 <docs>https://www.rssboard.org/rss-specification</docs>
 <ttl>1440</ttl>
@@ -96,13 +96,6 @@
 <description>I got annoyed that scanning for supply chain risk usually means installing a large dependency tree first, so I wrote one with no dependencies at all. Pure</description>
 </item>
 <item>
-<title>Two papers accepted to SIGCSE 2026. I&#x27;m an undergrad</title>
-<link>https://yusuf-gadelrab.github.io/writing/two-papers-accepted-to-sigcse-2026-im-an-undergrad.html</link>
-<guid isPermaLink="true">https://yusuf-gadelrab.github.io/writing/two-papers-accepted-to-sigcse-2026-im-an-undergrad.html</guid>
-<pubDate>Wed, 29 Jul 2026 00:00:00 +0000</pubDate>
-<description>The first one asks a question that sounds simple and isn&#x27;t: what happens to a student learning to code when the programming language is in English and thei</description>
-</item>
-<item>
 <title>The hardest part of an internship search isn&#x27;t the applications. It&#x27;s that nobody tells you...</title>
 <link>https://yusuf-gadelrab.github.io/writing/the-hardest-part-of-an-internship-search-isnt-the-applications-its-tha.html</link>
 <guid isPermaLink="true">https://yusuf-gadelrab.github.io/writing/the-hardest-part-of-an-internship-search-isnt-the-applications-its-tha.html</guid>
@@ -163,7 +156,14 @@
 <link>https://yusuf-gadelrab.github.io/writing/how-an-undergrad-with-no-connections-gets-into-a-research-lab-specific.html</link>
 <guid isPermaLink="true">https://yusuf-gadelrab.github.io/writing/how-an-undergrad-with-no-connections-gets-into-a-research-lab-specific.html</guid>
 <pubDate>Wed, 29 Jul 2026 00:00:00 +0000</pubDate>
-<description>I get asked this a lot now that I have two SIGCSE 2026 papers, so here is the actual sequence, not the inspirational version.</description>
+<description>I get asked this a lot now that I have a peer-reviewed SIGCSE TS 2026 paper, so here is the actual sequence, not the inspirational version.</description>
+</item>
+<item>
+<title>Correction: I have one peer-reviewed SIGCSE paper</title>
+<link>https://yusuf-gadelrab.github.io/writing/two-papers-accepted-to-sigcse-2026-im-an-undergrad.html</link>
+<guid isPermaLink="true">https://yusuf-gadelrab.github.io/writing/two-papers-accepted-to-sigcse-2026-im-an-undergrad.html</guid>
+<pubDate>Wed, 29 Jul 2026 00:00:00 +0000</pubDate>
+<description>This post used to announce a pair of accepted SIGCSE 2026 works. I have one peer-reviewed paper. Here is the correction, the evidence, and what I changed.</description>
 </item>
 <item>
 <title>Built a position size calculator that refuses to let you round up. Free, no signup</title>
