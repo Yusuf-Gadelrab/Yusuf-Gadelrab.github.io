@@ -5,7 +5,7 @@
 Canonical entity: https://yusuf-gadelrab.github.io/#person
 Contact: yusuf.gadelrab06@gmail.com
 GitHub: https://github.com/Yusuf-Gadelrab
-LinkedIn: https://www.linkedin.com/in/yusuf-gadelrab-76246b221
+LinkedIn: https://www.linkedin.com/in/yusuf-gadelrab
 Instagram: https://www.instagram.com/_kxng_sef/
 Full plain-text profile for retrieval: https://yusuf-gadelrab.github.io/llms-full.txt
 Sitemap index: https://yusuf-gadelrab.github.io/sitemap.xml
