@@ -204,7 +204,7 @@ const siteData = {
       abstract:
         'Co-presented research on using graph-augmented retrieval with large language models to generate adaptive curriculum maps, exploring how LLMs can personalize and structure educational pathways.',
       citation:
-        'Bainapalepu, S., Mondal, M., Desai, J., Bathula, K., & Gadelrab, Y. (2026). "Adaptive Curriculum Maps: Graph-Augmented Retrieval-Oriented LLMs for Education." Poster, SIGCSE TS 2026, ACM, Feb 2026.',
+        '"Adaptive Curriculum Maps: Graph-Augmented Retrieval-Oriented LLMs for Education." Poster, SIGCSE TS 2026, ACM, Feb 2026. Poster contribution, no DOI assigned.',
     },
   ],
   projects: [
@@ -574,7 +574,7 @@ const GOOFY = {
     },
     {
       chapter: 'Chapter III',
-      title: 'Valedictorian, 4.0, graduation speaker',
+      title: 'Valedictorian, 4.0 high school GPA, graduation speaker',
       body:
         'I stood in front of an entire football field of people and gave a speech I had rehearsed about ninety times. I still brought the notes. I still looked at the notes.',
     },

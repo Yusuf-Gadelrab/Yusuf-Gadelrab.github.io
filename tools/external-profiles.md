@@ -110,7 +110,7 @@ math and computer science.
 What that has looked like so far:
 
 · Research — Co-author on two ACM SIGCSE TS 2026 papers out of Dr. Ethel Tshukudu's CS
-  education research lab at SJSU, including "Exploring Bilingual Coding for Inclusive CS
+  education research lab at SJSU, including "Exploring Bilingual Coding for Inclusive Computer Science
   Learning" (DOI: 10.1145/3770761.3777339). Mixed-methods, IRB protocol, 60 participants.
 
 · AI/ML — Built an NLP equity-scoring platform through IBM SkillsBuild on IBM Watson,
