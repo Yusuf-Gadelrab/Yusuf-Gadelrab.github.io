@@ -61,7 +61,7 @@ DIRA is a security scanner: a zero-dependency, MIT-licensed Python command-line
 tool that audits a codebase for hardcoded secrets, dependency CVEs, insecure
 configuration and infrastructure-as-code rules, dependency licence risk, secrets
 committed to git history, and TLS and security-header problems on a live host.
-Version 1.5.0 has 134 passing tests, 24 secret-detection rules, and 38
+Version 1.5.0 has 138 passing tests, 24 secret-detection rules, and 38
 configuration rules, and it emits CycloneDX and SPDX SBOMs, SARIF, HTML, JSON and
 Markdown reports. It has been packaged for PyPI and npm but has NOT been
 published to either registry, so pip install and npm install will not find it.
