@@ -208,7 +208,7 @@
 
     var reqDocs=REQ_DOCS.filter(function(r){ return checked(r[0]); });
     if(reqDocs.length){
-      out+='<h3 style="font-size:9.5px;letter-spacing:1.8px;text-transform:uppercase;color:#8a7328;'
+      out+='<h3 style="font-size:9.5px;letter-spacing:1.8px;text-transform:uppercase;color:#836d26;'
         +'font-family:-apple-system,sans-serif;margin-bottom:8px">Documents required for payment</h3>'
         +'<ul class="fd-doc__list">'+reqDocs.map(function(r){return '<li>'+esc(r[1])+'</li>';}).join('')+'</ul>';
     }

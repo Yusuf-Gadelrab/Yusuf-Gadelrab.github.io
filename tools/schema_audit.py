@@ -50,7 +50,7 @@ KNOWN_TYPES = {
     "ImageObject", "VideoObject", "AudioObject", "SoftwareApplication",
     "WebApplication", "MobileApplication", "SoftwareSourceCode", "Dataset",
     "DataCatalog", "DataDownload", "LearningResource", "Course",
-    "CourseInstance", "Syllabus", "Quiz", "Newsletter", "Message",
+    "CourseInstance", "Syllabus", "Quiz", "Message",
     # how-to / lists
     "HowTo", "HowToStep", "HowToSection", "HowToTip", "HowToSupply",
     "HowToTool", "HowToDirection", "ItemList", "ListItem", "BreadcrumbList",
@@ -67,7 +67,7 @@ KNOWN_TYPES = {
     "PostalAddress", "ContactPoint", "Place", "City", "Country",
     "AdministrativeArea", "GeoCoordinates", "VirtualLocation",
     # events / misc
-    "Event", "EducationalEvent", "BusinessEvent", "Occupation", "JobPosting",
+    "Event", "EducationEvent", "BusinessEvent", "Occupation", "JobPosting",
     "Project", "ResearchProject", "Role", "OrganizationRole", "Audience",
     "EducationalAudience", "Language", "PropertyValue", "QuantitativeValue",
     "MonetaryAmount", "EducationalOccupationalCredential", "Occupation",

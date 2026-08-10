@@ -641,9 +641,27 @@
         }
       }
     }, { rootMargin: '0px 0px -40px 0px', threshold: 0 });
-    
+
+    /* Anything already inside the first viewport is shown INSTANTLY, with its
+       transition suppressed for one frame. Fading in content the visitor is
+       already looking at buys no elegance and costs real Largest Contentful
+       Paint: an element sitting at opacity 0 is not a paint candidate, so the
+       0.7s reveal was pushing LCP ~800ms past first paint on store.html and
+       freightdesk.html. Below-the-fold elements keep the full reveal. */
     var reveals = d.querySelectorAll('.reveal, .reveal-zoom, .reveal-left, .reveal-right');
-    for (var k = 0; k < reveals.length; k++) observer.observe(reveals[k]);
+    var vh = w.innerHeight || 800;
+    var instant = [];
+    var deferred = [];
+    for (var k = 0; k < reveals.length; k++) {
+      var box = reveals[k].getBoundingClientRect();
+      if (box.top < vh && box.bottom > 0) instant.push(reveals[k]);
+      else deferred.push(reveals[k]);
+    }
+    for (var m = 0; m < instant.length; m++) instant[m].style.transition = 'none';
+    for (var n = 0; n < instant.length; n++) instant[n].classList.add('is-in');
+    if (instant.length) { void d.body.offsetHeight; }
+    for (var q = 0; q < instant.length; q++) instant[q].style.transition = '';
+    for (var t = 0; t < deferred.length; t++) observer.observe(deferred[t]);
   }
 
   /* =======================================================================

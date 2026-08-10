@@ -585,6 +585,42 @@ input:focus-visible,textarea:focus-visible,select:focus-visible,
   outline:2px solid var(--gold);outline-offset:2px;
 }
 
+/* WCAG 1.4.1 (Use of Colour) — in-prose link affordance.
+   --gold-2 clears 12.2:1 against --bg, so a link is readable. But a link sitting
+   INSIDE a paragraph of --muted body copy is only 1.70:1 against the text around
+   it (#e9c96a vs #a29c8e, measured), far under the 3:1 that lets colour alone
+   carry "this is a link". Colour therefore cannot be the sole signal, so links
+   embedded in running text get a hairline underline. Chrome (nav, crumbs,
+   footer, buttons, cards, whole-block links) is excluded below — those are
+   identifiable by position and shape, which is itself a non-colour cue. */
+p a,li a,dd a,td a,blockquote a,figcaption a,
+.callout a,.note a,.disclosure a,.lead a,.related__more a,
+.size-note a,.tier__fine a,.faq-sub a,.legal-line a,.pub-meta a,
+.muted a,.machine a,.prose a,.art a,.legal a,
+.yg-trigger a,.proof-band span a{
+  text-decoration:underline;
+  text-decoration-thickness:1px;
+  text-underline-offset:.22em;
+  /* Quiet at rest, full strength on hover/focus — an underline that is present
+     but not shouting. Falls back to currentColor where color-mix is unsupported,
+     which still leaves the underline visible. */
+  text-decoration-color:color-mix(in srgb,currentColor 55%,transparent);
+}
+p a:hover,li a:hover,.prose a:hover,.art a:hover,.legal a:hover,
+p a:focus-visible,li a:focus-visible,.prose a:focus-visible,
+.art a:focus-visible,.legal a:focus-visible{text-decoration-color:currentColor}
+
+/* Not running text: site chrome, buttons, and links whose whole box is the
+   target. These already carry a non-colour affordance (shape, border, position). */
+.site-nav a,.site-footer a,.crumbs a,.crumbs li a,
+.yg-pal a,.yg-cta-bar a,.yg-faq summary a,
+.related__grid a,.related__item,
+p a.btn,li a.btn,p a.badge,li a.badge,
+a.btn,a.badge,a.card,a.panel,a.stat,
+li a.related__item,li > a.tag,.toc a,.tabs a,.a-card a,.a-brand{
+  text-decoration:none;
+}
+
 /* ---------- motion opt-out (must stay last) -------------------------------- */
 @media(prefers-reduced-motion:reduce){
   @view-transition{navigation:none}

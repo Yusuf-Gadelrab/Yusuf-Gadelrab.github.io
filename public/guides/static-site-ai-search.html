@@ -104,8 +104,8 @@
       <p>One command settles the question. Fetch your page with no JavaScript engine, strip the tags, and count the words:</p>
       <span class="formula" tabindex="0" role="group" aria-label="Formula, scrolls horizontally">curl -sL https://yoursite.com/some-page \
   | python3 -c "import sys,re,html;s=sys.stdin.read();
-s=re.sub(r'(?is)<(script|style|noscript).*?</\\1>',' ',s);
-print(len(html.unescape(re.sub('<[^>]+>',' ',s)).split()),'words')"
+s=re.sub(r'(?is)&lt;(script|style|noscript).*?&lt;/\\1&gt;',' ',s);
+print(len(html.unescape(re.sub('&lt;[^&gt;]+&gt;',' ',s)).split()),'words')"
 
 # A 2,000-word article should report roughly 2,000 words.
 # If it reports 12, everything a reader sees is being drawn by JavaScript.</span>

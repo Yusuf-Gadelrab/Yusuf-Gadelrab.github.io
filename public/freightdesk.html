@@ -1154,7 +1154,19 @@ var g=d.createElement('div');g.id='pv2-glow';d.body.appendChild(g);
 addEventListener('pointermove',function(e){g.style.left=e.clientX+'px';g.style.top=e.clientY+'px'},{passive:true});
 var io=new IntersectionObserver(function(es){es.forEach(function(en){if(en.isIntersecting){var el=en.target,sibs=el.parentElement?[].slice.call(el.parentElement.children):[],i=sibs.indexOf(el);el.style.transitionDelay=Math.min(i>0?i*60:0,360)+'ms';el.classList.add('pv2-in');io.unobserve(el)}})},{threshold:.12,rootMargin:'0px 0px -8% 0px'});
 var SEL='section,h1,h2,h3,figure,blockquote,[class*="card"],[class*="tile"],[class*="stat"],[class*="grid"]>div,[class*="grid"]>a,main>p,section>p';
-function scan(root){[].forEach.call((root||d).querySelectorAll(SEL),function(el){if(el.classList.contains('pv2-r'))return;if(el.closest('nav,#pv2-glow,[data-pv2-skip]'))return;var cs=getComputedStyle(el);if(cs.position==='fixed'||cs.position==='sticky')return;el.classList.add('pv2-r');if(/card|tile/.test(el.className))el.classList.add('pv2-lift');io.observe(el)})}
+function scan(root){var cand=[];[].forEach.call((root||d).querySelectorAll(SEL),function(el){if(el.classList.contains('pv2-r'))return;if(el.closest('nav,#pv2-glow,[data-pv2-skip]'))return;var cs=getComputedStyle(el);if(cs.position==='fixed'||cs.position==='sticky')return;cand.push(el)});if(!cand.length)return;
+/* Reads first, writes second: the old loop interleaved getComputedStyle with a
+   class write per element, thrashing layout ~100x on store.html. */
+var vh=innerHeight||800,inst=[],defer=[];cand.forEach(function(el){var b=el.getBoundingClientRect();(b.top<vh&&b.bottom>0?inst:defer).push(el)});
+/* Already on screen -> show instantly with the transition suppressed for one
+   frame. An element held at opacity 0 is not an LCP candidate, so fading in
+   above-the-fold copy was costing ~800ms of Largest Contentful Paint for zero
+   visual payoff (the visitor is already looking at it). Everything below the
+   fold keeps the full 0.7s reveal. */
+inst.forEach(function(el){el.style.transition='none';el.classList.add('pv2-r','pv2-in');if(/card|tile/.test(el.className))el.classList.add('pv2-lift')});
+if(inst.length)void d.body.offsetHeight;
+inst.forEach(function(el){el.style.transition=''});
+defer.forEach(function(el){el.classList.add('pv2-r');if(/card|tile/.test(el.className))el.classList.add('pv2-lift');io.observe(el)})}
 function boot(){scan(d);var r=d.getElementById('root');if(r){var t,mo=new MutationObserver(function(){clearTimeout(t);t=setTimeout(function(){scan(r)},120)});mo.observe(r,{childList:true,subtree:true})}}
 d.readyState==='loading'?d.addEventListener('DOMContentLoaded',boot):boot();
 })();
