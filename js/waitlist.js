@@ -181,7 +181,8 @@
     record(listName, email, live ? "attempt" : "mailto");
 
     if (!live) {
-      mailtoFallback(listName, email);         // not banked — opening a draft is not a send
+      mailtoFallback(listName, email);
+      markJoined(listName, email);
       return Promise.resolve({ status: "mailto", email: email });
     }
 
@@ -264,8 +265,8 @@
       record(listName, email, live ? "attempt" : "mailto");
 
       if (!live) {
-        mailtoFallback(listName, email);       // not banked — opening a draft is not a send,
-                                               // so the form comes back on the next visit
+        mailtoFallback(listName, email);
+        markJoined(listName, email);
         done("Your email app is open with the message ready.");
         say("Hit send in your mail app and you’re on the list — I reply to every one.", false);
         return;

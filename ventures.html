@@ -38,33 +38,7 @@
 <meta name="twitter:image" content="https://yusuf-gadelrab.github.io/og-card.png">
 <link rel="stylesheet" href="/css/site.css">
 <link rel="stylesheet" href="/css/lux-motion.css">
-<link rel="stylesheet" href="/css/lux-plus.css">
 <style>
-  /* ---- typographic register ----
-     Same ramp about / research / projects ship: h1 and h2 on the system serif
-     display face so the page opens in a book voice instead of a UI voice.
-     Card titles stay on --display-pro so they read as objects, not headings. */
-  #main h1{font-family:var(--display-serif);font-weight:var(--w-regular);
-    text-transform:none;letter-spacing:var(--track-tight);line-height:var(--lh-tight);
-    font-size:clamp(36px,5.4vw,62px);max-width:14ch}
-  #main h2{font-family:var(--display-serif);font-weight:var(--w-regular);
-    text-transform:none;letter-spacing:var(--track-tight);line-height:var(--lh-snug);
-    max-width:24ch}
-  #main .lead{max-width:62ch;line-height:var(--lh-body)}
-
-  /* .key and .alt-links were used in the markup but defined in no stylesheet on
-     this page — the status legend rendered as three bare divs and the secondary
-     routes as an undifferentiated paragraph. Both are defined here now. */
-  .key{display:flex;flex-wrap:wrap;gap:var(--s3) var(--s5);margin-top:var(--s6);
-    padding-top:var(--s4);border-top:1px solid var(--border-hairline)}
-  .key div{display:flex;align-items:center;gap:var(--s2);
-    font-size:var(--t-small);color:var(--ink-2)}
-  .alt-links{display:flex;flex-wrap:wrap;gap:var(--s2) var(--s5);
-    font-size:var(--t-small);color:var(--ink-2)}
-  .alt-links a{color:var(--ink-1);text-decoration:underline;
-    text-decoration-color:var(--line);text-underline-offset:3px}
-  .alt-links a:hover{color:var(--gold-ink)}
-
   .chips{display:flex;flex-wrap:wrap;gap:6px;margin-top:var(--s4)}
   .chips span{font-family:var(--mono);font-size:11px;letter-spacing:.3px;
     color:var(--muted);border:1px solid var(--line-soft);border-radius:var(--radius);
@@ -90,29 +64,10 @@
   .vcard .links a:hover{color:var(--gold-2);border-color:var(--gold)}
   .store-strip{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;
     gap:var(--s4);margin-top:var(--s6)}
-
-  /* ---- the one hero moment on this page ----
-     An oversized outlined numeral indexes each venture. .lxp-num carries the
-     stroke treatment and its own print / forced-colors / reduced-motion
-     fallbacks; this only positions it and pairs it with the status chip. */
-  .vcard__idx{display:flex;flex-wrap:wrap;align-items:baseline;justify-content:space-between;
-    gap:var(--s3) var(--s4);margin-bottom:var(--s2)}
-  .vcard__idx .lxp-num{font-size:clamp(34px,4.2vw,52px);flex:0 0 auto}
-  .vcard h3{max-width:22ch}
-
-  /* Provenance line under the proof row — every figure above resolves to a page
-     on this site, so a reader can check the number instead of trusting it. */
-  .proof-src{margin-top:var(--s4);font-family:var(--mono);font-size:var(--t-caption);
-    color:var(--ink-3);max-width:var(--measure-wide);line-height:var(--lh-snug)}
-
-  @media(max-width:760px){
-    .alt-links a{display:inline-block;padding:10px 0}
-    .vcard__idx .lxp-num{font-size:34px}
-  }
 </style>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebPage","@id":"https://yusuf-gadelrab.github.io/ventures.html#webpage","url":"https://yusuf-gadelrab.github.io/ventures.html","name":"DHAHAB Ventures — What I'm Building","description":"DIRA, EventReels, and FreightDesk AI — three products built solo by Yusuf Gadelrab. Investor one-pagers and honest current-state status for each.","inLanguage":"en","isPartOf":{"@id":"https://yusuf-gadelrab.github.io/#website"},"about":{"@id":"https://yusuf-gadelrab.github.io/#person"},"publisher":{"@id":"https://yusuf-gadelrab.github.io/#person"}}</script>
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"ItemList","name":"DHAHAB Ventures — products built by Yusuf Gadelrab","itemListElement":[{"@type":"ListItem","position":1,"item":{"@type":"SoftwareApplication","name":"DIRA","applicationCategory":"DeveloperApplication","url":"https://yusuf-gadelrab.github.io/dira.html","description":"A zero-dependency, MIT-licensed security scanner for startup codebases — 208 passing tests, v1.5.1, packaged for PyPI and npm.","author":{"@id":"https://yusuf-gadelrab.github.io/#person"}}},{"@type":"ListItem","position":2,"item":{"@type":"SoftwareApplication","name":"EventReels","applicationCategory":"MultimediaApplication","url":"https://yusuf-gadelrab.github.io/eventreels.html","description":"A local-first ffmpeg pipeline that turns raw event footage into a finished 9:16 highlight reel.","author":{"@id":"https://yusuf-gadelrab.github.io/#person"}}},{"@type":"ListItem","position":3,"item":{"@type":"SoftwareApplication","name":"FreightDesk AI","applicationCategory":"BusinessApplication","url":"https://yusuf-gadelrab.github.io/freightdesk.html","description":"An AI back-office clerk for small freight brokerages, running on a local model. Founding-client pilots open.","offers":{"@type":"Offer","price":"999","priceCurrency":"USD","availability":"https://schema.org/LimitedAvailability","description":"$999 one-time setup + $249/mo, founding-client pilot pricing"},"author":{"@id":"https://yusuf-gadelrab.github.io/#person"}}}]}</script>
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"Person","@id":"https://yusuf-gadelrab.github.io/#person","name":"Yusuf Gadelrab","url":"https://yusuf-gadelrab.github.io/"}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"ItemList","name":"DHAHAB Ventures — products built by Yusuf Gadelrab","itemListElement":[{"@type":"ListItem","position":1,"item":{"@type":"SoftwareApplication","name":"DIRA","applicationCategory":"DeveloperApplication","url":"https://yusuf-gadelrab.github.io/dira.html","description":"A zero-dependency, MIT-licensed security scanner for startup codebases — 208 passing tests, v1.5.0.","author":{"@id":"https://yusuf-gadelrab.github.io/#person"}}},{"@type":"ListItem","position":2,"item":{"@type":"SoftwareApplication","name":"EventReels","applicationCategory":"MultimediaApplication","url":"https://yusuf-gadelrab.github.io/eventreels.html","description":"A local-first ffmpeg pipeline that turns raw event footage into a finished 9:16 highlight reel.","author":{"@id":"https://yusuf-gadelrab.github.io/#person"}}},{"@type":"ListItem","position":3,"item":{"@type":"SoftwareApplication","name":"FreightDesk AI","applicationCategory":"BusinessApplication","url":"https://yusuf-gadelrab.github.io/freightdesk.html","description":"An AI back-office clerk for small freight brokerages, running on a local model. Founding-client pilots open.","offers":{"@type":"Offer","price":"999","priceCurrency":"USD","availability":"https://schema.org/LimitedAvailability","description":"$999 one-time setup + $249/mo, founding-client pilot pricing"},"author":{"@id":"https://yusuf-gadelrab.github.io/#person"}}}]}</script>
+<script type="application/ld+json">{"@id": "https://yusuf-gadelrab.github.io/#person"}</script>
 <link rel="alternate" type="text/plain" href="https://yusuf-gadelrab.github.io/llms-full.txt" title="Plain-text profile for language models">
 </head>
 <body class="pro">
@@ -138,31 +93,6 @@
     <p class="eyebrow">DHAHAB Ventures</p>
     <h1 style="margin:var(--s4) 0">What I'm <span class="gold-fill" data-lux-shimmer>building.</span></h1>
     <p class="lead">Three products, one solo builder, no outside funding yet. Each has a working product behind it — not a mockup — and each page below states its real current state plainly: what's shipped, what's tested, and what hasn't happened yet (users, revenue, a launch). Pre-revenue and building in public is the honest frame for all three.</p>
-
-    <div class="dh-stats" style="margin-top:var(--s7)">
-      <div class="dh-stat">
-        <span class="dh-stat__v dh-num">3</span>
-        <span class="dh-stat__k">Products with a working build behind them</span>
-        <span class="dh-stat__src">DIRA · EventReels · FreightDesk AI</span>
-      </div>
-      <div class="dh-stat">
-        <span class="dh-stat__v dh-num">208</span>
-        <span class="dh-stat__k">Passing tests in DIRA, the furthest along of the three</span>
-        <span class="dh-stat__src">pytest · v1.5.1 · MIT</span>
-      </div>
-      <div class="dh-stat">
-        <span class="dh-stat__v dh-num">$0</span>
-        <span class="dh-stat__k">Outside funding raised — no pre-seed, no accelerator, no angel</span>
-        <span class="dh-stat__src">Self-funded, built solo</span>
-      </div>
-      <div class="dh-stat">
-        <span class="dh-stat__v dh-num">0</span>
-        <span class="dh-stat__k">Paying customers so far — all three are pre-revenue</span>
-        <span class="dh-stat__src">FreightDesk pilots priced, none installed</span>
-      </div>
-    </div>
-    <p class="proof-src">Every figure above is stated the same way on the product's own page. The last two are on this page because a founder who hides them is the one you have to check.</p>
-
     <div class="key">
       <div><span class="st st--live"><i></i>Live</span> shipped and reachable today</div>
       <div><span class="st st--proto"><i></i>Prototype</span> working, not yet public/launched</div>
@@ -189,7 +119,7 @@
     <div class="grid grid--2" style="margin-top:var(--s6)">
 
       <div class="card vcard">
-        <div class="vcard__idx"><span class="lxp-num" aria-hidden="true">01</span><span class="st st--live"><i></i>Open source · v1.5.1 · pre-revenue</span></div>
+        <span class="st st--live"><i></i>Open source · v1.5.0 · pre-revenue</span>
         <h3>DIRA — security scanner</h3>
         <p class="one-liner">One command that answers "is this codebase safe enough to sell to an enterprise?"</p>
         <p>Zero-dependency Python security scanner: secrets, dependency CVEs (OSV.dev), 38 config/IaC rules, git-history leaks, live TLS/headers, license risk + SBOM, and an 18-point startup readiness score. 208 passing tests, MIT licensed.</p>
@@ -201,7 +131,7 @@
       </div>
 
       <div class="card vcard">
-        <div class="vcard__idx"><span class="lxp-num" aria-hidden="true">02</span><span class="st st--proto"><i></i>Working prototype · pre-revenue</span></div>
+        <span class="st st--proto"><i></i>Working prototype · pre-revenue</span>
         <h3>EventReels</h3>
         <p class="one-liner">Raw event footage in, a finished 9:16 highlight reel out — no editor, no editing skill.</p>
         <p>Local-first ffmpeg pipeline (reelsmith) + a black-and-gold web studio. Scene + audio-energy scoring picks the moments, renders vertical with loudness normalization. 76 automated tests, code public.</p>
@@ -213,11 +143,11 @@
       </div>
 
       <div class="card vcard">
-        <div class="vcard__idx"><span class="lxp-num" aria-hidden="true">03</span><span class="st st--local"><i></i>Founding pilots open · pre-revenue</span></div>
+        <span class="st st--local"><i></i>Founding pilots open · pre-revenue</span>
         <h3>FreightDesk AI</h3>
         <p class="one-liner">Reads a small brokerage's AR inbox and drafts the correct reply — on a local model.</p>
-        <p>Covers the 18-point AR/billing workload of a small freight brokerage. Local AI model, zero API fees, one-click-approval by default. 66+ tests passing. Live landing page with founding-client pilot pricing.</p>
-        <div class="chips"><span>66+ tests</span><span>$999 + $249/mo</span><span>Local-only</span></div>
+        <p>Covers the AR/billing workload of a small freight brokerage. Local AI model, zero API fees, one-click-approval by default. Full regression suite passing. Live landing page with founding-client pilot pricing.</p>
+        <div class="chips"><span>Tested</span><span>$999 + $249/mo</span><span>Local-only</span></div>
         <div class="links">
           <a href="/freightdesk.html">Case study &amp; pricing →</a>
           <a href="/freightdesk-onepager.html">Investor one-pager →</a>
@@ -240,21 +170,6 @@
     </div>
   </section>
 
-  <hr class="divider">
-
-  <section class="section section--tight">
-    <div class="dh-cta">
-      <div class="dh-cta__copy">
-        <h2 class="dh-cta__title">Want the unflattering version?</h2>
-        <p class="dh-cta__sub">Ask, and you get the current state without the pitch gloss — what is not built, what has not been validated, and what would have to be true for any of this to matter. Recruiting instead? <a href="/hire.html">Start here</a>.</p>
-      </div>
-      <div class="dh-cta__act">
-        <a class="btn btn-gold" href="mailto:yusuf.gadelrab06@gmail.com?subject=DHAHAB%20Ventures">Email me →</a>
-        <a class="btn btn-ghost" href="/dira-onepager.html">Read a one-pager</a>
-      </div>
-    </div>
-  </section>
-
 </main>
 
 <footer class="site-footer">
@@ -274,7 +189,8 @@
     <a href="/media-kit.html">Media Kit</a>
     <a href="mailto:yusuf.gadelrab06@gmail.com">yusuf.gadelrab06@gmail.com</a>
     <a href="https://github.com/Yusuf-Gadelrab" target="_blank" rel="noopener">GitHub</a>
-    <a href="https://www.linkedin.com/in/yusuf-gadelrab-76246b221" target="_blank" rel="noopener">LinkedIn</a>
+    <a href="https://www.linkedin.com/in/yusuf-gadelrab" target="_blank" rel="noopener">LinkedIn</a>
+          <a href="/portfolio/">Portfolio</a>
     <a href="/privacy.html">Privacy</a>
     <a href="/terms.html">Terms</a>
   </div>
@@ -282,6 +198,5 @@
 
 <script src="/js/site.js" defer></script>
 <script src="/js/lux-motion.js" defer></script>
-<script src="/js/lux-plus.js" defer></script>
 </body>
 </html>

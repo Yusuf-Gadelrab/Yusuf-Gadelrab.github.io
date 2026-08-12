@@ -31,7 +31,6 @@
 
 <link rel="stylesheet" href="/css/site.css">
 <link rel="stylesheet" href="/css/lux-motion.css">
-<link rel="stylesheet" href="/css/lux-plus.css">
 <style>
   .prose{max-width:68ch}
   .prose h2{margin:var(--s7) 0 var(--s4);font-size:var(--t-h2)}
@@ -89,7 +88,7 @@
 
       <h2>What is an R-multiple?</h2>
       <p>An R-multiple expresses a trade's result in units of the risk you took on that trade. <strong>1R is the distance from your entry to your stop loss, in dollars.</strong> Risk $250 and make $500, and the trade is +2R. Get stopped out, and it is −1R.</p>
-      <p>The point of R is comparability. A $180 gain in a small account and a $1,800 gain in a large one are the same trade if both were +2R. Once every result is in R, you can average them, rank setups against each other, and spot the one that quietly bleeds the account.</p>
+      <p>The point of R is comparability. A $180 gain in a small account and an $1,800 gain in a large one are the same trade if both were +2R. Once every result is in R, you can average them, rank setups against each other, and spot the one that quietly bleeds the account.</p>
 
       <h2>How do you calculate position size?</h2>
       <span class="formula">position size = (account size × risk %) ÷ (entry price − stop price)</span>
@@ -126,7 +125,7 @@
 
       <h2>How many trades before the number means anything?</h2>
       <p>At least 30 for a rough read, and 100 or more before you trust it. Expectancy measured over ten trades is noise wearing a decimal point.</p>
-      <p>This matters more than it sounds. When I ran my own swing setups through a no-lookahead walk-forward test, most of them died: only the anchored-VWAP reclaim survived — and even that shrank to <strong>+0.117R over 4,933 trades</strong> (95% CI +0.057 to +0.174) once I re-tested it on a 129-symbol, 10-year universe. The earlier small-sample result I first reported did not survive that re-test — and even +0.117R isn't a clean edge: a risk-matched random entry on the same data already captures +0.086R, so the signal's own contribution is only about +0.030R, with a confidence interval that crosses zero. A VCP variant came out breakeven, and a gap and opening-range-breakout proxy came out at −0.28R and was dropped entirely. Nothing about that was visible in a small recent sample — which is exactly the point. <a href="/swing-screener.html">The full write-up is here →</a></p>
+      <p>This matters more than it sounds. When I ran my own swing setups through a no-lookahead walk-forward test, most of them died: only the anchored-VWAP reclaim survived — and even that shrank to <strong>+0.117R over 4,933 trades</strong> (95% CI +0.057 to +0.174) once I re-tested it on a 129-symbol, 10-year universe. The <strong>+0.23R over 101 trades</strong> I first reported did not survive that re-test. A VCP variant came out breakeven, and a gap and opening-range-breakout proxy came out at −0.28R and was dropped entirely. Nothing about that was visible in a small recent sample — which is exactly the point. <a href="/swing-screener.html">The full write-up is here →</a></p>
 
       <h2>Putting it together</h2>
       <ul>
@@ -206,6 +205,5 @@
 
 <script src="/js/site.js" defer></script>
 <script src="/js/lux-motion.js" defer></script>
-<script src="/js/lux-plus.js" defer></script>
 </body>
 </html>

@@ -37,22 +37,7 @@
 <meta property="og:url" content="https://yusuf-gadelrab.github.io/risk-tools.html">
 <link rel="stylesheet" href="/css/site.css">
 <link rel="stylesheet" href="/css/lux-motion.css">
-<link rel="stylesheet" href="/css/lux-plus.css">
 <style>
-  /* EDITORIAL TYPE REGISTER — scoped deliberately.
-     site.css:137 sets `body.pro h1,body.pro h2{font-family:var(--display-pro)}` at
-     specificity (0,0,1,1), which outranked the plain `main h1,main h2` (0,0,0,2)
-     this block used to carry — the serif register never actually applied. Re-scoped
-     under body.pro so it wins.
-     SCOPE: h1 and h2 ONLY. Every heading inside a calculator widget is an h3
-     (`.results h3` = "Result", `.explain h3` = the label row) and stays in the
-     sans/mono UI register, as do `.field label`, `.formula`, `.result-tile .v/.l`
-     and every input. A serif label on a numeric input reads wrong; serif is for the
-     marketing/explanatory layer (hero, section titles, honesty band, CTA, FAQ). */
-  body.pro main h1,body.pro main h2{font-family:var(--display-serif);
-    letter-spacing:var(--track-tight);font-weight:var(--w-semibold);
-    text-transform:none;line-height:var(--lh-snug)}
-  body.pro main h1{line-height:var(--lh-tight)}
   .hero{padding-top:var(--s7);padding-bottom:var(--s5)}
   .hero h1{margin:var(--s4) 0 var(--s4);max-width:24ch}
   .hero .lead{margin-bottom:var(--s4)}
@@ -60,33 +45,13 @@
 
   .toc{display:flex;flex-wrap:wrap;gap:var(--s2);margin-top:var(--s6)}
   .toc a{font-size:var(--t-small);color:var(--muted);border:1px solid var(--line-soft);
-    border-radius:var(--radius);padding:6px 12px;min-height:var(--tap);
-    display:inline-flex;align-items:center;transition:color .2s,border-color .2s}
+    border-radius:var(--radius);padding:6px 12px;transition:color .2s,border-color .2s}
   .toc a:hover,.toc a:focus-visible{color:var(--gold-2);border-color:var(--gold-dim)}
 
   .calc-section{padding-top:var(--s7);padding-bottom:var(--s7);border-top:1px solid var(--line-soft)}
   .calc-head{max-width:70ch;margin-bottom:var(--s6)}
   .calc-head h2{margin:var(--s2) 0 var(--s3)}
   .calc-head p{color:var(--muted)}
-
-  /* EDITORIAL INDEX — the page's ONE lxp- accent (.lxp-num), nothing else.
-     The six sections were already numbered "01 ·" … "06 ·" inside the eyebrow
-     string; this lifts the numeral into its own stroked column so the six
-     calculators read as an index rather than a stack. The numeral is decoration:
-     it is aria-hidden and the <h2> remains the sole accessible section title.
-     Scoped to .calc-section so the FAQ's own .calc-head keeps its plain stack. */
-  .calc-section .calc-head{display:grid;grid-template-columns:auto minmax(0,1fr);
-    column-gap:clamp(14px,2vw,26px);max-width:78ch}
-  .calc-section .calc-head>*{grid-column:2}
-  .calc-section .calc-head .calc-num{grid-column:1;grid-row:1/span 2;
-    align-self:center;user-select:none}
-  .calc-section .calc-head .dh-eyebrow{margin-bottom:var(--s2)}
-  .calc-section .calc-head h2{margin:0 0 var(--s3)}
-  @media(max-width:560px){
-    .calc-section .calc-head{grid-template-columns:minmax(0,1fr)}
-    .calc-section .calc-head>*{grid-column:1}
-    .calc-section .calc-head .calc-num{grid-row:auto;margin-bottom:var(--s2)}
-  }
   .calc-grid{display:grid;grid-template-columns:minmax(0,380px) minmax(0,1fr);gap:var(--s6)}
   .calc-grid>*{min-width:0}
   @media(max-width:820px){.calc-grid{grid-template-columns:minmax(0,1fr)}}
@@ -103,26 +68,13 @@
 
   .results{background:var(--panel);border:1px solid var(--line-soft);border-radius:var(--radius-lg);
     padding:var(--s5)}
-  /* "Result" was set at --t-h3 and competed with the figures underneath it. It is a
-     label, not the payload — demoted to a small-caps rule so the live numbers are
-     the loudest thing in the panel. --gold-ink is 10.54:1 on dark. */
-  .results h3{font-size:var(--t-micro);letter-spacing:1.6px;text-transform:uppercase;
-    font-weight:var(--w-semibold);color:var(--gold-ink);margin:0 0 var(--s4)}
-  .result-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));
-    gap:var(--s5) var(--s4);margin-bottom:var(--s4)}
-  /* LIVE TILES — the JS writes into `.v` by id. Markup untouched by design; these are
-     typographic-only changes. tabular-nums stops the row jittering as you type. */
-  .result-tile .v{font-family:var(--display-pro);font-weight:800;font-size:clamp(20px,2.4vw,28px);color:var(--gold-2);letter-spacing:-.02em;
-    font-variant-numeric:tabular-nums;line-height:var(--lh-tight,1.05)}
-  .result-tile .l{font-size:var(--t-micro);color:var(--muted);margin-top:6px;letter-spacing:.02em}
+  .results h3{font-size:var(--t-h3);margin-bottom:var(--s3)}
+  .result-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:var(--s4);margin-bottom:var(--s4)}
+  .result-tile .v{font-family:var(--display-pro);font-weight:800;font-size:clamp(20px,2.4vw,28px);color:var(--gold-2);letter-spacing:-.02em}
+  .result-tile .l{font-size:var(--t-micro);color:var(--muted);margin-top:2px}
   .formula{font-family:var(--mono);font-size:13px;color:var(--muted);background:var(--bg2);
     border:1px solid var(--line-soft);border-radius:var(--radius);padding:var(--s3) var(--s4);
-    margin-top:var(--s3);overflow-x:auto;overscroll-behavior-x:contain;white-space:pre}
-  /* Every .formula already scrolls on its own axis, so a long line can never push the
-     body sideways at 375px. They also carry tabindex="0" so a keyboard user can reach
-     the scroll — same intent as the site's .dh-scroll pattern, without wrapping 18
-     extra landmark regions around blocks that are already labelled by their heading. */
-  .formula:focus-visible{outline:var(--focus-ring-w) solid var(--focus-ring);outline-offset:2px}
+    margin-top:var(--s3);overflow-x:auto;white-space:pre}
   .note{font-size:var(--t-small);color:var(--muted);margin-top:var(--s3)}
   .warn-box{margin-top:var(--s3);border:1px solid rgba(224,104,95,.4);border-left:3px solid var(--bad);
     border-radius:var(--radius);background:rgba(224,104,95,.08);padding:var(--s3) var(--s4);
@@ -138,14 +90,9 @@
   .chart-wrap{margin-top:var(--s4)}
   .chart-caption{font-size:var(--t-micro);color:var(--faint);margin-top:var(--s2)}
 
-  /* HONESTY BAND — promoted to the page's single full-bleed sunk band (.dh-band
-     --sunk --edge). It is the credibility anchor and previously read as a seventh
-     numbered section. The card keeps its gold edge but the prose is now clamped to
-     a real measure: at 1180px it was running ~100 characters per line. */
   .honest-card{border:1px solid var(--gold-dim);border-radius:var(--radius-lg);
-    background:linear-gradient(180deg,var(--panel),var(--panel2));
-    padding:clamp(24px,4vw,48px);max-width:min(100%,780px)}
-  .honest-card h2{margin-bottom:var(--s4);max-width:26ch}
+    background:linear-gradient(180deg,var(--panel),var(--panel2));padding:var(--s6)}
+  .honest-card h2{margin-bottom:var(--s3)}
   .honest-card table{margin-top:var(--s4)}
   .honest-card .verdict{display:inline-block;margin-top:var(--s3);padding:4px 12px;
     border:1px solid var(--line);border-radius:var(--radius);font-size:var(--t-micro);
@@ -158,13 +105,7 @@
     color:var(--gold-2);margin:0 0 var(--s2)}
   .explain p{color:var(--muted);font-size:var(--t-small);margin:0;max-width:var(--maxw-prose)}
   .explain .formula{margin-top:0}
-  /* "When this number misleads you" is the honest half of every calculator. It was
-     visually identical to the neutral blocks above it — given a warn-coloured rule
-     and tint so it is promoted, never demoted, by this pass. */
-  .explain .x-warn{border-left:2px solid var(--warn);background:rgba(224,179,65,.05);
-    border-radius:var(--radius);padding:var(--s4)}
   .explain .x-warn h3{color:var(--warn)}
-  .explain .x-warn p{max-width:74ch}
 
   .disclaimer{max-width:70ch;font-size:var(--t-small);color:var(--faint);
     border-top:1px solid var(--line-soft);padding-top:var(--s5);margin-top:var(--s7)}
@@ -191,7 +132,6 @@
    This page's own CSS overrides the shared floor, so pin it here. */
 input,textarea,select{font-size:16px!important}</style>
 <!-- geo:entity — canonical Person node, one entity across every page -->
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"Person","@id":"https://yusuf-gadelrab.github.io/#person","name":"Yusuf Gadelrab","url":"https://yusuf-gadelrab.github.io/"}</script>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebPage","@id":"https://yusuf-gadelrab.github.io/risk-tools.html#webpage","url":"https://yusuf-gadelrab.github.io/risk-tools.html","inLanguage":"en","isPartOf":{"@id":"https://yusuf-gadelrab.github.io/#website"},"about":{"@id":"https://yusuf-gadelrab.github.io/#person"},"publisher":{"@id":"https://yusuf-gadelrab.github.io/#person"}}</script>
 <link rel="alternate" type="text/plain" href="https://yusuf-gadelrab.github.io/llms-full.txt" title="Plain-text profile for language models">
 <!-- geo:faq — extractable Q&A for answer engines -->
@@ -218,7 +158,7 @@ input,textarea,select{font-size:16px!important}</style>
     <p class="lead">Six calculators most traders skip, and most losing traders never learn: position sizing, R-multiples, expectancy, a Monte Carlo risk-of-ruin simulator, Kelly fraction, and break-even win rate. Every formula is shown in the open below its result — check the math yourself, don't take it on faith.</p>
     <div class="hero-cta">
       <a href="#position-sizer" class="btn btn-gold">Start with position sizing ↓</a>
-      <a href="/store.html#products" class="btn btn-ghost">See the course — $59</a>
+      <a href="/store.html#products" class="btn btn-ghost">Get the full course — $59</a>
     </div>
     <nav class="toc" aria-label="Jump to a calculator">
       <a href="#position-sizer">1. Position sizer</a>
@@ -234,8 +174,7 @@ input,textarea,select{font-size:16px!important}</style>
   <!-- ============ 1. POSITION SIZER ============ -->
   <section class="section calc-section" id="position-sizer" aria-labelledby="ps-h">
     <div class="calc-head">
-      <span class="lxp-num calc-num" aria-hidden="true">01</span>
-      <p class="dh-eyebrow">Sizing</p>
+      <span class="eyebrow">01 · Sizing</span>
       <h2 id="ps-h">Position size calculator</h2>
       <p>How many shares (or contracts, treated as 1:1 units here) can you buy without risking more than a fixed percent of your account if your stop gets hit. Works for longs and shorts — the calculator infers direction from where you put the stop. Where that stop actually belongs is a separate question from the sizing math — see <a href="/guides/stop-loss-placement.html">the stop-loss placement guide</a> for structure-based stops versus arbitrary percentage stops.</p>
     </div>
@@ -271,7 +210,7 @@ input,textarea,select{font-size:16px!important}</style>
         </div>
         <div id="psDirection" class="note"></div>
         <div id="psWarning"></div>
-        <div class="formula" tabindex="0" id="psFormula"></div>
+        <div class="formula" id="psFormula"></div>
       </div>
     </div>
     <div class="explain">
@@ -281,14 +220,14 @@ input,textarea,select{font-size:16px!important}</style>
       </div>
       <div>
         <h3>The formula</h3>
-        <div class="formula" tabindex="0">risk_per_share = |entry − stop|
+        <div class="formula">risk_per_share = |entry − stop|
 dollar_risk    = equity × risk %
 position_size  = floor(dollar_risk / risk_per_share)
 notional       = position_size × entry</div>
       </div>
       <div>
         <h3>Worked example</h3>
-        <div class="formula" tabindex="0">equity $25,000 · risk 1% · entry $48.20 · stop $46.10
+        <div class="formula">equity $25,000 · risk 1% · entry $48.20 · stop $46.10
 
 risk_per_share = 48.20 − 46.10        = $2.10
 dollar_risk    = 25,000 × 0.01        = $250.00
@@ -306,8 +245,7 @@ notional       = 119 × 48.20          = $5,735.80  (22.9% of equity)</div>
   <!-- ============ 2. R-MULTIPLE ============ -->
   <section class="section calc-section" id="r-multiple" aria-labelledby="r-h">
     <div class="calc-head">
-      <span class="lxp-num calc-num" aria-hidden="true">02</span>
-      <p class="dh-eyebrow">Grading trades</p>
+      <span class="eyebrow">02 · Grading trades</span>
       <h2 id="r-h">R-multiple calculator</h2>
       <p>An R-multiple measures a trade's result as a multiple of what you risked, so a $40 win on a $20-risk trade and a $400 win on a $200-risk trade are both "+2R" — comparable regardless of size. One formula handles longs and shorts identically.</p>
     </div>
@@ -326,8 +264,8 @@ notional       = 119 × 48.20          = $5,735.80  (22.9% of equity)</div>
           <label for="rBatch">Paste trades, one per line: entry,stop,exit</label>
           <textarea id="rBatch" placeholder="100,95,110&#10;50,52,47&#10;30,28,33"></textarea>
           <div class="btn-row">
-            <button type="button" class="btn btn-ghost" id="rBatchRun">Compute batch</button>
-            <button type="button" class="btn btn-ghost" id="rBatchClear">Clear</button>
+            <button type="button" class="btn btn-ghost btn-sm" id="rBatchRun">Compute batch</button>
+            <button type="button" class="btn btn-ghost btn-sm" id="rBatchClear">Clear</button>
           </div>
         </fieldset>
       </form>
@@ -339,7 +277,7 @@ notional       = 119 × 48.20          = $5,735.80  (22.9% of equity)</div>
           <div class="result-tile"><div class="v" id="rAvg">—</div><div class="l">Batch average R</div></div>
           <div class="result-tile"><div class="v" id="rWinRate">—</div><div class="l">Batch win rate</div></div>
         </div>
-        <div class="formula" tabindex="0">R = (exit − entry) / (entry − stop)
+        <div class="formula">R = (exit − entry) / (entry − stop)
 This single formula is sign-correct for both directions:
 long  (stop &lt; entry): profitable exit &gt; entry → positive R
 short (stop &gt; entry): profitable exit &lt; entry → positive R</div>
@@ -352,13 +290,13 @@ short (stop &gt; entry): profitable exit &lt; entry → positive R</div>
       </div>
       <div>
         <h3>The formula</h3>
-        <div class="formula" tabindex="0">R = (exit − entry) / (entry − stop)
+        <div class="formula">R = (exit − entry) / (entry − stop)
 
 1R (dollars) = position_size × |entry − stop|</div>
       </div>
       <div>
         <h3>Worked example</h3>
-        <div class="formula" tabindex="0">entry $48.20 · stop $46.10 · exit $51.75 · 119 shares
+        <div class="formula">entry $48.20 · stop $46.10 · exit $51.75 · 119 shares
 
 R       = (51.75 − 48.20) / (48.20 − 46.10)
         = 3.55 / 2.10                       = +1.69R
@@ -375,8 +313,7 @@ check   = 422.45 / 249.90 risked            = 1.69×</div>
   <!-- ============ 3. EXPECTANCY ============ -->
   <section class="section calc-section" id="expectancy" aria-labelledby="exp-h">
     <div class="calc-head">
-      <span class="lxp-num calc-num" aria-hidden="true">03</span>
-      <p class="dh-eyebrow">The number that actually matters</p>
+      <span class="eyebrow">03 · The number that actually matters</span>
       <h2 id="exp-h">Expectancy calculator</h2>
       <p>Expectancy is your average result per trade, in R, given your actual win rate and the size of typical wins and losses. A positive expectancy is necessary for a system to work over time — it is not sufficient, and it says nothing about how bad a losing streak can feel along the way (that's what the simulator below is for).</p>
     </div>
@@ -393,7 +330,7 @@ check   = 422.45 / 249.90 risked            = 1.69×</div>
         <div class="result-grid">
           <div class="result-tile"><div class="v" id="expValue">—</div><div class="l">Expectancy per trade (R)</div></div>
         </div>
-        <div class="formula" tabindex="0">Expectancy = (win rate × avg win) − ((1 − win rate) × avg loss)</div>
+        <div class="formula">Expectancy = (win rate × avg win) − ((1 − win rate) × avg loss)</div>
         <div class="warn-box info">
           <b>What this does and doesn't tell you:</b> a system with 45% wins, 2R average win, 1R average loss has expectancy +0.35R/trade — but with a small sample (say, 30–60 trades) the confidence interval around that number is wide. A run of 40 trades from a true +0.35R system can easily show a negative result by chance alone, and a run of 40 trades from a break-even or slightly negative system can show a strong positive result. Expectancy from under ~100 trades is a hypothesis, not a fact — see the honesty section below for a real example of this happening to me.
         </div>
@@ -406,13 +343,13 @@ check   = 422.45 / 249.90 risked            = 1.69×</div>
       </div>
       <div>
         <h3>The formula</h3>
-        <div class="formula" tabindex="0">E = (p × avg_win_R) − ((1 − p) × avg_loss_R)
+        <div class="formula">E = (p × avg_win_R) − ((1 − p) × avg_loss_R)
 
 where p = win rate as a decimal, avg_loss_R entered as a positive number</div>
       </div>
       <div>
         <h3>Worked example</h3>
-        <div class="formula" tabindex="0">win rate 42% · avg win 2.10R · avg loss 1.00R
+        <div class="formula">win rate 42% · avg win 2.10R · avg loss 1.00R
 
 E = 0.42 × 2.10 − 0.58 × 1.00
   = 0.882 − 0.580                  = +0.302R per trade
@@ -430,8 +367,7 @@ at $250 of risk per trade  ->  $75.50 expected per trade
   <!-- ============ 4. MONTE CARLO ============ -->
   <section class="section calc-section" id="monte-carlo" aria-labelledby="mc-h">
     <div class="calc-head">
-      <span class="lxp-num calc-num" aria-hidden="true">04</span>
-      <p class="dh-eyebrow">The lesson expectancy alone won't teach you</p>
+      <span class="eyebrow">04 · The lesson expectancy alone won't teach you</span>
       <h2 id="mc-h">Risk of ruin calculator (Monte Carlo)</h2>
       <p>Positive expectancy over many trades still produces a wide spread of possible outcomes, because trade order and win/loss sequencing are random. This runs 2,000 independent simulated paths of your system and shows the actual distribution of outcomes and drawdowns you could experience, not just the average.</p>
     </div>
@@ -447,7 +383,7 @@ at $250 of risk per trade  ->  $75.50 expected per trade
           <div class="field"><label for="mcTrades">Number of trades <span class="unit">per path</span></label><input type="number" id="mcTrades" value="200" min="1" max="2000" step="1"></div>
         </div>
         <div class="field"><label for="mcThreshold">Drawdown threshold to test <span class="unit">% equity</span></label><input type="number" id="mcThreshold" value="20" min="1" max="99" step="any"></div>
-        <button type="button" class="btn btn-gold" id="mcRun">Run 2,000 simulations</button>
+        <button type="button" class="btn btn-gold btn-sm" id="mcRun">Run 2,000 simulations</button>
       </form>
       <div class="results" aria-live="polite" id="mcResults">
         <h3>Result</h3>
@@ -461,7 +397,7 @@ at $250 of risk per trade  ->  $75.50 expected per trade
           <canvas id="mcCanvas" role="img" aria-label="Histogram of final equity multiples across simulated paths"></canvas>
           <div class="chart-caption" id="mcCaption">Distribution of final equity multiple across 2,000 simulated paths.</div>
         </div>
-        <div class="formula" tabindex="0">Per trade: equity ← equity × (1 + risk% × R), where R = +avgWin with prob. p, −avgLoss with prob. (1−p), drawn independently each trade.
+        <div class="formula">Per trade: equity ← equity × (1 + risk% × R), where R = +avgWin with prob. p, −avgLoss with prob. (1−p), drawn independently each trade.
 Max drawdown per path = max over time of (running peak − equity) / running peak.
 Assumptions: independent draws (no streak correlation, no regime effects), fixed fractional risk (position size recalculated off current equity each trade, not a fixed dollar amount), no costs/slippage.</div>
       </div>
@@ -473,7 +409,7 @@ Assumptions: independent draws (no streak correlation, no regime effects), fixed
       </div>
       <div>
         <h3>The formula</h3>
-        <div class="formula" tabindex="0">equity(t) = equity(t−1) × (1 + risk% × R(t))
+        <div class="formula">equity(t) = equity(t−1) × (1 + risk% × R(t))
 
 R(t) = +avg_win   with probability p
        −avg_loss  with probability 1 − p     (drawn independently)
@@ -482,7 +418,7 @@ max_drawdown = max over t of (running_peak − equity) / running_peak</div>
       </div>
       <div>
         <h3>Worked example</h3>
-        <div class="formula" tabindex="0">win rate 42%  ->  probability of a loss = 0.58
+        <div class="formula">win rate 42%  ->  probability of a loss = 0.58
 
 15 straight losses at 1% risk:  0.99^15 = 0.8601  ->  −14.0% equity
 the same streak at 3% risk:     0.97^15 = 0.6333  ->  −36.7% equity
@@ -503,8 +439,7 @@ recoverable dip into a hole that needs +58% just to get back to flat.</div>
   <!-- ============ 5. KELLY ============ -->
   <section class="section calc-section" id="kelly" aria-labelledby="kelly-h">
     <div class="calc-head">
-      <span class="lxp-num calc-num" aria-hidden="true">05</span>
-      <p class="dh-eyebrow">The theoretical ceiling — do not use it directly</p>
+      <span class="eyebrow">05 · The theoretical ceiling — do not use it directly</span>
       <h2 id="kelly-h">Kelly criterion calculator</h2>
       <p>The Kelly criterion gives the risk fraction that maximizes long-run geometric growth <em>if</em> your win rate and payoff ratio are known exactly. In real trading they're estimates, not known constants, and full Kelly produces brutal drawdowns even when the inputs are correct. Fractional Kelly (typically ¼–½ Kelly) is the practical standard for this reason.</p>
     </div>
@@ -523,7 +458,7 @@ recoverable dip into a hole that needs +58% just to get back to flat.</div>
           <div class="result-tile"><div class="v" id="kHalf">—</div><div class="l">½ Kelly</div></div>
           <div class="result-tile"><div class="v" id="kQuarter">—</div><div class="l">¼ Kelly</div></div>
         </div>
-        <div class="formula" tabindex="0">b = avg win / avg loss  (payoff ratio)
+        <div class="formula">b = avg win / avg loss  (payoff ratio)
 f* = p − (1 − p) / b   =   (p·b − (1 − p)) / b</div>
         <div class="warn-box">
           <b>Full Kelly is not a recommendation, it's a ceiling.</b> It assumes your win rate and payoff ratio are exact and constant, which they never are in live trading — real edges decay and get mis-estimated from small samples. Even with correct inputs, full Kelly's growth-optimal path still carries 50%+ drawdowns as a normal event. Most professional sizing lands at ¼–½ Kelly specifically to trade some growth rate for a survivable ride. Full derivation and a worked example: <a href="/guides/kelly-criterion.html">the Kelly criterion guide</a>.
@@ -537,14 +472,14 @@ f* = p − (1 − p) / b   =   (p·b − (1 − p)) / b</div>
       </div>
       <div>
         <h3>The formula</h3>
-        <div class="formula" tabindex="0">b  = avg_win / avg_loss                    (payoff ratio)
+        <div class="formula">b  = avg_win / avg_loss                    (payoff ratio)
 f* = p − (1 − p) / b   =   (p·b − (1 − p)) / b
 
 fractional Kelly = f* × 0.5 (half) or f* × 0.25 (quarter)</div>
       </div>
       <div>
         <h3>Worked example</h3>
-        <div class="formula" tabindex="0">win rate 42% · avg win 2.10R · avg loss 1.00R · equity $25,000
+        <div class="formula">win rate 42% · avg win 2.10R · avg loss 1.00R · equity $25,000
 
 b  = 2.10 / 1.00                     = 2.10
 f* = 0.42 − 0.58 / 2.10
@@ -564,8 +499,7 @@ quarter Kelly =  3.6% of $25,000     =   $899 risked per trade
   <!-- ============ 6. BREAK-EVEN WIN RATE ============ -->
   <section class="section calc-section" id="breakeven" aria-labelledby="be-h">
     <div class="calc-head">
-      <span class="lxp-num calc-num" aria-hidden="true">06</span>
-      <p class="dh-eyebrow">The bar you need to clear</p>
+      <span class="eyebrow">06 · The bar you need to clear</span>
       <h2 id="be-h">Break-even win rate calculator</h2>
       <p>Given a reward:risk ratio, this is the win rate at which expectancy is exactly zero — the minimum you need to clear before a system is worth trading at all.</p>
     </div>
@@ -578,7 +512,7 @@ quarter Kelly =  3.6% of $25,000     =   $899 risked per trade
         <div class="result-grid">
           <div class="result-tile"><div class="v" id="beValue">—</div><div class="l">Required win rate</div></div>
         </div>
-        <div class="formula" tabindex="0">break-even win rate = 1 / (1 + reward:risk)
+        <div class="formula">break-even win rate = 1 / (1 + reward:risk)
 e.g. at a 2:1 reward:risk, you only need to win 33.3% of the time to break even.</div>
       </div>
     </div>
@@ -589,13 +523,13 @@ e.g. at a 2:1 reward:risk, you only need to win 33.3% of the time to break even.
       </div>
       <div>
         <h3>The formula</h3>
-        <div class="formula" tabindex="0">break_even_win_rate = 1 / (1 + reward:risk)
+        <div class="formula">break_even_win_rate = 1 / (1 + reward:risk)
 
 derivation: set p × RR − (1 − p) × 1 = 0  ->  p = 1 / (1 + RR)</div>
       </div>
       <div>
         <h3>Worked example</h3>
-        <div class="formula" tabindex="0">reward:risk 2.10 : 1  (target $52.61 from entry $48.20, stop $46.10)
+        <div class="formula">reward:risk 2.10 : 1  (target $52.61 from entry $48.20, stop $46.10)
 
 p = 1 / (1 + 2.10) = 1 / 3.10        = 0.3226  ->  32.3%
 
@@ -613,11 +547,10 @@ p           = 1 / 3.00                        = 33.3%</div>
     </div>
   </section>
 
-  <!-- ============ HONESTY SECTION — the page's one full-bleed sunk band ============ -->
-  <section class="dh-band dh-band--sunk dh-band--edge" id="honesty" aria-labelledby="honesty-h">
-    <div class="dh-wrap">
+  <!-- ============ HONESTY SECTION ============ -->
+  <section class="section calc-section" id="honesty" aria-labelledby="honesty-h">
     <div class="honest-card">
-      <p class="dh-eyebrow">Why I built this the way I did</p>
+      <span class="eyebrow">Why I built this the way I did</span>
       <h2 id="honesty-h">I tried to kill my own backtested edge, and mostly succeeded</h2>
       <p>I run a swing-setup screener that flagged an anchored-VWAP reclaim pattern. The first backtest produced a headline expectancy that looked like a real edge — but it came from eight correlated large-cap tech and index names I had picked with hindsight, over one arbitrary window alignment. So instead of trusting it, I re-tested it adversarially. The explicit goal was to try to kill the result, not to confirm it. That headline number did not survive, so it has been retired rather than quoted here.</p>
       <p>Sliding the backtest's arbitrary 126-bar window grid across 21 alignments on those same 8 names, the reproducible expectancy had a <b>median of +0.004R</b>, ranging from −0.045R to +0.287R. The original headline sat near the lucky end of a distribution that was, at its center, indistinguishable from zero. Expanding to a 129-symbol, 10-year universe did find a statistically significant expectancy of <b>+0.117R over 4,933 trades</b> (block-bootstrap 95% CI [+0.057, +0.174]). But when I benchmarked the AVWAP-reclaim signal against risk-matched random entries using the identical stop and target, the random entries alone captured <b>+0.086R</b> of that — just long-term market drift. The signal's own incremental contribution came out to <b>+0.030R per trade, with a 95% confidence interval of [−0.014, +0.077]</b> — a result that does not clear statistical significance, and one that ordinary trading costs (5–10 bps round-trip) would mostly or entirely consume.</p>
@@ -626,12 +559,11 @@ p           = 1 / 3.00                        = 33.3%</div>
       <p>That's the exact experience this toolkit is built to prevent you from having to learn the hard way: a good-looking backtest number, a small sample, and a plausible story are not the same thing as a validated edge. Position size like your edge might be much smaller than your backtest says, because it usually is. Logging every trade in R, the way <a href="/guides/trading-journal.html">a proper trading journal</a> does, is what surfaces a fake edge before it costs real money.</p>
       <p class="note">Full write-up with method, every benchmark, and the correlation-adjusted statistics: <code>reports/robustness-2026-07.md</code> in the swing-screener repo.</p>
     </div>
-    </div>
   </section>
 
   <section class="section">
     <div class="cta-final">
-      <p class="dh-eyebrow">Go deeper</p>
+      <span class="eyebrow">Go deeper</span>
       <h2>These six calculators are chapter 4 of the course</h2>
       <p>The Swing Trading Operating System walks through position sizing and expectancy math, the anchored-VWAP setup above (including how to stress-test it yourself), chart-pattern and options-overlay modules, and the weekly routine that ties it together — 8 illustrated modules, no signals or return promises, just the process.</p>
       <a href="/store.html#products" class="btn btn-gold">See the course — $59</a>
@@ -640,7 +572,7 @@ p           = 1 / 3.00                        = 33.3%</div>
 
   <section class="section" id="risk-disclosure" aria-labelledby="rd-h">
     <div class="disclaimer-box">
-      <p class="dh-eyebrow">Risk disclosure</p>
+      <span class="eyebrow">Risk disclosure</span>
       <h2 id="rd-h">Trading involves substantial risk of loss</h2>
       <p>Educational content only — nothing on this page is financial advice, a recommendation, or a solicitation to trade, and no calculator here predicts or promises any return. Trading involves substantial risk of loss, including total loss of principal, and most retail traders lose money.</p>
       <p>Risk math does not remove risk. A stop can gap through your price, a position can be halted, and a realised loss can exceed the figure any calculator on this page shows. The simulator assumes trades are independent; real drawdowns cluster and arrive worse. Past or backtested performance, including the AVWAP example above, does not indicate future results.</p>
@@ -652,8 +584,8 @@ p           = 1 / 3.00                        = 33.3%</div>
   <!-- geo:faq-visible — mirrors the FAQPage structured data above -->
   <hr class="divider">
   <section class="section section--tight" id="faq">
-    <div class="calc-head">
-      <p class="dh-eyebrow">FAQ</p>
+    <div class="grp-head">
+      <p class="eyebrow">FAQ</p>
       <h2>Common questions</h2>
       <p style="color:var(--muted);font-size:var(--t-small);max-width:56ch">Longer version, with every formula worked out: <a href="/guides/r-multiple-expectancy.html" style="color:var(--gold-2)">R-multiple &amp; expectancy, explained →</a></p>
     </div>
@@ -716,7 +648,7 @@ p           = 1 / 3.00                        = 33.3%</div>
     <a href="/media-kit.html">Media Kit</a>
     <a href="mailto:yusuf.gadelrab06@gmail.com?subject=Risk%20toolkit%20question">yusuf.gadelrab06@gmail.com</a>
     <a href="https://github.com/Yusuf-Gadelrab" target="_blank" rel="noreferrer">GitHub</a>
-    <a href="https://www.linkedin.com/in/yusuf-gadelrab-76246b221" target="_blank" rel="noreferrer">LinkedIn</a>
+    <a href="https://www.linkedin.com/in/yusuf-gadelrab" target="_blank" rel="noreferrer">LinkedIn</a>
     <a href="/brand.html">Brand</a>
     <a href="/stack.html">Stack</a>
     <a href="/everything.html">Everything</a>
@@ -1006,7 +938,7 @@ p           = 1 / 3.00                        = 33.3%</div>
       ctx.fillRect(x+0.5, y, Math.max(barW-1,1), h);
     }
 
-    ctx.fillStyle='#8C8677';
+    ctx.fillStyle='#6f6a61';
     ctx.font='10px sans-serif';
     ctx.fillText('0×', padL, H-6);
     ctx.fillText(cap.toFixed(1)+'×+', W-padR-30, H-6);
@@ -1025,6 +957,5 @@ p           = 1 / 3.00                        = 33.3%</div>
 </script>
 <script src="/js/site.js" defer></script>
 <script src="/js/lux-motion.js" defer></script>
-<script src="/js/lux-plus.js" defer></script>
 </body>
 </html>

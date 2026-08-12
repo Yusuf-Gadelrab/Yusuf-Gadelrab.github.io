@@ -30,7 +30,6 @@
 
 <link rel="stylesheet" href="/css/site.css">
 <link rel="stylesheet" href="/css/lux-motion.css">
-<link rel="stylesheet" href="/css/lux-plus.css">
 <style>
   .prose{max-width:68ch}
   .prose h2{margin:var(--s7) 0 var(--s4);font-size:var(--t-h2)}
@@ -191,7 +190,7 @@ curl -sI https://yourapp.com | grep -i strict-transport-security</span>
       <p><code>dira scan .</code> for a first pass, <code>dira scan . -t yourapp.com</code> to add the live TLS and header checks, <code>dira fix --apply</code> to write the policy files it can generate safely. It will not replace a real pentest or a SOC 2 audit, and it says so in its own report, but it closes most of this checklist in about the time it takes to read this sentence twice. <a href="/dira.html">See the full scanner and install instructions →</a></p>
       <h2>When the checklist isn't enough on its own</h2>
       <p>DIRA is free because most of this list is mechanical, and mechanical problems don't need a person attached to them. What it can't do is sit on a call, read the actual architecture, and tell you which of the manual attestations in its own report are real for your specific setup. That's the gap <a href="/services.html#shield-audit">Shield Audit</a> fills: DIRA runs against the repo and the live domain, then the findings get walked through together into a scored report with a fix plan attached, not just a list.</p>
-      <p>And if the immediate need is smaller than a full audit, a chunk of what's above is also written up as templates and playbooks in <a href="/store.html">the store</a>, the kind of thing that's faster to pick up ready-made than to rebuild from scratch at 11pm before a demo.</p>
+      <p>And if the immediate need is smaller than a full audit, a chunk of what's above is also written up as templates and playbooks in <a href="/store.html">the store</a>, the kind of thing that's faster to buy than to rebuild from scratch at 11pm before a demo.</p>
       <h2>The point of a checklist</h2>
       <p>The founder from the opening story didn't need a security team. They needed about ninety minutes, spread across a weekend, going down this exact list before the questionnaire arrived instead of after. That's the whole job a checklist does: not turning anyone into an expert, just making sure the easy, expensive mistakes never get the chance to become the story.</p>
 
@@ -256,6 +255,5 @@ curl -sI https://yourapp.com | grep -i strict-transport-security</span>
 
 <script src="/js/site.js" defer></script>
 <script src="/js/lux-motion.js" defer></script>
-<script src="/js/lux-plus.js" defer></script>
 </body>
 </html>

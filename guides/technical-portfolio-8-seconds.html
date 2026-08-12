@@ -30,7 +30,6 @@
 
 <link rel="stylesheet" href="/css/site.css">
 <link rel="stylesheet" href="/css/lux-motion.css">
-<link rel="stylesheet" href="/css/lux-plus.css">
 <style>
   .prose{max-width:68ch}
   .prose h2{margin:var(--s7) 0 var(--s4);font-size:var(--t-h2)}
@@ -107,7 +106,7 @@
         <li><strong>The link must survive parsing as plain text.</strong> A URL that only exists as a hyperlink behind the word "Portfolio" can be flattened into the word "Portfolio" with the destination gone. Write the visible URL out.</li>
         <li><strong>No shorteners, no tracking parameters.</strong> A shortened link looks like spam to a human and can be stripped or blocked by mail filters. A URL with a long query string looks broken and is impossible to type from a printed page.</li>
         <li><strong>Short enough to retype by hand.</strong> Recruiters do this more than you would expect, particularly from a PDF opened on a phone. Compare a clean domain against a nested workspace URL with a random identifier in it: only one of those survives being read aloud.</li>
-        <li><strong>The same link everywhere.</strong> Resume, LinkedIn, email signature, GitHub profile. Different links in different places create ambiguity about which is current, and the resolution is usually that nobody checks any of them.</li>
+        <li><strong>The same link everywhere.</strong> Resume, LinkedIn, email signature, GitHub profile. Different links in different places creates ambiguity about which is current, and the resolution is usually that nobody checks any of them.</li>
         <li><strong>Top of page one.</strong> Header block with your email, not buried in a projects section on page two.</li>
       </ul>
       <p>Everything else about surviving the parse is resume mechanics rather than portfolio design, and it is covered properly in <a href="/guides/ats-resume.html">the ATS resume guide</a>. The one-line summary: the parser is a database importer, not an adversary, and the rules that matter are boring formatting rules.</p>
@@ -149,7 +148,7 @@
       </table></div>
       <h3>The honesty rule, and why it is self-interested</h3>
       <p>Every number on your portfolio is a promise that you can explain how it was produced. A figure you cannot reproduce under a follow-up question does more damage than having no number at all, because it converts "impressive" into "unreliable" in a single exchange, and the interviewer remembers the second one.</p>
-      <p>Two things make a number safe. Attach the method to it ("78% directional accuracy on a six-month backtest" is checkable; "78% accurate" is not), and be willing to retire it. I have removed figures from my own site after they failed a stricter re-test, including a trading result that did not survive a proper walk-forward evaluation and a research statistic that turned out to overstate what the published paper actually reported. Both removals were mildly painful and both were obviously correct, because the alternative is defending a number you already know is wrong in front of someone who might check.</p>
+      <p>Two things make a number safe. Attach the method to it ("92% precision on a 3,000-row hand-labelled test set" is checkable; "78% accurate" is not), and be willing to retire it. I have removed figures from my own site after they failed a stricter re-test, including a trading result that did not survive a proper walk-forward evaluation and a research statistic that turned out to overstate what the published paper actually reported. Both removals were mildly painful and both were obviously correct, because the alternative is defending a number you already know is wrong in front of someone who might check.</p>
       <p>Where a result is real but weaker than it looks, say so on the page. "Statistically significant pre-to-post gains across 60 participants" plus a note that a specific secondary comparison was not significant reads as someone who understands their own data. Omitting the caveat reads fine right up until an interviewer opens the paper.</p>
       <h2>The README is the landing page</h2>
       <p>For most technical reviewers, the repository README <em>is</em> your portfolio, because it is where the forwarded link goes. Treat it as a product page with a fixed structure, and put the visual proof above the fold.</p>
@@ -278,6 +277,5 @@
 
 <script src="/js/site.js" defer></script>
 <script src="/js/lux-motion.js" defer></script>
-<script src="/js/lux-plus.js" defer></script>
 </body>
 </html>

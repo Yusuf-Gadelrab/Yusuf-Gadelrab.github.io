@@ -39,18 +39,8 @@
 <meta name="twitter:description" content="AI freight tooling, a security scanner, trading research systems, prototypes, and free web apps — each with a real case study.">
 <link rel="stylesheet" href="/css/site.css">
 <link rel="stylesheet" href="/css/lux-motion.css">
-<link rel="stylesheet" href="/css/lux-plus.css">
 <style>
   /* ---- page-specific only ---- */
-
-  /* ---- typographic register ----
-     Same ramp hire.html ships: h1/h2 in the serif display face, .proj h3 / .qa h3
-     stay on --display-pro so the card titles read as UI, not headings. */
-  #main h1{font-family:var(--display-serif);font-weight:400;letter-spacing:var(--track-tight);
-    line-height:var(--lh-tight);max-width:16ch}
-  #main h2{font-family:var(--display-serif);font-weight:400;letter-spacing:var(--track-tight);
-    line-height:var(--lh-snug);max-width:22ch}
-
   .proj{display:flex;flex-direction:column;padding:var(--s5)}
   .proj h3{margin:var(--s2) 0 var(--s3);font-size:var(--t-h3)}
   .proj>p{color:var(--muted);font-size:var(--t-small);flex:1;margin:0}
@@ -94,31 +84,17 @@
 
   form.mini{display:flex;gap:8px;flex-wrap:wrap;max-width:440px}
   form.mini input{flex:1 1 200px;min-width:0;background:var(--panel2);border:1px solid var(--line);
-    border-radius:var(--radius);color:var(--bone);padding:11px 12px;font-family:var(--body-font);font-size:16px;min-height:var(--tap)}
+    border-radius:var(--radius);color:var(--bone);padding:11px 12px;font-family:var(--body-font);font-size:13px}
   form.mini input:focus{border-color:var(--gold)}
   form.mini input:focus-visible{outline:2px solid var(--gold-2);outline-offset:2px}
   .offer-note{margin-top:9px;font-size:11px;color:var(--faint)}
-
-  /* ---- proof row ----
-     The hero moment on this page is arithmetic, not ornament: four numbers that
-     can each be checked against a repo or a report, including the two that are
-     zero. .dh-stat__src carries the provenance so nothing has to be trusted. */
-  .proof-src{margin-top:var(--s4);font-family:var(--mono);font-size:var(--t-caption);
-    color:var(--ink-3);max-width:var(--measure-wide);line-height:var(--lh-snug)}
-  .proof-src a{color:var(--gold-ink)}
-
-  /* The quiet secondary routes are the smallest hit area on the page. */
-  @media(max-width:760px){
-    .alt-links a{display:inline-block;padding:10px 0}
-  }
 </style>
 <!-- geo:entity — canonical Person node, one entity across every page -->
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebPage","@id":"https://yusuf-gadelrab.github.io/projects.html#webpage","url":"https://yusuf-gadelrab.github.io/projects.html","inLanguage":"en","isPartOf":{"@id":"https://yusuf-gadelrab.github.io/#website"},"about":{"@id":"https://yusuf-gadelrab.github.io/#person"},"publisher":{"@id":"https://yusuf-gadelrab.github.io/#person"}}</script>
+
 <link rel="alternate" type="text/plain" href="https://yusuf-gadelrab.github.io/llms-full.txt" title="Plain-text profile for language models">
-<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"Person","@id":"https://yusuf-gadelrab.github.io/#person","name":"Yusuf Gadelrab","url":"https://yusuf-gadelrab.github.io/","jobTitle":"Computer Science Student, AI Builder & Researcher","sameAs":["https://github.com/Yusuf-Gadelrab","https://www.linkedin.com/in/yusuf-gadelrab-76246b221","https://orcid.org/0009-0001-6579-1179"]},{"@type":"WebSite","@id":"https://yusuf-gadelrab.github.io/#website","name":"Yusuf Gadelrab","url":"https://yusuf-gadelrab.github.io/"}]}</script>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"CollectionPage","@id":"https://yusuf-gadelrab.github.io/projects.html#page","url":"https://yusuf-gadelrab.github.io/projects.html","name":"Projects — Yusuf Gadelrab","description":"An index of the technical projects built by Yusuf Gadelrab: AI freight tooling, a zero-dependency security scanner, trading research systems, product prototypes, and free client-side web apps.","author":{"@id":"https://yusuf-gadelrab.github.io/#person"},"about":{"@id":"https://yusuf-gadelrab.github.io/#person"},"isPartOf":{"@id":"https://yusuf-gadelrab.github.io/#website"},"mainEntity":{"@id":"https://yusuf-gadelrab.github.io/projects.html#list"},"inLanguage":"en"}</script>
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"ItemList","@id":"https://yusuf-gadelrab.github.io/projects.html#list","name":"Technical projects by Yusuf Gadelrab","itemListOrder":"https://schema.org/ItemListOrderAscending","numberOfItems":14,"itemListElement":[{"@type":"ListItem","position":1,"item":{"@type":"SoftwareApplication","name":"FreightDesk AI","applicationCategory":"BusinessApplication","description":"An AI back-office clerk for small freight brokerages that reads the billing and AR inbox and drafts every reply on a local model.","url":"https://yusuf-gadelrab.github.io/freightdesk.html","author":{"@id":"https://yusuf-gadelrab.github.io/#person"}}},{"@type":"ListItem","position":2,"item":{"@type":"SoftwareApplication","name":"HwyHaul LoadLink","applicationCategory":"BusinessApplication","description":"An AI freight back office covering 18 AR and billing workflows, built and tested entirely on local models.","url":"https://yusuf-gadelrab.github.io/hwyhaul.html","author":{"@id":"https://yusuf-gadelrab.github.io/#person"}}},{"@type":"ListItem","position":3,"item":{"@type":"SoftwareApplication","name":"DIRA","applicationCategory":"DeveloperApplication","description":"A zero-dependency, MIT-licensed security scanner for startup codebases: secrets, dependency CVEs, misconfigurations, license risk, and git-history leaks.","url":"https://yusuf-gadelrab.github.io/dira.html","author":{"@id":"https://yusuf-gadelrab.github.io/#person"}}},{"@type":"ListItem","position":4,"item":{"@type":"SoftwareApplication","name":"Swing Screener","applicationCategory":"FinanceApplication","description":"A swing-setup screener with a no-lookahead backtest engine and an adversarial validation audit that invalidated most of its own setups.","url":"https://yusuf-gadelrab.github.io/swing-screener.html","author":{"@id":"https://yusuf-gadelrab.github.io/#person"}}},{"@type":"ListItem","position":5,"item":{"@type":"SoftwareApplication","name":"Trading Bot","applicationCategory":"FinanceApplication","description":"A broker-agnostic trading execution engine with a crash-safe order journal, a fail-closed risk layer, and 160 passing tests.","url":"https://yusuf-gadelrab.github.io/trading-bot.html","author":{"@id":"https://yusuf-gadelrab.github.io/#person"}}},{"@type":"ListItem","position":6,"item":{"@type":"SoftwareApplication","name":"EventReels","applicationCategory":"MultimediaApplication","description":"A local-first ffmpeg pipeline that turns raw event footage into a finished vertical highlight reel, with a browser studio to drive it.","url":"https://yusuf-gadelrab.github.io/eventreels.html","author":{"@id":"https://yusuf-gadelrab.github.io/#person"}}},{"@type":"ListItem","position":7,"item":{"@type":"SoftwareApplication","name":"EcoImpact","applicationCategory":"UtilitiesApplication","description":"A community trash map with a quantified impact meter, built on FastAPI, SQLite and Leaflet and designed privacy-first from the schema up.","url":"https://yusuf-gadelrab.github.io/ecoimpact.html","author":{"@id":"https://yusuf-gadelrab.github.io/#person"}}},{"@type":"ListItem","position":8,"item":{"@type":"SoftwareApplication","name":"SpartanEats","applicationCategory":"LifestyleApplication","description":"A student-run campus food delivery concept for San José State University.","url":"https://yusuf-gadelrab.github.io/spartaneats.html","author":{"@id":"https://yusuf-gadelrab.github.io/#person"}}},{"@type":"ListItem","position":9,"item":{"@type":"SoftwareApplication","name":"AU","applicationCategory":"SocialNetworkingApplication","description":"A chronological social feed with the outrage machinery removed: no vanity metrics, no quote-posts, no verification hierarchy.","url":"https://yusuf-gadelrab.github.io/au.html","author":{"@id":"https://yusuf-gadelrab.github.io/#person"}}},{"@type":"ListItem","position":10,"item":{"@type":"SoftwareApplication","name":"AURUM","applicationCategory":"BusinessApplication","description":"A luxury super-app study: five product surfaces on one design system and one faceted search engine.","url":"https://yusuf-gadelrab.github.io/aurum/","author":{"@id":"https://yusuf-gadelrab.github.io/#person"}}},{"@type":"ListItem","position":11,"item":{"@type":"WebApplication","name":"Visa Navigator","applicationCategory":"UtilitiesApplication","description":"A free, private, browser-only planner for international students changing US nonimmigrant status, with a backward-planned I-539 timeline and conflict flags.","url":"https://yusuf-gadelrab.github.io/visa.html","author":{"@id":"https://yusuf-gadelrab.github.io/#person"}}},{"@type":"ListItem","position":12,"item":{"@type":"WebApplication","name":"Apply OS","applicationCategory":"UtilitiesApplication","description":"A free client-side tracker for internship, scholarship, grant and fellowship applications, with a deadline radar and kanban board.","url":"https://yusuf-gadelrab.github.io/apply.html","author":{"@id":"https://yusuf-gadelrab.github.io/#person"}}},{"@type":"ListItem","position":13,"item":{"@type":"WebApplication","name":"Freight Broker Calculators","applicationCategory":"FinanceApplication","description":"Six free freight calculators: rate per mile, deadhead cost, broker margin, detention, fuel surcharge, and break-even.","url":"https://yusuf-gadelrab.github.io/freight-tools.html","author":{"@id":"https://yusuf-gadelrab.github.io/#person"}}},{"@type":"ListItem","position":14,"item":{"@type":"WebApplication","name":"Risk Toolkit","applicationCategory":"FinanceApplication","description":"Free no-signup risk calculators for traders: position sizer, R-multiple, expectancy, Monte Carlo risk of ruin, Kelly fraction, and break-even win rate.","url":"https://yusuf-gadelrab.github.io/risk-tools.html","author":{"@id":"https://yusuf-gadelrab.github.io/#person"}}}]}</script>
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","@id":"https://yusuf-gadelrab.github.io/projects.html#faq","mainEntity":[{"@type":"Question","name":"Which of these is actually finished?","acceptedAnswer":{"@type":"Answer","text":"Check the status chip on each card. Live means shipped and in use today — DIRA, Swing Screener, the SIGCSE paper, and the four free client-side tools. FreightDesk AI is shipped and priced with founding-client pilots open, but no client is installed yet. Local-first means built and tested end to end but running on local models only — HwyHaul LoadLink and the trading bot. Prototype or Concept means it works but has not shipped to a real user yet — EventReels, EcoImpact, SpartanEats, AU, and AURUM."}},{"@type":"Question","name":"Did he actually build these, or assemble them from templates?","acceptedAnswer":{"@type":"Answer","text":"Check the repo and the test count, not the claim. DIRA is MIT-licensed, zero-dependency Python with 208 passing tests, open on GitHub . HwyHaul LoadLink shipped 18 finance workflows with 77 passing tests inside a real freight-brokerage internship. The trading bot has 160 passing tests and a promotion gate that has never let it touch real money. Every project links to its own repo or case study."}},{"@type":"Question","name":"What am I supposed to do with this page?","acceptedAnswer":{"@type":"Answer","text":"Click into whichever project matches what you need to see — each one links to a full case study. If it's about hiring him or building something like one of these, use Work with me below. If it's just to know when something new ships, leave an email under New Builds & Releases — nothing else, no sales sequence."}}]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"ItemList","@id":"https://yusuf-gadelrab.github.io/projects.html#list","name":"Technical projects by Yusuf Gadelrab","itemListOrder":"https://schema.org/ItemListOrderAscending","numberOfItems":14,"itemListElement":[{"@type":"ListItem","position":1,"item":{"@type":"SoftwareApplication","name":"FreightDesk AI","applicationCategory":"BusinessApplication","description":"An AI back-office clerk for small freight brokerages that reads the billing and AR inbox and drafts every reply on a local model.","url":"https://yusuf-gadelrab.github.io/freightdesk.html","author":{"@id":"https://yusuf-gadelrab.github.io/#person"}}},{"@type":"ListItem","position":2,"item":{"@type":"SoftwareApplication","name":"HwyHaul LoadLink","applicationCategory":"BusinessApplication","description":"An AI freight back office covering a brokerage's AR and billing workflows, built and tested entirely on local models.","url":"https://yusuf-gadelrab.github.io/hwyhaul.html","author":{"@id":"https://yusuf-gadelrab.github.io/#person"}}},{"@type":"ListItem","position":3,"item":{"@type":"SoftwareApplication","name":"DIRA","applicationCategory":"DeveloperApplication","description":"A zero-dependency, MIT-licensed security scanner for startup codebases: secrets, dependency CVEs, misconfigurations, license risk, and git-history leaks.","url":"https://yusuf-gadelrab.github.io/dira.html","author":{"@id":"https://yusuf-gadelrab.github.io/#person"}}},{"@type":"ListItem","position":4,"item":{"@type":"SoftwareApplication","name":"Swing Screener","applicationCategory":"FinanceApplication","description":"A swing-setup screener with a no-lookahead backtest engine and an adversarial validation audit that invalidated most of its own setups.","url":"https://yusuf-gadelrab.github.io/swing-screener.html","author":{"@id":"https://yusuf-gadelrab.github.io/#person"}}},{"@type":"ListItem","position":5,"item":{"@type":"SoftwareApplication","name":"Trading Bot","applicationCategory":"FinanceApplication","description":"A broker-agnostic trading execution engine with a crash-safe order journal, a fail-closed risk layer, and 160 passing tests.","url":"https://yusuf-gadelrab.github.io/trading-bot.html","author":{"@id":"https://yusuf-gadelrab.github.io/#person"}}},{"@type":"ListItem","position":6,"item":{"@type":"SoftwareApplication","name":"EventReels","applicationCategory":"MultimediaApplication","description":"A local-first ffmpeg pipeline that turns raw event footage into a finished vertical highlight reel, with a browser studio to drive it.","url":"https://yusuf-gadelrab.github.io/eventreels.html","author":{"@id":"https://yusuf-gadelrab.github.io/#person"}}},{"@type":"ListItem","position":7,"item":{"@type":"SoftwareApplication","name":"EcoImpact","applicationCategory":"UtilitiesApplication","description":"A community trash map with a quantified impact meter, built on FastAPI, SQLite and Leaflet and designed privacy-first from the schema up.","url":"https://yusuf-gadelrab.github.io/ecoimpact.html","author":{"@id":"https://yusuf-gadelrab.github.io/#person"}}},{"@type":"ListItem","position":8,"item":{"@type":"SoftwareApplication","name":"SpartanEats","applicationCategory":"LifestyleApplication","description":"A student-run campus food delivery concept for San José State University.","url":"https://yusuf-gadelrab.github.io/spartaneats.html","author":{"@id":"https://yusuf-gadelrab.github.io/#person"}}},{"@type":"ListItem","position":9,"item":{"@type":"SoftwareApplication","name":"AU","applicationCategory":"SocialNetworkingApplication","description":"A chronological social feed with the outrage machinery removed: no vanity metrics, no quote-posts, no verification hierarchy.","url":"https://yusuf-gadelrab.github.io/au.html","author":{"@id":"https://yusuf-gadelrab.github.io/#person"}}},{"@type":"ListItem","position":10,"item":{"@type":"SoftwareApplication","name":"AURUM","applicationCategory":"BusinessApplication","description":"A luxury super-app study: five product surfaces on one design system and one faceted search engine.","url":"https://yusuf-gadelrab.github.io/aurum/","author":{"@id":"https://yusuf-gadelrab.github.io/#person"}}},{"@type":"ListItem","position":11,"item":{"@type":"WebApplication","name":"Visa Navigator","applicationCategory":"UtilitiesApplication","description":"A free, private, browser-only planner for international students changing US nonimmigrant status, with a backward-planned I-539 timeline and conflict flags.","url":"https://yusuf-gadelrab.github.io/visa.html","author":{"@id":"https://yusuf-gadelrab.github.io/#person"}}},{"@type":"ListItem","position":12,"item":{"@type":"WebApplication","name":"Apply OS","applicationCategory":"UtilitiesApplication","description":"A free client-side tracker for internship, scholarship, grant and fellowship applications, with a deadline radar and kanban board.","url":"https://yusuf-gadelrab.github.io/apply.html","author":{"@id":"https://yusuf-gadelrab.github.io/#person"}}},{"@type":"ListItem","position":13,"item":{"@type":"WebApplication","name":"Freight Broker Calculators","applicationCategory":"FinanceApplication","description":"Six free freight calculators: rate per mile, deadhead cost, broker margin, detention, fuel surcharge, and break-even.","url":"https://yusuf-gadelrab.github.io/freight-tools.html","author":{"@id":"https://yusuf-gadelrab.github.io/#person"}}},{"@type":"ListItem","position":14,"item":{"@type":"WebApplication","name":"Risk Toolkit","applicationCategory":"FinanceApplication","description":"Free no-signup risk calculators for traders: position sizer, R-multiple, expectancy, Monte Carlo risk of ruin, Kelly fraction, and break-even win rate.","url":"https://yusuf-gadelrab.github.io/risk-tools.html","author":{"@id":"https://yusuf-gadelrab.github.io/#person"}}}]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","@id":"https://yusuf-gadelrab.github.io/projects.html#faq","mainEntity":[{"@type":"Question","name":"Which of these is actually finished?","acceptedAnswer":{"@type":"Answer","text":"Check the status chip on each card. Live means shipped and in use today — DIRA, Swing Screener, the SIGCSE paper, and the four free client-side tools. FreightDesk AI is shipped and priced with founding-client pilots open, but no client is installed yet. Local-first means built and tested end to end but running on local models only — HwyHaul LoadLink and the trading bot. Prototype or Concept means it works but has not shipped to a real user yet — EventReels, EcoImpact, SpartanEats, AU, and AURUM."}},{"@type":"Question","name":"Did he actually build these, or assemble them from templates?","acceptedAnswer":{"@type":"Answer","text":"Check the repo and the test count, not the claim. DIRA is MIT-licensed, zero-dependency Python with 208 passing tests, open on GitHub . HwyHaul LoadLink shipped the AR and billing workflow load with a passing regression suite during a real freight-brokerage internship. The trading bot has 160 passing tests and a promotion gate that has never let it touch real money. Every project links to its own repo or case study."}},{"@type":"Question","name":"What am I supposed to do with this page?","acceptedAnswer":{"@type":"Answer","text":"Click into whichever project matches what you need to see — each one links to a full case study. If it's about hiring him or building something like one of these, use Work with me below. If it's just to know when something new ships, leave an email under New Builds & Releases — nothing else, no sales sequence."}}]}</script>
 </head>
 <body class="pro">
 
@@ -144,31 +120,6 @@
     <h1 style="margin:var(--s4) 0">Everything I've <span class="gold-fill">actually built.</span></h1>
     <p class="lead">Yusuf Gadelrab is a computer science student at San José State University (BS Computer Science, expected May 2028) who ships in public. Each project below has its own case study page — what it does, how it was built, and, where it applies, the result that went against him. Nothing here is a mockup with a made-up metric attached.</p>
     <p style="color:var(--muted);max-width:62ch">The academic side lives on <a href="/research.html">the research page</a>. This page is the engineering.</p>
-
-    <div class="dh-stats" style="margin-top:var(--s7)">
-      <div class="dh-stat">
-        <span class="dh-stat__v dh-num">14</span>
-        <span class="dh-stat__k">Builds on this page, each with its own case study</span>
-        <span class="dh-stat__src">Counted below · no entry without a page</span>
-      </div>
-      <div class="dh-stat">
-        <span class="dh-stat__v dh-num">208</span>
-        <span class="dh-stat__k">Passing tests in DIRA, the zero-dependency scanner</span>
-        <span class="dh-stat__src">pytest · MIT · open on GitHub</span>
-      </div>
-      <div class="dh-stat">
-        <span class="dh-stat__v dh-num">4,933</span>
-        <span class="dh-stat__k">Trades in the walk-forward audit that invalidated most of the setups</span>
-        <span class="dh-stat__src">129 symbols · 10 years · no lookahead</span>
-      </div>
-      <div class="dh-stat">
-        <span class="dh-stat__v dh-num">$0</span>
-        <span class="dh-stat__k">Live capital ever traded — the promotion gate has never opened</span>
-        <span class="dh-stat__src">Execution engine, paper only</span>
-      </div>
-    </div>
-    <p class="proof-src">Two of those four are zeros, and they are on the page for the same reason the other two are: a number you cannot check is decoration. Each resolves to the case study it came from.</p>
-
     <div class="key">
       <div><span class="st st--live"><i></i>Live</span> shipped and in use</div>
       <div><span class="st st--proto"><i></i>Prototype</span> built, not in production</div>
@@ -179,7 +130,7 @@
     </div>
     <p class="muted" style="font-size:var(--t-micro);margin-top:var(--s3)">Reply within two business days · you deal with me directly, not an agency</p>
     <p class="alt-links">
-      <a href="/Yusuf_Gadelrab_CS.pdf">Résumé (PDF)</a>
+      <a href="/resume.html">Résumé</a>
       <a href="#faq">FAQ</a>
       <a href="#capture">Get notified of new builds</a>
     </p>
@@ -210,8 +161,8 @@
       <a class="card proj" href="/hwyhaul.html">
         <span class="st st--local"><i></i>Internship build</span>
         <h3>HwyHaul LoadLink</h3>
-        <p>An AI intake and accounts-receivable automation built during a freight-brokerage internship, covering 18 distinct finance workflows end to end. The design constraint that shaped everything: it had to run entirely on local models, at $0 in API cost, because freight paperwork is full of customer and carrier data that should not be posted to a third-party endpoint. 77 passing tests, because a finance workflow that is wrong 5% of the time is worse than no automation at all.</p>
-        <div class="chips"><span>Python</span><span>Local LLM</span><span>77 tests</span><span>$0 API cost</span></div>
+        <p>An AI intake and accounts-receivable automation built during a freight-brokerage internship, covering its finance workflows end to end. The design constraint that shaped everything: it had to run entirely on local models, at $0 in API cost, because freight paperwork is full of customer and carrier data that should not be posted to a third-party endpoint. a passing regression suite, because a finance workflow that is wrong 5% of the time is worse than no automation at all.</p>
+        <div class="chips"><span>Python</span><span>Local LLM</span><span>Regression suite</span><span>$0 API cost</span></div>
         <span class="go">Read the case study →</span>
       </a>
 
@@ -251,7 +202,7 @@
       <a class="card proj" href="/swing-screener.html">
         <span class="st st--live"><i></i>Live · results published</span>
         <h3>Swing Screener</h3>
-        <p>A swing-setup screener sitting on top of a backtest engine written specifically to make lookahead bias impossible — signals can only ever see data that existed at signal time. Then it was pointed at its own headline result. Adversarial walk-forward validation invalidated most of the setups being traded: only the anchored-VWAP reclaim survived. Its original headline figure, measured on a far smaller sample, then failed a second and harder re-test and was replaced by +0.117R over 4,933 trades on a 129-symbol, 10-year universe (95% CI +0.057 to +0.174) — and a risk-matched random entry already captures +0.086R of that, leaving the signal's own contribution near +0.030R with a confidence interval crossing zero. VCP came out breakeven; a gap and opening-range-breakout proxy came out at −0.28R and was dropped. The case study is the audit, not the strategy.</p>
+        <p>A swing-setup screener sitting on top of a backtest engine written specifically to make lookahead bias impossible — signals can only ever see data that existed at signal time. Then it was pointed at its own headline result. Adversarial walk-forward validation invalidated most of the setups being traded: only the anchored-VWAP reclaim survived. Its original +0.23R over 101 trades then failed a second, harder re-test and was replaced by +0.117R over 4,933 trades on a 129-symbol, 10-year universe (95% CI +0.057 to +0.174) — and a risk-matched random entry already captures +0.086R of that, leaving the signal's own contribution near +0.030R with a confidence interval crossing zero. VCP came out breakeven; a gap and opening-range-breakout proxy came out at −0.28R and was dropped. The case study is the audit, not the strategy.</p>
         <div class="chips"><span>Python</span><span>Walk-forward</span><span>No-lookahead</span></div>
         <span class="go">Read the case study →</span>
       </a>
@@ -265,8 +216,6 @@
       </a>
 
     </div>
-
-    <p class="dh-note" style="margin-top:var(--s6)">Stated plainly, because it is the part that matters: the anchored-VWAP reclaim is the only setup that survived walk-forward, and it is <b>not</b> a validated edge. A risk-matched random entry already captures +0.086R of the +0.117R, which leaves the signal's own contribution around +0.030R with a confidence interval that crosses zero. No live capital has ever been deployed behind any of it, and none of it is financial advice.</p>
   </section>
 
   <hr class="divider">
@@ -366,8 +315,8 @@
 
       <a class="card proj" href="/apps.html">
         <span class="st st--live"><i></i>Live · installable</span>
-        <h3>Offline PWAs — TradeLog, Cut, Fire, GRAMPA</h3>
-        <p>Four installable progressive web apps with no backend at all: TradeLog (an R-multiple trading journal), Cut (a weight tracker), Fire (a daily ritual checklist), and GRAMPA (a big-button phone helper for older adults). They install to a home screen, work with no connection, and store everything in local storage on the device. The full apps and projects index lives here too.</p>
+        <h3>Offline PWAs — TradeLog, Cut, Fire</h3>
+        <p>Three installable progressive web apps with no backend at all: TradeLog (an R-multiple trading journal), Cut (a weight tracker), and Fire (a daily ritual checklist). They install to a home screen, work with no connection, and store everything in local storage on the device. The full apps and projects index lives here too.</p>
         <div class="chips"><span>PWA</span><span>Offline</span><span>localStorage</span></div>
         <span class="go">Browse the apps index →</span>
       </a>
@@ -384,7 +333,7 @@
       <h2>The rest of the work</h2>
     </div>
     <div class="grid" style="margin-top:var(--s6)">
-      <a class="card proj" href="/research.html"><span class="st st--live"><i></i>Published · peer-reviewed</span><h3>Research</h3><p>A peer-reviewed SIGCSE Technical Symposium 2026 paper on computer science education, with methods and DOI.</p><span class="go">Read the research →</span></a>
+      <a class="card proj" href="/research.html"><span class="st st--live"><i></i>Published · peer-reviewed</span><h3>Research</h3><p>A co-authored ACM SIGCSE TS 2026 poster abstract on computer science education, with methods and DOI.</p><span class="go">Read the research →</span></a>
       <a class="card proj" href="/codeswitch.html"><span class="st st--proto"><i></i>Pre-launch</span><h3>CODESWITCH</h3><p>A free 8-week bilingual intro CS program for high schoolers still learning English, built out of that research. The page is live; the program itself has not run its first cohort yet.</p><span class="go">See the program →</span></a>
       <a class="card proj" href="/writing.html"><span class="st st--live"><i></i>Live</span><h3>Writing</h3><p>Build logs and postmortems, including the ones about things that did not work.</p><span class="go">Read the writing →</span></a>
       <a class="card proj" href="/everything.html"><span class="st st--live"><i></i>Live</span><h3>Everything</h3><p>One page listing every project, product, brand and app in one place.</p><span class="go">See everything →</span></a>
@@ -409,7 +358,7 @@
       </article>
       <article class="card qa">
         <h3>Did he actually build these, or assemble them from templates?</h3>
-        <p>Check the repo and the test count, not the claim. DIRA is MIT-licensed, zero-dependency Python with 208 passing tests, open on <a href="https://github.com/Yusuf-Gadelrab" target="_blank" rel="noopener">GitHub</a>. HwyHaul LoadLink shipped 18 finance workflows with 77 passing tests inside a real freight-brokerage internship. The trading bot has 160 passing tests and a promotion gate that has never let it touch real money. Every project links to its own repo or case study.</p>
+        <p>Check the repo and the test count, not the claim. DIRA is MIT-licensed, zero-dependency Python with 208 passing tests, open on <a href="https://github.com/Yusuf-Gadelrab" target="_blank" rel="noopener">GitHub</a>. HwyHaul LoadLink shipped the AR and billing workflow load with a passing regression suite during a real freight-brokerage internship. The trading bot has 160 passing tests and a promotion gate that has never let it touch real money. Every project links to its own repo or case study.</p>
       </article>
       <article class="card qa">
         <h3>What am I supposed to do with this page?</h3>
@@ -433,20 +382,20 @@
       <input type="email" id="e-projects" placeholder="you@company.com" autocomplete="email" required>
       <button class="btn btn-ghost btn-sm" type="submit">Save my spot</button>
     </form>
-    <p class="offer-note" id="n-projects">One email when something new ships. Nothing else, ever.</p>
+    <p class="offer-note" id="n-projects">One email when this opens. Nothing else, ever.</p>
   </section>
 
   <hr class="divider">
 
   <section class="section section--tight">
-    <div class="dh-cta">
-      <div class="dh-cta__copy">
-        <h2 class="dh-cta__title">Hiring, or want one of these built for you?</h2>
-        <p class="dh-cta__sub">You deal with him directly, not an agency, and the reply lands within two business days — including the honest no when something isn't a fit.</p>
+    <div class="row" style="justify-content:space-between">
+      <div>
+        <p class="eyebrow">Next step</p>
+        <h2 style="margin-top:var(--s2)">Hiring, or want one of these built for you?</h2>
       </div>
-      <div class="dh-cta__act">
+      <div class="row">
         <a class="btn btn-gold" href="/hire.html">Work with me →</a>
-        <a class="btn btn-ghost" href="/Yusuf_Gadelrab_CS.pdf">Résumé (PDF)</a>
+        <a class="btn btn-ghost" href="/resume.html">See the résumé</a>
         <a class="btn btn-ghost" href="https://github.com/Yusuf-Gadelrab" target="_blank" rel="noopener">GitHub</a>
       </div>
     </div>
@@ -474,13 +423,13 @@
     <a href="/terms.html">Terms</a>
     <a href="mailto:yusuf.gadelrab06@gmail.com">yusuf.gadelrab06@gmail.com</a>
     <a href="https://github.com/Yusuf-Gadelrab" target="_blank" rel="noopener">GitHub</a>
-    <a href="https://www.linkedin.com/in/yusuf-gadelrab-76246b221" target="_blank" rel="noopener">LinkedIn</a>
+    <a href="https://www.linkedin.com/in/yusuf-gadelrab" target="_blank" rel="noopener">LinkedIn</a>
+          <a href="/portfolio/">Portfolio</a>
   </div>
 </footer>
 
 <script src="/js/site.js" defer></script>
 <script src="/js/lux-motion.js" defer></script>
-<script src="/js/lux-plus.js" defer></script>
 <script src="/js/waitlist.js" defer></script>
 <script>
 document.addEventListener('DOMContentLoaded', function () {

@@ -30,7 +30,6 @@
 
 <link rel="stylesheet" href="/css/site.css">
 <link rel="stylesheet" href="/css/lux-motion.css">
-<link rel="stylesheet" href="/css/lux-plus.css">
 <style>
   .prose{max-width:68ch}
   .prose h2{margin:var(--s7) 0 var(--s4);font-size:var(--t-h2)}
@@ -311,11 +310,11 @@ CANDIDATE 2
         </tbody>
       </table></div>
       <p>Which is the honest summary of this whole field right now — <strong>the model is the cheap part.</strong></p>
-      <p>This is the pattern my own overnight drafting pipeline runs in production: local model drafts, an automated audit quarantines anything failing its checks, a human sees only exceptions — and <a href="/freightdesk.html">FreightDesk AI</a> is the same pattern packaged for freight brokerages. The freight-specific version of the same problem is in <a href="/guides/freight-back-office.html">the back office guide</a>, the retrieval half is in <a href="/guides/rag-explained.html">the RAG guide</a>, and if you want the build done rather than described, that is <a href="/services.html">the services page</a>.</p>
+      <p>A worked example of all of this in production is <a href="/freightdesk.html">FreightDesk AI</a>: local model drafts overnight, an automated audit quarantines anything failing its checks, a human sees only exceptions. The freight-specific version of the same problem is in <a href="/guides/freight-back-office.html">the back office guide</a>, the retrieval half is in <a href="/guides/rag-explained.html">the RAG guide</a>, and if you want the build done rather than described, that is <a href="/services.html">the services page</a>.</p>
 
       <h2>Tools referenced in this guide</h2>
       <ul>
-        <li><a href="/freightdesk.html">FreightDesk AI</a> — the same pattern packaged for freight brokerages.</li>
+        <li><a href="/freightdesk.html">FreightDesk AI</a> — the pattern in production for freight brokerages.</li>
         <li><a href="/guides/local-llm-ollama.html">Local LLM guide</a> — how to run the cheap tier on your own hardware.</li>
         <li><a href="/store.html">Automation Studio &amp; store</a> — playbooks and templates for building this yourself.</li>
       </ul>
@@ -376,6 +375,5 @@ CANDIDATE 2
 
 <script src="/js/site.js" defer></script>
 <script src="/js/lux-motion.js" defer></script>
-<script src="/js/lux-plus.js" defer></script>
 </body>
 </html>
