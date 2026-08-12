@@ -30,6 +30,7 @@
 
 <link rel="stylesheet" href="/css/site.css">
 <link rel="stylesheet" href="/css/lux-motion.css">
+<link rel="stylesheet" href="/css/lux-plus.css">
 <style>
   .prose{max-width:68ch}
   .prose h2{margin:var(--s7) 0 var(--s4);font-size:var(--t-h2)}
@@ -198,7 +199,7 @@
       <p>The two tools answer neighbouring questions and are strongest together. A profile tells you where volume sits but not who is up or down on it. Anchored VWAP tells you the average cost basis of everyone since a chosen event, so it tells you whether that cohort is in profit.</p>
       <p>Concretely: anchor a VWAP to the same event you anchor the profile to. If the AVWAP and the POC sit at nearly the same price, that level is both the most-traded price and the average cost basis, which makes it a strong reference for both entry and invalidation. If the AVWAP sits well above the POC, the average participant paid more than the most agreed-on price, which is overhead supply waiting to sell into strength.</p>
       <p>An AVWAP reclaim occurring at a low volume node is a more interesting setup than one occurring in the middle of a high volume node, because there is less inventory to chew through above it. <a href="/guides/anchored-vwap.html">The anchored VWAP guide covers the reclaim mechanics →</a></p>
-      <p class="callout callout--warn">The AVWAP reclaim is the one setup my walk-forward testing did not eliminate, at +0.117R over 4,933 trades on a 129-symbol, 10-year universe with a 95% confidence interval of +0.057 to +0.174. It is <strong>not a validated edge</strong>: a risk-matched random entry captured +0.086R on the same data, so the signal's own contribution is about +0.030R with a confidence interval crossing zero. An earlier +0.23R over 101 trades failed my own adversarial re-test and is retired. Backtest results, not live trading claims.</p>
+      <p class="callout callout--warn">The AVWAP reclaim is the one setup my walk-forward testing did not eliminate, at +0.117R over 4,933 trades on a 129-symbol, 10-year universe with a 95% confidence interval of +0.057 to +0.174. It is <strong>not a validated edge</strong>: a risk-matched random entry captured +0.086R on the same data, so the signal's own contribution is about +0.030R with a confidence interval crossing zero. An earlier small-sample result failed my own adversarial re-test and is retired. Backtest results, not live trading claims.</p>
       <h2>Limits</h2>
       <ul>
         <li>Profiles are descriptive, not predictive. They show where trade happened, not where it will happen.</li>
@@ -274,5 +275,6 @@
 
 <script src="/js/site.js" defer></script>
 <script src="/js/lux-motion.js" defer></script>
+<script src="/js/lux-plus.js" defer></script>
 </body>
 </html>

@@ -86,7 +86,7 @@
 <link>https://yusuf-gadelrab.github.io/writing/building-a-nonprofit-before-youre-allowed-to-earn.html</link>
 <guid isPermaLink="true">https://yusuf-gadelrab.github.io/writing/building-a-nonprofit-before-youre-allowed-to-earn.html</guid>
 <pubDate>Fri, 31 Jul 2026 00:00:00 +0000</pubDate>
-<description>Written while my status did not authorize employment. Four program ideas, one entity, and nothing filed yet.</description>
+<description>Written while my status did not authorize employment. Update: I am now a US permanent resident. Four program ideas, one entity, and nothing filed yet.</description>
 </item>
 <item>
 <title>Zero-dependency security scanner: secrets, OSV CVEs, IaC rules, git-history leaks, SBOM,...</title>
@@ -149,21 +149,21 @@
 <link>https://yusuf-gadelrab.github.io/writing/i-built-a-visa-timeline-planner-because-i-got-tired-of-being-scared-of.html</link>
 <guid isPermaLink="true">https://yusuf-gadelrab.github.io/writing/i-built-a-visa-timeline-planner-because-i-got-tired-of-being-scared-of.html</guid>
 <pubDate>Wed, 29 Jul 2026 00:00:00 +0000</pubDate>
-<description>I built a free visa timeline planner while on TD status with a hard age deadline. Still free, still not legal advice.</description>
+<description>I built a free visa timeline planner while on TD status with a hard age deadline. Update: I am now a US permanent resident. Still free, still not legal advice.</description>
 </item>
 <item>
 <title>How an undergrad with no connections gets into a research lab, specifically</title>
 <link>https://yusuf-gadelrab.github.io/writing/how-an-undergrad-with-no-connections-gets-into-a-research-lab-specific.html</link>
 <guid isPermaLink="true">https://yusuf-gadelrab.github.io/writing/how-an-undergrad-with-no-connections-gets-into-a-research-lab-specific.html</guid>
 <pubDate>Wed, 29 Jul 2026 00:00:00 +0000</pubDate>
-<description>I get asked this a lot now that I have two peer-reviewed SIGCSE 2026 works, so here is the actual sequence, not the inspirational version.</description>
+<description>I get asked this a lot now that I have a peer-reviewed SIGCSE TS 2026 paper, so here is the actual sequence, not the inspirational version.</description>
 </item>
 <item>
-<title>Correcting my SIGCSE 2026 record: two works, two conferences</title>
-<link>https://yusuf-gadelrab.github.io/writing/correcting-my-sigcse-2026-claim.html</link>
-<guid isPermaLink="true">https://yusuf-gadelrab.github.io/writing/correcting-my-sigcse-2026-claim.html</guid>
+<title>Correction: I have one peer-reviewed SIGCSE paper</title>
+<link>https://yusuf-gadelrab.github.io/writing/two-papers-accepted-to-sigcse-2026-im-an-undergrad.html</link>
+<guid isPermaLink="true">https://yusuf-gadelrab.github.io/writing/two-papers-accepted-to-sigcse-2026-im-an-undergrad.html</guid>
 <pubDate>Wed, 29 Jul 2026 00:00:00 +0000</pubDate>
-<description>This post once announced two SIGCSE TS 2026 works; a first correction then over-corrected to one. The accurate record: two accepted works at two different SIGCSE conferences.</description>
+<description>This post used to announce a pair of accepted SIGCSE 2026 works. I have one peer-reviewed paper. Here is the correction, the evidence, and what I changed.</description>
 </item>
 <item>
 <title>Built a position size calculator that refuses to let you round up. Free, no signup</title>

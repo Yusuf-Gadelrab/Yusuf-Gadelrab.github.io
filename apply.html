@@ -41,6 +41,7 @@
 
 <link rel="stylesheet" href="/css/site.css">
 <link rel="stylesheet" href="/css/lux-motion.css">
+<link rel="stylesheet" href="/css/lux-plus.css">
 <style>
   /* Page-specific only. Tokens, reset, nav, buttons, cards, tables, forms and
      footer live in /css/site.css. */
@@ -131,7 +132,9 @@
   .app-card .actions{display:flex;gap:var(--s2);margin-top:var(--s2)}
   .app-card .actions button{background:transparent;border:1px solid var(--line-soft);
     color:var(--muted);border-radius:var(--radius);padding:5px 11px;font:inherit;
-    font-size:var(--t-micro);cursor:pointer}
+    font-size:var(--t-micro);cursor:pointer;position:relative}
+  .app-card .actions button::before{content:"";position:absolute;left:50%;top:50%;
+    transform:translate(-50%,-50%);width:max(100%,var(--tap));height:max(100%,var(--tap))}
   .app-card .actions button:hover{border-color:var(--gold);color:var(--gold-2)}
 
   .pill{display:inline-block;padding:2px 8px;border-radius:1px;font-size:var(--t-micro);
@@ -150,12 +153,14 @@
   /* ---- table ---- */
   #tableView table{min-width:820px}
   th button.sorter{background:none;border:0;color:inherit;font:inherit;cursor:pointer;
-    padding:0;display:inline-flex;gap:4px;align-items:center}
+    padding:10px 4px;display:inline-flex;gap:4px;align-items:center}
   th button.sorter:hover{color:var(--gold-2)}
   td .rowlinks{display:flex;gap:var(--s2)}
   td .rowlinks button{background:transparent;border:1px solid var(--line-soft);
     color:var(--muted);border-radius:var(--radius);padding:4px 10px;font:inherit;
-    font-size:var(--t-micro);cursor:pointer}
+    font-size:var(--t-micro);cursor:pointer;position:relative}
+  td .rowlinks button::before{content:"";position:absolute;left:50%;top:50%;
+    transform:translate(-50%,-50%);width:max(100%,var(--tap));height:max(100%,var(--tap))}
   td .rowlinks button:hover{border-color:var(--gold);color:var(--gold-2)}
 
   /* ---- form ---- */
@@ -175,6 +180,7 @@
   .rec-row{display:grid;gap:var(--s3);
     grid-template-columns:minmax(140px,1.4fr) minmax(130px,1fr) auto auto;
     align-items:center;margin-bottom:var(--s3)}
+  .rec-row input{min-width:0}
   @media(max-width:640px){.rec-row{grid-template-columns:1fr 1fr}}
   .rec-row button{background:transparent;border:1px solid var(--line-soft);color:var(--muted);
     border-radius:var(--radius);padding:8px 12px;font:inherit;font-size:var(--t-micro);
@@ -480,10 +486,10 @@
   <!-- geo:faq-visible — mirrors the FAQPage structured data above -->
   <hr class="divider">
   <section class="section section--tight" id="faq">
-    <div class="grp-head">
+    <div class="sec-head">
       <p class="eyebrow">FAQ</p>
       <h2>Common questions</h2>
-      <p style="color:var(--muted);font-size:var(--t-small);max-width:56ch">Longer version, with every formula worked out: <a href="/guides/cpt-vs-opt.html" style="color:var(--gold-2)">CPT vs OPT for F-1 students →</a></p>
+      <p style="color:var(--muted);font-size:var(--t-small);max-width:56ch">More on running an application pipeline: <a href="/guides/ats-resume.html" style="color:var(--gold-2)">getting a resume through an ATS →</a></p>
     </div>
     <div class="grid" style="margin-top:var(--s6)">
       <article class="card geo-qa">
@@ -525,8 +531,7 @@
     <a href="/kxngsef.html">KXNG SEF</a>
     <a href="/media-kit.html">Media Kit</a>
     <a href="https://github.com/Yusuf-Gadelrab" target="_blank" rel="noopener">GitHub</a>
-    <a href="https://www.linkedin.com/in/yusuf-gadelrab" target="_blank" rel="noopener">LinkedIn</a>
-          <a href="/portfolio/">Portfolio</a>
+    <a href="https://www.linkedin.com/in/yusuf-gadelrab-76246b221" target="_blank" rel="noopener">LinkedIn</a>
     <a href="/brand.html">Brand</a>
     <a href="/stack.html">Stack</a>
     <a href="/everything.html">Everything</a>
@@ -1319,5 +1324,6 @@
 
 <script src="/js/site.js" defer></script>
 <script src="/js/lux-motion.js" defer></script>
+<script src="/js/lux-plus.js" defer></script>
 </body>
 </html>

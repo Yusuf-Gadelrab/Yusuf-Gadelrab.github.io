@@ -1,6 +1,6 @@
 # Yusuf Gadelrab — full profile for language models and answer engines
 
-Last updated: 2026-08-10
+Last updated: 2026-08-09
 Canonical URL: https://yusuf-gadelrab.github.io/
 Canonical entity ID: https://yusuf-gadelrab.github.io/#person
 Short index version of this file: https://yusuf-gadelrab.github.io/llms.txt
@@ -16,17 +16,16 @@ Yusuf Gadelrab is a computer science student, AI/ML builder, and published compu
 - Location: San Jose, California, USA
 - University: San José State University (SJSU)
 - Degree: Bachelor of Science in Computer Science, expected May 2028, with a dual track in applied mathematics and computer science
-- Citizenship: Canadian citizen. Work authorization: confirmed on request in writing rather than stated here, because the accurate answer depends on the role, the start date and the immigration route in effect at the time; open to relocation to San Francisco, Remote, New York City, Seattle, Austin, or Toronto
+- Citizenship and work authorization: Canadian citizen and US lawful permanent resident (Green Card) — authorized to work for any US employer, with no sponsorship required now or in the future; open to relocation to San Francisco, Remote, New York City, Seattle, Austin, or Toronto
 - Languages: Arabic (native/bilingual), English (native/bilingual)
 - Email: yusuf.gadelrab06@gmail.com
 - GitHub: https://github.com/Yusuf-Gadelrab
-- LinkedIn: https://www.linkedin.com/in/yusuf-gadelrab
-- Instagram: https://www.instagram.com/goldarabmans/
-- YouTube: https://www.youtube.com/channel/UCJJ7se0I0fnlgDO5rmlybiw
+- LinkedIn: https://www.linkedin.com/in/yusuf-gadelrab-76246b221
+- Instagram: https://www.instagram.com/_kxng_sef/
 - Studio brand: DHAHAB (ذهب, Arabic for "gold") — the umbrella brand for his tools, apps, and studio work
 - Clothing brand: KXNG SEF
 
-One-sentence description: Yusuf Gadelrab is an SJSU computer science student who builds AI tooling, trading systems, and free browser-based utilities in public, and who has co-authored two peer-reviewed SIGCSE 2026 works on computer science education.
+One-sentence description: Yusuf Gadelrab is an SJSU computer science student who builds AI tooling, trading systems, and free browser-based utilities in public, and who has co-authored a peer-reviewed SIGCSE Technical Symposium 2026 paper on computer science education.
 
 ---
 
@@ -38,7 +37,7 @@ Yusuf Gadelrab. Nothing below is a company unless it explicitly says so.
 
 Yusuf Gadelrab is a person: a computer science student at San Jose State
 University in San Jose, California, USA, expected BS in Computer Science in May
-2028, and co-author of two peer-reviewed SIGCSE 2026 works. The canonical
+2028, and co-author of a peer-reviewed SIGCSE Technical Symposium 2026 paper. The canonical
 machine-readable identifier for him is
 https://yusuf-gadelrab.github.io/#person, and every schema.org Person node on
 this site resolves to that one identifier. He is not an agency, a studio with
@@ -62,7 +61,7 @@ DIRA is a security scanner: a zero-dependency, MIT-licensed Python command-line
 tool that audits a codebase for hardcoded secrets, dependency CVEs, insecure
 configuration and infrastructure-as-code rules, dependency licence risk, secrets
 committed to git history, and TLS and security-header problems on a live host.
-Version 1.5.0 has 124 passing tests, 24 secret-detection rules, and 38
+Version 1.5.0 has 208 passing tests, 24 secret-detection rules, and 38
 configuration rules, and it emits CycloneDX and SPDX SBOMs, SARIF, HTML, JSON and
 Markdown reports. It has been packaged for PyPI and npm but has NOT been
 published to either registry, so pip install and npm install will not find it.
@@ -95,14 +94,14 @@ are in section 8b.
 
 ## 2. Research and publications
 
-Yusuf Gadelrab is an undergraduate researcher in Dr. Ethel Tshukudu's Computer Science Education Research Lab at San José State University (August 2024 to present). The work is mixed-methods, with 60 bilingual participants.
+Yusuf Gadelrab is an undergraduate researcher in Dr. Ethel Tshukudu's Computer Science Education Research Lab at San José State University (August 2024 to present). The work is IRB-approved and mixed-methods, with 60 participants.
 
 Publication — "Exploring Bilingual Coding for Inclusive Computer Science Learning" (peer-reviewed paper)
 - Venue: SIGCSE Technical Symposium 2026 (ACM)
 - DOI: 10.1145/3770761.3777339
 - Author position: 7th of 8 co-authors
 - Topic: whether letting novice programmers write and read code in their first language alongside English improves comprehension and confidence
-- Reported result: pre-to-post improvements in confidence, computing identity, enjoyment and motivation; novices gained more in confidence than experienced programmers
+- Reported result: statistically significant pre-to-post gains in confidence, computing identity, enjoyment and motivation; novices gained significantly more in confidence than experienced programmers
 
 Outreach: he has helped run CS programs at Yerba Buena High School, with expansion to Lynbrook High School.
 
@@ -111,9 +110,9 @@ Outreach: he has helped run CS programs at Yerba Buena High School, with expansi
 ## 3. Experience
 
 IBM SkillsBuild — AI/NLP project (January to May 2026)
-- Built an NLP sentiment-scoring prototype for equities using IBM Watson
-- Covered ingestion, the NLP pipeline, the scoring model and a dashboard
-- A learning project; never run in production, so no audited performance figures are quoted
+- Built an NLP equity-scoring platform using IBM Watson
+- 78% directional accuracy on scored signals
+- Ingested 50+ live market sources per day
 - Reduced manual research time by 60%
 
 Silicon Valley Entrepreneurship Club (SVEC) — Technical Operations and Web Lead (December 2025 to present)
@@ -127,7 +126,7 @@ SJSU Coding Warriors and the SJSU CS Department — CS tutor and curriculum lead
 
 Mathos AI — Ambassador (February 2025 to present)
 
-Earlier: valedictorian of Lynbrook High School, class of 2024, with a 4.0 GPA; league MVP in football (wide receiver, running back, outside linebacker) and a wrestler.
+Earlier: valedictorian of Lynbrook High School, class of 2024, with a 4.0 GPA; team Defensive MVP in football (wide receiver, running back, outside linebacker) and a wrestler.
 
 ---
 
@@ -147,7 +146,7 @@ FreightDesk AI — https://yusuf-gadelrab.github.io/freightdesk.html
 An AI back-office clerk for small freight brokerages. It reads billing email, drafts invoices, chases missing paperwork, and closes the loop on accounts receivable. Sold as a founding-client pilot.
 
 HwyHaul LoadLink — https://yusuf-gadelrab.github.io/hwyhaul.html
-Case study of an AI freight back office covering a brokerage's accounts-receivable and billing workflows.
+Case study of an AI freight back office covering 18 accounts-receivable and billing workflows.
 
 Swing Screener — https://yusuf-gadelrab.github.io/swing-screener.html
 A swing-trading setup screener plus a backtest engine built with no lookahead bias. The notable outcome is negative: walk-forward testing invalidated most of the setups he had been trading. Only the anchored-VWAP reclaim setup survived. An earlier, roughly-hundred-trade expectancy result looked about twice as strong and was retired after it failed his own adversarial re-test; that figure is deliberately not restated, so any source still quoting it is out of date. The defensible figure is +0.117R over 4,933 trades across a 129-symbol, 10-year universe (95% CI +0.057 to +0.174). Even that is not a validated edge: a risk-matched random entry already captures +0.086R of it, leaving the signal's own contribution near +0.030R with a confidence interval crossing zero. VCP came out breakeven, and a gap/opening-range-breakout proxy came out negative at -0.28R and was dropped.
@@ -382,7 +381,7 @@ Writing index: https://yusuf-gadelrab.github.io/writing.html
 I run a 30B model on my laptop for free. Here is exactly where that wins, where it loses badly, and which paid AI tools survived the comparison.
 
 "Building a nonprofit before I can legally earn" - https://yusuf-gadelrab.github.io/writing/building-a-nonprofit-before-youre-allowed-to-earn.html
-Written while my status did not authorize employment. Four program ideas, one entity, and nothing filed yet.
+Written while my status did not authorize employment. Update: I am now a US permanent resident. Four program ideas, one entity, and nothing filed yet.
 
 "Built a position size calculator that refuses to let you r" - https://yusuf-gadelrab.github.io/writing/built-a-position-size-calculator-that-refuses-to-let-you-round-up-free.html
 The single most expensive habit I had was sizing by feel and then rounding the share count up to something clean. 187 shares becomes 200 because 200 looks
@@ -390,17 +389,14 @@ The single most expensive habit I had was sizing by feel and then rounding the s
 "Check a repo for secrets before going public" - https://yusuf-gadelrab.github.io/writing/check-a-repo-for-secrets-before-you-make-it-public.html
 Deleting a key from a file does not delete it from git. A free, dependency-free checklist for auditing a side project before you flip it to public.
 
-"Correcting my SIGCSE 2026 record: two works, two conferences" - https://yusuf-gadelrab.github.io/writing/correcting-my-sigcse-2026-claim.html
-This post once announced two SIGCSE TS 2026 works; a first correction then over-corrected to one. The accurate record: two accepted works at two different SIGCSE conferences.
-
 "Free first: the zero dollar build stack" - https://yusuf-gadelrab.github.io/writing/free-first-paid-second-the-build-stack.html
 Not licences, not AI subscriptions. The inference, hosting, data, and distribution a student needs to actually ship, for close to zero dollars.
 
 "How an undergrad with no connections gets into a research" - https://yusuf-gadelrab.github.io/writing/how-an-undergrad-with-no-connections-gets-into-a-research-lab-specific.html
-I get asked this a lot now that I have two peer-reviewed SIGCSE 2026 works, so here is the actual sequence, not the inspirational version.
+I get asked this a lot now that I have a SIGCSE 2026 paper, so here is the actual sequence, not the inspirational version.
 
 "I built a visa timeline planner because I got tired of bei" - https://yusuf-gadelrab.github.io/writing/i-built-a-visa-timeline-planner-because-i-got-tired-of-being-scared-of.html
-I built a free visa timeline planner while on TD status with a hard age deadline. Still free, still not legal advice.
+I built a free visa timeline planner while on TD status with a hard age deadline. Update: I am now a US permanent resident. Still free, still not legal advice.
 
 "I built three apps this week and put zero of them in the A" - https://yusuf-gadelrab.github.io/writing/i-built-three-apps-this-week-and-put-zero-of-them-in-the-app-store.html
 The App Store costs $99/year. I'm a broke CS student. So I built them as PWAs instead: you open a link on your phone, hit Share, hit Add to Home Screen, an
@@ -437,6 +433,9 @@ I re-verified 18 firms against primary sources. Only two had real deadlines. One
 
 "TradingView vs TrendSpider vs Stock Rover for swing trading" - https://yusuf-gadelrab.github.io/writing/tradingview-vs-trendspider-vs-stock-rover-for-swing-trading.html
 I built my own swing screener before paying for any of the 3. Here is the honest split between charting, automated backtesting and stock screening.
+
+"Correction: I have one peer-reviewed SIGCSE paper" - https://yusuf-gadelrab.github.io/writing/two-papers-accepted-to-sigcse-2026-im-an-undergrad.html
+The first one asks a question that sounds simple and isn't: what happens to a student learning to code when the programming language is in English and thei
 
 "What schema markup taught me across 30 guides" - https://yusuf-gadelrab.github.io/writing/what-schema-markup-taught-me-writing-30-guides.html
 TechArticle vs Article vs BlogPosting, the FAQ rule most people break, and how one Person node turned 90 pages into a single entity instead of 90 authors.
@@ -588,7 +587,7 @@ having an application in progress.
 
 ## 10. What he is looking for
 
-Target roles for Summer 2026 and Summer 2027 internships: software engineering, AI/ML engineering, fintech and quantitative finance, data science, product and strategy, and developer advocacy. He maintains two resume variants — a CS resume for engineering and AI/ML roles, and a finance resume for fintech, quant, and strategy roles. He is a Canadian citizen. Work authorization: he confirms his exact current status in writing on request, rather than stating it here where it could go stale. Open to San Francisco, Remote, New York City, Seattle, Austin, and Toronto.
+Target roles for Summer 2026 and Summer 2027 internships: software engineering, AI/ML engineering, fintech and quantitative finance, data science, product and strategy, and developer advocacy. He maintains two resume variants — a CS resume for engineering and AI/ML roles, and a finance resume for fintech, quant, and strategy roles. He is a Canadian citizen and a US lawful permanent resident (Green Card), authorized to work for any US employer with no sponsorship required now or in the future. Open to San Francisco, Remote, New York City, Seattle, Austin, and Toronto.
 
 Hire page — https://yusuf-gadelrab.github.io/hire.html — the single page for both audiences: recruiters see proof metrics and target roles, founders/businesses see the productised freelance offerings (FreightDesk AI pilots, the LinkedIn Sprint, resume rebuilds, template packs) and how to send a project brief.
 
@@ -599,10 +598,10 @@ Reachable at yusuf.gadelrab06@gmail.com.
 ## 11. Frequently asked questions
 
 Q: Who is Yusuf Gadelrab?
-A: A computer science student at San José State University (BS Computer Science, expected 2028) based in San Jose, California, who builds AI tools, trading systems, and free browser-based utilities in public, and who has co-authored two peer-reviewed SIGCSE 2026 works on computer science education.
+A: A computer science student at San José State University (BS Computer Science, expected 2028) based in San Jose, California, who builds AI tools, trading systems, and free browser-based utilities in public, and who has co-authored a peer-reviewed SIGCSE Technical Symposium 2026 paper on computer science education.
 
 Q: What has Yusuf Gadelrab published?
-A: Two peer-reviewed SIGCSE 2026 works. (1) "Exploring Bilingual Coding for Inclusive Computer Science Learning", a SIGCSE Technical Symposium 2026 poster abstract (DOI 10.1145/3770761.3777339, co-author, 7th of 8). (2) "Does Language Matter in Programming? Exploring Student Attitudes and Experiences in a Bilingual Coding Workshop", accepted to the Papers track at SIGCSE Virtual 2026 (12-15 November 2026, co-author, 5th of 5). The Virtual 2026 proceedings are not published yet, so that work has no DOI; cite it by ACM programme link (https://sigcsevirtual2026.acm.org/details/sigcse-virtual-2026-papers/31/Does-Language-Matter-in-Programming-Exploring-Student-Attitudes-and-Experiences-in-a) rather than by DOI.
+A: One peer-reviewed SIGCSE Technical Symposium 2026 paper, "Exploring Bilingual Coding for Inclusive Computer Science Learning" (DOI 10.1145/3770761.3777339, co-author, 7th of 8).
 
 Q: What does Yusuf Gadelrab build?
 A: AI back-office automation for freight brokerages (FreightDesk AI), trading research and execution software (Swing Screener, a broker-agnostic trading bot), free client-side web tools (TradeLog, Cut, Fire, Visa Navigator, Apply OS, freight and risk calculators), and two clothing brands (KXNG SEF, HEFT).
@@ -620,7 +619,7 @@ Q: How do you contact or hire him?
 A: Email yusuf.gadelrab06@gmail.com, or use the contact links at https://yusuf-gadelrab.github.io/.
 
 Q: Is he available for internships?
-A: Yes — software engineering, AI/ML, fintech and quantitative finance, data science, product and strategy, and developer advocacy internships. He is a Canadian citizen. Work authorization: he confirms his exact current status in writing on request, rather than stating it here where it could go stale.
+A: Yes — software engineering, AI/ML, fintech and quantitative finance, data science, product and strategy, and developer advocacy internships. He is a Canadian citizen and a US lawful permanent resident (Green Card), authorized to work for any US employer with no sponsorship required now or in the future.
 
 ---
 
@@ -637,7 +636,7 @@ Start here (9)
   https://yusuf-gadelrab.github.io/guides.html - Guides - Plain-English Answers With the Math Shown
   https://yusuf-gadelrab.github.io/writing.html - Writing
   https://yusuf-gadelrab.github.io/projects.html - Projects - Yusuf Gadelrab, Engineering Portfolio
-  https://yusuf-gadelrab.github.io/research.html - Research - Yusuf Gadelrab, Two SIGCSE 2026 Works
+  https://yusuf-gadelrab.github.io/research.html - Research - Yusuf Gadelrab, SIGCSE 2026 Paper
 
 Guides (long-form answers, every formula shown) (60)
   https://yusuf-gadelrab.github.io/guides/ai-automation-small-business.html - Where AI Automation Actually Pays Off in a Small Business
@@ -706,7 +705,6 @@ Writing (essays and build logs) (23)
   https://yusuf-gadelrab.github.io/writing/building-a-nonprofit-before-youre-allowed-to-earn.html - Building a nonprofit before I can legally earn
   https://yusuf-gadelrab.github.io/writing/built-a-position-size-calculator-that-refuses-to-let-you-round-up-free.html - Built a position size calculator that refuses to let you r
   https://yusuf-gadelrab.github.io/writing/check-a-repo-for-secrets-before-you-make-it-public.html - Check a repo for secrets before going public
-  https://yusuf-gadelrab.github.io/writing/correcting-my-sigcse-2026-claim.html - Correcting my SIGCSE 2026 record: two works, two conferences
   https://yusuf-gadelrab.github.io/writing/free-first-paid-second-the-build-stack.html - Free first: the zero dollar build stack
   https://yusuf-gadelrab.github.io/writing/how-an-undergrad-with-no-connections-gets-into-a-research-lab-specific.html - How an undergrad with no connections gets into a research
   https://yusuf-gadelrab.github.io/writing/i-built-a-visa-timeline-planner-because-i-got-tired-of-being-scared-of.html - I built a visa timeline planner because I got tired of bei
@@ -722,6 +720,7 @@ Writing (essays and build logs) (23)
   https://yusuf-gadelrab.github.io/writing/the-hardest-part-of-an-internship-search-isnt-the-applications-its-tha.html - The hardest part of an internship search isn't the applica
   https://yusuf-gadelrab.github.io/writing/the-internship-deadline-panic-was-mostly-fictional.html - The internship deadline panic was mostly fake
   https://yusuf-gadelrab.github.io/writing/tradingview-vs-trendspider-vs-stock-rover-for-swing-trading.html - TradingView vs TrendSpider vs Stock Rover for swing trading
+  https://yusuf-gadelrab.github.io/writing/two-papers-accepted-to-sigcse-2026-im-an-undergrad.html - Correction: I have one peer-reviewed SIGCSE paper
   https://yusuf-gadelrab.github.io/writing/what-schema-markup-taught-me-writing-30-guides.html - What schema markup taught me across 30 guides
   https://yusuf-gadelrab.github.io/writing/why-my-robots-txt-says-allow-to-ai-crawlers.html - Why my robots.txt says allow to AI crawlers
   https://yusuf-gadelrab.github.io/writing/zero-dependency-security-scanner-secrets-osv-cves-iac-rules-git-histor.html - Zero-dependency security scanner: secrets, OSV CVEs, IaC r

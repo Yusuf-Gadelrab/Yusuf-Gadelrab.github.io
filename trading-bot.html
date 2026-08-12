@@ -41,7 +41,20 @@
 
 <link rel="stylesheet" href="/css/site.css">
 <link rel="stylesheet" href="/css/lux-motion.css">
+<link rel="stylesheet" href="/css/lux-plus.css">
 <style>
+  /* site.css `body.pro h1,body.pro h2` is (0,1,1) and outranks a bare
+     `main h1,main h2` (0,0,2), so the editorial serif never landed. Matching
+     its specificity is the whole fix — no !important needed. */
+  body.pro main h1,body.pro main h2{font-family:var(--display-serif);
+    letter-spacing:var(--track-tight);font-weight:var(--w-semibold);
+    line-height:var(--lh-snug)}
+  body.pro main h1{line-height:var(--lh-tight)}
+  main h3{font-size:var(--t-h4)}
+  /* The promotion-gate band is the page's one sunk full-bleed movement. Its
+     ground is --surface-1, the same surface .panel sits on, so raise the panels
+     one step or they dissolve into the band. */
+  .dh-band--sunk .panel{background:var(--panel2)}
   .pills{display:flex;flex-wrap:wrap;gap:var(--s2)}
   .pill{padding:8px 14px;border:1px solid var(--line-soft);border-radius:var(--radius);
     font-size:var(--t-small);color:var(--ink);background:var(--panel)}
@@ -75,7 +88,7 @@
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebPage","@id":"https://yusuf-gadelrab.github.io/trading-bot.html#webpage","url":"https://yusuf-gadelrab.github.io/trading-bot.html","name":"Trading Bot Safety Architecture — Python Execution Engine","description":"A broker-agnostic Python trading bot that refuses to connect a live broker until 60 closed paper trades show positive expectancy. Fails closed, 160 tests.","inLanguage":"en","isPartOf":{"@id":"https://yusuf-gadelrab.github.io/#website"},"about":{"@id":"https://yusuf-gadelrab.github.io/#person"},"publisher":{"@id":"https://yusuf-gadelrab.github.io/#person"}}</script>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":["SoftwareSourceCode","SoftwareApplication"],"@id":"https://yusuf-gadelrab.github.io/trading-bot.html#software","name":"trading-bot","description":"A broker-agnostic execution engine for a single daily-bar swing setup, built around a crash-safe SQLite order journal, deterministic client order IDs, a fail-closed risk layer and a promotion gate that blocks real capital until 60 closed paper trades show positive realized expectancy.","programmingLanguage":"Python","runtimePlatform":"Python 3.11+","applicationCategory":"DeveloperApplication","author":{"@id":"https://yusuf-gadelrab.github.io/#person"},"maintainer":{"@id":"https://yusuf-gadelrab.github.io/#person"},"isAccessibleForFree":true,"mainEntityOfPage":{"@id":"https://yusuf-gadelrab.github.io/trading-bot.html#webpage"}}</script>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","@id":"https://yusuf-gadelrab.github.io/trading-bot.html#faq","mainEntity":[{"@type":"Question","name":"What does this trading bot actually do?","acceptedAnswer":{"@type":"Answer","text":"It executes one daily-bar setup end to end: it scans a watchlist after the close, sizes a position from a fixed percentage of equity risked against the entry-to-stop distance, places the entry, immediately attaches a stop and a 2R target, and then manages those exits until one fills or a 20-bar time stop fires. There is no intraday logic and none was validated."}},{"@type":"Question","name":"Can it trade real money right now?","acceptedAnswer":{"@type":"Answer","text":"No, and it structurally refuses to. Two separate gates stand in the way: a live-capable broker adapter will not start unless ALLOW_LIVE is explicitly set to true, and beyond that the promotion gate blocks real funds until a genuine paper track record exists. The record today is zero closed paper trades, so the gate is shut."}},{"@type":"Question","name":"What is the promotion gate?","acceptedAnswer":{"@type":"Answer","text":"It is a check inside the engine that refuses to trade real money until the journal shows at least 60 closed paper trades at a positive realized expectancy. The rule originally lived only in a markdown design doc, which meant a single environment variable could bypass it, so it was moved into code where it runs on every pass. Overriding it requires a deliberately named environment variable and it logs a warning when used."}},{"@type":"Question","name":"What happens if the process crashes while placing an order?","acceptedAnswer":{"@type":"Answer","text":"Every signal maps to a deterministic client order id, and a SQLite journal claims that id before the broker call rather than after it. On restart the same id is re-derived and the order is skipped instead of being sent twice. A concurrency test runs twelve competing writers against one journal and asserts that exactly one of them wins the claim."}},{"@type":"Question","name":"Which broker should I use?","acceptedAnswer":{"@type":"Answer","text":"Alpaca, for two reasons: it publishes an official API, and it offers a real paper-trading mode so the safety work can be exercised without money at stake. It is also the only adapter that can express a broker-native OCO exit pair, which means the losing leg is cancelled server-side even while this process is dead. Start on the local paper simulator, which needs no network and no keys."}},{"@type":"Question","name":"Does it come with a profitable strategy?","acceptedAnswer":{"@type":"Answer","text":"No, and that is stated deliberately. The setup it executes did not survive an adversarial re-test: the signal's own incremental contribution measured +0.030R with a 95% confidence interval crossing zero, which is not a validated edge. This is an execution engine wrapped around a strategy that has not earned real capital."}},{"@type":"Question","name":"Is it free and open source?","acceptedAnswer":{"@type":"Answer","text":"There is no paid tier, no account and no telemetry, and it runs entirely on your own machine. The repository is private at the moment rather than published, so access is by request instead of a public clone URL."}}]}</script>
-<script type="application/ld+json">{"@id": "https://yusuf-gadelrab.github.io/#person"}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Person","@id":"https://yusuf-gadelrab.github.io/#person","name":"Yusuf Gadelrab","url":"https://yusuf-gadelrab.github.io/"}</script>
 <link rel="alternate" type="text/plain" href="https://yusuf-gadelrab.github.io/llms-full.txt" title="Plain-text profile for language models">
 </head>
 <body class="pro">
@@ -101,18 +114,26 @@
     <span class="badge"><span class="dot"></span>Built &amp; tested · paper mode only · not trading real money</span>
     <h1 style="margin:var(--s5) 0">A trading bot where <span class="gold-fill">the interesting part isn't the strategy.</span></h1>
     <p class="lead">A broker-agnostic execution engine for a single daily-bar setup. The strategy is about forty lines. The other 95% of the codebase exists to answer one question: <b>what happens when the process dies halfway through placing an order?</b></p>
-    <div class="grid" style="margin-top:var(--s8);grid-template-columns:repeat(auto-fit,minmax(min(180px,100%),1fr))">
-      <div class="card card--flat stat"><span class="stat__value">88</span><span class="stat__label">passing tests</span></div>
-      <div class="card card--flat stat"><span class="stat__value">60</span><span class="stat__label">paper trades required before live</span></div>
-      <div class="card card--flat stat"><span class="stat__value">4</span><span class="stat__label">broker adapters, one interface</span></div>
-      <div class="card card--flat stat"><span class="stat__value">$0</span><span class="stat__label">real capital deployed</span></div>
+    <div class="dh-stats" style="margin-top:var(--s8)">
+      <div class="dh-stat"><span class="dh-stat__v">160</span>
+        <span class="dh-stat__k">passing tests</span>
+        <span class="dh-stat__src">pytest</span></div>
+      <div class="dh-stat"><span class="dh-stat__v">60</span>
+        <span class="dh-stat__k">paper trades required before live</span>
+        <span class="dh-stat__src">0 logged · gate shut</span></div>
+      <div class="dh-stat"><span class="dh-stat__v">4</span>
+        <span class="dh-stat__k">broker adapters, one interface</span>
+        <span class="dh-stat__src">paper · alpaca · rh_crypto · robinhood</span></div>
+      <div class="dh-stat"><span class="dh-stat__v">$0</span>
+        <span class="dh-stat__k">real capital deployed</span>
+        <span class="dh-stat__src">journal on disk: zero orders</span></div>
     </div>
   </section>
 
-  <hr class="divider">
-
-  <section class="section section--tight" id="promotion-gate">
-    <p class="eyebrow">The Standout Feature</p>
+  <section class="dh-band dh-band--sunk" id="promotion-gate">
+    <div class="dh-wrap">
+    <hr class="lxp-rule" style="margin:0 0 var(--s6)">
+    <p class="dh-eyebrow">The Standout Feature</p>
     <h2>It will not let me trade real money.</h2>
     <p class="lead" style="margin-top:var(--s3);max-width:var(--maxw-prose)">Most hobby bots are one environment variable away from live capital. This one is not. Before any real-money broker call, the engine reads its own journal and refuses to proceed unless a genuine paper track record already exists — <b>at least 60 closed paper trades at a positive realized expectancy</b>. The rule started life in a markdown design doc, which meant a single flag could quietly skip it, so it was moved into <span class="mono">Engine._guard_promotion_gate</span> where it runs on every single pass.</p>
     <div class="panel gate" style="margin-top:var(--s6)">
@@ -133,12 +154,11 @@
         <p>A <span class="mono">gate_detail()</span> breakdown reports closed trades per broker, because "I have closed trades but the gate says zero" has two very different causes — simulator trades, which are never eligible, and trades whose exit price was never recovered, which are excluded rather than fabricated.</p>
       </div>
     </div>
+    </div>
   </section>
 
-  <hr class="divider">
-
   <section class="section section--tight">
-    <p class="eyebrow">The Problem</p>
+    <p class="dh-eyebrow">The Problem</p>
     <h2>Automated trading fails at the plumbing, not the signal.</h2>
     <p class="lead" style="margin-top:var(--s3)">Every hobby trading bot has the same failure modes, and none of them are about picking the wrong stock. It crashes between sending an order and recording it, restarts, and sends the order again. It fills an entry and never gets a stop in. It sells a position twice because two exit orders were live against one lot. It quietly manages a position you opened by hand. Each of those loses real money in a way a backtest will never show you.</p>
   </section>
@@ -146,7 +166,7 @@
   <hr class="divider">
 
   <section class="section section--tight">
-    <p class="eyebrow">What I Built</p>
+    <p class="dh-eyebrow">What I Built</p>
     <h2>Six invariants, enforced structurally.</h2>
     <div class="grid" style="margin-top:var(--s6)">
       <div class="card">
@@ -176,10 +196,8 @@
     </div>
   </section>
 
-  <hr class="divider">
-
   <section class="section section--tight">
-    <p class="eyebrow">How It Works</p>
+    <p class="dh-eyebrow">How It Works</p>
     <h2>Scan, size, place, protect, repair.</h2>
     <div class="code" style="margin-top:var(--s6)">
       <div class="bar"><i></i><i></i><i></i><span>cli.py</span></div>
@@ -195,12 +213,10 @@
     </div>
   </section>
 
-  <hr class="divider">
-
   <section class="section section--tight" id="quickstart">
-    <p class="eyebrow">Install &amp; Quickstart</p>
+    <p class="dh-eyebrow">Install &amp; Quickstart</p>
     <h2>Starts on a simulator, with no keys.</h2>
-    <p class="lead" style="margin-top:var(--s3);max-width:var(--maxw-prose)">The repository is <b>private today</b>, so there is no public clone URL — access is by request rather than a link. Once you have a copy, setup is a virtualenv, an editable install and a copy of the example environment file. The default broker is a local paper simulator: no network, no credentials, nothing that can reach a real account.</p>
+    <p class="lead" style="margin-top:var(--s3);max-width:var(--maxw-prose)">The repository is <b>private today</b>, so there is no public clone URL — access is <a class="gold" href="mailto:yusuf.gadelrab06@gmail.com?subject=Trading%20bot%20repo%20access">by request</a> rather than a link. Once you have a copy, setup is a virtualenv, an editable install and a copy of the example environment file. The default broker is a local paper simulator: no network, no credentials, nothing that can reach a real account.</p>
     <div class="code" style="margin-top:var(--s6)">
       <div class="bar"><i></i><i></i><i></i><span>setup</span></div>
 <pre>uv venv &amp;&amp; uv pip install -e .
@@ -217,7 +233,7 @@ python cli.py <span class="g">resume</span>
 python cli.py <span class="g">reconcile</span>  <span class="c"># repair the journal against the broker after a crash</span></pre>
     </div>
     <p class="muted" style="margin-top:var(--s5);max-width:var(--maxw-prose);font-size:var(--t-small)">Watchlist is one ticker per line in <span class="mono">watchlist.txt</span>, or pass <span class="mono">--symbols SPY,NVDA</span>. Broker adapters are optional extras, so only the one you pick gets installed. Start with <span class="mono">scan</span> — it reaches no broker and needs no credentials at all.</p>
-    <div class="table-wrap">
+    <div class="table-wrap" tabindex="0" role="region" aria-label="Broker comparison table">
       <table>
         <thead><tr><th>BROKER=</th><th>Official API</th><th>Paper mode</th><th>Notes</th></tr></thead>
         <tbody>
@@ -231,10 +247,8 @@ python cli.py <span class="g">reconcile</span>  <span class="c"># repair the jou
     <p class="muted" style="margin-top:var(--s5);max-width:var(--maxw-prose);font-size:var(--t-small)"><b>On the unofficial Robinhood equities adapter:</b> it exists in the codebase and the README documents it as a bad idea. Robinhood publishes no public stocks API, so that adapter impersonates the mobile app — it breaks Robinhood's terms of service, accounts have been restricted for automated access, it can break without notice, it has no paper mode, and it requires storing a password and TOTP seed locally. It is disclosed here for completeness, not offered as an option. <b>Use Alpaca.</b></p>
   </section>
 
-  <hr class="divider">
-
   <section class="section section--tight">
-    <p class="eyebrow">The Stack</p>
+    <p class="dh-eyebrow">The Stack</p>
     <h2>Small surface, deliberately.</h2>
     <div class="pills" style="margin-top:var(--s5)">
       <span class="pill">Python</span>
@@ -254,7 +268,7 @@ python cli.py <span class="g">reconcile</span>  <span class="c"># repair the jou
   <hr class="divider">
 
   <section class="section section--tight">
-    <p class="eyebrow">Honest Status</p>
+    <p class="dh-eyebrow">Honest Status</p>
     <h2>It is not making money, and I won't pretend otherwise.</h2>
     <div class="grid" style="margin-top:var(--s6)">
       <div class="card">
@@ -278,19 +292,18 @@ python cli.py <span class="g">reconcile</span>  <span class="c"># repair the jou
       ⚠ <b>Known gaps, from the README:</b> positions opened before the ownership table existed are unmanaged by design; the software-OCO brokers have a real cancel-latency window; partial fills are handled conservatively rather than precisely; and market-hours checks on the non-Alpaca adapters use a simple clock that doesn't know about holidays. Nothing here is financial advice, and none of it is an invitation to run this with your money.
     </div>
     <div class="panel callout" style="margin-top:var(--s3)">
-      🔒 <b>Repo access:</b> the repository is private. Happy to walk through the journal design or the reconciliation logic on a call.
+      🔒 <b>Repo access:</b> the repository is private. Happy to walk through the journal design or the reconciliation logic on a call — <a class="gold" href="mailto:yusuf.gadelrab06@gmail.com?subject=Trading%20bot%20repo%20access">email me</a>.
     </div>
     <p class="lead" style="margin-top:var(--s6)">The reasoning behind the guardrails is written out on its own: <a class="gold" href="/guides/paper-to-live-trading.html">what has to be true before paper becomes live</a>, <a class="gold" href="/guides/trading-journal.html">why the journal is the system of record</a>, and <a class="gold" href="/guides/alpaca-vs-interactive-brokers-vs-robinhood.html">which brokers publish an API worth building against</a>.</p>
     <div class="row" style="margin-top:var(--s6)">
-      <a href="/apps.html" class="btn btn-gold">← All projects</a>
+      <a href="mailto:yusuf.gadelrab06@gmail.com?subject=Trading%20bot%20repo%20access" class="btn btn-gold">Request repo access →</a>
       <a href="/swing-screener.html" class="btn btn-ghost">The validation story →</a>
+      <a href="/apps.html" class="btn btn-ghost">← All projects</a>
     </div>
   </section>
 
-  <hr class="divider">
-
   <section class="section section--tight" id="faq">
-    <p class="eyebrow">FAQ</p>
+    <p class="dh-eyebrow">FAQ</p>
     <h2>Common questions.</h2>
     <div class="grid grid--2" style="margin-top:var(--s6)">
       <article class="card qa">
@@ -358,8 +371,7 @@ python cli.py <span class="g">reconcile</span>  <span class="c"># repair the jou
     <a href="/media-kit.html">Media Kit</a>
     <a href="mailto:yusuf.gadelrab06@gmail.com">yusuf.gadelrab06@gmail.com</a>
     <a href="https://github.com/Yusuf-Gadelrab" target="_blank" rel="noopener">GitHub</a>
-    <a href="https://www.linkedin.com/in/yusuf-gadelrab" target="_blank" rel="noopener">LinkedIn</a>
-          <a href="/portfolio/">Portfolio</a>
+    <a href="https://www.linkedin.com/in/yusuf-gadelrab-76246b221" target="_blank" rel="noopener">LinkedIn</a>
     <a href="/brand.html">Brand</a>
     <a href="/stack.html">Stack</a>
     <a href="/everything.html">Everything</a>
@@ -374,5 +386,6 @@ python cli.py <span class="g">reconcile</span>  <span class="c"># repair the jou
 
 <script src="/js/site.js" defer></script>
 <script src="/js/lux-motion.js" defer></script>
+<script src="/js/lux-plus.js" defer></script>
 </body>
 </html>

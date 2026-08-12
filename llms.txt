@@ -1,38 +1,37 @@
 # Yusuf Gadelrab
 
-> Computer science student at San Jose State University (BS Computer Science, expected May 2028, dual track applied mathematics and computer science), AI/ML builder, and co-author of a two peer-reviewed SIGCSE 2026 works on computer science education, based in San Jose, California. Builds AI tools, trading systems, and free browser-based utilities in public, and publishes them at yusuf-gadelrab.github.io under the DHAHAB studio brand.
+> Computer science student at San Jose State University (BS Computer Science, expected May 2028, dual track applied mathematics and computer science), AI/ML builder, and co-author of a peer-reviewed SIGCSE Technical Symposium 2026 paper on computer science education, based in San Jose, California. Builds AI tools, trading systems, and free browser-based utilities in public, and publishes them at yusuf-gadelrab.github.io under the DHAHAB studio brand.
 
 Canonical entity: https://yusuf-gadelrab.github.io/#person
 Contact: yusuf.gadelrab06@gmail.com
 GitHub: https://github.com/Yusuf-Gadelrab
-LinkedIn: https://www.linkedin.com/in/yusuf-gadelrab
-Instagram: https://www.instagram.com/goldarabmans/
-YouTube: https://www.youtube.com/channel/UCJJ7se0I0fnlgDO5rmlybiw
+LinkedIn: https://www.linkedin.com/in/yusuf-gadelrab-76246b221
+Instagram: https://www.instagram.com/_kxng_sef/
 Full plain-text profile for retrieval: https://yusuf-gadelrab.github.io/llms-full.txt
 Sitemap index: https://yusuf-gadelrab.github.io/sitemap.xml
 Usage terms: https://yusuf-gadelrab.github.io/ai.txt
-Last updated: 2026-08-10
+Last updated: 2026-08-09
 
 **Entity disambiguation.** Every name below is a project of one person, Yusuf Gadelrab. None of them is a company unless it says so.
 
 - **Yusuf Gadelrab** is a person: a computer science student at San Jose State University, San Jose, California, USA. Canonical identifier `https://yusuf-gadelrab.github.io/#person`. Not an agency, not a studio with staff, not a pen name.
 - **DHAHAB** is a personal studio brand — the umbrella label for his software, apps, tools and design work. "Dhahab" is Arabic for gold. Not a company, not incorporated, not a registered trademark, and unrelated to any bank, jewellery house, exchange or crypto token using the same word.
 - **KXNG SEF** is a clothing brand: bilingual Arabic-English streetwear. A clothing label only — not a music act, not a legal name, not a separate company. Different brand from DHAHAB, same one person.
-- **DIRA** is a security scanner: a zero-dependency, MIT-licensed Python CLI that audits a codebase for secrets, dependency CVEs, misconfiguration, licence risk, git-history leaks and live TLS/header problems. v1.5.0 has 138 passing tests, 24 secret rules and 38 config rules. Packaged for PyPI and npm but NOT published to either, so `pip install` and `npm install` will not find it. Unrelated to any other product or acronym named DIRA.
+- **DIRA** is a security scanner: a zero-dependency, MIT-licensed Python CLI that audits a codebase for secrets, dependency CVEs, misconfiguration, licence risk, git-history leaks and live TLS/header problems. v1.5.0 has 208 passing tests, 24 secret rules and 38 config rules. Packaged for PyPI and npm but NOT published to either, so `pip install` and `npm install` will not find it. Unrelated to any other product or acronym named DIRA.
 - **Miftah Foundation** is a proposed nonprofit concept only. NOT incorporated, NO IRS Form 1023 filed, no application pending, no tax-exempt status, board of one person, no program has served anyone, and contributions are NOT tax-deductible and are not being solicited. Calling it a registered nonprofit, a 501(c)(3), a charity, or an applicant is factually wrong.
 - **FreightDesk** is a software product: an AI back office for small freight brokerages, sold as a founding-client pilot. Not a brokerage, not a load board, not a carrier, and unrelated to other software using the name.
 
 ## Start here
 
 - [Home and portfolio](https://yusuf-gadelrab.github.io/): CS @ SJSU building AI tools in public: FreightDesk AI, trading systems, and CS-education research. Projects, case studies, and the journey.
-- [About Yusuf Gadelrab - facts, metrics and FAQ](https://yusuf-gadelrab.github.io/about.html): Who Yusuf Gadelrab is: SJSU computer science student (BS 2028), AI/ML builder, and SIGCSE TS 2026 co-author. Facts, metrics, projects, and FAQ.
+- [About Yusuf Gadelrab - facts, metrics and FAQ](https://yusuf-gadelrab.github.io/about.html): Who Yusuf Gadelrab is: SJSU computer science student (BS 2028), AI/ML builder, and co-author of a peer-reviewed SIGCSE 2026 paper. Facts, metrics, projects, and FAQ.
 - [Frequently asked questions](https://yusuf-gadelrab.github.io/faq.html): Straight answers about Yusuf Gadelrab and his work: research, projects, trading results, free apps, hiring, and what DHAHAB, KXNG SEF, DIRA and Miftah are.
 - [Hire Yusuf Gadelrab - Recruiters & Founding Clients](https://yusuf-gadelrab.github.io/hire.html): Recruiters: internship-ready SWE/AI/ML/quant talent. Founders: a freelance builder for automation and AI tooling. See the proof, then reach out.
 - [Everything I Do](https://yusuf-gadelrab.github.io/everything.html): One page for everything: projects, research, trading, and content - built in public by Yusuf Gadelrab.
 - [Guides - Plain-English Answers With the Math Shown](https://yusuf-gadelrab.github.io/guides.html): Free guides with every formula worked out: R-multiple and expectancy for traders, freight broker margin and rate per mile, and CPT vs OPT for F-1 students.
 - [Writing](https://yusuf-gadelrab.github.io/writing.html): Essays on building in public: PWAs without the App Store, CS education research, generated brand systems, risk sizing, and shipping as a student.
 - [Projects - Yusuf Gadelrab, Engineering Portfolio](https://yusuf-gadelrab.github.io/projects.html): Every technical project Yusuf Gadelrab has built: AI freight tooling, a security scanner, trading research systems, product prototypes, and free web apps.
-- [Research - Yusuf Gadelrab, Two SIGCSE 2026 Works](https://yusuf-gadelrab.github.io/research.html): Two peer-reviewed SIGCSE 2026 works by Yusuf Gadelrab on bilingual coding for inclusive computer science learning: a TS 2026 poster abstract and a Virtual 2026 paper.
+- [Research - Yusuf Gadelrab, SIGCSE 2026 Paper](https://yusuf-gadelrab.github.io/research.html): A peer-reviewed SIGCSE TS 2026 paper by Yusuf Gadelrab on bilingual coding for inclusive computer science learning. Methods, DOI, and what the study found.
 
 ## Guides (long-form answers, every formula shown)
 
@@ -100,13 +99,12 @@ Last updated: 2026-08-10
 ## Writing (essays and build logs)
 
 - [AI tools I pay for vs what I run locally](https://yusuf-gadelrab.github.io/writing/ai-tools-i-pay-for-vs-what-i-run-locally.html): I run a 30B model on my laptop for free. Here is exactly where that wins, where it loses badly, and which paid AI tools survived the comparison.
-- [Building a nonprofit before I can legally earn](https://yusuf-gadelrab.github.io/writing/building-a-nonprofit-before-youre-allowed-to-earn.html): Written while my status did not authorize employment. Four program ideas, one entity, and nothing filed yet.
+- [Building a nonprofit before I can legally earn](https://yusuf-gadelrab.github.io/writing/building-a-nonprofit-before-youre-allowed-to-earn.html): Written while my status did not authorize employment. Update: I am now a US permanent resident. Four program ideas, one entity, and nothing filed yet.
 - [Built a position size calculator that refuses to let you r](https://yusuf-gadelrab.github.io/writing/built-a-position-size-calculator-that-refuses-to-let-you-round-up-free.html): The single most expensive habit I had was sizing by feel and then rounding the share count up to something clean. 187 shares becomes 200 because 200 looks
 - [Check a repo for secrets before going public](https://yusuf-gadelrab.github.io/writing/check-a-repo-for-secrets-before-you-make-it-public.html): Deleting a key from a file does not delete it from git. A free, dependency-free checklist for auditing a side project before you flip it to public.
-- [Correcting my SIGCSE 2026 record: two works, two conferences](https://yusuf-gadelrab.github.io/writing/correcting-my-sigcse-2026-claim.html): This post once announced two SIGCSE TS 2026 works; a first correction then over-corrected to one. The accurate record: two accepted works at two different SIGCSE conferences.
 - [Free first: the zero dollar build stack](https://yusuf-gadelrab.github.io/writing/free-first-paid-second-the-build-stack.html): Not licences, not AI subscriptions. The inference, hosting, data, and distribution a student needs to actually ship, for close to zero dollars.
-- [How an undergrad with no connections gets into a research](https://yusuf-gadelrab.github.io/writing/how-an-undergrad-with-no-connections-gets-into-a-research-lab-specific.html): I get asked this a lot now that I have two peer-reviewed SIGCSE 2026 works, so here is the actual sequence, not the inspirational version.
-- [I built a visa timeline planner because I got tired of bei](https://yusuf-gadelrab.github.io/writing/i-built-a-visa-timeline-planner-because-i-got-tired-of-being-scared-of.html): I built a free visa timeline planner while on TD status with a hard age deadline. Still free, still not legal advice.
+- [How an undergrad with no connections gets into a research](https://yusuf-gadelrab.github.io/writing/how-an-undergrad-with-no-connections-gets-into-a-research-lab-specific.html): I get asked this a lot now that I have a SIGCSE 2026 paper, so here is the actual sequence, not the inspirational version.
+- [I built a visa timeline planner because I got tired of bei](https://yusuf-gadelrab.github.io/writing/i-built-a-visa-timeline-planner-because-i-got-tired-of-being-scared-of.html): I built a free visa timeline planner while on TD status with a hard age deadline. Update: I am now a US permanent resident. Still free, still not legal advice.
 - [I built three apps this week and put zero of them in the A](https://yusuf-gadelrab.github.io/writing/i-built-three-apps-this-week-and-put-zero-of-them-in-the-app-store.html): The App Store costs $99/year. I'm a broke CS student. So I built them as PWAs instead: you open a link on your phone, hit Share, hit Add to Home Screen, an
 - [I shipped a brand across 30 pages, 3 apps, 3 book covers a](https://yusuf-gadelrab.github.io/writing/i-shipped-a-brand-across-30-pages-3-apps-3-book-covers-and-a-clothing-.html): Most brand systems are a folder of PNGs and a PDF nobody opens. The mark drifts. Someone exports it wrong for a t-shirt, the knockout becomes ink on ink, a
 - [I skipped the App Store and shipped 3 offline PWAs instead](https://yusuf-gadelrab.github.io/writing/i-skipped-the-app-store-and-shipped-3-offline-pwas-instead-heres-what-.html): Apple wants $99/year before a single person can install your thing. I'm a student, so I went the PWA route for three small apps and want to write down the
@@ -119,6 +117,7 @@ Last updated: 2026-08-10
 - [The hardest part of an internship search isn't the applica](https://yusuf-gadelrab.github.io/writing/the-hardest-part-of-an-internship-search-isnt-the-applications-its-tha.html): I learned this the expensive way. Summer 2027 internship recruiting is happening right now, in July 2026. Not in the spring. Not in the fall. Now.
 - [The internship deadline panic was mostly fake](https://yusuf-gadelrab.github.io/writing/the-internship-deadline-panic-was-mostly-fictional.html): I re-verified 18 firms against primary sources. Only two had real deadlines. One panic-inducing date belonged to a different program entirely.
 - [TradingView vs TrendSpider vs Stock Rover for swing trading](https://yusuf-gadelrab.github.io/writing/tradingview-vs-trendspider-vs-stock-rover-for-swing-trading.html): I built my own swing screener before paying for any of the 3. Here is the honest split between charting, automated backtesting and stock screening.
+- [Correction: I have one peer-reviewed SIGCSE paper](https://yusuf-gadelrab.github.io/writing/two-papers-accepted-to-sigcse-2026-im-an-undergrad.html): This post used to announce a pair of accepted SIGCSE 2026 works. I have one peer-reviewed paper. Here is the correction, the evidence, and what I changed.
 - [What schema markup taught me across 30 guides](https://yusuf-gadelrab.github.io/writing/what-schema-markup-taught-me-writing-30-guides.html): TechArticle vs Article vs BlogPosting, the FAQ rule most people break, and how one Person node turned 90 pages into a single entity instead of 90 authors.
 - [Why my robots.txt says allow to AI crawlers](https://yusuf-gadelrab.github.io/writing/why-my-robots-txt-says-allow-to-ai-crawlers.html): In mid-2026 everyone blocked GPTBot and ClaudeBot. I named 29 AI crawlers and allowed all of them. Here is the reasoning, and the part I can't measure.
 - [Zero-dependency security scanner: secrets, OSV CVEs, IaC r](https://yusuf-gadelrab.github.io/writing/zero-dependency-security-scanner-secrets-osv-cves-iac-rules-git-histor.html): I got annoyed that scanning for supply chain risk usually means installing a large dependency tree first, so I wrote one with no dependencies at all. Pure
@@ -138,22 +137,22 @@ Last updated: 2026-08-10
 
 ## Research and publications
 
-- [Exploring Bilingual Coding for Inclusive Computer Science Learning (SIGCSE TS 2026)](https://doi.org/10.1145/3770761.3777339): Peer-reviewed poster abstract on bilingual programming environments and novice-programmer confidence. Mixed-methods, 60 bilingual participants (40 with little or no prior programming experience, 20 experienced). Reported pre-to-post improvements across most measured constructs, with inexperienced students gaining more in confidence and enjoyment than experienced ones. Yusuf Gadelrab is one of nine listed authors, seventh in author order.
+- [Exploring Bilingual Coding for Inclusive Computer Science Learning (SIGCSE TS 2026)](https://doi.org/10.1145/3770761.3777339): Peer-reviewed paper on bilingual (Arabic/English) programming environments and novice-programmer confidence. Mixed-methods, IRB-approved, 60 participants. Reported statistically significant pre-to-post gains in programming confidence, computing identity, enjoyment and motivation, with novices gaining significantly more than experienced programmers.
 
 ## Software, projects and case studies
 
 - [AU - a chronological, no-vanity feed](https://yusuf-gadelrab.github.io/au.html): AU is a Twitter alternative with the outrage machinery removed: chronological only, no vanity metrics, no quote-posts, no blue-check hierarchy.
 - [AURUM: 5 Luxury Surfaces, One Faceted Search Engine](https://yusuf-gadelrab.github.io/aurum/): Browse AURUM's 5 fictional storefronts - retail, stays, cinema, dining, motors - built on one design system and one faceted search engine with live counts.
 - [DIRA - Investor One-Pager](https://yusuf-gadelrab.github.io/dira-onepager.html): DIRA: a zero-dependency, MIT-licensed security scanner for startup codebases. 208 passing tests, v1.5.0, seven scanners, one command. Investor one-pager.
-- [DIRA - Security Audit for Startup Codebases](https://yusuf-gadelrab.github.io/dira.html): One-command security audit for startup codebases - secrets, dependency CVEs, misconfigurations, licence risk, git-history leaks, and a readiness score. v1.5.0, 124 passing tests. Packaged for PyPI and npm but not published to either.
+- [DIRA - Security Audit for Startup Codebases](https://yusuf-gadelrab.github.io/dira.html): One-command security audit for startup codebases - secrets, dependency CVEs, misconfigurations, licence risk, git-history leaks, and a readiness score. v1.5.0, 208 passing tests. Packaged for PyPI and npm but not published to either.
 - [EcoImpact - Trash Map & Impact Meter](https://yusuf-gadelrab.github.io/ecoimpact.html): Case study: a community trash map with a quantified impact meter - FastAPI, SQLite and Leaflet, designed privacy-first from the schema up.
-- [EventReels - Investor One-Pager](https://yusuf-gadelrab.github.io/eventreels-onepager.html): EventReels: a local-first ffmpeg pipeline turning raw event footage into a finished 9:16 highlight reel. Working prototype, investor one-pager.
+- [EventReels - Investor One-Pager](https://yusuf-gadelrab.github.io/eventreels-onepager.html): EventReels: a local-first ffmpeg pipeline that turns raw event footage into a finished 9:16 highlight reel. 76 automated tests, working prototype. Investor one-pager.
 - [EventReels - Auto-Edited Highlight Reels](https://yusuf-gadelrab.github.io/eventreels.html): Case study: a local-first ffmpeg pipeline that turns raw event footage into a finished 9:16 highlight reel, plus a browser studio to drive it.
-- [FreightDesk AI - Investor One-Pager](https://yusuf-gadelrab.github.io/freightdesk-onepager.html): FreightDesk AI: an AI back-office clerk for small freight brokerages, running on a local model. Founding-client pilots open at $999 + $249/mo.
+- [FreightDesk AI - Investor One-Pager](https://yusuf-gadelrab.github.io/freightdesk-onepager.html): FreightDesk AI: an AI back-office clerk for small freight brokerages, running on a local model. Founding-client pilots open at $999 + $249/mo. Investor one-pager.
 - [FreightDesk AI - Your Back Office, On Autopilot](https://yusuf-gadelrab.github.io/freightdesk.html): An AI back-office clerk for small freight brokerages. Reads your billing and AR inbox, drafts every reply on a local model. No API fees, data never leaves.
 - [HISN - Security Audit for MCP Servers & AI Agents](https://yusuf-gadelrab.github.io/hisn.html): Audit your MCP server against the seven attack classes the protocol spec names: confused deputy, token passthrough, SSRF, session hijacking. One command, free.
-- [HwyHaul LoadLink - AI Freight Back Office](https://yusuf-gadelrab.github.io/hwyhaul.html): Case study: an AI freight back office covering a brokerage's AR/billing workflows, built and tested 100% on local models with $0 API cost.
-- [SpartanEats - SJSU Student Food Delivery App Concept](https://yusuf-gadelrab.github.io/spartaneats.html): SpartanEats: a student-run food delivery concept for San Jose State. Campus-priced delivery from local spots, built solo by one SJSU student, for Spartans.
+- [HwyHaul LoadLink - AI Freight Back Office](https://yusuf-gadelrab.github.io/hwyhaul.html): Case study: an AI freight back office covering 18 AR/billing workflows, built and tested 100% on local models with $0 API cost.
+- [SpartanEats - SJSU Student Food Delivery App Concept](https://yusuf-gadelrab.github.io/spartaneats.html): SpartanEats: a student-run food delivery concept for San Jose State. Campus-priced delivery from local spots, built by SJSU students for Spartans.
 - [Swing Trade Screener + Backtest Engine - Python CLI](https://yusuf-gadelrab.github.io/swing-screener.html): A Python CLI that scans a watchlist for anchored-VWAP reclaim, VCP and gap setups, plus a no-lookahead backtest engine and the audit that broke its result.
 - [Trading Bot Safety Architecture - Python Execution Engine](https://yusuf-gadelrab.github.io/trading-bot.html): A broker-agnostic Python trading bot that refuses to connect a live broker until 60 closed paper trades show positive expectancy. Fails closed, 160 tests.
 
@@ -191,7 +190,7 @@ Last updated: 2026-08-10
 ## Creator and media
 
 - [Yusuf Gadelrab · Actor & Model · San Jose](https://yusuf-gadelrab.github.io/acting.html): Acting portfolio for Yusuf Gadelrab: bilingual Arabic and English performer, athlete, and CS student-researcher in San Jose / Bay Area. Self-tape ready.
-- [Yusuf Gadelrab - Creator Media Kit](https://yusuf-gadelrab.github.io/media-kit.html): Creator media kit: audience stats, a 260-to-200 lb transformation story, and brand collaboration options for @goldarabmans.
+- [Yusuf Gadelrab - Creator Media Kit](https://yusuf-gadelrab.github.io/media-kit.html): Creator media kit: audience stats, a 260-to-200 lb transformation story, and brand collaboration options for @_kxng_sef.
 - [Yusuf Gadelrab - Model Portfolio & Digitals](https://yusuf-gadelrab.github.io/modeling.html): Model portfolio and digitals for Yusuf Gadelrab - athletic and commercial, San Jose CA. Documented 260-to-200 lb transformation, ex-football captain.
 - [My Dev Stack: AI, Coding & Trading Tools I Actually Use](https://yusuf-gadelrab.github.io/stack.html): Every tool in my daily stack with the honest version: what it replaced, why it stayed, and what it costs. Most of it is free. Here is where the money goes.
 

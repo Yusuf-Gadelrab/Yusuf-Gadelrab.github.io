@@ -25,6 +25,7 @@
 <meta property="og:image" content="https://yusuf-gadelrab.github.io/og/dira-card.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="DIRA — zero-dependency security audit for startup codebases">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Yusuf Gadelrab">
 <meta property="og:title" content="DIRA — Security Audit for Startup Codebases">
@@ -36,44 +37,112 @@
 <meta name="twitter:description" content="Secrets, dependency CVEs, misconfigs, license risk, git-history leaks and a startup security-readiness score. One free command.">
 <meta name="keywords" content="secret scanning, startup security audit, SBOM generator, SOC 2 readiness, dependency CVE scanner, SARIF, devsecops, open source security tool">
 <meta name="robots" content="index,follow">
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"SoftwareApplication","name":"DIRA","alternateName":"dira-scan","applicationCategory":"DeveloperApplication","operatingSystem":"macOS, Linux, Windows","url":"https://yusuf-gadelrab.github.io/dira.html","description":"Zero-dependency security audit for startup codebases: secret scanning, dependency CVEs via OSV.dev, 38 misconfiguration rules, dependency license classification, git-history leak detection, live TLS and security-header checks, SBOM generation, and an 18-point startup security-readiness score.","author":{"@id":"https://yusuf-gadelrab.github.io/#person"},"license":"https://opensource.org/licenses/MIT","offers":{"@type":"Offer","price":"0","priceCurrency":"USD","availability":"https://schema.org/InStock"},"alternativeHeadline":"Find it before your first enterprise customer does."}</script>
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"What does DIRA scan for?","acceptedAnswer":{"@type":"Answer","text":"Seven scanners: leaked credentials (23 provider patterns plus an entropy-gated generic rule), dependency vulnerabilities resolved against OSV.dev, 38 misconfiguration rules across Docker, Kubernetes, Terraform, GitHub Actions, cloud IAM, frontend code and LLM applications, dependency license risk, secrets buried in git history, the live domain's TLS and security headers, and an 18-point startup security-readiness score."}},{"@type":"Question","name":"Does DIRA send my code anywhere?","acceptedAnswer":{"@type":"Answer","text":"No. Scanning happens entirely on your machine. The only network calls are anonymous package-name lookups to OSV.dev and the public npm and PyPI registries, plus requests to a domain you explicitly pass with --target . The --offline flag disables all of them. Detected secrets are redacted before they reach any report or cache."}},{"@type":"Question","name":"How much does DIRA cost?","acceptedAnswer":{"@type":"Answer","text":"The scanner is free forever. MIT-licensed open source, installable from source with pipx install git+https://github.com/Yusuf-Gadelrab/dira , with PyPI and npm packages on the way. All seven scanners, every detection rule, the SBOM output, dira fix, baseline and --diff gating are free and unrestricted. Two features are reserved for the paid tier: --policy (per-rule severity overrides) and dira report (the client-ready readiness document). Neither is needed to find or fix anything. Two optional paid services exist if you want the output turned into a reviewed document — a $149 Startup Readiness Report and a $499 Deep Audit , both human-reviewed. Neither is required to use DIRA."}},{"@type":"Question","name":"Can DIRA replace a penetration test or a SOC 2 audit?","acceptedAnswer":{"@type":"Answer","text":"No. DIRA is automated pattern analysis. It can't see your cloud IAM, your MFA enforcement, or your access reviews — those appear in the report as manual attestations. A clean run means no known bad patterns in the repository, not that the product is secure."}},{"@type":"Question","name":"Is DIRA on PyPI or npm yet?","acceptedAnswer":{"@type":"Answer","text":"Not yet. v1.5.0 installs from source on GitHub today with pipx install git+https://github.com/Yusuf-Gadelrab/dira , then dira scan . PyPI and npm packages are on the way — the email list below pings the day either lands."}}],"@id":"https://yusuf-gadelrab.github.io/dira.html#faq"}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"SoftwareApplication","name":"DIRA","alternateName":"dira-scan","softwareVersion":"1.5.1","applicationCategory":"DeveloperApplication","operatingSystem":"macOS, Linux, Windows","url":"https://yusuf-gadelrab.github.io/dira.html","description":"Zero-dependency security audit for startup codebases: secret scanning, dependency CVEs via OSV.dev, 38 misconfiguration rules, dependency license classification, git-history leak detection, live TLS and security-header checks, SBOM generation, and an 18-point startup security-readiness score.","author":{"@id":"https://yusuf-gadelrab.github.io/#person"},"license":"https://opensource.org/licenses/MIT","downloadUrl":"https://github.com/Yusuf-Gadelrab/dira","offers":{"@type":"Offer","price":"0","priceCurrency":"USD","availability":"https://schema.org/InStock"},"alternativeHeadline":"Find it before your first enterprise customer does."}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"What does DIRA scan for?","acceptedAnswer":{"@type":"Answer","text":"Seven scanners: leaked credentials (23 provider patterns plus an entropy-gated generic rule), dependency vulnerabilities resolved against OSV.dev, 38 misconfiguration rules across Docker, Kubernetes, Terraform, GitHub Actions, cloud IAM, frontend code and LLM applications, dependency license risk, secrets buried in git history, the live domain's TLS and security headers, and an 18-point startup security-readiness score."}},{"@type":"Question","name":"Does DIRA send my code anywhere?","acceptedAnswer":{"@type":"Answer","text":"No. Scanning happens entirely on your machine. The only network calls are anonymous package-name lookups to OSV.dev and the public npm and PyPI registries, plus requests to a domain you explicitly pass with --target . The --offline flag disables all of them. Detected secrets are redacted before they reach any report or cache."}},{"@type":"Question","name":"How much does DIRA cost?","acceptedAnswer":{"@type":"Answer","text":"Nothing to scan and fix a codebase: all seven scanners, all 62 detection rules, SBOM output, dira fix, baseline and --diff PR gating ship free in the MIT-licensed open-source release. Two code paths — the client-ready report renderer (dira report) and policy-as-code overrides (--policy) — are marked Pro in the source and are not on sale yet. Install it from source with pipx install git+https://github.com/Yusuf-Gadelrab/dira ; PyPI and npm packages are on the way. Two optional human-review services are listed on the page for people who want the raw output turned into a client-ready document, and neither is required to find or fix anything."}},{"@type":"Question","name":"Can DIRA replace a penetration test or a SOC 2 audit?","acceptedAnswer":{"@type":"Answer","text":"No. DIRA is automated pattern analysis. It can't see your cloud IAM, your MFA enforcement, or your access reviews — those appear in the report as manual attestations. A clean run means no known bad patterns in the repository, not that the product is secure."}},{"@type":"Question","name":"Is DIRA on PyPI or npm yet?","acceptedAnswer":{"@type":"Answer","text":"Not yet. It installs from source on GitHub today with pipx install git+https://github.com/Yusuf-Gadelrab/dira , then dira scan . PyPI and npm packages are on the way — the email list below pings the day either lands."}}],"@id":"https://yusuf-gadelrab.github.io/dira.html#faq"}</script>
 <link rel="stylesheet" href="/css/site.css">
 <link rel="stylesheet" href="/css/lux-motion.css">
+<link rel="stylesheet" href="/css/lux-plus.css">
 <style>
-  .rule{height:1px;max-width:var(--maxw);margin:0 auto;
-    background:linear-gradient(90deg,transparent,var(--line) 30%,var(--line) 70%,transparent)}
-  .term{background:#0b0b0c;border:1px solid var(--line);border-radius:14px;overflow:hidden;
-    box-shadow:0 24px 60px rgba(0,0,0,.45)}
+  /* ── Typographic register ────────────────────────────────────────────────
+     A security tool page reads as a spec sheet by default. The serif display
+     stack (system fonts only — zero network requests) pulls the headings back
+     into the DHAHAB register and separates them clearly from the mono UI. */
+  main h1,main h2{font-family:var(--display-serif);letter-spacing:var(--track-tight);
+    font-weight:var(--w-semibold);line-height:var(--lh-snug)}
+  main h1{font-size:var(--t-h1);line-height:var(--lh-tight)}
+  main h2{font-size:var(--t-h2)}
+  main h3{font-size:var(--t-h4);letter-spacing:0}
+
+  /* Hero proof strip — three facts that are each checkable in the repo. */
+  .proof{display:flex;flex-wrap:wrap;justify-content:center;gap:var(--s3) var(--s5);
+    margin:var(--s5) 0 0;padding:var(--s4) 0 0;border-top:1px solid var(--border-hairline);
+    list-style:none;font-size:var(--t-caption);color:var(--ink-2)}
+  .proof li{display:flex;align-items:baseline;gap:8px}
+  .proof b{font-family:var(--mono);font-size:var(--t-small);color:var(--gold-ink);
+    font-weight:var(--w-semibold);font-variant-numeric:tabular-nums}
+
+  /* ── Vertical rhythm ──────────────────────────────────────────────────────
+     site.css resets every margin to 0, so on this page NOTHING has a default
+     gap — every one below is deliberate and comes off the --s1..--s11 ladder.
+     Scoped with the child combinator so component internals (.tier, .limits,
+     .receipt, .qa, .next) keep their own spacing untouched. */
+  .wrap{width:100%;max-width:var(--maxw);margin-inline:auto}
+  .wrap>.eyebrow{display:block;letter-spacing:var(--track-eyebrow);margin-bottom:var(--s3)}
+  .wrap>h2{margin-bottom:var(--s4)}
+  /* Display measure: ~30ch keeps a 40px serif headline to two or three lines
+     instead of one 1,100px ruler. Skipped inside the two centred wraps, where a
+     max-width with no auto margin would shove the heading off its own axis. */
+  .wrap:not([style*="center"])>h2{max-width:30ch}
+  .wrap>.lead+p,.wrap>p+p{margin-top:var(--s4)}
+  .wrap>.lead{line-height:var(--lh-snug)}
+
+  /* Two rules on this page: the quiet seam between sections, and one lit
+     hairline (.lxp-rule, from lux-plus) marking the step into the commercial
+     band. Only the geometry is shared — each keeps its own paint. */
+  .rule,.lxp-rule{height:1px;max-width:var(--maxw);margin:0 auto}
+  .rule{background:linear-gradient(90deg,transparent,var(--line) 30%,var(--line) 70%,transparent)}
+
+  /* .lxp-gilt clips a gold gradient to the h1's glyphs and sets
+     -webkit-text-fill-color:transparent — which INHERITS. The Arabic mark
+     carries its own colour, so it is opted back out here; otherwise it takes
+     the foil gradient, or vanishes where background-clip:text is unsupported. */
+  h1 .ar-mark{-webkit-text-fill-color:currentColor;background:none;animation:none}
+
+  .term{background:var(--surface-0);border:1px solid var(--line);border-radius:var(--radius-lg);overflow:hidden;
+    box-shadow:var(--elev-4),inset 0 1px 0 rgba(255,255,255,.05)}
   .term__bar{display:flex;gap:7px;align-items:center;padding:11px 14px;border-bottom:1px solid var(--line);
-    background:linear-gradient(180deg,#131313,#0d0d0d)}
-  .term__dot{width:10px;height:10px;border-radius:50%;background:#2c2c2c}
-  .term__title{margin-left:10px;font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:#8a857d}
+    background:linear-gradient(180deg,var(--surface-3),var(--surface-1))}
+  .term__dot{width:10px;height:10px;border-radius:50%;background:var(--border-control)}
+  .term__title{margin-left:10px;font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:var(--ink-3)}
   .term pre{margin:0;padding:20px 22px;overflow-x:auto;font-family:ui-monospace,SFMono-Regular,Menlo,monospace;
-    font-size:13px;line-height:1.75;color:#e8e4dc}
-  .term .g{color:#d4af37}.term .r{color:#ff6b6b}.term .o{color:#ff9f43}.term .y{color:#e9cf7a}
+    font-size:13px;line-height:1.75;color:var(--ink-1);font-variant-numeric:tabular-nums}
+  /* ANSI-mapped output colours. The two golds follow the ramp; red, orange, green
+     and dim stay literal — that is a terminal palette, not a design token set. */
+  .term .g{color:var(--gold-400)}.term .r{color:#ff6b6b}.term .o{color:#ff9f43}.term .y{color:var(--gold-ink)}
   .term .d{color:#7f7a70}.term .ok{color:#5ac36a}
-  .scanners{display:grid;grid-template-columns:repeat(auto-fit,minmax(258px,1fr));gap:16px}
-  .sc{border:1px solid var(--line);border-radius:14px;padding:20px 22px;background:rgba(255,255,255,.012)}
-  .sc h3{margin:0 0 6px;font-size:17px}
-  .sc .k{font-family:ui-monospace,Menlo,monospace;font-size:11px;letter-spacing:.12em;text-transform:uppercase;
-    color:#d4af37;margin-bottom:9px;display:block}
-  .sc p{margin:0;font-size:14.5px;color:#a9a49b;line-height:1.65}
-  .steps{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:16px;counter-reset:s}
-  .step{border:1px solid var(--line);border-radius:14px;padding:20px 22px}
-  .step:before{counter-increment:s;content:"0" counter(s);font-family:ui-monospace,Menlo,monospace;
-    font-size:12px;color:#d4af37;letter-spacing:.14em}
-  .step h3{margin:8px 0 6px;font-size:17px}
-  .step p{margin:0;color:#a9a49b;font-size:14.5px}
-  .kv{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:14px;text-align:center}
-  .kv div{border:1px solid var(--line);border-radius:14px;padding:20px 12px}
-  .kv b{display:block;font-family:"Iowan Old Style",Georgia,serif;font-size:34px;color:#e9cf7a;line-height:1.1}
-  .kv span{font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:#8a857d}
-  code.inline{font-family:ui-monospace,Menlo,monospace;font-size:.92em;color:#e9cf7a;
-    background:rgba(212,175,55,.08);border:1px solid rgba(212,175,55,.18);padding:2px 7px;border-radius:6px}
-  .limits{border:1px solid var(--line);border-left:3px solid #d4af37;border-radius:12px;padding:20px 24px;
+  /* ── Scanner cards ────────────────────────────────────────────────────────
+     A spec sheet, not a marketing grid: mono key, hairline border, generous
+     padding, and one hairline of gold light drawn along the top edge on hover.
+     A 1px lit bevel reads more precise — and costs less — than a heavy border. */
+  .scanners{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(258px,100%),1fr));gap:var(--s4)}
+  .sc{position:relative;border:1px solid var(--border-hairline);border-radius:var(--radius-lg);
+    padding:var(--s6) var(--s5);background:var(--surface-2);
+    transition:border-color var(--dur-2) var(--ease),box-shadow var(--dur-2) var(--ease)}
+  .sc::before{content:"";position:absolute;left:0;right:0;top:0;height:1px;opacity:0;
+    background:linear-gradient(90deg,var(--gold-400),transparent);
+    transition:opacity var(--dur-2) var(--ease)}
+  .sc:hover,.sc:focus-within{border-color:var(--border-gold);box-shadow:var(--elev-2)}
+  .sc:hover::before,.sc:focus-within::before{opacity:1}
+  .sc h3{margin:0 0 var(--s2);font-size:var(--t-h4)}
+  .sc .k{font-family:var(--mono);font-size:11px;letter-spacing:.14em;text-transform:uppercase;
+    color:var(--gold-400);margin-bottom:var(--s3);display:block}
+  .sc p{margin:0;font-size:var(--t-small);color:var(--ink-2);line-height:var(--lh-body);
+    max-width:var(--measure-narrow)}
+  .steps{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(240px,100%),1fr));gap:var(--s4);counter-reset:s}
+  .step{border:1px solid var(--border-hairline);border-radius:var(--radius-lg);
+    padding:var(--s6) var(--s5);background:var(--surface-2)}
+  .step:before{counter-increment:s;content:"0" counter(s);font-family:var(--mono);
+    font-size:var(--t-micro);color:var(--gold-400);letter-spacing:.14em;
+    font-variant-numeric:tabular-nums}
+  .step h3{margin:var(--s3) 0 var(--s2);font-size:var(--t-h4)}
+  .step p{margin:0;color:var(--ink-2);font-size:var(--t-small);line-height:var(--lh-body)}
+
+  /* ── Instrument strip ─────────────────────────────────────────────────────
+     The five repo-checkable counts read as one milled panel — 1px seams over a
+     hairline ground — instead of five detached boxes drifting on the page. */
+  .kv{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(150px,100%),1fr));
+    gap:1px;background:var(--border-hairline);text-align:center;
+    border:1px solid var(--border-hairline);border-radius:var(--radius-lg);overflow:hidden}
+  .kv div{border:0;border-radius:0;padding:var(--s6) var(--s3);background:var(--surface-2)}
+  .kv b{display:block;font-family:var(--display-serif);font-size:var(--t-h2);color:var(--gold-ink);
+    line-height:var(--lh-tight);font-variant-numeric:tabular-nums;letter-spacing:var(--track-tight)}
+  .kv span{display:block;margin-top:var(--s2);font-size:var(--t-micro);letter-spacing:.14em;
+    text-transform:uppercase;color:var(--ink-3)}
+  code.inline{font-family:ui-monospace,Menlo,monospace;font-size:.92em;color:var(--gold-ink);
+    background:rgba(212,175,55,.08);border:1px solid rgba(212,175,55,.18);padding:2px 7px;border-radius:var(--radius)}
+  .limits{border:1px solid var(--line);border-left:3px solid var(--gold-400);border-radius:var(--radius-lg);padding:20px 24px;
     background:rgba(212,175,55,.04)}
-  .limits p{color:#b6b1a8;margin:0 0 10px}
+  .limits p{color:var(--ink-2);margin:0 0 10px}
   .limits p:last-child{margin-bottom:0}
 
   /* One primary action per view. Secondary routes are quiet text links so the
@@ -89,50 +158,75 @@
     color:var(--gold-2);display:block;margin-bottom:var(--s2)}
   .next p{color:var(--muted);font-size:var(--t-small);margin:0}
   .next b{color:var(--ink)}
-  .qa{padding:var(--s5)}
-  .qa h3{font-size:var(--t-h3);margin:0 0 var(--s3)}
-  .qa p{color:var(--muted);font-size:var(--t-small);margin:0}
+  .qa{padding:var(--s6) var(--s5)}
+  .qa h3{font-size:var(--t-h4);margin:0 0 var(--s3)}
+  .qa p{color:var(--ink-2);font-size:var(--t-small);margin:0;line-height:var(--lh-body)}
   .qa a{color:var(--gold-2)}
+  /* Card hover is a 1px border shift plus a shadow. site.css lifts a card 3–4px;
+     on an instrument page that reads as bounce, so it is pulled back to 2. */
+  body.pro .card:hover{transform:translateY(-2px);border-color:var(--border-gold);
+    box-shadow:var(--elev-2),var(--ring-gold)}
   .cmp-note{color:var(--faint);font-size:var(--t-micro);margin-top:var(--s3)}
   .cmp td:first-child,.cmp th:first-child{color:var(--ink)}
 
   /* ── Pricing ──────────────────────────────────────────────────────────────
-     Same 14px-radius / --line card language as .sc and .step above, so the tiers
+     Same --radius-lg / --line card language as .sc and .step above, so the tiers
      read as another row of this page rather than a bolted-on store. */
-  .tiers{display:grid;gap:18px;grid-template-columns:repeat(auto-fit,minmax(min(300px,100%),1fr));
-    align-items:start;margin-top:30px}
-  .tier{border:1px solid var(--line);border-radius:14px;padding:26px 24px 24px;
-    background:rgba(255,255,255,.012);display:flex;flex-direction:column;height:100%}
-  .tier--mid{border-color:rgba(212,175,55,.42);background:rgba(212,175,55,.045);
-    box-shadow:0 22px 54px rgba(0,0,0,.4)}
-  .tier__tag{font-family:ui-monospace,Menlo,monospace;font-size:11px;letter-spacing:.14em;
-    text-transform:uppercase;color:#d4af37;display:block;margin-bottom:10px}
-  .tier h3{margin:0 0 4px;font-size:20px;line-height:1.25}
-  .tier__amt{font-family:"Iowan Old Style",Georgia,serif;font-size:42px;line-height:1.05;
-    color:#e9cf7a;margin:14px 0 2px}
+  .tiers{display:grid;gap:var(--s4);grid-template-columns:repeat(auto-fit,minmax(min(300px,100%),1fr));
+    align-items:start;margin-top:var(--s7)}
+  .tier{border:1px solid var(--border-hairline);border-radius:var(--radius-lg);
+    padding:var(--s7) var(--s5) var(--s6);
+    background:var(--surface-2);display:flex;flex-direction:column;height:100%}
+  /* The featured tier is the one plaque on the page: gold rim, a hairline of
+     light along its top edge painted as a background LAYER (so .lxp-frame's
+     engraved corners can own ::before/::after), and tabular figures. */
+  .tier--mid{border-color:rgba(212,175,55,.42);
+    background-image:linear-gradient(90deg,transparent,var(--gold-400),transparent),
+                     linear-gradient(180deg,var(--gold-wash),transparent 60%);
+    background-size:100% 1px,100% 100%;background-repeat:no-repeat;
+    background-position:0 0,0 0;background-color:var(--surface-3);
+    box-shadow:var(--elev-4)}
+  .tier__tag{font-family:var(--mono);font-size:11px;letter-spacing:.14em;
+    text-transform:uppercase;color:var(--gold-400);display:block;margin-bottom:var(--s3)}
+  .tier h3{margin:0 0 var(--s1);font-size:var(--t-h4);line-height:var(--lh-snug)}
+  .tier__amt{font-family:var(--display-serif);font-size:var(--t-h1);line-height:var(--lh-tight);
+    color:var(--gold-ink);margin:var(--s4) 0 2px;font-variant-numeric:tabular-nums;
+    letter-spacing:var(--track-tight)}
   .tier__amt small{font-family:var(--body-font);font-size:12px;letter-spacing:.14em;
-    text-transform:uppercase;color:#8a857d;display:block;margin-top:8px}
-  .tier__line{margin:16px 0 0;color:#a9a49b;font-size:14.5px;line-height:1.65}
+    text-transform:uppercase;color:var(--ink-3);display:block;margin-top:8px}
+  .tier__line{margin:16px 0 0;color:var(--ink-2);font-size:14.5px;line-height:1.65}
   .tier ul{list-style:none;margin:20px 0 0;padding:0;display:grid;gap:11px}
-  .tier li{position:relative;padding-left:22px;color:#a9a49b;font-size:14px;line-height:1.6}
+  .tier li{position:relative;padding-left:22px;color:var(--ink-2);font-size:14px;line-height:1.6}
   .tier li:before{content:"";position:absolute;left:0;top:.52em;width:9px;height:9px;
-    border-left:1.5px solid #d4af37;border-bottom:1.5px solid #d4af37;
+    border-left:1.5px solid var(--gold-400);border-bottom:1.5px solid var(--gold-400);
     transform:rotate(-45deg) translateY(-1px)}
   .tier li b{color:var(--ink)}
   .tier__act{margin-top:auto;padding-top:24px}
   .tier__act .btn{width:100%;text-align:center}
   .tier__fine{margin:12px 0 0;color:var(--faint);font-size:var(--t-micro);line-height:1.55}
-  .receipt{border:1px solid var(--line);border-left:3px solid #d4af37;border-radius:14px;
-    padding:26px 28px;background:rgba(212,175,55,.04);margin-top:34px}
+  .receipt{border:1px solid var(--line);border-left:3px solid var(--gold-400);border-radius:var(--radius-lg);
+    padding:26px 28px;background:rgba(212,175,55,.04);margin-top:var(--s6)}
   .receipt h3{margin:0 0 6px;font-size:19px}
   .receipt ol{margin:18px 0 0;padding-left:0;list-style:none;counter-reset:r;
     display:grid;gap:12px;grid-template-columns:repeat(auto-fit,minmax(min(250px,100%),1fr))}
-  .receipt li{counter-increment:r;color:#a9a49b;font-size:14px;line-height:1.6;
+  .receipt li{counter-increment:r;color:var(--ink-2);font-size:14px;line-height:1.6;
     padding-left:34px;position:relative}
   .receipt li:before{content:counter(r,decimal-leading-zero);position:absolute;left:0;top:0;
-    font-family:ui-monospace,Menlo,monospace;font-size:11px;letter-spacing:.1em;color:#d4af37}
+    font-family:ui-monospace,Menlo,monospace;font-size:11px;letter-spacing:.1em;color:var(--gold-400)}
   .receipt li b{color:var(--ink);display:block;font-weight:600;margin-bottom:2px}
-  @media(max-width:520px){.tier__amt{font-size:36px}}
+
+  /* The nav is position:sticky with no site-wide scroll-padding, so every #jump
+     on this page would otherwise land its heading underneath the bar. 144px is
+     the column-layout nav height once the 8-link row wraps at 620px. */
+  section[id]{scroll-margin-top:88px}
+  @media(max-width:620px){section[id]{scroll-margin-top:144px}}
+
+  /* Everything added above moves only on hover and only via opacity/border/
+     shadow. This is the explicit off-switch so the page is correct even if
+     site.css's global reduced-motion net is ever read out of order. */
+  @media(prefers-reduced-motion:reduce){
+    .sc,.sc::before,.card,.tier{transition:none!important}
+  }
 </style>
 <script>
   /* ===========================================================================
@@ -164,6 +258,7 @@
 </script>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"ItemList","name":"DIRA security tiers","itemListElement":[{"@type":"ListItem","position":1,"item":{"@type":"SoftwareApplication","name":"dira-scan","applicationCategory":"DeveloperApplication","operatingSystem":"macOS, Linux, Windows","url":"https://yusuf-gadelrab.github.io/dira.html#pricing","description":"The full open-source DIRA scanner: seven scanners, 62 detection rules, SBOM output, PR diff gating and the 18-point startup security-readiness score. MIT licensed, zero dependencies, runs entirely on your machine.","license":"https://opensource.org/licenses/MIT","offers":{"@type":"Offer","price":"0","priceCurrency":"USD","availability":"https://schema.org/InStock"}}},{"@type":"ListItem","position":2,"item":{"@type":"Service","name":"DIRA Startup Readiness Report","serviceType":"Security readiness report","provider":{"@id":"https://yusuf-gadelrab.github.io/#person"},"url":"https://yusuf-gadelrab.github.io/dira.html#pricing","description":"A client-ready Startup Security Readiness Report delivered as PDF and HTML: executive summary, prioritized findings with impact and effort scoring, a 30-day remediation roadmap, the 18-point readiness scorecard, and a SOC 2 and vendor-questionnaire appendix, plus a human QA pass on every automated finding. Delivered within 5 business days of repo access. Automated analysis with human review, not a penetration test.","offers":{"@type":"Offer","price":"149","priceCurrency":"USD","availability":"https://schema.org/PreOrder","url":"https://yusuf-gadelrab.github.io/dira.html#pricing"}}},{"@type":"ListItem","position":3,"item":{"@type":"Service","name":"DIRA Deep Audit","serviceType":"Security audit report with consultant review","provider":{"@id":"https://yusuf-gadelrab.github.io/#person"},"url":"https://yusuf-gadelrab.github.io/dira.html#pricing","description":"Everything in the Startup Readiness Report plus manual confirmation of every critical and high severity finding, consultant review notes typeset into the report, and a 30-minute readout call. Delivered within 5 business days of repo access. Automated analysis with human review, not a penetration test.","offers":{"@type":"Offer","price":"499","priceCurrency":"USD","availability":"https://schema.org/PreOrder","url":"https://yusuf-gadelrab.github.io/dira.html#pricing"}}}]}</script>
 <!-- geo:entity — canonical Person node, one entity across every page -->
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Person","@id":"https://yusuf-gadelrab.github.io/#person","name":"Yusuf Gadelrab","url":"https://yusuf-gadelrab.github.io/"}</script>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebPage","@id":"https://yusuf-gadelrab.github.io/dira.html#webpage","url":"https://yusuf-gadelrab.github.io/dira.html","inLanguage":"en","isPartOf":{"@id":"https://yusuf-gadelrab.github.io/#website"},"about":{"@id":"https://yusuf-gadelrab.github.io/#person"},"publisher":{"@id":"https://yusuf-gadelrab.github.io/#person"}}</script>
 </head>
 <body class="pro">
@@ -181,27 +276,32 @@
 
 <main id="main">
 
-<section class="section" style="padding-top:96px">
+<section class="section" style="padding-top:var(--s9)">
   <div class="wrap" style="text-align:center;max-width:860px">
-    <div class="eyebrow">Dhahab · Open Source · v1.5.0</div>
-    <h1 style="margin:14px 0 8px">DIRA <span style="color:#8a857d;font-size:.5em">درع</span></h1>
+    <div class="eyebrow">Dhahab · Open Source · v1.5.1</div>
+    <h1 class="lxp-gilt" style="margin:var(--s4) 0 var(--s2)">DIRA <span class="ar-mark" lang="ar" dir="rtl" style="color:var(--ink-3);font-size:.5em">درع</span></h1>
     <p class="lead" style="margin:0 auto 10px;max-width:660px">
-      <b>A zero-dependency Python security scanner for your codebase — 208 passing tests,
-      MIT licensed, one command.</b>
+      <b>One command tells you whether your codebase would survive an enterprise buyer's
+      security questionnaire.</b>
     </p>
-    <p style="color:#8a857d;max-width:620px;margin:0 auto 30px">
+    <p style="color:var(--ink-2);max-width:620px;margin:0 auto var(--s6)">
       Secrets · dependency CVEs · 38 misconfiguration rules · license risk · git-history leaks ·
       live TLS &amp; headers · SBOM · security-readiness score
     </p>
     <p>
       <a class="btn btn-gold" href="https://github.com/Yusuf-Gadelrab/dira">Get it on GitHub →</a>
     </p>
-    <p class="muted" style="font-size:var(--t-micro);margin-top:var(--s3)">Installs from source today · <code class="inline">pipx install</code>, no signup · PyPI and npm coming</p>
+    <p class="muted" style="font-size:var(--t-micro);margin-top:var(--s3)">Every scanner free forever · <code class="inline">pipx install</code>, no signup · PyPI and npm coming</p>
+    <ul class="proof">
+      <li><b>208</b> passing tests</li>
+      <li><b>0</b> runtime dependencies</li>
+      <li><b>MIT</b> licensed, readable end to end</li>
+    </ul>
     <p class="alt-links center" style="justify-content:center">
       <a href="#install">How to run it</a>
       <a href="#scanners">What it checks</a>
       <a href="#trust">Why trust it</a>
-      <a href="#pricing">Pricing</a>
+      <a href="#pricing">Reports</a>
       <a href="#faq">FAQ</a>
     </p>
   </div>
@@ -214,7 +314,7 @@
         <span class="term__dot"></span><span class="term__dot"></span><span class="term__dot"></span>
         <span class="term__title">dira scan . -t yourapp.com</span>
       </div>
-      <div class="table-wrap">
+      <div class="table-wrap dh-scroll" tabindex="0" role="region" aria-label="Example dira scan output">
 <pre><span class="d">$</span> dira scan . -t yourapp.com
 
   <span class="g">SECURITY GRADE</span>    <span class="r">F</span>   <span class="d">risk 72/100</span>
@@ -261,22 +361,22 @@
       CLIs nobody ever wires up. So the leaked Stripe key sits in the repo until a security
       questionnaire, an acquirer's diligence checklist, or somebody else finds it.
     </p>
-    <p style="color:#a9a49b;max-width:720px">
+    <p style="color:var(--ink-2);max-width:720px">
       DIRA is one command that answers the question founders actually get asked — <em>is this codebase
       safe enough to sell to an enterprise?</em> — and prints the exact fix beside every finding.
     </p>
-    <p style="color:#a9a49b;max-width:720px">
+    <p style="color:var(--ink-2);max-width:720px">
       Want to walk the same ground by hand first? The free guide
       <a class="gold" href="/guides/student-founder-security-checklist.html">18 things to fix before
       your first real user</a> covers the checklist DIRA automates, with the why behind each item.
     </p>
 
-    <div class="kv" style="margin-top:34px">
+    <div class="kv" style="margin-top:var(--s6)">
       <div><b>7</b><span>Scanners</span></div>
       <div><b>62</b><span>Detection rules</span></div>
       <div><b>0</b><span>Dependencies</span></div>
       <div><b>208</b><span>Passing tests</span></div>
-      <div><b>0.9s</b><span>Warm re-scan</span></div>
+      <div><b>18</b><span>Readiness checks</span></div>
     </div>
   </div>
 </section>
@@ -287,7 +387,7 @@
   <div class="wrap">
     <div class="eyebrow">What it checks</div>
     <h2>Seven scanners, one pass</h2>
-    <div class="scanners" style="margin-top:26px">
+    <div class="scanners" style="margin-top:var(--s6)">
       <div class="sc"><span class="k">secrets</span><h3>Leaked credentials</h3>
         <p>23 provider patterns — AWS, Stripe, OpenAI, Anthropic, GitHub, GCP, Slack, npm, database
         DSNs, private keys — plus an entropy-gated generic rule. Every value is redacted before it
@@ -321,14 +421,6 @@
 
 <div class="rule"></div>
 
-<section class="section">
-  <div class="wrap center">
-    <a class="btn btn-gold" href="https://github.com/Yusuf-Gadelrab/dira">Get it on GitHub →</a>
-  </div>
-</section>
-
-<div class="rule"></div>
-
 <section class="section" id="trust">
   <div class="wrap">
     <div class="eyebrow">Before you install</div>
@@ -336,7 +428,7 @@
     <p class="lead" style="max-width:720px">Answered up front, the same way every other number on
       this site is sourced instead of asserted.</p>
 
-    <div class="next" style="margin-top:30px">
+    <div class="next" style="margin-top:var(--s6)">
       <div>
         <span class="mk">01 · Why trust a student's security tool?</span>
         <p><b>The audit trail is the whole pitch: 208 passing tests, and zero dependencies means
@@ -352,14 +444,14 @@
       </div>
       <div>
         <span class="mk">03 · What does it cost, and will it phone home?</span>
-        <p><b>Nothing, and no.</b> MIT licensed, runs entirely on your machine. The only network
+        <p><b>Scanning costs nothing, and no.</b> MIT licensed, runs entirely on your machine. The only network
         calls are anonymous package-name lookups to OSV.dev, npm and PyPI, plus a domain you name
         yourself with <code class="inline">--target</code> — and <code class="inline">--offline</code>
         turns even those off.</p>
       </div>
     </div>
 
-    <div class="table-wrap" style="margin-top:30px">
+    <div class="table-wrap dh-scroll" tabindex="0" role="region" aria-label="DIRA compared with gitleaks, trufflehog, npm audit and Snyk" style="margin-top:var(--s6)">
       <table class="cmp">
         <thead><tr><th>Capability</th><th>DIRA</th><th>gitleaks</th><th>trufflehog</th><th>npm audit</th><th>Snyk (free tier)</th></tr></thead>
         <tbody>
@@ -387,7 +479,7 @@
       secret scanning, SAST, CODEOWNERS, a disclosure policy, infrastructure as code, error
       tracking, an incident-response plan, backups, privacy documentation.
     </p>
-    <p style="color:#a9a49b;max-width:720px">
+    <p style="color:var(--ink-2);max-width:720px">
       You get a percentage, a tier, and the specific missing artifact — plus the manual
       attestations no scanner can verify for you (MFA enforcement, branch protection,
       least-privilege IAM, same-day offboarding). Then <code class="inline">dira fix --apply</code>
@@ -396,16 +488,18 @@
   </div>
 </section>
 
-<div class="rule"></div>
+<div class="lxp-rule"></div>
 
 <section class="section" id="pricing">
   <div class="wrap">
-    <div class="eyebrow">Pricing</div>
-    <h2>The tool is free. The report is the thing you'd pay for.</h2>
+    <div class="eyebrow">Reports</div>
+    <h2>Every scan is free. A written report is a different product.</h2>
     <p class="lead" style="max-width:760px">
-      Running <code class="inline">dira scan .</code> costs nothing and always will. What money buys
-      is the part a scanner can't do for you: a person reading every finding, throwing out the noise,
-      and typesetting what's left into a document you can hand to an enterprise buyer's security team.
+      Every scanner, every rule and every scan output format is in the free MIT release. Two
+      Pro-marked code paths — the client-ready report renderer and policy-as-code overrides —
+      exist in the source and are not on sale yet. The two items below buy the part a scanner cannot do:
+      a person reading every finding, throwing out the noise, and typesetting what is left into a
+      document you can hand to an enterprise buyer's security team. Neither is open for sale yet.
     </p>
 
     <div class="tiers">
@@ -427,7 +521,7 @@
           and pre-commit hook; <code class="inline">--diff</code> scans only what changed.</li>
           <li><b>Auto-remediation</b> — <code class="inline">dira fix --apply</code> writes the
           boring missing files for you.</li>
-          <li><b>Runs offline</b>, on your machine. No telemetry, no account, no upsell wall.</li>
+          <li><b>Runs offline</b>, on your machine. No telemetry, no account.</li>
         </ul>
         <div class="tier__act">
           <a class="btn btn-ghost" href="https://github.com/Yusuf-Gadelrab/dira">Get it on GitHub →</a>
@@ -436,7 +530,7 @@
         </div>
       </div>
 
-      <div class="tier tier--mid">
+      <div class="tier tier--mid lxp-frame">
         <span class="tier__tag">Most founders start here</span>
         <h3>Startup Readiness Report</h3>
         <div class="tier__amt">$149<small>One-time · per repository</small></div>
@@ -461,7 +555,8 @@
           <a class="btn btn-gold" data-buy="dira-readiness" data-name="DIRA Readiness Report"
              data-list="DIRA Readiness Report" href="#">Get notified when this opens →</a>
           <p class="tier__fine">Not selling yet — join the list and you'll hear the day it opens.
-          Want it sooner? <a class="gold" href="mailto:yusuf.gadelrab06@gmail.com?subject=DIRA%20Readiness%20Report%20(%24149)">Email me directly</a>.</p>
+          Want it sooner? <a class="gold" href="/services.html#shield-audit">the Shield Audit is open now
+          through DHAHAB Studio</a> — or <a class="gold" href="mailto:yusuf.gadelrab06@gmail.com?subject=DIRA%20Readiness%20Report%20(%24149)">Email me directly</a>.</p>
         </div>
       </div>
 
@@ -486,7 +581,8 @@
           <a class="btn btn-ghost" data-buy="dira-deep" data-name="DIRA Deep Audit"
              data-list="DIRA Deep Audit" href="#">Get notified when this opens →</a>
           <p class="tier__fine">Need more than a report? The bespoke 15-hour engagement is quoted on
-          a call — <a class="gold" href="mailto:yusuf.gadelrab06@gmail.com?subject=DIRA%20full%20audit%20enquiry">email me</a>.</p>
+          a call through <a class="gold" href="/services.html#shield-audit">DHAHAB Studio</a> —
+          <a class="gold" href="mailto:yusuf.gadelrab06@gmail.com?subject=DIRA%20full%20audit%20enquiry">email me</a>.</p>
         </div>
       </div>
 
@@ -494,7 +590,7 @@
 
     <div class="receipt">
       <h3>What you actually receive</h3>
-      <p style="color:#b6b1a8;margin:0;max-width:760px">Not a screenshot of a terminal. A six-section
+      <p style="color:var(--ink-2);margin:0;max-width:760px">Not a screenshot of a terminal. A six-section
       report, in the same black-and-gold house style as everything else here — here is a real one,
       generated end to end by the same command that would generate yours.</p>
       <p style="margin:20px 0 0">
@@ -525,7 +621,7 @@
   <div class="wrap">
     <div class="eyebrow">Run it</div>
     <h2>Three minutes to your first report</h2>
-    <div class="steps" style="margin-top:26px">
+    <div class="steps" style="margin-top:var(--s6)">
       <div class="step"><h3>Scan</h3>
         <p><code class="inline">pipx install git+https://github.com/Yusuf-Gadelrab/dira</code>,
         then <code class="inline">dira scan .</code> — PyPI and npm packages are on the way.</p></div>
@@ -568,7 +664,7 @@
   <div class="wrap">
     <div class="eyebrow">FAQ</div>
     <h2>Common questions</h2>
-    <div class="grid" style="margin-top:26px">
+    <div class="grid" style="margin-top:var(--s6)">
       <article class="card qa">
         <h3>What does DIRA scan for?</h3>
         <p>Seven scanners: leaked credentials (23 provider patterns plus an entropy-gated generic
@@ -587,16 +683,17 @@
       </article>
       <article class="card qa">
         <h3>How much does DIRA cost?</h3>
-        <p><b>The scanner is free forever.</b> MIT-licensed open source, installable from source
-        with <code class="inline">pipx install git+https://github.com/Yusuf-Gadelrab/dira</code>,
-        with PyPI and npm packages on the way. All seven scanners, every detection rule, the SBOM
-        output, <code class="inline">dira fix</code>, baseline and <code class="inline">--diff</code>
-        gating are free and unrestricted. Two features are reserved for the paid tier:
-        <code class="inline">--policy</code> (per-rule severity overrides) and
-        <code class="inline">dira report</code> (the client-ready readiness document). Neither is
-        needed to find or fix anything. Two optional paid services exist if you want the output
-        turned into a reviewed document — a <a class="gold" href="#pricing">$149 Startup Readiness
-        Report and a $499 Deep Audit</a>, both human-reviewed. Neither is required to use DIRA.</p>
+        <p><b>Nothing to scan and fix a codebase.</b> All seven scanners, all 62 detection rules,
+        SBOM output, <code class="inline">dira fix</code>, baseline and
+        <code class="inline">--diff</code> PR gating ship free in the MIT-licensed open-source
+        release. Two code paths — the client-ready report renderer
+        (<code class="inline">dira report</code>) and policy-as-code overrides
+        (<code class="inline">--policy</code>) — are marked Pro in the source and are not on sale
+        yet. Install it with
+        <code class="inline">pipx install git+https://github.com/Yusuf-Gadelrab/dira</code>; PyPI
+        and npm are on the way. Two optional <a class="gold" href="#pricing">human-review
+        services</a> exist for founders who want the raw output turned into a document they can
+        hand a buyer — neither is required to find or fix anything.</p>
       </article>
       <article class="card qa">
         <h3>Can DIRA replace a penetration test or a SOC 2 audit?</h3>
@@ -606,7 +703,7 @@
       </article>
       <article class="card qa">
         <h3>Is DIRA on PyPI or npm yet?</h3>
-        <p>Not yet. v1.5.0 installs from source on GitHub today with
+        <p>Not yet. It installs from source on GitHub today with
         <code class="inline">pipx install git+https://github.com/Yusuf-Gadelrab/dira</code>,
         then <code class="inline">dira scan .</code> PyPI and npm packages are on the way — the
         email list below pings the day either lands.</p>
@@ -617,29 +714,60 @@
 
 <div class="rule"></div>
 
+<section class="section">
+  <div class="wrap">
+    <div class="eyebrow">Read next</div>
+    <h2>Four places to go from here</h2>
+    <div class="next" style="margin-top:var(--s6)">
+      <div>
+        <span class="mk">The comparison</span>
+        <p><b><a class="gold" href="/guides/snyk-vs-trivy-vs-dira.html">Snyk vs Trivy vs DIRA</a></b>
+        — where each tool actually wins, written without pretending DIRA replaces a funded platform.</p>
+      </div>
+      <div>
+        <span class="mk">The manual version</span>
+        <p><b><a class="gold" href="/guides/student-founder-security-checklist.html">18 things to fix
+        before your first real user</a></b> — the checklist DIRA automates, with the why behind each item.</p>
+      </div>
+      <div>
+        <span class="mk">The output</span>
+        <p><b><a class="gold" href="/downloads/dira-sample-readiness-report.html">A full sample
+        readiness report</a></b> — six sections, generated end to end by the same command.</p>
+      </div>
+      <div>
+        <span class="mk">Want it done for you</span>
+        <p><b><a class="gold" href="/services.html">The Shield Audit</a></b> — the same scan, reviewed
+        by hand and rebuilt as a client-ready report with a fix plan, inside 48 hours.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="rule"></div>
+
 <section class="section" style="padding-top:0">
   <div class="wrap" style="text-align:center;max-width:700px">
     <h2>Scan your repo in the next five minutes</h2>
-    <p class="lead" style="margin:0 auto 26px"><b>MIT licensed. Free forever. No account, no telemetry.</b></p>
+    <p class="lead" style="margin:0 auto var(--s6)"><b>MIT licensed. Every scanner free. No account, no telemetry.</b></p>
     <p>
       <a class="btn btn-gold" href="https://github.com/Yusuf-Gadelrab/dira">Get it on GitHub →</a>
     </p>
     <p class="alt-links center" style="justify-content:center">
-      <a href="mailto:yusuf.gadelrab06@gmail.com?subject=DIRA%20security%20audit">Ask me to run it for you</a>
+      <a href="/services.html#shield-audit">Ask me to run it for you</a>
       <a href="#faq">Read the FAQ</a>
       <a href="/guides/student-founder-security-checklist.html">The manual checklist</a>
     </p>
 
-    <div style="margin-top:38px;padding-top:30px;border-top:1px solid var(--line-soft)">
+    <div style="margin-top:var(--s7);padding-top:var(--s6);border-top:1px solid var(--line-soft)">
       <p style="margin:0 0 6px;font-family:var(--display-pro);letter-spacing:.4px">Not on GitHub yet?</p>
       <p style="margin:0 0 16px;color:var(--muted);font-size:var(--t-small)">Leave your email and you'll hear the day DIRA lands on PyPI and npm. One message, nothing else.</p>
       <form id="f-dira" novalidate style="display:flex;gap:8px;flex-wrap:wrap;justify-content:center;max-width:420px;margin:0 auto">
         <label class="sr-only" for="e-dira">Your email address</label>
         <input type="email" id="e-dira" placeholder="you@email.com" autocomplete="email" required
-          style="flex:1 1 190px;min-width:0;background:var(--panel2);border:1px solid var(--line);border-radius:var(--radius);color:var(--bone);padding:10px 12px;font-family:var(--body-font);font-size:13px">
-        <button class="btn btn-ghost btn-sm" type="submit">Tell me at launch</button>
+          style="flex:1 1 190px;min-width:0;background:var(--panel2);border:1px solid var(--line);border-radius:var(--radius);color:var(--bone);padding:10px 12px;font-family:var(--body-font);font-size:16px;min-height:var(--tap)">
+        <button class="btn btn-ghost" type="submit">Tell me at launch</button>
       </form>
-      <p id="n-dira" style="margin-top:10px;font-size:11px;color:var(--faint)">Used for this one announcement. <a href="/legal.html">Legal</a>
+      <p id="n-dira" style="margin-top:10px;font-size:11px;color:var(--faint)">Used for this one announcement. <a href="/legal.html">Legal</a> ·
     <a href="/privacy.html">Privacy</a> · <a href="/waitlist.html">all waitlists</a></p>
     </div>
   </div>
@@ -667,7 +795,7 @@
     <a href="/media-kit.html">Media Kit</a>
     <a href="mailto:yusuf.gadelrab06@gmail.com?subject=DIRA">yusuf.gadelrab06@gmail.com</a>
     <a href="https://github.com/Yusuf-Gadelrab" target="_blank" rel="noreferrer">GitHub</a>
-    <a href="https://www.linkedin.com/in/yusuf-gadelrab" target="_blank" rel="noreferrer">LinkedIn</a>
+    <a href="https://www.linkedin.com/in/yusuf-gadelrab-76246b221" target="_blank" rel="noreferrer">LinkedIn</a>
     <a href="/brand.html">Brand</a>
     <a href="/stack.html">Stack</a>
     <a href="/everything.html">Everything</a>
@@ -693,7 +821,9 @@
   menuBtn.addEventListener('click',function(){navLinks.classList.toggle('open')});
   navLinks.querySelectorAll('a').forEach(function(a){a.addEventListener('click',function(){navLinks.classList.remove('open')})});
 </script>
+<script src="/js/site.js" defer></script>
 <script src="/js/lux-motion.js" defer></script>
+<script src="/js/lux-plus.js" defer></script>
 <script src="/js/waitlist.js" defer></script>
 <!-- commerce.js reads the CHECKOUT map above. Every value is empty, so both paid
      tiers render as waitlist joins on the shared YGWaitlist rail — no page on this

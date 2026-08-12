@@ -30,6 +30,7 @@
 
 <link rel="stylesheet" href="/css/site.css">
 <link rel="stylesheet" href="/css/lux-motion.css">
+<link rel="stylesheet" href="/css/lux-plus.css">
 <style>
   .prose{max-width:68ch}
   .prose h2{margin:var(--s7) 0 var(--s4);font-size:var(--t-h2)}
@@ -114,7 +115,7 @@
       <p>The last row is the largest by a distance. A backtest and a paper account both take 100% of signals. In real money you will hesitate after two losses, size down after a drawdown, and take a discretionary exit at the worst moment. <strong>A strategy's realised expectancy is the strategy's expectancy multiplied by your compliance with it</strong>, and compliance is never 100%.</p>
       <p>The queue-position row deserves a note too, because it produces a specific and nasty bias. A paper engine fills your resting buy limit the moment the price prints there. A real one fills it only if enough sellers arrive to clear the book ahead of you — which happens reliably when the market is about to keep falling, and unreliably when it is about to bounce. Paper gives you the good fills for free and charges nothing for the bad ones.</p>
       <h2>How much does friction cost?</h2>
-      <p>Run the arithmetic on the only setup my walk-forward testing did not eliminate. The anchored-VWAP reclaim came out at +0.117R over 4,933 trades on a 129-symbol, 10-year universe, 95% CI +0.057 to +0.174. It is <strong>not a validated edge</strong>: a risk-matched random entry captured +0.086R on the same data, so the signal's own contribution is about +0.030R with a confidence interval crossing zero. The +0.23R over 101 trades I first reported failed my own adversarial re-test and is retired. Take the headline 0.117R anyway, as the friendliest possible case, and assume a 1R risk of $300 per trade on 100 shares of a $48 stock.</p>
+      <p>Run the arithmetic on the only setup my walk-forward testing did not eliminate. The anchored-VWAP reclaim came out at +0.117R over 4,933 trades on a 129-symbol, 10-year universe, 95% CI +0.057 to +0.174. It is <strong>not a validated edge</strong>: a risk-matched random entry captured +0.086R on the same data, so the signal's own contribution is about +0.030R with a confidence interval crossing zero. An earlier and much larger figure I reported here failed my own adversarial re-test and is retired. Take the headline 0.117R anyway, as the friendliest possible case, and assume a 1R risk of $300 per trade on 100 shares of a $48 stock.</p>
       <span class="formula" tabindex="0" role="group" aria-label="Formula, scrolls horizontally">modelled edge    = 0.117R × $300           = $35.10 per trade
 slippage 2 ticks × 2 sides on 100 shares  =  $4.00
 commission + fees                         =  $2.00
@@ -307,5 +308,6 @@ friction = $6.00 = 0.020R = 17% of the modelled edge</span>
 
 <script src="/js/site.js" defer></script>
 <script src="/js/lux-motion.js" defer></script>
+<script src="/js/lux-plus.js" defer></script>
 </body>
 </html>

@@ -30,6 +30,7 @@
 
 <link rel="stylesheet" href="/css/site.css">
 <link rel="stylesheet" href="/css/lux-motion.css">
+<link rel="stylesheet" href="/css/lux-plus.css">
 <style>
   .prose{max-width:68ch}
   .prose h2{margin:var(--s7) 0 var(--s4);font-size:var(--t-h2)}
@@ -81,7 +82,7 @@
 
   <header class="section">
     <p class="eyebrow">Comparison · Students</p>
-    <h1 style="margin:var(--s4) 0">Free vs Paid: What a CS Student Should Actually Pay For</h1>
+    <h1 style="margin:var(--s4) 0">Free vs paid: what a CS student should actually pay for</h1>
     <p class="lead">Every free trial and student discount promises to save you time or sharpen your odds, but stacking five of those promises quietly drains a budget that is already tight. This guide gives you a five-question framework for deciding, then scores about fifteen categories a CS student actually runs into, from code editors to cloud GPU time, against it.</p>
   </header>
 
@@ -92,7 +93,7 @@
       <h2>The real question isn't whether you can afford it</h2>
       <p>Every CS student runs into the same pitch: a tool promises to save time, sharpen a resume, or unblock a project, and the price looks small next to the promise. The problem shows up when you stack five or six of those small promises at once and realize most of them quietly duplicate something you already have for free. This isn't a coupon list. It's a repeatable way to decide, plus a scored comparison across roughly fifteen categories a CS student actually runs into, from code editors to cloud GPU time.</p>
       <p>Money is genuinely tight for most students, and irregular income, a stipend one month, nothing the next, makes the wrong subscription decision more expensive than it looks on a monthly statement. The framework below is the same one I use on my own tooling, and later in this guide I'll walk through a real decision I made with it: skipping a yearly Apple Developer account and shipping <a href="/apps.html">installable offline apps</a> instead.</p>
-      <h2>The Five-Question Purchase Filter</h2>
+      <h2>The five-question purchase filter</h2>
       <p>Before you pay for anything, run it through these five questions in order. A tool that fails two or more of them is a strong skip, no matter how good the marketing looks.</p>
       <ol>
         <li>Does it unblock money or admission directly, meaning a job offer, a school application, a paying client, or a grade that is genuinely at risk without it?</li>
@@ -120,9 +121,9 @@ $6.67 value &lt; $10 cost -> fails the break-even test, skip it
 
 The arithmetic doesn't change much. Your honesty about 'hours saved' does.</span>
       <h2>A worked example: why I didn't buy an Apple Developer account</h2>
-      <p>I built three small offline tools for myself: a trade journal, a habit tracker, and a daily checklist. Listing them on the App Store means paying a yearly developer program fee. Instead, I shipped them as installable Progressive Web Apps that add to a phone's home screen straight from the browser, no store, no yearly fee. You can see them at <a href="/apps.html">apps.html</a>.</p>
-      <p>Running that decision through the five-question filter: these are personal tools with no distribution plan, so question one fails outright, nothing gets unblocked by a store listing. Question three also fails the paid option's favor, a PWA gets me within a rounding error of native-app behavior for what these apps do. Two clear fails is a skip, and the yearly fee stayed in my pocket.</p>
-      <p>The same instinct shows up elsewhere in how I work. I run a local Qwen model through Ollama on my own machine for background automation specifically so I'm not paying per token for routine work, the setup is in the <a href="/guides/local-llm-ollama.html">local LLM guide</a>. And instead of paying for a commercial code security scanner, I built and publish my own free, MIT-licensed one, <a href="/dira.html">DIRA</a>. None of that is frugality for its own sake. It's the same filter, applied consistently, category after category.</p>
+      <p>I built four small offline tools for myself: a trade journal, a weight tracker, a daily checklist, and a big-button phone helper for older adults. Listing them on the App Store means paying a yearly developer program fee. Instead, I shipped them as installable Progressive Web Apps that add to a phone's home screen straight from the browser, no store, no yearly fee. You can see them at <a href="/apps.html">apps.html</a>.</p>
+      <p>Running that decision through the five-question filter: these are personal tools with no distribution plan, so question one fails outright, nothing gets unblocked by a store listing. Question three also fails to favor the paid option, a PWA gets me within a rounding error of native-app behavior for what these apps do. Two clear fails is a skip, and the yearly fee stayed in my pocket.</p>
+      <p>The same instinct shows up elsewhere in how I work. I run a local Qwen model through Ollama on my own machine for background automation specifically so I'm not paying per token for routine work, the setup is in the <a href="/guides/local-llm-ollama.html">local LLM guide</a>. And instead of paying for a commercial code security scanner, I built and open-sourced my own free, MIT-licensed one, <a href="/dira.html">DIRA</a>. None of that is frugality for its own sake. It's the same filter, applied consistently, category after category.</p>
       <h2>The scored table: about 15 categories</h2>
       <p>Every 'Pay' or 'Conditional' verdict below assumes you check the vendor's current pricing page yourself before deciding. Prices and discount terms change often enough that quoting a number here would be stale the day this page ships, so none are quoted. Treat the 'Why' column as reasoning, not a price list.</p>
       <div class="tblwrap" tabindex="0" role="group" aria-label="Table, scrolls horizontally"><table class="tbl">
@@ -237,5 +238,6 @@ The arithmetic doesn't change much. Your honesty about 'hours saved' does.</span
 
 <script src="/js/site.js" defer></script>
 <script src="/js/lux-motion.js" defer></script>
+<script src="/js/lux-plus.js" defer></script>
 </body>
 </html>
