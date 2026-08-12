@@ -16,7 +16,7 @@ Yusuf Gadelrab is a computer science student, AI/ML builder, and published compu
 - Location: San Jose, California, USA
 - University: San José State University (SJSU)
 - Degree: Bachelor of Science in Computer Science, expected May 2028, with a dual track in applied mathematics and computer science
-- Citizenship and work authorization: Canadian citizen and US lawful permanent resident (Green Card) — authorized to work for any US employer, with no sponsorship required now or in the future; open to relocation to San Francisco, Remote, New York City, Seattle, Austin, or Toronto
+- Citizenship and work authorization: Canadian citizen currently in the US as a dependent on a TD visa. Not a US citizen or permanent resident. Work authorization status is provided in writing on request. Open to relocation to San Francisco, Remote, New York City, Seattle, Austin, or Toronto
 - Languages: Arabic (native/bilingual), English (native/bilingual)
 - Email: yusuf.gadelrab06@gmail.com
 - GitHub: https://github.com/Yusuf-Gadelrab
@@ -298,7 +298,7 @@ having an application in progress.
 
 ## 10. What he is looking for
 
-Target roles for Summer 2026 and Summer 2027 internships: software engineering, AI/ML engineering, fintech and quantitative finance, data science, product and strategy, and developer advocacy. He maintains two resume variants — a CS resume for engineering and AI/ML roles, and a finance resume for fintech, quant, and strategy roles. He is a Canadian citizen and a US lawful permanent resident (Green Card), authorized to work for any US employer with no sponsorship required now or in the future. Open to San Francisco, Remote, New York City, Seattle, Austin, and Toronto.
+Target roles for Summer 2026 and Summer 2027 internships: software engineering, AI/ML engineering, fintech and quantitative finance, data science, product and strategy, and developer advocacy. He maintains two resume variants — a CS resume for engineering and AI/ML roles, and a finance resume for fintech, quant, and strategy roles. He is a Canadian citizen currently in the US as a dependent on a TD visa, and is not a US citizen or permanent resident. He provides his current work authorization status in writing on request. Open to San Francisco, Remote, New York City, Seattle, Austin, and Toronto.
 
 Hire page — https://yusuf-gadelrab.github.io/hire.html — the single page for both audiences: recruiters see proof metrics and target roles, founders/businesses see the productised freelance offerings (FreightDesk AI pilots, the LinkedIn Sprint, resume rebuilds, template packs) and how to send a project brief.
 
@@ -330,7 +330,7 @@ Q: How do you contact or hire him?
 A: Email yusuf.gadelrab06@gmail.com, or use the contact links at https://yusuf-gadelrab.github.io/.
 
 Q: Is he available for internships?
-A: Yes — software engineering, AI/ML, fintech and quantitative finance, data science, product and strategy, and developer advocacy internships. He is a Canadian citizen and a US lawful permanent resident (Green Card), authorized to work for any US employer with no sponsorship required now or in the future.
+A: Yes — software engineering, AI/ML, fintech and quantitative finance, data science, product and strategy, and developer advocacy internships. He is a Canadian citizen currently in the US as a dependent on a TD visa, and is not a US citizen or permanent resident. He provides his current work authorization status in writing on request.
 
 ---
 

@@ -37,7 +37,7 @@ const siteData = {
     availability: 'Wrapped my HwyHaul internship · July 2026 — building in public & open to what’s next',
     heroImage: '/img/yusuf-headshot.webp',
     stats: [
-      { value: '78%', label: 'Model directional accuracy · 6-mo backtest' },
+      { value: 'NLP', label: 'Equity sentiment scoring · IBM Watson Studio' },
       { value: '60', label: 'Research study participants' },
       { value: '40%', label: 'Web engagement lift · SVEC' },
       { value: '+0.117R', label: 'Walk-forward result over 4,933 trades, 129-symbol 10-yr universe (95% CI +0.057-+0.174; mostly market drift)' },
@@ -57,7 +57,7 @@ const siteData = {
   about: {
     bio: [
       "I study CS at San José State (graduating 2028) and spend most of my time where AI/ML and finance overlap — building models, running backtests, and trading my own account in equities, options, and futures.",
-      "On the research side, I co-authored a paper at ACM SIGCSE 2026 on bilingual coding education. The IBM project is probably the best example of my technical work right now: an NLP model that pulls sentiment from 50+ live market sources daily and scores equities across five factors — 78% directional accuracy on six-month backtests.",
+      "On the research side, I am a co-author on a peer-reviewed poster at ACM SIGCSE 2026 on bilingual coding education. The IBM project is probably the best example of my technical work right now: an NLP pipeline that pulls sentiment from public market news sources and scores equities across five quantitative factors, built on IBM Watson Studio.",
       "Outside of that, I grew up between cultures (Arabic is my first language), played varsity football and wrestled, and spoke at my graduation. I tend to approach things the same way I competed — show up prepared and go hard.",
     ],
     education: [
@@ -120,7 +120,7 @@ const siteData = {
       image: '',
       bullets: [
         'Engineered and deployed the club\u2019s official website end-to-end, boosting monthly visitor engagement 40% via optimized UI/UX and full-stack performance.',
-        'Secured 4 corporate technology sponsors, expanding the operational budget 35% through partnership pitching and negotiation.',
+        'Pitched Silicon Valley firms on technology partnerships and sponsorship for club programming.',
         'Grew social following 30% and event attendance 25% with cross-channel campaigns across 3 platforms.',
         'Coordinated 6+ events for 150+ attendees end-to-end \u2014 venue logistics, speaker booking, and live execution.',
       ],
@@ -132,7 +132,7 @@ const siteData = {
       tag: 'AI / ML',
       image: '',
       bullets: [
-        'Built an NLP equity-scoring model with IBM Watson that ingests sentiment from 50+ live market sources daily and generates signals across 5 quantitative factors — 78% directional accuracy on 6-month backtests.',
+        'Built an NLP equity-scoring pipeline with IBM Watson Studio that ingests sentiment from public market news sources and generates signals across five quantitative factors.',
         'Cut manual equity-research time ~60% by engineering an automated signal-generation pipeline on IBM Watson Studio, applying supervised and unsupervised ML to structured financial data.',
         'Earned IBM AI Fundamentals credentials in NLP, model evaluation, and responsible AI design.',
       ],
@@ -308,7 +308,7 @@ const siteData = {
       link: '',
       privateRepo: true,
       desc:
-        'Ingests sentiment from 50+ live market sources daily and scores equities across five quantitative factors, with an automated signal pipeline on IBM Watson Studio. 78% directional accuracy on six-month backtests; ~60% less manual research time.',
+        'Ingests sentiment from public market news sources and scores equities across five quantitative factors, with an automated signal pipeline on IBM Watson Studio. Prototype built during the IBM AI Creator program; not evaluated as a live trading strategy.',
     },
     {
       title: 'Silicon Valley Entrepreneurship Club — Official Site',
@@ -383,10 +383,10 @@ const siteData = {
   },
   resume: {
     // After deploy, drop both PDFs in /public and these paths resolve.
-    // Apex domain (yusuf-gadelrab.github.io): use '/Yusuf_Gadelrab_CS.pdf'
+    // Apex domain (yusuf-gadelrab.github.io): use '/Yusuf_Gadelrab_Resume.pdf'
     // Project path (…github.io/yusuf-portfolio): prefix '/yusuf-portfolio/…'
     files: [
-      { label: 'Software / AI résumé', url: '/Yusuf_Gadelrab_CS.pdf' },
+      { label: 'Software / AI résumé', url: '/Yusuf_Gadelrab_Resume.pdf' },
       { label: 'Finance / fintech résumé', url: '/Yusuf_Gadelrab_Resume.pdf' },
     ],
     summary:
@@ -454,11 +454,11 @@ const PROFESSIONAL = {
     },
   ],
   metrics: [
-    { value: '78%', label: 'Directional accuracy — NLP equity-scoring model, six-month backtest on IBM Watson' },
+    { value: '5', label: 'Quantitative factors scored — NLP equity model on IBM Watson Studio' },
     { value: '60%', label: 'Reduction in manual equity-research time once the signal pipeline shipped' },
     { value: '40%', label: 'Lift in monthly web engagement after rebuilding the SVEC site end to end' },
     { value: '60', label: 'Participants in the IRB-approved bilingual-coding study, with statistically significant pre-to-post confidence gains' },
-    { value: '35%', label: 'Operational budget expansion at SVEC, via four corporate technology sponsors' },
+    { value: 'SVEC', label: 'Project Manager — website and technical operations' },
   ],
   publications: [
     {
@@ -522,7 +522,7 @@ const PROFESSIONAL = {
       org: 'Silicon Valley Entrepreneurship Club',
       meta: 'Dec 2025 – Present',
       note:
-        'Own the club’s website and technical operations end to end. Monthly visitor engagement up 40%, four corporate technology sponsors signed, operational budget expanded 35%.',
+        'Own the club’s website and technical operations end to end, including sponsorship outreach to Silicon Valley technology firms.',
     },
     {
       role: 'Board Treasurer',
@@ -1290,7 +1290,7 @@ function ComplianceNote() {
         Disclosures
       </h2>
       <p style={{ fontSize: 13.5, lineHeight: 1.65, color: '#9a958c', margin: '0 0 8px' }}>
-        Figures shown on this site are research and engineering results, not live trading performance. The 78% directional
+        Figures shown on this site are research and engineering results, not live trading performance. The equity-scoring
         accuracy is a six-month backtest of a model. An early +0.23R result over 101 trades did not survive my own adversarial
         re-test; the defensible figure is +0.117R over 4,933 trades (95% CI +0.057-+0.174), and most of that is market drift
         rather than the signal itself. Backtested and simulated results do not represent live
