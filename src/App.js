@@ -327,6 +327,33 @@ const siteData = {
       desc:
         'Core data structures (arrays, lists, trees, graphs) and algorithms implemented with an emphasis on clean OOP design, exception handling, and test coverage.',
     },
+    {
+      title: 'IntakeKit',
+      stack: 'Open source · MIT license',
+      image: '',
+      link: 'https://github.com/Yusuf-Gadelrab/IntakeKit',
+      linkLabel: 'View on GitHub →',
+      desc:
+        'Prototype, no live users. Open source under MIT.',
+    },
+    {
+      title: 'LoadLink',
+      stack: 'Open source · MIT license',
+      image: '',
+      link: 'https://github.com/Yusuf-Gadelrab/LoadLink',
+      linkLabel: 'View on GitHub →',
+      desc:
+        'Prototype extracted from unpaid research work at Hwy Haul. MIT-licensed.',
+    },
+    {
+      title: 'Bilingual CS Prerequisite Map',
+      stack: 'Hugging Face Space · Publishing once pushed',
+      image: '',
+      link: 'https://huggingface.co/spaces/YusufGadelrab/bilingual-cs-prereq-map',
+      linkLabel: 'Open the Hugging Face Space →',
+      desc:
+        'A public Hugging Face Space link for the bilingual CS prerequisite map. It will become available once the Space is pushed.',
+    },
   ],
   gallery: [
     { image: '/img/gallery/lynbrook-feature.webp', caption: 'Featured — Lynbrook High “Meet Our Students”', category: 'Recognition' },
@@ -1698,6 +1725,13 @@ function Projects({ d }) {
       <SectionTitle eyebrow="Selected Work" title="Projects" />
       <div className="grid grid--2" style={{ marginTop: 'var(--s5)' }}>
         {d.projects.map((p, i) => <ProjectCard key={i} p={p} i={i} />)}
+      </div>
+      <div style={{ marginTop: 'var(--s8)' }}>
+        <SectionTitle eyebrow="Funding" title="Support Open Source" />
+        <p className="lead">The public funding listing for this portfolio is available on floss.fund.</p>
+        <a className="btn btn-gold" style={{ marginTop: 'var(--s4)' }} href="https://dir.floss.fund/view/project/@yusuf-gadelrab.github.io/yusuf-portfolio" target="_blank" rel="noreferrer">
+          View the funding listing →
+        </a>
       </div>
     </section>
   );
