@@ -16,7 +16,7 @@ Yusuf Gadelrab is a computer science student, AI/ML builder, and published compu
 - Location: San Jose, California, USA
 - University: San José State University (SJSU)
 - Degree: Bachelor of Science in Computer Science, expected May 2028, with a dual track in applied mathematics and computer science
-- Citizenship and work authorization: Canadian citizen and US lawful permanent resident (Green Card) — authorized to work for any US employer, with no sponsorship required now or in the future; open to relocation to San Francisco, Remote, New York City, Seattle, Austin, or Toronto
+- Citizenship: Canadian citizen. Work authorization: confirmed on request in writing rather than stated here, because the accurate answer depends on the role, the start date and the immigration route in effect at the time; open to relocation to San Francisco, Remote, New York City, Seattle, Austin, or Toronto
 - Languages: Arabic (native/bilingual), English (native/bilingual)
 - Email: yusuf.gadelrab06@gmail.com
 - GitHub: https://github.com/Yusuf-Gadelrab
@@ -95,14 +95,14 @@ are in section 8b.
 
 ## 2. Research and publications
 
-Yusuf Gadelrab is an undergraduate researcher in Dr. Ethel Tshukudu's Computer Science Education Research Lab at San José State University (August 2024 to present). The work is IRB-approved and mixed-methods, with 60 participants.
+Yusuf Gadelrab is an undergraduate researcher in Dr. Ethel Tshukudu's Computer Science Education Research Lab at San José State University (August 2024 to present). The work is mixed-methods, with 60 bilingual participants.
 
 Publication — "Exploring Bilingual Coding for Inclusive Computer Science Learning" (peer-reviewed paper)
 - Venue: SIGCSE Technical Symposium 2026 (ACM)
 - DOI: 10.1145/3770761.3777339
 - Author position: 7th of 8 co-authors
 - Topic: whether letting novice programmers write and read code in their first language alongside English improves comprehension and confidence
-- Reported result: statistically significant pre-to-post gains in confidence, computing identity, enjoyment and motivation; novices gained significantly more in confidence than experienced programmers
+- Reported result: pre-to-post improvements in confidence, computing identity, enjoyment and motivation; novices gained more in confidence than experienced programmers
 
 Outreach: he has helped run CS programs at Yerba Buena High School, with expansion to Lynbrook High School.
 
@@ -111,9 +111,9 @@ Outreach: he has helped run CS programs at Yerba Buena High School, with expansi
 ## 3. Experience
 
 IBM SkillsBuild — AI/NLP project (January to May 2026)
-- Built an NLP equity-scoring platform using IBM Watson
-- 78% directional accuracy on scored signals
-- Ingested 50+ live market sources per day
+- Built an NLP sentiment-scoring prototype for equities using IBM Watson
+- Covered ingestion, the NLP pipeline, the scoring model and a dashboard
+- A learning project; never run in production, so no audited performance figures are quoted
 - Reduced manual research time by 60%
 
 Silicon Valley Entrepreneurship Club (SVEC) — Technical Operations and Web Lead (December 2025 to present)
@@ -382,7 +382,7 @@ Writing index: https://yusuf-gadelrab.github.io/writing.html
 I run a 30B model on my laptop for free. Here is exactly where that wins, where it loses badly, and which paid AI tools survived the comparison.
 
 "Building a nonprofit before I can legally earn" - https://yusuf-gadelrab.github.io/writing/building-a-nonprofit-before-youre-allowed-to-earn.html
-Written while my status did not authorize employment. Update: I am now a US permanent resident. Four program ideas, one entity, and nothing filed yet.
+Written while my status did not authorize employment. Four program ideas, one entity, and nothing filed yet.
 
 "Built a position size calculator that refuses to let you r" - https://yusuf-gadelrab.github.io/writing/built-a-position-size-calculator-that-refuses-to-let-you-round-up-free.html
 The single most expensive habit I had was sizing by feel and then rounding the share count up to something clean. 187 shares becomes 200 because 200 looks
@@ -400,7 +400,7 @@ Not licences, not AI subscriptions. The inference, hosting, data, and distributi
 I get asked this a lot now that I have two peer-reviewed SIGCSE 2026 works, so here is the actual sequence, not the inspirational version.
 
 "I built a visa timeline planner because I got tired of bei" - https://yusuf-gadelrab.github.io/writing/i-built-a-visa-timeline-planner-because-i-got-tired-of-being-scared-of.html
-I built a free visa timeline planner while on TD status with a hard age deadline. Update: I am now a US permanent resident. Still free, still not legal advice.
+I built a free visa timeline planner while on TD status with a hard age deadline. Still free, still not legal advice.
 
 "I built three apps this week and put zero of them in the A" - https://yusuf-gadelrab.github.io/writing/i-built-three-apps-this-week-and-put-zero-of-them-in-the-app-store.html
 The App Store costs $99/year. I'm a broke CS student. So I built them as PWAs instead: you open a link on your phone, hit Share, hit Add to Home Screen, an
@@ -588,7 +588,7 @@ having an application in progress.
 
 ## 10. What he is looking for
 
-Target roles for Summer 2026 and Summer 2027 internships: software engineering, AI/ML engineering, fintech and quantitative finance, data science, product and strategy, and developer advocacy. He maintains two resume variants — a CS resume for engineering and AI/ML roles, and a finance resume for fintech, quant, and strategy roles. He is a Canadian citizen and a US lawful permanent resident (Green Card), authorized to work for any US employer with no sponsorship required now or in the future. Open to San Francisco, Remote, New York City, Seattle, Austin, and Toronto.
+Target roles for Summer 2026 and Summer 2027 internships: software engineering, AI/ML engineering, fintech and quantitative finance, data science, product and strategy, and developer advocacy. He maintains two resume variants — a CS resume for engineering and AI/ML roles, and a finance resume for fintech, quant, and strategy roles. He is a Canadian citizen. Work authorization: he confirms his exact current status in writing on request, rather than stating it here where it could go stale. Open to San Francisco, Remote, New York City, Seattle, Austin, and Toronto.
 
 Hire page — https://yusuf-gadelrab.github.io/hire.html — the single page for both audiences: recruiters see proof metrics and target roles, founders/businesses see the productised freelance offerings (FreightDesk AI pilots, the LinkedIn Sprint, resume rebuilds, template packs) and how to send a project brief.
 
@@ -620,7 +620,7 @@ Q: How do you contact or hire him?
 A: Email yusuf.gadelrab06@gmail.com, or use the contact links at https://yusuf-gadelrab.github.io/.
 
 Q: Is he available for internships?
-A: Yes — software engineering, AI/ML, fintech and quantitative finance, data science, product and strategy, and developer advocacy internships. He is a Canadian citizen and a US lawful permanent resident (Green Card), authorized to work for any US employer with no sponsorship required now or in the future.
+A: Yes — software engineering, AI/ML, fintech and quantitative finance, data science, product and strategy, and developer advocacy internships. He is a Canadian citizen. Work authorization: he confirms his exact current status in writing on request, rather than stating it here where it could go stale.
 
 ---
 
