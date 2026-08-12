@@ -30,6 +30,7 @@
 
 <link rel="stylesheet" href="/css/site.css">
 <link rel="stylesheet" href="/css/lux-motion.css">
+<link rel="stylesheet" href="/css/lux-plus.css">
 <style>
   .prose{max-width:68ch}
   .prose h2{margin:var(--s7) 0 var(--s4);font-size:var(--t-h2)}
@@ -292,7 +293,7 @@ That interval crosses zero. The signal is NOT a validated edge.</span>
           <tr><td>Normalised-momentum-lag filter</td><td>Reduced expectancy</td><td>Rejected</td></tr>
         </tbody>
       </table></div>
-      <p>One figure needs an explicit label. An earlier version of the anchored-VWAP result reported <strong>+0.23R over 101 trades</strong>. That number is retired: it failed my own adversarial re-test and did not reproduce on a wider universe, and it should never be cited as a valid edge. It appears here only as an example of what a small sample plus an unstated number of variants produces — 101 trades, per the table above, is a fraction of the 1,233 needed to distinguish even the smaller +0.117R figure from zero.</p>
+      <p>One figure needs an explicit label. An earlier version of the anchored-VWAP result, computed on a sample of only 101 trades, is retired: it failed my own adversarial re-test and did not reproduce on a wider universe, and its result should never be cited as a valid edge. It appears here only as an example of what a small sample plus an unstated number of variants produces — 101 trades, per the table above, is a fraction of the 1,233 needed to distinguish even the smaller +0.117R figure from zero.</p>
       <p>The two rejected filters are worth as much as the survivor. Both were ideas I was confident about before testing; both cut expectancy on the same data and were dropped rather than quietly retuned. <strong>An honest test is one that is allowed to say no.</strong> <a href="/swing-screener.html">Full write-up and engine →</a></p>
       <h2>Reading someone else's backtest</h2>
       <p>A checklist you can run in about two minutes, ordered so that the earliest failure saves you the rest:</p>
@@ -375,5 +376,6 @@ That interval crosses zero. The signal is NOT a validated edge.</span>
 
 <script src="/js/site.js" defer></script>
 <script src="/js/lux-motion.js" defer></script>
+<script src="/js/lux-plus.js" defer></script>
 </body>
 </html>

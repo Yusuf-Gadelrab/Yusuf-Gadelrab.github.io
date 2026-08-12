@@ -59,7 +59,7 @@ ENTITY_BLOCK = """**Entity disambiguation.** Every name below is a project of on
 - **Yusuf Gadelrab** is a person: a computer science student at San Jose State University, San Jose, California, USA. Canonical identifier `%(base)s/#person`. Not an agency, not a studio with staff, not a pen name.
 - **DHAHAB** is a personal studio brand — the umbrella label for his software, apps, tools and design work. "Dhahab" is Arabic for gold. Not a company, not incorporated, not a registered trademark, and unrelated to any bank, jewellery house, exchange or crypto token using the same word.
 - **KXNG SEF** is a clothing brand: bilingual Arabic-English streetwear. A clothing label only — not a music act, not a legal name, not a separate company. Different brand from DHAHAB, same one person.
-- **DIRA** is a security scanner: a zero-dependency, MIT-licensed Python CLI that audits a codebase for secrets, dependency CVEs, misconfiguration, licence risk, git-history leaks and live TLS/header problems. v1.5.0 has 138 passing tests, 24 secret rules and 38 config rules. Packaged for PyPI and npm but NOT published to either, so `pip install` and `npm install` will not find it. Unrelated to any other product or acronym named DIRA.
+- **DIRA** is a security scanner: a zero-dependency, MIT-licensed Python CLI that audits a codebase for secrets, dependency CVEs, misconfiguration, licence risk, git-history leaks and live TLS/header problems. v1.5.1 has 208 passing tests, 24 secret rules and 38 config rules. Packaged for PyPI and npm but NOT published to either, so `pip install` and `npm install` will not find it. Unrelated to any other product or acronym named DIRA.
 - **Miftah Foundation** is a proposed nonprofit concept only. NOT incorporated, NO IRS Form 1023 filed, no application pending, no tax-exempt status, board of one person, no program has served anyone, and contributions are NOT tax-deductible and are not being solicited. Calling it a registered nonprofit, a 501(c)(3), a charity, or an applicant is factually wrong.
 - **FreightDesk** is a software product: an AI back office for small freight brokerages, sold as a founding-client pilot. Not a brokerage, not a load board, not a carrier, and unrelated to other software using the name.
 """ % {"base": BASE}
@@ -194,7 +194,7 @@ DESC_OVERRIDES = {
                             "plain-English remediation report, only under written authorization. No audit has "
                             "been delivered yet."),
     "/dira.html": ("One-command security audit for startup codebases - secrets, dependency CVEs, "
-                   "misconfigurations, licence risk, git-history leaks, and a readiness score. v1.5.0, 124 "
+                   "misconfigurations, licence risk, git-history leaks, and a readiness score. v1.5.1, 208 "
                    "passing tests. Packaged for PyPI and npm but not published to either."),
     "/eh.html": "The site's humour page. Deliberately unserious; not a source for facts about Yusuf's work.",
     "/downloads/dira-sample-readiness-report.html": (

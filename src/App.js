@@ -71,7 +71,7 @@ const siteData = {
         school: 'Lynbrook High School',
         detail: 'Valedictorian — 4.0 GPA · Graduation Speaker',
         meta: 'Class of 2024',
-        note: 'Varsity Football (WR / RB / OLB) · League MVP. Wrestling. Selected Poster Student 2023–24 alongside Andrew Li. Combines: 4.7s 40-yd, 255 bench, 315 squat.',
+        note: 'Varsity Football (WR / RB / OLB) · team Defensive MVP. Wrestling. Selected Poster Student 2023–24 alongside Andrew Li. Combines: 4.7s 40-yd, 255 bench, 315 squat.',
       },
     ],
     recognition: [
@@ -547,9 +547,9 @@ const GOOFY = {
     },
     {
       chapter: 'Chapter II',
-      title: 'League MVP, three positions, one huddle problem',
+      title: 'team Defensive MVP, three positions, one huddle problem',
       body:
-        'Wide receiver, running back, outside linebacker. League MVP. I was fast and I was fearless and I once ran an immaculate route on a play that had been audibled out of in the huddle. Nobody threw it. I have thought about it since.',
+        'Wide receiver, running back, outside linebacker. team Defensive MVP. I was fast and I was fearless and I once ran an immaculate route on a play that had been audibled out of in the huddle. Nobody threw it. I have thought about it since.',
     },
     {
       chapter: 'Chapter III',
@@ -2036,7 +2036,7 @@ function Goofy({ go }) {
       <hr className="divider" />
       <h2>{T('The lore')}</h2>
       <p className="muted" style={{ marginTop: 'var(--s3)', maxWidth: 'var(--maxw-prose)' }}>
-        {T('A valedictorian who was also the League MVP at three positions, and who then looked at every available path and chose, freely and with enthusiasm, spreadsheets.')}
+        {T('A valedictorian who was also the team Defensive MVP at three positions, and who then looked at every available path and chose, freely and with enthusiasm, spreadsheets.')}
       </p>
       <ul className="lore">
         {GOOFY.lore.map((l, i) => (

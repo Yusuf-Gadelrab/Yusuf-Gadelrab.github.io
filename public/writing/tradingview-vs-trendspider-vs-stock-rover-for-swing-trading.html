@@ -30,31 +30,32 @@
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://yusuf-gadelrab.github.io/"},{"@type":"ListItem","position":2,"name":"Writing","item":"https://yusuf-gadelrab.github.io/writing.html"},{"@type":"ListItem","position":3,"name":"TradingView vs TrendSpider vs Stock Rover"}]}</script>
 <link rel="stylesheet" href="/css/site.css">
 <link rel="stylesheet" href="/css/lux-motion.css">
+<link rel="stylesheet" href="/css/lux-plus.css">
 <style>
   .art{max-width:44rem;margin:0 auto;padding:var(--s6) var(--s5)}
   .art h1{font-size:var(--t-h2);line-height:1.15;margin:0 0 var(--s3)}
   .art .meta{color:var(--muted);font-size:var(--t-small);margin:0 0 var(--s5);
     letter-spacing:.06em;text-transform:uppercase}
   .art p{color:var(--muted);font-size:1.02rem;line-height:1.75;margin:0 0 var(--s4)}
-  .art .lede{color:#f5f3ee;font-size:1.14rem}
+  .art .lede{color:var(--fg);font-size:1.14rem}
   .art a{color:var(--gold-2)}
   .art h2{font-family:var(--display-pro);font-weight:700;color:var(--gold-2);
     font-size:1.3rem;line-height:1.3;letter-spacing:-.01em;margin:var(--s6) 0 var(--s3)}
-  .art h3{font-family:var(--display-pro);font-weight:600;color:#f5f3ee;
+  .art h3{font-family:var(--display-pro);font-weight:600;color:var(--fg);
     font-size:1.06rem;margin:var(--s5) 0 var(--s3)}
   .art ul,.art ol.num{color:var(--muted);font-size:1.02rem;line-height:1.75;
     margin:0 0 var(--s4);padding-left:1.2rem}
   .art li{margin-bottom:.55rem}
-  .art li strong{color:#f5f3ee;font-weight:600}
+  .art li strong{color:var(--fg);font-weight:600}
   .art hr{border:0;border-top:1px solid var(--line-soft);margin:var(--s6) 0}
   .art blockquote{margin:var(--s5) 0;padding:0 0 0 var(--s4);
-    border-left:2px solid var(--gold-2);color:#f5f3ee;font-size:1.06rem;line-height:1.7}
+    border-left:2px solid var(--gold-2);color:var(--fg);font-size:1.06rem;line-height:1.7}
   .disclosure{border:1px solid var(--line-soft);border-left:3px solid var(--gold-2);
-    border-radius:12px;padding:var(--s4) var(--s5);margin:0 0 var(--s6);
+    border-radius:var(--radius-lg);padding:var(--s4) var(--s5);margin:0 0 var(--s6);
     color:var(--muted);font-size:.92rem;line-height:1.65}
   .disclosure b{color:var(--gold-2);font-family:var(--display-pro);
     letter-spacing:.08em;text-transform:uppercase;font-size:.74rem;display:block;margin-bottom:.4rem}
-  .tw{overflow-x:auto;margin:0 0 var(--s5);border:1px solid var(--line-soft);border-radius:12px}
+  .tw{overflow-x:auto;margin:0 0 var(--s5);border:1px solid var(--line-soft);border-radius:var(--radius-lg)}
   .art table{border-collapse:collapse;width:100%;min-width:34rem;font-size:.94rem}
   .art th{font-family:var(--display-pro);font-weight:600;color:var(--gold-2);text-align:left;
     padding:.85rem var(--s4);border-bottom:1px solid var(--line-soft);white-space:nowrap;
@@ -62,12 +63,12 @@
   .art td{padding:.8rem var(--s4);color:var(--muted);border-bottom:1px solid var(--line-soft);
     vertical-align:top;line-height:1.55}
   .art tr:last-child td{border-bottom:0}
-  .verdict{border:1px solid var(--line-soft);border-radius:14px;padding:var(--s5);
-    margin:var(--s6) 0;background:rgba(233,201,106,.035)}
+  .verdict{border:1px solid var(--line-soft);border-radius:var(--radius-lg);padding:var(--s5);
+    margin:var(--s6) 0;background:var(--gold-wash)}
   .verdict strong{font-family:var(--display-pro);color:var(--gold-2);display:block;
     margin-bottom:var(--s2);letter-spacing:.01em}
   .verdict p:last-child{margin-bottom:0}
-  .cta{border:1px solid var(--line-soft);border-radius:14px;padding:var(--s5);margin-top:var(--s6)}
+  .cta{border:1px solid var(--line-soft);border-radius:var(--radius-lg);padding:var(--s5);margin-top:var(--s6)}
   .cta strong{font-family:var(--display-pro);color:var(--gold-2);display:block;margin-bottom:var(--s2)}
   .cta p:last-child{margin-bottom:0}
   .related{margin-top:var(--s6);border-top:1px solid var(--line-soft);padding-top:var(--s5)}
@@ -145,14 +146,16 @@
   problem. Fix the second one first. A beautiful chart of a setup you never validated is an
   expensive way to lose money slowly.</p>
 
-  <div class="tw">
+  <div class="tw" tabindex="0" role="group" aria-label="Table, scrolls horizontally">
   <table>
-    <tr><th>&nbsp;</th><th>TradingView</th><th>TrendSpider</th><th>Stock Rover</th></tr>
-    <tr><td><strong>Really is</strong></td><td>A charting platform with a scripting language and a social layer</td><td>An automated technical analysis and backtesting engine</td><td>A fundamental plus technical screener with deep historical financials</td></tr>
-    <tr><td><strong>Best at</strong></td><td>Seeing price. Drawing on it. Alerts that fire reliably</td><td>Testing a rule set without writing code, then alerting on it</td><td>Finding candidates you would never have typed into a search box</td></tr>
-    <tr><td><strong>Weak at</strong></td><td>Rigorous strategy validation. Pine backtests flatter you</td><td>Being your daily chart. The interface fights you at first</td><td>Intraday. It is not a trading terminal and does not pretend to be</td></tr>
-    <tr><td><strong>Free tier</strong></td><td>Yes, genuinely usable, ad-supported, limited indicators per chart</td><td>Trial, not a free tier</td><td>Yes, limited screener and history depth</td></tr>
-    <tr><td><strong>Skip it if</strong></td><td>You already live in your broker's charts and they are fine</td><td>You can write Python. Then write Python</td><td>You trade pure price action and never look at a balance sheet</td></tr>
+    <thead><tr><th scope="col">&nbsp;</th><th scope="col">TradingView</th><th scope="col">TrendSpider</th><th scope="col">Stock Rover</th></tr></thead>
+    <tbody>
+    <tr><th scope="row">Really is</th><td>A charting platform with a scripting language and a social layer</td><td>An automated technical analysis and backtesting engine</td><td>A fundamental plus technical screener with deep historical financials</td></tr>
+    <tr><th scope="row">Best at</th><td>Seeing price. Drawing on it. Alerts that fire reliably</td><td>Testing a rule set without writing code, then alerting on it</td><td>Finding candidates you would never have typed into a search box</td></tr>
+    <tr><th scope="row">Weak at</th><td>Rigorous strategy validation. Pine backtests flatter you</td><td>Being your daily chart. The interface fights you at first</td><td>Intraday. It is not a trading terminal and does not pretend to be</td></tr>
+    <tr><th scope="row">Free tier</th><td>Yes, genuinely usable, ad-supported, limited indicators per chart</td><td>Trial, not a free tier</td><td>Yes, limited screener and history depth</td></tr>
+    <tr><th scope="row">Skip it if</th><td>You already live in your broker's charts and they are fine</td><td>You can write Python. Then write Python</td><td>You trade pure price action and never look at a balance sheet</td></tr>
+    </tbody>
   </table>
   </div>
 
@@ -263,7 +266,7 @@
 
 <div class="cta">
   <strong>Built by one CS student in San Jose.</strong>
-  <p>Free tools, three installable offline apps, and a peer-reviewed SIGCSE TS 2026 paper.
+  <p>Free tools, four installable offline apps, and a peer-reviewed SIGCSE TS 2026 paper.
   <a href="/">See the work</a> or <a href="/about.html">read the facts</a>.
   Open to Summer 2027 software engineering, AI/ML, and quant internships.</p>
 </div>
@@ -306,5 +309,6 @@ document.addEventListener("DOMContentLoaded", function () {
 </script>
 <script src="/js/site.js" defer></script>
 <script src="/js/lux-motion.js" defer></script>
+<script src="/js/lux-plus.js" defer></script>
 </body>
 </html>

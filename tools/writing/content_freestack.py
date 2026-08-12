@@ -106,7 +106,7 @@ POST = {
         ("h3", "Security: writing the scanner instead of installing one"),
 
         ("p", "I built <a href=\"/dira.html\">DIRA</a>, a zero-dependency security scanner, MIT "
-              "licensed, currently at v1.5.0 with 124 passing tests, pure standard library Python. "
+              "licensed, currently at v1.5.1 with 208 passing tests, pure standard library Python. "
               "The alternative was installing a dependency tree just to go looking for supply chain "
               "risk in my own dependency tree, which is a strange trade to make in the name of "
               "security. Zero dependencies means nothing it scans with can itself be the "

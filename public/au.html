@@ -37,12 +37,23 @@
 <meta name="twitter:card" content="summary_large_image">
 <link rel="stylesheet" href="/css/site.css">
 <link rel="stylesheet" href="/css/lux-motion.css">
+<link rel="stylesheet" href="/css/lux-plus.css">
 <style>
   /* ------------------------------------------------------------------
      AU — page-local styles. Everything below either composes site.css
      tokens or adds structure site.css has no opinion about (feed, cards,
      threads). No new colours, no new spacing units.
      ------------------------------------------------------------------ */
+
+  /* Editorial type register (DHAHAB 2A) — scoped to the page's own headings.
+     It deliberately does NOT reach the app widget: `.au-mark` (0,1,0),
+     `.rule__h` (0,1,0) and `.side .panel h3` (0,2,1) all outrank these
+     element-level selectors, so the AU wordmark and every piece of app chrome
+     keep the condensed display face they were designed in. */
+  main h1,main h2{font-family:var(--display-serif);letter-spacing:var(--track-tight);
+    font-weight:var(--w-semibold);line-height:var(--lh-snug);text-transform:none}
+  main h1{line-height:var(--lh-tight)}
+  main h3{font-size:var(--t-h4)}
 
   /* hero */
   .au-hero{padding:clamp(48px,7vw,90px) var(--section-x) var(--s7);max-width:var(--maxw);margin:0 auto}
@@ -439,7 +450,7 @@ input,textarea,select{font-size:16px!important}</style>
 
     return [
       P({ handle:'yusuf', name:'Yusuf Gadelrab', kind:'ship', ago: 40*m,
-        text:'KXNG SEF storefront is live. Drop 001 is six pieces — tees at $32, hoodie at $58, sizes S through 2XL, print-on-demand so there is zero inventory risk. Bilingual Arabic/English marks. Checkout is not wired yet, it is a waitlist until fulfillment is connected.',
+        text:'KXNG SEF storefront is live. Drop 001 is six pieces — tees at $34, hoodie at $58, sizes S through 2XL, print-on-demand so there is zero inventory risk. Bilingual Arabic/English marks. Checkout is not wired yet, it is a waitlist until fulfillment is connected.',
         link:'https://yusuf-gadelrab.github.io/kxngsef.html', metric:'6 pieces, S–2XL',
         replies:[ R('lint_witch','Ruth Ó Baoill', 34*m, 'POD first is the right call. Inventory is where clothing brands go to die.', [
                     R('yusuf','Yusuf Gadelrab', 28*m, 'Yeah. If nothing sells I am out design time, not rent.') ]) ] }),
@@ -995,5 +1006,6 @@ input,textarea,select{font-size:16px!important}</style>
 </script>
 <script src="/js/site.js" defer></script>
 <script src="/js/lux-motion.js" defer></script>
+<script src="/js/lux-plus.js" defer></script>
 </body>
 </html>

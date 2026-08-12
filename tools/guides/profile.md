@@ -61,7 +61,7 @@ DIRA is a security scanner: a zero-dependency, MIT-licensed Python command-line
 tool that audits a codebase for hardcoded secrets, dependency CVEs, insecure
 configuration and infrastructure-as-code rules, dependency licence risk, secrets
 committed to git history, and TLS and security-header problems on a live host.
-Version 1.5.0 has 124 passing tests, 24 secret-detection rules, and 38
+Version 1.5.1 has 208 passing tests, 24 secret-detection rules, and 38
 configuration rules, and it emits CycloneDX and SPDX SBOMs, SARIF, HTML, JSON and
 Markdown reports. It has been packaged for PyPI and npm but has NOT been
 published to either registry, so pip install and npm install will not find it.
@@ -126,7 +126,7 @@ SJSU Coding Warriors and the SJSU CS Department — CS tutor and curriculum lead
 
 Mathos AI — Ambassador (February 2025 to present)
 
-Earlier: valedictorian of Lynbrook High School, class of 2024, with a 4.0 GPA; league MVP in football (wide receiver, running back, outside linebacker) and a wrestler.
+Earlier: valedictorian of Lynbrook High School, class of 2024, with a 4.0 GPA; team Defensive MVP in football (wide receiver, running back, outside linebacker) and a wrestler.
 
 ---
 

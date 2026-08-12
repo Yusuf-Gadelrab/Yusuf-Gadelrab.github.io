@@ -39,11 +39,41 @@
 <meta property="og:url" content="https://yusuf-gadelrab.github.io/visa.html">
 <link rel="stylesheet" href="/css/site.css">
 <link rel="stylesheet" href="/css/lux-motion.css">
+<link rel="stylesheet" href="/css/lux-plus.css">
 <style>
   /* Page-specific only. Tokens, reset, nav, footer, buttons, cards, forms and
      print rules all come from /css/site.css. */
 
   section{scroll-margin-top:var(--s8)}
+
+  /* ---------- hero ---------- */
+  .vn-h1{font-family:var(--display-serif);font-weight:400;letter-spacing:-.01em;line-height:1.02}
+  .vn-proof{list-style:none;display:flex;flex-wrap:wrap;gap:var(--s2) var(--s5);
+    margin:var(--s5) 0 0;padding:0;font-size:var(--t-caption,13px);color:var(--muted)}
+  .vn-proof li{display:flex;align-items:center;gap:var(--s2)}
+  .vn-proof li::before{content:"";width:5px;height:5px;background:var(--gold);flex:none}
+
+  /* ---------- author's note: who wrote this and why they no longer need it -- */
+  .vn-note{
+    border-left:2px solid var(--gold);
+    padding:var(--s2) 0 var(--s2) var(--s5);
+    margin:var(--s7) 0 0;max-width:var(--maxw-prose);
+  }
+  .vn-note h2{font-size:var(--t-h3);margin:var(--s2) 0 var(--s3);
+    font-family:var(--display-serif);font-weight:400;letter-spacing:-.01em}
+  .vn-note p{color:var(--muted);font-size:var(--t-small);line-height:1.7}
+  .vn-note p+p{margin-top:var(--s3)}
+  .vn-note strong{color:var(--ink);font-weight:600}
+
+  /* ---------- closing pointer ---------- */
+  .vn-next{display:grid;gap:var(--s4);grid-template-columns:repeat(auto-fit,minmax(min(240px,100%),1fr));
+    margin-top:var(--s6)}
+  .vn-next a{display:block;border:1px solid var(--line-soft);border-radius:var(--radius-lg);
+    padding:var(--s4) var(--s5);text-decoration:none;min-height:var(--tap,44px);
+    transition:border-color .2s var(--ease),background .2s var(--ease)}
+  .vn-next a:hover{border-color:var(--gold);background:rgba(212,175,55,.05)}
+  .vn-next b{display:block;color:var(--ink);font-size:15px}
+  .vn-next span{display:block;color:var(--muted);font-size:var(--t-micro);margin-top:4px;line-height:1.5}
 
   /* ---------- disclaimer: deliberately loud, deliberately not dismissable ---- */
   .disclaimer{
@@ -72,6 +102,9 @@
   }
   .step__head{display:flex;gap:var(--s3);align-items:center;margin-bottom:var(--s3)}
   .step__head h2{font-size:var(--t-h3)}
+
+  /* ---------- section header block (eyebrow / h2 / dek, stacked) ---------- */
+  .grp-head h2{margin:var(--s2) 0 var(--s3)}
 
   /* ---------- path picker ---------- */
   fieldset{border:0;padding:0;margin:0;min-width:0}
@@ -212,12 +245,21 @@
   <header class="section" style="padding-bottom:0">
     <img class="page-lion" src="/img/brand/lion-mark.svg" alt="" width="46" height="46" decoding="async">
     <p class="eyebrow">Free tool · runs entirely in your browser</p>
-    <h1 style="margin-top:var(--s3)">Visa Navigator</h1>
+    <h1 class="vn-h1" style="margin-top:var(--s3)">Visa Navigator</h1>
     <p class="lead" style="margin-top:var(--s4)">
-      A planning aid for international students changing US nonimmigrant status. Enter your dates,
-      get a backward-planned schedule, conflict flags, a document checklist, and a plain-English
-      CPT/OPT eligibility read-out. Nothing you type leaves your device.
+      A change-of-status planner for international students. Put in the dates you have, and it works
+      backward from your program start: a dated timeline, the conflicts that will bite you, a document
+      checklist, and a plain-English CPT/OPT read-out. Nothing you type leaves your device.
     </p>
+    <div class="row" style="margin-top:var(--s5)">
+      <a class="btn btn-gold" href="#start">Build my plan</a>
+      <a class="btn btn-ghost" href="/guides/cpt-vs-opt.html">Read CPT vs OPT first</a>
+    </div>
+    <ul class="vn-proof">
+      <li>Free, no signup, no account</li>
+      <li>Every rule cited to uscis.gov, ice.gov or ecfr.gov</li>
+      <li>Nothing uploaded — localStorage only</li>
+    </ul>
   </header>
 
   <div class="disclaimer-wrap">
@@ -238,10 +280,26 @@
         disclaimer is reproduced in every file you export.
       </p>
     </aside>
+
+    <aside class="vn-note" aria-labelledby="why-h">
+      <p class="dh-eyebrow">Why this exists</p>
+      <h2 id="why-h">I built it for my own filing. I no longer need it. It stays up anyway.</h2>
+      <p>
+        I wrote Visa Navigator while working out my own change-of-status dates, because every answer I
+        found was a forum post and every forum post was someone's half-remembered case. Then my green
+        card came through in August 2026. <strong>I am a US lawful permanent resident — authorized to
+        work for any US employer, no sponsorship required, now or in the future.</strong>
+      </p>
+      <p>
+        The tool stayed up because the arithmetic does not care who is doing it. If you are still on
+        that clock, you should have a planner that quotes the regulation and links to it, instead of
+        one that guesses. It is free, it will stay free, and there is nothing to buy on this page.
+      </p>
+    </aside>
   </div>
 
   <!-- ============================ STEP 1 · PATH ============================ -->
-  <section class="section step" aria-labelledby="s1">
+  <section class="section step" id="start" aria-labelledby="s1">
     <div class="step__head"><span class="step__num" aria-hidden="true">1</span><h2 id="s1">Pick your path</h2></div>
     <fieldset>
       <legend>Which change are you planning? This selects the checklist and the rules that apply.</legend>
@@ -460,6 +518,18 @@
     </div>
   </section>
 
+  <hr class="dh-rule">
+
+  <section class="section section--tight" aria-labelledby="next-h">
+    <p class="dh-eyebrow">Where to go next</p>
+    <h2 id="next-h">Read the rules in long form, or take the checklist to your DSO.</h2>
+    <div class="vn-next">
+      <a href="/guides/cpt-vs-opt.html"><b>CPT vs OPT, worked out →</b><span>Every gate, every filing window, and the 12-month trap that ends post-completion OPT.</span></a>
+      <a href="/guides/f1-cpt-one-year-rule.html"><b>The one-academic-year rule →</b><span>What "lawfully enrolled for one full academic year" actually means, and why schools disagree.</span></a>
+      <a href="/apps.html"><b>The rest of the free tools →</b><span>Offline apps and calculators that also run entirely in your browser.</span></a>
+    </div>
+  </section>
+
 </main>
 
 <footer class="site-footer">
@@ -526,14 +596,14 @@
 
   /* ------------------------------------------------------------------ paths */
   var PATHS = [
-    { id:"td",    t:"TD or TN dependent \u2192 F-1",
-      d:"Dependent of a TN professional, changing to student status in the US on Form I-539.", cos:true },
+    { id:"other", t:"Another nonimmigrant status \u2192 F-1",
+      d:"L-2, E-2 dependent, B-2 and the rest. Start here if you are not sure \u2014 step 1 of the checklist is confirming your classification may change at all.", cos:true },
     { id:"h4",    t:"H-4 \u2192 F-1",
-      d:"Dependent of an H-1B worker, changing to student status in the US on Form I-539.", cos:true },
+      d:"Dependent of a specialty-occupation worker, changing to student status in the US on Form I-539.", cos:true },
     { id:"j1",    t:"J-1 or J-2 \u2192 F-1",
       d:"Exchange visitor changing to student status. The 212(e) two-year requirement can block this entirely.", cos:true },
-    { id:"other", t:"Other status \u2192 F-1",
-      d:"Any other nonimmigrant status (L-2, E-2 dependent, B-2, and so on). Check Form I-539 eligibility first.", cos:true },
+    { id:"td",    t:"TD or TN dependent \u2192 F-1",
+      d:"Dependent of a TN professional. Dependent status ends with the principal's, so the deadline is often earlier than people expect.", cos:true },
     { id:"f1",    t:"Already in F-1 status",
       d:"No change of status needed \u2014 you are here for the CPT/OPT timing, not the I-539 timeline.", cos:false }
   ];
@@ -626,7 +696,7 @@
   function today(){ var n=new Date(); return new Date(Date.UTC(n.getFullYear(),n.getMonth(),n.getDate())); }
 
   /* ------------------------------------------------------------------ state */
-  var state = { path:"td", checks:{} };
+  var state = { path:"other", checks:{} };
   var FIELDS = ["expiry","i20","filing","programStart","procMonths","approved","enrollStart","acadYearDone","internStart","dsoDays"];
 
   function load(){
@@ -635,7 +705,7 @@
       if(!raw) return;
       var o = JSON.parse(raw);
       if(o && typeof o === "object"){
-        state.path = o.path || "td";
+        state.path = o.path || "other";
         state.checks = o.checks || {};
         FIELDS.forEach(function(k){ if(o[k]!=null) state[k]=o[k]; });
         state.premium = !!o.premium;
@@ -1206,7 +1276,7 @@
   $("btn_reset").addEventListener("click", function(){
     if(!window.confirm("Clear every date and checklist item saved in this browser?")) return;
     try{ localStorage.removeItem(KEY); }catch(e){}
-    state = { path:"td", checks:{} };
+    state = { path:"other", checks:{} };
     FIELDS.forEach(function(k){
       var input = document.querySelector('[data-k="'+k+'"]');
       if(input) input.value = "";
@@ -1232,5 +1302,6 @@
 </script>
 <script src="/js/site.js" defer></script>
 <script src="/js/lux-motion.js" defer></script>
+<script src="/js/lux-plus.js" defer></script>
 </body>
 </html>

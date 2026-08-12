@@ -73,6 +73,18 @@ GROUP_OF = {
     "lemon-squeezy-vs-gumroad-vs-payhip-vs-etsy": 3,
     "alpaca-vs-interactive-brokers-vs-robinhood": 0,
     "free-vs-paid-student-tools": 2,
+    # Previously unmapped, so `GROUP_OF.get(slug, 1)` below silently dropped all
+    # eight into group 1 and grew it into a 24-card catch-all holding tee
+    # margins, detention billing and daily weigh-ins. Mapped explicitly so a
+    # regen reproduces the shipped grouping instead of reverting it.
+    "carrier-vetting-checklist": 3,
+    "detention-demurrage-accessorials": 3,
+    "pricing-a-digital-product": 3,
+    "clothing-brand-pod-margins": 3,
+    "landing-page-that-converts": 3,
+    "reading-a-scientific-paper": 2,
+    "technical-interview-study-system": 2,
+    "weight-tracking-signal-vs-noise": 4,
 }
 
 # The three hand-written guides that predate the generator.

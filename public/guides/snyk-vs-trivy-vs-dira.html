@@ -30,6 +30,7 @@
 
 <link rel="stylesheet" href="/css/site.css">
 <link rel="stylesheet" href="/css/lux-motion.css">
+<link rel="stylesheet" href="/css/lux-plus.css">
 <style>
   .prose{max-width:68ch}
   .prose h2{margin:var(--s7) 0 var(--s4);font-size:var(--t-h2)}
@@ -94,7 +95,7 @@
       <p>The first mistake is treating this as one comparison. It is really three tools that overlap in the middle of a Venn diagram and diverge completely at the edges.</p>
       <p><strong>Snyk</strong> is a commercial developer-security platform. The command-line tool is one entry point into a hosted service that keeps a curated vulnerability database, tracks findings across projects over time, opens fix pull requests, enforces policy, and answers to an enterprise buyer with SSO, role-based access control and a support contract. You authenticate to an account; the intelligence lives on their side.</p>
       <p><strong>Trivy</strong> is an open-source scanner from Aqua Security, distributed under Apache-2.0 as a single Go binary. It grew out of container security and expanded outward: operating-system packages inside images, language dependencies, infrastructure-as-code misconfiguration, secrets, licenses, Kubernetes clusters, and SBOM generation. No account, no telemetry requirement, no seat count.</p>
-      <p><strong>DIRA</strong> is a zero-dependency Python scanner I wrote to answer one narrow question a founder actually gets asked, which is not "what is broken in this file" but "can this codebase survive a procurement review". It bundles secrets, dependency CVEs, config rules, license risk, git-history leaks, a live TLS and headers check, an SBOM and a readiness score into one command. It is v1.5.0, MIT licensed, has 208 passing tests, and is maintained by exactly one person, which is a real risk factor and belongs in this paragraph rather than a footnote.</p>
+      <p><strong>DIRA</strong> is a zero-dependency Python scanner I wrote to answer one narrow question a founder actually gets asked, which is not "what is broken in this file" but "can this codebase survive a procurement review". It bundles secrets, dependency CVEs, config rules, license risk, git-history leaks, a live TLS and headers check, an SBOM and a readiness score into one command. It is v1.5.1, MIT licensed, has 208 passing tests, and is maintained by exactly one person, which is a real risk factor and belongs in this paragraph rather than a footnote.</p>
       <h2>The matrix</h2>
       <div class="tblwrap" tabindex="0" role="group" aria-label="Table, scrolls horizontally"><table class="tbl">
         <thead><tr><th scope="col"></th><th scope="col">Snyk</th><th scope="col">Trivy</th><th scope="col">DIRA</th></tr></thead>
@@ -140,7 +141,7 @@
       <p>DIRA exists because of a specific gap: the moment a two-person project gets its first enterprise security questionnaire, the questions are about posture, not about a CVE list. Do you scan for secrets in CI. Do you have a disclosure policy. Is your TLS current. Have you ever tested a restore. That is a different question from "is lodash out of date", and none of the tools I was using answered it in one command.</p>
       <ul>
         <li><strong>Zero runtime dependencies.</strong> A security tool that pulls in forty packages is itself a supply-chain surface. DIRA has none, so <code>uvx</code> can run it against a repo with nothing installed and nothing left behind.</li>
-        <li><strong>One command, six scanners.</strong> Secrets, dependency CVEs, config, licenses, git history and a live surface check, in a single run with a single report, instead of five CLIs you never got around to wiring up.</li>
+        <li><strong>One command, seven scanners.</strong> Secrets, dependency CVEs, config, licenses, git history, a live surface check and a readiness score, in a single run with a single report, instead of five CLIs you never got around to wiring up.</li>
         <li><strong>The live-surface check.</strong> <code>dira scan . -t yourapp.com</code> checks TLS validity and expiry, HSTS, CSP, cookie flags, and whether your production host is serving <code>/.env</code> or <code>/.git/config</code> to the open internet. Neither Snyk nor Trivy looks outside the repository.</li>
         <li><strong>An 18-check readiness score</strong> modelled on what enterprise questionnaires actually ask, reported as a percentage, with the checks no scanner can verify (MFA, access reviews) listed as manual attestations rather than silently skipped.</li>
         <li><strong>Redaction by default.</strong> Findings show <code>sk_l************nZaQ</code>, never the full credential, so an HTML report is safe to email to a customer.</li>
@@ -248,5 +249,6 @@ dira scan . -f sarif -o dira.sarif</span>
 
 <script src="/js/site.js" defer></script>
 <script src="/js/lux-motion.js" defer></script>
+<script src="/js/lux-plus.js" defer></script>
 </body>
 </html>

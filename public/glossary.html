@@ -4,6 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link rel="preload" href="/css/site.css" as="style">
+<link rel="preload" href="/css/lux-motion.css" as="style">
 <meta name="robots" content="index,follow,max-image-preview:large,max-snippet:-1">
 <meta property="og:locale" content="en_US">
 <title>Glossary — 120+ Terms, Defined in One Sentence Each</title>
@@ -19,6 +20,9 @@
 <meta property="og:description" content="Over 120 terms, each with a one-sentence definition, a real explanation, a worked example, and the misconception that trips people up.">
 <meta property="og:url" content="https://yusuf-gadelrab.github.io/glossary.html">
 <meta property="og:image" content="https://yusuf-gadelrab.github.io/og-card.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Yusuf Gadelrab — portfolio card">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Glossary — Trading, AI, Security, Visas, Freight">
 <meta name="twitter:description" content="Over 120 terms, each with a one-sentence definition, a real explanation, a worked example, and the misconception that trips people up.">
@@ -29,47 +33,11 @@
 
 <link rel="stylesheet" href="/css/site.css">
 <link rel="stylesheet" href="/css/lux-motion.css">
+<link rel="stylesheet" href="/css/lux-plus.css">
 <style>
-  .prose{max-width:var(--maxw-prose)}
-  .prose h2{margin:var(--s7) 0 var(--s4);font-size:var(--t-h2)}
-  .prose p{color:var(--muted);margin:0 0 var(--s4)}
-  .prose ul,.prose ol{color:var(--muted);padding-left:1.2em;margin:0 0 var(--s4)}
-  .prose li{margin-bottom:var(--s2)}
-  .prose a{color:var(--gold-2)}
-  .prose strong{color:var(--fg)}
-  .formula{display:block;padding:var(--s4);margin:0 0 var(--s4);border:1px solid var(--line-soft);
-    border-radius:var(--radius);font-family:ui-monospace,SFMono-Regular,Menlo,monospace;
-    font-size:var(--t-small);color:var(--gold-2);overflow-x:auto;white-space:pre-wrap}
-  .tblwrap{overflow-x:auto;margin:0 0 var(--s4)}
-  .tbl{width:100%;border-collapse:collapse;font-size:var(--t-small)}
-  .tbl th,.tbl td{text-align:left;padding:var(--s3);border-bottom:1px solid var(--line-soft);
-    color:var(--muted);vertical-align:top}
-  .tbl th{font-family:var(--display-pro);color:var(--gold-2);font-weight:600}
-  .callout{padding:var(--s4);border:1px solid var(--line-soft);border-radius:var(--radius);
-    color:var(--muted);font-size:var(--t-small);margin:0 0 var(--s5)}
-  .callout--warn{border-color:var(--gold-2)}
-  .jump{display:flex;flex-wrap:wrap;gap:var(--s2) var(--s4);margin:var(--s5) 0 0;padding:0;list-style:none}
-  .jump li{margin:0}
-  .jump a{font-size:var(--t-small);color:var(--muted)}
-  .jump a:hover{color:var(--gold-2)}
-  .term{max-width:var(--maxw-prose);padding:var(--s6) 0;border-top:1px solid var(--line-soft);
-    scroll-margin-top:var(--s8)}
-  .term__head{display:flex;align-items:baseline;gap:var(--s3);flex-wrap:wrap;margin:0 0 var(--s4)}
-  .term__head h3{margin:0;font-size:var(--t-h3)}
-  .term__hash{font-family:var(--display-pro);font-size:var(--t-small);color:var(--gold-dim);
-    text-decoration:none;opacity:0;transition:opacity .2s var(--ease)}
-  .term:hover .term__hash,.term__hash:focus-visible{opacity:1;color:var(--gold-2)}
-  .term__aka{font-size:var(--t-small);color:var(--muted)}
-  .term__def{color:var(--fg);font-size:17px;margin:0 0 var(--s4)}
-  .term p{color:var(--muted);margin:0 0 var(--s4)}
-  .term p:last-child{margin-bottom:0}
-  .term ul,.term ol{color:var(--muted);padding-left:1.2em;margin:0 0 var(--s4)}
-  .term li{margin-bottom:var(--s2)}
-  .term a{color:var(--gold-2)}
-  .term strong{color:var(--fg)}
   .note{font-size:var(--t-small);color:var(--muted);margin:0 0 var(--s3)}
-  .tag{font-family:var(--display-pro);font-size:var(--t-micro);font-weight:600;letter-spacing:2px;
-    text-transform:uppercase;color:var(--gold-2);margin-right:var(--s2)}
+  .grp-head h2{margin-top:var(--s2)}
+  .grp-head p:not(.eyebrow){color:var(--muted);font-size:var(--t-small);max-width:56ch;margin-top:var(--s2)}
   .az{margin:0;padding:0;list-style:none}
   .az__group{margin:0 0 var(--s6)}
   .az__letter{font-family:var(--display-pro);font-weight:700;font-size:var(--t-h3);
@@ -90,7 +58,7 @@
   .cl p{color:var(--muted);font-size:var(--t-small);flex:1;margin:0}
   .cl .go{margin-top:var(--s4);font-family:var(--display-pro);font-weight:600;
     font-size:var(--t-small);color:var(--gold-2)}
-  a.cl:hover .go{color:var(--gold)}
+  a.cl:hover .go{color:var(--gold-100)}
   .cl__n{color:var(--muted);font-size:var(--t-small);margin-top:var(--s3)}
 
   /* WCAG 2.2 SC 2.5.8 Target Size (Minimum): these single-letter jump links
@@ -107,13 +75,7 @@
 
 <nav class="site-nav">
   <a class="site-nav__brand" href="/"><img class="site-nav__lion" src="/img/brand/lion-mark.svg" alt="" width="34" height="34" decoding="async"><span>YUSUF GADELRAB</span></a>
-  <div class="site-nav__links">
-    <a href="/">Work</a>
-    <a href="/guides.html">Guides</a>
-    <a href="/glossary.html" aria-current="page">Glossary</a>
-    <a href="/apps.html">Apps</a>
-    <a href="/store.html">Store</a>
-  </div>
+  <div class="site-nav__links"><a href="/">Work</a><a href="/resume.html">Resume</a><a href="/guides.html">Guides</a><a href="/store.html">Store</a><a href="/apps.html">Apps</a><a href="/kxngsef.html">KXNG SEF</a><a href="/hire.html">Hire</a><a href="/media-kit.html">Media Kit</a></div>
 </nav>
 
 <nav class="crumbs" aria-label="Breadcrumb">
@@ -128,7 +90,7 @@
   <header class="section">
     <img class="page-lion" src="/img/brand/lion-mark.svg" alt="" width="46" height="46">
     <p class="eyebrow">DHAHAB · ذهب</p>
-    <h1 style="margin:var(--s4) 0">Glossary</h1>
+    <h1 class="dh-serif" style="margin:var(--s4) 0">Glossary</h1>
     <p class="lead">121 terms across 8 fields I actually work in. Every entry opens with one sentence that stands on its own, then explains the thing properly, shows a worked example where the arithmetic matters, and names the misconception that trips most people up. Nothing here is a guess: a definition I could not state accurately would be dropped rather than hedged.</p>
   </header>
 
@@ -459,6 +421,7 @@
       <li><a href="/freight-tools.html">Freight calculators</a></li>
       <li><a href="/apps.html">Free apps</a></li>
       <li><a href="/visa.html">Visa timeline tool</a></li>
+      <li><a href="/hire.html">Hire me →</a></li>
     </ul>
   </section>
 
@@ -466,20 +429,27 @@
 
 <section aria-labelledby="compliance-h" style="max-width:1080px;margin:0 auto;padding:28px 20px 8px;border-top:1px solid rgba(212,175,55,.18)"><h2 id="compliance-h" style="font-family:Georgia,'Times New Roman',serif;font-size:15px;letter-spacing:.06em;text-transform:uppercase;color:#d4af37;margin:0 0 10px">Disclaimer</h2><p style="font-size:13.5px;line-height:1.65;color:#9a958c;margin:0 0 8px">This glossary is educational and informational only. Nothing here is financial, investment, tax, legal or immigration advice, or a recommendation to buy or sell any security. Trading carries substantial risk of loss. Any backtested or example figure is hypothetical, does not represent live trading, and past performance does not guarantee future results. Definitions of legal, regulatory and immigration terms change; verify anything time-sensitive against the primary source, your DSO, or a licensed professional before acting on it.</p><p style="font-size:13.5px;line-height:1.65;color:#9a958c;margin:0"><a style="color:#d4af37" href="/terms.html">Terms of Use</a> · <a style="color:#d4af37" href="/privacy.html">Privacy Policy</a></p></section>
 <footer class="site-footer">
+  <div>© 2026 Yusuf Gadelrab · CS @ SJSU · San Jose, CA</div>
   <div class="site-footer__links">
     <a href="/">Work</a>
     <a href="/about.html">About</a>
+    <a href="/faq.html">FAQ</a>
+    <a href="/hire.html">Hire</a>
+    <a href="/writing.html">Writing</a>
     <a href="/guides.html">Guides</a>
     <a href="/glossary.html">Glossary</a>
+    <a href="/research.html">Research</a>
+    <a href="/resume.html">Resume</a>
     <a href="/apps.html">Apps</a>
     <a href="/store.html">Store</a>
     <a href="/privacy.html">Privacy</a>
     <a href="/terms.html">Terms</a>
     <a href="mailto:yusuf.gadelrab06@gmail.com">yusuf.gadelrab06@gmail.com</a>
-  </div>
+    <a href="https://github.com/Yusuf-Gadelrab" target="_blank" rel="noopener">GitHub</a><a href="https://www.linkedin.com/in/yusuf-gadelrab-76246b221" target="_blank" rel="noopener">LinkedIn</a></div>
 </footer>
 
 <script src="/js/site.js" defer></script>
 <script src="/js/lux-motion.js" defer></script>
+<script src="/js/lux-plus.js" defer></script>
 </body>
 </html>

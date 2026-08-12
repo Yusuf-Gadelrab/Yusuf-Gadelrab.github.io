@@ -40,6 +40,7 @@
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"EducationalOrganization","name":"CODESWITCH","alternateName":["Codeswitch CS","CodeBridge"],"url":"https://yusuf-gadelrab.github.io/codeswitch.html","description":"A free bilingual introductory computer science program for high school students who are English learners, taught by trained near-peer tutors who share the students' home languages.","disambiguatingDescription":"Program in design. No cohort has run, no school partnership is signed and no tutors are cleared. CODESWITCH is not an incorporated organization, is not a registered charity, has filed no 501(c)(3) application, has no application pending, and contributions are not tax-deductible. It is the program now being developed as CodeBridge under the planned Miftah Foundation, which is itself not yet incorporated.","founder":{"@id":"https://yusuf-gadelrab.github.io/#person"},"areaServed":{"@type":"City","name":"San Jose, California"},"knowsLanguage":["en","es","vi","ar"]}</script>
 <link rel="stylesheet" href="/css/site.css">
 <link rel="stylesheet" href="/css/lux-motion.css">
+<link rel="stylesheet" href="/css/lux-plus.css">
 <style>
   .wordmark{font-family:var(--display-pro);font-weight:700;letter-spacing:.22em;font-size:13px;
     color:var(--gold-2);text-transform:uppercase}
@@ -48,7 +49,7 @@
     background:linear-gradient(90deg,var(--gold),transparent)}
   .kw{font-family:var(--mono);font-size:.92em;color:var(--gold-2);
     background:rgba(212,175,55,.08);border:1px solid rgba(212,175,55,.18);
-    padding:2px 7px;border-radius:6px;white-space:nowrap}
+    padding:2px 7px;border-radius:var(--radius-lg);white-space:nowrap}
   .prog{display:flex;flex-direction:column;padding:var(--s5)}
   .prog .num{font-family:var(--mono);font-size:11px;letter-spacing:1.4px;color:var(--gold-2)}
   .prog h3{margin:var(--s3) 0 var(--s2);font-size:var(--t-h3)}
@@ -76,13 +77,15 @@
   .geo-qa p{color:var(--muted);font-size:var(--t-small);margin:0}
   .stat-row{display:flex;flex-wrap:wrap;gap:var(--s6);margin-top:var(--s6)}
   .stat-row > div{min-width:150px}
-  .stat-row b{display:block;font-family:var(--display);font-size:34px;color:var(--gold-2);line-height:1.1}
+  .stat-row b{display:block;font-family:var(--display-pro);font-weight:var(--w-black);
+    letter-spacing:var(--track-tight);font-size:clamp(28px,3.6vw,42px);
+    font-variant-numeric:tabular-nums;color:var(--gold-2);line-height:1.1}
   .stat-row span{font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--faint)}
 </style>
 <!-- geo:entity — canonical Person node, one entity across every page -->
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebPage","@id":"https://yusuf-gadelrab.github.io/codeswitch.html#webpage","url":"https://yusuf-gadelrab.github.io/codeswitch.html","inLanguage":"en","isPartOf":{"@id":"https://yusuf-gadelrab.github.io/#website"},"about":{"@id":"https://yusuf-gadelrab.github.io/#person"},"publisher":{"@id":"https://yusuf-gadelrab.github.io/#person"}}</script>
 <link rel="alternate" type="text/plain" href="https://yusuf-gadelrab.github.io/llms-full.txt" title="Plain-text profile for language models">
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","@id":"https://yusuf-gadelrab.github.io/codeswitch.html#faq","mainEntity":[{"@type":"Question","name":"What is CODESWITCH?","acceptedAnswer":{"@type":"Answer","text":"A free eight-week introductory computer science program for high school students who are still learning English. Sessions are taught bilingually by trained near-peer tutors who speak the students' home languages — concepts are introduced in the home language first, and English keywords are attached to ideas the student already holds."}},{"@type":"Question","name":"Why bilingual instead of just translating the materials?","acceptedAnswer":{"@type":"Answer","text":"Translating an English curriculum produces a translated curriculum with English-language pedagogy underneath it. Bilingual teaching changes the instruction itself: the concept is explained in the language the student thinks in, English keywords are treated as symbols to recognise rather than vocabulary to master, and students may ask and answer in whichever language they choose."}},{"@type":"Question","name":"What does it cost, and who pays?","acceptedAnswer":{"@type":"Answer","text":"It is free for students and for partner schools. Delivering one cohort costs roughly two hundred dollars, or about ninety-two dollars per student across a full year, because the tutors are trained volunteers rather than paid staff."}},{"@type":"Question","name":"How do volunteers work with students safely?","acceptedAnswer":{"@type":"Answer","text":"Every tutor completes the partner district's volunteer clearance, background check, TB screening where required, and mandated-reporter training before their first session. Two adults are present at all times, sessions happen only in school spaces, and there is no private contact between tutors and students."}},{"@type":"Question","name":"Which languages does CODESWITCH support?","acceptedAnswer":{"@type":"Answer","text":"The first cohorts are planned in Spanish and Vietnamese, the largest English-learner populations in the target San Jose schools, with Arabic following. Language coverage is set by which bilingual tutors are trained and cleared."}},{"@type":"Question","name":"How will you know whether it worked?","acceptedAnswer":{"@type":"Answer","text":"Three measures: persistence, meaning whether students enrol in a computer science course afterwards; self-efficacy, measured with a short pre and post survey administered in the student's home language; and conceptual understanding, assessed through a bilingual concept check and a final project the student can explain. Results are published whether or not they support the hypothesis."}}]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","@id":"https://yusuf-gadelrab.github.io/codeswitch.html#faq","mainEntity":[{"@type":"Question","name":"What is CODESWITCH?","acceptedAnswer":{"@type":"Answer","text":"A free eight-week introductory computer science program for high school students who are still learning English. Sessions are taught bilingually by trained near-peer tutors who speak the students' home languages — concepts are introduced in the home language first, and English keywords are attached to ideas the student already holds."}},{"@type":"Question","name":"Why bilingual instead of just translating the materials?","acceptedAnswer":{"@type":"Answer","text":"Translating an English curriculum produces a translated curriculum with English-language pedagogy underneath it. Bilingual teaching changes the instruction itself: the concept is explained in the language the student thinks in, English keywords are treated as symbols to recognise rather than vocabulary to master, and students may ask and answer in whichever language they choose."}},{"@type":"Question","name":"What does it cost, and who pays?","acceptedAnswer":{"@type":"Answer","text":"It is free for students and for partner schools. Delivering one cohort costs roughly two hundred dollars, because the tutors are trained volunteers rather than paid staff."}},{"@type":"Question","name":"How do volunteers work with students safely?","acceptedAnswer":{"@type":"Answer","text":"Every tutor completes the partner district's volunteer clearance, background check, TB screening where required, and mandated-reporter training before their first session. Two adults are present at all times, sessions happen only in school spaces, and there is no private contact between tutors and students."}},{"@type":"Question","name":"Which languages does CODESWITCH support?","acceptedAnswer":{"@type":"Answer","text":"The first cohorts are planned in Spanish and Vietnamese, the largest English-learner populations in the target San Jose schools, with Arabic following. Language coverage is set by which bilingual tutors are trained and cleared."}},{"@type":"Question","name":"How will you know whether it worked?","acceptedAnswer":{"@type":"Answer","text":"Three measures: persistence, meaning whether students enrol in a computer science course afterwards; self-efficacy, measured with a short pre and post survey administered in the student's home language; and conceptual understanding, assessed through a bilingual concept check and a final project the student can explain. Results are published whether or not they support the hypothesis."}}]}</script>
 </head>
 <body class="pro">
 
@@ -154,7 +157,7 @@
         <span class="num">01</span>
         <h3>The Bridge</h3>
         <p>Eight weeks, 90 minutes a week, after school. Eight to twelve students, two bilingual tutors. Everyone finishes having built one working thing they chose themselves — and demos it to their family in week eight, in whichever language they want.</p>
-        <span class="tag">First cohort · fall 2026</span>
+        <span class="tag">First cohort · pending a signed school partner</span>
       </article>
 
       <article class="card prog">
@@ -198,14 +201,14 @@
   <!-- ===== NUMBERS ===== -->
   <section class="section section--tight">
     <p class="eyebrow">04 · The economics</p>
-    <h2>It costs about $92 a student.</h2>
+    <h2>It costs about $200 a cohort.</h2>
     <p class="lead" style="margin-top:var(--s3)">Cheap because the expensive part — the tutors — are trained volunteers who are two years ahead of the students instead of twenty. Everything below is a plan, not a result. No outcome numbers appear on this page until a cohort has finished and been measured.</p>
 
     <div class="stat-row">
       <div><b>~$200</b><span>Cost per cohort</span></div>
       <div><b>8</b><span>Weeks per cohort</span></div>
       <div><b>8–12</b><span>Students per cohort</span></div>
-      <div><b>3</b><span>Languages at launch</span></div>
+      <div><b>3</b><span>Languages planned</span></div>
     </div>
 
     <div class="panel" style="margin-top:var(--s7);border-left:3px solid var(--gold)">
@@ -245,8 +248,7 @@
           <input type="email" id="e-tutor" placeholder="you@email.com" autocomplete="email" aria-label="Email to volunteer as a CODESWITCH tutor" required>
           <button class="btn btn-gold btn-sm" type="submit">I'll tutor</button>
         </form>
-        <p class="note" id="n-tutor">We'll send the handbook and the clearance steps. <a href="/legal.html">Legal</a>
-    <a href="/privacy.html">Privacy</a></p>
+        <p class="note" id="n-tutor">We'll send the handbook and the clearance steps. <a href="/legal.html">Legal</a> · <a href="/privacy.html">Privacy</a></p>
       </article>
 
       <article class="card prog">
@@ -255,7 +257,7 @@
         <p>What we need from you: a room, one afternoon a week, and access to laptops you already own. What we don't need: any curriculum work, any budget, or any of your teaching time. What you get back is 8–12 more students who've built something real, plus the pre/post data on whether it worked.</p>
         <form class="mini" id="f-school" novalidate>
           <input type="email" id="e-school" placeholder="you@school.edu" autocomplete="email" aria-label="Email to host a CODESWITCH cohort at your school" required>
-          <button class="btn btn-gold btn-sm" type="submit">Let's talk</button>
+          <button class="btn btn-gold btn-sm" type="submit">I'll host a cohort</button>
         </form>
         <p class="note" id="n-school">Or email directly: <a href="mailto:yusuf.gadelrab06@gmail.com?subject=CODESWITCH%20—%20school%20partnership">yusuf.gadelrab06@gmail.com</a></p>
       </article>
@@ -275,7 +277,7 @@
     <p class="eyebrow">07 · Why this, from me</p>
     <h2>I co-wrote the paper, then realised I hadn't done anything about it.</h2>
     <p class="lead" style="margin-top:var(--s3)">I'm Yusuf Gadelrab — CS at San José State, and an undergraduate researcher in Dr. Ethel Tshukudu's CS education lab. This year I co-authored a mixed-methods study on bilingual programming environments and inclusive computer science learning, accepted at SIGCSE TS 2026. I already tutor CS at SJSU and help run CS programming at a San Jose high school with a large English-learner population. I'm bilingual myself — Arabic and English.</p>
-    <p class="lead" style="margin-top:var(--s4)">The finding was clear and the paper is published. A published finding that changes nothing in a classroom isn't worth much. This is the attempt to change something.</p>
+    <p class="lead" style="margin-top:var(--s4)">The study found statistically significant pre-to-post gains in programming confidence, computing identity, enjoyment and motivation across 60 participants — with novices gaining most — and the paper is published. A published finding that changes nothing in a classroom isn't worth much. This is the attempt to change something.</p>
     <div class="row" style="margin-top:var(--s6)">
       <a class="btn btn-ghost" href="https://doi.org/10.1145/3770761.3777339" target="_blank" rel="noopener">Read the study →</a>
       <a class="btn btn-ghost" href="/about.html">About me</a>
@@ -299,7 +301,7 @@
       </article>
       <article class="card geo-qa">
         <h3>What does it cost, and who pays?</h3>
-        <p>It is free for students and for partner schools. Delivering one cohort costs roughly two hundred dollars, or about ninety-two dollars per student across a full year, because the tutors are trained volunteers rather than paid staff.</p>
+        <p>It is free for students and for partner schools. Delivering one cohort costs roughly two hundred dollars, because the tutors are trained volunteers rather than paid staff.</p>
       </article>
       <article class="card geo-qa">
         <h3>How do volunteers work with students safely?</h3>
@@ -339,6 +341,7 @@
 <script src="/js/waitlist.js" defer></script>
 <script src="/js/site.js" defer></script>
 <script src="/js/lux-motion.js" defer></script>
+<script src="/js/lux-plus.js" defer></script>
 <script>
 addEventListener("DOMContentLoaded", function () {
   if (!window.YGWaitlist) return;

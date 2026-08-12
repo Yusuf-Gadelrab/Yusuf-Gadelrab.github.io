@@ -667,18 +667,47 @@
   /* =======================================================================
      BOOT
      ===================================================================== */
+  /* Every boot step is independent chrome. Before this, one throw in an early
+     step skipped every later step; worse, a throw INSIDE initReveals after its
+     auto-tag loop left `.reveal` (opacity:0) on every .card/.panel/h2/h3/img on
+     the page with nothing left running to add `.is-in` — a blank page. Each
+     step is now isolated, and revealFailsafe() is the backstop that can undo
+     exactly that failure mode. */
+  function safe(name, fn) {
+    try { fn(); }
+    catch (e) { if (w.console && console.warn) console.warn('[site.js] ' + name + ' failed:', e); }
+  }
+
+  /* Anything still carrying a reveal class but not `.is-in` a moment after load
+     is shown outright. Costs nothing on a healthy page (the observer has
+     already settled everything on screen, and off-screen elements are skipped
+     because they are still legitimately waiting to be scrolled to). */
+  function revealFailsafe() {
+    var sel = '.reveal:not(.is-in),.reveal-zoom:not(.is-in),.reveal-left:not(.is-in),.reveal-right:not(.is-in)';
+    var stuck = d.querySelectorAll(sel);
+    var vh = w.innerHeight || 800;
+    for (var i = 0; i < stuck.length; i++) {
+      var box = stuck[i].getBoundingClientRect();
+      if (box.top < vh * 1.2 && box.bottom > -vh * 0.2) stuck[i].classList.add('is-in');
+    }
+  }
+
   function boot() {
-    injectTrigger();
-    initProgress();
-    initStickyCta();
-    initAnchors();
-    initTop();
-    initMeta();
-    initReveals();
+    safe('injectTrigger', injectTrigger);
+    safe('initProgress', initProgress);
+    safe('initStickyCta', initStickyCta);
+    safe('initAnchors', initAnchors);
+    safe('initTop', initTop);
+    safe('initMeta', initMeta);
+    safe('initReveals', initReveals);
     w.addEventListener('scroll', onScroll, { passive: true });
     w.addEventListener('resize', onScroll, { passive: true });
     onScroll();
     setTimeout(progressGuard, 0);
+    setTimeout(function () { safe('revealFailsafe', revealFailsafe); }, 1500);
+    w.addEventListener('load', function () {
+      setTimeout(function () { safe('revealFailsafe', revealFailsafe); }, 400);
+    });
 
     /* The React homepage swaps out #root; re-run the DOM-dependent bits. */
     var r = d.getElementById('root');

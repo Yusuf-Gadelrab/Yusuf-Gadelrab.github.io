@@ -1,0 +1,370 @@
+/* ============================================================================
+   miftah.css — Miftah Foundation sub-site layer (`mf-` namespace)
+   Loaded LAST, after site.css → lux-motion.css → lux-plus.css, on the eight
+   /miftah*.html pages only.
+
+   WHY A FOURTH FILE: the eight Miftah pages previously each carried a ~110-line
+   copy of the same page-local <style> block, which had already begun to drift
+   (three pages defined .mf-real, two defined .ledger, one defined .pill). One
+   shared sheet is the only way the sub-site reads as ONE publication instead of
+   eight pages that resemble each other. It is also cached once across all eight.
+
+   INVARIANTS:
+     1. `mf-` only. Nothing here restyles a shared selector (.btn, .card,
+        .site-nav, .dh-*). Delete this file and the pages fall back to the
+        shared system intact — plainer, never broken.
+     2. Every colour used as INK comes from the measured ramp in site.css and
+        is --gold-100..--gold-400 (>=8.08:1 on every dark surface). --gold-500,
+        --gold-600 appear only as borders/fills; --gold-700/--gold-800 never.
+     3. Zero network requests. System serif + system Arabic stacks only.
+     4. Every interactive control clears --tap (44px) and keeps the shared
+        focus ring. Nothing here sets outline:none.
+     5. All motion is opt-out under prefers-reduced-motion (§9).
+   ========================================================================= */
+
+:root{
+  /* Program accent. Default is the foundation stop; each program page sets its
+     own via a body class below, so the four programs are distinguishable
+     WITHIN the gold system rather than by inventing a second hue. */
+  --mf-accent:var(--gold-300);
+  --mf-accent-line:rgba(233,201,106,.34);
+  --mf-plate:linear-gradient(180deg,var(--surface-2),var(--surface-3));
+
+  /* System Arabic stack — mirrors the no-external-font rule. Falls through to
+     the shared serif, then to generic serif, so مفتاح renders everywhere. */
+  --mf-arabic:"Geeza Pro","Al Bayan","Damascus","Baghdad","Noto Naskh Arabic",
+              "Traditional Arabic","Segoe UI Historic","Segoe UI",
+              var(--display-serif),serif;
+}
+.mf-p01{--mf-accent:var(--gold-100);--mf-accent-line:rgba(247,233,184,.30)}
+.mf-p02{--mf-accent:var(--gold-200);--mf-accent-line:rgba(239,217,143,.32)}
+.mf-p03{--mf-accent:var(--gold-300);--mf-accent-line:rgba(233,201,106,.34)}
+.mf-p04{--mf-accent:var(--gold-400);--mf-accent-line:rgba(212,175,55,.38)}
+
+/* ============================================================================
+   §1  SUB-SITE NAVIGATION
+   A second, Miftah-scoped bar under the site nav. Deliberately NOT sticky: the
+   site nav already owns top:0 at z-index 50 and its height is fluid, so a
+   second sticky band would need a hard-coded offset that breaks the moment the
+   main nav wraps on a narrow viewport.
+   ========================================================================= */
+.mf-subnav{
+  position:relative;z-index:2;
+  border-block:1px solid var(--border-gold);
+  background:linear-gradient(180deg,rgba(212,175,55,.055),rgba(212,175,55,.012));
+}
+.mf-subnav__in{
+  max-width:var(--maxw);margin-inline:auto;
+  padding-inline:var(--section-x);
+  display:flex;align-items:center;gap:var(--s5);flex-wrap:wrap;
+}
+.mf-subnav__mark{
+  display:inline-flex;align-items:center;gap:var(--s3);
+  min-height:54px;flex:0 0 auto;
+}
+.mf-subnav__mark img{width:20px;height:20px;flex:none}
+.mf-subnav__name{
+  font-family:var(--display-serif);font-size:15px;
+  letter-spacing:var(--track-wide);text-transform:uppercase;color:var(--gold-200);
+}
+.mf-subnav__ar{font-family:var(--mf-arabic);font-size:16px;color:var(--ink-3);line-height:1}
+.mf-subnav__mark:hover .mf-subnav__name{color:var(--gold-100)}
+
+/* The link rail scrolls sideways on a phone instead of wrapping into a wall.
+   Every child is a link, so it is reachable by Tab and scrolls into view. */
+.mf-subnav__rail{flex:1 1 auto;min-width:0;overflow-x:auto;overflow-y:hidden;
+  scrollbar-width:none;-webkit-overflow-scrolling:touch;overscroll-behavior-x:contain}
+.mf-subnav__rail::-webkit-scrollbar{display:none}
+.mf-subnav__links{display:flex;gap:var(--s5);list-style:none;margin:0;padding:0;width:max-content}
+.mf-subnav__links a{
+  display:inline-flex;align-items:center;min-height:54px;
+  font-size:var(--t-small);color:var(--ink-2);white-space:nowrap;
+  border-bottom:2px solid transparent;
+  transition:color var(--dur-2) var(--ease),border-color var(--dur-2) var(--ease);
+}
+.mf-subnav__links a:hover{color:var(--gold-200)}
+.mf-subnav__links a[aria-current="page"]{color:var(--gold-100);border-bottom-color:var(--mf-accent)}
+@media(max-width:620px){
+  .mf-subnav__in{gap:var(--s4)}
+  .mf-subnav__links{gap:var(--s4)}
+  .mf-subnav__ar{display:none}
+}
+
+/* ============================================================================
+   §2  DISPLAY TYPE
+   ========================================================================= */
+body.pro .mf-h1{font-family:var(--display-serif);font-weight:var(--w-regular);
+  font-size:clamp(32px,5.8vw,58px);line-height:1.06;letter-spacing:-.015em}
+body.pro .mf-h2{font-family:var(--display-serif);font-weight:var(--w-regular);
+  font-size:var(--t-h2);line-height:var(--lh-snug);letter-spacing:-.015em;
+  max-width:var(--measure)}
+body.pro .mf-h3{font-family:var(--display-serif);font-weight:var(--w-regular);
+  font-size:var(--t-h3);line-height:var(--lh-snug);letter-spacing:-.01em}
+.mf-h1 em,.mf-h2 em,.mf-h3 em,.mf-kicker em{font-style:italic}
+
+.mf-kicker{margin-top:var(--s4);font-family:var(--display-serif);
+  font-size:clamp(19px,2.1vw,26px);line-height:1.45;color:var(--ink-1);
+  max-width:var(--measure)}
+.mf-kicker strong{color:var(--mf-accent);font-weight:var(--w-regular)}
+
+/* --- hero lockup: gilt wordmark + Arabic ---------------------------------- */
+.mf-lockup{display:flex;align-items:flex-end;gap:clamp(16px,3vw,40px);flex-wrap:wrap;
+  margin:var(--s5) 0 0}
+body.pro .mf-wordmark{
+  font-family:var(--display-serif);font-weight:var(--w-regular);
+  font-size:clamp(46px,10.5vw,116px);line-height:.9;letter-spacing:.015em;
+  text-transform:uppercase;margin:0;
+}
+.mf-ar{font-family:var(--mf-arabic);line-height:1.35;color:var(--gold-200);
+  letter-spacing:.02em;display:inline-block}
+.mf-ar--hero{font-size:clamp(34px,6vw,72px)}
+.mf-ar--inline{font-size:1.25em;color:inherit;vertical-align:-.08em}
+.mf-tagline{margin-top:var(--s4);font-family:var(--display-serif);
+  font-size:clamp(20px,2.4vw,30px);color:var(--gold-100);letter-spacing:.01em}
+
+/* ============================================================================
+   §3  THE STATUS BLOCK — the honesty is the design, not a footnote.
+   Given a plate, a rule and an accent so it reads as a masthead element.
+   ========================================================================= */
+.mf-status{margin-top:var(--s6);max-width:var(--measure)}
+.mf-status__k{display:block;font-family:var(--mono);font-size:var(--t-micro);
+  letter-spacing:var(--track-wide);text-transform:uppercase;color:var(--mf-accent);
+  margin-bottom:var(--s3)}
+.mf-status p{margin:0;line-height:var(--lh-body)}
+.mf-status p+p{margin-top:var(--s3)}
+.mf-status strong{color:var(--ink-1);font-weight:var(--w-semibold)}
+
+/* --- honest ticker: the facts that are usually hidden, set as a marquee ---- */
+.mf-tickerband{border-block:1px solid var(--border-hairline);
+  background:var(--surface-inset);padding-block:var(--s4)}
+.mf-tick{display:inline-flex;align-items:center;gap:var(--s3);
+  font-family:var(--mono);font-size:var(--t-micro);letter-spacing:var(--track-wide);
+  text-transform:uppercase;color:var(--ink-3);white-space:nowrap}
+.mf-tick b{color:var(--mf-accent);font-weight:var(--w-regular)}
+.mf-tick::after{content:"";width:5px;height:5px;background:var(--gold-600);
+  border-radius:1px;display:inline-block}
+
+/* ============================================================================
+   §4  ACTIONS, BACKLINKS, PROOF LINES
+   ========================================================================= */
+.mf-actions{display:flex;flex-wrap:wrap;gap:var(--s4);align-items:center;margin-top:var(--s6)}
+.mf-proof{margin-top:var(--s4);font-size:var(--t-caption);color:var(--ink-3);
+  line-height:var(--lh-snug);max-width:var(--measure-narrow)}
+.mf-back{margin-top:var(--s5);font-size:var(--t-small)}
+.mf-back a{display:inline-flex;align-items:center;min-height:var(--tap);
+  color:var(--ink-2);border-bottom:1px solid var(--border-hairline)}
+.mf-back a:hover{color:var(--mf-accent);border-color:var(--gold-400)}
+
+/* ============================================================================
+   §5  PROGRAM CARDS, STEPS, DEFINITION LISTS, LISTS
+   ========================================================================= */
+.mf-progs{margin-top:var(--s6)}
+.mf-prog__n{font-family:var(--mono);font-size:var(--t-micro);
+  letter-spacing:var(--track-wide);color:var(--ink-3)}
+.mf-prog__link{font-size:var(--t-small);color:var(--gold-ink);
+  font-weight:var(--w-semibold);margin-top:var(--s3)}
+.mf-prog__rule{height:1px;border:0;margin:var(--s3) 0 var(--s1);
+  background:linear-gradient(90deg,var(--mf-accent-line),transparent)}
+
+.mf-steps{counter-reset:mf;margin-top:var(--s6);display:grid;gap:1px;
+  background:var(--border-hairline);border:1px solid var(--border-hairline);
+  border-radius:var(--radius-lg);overflow:hidden;
+  grid-template-columns:repeat(auto-fit,minmax(min(230px,100%),1fr))}
+.mf-step{background:var(--surface-2);padding:var(--s5);counter-increment:mf}
+.mf-step::before{content:"0" counter(mf);display:block;font-family:var(--mono);
+  font-size:var(--t-micro);letter-spacing:var(--track-wide);color:var(--mf-accent)}
+.mf-step h3{margin:var(--s3) 0 var(--s2);font-size:var(--t-h4)}
+.mf-step p{margin:0;color:var(--ink-2);font-size:var(--t-small);line-height:var(--lh-body)}
+
+.mf-defs{margin:var(--s6) 0 0;border-top:1px solid var(--border-hairline)}
+.mf-defs>div{display:grid;gap:var(--s3) var(--s6);padding:var(--s5) 0;
+  border-bottom:1px solid var(--border-hairline)}
+@media(min-width:780px){.mf-defs>div{grid-template-columns:minmax(200px,.85fr) minmax(0,2fr)}}
+.mf-defs dt{font-family:var(--display-pro);font-weight:var(--w-semibold);
+  font-size:var(--t-h4);color:var(--ink-1);line-height:var(--lh-snug)}
+.mf-defs dd{margin:0;color:var(--ink-2);font-size:var(--t-small);
+  line-height:var(--lh-body);max-width:var(--measure)}
+.mf-defs dd a{display:inline-flex;align-items:center;min-height:var(--tap);
+  color:var(--gold-ink);font-weight:var(--w-semibold)}
+
+.mf-list{list-style:none;margin:var(--s5) 0 0;padding:0;max-width:var(--measure);
+  border-top:1px solid var(--border-hairline)}
+.mf-list li{padding:var(--s4) 0;border-bottom:1px solid var(--border-hairline);
+  color:var(--ink-2);font-size:var(--t-small);line-height:var(--lh-body)}
+.mf-list strong{color:var(--ink-1);font-weight:var(--w-semibold)}
+
+/* ============================================================================
+   §6  WHAT THIS IS / WHAT IT IS NOT YET
+   Two columns, deliberately equal weight. The "not yet" column is not smaller,
+   not greyed out and not below the fold.
+   ========================================================================= */
+.mf-real{display:grid;gap:var(--s5);margin-top:var(--s6);
+  grid-template-columns:repeat(auto-fit,minmax(min(320px,100%),1fr))}
+.mf-col{padding:var(--s6);border:1px solid var(--border-hairline);
+  border-radius:var(--radius-lg);background:var(--surface-2);position:relative}
+.mf-col--not{background:var(--surface-1)}
+.mf-col>h3{margin:0;font-size:var(--t-h4)}
+.mf-col>h3+p{margin-top:var(--s3)}
+.mf-col p{margin:0;color:var(--ink-2);font-size:var(--t-small);line-height:var(--lh-body)}
+.mf-col__k{display:block;font-family:var(--mono);font-size:var(--t-micro);
+  letter-spacing:var(--track-wide);text-transform:uppercase;margin-bottom:var(--s2)}
+.mf-col .mf-col__k{color:var(--mf-accent)}
+.mf-col--not .mf-col__k{color:var(--ink-3)}
+
+.status-list{list-style:none;margin:var(--s4) 0 0;padding:0}
+.status-list li{padding:var(--s3) 0;border-bottom:1px solid var(--border-hairline);
+  color:var(--ink-2);font-size:var(--t-small);display:flex;gap:var(--s3);
+  line-height:var(--lh-body)}
+.status-list li:last-child{border-bottom:0}
+.status-list .mark{flex:0 0 auto;font-family:var(--mono);color:var(--ink-3);
+  font-size:var(--t-micro);letter-spacing:var(--track-wide);min-width:5.5em;
+  padding-top:.35em}
+
+.mf-note{margin-top:var(--s6);max-width:var(--measure)}
+.mf-note b{color:var(--mf-accent)}
+
+/* ============================================================================
+   §7  THE LEDGER — schema strip, and the transparency table
+   ========================================================================= */
+.ledger{font-family:var(--mono);font-size:var(--t-small);color:var(--ink-2);
+  background:var(--surface-inset);border:1px solid var(--border-hairline);
+  border-radius:var(--radius);padding:var(--s4);white-space:pre}
+
+.mf-ledgertable{width:100%;border-collapse:collapse;font-size:var(--t-small)}
+.mf-ledgertable caption{text-align:left;font-family:var(--mono);
+  font-size:var(--t-micro);letter-spacing:var(--track-wide);text-transform:uppercase;
+  color:var(--ink-3);padding-bottom:var(--s3)}
+.mf-ledgertable th,.mf-ledgertable td{
+  padding:var(--s3) var(--s5) var(--s3) 0;text-align:left;vertical-align:top;
+  border-bottom:1px solid var(--border-hairline)}
+.mf-ledgertable thead th{font-family:var(--display-pro);font-weight:var(--w-semibold);
+  font-size:var(--t-micro);letter-spacing:var(--track-wide);text-transform:uppercase;
+  color:var(--mf-accent);white-space:nowrap}
+.mf-ledgertable tbody th{font-weight:var(--w-semibold);color:var(--ink-1)}
+.mf-ledgertable td{color:var(--ink-2)}
+.mf-ledgertable .num{font-family:var(--mono);color:var(--ink-1);
+  font-variant-numeric:tabular-nums;white-space:nowrap}
+.mf-ledgertable tbody tr:last-child th,.mf-ledgertable tbody tr:last-child td{border-bottom:0}
+
+/* ============================================================================
+   §8  FIRST 100 DAYS / FILING PATH — an engraved rail
+   ========================================================================= */
+.mf-plan{list-style:none;margin:var(--s6) 0 0;padding:0;
+  border-left:1px solid var(--border-hairline);max-width:var(--measure-wide)}
+.mf-plan>li{position:relative;padding:0 0 var(--s6) clamp(20px,3vw,36px)}
+.mf-plan>li:last-child{padding-bottom:0}
+.mf-plan>li::before{content:"";position:absolute;left:-4px;top:.45em;
+  width:7px;height:7px;background:var(--mf-accent);border-radius:1px}
+.mf-plan__d{display:block;font-family:var(--mono);font-size:var(--t-micro);
+  letter-spacing:var(--track-wide);text-transform:uppercase;color:var(--mf-accent)}
+.mf-plan h3{margin:var(--s2) 0 var(--s2);font-size:var(--t-h4)}
+.mf-plan p{margin:0;color:var(--ink-2);font-size:var(--t-small);
+  line-height:var(--lh-body);max-width:var(--measure)}
+.mf-plan p+p{margin-top:var(--s3)}
+.mf-plan__cost{display:inline-block;margin-top:var(--s3);font-family:var(--mono);
+  font-size:var(--t-micro);letter-spacing:var(--track-wide);color:var(--ink-3);
+  border:1px solid var(--border-hairline);border-radius:var(--radius);padding:4px 8px}
+
+/* ============================================================================
+   §9  ONWARD NAV, PATH CARDS, PRESS BLOCKS
+   ========================================================================= */
+.mf-onward{display:grid;gap:var(--s4);margin-top:var(--s7);
+  grid-template-columns:repeat(auto-fit,minmax(min(250px,100%),1fr))}
+.mf-onward a{display:flex;flex-direction:column;gap:var(--s2);
+  min-height:var(--tap);padding:var(--s4) var(--s5);background:var(--surface-2);
+  border:1px solid var(--border-hairline);border-radius:var(--radius-lg);
+  transition:border-color var(--dur-2) var(--ease),background var(--dur-2) var(--ease)}
+.mf-onward a:hover{border-color:var(--border-gold);background:var(--surface-3)}
+.mf-onward b{font-size:var(--t-small);color:var(--gold-ink);font-weight:var(--w-semibold)}
+.mf-onward span{font-size:var(--t-caption);color:var(--ink-3);line-height:var(--lh-snug)}
+
+/* --- a "path" card: one way in, with what it costs the person -------------- */
+.mf-path{display:flex;flex-direction:column;gap:var(--s3);padding:var(--s6);
+  background:var(--mf-plate);border:1px solid var(--border-hairline);
+  border-radius:var(--radius-lg);border-top:2px solid var(--mf-accent)}
+.mf-path__k{font-family:var(--mono);font-size:var(--t-micro);
+  letter-spacing:var(--track-wide);text-transform:uppercase;color:var(--mf-accent)}
+.mf-path h3{margin:0;font-size:var(--t-h3);font-family:var(--display-serif);
+  font-weight:var(--w-regular);letter-spacing:-.01em;text-transform:none}
+.mf-path p{margin:0;color:var(--ink-2);font-size:var(--t-small);line-height:var(--lh-body)}
+.mf-path ul{margin:0;padding-left:1.15em;color:var(--ink-2);font-size:var(--t-small);
+  line-height:var(--lh-body)}
+.mf-path ul li+li{margin-top:var(--s2)}
+.mf-path .btn{align-self:flex-start;margin-top:auto}
+.mf-path__meta{margin-top:var(--s2);font-family:var(--mono);font-size:var(--t-micro);
+  letter-spacing:var(--track-wide);color:var(--ink-3)}
+
+/* --- copy-and-paste boilerplate for press --------------------------------- */
+.mf-copy{margin-top:var(--s4);padding:var(--s5);background:var(--surface-inset);
+  border:1px solid var(--border-hairline);border-left:2px solid var(--mf-accent);
+  border-radius:var(--radius);color:var(--ink-1);font-size:var(--t-small);
+  line-height:var(--lh-body);max-width:var(--measure)}
+.mf-copy__k{display:block;font-family:var(--mono);font-size:var(--t-micro);
+  letter-spacing:var(--track-wide);text-transform:uppercase;color:var(--ink-3);
+  margin-bottom:var(--s3)}
+.mf-swatches{display:flex;flex-wrap:wrap;gap:var(--s3);margin-top:var(--s5);list-style:none;padding:0}
+.mf-swatch{display:flex;align-items:center;gap:var(--s3);padding:var(--s3) var(--s4);
+  border:1px solid var(--border-hairline);border-radius:var(--radius);
+  font-family:var(--mono);font-size:var(--t-micro);color:var(--ink-2)}
+.mf-swatch i{width:18px;height:18px;border-radius:1px;display:block;flex:none;
+  border:1px solid rgba(255,255,255,.14)}
+
+/* --- a small gold plaque used as a section opener -------------------------- */
+.mf-sealrow{display:flex;align-items:center;gap:var(--s5);flex-wrap:wrap;margin-top:var(--s6)}
+.mf-sealrow p{margin:0;color:var(--ink-2);font-size:var(--t-small);
+  line-height:var(--lh-body);max-width:var(--measure)}
+.mf-quiet{margin-top:var(--s5);font-size:var(--t-caption);color:var(--ink-3);
+  line-height:var(--lh-body);max-width:var(--measure)}
+
+/* --- editorial opener ------------------------------------------------------ */
+.mf-editorial{max-width:var(--measure);color:var(--ink-2);line-height:var(--lh-loose)}
+.mf-editorial>p+p{margin-top:var(--s5)}
+.mf-editorial strong{color:var(--ink-1);font-weight:var(--w-semibold)}
+.mf-editorial a{color:var(--gold-ink);border-bottom:1px solid var(--border-hairline)}
+.mf-editorial a:hover{border-color:var(--gold-400)}
+
+/* --- program pills (Shield capability chips) ------------------------------ */
+.pills{display:flex;flex-wrap:wrap;gap:var(--s2);margin-top:var(--s6)}
+.pill{padding:8px 14px;border:1px solid var(--border-hairline);border-radius:var(--radius);
+  font-size:var(--t-small);color:var(--ink-1);background:var(--surface-2)}
+.callout{border-left:3px solid var(--mf-accent)}
+.legal{font-size:var(--t-body);color:var(--ink-1)}
+.legal a{border-bottom:1px solid var(--border-hairline);color:var(--gold-ink)}
+
+/* --- flywheel rail (home) -------------------------------------------------- */
+.flow{position:relative;padding-left:44px;margin-top:var(--s6)}
+.flow__rail{position:absolute;left:0;top:0;bottom:0;width:44px;overflow:visible}
+.flow__rail svg{width:44px;height:100%}
+.flow__step{position:relative;margin-bottom:var(--s5)}
+.flow__step:last-child{margin-bottom:0}
+.flow__dot{position:absolute;left:-44px;top:26px;width:13px;height:13px;
+  margin-left:9px;border:1px solid var(--border-control);background:var(--surface-3);
+  border-radius:1px}
+.flow__step h3{margin:0 0 var(--s2);font-size:var(--t-h4)}
+.flow__step p{color:var(--ink-2);font-size:var(--t-small);margin:0;line-height:var(--lh-body)}
+.flow__step .then{display:block;margin-top:var(--s3);font-family:var(--mono);
+  font-size:var(--t-micro);letter-spacing:.5px;color:var(--ink-3)}
+.flow__return{margin-top:var(--s5);padding:var(--s5);
+  border:1px solid var(--border-hairline);border-left:2px solid var(--mf-accent);
+  border-radius:var(--radius);font-size:var(--t-small);color:var(--ink-2);
+  line-height:var(--lh-body);max-width:var(--measure)}
+@media(max-width:520px){
+  .flow{padding-left:28px}
+  .flow__rail,.flow__rail svg{width:28px}
+  .flow__dot{left:-28px;margin-left:2px}
+}
+
+/* ============================================================================
+   §10  MOTION OPT-OUT + PRINT
+   site.css already zeroes duration globally; these make the intent explicit
+   and keep this file correct if read on its own.
+   ========================================================================= */
+@media(prefers-reduced-motion:reduce){
+  .mf-onward a,.mf-subnav__links a,.mf-back a{transition:none!important}
+}
+@media print{
+  .mf-subnav,.mf-tickerband{display:none!important}
+  .mf-path,.mf-col,.mf-copy,.mf-step{border:1px solid #ccc;break-inside:avoid}
+  .mf-plan>li::before{background:#836D26}
+  .ledger,.mf-copy{background:#fff}
+}

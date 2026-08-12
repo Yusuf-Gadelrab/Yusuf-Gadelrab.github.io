@@ -31,6 +31,7 @@
 
 <link rel="stylesheet" href="/css/site.css">
 <link rel="stylesheet" href="/css/lux-motion.css">
+<link rel="stylesheet" href="/css/lux-plus.css">
 <style>
   .prose{max-width:68ch}
   .prose h2{margin:var(--s7) 0 var(--s4);font-size:var(--t-h2)}
@@ -42,7 +43,7 @@
   .prose strong{color:var(--fg)}
   .formula{display:block;padding:var(--s4);margin:0 0 var(--s4);border:1px solid var(--line-soft);
     border-radius:var(--radius);font-family:ui-monospace,SFMono-Regular,Menlo,monospace;
-    font-size:var(--t-small);color:var(--gold-2);overflow-x:auto}
+    font-size:var(--t-small);color:var(--gold-2);overflow-x:auto;white-space:pre-wrap}
   .tbl{width:100%;border-collapse:collapse;margin:0 0 var(--s4);font-size:var(--t-small)}
   .tbl th,.tbl td{text-align:left;padding:var(--s3);border-bottom:1px solid var(--line-soft);color:var(--muted)}
   .tbl th{font-family:var(--display-pro);color:var(--gold-2);font-weight:600}
@@ -97,7 +98,7 @@ margin % = margin $ ÷ customer rate</span>
       <h2>How do you calculate rate per mile?</h2>
       <span class="formula">rate per mile = linehaul rate ÷ loaded miles
 all-in rate per mile = linehaul rate ÷ (loaded + deadhead miles)</span>
-      <p>A $2,400 load over 1,200 miles is $2.00 per mile. Add 150 miles of deadhead to reach the pickup and the truck actually earned $2,400 ÷ 1,350 = <strong>$1.78 per mile</strong>. That 11% gap is where a lane that "pays well" quietly stops paying well.</p>
+      <p>A $2,400 load over 1,200 miles is $2.00 per mile. Add 150 miles of deadhead to reach the pickup and the truck actually earns $2,400 ÷ 1,350 = <strong>$1.78 per mile</strong>. That 11% gap is where a lane that "pays well" quietly stops paying well.</p>
 
       <h3>What does deadhead cost?</h3>
       <span class="formula">deadhead cost = deadhead miles × operating cost per mile</span>
@@ -130,6 +131,7 @@ all-in rate per mile = linehaul rate ÷ (loaded + deadhead miles)</span>
       <h2>Where the hours actually go</h2>
       <p>None of this math is hard. The reason small brokerages leak money is that the arithmetic competes with the back office: chasing rate confirmations, matching PODs to invoices, re-sending the same document to the same accounts-payable inbox, and dunning at 45 days. That work is repetitive, deadline-driven, and exactly the shape a machine handles well.</p>
       <p>That is the problem <a href="/freightdesk.html">FreightDesk AI</a> was built for — it reads the billing inbox, drafts the invoice, chases the missing paperwork, and hands you the exceptions. The case study behind it, covering 18 accounts-receivable workflows, is <a href="/hwyhaul.html">the HwyHaul case study</a>.</p>
+      <p><a href="/freightdesk.html#book" class="btn btn-gold">Book my pilot walkthrough →</a></p>
 
       <p class="callout">Rates, margins, and MPG assumptions in this guide are illustrative examples for showing the arithmetic, not market quotes or benchmarks. Confirm your own operating cost per mile and contract terms before pricing freight.</p>
 
@@ -200,5 +202,6 @@ all-in rate per mile = linehaul rate ÷ (loaded + deadhead miles)</span>
 
 <script src="/js/site.js" defer></script>
 <script src="/js/lux-motion.js" defer></script>
+<script src="/js/lux-plus.js" defer></script>
 </body>
 </html>

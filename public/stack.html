@@ -9,6 +9,8 @@
 <meta name="robots" content="index,follow,max-image-preview:large">
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="https://yusuf-gadelrab.github.io/og/stack-card.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
 <meta property="og:image:alt" content="My Stack — Yusuf Gadelrab">
 <meta name="twitter:image" content="https://yusuf-gadelrab.github.io/og/stack-card.png">
 <title>My Dev Stack: AI, Coding &amp; Trading Tools I Actually Use</title>
@@ -32,8 +34,22 @@
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"ItemList","name":"My Stack — Yusuf Gadelrab","url":"https://yusuf-gadelrab.github.io/stack.html","itemListElement":[{"@type":"ListItem","position":1,"name":"TradingView","url":"https://www.tradingview.com/"},{"@type":"ListItem","position":2,"name":"Alpaca","url":"https://alpaca.markets/"},{"@type":"ListItem","position":3,"name":"Swing Screener","url":"https://yusuf-gadelrab.github.io/swing-screener.html"},{"@type":"ListItem","position":4,"name":"Claude Code","url":"https://claude.com/claude-code"},{"@type":"ListItem","position":5,"name":"Ollama + qwen3","url":"https://ollama.com/"},{"@type":"ListItem","position":6,"name":"uv","url":"https://docs.astral.sh/uv/"},{"@type":"ListItem","position":7,"name":"Bun","url":"https://bun.sh/"},{"@type":"ListItem","position":8,"name":"Creatine Monohydrate","url":"https://www.amazon.com/s?k=creatine+monohydrate"},{"@type":"ListItem","position":9,"name":"Whey Protein","url":"https://www.amazon.com/s?k=whey+protein"},{"@type":"ListItem","position":10,"name":"Fish Oil","url":"https://www.amazon.com/s?k=fish+oil+omega+3"},{"@type":"ListItem","position":11,"name":"Magnesium Glycinate","url":"https://www.amazon.com/s?k=magnesium+glycinate"}]}</script>
 <link rel="stylesheet" href="/css/site.css">
 <link rel="stylesheet" href="/css/lux-motion.css">
+<link rel="stylesheet" href="/css/lux-plus.css">
 <style>
   /* ---- page-specific only ---- */
+
+  /* ---- typographic register ----
+     h1 AND h2 sit on the serif display face. This page is an argument about
+     tools rather than a logo wall, so the ramp has to match research.html
+     instead of dropping back to the body face at every section head. */
+  #main h1,#main h2{font-family:var(--display-serif);font-weight:var(--w-regular);
+    text-transform:none;letter-spacing:var(--track-tight);line-height:var(--lh-snug)}
+  #main h1{font-size:clamp(36px,5.4vw,62px);line-height:var(--lh-tight)}
+  /* lux-plus paints a text-shadow on every body.pro h1. On a headline carrying a
+     background-clip:text span that shadow prints straight through the glyph and
+     looks broken — so the one gilt headline on this page opts out. */
+  #main>header h1{text-shadow:none}
+
   .tool{display:flex;flex-direction:column;padding:var(--s5)}
   .tool h3{margin:0 0 var(--s3);font-size:var(--t-h3)}
   .tool>p{color:var(--muted);font-size:var(--t-small);flex:1;margin:0}
@@ -42,7 +58,17 @@
   a.tool:hover .go{color:var(--gold)}
   .disclosure{margin-top:var(--s5);padding:var(--s4);border:1px solid var(--line-soft);
     border-radius:var(--radius);color:var(--muted);font-size:var(--t-small)}
-  .grp-head p{color:var(--muted);font-size:var(--t-small);max-width:56ch}
+  /* `.grp-head p` (0,1,1) was outranking `.eyebrow` (0,1,0), so every numbered
+     eyebrow on this page was silently rendering as muted body copy instead of
+     gold small-caps. The :not() restores the eyebrow and keeps the framing line. */
+  .grp-head{display:flex;flex-wrap:wrap;gap:var(--s3);align-items:baseline;
+    justify-content:space-between}
+  .grp-head p:not(.eyebrow){color:var(--muted);font-size:var(--t-small);max-width:56ch}
+  .hero-proof{margin-top:var(--s5);font-family:var(--mono);font-size:var(--t-caption);
+    color:var(--ink-3);letter-spacing:.02em}
+  .why{margin-top:var(--s7);color:var(--ink-2);font-size:var(--t-small);
+    max-width:var(--measure);line-height:var(--lh-body)}
+  .dh-cta__sub a{color:var(--gold-ink)}
   .tool .meta{margin-top:var(--s3);font-family:var(--mono);font-size:var(--t-micro);
     line-height:1.7;color:var(--faint)}
   .tool .meta b{color:var(--muted);font-weight:600}
@@ -56,15 +82,16 @@
   .geo-qa{padding:var(--s5)}
   .geo-qa h3{font-size:var(--t-h3);margin:0 0 var(--s3)}
   .geo-qa p{color:var(--muted);font-size:var(--t-small);margin:0}
-  .note{margin-top:var(--s5);padding:var(--s4);border-left:3px solid var(--gold-dim);
-    color:var(--muted);font-size:var(--t-small)}
-  .note a,.disclosure a,.grp-head a,.tool-links a{color:var(--gold-2)}
+  /* Honesty furniture uses the shared component, not a local lookalike, so the
+     limits on this page read the same as the ones on research.html. */
+  .dh-note{margin-top:var(--s5);max-width:var(--measure-wide)}
+  .dh-note a,.disclosure a,.grp-head a,.tool-links a{color:var(--gold-2)}
   .tool-links{margin-top:var(--s5);font-size:var(--t-small);color:var(--muted)}
 </style>
 <!-- geo:entity — canonical Person node, one entity across every page -->
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebPage","@id":"https://yusuf-gadelrab.github.io/stack.html#webpage","url":"https://yusuf-gadelrab.github.io/stack.html","inLanguage":"en","isPartOf":{"@id":"https://yusuf-gadelrab.github.io/#website"},"about":{"@id":"https://yusuf-gadelrab.github.io/#person"},"publisher":{"@id":"https://yusuf-gadelrab.github.io/#person"}}</script>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://yusuf-gadelrab.github.io/"},{"@type":"ListItem","position":2,"name":"Stack"}]}</script>
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","@id":"https://yusuf-gadelrab.github.io/stack.html#faq","mainEntity":[{"@type":"Question","name":"What tools do you actually use every day?","acceptedAnswer":{"@type":"Answer","text":"Trading runs on TradingView for charts, Alpaca for the broker API, and a screener I wrote myself. Code runs on Claude Code, a local model served by Ollama, uv for Python, and Bun for JavaScript. Everything else on this page is a supplement, not software."}},{"@type":"Question","name":"Why use uv instead of pip?","acceptedAnswer":{"@type":"Answer","text":"Speed, and one less decision. uv resolves and installs an environment in seconds where pip took minutes, and a single binary covers what pip, venv and pyenv used to do separately. Every Python project I own now starts with uv, and nothing has made me want pip back."}},{"@type":"Question","name":"Why use Bun instead of Node and npm?","acceptedAnswer":{"@type":"Answer","text":"One binary covers install, run, test and bundle, so there is no separate package manager, test runner and bundler to keep in sync. It is fast enough that install time stopped being something I think about, which is the whole point of a runtime choice."}},{"@type":"Question","name":"Why run a local LLM instead of paying for an API?","acceptedAnswer":{"@type":"Answer","text":"Because the bulk of the work is not hard, it is just long. Drafting and rewriting passes run overnight on a mixture-of-experts model served by Ollama on my own machine: nothing per token, and the data never leaves the laptop. Frontier reasoning still goes to a hosted model. The local one handles volume, not judgement."}},{"@type":"Question","name":"How much does this stack cost to run?","acceptedAnswer":{"@type":"Answer","text":"Most of it is free. uv, Bun, Ollama and the open-weight models cost nothing, Alpaca's API and paper environment are free, TradingView has a free plan, and the screener is mine. The line that genuinely costs money is the coding agent, which has no free tier. Money is tight, so the rule is simple: stay on the free tier until it blocks something real."}},{"@type":"Question","name":"What broker API do you use for automated trading?","acceptedAnswer":{"@type":"Answer","text":"Alpaca. The paper environment is real and free, the REST endpoints are clean, and it is an official API rather than a reverse-engineered one. That last part matters: unofficial brokerage APIs get accounts restricted and usually have no paper mode at all."}},{"@type":"Question","name":"Are the links on this page affiliate links?","acceptedAnswer":{"@type":"Answer","text":"Some of them may become affiliate links, which means I could earn a commission at no extra cost to you. Nothing is on this list because of a payout. Every item is something I already use, and the free-versus-paid note next to each one stays honest either way."}}]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","@id":"https://yusuf-gadelrab.github.io/stack.html#faq","mainEntity":[{"@type":"Question","name":"What tools do you actually use every day?","acceptedAnswer":{"@type":"Answer","text":"Trading research runs on TradingView for charts and a screener I wrote myself, with the execution engine built against Alpaca's API. Code runs on Claude Code, a local model served by Ollama, uv for Python, and Bun for JavaScript. Everything else on this page is a supplement, not software."}},{"@type":"Question","name":"Why use uv instead of pip?","acceptedAnswer":{"@type":"Answer","text":"Speed, and one less decision. uv resolves and installs an environment in seconds where pip took minutes, and a single binary covers what pip, venv and pyenv used to do separately. Every Python project I own now starts with uv, and nothing has made me want pip back."}},{"@type":"Question","name":"Why use Bun instead of Node and npm?","acceptedAnswer":{"@type":"Answer","text":"One binary covers install, run, test and bundle, so there is no separate package manager, test runner and bundler to keep in sync. It is fast enough that install time stopped being something I think about, which is the whole point of a runtime choice."}},{"@type":"Question","name":"Why run a local LLM instead of paying for an API?","acceptedAnswer":{"@type":"Answer","text":"Because the bulk of the work is not hard, it is just long. Drafting and rewriting passes run overnight on a mixture-of-experts model served by Ollama on my own machine: nothing per token, and the data never leaves the laptop. Frontier reasoning still goes to a hosted model. The local one handles volume, not judgement."}},{"@type":"Question","name":"How much does this stack cost to run?","acceptedAnswer":{"@type":"Answer","text":"Most of it is free. uv, Bun, Ollama and the open-weight models cost nothing, Alpaca's API and paper environment are free, TradingView has a free plan, and the screener is mine. The line that genuinely costs money is the coding agent, which has no free tier. Money is tight, so the rule is simple: stay on the free tier until it blocks something real."}},{"@type":"Question","name":"What broker API do you use for automated trading?","acceptedAnswer":{"@type":"Answer","text":"Alpaca. The paper environment is real and free, the REST endpoints are clean, and it is an official API rather than a reverse-engineered one. That last part matters: unofficial brokerage APIs get accounts restricted and usually have no paper mode at all."}},{"@type":"Question","name":"Are the links on this page affiliate links?","acceptedAnswer":{"@type":"Answer","text":"Some of them may become affiliate links, which means I could earn a commission at no extra cost to you. Nothing is on this list because of a payout. Every item is something I already use, and the free-versus-paid note next to each one stays honest either way."}}]}</script>
 <link rel="alternate" type="text/plain" href="https://yusuf-gadelrab.github.io/llms-full.txt" title="Plain-text profile for language models">
 </head>
 <body class="pro">
@@ -86,20 +113,66 @@
 
   <header class="section">
     <img class="page-lion" src="/img/brand/lion-mark.svg" alt="" width="46" height="46" decoding="async">
-    <p class="eyebrow">DHAHAB · ذهب</p>
-    <h1 style="margin:var(--s4) 0">My Stack</h1>
+    <p class="eyebrow">DHAHAB · <span lang="ar" dir="rtl">ذهب</span> · Stack</p>
+    <h1 style="margin:var(--s4) 0">The stack I <span class="lxp-gilt">actually</span> use.</h1>
     <p class="lead">The real tools behind the trading, the code, and the cut — no fluff, only what I use daily.</p>
-    <p style="color:var(--muted);max-width:62ch;margin-top:var(--s4)">Most "my stack" pages are a logo wall. This one is the honest version: for every tool, what it replaced, why it stayed, and what it costs. Money is tight, so the default is the free tier until it blocks something real — and the ledger further down shows exactly where that rule breaks.</p>
+    <p style="color:var(--muted);max-width:62ch;margin-top:var(--s4)">Most "my stack" pages are a logo wall. This one is the honest version: for every tool, what it replaced, why it stayed, what it costs, and what adopting it cost me. Money is tight, so the default is the free tier until it blocks something real — and the ledger further down shows exactly where that rule breaks.</p>
+    <p class="hero-proof">11 line items · 6 free · 5 paid · one software subscription, four consumables</p>
     <p class="disclosure">Some links may become affiliate links, meaning I may earn a commission at no extra cost to you. I only list what I genuinely use, and the free-versus-paid note stays honest either way. Details: <a href="/terms.html">Terms</a> · <a href="/privacy.html">Privacy</a></p>
   </header>
+
+  <hr class="divider">
+
+  <!-- ============ AT A GLANCE ============ -->
+  <section class="section section--tight" id="glance">
+    <div class="grp-head">
+      <div>
+        <p class="eyebrow">01 · At a glance</p>
+        <h2>What it costs to run</h2>
+      </div>
+      <p>Four numbers, each one checkable against the ledger in section 05.</p>
+    </div>
+
+    <div class="dh-stats" style="margin-top:var(--s6)">
+      <div class="dh-stat">
+        <span class="dh-stat__v dh-num">7</span>
+        <span class="dh-stat__k">Software tools in the daily rotation — the complete list, not a highlight reel</span>
+        <span class="dh-stat__src">Sections 02–03 on this page</span>
+      </div>
+      <div class="dh-stat">
+        <span class="dh-stat__v dh-num">1</span>
+        <span class="dh-stat__k">Of them has no free tier at all — the coding agent</span>
+        <span class="dh-stat__src">The ledger, section 05</span>
+      </div>
+      <div class="dh-stat">
+        <span class="dh-stat__v dh-num">30B</span>
+        <span class="dh-stat__k">Parameter mixture-of-experts model, served locally on hardware I already own</span>
+        <span class="dh-stat__src">Ollama + qwen3, section 03</span>
+      </div>
+      <div class="dh-stat">
+        <span class="dh-stat__v dh-num">$0</span>
+        <span class="dh-stat__k">Per-token cost of the overnight drafting pass, because it never leaves the laptop</span>
+        <span class="dh-stat__src">Same local model — open weights</span>
+      </div>
+    </div>
+
+    <aside class="dh-quote" style="margin-top:var(--s7)">
+      <p>Stay on the free tier until it blocks something real.</p>
+      <span class="dh-quote__by">The rule every line on this page was chosen against</span>
+    </aside>
+
+    <p class="why">A tool earns a place here by replacing something specific, and it keeps that place only if I can say plainly what adopting it cost me. So every card carries a <b>tradeoff</b> line. Where a choice is genuinely opinionated — a young package manager, a runtime that is not quite Node, a local model measurably weaker than the hosted one — the cost of being wrong is written on the card rather than left for you to discover.</p>
+  </section>
 
   <hr class="divider">
 
   <!-- ============ TRADING ============ -->
   <section class="section section--tight">
     <div class="grp-head">
-      <p class="eyebrow">01 · Trading</p>
-      <h2>Markets</h2>
+      <div>
+        <p class="eyebrow">02 · Trading</p>
+        <h2>Markets</h2>
+      </div>
       <p>Charting, execution, and the screener I built when nothing off the shelf did what I needed.</p>
     </div>
 
@@ -108,21 +181,21 @@
       <a class="card tool" data-link="tradingview" href="https://www.tradingview.com/" target="_blank" rel="noopener">
         <h3>TradingView</h3>
         <p>Every chart I post starts here — it's the only platform where my anchored-VWAP workflows feel native instead of bolted on. The free plan already covers the workflow; the paid tiers mostly buy more indicators per chart and better alerting, neither of which has blocked me yet.</p>
-        <span class="meta"><b>Replaced:</b> broker-native charting<br><b>Cost:</b> free plan, paid tiers optional</span>
+        <span class="meta"><b>Replaced:</b> broker-native charting<br><b>Cost:</b> free plan, paid tiers optional<br><b>Tradeoff:</b> the layouts live on someone else's platform. The analysis is portable; the workspace is not.</span>
         <span class="go">tradingview.com →</span>
       </a>
 
       <a class="card tool" data-link="alpaca" href="https://alpaca.markets/" target="_blank" rel="noopener">
         <h3>Alpaca</h3>
-        <p>The broker API behind my automated paper-trading engine — clean REST endpoints and a real free paper environment, so I can test execution logic without risking a dollar. The part that decided it: it's an <em>official</em> API. Reverse-engineered brokerage APIs get accounts restricted and usually have no paper mode at all.</p>
-        <span class="meta"><b>Replaced:</b> unofficial broker APIs<br><b>Cost:</b> free API, free paper trading</span>
+        <p>The broker API my execution engine is built against — clean REST endpoints and a real free paper environment for testing execution logic without risking a dollar. The part that decided it: it's an <em>official</em> API. Reverse-engineered brokerage APIs get accounts restricted and usually have no paper mode at all.</p>
+        <span class="meta"><b>Replaced:</b> unofficial broker APIs<br><b>Cost:</b> free API, free paper trading<br><b>Tradeoff:</b> an official API covers fewer venues than a reverse-engineered one. I would rather lose coverage than lose the account.</span>
         <span class="go">alpaca.markets →</span>
       </a>
 
       <a class="card tool" data-link="screener" href="/swing-screener.html">
         <h3>Swing Screener</h3>
         <p>My own CLI: scans a watchlist for AVWAP-reclaim setups and backtests them with no lookahead — I built it, then used it to break my own edge. The walk-forward result is on the build page, including the part where the headline number did not survive.</p>
-        <span class="meta"><b>Replaced:</b> paid stock screeners<br><b>Cost:</b> free — I wrote it</span>
+        <span class="meta"><b>Replaced:</b> paid stock screeners<br><b>Cost:</b> free — I wrote it<br><b>Tradeoff:</b> one maintainer. When it breaks it breaks on my time, and there is nobody to escalate to.</span>
         <span class="go">Read the build →</span>
       </a>
 
@@ -130,7 +203,7 @@
 
     <p class="tool-links">Deeper on this section: <a href="/guides/alpaca-vs-interactive-brokers-vs-robinhood.html">Alpaca vs Interactive Brokers vs Robinhood</a> · <a href="/guides/anchored-vwap.html">Anchored VWAP</a> · <a href="/guides/walk-forward-backtest.html">Walk-forward backtesting</a> · <a href="/guides/paper-to-live-trading.html">Paper to live</a> · <a href="/trading-bot.html">the execution engine</a> · <a href="/risk-tools.html">free risk calculators</a></p>
 
-    <p class="note"><b>Risk disclaimer:</b> nothing on this page is financial advice. The trading tools listed here are what I use for research and paper trading; markets carry real risk of loss and past results — mine included — do not predict future ones. My own AVWAP-reclaim result is <b>not</b> a validated edge: +0.117R over 4,933 trades, 95% CI [+0.057R, +0.174R], against a risk-matched random entry that already captured +0.086R, leaving the signal's own contribution at +0.030R with a confidence interval crossing zero.</p>
+    <p class="dh-note"><b>Risk disclaimer:</b> nothing on this page is financial advice. The trading tools listed here are what I use for research and paper trading; markets carry real risk of loss and past results — mine included — do not predict future ones. My own AVWAP-reclaim result is <b>not</b> a validated edge: +0.117R over 4,933 trades, 95% CI [+0.057R, +0.174R], against a risk-matched random entry that already captured +0.086R, leaving the signal's own contribution at +0.030R with a confidence interval crossing zero.</p>
   </section>
 
   <hr class="divider">
@@ -138,8 +211,10 @@
   <!-- ============ AI & CODE ============ -->
   <section class="section section--tight">
     <div class="grp-head">
-      <p class="eyebrow">02 · AI &amp; Code</p>
-      <h2>The dev stack</h2>
+      <div>
+        <p class="eyebrow">03 · AI &amp; Code</p>
+        <h2>The dev stack</h2>
+      </div>
       <p>Agents where they earn their keep, local models where they don't, and tooling that never makes me wait.</p>
     </div>
 
@@ -148,28 +223,28 @@
       <a class="card tool" data-link="claudecode" href="https://claude.com/claude-code" target="_blank" rel="noopener">
         <h3>Claude Code</h3>
         <p>My daily driver for agent workflows — it runs my nightly automation, drafts my outreach pipelines, and ships most of the code on this site. It is also the only line on this page with no free tier, which is precisely why the local model exists: anything that is volume rather than judgement gets routed away from it.</p>
-        <span class="meta"><b>Replaced:</b> writing boilerplate by hand<br><b>Cost:</b> paid — no free tier</span>
+        <span class="meta"><b>Replaced:</b> writing boilerplate by hand<br><b>Cost:</b> paid — no free tier<br><b>Tradeoff:</b> the more it writes, the less of it I have read line by line. Anything that ships gets reviewed as if a stranger wrote it, because one did.</span>
         <span class="go">claude.com/claude-code →</span>
       </a>
 
       <a class="card tool" data-link="ollama" href="https://ollama.com/" target="_blank" rel="noopener">
         <h3>Ollama + qwen3</h3>
         <p>A local 30B mixture-of-experts model on my own machine handles the bulk drafting work overnight — nothing per token, the data never leaves my laptop, and it keeps running when the network doesn't. It is not as sharp as a frontier model. That's the trade, and I make it on purpose for work that is long rather than hard.</p>
-        <span class="meta"><b>Replaced:</b> metered API calls for bulk drafting<br><b>Cost:</b> free — open weights, runs on hardware I own</span>
+        <span class="meta"><b>Replaced:</b> metered API calls for bulk drafting<br><b>Cost:</b> free — open weights, runs on hardware I own<br><b>Tradeoff:</b> measurably weaker reasoning. Nothing it writes goes out unreviewed, and anything needing judgement goes back to the hosted model.</span>
         <span class="go">ollama.com →</span>
       </a>
 
       <a class="card tool" data-link="uv" href="https://docs.astral.sh/uv/" target="_blank" rel="noopener">
         <h3>uv</h3>
         <p>Replaced pip entirely for me — environments and installs resolve in seconds instead of minutes, which matters when every project is Python. One binary now covers what pip, venv and pyenv used to do separately. Nothing since has made me want pip back.</p>
-        <span class="meta"><b>Replaced:</b> pip + venv + pyenv<br><b>Cost:</b> free, open source</span>
+        <span class="meta"><b>Replaced:</b> pip + venv + pyenv<br><b>Cost:</b> free, open source<br><b>Tradeoff:</b> a young tool from one vendor. Betting on it is only safe because switching back to pip costs an afternoon.</span>
         <span class="go">astral.sh/uv →</span>
       </a>
 
       <a class="card tool" data-link="bun" href="https://bun.sh/" target="_blank" rel="noopener">
         <h3>Bun</h3>
         <p>My default JS runtime and package manager — one binary covers install, run, test, and bundle, and it's fast enough that I stopped thinking about it. No separate package manager, test runner and bundler to keep in version-sync with each other.</p>
-        <span class="meta"><b>Replaced:</b> Node + npm on my own projects<br><b>Cost:</b> free, open source</span>
+        <span class="meta"><b>Replaced:</b> Node + npm on my own projects<br><b>Cost:</b> free, open source<br><b>Tradeoff:</b> Node compatibility is close, not total — which is why it is scoped to <em>my own</em> projects. Anything that has to run in someone else's CI still targets Node.</span>
         <span class="go">bun.sh →</span>
       </a>
 
@@ -183,8 +258,10 @@
   <!-- ============ THE CUT ============ -->
   <section class="section section--tight">
     <div class="grp-head">
-      <p class="eyebrow">03 · The Cut</p>
-      <h2>Supplements</h2>
+      <div>
+        <p class="eyebrow">04 · The Cut</p>
+        <h2>Supplements</h2>
+      </div>
       <p>The short list behind the 260→200 lb cut. Categories only — I'll name brands when I've vetted the deals, not before.</p>
     </div>
 
@@ -193,28 +270,28 @@
       <a class="card tool" data-link="creatine" href="https://www.amazon.com/s?k=creatine+monohydrate" target="_blank" rel="noopener">
         <h3>Creatine Monohydrate</h3>
         <p>The one supplement I never skip — 5g daily kept my lifts from falling off a cliff while cutting hard. Plain monohydrate, not a branded blend; the fancier forms cost more per gram to do the same job.</p>
-        <span class="meta"><b>Replaced:</b> nothing — it was always first<br><b>Cost:</b> paid, cheapest item on the page per month</span>
+        <span class="meta"><b>Replaced:</b> nothing — it was always first<br><b>Cost:</b> paid, cheapest item on the page per month<br><b>Tradeoff:</b> the scale jumps in week one. That is water, not fat, and it panics people who do not expect it.</span>
         <span class="go">Shop creatine →</span>
       </a>
 
       <a class="card tool" data-link="whey" href="https://www.amazon.com/s?k=whey+protein" target="_blank" rel="noopener">
         <h3>Whey Protein</h3>
         <p>Hitting protein targets in a deficit is the whole game — a shake covers the gap on days when food alone can't. It is a convenience, not a requirement: if you can hit the number with food, skip it and save the money.</p>
-        <span class="meta"><b>Replaced:</b> nothing food couldn't do, on a good day<br><b>Cost:</b> paid, the largest monthly line here</span>
+        <span class="meta"><b>Replaced:</b> nothing food couldn't do, on a good day<br><b>Cost:</b> paid, the largest monthly line here<br><b>Tradeoff:</b> it is convenience, not nutrition. Hit the protein number with food and this line disappears.</span>
         <span class="go">Shop whey →</span>
       </a>
 
       <a class="card tool" data-link="fishoil" href="https://www.amazon.com/s?k=fish+oil+omega+3" target="_blank" rel="noopener">
         <h3>Fish Oil</h3>
         <p>Cheap insurance for joints that take a beating from lifting and years of football and wrestling. This is the one I would drop first if the budget got tighter — I keep it because it is a few dollars a month, not because I can point at a measurement.</p>
-        <span class="meta"><b>Replaced:</b> nothing<br><b>Cost:</b> paid, a few dollars a month</span>
+        <span class="meta"><b>Replaced:</b> nothing<br><b>Cost:</b> paid, a few dollars a month<br><b>Tradeoff:</b> I cannot point at a measurement for it. It survives on price alone, and it is first out if the budget tightens.</span>
         <span class="go">Shop fish oil →</span>
       </a>
 
       <a class="card tool" data-link="magnesium" href="https://www.amazon.com/s?k=magnesium+glycinate" target="_blank" rel="noopener">
         <h3>Magnesium Glycinate</h3>
         <p>Taken before bed for sleep quality — the glycinate form because it doesn't wreck my stomach like the cheap oxide stuff. That difference is the whole reason to pay a little more here instead of buying the biggest bottle.</p>
-        <span class="meta"><b>Replaced:</b> magnesium oxide<br><b>Cost:</b> paid, modest</span>
+        <span class="meta"><b>Replaced:</b> magnesium oxide<br><b>Cost:</b> paid, modest<br><b>Tradeoff:</b> dearer per gram than the oxide. I pay it for a stomach that tolerates the dose, not for a better mineral.</span>
         <span class="go">Shop magnesium →</span>
       </a>
 
@@ -222,7 +299,7 @@
 
     <p class="tool-links">The part that actually moved the number: <a href="/guides/cut-calorie-math.html">the calorie math behind the cut</a> · <a href="/guides/weight-tracking-signal-vs-noise.html">weight tracking, signal vs noise</a> · <a href="/apps/cut/">the free offline weight tracker I built</a></p>
 
-    <p class="note"><b>Not medical advice.</b> This is what I take, not a recommendation for you. Supplements are the smallest lever in a cut — sleep, calories and protein do the work. Talk to a doctor before adding anything, especially if you take medication.</p>
+    <p class="dh-note"><b>Not medical advice.</b> This is what I take, not a recommendation for you. Supplements are the smallest lever in a cut — sleep, calories and protein do the work. Talk to a doctor before adding anything, especially if you take medication.</p>
   </section>
 
   <hr class="divider">
@@ -230,12 +307,14 @@
   <!-- ============ THE LEDGER ============ -->
   <section class="section section--tight">
     <div class="grp-head">
-      <p class="eyebrow">04 · The money</p>
-      <h2>Free vs paid — the actual ledger</h2>
+      <div>
+        <p class="eyebrow">05 · The money</p>
+        <h2>Free vs paid — the actual ledger</h2>
+      </div>
       <p>Every tool above, with what it replaced and whether it costs anything. No "pro tier recommended" hedging.</p>
     </div>
 
-    <div class="table-wrap" style="margin-top:var(--s6)">
+    <div class="dh-scroll" style="margin-top:var(--s6)" tabindex="0" role="region" aria-label="Free vs paid tool ledger">
       <table class="ledger">
         <thead>
           <tr><th scope="col">Tool</th><th scope="col">What it replaced</th><th scope="col">Free tier</th><th scope="col">What paying actually buys</th></tr>
@@ -253,7 +332,7 @@
       </table>
     </div>
 
-    <p class="note"><b>The rule:</b> stay on the free tier until it blocks something real. Most "pro" upgrades buy convenience, not capability, and convenience is the cheapest thing to live without when you are a student. The one exception is the coding agent — and even there, everything that is volume rather than judgement gets routed to the local model so it never touches a metered API. Longer version: <a href="/guides/free-vs-paid-student-tools.html">free vs paid tools for students</a>.</p>
+    <p class="dh-note"><b>The rule:</b> stay on the free tier until it blocks something real. Most "pro" upgrades buy convenience, not capability, and convenience is the cheapest thing to live without when you are a student. The one exception is the coding agent — and even there, everything that is volume rather than judgement gets routed to the local model so it never touches a metered API. Longer version: <a href="/guides/free-vs-paid-student-tools.html">free vs paid tools for students</a>.</p>
   </section>
 
   <hr class="divider">
@@ -261,14 +340,16 @@
   <!-- geo:faq-visible — mirrors the FAQPage structured data in the head -->
   <section class="section section--tight" id="faq">
     <div class="grp-head">
-      <p class="eyebrow">05 · FAQ</p>
-      <h2>Questions I get about this stack</h2>
+      <div>
+        <p class="eyebrow">06 · FAQ</p>
+        <h2>Questions I get about this stack</h2>
+      </div>
       <p>More of the reasoning is written up in the <a href="/guides.html">guides</a>, and the things I built with this stack are on the <a href="/apps.html">apps page</a>.</p>
     </div>
     <div class="grid" style="margin-top:var(--s6)">
       <article class="card geo-qa">
         <h3>What tools do you actually use every day?</h3>
-        <p>Trading runs on TradingView for charts, Alpaca for the broker API, and a screener I wrote myself. Code runs on Claude Code, a local model served by Ollama, uv for Python, and Bun for JavaScript. Everything else on this page is a supplement, not software.</p>
+        <p>Trading research runs on TradingView for charts and a screener I wrote myself, with the execution engine built against Alpaca's API. Code runs on Claude Code, a local model served by Ollama, uv for Python, and Bun for JavaScript. Everything else on this page is a supplement, not software.</p>
       </article>
       <article class="card geo-qa">
         <h3>Why use uv instead of pip?</h3>
@@ -297,6 +378,22 @@
     </div>
   </section>
 
+  <hr class="divider">
+
+  <section class="section section--tight">
+    <div class="dh-cta">
+      <div class="dh-cta__copy">
+        <p class="dh-cta__title">Want this stack pointed at your problem?</p>
+        <p class="dh-cta__sub">Same tools, same rule — free tier until it blocks something real, and the tradeoff stated up front. Recruiting instead? The full background is on <a href="/about.html">the about page</a>.</p>
+      </div>
+      <div class="dh-cta__act">
+        <a class="btn btn-gold" href="/hire.html">Work with me →</a>
+        <a class="btn btn-ghost" href="/apps.html">Try the free apps</a>
+        <a class="btn btn-ghost" href="/guides.html">Read the guides</a>
+      </div>
+    </div>
+  </section>
+
 </main>
 
 <footer class="site-footer">
@@ -305,7 +402,7 @@
     <a href="/faq.html">FAQ</a>
     <a href="/writing.html">Writing</a>
     <a href="/dispatch.html">Dispatch</a>
-    <a href="/eh.html">eh</a>
+    <a href="/eh.html">eh<span class="sr-only"> — the unserious page</span></a>
     <a href="/">Work</a>
     <a href="/resume.html">Resume</a>
     <a href="/hire.html">Hire</a>
@@ -347,5 +444,6 @@
 </script>
 <script src="/js/site.js" defer></script>
 <script src="/js/lux-motion.js" defer></script>
+<script src="/js/lux-plus.js" defer></script>
 </body>
 </html>
