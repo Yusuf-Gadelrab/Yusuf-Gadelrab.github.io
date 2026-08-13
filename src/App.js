@@ -143,7 +143,7 @@ const siteData = {
       tag: 'Research',
       image: '',
       bullets: [
-        'Measured statistically significant pre-to-post gains in programming confidence across 60 SJSU students by co-designing and analyzing pre/post surveys for a bilingual programming workshop on the Hedy multilingual platform; novice learners gained significantly more than experienced ones.',
+        'Co-designed and analyzed pre/post surveys measuring confidence, computing identity, enjoyment, and motivation for a 60-bilingual-participant programming workshop on the Hedy multilingual platform, with novice participants showing the largest confidence gains. See the published poster abstract and the accepted SIGCSE Virtual 2026 paper for the full methodology and results.',
         'Expanded CS accessibility for underrepresented learners by facilitating 3+ inclusive-computing workshops and conducting qualitative research on structural barriers.',
       ],
     },
@@ -185,14 +185,35 @@ const siteData = {
   research: [
     {
       title: 'Exploring Bilingual Coding for Inclusive Computer Science Learning',
-      venue: 'SIGCSE TS 2026 · ACM · 2 pages',
-      role: 'Co-Author',
+      venue: 'SIGCSE TS 2026 · 57th ACM Technical Symposium on Computer Science Education · Posters track',
+      role: 'Co-author (7th of 9 authors)',
       image: '',
       link: 'https://dl.acm.org/doi/10.1145/3770761.3777339',
       abstract:
-        'Investigated how bilingual programming workshops influence student attitudes, perceived understanding, and comfort. Across 60 SJSU participants (40 novice, 20 experienced) using the multilingual Hedy platform, novice learners showed the largest gains in confidence and enjoyment. Contributed to survey design and mixed-methods analysis; pre-to-post gains in confidence, computing identity, enjoyment and motivation were statistically significant.',
+        'A poster examining bilingual coding for more inclusive computer science learning. The study included 60 bilingual participants (40 novice, 20 experienced) on the multilingual Hedy platform, measuring confidence, computing identity, enjoyment, and motivation before and after; novice participants showed the largest confidence gains. I contributed to survey design and mixed-methods analysis. See the published poster abstract for the full methodology and results.',
       citation:
-        'Tshukudu, E., Shah, N., Kieu, T., Deeb, L., Venkateswaran, H., Ghai, A., Gadelrab, Y., & Hada, P. (2026). "Exploring Bilingual Coding for Inclusive Computer Science Learning." SIGCSE TS 2026, ACM. doi.org/10.1145/3770761.3777339',
+        'Tshukudu, Shah, Kieu, Deeb, Venkateswaran, Ghai, Gadelrab, Nagesh, & Hada (2026). "Exploring Bilingual Coding for Inclusive Computer Science Learning." SIGCSE TS 2026, ACM, pp. 1559–1560. doi.org/10.1145/3770761.3777339',
+    },
+    {
+      title: 'Does Language Matter in Programming? Exploring Student Attitudes and Experiences in a Bilingual Coding Workshop',
+      venue: 'SIGCSE Virtual 2026 · CER Papers track',
+      role: 'Co-author (5th of 5 authors)',
+      image: '',
+      link: '',
+      abstract:
+        'The full study introduced by the poster above: a two-hour bilingual coding workshop for the same 60 SJSU participants (40 novice, 20 experienced) on the multilingual Hedy platform, using pre/post surveys with the Attitudes Toward Computing Scale plus open-ended questions. Novice participants gained more in confidence and enjoyment; experienced programmers showed smaller gains and preferred coding in English. Accepted; ACM has not yet assigned a DOI.',
+      citation:
+        'Tshukudu, E., Kieu, T., Deeb, L., Venkateswaran, H., & Gadelrab, Y. (2026). "Does Language Matter in Programming? Exploring Student Attitudes and Experiences in a Bilingual Coding Workshop." SIGCSE Virtual 2026, ACM. DOI not yet assigned.',
+    },
+    {
+      title: 'SJSU 21st Annual Student Research Day — Poster #73',
+      venue: 'San José State University Student Research Day',
+      role: 'Co-author (5th of 11 authors)',
+      image: '',
+      link: '',
+      abstract:
+        'A poster presentation of the same bilingual-coding-education research at SJSU’s campus-wide Student Research Day.',
+      citation: 'SJSU 21st Annual Student Research Day, Poster #73 (2026).',
     },
   ],
   projects: [
