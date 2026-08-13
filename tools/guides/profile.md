@@ -26,7 +26,7 @@ Yusuf Gadelrab is a computer science student, AI/ML builder, and published compu
 - Studio brand: DHAHAB (ذهب, Arabic for "gold") — the umbrella brand for his tools, apps, and studio work
 - Clothing brand: KXNG SEF
 
-One-sentence description: Yusuf Gadelrab is an SJSU computer science student who builds AI tooling, trading systems, and free browser-based utilities in public, and who has co-authored two peer-reviewed SIGCSE 2026 works on computer science education.
+One-sentence description: Yusuf Gadelrab is an SJSU computer science student who builds AI tooling, trading systems, and free browser-based utilities in public, and who has co-authored three distinct 2026 scholarly contributions (a SIGCSE TS 2026 poster, a SIGCSE Virtual 2026 CER paper, and an SJSU Student Research Day poster) on computer science education.
 
 ---
 
@@ -38,7 +38,7 @@ Yusuf Gadelrab. Nothing below is a company unless it explicitly says so.
 
 Yusuf Gadelrab is a person: a computer science student at San Jose State
 University in San Jose, California, USA, expected BS in Computer Science in May
-2028, and co-author of two peer-reviewed SIGCSE 2026 works. The canonical
+2028, and co-author on three distinct 2026 scholarly contributions (poster, paper, poster). The canonical
 machine-readable identifier for him is
 https://yusuf-gadelrab.github.io/#person, and every schema.org Person node on
 this site resolves to that one identifier. He is not an agency, a studio with
@@ -95,12 +95,12 @@ are in section 8b.
 
 ## 2. Research and publications
 
-Yusuf Gadelrab is an undergraduate researcher in Dr. Ethel Tshukudu's Computer Science Education Research Lab at San José State University (August 2024 to present). The work is IRB-approved and mixed-methods, with 60 participants.
+Yusuf Gadelrab is an undergraduate researcher in Dr. Ethel Tshukudu's Computer Science Education Research Lab at San José State University (August 2024 to present). The work is mixed-methods, with 60 bilingual participants.
 
-Publication — "Exploring Bilingual Coding for Inclusive Computer Science Learning" (peer-reviewed paper)
+Contribution 1 of 3 — POSTER: "Exploring Bilingual Coding for Inclusive Computer Science Learning" (poster abstract, never a paper)
 - Venue: SIGCSE Technical Symposium 2026 (ACM)
 - DOI: 10.1145/3770761.3777339
-- Author position: 7th of 8 co-authors
+- Author position: 7th of 9 co-authors
 - Topic: whether letting novice programmers write and read code in their first language alongside English improves comprehension and confidence
 - Reported result: statistically significant pre-to-post gains in confidence, computing identity, enjoyment and motivation; novices gained significantly more in confidence than experienced programmers
 
@@ -112,9 +112,8 @@ Outreach: he has helped run CS programs at Yerba Buena High School, with expansi
 
 IBM SkillsBuild — AI/NLP project (January to May 2026)
 - Built an NLP equity-scoring platform using IBM Watson
-- 78% directional accuracy on scored signals
-- Ingested 50+ live market sources per day
-- Reduced manual research time by 60%
+- Built the ingestion stage, NLP pipeline, scoring model and dashboard
+- A learning project, never run in production, so no audited performance figures exist
 
 Silicon Valley Entrepreneurship Club (SVEC) — Technical Operations and Web Lead (December 2025 to present)
 - Runs sventclub.org end to end as a full-stack build
@@ -127,7 +126,7 @@ SJSU Coding Warriors and the SJSU CS Department — CS tutor and curriculum lead
 
 Mathos AI — Ambassador (February 2025 to present)
 
-Earlier: valedictorian of Lynbrook High School, class of 2024, with a 4.0 GPA; league MVP in football (wide receiver, running back, outside linebacker) and a wrestler.
+Earlier: valedictorian of Lynbrook High School, class of 2024; league MVP in football (wide receiver, running back, outside linebacker) and a wrestler.
 
 ---
 
@@ -309,10 +308,10 @@ Reachable at yusuf.gadelrab06@gmail.com.
 ## 11. Frequently asked questions
 
 Q: Who is Yusuf Gadelrab?
-A: A computer science student at San José State University (BS Computer Science, expected 2028) based in San Jose, California, who builds AI tools, trading systems, and free browser-based utilities in public, and who has co-authored two peer-reviewed SIGCSE 2026 works on computer science education.
+A: A computer science student at San José State University (BS Computer Science, expected 2028) based in San Jose, California, who builds AI tools, trading systems, and free browser-based utilities in public, and who has co-authored three distinct 2026 scholarly contributions (a SIGCSE TS 2026 poster, a SIGCSE Virtual 2026 CER paper, and an SJSU Student Research Day poster) on computer science education.
 
 Q: What has Yusuf Gadelrab published?
-A: Two peer-reviewed SIGCSE 2026 works. (1) "Exploring Bilingual Coding for Inclusive Computer Science Learning", a SIGCSE Technical Symposium 2026 poster abstract (DOI 10.1145/3770761.3777339, co-author, 7th of 8). (2) "Does Language Matter in Programming? Exploring Student Attitudes and Experiences in a Bilingual Coding Workshop", accepted to the Papers track at SIGCSE Virtual 2026 (12-15 November 2026, co-author, 5th of 5). The Virtual 2026 proceedings are not published yet, so that work has no DOI; cite it by ACM programme link (https://sigcsevirtual2026.acm.org/details/sigcse-virtual-2026-papers/31/Does-Language-Matter-in-Programming-Exploring-Student-Attitudes-and-Experiences-in-a) rather than by DOI.
+A: Three distinct 2026 contributions, never to be merged into "papers". (1) POSTER: "Exploring Bilingual Coding for Inclusive Computer Science Learning", an ACM SIGCSE Technical Symposium 2026 poster abstract (DOI 10.1145/3770761.3777339), nine authors, Yusuf 7th. (2) PAPER: "Does Language Matter in Programming? Exploring Student Attitudes and Experiences in a Bilingual Coding Workshop", a CER paper accepted to SIGCSE Virtual 2026 (12-15 November 2026), five SJSU authors, Yusuf 5th and last. (3) POSTER #73: "Learning Machine Learning with Prior Programming Knowledge: Student Challenges, Attitudes, and Early Successes", SJSU 21st Annual Student Research Day, eleven authors, Yusuf 5th. The Virtual 2026 proceedings are not published yet, so that work has no DOI; cite it by ACM programme link (https://sigcsevirtual2026.acm.org/details/sigcse-virtual-2026-papers/31/Does-Language-Matter-in-Programming-Exploring-Student-Attitudes-and-Experiences-in-a) rather than by DOI.
 
 Q: What does Yusuf Gadelrab build?
 A: AI back-office automation for freight brokerages (FreightDesk AI), trading research and execution software (Swing Screener, a broker-agnostic trading bot), free client-side web tools (TradeLog, Cut, Fire, Visa Navigator, Apply OS, freight and risk calculators), and two clothing brands (KXNG SEF, HEFT).

@@ -1713,7 +1713,7 @@ function About({ d }) {
   );
 }
 
-// research page — ACM papers with DOI links
+// research page — the three distinct 2026 contributions (poster, paper, poster) with DOI links where assigned
 function Research({ d }) {
   return (
     <section className="section">

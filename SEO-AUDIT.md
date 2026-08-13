@@ -144,7 +144,7 @@ You already wrote the playbook — `tools/external-profiles.md` — and its own 
 Highest value first, roughly by domain authority and relevance:
 
 - **ACM Digital Library author profile** — you have a real DOI (`10.1145/3770761.3777339`). An ACM DL author page linking to your site is about the strongest possible signal for a CS student. Claim it.
-- **Google Scholar profile** — free, indexed fast, and it is frequently the *first* result for an academic's name. A peer-reviewed SIGCSE TS 2026 paper is enough to justify one.
+- **Google Scholar profile** — free, indexed fast, and it is frequently the *first* result for an academic's name. A co-authored SIGCSE TS 2026 poster abstract is enough to justify one.
 - **ORCID iD** — free, permanent, high-authority, and it links out to your site. Ten minutes.
 - **GitHub profile "Website" field + bio** — your `about-yusuf` notes say the bio update is still pending and needs `gh auth refresh -h github.com -s user`. GitHub profiles rank extremely well for name queries. The Website field is the single cheapest authoritative backlink you can create.
 - **`Yusuf-Gadelrab/Yusuf-Gadelrab` profile README** — copy is already drafted in `tools/external-profiles.md`.
@@ -222,7 +222,7 @@ Every post uses `og-card.png`. Per-post cards would lift click-through when thes
 
 **Then, in descending order of impact — all off-site, none of it in this repo:**
 
-3. **Google Scholar profile.** A peer-reviewed SIGCSE TS 2026 paper. Often outranks everything else for an academic name query. *(20 min)*
+3. **Google Scholar profile.** A co-authored SIGCSE TS 2026 poster abstract. Often outranks everything else for an academic name query. *(20 min)*
 4. **ORCID iD.** Free, permanent, authoritative, links to your site. *(10 min)*
 5. **ACM DL author profile.** Claim it against DOI `10.1145/3770761.3777339`. *(15 min)*
 6. **GitHub bio + Website field + profile README.** Run `gh auth refresh -h github.com -s user` first; copy is already written in `tools/external-profiles.md`. *(15 min)*

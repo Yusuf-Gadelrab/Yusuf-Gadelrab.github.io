@@ -60,7 +60,7 @@ I build AI systems for markets and classrooms — and I publish the parts that f
 - Co-author, **ACM SIGCSE TS 2026** — *Exploring Bilingual Coding for
   Inclusive Computer Science Learning* ([DOI 10.1145/3770761.3777339](https://doi.org/10.1145/3770761.3777339))
 - Built an NLP equity-scoring platform through **IBM SkillsBuild** (IBM Watson) —
-  78% directional accuracy
+  built the ingestion, NLP, scoring and dashboard stages
 - Ex-**HwyHaul** — AI freight back office covering a brokerage's AR/billing workflows, run entirely
   on local models ([case study](https://yusuf-gadelrab.github.io/hwyhaul.html))
 
@@ -109,12 +109,12 @@ math and computer science.
 
 What that has looked like so far:
 
-· Research — Co-author on a peer-reviewed ACM SIGCSE TS 2026 paper out of Dr. Ethel Tshukudu's CS
+· Research — Co-author (7th of 9) on an ACM SIGCSE TS 2026 POSTER out of Dr. Ethel Tshukudu's CS
   education research lab at SJSU, "Exploring Bilingual Coding for Inclusive Computer Science
-  Learning" (DOI: 10.1145/3770761.3777339). Mixed-methods, IRB protocol, 60 participants.
+  Learning" (DOI: 10.1145/3770761.3777339). Mixed-methods, 60 bilingual participants.
 
 · AI/ML — Built an NLP equity-scoring platform through IBM SkillsBuild on IBM Watson,
-  reaching 78% directional accuracy against a six-month backtest.
+  covering ingestion, the NLP pipeline, the scoring model and a dashboard.
 
 · Freight AI — At HwyHaul I built an AI back office covering 18 AR and billing
   workflows, tested end-to-end on local models at $0 API cost, with 77 automated tests
@@ -223,7 +223,7 @@ Register at https://orcid.org — free, takes ~5 minutes.
   match without checking it first would be a research-integrity error, not a typo.
 
 **Why it helps:** ORCID is the canonical author identifier in academic indexing. Adding
-the DOI links your name permanently to the SIGCSE paper in Crossref's graph, which is
+the DOI links your name permanently to the SIGCSE TS 2026 poster in Crossref's graph, which is
 what lets Google Scholar, Semantic Scholar, and ACM DL all agree that the "Y. Gadelrab"
 on the paper is you. This is the highest-leverage item on the page for the *research*
 half of the search footprint, and it's the one that keeps working after graduation.
@@ -242,7 +242,7 @@ to get the verified badge — use it).
   `Human-Computer Interaction`
 - Homepage: `https://yusuf-gadelrab.github.io`
 - Profile visibility: **Public**
-- Add the SIGCSE TS 2026 paper (DOI `10.1145/3770761.3777339`); turn on "Automatically
+- Add the SIGCSE TS 2026 poster (DOI `10.1145/3770761.3777339`); turn on "Automatically
   update my articles" but do **not** accept any other auto-suggested SIGCSE TS 2026
   match — a similarly-titled one exists and belongs to different authors, not him
 
@@ -341,7 +341,7 @@ skip it — submitting a speculative profile risks a rejection that's annoying t
 
 1. **GitHub profile README + Website field** — biggest single lift, ~15 minutes, and it's
    the only item that deep-links your interior pages from a high-authority domain.
-2. **ORCID + the DOI** — permanently binds your name to the SIGCSE paper. ~5 minutes.
+2. **ORCID + the DOI** — permanently binds your name to the SIGCSE TS 2026 poster. ~5 minutes.
 3. **LinkedIn headline** — it's the snippet Google shows for the #1 result on your name.
 
 ---
