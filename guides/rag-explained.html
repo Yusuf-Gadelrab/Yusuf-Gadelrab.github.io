@@ -259,7 +259,7 @@ Reciprocal ranks: 1.000, 0.333, 1.000, 0.000, 0.500
         </tbody>
       </table></div>
       <p>That is where a graph helps: model the entities and the edges between them, walk the graph to assemble context, and use retrieval to fill in the text. The two are complements rather than alternatives — the graph decides <em>which</em> nodes belong in the context and in what order, and vector retrieval supplies the prose for each node.</p>
-      <p>This graph-augmented approach is the subject of a project I built — using knowledge graphs to build adaptive curriculum maps, so a tutoring system can reason about prerequisite structure rather than topical similarity. The practical difference in that setting: asked what a student should study next, similarity search returns the most topically related material, while a prerequisite graph returns the material that unlocks it.</p>
+      <p>The practical difference in an education setting makes the trade-off concrete: asked what a student should study next, similarity search returns the most topically related material, while a prerequisite graph returns the material that unlocks it. Neither is strictly better; they answer different questions.</p>
       <p>The peer-reviewed SIGCSE TS 2026 poster abstract looked at bilingual coding for inclusive computer science learning (<a href="https://doi.org/10.1145/3770761.3777339" rel="noopener">DOI 10.1145/3770761.3777339</a>), a mixed-methods study of 60 bilingual participants. It found pre-to-post improvements in programming confidence, computing identity, enjoyment and motivation across those 60 participants, with novices gaining more than experienced programmers. The bilingual-versus-English comparison specifically showed effect sizes in the Cohen's d 0.25 to 0.40 range and was <strong>not</strong> statistically significant. <a href="/research.html">More on the research →</a></p>
       <p>The cost side is worth stating plainly, because graph RAG is over-recommended. Building the graph means entity extraction, relationship extraction, and de-duplication across the corpus, which is a large one-time job and an ongoing maintenance burden every time documents change. <strong>Reach for a graph when the questions are genuinely relational and you can name three of them.</strong> If your questions are lookups, hybrid search plus a reranker will beat a badly maintained graph every time.</p>
       <h2>A sane starting build</h2>
@@ -276,7 +276,7 @@ Reciprocal ranks: 1.000, 0.333, 1.000, 0.000, 0.500
 
       <h2>Tools referenced in this guide</h2>
       <ul>
-        <li><a href="/about.html">About &amp; research</a> — the SIGCSE 2026 poster abstract, plus the graph-augmented retrieval project.</li>
+        <li><a href="/about.html">About &amp; research</a> — the SIGCSE TS 2026 poster abstract and the CS education research behind it.</li>
         <li><a href="/guides/local-llm-ollama.html">Local LLM guide</a> — how to run the generation half of this on your own machine.</li>
         <li><a href="/stack.html">My stack</a> — the tools I actually use for this work.</li>
       </ul>

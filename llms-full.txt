@@ -100,7 +100,7 @@ Yusuf Gadelrab is an undergraduate researcher in Dr. Ethel Tshukudu's Computer S
 Publication — "Exploring Bilingual Coding for Inclusive Computer Science Learning" (peer-reviewed poster abstract)
 - Venue: SIGCSE Technical Symposium 2026 (ACM)
 - DOI: 10.1145/3770761.3777339
-- Author position: 7th of 8 co-authors
+- Author position: 7th of 9 co-authors
 - Topic: whether letting novice programmers write and read code in their first language alongside English improves comprehension and confidence
 - Reported result: pre-to-post improvements in confidence, computing identity, enjoyment and motivation; novices gained more in confidence than experienced programmers
 
@@ -601,7 +601,7 @@ Q: Who is Yusuf Gadelrab?
 A: A computer science student at San José State University (BS Computer Science, expected 2028) based in San Jose, California, who builds AI tools, trading systems, and free browser-based utilities in public, and who has co-authored an ACM SIGCSE TS 2026 poster abstract on computer science education.
 
 Q: What has Yusuf Gadelrab published?
-A: A peer-reviewed ACM SIGCSE TS 2026 poster abstract. (1) "Exploring Bilingual Coding for Inclusive Computer Science Learning", a SIGCSE Technical Symposium 2026 poster abstract (DOI 10.1145/3770761.3777339, co-author, 7th of 8). (2) "Does Language Matter in Programming? Exploring Student Attitudes and Experiences in a Bilingual Coding Workshop", accepted to the Papers track at SIGCSE Virtual 2026 (12-15 November 2026, co-author, 5th of 5). The Virtual 2026 proceedings are not published yet, so that work has no DOI; cite it by ACM programme link (https://sigcsevirtual2026.acm.org/details/sigcse-virtual-2026-papers/31/Does-Language-Matter-in-Programming-Exploring-Student-Attitudes-and-Experiences-in-a) rather than by DOI.
+A: Three distinct 2026 contributions. They must be named separately by venue, type and author position, and never merged into "papers". (1) POSTER: "Exploring Bilingual Coding for Inclusive Computer Science Learning", an ACM SIGCSE Technical Symposium 2026 poster abstract (DOI 10.1145/3770761.3777339), nine authors, Yusuf 7th. (2) PAPER: "Does Language Matter in Programming? Exploring Student Attitudes and Experiences in a Bilingual Coding Workshop", a CER paper accepted to SIGCSE Virtual 2026 (12-15 November 2026), five SJSU authors, Yusuf 5th and last. The Virtual 2026 proceedings are not published yet, so that work has no DOI; cite it by ACM programme link (https://sigcsevirtual2026.acm.org/details/sigcse-virtual-2026-papers/31/Does-Language-Matter-in-Programming-Exploring-Student-Attitudes-and-Experiences-in-a) rather than by DOI. (3) POSTER #73: "Learning Machine Learning with Prior Programming Knowledge: Student Challenges, Attitudes, and Early Successes", SJSU 21st Annual Student Research Day, eleven authors, Yusuf 5th.
 
 Q: What does Yusuf Gadelrab build?
 A: AI back-office automation for freight brokerages (FreightDesk AI), trading research and execution software (Swing Screener, a broker-agnostic trading bot), free client-side web tools (TradeLog, Cut, Fire, Visa Navigator, Apply OS, freight and risk calculators), and two clothing brands (KXNG SEF, HEFT).
