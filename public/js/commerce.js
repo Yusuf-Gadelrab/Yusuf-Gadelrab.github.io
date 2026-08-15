@@ -197,7 +197,12 @@
       /* Guessed vendor URLs are why every button 404'd in July. A value only counts
          as live if it is an absolute http(s) URL. */
       if (url && /^https?:\/\//.test(url)) wireLive(el, url);
-      else wirePending(el, key);
+      /* data-manual marks a page that already takes payment by hand (Zelle plus a
+         pre-filled mailto). The waitlist downgrade exists so a page that cannot be
+         paid never says "buy"; where payment genuinely works, downgrading it would
+         turn a paying customer away. Such a button keeps its own href, and still
+         upgrades the moment a real URL lands in CHECKOUT. */
+      else if (!el.hasAttribute("data-manual")) wirePending(el, key);
     }
   }
 
