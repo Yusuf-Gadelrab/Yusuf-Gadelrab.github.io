@@ -1264,9 +1264,9 @@ function ComplianceNote() {
       </h2>
       <p style={{ fontSize: 13.5, lineHeight: 1.65, color: '#9a958c', margin: '0 0 8px' }}>
         Figures shown on this site are research and engineering results, not live trading performance. The 78% directional
-        accuracy is a six-month backtest of a model. An early +0.23R result over 101 trades did not survive my own adversarial
-        re-test; the defensible figure is +0.117R over 4,933 trades (95% CI +0.057-+0.174), and most of that is market drift
-        rather than the signal itself. Backtested and simulated results do not represent live
+        accuracy is a six-month backtest of a model. An early trading result, run on a hand-picked handful of names over barely a
+        hundred trades, did not survive my own adversarial re-test and is retired; the defensible figure is +0.117R over
+        4,933 trades (95% CI +0.057-+0.174), and most of that is market drift rather than the signal itself. Backtested and simulated results do not represent live
         trading, and past performance does not guarantee future results. No live profit-and-loss figures are claimed anywhere
         on this site. Nothing here is financial, investment, tax or legal advice.
       </p>

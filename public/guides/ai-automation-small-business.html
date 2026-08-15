@@ -29,8 +29,6 @@
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","@id":"https://yusuf-gadelrab.github.io/guides/ai-automation-small-business.html#faq","mainEntity":[{"@type":"Question","name":"Which business tasks are worth automating with AI?","acceptedAnswer":{"@type":"Answer","text":"Tasks that are repetitive, structured, deadline-driven, and cheap to verify — drafting first versions, extracting fields from documents, classifying and routing messages, chasing paperwork on a schedule, summarising threads, and monitoring expiry dates. If verifying the output costs as much as doing the work, automation has moved the work rather than removed it."}},{"@type":"Question","name":"How do you decide which task to automate first?","acceptedAnswer":{"@type":"Answer","text":"Score candidates on frequency, input structure, verification cost, reversibility if wrong, and format stability, with frequency and structure weighted heaviest. Build anything scoring high, and leave low scorers alone regardless of how annoying they are. Resentment is not a prioritisation signal, which is why founders build the monthly board narrative instead of the daily document extraction."}},{"@type":"Question","name":"How do you calculate the ROI of an automation?","acceptedAnswer":{"@type":"Answer","text":"Multiply frequency by minutes saved per item to get weekly hours, subtract the review time that still exists after automation, and divide build hours by the weekly saving to get payback in weeks. A payback measured in weeks is a build and a payback measured in years is a hobby. Never model review time as zero."}},{"@type":"Question","name":"What should stay human in an automated workflow?","acceptedAnswer":{"@type":"Answer","text":"Anything that commits you or depends on a relationship: sending final communications, negotiating price, handling complaints or claims, and deciding what to do when something the system flagged actually happens."}},{"@type":"Question","name":"What is the two-tier model pattern?","acceptedAnswer":{"@type":"Answer","text":"A cheap local model handles high-volume, low-difficulty work such as drafting, tagging, and extraction at zero marginal cost, while a frontier model handles judgement, hard reasoning, and anything customer-facing. An automated quality gate sits between them and decides which items need the expensive tier."}},{"@type":"Question","name":"Why does an automation pipeline need a quality gate?","acceptedAnswer":{"@type":"Answer","text":"Because generation at volume always has a non-zero failure rate, and one bad artefact reaching a customer can cost more than the entire batch saved. A gate checks hard invariants in code — required fields, no placeholder text, exact string matches for names and amounts, deduplication — and quarantines anything that fails."}},{"@type":"Question","name":"What is shadow mode and when can you turn it off?","acceptedAnswer":{"@type":"Answer","text":"Shadow mode runs generation and the gate end to end while sending nothing, so the go-live decision is made against data. A workable exit condition is a gate pass rate at or above 95 percent with zero escapes in 30 audited passes, sustained across three consecutive batches, and even then the next step is human-fired sends rather than full automation."}},{"@type":"Question","name":"What does AI automation actually cost?","acceptedAnswer":{"@type":"Answer","text":"Less than expected on model inference, especially with a local model on hardware you already own, and more than expected on integration — connecting data sources, defining invariants, handling exceptions, and maintaining it when an upstream format changes. Budget half an hour to two hours a month of maintenance forever. The model is the cheap part."}}]}</script>
 
 <link rel="stylesheet" href="/css/site.css">
-<link rel="stylesheet" href="/css/lux-motion.css">
-<link rel="stylesheet" href="/css/lux-plus.css">
 <style>
   .prose{max-width:68ch}
   .prose h2{margin:var(--s7) 0 var(--s4);font-size:var(--t-h2)}
@@ -311,11 +309,11 @@ CANDIDATE 2
         </tbody>
       </table></div>
       <p>Which is the honest summary of this whole field right now — <strong>the model is the cheap part.</strong></p>
-      <p>This is the pattern my own overnight drafting pipeline runs in production: local model drafts, an automated audit quarantines anything failing its checks, a human sees only exceptions — and <a href="/freightdesk.html">FreightDesk AI</a> is the same pattern packaged for freight brokerages. The freight-specific version of the same problem is in <a href="/guides/freight-back-office.html">the back office guide</a>, the retrieval half is in <a href="/guides/rag-explained.html">the RAG guide</a>, and if you want the build done rather than described, that is <a href="/services.html">the services page</a>.</p>
+      <p>A worked example of all of this in production is <a href="/freightdesk.html">FreightDesk AI</a>: local model drafts overnight, an automated audit quarantines anything failing its checks, a human sees only exceptions. The freight-specific version of the same problem is in <a href="/guides/freight-back-office.html">the back office guide</a>, the retrieval half is in <a href="/guides/rag-explained.html">the RAG guide</a>, and if you want the build done rather than described, that is <a href="/services.html">the services page</a>.</p>
 
       <h2>Tools referenced in this guide</h2>
       <ul>
-        <li><a href="/freightdesk.html">FreightDesk AI</a> — the same pattern packaged for freight brokerages.</li>
+        <li><a href="/freightdesk.html">FreightDesk AI</a> — the pattern in production for freight brokerages.</li>
         <li><a href="/guides/local-llm-ollama.html">Local LLM guide</a> — how to run the cheap tier on your own hardware.</li>
         <li><a href="/store.html">Automation Studio &amp; store</a> — playbooks and templates for building this yourself.</li>
       </ul>
@@ -375,7 +373,5 @@ CANDIDATE 2
 </footer>
 
 <script src="/js/site.js" defer></script>
-<script src="/js/lux-motion.js" defer></script>
-<script src="/js/lux-plus.js" defer></script>
 </body>
 </html>

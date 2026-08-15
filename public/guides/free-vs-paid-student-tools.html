@@ -29,8 +29,6 @@
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","@id":"https://yusuf-gadelrab.github.io/guides/free-vs-paid-student-tools.html#faq","mainEntity":[{"@type":"Question","name":"What's the single most important test before buying a student tool?","acceptedAnswer":{"@type":"Answer","text":"Check whether a free tier or substitute already gets you within about 20 percent of the quality; if it does, the free option almost always wins, especially early in school when your needs are still changing."}},{"@type":"Question","name":"Should I buy an annual subscription to save money over monthly?","acceptedAnswer":{"@type":"Answer","text":"Only if you're confident you'll still be using the tool in eleven months, because annual plans are the easiest place for a forgotten subscription to quietly drain a full year of an irregular student income."}},{"@type":"Question","name":"Is a local LLM actually a good substitute for a paid AI subscription?","acceptedAnswer":{"@type":"Answer","text":"For repetitive, low-stakes, or background tasks, yes, a local model running on your own machine has no per-token cost, and pairing it with a free-tier hosted assistant covers most of what a student needs day to day."}},{"@type":"Question","name":"How do I know if my university already provides a tool for free?","acceptedAnswer":{"@type":"Answer","text":"Check your university IT department's software page before buying anything; many schools hold site licenses for design, office, and developer tools that students never think to look for."}},{"@type":"Question","name":"What should I actually spend real money on as a CS student?","acceptedAnswer":{"@type":"Answer","text":"A domain name for your portfolio, a short focused interview-prep window right before you start interviewing, and any cloud compute a specific project genuinely requires; all three have a clear, bounded return."}},{"@type":"Question","name":"How often should I audit my subscriptions?","acceptedAnswer":{"@type":"Answer","text":"Once a year is enough for most students: list every recurring charge, note when you last actually used it, and cancel anything you can't justify in one sentence."}},{"@type":"Question","name":"Do I need a paid VPN as a student?","acceptedAnswer":{"@type":"Answer","text":"Usually not; most day-to-day student risk is better addressed with good password hygiene and your university's network than with a VPN, so pay for one only if you have a specific, named need."}},{"@type":"Question","name":"Why skip a mobile developer program fee for a personal project?","acceptedAnswer":{"@type":"Answer","text":"Because an installable web app can reach the same users without an ongoing yearly fee, and paying only makes sense once you have an actual store-distribution reason, not just because the app works."}}]}</script>
 
 <link rel="stylesheet" href="/css/site.css">
-<link rel="stylesheet" href="/css/lux-motion.css">
-<link rel="stylesheet" href="/css/lux-plus.css">
 <style>
   .prose{max-width:68ch}
   .prose h2{margin:var(--s7) 0 var(--s4);font-size:var(--t-h2)}
@@ -82,7 +80,7 @@
 
   <header class="section">
     <p class="eyebrow">Comparison · Students</p>
-    <h1 style="margin:var(--s4) 0">Free vs paid: what a CS student should actually pay for</h1>
+    <h1 style="margin:var(--s4) 0">Free vs Paid: What a CS Student Should Actually Pay For</h1>
     <p class="lead">Every free trial and student discount promises to save you time or sharpen your odds, but stacking five of those promises quietly drains a budget that is already tight. This guide gives you a five-question framework for deciding, then scores about fifteen categories a CS student actually runs into, from code editors to cloud GPU time, against it.</p>
   </header>
 
@@ -93,7 +91,7 @@
       <h2>The real question isn't whether you can afford it</h2>
       <p>Every CS student runs into the same pitch: a tool promises to save time, sharpen a resume, or unblock a project, and the price looks small next to the promise. The problem shows up when you stack five or six of those small promises at once and realize most of them quietly duplicate something you already have for free. This isn't a coupon list. It's a repeatable way to decide, plus a scored comparison across roughly fifteen categories a CS student actually runs into, from code editors to cloud GPU time.</p>
       <p>Money is genuinely tight for most students, and irregular income, a stipend one month, nothing the next, makes the wrong subscription decision more expensive than it looks on a monthly statement. The framework below is the same one I use on my own tooling, and later in this guide I'll walk through a real decision I made with it: skipping a yearly Apple Developer account and shipping <a href="/apps.html">installable offline apps</a> instead.</p>
-      <h2>The five-question purchase filter</h2>
+      <h2>The Five-Question Purchase Filter</h2>
       <p>Before you pay for anything, run it through these five questions in order. A tool that fails two or more of them is a strong skip, no matter how good the marketing looks.</p>
       <ol>
         <li>Does it unblock money or admission directly, meaning a job offer, a school application, a paying client, or a grade that is genuinely at risk without it?</li>
@@ -121,9 +119,9 @@ $6.67 value &lt; $10 cost -> fails the break-even test, skip it
 
 The arithmetic doesn't change much. Your honesty about 'hours saved' does.</span>
       <h2>A worked example: why I didn't buy an Apple Developer account</h2>
-      <p>I built four small offline tools for myself: a trade journal, a weight tracker, a daily checklist, and a big-button phone helper for older adults. Listing them on the App Store means paying a yearly developer program fee. Instead, I shipped them as installable Progressive Web Apps that add to a phone's home screen straight from the browser, no store, no yearly fee. You can see them at <a href="/apps.html">apps.html</a>.</p>
-      <p>Running that decision through the five-question filter: these are personal tools with no distribution plan, so question one fails outright, nothing gets unblocked by a store listing. Question three also fails to favor the paid option, a PWA gets me within a rounding error of native-app behavior for what these apps do. Two clear fails is a skip, and the yearly fee stayed in my pocket.</p>
-      <p>The same instinct shows up elsewhere in how I work. I run a local Qwen model through Ollama on my own machine for background automation specifically so I'm not paying per token for routine work, the setup is in the <a href="/guides/local-llm-ollama.html">local LLM guide</a>. And instead of paying for a commercial code security scanner, I built and open-sourced my own free, MIT-licensed one, <a href="/dira.html">DIRA</a>. None of that is frugality for its own sake. It's the same filter, applied consistently, category after category.</p>
+      <p>I built three small offline tools for myself: a trade journal, a habit tracker, and a daily checklist. Listing them on the App Store means paying a yearly developer program fee. Instead, I shipped them as installable Progressive Web Apps that add to a phone's home screen straight from the browser, no store, no yearly fee. You can see them at <a href="/apps.html">apps.html</a>.</p>
+      <p>Running that decision through the five-question filter: these are personal tools with no distribution plan, so question one fails outright, nothing gets unblocked by a store listing. Question three also fails the paid option's favor, a PWA gets me within a rounding error of native-app behavior for what these apps do. Two clear fails is a skip, and the yearly fee stayed in my pocket.</p>
+      <p>The same instinct shows up elsewhere in how I work. I run a local Qwen model through Ollama on my own machine for background automation specifically so I'm not paying per token for routine work, the setup is in the <a href="/guides/local-llm-ollama.html">local LLM guide</a>. And instead of paying for a commercial code security scanner, I built and publish my own free, MIT-licensed one, <a href="/dira.html">DIRA</a>. None of that is frugality for its own sake. It's the same filter, applied consistently, category after category.</p>
       <h2>The scored table: about 15 categories</h2>
       <p>Every 'Pay' or 'Conditional' verdict below assumes you check the vendor's current pricing page yourself before deciding. Prices and discount terms change often enough that quoting a number here would be stale the day this page ships, so none are quoted. Treat the 'Why' column as reasoning, not a price list.</p>
       <div class="tblwrap" tabindex="0" role="group" aria-label="Table, scrolls horizontally"><table class="tbl">
@@ -237,7 +235,5 @@ The arithmetic doesn't change much. Your honesty about 'hours saved' does.</span
 </footer>
 
 <script src="/js/site.js" defer></script>
-<script src="/js/lux-motion.js" defer></script>
-<script src="/js/lux-plus.js" defer></script>
 </body>
 </html>
