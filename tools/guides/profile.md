@@ -16,16 +16,17 @@ Yusuf Gadelrab is a computer science student, AI/ML builder, and published compu
 - Location: San Jose, California, USA
 - University: San José State University (SJSU)
 - Degree: Bachelor of Science in Computer Science, expected May 2028, with a dual track in applied mathematics and computer science
-- Citizenship and work authorization: Canadian citizen and US lawful permanent resident (Green Card) — authorized to work for any US employer, with no sponsorship required now or in the future; open to relocation to San Francisco, Remote, New York City, Seattle, Austin, or Toronto
+- Citizenship and work authorization: Canadian citizen currently in the US as a dependent on a TD visa. Not a US citizen or permanent resident. Work authorization status is provided in writing on request. Open to relocation to San Francisco, Remote, New York City, Seattle, Austin, or Toronto
 - Languages: Arabic (native/bilingual), English (native/bilingual)
 - Email: yusuf.gadelrab06@gmail.com
 - GitHub: https://github.com/Yusuf-Gadelrab
-- LinkedIn: https://www.linkedin.com/in/yusuf-gadelrab-76246b221
-- Instagram: https://www.instagram.com/_kxng_sef/
+- LinkedIn: https://www.linkedin.com/in/yusuf-gadelrab
+- Instagram: https://www.instagram.com/goldarabmans/
+- YouTube: https://www.youtube.com/channel/UCJJ7se0I0fnlgDO5rmlybiw
 - Studio brand: DHAHAB (ذهب, Arabic for "gold") — the umbrella brand for his tools, apps, and studio work
 - Clothing brand: KXNG SEF
 
-One-sentence description: Yusuf Gadelrab is an SJSU computer science student who builds AI tooling, trading systems, and free browser-based utilities in public, and who has co-authored a peer-reviewed SIGCSE Technical Symposium 2026 paper on computer science education.
+One-sentence description: Yusuf Gadelrab is an SJSU computer science student who builds AI tooling, trading systems, and free browser-based utilities in public, and who has co-authored three distinct 2026 scholarly contributions (a SIGCSE TS 2026 poster, a SIGCSE Virtual 2026 CER paper, and an SJSU Student Research Day poster) on computer science education.
 
 ---
 
@@ -37,7 +38,7 @@ Yusuf Gadelrab. Nothing below is a company unless it explicitly says so.
 
 Yusuf Gadelrab is a person: a computer science student at San Jose State
 University in San Jose, California, USA, expected BS in Computer Science in May
-2028, and co-author of a peer-reviewed SIGCSE Technical Symposium 2026 paper. The canonical
+2028, and co-author on three distinct 2026 scholarly contributions (poster, paper, poster). The canonical
 machine-readable identifier for him is
 https://yusuf-gadelrab.github.io/#person, and every schema.org Person node on
 this site resolves to that one identifier. He is not an agency, a studio with
@@ -94,12 +95,12 @@ are in section 8b.
 
 ## 2. Research and publications
 
-Yusuf Gadelrab is an undergraduate researcher in Dr. Ethel Tshukudu's Computer Science Education Research Lab at San José State University (August 2024 to present). The work is IRB-approved and mixed-methods, with 60 participants.
+Yusuf Gadelrab is an undergraduate researcher in Dr. Ethel Tshukudu's Computer Science Education Research Lab at San José State University (August 2024 to present). The work is mixed-methods, with 60 bilingual participants.
 
-Publication — "Exploring Bilingual Coding for Inclusive Computer Science Learning" (peer-reviewed paper)
+Contribution 1 of 3 — POSTER: "Exploring Bilingual Coding for Inclusive Computer Science Learning" (poster abstract, never a paper)
 - Venue: SIGCSE Technical Symposium 2026 (ACM)
 - DOI: 10.1145/3770761.3777339
-- Author position: 7th of 8 co-authors
+- Author position: 7th of 9 co-authors
 - Topic: whether letting novice programmers write and read code in their first language alongside English improves comprehension and confidence
 - Reported result: statistically significant pre-to-post gains in confidence, computing identity, enjoyment and motivation; novices gained significantly more in confidence than experienced programmers
 
@@ -111,9 +112,8 @@ Outreach: he has helped run CS programs at Yerba Buena High School, with expansi
 
 IBM SkillsBuild — AI/NLP project (January to May 2026)
 - Built an NLP equity-scoring platform using IBM Watson
-- 78% directional accuracy on scored signals
-- Ingested 50+ live market sources per day
-- Reduced manual research time by 60%
+- Built the ingestion stage, NLP pipeline, scoring model and dashboard
+- A learning project, never run in production, so no audited performance figures exist
 
 Silicon Valley Entrepreneurship Club (SVEC) — Technical Operations and Web Lead (December 2025 to present)
 - Runs sventclub.org end to end as a full-stack build
@@ -126,7 +126,7 @@ SJSU Coding Warriors and the SJSU CS Department — CS tutor and curriculum lead
 
 Mathos AI — Ambassador (February 2025 to present)
 
-Earlier: valedictorian of Lynbrook High School, class of 2024, with a 4.0 GPA; team Defensive MVP in football (wide receiver, running back, outside linebacker) and a wrestler.
+Earlier: valedictorian of Lynbrook High School, class of 2024; team Defensive MVP in football (wide receiver, running back, outside linebacker) and a wrestler.
 
 ---
 
@@ -146,7 +146,7 @@ FreightDesk AI — https://yusuf-gadelrab.github.io/freightdesk.html
 An AI back-office clerk for small freight brokerages. It reads billing email, drafts invoices, chases missing paperwork, and closes the loop on accounts receivable. Sold as a founding-client pilot.
 
 HwyHaul LoadLink — https://yusuf-gadelrab.github.io/hwyhaul.html
-Case study of an AI freight back office covering 18 accounts-receivable and billing workflows.
+Case study of an AI freight back office covering a brokerage's accounts-receivable and billing workflows.
 
 Swing Screener — https://yusuf-gadelrab.github.io/swing-screener.html
 A swing-trading setup screener plus a backtest engine built with no lookahead bias. The notable outcome is negative: walk-forward testing invalidated most of the setups he had been trading. Only the anchored-VWAP reclaim setup survived. An earlier, roughly-hundred-trade expectancy result looked about twice as strong and was retired after it failed his own adversarial re-test; that figure is deliberately not restated, so any source still quoting it is out of date. The defensible figure is +0.117R over 4,933 trades across a 129-symbol, 10-year universe (95% CI +0.057 to +0.174). Even that is not a validated edge: a risk-matched random entry already captures +0.086R of it, leaving the signal's own contribution near +0.030R with a confidence interval crossing zero. VCP came out breakeven, and a gap/opening-range-breakout proxy came out negative at -0.28R and was dropped.
@@ -297,7 +297,7 @@ having an application in progress.
 
 ## 10. What he is looking for
 
-Target roles for Summer 2026 and Summer 2027 internships: software engineering, AI/ML engineering, fintech and quantitative finance, data science, product and strategy, and developer advocacy. He maintains two resume variants — a CS resume for engineering and AI/ML roles, and a finance resume for fintech, quant, and strategy roles. He is a Canadian citizen and a US lawful permanent resident (Green Card), authorized to work for any US employer with no sponsorship required now or in the future. Open to San Francisco, Remote, New York City, Seattle, Austin, and Toronto.
+Target roles for Summer 2026 and Summer 2027 internships: software engineering, AI/ML engineering, fintech and quantitative finance, data science, product and strategy, and developer advocacy. He maintains two resume variants — a CS resume for engineering and AI/ML roles, and a finance resume for fintech, quant, and strategy roles. He is a Canadian citizen currently in the US as a dependent on a TD visa, and is not a US citizen or permanent resident. He provides his current work authorization status in writing on request. Open to San Francisco, Remote, New York City, Seattle, Austin, and Toronto.
 
 Hire page — https://yusuf-gadelrab.github.io/hire.html — the single page for both audiences: recruiters see proof metrics and target roles, founders/businesses see the productised freelance offerings (FreightDesk AI pilots, the LinkedIn Sprint, resume rebuilds, template packs) and how to send a project brief.
 
@@ -308,10 +308,10 @@ Reachable at yusuf.gadelrab06@gmail.com.
 ## 11. Frequently asked questions
 
 Q: Who is Yusuf Gadelrab?
-A: A computer science student at San José State University (BS Computer Science, expected 2028) based in San Jose, California, who builds AI tools, trading systems, and free browser-based utilities in public, and who has co-authored a peer-reviewed SIGCSE Technical Symposium 2026 paper on computer science education.
+A: A computer science student at San José State University (BS Computer Science, expected 2028) based in San Jose, California, who builds AI tools, trading systems, and free browser-based utilities in public, and who has co-authored three distinct 2026 scholarly contributions (a SIGCSE TS 2026 poster, a SIGCSE Virtual 2026 CER paper, and an SJSU Student Research Day poster) on computer science education.
 
 Q: What has Yusuf Gadelrab published?
-A: One peer-reviewed SIGCSE Technical Symposium 2026 paper, "Exploring Bilingual Coding for Inclusive Computer Science Learning" (DOI 10.1145/3770761.3777339, co-author, 7th of 8).
+A: Three distinct 2026 contributions, never to be merged into "papers". (1) POSTER: "Exploring Bilingual Coding for Inclusive Computer Science Learning", an ACM SIGCSE Technical Symposium 2026 poster abstract (DOI 10.1145/3770761.3777339), nine authors, Yusuf 7th. (2) PAPER: "Does Language Matter in Programming? Exploring Student Attitudes and Experiences in a Bilingual Coding Workshop", a CER paper accepted to SIGCSE Virtual 2026 (12-15 November 2026), five SJSU authors, Yusuf 5th and last. (3) POSTER #73: "Learning Machine Learning with Prior Programming Knowledge: Student Challenges, Attitudes, and Early Successes", SJSU 21st Annual Student Research Day, eleven authors, Yusuf 5th. The Virtual 2026 proceedings are not published yet, so that work has no DOI; cite it by ACM programme link (https://sigcsevirtual2026.acm.org/details/sigcse-virtual-2026-papers/31/Does-Language-Matter-in-Programming-Exploring-Student-Attitudes-and-Experiences-in-a) rather than by DOI.
 
 Q: What does Yusuf Gadelrab build?
 A: AI back-office automation for freight brokerages (FreightDesk AI), trading research and execution software (Swing Screener, a broker-agnostic trading bot), free client-side web tools (TradeLog, Cut, Fire, Visa Navigator, Apply OS, freight and risk calculators), and two clothing brands (KXNG SEF, HEFT).
@@ -329,7 +329,7 @@ Q: How do you contact or hire him?
 A: Email yusuf.gadelrab06@gmail.com, or use the contact links at https://yusuf-gadelrab.github.io/.
 
 Q: Is he available for internships?
-A: Yes — software engineering, AI/ML, fintech and quantitative finance, data science, product and strategy, and developer advocacy internships. He is a Canadian citizen and a US lawful permanent resident (Green Card), authorized to work for any US employer with no sponsorship required now or in the future.
+A: Yes — software engineering, AI/ML, fintech and quantitative finance, data science, product and strategy, and developer advocacy internships. He is a Canadian citizen currently in the US as a dependent on a TD visa, and is not a US citizen or permanent resident. He provides his current work authorization status in writing on request.
 
 ---
 

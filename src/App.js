@@ -33,13 +33,12 @@ const siteData = {
     headline: 'I build AI systems for markets and classrooms.',
     highlight: 'AI systems',
     sub:
-      'CS undergraduate at San José State University. I co-authored a peer-reviewed ACM SIGCSE 2026 paper, built an NLP equity-scoring model on IBM Watson, and trade equities, options, and futures on the side. I care about turning noisy data into signals you can actually defend.',
+      'CS undergraduate at San José State University. I am a co-author on an ACM SIGCSE TS 2026 poster and an accepted SIGCSE Virtual 2026 paper on bilingual coding education, I built an NLP equity-scoring model on IBM Watson, and I trade equities, options, and futures on the side. I care about turning noisy data into signals you can actually defend.',
     availability: 'Wrapped my HwyHaul internship · July 2026 — building in public & open to what’s next',
     heroImage: '/img/yusuf-headshot.webp',
     stats: [
-      { value: '78%', label: 'Model directional accuracy · 6-mo backtest' },
+      { value: 'NLP', label: 'Equity sentiment scoring · IBM Watson Studio' },
       { value: '60', label: 'Research study participants' },
-      { value: '40%', label: 'Web engagement lift · SVEC' },
       { value: '+0.117R', label: 'Walk-forward result over 4,933 trades, 129-symbol 10-yr universe (95% CI +0.057-+0.174; mostly market drift)' },
     ],
   },
@@ -57,7 +56,7 @@ const siteData = {
   about: {
     bio: [
       "I study CS at San José State (graduating 2028) and spend most of my time where AI/ML and finance overlap — building models, running backtests, and trading my own account in equities, options, and futures.",
-      "On the research side, I co-authored a paper at ACM SIGCSE 2026 on bilingual coding education. The IBM project is probably the best example of my technical work right now: an NLP model that pulls sentiment from 50+ live market sources daily and scores equities across five factors — 78% directional accuracy on six-month backtests.",
+      "On the research side, I am a co-author on an ACM SIGCSE TS 2026 poster and an accepted SIGCSE Virtual 2026 paper, both on bilingual coding education. The IBM project is probably the best example of my technical work right now: an NLP pipeline that pulls sentiment from public market news sources and generates equity signals, built on IBM Watson Studio.",
       "Outside of that, I grew up between cultures (Arabic is my first language), played varsity football and wrestled, and spoke at my graduation. I tend to approach things the same way I competed — show up prepared and go hard.",
     ],
     education: [
@@ -69,7 +68,7 @@ const siteData = {
       },
       {
         school: 'Lynbrook High School',
-        detail: 'Valedictorian — 4.0 GPA · Graduation Speaker',
+        detail: 'Valedictorian · Graduation Speaker',
         meta: 'Class of 2024',
         note: 'Varsity Football (WR / RB / OLB) · team Defensive MVP. Wrestling. Selected Poster Student 2023–24 alongside Andrew Li. Combines: 4.7s 40-yd, 255 bench, 315 squat.',
       },
@@ -95,7 +94,7 @@ const siteData = {
       { group: 'Quant / Markets', items: ['Equities', 'Options', 'Futures', 'Backtesting', 'Quantitative Modeling', 'Signal Design'] },
       { group: 'Programming', items: ['Python', 'Java', 'JavaScript', 'SQL'] },
       { group: 'Web & Tools', items: ['React', 'FastAPI', 'Ollama / Local LLMs', 'Full-Stack Dev', 'Git / GitHub', 'Hedy'] },
-      { group: 'Research', items: ['Survey Design', 'Mixed-Methods Analysis', 'Statistical Analysis', 'IRB Protocol', 'Data Visualization', 'HCI'] },
+      { group: 'Research', items: ['Survey Design', 'Mixed-Methods Analysis', 'Statistical Analysis', 'Data Visualization', 'HCI'] },
       { group: 'Languages', items: ['Arabic (Native)', 'English (Fluent)'] },
     ],
   },
@@ -119,10 +118,10 @@ const siteData = {
       tag: 'Engineering / Ops',
       image: '',
       bullets: [
-        'Engineered and deployed the club\u2019s official website end-to-end, boosting monthly visitor engagement 40% via optimized UI/UX and full-stack performance.',
-        'Secured 4 corporate technology sponsors, expanding the operational budget 35% through partnership pitching and negotiation.',
-        'Grew social following 30% and event attendance 25% with cross-channel campaigns across 3 platforms.',
-        'Coordinated 6+ events for 150+ attendees end-to-end \u2014 venue logistics, speaker booking, and live execution.',
+        'Engineered and deployed the club\u2019s official website end-to-end, covering UI/UX and full-stack performance.',
+        'Pitched Silicon Valley firms on technology partnerships and sponsorship for club programming.',
+        'Ran cross-channel campaigns across 3 platforms to grow the club\u2019s social following.',
+        'Coordinated events end-to-end \u2014 venue logistics, speaker booking, and live execution.',
       ],
     },
     {
@@ -132,8 +131,8 @@ const siteData = {
       tag: 'AI / ML',
       image: '',
       bullets: [
-        'Built an NLP equity-scoring model with IBM Watson that ingests sentiment from 50+ live market sources daily and generates signals across 5 quantitative factors — 78% directional accuracy on 6-month backtests.',
-        'Cut manual equity-research time ~60% by engineering an automated signal-generation pipeline on IBM Watson Studio, applying supervised and unsupervised ML to structured financial data.',
+        'Built an NLP equity-scoring pipeline with IBM Watson Studio that ingests sentiment from public market news sources and generates equity signals.',
+        'Engineered an automated signal-generation pipeline on IBM Watson Studio, applying supervised and unsupervised ML to structured financial data.',
         'Earned IBM AI Fundamentals credentials in NLP, model evaluation, and responsible AI design.',
       ],
     },
@@ -144,7 +143,7 @@ const siteData = {
       tag: 'Research',
       image: '',
       bullets: [
-        'Measured statistically significant pre-to-post gains in programming confidence across 60 SJSU students by co-designing and analyzing pre/post surveys for a bilingual programming workshop on the Hedy multilingual platform; novice learners gained significantly more than experienced ones.',
+        'Co-designed and analyzed pre/post surveys measuring confidence, computing identity, enjoyment, and motivation for a 60-bilingual-participant programming workshop on the Hedy multilingual platform, with novice participants showing the largest confidence gains. See the published poster abstract and the accepted SIGCSE Virtual 2026 paper for the full methodology and results.',
         'Expanded CS accessibility for underrepresented learners by facilitating 3+ inclusive-computing workshops and conducting qualitative research on structural barriers.',
       ],
     },
@@ -186,14 +185,35 @@ const siteData = {
   research: [
     {
       title: 'Exploring Bilingual Coding for Inclusive Computer Science Learning',
-      venue: 'SIGCSE TS 2026 · ACM · 2 pages',
-      role: 'Co-Author',
+      venue: 'SIGCSE TS 2026 · 57th ACM Technical Symposium on Computer Science Education · Posters track',
+      role: 'Co-author (7th of 9 authors)',
       image: '',
       link: 'https://dl.acm.org/doi/10.1145/3770761.3777339',
       abstract:
-        'Investigated how bilingual programming workshops influence student attitudes, perceived understanding, and comfort. Across 60 SJSU participants (40 novice, 20 experienced) using the multilingual Hedy platform, novice learners showed the largest gains in confidence and enjoyment. Contributed to survey design and mixed-methods analysis; pre-to-post gains in confidence, computing identity, enjoyment and motivation were statistically significant.',
+        'A poster examining bilingual coding for more inclusive computer science learning. The study included 60 bilingual participants (40 novice, 20 experienced) on the multilingual Hedy platform, measuring confidence, computing identity, enjoyment, and motivation before and after; novice participants showed the largest confidence gains. I contributed to survey design and mixed-methods analysis. See the published poster abstract for the full methodology and results.',
       citation:
-        'Tshukudu, E., Shah, N., Kieu, T., Deeb, L., Venkateswaran, H., Ghai, A., Gadelrab, Y., & Hada, P. (2026). "Exploring Bilingual Coding for Inclusive Computer Science Learning." SIGCSE TS 2026, ACM. doi.org/10.1145/3770761.3777339',
+        'Tshukudu, Shah, Kieu, Deeb, Venkateswaran, Ghai, Gadelrab, Nagesh, & Hada (2026). "Exploring Bilingual Coding for Inclusive Computer Science Learning." SIGCSE TS 2026, ACM, pp. 1559–1560. doi.org/10.1145/3770761.3777339',
+    },
+    {
+      title: 'Does Language Matter in Programming? Exploring Student Attitudes and Experiences in a Bilingual Coding Workshop',
+      venue: 'SIGCSE Virtual 2026 · CER Papers track',
+      role: 'Co-author (5th of 5 authors)',
+      image: '',
+      link: '',
+      abstract:
+        'The full study introduced by the poster above: a two-hour bilingual coding workshop for the same 60 SJSU participants (40 novice, 20 experienced) on the multilingual Hedy platform, using pre/post surveys with the Attitudes Toward Computing Scale plus open-ended questions. Novice participants gained more in confidence and enjoyment; experienced programmers showed smaller gains and preferred coding in English. Accepted; ACM has not yet assigned a DOI.',
+      citation:
+        'Tshukudu, E., Kieu, T., Deeb, L., Venkateswaran, H., & Gadelrab, Y. (2026). "Does Language Matter in Programming? Exploring Student Attitudes and Experiences in a Bilingual Coding Workshop." SIGCSE Virtual 2026, ACM. DOI not yet assigned.',
+    },
+    {
+      title: 'SJSU 21st Annual Student Research Day — Poster #73',
+      venue: 'San José State University Student Research Day',
+      role: 'Co-author (5th of 11 authors)',
+      image: '',
+      link: '',
+      abstract:
+        'A poster presentation of the same bilingual-coding-education research at SJSU’s campus-wide Student Research Day.',
+      citation: 'SJSU 21st Annual Student Research Day, Poster #73 (2026).',
     },
   ],
   projects: [
@@ -308,7 +328,7 @@ const siteData = {
       link: '',
       privateRepo: true,
       desc:
-        'Ingests sentiment from 50+ live market sources daily and scores equities across five quantitative factors, with an automated signal pipeline on IBM Watson Studio. 78% directional accuracy on six-month backtests; ~60% less manual research time.',
+        'Ingests sentiment from public market news sources and generates equity signals with an automated pipeline on IBM Watson Studio. Prototype built during the IBM AI Creator program; not evaluated as a live trading strategy.',
     },
     {
       title: 'Silicon Valley Entrepreneurship Club — Official Site',
@@ -316,7 +336,7 @@ const siteData = {
       image: '',
       link: 'https://sventclub.org/',
       desc:
-        'Built and shipped the club’s official website end-to-end and ran its digital presence — a 40% lift in monthly visitor engagement, plus four corporate sponsors and a 25% rise in event attendance.',
+        'Built and shipped the club’s official website end-to-end and ran its digital presence, including sponsorship outreach and event-campaign coordination.',
     },
     {
       title: 'Data Structures & Algorithms (Java)',
@@ -326,6 +346,33 @@ const siteData = {
       privateRepo: true,
       desc:
         'Core data structures (arrays, lists, trees, graphs) and algorithms implemented with an emphasis on clean OOP design, exception handling, and test coverage.',
+    },
+    {
+      title: 'IntakeKit',
+      stack: 'Open source · MIT license',
+      image: '',
+      link: 'https://github.com/Yusuf-Gadelrab/IntakeKit',
+      linkLabel: 'View on GitHub →',
+      desc:
+        'Prototype, no live users. Open source under MIT.',
+    },
+    {
+      title: 'LoadLink',
+      stack: 'Open source · MIT license',
+      image: '',
+      link: 'https://github.com/Yusuf-Gadelrab/LoadLink',
+      linkLabel: 'View on GitHub →',
+      desc:
+        'Prototype extracted from unpaid research work at Hwy Haul. MIT-licensed.',
+    },
+    {
+      title: 'Bilingual CS Prerequisite Map',
+      stack: 'Hugging Face Space · Publishing once pushed',
+      image: '',
+      link: 'https://huggingface.co/spaces/YusufGadelrab/bilingual-cs-prereq-map',
+      linkLabel: 'Open the Hugging Face Space →',
+      desc:
+        'A public Hugging Face Space link for the bilingual CS prerequisite map. It will become available once the Space is pushed.',
     },
   ],
   gallery: [
@@ -348,7 +395,7 @@ const siteData = {
     email: 'yusuf.gadelrab06@gmail.com',
     phone: '(669) 328-1148',
     links: [
-      { label: 'LinkedIn', url: 'https://www.linkedin.com/in/yusuf-gadelrab-76246b221' },
+      { label: 'LinkedIn', url: 'https://www.linkedin.com/in/yusuf-gadelrab' },
       { label: 'GitHub', url: 'https://github.com/Yusuf-Gadelrab' },
       { label: 'Instagram', url: 'https://www.instagram.com/_kxng_sef/' },
       { label: 'Hudl', url: 'https://www.hudl.com/profile/18612951/Yusuf-Gadelrab' },
@@ -356,14 +403,14 @@ const siteData = {
   },
   resume: {
     // After deploy, drop both PDFs in /public and these paths resolve.
-    // Apex domain (yusuf-gadelrab.github.io): use '/Yusuf_Gadelrab_CS.pdf'
+    // Apex domain (yusuf-gadelrab.github.io): use '/Yusuf_Gadelrab_Resume.pdf'
     // Project path (…github.io/yusuf-portfolio): prefix '/yusuf-portfolio/…'
     files: [
-      { label: 'Software / AI résumé', url: '/Yusuf_Gadelrab_CS.pdf' },
+      { label: 'Software / AI résumé', url: '/Yusuf_Gadelrab_Resume.pdf' },
       { label: 'Finance / fintech résumé', url: '/Yusuf_Gadelrab_Resume.pdf' },
     ],
     summary:
-      'CS undergraduate at SJSU (B.S., 2028) with applied work in AI/ML, quantitative finance, and inclusive-computing research. Co-author of a peer-reviewed ACM SIGCSE 2026 publication. Two résumés below — one tuned for software/AI roles, one for finance and fintech.',
+      'CS undergraduate at SJSU (B.S., 2028) with applied work in AI/ML, quantitative finance, and inclusive-computing research. Co-author of an ACM SIGCSE TS 2026 poster and an accepted SIGCSE Virtual 2026 paper. Two résumés below — one tuned for software/AI roles, one for finance and fintech.',
   },
 };
 
@@ -403,9 +450,9 @@ const PROFESSIONAL = {
   presence: [
     {
       label: 'LinkedIn',
-      handle: 'in/yusuf-gadelrab-76246b221',
+      handle: 'in/yusuf-gadelrab',
       meta: '705 followers · 500+ connections',
-      url: 'https://www.linkedin.com/in/yusuf-gadelrab-76246b221',
+      url: 'https://www.linkedin.com/in/yusuf-gadelrab',
       cta: 'Connect →',
       icon: 'M6.94 5a2 2 0 11-4-.02 2 2 0 014 .02zM7 8.48H3V21h4V8.48zm6.32 0H9.34V21h3.94v-6.57c0-3.66 4.77-4 4.77 0V21H22v-7.93c0-6.17-7.06-5.94-8.72-2.91l.04-1.68z',
     },
@@ -427,22 +474,40 @@ const PROFESSIONAL = {
     },
   ],
   metrics: [
-    { value: '78%', label: 'Directional accuracy — NLP equity-scoring model, six-month backtest on IBM Watson' },
-    { value: '60%', label: 'Reduction in manual equity-research time once the signal pipeline shipped' },
-    { value: '40%', label: 'Lift in monthly web engagement after rebuilding the SVEC site end to end' },
-    { value: '60', label: 'Participants in the IRB-approved bilingual-coding study, with statistically significant pre-to-post confidence gains' },
-    { value: '35%', label: 'Operational budget expansion at SVEC, via four corporate technology sponsors' },
+    { value: 'NLP', label: 'Equity-scoring model — IBM Watson Studio' },
+    { value: '60', label: 'Bilingual participants in the SIGCSE research study' },
+    { value: 'SVEC', label: 'Project Manager — website and technical operations' },
   ],
   publications: [
     {
-      kind: 'Peer-reviewed paper',
-      role: 'Co-author',
+      kind: 'Poster',
+      role: 'Co-author (7th of 9 authors)',
       title: 'Exploring Bilingual Coding for Inclusive Computer Science Learning',
-      venue: 'SIGCSE TS 2026 · 57th ACM Technical Symposium on Computer Science Education',
+      venue: 'SIGCSE TS 2026 · 57th ACM Technical Symposium on Computer Science Education, Posters track',
       doi: '10.1145/3770761.3777339',
       url: 'https://doi.org/10.1145/3770761.3777339',
       note:
-        'A 60-participant, IRB-approved mixed-methods study run in Dr. Ethel Tshukudu’s CS-education lab at San José State. Participants showed statistically significant pre-to-post gains in programming confidence, computing identity, enjoyment and motivation, and novice learners gained significantly more than experienced programmers. I contributed to survey design and mixed-methods analysis.',
+        'A 60-bilingual-participant mixed-methods study run in Dr. Ethel Tshukudu’s CS-education lab at San José State, on the multilingual Hedy platform. Novice participants showed the largest confidence gains. I contributed to survey design and mixed-methods analysis. See the published poster abstract for full methodology and results.',
+    },
+    {
+      kind: 'Paper',
+      role: 'Co-author (5th of 5 authors)',
+      title: 'Does Language Matter in Programming? Exploring Student Attitudes and Experiences in a Bilingual Coding Workshop',
+      venue: 'SIGCSE Virtual 2026 · CER Papers track',
+      doi: '',
+      url: '',
+      note:
+        'The full study introduced by the poster above, covering the same 60-bilingual-participant workshop on the multilingual Hedy platform. Accepted; DOI not yet assigned by ACM.',
+    },
+    {
+      kind: 'Poster',
+      role: 'Co-author (5th of 11 authors)',
+      title: 'SJSU 21st Annual Student Research Day — Poster #73',
+      venue: 'San José State University Student Research Day',
+      doi: '',
+      url: '',
+      note:
+        'A poster presentation of the same bilingual-coding-education research at SJSU’s campus-wide Student Research Day.',
     },
   ],
   ventures: [
@@ -495,7 +560,7 @@ const PROFESSIONAL = {
       org: 'Silicon Valley Entrepreneurship Club',
       meta: 'Dec 2025 – Present',
       note:
-        'Own the club’s website and technical operations end to end. Monthly visitor engagement up 40%, four corporate technology sponsors signed, operational budget expanded 35%.',
+        'Own the club’s website and technical operations end to end, including sponsorship outreach to Silicon Valley technology firms.',
     },
     {
       role: 'Board Treasurer',
@@ -515,7 +580,7 @@ const PROFESSIONAL = {
       org: 'CSEd Research Lab, SJSU — Dr. Ethel Tshukudu',
       meta: 'Aug 2024 – Present',
       note:
-        'Mixed-methods research under IRB protocol, plus CS programming at Yerba Buena High School and an expansion into Lynbrook High School.',
+        'Mixed-methods research on bilingual coding education, plus CS programming at Yerba Buena High School and an expansion into Lynbrook High School.',
     },
     {
       role: 'Campus Ambassador',
@@ -553,7 +618,7 @@ const GOOFY = {
     },
     {
       chapter: 'Chapter III',
-      title: 'Valedictorian, 4.0 high school GPA, graduation speaker',
+      title: 'Valedictorian, graduation speaker',
       body:
         'I stood in front of an entire football field of people and gave a speech I had rehearsed about ninety times. I still brought the notes. I still looked at the notes.',
     },
@@ -1304,7 +1369,7 @@ function SiteFooter({ contact, brand }) {
         <a href="/media-kit.html">Media Kit</a>
         <a href="/brand.html">Brand</a>
         <a href="https://github.com/Yusuf-Gadelrab" target="_blank" rel="noopener noreferrer">GitHub</a>
-        <a href="https://www.linkedin.com/in/yusuf-gadelrab-76246b221" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+        <a href="https://www.linkedin.com/in/yusuf-gadelrab" target="_blank" rel="noopener noreferrer">LinkedIn</a>
         <a href="/privacy.html">Privacy</a>
         <a href="/terms.html">Terms</a>
       </div>
@@ -1344,7 +1409,7 @@ function Home({ d, go }) {
             <a href="https://doi.org/10.1145/3770761.3777339">Co-author, SIGCSE TS 2026 — DOI: 10.1145/3770761.3777339</a> ·{' '}
             <a href="hwyhaul.html">ex-HwyHaul — case study</a> ·{' '}
             <a href="https://github.com/Yusuf-Gadelrab">GitHub</a> ·{' '}
-            <a href="https://www.linkedin.com/in/yusuf-gadelrab-76246b221">LinkedIn</a>
+            <a href="https://www.linkedin.com/in/yusuf-gadelrab">LinkedIn</a>
           </p>
         </div>
         {d.home.heroImage && (
@@ -1421,8 +1486,8 @@ function HomeResearch({ d, go }) {
   return (
     <HomeBand
       eyebrow="Research & Publications"
-      title="A peer-reviewed publication at ACM SIGCSE 2026"
-      intro="Written as an undergraduate in Dr. Ethel Tshukudu's CS-education lab at SJSU, under IRB protocol."
+      title="A poster and a paper on bilingual coding education"
+      intro="Written as an undergraduate in Dr. Ethel Tshukudu's CS-education lab at SJSU."
     >
       <div className="grid grid--2" style={{ marginTop: 'var(--s5)' }}>
         {papers.map((p, i) => (
@@ -1648,7 +1713,7 @@ function About({ d }) {
   );
 }
 
-// research page — ACM papers with DOI links
+// research page — the three distinct 2026 contributions (poster, paper, poster) with DOI links where assigned
 function Research({ d }) {
   return (
     <section className="section">
@@ -1699,6 +1764,13 @@ function Projects({ d }) {
       <div className="grid grid--2" style={{ marginTop: 'var(--s5)' }}>
         {d.projects.map((p, i) => <ProjectCard key={i} p={p} i={i} />)}
       </div>
+      <div style={{ marginTop: 'var(--s8)' }}>
+        <SectionTitle eyebrow="Funding" title="Support Open Source" />
+        <p className="lead">The public funding listing for this portfolio is available on floss.fund.</p>
+        <a className="btn btn-gold" style={{ marginTop: 'var(--s4)' }} href="https://dir.floss.fund/view/project/@yusuf-gadelrab.github.io/yusuf-portfolio" target="_blank" rel="noreferrer">
+          View the funding listing →
+        </a>
+      </div>
     </section>
   );
 }
@@ -1744,7 +1816,7 @@ function PublicationCard({ p, i }) {
       <div className="row" style={{ marginTop: 'var(--s4)' }}>
         {p.doi
           ? <span className="doi">DOI {p.doi}</span>
-          : <span className="doi no-doi">Poster — no DOI claimed</span>}
+          : <span className="doi no-doi">No DOI assigned yet</span>}
         {p.url && (
           <a className="btn btn-ghost btn-sm" href={p.url} target="_blank" rel="noreferrer">Read on ACM →</a>
         )}
@@ -1784,8 +1856,8 @@ function Professional({ d, go }) {
       <hr className="divider" />
       <h2>Research</h2>
       <p className="muted" style={{ margin: 'var(--s3) 0 var(--s5)', maxWidth: 'var(--maxw-prose)' }}>
-        A peer-reviewed publication at the ACM SIGCSE Technical Symposium 2026, written as an
-        undergraduate in the CS-education lab at San José State under IRB protocol.
+        An ACM SIGCSE TS 2026 poster and an accepted SIGCSE Virtual 2026 paper, written as an
+        undergraduate in the CS-education lab at San José State.
       </p>
       <div className="stack-lg">
         {P.publications.map((p, i) => <PublicationCard key={p.title} p={p} i={i} />)}

@@ -9,15 +9,15 @@
 <link rel="preload" href="/css/site.css" as="style">
 <meta name="robots" content="index,follow,max-image-preview:large">
 <meta property="og:locale" content="en_US">
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"Project","@id":"https://yusuf-gadelrab.github.io/miftah-passage.html#program","name":"Passage","url":"https://yusuf-gadelrab.github.io/miftah-passage.html","description":"Free plain-language guides, eligibility-filtered scholarship matching, and referral to accredited legal help for immigrant and first-generation students. A program of Miftah Foundation.","disambiguatingDescription":"Information and referral only. Miftah Foundation is not a law firm and does not provide legal advice. Program in design; no student has been served. The organization is not incorporated, no application for recognition of federal charitable tax exemption has been filed with the IRS, and nothing given to it is deductible on anyone's return.","parentOrganization":{"@type":"NGO","@id":"https://yusuf-gadelrab.github.io/miftah.html#org"},"founder":{"@id":"https://yusuf-gadelrab.github.io/#person"},"areaServed":{"@type":"City","name":"San José, California"}}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Project","@id":"https://yusuf-gadelrab.github.io/miftah-passage.html#program","name":"Passage","url":"https://yusuf-gadelrab.github.io/miftah-passage.html","description":"Free navigation tools, plain-language guides, eligibility-filtered scholarship matching and referral to accredited legal help for immigrant and international students. A program of Miftah Foundation.","disambiguatingDescription":"Passage provides general information and referrals only and is not legal advice. Miftah Foundation is not a law firm. Program in design; no students have been served. The organization is not yet incorporated, no 501(c)(3) application has been filed, and contributions are not tax-deductible.","parentOrganization":{"@type":"NGO","@id":"https://yusuf-gadelrab.github.io/miftah.html#org"},"founder":{"@id":"https://yusuf-gadelrab.github.io/#person"},"areaServed":{"@type":"City","name":"San José, California"}}</script>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://yusuf-gadelrab.github.io/"},{"@type":"ListItem","position":2,"name":"Miftah Foundation","item":"https://yusuf-gadelrab.github.io/miftah.html"},{"@type":"ListItem","position":3,"name":"Passage","item":"https://yusuf-gadelrab.github.io/miftah-passage.html"}]}</script>
 <link rel="manifest" href="/manifest.webmanifest">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 <script>addEventListener("load",function(){if("serviceWorker" in navigator)navigator.serviceWorker.register("/sw.js").catch(function(){})});</script>
 <!-- /tech:seo -->
-<title>Passage — student navigation · Miftah Foundation</title>
-<meta name="description" content="Passage: free guides, eligibility-filtered scholarship matching and referral to accredited legal help for immigrant students. Never legal advice.">
+<title>Passage — immigrant student navigator · Miftah</title>
+<meta name="description" content="Passage gives immigrant and international students free guides, scholarship matching and referral to accredited legal help. Referral only, never legal advice.">
 <link rel="canonical" href="https://yusuf-gadelrab.github.io/miftah-passage.html">
 <link rel="icon" type="image/svg+xml" href="https://yusuf-gadelrab.github.io/favicon.svg">
 <link rel="apple-touch-icon" sizes="180x180" href="https://yusuf-gadelrab.github.io/apple-touch-icon.png">
@@ -26,54 +26,49 @@
 <meta name="author" content="Yusuf Gadelrab">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Yusuf Gadelrab">
-<meta property="og:title" content="Passage — student navigation">
-<meta property="og:description" content="Plain-language guides, eligibility-filtered scholarship matching, and referral to accredited legal help. A program of Miftah Foundation.">
+<meta property="og:title" content="Passage — immigrant student navigator">
+<meta property="og:description" content="Free guides, scholarship matching and referral to accredited legal help. A program of Miftah Foundation. Not legal advice.">
 <meta property="og:url" content="https://yusuf-gadelrab.github.io/miftah-passage.html">
 <meta property="og:image" content="https://yusuf-gadelrab.github.io/og-card.png">
-<meta property="og:image:width" content="1200">
-<meta property="og:image:height" content="630">
-<meta property="og:image:alt" content="Passage — navigation for immigrant and first-generation students">
+<meta property="og:image:alt" content="Passage — immigrant and international student navigator">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Passage — student navigation">
-<meta name="twitter:description" content="Plain-language guides, eligibility-filtered scholarship matching, and referral to accredited legal help. A program of Miftah Foundation.">
+<meta name="twitter:title" content="Passage — immigrant student navigator">
+<meta name="twitter:description" content="Free guides, scholarship matching and referral to accredited legal help. A program of Miftah Foundation. Not legal advice.">
 <meta name="twitter:image" content="https://yusuf-gadelrab.github.io/og-card.png">
 <link rel="stylesheet" href="/css/site.css">
 <link rel="stylesheet" href="/css/lux-motion.css">
-<link rel="stylesheet" href="/css/lux-plus.css">
-<link rel="stylesheet" href="/css/miftah.css">
+<style>
+  .callout{border-left:3px solid var(--gold)}
+  .callout b{color:var(--gold-2)}
+  .card p{color:var(--muted);font-size:var(--t-small);margin-top:var(--s3)}
+  .pipe{display:flex;flex-wrap:wrap;gap:var(--s3)}
+  .pipe-step{flex:1 1 190px;min-width:0}
+  .pipe-step .step-n{font-family:var(--display-pro);font-size:var(--t-micro);
+    letter-spacing:2px;color:var(--muted);font-weight:700}
+  .pipe-step h3{margin:var(--s2) 0}
+  .pipe-step p{color:var(--muted);font-size:var(--t-small)}
+  .plainlist{list-style:none;margin:var(--s4) 0 0;padding:0}
+  .plainlist li{padding:var(--s3) 0;border-bottom:1px solid var(--line-soft);
+    color:var(--muted);font-size:var(--t-small)}
+  .plainlist li:last-child{border-bottom:0}
+  .siblings{display:flex;flex-wrap:wrap;gap:var(--s3);margin-top:var(--s5)}
+  .siblings a{padding:10px 18px;border:1px solid var(--line-soft);border-radius:var(--radius);
+    font-size:var(--t-small);color:var(--muted);background:var(--panel)}
+  .siblings a:hover{border-color:var(--line);color:var(--ink)}
+  .legal{font-size:var(--t-body);color:var(--ink)}
+  .legal a{border-bottom:1px solid var(--line)}
+</style>
 <!-- geo:entity — canonical Person node, one entity across every page -->
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebPage","@id":"https://yusuf-gadelrab.github.io/miftah-passage.html#webpage","url":"https://yusuf-gadelrab.github.io/miftah-passage.html","inLanguage":"en","isPartOf":{"@id":"https://yusuf-gadelrab.github.io/#website"},"about":{"@id":"https://yusuf-gadelrab.github.io/#person"},"publisher":{"@id":"https://yusuf-gadelrab.github.io/#person"}}</script>
 <link rel="alternate" type="text/plain" href="https://yusuf-gadelrab.github.io/llms-full.txt" title="Plain-text profile for language models">
 </head>
-<body class="pro mf-p02">
+<body class="pro">
 
 <a class="skip-link" href="#main">Skip to content</a>
 
 <nav class="site-nav">
   <a class="site-nav__brand" href="/"><img class="site-nav__lion" src="/img/brand/lion-mark.svg" alt="" width="34" height="34" decoding="async"><span>YUSUF GADELRAB</span></a>
   <div class="site-nav__links"><a href="/">Work</a><a href="/resume.html">Resume</a><a href="/guides.html">Guides</a><a href="/store.html">Store</a><a href="/apps.html">Apps</a><a href="/kxngsef.html">KXNG SEF</a><a href="/hire.html">Hire</a><a href="/media-kit.html">Media Kit</a></div>
-</nav>
-
-<nav class="mf-subnav" aria-label="Miftah Foundation">
-  <div class="mf-subnav__in">
-    <a class="mf-subnav__mark" href="/miftah.html">
-      <img src="/img/miftah/key-mark.svg" alt="" width="20" height="20" decoding="async">
-      <span class="mf-subnav__name">Miftah</span>
-      <span class="mf-subnav__ar" lang="ar" dir="rtl">مفتاح</span>
-    </a>
-    <div class="mf-subnav__rail">
-      <ul class="mf-subnav__links">
-        <li><a href="/miftah.html">Foundation</a></li>
-        <li><a href="/miftah-codebridge.html">CodeBridge</a></li>
-        <li><a href="/miftah-passage.html" aria-current="page">Passage</a></li>
-        <li><a href="/miftah-ecoimpact.html">EcoImpact</a></li>
-        <li><a href="/miftah-shield.html">Shield</a></li>
-        <li><a href="/miftah-get-involved.html">Get involved</a></li>
-        <li><a href="/miftah-transparency.html">Transparency</a></li>
-        <li><a href="/miftah-contact.html">Contact</a></li>
-      </ul>
-    </div>
-  </div>
 </nav>
 
 <nav class="crumbs" aria-label="Breadcrumb">
@@ -86,110 +81,84 @@
 
 <main id="main">
 
-  <div class="lxp-aura">
-    <header class="section" id="top">
-      <div class="mf-lockup" style="align-items:center;margin:0">
-        <span class="lxp-num" aria-hidden="true">02</span>
-        <span class="badge"><span class="dot"></span>Miftah Foundation · Program 02 · in design</span>
+  <section class="section">
+    <span class="badge"><span class="dot"></span>Miftah Foundation · Program 02 · in design</span>
+    <h1 style="margin:var(--s5) 0">Passage — <span class="gold-fill">the paperwork should not be the thing that stops you.</span></h1>
+    <p class="lead">Free navigation tools, plain-language guides, and eligibility-filtered scholarship matching for immigrant, international, TD, F-1 and undocumented students. When a question needs a lawyer, Passage refers you to one instead of guessing.</p>
+
+    <div class="panel callout" style="margin-top:var(--s6)" role="note" aria-label="Legal disclaimer">
+      <p class="legal">Miftah Foundation is not a law firm and does not provide legal advice. Passage provides general information and referrals only. Immigration outcomes depend on individual facts — consult a licensed immigration attorney or a DOJ-accredited representative before acting. Find free and low-cost help at <a href="https://www.immigrationadvocates.org/legaldirectory/" target="_blank" rel="noopener">immigrationadvocates.org/legaldirectory</a>.</p>
+    </div>
+
+    <p class="muted" style="margin-top:var(--s5);font-size:var(--t-small)"><a href="/miftah.html" style="border-bottom:1px solid var(--line)">← Back to Miftah Foundation</a></p>
+  </section>
+
+  <hr class="divider">
+
+  <section class="section section--tight">
+    <p class="eyebrow">The Problem</p>
+    <h2>The information exists. It just costs $400 an hour.</h2>
+    <p class="lead" style="margin-top:var(--s3)">A student on a dependent visa finds out at nineteen that their status has an age cliff. Another discovers in April that the scholarship they qualified for closed in January, because nobody told them citizenship was not a requirement. A third does not apply anywhere at all, because every form asks a question they are afraid to answer.</p>
+    <p class="lead" style="margin-top:var(--s4)">None of this is hidden. It is spread across federal regulations, campus offices, PDFs and forum threads, and the people who can assemble it into an answer charge by the hour. The students who most need it are the least able to pay for it.</p>
+  </section>
+
+  <hr class="divider">
+
+  <section class="section section--tight">
+    <p class="eyebrow">What It Is</p>
+    <h2>Maps of the system, and a phone number for the parts we can't map.</h2>
+    <div class="grid grid--2" style="margin-top:var(--s6)">
+      <div class="card">
+        <h3>Plain-language guides and timeline tools</h3>
+        <p>What the common student status pathways actually involve, in order, with the deadlines that matter and the ones that do not. Written for someone reading it at midnight, not for someone billing for it.</p>
       </div>
-      <h1 class="mf-h1" style="margin:var(--s5) 0 var(--s4)">Passage — the paperwork should not be the thing that <em class="gold-fill">stops you.</em></h1>
-      <p class="lead">Free navigation tools, plain-language guides, and eligibility-filtered scholarship matching for immigrant, international, first-generation and undocumented students. When a question needs a lawyer, Passage refers you to one instead of guessing.</p>
-
-      <div class="dh-note mf-status lxp-frame" role="note" aria-labelledby="mf-status-k">
-        <span class="mf-status__k" id="mf-status-k">Where this actually is</span>
-        <p>Passage has served <strong>zero students</strong>. No guide has been published under the Miftah name and no referral relationships are in place. The parent organization is <strong>not incorporated</strong>, has <strong>filed nothing</strong> with the IRS and has nothing pending, so nothing given to it is deductible on anyone's return and none is being asked for. What follows is the design and the tooling it rests on.</p>
+      <div class="card">
+        <h3>Eligibility-filtered scholarship matching</h3>
+        <p>Most scholarship lists waste a student's time by showing awards they cannot receive. Passage filters on the fields that actually disqualify people — citizenship, residency, status, institution — so what's left is worth an evening.</p>
       </div>
-
-      <div class="panel callout" style="margin-top:var(--s5)" role="note" aria-label="Legal disclaimer">
-        <p class="legal">Miftah Foundation is not a law firm and does not provide legal advice. Passage provides general information and referrals only. Immigration outcomes depend on individual facts — consult a licensed immigration attorney or a DOJ-accredited representative before acting. Find free and low-cost help at <a href="https://www.immigrationadvocates.org/legaldirectory/" target="_blank" rel="noopener">immigrationadvocates.org/legaldirectory</a>.</p>
+      <div class="card">
+        <h3>Referral, every time it matters</h3>
+        <p>Anything that depends on an individual's specific facts goes to a licensed immigration attorney or a DOJ-accredited representative. Passage keeps a live list of free and low-cost providers and hands students to them.</p>
       </div>
-
-      <div class="mf-actions">
-        <a href="mailto:yusuf.gadelrab06@gmail.com?subject=Passage%20-%20referral%20partner" class="btn btn-gold">Take referrals or partner</a>
-        <a href="/miftah-transparency.html" class="btn btn-ghost">Read the honest ledger</a>
+      <div class="card">
+        <h3>Career and application navigation</h3>
+        <p>Which employers sponsor, what work authorization questions on applications mean, how to read a job posting's status requirements. General information about how the process works, not advice about a specific case.</p>
       </div>
-
-      <p class="mf-back"><a href="/miftah.html">← Back to Miftah Foundation</a></p>
-    </header>
-  </div>
-
-  <hr class="lxp-rule">
-
-  <section class="section section--tight" aria-labelledby="problem">
-    <p class="dh-eyebrow">The Problem</p>
-    <h2 class="mf-h2" id="problem">The information exists. It just costs hundreds of dollars an hour.</h2>
-    <div class="dh-prose" style="margin-top:var(--s4)">
-      <p>A student on a dependent visa finds out at nineteen that their status has an age cliff. Another discovers in April that the scholarship they qualified for closed in January, because nobody told them citizenship was not a requirement. A third does not apply anywhere at all, because every form asks a question they are afraid to answer.</p>
-      <p>None of this is hidden. It is spread across federal regulations, campus offices, PDFs and forum threads, and the people who can assemble it into an answer charge by the hour. The students who most need it are the least able to pay for it.</p>
     </div>
   </section>
 
-  <hr class="lxp-rule">
+  <hr class="divider">
 
-  <section class="section section--tight" aria-labelledby="what">
-    <p class="dh-eyebrow">What It Is</p>
-    <h2 class="mf-h2" id="what">Maps of the system, and a phone number for the parts we can't map.</h2>
-    <div class="dh-grid" style="--dh-col:320px;margin-top:var(--s6)">
-      <article class="dh-card dh-card--flat">
-        <h3 class="dh-card__title">Plain-language guides and timeline tools</h3>
-        <p class="dh-card__body">What the common student status pathways actually involve, in order, with the deadlines that matter and the ones that do not. Written for someone reading it at midnight, not for someone billing for it.</p>
-      </article>
-      <article class="dh-card dh-card--flat">
-        <h3 class="dh-card__title">Eligibility-filtered scholarship matching</h3>
-        <p class="dh-card__body">Most scholarship lists waste a student's time by showing awards they cannot receive. Passage filters on the fields that actually disqualify people — citizenship, residency, status, institution — so what's left is worth an evening.</p>
-      </article>
-      <article class="dh-card dh-card--flat">
-        <h3 class="dh-card__title">Referral, every time it matters</h3>
-        <p class="dh-card__body">Anything that depends on an individual's specific facts goes to a licensed immigration attorney or a DOJ-accredited representative. Passage will keep a live list of free and low-cost providers and hand students to them.</p>
-      </article>
-      <article class="dh-card dh-card--flat">
-        <h3 class="dh-card__title">Career and application navigation</h3>
-        <p class="dh-card__body">Which employers sponsor, what work authorization questions on applications mean, how to read a job posting's status requirements. General information about how the process works, not advice about a specific case.</p>
-      </article>
+  <section class="section section--tight">
+    <p class="eyebrow">How It Works</p>
+    <h2>Four moves, and one of them is always "hand off."</h2>
+    <div class="pipe" style="margin-top:var(--s6)">
+      <div class="card pipe-step"><div class="step-n">STEP 1</div><h3>Orient</h3><p>A student answers a few structural questions about where they are. No names, no A-numbers, no documents.</p></div>
+      <div class="card pipe-step"><div class="step-n">STEP 2</div><h3>Read</h3><p>They get the guides and timeline tools relevant to their situation, in plain language, free, with no account required.</p></div>
+      <div class="card pipe-step"><div class="step-n">STEP 3</div><h3>Match</h3><p>Scholarships are filtered against their real eligibility, so the list they get is short and actually applicable.</p></div>
+      <div class="card pipe-step"><div class="step-n">STEP 4</div><h3>Refer</h3><p>Anything fact-specific goes to a licensed attorney or DOJ-accredited representative, with the free and low-cost options named first.</p></div>
     </div>
   </section>
 
-  <hr class="lxp-rule">
+  <hr class="divider">
 
-  <section class="section section--tight" aria-labelledby="how">
-    <p class="dh-eyebrow">How It Works</p>
-    <h2 class="mf-h2" id="how">Four moves, and one of them is always "hand off."</h2>
-    <div class="mf-steps">
-      <div class="mf-step"><h3>Orient</h3><p>A student answers a few structural questions about where they are. No names, no A-numbers, no documents.</p></div>
-      <div class="mf-step"><h3>Read</h3><p>They get the guides and timeline tools relevant to their situation, in plain language, free, with no account required.</p></div>
-      <div class="mf-step"><h3>Match</h3><p>Scholarships are filtered against their real eligibility, so the list they get is short and actually applicable.</p></div>
-      <div class="mf-step"><h3>Refer</h3><p>Anything fact-specific goes to a licensed attorney or DOJ-accredited representative, with the free and low-cost options named first.</p></div>
+  <section class="section section--tight">
+    <p class="eyebrow">Who It's For</p>
+    <h2>Named plainly.</h2>
+    <div class="grid" style="margin-top:var(--s6)">
+      <div class="card"><h3>International and dependent-status students</h3><p>F-1, TD and similar. People whose right to stay has a date on it and whose plans have to be built around that date.</p></div>
+      <div class="card"><h3>Undocumented students</h3><p>Who need to know what is genuinely available to them, and who deserve information that does not require them to identify themselves to get it.</p></div>
+      <div class="card"><h3>First-generation immigrant students</h3><p>Whose families cannot walk them through a system nobody in the household has been through either.</p></div>
     </div>
   </section>
 
-  <hr class="lxp-rule">
+  <hr class="divider">
 
-  <section class="section section--tight" aria-labelledby="who">
-    <p class="dh-eyebrow">Who It's For</p>
-    <h2 class="mf-h2" id="who">Named plainly.</h2>
-    <dl class="mf-defs">
-      <div>
-        <dt>International and dependent-status students</dt>
-        <dd>People whose right to stay has a date on it, and whose plans have to be built around that date rather than around the academic calendar.</dd>
-      </div>
-      <div>
-        <dt>Undocumented students</dt>
-        <dd>Who need to know what is genuinely available to them, and who deserve information that does not require them to identify themselves to get it.</dd>
-      </div>
-      <div>
-        <dt>First-generation immigrant students</dt>
-        <dd>Whose families cannot walk them through a system nobody in the household has been through either.</dd>
-      </div>
-    </dl>
-  </section>
-
-  <hr class="lxp-rule">
-
-  <section class="section section--tight" aria-labelledby="hardline">
-    <p class="dh-eyebrow">The Hard Line</p>
-    <h2 class="mf-h2" id="hardline">Where Passage stops, and why it stops there.</h2>
+  <section class="section section--tight">
+    <p class="eyebrow">The Hard Line</p>
+    <h2>Where Passage stops, and why it stops there.</h2>
     <p class="lead" style="margin-top:var(--s3)">Immigration advice from a non-attorney is unauthorized practice of law. For immigration specifically it also carries federal penalties, and the people harmed are the students. So the boundary is drawn early and enforced everywhere, not just in a footer.</p>
-    <ul class="mf-list">
+    <ul class="plainlist">
       <li><strong>No advice about your specific case, ever.</strong> Passage will not tell you what to file, when to file it, or what your chances are. It will tell you how the process generally works and who is qualified to answer that question for you.</li>
       <li><strong>No form preparation.</strong> Passage does not fill out, review or submit immigration forms on anyone's behalf.</li>
       <li><strong>No document collection.</strong> Passage does not want your passport, your I-20, your A-number or your immigration file, and will not store them.</li>
@@ -197,31 +166,29 @@
       <li><strong>No prediction of outcomes.</strong> Outcomes depend on individual facts. Anyone who promises you one is a warning sign, including us.</li>
       <li><strong>Volunteers are trained on this boundary before they talk to a single student,</strong> and the disclaimer goes on every guide, every page and every email, not just this one.</li>
     </ul>
-    <div class="panel callout" style="margin-top:var(--s6)" role="note" aria-label="Legal disclaimer, repeated">
+    <div class="panel callout" style="margin-top:var(--s6)" role="note" aria-label="Legal disclaimer">
       <p class="legal">Miftah Foundation is not a law firm and does not provide legal advice. Passage provides general information and referrals only. Immigration outcomes depend on individual facts — consult a licensed immigration attorney or a DOJ-accredited representative before acting. Find free and low-cost help at <a href="https://www.immigrationadvocates.org/legaldirectory/" target="_blank" rel="noopener">immigrationadvocates.org/legaldirectory</a>.</p>
     </div>
   </section>
 
-  <hr class="lxp-rule">
+  <hr class="divider">
 
-  <section class="section section--tight" aria-labelledby="status">
-    <p class="dh-eyebrow">Honest Status</p>
-    <h2 class="mf-h2" id="status">What this is, and what it is not yet.</h2>
-    <div class="mf-real">
-      <div class="mf-col">
-        <span class="mf-col__k">What this is</span>
-        <h3>Real today</h3>
-        <p>The tooling exists and runs. A visa timeline planner and a scholarship-matching engine were both built and used — the matcher has surfaced roughly two hundred eligibility-filtered scholarship packets for a single student. The founder built this out of his own situation: he navigated the US student-immigration system first-hand, before becoming a US permanent resident.</p>
+  <section class="section section--tight">
+    <p class="eyebrow">Honest Status</p>
+    <h2>What's real, and what isn't.</h2>
+    <div class="grid grid--2" style="margin-top:var(--s6)">
+      <div class="card">
+        <h3>What's real</h3>
+        <p>The tooling exists and runs. A visa timeline planner and a scholarship-matching engine were both built and used — the matcher has surfaced 198 eligibility-filtered scholarship packets for a single student. The founder built this out of his own situation: he has navigated TD status, the age cliff, the income restrictions and the F-1 transition question first-hand.</p>
       </div>
-      <div class="mf-col mf-col--not">
-        <span class="mf-col__k">What it is not yet</span>
-        <h3>Not true yet</h3>
-        <p>Passage has served zero students. No guide has been published under the Miftah name, no referral relationships are in place with legal providers, no volunteers are trained, and the parent organization is not incorporated. That packet count is a tool output for one person, not a program result.</p>
+      <div class="card">
+        <h3>What isn't</h3>
+        <p>Passage has served zero students. No guide has been published under the Miftah name, no referral relationships are in place with legal providers, no volunteers are trained, and the parent organization is not incorporated. The 198 figure is a tool output for one person, not a program result.</p>
       </div>
     </div>
     <div class="panel" style="margin-top:var(--s5)">
-      <p class="dh-eyebrow">Year-one targets — targets, not results</p>
-      <ul class="mf-list" style="margin-top:var(--s3)">
+      <p class="eyebrow">Year-one targets (targets, not results)</p>
+      <ul class="plainlist">
         <li><strong>Target:</strong> published plain-language guides covering the most common student status pathways.</li>
         <li><strong>Target:</strong> formal referral relationships with at least two free or low-cost legal providers.</li>
         <li><strong>Target:</strong> students reaching a filed application or a funded scholarship — the only outcome that counts, measured at the finish line rather than at the click.</li>
@@ -229,75 +196,24 @@
     </div>
   </section>
 
-  <hr class="lxp-rule">
+  <hr class="divider">
 
-  <section class="section section--tight" aria-labelledby="hundred">
-    <p class="dh-eyebrow">First 100 Days</p>
-    <h2 class="mf-h2" id="hundred">What the first hundred days would actually look like.</h2>
-    <p class="lead" style="margin-top:var(--s3)">Counted from the day one licensed referral partner signs on. That is deliberately first: publishing guides before there is somewhere to send the hard questions would be the single most dangerous version of this program.</p>
-
-    <ol class="mf-plan">
-      <li>
-        <span class="mf-plan__d">Days 1–15 · the hard gate</span>
-        <h3>Sign one referral partner and write the boundary down</h3>
-        <p>A licensed immigration attorney or a DOJ-accredited representative who will take referrals, plus a one-page referral protocol naming exactly which question types are handed over on sight. Nothing publishes before this exists.</p>
-      </li>
-      <li>
-        <span class="mf-plan__d">Days 16–40</span>
-        <h3>Publish the first three guides</h3>
-        <p>The three pathways students ask about most, written in plain language, each carrying the not-a-law-firm disclaimer in the body rather than the footer, and each reviewed by the referral partner before it goes up.</p>
-      </li>
-      <li>
-        <span class="mf-plan__d">Days 41–55</span>
-        <h3>Ship the eligibility filter with no account required</h3>
-        <p>Filtering on the fields that actually disqualify people, running client-side, storing nothing and asking for no name. A student who is afraid to identify themselves must still be able to use it.</p>
-      </li>
-      <li>
-        <span class="mf-plan__d">Days 56–70</span>
-        <h3>Get one campus office to hand it to real students</h3>
-        <p>A financial-aid desk, a counsellor or a student organization willing to say "start here". Distribution through an office a student already trusts beats any amount of traffic.</p>
-      </li>
-      <li>
-        <span class="mf-plan__d">Days 71–90</span>
-        <h3>First cohort of real users, measured at the finish line</h3>
-        <p>The metric is applications actually filed and awards actually funded — not sessions, not clicks, not downloads. Referrals made and referrals accepted are counted separately, because only the second one means a student got help.</p>
-      </li>
-      <li>
-        <span class="mf-plan__d">Days 91–100</span>
-        <h3>Publish what worked and what did not</h3>
-        <p>Including guides nobody read and referrals that went nowhere. A navigation program that only reports its wins is misinforming the exact people it claims to serve.</p>
-      </li>
-    </ol>
-  </section>
-
-  <hr class="lxp-rule">
-
-  <section class="section section--tight" aria-labelledby="help">
-    <p class="dh-eyebrow">Get Involved</p>
-    <h2 class="mf-h2" id="help">What would actually help.</h2>
+  <section class="section section--tight">
+    <p class="eyebrow">Get Involved</p>
+    <h2>What would actually help.</h2>
     <p class="lead" style="margin-top:var(--s3)">An immigration attorney or DOJ-accredited representative willing to take referrals. A campus office willing to point students here. Those are the two things that make Passage real.</p>
-
-    <div class="dh-note dh-note--warn" style="margin-top:var(--s5);max-width:var(--measure)">
-      Miftah Foundation is not incorporated and has not applied for recognition of federal charitable tax exemption. No application is pending. Nothing given to it is deductible on anyone's return, and nothing is being solicited.
+    <div class="panel" style="margin-top:var(--s5)">
+      <p>Miftah Foundation is not yet incorporated and has not applied for recognition of exemption under section 501(c)(3). No application is pending. Contributions are not tax-deductible.</p>
     </div>
-
-    <div class="dh-cta" style="margin-top:var(--s6)">
-      <div class="dh-cta__copy">
-        <p class="dh-cta__title">One referral partner makes this real.</p>
-        <p class="dh-cta__sub">Say whether you can take referrals, or which campus office you can point this way. That is the whole ask.</p>
-      </div>
-      <div class="dh-cta__act">
-        <a href="mailto:yusuf.gadelrab06@gmail.com?subject=Passage%20-%20referral%20partner" class="btn btn-gold">Take referrals or partner</a>
-        <a href="/miftah-get-involved.html" class="btn btn-ghost">All the ways in</a>
-      </div>
+    <div class="row" style="margin-top:var(--s6)">
+      <a href="mailto:yusuf.gadelrab06@gmail.com?subject=Passage%20-%20referral%20partner" class="btn btn-gold">Take referrals or partner</a>
+      <a href="/miftah.html" class="btn btn-ghost">← Miftah Foundation</a>
     </div>
-
-    <nav class="mf-onward" aria-label="More reading">
-      <a href="/miftah-codebridge.html"><b>CodeBridge →</b><span>Free bilingual computer science, taught in the learner's own language.</span></a>
-      <a href="/miftah-ecoimpact.html"><b>EcoImpact →</b><span>Cleanups with a measurement layer attached.</span></a>
-      <a href="/miftah-shield.html"><b>Shield →</b><span>Free security audits for the nonprofits nobody audits.</span></a>
-      <a href="/miftah-transparency.html"><b>The honest ledger →</b><span>What is filed, raised, spent and governed. Currently all zero.</span></a>
-    </nav>
+    <div class="siblings">
+      <a href="/miftah-codebridge.html">CodeBridge — bilingual computer science education</a>
+      <a href="/miftah-ecoimpact.html">EcoImpact — local environmental restoration</a>
+      <a href="/miftah-shield.html">Shield — free security audits for nonprofits</a>
+    </div>
   </section>
 
 </main>
@@ -311,9 +227,6 @@
     <a href="/miftah-passage.html">Passage</a>
     <a href="/miftah-ecoimpact.html">EcoImpact</a>
     <a href="/miftah-shield.html">Shield</a>
-    <a href="/miftah-get-involved.html">Get Involved</a>
-    <a href="/miftah-transparency.html">Transparency</a>
-    <a href="/miftah-contact.html">Contact</a>
     <a href="/writing.html">Writing</a>
     <a href="/dispatch.html">Dispatch</a>
     <a href="/dira.html">DIRA</a>
@@ -328,7 +241,8 @@
     <a href="/media-kit.html">Media Kit</a>
     <a href="mailto:yusuf.gadelrab06@gmail.com">yusuf.gadelrab06@gmail.com</a>
     <a href="https://github.com/Yusuf-Gadelrab" target="_blank" rel="noopener">GitHub</a>
-    <a href="https://www.linkedin.com/in/yusuf-gadelrab-76246b221" target="_blank" rel="noopener">LinkedIn</a>
+    <a href="https://www.linkedin.com/in/yusuf-gadelrab" target="_blank" rel="noopener">LinkedIn</a>
+          <a href="/portfolio/">Portfolio</a>
     <a href="/legal.html">Legal</a>
     <a href="/privacy.html">Privacy</a>
     <a href="/terms.html">Terms</a>
@@ -337,6 +251,5 @@
 
 <script src="/js/site.js" defer></script>
 <script src="/js/lux-motion.js" defer></script>
-<script src="/js/lux-plus.js" defer></script>
 </body>
 </html>

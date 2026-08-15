@@ -47,7 +47,7 @@ SKIP_DIRS = ("templates/",)
 SUMMARY = (
     "Computer science student at San Jose State University (BS Computer Science, expected May 2028, "
     "dual track applied mathematics and computer science), AI/ML builder, and co-author of a "
-    "peer-reviewed SIGCSE Technical Symposium 2026 paper on computer science education, based in "
+    "two peer-reviewed SIGCSE 2026 works on computer science education, based in "
     "San Jose, California. Builds AI tools, trading systems, and free browser-based utilities in "
     "public, and publishes them at yusuf-gadelrab.github.io under the DHAHAB studio brand."
 )
@@ -287,8 +287,9 @@ def build():
            "Canonical entity: %s/#person" % BASE,
            "Contact: yusuf.gadelrab06@gmail.com",
            "GitHub: https://github.com/Yusuf-Gadelrab",
-           "LinkedIn: https://www.linkedin.com/in/yusuf-gadelrab-76246b221",
-           "Instagram: https://www.instagram.com/_kxng_sef/",
+           "LinkedIn: https://www.linkedin.com/in/yusuf-gadelrab",
+           "Instagram: https://www.instagram.com/goldarabmans/",
+           "YouTube: https://www.youtube.com/channel/UCJJ7se0I0fnlgDO5rmlybiw",
            "Full plain-text profile for retrieval: %s/llms-full.txt" % BASE,
            "Sitemap index: %s/sitemap.xml" % BASE,
            "Usage terms: %s/ai.txt" % BASE,
