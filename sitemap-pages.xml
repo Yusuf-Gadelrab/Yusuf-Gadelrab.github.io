@@ -510,4 +510,9 @@
     <loc>https://yusuf-gadelrab.github.io/writing.html</loc>
     <lastmod>2026-08-10T22:45:15Z</lastmod>
   </url>
+  <url>
+    <loc>https://yusuf-gadelrab.github.io/library.html</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
 </urlset>
