@@ -15,6 +15,11 @@
        site.js does not cover (<section>, opt-in [data-lux-reveal]) and only
        ever ADDS a transition-delay (.lux-d1..d6) to elements site.js already
        owns — never a competing opacity/transform rule on the same element.
+     - Motion ONLY (invariant tightened 2026-08-10): the bare <hr> gradient
+       moved to site.css beside .divider — it was the one rule needed before
+       paint. Every selector left is applied by lux-motion.js at runtime, so
+       pages load this off the critical path (rel=preload → stylesheet). A
+       rule a page needs on first paint belongs in site.css, not here.
    ========================================================================= */
 
 /* ---------- page-load fade ---------- */
@@ -24,12 +29,6 @@
    Opacity only: no layout shift, sticky/fixed chrome unaffected. */
 html.lux-boot body{animation:lux-pagein .45s ease-out both}
 @keyframes lux-pagein{from{opacity:.001}to{opacity:1}}
-
-/* ---------- gold divider ---------- */
-/* CSS-only: plain <hr> reads as a hairline gold gradient wherever this file
-   is linked. Static styling, not motion — safe under reduced motion. */
-hr{border:0;height:1px;margin:2rem 0;
-  background:linear-gradient(90deg,transparent,rgba(212,175,55,.45),transparent)}
 
 /* ---------- own reveal system (sections + opt-in) ---------- */
 .lux-reveal{
@@ -122,4 +121,19 @@ hr{border:0;height:1px;margin:2rem 0;
    the base surfaces inert if a class ever ends up applied anyway. */
 @media(hover:none){
   .lux-tilt,.lux-magnet{transform:none!important}
+}
+
+/* ---------- reduced-motion: delay hardening (added 2026-08-10) ----------
+   site.css's global net now zeroes transition-delay/animation-delay with
+   !important, so the stagger classes below are already neutralised wherever
+   both files are linked. This repeats it locally so lux-motion.css remains
+   correct on its own — a page that links ONLY this file must not be able to
+   strand a staggered element invisible for 0.42s. Additive: it can only
+   ever reduce motion, never add any. */
+@media(prefers-reduced-motion:reduce){
+  .lux-d1,.lux-d2,.lux-d3,.lux-d4,.lux-d5,.lux-d6{
+    transition-delay:0s!important;animation-delay:0s!important;
+  }
+  [data-lux-parallax]{transform:none!important;will-change:auto!important}
+  [data-countup]{font-variant-numeric:tabular-nums}
 }

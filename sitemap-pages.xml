@@ -25,7 +25,6 @@
       <image:loc>https://yusuf-gadelrab.github.io/img/yusuf-candid.webp</image:loc>
     </image:image>
     <image:image>
-      <image:loc>https://yusuf-gadelrab.github.io/img/yusuf-gym.webp</image:loc>
     </image:image>
   </url>
   <url>
@@ -413,7 +412,6 @@
       <image:loc>https://yusuf-gadelrab.github.io/img/yusuf-candid.webp</image:loc>
     </image:image>
     <image:image>
-      <image:loc>https://yusuf-gadelrab.github.io/img/yusuf-gym.webp</image:loc>
     </image:image>
   </url>
   <url>
@@ -509,10 +507,5 @@
   <url>
     <loc>https://yusuf-gadelrab.github.io/writing.html</loc>
     <lastmod>2026-08-10T22:45:15Z</lastmod>
-  </url>
-  <url>
-    <loc>https://yusuf-gadelrab.github.io/library.html</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.9</priority>
   </url>
 </urlset>

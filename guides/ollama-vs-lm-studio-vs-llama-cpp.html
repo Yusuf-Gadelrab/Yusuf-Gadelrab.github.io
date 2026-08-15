@@ -29,7 +29,6 @@
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","@id":"https://yusuf-gadelrab.github.io/guides/ollama-vs-lm-studio-vs-llama-cpp.html#faq","mainEntity":[{"@type":"Question","name":"Can I run Ollama, LM Studio, and llama.cpp at the same time on one Mac?","acceptedAnswer":{"@type":"Answer","text":"Yes, they do not conflict with each other. Just watch your RAM: each one that has a model loaded is holding that model in memory, and unified memory is shared across everything running on the machine at once."}},{"@type":"Question","name":"Do I need a discrete GPU to run local LLMs on a Mac?","acceptedAnswer":{"@type":"Answer","text":"No. Apple Silicon Macs use unified memory with no separate VRAM pool, and all three tools get Metal acceleration through the same underlying engine. The limit is total system RAM, not a GPU."}},{"@type":"Question","name":"What quantization level should I start with?","acceptedAnswer":{"@type":"Answer","text":"Q4_K_M is the common default and a reasonable starting point for most models. Move up to Q5_K_M, Q6_K, or Q8_0 if you have RAM to spare and want higher quality, or down only if your hardware genuinely cannot fit the larger file."}},{"@type":"Question","name":"Is LM Studio actually free to use?","acceptedAnswer":{"@type":"Answer","text":"It is free to download and closed source. Licensing terms for commercial or work use are set by the vendor, so check them yourself before relying on it for anything beyond personal use."}},{"@type":"Question","name":"Which of the three has the best OpenAI-compatible API?","acceptedAnswer":{"@type":"Answer","text":"All three expose one: llama.cpp through llama-server, Ollama through its native API plus an OpenAI-compatible v1 path, and LM Studio through its local server. For most client code, the choice between them will not matter."}},{"@type":"Question","name":"Can I load a GGUF file I downloaded myself into Ollama?","acceptedAnswer":{"@type":"Answer","text":"Yes, by writing a small Modelfile that points at the file and defines a template, then running a create command. It takes one extra step compared to LM Studio or llama.cpp, where you just point at the file directly."}},{"@type":"Question","name":"Does LM Studio support Apple MLX models?","acceptedAnswer":{"@type":"Answer","text":"Yes. In addition to the standard GGUF and llama.cpp path, LM Studio can run compatible models through the MLX runtime built by Apple, a genuine Apple-specific option the other two tools do not offer out of the box."}}]}</script>
 
 <link rel="stylesheet" href="/css/site.css">
-<link rel="stylesheet" href="/css/lux-motion.css">
 <style>
   .prose{max-width:68ch}
   .prose h2{margin:var(--s7) 0 var(--s4);font-size:var(--t-h2)}
@@ -238,6 +237,5 @@
 </footer>
 
 <script src="/js/site.js" defer></script>
-<script src="/js/lux-motion.js" defer></script>
 </body>
 </html>

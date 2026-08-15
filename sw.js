@@ -22,7 +22,7 @@
    whose name is not in the current set, so one reload fully retires the old one.
    ========================================================================= */
 
-var VERSION = "v6";
+var VERSION = "v7";
 var SHELL = "yg-shell-" + VERSION;   // precached offline fallback + chrome
 var RUNTIME = "yg-runtime-" + VERSION; // opportunistic assets
 var PAGES = "yg-pages-" + VERSION;     // last-known-good HTML, offline only
@@ -32,7 +32,9 @@ var OFFLINE_URL = "/offline.html";
 var PRECACHE = [
   OFFLINE_URL,
   "/css/site.css",
+  "/css/lux-motion.css",
   "/js/site.js",
+  "/js/lux-motion.js",
   "/manifest.webmanifest",
   "/favicon.svg",
   "/icon-192.png",

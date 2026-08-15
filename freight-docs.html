@@ -40,7 +40,12 @@
 <meta name="twitter:description" content="Fill one form, get a rate confirmation, bill of lading, carrier packet request and load tender. Runs entirely in your browser.">
 <link rel="stylesheet" href="/css/site.css">
 <link rel="stylesheet" href="/css/lux-motion.css">
+<link rel="stylesheet" href="/css/lux-plus.css">
 <link rel="stylesheet" href="/css/freight-docs.css">
+<style>
+  .dg-check{min-height:44px;padding-block:8px}
+  .dg-check input{width:20px;height:20px}
+</style>
 </head>
 <body class="pro">
 <a class="skip-link" href="#main">Skip to content</a>
@@ -110,7 +115,7 @@
         <div class="dg-fields">
           <div class="dg-field">
             <label for="fd_loadNumber">Load number <span class="req" aria-hidden="true">*</span></label>
-            <input type="text" id="fd_loadNumber" placeholder="L-1042">
+            <input type="text" id="fd_loadNumber" aria-required="true" placeholder="L-1042">
           </div>
           <div class="dg-field">
             <label for="fd_poNumber">PO / reference</label>
@@ -165,7 +170,7 @@
         <div class="dg-fields">
           <div class="dg-field dg-field--wide">
             <label for="fd_originName">Shipper name <span class="req" aria-hidden="true">*</span></label>
-            <input type="text" id="fd_originName" placeholder="Origin facility">
+            <input type="text" id="fd_originName" aria-required="true" placeholder="Origin facility">
           </div>
           <div class="dg-field dg-field--wide">
             <label for="fd_originAddr">Street address</label>
@@ -173,11 +178,11 @@
           </div>
           <div class="dg-field">
             <label for="fd_originCity">City <span class="req" aria-hidden="true">*</span></label>
-            <input type="text" id="fd_originCity" placeholder="Stockton">
+            <input type="text" id="fd_originCity" aria-required="true" placeholder="Stockton">
           </div>
           <div class="dg-field">
             <label for="fd_originState">State <span class="req" aria-hidden="true">*</span></label>
-            <input type="text" id="fd_originState" maxlength="2" placeholder="CA">
+            <input type="text" id="fd_originState" maxlength="2" aria-required="true" placeholder="CA">
           </div>
           <div class="dg-field">
             <label for="fd_originZip">ZIP</label>
@@ -207,7 +212,7 @@
         <div class="dg-fields">
           <div class="dg-field dg-field--wide">
             <label for="fd_destName">Consignee name <span class="req" aria-hidden="true">*</span></label>
-            <input type="text" id="fd_destName" placeholder="Destination facility">
+            <input type="text" id="fd_destName" aria-required="true" placeholder="Destination facility">
           </div>
           <div class="dg-field dg-field--wide">
             <label for="fd_destAddr">Street address</label>
@@ -215,11 +220,11 @@
           </div>
           <div class="dg-field">
             <label for="fd_destCity">City <span class="req" aria-hidden="true">*</span></label>
-            <input type="text" id="fd_destCity" placeholder="Phoenix">
+            <input type="text" id="fd_destCity" aria-required="true" placeholder="Phoenix">
           </div>
           <div class="dg-field">
             <label for="fd_destState">State <span class="req" aria-hidden="true">*</span></label>
-            <input type="text" id="fd_destState" maxlength="2" placeholder="AZ">
+            <input type="text" id="fd_destState" maxlength="2" aria-required="true" placeholder="AZ">
           </div>
           <div class="dg-field">
             <label for="fd_destZip">ZIP</label>
@@ -249,7 +254,7 @@
         <div class="dg-fields">
           <div class="dg-field dg-field--wide">
             <label for="fd_carrierName">Carrier legal name <span class="req" aria-hidden="true">*</span></label>
-            <input type="text" id="fd_carrierName" placeholder="As it appears on the authority">
+            <input type="text" id="fd_carrierName" aria-required="true" placeholder="As it appears on the authority">
           </div>
           <div class="dg-field">
             <label for="fd_carrierMC">Carrier MC</label>
@@ -435,7 +440,7 @@
 </section>
 
 <section class="fd-sec" aria-labelledby="how-h">
-  <h2 id="how-h"><span class="gold-fill" data-lux-shimmer>What each document is for</span></h2>
+  <h2 id="how-h">What each document is for</h2>
   <div class="fd-note">
     <h3>Rate confirmation</h3>
     <p>The rate confirmation is the contract for one specific load. It fixes the rate, the stops, the equipment and the paperwork the carrier owes you before you pay. Most payment disputes trace back to something that was never written on this page: detention terms, accessorial caps, or which documents are required for an invoice to be considered complete.</p>
@@ -479,6 +484,7 @@
 
 <script src="/js/site.js" defer></script>
 <script src="/js/lux-motion.js" defer></script>
+<script src="/js/lux-plus.js" defer></script>
 <script src="/js/freight-docs.js" defer></script>
 </body>
 </html>
