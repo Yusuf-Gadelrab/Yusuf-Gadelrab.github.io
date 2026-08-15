@@ -12,17 +12,16 @@
 <meta property="og:image" content="https://yusuf-gadelrab.github.io/og-card.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
-<meta property="og:image:alt" content="Yusuf Gadelrab — portfolio card">
+<meta property="og:image:alt" content="Research — Yusuf Gadelrab, SIGCSE TS 2026">
 <meta name="twitter:image" content="https://yusuf-gadelrab.github.io/og-card.png">
-<meta name="twitter:image:alt" content="Yusuf Gadelrab — portfolio card">
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://yusuf-gadelrab.github.io/"},{"@type":"ListItem","position":2,"name":"Research","item":"https://yusuf-gadelrab.github.io/research.html"}]}</script>
 <link rel="manifest" href="/manifest.webmanifest">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 <script>addEventListener("load",function(){if("serviceWorker" in navigator)navigator.serviceWorker.register("/sw.js").catch(function(){})});</script>
 <!-- /tech:seo -->
-<title>Research — Yusuf Gadelrab, SIGCSE 2026 Paper</title>
-<meta name="description" content="A peer-reviewed SIGCSE TS 2026 paper by Yusuf Gadelrab on bilingual coding for inclusive computer science learning. Methods, DOI, and what the study found.">
+<title>Research — Yusuf Gadelrab, SIGCSE TS 2026 Poster Abstract</title>
+<meta name="description" content="A peer-reviewed ACM SIGCSE TS 2026 poster abstract co-authored by Yusuf Gadelrab on bilingual coding for inclusive computer science learning.">
 <link rel="canonical" href="https://yusuf-gadelrab.github.io/research.html">
 <link rel="icon" type="image/svg+xml" href="https://yusuf-gadelrab.github.io/favicon.svg">
 <link rel="apple-touch-icon" sizes="180x180" href="https://yusuf-gadelrab.github.io/apple-touch-icon.png">
@@ -31,36 +30,25 @@
 <meta name="author" content="Yusuf Gadelrab">
 <meta name="keywords" content="Exploring Bilingual Coding for Inclusive Computer Science Learning, Yusuf Gadelrab research, SIGCSE 2026, CS education research, Ethel Tshukudu, bilingual programming education, undergraduate research SJSU">
 <meta property="og:type" content="article">
-<meta property="article:published_time" content="2026-02-17">
-<meta property="article:author" content="Yusuf Gadelrab">
 <meta property="og:site_name" content="Yusuf Gadelrab">
-<meta property="og:title" content="Research — Yusuf Gadelrab, SIGCSE 2026 Paper">
-<meta property="og:description" content="Bilingual coding for inclusive computer science learning — a peer-reviewed SIGCSE TS 2026 paper, with methods and DOI.">
+<meta property="og:title" content="Research — Yusuf Gadelrab, SIGCSE TS 2026 Poster Abstract">
+<meta property="og:description" content="Bilingual coding for inclusive computer science learning — a peer-reviewed ACM SIGCSE TS 2026 poster abstract.">
 <meta property="og:url" content="https://yusuf-gadelrab.github.io/research.html">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Research — Yusuf Gadelrab, SIGCSE 2026 Paper">
-<meta name="twitter:description" content="A peer-reviewed SIGCSE TS 2026 paper on bilingual coding for inclusive computer science learning. Methods, DOI, and findings.">
+<meta name="twitter:title" content="Research — Yusuf Gadelrab, SIGCSE TS 2026 Poster Abstract">
+<meta name="twitter:description" content="A peer-reviewed ACM SIGCSE TS 2026 poster abstract on bilingual coding for inclusive CS learning.">
 <link rel="stylesheet" href="/css/site.css">
 <link rel="stylesheet" href="/css/lux-motion.css">
-<link rel="stylesheet" href="/css/lux-plus.css">
 <style>
   /* ---- page-specific only ---- */
   .grp-head{display:flex;flex-wrap:wrap;gap:var(--s3);align-items:baseline;
     justify-content:space-between}
-  .grp-head p:not(.eyebrow){color:var(--muted);font-size:var(--t-small);max-width:56ch}
-
-  /* ---- typographic register ----
-     Section titles move to the serif display face so the h1 → h2 ramp matches
-     hire / services / store instead of dropping to the body face. */
-  #main h1,#main h2{font-family:var(--display-serif);font-weight:var(--w-regular);
-    letter-spacing:var(--track-tight);line-height:var(--lh-snug)}
-  #main h1{line-height:var(--lh-tight)}
+  .grp-head p{color:var(--muted);font-size:var(--t-small);max-width:56ch}
 
   .pubs{list-style:none;padding:0;margin:var(--s6) 0 0;display:grid;gap:var(--s6)}
-  .pubs > li{padding-left:var(--s5);border-left:2px solid var(--line-soft)}
-  .pub-title{font-family:var(--display-serif);font-weight:var(--w-regular);
-    color:var(--ink-1);font-size:var(--t-h3);letter-spacing:var(--track-tight);
-    line-height:var(--lh-snug);margin:0 0 var(--s2)}
+  .pubs li{padding-left:var(--s5);border-left:2px solid var(--line-soft)}
+  .pub-title{font-family:var(--display-pro);font-weight:600;color:var(--gold-2);
+    font-size:var(--t-h4,1.15rem);margin:0 0 var(--s2)}
   .pub-meta{color:var(--muted);font-size:var(--t-small);margin:0 0 var(--s3);letter-spacing:.02em}
   .pub-meta a{color:var(--gold-2)}
   .pub-body{color:var(--muted);font-size:var(--t-small);margin:0 0 var(--s3);max-width:68ch}
@@ -81,41 +69,20 @@
   .qa h3{font-size:var(--t-h3);margin:0 0 var(--s3)}
   .qa p{color:var(--muted);font-size:var(--t-small);margin:0}
   .qa a{color:var(--gold-2)}
-
-  /* Hero: one primary action, proof directly beneath it. */
-  .hero-act{display:flex;flex-wrap:wrap;gap:var(--s3);margin-top:var(--s6)}
-  .hero-act .btn{min-height:var(--tap)}
-  .hero-proof{margin-top:var(--s4);font-family:var(--mono);font-size:var(--t-caption);
-    color:var(--ink-3);letter-spacing:.02em}
-
-  /* The byline. Author order is load-bearing: it is printed in full, in order,
-     with the position marked, so nobody has to guess where he sits. */
-  .byline{list-style:none;margin:var(--s5) 0 0;padding:0;display:flex;flex-wrap:wrap;
-    gap:var(--s2) 0;counter-reset:a;font-size:var(--t-small);color:var(--ink-2)}
-  .byline li{counter-increment:a;display:inline-flex;align-items:baseline;gap:6px;
-    padding-right:var(--s4)}
-  .byline li::before{content:counter(a);font-family:var(--mono);font-size:var(--t-micro);
-    color:var(--ink-3)}
-  .byline li[aria-current]{color:var(--gold-ink);font-weight:var(--w-semibold)}
-  .byline li[aria-current]::before{color:var(--gold-ink)}
-
-  .who-note{margin-top:var(--s4);font-size:var(--t-small);color:var(--ink-2);
-    max-width:var(--maxw-prose)}
-
-  @media(max-width:760px){.facts dfn{min-width:100%}}
 </style>
 <!-- geo:entity — canonical Person node, one entity across every page -->
 
 <link rel="alternate" type="text/plain" href="https://yusuf-gadelrab.github.io/llms-full.txt" title="Plain-text profile for language models">
-<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"CollegeOrUniversity","@id":"https://yusuf-gadelrab.github.io/#sjsu","name":"San José State University","url":"https://www.sjsu.edu/"},{"@type":"ResearchOrganization","@id":"https://yusuf-gadelrab.github.io/#csed-lab","name":"CS Education Research Lab, San José State University","parentOrganization":{"@id":"https://yusuf-gadelrab.github.io/#sjsu"}},{"@type":"ScholarlyArticle","@id":"https://doi.org/10.1145/3770761.3777339","name":"Exploring Bilingual Coding for Inclusive Computer Science Learning","headline":"Exploring Bilingual Coding for Inclusive Computer Science Learning","mainEntityOfPage":{"@id":"https://yusuf-gadelrab.github.io/research.html#page"},"author":[{"@type":"Person","name":"Ethel Tshukudu","sameAs":"https://orcid.org/0000-0001-5626-5663","identifier":{"@type":"PropertyValue","propertyID":"ORCID","value":"https://orcid.org/0000-0001-5626-5663"},"affiliation":{"@id":"https://yusuf-gadelrab.github.io/#sjsu"}},{"@type":"Person","name":"Neel Asheshbhai Shah","sameAs":"https://orcid.org/0009-0004-6768-6147","identifier":{"@type":"PropertyValue","propertyID":"ORCID","value":"https://orcid.org/0009-0004-6768-6147"},"affiliation":{"@id":"https://yusuf-gadelrab.github.io/#sjsu"}},{"@type":"Person","name":"Thien Khang Kieu","sameAs":"https://orcid.org/0009-0009-4557-2209","identifier":{"@type":"PropertyValue","propertyID":"ORCID","value":"https://orcid.org/0009-0009-4557-2209"},"affiliation":{"@id":"https://yusuf-gadelrab.github.io/#sjsu"}},{"@type":"Person","name":"Leqaa Deeb","sameAs":"https://orcid.org/0009-0000-1386-501X","identifier":{"@type":"PropertyValue","propertyID":"ORCID","value":"https://orcid.org/0009-0000-1386-501X"},"affiliation":{"@id":"https://yusuf-gadelrab.github.io/#sjsu"}},{"@type":"Person","name":"Harshitha Venkateswaran","sameAs":"https://orcid.org/0009-0000-0259-7726","identifier":{"@type":"PropertyValue","propertyID":"ORCID","value":"https://orcid.org/0009-0000-0259-7726"},"affiliation":{"@id":"https://yusuf-gadelrab.github.io/#sjsu"}},{"@type":"Person","name":"Aarav Ghai","sameAs":"https://orcid.org/0009-0008-9433-3899","identifier":{"@type":"PropertyValue","propertyID":"ORCID","value":"https://orcid.org/0009-0008-9433-3899"},"affiliation":{"@id":"https://yusuf-gadelrab.github.io/#sjsu"}},{"@type":"Person","@id":"https://yusuf-gadelrab.github.io/#person","name":"Yusuf Gadelrab","url":"https://yusuf-gadelrab.github.io/","sameAs":"https://orcid.org/0009-0001-6579-1179","identifier":{"@type":"PropertyValue","propertyID":"ORCID","value":"https://orcid.org/0009-0001-6579-1179"},"affiliation":{"@id":"https://yusuf-gadelrab.github.io/#sjsu"}},{"@type":"Person","name":"Purujit Hada","sameAs":"https://orcid.org/0009-0007-1696-2908","identifier":{"@type":"PropertyValue","propertyID":"ORCID","value":"https://orcid.org/0009-0007-1696-2908"},"affiliation":{"@id":"https://yusuf-gadelrab.github.io/#sjsu"}}],"datePublished":"2026-02-17","inLanguage":"en","publisher":{"@type":"Organization","name":"Association for Computing Machinery","alternateName":"ACM"},"isPartOf":{"@type":"CreativeWork","name":"Proceedings of the 57th ACM Technical Symposium on Computer Science Education (SIGCSE TS 2026)"},"sourceOrganization":{"@id":"https://yusuf-gadelrab.github.io/#csed-lab"},"identifier":[{"@type":"PropertyValue","propertyID":"DOI","value":"10.1145/3770761.3777339"}],"sameAs":"https://doi.org/10.1145/3770761.3777339","url":"https://doi.org/10.1145/3770761.3777339","about":["Computer science education","Bilingual learners","Inclusive pedagogy"]}]}</script>
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"CollectionPage","@id":"https://yusuf-gadelrab.github.io/research.html#page","url":"https://yusuf-gadelrab.github.io/research.html","name":"Research — Yusuf Gadelrab","description":"Peer-reviewed computer science education research by Yusuf Gadelrab, co-authored in Dr. Ethel Tshukudu's CS Education Research Lab at San José State University.","author":{"@id":"https://yusuf-gadelrab.github.io/#person"},"about":{"@id":"https://yusuf-gadelrab.github.io/#person"},"hasPart":[{"@id":"https://doi.org/10.1145/3770761.3777339"}],"mainEntity":{"@id":"https://yusuf-gadelrab.github.io/research.html#papers"},"isPartOf":{"@type":"WebSite","name":"Yusuf Gadelrab","url":"https://yusuf-gadelrab.github.io/"},"inLanguage":"en"}</script>
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"ItemList","@id":"https://yusuf-gadelrab.github.io/research.html#papers","name":"Peer-reviewed papers by Yusuf Gadelrab","numberOfItems":1,"itemListOrder":"https://schema.org/ItemListOrderAscending","itemListElement":[{"@type":"ListItem","position":1,"name":"Exploring Bilingual Coding for Inclusive Computer Science Learning","item":{"@id":"https://doi.org/10.1145/3770761.3777339"}}]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"ScholarlyArticle","@id":"https://doi.org/10.1145/3770761.3777339","name":"Exploring Bilingual Coding for Inclusive Computer Science Learning","headline":"Exploring Bilingual Coding for Inclusive Computer Science Learning","author":[{"@type":"Person","name":"Ethel Tshukudu","sameAs":"https://orcid.org/0000-0001-5626-5663","identifier":{"@type":"PropertyValue","propertyID":"ORCID","value":"https://orcid.org/0000-0001-5626-5663"},"affiliation":{"@id":"https://yusuf-gadelrab.github.io/#sjsu"}},{"@type":"Person","name":"Neel Asheshbhai Shah","sameAs":"https://orcid.org/0009-0004-6768-6147","identifier":{"@type":"PropertyValue","propertyID":"ORCID","value":"https://orcid.org/0009-0004-6768-6147"},"affiliation":{"@id":"https://yusuf-gadelrab.github.io/#sjsu"}},{"@type":"Person","name":"Thien Khang Kieu","sameAs":"https://orcid.org/0009-0009-4557-2209","identifier":{"@type":"PropertyValue","propertyID":"ORCID","value":"https://orcid.org/0009-0009-4557-2209"},"affiliation":{"@id":"https://yusuf-gadelrab.github.io/#sjsu"}},{"@type":"Person","name":"Leqaa Deeb","sameAs":"https://orcid.org/0009-0000-1386-501X","identifier":{"@type":"PropertyValue","propertyID":"ORCID","value":"https://orcid.org/0009-0000-1386-501X"},"affiliation":{"@id":"https://yusuf-gadelrab.github.io/#sjsu"}},{"@type":"Person","name":"Harshitha Venkateswaran","sameAs":"https://orcid.org/0009-0000-0259-7726","identifier":{"@type":"PropertyValue","propertyID":"ORCID","value":"https://orcid.org/0009-0000-0259-7726"},"affiliation":{"@id":"https://yusuf-gadelrab.github.io/#sjsu"}},{"@type":"Person","name":"Aarav Ghai","sameAs":"https://orcid.org/0009-0008-9433-3899","identifier":{"@type":"PropertyValue","propertyID":"ORCID","value":"https://orcid.org/0009-0008-9433-3899"},"affiliation":{"@id":"https://yusuf-gadelrab.github.io/#sjsu"}},{"@id":"https://yusuf-gadelrab.github.io/#person"},{"@type":"Person","name":"Purujit Hada","sameAs":"https://orcid.org/0009-0007-1696-2908","identifier":{"@type":"PropertyValue","propertyID":"ORCID","value":"https://orcid.org/0009-0007-1696-2908"},"affiliation":{"@id":"https://yusuf-gadelrab.github.io/#sjsu"}}],"datePublished":"2026-02-17","inLanguage":"en","publisher":{"@type":"Organization","name":"Association for Computing Machinery","alternateName":"ACM"},"isPartOf":{"@type":"CreativeWork","name":"Proceedings of the 57th ACM Technical Symposium on Computer Science Education (SIGCSE TS 2026)"},"sourceOrganization":{"@id":"https://yusuf-gadelrab.github.io/#csed-lab"},"identifier":[{"@type":"PropertyValue","propertyID":"DOI","value":"10.1145/3770761.3777339"}],"sameAs":"https://doi.org/10.1145/3770761.3777339","url":"https://doi.org/10.1145/3770761.3777339","about":["Computer science education","Bilingual learners","Inclusive pedagogy"]}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "ScholarlyArticle", "@id": "https://yusuf-gadelrab.github.io/research.html#does-language-matter", "name": "Does Language Matter in Programming? Exploring Student Attitudes and Experiences in a Bilingual Coding Workshop", "headline": "Does Language Matter in Programming? Exploring Student Attitudes and Experiences in a Bilingual Coding Workshop", "author": [{"@type": "Person", "name": "Ethel Tshukudu", "sameAs": "https://orcid.org/0000-0001-5626-5663", "identifier": {"@type": "PropertyValue", "propertyID": "ORCID", "value": "https://orcid.org/0000-0001-5626-5663"}, "affiliation": {"@id": "https://yusuf-gadelrab.github.io/#sjsu"}}, {"@type": "Person", "name": "Thien Khang Kieu", "sameAs": "https://orcid.org/0009-0009-4557-2209", "identifier": {"@type": "PropertyValue", "propertyID": "ORCID", "value": "https://orcid.org/0009-0009-4557-2209"}, "affiliation": {"@id": "https://yusuf-gadelrab.github.io/#sjsu"}}, {"@type": "Person", "name": "Leqaa Deeb", "sameAs": "https://orcid.org/0009-0000-1386-501X", "identifier": {"@type": "PropertyValue", "propertyID": "ORCID", "value": "https://orcid.org/0009-0000-1386-501X"}, "affiliation": {"@id": "https://yusuf-gadelrab.github.io/#sjsu"}}, {"@type": "Person", "name": "Harshitha Venkateswaran", "sameAs": "https://orcid.org/0009-0000-0259-7726", "identifier": {"@type": "PropertyValue", "propertyID": "ORCID", "value": "https://orcid.org/0009-0000-0259-7726"}, "affiliation": {"@id": "https://yusuf-gadelrab.github.io/#sjsu"}}, {"@id": "https://yusuf-gadelrab.github.io/#person"}], "inLanguage": "en", "creativeWorkStatus": "Accepted for presentation; proceedings not yet published", "publisher": {"@type": "Organization", "name": "Association for Computing Machinery", "url": "https://www.acm.org/"}, "isPartOf": {"@type": "CreativeWork", "name": "SIGCSE Virtual 2026: 2nd ACM Virtual Global Computing Education Conference"}, "sourceOrganization": {"@id": "https://yusuf-gadelrab.github.io/#csed-lab"}, "url": "https://sigcsevirtual2026.acm.org/details/sigcse-virtual-2026-papers/31/Does-Language-Matter-in-Programming-Exploring-Student-Attitudes-and-Experiences-in-a", "sameAs": "https://sigcsevirtual2026.acm.org/details/sigcse-virtual-2026-papers/31/Does-Language-Matter-in-Programming-Exploring-Student-Attitudes-and-Experiences-in-a", "abstract": "A study of 60 bilingual participants at San Jose State University examining how a two-hour bilingual programming workshop on the multilingual Hedy platform influences student attitudes, perceived understanding and comfort. Inexperienced participants gained more in confidence and enjoyment than experienced programmers, who preferred coding in English.", "about": ["Computer science education", "Bilingual learners", "Inclusive pedagogy"]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"CollectionPage","@id":"https://yusuf-gadelrab.github.io/research.html#page","url":"https://yusuf-gadelrab.github.io/research.html","name":"Research — Yusuf Gadelrab","description":"Peer-reviewed computer science education research by Yusuf Gadelrab, co-authored in Dr. Ethel Tshukudu's CS Education Research Lab at San José State University.","author":{"@id":"https://yusuf-gadelrab.github.io/#person"},"about":{"@id":"https://yusuf-gadelrab.github.io/#person"},"hasPart":[{"@id":"https://doi.org/10.1145/3770761.3777339"},{"@id":"https://yusuf-gadelrab.github.io/research.html#does-language-matter"}],"mainEntity":{"@id":"https://yusuf-gadelrab.github.io/research.html#papers"},"isPartOf":{"@type":"WebSite","name":"Yusuf Gadelrab","url":"https://yusuf-gadelrab.github.io/"},"inLanguage":"en"}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"ItemList","@id":"https://yusuf-gadelrab.github.io/research.html#papers","name":"Peer-reviewed work by Yusuf Gadelrab","numberOfItems":2,"itemListOrder":"https://schema.org/ItemListOrderAscending","itemListElement":[{"@type":"ListItem","position":1,"name":"Exploring Bilingual Coding for Inclusive Computer Science Learning","item":{"@id":"https://doi.org/10.1145/3770761.3777339"}},{"@type":"ListItem","position":2,"name":"Does Language Matter in Programming? Exploring Student Attitudes and Experiences in a Bilingual Coding Workshop","item":{"@id":"https://yusuf-gadelrab.github.io/research.html#does-language-matter"}}]}</script>
 </head>
 <body class="pro">
 
 <a class="skip-link" href="#main">Skip to content</a>
 
-<nav class="site-nav" aria-label="Primary">
+<nav class="site-nav">
   <a class="site-nav__brand" href="/"><img class="site-nav__lion" src="/img/brand/lion-mark.svg" alt="" width="34" height="34" decoding="async"><span>YUSUF GADELRAB</span></a>
   <div class="site-nav__links"><a href="/">Work</a><a href="/resume.html">Resume</a><a href="/guides.html">Guides</a><a href="/store.html">Store</a><a href="/apps.html">Apps</a><a href="/kxngsef.html">KXNG SEF</a><a href="/hire.html">Hire</a><a href="/media-kit.html">Media Kit</a></div>
 </nav>
@@ -132,16 +99,9 @@
   <header class="section" id="who">
     <img class="page-lion" src="/img/brand/lion-mark.svg" alt="" width="46" height="46" decoding="async">
     <p class="eyebrow">DHAHAB · Research</p>
-    <h1 class="dh-serif" style="margin:var(--s4) 0">Peer-reviewed <span class="gold-fill">CS education research.</span></h1>
-    <p class="lead">One question, measured properly: what has to change so a beginner who does not think in English can still learn to program? Yusuf Gadelrab co-authored the paper that tested it, in Dr. Ethel Tshukudu's CS Education Research Lab at San José State University, where he has been an undergraduate researcher since August 2024.</p>
-
-    <div class="hero-act">
-      <a class="btn btn-ghost" href="https://doi.org/10.1145/3770761.3777339" rel="noopener">Read the paper at ACM →</a>
-      <a class="btn btn-gold" href="#papers">The record, in 30 seconds</a>
-    </div>
-    <p class="hero-proof">SIGCSE TS 2026 · doi:10.1145/3770761.3777339 · accepted, not a preprint</p>
-
-    <p class="who-note">Every claim on this page resolves to that DOI. There is one peer-reviewed publication, and it is the one below — no preprints, no class projects, no submissions still under review padding the list.</p>
+    <h1 style="margin:var(--s4) 0">Peer-reviewed <span class="gold-fill">CS education research.</span></h1>
+    <p class="lead">Yusuf Gadelrab is a co-author of a peer-reviewed poster abstract published at the ACM SIGCSE Technical Symposium 2026, out of Dr. Ethel Tshukudu's CS Education Research Lab at San José State University, where he has been an undergraduate researcher since August 2024. The question underneath it: what actually has to change so that a beginner who does not think in English can still learn to program?</p>
+    <p style="color:var(--muted);max-width:62ch">Every claim on this page is checkable against a primary source: the published poster abstract has a DOI. Nothing here is a preprint or a submission still under review.</p>
   </header>
 
   <hr class="divider">
@@ -156,37 +116,22 @@
       <p>Undergraduate co-author, not a lab assistant credit.</p>
     </div>
 
-    <div class="dh-stats" style="margin-top:var(--s6)">
-      <div class="dh-stat">
-        <span class="dh-stat__v dh-num">1</span>
-        <span class="dh-stat__k">Peer-reviewed publication — the complete list, not a highlight</span>
-        <span class="dh-stat__src">SIGCSE TS 2026 · ACM</span>
-      </div>
-      <div class="dh-stat">
-        <span class="dh-stat__v dh-num">60</span>
-        <span class="dh-stat__k">Participants in the IRB-approved mixed-methods study</span>
-        <span class="dh-stat__src">doi:10.1145/3770761.3777339</span>
-      </div>
-      <div class="dh-stat">
-        <span class="dh-stat__v dh-num">7<span style="font-size:.5em;color:var(--ink-3)"> / 8</span></span>
-        <span class="dh-stat__k">Author position — seventh of eight, as it appears on the paper</span>
-        <span class="dh-stat__src">Verified against the accepted PDF</span>
-      </div>
-      <div class="dh-stat">
-        <span class="dh-stat__v dh-num">2024</span>
-        <span class="dh-stat__k">Joined the CS Education Research Lab at SJSU</span>
-        <span class="dh-stat__src">August 2024 — present</span>
-      </div>
+    <div class="grid" style="margin-top:var(--s6)">
+      <div class="card stat"><span class="stat__value">2</span><span class="stat__label">Peer-reviewed works — a SIGCSE TS 2026 poster abstract and a SIGCSE Virtual 2026 paper</span></div>
+      <div class="card stat"><span class="stat__value">60</span><span class="stat__label">Bilingual participants in the study</span></div>
+      <div class="card stat"><span class="stat__value">60</span><span class="stat__label">Bilingual participants in the mixed-methods study, which found significant pre-to-post gains in confidence</span></div>
+      <div class="card stat"><span class="stat__value">2024</span><span class="stat__label">Year he joined the CS Education Research Lab at SJSU</span></div>
     </div>
 
     <ul class="facts">
       <li><dfn>Researcher</dfn><span>Yusuf Gadelrab — BS Computer Science, San José State University, expected May 2028, dual track in applied mathematics and computer science</span></li>
       <li><dfn>Lab</dfn><span>CS Education Research Lab, San José State University</span></li>
       <li><dfn>Advisor</dfn><span>Dr. Ethel Tshukudu</span></li>
-      <li><dfn>Venue</dfn><span>ACM SIGCSE Technical Symposium 2026 (SIGCSE TS 2026)</span></li>
-      <li><dfn>Methods</dfn><span>IRB-approved protocol, mixed methods, 60 participants</span></li>
+      <li><dfn>Venues</dfn><span>ACM SIGCSE Technical Symposium 2026 (SIGCSE TS 2026), Posters track · SIGCSE Virtual 2026, Papers track, 12–15 November 2026</span></li>
+      <li><dfn>Methods</dfn><span>Mixed methods, 60 bilingual participants</span></li>
       <li><dfn>Primary DOI</dfn><span><a href="https://doi.org/10.1145/3770761.3777339" rel="noopener">10.1145/3770761.3777339</a></span></li>
-      <li><dfn>Contact</dfn><span><a href="mailto:yusuf.gadelrab06@gmail.com">yusuf.gadelrab06@gmail.com</a> · <a href="https://github.com/Yusuf-Gadelrab" rel="noopener">GitHub</a> · <a href="https://www.linkedin.com/in/yusuf-gadelrab-76246b221" rel="noopener">LinkedIn</a></span></li>
+      <li><dfn>Repository record</dfn><span><a href="https://scholarworks.sjsu.edu/faculty_rsca/6913/" rel="noopener">SJSU ScholarWorks</a></span></li>
+      <li><dfn>Contact</dfn><span><a href="mailto:yusuf.gadelrab06@gmail.com">yusuf.gadelrab06@gmail.com</a> · <a href="https://github.com/Yusuf-Gadelrab" rel="noopener">GitHub</a> · <a href="https://www.linkedin.com/in/yusuf-gadelrab" rel="noopener">LinkedIn</a></span></li>
     </ul>
   </section>
 
@@ -211,39 +156,36 @@
 
   <hr class="divider">
 
-  <!-- ============ THE PAPERS ============ -->
+  <!-- ============ THE POSTER AND THE PAPER ============ -->
   <section class="section section--tight" id="papers">
     <div class="grp-head">
       <div>
         <p class="eyebrow">03 · Publications</p>
-        <h2>The paper</h2>
+        <h2>The poster and the paper</h2>
       </div>
-      <p>One entry. SIGCSE Technical Symposium 2026 · ACM.</p>
+      <p>ACM SIGCSE TS 2026 · SIGCSE Virtual 2026</p>
     </div>
 
     <ol class="pubs">
       <li id="bilingual-coding">
-        <h3 class="pub-title">Exploring Bilingual Coding for Inclusive Computer Science Learning</h3>
+        <p class="pub-title">Exploring Bilingual Coding for Inclusive Computer Science Learning</p>
         <p class="pub-meta">SIGCSE Technical Symposium 2026 · ACM · DOI <a href="https://doi.org/10.1145/3770761.3777339" rel="noopener">10.1145/3770761.3777339</a></p>
-
-        <ol class="byline" aria-label="Authors in published order">
-          <li>Ethel Tshukudu</li>
-          <li>Neel Asheshbhai Shah</li>
-          <li>Thien Khang Kieu</li>
-          <li>Leqaa Deeb</li>
-          <li>Harshitha Venkateswaran</li>
-          <li>Aarav Ghai</li>
-          <li aria-current="true">Yusuf Gadelrab</li>
-          <li>Purujit Hada</li>
-        </ol>
-        <p class="pub-body">A mixed-methods, IRB-approved study of 60 participants asking whether novices learn programming better when they can read and write code alongside their first language, rather than being forced through English-only syntax and English-only instruction from day one.</p>
-        <p class="pub-body">The design pairs quantitative performance data with qualitative accounts from the learners themselves, because the interesting failure mode in introductory CS is rarely a wrong answer — it is a student who decides, quietly and early, that this subject is not for them. The headline result: statistically significant pre-to-post gains in confidence, computing identity, enjoyment and motivation, with inexperienced participants gaining significantly more in confidence than experienced ones. Confidence is the measure that predicts whether someone takes the second CS course, which is the outcome the field actually cares about.</p>
+        <p class="pub-body">A mixed-methods study of 60 participants asking whether novices learn programming better when they can read and write code alongside their first language, rather than being forced through English-only syntax and English-only instruction from day one.</p>
+        <p class="pub-body">The design pairs quantitative performance data with qualitative accounts from the learners themselves, because the interesting failure mode in introductory CS is rarely a wrong answer — it is a student who decides, quietly and early, that this subject is not for them. The headline result: pre-to-post improvements in confidence, computing identity, enjoyment and motivation, with inexperienced participants gaining more in confidence than experienced ones. Confidence is the measure that predicts whether someone takes the second CS course, which is the outcome the field actually cares about.</p>
         <p class="pub-body"><a href="https://doi.org/10.1145/3770761.3777339" rel="noopener">Read it at doi.org/10.1145/3770761.3777339 →</a></p>
         <p class="cite">Tshukudu, Shah, Kieu, Deeb, Venkateswaran, Ghai, Gadelrab, Hada (2026). Exploring Bilingual Coding for Inclusive Computer Science Learning. In Proceedings of the 57th ACM Technical Symposium on Computer Science Education (SIGCSE TS 2026). ACM. https://doi.org/10.1145/3770761.3777339</p>
       </li>
-    </ol>
 
-    <p class="dh-note" style="margin-top:var(--s6)">This is the whole publication record. If a list somewhere credits a second SIGCSE item to him, that list is wrong.</p>
+      <li id="does-language-matter">
+        <p class="pub-title">Does Language Matter in Programming? Exploring Student Attitudes and Experiences in a Bilingual Coding Workshop</p>
+        <p class="pub-meta">SIGCSE Virtual 2026 · Papers track · 2nd ACM Virtual Global Computing Education Conference · 12–15 November 2026, online</p>
+        <p class="pub-body">The full treatment of the study the poster abstract introduced. Sixty bilingual participants at San José State University — 40 with little to no prior programming experience, 20 experienced programmers — completed a two-hour workshop on the multilingual <a href="https://www.hedy.org/" rel="noopener">Hedy</a> platform. Pre- and post-surveys used the validated Attitudes Toward Computing Scale to measure confidence, enjoyment, motivation, identity and perceived usefulness, alongside open-ended questions about what the experience was actually like.</p>
+        <p class="pub-body">The result that matters is the split. Every group improved on most constructs, but the inexperienced participants gained more in confidence and enjoyment, while the experienced programmers showed smaller gains and actively preferred coding in English. The qualitative data explains why: most students felt English supported clarity, yet bilingual students more often reported that having both languages available helped them grasp the concept, even when translation itself was awkward. So bilingual environments help most exactly where the field needs help — at the point of first contact — and matter less once someone already reads code fluently.</p>
+        <p class="pub-body"><a href="https://sigcsevirtual2026.acm.org/details/sigcse-virtual-2026-papers/31/Does-Language-Matter-in-Programming-Exploring-Student-Attitudes-and-Experiences-in-a" rel="noopener">See it on the SIGCSE Virtual 2026 programme →</a></p>
+        <p class="pub-body" style="color:var(--muted)">The conference takes place in November 2026, so proceedings are not published yet and no DOI has been assigned. This entry will be updated with the DOI when ACM issues it.</p>
+        <p class="cite">Tshukudu, Kieu, Deeb, Venkateswaran, Gadelrab (2026). Does Language Matter in Programming? Exploring Student Attitudes and Experiences in a Bilingual Coding Workshop. SIGCSE Virtual 2026, Papers track. ACM.</p>
+      </li>
+    </ol>
   </section>
 
   <hr class="divider">
@@ -260,7 +202,7 @@
 
     <div class="panel" style="margin-top:var(--s6)">
       <ul class="facts" style="margin-top:0">
-        <li><dfn>Approval</dfn><span>IRB protocol — human-subjects review cleared before any data was collected, which is the boundary between a study and an anecdote</span></li>
+        <li><dfn>Participants</dfn><span>60 bilingual participants — 40 with little or no prior programming experience, 20 experienced. Thtween a study and an anecdote</span></li>
         <li><dfn>Design</dfn><span>Mixed methods — quantitative performance measures paired with qualitative learner accounts, so the numbers come with the reasons behind them</span></li>
         <li><dfn>Sample</dfn><span>60 participants</span></li>
         <li><dfn>Primary outcome</dfn><span>Learner confidence — significant pre-to-post gains, largest among novices</span></li>
@@ -268,7 +210,7 @@
       </ul>
     </div>
 
-    <p style="margin-top:var(--s6);color:var(--muted);max-width:var(--maxw-prose)">The peer-reviewed paper is the source of record. Anything reported here beyond what is stated above should be read out of the paper itself, not out of this page.</p>
+    <p style="margin-top:var(--s6);color:var(--muted);max-width:var(--maxw-prose)">The published poster abstract is the source of record. Anything reported here beyond what is stated above should be read out of the paper itself, not out of this page.</p>
   </section>
 
   <hr class="divider">
@@ -276,15 +218,13 @@
   <!-- ============ RELATED ============ -->
   <section class="section section--tight" id="related">
     <div class="grp-head">
-      <div>
-        <p class="eyebrow">05 · Where this goes next</p>
-        <h2>Research in practice</h2>
-      </div>
+      <p class="eyebrow">05 · Where this goes next</p>
+      <h2>Research in practice</h2>
     </div>
     <div class="grid" style="margin-top:var(--s6)">
-      <a class="card qa" href="/codeswitch.html"><h3>CODESWITCH</h3><p>The bilingual coding finding, turned into a free 8-week intro CS curriculum — written and public, first cohort not yet run →</p></a>
-      <a class="card qa" href="/guides/bilingual-coding-cs-education.html"><h3>Bilingual coding, explained</h3><p>A plain-language guide to second-language load in intro CS, and what the study found about novice confidence →</p></a>
-      <a class="card qa" href="/guides/undergraduate-research.html"><h3>Getting into a research lab</h3><p>How an undergrad with no connections ends up co-authoring a peer-reviewed paper →</p></a>
+      <a class="card qa" href="/codeswitch.html"><h3>CODESWITCH</h3><p>The bilingual coding finding, turned into a free 8-week intro CS program for high schoolers still learning English →</p></a>
+      <a class="card qa" href="/guides/bilingual-coding-cs-education.html"><h3>Bilingual coding, explained</h3><p>A plain-language guide to why first-language instruction changes introductory CS outcomes →</p></a>
+      <a class="card qa" href="/guides/undergraduate-research.html"><h3>Getting into a research lab</h3><p>How an undergrad with no connections ends up co-authoring a peer-reviewed poster abstract →</p></a>
       <a class="card qa" href="/projects.html"><h3>Technical projects</h3><p>The engineering side — AI tooling, trading research, and free browser apps →</p></a>
     </div>
   </section>
@@ -292,14 +232,13 @@
   <hr class="divider">
 
   <section class="section section--tight">
-    <div class="dh-cta">
-      <div class="dh-cta__copy">
-        <p class="dh-cta__title">Working on CS education research?</p>
-        <p class="dh-cta__sub">Replication, a bilingual cohort, or a lab looking for an undergraduate who has already been through IRB — email is the fastest route. Recruiting instead? <a href="/hire.html">Start here</a>.</p>
+    <div class="row" style="justify-content:space-between">
+      <div>
+        <p class="eyebrow">Collaboration</p>
+        <h2 style="margin-top:var(--s2)">Working on CS education research?</h2>
       </div>
-      <div class="dh-cta__act">
+      <div class="row">
         <a class="btn btn-gold" href="mailto:yusuf.gadelrab06@gmail.com?subject=Research">Email me →</a>
-        <a class="btn btn-ghost" href="/hire.html">Hiring? Work with me →</a>
         <a class="btn btn-ghost" href="/about.html">Full background</a>
       </div>
     </div>
@@ -327,12 +266,12 @@
     <a href="/terms.html">Terms</a>
     <a href="mailto:yusuf.gadelrab06@gmail.com">yusuf.gadelrab06@gmail.com</a>
     <a href="https://github.com/Yusuf-Gadelrab" target="_blank" rel="noopener">GitHub</a>
-    <a href="https://www.linkedin.com/in/yusuf-gadelrab-76246b221" target="_blank" rel="noopener">LinkedIn</a>
+    <a href="https://www.linkedin.com/in/yusuf-gadelrab" target="_blank" rel="noopener">LinkedIn</a>
+          <a href="/portfolio/">Portfolio</a>
   </div>
 </footer>
 
 <script src="/js/site.js" defer></script>
 <script src="/js/lux-motion.js" defer></script>
-<script src="/js/lux-plus.js" defer></script>
 </body>
 </html>

@@ -22,7 +22,7 @@
 <script>addEventListener("load",function(){if("serviceWorker" in navigator)navigator.serviceWorker.register("/sw.js").catch(function(){})});</script>
 <!-- /tech:seo -->
 <title>HEFT — Heavyweight Hoodies. Nothing Else.</title>
-<meta name="description" content="HEFT is a heavyweight hoodie brand in the making: 450+ GSM, minimal design, maximum weight. No logos screaming at you. First-drop waitlist open.">
+<meta name="description" content="HEFT makes one thing: 450+ GSM heavyweight hoodies. Minimal design, maximum weight. No logos screaming at you. Just heft.">
 <link rel="canonical" href="https://yusuf-gadelrab.github.io/heft.html">
 <link rel="icon" type="image/svg+xml" href="https://yusuf-gadelrab.github.io/favicon.svg">
 <link rel="apple-touch-icon" sizes="180x180" href="https://yusuf-gadelrab.github.io/apple-touch-icon.png">
@@ -31,41 +31,20 @@
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="HEFT">
 <meta property="og:title" content="HEFT — Heavyweight Hoodies. Nothing Else.">
-<meta property="og:description" content="A heavyweight hoodie brand in the making: 450+ GSM, minimal design, maximum weight. First-drop waitlist open.">
+<meta property="og:description" content="450+ GSM heavyweight hoodies. Minimal design, maximum weight. No logos screaming at you. Just heft.">
 <meta property="og:url" content="https://yusuf-gadelrab.github.io/heft.html">
 
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="HEFT — Heavyweight Hoodies. Nothing Else.">
-<meta name="twitter:description" content="A heavyweight hoodie brand in the making: 450+ GSM, minimal design. First-drop waitlist open.">
+<meta name="twitter:description" content="450+ GSM heavyweight hoodies. Minimal design, maximum weight.">
 
-<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"Brand","@id":"https://yusuf-gadelrab.github.io/heft.html#brand","founder":{"@id":"https://yusuf-gadelrab.github.io/#person"},"name":"HEFT","url":"https://yusuf-gadelrab.github.io/heft.html","description":"A heavyweight hoodie brand in the making: 450+ GSM, minimal design, maximum weight. First-drop waitlist open."},{"@type":"Person","@id":"https://yusuf-gadelrab.github.io/#person","name":"Yusuf Gadelrab"}]}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@graph": [{"@type": "Brand", "@id": "https://yusuf-gadelrab.github.io/heft.html#brand", "name": "HEFT", "url": "https://yusuf-gadelrab.github.io/heft.html", "description": "450+ GSM heavyweight hoodies. Minimal design, maximum weight."}, {"@id": "https://yusuf-gadelrab.github.io/#person"}]}</script>
 <link rel="stylesheet" href="/css/site.css">
 <link rel="stylesheet" href="/css/lux-motion.css">
-<link rel="stylesheet" href="/css/lux-plus.css">
 <style>
   /* ---- page-specific only: the GSM comparison bars and the numbered lineup ---- */
-
-  /* Editorial register, scoped to h2/h3 ONLY. The <h1> is deliberately set in
-     --display (uppercase, --t-hero, +2px tracking) — that condensed slab IS the
-     HEFT wordmark, so it is left alone. Everything below it goes serif so the
-     prose reads editorial instead of shouted. This body has no .pro class, so
-     text-transform has to be reset here (site.css uppercases h1-h4 by default).
-     --display-serif is a SYSTEM stack — zero network requests. */
-  main h2,main h3{font-family:var(--display-serif);text-transform:none;
-    letter-spacing:var(--track-tight);font-weight:var(--w-semibold);
-    line-height:var(--lh-snug)}
-  main h3{font-size:var(--t-h4)}
-
   .hero-heft{padding-top:var(--s8);padding-bottom:var(--s7)}
   .hero-heft h1{font-size:var(--t-hero);letter-spacing:2px;line-height:.9;margin:var(--s4) 0}
-
-  /* The one decorative accent on this page: a conic gold bloom behind the hero,
-     which was otherwise flat type on flat black. */
-  .hero-heft.lxp-aura{isolation:isolate}
-
-  /* .drop was the old card wrapper; the closing ask is a .dh-cta now, so the
-     trailing reassurance line keeps its own rule. */
-  .dh-cta .after{margin:var(--s3) 0 0;font-size:var(--t-small);color:var(--muted)}
 
   .gsmbars{max-width:640px}
   .gsmbar+.gsmbar{margin-top:var(--s5)}
@@ -96,6 +75,10 @@
   .story p{color:var(--muted);max-width:var(--maxw-prose)}
   .story p+p{margin-top:var(--s4)}
   .story strong{color:var(--ink)}
+
+  .drop{text-align:center;padding:var(--s8) var(--s5)}
+  .drop p{color:var(--muted);max-width:46ch;margin:0 auto var(--s6)}
+  .drop .after{margin:var(--s4) auto 0;font-size:var(--t-small);color:var(--muted)}
 </style>
 <!-- geo:entity — canonical Person node, one entity across every page -->
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebPage","@id":"https://yusuf-gadelrab.github.io/heft.html#webpage","url":"https://yusuf-gadelrab.github.io/heft.html","inLanguage":"en","isPartOf":{"@id":"https://yusuf-gadelrab.github.io/#website"},"about":{"@id":"https://yusuf-gadelrab.github.io/#person"},"publisher":{"@id":"https://yusuf-gadelrab.github.io/#person"}}</script>
@@ -118,11 +101,11 @@
   </ol>
 </nav>
 
-<main id="main" tabindex="-1">
+<main id="main">
 
-  <header class="section hero-heft lxp-aura">
+  <header class="section hero-heft">
     <img class="page-lion" src="/img/brand/lion-mark.svg" alt="" width="46" height="46" decoding="async">
-    <p class="dh-eyebrow">Heavyweight · Minimal · Built to outlast</p>
+    <p class="eyebrow">Heavyweight · Minimal · Built to outlast</p>
     <h1>Weight<br>is the<br>design.</h1>
     <p class="lead">One hoodie, done right. 450+ GSM cotton fleece. No graphics, no noise, no planned obsolescence.</p>
     <p style="margin-top:var(--s4);max-width:var(--maxw-prose)"><strong>The hoodie you reach for every cold morning — for the next ten years.</strong></p>
@@ -130,12 +113,13 @@
       <a class="btn btn-gold" href="#drop">Join First Drop</a>
       <a class="btn btn-ghost" href="#weight">Why Heavy</a>
     </div>
-    <p class="faint" style="margin-top:var(--s4);font-size:var(--t-small)">First run not yet produced — waitlist open. First 100 sign-ups lock founding pricing for good.</p>
+    <p class="faint" style="margin-top:var(--s4);font-size:var(--t-small)">First 100 sign-ups lock founding pricing for good.</p>
   </header>
 
-  <section id="weight" class="dh-band dh-band--sunk dh-band--edge">
-   <div class="dh-wrap">
-    <p class="dh-eyebrow">The Weight</p>
+  <hr class="divider">
+
+  <section id="weight" class="section">
+    <p class="eyebrow">The Weight</p>
     <h2>Most hoodies are 280 GSM. Ours start at 450.</h2>
     <p class="lead" style="margin-top:var(--s3)">GSM — grams per square meter — is the honest measure of a hoodie. Fast fashion hides behind prints because the fabric can't speak for itself. We went the other way: heavier fabric, tighter knit, cleaner lines.</p>
 
@@ -150,22 +134,22 @@
       </div>
     </div>
 
-    <div class="dh-stats" style="margin-top:var(--s7)">
-      <div class="dh-stat"><span class="dh-stat__v">450+</span><span class="dh-stat__k">GSM heavyweight cotton fleece</span><span class="dh-stat__src">first-run target spec</span></div>
-      <div class="dh-stat"><span class="dh-stat__v">100%</span><span class="dh-stat__k">ring-spun cotton face, pre-shrunk</span><span class="dh-stat__src">first-run target spec</span></div>
-      <div class="dh-stat"><span class="dh-stat__v">0</span><span class="dh-stat__k">logos on the front. A single tonal stitch mark.</span><span class="dh-stat__src">first-run target spec</span></div>
-      <div class="dh-stat"><span class="dh-stat__v">10 yr</span><span class="dh-stat__k">the lifespan we design for — repair, not replace</span><span class="dh-stat__src">design target</span></div>
+    <div class="grid" style="margin-top:var(--s7)">
+      <div class="card card--flat stat"><span class="stat__value">450+</span><span class="stat__label">GSM heavyweight cotton fleece</span></div>
+      <div class="card card--flat stat"><span class="stat__value">100%</span><span class="stat__label">ring-spun cotton face, pre-shrunk</span></div>
+      <div class="card card--flat stat"><span class="stat__value">0</span><span class="stat__label">logos on the front. A single tonal stitch mark.</span></div>
+      <div class="card card--flat stat"><span class="stat__value">10 yr</span><span class="stat__label">the lifespan we design for — repair, not replace</span></div>
     </div>
-    <p class="dh-note" style="margin-top:var(--s3)">Nothing above has been produced yet. Every figure is <b>first-run target spec</b> — confirmed at production, before checkout ever opens.</p>
 
-    <p class="quote-rail" style="margin-top:var(--s6)">Hoodies at this weight typically retail well north of <b>$100</b> — with someone else's logo on the chest. The Standard targets <b>$100 flat</b>. Cost plus honesty, nothing hidden.</p>
-   </div>
+    <p class="quote-rail" style="margin-top:var(--s6)">Hoodies at this weight retail for <b>$150–180</b> — with someone else's logo on the chest. The Standard targets <b>$100 flat</b>. Cost plus honesty, nothing hidden.</p>
   </section>
 
+  <hr class="divider">
+
   <section id="pieces" class="section">
-    <p class="dh-eyebrow">Pieces</p>
+    <p class="eyebrow">Pieces</p>
     <h2>The lineup.</h2>
-    <p class="lead" style="margin-top:var(--s3)">Three silhouettes. Four colors — bone, slate, moss, black. That's the whole lineup, on purpose.</p>
+    <p class="lead" style="margin-top:var(--s3)">Three silhouettes. Four colors — bone, slate, moss, black. That's the whole store, on purpose.</p>
     <div class="grid" style="margin-top:var(--s6)">
       <article class="card piece">
         <span class="ghost" aria-hidden="true">01</span>
@@ -189,7 +173,7 @@
   <hr class="divider">
 
   <section id="story" class="section story">
-    <p class="dh-eyebrow">Story</p>
+    <p class="eyebrow">Story</p>
     <h2>Built by someone who got tired of thin.</h2>
     <div style="margin-top:var(--s5)">
       <p>HEFT started with a simple annoyance: every hoodie under $100 felt like a t-shirt with a hood, and every hoodie that didn't cost $180 with someone else's logo on it.</p>
@@ -199,17 +183,13 @@
   </section>
 
   <section id="drop" class="section section--tight">
-    <div class="dh-cta">
-      <div class="dh-cta__copy">
-        <p class="dh-eyebrow">First Drop</p>
-        <h2 class="dh-cta__title">Get in before it exists.</h2>
-        <p class="dh-cta__sub">There is nothing to buy on this page — the first run has not been produced. It will be limited and priced at cost + honesty, and the first 100 names on the list lock founding pricing, forever.</p>
-      </div>
-      <div class="dh-cta__act" style="flex-direction:column;align-items:flex-start;flex:0 1 320px">
-        <a class="btn btn-gold" href="mailto:yusuf.gadelrab06@gmail.com?subject=HEFT%20First%20Drop&amp;body=Add%20me%20to%20the%20Founding%20100.">Join First Drop</a>
-        <p class="after">One email when the drop opens — founding price locked for you.</p>
-        <!-- Founding-100 counter: add "Founding 100 — N claimed" + thin progress bar here ONLY once real signups exist (N > 0). Never display an invented number. -->
-      </div>
+    <div class="card card--flat drop">
+      <p class="eyebrow">First Drop</p>
+      <h2 style="margin:var(--s3) 0">Get in before it exists.</h2>
+      <p>First run is limited and priced at cost + honesty. The first 100 names on the list lock founding pricing — forever.</p>
+      <a class="btn btn-gold" href="mailto:yusuf.gadelrab06@gmail.com?subject=HEFT%20First%20Drop&amp;body=Add%20me%20to%20the%20Founding%20100.">Join First Drop</a>
+      <p class="after">One email when the drop opens — founding price locked for you.</p>
+      <!-- Founding-100 counter: add "Founding 100 — N claimed" + thin progress bar here ONLY once real signups exist (N > 0). Never display an invented number. -->
     </div>
   </section>
 
@@ -236,7 +216,8 @@
     <a href="/media-kit.html">Media Kit</a>
     <a href="mailto:yusuf.gadelrab06@gmail.com">yusuf.gadelrab06@gmail.com</a>
     <a href="https://github.com/Yusuf-Gadelrab" target="_blank" rel="noopener">GitHub</a>
-    <a href="https://www.linkedin.com/in/yusuf-gadelrab-76246b221" target="_blank" rel="noopener">LinkedIn</a>
+    <a href="https://www.linkedin.com/in/yusuf-gadelrab" target="_blank" rel="noopener">LinkedIn</a>
+          <a href="/portfolio/">Portfolio</a>
     <a href="/brand.html">Brand</a>
     <a href="/stack.html">Stack</a>
     <a href="/everything.html">Everything</a>
@@ -251,6 +232,5 @@
 
 <script src="/js/site.js" defer></script>
 <script src="/js/lux-motion.js" defer></script>
-<script src="/js/lux-plus.js" defer></script>
 </body>
 </html>

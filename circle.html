@@ -40,12 +40,11 @@
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"Organization","name":"DHAHAB Circle","alternateName":"The Golden Standard","url":"https://yusuf-gadelrab.github.io/circle.html","description":"A free community for people who build software, trade markets, pursue internships, and run creative brands. Members post proof of work rather than opinions.","founder":{"@id":"https://yusuf-gadelrab.github.io/#person"},"logo":"https://yusuf-gadelrab.github.io/img/brand/lion-mark.svg"}</script>
 <link rel="stylesheet" href="/css/site.css">
 <link rel="stylesheet" href="/css/lux-motion.css">
-<link rel="stylesheet" href="/css/lux-plus.css">
 <style>
   .lane{display:flex;flex-direction:column;padding:var(--s5)}
   .lane h3{margin:var(--s3) 0 var(--s3);font-size:var(--t-h3)}
   .lane p{color:var(--muted);font-size:var(--t-small);margin:0;flex:1}
-  .lane .num{font-family:var(--mono);font-size:11px;letter-spacing:1.4px;color:var(--gold-2)}
+  .lane .glyph{font-size:26px;line-height:1}
   .chips{display:flex;flex-wrap:wrap;gap:6px;margin-top:var(--s4)}
   .chips span{font-family:var(--mono);font-size:11px;letter-spacing:.3px;color:var(--muted);
     border:1px solid var(--line-soft);border-radius:var(--radius);padding:3px 8px;white-space:nowrap}
@@ -128,28 +127,28 @@
     <div class="grid" style="margin-top:var(--s6)">
 
       <article class="card lane">
-        <span class="num">01</span>
+        <span class="glyph">🔨</span>
         <h3>Build</h3>
         <p>Shipping software and AI. The proof channel takes commits, demos, and repos — including the broken version. The help channel takes real questions with real error messages.</p>
         <div class="chips"><span>#shipped</span><span>#build-help</span><span>#the-stack</span></div>
       </article>
 
       <article class="card lane">
-        <span class="num">02</span>
+        <span class="glyph">📈</span>
         <h3>Trade</h3>
         <p>Setups posted with a thesis and an invalidation, or not posted. Weekly R-multiple journals. Closed-trade reviews where the loss gets the same attention as the win.</p>
         <div class="chips"><span>#setups</span><span>#journals</span><span>#trade-review</span></div>
       </article>
 
       <article class="card lane">
-        <span class="num">03</span>
+        <span class="glyph">🎓</span>
         <h3>Climb</h3>
         <p>Live internship drops with deadlines. Resume reviews on a give-two-take-one basis. Visa and international-student notes from people actually in it — peer notes, never legal advice.</p>
         <div class="chips"><span>#internship-drops</span><span>#resume-review</span><span>#visa-and-intl</span></div>
       </article>
 
       <article class="card lane">
-        <span class="num">04</span>
+        <span class="glyph">👑</span>
         <h3>Look</h3>
         <p>Training logs, cut numbers, fits, and early access to KXNG SEF drops before they go public. The lane for people who think how you show up is part of the work.</p>
         <div class="chips"><span>#fits</span><span>#cut-log</span><span>#kxngsef</span></div>
@@ -218,7 +217,8 @@
         <input type="email" id="wlEmail" name="email" placeholder="you@email.com" autocomplete="email" required>
         <button class="btn btn-gold" type="submit">Save my spot</button>
       </form>
-      <p class="formnote" id="wlNote">Your email is used for one thing: telling you when the doors open. No list rental, no spam, unsubscribe by replying once. <a href="/legal.html">Legal</a> · <a href="/privacy.html">Privacy</a>.</p>
+      <p class="formnote" id="wlNote">Your email is used for one thing: telling you when the doors open. No list rental, no spam, unsubscribe by replying once. <a href="/legal.html">Legal</a>
+    <a href="/privacy.html">Privacy</a>.</p>
       <p class="alt-links"><a href="/waitlist.html">See all seven waitlists</a></p>
     </div>
   </section>
@@ -299,7 +299,8 @@
     <a href="/everything.html">Everything</a>
     <a href="/privacy.html">Privacy</a>
     <a href="/terms.html">Terms</a>
-    <a href="mailto:yusuf.gadelrab06@gmail.com">yusuf.gadelrab06@gmail.com</a><a href="https://github.com/Yusuf-Gadelrab" target="_blank" rel="noopener">GitHub</a><a href="https://www.linkedin.com/in/yusuf-gadelrab-76246b221" target="_blank" rel="noopener">LinkedIn</a></div>
+    <a href="mailto:yusuf.gadelrab06@gmail.com">yusuf.gadelrab06@gmail.com</a><a href="https://github.com/Yusuf-Gadelrab" target="_blank" rel="noopener">GitHub</a><a href="https://www.linkedin.com/in/yusuf-gadelrab" target="_blank" rel="noopener">LinkedIn</a>
+          <a href="/portfolio/">Portfolio</a></div>
 </footer>
 
 <script>
@@ -310,7 +311,6 @@ var CIRCLE_INVITE = "";
 <script src="/js/waitlist.js" defer></script>
 <script src="/js/site.js" defer></script>
 <script src="/js/lux-motion.js" defer></script>
-<script src="/js/lux-plus.js" defer></script>
 <script>
 addEventListener("DOMContentLoaded", function () {
   var btns = [document.getElementById("joinBtn"), document.getElementById("inviteBtn")];

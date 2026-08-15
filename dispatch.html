@@ -38,34 +38,19 @@
 <meta name="twitter:description" content="AI agent workflows, automation, and the honest economics of building. Free, weekly.">
 <link rel="stylesheet" href="/css/site.css">
 <link rel="stylesheet" href="/css/lux-motion.css">
-<link rel="stylesheet" href="/css/lux-plus.css">
 <style>
-  /* Editorial register. --display-serif is a SYSTEM stack (Iowan/Hoefler/
-     Palatino/Georgia) — zero network requests. body.pro already sets
-     text-transform:none on h1-h3. */
-  main h1,main h2{font-family:var(--display-serif);letter-spacing:var(--track-tight);
-    font-weight:var(--w-semibold);line-height:var(--lh-snug)}
-  main h1{line-height:var(--lh-tight)}
-  main h3{font-size:var(--t-h4)}
-
   .issue{display:flex;flex-direction:column;padding:var(--s5)}
-  /* The one decorative accent on this page: the stroked issue numeral turns the
-     card grid into a contents page. It duplicates the visible "Issue 0N" label,
-     so it is aria-hidden and the label stays the accessible text. */
-  .issue__idx{display:flex;align-items:baseline;gap:var(--s3);margin-bottom:var(--s2)}
-  .issue .lxp-num{flex:0 0 auto}
   .issue .no{font-family:var(--display-pro);font-size:11px;letter-spacing:1.4px;
     text-transform:uppercase;color:var(--gold-2)}
   .issue h3{margin:var(--s2) 0 var(--s2);font-size:var(--t-h3);line-height:1.25}
   .issue p{color:var(--muted);font-size:var(--t-small);margin:0;flex:1}
-  .signup{max-width:560px}
-  .dh-cta__act.signup{display:block;flex:1 1 340px}
+  .signup{max-width:560px;margin:var(--s6) auto 0}
   .signup form{display:flex;gap:10px;flex-wrap:wrap}
   .signup input{flex:1 1 220px;min-width:0;background:var(--panel2);border:1px solid var(--line);
     border-radius:var(--radius);color:var(--bone);padding:13px 14px;
     font-family:var(--body-font);font-size:14px}
   .signup input:focus{outline:none;border-color:var(--gold-dim)}
-  .signup .note{margin-top:10px;font-size:12px;color:var(--faint)}
+  .signup .note{margin-top:10px;font-size:12px;color:var(--faint);text-align:center}
   .promise{display:grid;gap:var(--s3);margin-top:var(--s6);padding:0;list-style:none}
   .promise li{display:flex;gap:12px;align-items:flex-start;color:var(--muted);font-size:var(--t-small)}
   .promise li::before{content:"\25C6";color:var(--gold-2);font-size:10px;line-height:1.7;flex:0 0 auto}
@@ -77,7 +62,7 @@
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebPage","@id":"https://yusuf-gadelrab.github.io/dispatch.html#webpage","url":"https://yusuf-gadelrab.github.io/dispatch.html","inLanguage":"en","isPartOf":{"@id":"https://yusuf-gadelrab.github.io/#website"},"about":{"@id":"https://yusuf-gadelrab.github.io/#person"},"publisher":{"@id":"https://yusuf-gadelrab.github.io/#person"}}</script>
 <link rel="alternate" type="text/plain" href="https://yusuf-gadelrab.github.io/llms-full.txt" title="Plain-text profile for language models">
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"Periodical","@id":"https://yusuf-gadelrab.github.io/dispatch.html#newsletter","name":"DHAHAB Dispatch","url":"https://yusuf-gadelrab.github.io/dispatch.html","description":"A free weekly letter on AI agent workflows, automation, and the honest economics of building things as a student engineer.","inLanguage":"en","isAccessibleForFree":true,"author":{"@id":"https://yusuf-gadelrab.github.io/#person"},"publisher":{"@id":"https://yusuf-gadelrab.github.io/#person"}}</script>
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","@id":"https://yusuf-gadelrab.github.io/dispatch.html#faq","mainEntity":[{"@type":"Question","name":"How often does the Dispatch go out?","acceptedAnswer":{"@type":"Answer","text":"Once a week. If there is nothing worth sending in a given week, nothing gets sent. Filler is worse than silence."}},{"@type":"Question","name":"Is it free?","acceptedAnswer":{"@type":"Answer","text":"Yes, and every issue currently planned is free. If a paid tier is ever added, everything already published stays free and nothing you already receive gets moved behind a paywall."}},{"@type":"Question","name":"Will you sell my email address?","acceptedAnswer":{"@type":"Answer","text":"No. The list is not rented, sold, or shared with anyone. Every issue tells you how to unsubscribe, and it takes effect immediately."}},{"@type":"Question","name":"Is this a trading newsletter?","acceptedAnswer":{"@type":"Answer","text":"No. Trading comes up as one subject among several, and only as a case study in testing ideas honestly. The Dispatch does not publish trade alerts, signals, or price targets, and nothing in it is financial advice."}}]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","@id":"https://yusuf-gadelrab.github.io/dispatch.html#faq","mainEntity":[{"@type":"Question","name":"How often does the Dispatch go out?","acceptedAnswer":{"@type":"Answer","text":"Once a week. If there is nothing worth sending in a given week, nothing gets sent. Filler is worse than silence."}},{"@type":"Question","name":"Is it free?","acceptedAnswer":{"@type":"Answer","text":"Yes, and every issue currently planned is free. If a paid tier is ever added, everything already published stays free and nothing you already receive gets moved behind a paywall."}},{"@type":"Question","name":"Will you sell my email address?","acceptedAnswer":{"@type":"Answer","text":"No. The list is not rented, sold, or shared with anyone. Every issue has a one-click unsubscribe link and unsubscribing takes effect immediately."}},{"@type":"Question","name":"Is this a trading newsletter?","acceptedAnswer":{"@type":"Answer","text":"No. Trading comes up as one subject among several, and only as a case study in testing ideas honestly. The Dispatch does not publish trade alerts, signals, or price targets, and nothing in it is financial advice."}}]}</script>
 </head>
 <body class="pro">
 
@@ -99,110 +84,106 @@
 
   <header class="section">
     <img class="page-lion" src="/img/brand/lion-mark.svg" alt="" width="46" height="46" decoding="async">
-    <p class="dh-eyebrow">DHAHAB Dispatch · free weekly</p>
+    <p class="eyebrow">DHAHAB Dispatch · free weekly</p>
     <h1 style="margin:var(--s4) 0">Most build-in-public writing shows you the win. <span class="gold-fill">This one shows the arithmetic.</span></h1>
     <p class="lead">A weekly letter about building leverage without a budget: AI agent workflows, automation that survives contact with reality, and the honest economics underneath it. Written by a full-time CS and applied math student who pays his own API bill, which is exactly why the numbers in it are real.</p>
 
-    <div class="dh-cta" style="margin-top:var(--s7)">
-      <div class="dh-cta__copy">
-        <h2 class="dh-cta__title">Be on the list before issue 01</h2>
-        <p class="dh-cta__sub">Nothing has gone out yet. The first send is issue 01, and everyone on the list gets it from the top — there are no back issues to catch up on.</p>
-      </div>
-      <div class="dh-cta__act signup">
-        <form class="mini" id="f-dispatch" novalidate>
-          <input type="email" id="e-dispatch" placeholder="you@email.com" autocomplete="email" aria-label="Email address for the DHAHAB Dispatch" required>
-          <button class="btn btn-gold" type="submit">Get the Dispatch</button>
-        </form>
-        <p class="note" id="n-dispatch">Free forever. One email a week once it's live. Unsubscribe any time — just reply.</p>
-      </div>
+    <div class="signup">
+      <form class="mini" id="f-dispatch" novalidate>
+        <input type="email" id="e-dispatch" placeholder="you@email.com" autocomplete="email" aria-label="Email address for the DHAHAB Dispatch" required>
+        <button class="btn btn-gold" type="submit">Get the Dispatch</button>
+      </form>
+      <p class="note" id="n-dispatch">Free forever. One email a week. Unsubscribe in one click.</p>
     </div>
   </header>
 
   <hr class="divider">
 
   <section class="section section--tight">
-    <p class="dh-eyebrow">The rules</p>
+    <p class="eyebrow">The rules</p>
     <h2>What I will and will not send you</h2>
     <ul class="promise">
       <li><b>One email a week, and only if it earns the send.</b> A week with nothing worth saying gets no email. Filler is worse than silence.</li>
       <li><b>Real numbers or no numbers.</b> Every figure comes with its method and its window. If something is a backtest, it says so. If it lost money, that gets written down too.</li>
       <li><b>Nothing gets sold to you mid-letter.</b> At most one link at the bottom, and usually it is to something free.</li>
       <li><b>No trade alerts, no signals, no price targets.</b> Trading shows up as a case study in testing ideas honestly, not as advice. Nothing here is financial advice.</li>
-      <li><b>Your address stays put.</b> Never rented, never sold, never shared. Unsubscribe any time — just reply.</li>
+      <li><b>Your address stays put.</b> Never rented, never sold, never shared. One-click unsubscribe on every issue.</li>
     </ul>
   </section>
 
-  <section class="dh-band dh-band--sunk dh-band--edge">
-   <div class="dh-wrap">
-    <p class="dh-eyebrow">Lined up</p>
+  <hr class="divider">
+
+  <section class="section section--tight">
+    <p class="eyebrow">Already written</p>
     <h2>The first eight issues</h2>
-    <p class="lead">These eight are mapped out down to the angle and the numbers, not just topic ideas. Subscribe now and you'll get them in order, one a week, starting with issue 01 when the first send goes out.</p>
+    <p class="lead">These are finished, not planned. Subscribe now and you get them in order, one a week, starting with the first one.</p>
 
     <div class="grid" style="margin-top:var(--s6)">
 
       <article class="card issue">
-        <div class="issue__idx"><span class="lxp-num" aria-hidden="true">01</span><span class="no">Issue 01</span></div>
+        <span class="no">Issue 01</span>
         <h3>The mistake that fixed my AI budget</h3>
         <p>Output tokens cost more than input tokens on every tier, and a chatty model answering a yes or no question is the most expensive habit you can have without noticing. What I changed, and what it actually saved.</p>
       </article>
 
       <article class="card issue">
-        <div class="issue__idx"><span class="lxp-num" aria-hidden="true">02</span><span class="no">Issue 02</span></div>
+        <span class="no">Issue 02</span>
         <h3>Stop doing it inline. Fan it out.</h3>
         <p>One agent grinding a checklist is slower than five agents working five independent problems. How I split work into parallel lanes, and the two kinds of task that must never be parallelised.</p>
       </article>
 
       <article class="card issue">
-        <div class="issue__idx"><span class="lxp-num" aria-hidden="true">03</span><span class="no">Issue 03</span></div>
+        <span class="no">Issue 03</span>
         <h3>I tested six trading setups. One survived.</h3>
         <p>Walk-forward testing on my own data killed five of six ideas, including two that looked excellent in-sample. The one that held up returned a modest positive expectancy in simulation, and I explain exactly why that is still not a promise.</p>
       </article>
 
       <article class="card issue">
-        <div class="issue__idx"><span class="lxp-num" aria-hidden="true">04</span><span class="no">Issue 04</span></div>
+        <span class="no">Issue 04</span>
         <h3>How one person ships a 25-page site</h3>
         <p>Not by working 25 times harder. By building the parts that repeat once and then letting them repeat. A tour of the system, including the parts that were a waste of time.</p>
       </article>
 
       <article class="card issue">
-        <div class="issue__idx"><span class="lxp-num" aria-hidden="true">05</span><span class="no">Issue 05</span></div>
+        <span class="no">Issue 05</span>
         <h3>My local model does the boring eighty percent</h3>
         <p>A small model on my own machine drafts. A bigger one only judges. Where that split saves real money, and the class of work where sending it local quietly costs more than it saves.</p>
       </article>
 
       <article class="card issue">
-        <div class="issue__idx"><span class="lxp-num" aria-hidden="true">06</span><span class="no">Issue 06</span></div>
+        <span class="no">Issue 06</span>
         <h3>A research paper became a CS program</h3>
-        <p>My co-authored SIGCSE paper on bilingual coding instruction did not have to stop at publication. How the finding turned into a curriculum for English-learner high schoolers, and what that took.</p>
+        <p>The co-authored SIGCSE TS 2026 poster abstract on bilingual coding instruction did not have to stop at publication. How the finding turned into a curriculum for English-learner high schoolers, and what that took.</p>
       </article>
 
       <article class="card issue">
-        <div class="issue__idx"><span class="lxp-num" aria-hidden="true">07</span><span class="no">Issue 07</span></div>
+        <span class="no">Issue 07</span>
         <h3>The gate that stops automation from embarrassing you</h3>
         <p>Automated writing is fast. Unchecked automated writing is a liability with your name on it. The quality gate I run before anything generated is allowed out the door.</p>
       </article>
 
       <article class="card issue">
-        <div class="issue__idx"><span class="lxp-num" aria-hidden="true">08</span><span class="no">Issue 08</span></div>
+        <span class="no">Issue 08</span>
         <h3>What I actually earned this year</h3>
         <p>The real accounting, not the highlight reel. What made money, what made nothing, and which of my own projects I would not build again.</p>
       </article>
 
     </div>
-   </div>
   </section>
 
+  <hr class="divider">
+
   <section class="section section--tight">
-    <p class="dh-eyebrow">Who writes it</p>
+    <p class="eyebrow">Who writes it</p>
     <h2>Why this letter and not another one</h2>
-    <p class="lead">I am a computer science and applied math undergraduate at San José State, co-author of a peer-reviewed SIGCSE TS 2026 paper in CS education, and an undergraduate researcher in the CSEd lab. I also build the things I write about: a security scanner, a set of offline apps, an outreach automation rail, and a swing screener whose results I publish whether or not they flatter me. The Dispatch is the working notebook, cleaned up once a week. It is free because the audience is the point.</p>
+    <p class="lead">I am a computer science and applied math undergraduate at San José State, co-author of an ACM SIGCSE TS 2026 poster abstract in CS education, and an undergraduate researcher in the CSEd lab. I also build the things I write about: a security scanner, a set of offline apps, an outreach automation rail, and a swing screener whose results I publish whether or not they flatter me. The Dispatch is the working notebook, cleaned up once a week. It is free because the audience is the point.</p>
     <p style="margin-top:var(--s5)"><a class="btn btn-ghost" href="/about.html">More about me</a> <a class="btn btn-ghost" href="/writing.html">Read the long-form essays</a></p>
   </section>
 
   <hr class="divider">
 
   <section class="section section--tight">
-    <p class="dh-eyebrow">FAQ</p>
+    <p class="eyebrow">FAQ</p>
     <h2>Common questions</h2>
     <div class="grid" style="margin-top:var(--s6)">
       <article class="card geo-qa">
@@ -215,7 +196,7 @@
       </article>
       <article class="card geo-qa">
         <h3>Will you sell my email address?</h3>
-        <p>No. The list is not rented, sold, or shared with anyone. Every issue tells you how to unsubscribe, and it takes effect immediately.</p>
+        <p>No. The list is not rented, sold, or shared with anyone. Every issue has a one-click unsubscribe link and unsubscribing takes effect immediately.</p>
       </article>
       <article class="card geo-qa">
         <h3>Is this a trading newsletter?</h3>
@@ -247,13 +228,13 @@
     <a href="/legal.html">Legal</a>
     <a href="/privacy.html">Privacy</a>
     <a href="/terms.html">Terms</a>
-    <a href="mailto:yusuf.gadelrab06@gmail.com">yusuf.gadelrab06@gmail.com</a><a href="https://github.com/Yusuf-Gadelrab" target="_blank" rel="noopener">GitHub</a><a href="https://www.linkedin.com/in/yusuf-gadelrab-76246b221" target="_blank" rel="noopener">LinkedIn</a></div>
+    <a href="mailto:yusuf.gadelrab06@gmail.com">yusuf.gadelrab06@gmail.com</a><a href="https://github.com/Yusuf-Gadelrab" target="_blank" rel="noopener">GitHub</a><a href="https://www.linkedin.com/in/yusuf-gadelrab" target="_blank" rel="noopener">LinkedIn</a>
+          <a href="/portfolio/">Portfolio</a></div>
 </footer>
 
 <script src="/js/waitlist.js" defer></script>
 <script src="/js/site.js" defer></script>
 <script src="/js/lux-motion.js" defer></script>
-<script src="/js/lux-plus.js" defer></script>
 <script>
 addEventListener("DOMContentLoaded", function () {
   if (!window.YGWaitlist) return;
