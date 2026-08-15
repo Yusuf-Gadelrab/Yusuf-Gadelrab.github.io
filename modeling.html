@@ -16,7 +16,7 @@
 <script>addEventListener("load",function(){if("serviceWorker" in navigator)navigator.serviceWorker.register("/sw.js").catch(function(){})});</script>
 <!-- /tech:seo -->
 <title>Yusuf Gadelrab — Model Portfolio &amp; Digitals</title>
-<meta name="description" content="Model portfolio and digitals for Yusuf Gadelrab — athletic and commercial, San Jose CA. Documented 260-to-200 lb transformation, ex-football captain.">
+<meta name="description" content="Book an athletic and commercial model in San Jose. Current digitals, full measurements, and a direct booking email — no agency in between.">
 <link rel="canonical" href="https://yusuf-gadelrab.github.io/modeling.html">
 <link rel="icon" type="image/svg+xml" href="https://yusuf-gadelrab.github.io/favicon.svg">
 <link rel="apple-touch-icon" sizes="180x180" href="https://yusuf-gadelrab.github.io/apple-touch-icon.png">
@@ -26,9 +26,11 @@
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Yusuf Gadelrab">
 <meta property="og:title" content="Yusuf Gadelrab — Model Portfolio &amp; Digitals">
-<meta property="og:description" content="Athletic/commercial model, San Jose CA. 5'10&quot;, documented 260→200 lb transformation, ex-football captain. Digitals and measurements inside.">
+<meta property="og:description" content="Athletic/commercial model, San Jose CA. 5'10&quot;, Defensive-MVP football and wrestling background. Current digitals, full measurements, direct booking.">
 <meta property="og:url" content="https://yusuf-gadelrab.github.io/modeling.html">
 <meta property="og:image" content="https://yusuf-gadelrab.github.io/og/modeling-card.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
 <meta property="og:image:alt" content="Headshot of Yusuf Gadelrab, athletic/commercial model based in San Jose, California">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Yusuf Gadelrab — Model Portfolio &amp; Digitals">
@@ -36,7 +38,8 @@
 <meta name="twitter:image" content="https://yusuf-gadelrab.github.io/og/modeling-card.png">
 <link rel="stylesheet" href="/css/site.css">
 <link rel="stylesheet" href="/css/lux-motion.css">
-<link rel="preload" as="image" href="img/yusuf-headshot.webp" type="image/webp" fetchpriority="high">
+<link rel="stylesheet" href="/css/lux-plus.css">
+<link rel="preload" as="image" href="/img/yusuf-headshot.webp" type="image/webp" fetchpriority="high">
 <style>
   /* page-specific only — everything else comes from site.css */
   .portrait{width:148px;height:158px;object-fit:cover;border-radius:20px;margin:var(--s5) auto var(--s2);
@@ -63,6 +66,36 @@
   .specs td:first-child{color:var(--muted);text-transform:uppercase;letter-spacing:.06em;
     font-size:var(--t-micro);width:44%}
   .specs td:last-child{font-weight:600}
+
+  /* Spec sheet — a card sheet, not another table. Two columns on desktop,
+     one on phones, hairline separators instead of borders. */
+  .sheet{display:grid;gap:0 var(--s7);grid-template-columns:repeat(auto-fit,minmax(min(280px,100%),1fr));
+    max-width:760px;margin-top:var(--s5)}
+  .sheet div{display:flex;justify-content:space-between;align-items:baseline;gap:var(--s4);
+    padding:var(--s3) 0;border-bottom:1px solid var(--line-soft)}
+  .sheet dt{color:var(--muted);font-size:var(--t-micro);letter-spacing:.14em;text-transform:uppercase}
+  .sheet dd{margin:0;font-weight:600;font-variant-numeric:tabular-nums;white-space:nowrap}
+
+  /* Booking rail — numbered, hairline, deliberately not a card grid. */
+  .rail{list-style:none;counter-reset:r;margin-top:var(--s5);max-width:760px}
+  .rail li{counter-increment:r;position:relative;padding:var(--s4) 0 var(--s4) 52px;
+    border-top:1px solid var(--line-soft)}
+  .rail li:last-child{border-bottom:1px solid var(--line-soft)}
+  .rail li::before{content:"0" counter(r);position:absolute;left:0;top:var(--s4);
+    font-family:var(--mono);font-size:var(--t-micro);letter-spacing:.14em;color:var(--gold-2)}
+  .rail b{display:block;font-size:16px}
+  .rail span{display:block;color:var(--muted);font-size:var(--t-small);margin-top:4px;line-height:1.6}
+
+  /* Onward links */
+  .onward{display:grid;gap:var(--s4);grid-template-columns:repeat(auto-fit,minmax(min(230px,100%),1fr));
+    margin-top:var(--s5);text-align:left}
+  .onward a{display:block;border:1px solid var(--line-soft);border-radius:var(--radius-lg);
+    padding:var(--s4) var(--s5);text-decoration:none;
+    transition:border-color .2s var(--ease),background .2s var(--ease)}
+  .onward a:hover{border-color:var(--gold);background:rgba(212,175,55,.05)}
+  .onward b{display:block;color:var(--ink);font-size:15px}
+  .onward span{display:block;color:var(--muted);font-size:var(--t-micro);margin-top:4px;line-height:1.5}
+
   ul.checks{list-style:none}
   ul.checks li{padding:var(--s2) 0 var(--s2) 28px;position:relative}
   ul.checks li::before{content:"✓";position:absolute;left:0;color:var(--gold-2);font-weight:700}
@@ -91,11 +124,14 @@
     .lightbox__close{top:var(--s3);right:var(--s3)}
   }
 </style>
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"ProfilePage","mainEntity":{"@id":"https://yusuf-gadelrab.github.io/#person"},"image":[{"@type":"ImageObject","contentUrl":"https://yusuf-gadelrab.github.io/img/yusuf-headshot.jpg","caption":"Studio-style headshot, suit, gold frame border","width":700,"height":749},{"@type":"ImageObject","contentUrl":"https://yusuf-gadelrab.github.io/img/yusuf-candid.jpg","caption":"Natural-light candid, unretouched","width":825,"height":1100},{"@type":"ImageObject","contentUrl":"https://yusuf-gadelrab.github.io/img/yusuf-gym.jpg","caption":"Training shot documenting the transformation","width":728,"height":487}],"@id":"https://yusuf-gadelrab.github.io/modeling.html#webpage","url":"https://yusuf-gadelrab.github.io/modeling.html","inLanguage":"en","isPartOf":{"@id":"https://yusuf-gadelrab.github.io/#website"}}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"ProfilePage","mainEntity":{"@id":"https://yusuf-gadelrab.github.io/#person"},"image":[{"@type":"ImageObject","contentUrl":"https://yusuf-gadelrab.github.io/img/yusuf-headshot.jpg","caption":"Studio-style headshot, suit, gold frame border","width":700,"height":749},{"@type":"ImageObject","contentUrl":"https://yusuf-gadelrab.github.io/img/yusuf-candid.jpg","caption":"Natural-light candid, unretouched","width":825,"height":1100}],"@id":"https://yusuf-gadelrab.github.io/modeling.html#webpage","url":"https://yusuf-gadelrab.github.io/modeling.html","inLanguage":"en","isPartOf":{"@id":"https://yusuf-gadelrab.github.io/#website"}}</script>
 <!-- geo:entity — canonical Person node, one entity across every page -->
 
 <link rel="alternate" type="text/plain" href="https://yusuf-gadelrab.github.io/llms-full.txt" title="Plain-text profile for language models">
 <style>.specs th{font-family:inherit;letter-spacing:inherit;text-transform:none;font-weight:inherit;color:inherit}</style>
+<noscript><style>
+  .reveal,.reveal-zoom,.reveal-left,.reveal-right,.lux-reveal{opacity:1!important;transform:none!important}
+</style></noscript>
 </head>
 <body class="pro">
 
@@ -112,117 +148,142 @@
   </ol>
 </nav>
 
-<main id="main">
+<main id="main" tabindex="-1">
 
 <section class="section center">
   <img class="page-lion" data-lux-parallax=".1" src="/img/brand/lion-mark.svg" alt="" width="46" height="46" decoding="async">
     <div class="eyebrow">Model Portfolio &amp; Digitals</div>
-  <img class="portrait" src="img/yusuf-headshot.webp" alt="Yusuf Gadelrab, professional headshot in a suit with a gold frame border" width="700" height="749" fetchpriority="high" decoding="async">
-  <h1 class="hero-type gold-fill" data-lux-shimmer>Yusuf Gadelrab &mdash; Athletic &amp; Commercial Model</h1>
-  <p class="lead" style="margin:var(--s4) auto 0">Athletic &amp; commercial model — San Jose / Bay Area. Student-athlete build with a documented 260→200 lb transformation, comfortable on camera every day.</p>
+  <picture>
+    <source type="image/webp" srcset="/img/yusuf-headshot.webp">
+    <img class="portrait" src="/img/yusuf-headshot.jpg" alt="Yusuf Gadelrab, head-and-shoulders in a dark suit against a warm studio backdrop" width="700" height="749" fetchpriority="high" decoding="async">
+  </picture>
+  <h1 class="hero-type gold-fill" data-lux-shimmer>Yusuf Gadelrab</h1>
+  <p class="lead" style="margin:var(--s4) auto 0">Athletic and commercial model, San Jose / Bay Area. Student-athlete build, current digitals, full measurements below — and you book me by email, not through an agency.</p>
 
   <div class="grid" style="margin:var(--s7) 0">
-    <div class="card card--flat stat center"><span class="stat__value">5'10"</span><span class="stat__label">Height</span></div>
-    <div class="card card--flat stat center"><span class="stat__value">40"</span><span class="stat__label">Chest</span></div>
-    <div class="card card--flat stat center"><span class="stat__value">60 lb</span><span class="stat__label">Documented cut (260→200)</span></div>
-    <div class="card card--flat stat center"><span class="stat__value" data-countup>650K+</span><span class="stat__label">IG views · last 30 days</span></div>
+    <div class="card card--flat stat center"><span class="stat__value">5'10"</span><span class="stat__label">Height · 178 cm</span></div>
+    <div class="card card--flat stat center"><span class="stat__value">40"</span><span class="stat__label">Chest · 22" shoulders</span></div>
+    <div class="card card--flat stat center"><span class="stat__value">10.5</span><span class="stat__label">Shoe, US</span></div>
+    <div class="card card--flat stat center"><span class="stat__value">SJC</span><span class="stat__label">San Jose · Bay Area travel</span></div>
   </div>
 
   <div class="row" style="justify-content:center">
-    <a class="btn btn-gold" href="mailto:yusuf.gadelrab06@gmail.com?subject=Modeling%20Inquiry">Book / inquire →</a>
-    <a class="btn btn-ghost" href="https://www.instagram.com/goldarabmans/" target="_blank" rel="noopener">@goldarabmans</a>
+    <a class="btn btn-gold" href="mailto:yusuf.gadelrab06@gmail.com?subject=Modeling%20Inquiry">Send a brief →</a>
+    <a class="btn btn-ghost" href="#measurements">Measurements</a>
   </div>
-  <span class="micro">Replies within 24 hours · San Jose, CA · open to Bay Area travel</span>
+  <span class="micro">Direct booking, no agency in between · San Jose, CA · open to Bay Area travel</span>
 </section>
 
 <hr class="divider">
 
 <section class="section reveal">
-  <h2>Digitals</h2>
+  <p class="dh-eyebrow">Current photos</p>
+  <h2>Portfolio</h2>
   <div class="digitals" style="margin-top:var(--s5)" id="digitals-grid">
     <figure>
       <button type="button" class="shot" data-lightbox-index="0">
-        <img src="img/yusuf-headshot.webp" alt="Yusuf Gadelrab, studio headshot in a suit with a gold frame border" width="700" height="749" loading="lazy" decoding="async">
+        <picture>
+          <source type="image/webp" srcset="/img/yusuf-headshot.webp">
+          <img src="/img/yusuf-headshot.jpg" alt="Head-and-shoulders in a dark suit, warm studio light, neutral expression" width="700" height="749" loading="lazy" decoding="async">
+        </picture>
         <span class="shot__expand" aria-hidden="true">⤢</span>
       </button>
-      <figcaption>Headshot</figcaption>
+      <figcaption>Headshot · studio</figcaption>
     </figure>
     <figure>
       <button type="button" class="shot" data-lightbox-index="1">
-        <img src="img/yusuf-candid.webp" alt="Yusuf Gadelrab, natural-light candid portrait in a plant-filled atrium" width="825" height="1100" loading="lazy" decoding="async">
+        <picture>
+          <source type="image/webp" srcset="/img/yusuf-candid.webp">
+          <img src="/img/yusuf-candid.jpg" alt="Casual candid in natural daylight, indoor atrium background" width="825" height="1100" loading="lazy" decoding="async">
+        </picture>
         <span class="shot__expand" aria-hidden="true">⤢</span>
       </button>
       <figcaption>Natural light · unretouched</figcaption>
     </figure>
-    <figure>
-      <button type="button" class="shot" data-lightbox-index="2">
-        <img src="img/yusuf-gym.webp" alt="Yusuf Gadelrab training in the gym, athletic build for an acting and modeling comp card" width="728" height="487" loading="lazy" decoding="async">
-        <span class="shot__expand" aria-hidden="true">⤢</span>
-      </button>
-      <figcaption>Training · the transformation in progress</figcaption>
-    </figure>
   </div>
-  <p class="note">Fresh digitals available on request — new sets shot within 48 hours for any brief.</p>
+  <p class="note">Unretouched, no filters. A full digitals set — front, side, back, profile, neutral and smiling — is available on request for any brief.</p>
 </section>
 
 <div class="lightbox" id="lightbox" hidden role="dialog" aria-modal="true" aria-label="Digital preview">
   <button type="button" class="lightbox__nav lightbox__nav--prev" id="lightbox-prev" aria-label="Previous image">‹</button>
   <div class="lightbox__frame">
-    <img class="lightbox__img" id="lightbox-img" alt="" decoding="async">
+    <img class="lightbox__img" id="lightbox-img" alt="" width="700" height="749" decoding="async">
     <p class="lightbox__cap" id="lightbox-cap"></p>
   </div>
   <button type="button" class="lightbox__nav lightbox__nav--next" id="lightbox-next" aria-label="Next image">›</button>
   <button type="button" class="lightbox__close" id="lightbox-close" aria-label="Close preview">✕</button>
 </div>
 
-<section class="section reveal">
+<section class="section reveal" id="measurements">
+  <p class="dh-eyebrow">Spec sheet</p>
   <h2>Measurements</h2>
-  <div class="table-wrap" style="margin-top:var(--s5)">
-    <table class="specs">
-      <tbody>
-        <tr><th scope="row">Height</th><td>5'10" (178 cm)</td></tr>
-        <tr><th scope="row">Weight</th><td>200 lb (91 kg) — athletic</td></tr>
-        <tr><th scope="row">Chest</th><td>40"</td></tr>
-        <tr><th scope="row">Shoulders</th><td>22"</td></tr>
-        <tr><th scope="row">Neck</th><td>16"</td></tr>
-        <tr><th scope="row">Hips</th><td>39"</td></tr>
-        <tr><th scope="row">Arm</th><td>15.5"</td></tr>
-        <tr><th scope="row">Shoe (US)</th><td>10.5</td></tr>
-        <tr><th scope="row">Hair</th><td>Black</td></tr>
-        <tr><th scope="row">Eyes</th><td>Brown</td></tr>
-        <tr><th scope="row">Age</th><td>20</td></tr>
-      </tbody>
-    </table>
-  </div>
+  <p class="note" style="margin-top:var(--s2)">Self-reported, measured at home, current. If a client needs them verified on a fitting, say so in the brief.</p>
+  <dl class="sheet">
+    <div><dt>Height</dt><dd>5'10" · 178 cm</dd></div>
+    <div><dt>Weight</dt><dd>200 lb · 91 kg</dd></div>
+    <div><dt>Chest</dt><dd>40"</dd></div>
+    <div><dt>Shoulders</dt><dd>22"</dd></div>
+    <div><dt>Neck</dt><dd>16"</dd></div>
+    <div><dt>Hips</dt><dd>39"</dd></div>
+    <div><dt>Arm</dt><dd>15.5"</dd></div>
+    <div><dt>Shoe, US</dt><dd>10.5</dd></div>
+    <div><dt>Hair</dt><dd>Black</dd></div>
+    <div><dt>Eyes</dt><dd>Brown</dd></div>
+    <div><dt>Age</dt><dd>20</dd></div>
+    <div><dt>Based</dt><dd>San Jose, CA</dd></div>
+  </dl>
 </section>
 
+<hr class="dh-rule">
+
 <section class="section reveal">
-  <h2>About</h2>
+  <p class="dh-eyebrow">Background</p>
+  <h2>Where the build came from</h2>
   <div class="prose stack" style="margin-top:var(--s5)">
-    <p>Former football team captain (<strong class="gold">league MVP</strong>) and wrestler, now a computer-science student at <strong class="gold">San Jose State</strong>. I cut from <strong class="gold">260 lb to 200 lb</strong> while adding muscle and documented every step on camera — so the physique in the photos is the physique that shows up on set.</p>
-    <p>I bring an athlete's discipline to shoots: on time, coachable, unlimited takes, zero ego. My content home base is Instagram (<a class="gold" href="https://www.instagram.com/goldarabmans/" target="_blank" rel="noopener">@goldarabmans</a>), currently at <strong class="gold">650,000+ views in the last 30 days</strong> — brands get both the model and the reach.</p>
+    <p>Varsity football — <strong class="gold">team Defensive MVP</strong> at wide receiver, running back and outside linebacker — plus wrestling, and now a computer-science student at <strong class="gold">San Jose State</strong>. The training did not stop when the season did, so the physique in these frames is the one that walks onto set.</p>
+    <p>What that buys a client is boring and valuable: I show up on time, I take direction without ego, and I will run the take again. Coaches spend years drilling exactly that.</p>
+    <p>Campaigns that need deliverables and audience numbers are a different conversation — those live on the <a class="gold" href="/media-kit.html">media kit</a>, where the rates and the current reach are kept up to date in one place.</p>
   </div>
 </section>
 
 <section class="section reveal">
+  <p class="dh-eyebrow">Fit</p>
   <h2>Open To</h2>
   <ul class="checks" style="margin-top:var(--s5)">
-    <li>Fitness &amp; athletic-wear campaigns — the natural fit</li>
-    <li>Commercial / lifestyle and campus-brand work</li>
-    <li>Grooming &amp; men's-care product shoots</li>
+    <li>Fitness and athletic-wear campaigns — the natural fit</li>
+    <li>Commercial, lifestyle and campus-brand work</li>
+    <li>Grooming and men's-care product shoots</li>
     <li>Product collaborations and gifted-product tests</li>
     <li>TFP with photographers building portfolios — selective, Bay Area</li>
   </ul>
-  <p class="note">Creator campaigns with deliverables and reach? That's the <a class="gold" href="/media-kit.html">media kit</a> — packages, audience stats, and booking in one page. On-camera work (student films, indie shorts, hosting) lives on the <a class="gold" href="/acting.html">acting page</a>.</p>
+  <p class="note"><strong>Not a fit:</strong> runway height requirements, anything needing union credits, or unpaid usage in perpetuity. Say no early and nobody wastes a day.</p>
+</section>
+
+<hr class="dh-rule">
+
+<section class="section reveal">
+  <p class="dh-eyebrow">Booking</p>
+  <h2>Three steps, no gatekeeper</h2>
+  <ol class="rail">
+    <li><b>Send the brief</b><span>Project, usage, dates, location, rate. Four lines is enough — the mail link below pre-fills them.</span></li>
+    <li><b>I confirm or decline, plainly</b><span>If the dates or the usage do not work I will say so instead of going quiet.</span></li>
+    <li><b>Fresh digitals if you need them</b><span>Specific look, colourway or crop shot for your brief rather than resending the set above.</span></li>
+  </ol>
 </section>
 
 <section class="section reveal">
   <div class="cta-band">
     <h2>Book Me</h2>
-    <p class="muted" style="margin:var(--s2) 0 var(--s5)">One email, a reply within 24 hours, no agency in between.</p>
+    <p class="muted" style="margin:var(--s2) 0 var(--s5)">One email, straight to me. No agency, no rep, no forwarding.</p>
     <div class="row" style="justify-content:center">
       <a class="btn btn-gold" href="mailto:yusuf.gadelrab06@gmail.com?subject=Modeling%20Inquiry%20-%20%5BBrand%2FProject%5D&amp;body=Project%3A%20%0AUsage%3A%20%0ADates%3A%20%0ALocation%3A%20">Email a brief →</a>
       <a class="btn btn-ghost" href="/media-kit.html">Creator media kit →</a>
+    </div>
+    <div class="onward">
+      <a href="/acting.html"><b>Acting &amp; on-camera →</b><span>Student films, indie shorts, hosting, bilingual reads.</span></a>
+      <a href="/media-kit.html"><b>Creator media kit →</b><span>Packages, deliverables and current audience numbers.</span></a>
+      <a href="/kxngsef.html"><b>KXNG SEF →</b><span>The clothing brand I design and model for myself.</span></a>
+      <a href="/hire.html"><b>Everything else →</b><span>Software, freight tooling and client work.</span></a>
     </div>
   </div>
 </section>
@@ -260,9 +321,8 @@
   <div class="site-footer__links">
     <a href="mailto:yusuf.gadelrab06@gmail.com">yusuf.gadelrab06@gmail.com</a>
     <a href="https://github.com/Yusuf-Gadelrab" target="_blank" rel="noopener">GitHub</a>
-    <a href="https://www.linkedin.com/in/yusuf-gadelrab" target="_blank" rel="noopener">LinkedIn</a>
-          <a href="/portfolio/">Portfolio</a>
-    <a href="https://www.instagram.com/goldarabmans/" target="_blank" rel="noopener">@goldarabmans</a>
+    <a href="https://www.linkedin.com/in/yusuf-gadelrab-76246b221" target="_blank" rel="noopener">LinkedIn</a>
+    <a href="https://www.instagram.com/_kxng_sef" target="_blank" rel="noopener">@_kxng_sef</a>
   </div>
   <div class="faint">© 2026 Yusuf Gadelrab · San Jose, CA</div>
 </footer>
@@ -284,10 +344,14 @@
   function slideData(idx){
     const fig = shots[idx].closest('figure');
     const img = fig.querySelector('img');
-    return { src: img.currentSrc || img.src, alt: img.alt, cap: fig.querySelector('figcaption')?.textContent || '' };
+    return { src: img.currentSrc || img.src, alt: img.alt, w: img.getAttribute('width'),
+             h: img.getAttribute('height'), cap: fig.querySelector('figcaption')?.textContent || '' };
   }
   function render(){
     const d = slideData(i);
+    /* Set the intrinsic box before the src so the frame never jumps between slides. */
+    if (d.w) lbImg.setAttribute('width', d.w);
+    if (d.h) lbImg.setAttribute('height', d.h);
     lbImg.src = d.src; lbImg.alt = d.alt; lbCap.textContent = d.cap;
   }
   function open(idx){
@@ -311,11 +375,19 @@
     if (e.key === 'Escape') close();
     if (e.key === 'ArrowLeft') step(-1);
     if (e.key === 'ArrowRight') step(1);
+    if (e.key === 'Tab') {
+      const focusable = [document.getElementById('lightbox-prev'), document.getElementById('lightbox-next'), document.getElementById('lightbox-close')];
+      const idx = focusable.indexOf(document.activeElement);
+      e.preventDefault();
+      const next = e.shiftKey ? (idx <= 0 ? focusable.length - 1 : idx - 1) : (idx === focusable.length - 1 ? 0 : idx + 1);
+      focusable[next].focus();
+    }
   });
 })();
 </script>
 
 <script src="/js/site.js" defer></script>
 <script src="/js/lux-motion.js" defer></script>
+<script src="/js/lux-plus.js" defer></script>
 </body>
 </html>

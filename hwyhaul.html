@@ -21,7 +21,7 @@
 <script>addEventListener("load",function(){if("serviceWorker" in navigator)navigator.serviceWorker.register("/sw.js").catch(function(){})});</script>
 <!-- /tech:seo -->
 <title>HwyHaul LoadLink — AI Freight Back Office · Yusuf Gadelrab</title>
-<meta name="description" content="Case study: an AI freight back office covering a brokerage's AR/billing workflows, built and tested 100% on local models with $0 API cost.">
+<meta name="description" content="Case study: an AI freight back office covering 18 AR/billing workflows, built and tested 100% on local models with $0 API cost.">
 <link rel="canonical" href="https://yusuf-gadelrab.github.io/hwyhaul.html">
 <link rel="icon" type="image/svg+xml" href="https://yusuf-gadelrab.github.io/favicon.svg">
 <link rel="apple-touch-icon" sizes="180x180" href="https://yusuf-gadelrab.github.io/apple-touch-icon.png">
@@ -31,24 +31,30 @@
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Yusuf Gadelrab">
 <meta property="og:title" content="HwyHaul LoadLink — AI Freight Back Office">
-<meta property="og:description" content="Case study: an AI freight back office covering a brokerage's AR/billing workflows, built and tested 100% on local models with $0 API cost.">
+<meta property="og:description" content="Case study: an AI freight back office covering 18 AR/billing workflows, built and tested 100% on local models with $0 API cost.">
 <meta property="og:url" content="https://yusuf-gadelrab.github.io/hwyhaul.html">
 
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="HwyHaul LoadLink — AI Freight Back Office">
-<meta name="twitter:description" content="Case study: an AI freight back office covering a brokerage's AR/billing workflows, built and tested 100% on local models with $0 API cost.">
+<meta name="twitter:description" content="Case study: an AI freight back office covering 18 AR/billing workflows, built and tested 100% on local models with $0 API cost.">
 
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"TechArticle","headline":"HwyHaul LoadLink — building an AI freight back office","url":"https://yusuf-gadelrab.github.io/hwyhaul.html","author":{"@id":"https://yusuf-gadelrab.github.io/#person"},"image":"https://yusuf-gadelrab.github.io/og-card.png","datePublished":"2026-07-03"}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"TechArticle","headline":"HwyHaul LoadLink — building an AI freight back office","url":"https://yusuf-gadelrab.github.io/hwyhaul.html","author":{"@id":"https://yusuf-gadelrab.github.io/#person"},"image":"https://yusuf-gadelrab.github.io/og/hwyhaul-card.png","datePublished":"2026-07-03"}</script>
 <link rel="stylesheet" href="/css/site.css">
 <link rel="stylesheet" href="/css/lux-motion.css">
+<link rel="stylesheet" href="/css/lux-plus.css">
 <style>
   /* ---- page-specific only ---- */
   #progress{position:fixed;top:0;left:0;height:2px;width:0;z-index:60;
     background:linear-gradient(90deg,var(--gold-dim),var(--gold),var(--gold-2));
     box-shadow:0 0 12px var(--glow);pointer-events:none}
 
-  /* four metric tiles stay on one line until the phone breakpoint */
-  .grid.stats-4{grid-template-columns:repeat(auto-fit,minmax(min(180px,100%),1fr))}
+  /* ── Typographic register ──────────────────────────────────────────────
+     Serif display (system stack, no network request) for headings; the sans
+     stays on body and UI. Matches eventreels.html / ecoimpact.html. */
+  main h1,main h2{font-family:var(--display-serif);letter-spacing:var(--track-tight);
+    font-weight:var(--w-semibold);line-height:var(--lh-snug)}
+  main h1{line-height:var(--lh-tight)}
+  main h3{font-size:var(--t-h4)}
 
   .hero-grid{display:grid;grid-template-columns:minmax(0,1.4fr) minmax(240px,.6fr);
     gap:clamp(28px,5vw,64px);align-items:center}
@@ -107,12 +113,6 @@
   .code pre .c{color:var(--faint)}
   .code pre .g{color:var(--gold-2)}
   .code pre .k{color:var(--ink)}
-
-  .final{text-align:center;padding:clamp(40px,6vw,80px) var(--s5);
-    background:radial-gradient(60% 100% at 50% 0%,rgba(212,175,55,.10),transparent),
-               linear-gradient(180deg,var(--panel),var(--panel2))}
-  .final p{color:var(--muted);max-width:52ch;margin:var(--s4) auto var(--s6)}
-  .final .row{justify-content:center}
 </style>
 <!-- geo:entity — canonical Person node, one entity across every page -->
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebPage","@id":"https://yusuf-gadelrab.github.io/hwyhaul.html#webpage","url":"https://yusuf-gadelrab.github.io/hwyhaul.html","inLanguage":"en","isPartOf":{"@id":"https://yusuf-gadelrab.github.io/#website"},"about":{"@id":"https://yusuf-gadelrab.github.io/#person"},"publisher":{"@id":"https://yusuf-gadelrab.github.io/#person"}}</script>
@@ -148,21 +148,37 @@
         <p class="lead reveal">At <b>HwyHaul</b>, a freight brokerage moving loads between shippers and carriers, I built an AI layer that reads incoming carrier messages, drafts the reply, and clears the billing &amp; AR back office — <b>100% on the laptop, zero API cost, and a human always clicks Send.</b></p>
         <div class="row reveal" style="margin-top:var(--s6)">
           <a href="#build" class="btn btn-gold">See what I built ↓</a>
-          <a href="https://www.linkedin.com/in/yusuf-gadelrab" target="_blank" rel="noopener" class="btn btn-ghost">LinkedIn</a>
+          <a href="https://www.linkedin.com/in/yusuf-gadelrab-76246b221" target="_blank" rel="noopener" class="btn btn-ghost">LinkedIn</a>
           <a href="https://github.com/Yusuf-Gadelrab" target="_blank" rel="noopener" class="btn btn-ghost">GitHub</a>
         </div>
       </div>
       <figure class="hero-shot reveal">
-        <img src="img/yusuf-hwyhaul.webp" alt="Yusuf Gadelrab excitedly holding up a HwyHaul t-shirt" width="825" height="1100" loading="lazy" decoding="async">
+        <img src="img/yusuf-hwyhaul.webp" alt="Yusuf Gadelrab excitedly holding up a HwyHaul t-shirt" width="825" height="1100" fetchpriority="high" decoding="async">
         <figcaption><b>Last day at HwyHaul</b> — July 2026</figcaption>
       </figure>
     </div>
 
-    <div class="grid stats-4" style="margin-top:var(--s8)">
-      <div class="card card--flat stat reveal"><span class="stat__value" data-count="77">77</span><span class="stat__label">automated tests passing</span></div>
-      <div class="card card--flat stat reveal"><span class="stat__value" data-count="18">18</span><span class="stat__label">finance pain-points solved</span></div>
-      <div class="card card--flat stat reveal"><span class="stat__value" data-count="100" data-suffix="%">100%</span><span class="stat__label">local · no third-party API</span></div>
-      <div class="card card--flat stat reveal"><span class="stat__value" data-count="0" data-prefix="$">$0</span><span class="stat__label">ongoing API cost</span></div>
+    <div class="dh-stats" style="margin-top:var(--s8)">
+      <div class="dh-stat reveal">
+        <span class="dh-stat__v stat__value" data-count="77">77</span>
+        <span class="dh-stat__k">automated tests passing</span>
+        <span class="dh-stat__src">pytest — Billing 25/25 + AR 29/29 + intake</span>
+      </div>
+      <div class="dh-stat reveal">
+        <span class="dh-stat__v stat__value" data-count="18">18</span>
+        <span class="dh-stat__k">finance pain-points solved</span>
+        <span class="dh-stat__src">AR/Billing controller's pain-point list</span>
+      </div>
+      <div class="dh-stat reveal">
+        <span class="dh-stat__v stat__value" data-count="100" data-suffix="%">100%</span>
+        <span class="dh-stat__k">local · no third-party API</span>
+        <span class="dh-stat__src">Ollama · qwen3-fast, on-device</span>
+      </div>
+      <div class="dh-stat reveal">
+        <span class="dh-stat__v stat__value" data-count="0" data-prefix="$">$0</span>
+        <span class="dh-stat__k">ongoing API cost</span>
+        <span class="dh-stat__src">zero third-party API calls, ever</span>
+      </div>
     </div>
   </section>
 
@@ -170,7 +186,7 @@
 
   <!-- PROBLEM -->
   <section id="problem" class="section section--tight">
-    <p class="eyebrow reveal">The Problem</p>
+    <p class="dh-eyebrow reveal">The Problem</p>
     <h2 class="reveal">Two things quietly eat a brokerage's day.</h2>
     <p class="lead reveal" style="margin-top:var(--s3)">The finance and ops teams lose hours to repetitive typing and manual cross-checking across four disconnected systems. That's exactly where automation pays off.</p>
     <div class="grid grid--2" style="margin-top:var(--s6)">
@@ -191,7 +207,7 @@
 
   <!-- WHAT I BUILT -->
   <section id="build" class="section section--tight">
-    <p class="eyebrow reveal">What I Built</p>
+    <p class="dh-eyebrow reveal">What I Built</p>
     <h2 class="reveal">Two products, one philosophy: AI drafts, a human decides.</h2>
     <p class="lead reveal" style="margin:var(--s3) 0 var(--s6)">Tap a module to see what's inside. Everything runs locally on a FastAPI server and sends real email through the desktop mail account — no cloud, no leaked data.</p>
 
@@ -213,7 +229,7 @@
     <div class="tabpanel" id="billing" role="tabpanel" tabindex="0" aria-labelledby="tab-billing">
       <div class="panel callout"><b>Billing Ops.</b> Back-office checks rendered as clean tables plus ready-to-send emails. A local agent flags what's off and drafts the outreach — you review and send. <b>25/25 tests green.</b></div>
       <div style="margin-top:var(--s5)">
-        <div class="feat"><span class="fic">1</span><span><b>Stale bank-info detection</b> &amp; false-delay flagging (catching the ~40% of delay flags that were false).</span></div>
+        <div class="feat"><span class="fic">1</span><span><b>Stale bank-info detection</b> &amp; false-delay flagging — catching delay flags that turned out to be false.</span></div>
         <div class="feat"><span class="fic">2</span><span><b>POD verification</b> and advance reconciliation — surfacing double-pay risk before it goes out the door.</span></div>
         <div class="feat"><span class="fic">3</span><span><b>W-9 / 1099 tracker</b>, 30-day payment-clock tracker, and the daily release list — automated end-to-end.</span></div>
       </div>
@@ -229,35 +245,33 @@
     </div>
   </section>
 
-  <hr class="divider">
+  <!-- PIPELINE — the page's spine: full-bleed sunk band -->
+  <section id="pipeline" class="dh-band dh-band--sunk dh-band--edge">
+    <div class="dh-wrap">
+      <p class="dh-eyebrow reveal">How It Works</p>
+      <h2 class="reveal">From an incoming message to a sent reply.</h2>
+      <p class="lead reveal" style="margin:var(--s3) 0 var(--s6)">A deterministic classifier keeps the demo instant; a local LLM is wired in as an optional upgrade. The pipeline drafts — it never fires blindly.</p>
+      <div class="pipe">
+        <div class="card pipe-step reveal"><div class="step-n">STEP 1</div><h3>Incoming message</h3><p>Carrier email or WhatsApp text arrives at the intake webhook.</p></div>
+        <div class="card pipe-step reveal"><div class="step-n">STEP 2</div><h3>Classify &amp; extract</h3><p>Reads intent, picks 1 of 8 reply types, pulls load / invoice / amount.</p></div>
+        <div class="card pipe-step reveal"><div class="step-n">STEP 3</div><h3>Draft in-voice</h3><p>Fills the matching template in the brokerage's tone.</p></div>
+        <div class="card pipe-step reveal"><div class="step-n">STEP 4</div><h3>Human sends</h3><p>You review, pick the recipient, hit Send — it goes out for real.</p></div>
+      </div>
 
-  <!-- PIPELINE -->
-  <section id="pipeline" class="section section--tight">
-    <p class="eyebrow reveal">How It Works</p>
-    <h2 class="reveal">From an incoming message to a sent reply.</h2>
-    <p class="lead reveal" style="margin:var(--s3) 0 var(--s6)">A deterministic classifier keeps the demo instant; a local LLM is wired in as an optional upgrade. The pipeline drafts — it never fires blindly.</p>
-    <div class="pipe">
-      <div class="card pipe-step reveal"><div class="step-n">STEP 1</div><h3>Incoming message</h3><p>Carrier email or WhatsApp text arrives at the intake webhook.</p></div>
-      <div class="card pipe-step reveal"><div class="step-n">STEP 2</div><h3>Classify &amp; extract</h3><p>Reads intent, picks 1 of 8 reply types, pulls load / invoice / amount.</p></div>
-      <div class="card pipe-step reveal"><div class="step-n">STEP 3</div><h3>Draft in-voice</h3><p>Fills the matching template in the brokerage's tone.</p></div>
-      <div class="card pipe-step reveal"><div class="step-n">STEP 4</div><h3>Human sends</h3><p>You review, pick the recipient, hit Send — it goes out for real.</p></div>
-    </div>
-
-    <div class="code reveal" style="margin-top:var(--s6)">
-      <div class="bar"><i></i><i></i><i></i><span>pipeline.py</span></div>
+      <div class="code reveal" style="margin-top:var(--s6)">
+        <div class="bar"><i></i><i></i><i></i><span>pipeline.py</span></div>
 <pre><span class="c"># incoming email text</span>
    ↓  <span class="g">classifier.py</span>          <span class="c"># intent → 1 of 8 reply types, extract load/invoice/amount</span>
    ↓  <span class="g">email_assistant.py</span>     <span class="c"># fills the matching template in our voice</span>
    ↓  <span class="k">you review + pick recipient</span>
    ↓  <span class="g">Mail.app (osascript)</span>   <span class="c"># sends for real — no API key, no cost</span></pre>
+      </div>
     </div>
   </section>
 
-  <hr class="divider">
-
   <!-- STACK -->
   <section id="stack" class="section section--tight">
-    <p class="eyebrow reveal">The Stack &amp; The Engineering</p>
+    <p class="dh-eyebrow reveal">The Stack &amp; The Engineering</p>
     <h2 class="reveal">Built to run anywhere, cost nothing, and never lie about what's real.</h2>
     <div class="grid" style="margin:var(--s6) 0">
       <div class="card reveal"><h3>Local-first AI</h3><p class="muted" style="margin-top:var(--s3);font-size:var(--t-small)">A local LLM (Ollama · qwen3-fast) is the brain, with a fast deterministic rules path so the live demo never lags. No data ever leaves the machine.</p></div>
@@ -273,7 +287,7 @@
       <span class="pill">Mail.app / osascript</span>
       <span class="pill">Mock-to-live SWAP layer</span>
       <span class="pill">VPN-resilient client</span>
-      <span class="pill">pytest</span>
+      <span class="pill">pytest · 77 tests</span>
     </div>
   </section>
 
@@ -281,15 +295,15 @@
 
   <!-- RESULTS -->
   <section id="results" class="section section--tight">
-    <p class="eyebrow reveal">Results &amp; What I Learned</p>
+    <p class="dh-eyebrow reveal">Results &amp; What I Learned</p>
     <h2 class="reveal">Shipped, tested, and honest about the edges.</h2>
     <div class="grid grid--2" style="margin-top:var(--s6)">
       <div class="card reveal">
-        <h3>Every finance pain-point, demoable</h3>
+        <h3>All 18 finance pain-points, demoable</h3>
         <p class="muted" style="margin-top:var(--s3);font-size:var(--t-small)">The AR/Billing controller's full list of 18 items — mapped end-to-end and demonstrable in one local web app, with the two purely-behavioral items flagged honestly as process, not AI.</p>
       </div>
       <div class="card reveal">
-        <h3>Automated test suite green</h3>
+        <h3>77 automated tests green</h3>
         <p class="muted" style="margin-top:var(--s3);font-size:var(--t-small)">Billing (25/25) and AR (29/29) suites plus intake coverage — a real, test-backed codebase, not a demo held together with tape.</p>
       </div>
       <div class="card reveal">
@@ -298,27 +312,29 @@
       </div>
       <div class="card reveal">
         <h3>The big lesson</h3>
-        <p class="muted" style="margin-top:var(--s3);font-size:var(--t-small)">"Learned more in a couple of weeks than most of a semester." Building AI that ships into a real operations team means designing for failure modes — VPNs down, tokens expired, messy input — first.</p>
+        <p class="muted" style="margin-top:var(--s3);font-size:var(--t-small)">My honest takeaway: I learned more in a couple of weeks than in most of a semester. Building AI that ships into a real operations team means designing for failure modes — VPNs down, tokens expired, messy input — first.</p>
       </div>
     </div>
 
     <div class="panel callout reveal" style="margin-top:var(--s6)">
-      🔒 <b>A note on the code:</b> HwyHaul's implementation is confidential to the company, so the repository isn't public. This page is a high-level walkthrough of what I designed and built — a private code walkthrough is available on request.
+      <b>A note on the code:</b> HwyHaul's implementation is confidential to the company, so the repository isn't public. This page is a high-level walkthrough of what I designed and built — a private code walkthrough is available on request.
     </div>
 
     <div class="panel callout reveal" style="margin-top:var(--s3)">
-      🚚 <b>What happened next:</b> the systems in this case study became <a href="/freightdesk.html" class="gold">FreightDesk AI</a> — now open for founding-client pilots at $999 setup + $249/mo. No clients are installed yet.
+      <b>What happened next:</b> the systems in this case study became <a href="/freightdesk.html" class="gold">FreightDesk AI</a> — now open for founding-client pilots at $999 setup + $249/mo. No clients are installed yet.
     </div>
   </section>
 
   <!-- FINAL CTA -->
   <section class="section section--tight">
-    <div class="card card--flat final reveal">
-      <p class="eyebrow">Let's talk</p>
-      <h2 style="margin-top:var(--s3)">Want the deeper walkthrough?</h2>
-      <p>I'm happy to screen-share the demo and talk through the architecture, the tradeoffs, and the failure-mode design.</p>
-      <div class="row">
-        <a href="https://www.linkedin.com/in/yusuf-gadelrab" target="_blank" rel="noopener" class="btn btn-gold">Connect on LinkedIn →</a>
+    <div class="dh-cta reveal">
+      <div class="dh-cta__copy">
+        <p class="dh-eyebrow">Let's talk</p>
+        <h2 class="dh-cta__title">Want the deeper walkthrough?</h2>
+        <p class="dh-cta__sub">I'm happy to screen-share the demo and talk through the architecture, the tradeoffs, and the failure-mode design.</p>
+      </div>
+      <div class="dh-cta__act">
+        <a href="https://www.linkedin.com/in/yusuf-gadelrab-76246b221" target="_blank" rel="noopener" class="btn btn-gold">Connect on LinkedIn →</a>
         <a href="https://github.com/Yusuf-Gadelrab" target="_blank" rel="noopener" class="btn btn-ghost">See my GitHub →</a>
         <a href="mailto:yusuf.gadelrab06@gmail.com" class="btn btn-ghost">Email me</a>
       </div>
@@ -348,8 +364,7 @@
     <a href="/media-kit.html">Media Kit</a>
     <a href="mailto:yusuf.gadelrab06@gmail.com">yusuf.gadelrab06@gmail.com</a>
     <a href="https://github.com/Yusuf-Gadelrab" target="_blank" rel="noopener">GitHub</a>
-    <a href="https://www.linkedin.com/in/yusuf-gadelrab" target="_blank" rel="noopener">LinkedIn</a>
-          <a href="/portfolio/">Portfolio</a>
+    <a href="https://www.linkedin.com/in/yusuf-gadelrab-76246b221" target="_blank" rel="noopener">LinkedIn</a>
     <a href="/brand.html">Brand</a>
     <a href="/stack.html">Stack</a>
     <a href="/everything.html">Everything</a>
@@ -363,6 +378,8 @@
 </footer>
 
 <script>
+  var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
   // scroll progress
   var prog=document.getElementById('progress');
   function onScroll(){
@@ -412,6 +429,7 @@
   function animate(el){
     var target=parseFloat(el.getAttribute('data-count'));
     var pre=el.getAttribute('data-prefix')||'', suf=el.getAttribute('data-suffix')||'';
+    if(reduceMotion){el.textContent=pre+target+suf;return;}
     var start=null, dur=1400;
     function tick(ts){
       if(!start)start=ts; var p=Math.min((ts-start)/dur,1);
@@ -429,5 +447,6 @@
 
 <script src="/js/site.js" defer></script>
 <script src="/js/lux-motion.js" defer></script>
+<script src="/js/lux-plus.js" defer></script>
 </body>
 </html>

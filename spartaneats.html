@@ -36,6 +36,7 @@
 <meta name="twitter:image" content="https://yusuf-gadelrab.github.io/og/spartaneats-card.png">
 <link rel="stylesheet" href="/css/site.css">
 <link rel="stylesheet" href="/css/lux-motion.css">
+<link rel="stylesheet" href="/css/lux-plus.css">
 <style>
   /* ============================================================================
      Page-specific CSS only.
@@ -55,6 +56,18 @@
   .landing{display:grid;grid-template-columns:minmax(0,1fr) 420px;
     gap:clamp(28px,5vw,56px);align-items:center}
   @media(max-width:920px){.landing{grid-template-columns:1fr}}
+
+  /* Editorial type register (DHAHAB 2A) — deliberately scoped to `.pitch`, the
+     marketing column. The phone is a self-contained app UI in its own idiom and
+     must keep --body-font (#phone * already pins it); a serif in there would be
+     wrong and would fight the SJSU blue/gold chrome. The selector carries
+     .pitch so it outranks site.css's `body.pro h1` (0,1,1). */
+  body.pro .pitch h1{font-family:var(--display-serif);letter-spacing:var(--track-tight);
+    font-weight:var(--w-semibold);line-height:var(--lh-tight);text-transform:none}
+
+  /* The fee-comparison panel is the page's proof block. .lxp-glass frosts it
+     over the fixed grain/aurora atmosphere layers; padding comes from .panel. */
+  .pitch .lxp-glass{border-radius:var(--radius-lg)}
 
   .mathrow{display:flex;justify-content:space-between;align-items:baseline;
     gap:var(--s3);font-size:var(--t-small)}
@@ -211,11 +224,11 @@ input,textarea,select{font-size:16px!important}</style>
 
   <section class="pitch">
     <img class="page-lion" src="/img/brand/lion-mark.svg" alt="" width="46" height="46" decoding="async">
-    <p class="eyebrow">SJSU · Student-run delivery · Concept demo</p>
+    <p class="dh-eyebrow">SJSU · Student-run delivery · Concept demo</p>
     <h1 style="margin:var(--s4) 0">$1.99 flat-fee campus delivery. <span class="gold-fill">By Spartans, for Spartans.</span></h1>
     <p class="lead">SJSU students deliver, everyone eats: $0 service fees, no surge pricing, .edu-verified deliverers — and you can even pay your Spartan in food.</p>
 
-    <div class="panel" style="margin-top:var(--s5)">
+    <div class="panel lxp-glass" style="margin-top:var(--s5)">
       <div class="mathrow"><span>DoorDash-style fees on a $25 order</span><b class="strike">~$10.74</b></div>
       <div class="mathsub">15% service fee + $4.99 delivery + ~$2 in misc fees</div>
       <div class="mathrow total"><span>SpartanEats delivery fee</span><span class="goldn">$1.99 flat</span></div>
@@ -270,8 +283,7 @@ input,textarea,select{font-size:16px!important}</style>
     <a href="/media-kit.html">Media Kit</a>
     <a href="mailto:yusuf.gadelrab06@gmail.com">yusuf.gadelrab06@gmail.com</a>
     <a href="https://github.com/Yusuf-Gadelrab" target="_blank" rel="noopener">GitHub</a>
-    <a href="https://www.linkedin.com/in/yusuf-gadelrab" target="_blank" rel="noopener">LinkedIn</a>
-          <a href="/portfolio/">Portfolio</a>
+    <a href="https://www.linkedin.com/in/yusuf-gadelrab-76246b221" target="_blank" rel="noopener">LinkedIn</a>
     <a href="/brand.html">Brand</a>
     <a href="/stack.html">Stack</a>
     <a href="/everything.html">Everything</a>
@@ -382,13 +394,13 @@ function vOnboard(){return `
     <button class="btn" id="ob-guest">Browse the menu — no sign-up 🍔</button>
     <div class="mut" style="text-align:center;margin-top:8px;font-size:11.5px">Straight to the food. We only ask your name at checkout.</div>
     <div class="mut" style="text-align:center;margin:18px 0 0;font-size:11.5px;font-weight:700;letter-spacing:.06em">— OR SET UP A PROFILE (NEEDED TO DELIVER &amp; EARN) —</div>
-    <label>Your name</label><input id="ob-name" placeholder="Sammy Spartan">
-    <label>SJSU email</label><input id="ob-email" placeholder="sammy.spartan@sjsu.edu" type="email">
+    <label for="ob-name">Your name</label><input id="ob-name" placeholder="Sammy Spartan">
+    <label for="ob-email">SJSU email</label><input id="ob-email" placeholder="sammy.spartan@sjsu.edu" type="email">
     <div class="err" id="ob-err">Enter your name and a valid @sjsu.edu email.</div>
-    <label>I want to…</label>
-    <div class="split" style="margin-top:8px">
-      <div class="radio on" id="ob-cust" data-role="customer">🛒 Order food</div>
-      <div class="radio" id="ob-deli" data-role="deliverer">🛵 Deliver &amp; earn</div>
+    <label id="ob-role-label">I want to…</label>
+    <div class="split" style="margin-top:8px" role="radiogroup" aria-labelledby="ob-role-label">
+      <div class="radio on" id="ob-cust" data-role="customer" role="radio" aria-checked="true" tabindex="0">🛒 Order food</div>
+      <div class="radio" id="ob-deli" data-role="deliverer" role="radio" aria-checked="false" tabindex="0">🛵 Deliver &amp; earn</div>
     </div>
     <div style="height:16px"></div>
     <button class="btn blue" id="ob-go">Create my profile →</button>
@@ -397,9 +409,12 @@ function vOnboard(){return `
 
 function wireOnboard(){
   let role='customer';
-  const pick=r=>{role=r;$('ob-cust').classList.toggle('on',r==='customer');$('ob-deli').classList.toggle('on',r==='deliverer');};
+  const pick=r=>{role=r;$('ob-cust').classList.toggle('on',r==='customer');$('ob-deli').classList.toggle('on',r==='deliverer');$('ob-cust').setAttribute('aria-checked',r==='customer');$('ob-deli').setAttribute('aria-checked',r==='deliverer');};
+  const onKey=fn=>e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();fn();}};
   $('ob-cust').onclick=()=>pick('customer');
   $('ob-deli').onclick=()=>pick('deliverer');
+  $('ob-cust').onkeydown=onKey(()=>pick('customer'));
+  $('ob-deli').onkeydown=onKey(()=>pick('deliverer'));
   $('ob-guest').onclick=()=>{
     S.user={name:'Guest Spartan',email:'guest@spartaneats.demo',role:'customer',verified:false,guest:true};
     save();go('home');toast('Browsing as guest 🍔');
@@ -461,23 +476,25 @@ function vCheckout(){
       <b>${r.em} ${r.name}</b>
       ${Object.entries(S.cart.items).map(([iid,q])=>{const i=item(S.cart.restId,iid);return `<div class="row" style="margin-top:8px"><span class="mut">${q}× ${i.name}</span><span>${money(i.price*q)}</span></div>`;}).join('')}
     </div>
-    <label>Drop-off spot on campus</label>
+    <label for="co-drop">Drop-off spot on campus</label>
     <select id="co-drop">${DROPOFFS.map(d=>`<option>${d}</option>`).join('')}</select>
-    ${S.user.guest?`<label>Your name (so your Spartan knows who to find)</label><input id="co-name" placeholder="Sammy Spartan" value="${S.user.name==='Guest Spartan'?'':esc(S.user.name)}">`:''}
-    <label>How are you paying your deliverer?</label>
-    <div class="radio on" id="pay-cash" onclick="pickPay('cash')">💵 Cash on delivery <span class="pill" style="margin-left:auto">most popular</span></div>
-    <div class="radio" id="pay-venmo" onclick="pickPay('venmo')">📱 Venmo / Zelle</div>
-    <div class="radio" id="pay-food" onclick="pickPay('food')">🍕 Pay with food (barter)</div>
+    ${S.user.guest?`<label for="co-name">Your name (so your Spartan knows who to find)</label><input id="co-name" placeholder="Sammy Spartan" value="${S.user.name==='Guest Spartan'?'':esc(S.user.name)}">`:''}
+    <label id="pay-label">How are you paying your deliverer?</label>
+    <div role="radiogroup" aria-labelledby="pay-label">
+      <div class="radio on" id="pay-cash" role="radio" aria-checked="true" tabindex="0" onclick="pickPay('cash')" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();pickPay('cash')}">💵 Cash on delivery <span class="pill" style="margin-left:auto">most popular</span></div>
+      <div class="radio" id="pay-venmo" role="radio" aria-checked="false" tabindex="0" onclick="pickPay('venmo')" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();pickPay('venmo')}">📱 Venmo / Zelle</div>
+      <div class="radio" id="pay-food" role="radio" aria-checked="false" tabindex="0" onclick="pickPay('food')" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();pickPay('food')}">🍕 Pay with food (barter)</div>
+    </div>
     <div id="foodbox" style="display:none">
       <div class="warn">⚠️ <b>Food-barter rules:</b> you must specify <b>exactly</b> what food you're offering (item + quantity). The deliverer sees your offer up front and must tap <b>Accept</b> before pickup. No changes after acceptance.</div>
-      <label>Exactly what food are you offering?</label>
+      <label for="co-fooddesc">Exactly what food are you offering?</label>
       <textarea id="co-fooddesc" rows="2" placeholder="e.g. 4 slices of pepperoni pizza + 1 Celsius, still sealed"></textarea>
       <label class="chk"><input type="checkbox" id="co-foodack"> I understand this is a voluntary student-to-student barter and the deliverer must explicitly accept my exact offer before pickup.</label>
     </div>
     <div id="tipbox">
-      <label>Tip your fellow Spartan (optional)</label>
-      <div class="split" style="margin-top:8px">
-        ${[0,1,2,3].map(t=>`<div class="radio ${t===0?'on':''}" id="tip-${t}" onclick="pickTip(${t})" style="justify-content:center">${t===0?'No tip':'$'+t}</div>`).join('')}
+      <label id="tip-label">Tip your fellow Spartan (optional)</label>
+      <div class="split" style="margin-top:8px" role="radiogroup" aria-labelledby="tip-label">
+        ${[0,1,2,3].map(t=>`<div class="radio ${t===0?'on':''}" id="tip-${t}" role="radio" aria-checked="${t===0}" tabindex="0" onclick="pickTip(${t})" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();pickTip(${t})}" style="justify-content:center">${t===0?'No tip':'$'+t}</div>`).join('')}
       </div>
     </div>
     <div class="card" style="margin-top:18px">
@@ -495,8 +512,8 @@ function vCheckout(){
   </div>`;
 }
 let coPay='cash', coTip=0;
-function pickPay(p){coPay=p;['cash','venmo','food'].forEach(x=>$('pay-'+x).classList.toggle('on',x===p));$('foodbox').style.display=p==='food'?'block':'none';$('tipbox').style.display=p==='food'?'none':'block';if(p==='food'){coTip=0;updTotals();}}
-function pickTip(t){coTip=t;[0,1,2,3].forEach(x=>$('tip-'+x).classList.toggle('on',x===t));updTotals();}
+function pickPay(p){coPay=p;['cash','venmo','food'].forEach(x=>{const el=$('pay-'+x);el.classList.toggle('on',x===p);el.setAttribute('aria-checked',x===p);});$('foodbox').style.display=p==='food'?'block':'none';$('tipbox').style.display=p==='food'?'none':'block';if(p==='food'){coTip=0;updTotals();}}
+function pickTip(t){coTip=t;[0,1,2,3].forEach(x=>{const el=$('tip-'+x);el.classList.toggle('on',x===t);el.setAttribute('aria-checked',x===t);});updTotals();}
 function updTotals(){const sub=cartSubtotal();$('tipval').textContent=money(coTip);$('totalval').textContent=money(sub+FEE+coTip);}
 function placeOrder(){
   let fooddesc=null;
@@ -554,9 +571,9 @@ function vVerify(){return `
   <div class="hero"><div class="logo">Deliverer <span>Verification</span></div><div class="tag">Only enrolled SJSU students can deliver</div></div>
   <div class="pad">
     <div class="warn">🎓 SpartanEats is student-powered. We verify your @sjsu.edu email and Student ID before you can accept jobs.</div>
-    ${S.user.guest?`<label>Your name</label><input id="vf-name" placeholder="Sammy Spartan">`:''}
-    <label>SJSU email</label><input id="vf-email" ${S.user.guest?`placeholder="sammy.spartan@sjsu.edu" type="email"`:`value="${esc(S.user.email)}" disabled`}>
-    <label>SJSU Student ID (9 digits, on your Tower Card)</label><input id="vf-sid" placeholder="012345678" maxlength="9" inputmode="numeric">
+    ${S.user.guest?`<label for="vf-name">Your name</label><input id="vf-name" placeholder="Sammy Spartan">`:''}
+    <label for="vf-email">SJSU email</label><input id="vf-email" ${S.user.guest?`placeholder="sammy.spartan@sjsu.edu" type="email"`:`value="${esc(S.user.email)}" disabled`}>
+    <label for="vf-sid">SJSU Student ID (9 digits, on your Tower Card)</label><input id="vf-sid" placeholder="012345678" maxlength="9" inputmode="numeric">
     <label class="chk"><input type="checkbox" id="vf-ack"> I'm a currently enrolled SJSU student and I understand deliveries are peer-to-peer favors between students, with payment (cash, Venmo/Zelle, or a specified food barter) agreed up front.</label>
     <div class="err" id="vf-err">Fill in your details, 9-digit Student ID, and check the box.</div>
     <div style="height:14px"></div>
@@ -661,5 +678,6 @@ render();
 </script>
 <script src="/js/site.js" defer></script>
 <script src="/js/lux-motion.js" defer></script>
+<script src="/js/lux-plus.js" defer></script>
 </body>
 </html>

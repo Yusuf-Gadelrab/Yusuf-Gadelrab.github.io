@@ -6,6 +6,7 @@
 <meta http-equiv="Content-Security-Policy" content="object-src 'none'; base-uri 'self'">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link rel="preload" href="/css/site.css" as="style">
+<link rel="preload" href="/css/lux-motion.css" as="style">
 <meta name="robots" content="index,follow,max-image-preview:large,max-snippet:-1">
 <meta property="og:locale" content="en_US">
 <title>Guides — Plain-English Answers With the Math Shown</title>
@@ -21,6 +22,9 @@
 <meta property="og:description" content="Trading risk, freight economics, and F-1 work authorization — explained with the arithmetic on the page.">
 <meta property="og:url" content="https://yusuf-gadelrab.github.io/guides.html">
 <meta property="og:image" content="https://yusuf-gadelrab.github.io/og/guides-card.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Guides by Yusuf Gadelrab — plain-English answers with the math shown">
 <meta name="twitter:card" content="summary_large_image">
 <link rel="alternate" type="application/rss+xml" title="Yusuf Gadelrab — Guides" href="https://yusuf-gadelrab.github.io/guides.xml">
 <link rel="alternate" type="application/rss+xml" title="Yusuf Gadelrab — Writing" href="https://yusuf-gadelrab.github.io/rss.xml">
@@ -32,15 +36,82 @@
 
 <link rel="stylesheet" href="/css/site.css">
 <link rel="stylesheet" href="/css/lux-motion.css">
+<link rel="stylesheet" href="/css/lux-plus.css">
 <style>
+  /* ---- DISPLAY REGISTER ------------------------------------------------
+     A 60-item index lives or dies on hierarchy, so the serif carries h1 and
+     every group head, and the card titles drop a full step below them. */
+  #main h1,#main h2{font-family:var(--display-serif);font-weight:var(--w-regular);
+    text-transform:none;letter-spacing:var(--track-tight);line-height:var(--lh-snug)}
+  #main h1{line-height:var(--lh-tight);font-size:clamp(36px,5.4vw,62px)}
+  #main .lead{line-height:var(--lh-body);max-width:var(--measure)}
+
+  /* ---- GROUP HEADS -----------------------------------------------------
+     The one hero moment on this page, used as a system rather than an
+     ornament: an oversized outlined numeral indexing each topic group.
+     Sixty cards need an index far more than they need another gradient. */
+  .grp-head{display:flex;flex-wrap:wrap;gap:var(--s3) var(--s5);
+    align-items:baseline;justify-content:space-between}
+  .grp-title{display:flex;align-items:baseline;gap:var(--s4);
+    flex:1 1 22rem;min-width:min(100%,16rem)}
+  .grp-title .lxp-num{flex:0 0 auto;line-height:1}
+  .grp-head h2{margin-top:var(--s2)}
+  .grp-head p:not(.eyebrow):not(.count){color:var(--ink-2);font-size:var(--t-small);
+    max-width:52ch;margin:0;line-height:var(--lh-body)}
+  .grp-aside{flex:0 1 34ch;min-width:min(100%,24ch)}
+  .grp-aside .count{margin-top:var(--s2)}
+  .count{font-family:var(--mono);font-size:var(--t-micro);color:var(--ink-3);
+    letter-spacing:.08em;text-transform:uppercase}
+
+  /* ---- JUMP LINKS ------------------------------------------------------
+     Deliberately NOT sticky — a page this long already asks a lot of a small
+     viewport, and a pinned bar would eat a third of it. Plain anchors, full
+     44px targets, focus ring inherited from site.css. */
+  .jump{margin-top:var(--s7)}
+  .jump ul{list-style:none;display:flex;flex-wrap:wrap;gap:var(--s3);
+    padding:0;margin:var(--s4) 0 0}
+  .jump a{display:inline-flex;align-items:center;gap:var(--s3);min-height:var(--tap);
+    padding:var(--s2) var(--s5);border:1px solid var(--border-control);
+    border-radius:var(--radius-pill);color:var(--ink-1);font-size:var(--t-small);
+    font-family:var(--display-pro);font-weight:var(--w-semibold);
+    transition:border-color var(--dur-2) var(--ease),color var(--dur-2) var(--ease),
+               background-color var(--dur-2) var(--ease)}
+  .jump a:hover{border-color:var(--gold-400);color:var(--gold-ink);background:var(--gold-wash)}
+  .jump a span{font-family:var(--mono);font-weight:var(--w-regular);
+    font-size:var(--t-micro);color:var(--ink-3);letter-spacing:.06em}
+  .jump a:hover span{color:var(--gold-ink)}
+
+  /* Jumped-to targets must clear the sticky nav, or the heading lands behind it. */
+  #main section[id],#compliance-h{scroll-margin-top:calc(var(--s8) + var(--s4))}
+
+  /* ---- CARD HIERARCHY --------------------------------------------------
+     One rung per line: title (display face, primary ink) > what it covers
+     (secondary) > the three questions it answers (caption, hairline-tied) >
+     the gold call to action last. */
   .guide{display:flex;flex-direction:column;padding:var(--s5)}
-  .guide h3{margin:0 0 var(--s3);font-size:var(--t-h3)}
-  .guide p{color:var(--muted);font-size:var(--t-small);flex:1;margin:0}
-  .guide .go{margin-top:var(--s4);font-family:var(--display-pro);font-weight:600;
-    font-size:var(--t-small);color:var(--gold-2)}
-  a.guide:hover .go{color:var(--gold)}
-  .qs{color:var(--muted);font-size:var(--t-small);margin-top:var(--s3);padding-left:1.1em}
-  .qs li{margin-bottom:4px}
+  .guide h3{margin:0 0 var(--s3);font-family:var(--display-pro);
+    font-weight:var(--w-semibold);font-size:var(--t-h4);line-height:var(--lh-snug);
+    letter-spacing:var(--track-tight);color:var(--ink-1);text-transform:none}
+  .guide p{color:var(--ink-2);font-size:var(--t-small);line-height:var(--lh-body);
+    flex:1;margin:0}
+  .guide .go{margin-top:var(--s5);font-family:var(--mono);font-size:var(--t-micro);
+    letter-spacing:.08em;text-transform:uppercase;color:var(--gold-ink)}
+  a.guide:hover .go{color:var(--gold-100)}
+  /* No bullet glyph: at 60 cards x 3 questions a decorative marker is 180
+     extra things for a screen reader to announce. A hairline does the job. */
+  .qs{list-style:none;color:var(--ink-3);font-size:var(--t-caption);
+    margin:var(--s4) 0 0;padding:0 0 0 var(--s4);display:grid;gap:var(--s1);
+    border-left:1px solid var(--border-hairline)}
+  .qs li{line-height:var(--lh-snug);margin:0}
+
+  .hero-act{display:flex;flex-wrap:wrap;gap:var(--s3);margin-top:var(--s6)}
+  .hero-act .btn{min-height:var(--tap)}
+  .hero-meta{margin-top:var(--s4);font-family:var(--mono);font-size:var(--t-caption);
+    color:var(--ink-3);letter-spacing:.02em}
+
+  @media(prefers-reduced-motion:reduce){
+    .jump a{transition:none}
+  }
 </style>
 </head>
 <body class="pro">
@@ -65,8 +136,50 @@
     <img class="page-lion" src="/img/brand/lion-mark.svg" alt="" width="46" height="46" decoding="async">
     <p class="eyebrow">DHAHAB · ذهب</p>
     <h1 style="margin:var(--s4) 0">Guides</h1>
-    <p class="lead">Every formula printed on the page, every example worked out, every claim I can't back up left off. Each guide pairs with a free calculator you can run in your browser.</p>
+    <p class="lead">Every formula printed on the page, every example worked out, every claim I can't back up left off. Most guides pair with a free calculator you can run in your browser.</p>
     <p class="lead" style="margin-top:var(--s4)">If a term here is unfamiliar, <a href="/glossary.html">the glossary</a> defines 120+ of them in one sentence each before explaining them properly. Shorter questions are answered on <a href="/faq.html">the FAQ</a>.</p>
+    <div class="hero-act">
+      <a class="btn btn-gold" href="/guides/r-multiple-expectancy.html">Start with R-multiple &amp; expectancy →</a>
+      <a class="btn btn-ghost" href="/glossary.html">Browse the glossary</a>
+    </div>
+    <p class="hero-meta">60 guides · free to read, free to quote · no signup, no paywall</p>
+
+    <div class="dh-stats" style="margin-top:var(--s7)">
+      <div class="dh-stat">
+        <span class="dh-stat__v dh-num">60</span>
+        <span class="dh-stat__k">Guides, each with its arithmetic shown rather than asserted</span>
+        <span class="dh-stat__src">indexed in this page's structured data</span>
+      </div>
+      <div class="dh-stat">
+        <span class="dh-stat__v dh-num">5</span>
+        <span class="dh-stat__k">Topic groups — jump straight to one below</span>
+        <span class="dh-stat__src">sections 01–05 on this page</span>
+      </div>
+      <div class="dh-stat">
+        <span class="dh-stat__v dh-num">120+</span>
+        <span class="dh-stat__k">Terms defined in one sentence, then explained properly</span>
+        <span class="dh-stat__src">/glossary.html</span>
+      </div>
+      <div class="dh-stat">
+        <span class="dh-stat__v dh-num">5</span>
+        <span class="dh-stat__k">Free calculators these guides pair with</span>
+        <span class="dh-stat__src">listed at the foot of this page</span>
+      </div>
+    </div>
+
+    <nav class="jump" aria-labelledby="jump-h">
+      <p class="eyebrow" id="jump-h">Jump to a group</p>
+      <ul>
+        <li><a href="#trading" aria-label="Trading and risk — 16 guides">Trading &amp; risk <span>16</span></a></li>
+        <li><a href="#ai-engineering" aria-label="AI and engineering — 16 guides">AI &amp; engineering <span>16</span></a></li>
+        <li><a href="#career" aria-label="Career and students — 17 guides">Career &amp; students <span>17</span></a></li>
+        <li><a href="#business" aria-label="Business and freight — 9 guides">Business &amp; freight <span>9</span></a></li>
+        <li><a href="#body" aria-label="Body — 2 guides">Body <span>2</span></a></li>
+        <li><a href="#tools" aria-label="Free tools — 5 tools">Free tools <span>5</span></a></li>
+      </ul>
+    </nav>
+
+    <p class="dh-note" style="margin-top:var(--s7)">The formulas are printed so you can run them against your own numbers instead of trusting mine. None of this is financial, legal or immigration advice, and anything time-sensitive — a rate, a deadline, an agency rule — should be re-checked against the primary source before you act on it. <a href="#compliance-h">Full disclaimer at the foot of the page.</a></p>
   </header>
 
   <hr class="divider">
@@ -358,61 +471,6 @@
         <span class="go">Read the guide →</span>
       </a>
 
-      <a class="card guide" href="/guides/carrier-vetting-checklist.html">
-        <h3>Vet the carrier before the load, not after the claim</h3>
-        <p>How to verify FMCSA authority, read a certificate of insurance, spot double-brokering, and build a vetting file that survives a cargo claim.</p>
-        <ul class="qs">
-          <li>How do you verify a carrier&#x27;s FMCSA authority?</li>
-          <li>What should a certificate of insurance show?</li>
-          <li>Why should a COI come from the insurance agent, not the carrier?</li>
-        </ul>
-        <span class="go">Read the guide →</span>
-      </a>
-
-      <a class="card guide" href="/guides/detention-demurrage-accessorials.html">
-        <h3>The linehaul is the quote. The accessorials are the profit.</h3>
-        <p>What each charge is, who owes it, how to document time in and out so a claim survives, typical free time, and how unbilled accessorials eat a load's margin.</p>
-        <ul class="qs">
-          <li>What is the difference between detention and demurrage?</li>
-          <li>How much free time is typical before detention starts?</li>
-          <li>Who pays detention, the shipper or the broker?</li>
-        </ul>
-        <span class="go">Read the guide →</span>
-      </a>
-
-      <a class="card guide" href="/guides/pricing-a-digital-product.html">
-        <h3>The price is a decision. The take-home is arithmetic.</h3>
-        <p>Platform take-home compared on the same list price, VAT and merchant of record, tier design, refund assumptions, and the break-even unit math.</p>
-        <ul class="qs">
-          <li>Which platform leaves you the most on a digital product sale?</li>
-          <li>What is a merchant of record and do I need one?</li>
-          <li>Do I owe VAT on digital products sold to the EU?</li>
-        </ul>
-        <span class="go">Read the guide →</span>
-      </a>
-
-      <a class="card guide" href="/guides/clothing-brand-pod-margins.html">
-        <h3>Where every dollar of a $32 tee actually goes</h3>
-        <p>Blank cost, print cost and platform cut separated, a $32 tee and a $58 hoodie worked end to end, plus shipping, returns and the pre-order break-even.</p>
-        <ul class="qs">
-          <li>What does a print-on-demand tee actually net?</li>
-          <li>Are hoodies more profitable than tees?</li>
-          <li>How much does free shipping cost a clothing brand?</li>
-        </ul>
-        <span class="go">Read the guide →</span>
-      </a>
-
-      <a class="card guide" href="/guides/landing-page-that-converts.html">
-        <h3>A stranger, on a phone, with four seconds</h3>
-        <p>The one-job rule, above-the-fold structure, specificity over adjectives, proof when you have none, and how to measure a page without a tracking stack.</p>
-        <ul class="qs">
-          <li>What is the most common landing page mistake?</li>
-          <li>What belongs above the fold?</li>
-          <li>How do you write a headline that converts?</li>
-        </ul>
-        <span class="go">Read the guide →</span>
-      </a>
-
       <a class="card guide" href="/guides/snyk-vs-trivy-vs-dira.html">
         <h3>Snyk vs Trivy vs DIRA: choosing a security scanner</h3>
         <p>An honest matrix across three security scanners, written by the author of one of them: coverage, container scanning, licensing, cost, and where each one loses.</p>
@@ -497,39 +555,6 @@
           <li>What is the fastest way to check if I&#x27;ve ever committed a secret?</li>
           <li>If a secret key leaked, do I need to rewrite git history?</li>
           <li>What&#x27;s the minimum security setup before a first paying customer?</li>
-        </ul>
-        <span class="go">Read the guide →</span>
-      </a>
-
-      <a class="card guide" href="/guides/weight-tracking-signal-vs-noise.html">
-        <h3>The scale is a noisy instrument. Treat it like one.</h3>
-        <p>Why a daily weigh-in is mostly noise, how big that noise actually is, what a moving average recovers, and how long to wait before a trend means anything.</p>
-        <ul class="qs">
-          <li>Should I weigh myself every day or once a week?</li>
-          <li>How much can body weight fluctuate in a day?</li>
-          <li>What is a weight trend line and how do I calculate one?</li>
-        </ul>
-        <span class="go">Read the guide →</span>
-      </a>
-
-      <a class="card guide" href="/guides/reading-a-scientific-paper.html">
-        <h3>Read it out of order, and check the effect size first</h3>
-        <p>The order to read sections in, how to judge a sample size, what p-values and effect sizes actually mean, and how to spot a claim the data does not support.</p>
-        <ul class="qs">
-          <li>What order should you read a scientific paper in?</li>
-          <li>Is a sample size of 60 participants enough?</li>
-          <li>What does a p-value actually mean?</li>
-        </ul>
-        <span class="go">Read the guide →</span>
-      </a>
-
-      <a class="card guide" href="/guides/technical-interview-study-system.html">
-        <h3>The schedule is the skill, not the problem count</h3>
-        <p>The study system, not the problem list: Leitner spaced repetition, how to review a solved problem, timeboxing, and a hint ladder for when you are stuck.</p>
-        <ul class="qs">
-          <li>Why does solving lots of problems not work?</li>
-          <li>What is the Leitner system and how do you use it for coding?</li>
-          <li>How do you review a coding problem you already solved?</li>
         </ul>
         <span class="go">Read the guide →</span>
       </a>
@@ -712,6 +737,28 @@
         <span class="go">Read the guide →</span>
       </a>
 
+      <a class="card guide" href="/guides/reading-a-scientific-paper.html">
+        <h3>Read it out of order, and check the effect size first</h3>
+        <p>The order to read sections in, how to judge a sample size, what p-values and effect sizes actually mean, and how to spot a claim the data does not support.</p>
+        <ul class="qs">
+          <li>What order should you read a scientific paper in?</li>
+          <li>Is a sample size of 60 participants enough?</li>
+          <li>What does a p-value actually mean?</li>
+        </ul>
+        <span class="go">Read the guide →</span>
+      </a>
+
+      <a class="card guide" href="/guides/technical-interview-study-system.html">
+        <h3>The schedule is the skill, not the problem count</h3>
+        <p>The study system, not the problem list: Leitner spaced repetition, how to review a solved problem, timeboxing, and a hint ladder for when you are stuck.</p>
+        <ul class="qs">
+          <li>Why does solving lots of problems not work?</li>
+          <li>What is the Leitner system and how do you use it for coding?</li>
+          <li>How do you review a coding problem you already solved?</li>
+        </ul>
+        <span class="go">Read the guide →</span>
+      </a>
+
     </div>
   </section>
 
@@ -743,6 +790,61 @@
           <li>What does a freight broker do after a load is booked?</li>
           <li>Why do freight invoices get paid late?</li>
           <li>What is the most chased document in freight?</li>
+        </ul>
+        <span class="go">Read the guide →</span>
+      </a>
+
+      <a class="card guide" href="/guides/carrier-vetting-checklist.html">
+        <h3>Vet the carrier before the load, not after the claim</h3>
+        <p>How to verify FMCSA authority, read a certificate of insurance, spot double-brokering, and build a vetting file that survives a cargo claim.</p>
+        <ul class="qs">
+          <li>How do you verify a carrier&#x27;s FMCSA authority?</li>
+          <li>What should a certificate of insurance show?</li>
+          <li>Why should a COI come from the insurance agent, not the carrier?</li>
+        </ul>
+        <span class="go">Read the guide →</span>
+      </a>
+
+      <a class="card guide" href="/guides/detention-demurrage-accessorials.html">
+        <h3>The linehaul is the quote. The accessorials are the profit.</h3>
+        <p>What each charge is, who owes it, how to document time in and out so a claim survives, typical free time, and how unbilled accessorials eat a load's margin.</p>
+        <ul class="qs">
+          <li>What is the difference between detention and demurrage?</li>
+          <li>How much free time is typical before detention starts?</li>
+          <li>Who pays detention, the shipper or the broker?</li>
+        </ul>
+        <span class="go">Read the guide →</span>
+      </a>
+
+      <a class="card guide" href="/guides/pricing-a-digital-product.html">
+        <h3>The price is a decision. The take-home is arithmetic.</h3>
+        <p>Platform take-home compared on the same list price, VAT and merchant of record, tier design, refund assumptions, and the break-even unit math.</p>
+        <ul class="qs">
+          <li>Which platform leaves you the most on a digital product sale?</li>
+          <li>What is a merchant of record and do I need one?</li>
+          <li>Do I owe VAT on digital products sold to the EU?</li>
+        </ul>
+        <span class="go">Read the guide →</span>
+      </a>
+
+      <a class="card guide" href="/guides/clothing-brand-pod-margins.html">
+        <h3>Where every dollar of a $32 tee actually goes</h3>
+        <p>Blank cost, print cost and platform cut separated, a $32 tee and a $58 hoodie worked end to end, plus shipping, returns and the pre-order break-even.</p>
+        <ul class="qs">
+          <li>What does a print-on-demand tee actually net?</li>
+          <li>Are hoodies more profitable than tees?</li>
+          <li>How much does free shipping cost a clothing brand?</li>
+        </ul>
+        <span class="go">Read the guide →</span>
+      </a>
+
+      <a class="card guide" href="/guides/landing-page-that-converts.html">
+        <h3>A stranger, on a phone, with four seconds</h3>
+        <p>The one-job rule, above-the-fold structure, specificity over adjectives, proof when you have none, and how to measure a page without a tracking stack.</p>
+        <ul class="qs">
+          <li>What is the most common landing page mistake?</li>
+          <li>What belongs above the fold?</li>
+          <li>How do you write a headline that converts?</li>
         </ul>
         <span class="go">Read the guide →</span>
       </a>
@@ -793,6 +895,17 @@
         <span class="go">Read the guide →</span>
       </a>
 
+      <a class="card guide" href="/guides/weight-tracking-signal-vs-noise.html">
+        <h3>The scale is a noisy instrument. Treat it like one.</h3>
+        <p>Why a daily weigh-in is mostly noise, how big that noise actually is, what a moving average recovers, and how long to wait before a trend means anything.</p>
+        <ul class="qs">
+          <li>Should I weigh myself every day or once a week?</li>
+          <li>How much can body weight fluctuate in a day?</li>
+          <li>What is a weight trend line and how do I calculate one?</li>
+        </ul>
+        <span class="go">Read the guide →</span>
+      </a>
+
     </div>
   </section>
 
@@ -800,18 +913,40 @@
 
   <!-- guides:auto:end -->
 
-  <section class="section section--tight">
+  <section class="section section--tight" id="tools">
     <div class="grp-head">
-      <p class="eyebrow">Pairs with</p>
-      <h2>The free tools</h2>
-      <p>No signup, no backend — everything runs in your browser and stays on your device.</p>
+      <div class="grp-title">
+        <div>
+          <p class="eyebrow">06 · Pairs with</p>
+          <h2>The free tools</h2>
+        </div>
+      </div>
+      <div class="grp-aside">
+        <p>No signup, no backend — everything runs in your browser and stays on your device.</p>
+        <p class="count">5 tools</p>
+      </div>
     </div>
     <div class="grid" style="margin-top:var(--s6)">
       <a class="card guide" href="/risk-tools.html"><h3>Trader's risk toolkit</h3><p>Position sizer, R-multiple, expectancy, risk of ruin, Kelly, break-even win rate.</p><span class="go">Open →</span></a>
       <a class="card guide" href="/freight-tools.html"><h3>Freight calculators</h3><p>Rate per mile, deadhead, margin, detention, fuel surcharge, break-even.</p><span class="go">Open →</span></a>
       <a class="card guide" href="/visa.html"><h3>Visa Navigator</h3><p>Backward-planned CPT/OPT and change-of-status timeline with a document checklist.</p><span class="go">Open →</span></a>
       <a class="card guide" href="/codeswitch/glossary.html"><h3>Bilingual CS glossary</h3><p>Python terms and the ten most common error messages, explained in English, Spanish, Vietnamese and Arabic.</p><span class="go">Open →</span></a>
-      <a class="card guide" href="/apps.html"><h3>All apps</h3><p>TradeLog, Cut, and Fire — installable, offline, local-only.</p><span class="go">Open →</span></a>
+      <a class="card guide" href="/apps.html"><h3>All apps</h3><p>TradeLog, Cut, Fire, and GRAMPA — installable, offline, local-only.</p><span class="go">Open →</span></a>
+    </div>
+  </section>
+
+  <hr class="divider">
+
+  <section class="section section--tight">
+    <div class="dh-cta">
+      <div class="dh-cta__copy">
+        <p class="dh-cta__title">Want this arithmetic applied to your product?</p>
+        <p class="dh-cta__sub">The same person who wrote these guides builds AI tooling, trading research software, and client-side apps — fixed scope, quoted price, every claim backed the way these pages back theirs.</p>
+      </div>
+      <div class="dh-cta__act">
+        <a class="btn btn-gold" href="/hire.html">Work together →</a>
+        <a class="btn btn-ghost" href="/writing.html">Read the essays</a>
+      </div>
     </div>
   </section>
 
@@ -819,6 +954,7 @@
 
 <section aria-labelledby="compliance-h" style="max-width:1080px;margin:0 auto;padding:28px 20px 8px;border-top:1px solid rgba(212,175,55,.18)"><h2 id="compliance-h" style="font-family:Georgia,'Times New Roman',serif;font-size:15px;letter-spacing:.06em;text-transform:uppercase;color:#d4af37;margin:0 0 10px">Disclaimer</h2><p style="font-size:13.5px;line-height:1.65;color:#9a958c;margin:0 0 8px">These guides are educational and informational only. Nothing here is financial, investment, tax, legal or immigration advice, or a recommendation to buy or sell any security. Trading carries substantial risk of loss. Any backtested, walk-forward or example figure is hypothetical, does not represent live trading, and past performance does not guarantee future results. Verify anything time-sensitive against the primary source before acting on it.</p><p style="font-size:13.5px;line-height:1.65;color:#9a958c;margin:0"><a style="color:#d4af37" href="/terms.html">Terms of Use</a> · <a style="color:#d4af37" href="/privacy.html">Privacy Policy</a></p></section>
 <footer class="site-footer">
+  <div>© 2026 Yusuf Gadelrab · CS @ SJSU · San Jose, CA</div>
   <div class="site-footer__links">
     <a href="/">Work</a>
     <a href="/about.html">About</a>
@@ -833,11 +969,11 @@
     <a href="/legal.html">Legal</a>
     <a href="/privacy.html">Privacy</a>
     <a href="/terms.html">Terms</a>
-    <a href="mailto:yusuf.gadelrab06@gmail.com">yusuf.gadelrab06@gmail.com</a><a href="https://github.com/Yusuf-Gadelrab" target="_blank" rel="noopener">GitHub</a><a href="https://www.linkedin.com/in/yusuf-gadelrab" target="_blank" rel="noopener">LinkedIn</a>
-          <a href="/portfolio/">Portfolio</a></div>
+    <a href="mailto:yusuf.gadelrab06@gmail.com">yusuf.gadelrab06@gmail.com</a><a href="https://github.com/Yusuf-Gadelrab" target="_blank" rel="noopener">GitHub</a><a href="https://www.linkedin.com/in/yusuf-gadelrab-76246b221" target="_blank" rel="noopener">LinkedIn</a></div>
 </footer>
 
 <script src="/js/site.js" defer></script>
 <script src="/js/lux-motion.js" defer></script>
+<script src="/js/lux-plus.js" defer></script>
 </body>
 </html>

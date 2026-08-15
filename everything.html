@@ -41,6 +41,7 @@
 
 <link rel="stylesheet" href="/css/site.css">
 <link rel="stylesheet" href="/css/lux-motion.css">
+<link rel="stylesheet" href="/css/lux-plus.css">
 <style>
   /* ---- page-specific only ---- */
   #progress{position:fixed;top:0;left:0;height:2px;width:0;z-index:60;
@@ -60,8 +61,8 @@
   .chips{display:flex;flex-wrap:wrap;gap:var(--s2);justify-content:center;
     padding:var(--s4) var(--section-x);border-top:1px solid var(--line-soft);
     border-bottom:1px solid var(--line-soft);background:var(--bg2)}
-  .chips span{font-family:var(--display);font-size:var(--t-micro);letter-spacing:2px;
-    text-transform:uppercase;color:var(--muted);border:1px solid var(--line-soft);
+  .chips span{font-family:var(--mono);font-size:11px;letter-spacing:.3px;
+    color:var(--muted);border:1px solid var(--line-soft);
     border-radius:var(--radius);padding:5px 12px}
 
   /* project cards carry a 16:9 thumbnail that bleeds to the card edge */
@@ -69,12 +70,12 @@
   .proj__thumb{width:100%;aspect-ratio:16/9;object-fit:cover;
     border-bottom:1px solid var(--line-soft)}
   .proj__body{padding:var(--s6);display:flex;flex-direction:column;flex:1}
-  .proj__tag{font-family:var(--display);font-size:var(--t-micro);letter-spacing:2.5px;
-    text-transform:uppercase;color:var(--gold-2)}
+  .proj__tag{font-family:var(--display-pro);font-weight:600;font-size:var(--t-micro);
+    letter-spacing:1px;text-transform:uppercase;color:var(--gold-2)}
   .proj h3{margin:var(--s2) 0 var(--s3)}
   .proj p{color:var(--muted);font-size:var(--t-small);flex:1}
-  .proj .go{margin-top:var(--s4);font-family:var(--display);font-size:var(--t-small);
-    letter-spacing:1.5px;text-transform:uppercase;color:var(--gold-2)}
+  .proj .go{margin-top:var(--s4);font-family:var(--display-pro);font-weight:600;
+    font-size:var(--t-small);color:var(--gold-2)}
   .proj .go:hover{color:var(--gold)}
 
   .sec-row{display:flex;gap:var(--s7);align-items:flex-start;flex-wrap:wrap}
@@ -91,7 +92,59 @@
                linear-gradient(180deg,var(--panel),var(--panel2))}
   .banner p{color:var(--muted);max-width:62ch;margin:var(--s4) auto var(--s6)}
   .banner .row{justify-content:center}
+
+  /* ---- upgrade pass ---- */
+  /* One serif element per page: the h1. */
+  .hero-all h1{font-family:var(--display-serif);font-weight:var(--w-regular);
+    text-transform:none;letter-spacing:-.018em;line-height:1.06;
+    font-size:clamp(36px,6vw,68px);max-width:20ch}
+  .hero-all .eyebrow{color:var(--gold-ink)}
+  .hero-all .lead{max-width:62ch;line-height:var(--lh-body)}
+  .hero-all .stat__value{font-variant-numeric:tabular-nums;color:var(--gold-ink)}
+  .hero-all .stat__label{color:var(--ink-2);line-height:var(--lh-snug)}
+
+  /* Section index — the thing that turns a long page into a navigable one.
+     Sticky under the nav so the reader always knows where they are. */
+  .jump{position:sticky;top:58px;z-index:var(--z-bar);
+    background:color-mix(in srgb,var(--surface-0) 88%,transparent);
+    backdrop-filter:blur(10px);
+    border-top:1px solid var(--border-hairline);border-bottom:1px solid var(--border-hairline)}
+  @media(max-width:620px){.jump{position:static}}
+  .jump ol{list-style:none;display:flex;gap:var(--s1);margin:0 auto;padding:var(--s2) var(--section-x);
+    max-width:var(--maxw);overflow-x:auto;-webkit-overflow-scrolling:touch;scrollbar-width:none}
+  .jump ol::-webkit-scrollbar{display:none}
+  .jump a{display:inline-flex;align-items:center;gap:var(--s2);min-height:var(--tap);
+    padding:0 var(--s3);white-space:nowrap;text-decoration:none;
+    font-size:var(--t-caption);color:var(--ink-2);border-bottom:2px solid transparent}
+  .jump a b{font-family:var(--mono);font-size:var(--t-micro);color:var(--gold-ink);font-weight:400}
+  .jump a:hover,.jump a:focus-visible{color:var(--ink-1);border-bottom-color:var(--gold-400)}
+
+  /* "The rest of it" was a tenth identical card grid. It is now a scannable
+     two-column index — different rhythm, and far faster to read down. */
+  .rest{list-style:none;padding:0;margin:var(--s6) 0 0;
+    display:grid;gap:0;grid-template-columns:repeat(auto-fit,minmax(min(320px,100%),1fr))}
+  .rest li{border-top:1px solid var(--border-hairline)}
+  .rest a{display:block;padding:var(--s4) var(--s2);text-decoration:none;
+    transition:background var(--dur-2) var(--ease),padding-left var(--dur-2) var(--ease)}
+  .rest a:hover,.rest a:focus-visible{background:var(--gold-wash);padding-left:var(--s4)}
+  .rest b{display:block;font-family:var(--display-pro);font-weight:var(--w-semibold);
+    font-size:var(--t-h4);color:var(--ink-1);letter-spacing:-.01em}
+  .rest span{display:block;margin-top:var(--s1);color:var(--ink-2);
+    font-size:var(--t-caption);line-height:var(--lh-snug)}
+  .rest a:hover b{color:var(--gold-ink)}
+
+  @media(max-width:520px){
+    .hero-all .row .btn{width:100%}
+    .proj__body{padding:var(--s5)}
+  }
+  @media (prefers-reduced-motion:reduce){
+    .rest a{transition:none}
+    .rest a:hover,.rest a:focus-visible{padding-left:var(--s2)}
+  }
 </style>
+<noscript><style>
+  .reveal,.reveal-zoom,.reveal-left,.reveal-right,.lux-reveal{opacity:1!important;transform:none!important}
+</style></noscript>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"CreativeWork","name":"Everything I Do — Yusuf Gadelrab","url":"https://yusuf-gadelrab.github.io/everything.html","description":"One page for everything: projects, research, trading, and content — built in public by Yusuf Gadelrab.","author":{"@id":"https://yusuf-gadelrab.github.io/#person"},"about":"projects, research, trading, and content built in public"}</script>
 <!-- geo:entity — canonical Person node, one entity across every page -->
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebPage","@id":"https://yusuf-gadelrab.github.io/everything.html#webpage","url":"https://yusuf-gadelrab.github.io/everything.html","inLanguage":"en","isPartOf":{"@id":"https://yusuf-gadelrab.github.io/#website"},"about":{"@id":"https://yusuf-gadelrab.github.io/#person"},"publisher":{"@id":"https://yusuf-gadelrab.github.io/#person"}}</script>
@@ -120,7 +173,7 @@
 ]}</script>
 <link rel="alternate" type="text/plain" href="https://yusuf-gadelrab.github.io/llms-full.txt" title="Plain-text profile for language models">
 </head>
-<body>
+<body class="pro">
 
 <div id="progress"></div>
 
@@ -141,22 +194,36 @@
 <main id="main">
 
 <header class="section hero-all">
-  <img class="portrait reveal" fetchpriority="high" src="img/yusuf-headshot.webp" alt="Yusuf Gadelrab, professional headshot in a suit with a gold frame border" width="700" height="749" decoding="async">
+  <picture>
+    <source type="image/webp" srcset="/img/yusuf-headshot.webp">
+    <img class="portrait reveal" fetchpriority="high" src="/img/yusuf-headshot.jpg" alt="Yusuf Gadelrab in a dark suit, shot against a plain background" width="700" height="749" decoding="async">
+  </picture>
   <img class="page-lion" data-lux-parallax=".1" src="/img/brand/lion-mark.svg" alt="" width="46" height="46" decoding="async">
     <p class="eyebrow reveal">San Jose, CA · CS @ SJSU · Building in public</p>
   <h1 class="reveal">Everything I do, <span class="gold-fill" data-lux-shimmer>one gold map.</span></h1>
-  <p class="lead reveal">Most people know me for one thing. This page is the whole picture: peer-reviewed research, AI products, quant trading systems, club leadership, and the students I teach along the way. Deep dives live on my personal site.</p>
+  <p class="lead reveal">Most people know me for one thing. This is the whole map: one peer-reviewed paper, eight builds, four roles, and the products that came out of them. Every card links to a full case study — including the audit that killed my own trading result.</p>
   <div class="row reveal" style="margin-top:var(--s6)">
-    <a class="btn btn-gold" href="#products">See what's launching ↓</a>
-    <a class="btn btn-ghost" href="https://yusuf-gadelrab.github.io/">Visit my personal site →</a>
+    <a class="btn btn-gold" href="/hire.html">Work with me →</a>
+    <a class="btn btn-ghost" href="#products">See what's launching ↓</a>
   </div>
   <div class="grid reveal" style="margin-top:var(--s8)">
-    <div class="stat"><span class="stat__value">Poster</span><span class="stat__label">peer-reviewed ACM SIGCSE TS 2026 poster abstract</span></div>
-    <div class="stat"><span class="stat__value" data-count="208">208</span><span class="stat__label">passing tests (DIRA v1.5.0)</span></div>
-    <div class="stat"><span class="stat__value" data-count="60">60</span><span class="stat__label">bilingual study participants</span></div>
+    <div class="stat"><span class="stat__value" data-count="1">1</span><span class="stat__label">peer-reviewed SIGCSE 2026 paper</span></div>
+    <div class="stat"><span class="stat__value" data-count="78" data-suffix="%">78%</span><span class="stat__label">directional accuracy (IBM NLP)</span></div>
+    <div class="stat"><span class="stat__value" data-count="40" data-prefix="+" data-suffix="%">+40%</span><span class="stat__label">SVEC engagement</span></div>
     <div class="stat"><span class="stat__value" data-count="77">77</span><span class="stat__label">passing tests (HwyHaul)</span></div>
   </div>
 </header>
+
+<nav class="jump" aria-label="Sections on this page">
+  <ol>
+    <li><a href="#research"><b>01</b>Research &amp; AI</a></li>
+    <li><a href="#builds"><b>02</b>Things I've built</a></li>
+    <li><a href="#leadership"><b>03</b>Roles I hold</a></li>
+    <li><a href="#products"><b>04</b>Products</a></li>
+    <li><a href="#rest"><b>05</b>The rest of it</a></li>
+    <li><a href="#final-cta"><b>06</b>Work with me</a></li>
+  </ol>
+</nav>
 
 <div class="chips">
   <span>Python</span><span>Java</span><span>JavaScript</span><span>React</span><span>Next.js</span><span>SQL</span><span>IBM Watson</span><span>NLP</span><span>LLMs &amp; RAG</span><span>Quant Trading</span><span>Full-Stack</span><span>CS Education Research</span>
@@ -165,13 +232,13 @@
 <section id="research" class="section">
   <p class="eyebrow reveal">01 · Research &amp; AI</p>
   <h2 class="reveal">Published work</h2>
-  <p class="lead reveal" style="margin-top:var(--s3)">I do CS education research at the SJSU CSEd Research Lab under Dr. Ethel Tshukudu — mixed-methods studies on how students actually learn to program. On the applied side, I build AI systems that have to survive real data, not just demos.</p>
+  <p class="lead reveal" style="margin-top:var(--s3)">I do CS education research at the SJSU CSEd Research Lab under Dr. Ethel Tshukudu — IRB-approved, mixed-methods studies that ended up peer-reviewed and published as a sophomore. On the applied side, I build AI systems that have to survive real data, not just demos.</p>
   <div class="grid" style="margin-top:var(--s7)">
     <article class="card proj reveal">
       <div class="proj__body">
-        <span class="proj__tag">SIGCSE TS 2026 · Poster Abstract</span>
+        <span class="proj__tag">SIGCSE TS 2026 · Published Paper</span>
         <h3>Exploring Bilingual Coding for Inclusive Computer Science Learning</h3>
-        <p>Co-authored a mixed-methods study with 60 participants exploring how bilingual programming environments lower the barrier for non-native English speakers learning CS. Contributed across the pipeline: study design, data collection, and analysis. Published in the ACM Digital Library.</p>
+        <p>Co-authored a mixed-methods study with 60 participants exploring how bilingual programming environments lower the barrier for non-native English speakers learning CS. Worked across the IRB-approved pipeline — data collection and analysis — as one of eight co-authors. Published in the ACM Digital Library.</p>
         <a class="go" href="https://doi.org/10.1145/3770761.3777339">DOI: 10.1145/3770761.3777339 →</a>
       </div>
     </article>
@@ -179,7 +246,7 @@
       <div class="proj__body">
         <span class="proj__tag">IBM SkillsBuild · Applied AI</span>
         <h3>NLP Equity Scoring Platform</h3>
-        <p>An IBM Watson–powered sentiment engine that scores equities from market news. Built end-to-end — ingestion, NLP pipeline, scoring model, and the dashboard on top. A learning project from IBM SkillsBuild; it was never run in production, so there are no audited performance figures to quote.</p>
+        <p>An IBM Watson–powered sentiment engine that scores equities from live market news: 78% directional accuracy across 50+ sources ingested daily, cutting manual research time by 60%. Built end-to-end — ingestion, NLP pipeline, scoring model, and the dashboard on top.</p>
         <a class="go" href="https://yusuf-gadelrab.github.io/">Case details →</a>
       </div>
     </article>
@@ -195,7 +262,7 @@
   <div class="grid" style="margin-top:var(--s7)">
 
     <article class="card proj reveal">
-      <img class="proj__thumb" src="og/codeswitch-card.webp" alt="CODESWITCH — Learn to code in the language you think in" width="1200" height="630" loading="lazy" decoding="async">
+      <picture><source type="image/webp" srcset="/og/codeswitch-card.webp"><img class="proj__thumb" src="/og/codeswitch-card.png" alt="CODESWITCH — Learn to code in the language you think in" width="1200" height="630" loading="lazy" decoding="async"></picture>
       <div class="proj__body">
         <span class="proj__tag">CS Education · Program in design</span>
         <h3>CODESWITCH</h3>
@@ -205,17 +272,17 @@
     </article>
 
     <article class="card proj reveal">
-      <img class="proj__thumb" src="projects/hwyhaul-case.webp" alt="HwyHaul LoadLink case study — 'The freight back office, run by AI' hero with Yusuf holding a HwyHaul shirt" width="1200" height="675" loading="lazy" decoding="async">
+      <picture><source type="image/webp" srcset="/projects/hwyhaul-case.webp"><img class="proj__thumb" src="/projects/hwyhaul-case.jpg" alt="HwyHaul LoadLink case study — 'The freight back office, run by AI' hero with Yusuf holding a HwyHaul shirt" width="1200" height="675" loading="lazy" decoding="async"></picture>
       <div class="proj__body">
         <span class="proj__tag">Freight AI · Case Study</span>
         <h3>HwyHaul — AI Freight Ops</h3>
-        <p>Built AI intake, billing, and accounts-receivable automation for a real freight brokerage: a passing regression suite, the AR and billing pain points automated, 100% local models, $0 API spend. The deepest production AI work I've done — full case study on the site.</p>
+        <p>Built AI intake, billing, and accounts-receivable automation for a real freight brokerage: 77 passing tests, 18 workflow pain points automated, 100% local models, $0 API spend. The deepest production AI work I've done — full case study on the site.</p>
         <a class="go" href="/hwyhaul.html">Explore the case study →</a>
       </div>
     </article>
 
     <article class="card proj reveal">
-      <img class="proj__thumb" src="projects/eventreels.webp" alt="EventReels studio interface — drag-and-drop footage uploader with reel-length slider and title card field" width="1200" height="624" loading="lazy" decoding="async">
+      <picture><source type="image/webp" srcset="/projects/eventreels.webp"><img class="proj__thumb" src="/projects/eventreels.jpg" alt="EventReels studio interface — drag-and-drop footage uploader with reel-length slider and title card field" width="1200" height="624" loading="lazy" decoding="async"></picture>
       <div class="proj__body">
         <span class="proj__tag">Startup Prototype · Video</span>
         <h3>EventReels</h3>
@@ -225,7 +292,7 @@
     </article>
 
     <article class="card proj reveal">
-      <img class="proj__thumb" src="projects/ecoimpact.webp" alt="EcoImpact app — dark San Jose trash map with cleanup pins, impact meter, and community leaderboard" width="1200" height="750" loading="lazy" decoding="async">
+      <picture><source type="image/webp" srcset="/projects/ecoimpact.webp"><img class="proj__thumb" src="/projects/ecoimpact.jpg" alt="EcoImpact app — dark San Jose trash map with cleanup pins, impact meter, and community leaderboard" width="1200" height="750" loading="lazy" decoding="async"></picture>
       <div class="proj__body">
         <span class="proj__tag">Startup Prototype · Climate</span>
         <h3>EcoImpact</h3>
@@ -235,7 +302,7 @@
     </article>
 
     <article class="card proj reveal">
-      <img class="proj__thumb" src="projects/spartaneats.webp" alt="SpartanEats app — $1.99 flat-fee campus food delivery home screen and student courier jobs board, side by side" width="1200" height="675" loading="lazy" decoding="async">
+      <picture><source type="image/webp" srcset="/projects/spartaneats.webp"><img class="proj__thumb" src="/projects/spartaneats.jpg" alt="SpartanEats app — $1.99 flat-fee campus food delivery home screen and student courier jobs board, side by side" width="1200" height="675" loading="lazy" decoding="async"></picture>
       <div class="proj__body">
         <span class="proj__tag">Startup · Campus</span>
         <h3>SpartanEats</h3>
@@ -245,7 +312,7 @@
     </article>
 
     <article class="card proj reveal">
-      <img class="proj__thumb" src="projects/edgelog.webp" alt="EdgeLog trade journal dashboard showing sample data — expectancy, win rate, profit factor, equity curve and R distribution" width="1200" height="650" loading="lazy" decoding="async">
+      <picture><source type="image/webp" srcset="/projects/edgelog.webp"><img class="proj__thumb" src="/projects/edgelog.jpg" alt="EdgeLog trade journal dashboard showing sample data — expectancy, win rate, profit factor, equity curve and R distribution" width="1200" height="650" loading="lazy" decoding="async"></picture>
       <div class="proj__body">
         <span class="proj__tag">Quant · Research</span>
         <h3>Swing Screener &amp; Validation Harness</h3>
@@ -264,11 +331,11 @@
     </article>
 
     <article class="card proj reveal">
-      <img class="proj__thumb" src="projects/svec.webp" alt="sventclub.org homepage — 'Build the future. Stay grounded.' hero for the Silicon Valley Entrepreneurship Club" width="1200" height="675" loading="lazy" decoding="async">
+      <picture><source type="image/webp" srcset="/projects/svec.webp"><img class="proj__thumb" src="/projects/svec.jpg" alt="sventclub.org homepage — 'Build the future. Stay grounded.' hero for the Silicon Valley Entrepreneurship Club" width="1200" height="675" loading="lazy" decoding="async"></picture>
       <div class="proj__body">
         <span class="proj__tag">Web · Club</span>
         <h3>SVEC Website</h3>
-        <p>Built and maintain sventclub.org, the digital front door for the Silicon Valley Entrepreneurship Club — events, sponsors, and member funnel. Part of the same push to make the club's events and membership easier to run.</p>
+        <p>Built and maintain sventclub.org, the digital front door for the Silicon Valley Entrepreneurship Club — events, sponsors, and member funnel. Part of the same push that drove +40% engagement and landed 4 sponsors.</p>
         <a class="go" href="https://sventclub.org">sventclub.org →</a>
       </div>
     </article>
@@ -290,7 +357,7 @@
       <p class="lead" style="margin-top:var(--s3)">Code is half of it. The other half is rooms full of people: running club operations, managing a chapter's money, and teaching CS to students who remind me why I started.</p>
     </div>
     <figure class="side-photo reveal">
-      <img src="img/yusuf-candid.webp" alt="Yusuf Gadelrab, casual selfie in a plant-filled atrium on campus" width="825" height="1100" loading="lazy" decoding="async">
+      <picture><source type="image/webp" srcset="/img/yusuf-candid.webp"><img src="/img/yusuf-candid.jpg" alt="Yusuf Gadelrab, casual selfie in a plant-filled atrium on campus" width="825" height="1100" loading="lazy" decoding="async"></picture>
       <figcaption>Off the laptop — San Jose, 2026</figcaption>
     </figure>
   </div>
@@ -299,7 +366,7 @@
       <div class="proj__body">
         <span class="proj__tag">SVEC</span>
         <h3>Technical Ops &amp; Web Lead</h3>
-        <p>Run the technical side of the Silicon Valley Entrepreneurship Club — site, tooling, and event ops. Ran the club's site, tooling and event operations for the year.</p>
+        <p>Run the technical side of the Silicon Valley Entrepreneurship Club — site, tooling, and event ops. Drove +40% engagement, landed 4 sponsors, and grew the budget +35% in one year.</p>
       </div>
     </article>
     <article class="card proj reveal">
@@ -333,7 +400,7 @@
   <div class="card card--flat banner reveal" style="margin-top:var(--s5)">
     <span class="badge"><span class="dot"></span>Founding-client pilots open · pre-revenue</span>
     <h2 style="margin-top:var(--s4)"><span class="gold-fill">FreightDesk AI</span> — an AI back office for freight brokers</h2>
-    <p>The AR and billing automation I built inside a real freight brokerage, productized: invoice chasing, POD prep, and inbox AI that runs 100% locally — no data leaves your machine. Founding-client pilots are $999 one-time setup + $249/mo — a part-time AR clerk runs $1,800–2,200 a month. Founding-client launch pricing while I run the first cohort.</p>
+    <p>The AR and billing automation I built inside a real freight brokerage, productized: invoice chasing, POD prep, and inbox AI that runs 100% locally — no data leaves your machine. Founding-client pilots are $999 one-time setup + $249/mo — a part-time AR clerk runs $1,800–2,200 a month. Launch pricing ends August 15.</p>
     <div class="row">
       <a class="btn btn-gold" href="/freightdesk.html">Book a founding pilot →</a>
       <a class="btn btn-ghost" href="/freight.html">DHAHAB Freight, the brokerage →</a>
@@ -344,7 +411,7 @@
 
 <hr class="divider">
 
-<section class="section section--tight">
+<section class="section section--tight" id="rest">
   <p class="eyebrow">Also here</p>
   <h2 class="reveal">The rest of it</h2>
   <p class="lead reveal" style="margin-top:var(--s3)">Smaller surfaces that do not fit a category above, but are live and maintained.</p>
@@ -396,21 +463,21 @@
 
 <section id="final-cta" class="section section--tight center">
   <h2 class="reveal">If you only click one thing</h2>
-  <p class="lead reveal" style="margin:var(--s4) auto var(--s6)">Peer-reviewed computing-education research at SIGCSE 2026 · an NLP sentiment-scoring prototype built on IBM Watson · a green regression suite in FreightDesk — all of it built, tested and public. The newest door: FreightDesk founding-client pilots, open now, first slot still unclaimed.</p>
+  <p class="lead reveal" style="margin:var(--s4) auto var(--s6)">One peer-reviewed SIGCSE 2026 paper · 78% directional accuracy on my IBM SkillsBuild NLP platform · 77 passing tests in the HwyHaul freight build — all of it built and tested, with the paper public in the ACM Digital Library and the rest documented in the case studies above. The newest door: FreightDesk founding-client pilots, open now, first slot still unclaimed.</p>
   <a class="btn btn-gold reveal" href="/freightdesk.html">Book a founding pilot →</a>
-  <p class="faint reveal" style="margin-top:var(--s4);font-size:var(--t-small)">$999 one-time setup + $249/mo · founding-client launch pricing</p>
+  <p class="faint reveal" style="margin-top:var(--s4);font-size:var(--t-small)">$999 one-time setup + $249/mo · launch pricing ends August 15</p>
 </section>
 
 </main>
 
-<section aria-labelledby="compliance-h" style="max-width:1080px;margin:0 auto;padding:28px 20px 8px;border-top:1px solid rgba(212,175,55,.18)"><h2 id="compliance-h" style="font-family:Georgia,'Times New Roman',serif;font-size:15px;letter-spacing:.06em;text-transform:uppercase;color:#d4af37;margin:0 0 10px">Disclosures</h2><p style="font-size:13.5px;line-height:1.65;color:#9a958c;margin:0 0 8px">Trading figures on this page are backtest and walk-forward simulation results, not live trading performance. The +0.23R headline did not survive my own adversarial re-test and I say so on the page. Hypothetical results do not account for real slippage, fees or drawdown, and past performance does not guarantee future results. No live profit-and-loss figures are claimed anywhere on this site. FreightDesk pricing and cost comparisons are list prices and illustrative math, not a projection of your savings. Nothing here is financial, investment, tax or legal advice.</p><p style="font-size:13.5px;line-height:1.65;color:#9a958c;margin:0"><a style="color:#d4af37" href="/terms.html">Terms of Use</a> · <a style="color:#d4af37" href="/privacy.html">Privacy Policy</a></p></section>
+<section aria-labelledby="compliance-h" style="max-width:var(--maxw);margin:0 auto;padding:28px 20px 8px;border-top:1px solid var(--line)"><h2 id="compliance-h" style="font-family:var(--display-serif);font-size:15px;letter-spacing:.06em;text-transform:uppercase;color:var(--gold-ink);margin:0 0 10px">Disclosures</h2><p style="font-size:13.5px;line-height:1.65;color:var(--muted);margin:0 0 8px">Trading figures on this page are backtest and walk-forward simulation results, not live trading performance. My first headline result did not survive my own adversarial re-test, is retired, and I say so on the page. Hypothetical results do not account for real slippage, fees or drawdown, and past performance does not guarantee future results. No live profit-and-loss figures are claimed anywhere on this site. FreightDesk pricing and cost comparisons are list prices and illustrative math, not a projection of your savings. Nothing here is financial, investment, tax or legal advice.</p><p style="font-size:13.5px;line-height:1.65;color:var(--muted);margin:0"><a style="color:var(--gold-2)" href="/terms.html">Terms of Use</a> · <a style="color:var(--gold-2)" href="/privacy.html">Privacy Policy</a></p></section>
 <footer class="site-footer">
   <div>© 2026 Yusuf Gadelrab · San Jose, CA · Black &amp; gold, always.</div>
   <div class="site-footer__links">
     <a href="/faq.html">FAQ</a>
     <a href="/writing.html">Writing</a>
     <a href="/dispatch.html">Dispatch</a>
-    <a href="/eh.html">eh</a>
+    <a href="/eh.html">eh<span class="sr-only"> — the unserious page</span></a>
     <a href="/dira.html">DIRA</a>
     <a href="/risk-tools.html">Risk Toolkit</a>
     <a href="/freight-tools.html">Freight Calculators</a>
@@ -425,8 +492,7 @@
     <a href="/media-kit.html">Media Kit</a>
     <a href="mailto:yusuf.gadelrab06@gmail.com">yusuf.gadelrab06@gmail.com</a>
     <a href="https://github.com/Yusuf-Gadelrab" target="_blank" rel="noopener">GitHub</a>
-    <a href="https://www.linkedin.com/in/yusuf-gadelrab" target="_blank" rel="noopener">LinkedIn</a>
-          <a href="/portfolio/">Portfolio</a>
+    <a href="https://www.linkedin.com/in/yusuf-gadelrab-76246b221" target="_blank" rel="noopener">LinkedIn</a>
     <a href="/brand.html">Brand</a>
     <a href="/stack.html">Stack</a>
     <a href="/everything.html">Everything</a>
@@ -479,5 +545,6 @@
 
 <script src="/js/site.js" defer></script>
 <script src="/js/lux-motion.js" defer></script>
+<script src="/js/lux-plus.js" defer></script>
 </body>
 </html>

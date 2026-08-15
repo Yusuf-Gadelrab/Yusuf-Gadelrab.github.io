@@ -37,9 +37,10 @@
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Hire Yusuf Gadelrab — Recruiters &amp; Founding Clients">
 <meta name="twitter:description" content="Recruiters: internship-ready SWE/AI/ML/quant talent. Founders: a freelance builder for automation and AI tooling.">
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","@id":"https://yusuf-gadelrab.github.io/hire.html#faq","mainEntity":[{"@type":"Question","name":"Is he available for a Summer 2027 internship?","acceptedAnswer":{"@type":"Answer","text":"Yes — software engineering, AI/ML, fintech and quantitative finance, data science, product/strategy, and developer advocacy. Open to SF, Remote, NYC, Seattle, Austin, Toronto. Work authorization: ask directly and I will confirm my exact status in writing."}},{"@type":"Question","name":"Does he do freelance or contract work?","acceptedAnswer":{"@type":"Answer","text":"Yes, solo — he scopes, builds and ships it himself. Productised options above; anything else, email a brief and he'll say honestly whether it's a fit."}},{"@type":"Question","name":"What's the fastest way to reach him?","acceptedAnswer":{"@type":"Answer","text":"yusuf.gadelrab06@gmail.com — put what you need in the first line. LinkedIn works too. Replies to serious inquiries within a couple of days."}},{"@type":"Question","name":"Does he do brand partnerships or sponsorships?","acceptedAnswer":{"@type":"Answer","text":"Yes — that runs through the media kit , with audience numbers and past collaborations, not through this page."}},{"@type":"Question","name":"Does he need visa sponsorship?","acceptedAnswer":{"@type":"Answer","text":"Ask him directly. He is a Canadian citizen studying at SJSU, and the accurate answer depends on the role, the start date and the immigration route he is on at the time — so he will confirm his exact current status in writing rather than post a slogan here that might be out of date by the time you read it."}},{"@type":"Question","name":"How long does he take to reply?","acceptedAnswer":{"@type":"Answer","text":"Within two business days, written by him rather than a template. If it is not a fit he says so in the reply instead of going quiet."}},{"@type":"Question","name":"Is this page written by AI?","acceptedAnswer":{"@type":"Answer","text":"Drafted with tools, edited and fact-checked by Yusuf. Every number here links back to where it was first published, so it can be checked rather than trusted."}}]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","@id":"https://yusuf-gadelrab.github.io/hire.html#faq","mainEntity":[{"@type":"Question","name":"Is he available for a Summer 2027 internship?","acceptedAnswer":{"@type":"Answer","text":"Yes — software engineering, AI/ML, fintech and quantitative finance, data science, product/strategy, and developer advocacy. US permanent resident (Green Card), authorized to work with no sponsorship required. Open to SF, Remote, NYC, Seattle, Austin, Toronto."}},{"@type":"Question","name":"Does he do freelance or contract work?","acceptedAnswer":{"@type":"Answer","text":"Yes, solo — he scopes, builds and ships it himself. Productised options above; anything else, email a brief and he'll say honestly whether it's a fit."}},{"@type":"Question","name":"What's the fastest way to reach him?","acceptedAnswer":{"@type":"Answer","text":"yusuf.gadelrab06@gmail.com — put what you need in the first line. LinkedIn works too. Replies to serious inquiries within a couple of days."}},{"@type":"Question","name":"Does he do brand partnerships or sponsorships?","acceptedAnswer":{"@type":"Answer","text":"Yes — that runs through the media kit, with audience numbers and collaboration formats, not through this page."}},{"@type":"Question","name":"Does he need visa sponsorship?","acceptedAnswer":{"@type":"Answer","text":"No. He is a US permanent resident (Green Card holder) and is authorized to work for any US employer with no sponsorship required, now or in the future. He would rather say that up front than have it surface after two interview rounds."}},{"@type":"Question","name":"How long does he take to reply?","acceptedAnswer":{"@type":"Answer","text":"Within two business days, written by him rather than a template. If it is not a fit he says so in the reply instead of going quiet."}},{"@type":"Question","name":"Is this page written by AI?","acceptedAnswer":{"@type":"Answer","text":"Drafted with tools, edited and fact-checked by Yusuf. The key numbers here link back to where they were first published, so they can be checked rather than trusted."}}]}</script>
 <link rel="stylesheet" href="/css/site.css">
 <link rel="stylesheet" href="/css/lux-motion.css">
+<link rel="stylesheet" href="/css/lux-plus.css">
 <style>
   /* ---- page-specific only ---- */
   .proof{display:flex;gap:var(--s4);align-items:flex-start;padding:var(--s4) 0;
@@ -47,6 +48,11 @@
   .proof:last-child{border-bottom:none}
   .proof b{font-family:var(--display-pro);color:var(--gold-2);display:block;margin-bottom:2px}
   .proof span{color:var(--muted);font-size:var(--t-small)}
+
+  /* Four stats, one row. The generic .grid track is 300px, which needs 1272px
+     for four columns inside 1060px of section content — the fourth stat was
+     dropping to a row of its own. 190px matches .dh-stats on research.html. */
+  #recruiters .grid{grid-template-columns:repeat(auto-fit,minmax(min(190px,100%),1fr))}
 
   /* These class names were used in the markup but had no rules anywhere — the
      offer cards and FAQ cards were rendering unstyled. Defined here to match
@@ -92,13 +98,150 @@
   form.mini{display:flex;flex-wrap:wrap;gap:var(--s2);max-width:440px;margin-top:var(--s4)}
   form.mini input{flex:1 1 200px;min-width:0;background:var(--panel2);
     border:1px solid var(--line-soft);border-radius:var(--radius);color:var(--ink);
-    font-family:var(--body-font);font-size:var(--t-small);padding:11px 14px}
+    font-family:var(--body-font);font-size:16px;padding:11px 14px;min-height:var(--tap)}
   form.mini input::placeholder{color:var(--faint)}
   form.mini input:focus{border-color:var(--gold)}
   form.mini input:focus-visible{outline:2px solid var(--gold-2);outline-offset:2px}
   .capture-note{color:var(--muted);font-size:var(--t-micro);margin-top:var(--s3)}
+
+  /* ---- typographic register ----
+     The page had one type voice for everything. Section titles now sit in the
+     serif display face so the h1 → h2 → h3 ramp is legible at a glance. */
+  #main h1{font-family:var(--display-serif);font-weight:400;letter-spacing:var(--track-tight);
+    line-height:var(--lh-tight);max-width:16ch}
+  #main h2{font-family:var(--display-serif);font-weight:400;letter-spacing:var(--track-tight);
+    line-height:var(--lh-snug);max-width:22ch}
+  .grp-head{align-items:flex-end;gap:var(--s5)}
+  .grp-head>div{min-width:0}
+
+  /* Verified figures need a home for their caveats, or the caveat ends up
+     inside the stat label where nobody reads it. */
+  .caveat{margin-top:var(--s5);padding-left:var(--s4);
+    border-left:1px solid var(--border-gold);
+    color:var(--ink-3);font-size:var(--t-caption);line-height:var(--lh-body);
+    max-width:var(--measure)}
+  .caveat a{color:var(--gold-ink);text-underline-offset:3px;text-decoration:underline;
+    text-decoration-color:var(--gold-dim)}
+
+  /* Cards: quieter at rest, deliberate on hover — lift plus a gold hairline,
+     never a colour wash. */
+  .card.proj{transition:border-color var(--dur-2) var(--ease),
+    transform var(--dur-2) var(--ease-out),box-shadow var(--dur-2) var(--ease)}
+  a.card.proj:hover{border-color:var(--gold-dim);transform:translateY(-2px);box-shadow:var(--elev-2)}
+  .next div{transition:border-color var(--dur-2) var(--ease)}
+  .next div:hover{border-color:var(--gold-dim)}
+
+  /* Proof list reads as a ledger, not a card grid — deliberate section variety. */
+  .proof b{font-size:var(--t-small);letter-spacing:.01em}
+  .proof:hover b{color:var(--gold)}
+  .panel .proof:first-child{padding-top:0}
+
+  .alt-links a{min-height:var(--tap);display:inline-flex;align-items:center}
+
+  /* ==========================================================================
+     ATELIER PASS — rhythm, hierarchy, hairline detail.
+     Not one word, number, link or claim changes below this line. What changes
+     is where the eye lands: two equally weighted doors, one ledger, one plaque.
+     ========================================================================= */
+
+  /* The shipped .lxp-aura bleeds 12% past each edge and stands 78vh tall. This
+     hero is two paragraphs, so the default bloom would run straight through the
+     first divider — and on a 320px screen it hangs ~38px of blur off a body
+     that is already clipping overflow-x. Pulled back to the header's own box. */
+  #who.lxp-aura::before{inset:-8% 0 auto 0;height:min(52vh,480px)}
+
+  /* Eyebrows: proportional micro-caps tracking. The shipped 2px is a fixed
+     value that stops tracking once the reader zooms; .22em keeps the ratio. */
+  #main .eyebrow{font-size:var(--t-micro);letter-spacing:var(--track-eyebrow)}
+
+  /* Measure. The two hero leads are the widest copy on the page; the second is
+     a scan-list of two audiences, so it reads better short. */
+  #who .lead{max-width:var(--measure)}
+  #who .lead + .lead{max-width:var(--measure-narrow)}
+
+  /* ---- the two doors ----
+     #recruiters and #clients ARE this page — a recruiter and a founder both
+     land here and each must feel addressed, not sequenced. Both lanes open on
+     an identical lintel: a faint hairline across the section head with one
+     short gold segment at its left. Every other section head gets the hairline
+     WITHOUT the gold segment, and that absence is what makes the segment read
+     as "this is a door" rather than as decoration. */
+  .grp-head{position:relative;padding-top:var(--s5);
+    border-top:1px solid var(--border-hairline)}
+  #recruiters .grp-head::before,#clients .grp-head::before{
+    content:"";position:absolute;top:-1px;left:0;height:1px;
+    width:clamp(56px,16%,132px);
+    background:linear-gradient(90deg,var(--gold-400),transparent)}
+  .grp-head p{max-width:var(--measure-narrow);line-height:var(--lh-body);color:var(--ink-2)}
+
+  /* ---- the verified figures ----
+     One 1px gold gradient along the top edge is the entire decoration: no extra
+     box, no extra element, and — because it is a background LAYER rather than a
+     ::before — the tile stays position:static, so lux-plus's pointer spotlight
+     still qualifies it. A tile you cannot click must not lift on hover; that
+     lift is the tell. */
+  #recruiters .card.stat{
+    background-image:linear-gradient(90deg,var(--gold-400),transparent 64%),
+                     linear-gradient(180deg,var(--panel),var(--panel2));
+    background-size:100% 1px,100% 100%;
+    background-repeat:no-repeat;background-position:0 0,0 0;
+    padding:var(--s5);gap:var(--s3)}
+  #recruiters .stat__value{font-variant-numeric:tabular-nums;
+    letter-spacing:var(--track-tight);line-height:var(--lh-tight)}
+  #recruiters .stat__label{color:var(--ink-2);line-height:var(--lh-snug);max-width:26ch}
+  #recruiters .card.stat:hover,#faq .card.qa:hover{transform:none}
+
+  /* ---- 03 · the numbered objections ----
+     A genuine numbered list, so the index gets to be a display object instead
+     of three characters of 11px label. Outlined, so it never out-shouts the
+     answer — and the question text sits right beside it, so the numeral is
+     never the only carrier of the step's meaning. */
+  .next div{padding:var(--s5) var(--s5) var(--s6)}
+  .next .mk{display:flex;flex-wrap:wrap;align-items:baseline;gap:var(--s1) .5ch;
+    font-size:var(--t-micro);letter-spacing:var(--track-wide);
+    margin-bottom:var(--s3)}
+  .next .lxp-num{flex:0 0 auto;font-size:clamp(30px,3.4vw,42px);
+    -webkit-text-stroke:1px var(--gold-500)}
+  /* An outline nobody can render must not become an invisible number. */
+  @supports not (-webkit-text-stroke:1px currentColor){
+    .next .lxp-num{color:var(--gold-ink);-webkit-text-stroke:0}
+  }
+  .next p{line-height:var(--lh-body);max-width:var(--measure-narrow)}
+
+  /* ---- the ledger ----
+     Six credentials as rows in one framed plaque, not six cards — deliberate
+     variety against the two card grids above it. The tick is a flex ITEM, not
+     an absolutely positioned box, so it aligns to the first text line at every
+     width, and it scales on transform rather than width so hovering it costs
+     no layout. */
+  #proof .panel{padding:var(--s6)}
+  #proof .proof::before{content:"";flex:0 0 18px;height:1px;margin-top:.68em;
+    background:var(--gold-600);transform:scaleX(.5);transform-origin:left center;
+    transition:transform var(--dur-2) var(--ease-out),
+               background-color var(--dur-2) var(--ease)}
+  #proof .proof:hover::before{transform:scaleX(1);background:var(--gold-400)}
+  /* No colour is restated on the row title — an id-level selector here would
+     outrank `.proof:hover b` above and silently kill the row's gold shift. */
+  #proof .proof span{line-height:var(--lh-body);max-width:var(--measure)}
+
+  /* Quiet routes stay quiet: tight rows, generous columns. */
+  .alt-links{column-gap:var(--s5);row-gap:var(--s1)}
+
+  @media (prefers-reduced-motion:reduce){
+    a.card.proj:hover{transform:none}
+    #proof .proof::before{transition:none;transform:scaleX(1)}
+  }
+  @media (max-width:600px){
+    .row .btn{width:100%;justify-content:center}
+    .proof{gap:var(--s3)}
+    /* The plaque's own padding plus the tick's gutter is too much of a 320px
+       line to give away — the ledger stays readable, the frame stays legible. */
+    #proof .panel{padding:var(--s5)}
+    .next div{padding:var(--s5)}
+  }
 </style>
 <!-- geo:entity — canonical Person node, one entity across every page -->
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"Person","@id":"https://yusuf-gadelrab.github.io/#person","name":"Yusuf Gadelrab","url":"https://yusuf-gadelrab.github.io/","jobTitle":"Computer Science Student, AI Builder & Researcher","description":"Computer science student at San José State University (BS Computer Science, expected May 2028), AI/ML builder, and co-author of a peer-reviewed SIGCSE Technical Symposium 2026 paper.","sameAs":["https://github.com/Yusuf-Gadelrab","https://www.linkedin.com/in/yusuf-gadelrab-76246b221","https://orcid.org/0009-0001-6579-1179"],"address":{"@type":"PostalAddress","addressLocality":"San Jose","addressRegion":"CA","addressCountry":"US"}},{"@type":"WebSite","@id":"https://yusuf-gadelrab.github.io/#website","name":"Yusuf Gadelrab","url":"https://yusuf-gadelrab.github.io/"}]}</script>
 
 <link rel="alternate" type="text/plain" href="https://yusuf-gadelrab.github.io/llms-full.txt" title="Plain-text profile for language models">
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"CollectionPage","name":"Hire Yusuf Gadelrab","url":"https://yusuf-gadelrab.github.io/hire.html","author":{"@id":"https://yusuf-gadelrab.github.io/#person"},"@id":"https://yusuf-gadelrab.github.io/hire.html#webpage","inLanguage":"en","isPartOf":{"@id":"https://yusuf-gadelrab.github.io/#website"},"speakable":{"@type":"SpeakableSpecification","cssSelector":[".lead","h1"]}}</script>
@@ -107,7 +250,7 @@
 
 <a class="skip-link" href="#main">Skip to content</a>
 
-<nav class="site-nav">
+<nav class="site-nav" aria-label="Primary">
   <a class="site-nav__brand" href="/"><img class="site-nav__lion" src="/img/brand/lion-mark.svg" alt="" width="34" height="34" decoding="async"><span>YUSUF GADELRAB</span></a>
   <div class="site-nav__links"><a href="/">Work</a><a href="/resume.html">Resume</a><a href="/guides.html">Guides</a><a href="/store.html">Store</a><a href="/apps.html">Apps</a><a href="/kxngsef.html">KXNG SEF</a><a href="/hire.html" aria-current="page">Hire</a><a href="/media-kit.html">Media Kit</a></div>
 </nav>
@@ -121,12 +264,12 @@
 
 <main id="main">
 
-  <header class="section" id="who">
+  <header class="section lxp-aura" id="who">
     <img class="page-lion" src="/img/brand/lion-mark.svg" alt="" width="46" height="46" decoding="async">
     <p class="eyebrow">DHAHAB · Work With Me</p>
     <h1 style="margin:var(--s4) 0">Two ways to <span class="gold-fill">work with me.</span></h1>
-    <p class="lead"><b>I'm Yusuf Gadelrab — a CS undergraduate at San José State University (BS, May 2028), co-author of an ACM SIGCSE TS 2026 poster abstract, and the sole builder of every project on this site.</b> Recruiters: I'm interviewing for Summer 2027 SWE, AI/ML, quant and data-science internships. Founders: I take a small number of solo build engagements — automation, AI tooling, internal tools.</p>
-    <p class="lead" style="margin-top:var(--s3)">Either way the first step is the same email, and I answer it myself.</p>
+    <p class="lead"><b>Everything on this site was built by one person, and the key numbers on it link to where they came from.</b> I'm Yusuf Gadelrab — CS at San José State (BS, May 2028), co-author of a peer-reviewed SIGCSE Technical Symposium 2026 paper, and the sole builder of every project here.</p>
+    <p class="lead" style="margin-top:var(--s3)"><b>Recruiters:</b> I'm interviewing for Summer 2027 SWE, AI/ML, quant and data-science internships. <b>Founders:</b> I take a small number of solo builds — automation, AI tooling, internal tools. Either way it starts with the same email, and I answer it myself.</p>
 
     <div class="row" style="margin-top:var(--s6)">
       <a class="btn btn-gold" href="mailto:yusuf.gadelrab06@gmail.com?subject=Hiring%20Yusuf%20Gadelrab&amp;body=Role%20or%20project%3A%20%0ATimeline%3A%20%0AAnything%20I%20should%20read%20first%3A%20">Email me →</a>
@@ -135,7 +278,7 @@
     <p class="alt-links">
       <a href="#recruiters">I'm a recruiter</a>
       <a href="#clients">I'm a founder or business</a>
-      <a href="/resume.html">Résumé</a>
+      <a href="/Yusuf_Gadelrab_CS.pdf">Résumé (PDF)</a>
       <a href="#faq">FAQ</a>
     </p>
   </header>
@@ -149,23 +292,26 @@
         <p class="eyebrow">01 · For Recruiters</p>
         <h2>Internship-ready for Summer 2027</h2>
       </div>
-      <p>Canadian citizen studying at SJSU. Ask me about work authorization directly and I will put my exact status in writing before you spend time on interviews. Open to relocation.</p>
-      <p style="margin-top:var(--s3)">If you are a student reading this rather than hiring: I wrote up the parts that took me longest to work out — <a href="/guides/swe-internship-international-student.html">landing a SWE internship as an international student</a>, <a href="/guides/verify-visa-sponsorship-internships.html">checking whether a posting actually sponsors</a>, <a href="/guides/portfolio-that-gets-interviews.html">building a portfolio that gets interviews</a>, and <a href="/guides/ats-resume.html">getting a resume through an ATS</a>.</p>
+      <p>US permanent resident (Green Card) — authorized to work with no sponsorship required. Open to relocation.</p>
     </div>
 
     <div class="grid" style="margin-top:var(--s6)">
-      <div class="card stat"><span class="stat__value">208</span><span class="stat__label">Passing tests in DIRA v1.5.0, zero dependencies, MIT-licensed on GitHub</span></div>
-      <div class="card stat"><span class="stat__value">2</span><span class="stat__label">Peer-reviewed SIGCSE 2026 works co-authored as an undergrad</span></div>
-      <div class="card stat"><span class="stat__value">+0.117R</span><span class="stat__label">Backtested expectancy over 4,933 trades on a 129-symbol, 10-year universe (95% CI +0.057–+0.174) — a risk-matched random entry already captures +0.086R of it, and my own re-test killed the +0.23R headline I started with</span></div>
+      <div class="card stat"><span class="stat__value">78%</span><span class="stat__label">Directional accuracy — NLP backtest built on IBM Watson</span></div>
+      <div class="card stat"><span class="stat__value">60%</span><span class="stat__label">Manual research time cut, same IBM SkillsBuild project</span></div>
+      <div class="card stat"><span class="stat__value">1</span><span class="stat__label">Peer-reviewed SIGCSE TS 2026 paper co-authored as an undergrad</span></div>
+      <div class="card stat"><span class="stat__value">208</span><span class="stat__label">Passing tests in DIRA v1.5.1 — zero dependencies, MIT-licensed, public on GitHub</span></div>
     </div>
 
-    <p style="margin-top:var(--s6);color:var(--muted);max-width:var(--maxw-prose)">Target roles: software engineering, AI/ML, fintech and quantitative finance, data science, product/strategy, and developer advocacy. Stack: Python, Java, JavaScript, SQL, React, full-stack, RAG/LLMs, local models via Ollama. Relocate OK: San Francisco, Remote, New York City, Seattle, Austin, Toronto.</p>
+    <p class="caveat">The trading research is on the site too, and it is deliberately unflattering: the surviving setup backtests at +0.117R over 4,933 trades across a 129-symbol, 10-year universe (95% CI +0.057 to +0.174), but a risk-matched random entry already captures +0.086R of that, so the signal's own contribution is about +0.030R with a confidence interval crossing zero. The larger figure I first published failed my own adversarial re-test and is retired. <a href="/writing/robustness-test-on-my-trading-strategy-and-it-failed.html">That write-up is here</a> — it is the number I most wanted to be wrong about.</p>
+
+    <p style="margin-top:var(--s6);color:var(--muted);max-width:var(--maxw-prose)"><b>Target roles:</b> software engineering, AI/ML, fintech and quantitative finance, data science, product/strategy, and developer advocacy.<br><b>Stack:</b> Python, Java, JavaScript, SQL, React, full-stack, RAG/LLMs, local models via Ollama.<br><b>Relocate OK:</b> San Francisco, Remote, New York City, Seattle, Austin, Toronto.</p>
 
     <div class="row" style="margin-top:var(--s6)">
-      <a class="btn btn-gold" href="mailto:yusuf.gadelrab06@gmail.com?subject=Internship%20Opportunity&amp;body=Company%3A%20%0ARole%3A%20%0ATerm%20(e.g.%20Summer%202027)%3A%20%0ALink%20to%20the%20req%3A%20">Email me about a role →</a>
+      <a class="btn btn-ghost" href="mailto:yusuf.gadelrab06@gmail.com?subject=Internship%20Opportunity&amp;body=Company%3A%20%0ARole%3A%20%0ATerm%20(e.g.%20Summer%202027)%3A%20%0ALink%20to%20the%20req%3A%20">Email me about a role →</a>
     </div>
     <p class="alt-links">
-      <a href="/resume.html">See the résumé</a>
+      <a href="/Yusuf_Gadelrab_CS.pdf">Résumé — software engineering (PDF)</a>
+      <a href="/Yusuf_Gadelrab_Resume.pdf">Résumé — fintech &amp; quant (PDF)</a>
       <a href="/about.html">Read the sourced facts</a>
       <a href="/projects.html">Browse the projects</a>
     </p>
@@ -185,10 +331,18 @@
 
     <div class="grid" style="margin-top:var(--s6)">
 
+      <a class="card proj" href="/services.html">
+        <span class="st st--live"><i></i>Founding cohort open</span>
+        <h3>DHAHAB Studio</h3>
+        <p>Three fixed-scope builds: a launch site live in about a week, a security audit reported in 48 hours, and an AI automation with a QC gate on it. Scoped and priced on a call, nothing billed before it.</p>
+        <div class="chips"><span>Launch Site</span><span>Shield Audit</span><span>Automation</span></div>
+        <span class="go">See the three offers →</span>
+      </a>
+
       <a class="card proj" href="/freightdesk.html">
         <span class="st st--live"><i></i>Founding pilots open</span>
         <h3>FreightDesk AI</h3>
-        <p>An AI back-office clerk for small freight brokerages: reads the billing/AR inbox and drafts every reply on a local model. $999 one-time setup + $249/mo, 3-day install, 14-day setup-fee-back guarantee.</p>
+        <p>An AI back-office clerk for small freight brokerages: reads the billing/AR inbox and drafts every reply on a local model. $999 one-time setup + $249/mo, 3-day install, 14-day setup-fee-back guarantee. No pilot has started yet — the founding cohort is the first.</p>
         <div class="chips"><span>Python</span><span>FastAPI</span><span>Local LLM</span></div>
         <span class="go">Book a pilot walkthrough →</span>
       </a>
@@ -204,7 +358,7 @@
       <a class="card proj" href="/resume.html">
         <span class="st st--live"><i></i>Live</span>
         <h3>Resume &amp; Application Engineering</h3>
-        <p>ATS-safe resume rebuild for $49, or $99 with 10 fully tailored applications. Built from the same application system I use on my own search.</p>
+        <p>For students and new grads: ATS-safe resume rebuild for $49, or $99 with 10 fully tailored applications. Built from the same application system I use on my own search.</p>
         <div class="chips"><span>ATS</span><span>Applications</span></div>
         <span class="go">See the packs →</span>
       </a>
@@ -222,7 +376,7 @@
     <p style="margin-top:var(--s6);color:var(--muted);max-width:var(--maxw-prose)">Outside those four: email a brief. If it's a good fit for a solo builder — a script, an internal tool, an automation, a small full-stack build — I'll say so honestly, and say so just as honestly if it isn't.</p>
 
     <div class="row" style="margin-top:var(--s5)">
-      <a class="btn btn-gold" href="mailto:yusuf.gadelrab06@gmail.com?subject=Project%20Brief&amp;body=What%20you%20need%20built%3A%20%0AWhat%20it%20replaces%20today%3A%20%0ATimeline%3A%20%0ABudget%20range%20(rough%20is%20fine)%3A%20">Email a project brief →</a>
+      <a class="btn btn-ghost" href="mailto:yusuf.gadelrab06@gmail.com?subject=Project%20Brief&amp;body=What%20you%20need%20built%3A%20%0AWhat%20it%20replaces%20today%3A%20%0ATimeline%3A%20%0ABudget%20range%20(rough%20is%20fine)%3A%20">Email a project brief →</a>
     </div>
     <p class="muted" style="font-size:var(--t-micro);margin-top:var(--s3)">Three lines is enough. No form, no discovery-call funnel.</p>
   </section>
@@ -233,7 +387,7 @@
   <section class="section section--tight" id="how">
     <div class="grp-head">
       <div>
-        <p class="eyebrow">Before you email</p>
+        <p class="eyebrow">03 · Before you email</p>
         <h2>The three things people want to know</h2>
       </div>
       <p>Answered up front so nobody has to spend an email finding out.</p>
@@ -241,21 +395,21 @@
 
     <div class="next">
       <div>
-        <span class="mk">01 · Will you actually reply?</span>
+        <span class="mk"><span class="lxp-num">01</span> · Will you actually reply?</span>
         <p><b>Within two business days, from me, not a template.</b> Put what you need in the first line and I can answer it in one round instead of four. If it isn't a fit I say that in the reply rather than going quiet.</p>
       </div>
       <div>
-        <span class="mk">02 · Can a student really deliver this?</span>
-        <p><b>The work is checkable, which is the point of this whole site.</b> A freight brokerage's full finance workflow load, with a passing regression suite, shipped against its live inbox. DIRA v1.5.0: 208 passing tests, zero dependencies, MIT-licensed on GitHub. A peer-reviewed ACM SIGCSE TS 2026 poster abstract. 60 published guides and three installable offline PWAs, live right now. Every number links to where it came from.</p>
+        <span class="mk"><span class="lxp-num">02</span> · Can a student really deliver this?</span>
+        <p><b>The work is checkable, which is the point of this whole site.</b> 18 finance workflows and 77 passing tests shipped inside a real freight brokerage. DIRA v1.5.1: 208 passing tests, zero dependencies, MIT-licensed on GitHub. One peer-reviewed SIGCSE TS 2026 paper. 60 published guides and four installable offline PWAs, live right now. The key numbers link to where they came from.</p>
       </div>
       <div>
-        <span class="mk">03 · Does work authorization make this a dead end?</span>
-        <p><b>I'd rather you hear it from me than find out from a screening form.</b> I'm a Canadian citizen studying at San Jos&eacute; State University. Work authorization is the one thing on this page I won't summarise in a slogan, because the accurate answer depends on the role, the start date and the immigration route I'm on at the time. Email me and I'll put my exact current status in writing before either of us invests in an interview loop.</p>
+        <span class="mk"><span class="lxp-num">03</span> · Does work authorization make this a dead end?</span>
+        <p><b>No, and I'd rather you hear it from me than a screening form.</b> I'm a Canadian citizen and a US lawful permanent resident (Green Card) — authorized to work for any US employer, with no sponsorship required now or in the future. That applies to internships, full-time roles, freelance and contract work alike.</p>
       </div>
     </div>
 
     <div class="row" style="margin-top:var(--s6)">
-      <a class="btn btn-gold" href="mailto:yusuf.gadelrab06@gmail.com?subject=Hiring%20Yusuf%20Gadelrab">Email me →</a>
+      <a class="btn btn-ghost" href="mailto:yusuf.gadelrab06@gmail.com?subject=Hiring%20Yusuf%20Gadelrab">Email me →</a>
     </div>
   </section>
 
@@ -265,30 +419,30 @@
   <section class="section section--tight" id="proof">
     <div class="grp-head">
       <div>
-        <p class="eyebrow">03 · How I actually work</p>
+        <p class="eyebrow">04 · How I actually work</p>
         <h2>Tested, not just shipped</h2>
       </div>
       <p>Six pieces of work, each with the number that makes it checkable.</p>
     </div>
 
-    <div class="panel" style="margin-top:var(--s6)">
+    <div class="panel lxp-frame" style="margin-top:var(--s6)">
       <div class="proof">
-        <div><b>HwyHaul LoadLink</b><span>AI intake and AR automation built during a freight-brokerage internship — the AR and billing workflow load, a passing regression suite, entirely on local models.</span></div>
+        <div><b>HwyHaul LoadLink</b><span>AI intake and AR automation built during a freight-brokerage internship — 18 finance workflows, 77 passing tests, entirely on local models.</span></div>
       </div>
       <div class="proof">
-        <div><b>IBM SkillsBuild sentiment-scoring prototype</b><span>An NLP sentiment pipeline for equities on IBM Watson — ingestion, scoring model and dashboard, built end to end. A learning project, never run in production.</span></div>
+        <div><b>IBM SkillsBuild equity-scoring platform</b><span>NLP sentiment pipeline on IBM Watson reading 50+ live market sources a day — 78% directional accuracy, 60% less manual research time.</span></div>
       </div>
       <div class="proof">
         <div><b>Broker-agnostic trading bot</b><span>Deterministic order IDs, a claimed-before-every-call journal, idempotent reconciliation — 160 tests, no live capital until the promotion gate clears.</span></div>
       </div>
       <div class="proof">
-        <div><b>DIRA security scanner</b><span>Zero-dependency Python, MIT-licensed, seven scanners plus SBOM and safe auto-remediation — v1.5.0, 208 passing tests, open source on GitHub.</span></div>
+        <div><b>DIRA security scanner</b><span>Zero-dependency Python, MIT-licensed, seven scanners plus SBOM and safe auto-remediation — v1.5.1, 208 passing tests, open source on GitHub.</span></div>
       </div>
       <div class="proof">
-        <div><b>SIGCSE CS-education research</b><span>A peer-reviewed poster, mixed methods, 60 bilingual participants — under Dr. Ethel Tshukudu's CSEd Research Lab at SJSU. <a href="https://doi.org/10.1145/3770761.3777339" target="_blank" rel="noopener">DOI 10.1145/3770761.3777339</a>.</span></div>
+        <div><b>SIGCSE CS-education research</b><span>One peer-reviewed paper, IRB-approved mixed methods, 60 participants — under Dr. Ethel Tshukudu's CSEd Research Lab at SJSU. <a href="https://doi.org/10.1145/3770761.3777339" target="_blank" rel="noopener">DOI 10.1145/3770761.3777339</a>. <a href="/research.html">Methods, sample and findings</a>.</span></div>
       </div>
       <div class="proof">
-        <div><b>SVEC technical ops</b><span>Technical Ops &amp; Web Lead at the Silicon Valley Entrepreneurship Club — built and ran the club site, tooling and event operations.</span></div>
+        <div><b>SVEC technical ops</b><span>Technical Ops &amp; Web Lead at the Silicon Valley Entrepreneurship Club — +40% engagement, 4 sponsors landed, +35% budget.</span></div>
       </div>
     </div>
 
@@ -309,7 +463,7 @@
     <div class="grid" style="margin-top:var(--s6)">
       <article class="card qa">
         <h3>Is he available for a Summer 2027 internship?</h3>
-        <p>Yes — software engineering, AI/ML, fintech and quantitative finance, data science, product/strategy, and developer advocacy. Open to SF, Remote, NYC, Seattle, Austin, Toronto. Work authorization: ask directly and I will confirm my exact status in writing.</p>
+        <p>Yes — software engineering, AI/ML, fintech and quantitative finance, data science, product/strategy, and developer advocacy. US permanent resident (Green Card), authorized to work with no sponsorship required. Open to SF, Remote, NYC, Seattle, Austin, Toronto.</p>
       </article>
       <article class="card qa">
         <h3>Does he do freelance or contract work?</h3>
@@ -321,11 +475,11 @@
       </article>
       <article class="card qa">
         <h3>Does he do brand partnerships or sponsorships?</h3>
-        <p>Yes — that runs through the <a href="/media-kit.html">media kit</a>, with audience numbers and past collaborations, not through this page.</p>
+        <p>Yes — that runs through the <a href="/media-kit.html">media kit</a>, with audience numbers and collaboration formats, not through this page.</p>
       </article>
       <article class="card qa">
         <h3>Does he need visa sponsorship?</h3>
-        <p>Ask him directly. He is a Canadian citizen studying at SJSU, and the accurate answer depends on the role, the start date and the immigration route he is on at the time — so he will confirm his exact current status in writing rather than post a slogan here that might be out of date by the time you read it.</p>
+        <p>No. He is a US permanent resident (Green Card holder) and is authorized to work for any US employer with no sponsorship required, now or in the future. He would rather say that up front than have it surface after two interview rounds.</p>
       </article>
       <article class="card qa">
         <h3>How long does he take to reply?</h3>
@@ -333,9 +487,11 @@
       </article>
       <article class="card qa">
         <h3>Is this page written by AI?</h3>
-        <p>Drafted with tools, edited and fact-checked by Yusuf. Every number here links back to where it was first published, so it can be checked rather than trusted.</p>
+        <p>Drafted with tools, edited and fact-checked by Yusuf. The key numbers here link back to where they were first published, so they can be checked rather than trusted.</p>
       </article>
     </div>
+
+    <p class="caveat" style="margin-top:var(--s7)">Student rather than recruiter? The guides students ask me for most: <a href="/guides/portfolio-that-gets-interviews.html">a portfolio that gets interviews</a> · <a href="/guides/ats-resume.html">getting a resume through an ATS</a>. All free, no signup.</p>
   </section>
 
   <hr class="divider">
@@ -350,8 +506,7 @@
       <div>
         <a class="btn btn-gold" href="mailto:yusuf.gadelrab06@gmail.com?subject=Hiring%20Yusuf%20Gadelrab&amp;body=Role%20or%20project%3A%20%0ATimeline%3A%20%0AAnything%20I%20should%20read%20first%3A%20">Email me →</a>
         <p class="alt-links">
-          <a href="https://www.linkedin.com/in/yusuf-gadelrab" target="_blank" rel="noopener">LinkedIn</a>
-          <a href="/portfolio/">Portfolio</a>
+          <a href="https://www.linkedin.com/in/yusuf-gadelrab-76246b221" target="_blank" rel="noopener">LinkedIn</a>
           <a href="/services.html">DHAHAB Studio offers</a>
         </p>
       </div>
@@ -394,13 +549,13 @@
     <a href="/terms.html">Terms</a>
     <a href="mailto:yusuf.gadelrab06@gmail.com">yusuf.gadelrab06@gmail.com</a>
     <a href="https://github.com/Yusuf-Gadelrab" target="_blank" rel="noopener">GitHub</a>
-    <a href="https://www.linkedin.com/in/yusuf-gadelrab" target="_blank" rel="noopener">LinkedIn</a>
-          <a href="/portfolio/">Portfolio</a>
+    <a href="https://www.linkedin.com/in/yusuf-gadelrab-76246b221" target="_blank" rel="noopener">LinkedIn</a>
   </div>
 </footer>
 
 <script src="/js/site.js" defer></script>
 <script src="/js/lux-motion.js" defer></script>
+<script src="/js/lux-plus.js" defer></script>
 <script src="/js/waitlist.js" defer></script>
 <script>
 addEventListener("DOMContentLoaded", function () {

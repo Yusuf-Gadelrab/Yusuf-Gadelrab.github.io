@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="robots" content="index,follow,max-image-preview:large,max-snippet:-1">
-<title>Built a position size calculator that refuses to let you r</title>
+<title>Built a position size calculator that refuses to round up</title>
 <meta name="description" content="The single most expensive habit I had was sizing by feel and then rounding the share count up to something clean. 187 shares becomes 200 because 200 looks ">
 <link rel="canonical" href="https://yusuf-gadelrab.github.io/writing/built-a-position-size-calculator-that-refuses-to-let-you-round-up-free.html">
 <link rel="icon" type="image/svg+xml" href="/favicon.svg">
@@ -23,31 +23,23 @@
 <meta name="twitter:image" content="https://yusuf-gadelrab.github.io/og-card.png">
 <link rel="alternate" type="application/rss+xml" title="Yusuf Gadelrab" href="/rss.xml">
 <link rel="alternate" type="text/plain" href="https://yusuf-gadelrab.github.io/llms-full.txt">
-<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BlogPosting", "headline": "Built a position size calculator that refuses to let you round up. Free, no signup", "datePublished": "2026-07-29", "dateModified": "2026-07-29", "url": "https://yusuf-gadelrab.github.io/writing/built-a-position-size-calculator-that-refuses-to-let-you-round-up-free.html", "mainEntityOfPage": "https://yusuf-gadelrab.github.io/writing/built-a-position-size-calculator-that-refuses-to-let-you-round-up-free.html", "description": "The single most expensive habit I had was sizing by feel and then rounding the share count up to something clean. 187 shares becomes 200 because 200 looks ", "image": "https://yusuf-gadelrab.github.io/og-card.png", "author": {"@id": "https://yusuf-gadelrab.github.io/#person"}, "publisher": {"@id": "https://yusuf-gadelrab.github.io/#person"}, "isPartOf": {"@id": "https://yusuf-gadelrab.github.io/writing.html#blog"}}</script>
-<script type="application/ld+json">{"@id": "https://yusuf-gadelrab.github.io/#person"}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","headline":"Built a position size calculator that refuses to let you round up. Free, no signup","datePublished":"2026-07-29","dateModified":"2026-07-29","url":"https://yusuf-gadelrab.github.io/writing/built-a-position-size-calculator-that-refuses-to-let-you-round-up-free.html","mainEntityOfPage":"https://yusuf-gadelrab.github.io/writing/built-a-position-size-calculator-that-refuses-to-let-you-round-up-free.html","description":"The single most expensive habit I had was sizing by feel and then rounding the share count up to something clean. 187 shares becomes 200 because 200 looks ","image":"https://yusuf-gadelrab.github.io/og-card.png","author":{"@id":"https://yusuf-gadelrab.github.io/#person"},"publisher":{"@id":"https://yusuf-gadelrab.github.io/#person"},"isPartOf":{"@type":"Blog","@id":"https://yusuf-gadelrab.github.io/writing.html#blog","name":"Yusuf Gadelrab \u2014 Writing"}}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Person","@id":"https://yusuf-gadelrab.github.io/#person","name":"Yusuf Gadelrab","url":"https://yusuf-gadelrab.github.io/"}</script>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://yusuf-gadelrab.github.io/"},{"@type":"ListItem","position":2,"name":"Writing","item":"https://yusuf-gadelrab.github.io/writing.html"},{"@type":"ListItem","position":3,"name":"Built a position size calculator that refuses to let you"}]}</script>
 <link rel="stylesheet" href="/css/site.css">
 <link rel="stylesheet" href="/css/lux-motion.css">
+<link rel="stylesheet" href="/css/lux-plus.css">
 <style>
   .art{max-width:44rem;margin:0 auto;padding:var(--s6) var(--s5)}
   .art h1{font-size:var(--t-h2);line-height:1.15;margin:0 0 var(--s3)}
   .art .meta{color:var(--muted);font-size:var(--t-small);margin:0 0 var(--s6);
     letter-spacing:.06em;text-transform:uppercase}
   .art p{color:var(--muted);font-size:1.02rem;line-height:1.75;margin:0 0 var(--s4)}
-  .art p:first-of-type{color:var(--fg,#f5f3ee);font-size:1.14rem}
+  .art > .meta + p{color:var(--fg,#f5f3ee);font-size:1.14rem}
   .art a{color:var(--gold-2)}
   .art hr{border:0;border-top:1px solid var(--line-soft);margin:var(--s6) 0}
-  .cta{border:1px solid var(--line-soft);border-radius:14px;padding:var(--s5);margin-top:var(--s6)}
+  .cta{border:1px solid var(--line-soft);border-radius:var(--radius-lg);padding:var(--s5);margin-top:var(--s6)}
   .cta strong{font-family:var(--display-pro);color:var(--gold-2);display:block;margin-bottom:var(--s2)}
-  .idx{max-width:46rem;margin:0 auto;padding:var(--s6) var(--s5)}
-  .idx h1{font-size:var(--t-h2);margin:0 0 var(--s3)}
-  .idx .lead{color:var(--muted);margin:0 0 var(--s6);font-size:1.05rem;line-height:1.7}
-  .idx ol{list-style:none;padding:0;margin:0;display:grid;gap:var(--s4)}
-  .idx li{border-bottom:1px solid var(--line-soft);padding-bottom:var(--s4)}
-  .idx li a{font-family:var(--display-pro);font-size:1.12rem;color:var(--gold-2);
-    text-decoration:none;display:block;margin-bottom:.35rem}
-  .idx li a:hover{text-decoration:underline}
-  .idx li span{color:var(--muted);font-size:var(--t-small);display:block}
 </style>
 </head>
 <body>
@@ -74,15 +66,13 @@
   <h1>Built a position size calculator that refuses to let you round up. Free, no signup</h1>
   <p class="meta">2026-07-29 &middot; Yusuf Gadelrab</p>
   <p>The single most expensive habit I had was sizing by feel and then rounding the share count up to something clean. 187 shares becomes 200 because 200 looks like a number. That rounding is a silent 7% increase in risk on every trade, and it compounds against you in exactly the periods you can least afford it.</p>
-  <h2 style="margin:var(--s7) 0 var(--s4)">A calculator that does not round</h2>
-  <p>So I built the calculator to be annoying about it. You give it account size, risk percent, entry and stop. It gives you the share count and it does not round. It also shows you the R value in dollars up front, because the point is to stop thinking in dollars and start thinking in R.</p>
+  <p>So I built the calculator to be annoying about it. You give it account size, risk percent, entry and stop. It gives you the share count and it does not round. It also shows you the R value in dollars up front, because the point is to stop thinking in dollars and start thinking in R. Try it: <a href="/risk-tools.html#position-sizer">the position size calculator</a>.</p>
   <p>No signup, no email, nothing to buy. It&#x27;s a static page, it runs in your browser, I don&#x27;t see your numbers.</p>
-  <h2 style="margin:var(--s7) 0 var(--s4)">Sizing discipline</h2>
   <p>The unsexy conclusion after backtesting a bunch of my own setups: sizing discipline moved my expectancy more than any indicator I ever added.</p>
-  <p>Happy to explain the math in the comments if useful.</p>
+  <p>Happy to explain the math &mdash; email me at <a href="mailto:yusuf.gadelrab06@gmail.com">yusuf.gadelrab06@gmail.com</a> if useful.</p>
   <div class="cta">
     <strong>Built by one CS student in San Jose.</strong>
-    <p>Free tools, three installable apps, and a co-authored ACM SIGCSE TS 2026 poster abstract.
+    <p>Free tools, four installable apps, and a peer-reviewed SIGCSE TS 2026 paper.
     <a href="/">See the work</a> or <a href="/about.html">read the facts</a>.
     Open to Summer 2027 software engineering, AI/ML, and quant internships.</p>
   </div>
@@ -105,5 +95,6 @@
 </footer>
 <script src="/js/site.js" defer></script>
 <script src="/js/lux-motion.js" defer></script>
+<script src="/js/lux-plus.js" defer></script>
 </body>
 </html>

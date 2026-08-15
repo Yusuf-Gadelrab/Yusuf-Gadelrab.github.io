@@ -7,16 +7,17 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>404 — This Page Doesn't Exist on Yusuf Gadelrab's Site</title>
 <meta name="robots" content="noindex,follow">
-<meta name="description" content="That URL is dead and nothing lives there. Head back to the homepage, browse 60 guides, check the store, or open the full project index instead.">
+<meta name="description" content="That URL is dead and nothing lives there. Head back to the homepage, browse the guides, check the store, or open the full project index instead.">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Yusuf Gadelrab">
 <meta property="og:title" content="You Just Found the 404 Page — There's a Goose On It">
-<meta property="og:description" content="This URL doesn't exist, but the error page has a goose that gets more sarcastic the longer you stay. Head back to the homepage, the store, or 60 guides.">
+<meta property="og:description" content="This URL doesn't exist, but the error page has a goose that gets more sarcastic the longer you stay. Head back to the homepage, the store, or the guides.">
+<meta property="og:url" content="https://yusuf-gadelrab.github.io/404.html">
 <meta property="og:image" content="https://yusuf-gadelrab.github.io/og-card.png">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:image" content="https://yusuf-gadelrab.github.io/og-card.png">
 <meta name="twitter:title" content="You Just Found the 404 Page — There's a Goose On It">
-<meta name="twitter:description" content="This URL doesn't exist, but the error page has a goose that gets more sarcastic the longer you stay. Head back to the homepage, the store, or 60 guides.">
+<meta name="twitter:description" content="This URL doesn't exist, but the error page has a goose that gets more sarcastic the longer you stay. Head back to the homepage, the store, or the guides.">
 <link rel="manifest" href="/manifest.webmanifest">
 <meta name="theme-color" content="#0B0B0D">
 <link rel="icon" type="image/svg+xml" href="/favicon-automation.svg">
@@ -24,6 +25,7 @@
 <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#d4af37">
 <link rel="stylesheet" href="/css/site.css">
 <link rel="stylesheet" href="/css/lux-motion.css">
+<link rel="stylesheet" href="/css/lux-plus.css">
 <style>
   /* page-specific: the 404 needs to sit centred in the viewport, nothing else */
   .notfound{
@@ -38,15 +40,15 @@
   .goose:hover{transform:translateY(-4px) rotate(-2deg)}
   .goose.honk{animation:lunge .4s cubic-bezier(.3,1.6,.4,1)}
   @keyframes lunge{50%{transform:translateX(14px) rotate(6deg) scale(1.06)}}
-  .honkline{min-height:1.5em;font-family:ui-monospace,Menlo,monospace;font-size:13px;
-    color:var(--gold-2,#f4d47a);letter-spacing:.04em}
-  .sorries{font-family:ui-monospace,Menlo,monospace;font-size:12px;color:var(--muted,#a39f94)}
+  .honkline{min-height:1.5em;font-family:var(--mono);font-size:var(--t-caption);
+    color:var(--gold-2,#e9c96a);letter-spacing:.04em}
+  .sorries{font-family:var(--mono);font-size:var(--t-micro);color:var(--muted,#a39f94)}
   .sorries b{color:var(--gold,#d4af37);font-variant-numeric:tabular-nums}
   .metric{font-size:12.5px;color:var(--muted,#a39f94);max-width:44ch;margin-inline:auto}
   @media (prefers-reduced-motion:reduce){.goose,.goose.honk{animation:none;transition:none}}
 </style>
 </head>
-<body>
+<body class="pro">
 
 <a class="skip-link" href="#main">Skip to content</a>
 
@@ -59,8 +61,8 @@
   <img class="page-lion" src="/img/brand/lion-mark.svg" alt="" width="46" height="46" decoding="async">
     <p class="eyebrow">Error 404 · sorry aboot that</p>
 
-  <svg class="goose" id="goose" viewBox="0 0 220 190" role="img"
-       aria-label="A Canada goose, drawn in gold, looking mildly threatening">
+  <svg class="goose" id="goose" viewBox="0 0 220 190" role="button"
+       aria-label="Honk the goose, a Canada goose drawn in gold, looking mildly threatening">
     <g fill="none" stroke="#d4af37" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
       <path d="M32 128c-6-10 4-24 22-30 20-7 44-6 58 2 12 7 16 18 12 27-5 12-22 19-44 19-24 0-42-8-48-18z"
             fill="rgba(212,175,55,.10)"/>
@@ -79,7 +81,7 @@
   <h1 class="notfound__code gold-fill">Sorry.</h1>
   <p class="lead">Genuinely, deeply sorry. This page doesn't exist. I checked twice and
     apologised to the server both times.</p>
-  <p class="honkline" id="honkline">The goose says this page was already like that when he got here.</p>
+  <p class="honkline" id="honkline" aria-live="polite">The goose says this page was already like that when he got here.</p>
   <p class="sorries">Apologies issued since you arrived: <b id="sorryCount">1</b></p>
   <a class="btn btn-gold" href="/">Back to home</a>
   <p class="metric">It's 22°C out, which is 71°F if you insist. The good stuff is about
@@ -91,7 +93,7 @@
   <div class="site-footer__links">
     <a href="/writing.html">Writing</a>
     <a href="/dispatch.html">Dispatch</a>
-    <a href="/eh.html">eh</a>
+    <a href="/eh.html" aria-label="eh — Canadiana page">eh</a>
     <a href="/dira.html">DIRA</a>
     <a href="/risk-tools.html">Risk Toolkit</a>
     <a href="/freight-tools.html">Freight Calculators</a>
@@ -105,13 +107,13 @@
     <a href="/media-kit.html">Media Kit</a>
     <a href="mailto:yusuf.gadelrab06@gmail.com">yusuf.gadelrab06@gmail.com</a>
     <a href="https://github.com/Yusuf-Gadelrab" target="_blank" rel="noopener">GitHub</a>
-    <a href="https://www.linkedin.com/in/yusuf-gadelrab" target="_blank" rel="noopener">LinkedIn</a>
-          <a href="/portfolio/">Portfolio</a>
+    <a href="https://www.linkedin.com/in/yusuf-gadelrab-76246b221" target="_blank" rel="noopener">LinkedIn</a>
   </div>
 </footer>
 
 <script src="/js/site.js" defer></script>
 <script src="/js/lux-motion.js" defer></script>
+<script src="/js/lux-plus.js" defer></script>
 <script>
 (function(){
   "use strict";
@@ -127,9 +129,12 @@
   var g = document.getElementById("goose"),
       line = document.getElementById("honkline"),
       count = document.getElementById("sorryCount"),
-      n = 1, i = 1;
-  // The joke is the escalation: it keeps apologising the longer you stay.
-  setInterval(function(){ n++; count.textContent = n; }, 4000);
+      n = 1, i = 1, ticks = 0;
+  // The joke is the escalation: it keeps apologising the longer you stay, then stops (WCAG 2.2.2).
+  var apologyTimer = setInterval(function(){
+    n++; count.textContent = n; ticks++;
+    if (ticks >= 20) clearInterval(apologyTimer);
+  }, 4000);
   function honk(){
     i = (i + 1) % HONKS.length;
     line.textContent = HONKS[i];
