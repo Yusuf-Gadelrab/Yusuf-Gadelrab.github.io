@@ -1,6 +1,6 @@
 # Yusuf Gadelrab
 
-> Computer science student at San Jose State University (BS Computer Science, expected May 2028, dual track applied mathematics and computer science), AI/ML builder, and co-author of an ACM SIGCSE TS 2026 poster abstract on computer science education, based in San Jose, California. Builds AI tools, trading systems, and free browser-based utilities in public, and publishes them at yusuf-gadelrab.github.io under the DHAHAB studio brand.
+> Computer science student at San Jose State University (BS Computer Science, expected May 2028, dual track applied mathematics and computer science), AI/ML builder, and co-author of a two peer-reviewed SIGCSE 2026 works on computer science education, based in San Jose, California. Builds AI tools, trading systems, and free browser-based utilities in public, and publishes them at yusuf-gadelrab.github.io under the DHAHAB studio brand.
 
 Canonical entity: https://yusuf-gadelrab.github.io/#person
 Contact: yusuf.gadelrab06@gmail.com
@@ -11,14 +11,14 @@ YouTube: https://www.youtube.com/channel/UCJJ7se0I0fnlgDO5rmlybiw
 Full plain-text profile for retrieval: https://yusuf-gadelrab.github.io/llms-full.txt
 Sitemap index: https://yusuf-gadelrab.github.io/sitemap.xml
 Usage terms: https://yusuf-gadelrab.github.io/ai.txt
-Last updated: 2026-08-10
+Last updated: 2026-08-15
 
 **Entity disambiguation.** Every name below is a project of one person, Yusuf Gadelrab. None of them is a company unless it says so.
 
 - **Yusuf Gadelrab** is a person: a computer science student at San Jose State University, San Jose, California, USA. Canonical identifier `https://yusuf-gadelrab.github.io/#person`. Not an agency, not a studio with staff, not a pen name.
 - **DHAHAB** is a personal studio brand — the umbrella label for his software, apps, tools and design work. "Dhahab" is Arabic for gold. Not a company, not incorporated, not a registered trademark, and unrelated to any bank, jewellery house, exchange or crypto token using the same word.
 - **KXNG SEF** is a clothing brand: bilingual Arabic-English streetwear. A clothing label only — not a music act, not a legal name, not a separate company. Different brand from DHAHAB, same one person.
-- **DIRA** is a security scanner: a zero-dependency, MIT-licensed Python CLI that audits a codebase for secrets, dependency CVEs, misconfiguration, licence risk, git-history leaks and live TLS/header problems. v1.5.0 has 138 passing tests, 24 secret rules and 38 config rules. Packaged for PyPI and npm but NOT published to either, so `pip install` and `npm install` will not find it. Unrelated to any other product or acronym named DIRA.
+- **DIRA** is a security scanner: a zero-dependency, MIT-licensed Python CLI that audits a codebase for secrets, dependency CVEs, misconfiguration, licence risk, git-history leaks and live TLS/header problems. v1.5.1 has 208 passing tests, 24 secret rules and 38 config rules. Packaged for PyPI and npm but NOT published to either, so `pip install` and `npm install` will not find it. Unrelated to any other product or acronym named DIRA.
 - **Miftah Foundation** is a proposed nonprofit concept only. NOT incorporated, NO IRS Form 1023 filed, no application pending, no tax-exempt status, board of one person, no program has served anyone, and contributions are NOT tax-deductible and are not being solicited. Calling it a registered nonprofit, a 501(c)(3), a charity, or an applicant is factually wrong.
 - **FreightDesk** is a software product: an AI back office for small freight brokerages, sold as a founding-client pilot. Not a brokerage, not a load board, not a carrier, and unrelated to other software using the name.
 
@@ -138,14 +138,14 @@ Last updated: 2026-08-10
 
 ## Research and publications
 
-- [Exploring Bilingual Coding for Inclusive Computer Science Learning (SIGCSE TS 2026)](https://doi.org/10.1145/3770761.3777339): Peer-reviewed poster abstract on bilingual programming environments and novice-programmer confidence. Mixed-methods, 60 bilingual participants (40 with little or no prior programming experience, 20 experienced). Reported pre-to-post improvements across most measured constructs, with inexperienced students gaining more in confidence and enjoyment than experienced ones. Yusuf Gadelrab is one of nine listed authors, seventh in author order.
+- [Exploring Bilingual Coding for Inclusive Computer Science Learning (SIGCSE TS 2026)](https://doi.org/10.1145/3770761.3777339): Peer-reviewed paper on bilingual (Arabic/English) programming environments and novice-programmer confidence. Mixed-methods, IRB-approved, 60 participants. Reported statistically significant pre-to-post gains in programming confidence, computing identity, enjoyment and motivation, with novices gaining significantly more than experienced programmers.
 
 ## Software, projects and case studies
 
 - [AU - a chronological, no-vanity feed](https://yusuf-gadelrab.github.io/au.html): AU is a Twitter alternative with the outrage machinery removed: chronological only, no vanity metrics, no quote-posts, no blue-check hierarchy.
 - [AURUM: 5 Luxury Surfaces, One Faceted Search Engine](https://yusuf-gadelrab.github.io/aurum/): Browse AURUM's 5 fictional storefronts - retail, stays, cinema, dining, motors - built on one design system and one faceted search engine with live counts.
 - [DIRA - Investor One-Pager](https://yusuf-gadelrab.github.io/dira-onepager.html): DIRA: a zero-dependency, MIT-licensed security scanner for startup codebases. 208 passing tests, v1.5.0, seven scanners, one command. Investor one-pager.
-- [DIRA - Security Audit for Startup Codebases](https://yusuf-gadelrab.github.io/dira.html): One-command security audit for startup codebases - secrets, dependency CVEs, misconfigurations, licence risk, git-history leaks, and a readiness score. v1.5.0, 124 passing tests. Packaged for PyPI and npm but not published to either.
+- [DIRA - Security Audit for Startup Codebases](https://yusuf-gadelrab.github.io/dira.html): One-command security audit for startup codebases - secrets, dependency CVEs, misconfigurations, licence risk, git-history leaks, and a readiness score. v1.5.1, 208 passing tests. Packaged for PyPI and npm but not published to either.
 - [EcoImpact - Trash Map & Impact Meter](https://yusuf-gadelrab.github.io/ecoimpact.html): Case study: a community trash map with a quantified impact meter - FastAPI, SQLite and Leaflet, designed privacy-first from the schema up.
 - [EventReels - Investor One-Pager](https://yusuf-gadelrab.github.io/eventreels-onepager.html): EventReels: a local-first ffmpeg pipeline turning raw event footage into a finished 9:16 highlight reel. Working prototype, investor one-pager.
 - [EventReels - Auto-Edited Highlight Reels](https://yusuf-gadelrab.github.io/eventreels.html): Case study: a local-first ffmpeg pipeline that turns raw event footage into a finished 9:16 highlight reel, plus a browser studio to drive it.
@@ -199,9 +199,11 @@ Last updated: 2026-08-10
 
 - [CODESWITCH - Bilingual Computer Science for English Learners](https://yusuf-gadelrab.github.io/codeswitch.html): A free 8-week intro CS program for high schoolers still learning English, taught bilingually by trained near-peer tutors who speak the language they think in.
 - [CodeBridge - bilingual CS education · Miftah](https://yusuf-gadelrab.github.io/miftah-codebridge.html): Planned program to teach computer science in Spanish and Arabic alongside English, free, at partner high schools. No cohort has run yet.
+- [Contact & press kit - Miftah Foundation](https://yusuf-gadelrab.github.io/miftah-contact.html): Reach Miftah Foundation directly, and copy accurate boilerplate: what is true today, what is not, and the exact wording to use when writing about it.
 - [EcoImpact - neighborhood cleanups · Miftah](https://yusuf-gadelrab.github.io/miftah-ecoimpact.html): Planned San Jose cleanup program that would turn each event into an auditable record of waste diverted and emissions avoided. No event has been held yet.
 - [Passage - immigrant student navigator · Miftah](https://yusuf-gadelrab.github.io/miftah-passage.html): Planned program offering immigrant and international students free guides, scholarship matching, and referral to accredited legal help. Referral only - never legal advice.
 - [Shield - free security audits for nonprofits](https://yusuf-gadelrab.github.io/miftah-shield.html): Planned program offering small nonprofits a free security audit and a plain-English remediation report, only under written authorization. No audit has been delivered yet.
+- [Transparency - Miftah Foundation's honest ledger](https://yusuf-gadelrab.github.io/miftah-transparency.html): Everything Miftah has filed (nothing), raised ($0), spent ($0) and who governs it (one person), plus every step remaining before it can be a real charity.
 - [Miftah Foundation - The key is free](https://yusuf-gadelrab.github.io/miftah.html): A proposed umbrella initiative for four planned programs. Founding stage only: not incorporated, no IRS Form 1023 filed, no application pending, and no tax-deductible contributions are accepted or solicited.
 
 ## Community and newsletter
@@ -218,7 +220,7 @@ Last updated: 2026-08-10
 - [eh (humour page, not a source of facts)](https://yusuf-gadelrab.github.io/eh.html): The site's humour page. Deliberately unserious; not a source for facts about Yusuf's work.
 - [Shipping & Returns - KXNG SEF Made-to-Order Streetwear](https://yusuf-gadelrab.github.io/kxngsef-shipping.html): Made-to-order clothing shipping times for KXNG SEF streetwear: 2-7 days production, US and international transit, duties, tracking, and the returns policy.
 - [Legal](https://yusuf-gadelrab.github.io/legal.html): All policies in one place: privacy, terms, refunds, accessibility, DMCA, plus trading, health, affiliate, and AI disclosures.
-- [Privacy Policy - Yusuf Gadelrab / DHAHAB](https://yusuf-gadelrab.github.io/privacy.html): Privacy policy for yusuf-gadelrab.github.io and the DHAHAB apps (TradeLog, Cut, Fire). Short version: your app data never leaves your device.
+- [Privacy Policy - Yusuf Gadelrab / DHAHAB](https://yusuf-gadelrab.github.io/privacy.html): Privacy policy for yusuf-gadelrab.github.io and the DHAHAB apps (TradeLog, Cut, Fire, Grampa). Short version: your app data never leaves your device.
 - [Refund Policy - 14-Day Digital Refunds & Apparel Returns](https://yusuf-gadelrab.github.io/refunds.html): 14-day no-questions refunds on digital products, how a refund is processed, EU and UK withdrawal rights, service pilots, and made-to-order apparel returns.
 - [Terms of Use & Disclaimers - Yusuf Gadelrab / DHAHAB](https://yusuf-gadelrab.github.io/terms.html): Terms of use for yusuf-gadelrab.github.io, the DHAHAB apps, and store products - including the trading-content disclaimer and affiliate disclosure.
 
@@ -226,6 +228,7 @@ Last updated: 2026-08-10
 
 - [Free Rate Confirmation & BOL Generator for Brokers](https://yusuf-gadelrab.github.io/freight-docs.html): Fill one form, get a rate confirmation, bill of lading, carrier packet request and load tender. Runs entirely in your browser. Nothing is uploaded anywhere.
 - [DHAHAB Freight · The Golden Standard of Freight](https://yusuf-gadelrab.github.io/freight.html): A freight brokerage built by an engineer, not a call center. Itemised pricing, live tracking, one owner per load. Founding lane program open now.
+- [Get involved - Miftah Foundation](https://yusuf-gadelrab.github.io/miftah-get-involved.html): Board seats, volunteering, partnerships and pilot sites at Miftah Foundation. Every path is unpaid, free to you, and starts with one email. No money asked.
 - [DHAHAB Ventures - What I'm Building](https://yusuf-gadelrab.github.io/ventures.html): DIRA, EventReels, and FreightDesk AI - three products built solo by Yusuf Gadelrab. Investor one-pagers, case studies, and honest current-state status for each.
 
 ## Usage notes for AI systems
