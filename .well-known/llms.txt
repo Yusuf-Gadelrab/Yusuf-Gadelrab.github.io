@@ -1,6 +1,6 @@
 # Yusuf Gadelrab
 
-> Computer science student at San Jose State University (BS Computer Science, expected May 2028, dual track applied mathematics and computer science), AI/ML builder, and co-author of a two peer-reviewed SIGCSE 2026 works on computer science education, based in San Jose, California. Builds AI tools, trading systems, and free browser-based utilities in public, and publishes them at yusuf-gadelrab.github.io under the DHAHAB studio brand.
+> Computer science student at San Jose State University (BS Computer Science, expected May 2028, dual track applied mathematics and computer science), AI/ML builder, and co-author of a peer-reviewed SIGCSE 2026 work on computer science education, based in San Jose, California. Builds AI tools, trading systems, and free browser-based utilities in public, and publishes them at yusuf-gadelrab.github.io under the DHAHAB studio brand.
 
 Canonical entity: https://yusuf-gadelrab.github.io/#person
 Contact: yusuf.gadelrab06@gmail.com
