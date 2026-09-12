@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="preload" href="/css/site.css" as="style">
+<meta name="robots" content="index,follow,max-image-preview:large,max-snippet:-1">
+<meta property="og:locale" content="en_US">
+<title>Weight Tracking: Signal vs Noise</title>
+<meta name="description" content="Why a daily weigh-in is mostly noise, how big that noise actually is, what a moving average recovers, and how long to wait before a trend means anything.">
+<link rel="canonical" href="https://yusuf-gadelrab.github.io/guides/weight-tracking-signal-vs-noise.html">
+<link rel="icon" type="image/svg+xml" href="https://yusuf-gadelrab.github.io/favicon.svg">
+<link rel="apple-touch-icon" sizes="180x180" href="https://yusuf-gadelrab.github.io/apple-touch-icon.png">
+<meta name="theme-color" content="#0B0B0D">
+<meta name="author" content="Yusuf Gadelrab">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="Yusuf Gadelrab">
+<meta property="og:title" content="Weight Tracking: Signal vs Noise">
+<meta property="og:description" content="The scale is a noisy instrument. Here is the noise level, the filter, and the wait time before a number means anything.">
+<meta property="og:url" content="https://yusuf-gadelrab.github.io/guides/weight-tracking-signal-vs-noise.html">
+<meta property="og:image" content="https://yusuf-gadelrab.github.io/og-card.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Weight Tracking: Signal vs Noise">
+<meta name="twitter:description" content="The scale is a noisy instrument. Here is the noise level, the filter, and the wait time before a number means anything.">
+<meta name="twitter:image" content="https://yusuf-gadelrab.github.io/og-card.png">
+<link rel="alternate" type="text/plain" href="https://yusuf-gadelrab.github.io/llms-full.txt" title="Plain-text profile for language models">
+
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"TechArticle","@id":"https://yusuf-gadelrab.github.io/guides/weight-tracking-signal-vs-noise.html#article","headline":"Tracking Weight Without Losing Your Mind: Signal vs Noise","name":"Tracking Weight Without Losing Your Mind: Signal vs Noise","description":"Why a daily weigh-in is mostly noise, how big that noise actually is, what a moving average recovers, and how long to wait before a trend means anything.","datePublished":"2026-07-29","dateModified":"2026-07-29","inLanguage":"en","author":{"@id":"https://yusuf-gadelrab.github.io/#person"},"publisher":{"@id":"https://yusuf-gadelrab.github.io/#person"},"about":["Body composition","Measurement noise","Habit tracking","Calorie deficit"],"mainEntityOfPage":"https://yusuf-gadelrab.github.io/guides/weight-tracking-signal-vs-noise.html","isAccessibleForFree":true,"isPartOf":{"@id":"https://yusuf-gadelrab.github.io/#website"},"proficiencyLevel":"Beginner","hasPart":{"@id":"https://yusuf-gadelrab.github.io/guides/weight-tracking-signal-vs-noise.html#howto"}},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://yusuf-gadelrab.github.io/"},{"@type":"ListItem","position":2,"name":"Guides","item":"https://yusuf-gadelrab.github.io/guides.html"},{"@type":"ListItem","position":3,"name":"Signal vs Noise"}]},{"@type":"HowTo","@id":"https://yusuf-gadelrab.github.io/guides/weight-tracking-signal-vs-noise.html#howto","name":"How to triage a weight-loss plateau","description":"Why a daily weigh-in is mostly noise, how big that noise actually is, what a moving average recovers, and how long to wait before a trend means anything.","inLanguage":"en","isAccessibleForFree":true,"author":{"@id":"https://yusuf-gadelrab.github.io/#person"},"step":[{"@type":"HowToStep","position":1,"name":"Is it actually flat? Check the trend line, not the daily readings, and","text":"Is it actually flat? Check the trend line, not the daily readings, and check four weeks rather than two. Most reported plateaus are three weeks long and turn out to be noise.","url":"https://yusuf-gadelrab.github.io/guides/weight-tracking-signal-vs-noise.html#howto"},{"@type":"HowToStep","position":2,"name":"Is the intake real? Tracked intake drifts upward silently","text":"Is the intake real? Tracked intake drifts upward silently: untracked oils, drinks, bites while cooking, weekend meals estimated instead of measured. Weigh food for one honest week before touching anything else. This finds the problem far more often than anything below it does.","url":"https://yusuf-gadelrab.github.io/guides/weight-tracking-signal-vs-noise.html#howto"},{"@type":"HowToStep","position":3,"name":"Has non-exercise activity dropped? Spontaneous movement falls in a","text":"Has non-exercise activity dropped? Spontaneous movement falls in a deficit without anyone noticing. Step count is the cheapest available proxy, and a drop from 9,000 to 5,000 steps a day is a real, invisible reduction in expenditure.","url":"https://yusuf-gadelrab.github.io/guides/weight-tracking-signal-vs-noise.html#howto"},{"@type":"HowToStep","position":4,"name":"Is bodyweight lower than when you started? A smaller body needs fewer","text":"Is bodyweight lower than when you started? A smaller body needs fewer calories. A deficit calculated at 200 lb is a smaller deficit at 185 lb, and eventually it is no deficit at all. Recalculate every 10 to 15 pounds.","url":"https://yusuf-gadelrab.github.io/guides/weight-tracking-signal-vs-noise.html#howto"},{"@type":"HowToStep","position":5,"name":"Only then, adjust","text":"Only then, adjust. Cut roughly 100 to 200 calories or add activity. Cutting 500 more because the number felt stuck is how people end up eating too little to sustain the plan.","url":"https://yusuf-gadelrab.github.io/guides/weight-tracking-signal-vs-noise.html#howto"}]}]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","@id":"https://yusuf-gadelrab.github.io/guides/weight-tracking-signal-vs-noise.html#faq","mainEntity":[{"@type":"Question","name":"Should I weigh myself every day or once a week?","acceptedAnswer":{"@type":"Answer","text":"Weigh daily and look weekly. More samples make the average more accurate, but reading each individual sample is what causes bad decisions. A once-a-week weigh-in is actually worse than daily weighing with a weekly average, because that single reading inherits all of the previous day's water and sodium noise with nothing to average it against."}},{"@type":"Question","name":"How much can body weight fluctuate in a day?","acceptedAnswer":{"@type":"Answer","text":"Several pounds, routinely. Glycogen and its bound water can swing 1 to 4 pounds, sodium and fluid balance 1 to 3, gut contents 1 to 3, and hard training another 1 to 3 through muscle water retention. Since fat loss at a 500 calorie deficit is only about a pound per week, the daily noise is commonly three to ten times larger than the signal."}},{"@type":"Question","name":"What is a weight trend line and how do I calculate one?","acceptedAnswer":{"@type":"Answer","text":"It is an exponentially weighted moving average of your daily weigh-ins: trend today equals trend yesterday plus k times the difference between today's weight and yesterday's trend, with k around 0.1. It updates every day, weights recent readings more heavily, and absorbs a 3-pound water spike as roughly a 0.3-pound move, so spikes stay visible without distorting the picture."}},{"@type":"Question","name":"How long should I wait before deciding a diet is not working?","acceptedAnswer":{"@type":"Answer","text":"Three weeks at a roughly 1 pound per week target, and four weeks at a slower rate, judged on trend or weekly averages rather than individual days. Below three weeks the noise band is wide enough to hide a working deficit completely, which is why most reported plateaus turn out to be nothing when the fourth week is added."}},{"@type":"Question","name":"Why do TDEE calculators give different numbers?","acceptedAnswer":{"@type":"Answer","text":"Because they are population-level regressions applied to one person, and they disagree at both steps. Mifflin-St Jeor and Katch-McArdle can differ by 150 to 300 calories at the BMR stage, and the activity multiplier adds far more spread than that. Use a formula as a starting hypothesis with a wide error bar, then let two to three weeks of your own trend data correct it."}},{"@type":"Question","name":"How much damage does one bad weekend actually do?","acceptedAnswer":{"@type":"Answer","text":"Far less than the scale suggests. Roughly 3,000 calories above plan across a weekend erases about one week of a 500-calorie-per-day deficit, while the next-morning scale reading might be 4 to 6 pounds higher because carbohydrate and sodium pulled water in. Most of that visible number is gone within four to seven days of normal eating."}},{"@type":"Question","name":"What should I do after a blown week?","acceptedAnswer":{"@type":"Answer","text":"Eat normally at the next meal, keep weighing, expect the trend to be wrong for about a week, and do not change the deficit. Compensatory fasting or punishment cardio is not supported by the arithmetic and reliably sets up the next binge. Write one line about what preceded it so the week becomes information instead of a mood."}},{"@type":"Question","name":"What should I track when the scale stops moving?","acceptedAnswer":{"@type":"Answer","text":"Waist circumference weekly at the same time of day, a monthly photo under the same conditions, and strength on two or three main lifts. During recomposition the scale can be genuinely flat while body composition changes, so mass is the wrong instrument and the tape and the lifts are the right ones."}}]}</script>
+
+<link rel="stylesheet" href="/css/site.css">
+<style>
+  .prose{max-width:68ch}
+  .prose h2{margin:var(--s7) 0 var(--s4);font-size:var(--t-h2)}
+  .prose h3{margin:var(--s6) 0 var(--s3);font-size:var(--t-h3)}
+  .prose p{color:var(--muted);margin:0 0 var(--s4)}
+  .prose ul,.prose ol{color:var(--muted);padding-left:1.2em;margin:0 0 var(--s4)}
+  .prose li{margin-bottom:var(--s2)}
+  .prose a{color:var(--gold-2)}
+  .prose strong{color:var(--fg)}
+  .formula{display:block;padding:var(--s4);margin:0 0 var(--s4);border:1px solid var(--line-soft);
+    border-radius:var(--radius);font-family:ui-monospace,SFMono-Regular,Menlo,monospace;
+    font-size:var(--t-small);color:var(--gold-2);overflow-x:auto;white-space:pre-wrap}
+  .tblwrap{overflow-x:auto;margin:0 0 var(--s4)}
+  .tbl{width:100%;border-collapse:collapse;font-size:var(--t-small)}
+  .tbl th,.tbl td{text-align:left;padding:var(--s3);border-bottom:1px solid var(--line-soft);
+    color:var(--muted);vertical-align:top}
+  .tbl th{font-family:var(--display-pro);color:var(--gold-2);font-weight:600}
+  .callout{padding:var(--s4);border:1px solid var(--line-soft);border-radius:var(--radius);
+    color:var(--muted);font-size:var(--t-small);margin:0 0 var(--s5)}
+  .callout--warn{border-color:var(--gold-2)}
+  .faq-card{padding:var(--s5)}
+  .faq-card h3{font-size:var(--t-h3);margin:0;line-height:1.3}
+  .faq-card p{color:var(--muted);font-size:var(--t-small);line-height:1.65;margin:var(--s3) 0 0}
+</style>
+</head>
+<body class="pro">
+
+<a class="skip-link" href="#main">Skip to content</a>
+
+<nav class="site-nav" aria-label="Primary">
+  <a class="site-nav__brand" href="/"><img class="site-nav__lion" src="/img/brand/lion-mark.svg" alt="" width="34" height="34" decoding="async"><span>YUSUF GADELRAB</span></a>
+  <div class="site-nav__links">
+    <a href="/">Work</a>
+    <a href="/guides.html">Guides</a>
+    <a href="/apps.html">Apps</a>
+    <a href="/media-kit.html">Media Kit</a>
+  </div>
+</nav>
+
+<nav class="crumbs" aria-label="Breadcrumb">
+  <ol>
+    <li><a href="/">Home</a></li>
+    <li><a href="/guides.html">Guides</a></li>
+    <li><span aria-current="page">Signal vs Noise</span></li>
+  </ol>
+</nav>
+
+<main id="main">
+
+  <header class="section">
+    <p class="eyebrow">Guide · Body</p>
+    <h1 style="margin:var(--s4) 0">The scale is a noisy instrument. Treat it like one.</h1>
+    <p class="lead">Almost every bad decision people make about their own body comes from reading a single measurement as if it were a fact. It is not a fact. It is one sample from a noisy signal, and the noise is bigger than the thing you are trying to measure.</p>
+  </header>
+
+  <hr class="divider">
+
+  <section class="section section--tight">
+    <div class="prose">
+      <p class="callout callout--warn">General information, not medical advice. Talk to a doctor or a registered dietitian before changing how you eat or train, especially with any medical condition, any medication, or any history of disordered eating. Nothing here is a diagnosis and nothing here is a prescription.</p>
+      <h2>The instrument problem nobody warns you about</h2>
+      <p>A bathroom scale is precise and inaccurate at the same time, which is the worst combination an instrument can have. Step on it twice and it gives the same number to a tenth of a pound, so it feels authoritative. Step on it tomorrow after a salty dinner and it is up 2.6 pounds, which is physically impossible as fat gain and completely normal as a reading.</p>
+      <p>The result is a person doing everything right, watching a number go the wrong way, and concluding the plan is broken. It is not broken. The measurement is noisy, and nobody handed them the noise level.</p>
+      <p>This guide is about the measurement, not the plan. If you need the plan — maintenance, deficit size, the protein floor — that is <a href="/guides/cut-calorie-math.html">the calorie arithmetic guide</a>. This one answers a narrower and more useful question: <strong>given a number on a scale this morning, what are you actually allowed to conclude?</strong></p>
+      <h2>Where the noise comes from, and roughly how big it is</h2>
+      <p>Body mass on any given morning is fat, plus lean tissue, plus bone, plus whatever water, food, and waste happen to be inside you at that moment. Only the first two change slowly. Everything else moves fast, and it moves in pounds.</p>
+      <div class="tblwrap" tabindex="0" role="group" aria-label="Table, scrolls horizontally"><table class="tbl">
+        <thead><tr><th scope="col">Source</th><th scope="col">Typical same-week swing</th><th scope="col">How fast it resolves</th></tr></thead>
+        <tbody>
+          <tr><td>Glycogen and its bound water</td><td>1–4 lb</td><td>Days. Every gram of stored carbohydrate carries roughly 3 g of water with it.</td></tr>
+          <tr><td>Sodium and fluid balance</td><td>1–3 lb</td><td>24–72 hours after intake normalises.</td></tr>
+          <tr><td>Gut contents (food and waste in transit)</td><td>1–3 lb</td><td>Hours to days. Fibre and meal timing dominate.</td></tr>
+          <tr><td>Hard or novel training</td><td>1–3 lb</td><td>2–5 days. Muscle damage draws water into the tissue.</td></tr>
+          <tr><td>Sleep debt and stress</td><td>0.5–2 lb</td><td>Variable. Cortisol-driven fluid retention, resolves with sleep.</td></tr>
+          <tr><td>Menstrual cycle, if applicable</td><td>1–5 lb</td><td>Predictable across a cycle, not across a week.</td></tr>
+          <tr><td>Actual fat change at a 500 cal/day deficit</td><td>≈ 1 lb per week</td><td>Slow, monotone, and completely buried by everything above.</td></tr>
+        </tbody>
+      </table></div>
+      <p>Read the last row against every row above it. The thing you are trying to detect moves about a pound a week. The things you are not trying to detect move several pounds in a day. <strong>Day-to-day, the noise is somewhere between three and ten times the size of the signal.</strong> That single ratio explains basically every stalled-scale panic in existence.</p>
+      <p class="callout">A useful reframe: you are not weighing fat. You are weighing fat plus a large, fast, random number. Your entire job as a tracker is to average that random number away, and averaging takes time. There is no clever workaround, no better scale, and no time of day that removes it.</p>
+      <h2>The formulas disagree, which is itself the point</h2>
+      <p>Before the tracking starts, most people run a TDEE calculator. Total daily energy expenditure is basal metabolic rate multiplied by an activity factor, and there are several competing estimators for the BMR half.</p>
+      <span class="formula" tabindex="0" role="group" aria-label="Formula, scrolls horizontally">Mifflin-St Jeor (men):    BMR = 10W + 6.25H - 5A + 5
+Mifflin-St Jeor (women):  BMR = 10W + 6.25H - 5A - 161
+   W = kg, H = cm, A = years
+
+Katch-McArdle:            BMR = 370 + 21.6 × LBM(kg)
+   LBM = lean body mass, so it needs a body-fat estimate
+
+TDEE = BMR × activity factor (roughly 1.2 sedentary to 1.9 very active)</span>
+      <p>Run your own numbers through two or three of these and they will disagree, often by 150 to 300 calories at the BMR step alone. Then the activity multiplier, which is a single number standing in for everything from a desk job to a construction shift, adds far more spread than that. Two defensible choices of multiplier for the same person can differ by 500 calories a day.</p>
+      <p>People treat that disagreement as a flaw in the calculators. It is not. It is the calculators being honest about a population-level regression applied to one individual. Mifflin-St Jeor was validated against measured resting energy expenditure and is generally the better default for most people; Katch-McArdle is better if you have a genuinely reliable body-fat number, and worse if you are guessing. Neither one knows about your thyroid, your job, your fidgeting, or the fact that you take the stairs.</p>
+      <p><strong>The correct use of a TDEE formula is as a starting hypothesis with a wide error bar, not an answer.</strong> Pick one, eat at that number consistently for two to three weeks, measure the trend, and let the observed trend correct the estimate. Your own data has an error bar too, but it is the only estimate that is actually about you.</p>
+      <h2>Why one weigh-in carries almost no information</h2>
+      <p>Take the noise table seriously for a second and the arithmetic gets stark. Suppose your true rate of loss is 1 pound a week, so about 0.14 lb a day, and the day-to-day noise has a spread of roughly plus or minus 2 pounds. The chance that today's number is higher than yesterday's, while you are losing fat perfectly steadily, is close to a coin flip.</p>
+      <p>That is not a metaphor. If you weigh daily during a genuinely successful cut, a large fraction of individual days will be up on the day before. People who weigh once a week are drawing one sample from that same distribution and treating it as the week's result, which is worse, not better: a single Monday reading inherits all of Sunday's sodium and none of the averaging.</p>
+      <p>So the rule is not "weigh less often." It is <strong>weigh more often and look less often.</strong> More samples make the average better. Looking at each sample individually is what causes the damage.</p>
+      <h2>The moving average is the actual measurement</h2>
+      <p>There are two filters worth knowing, and the difference between them matters more than it sounds.</p>
+      <h3>Weekly averages</h3>
+      <p>Average all seven days of the week, then compare that average to the previous week's average. Simple, robust, and it collapses seven noisy samples into one number whose noise is roughly a third of a single day's. The weakness is latency: you find out about last week at the end of this week, and a Wednesday-to-Wednesday comparison can still be pulled around by one outlier day at either edge.</p>
+      <h3>Exponentially weighted averages</h3>
+      <p>An exponentially weighted moving average updates every day, weights recent days more heavily, and never needs you to wait for a week boundary. It is one line of arithmetic.</p>
+      <span class="formula" tabindex="0" role="group" aria-label="Formula, scrolls horizontally">trend(today) = trend(yesterday) + k × (weight(today) - trend(yesterday))
+
+k = 0.1  →  smooth, slow, roughly a 2-3 week memory
+k = 0.25 →  responsive, noisier, roughly a 1 week memory
+
+Start with trend = your first weigh-in, then just iterate.</span>
+      <p>This is the same idea as the Hacker's Diet trend line, and it is what most decent tracking apps compute under the hood whether or not they say so. With k = 0.1, a single 3-pound water spike moves the trend line by 0.3 pounds. The spike is visible and it does not lie to you.</p>
+      <p>Either filter is fine. What is not fine is comparing raw daily numbers to each other, which is the default behaviour of every scale ever sold and the source of most of the misery.</p>
+      <h2>How long before a trend means anything</h2>
+      <p>The honest answer depends on how aggressive the deficit is, because the signal size scales with it while the noise does not.</p>
+      <div class="tblwrap" tabindex="0" role="group" aria-label="Table, scrolls horizontally"><table class="tbl">
+        <thead><tr><th scope="col">Target rate</th><th scope="col">Weekly signal</th><th scope="col">Minimum wait before judging</th></tr></thead>
+        <tbody>
+          <tr><td>0.5 lb/week (≈250 cal/day)</td><td>0.5 lb</td><td>4 weeks. The signal is small enough that three weeks of noise can hide it entirely.</td></tr>
+          <tr><td>1 lb/week (≈500 cal/day)</td><td>1 lb</td><td>3 weeks. The usual case, and the usual answer.</td></tr>
+          <tr><td>1.5–2 lb/week (≈750–1000 cal/day)</td><td>1.5–2 lb</td><td>2 weeks. Larger signal, faster confirmation, worse adherence and more lean-mass cost.</td></tr>
+          <tr><td>Recomposition or maintenance</td><td>≈ 0</td><td>6+ weeks, and the scale is the wrong instrument. Use the tape and the lifts.</td></tr>
+        </tbody>
+      </table></div>
+      <p>Three weeks is the number most people should internalise. Not three days, not "the scale did not move since Tuesday." <strong>Three consecutive weekly averages, or three weeks of a trend line, before you are allowed to conclude anything and change something.</strong></p>
+      <p>There is one legitimate exception, and it is the start. The first week of any deficit typically shows a large drop — often 3 to 6 pounds — that is overwhelmingly glycogen and water, not fat. It is real weight and it is not real progress. The corresponding trap is at the end: coming out of a deficit produces a fast regain of that same water, which is not fat regain either, and which has convinced an enormous number of people that their diet failed at the exact moment it succeeded.</p>
+      <h2>A blown week, in actual arithmetic</h2>
+      <p>This is the part that gets skipped, and it is the part that decides whether a plan survives its first bad week. So do the numbers instead of the guilt.</p>
+      <p>Say you are running a 500 calorie daily deficit and you have a genuinely terrible weekend: a restaurant meal, drinks, and a next-day recovery meal, adding up to roughly 3,000 calories above maintenance across two days. What happened?</p>
+      <span class="formula" tabindex="0" role="group" aria-label="Formula, scrolls horizontally">Planned week:   -500 × 7        = -3,500 cal  ≈ -1.0 lb
+Actual week:    -500 × 5 + 3,000 = +500 cal  ≈ +0.14 lb
+
+Net damage:  about one week of progress, not one month.
+Scale damage: possibly +4 to +6 lb the next morning.</span>
+      <p>Two numbers, wildly different. The real cost is roughly one week erased. The scale cost looks like a month, because a high-carbohydrate, high-sodium weekend refills glycogen and pulls water in with it. Nearly all of that visible number is gone within four to seven days of returning to normal eating, with no additional effort and no compensating starvation required.</p>
+      <p>The reason this matters is that people do not quit because of the 500 calories. They quit because of the 5 pounds, which was never fat. <strong>The bad week costs a week. The reaction to the bad week is what costs the plan.</strong></p>
+      <h3>The recovery protocol, such as it is</h3>
+      <ol>
+        <li>Eat normally at the next meal. Not less, not a fast, not a punishment session on a treadmill. The arithmetic above does not support any of those and they reliably set up the next binge.</li>
+        <li>Keep weighing. Skipping the weigh-in because you know it will be bad is how a one-week gap becomes a three-month gap. The number is data, not a verdict.</li>
+        <li>Expect the trend line to be wrong for about a week and do not act on it. Your filter is doing exactly its job by absorbing the spike slowly.</li>
+        <li>Do not change the deficit. A blown week is not evidence that the plan is too aggressive; it is evidence that one weekend happened. Change the plan only on three weeks of trend, per the table above.</li>
+        <li>Write down what actually preceded it — sleep, hunger, an unplanned event, alcohol. One line. That log is the only thing that turns a bad week into information rather than a mood.</li>
+      </ol>
+      <h2>Plateau triage</h2>
+      <p>Four weeks of a genuinely flat trend line is a real plateau and deserves a real diagnosis. Work the list in order, because the answer is almost always found before the last item.</p>
+      <ol>
+        <li><strong>Is it actually flat?</strong> Check the trend line, not the daily readings, and check four weeks rather than two. Most reported plateaus are three weeks long and turn out to be noise.</li>
+        <li><strong>Is the intake real?</strong> Tracked intake drifts upward silently: untracked oils, drinks, bites while cooking, weekend meals estimated instead of measured. Weigh food for one honest week before touching anything else. This finds the problem far more often than anything below it does.</li>
+        <li><strong>Has non-exercise activity dropped?</strong> Spontaneous movement falls in a deficit without anyone noticing. Step count is the cheapest available proxy, and a drop from 9,000 to 5,000 steps a day is a real, invisible reduction in expenditure.</li>
+        <li><strong>Is bodyweight lower than when you started?</strong> A smaller body needs fewer calories. A deficit calculated at 200 lb is a smaller deficit at 185 lb, and eventually it is no deficit at all. Recalculate every 10 to 15 pounds.</li>
+        <li><strong>Only then, adjust.</strong> Cut roughly 100 to 200 calories or add activity. Cutting 500 more because the number felt stuck is how people end up eating too little to sustain the plan.</li>
+      </ol>
+      <h2>The measurements the scale cannot make</h2>
+      <p>Body mass is one number describing a thing that has several dimensions, which is why it goes flat during recomposition even when the body is visibly changing. Keep two or three cheap secondary measurements so the scale is never the only witness.</p>
+      <ul>
+        <li><strong>Waist circumference</strong>, measured at the navel, same time of day, once a week. It tracks abdominal fat better than mass does and it keeps moving during scale plateaus.</li>
+        <li><strong>Photos, monthly</strong>, same lighting, same position, same time of day. The single most convincing measurement over a long timeline and the one people skip because month one feels pointless. Month one is the whole reason it works in month six.</li>
+        <li><strong>Strength on two or three main lifts.</strong> Strength holding steady in a deficit is the best available field evidence that the mass leaving is mostly fat rather than muscle.</li>
+        <li><strong>A single pair of jeans.</strong> Unscientific, zero effort, and completely immune to sodium.</li>
+      </ul>
+      <h2>The one thing you do not renegotiate</h2>
+      <p>Everything above is about measurement, with one intake exception worth repeating here because it interacts with the noise directly: the protein floor. Common practical guidance sits around 0.7 to 1.0 grams per pound of target bodyweight. It protects lean mass in a deficit, and it is the most satiating macronutrient per calorie, which makes the bad weeks less likely in the first place.</p>
+      <p>Treat protein as a hard floor and everything else as a target. When a week goes sideways, the protein floor is the thing you keep, because it is the thing that determines what kind of weight comes off. The rest of the deficit arithmetic — maintenance estimation, deficit sizing, macro split — is in <a href="/guides/cut-calorie-math.html">the calorie arithmetic guide</a>.</p>
+      <h2>The same problem, in a different domain</h2>
+      <p>If this framing feels familiar it is because it is the same problem as evaluating a trading system, and the same mistakes show up in both. A single trade tells you nothing. A single week of results is inside the noise band. People change a working system after three bad samples, and they conclude a broken system works after three good ones. The fix in both places is identical: a defined sample size before any conclusion, a filter instead of a raw reading, and a written log so the decision is made from data rather than from how the last data point felt. That is written up for markets in <a href="/guides/trading-journal.html">the trading journal guide</a>, and the arithmetic there is uncomfortably similar.</p>
+      <h2>What this looks like day to day</h2>
+      <ol>
+        <li>Weigh every morning, after the bathroom, before food or drink, minimal clothing. Same conditions, every time.</li>
+        <li>Log the number and then stop looking at it. The daily number is an input, not a result.</li>
+        <li>Look at the trend line or the weekly average once a week, on a fixed day.</li>
+        <li>Judge nothing before three weeks. Change nothing before three weeks.</li>
+        <li>Keep the protein floor, keep lifting, keep a waist measurement and a monthly photo.</li>
+        <li>When a week blows up, do the arithmetic instead of the guilt, then go back to step one tomorrow.</li>
+      </ol>
+      <p>That is the whole method. It is unexciting on purpose, because the failure mode is never a missing technique — it is reacting to noise. I built <a href="/apps/cut/">Cut</a> to do exactly this shape of tracking: weight in, trend out, no account, no server, nothing leaving the device. <a href="/apps/fire/">Fire</a> handles the habit side, for the same reason: the daily behaviour is the input, and the scale is just the instrument reading it back.</p>
+
+      <h2>Tools referenced in this guide</h2>
+      <ul>
+        <li><a href="/apps/cut/">Cut</a> — offline weight tracker that computes the trend line for you — local-only, no signup.</li>
+        <li><a href="/apps/fire/">Fire</a> — daily ritual checklist for the behaviours the scale is measuring.</li>
+        <li><a href="/guides/cut-calorie-math.html">Calorie arithmetic</a> — the companion guide: maintenance, deficit size, and the protein floor.</li>
+      </ul>
+    </div>
+  </section>
+
+  <hr class="divider">
+
+  <section class="section section--tight" id="faq">
+    <div class="grp-head">
+      <p class="eyebrow">FAQ</p>
+      <h2>Quick answers</h2>
+    </div>
+    <div class="grid" style="margin-top:var(--s6)">
+      <article class="card faq-card"><h3>Should I weigh myself every day or once a week?</h3><p>Weigh daily and look weekly. More samples make the average more accurate, but reading each individual sample is what causes bad decisions. A once-a-week weigh-in is actually worse than daily weighing with a weekly average, because that single reading inherits all of the previous day&#x27;s water and sodium noise with nothing to average it against.</p></article>
+      <article class="card faq-card"><h3>How much can body weight fluctuate in a day?</h3><p>Several pounds, routinely. Glycogen and its bound water can swing 1 to 4 pounds, sodium and fluid balance 1 to 3, gut contents 1 to 3, and hard training another 1 to 3 through muscle water retention. Since fat loss at a 500 calorie deficit is only about a pound per week, the daily noise is commonly three to ten times larger than the signal.</p></article>
+      <article class="card faq-card"><h3>What is a weight trend line and how do I calculate one?</h3><p>It is an exponentially weighted moving average of your daily weigh-ins: trend today equals trend yesterday plus k times the difference between today&#x27;s weight and yesterday&#x27;s trend, with k around 0.1. It updates every day, weights recent readings more heavily, and absorbs a 3-pound water spike as roughly a 0.3-pound move, so spikes stay visible without distorting the picture.</p></article>
+      <article class="card faq-card"><h3>How long should I wait before deciding a diet is not working?</h3><p>Three weeks at a roughly 1 pound per week target, and four weeks at a slower rate, judged on trend or weekly averages rather than individual days. Below three weeks the noise band is wide enough to hide a working deficit completely, which is why most reported plateaus turn out to be nothing when the fourth week is added.</p></article>
+      <article class="card faq-card"><h3>Why do TDEE calculators give different numbers?</h3><p>Because they are population-level regressions applied to one person, and they disagree at both steps. Mifflin-St Jeor and Katch-McArdle can differ by 150 to 300 calories at the BMR stage, and the activity multiplier adds far more spread than that. Use a formula as a starting hypothesis with a wide error bar, then let two to three weeks of your own trend data correct it.</p></article>
+      <article class="card faq-card"><h3>How much damage does one bad weekend actually do?</h3><p>Far less than the scale suggests. Roughly 3,000 calories above plan across a weekend erases about one week of a 500-calorie-per-day deficit, while the next-morning scale reading might be 4 to 6 pounds higher because carbohydrate and sodium pulled water in. Most of that visible number is gone within four to seven days of normal eating.</p></article>
+      <article class="card faq-card"><h3>What should I do after a blown week?</h3><p>Eat normally at the next meal, keep weighing, expect the trend to be wrong for about a week, and do not change the deficit. Compensatory fasting or punishment cardio is not supported by the arithmetic and reliably sets up the next binge. Write one line about what preceded it so the week becomes information instead of a mood.</p></article>
+      <article class="card faq-card"><h3>What should I track when the scale stops moving?</h3><p>Waist circumference weekly at the same time of day, a monthly photo under the same conditions, and strength on two or three main lifts. During recomposition the scale can be genuinely flat while body composition changes, so mass is the wrong instrument and the tape and the lifts are the right ones.</p></article>
+    </div>
+  </section>
+
+<!-- related:auto:start -->
+  <hr class="divider">
+
+  <section class="section section--tight related" id="related" aria-labelledby="related-h">
+    <div class="grp-head">
+      <p class="eyebrow">Keep reading</p>
+      <h2 id="related-h">Related guides</h2>
+    </div>
+    <div class="related__grid">
+      <a class="related__item" href="/guides/cut-calorie-math.html"><strong>260 to 200, and the arithmetic that got there</strong><span>Maintenance, deficit size, protein, and why the scale lies for ten days at a time.</span></a>
+      <a class="related__item" href="/guides/ats-resume.html"><strong>What an ATS actually does to your resume</strong><span>What ATS software really does, what breaks parsing, and which rules are folklore.</span></a>
+      <a class="related__item" href="/guides/snyk-vs-trivy-vs-dira.html"><strong>Snyk vs Trivy vs DIRA: choosing a security scanner</strong><span>Written by the person who built one of the three, with the conflict of interest stated up front and the places the…</span></a>
+      <a class="related__item" href="/guides/client-side-only-tools.html"><strong>Tools with no backend, and the honest trade</strong><span>No accounts, no database, no breach surface — and an honest account of what that costs the user.</span></a>
+    </div>
+    <p class="related__more">Every guide is indexed on <a href="/guides.html">the guides hub</a>. Or put it to work in <a href="/apps/cut/">Cut, the offline weight tracker</a>.</p>
+  </section>
+<!-- related:auto:end -->
+
+</main>
+
+<footer class="site-footer">
+  <div class="site-footer__links">
+    <a href="/">Work</a>
+    <a href="/about.html">About</a>
+    <a href="/guides.html">Guides</a>
+    <a href="/apps.html">Apps</a>
+    <a href="/store.html">Store</a>
+    <a href="/privacy.html">Privacy</a>
+    <a href="/terms.html">Terms</a>
+    <a href="mailto:yusuf.gadelrab06@gmail.com">yusuf.gadelrab06@gmail.com</a>
+  </div>
+</footer>
+
+<script src="/js/site.js" defer></script>
+</body>
+</html>

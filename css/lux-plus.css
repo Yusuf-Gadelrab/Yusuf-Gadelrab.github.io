@@ -1,0 +1,422 @@
+/* ============================================================================
+   lux-plus.css — DHAHAB atelier layer (tier 3)
+   Loaded LAST, after /css/site.css and /css/lux-motion.css. Paired with
+   /js/lux-plus.js (defer, after /js/lux-motion.js).
+
+   WHY A THIRD FILE instead of editing site.css: site.css is the contract every
+   one of the 65 pages and every page-local <style> block is written against —
+   its tokens, its contrast measurements, its a11y guards. Nothing here changes
+   a token value or a measured ratio. This file only adds ATMOSPHERE and OPT-IN
+   components, so it can be deleted wholesale and every page still renders
+   exactly as it did before it shipped.
+
+   INVARIANTS (hold these or the layer is not safe to ship site-wide):
+     1. No layout-affecting property on any shared selector. Nothing here sets
+        width/height/margin/padding/display/position on an element the pages
+        already ship — only background, shadow, filter, outline, text-wrap and
+        transition. `.btn`, `.card`, `.site-nav` keep their exact box.
+        (Exception, by design: the two `position:relative` declarations under
+        §5 are applied by lux-plus.js ONLY after it has verified the element is
+        currently `position:static` AND has no positioned descendant — see the
+        guard in that file. The class does not exist in static HTML.)
+     2. Every colour used as INK is taken from the measured gold ramp in
+        site.css (--gold-100..--gold-800). Decorative-only stops (--gold-700,
+        --gold-800) appear here exclusively in rules, fills and scrollbars —
+        never as text colour. No new contrast risk is introduced.
+     3. Everything motion-bearing is dead under prefers-reduced-motion.
+        site.css already ships a global `*,*::before,*::after` net that zeroes
+        animation and transition duration with !important; §12 repeats the
+        parts that need an explicit off-switch (fixed overlays, infinite
+        drifts) so this file is also correct if read on its own.
+     4. Anything that could cost a repaint on scroll is either static (the
+        grain never animates) or gated behind a runtime class lux-plus.js only
+        adds on a fine pointer.
+     5. Zero network requests. The grain is an inline SVG data URI, not an
+        image file, and no font is loaded — the site's no-external-font rule
+        is absolute and this layer does not break it.
+   ========================================================================= */
+
+:root{
+  /* Atmosphere dials — a page can retune its own mood by overriding these on
+     a wrapper without touching any other page. */
+  --lxp-grain:.055;          /* film-grain strength; 0 disables it entirely   */
+  --lxp-vignette:.55;        /* edge darkening at the far corners             */
+  --lxp-aura-1:rgba(212,175,55,.055);
+  --lxp-aura-2:rgba(212,175,55,.04);
+  --lxp-aura-3:rgba(233,201,106,.03);
+  --lxp-sheen:rgba(255,255,255,.5);   /* specular sweep on gold fills         */
+  --lxp-spot:rgba(212,175,55,.10);    /* pointer spotlight inside a surface   */
+  --lxp-ease:var(--ease-out,cubic-bezier(.16,1,.3,1));
+}
+
+/* ============================================================================
+   §1  ATMOSPHERE — grain, vignette, drifting aurora
+   Three fixed, non-interactive layers. They sit on <html>, not <body>, because
+   site.css already owns body::before for the base gold wash and this layer
+   must not take a pseudo-element a page might be using.
+   ========================================================================= */
+
+/* Film grain. Static — it never animates, so the compositor paints it once and
+   scroll cost is nil. Blended, not stacked, so it textures the page rather than
+   fogging it: at .055 it reads as paper tooth, not as noise.
+   z-index sits BELOW the scroll progress hairline (99999) and the command
+   palette (100000) so both stay perfectly crisp. */
+html::after{
+  content:"";position:fixed;inset:0;z-index:9998;pointer-events:none;
+  opacity:var(--lxp-grain);
+  mix-blend-mode:overlay;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='180' height='180' filter='url(%23n)'/%3E%3C/svg%3E");
+  background-size:180px 180px;
+}
+
+/* Vignette + a second, slower aurora than the one in site.css. Two gold blooms
+   drifting on long, offset cycles never line up the same way twice, so the
+   background reads as lit rather than as a static gradient. */
+html::before{
+  content:"";position:fixed;inset:0;z-index:0;pointer-events:none;
+  background:
+    radial-gradient(38vw 30vw at 12% 8%,var(--lxp-aura-3),transparent 62%),
+    radial-gradient(46vw 34vw at 92% 78%,var(--lxp-aura-2),transparent 60%),
+    radial-gradient(120vw 100vh at 50% 50%,transparent 42%,rgba(0,0,0,var(--lxp-vignette)) 100%);
+  animation:lxp-drift 44s var(--ease-in-out,ease-in-out) infinite alternate;
+}
+@keyframes lxp-drift{
+  from{transform:translate3d(0,0,0) scale(1)}
+  to  {transform:translate3d(-1.6%,1.2%,0) scale(1.045)}
+}
+
+/* ============================================================================
+   §2  TYPE — optical refinements. All progressive: a browser without
+   text-wrap:balance simply keeps today's ragged line breaks.
+   ========================================================================= */
+
+/* Balanced headline rag is the single biggest "designed vs. defaulted" tell on
+   a large display face. Capped by the spec at ~6 lines, so it costs nothing on
+   long text. `pretty` kills orphans in body copy. */
+h1,h2,h3,.dh-h1,.dh-h2,.mf-h1,.mf-h2,.lead,.dh-lead{text-wrap:balance}
+p,li,figcaption,.dh-body,.prose p{text-wrap:pretty}
+
+/* Depth on the display face. Excluded from anything using background-clip:text
+   (the shimmer headings) — a text-shadow on transparent-filled text paints the
+   shadow straight through the glyph and looks broken. */
+body.pro h1:not([data-lux-shimmer]):not([class*="gilt"]),
+body.pro h2:not([data-lux-shimmer]):not([class*="gilt"]){
+  text-shadow:0 1px 0 rgba(0,0,0,.5),0 0 34px rgba(212,175,55,.055);
+}
+
+/* Numerals in tables and metrics align in columns instead of jittering. */
+.stat__value,.dh-stat__value,td,.dh-table td,time,[data-countup]{
+  font-variant-numeric:tabular-nums;
+}
+
+/* Real small-caps eyebrows where the face supports them. */
+.dh-eyebrow,.mf-status__k{font-feature-settings:"c2sc" 1,"smcp" 1,"kern" 1}
+
+/* ============================================================================
+   §3  NAV — the chrome that is on screen 100% of the time, so it earns the
+   most refinement. Sticky nav gains depth only once the page has scrolled;
+   at rest it stays flat against the hero exactly as it does today.
+   ========================================================================= */
+.site-nav{
+  transition:background .45s var(--lxp-ease),border-color .45s var(--lxp-ease),
+             box-shadow .45s var(--lxp-ease),backdrop-filter .45s var(--lxp-ease);
+}
+html.lxp-scrolled .site-nav{
+  background:rgba(9,9,11,.92);
+  backdrop-filter:saturate(165%) blur(18px);
+  border-bottom-color:rgba(212,175,55,.30);
+  box-shadow:0 12px 40px -18px rgba(0,0,0,.95),0 1px 0 rgba(212,175,55,.07);
+}
+
+/* Kinetic underline. Painted as a background layer, never as a border or an
+   ::after box, so the link's hit area and the 44px tap target are untouched. */
+.site-nav__links a{
+  background-image:linear-gradient(90deg,var(--gold-400),var(--gold-200));
+  background-repeat:no-repeat;
+  background-position:0 calc(100% - 9px);
+  background-size:0% 1px;
+  transition:color .2s var(--ease),background-size .4s var(--lxp-ease);
+}
+.site-nav__links a:hover,
+.site-nav__links a:focus-visible,
+.site-nav__links a[aria-current="page"]{background-size:100% 1px}
+
+/* The lion mark picks up a faint gold rim once the nav is lifted. */
+html.lxp-scrolled .site-nav__lion{filter:drop-shadow(0 0 6px rgba(212,175,55,.22))}
+
+/* ============================================================================
+   §4  BUTTONS — specular sweep on the gold fill.
+   Implemented as a second background LAYER, not a pseudo-element, so no
+   `overflow:hidden` is needed and nothing can clip a focus ring or an icon.
+   ========================================================================= */
+.btn-gold{
+  background-image:
+    linear-gradient(112deg,transparent 20%,var(--lxp-sheen) 36%,transparent 54%),
+    linear-gradient(135deg,var(--gold-400),var(--gold-300));
+  background-size:260% 100%,100% 100%;
+  background-position:135% 0,0 0;
+  background-repeat:no-repeat;
+  transition:transform .25s var(--ease),box-shadow .3s var(--ease),
+             border-color .3s var(--ease),
+             background-position .8s var(--lxp-ease);
+}
+.btn-gold:hover,.btn-gold:focus-visible{background-position:-45% 0,0 0}
+.btn-gold:hover{box-shadow:0 16px 46px -10px var(--glow),0 0 0 1px rgba(255,255,255,.14) inset}
+
+/* Ghost button gains a lit edge and a faint interior warmth on hover. */
+.btn-ghost{
+  background-image:linear-gradient(180deg,rgba(255,255,255,.03),rgba(255,255,255,0));
+  transition:transform .25s var(--ease),box-shadow .3s var(--ease),
+             background .3s var(--ease),border-color .3s var(--ease);
+}
+.btn-ghost:hover{
+  background-image:linear-gradient(180deg,rgba(212,175,55,.12),rgba(212,175,55,.03));
+  box-shadow:0 0 0 1px rgba(212,175,55,.18),0 10px 30px -14px var(--glow);
+}
+
+/* ============================================================================
+   §5  SURFACES — pointer spotlight.
+   `.lxp-spot` is added at runtime by lux-plus.js and ONLY to elements it has
+   verified are position:static, free of positioned descendants, and free of an
+   existing ::before. That guard is what makes the two declarations below safe
+   on a 65-page site none of which were written with this effect in mind.
+   ========================================================================= */
+.lxp-spot{position:relative;isolation:isolate}
+.lxp-spot::before{
+  content:"";position:absolute;inset:0;z-index:-1;pointer-events:none;
+  border-radius:inherit;opacity:0;
+  transition:opacity .45s var(--lxp-ease);
+  background:radial-gradient(
+    28ch 28ch at var(--lxp-x,50%) var(--lxp-y,50%),
+    var(--lxp-spot),transparent 70%);
+}
+.lxp-spot:hover::before,.lxp-spot:focus-within::before{opacity:1}
+
+/* Top-edge highlight — one hairline of light along the upper border reads as a
+   physical bevel and is the cheapest way to make a flat card look milled. */
+.card,.panel,.dh-card{
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.045);
+}
+.card:hover,.dh-card:hover{
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.075),
+             var(--shadow),
+             0 0 0 1px rgba(212,175,55,.10);
+}
+
+/* Imagery inside a surface warms slightly on hover. Filter only — no transform,
+   so an image can never overflow a card that has no overflow:hidden. */
+.card img,.panel img,.dh-card img,figure img{
+  transition:filter .6s var(--lxp-ease);
+}
+.card:hover img,.panel:hover img,.dh-card:hover img{filter:saturate(1.07) contrast(1.03)}
+
+/* ============================================================================
+   §6  RULES & DIVIDERS — a slow travelling glint along the hairline.
+   ========================================================================= */
+.divider,hr{
+  background-image:linear-gradient(90deg,
+    transparent,var(--line) 22%,rgba(233,201,106,.45) 50%,var(--line) 78%,transparent);
+  background-size:220% 100%;
+  animation:lxp-glint 9s var(--ease-in-out,ease-in-out) infinite;
+}
+@keyframes lxp-glint{
+  0%,100%{background-position:130% 0}
+  50%    {background-position:-30% 0}
+}
+
+/* ============================================================================
+   §7  SCROLLBAR — gilded, and only where a scrollbar is actually visible.
+   `.dh-scroll` in site.css keeps its own 8px sizing (higher specificity).
+   ========================================================================= */
+html{scrollbar-color:var(--gold-700) transparent;scrollbar-width:thin}
+::-webkit-scrollbar{width:12px;height:12px}
+::-webkit-scrollbar-track{background:transparent}
+::-webkit-scrollbar-thumb{
+  background:linear-gradient(180deg,var(--gold-600),var(--gold-800));
+  border:3px solid var(--bg);border-radius:var(--radius-pill,999px);
+}
+::-webkit-scrollbar-thumb:hover{background:linear-gradient(180deg,var(--gold-400),var(--gold-600))}
+
+/* ============================================================================
+   §8  FOCUS — the outline in site.css stays exactly as measured; this only
+   adds a halo behind it so the ring reads as lit rather than drawn.
+   ========================================================================= */
+:where(a[href],button,input,select,textarea,summary,[tabindex]):focus-visible{
+  box-shadow:0 0 0 4px rgba(212,175,55,.15),0 0 26px -4px var(--glow);
+}
+
+/* ============================================================================
+   §9  OPT-IN COMPONENTS — `lxp-` namespace, verified to appear zero times
+   across every HTML, CSS and JS file in public/ before this file shipped.
+   None of these do anything until a page adds the class.
+   ========================================================================= */
+
+/* --- gilt text: foil-stamped headline ------------------------------------ */
+.lxp-gilt{
+  background-image:linear-gradient(96deg,
+    var(--gold-600) 0%,var(--gold-300) 26%,#FBF3D2 44%,
+    var(--gold-300) 58%,var(--gold-500) 78%,var(--gold-300) 100%);
+  background-size:200% 100%;
+  -webkit-background-clip:text;background-clip:text;
+  -webkit-text-fill-color:transparent;
+  color:var(--gold-300);              /* fallback where background-clip fails */
+  animation:lxp-foil 11s var(--ease-in-out,ease-in-out) infinite;
+}
+@keyframes lxp-foil{
+  0%,100%{background-position:130% 0}
+  50%    {background-position:-30% 0}
+}
+
+/* --- aura: conic gold bloom behind a hero -------------------------------- */
+.lxp-aura{position:relative;isolation:isolate}
+.lxp-aura::before{
+  content:"";position:absolute;z-index:-1;pointer-events:none;
+  inset:-18% -12% auto -12%;height:min(78vh,720px);
+  background:
+    conic-gradient(from 210deg at 50% 42%,
+      transparent 0deg,var(--lxp-aura-1) 55deg,transparent 130deg,
+      var(--lxp-aura-3) 215deg,transparent 300deg),
+    radial-gradient(52vw 34vw at 50% 20%,var(--lxp-aura-1),transparent 66%);
+  filter:blur(28px);
+  animation:lxp-turn 60s linear infinite;
+}
+@keyframes lxp-turn{to{transform:rotate(1turn)}}
+
+/* --- frame: engraved corner brackets ------------------------------------- */
+.lxp-frame{position:relative}
+.lxp-frame::before,.lxp-frame::after{
+  content:"";position:absolute;width:26px;height:26px;pointer-events:none;
+  border-color:var(--gold-500);border-style:solid;
+}
+.lxp-frame::before{top:-1px;left:-1px;border-width:1px 0 0 1px}
+.lxp-frame::after{bottom:-1px;right:-1px;border-width:0 1px 1px 0}
+
+/* --- seal: circular gold plaque ------------------------------------------ */
+.lxp-seal{
+  display:inline-flex;align-items:center;justify-content:center;
+  width:74px;height:74px;border-radius:50%;
+  border:1px solid var(--gold-600);
+  background:radial-gradient(circle at 34% 28%,rgba(212,175,55,.18),rgba(212,175,55,.03) 62%);
+  box-shadow:inset 0 0 22px rgba(212,175,55,.14),0 8px 26px -14px var(--glow);
+  font-family:var(--display-serif);font-size:22px;color:var(--gold-200);
+}
+
+/* --- drop cap: editorial opener ------------------------------------------ */
+.lxp-dropcap::first-letter{
+  float:left;font-family:var(--display-serif);font-size:3.4em;line-height:.82;
+  padding:.06em .12em 0 0;color:var(--gold-300);
+}
+
+/* --- numeral: oversized index for ordered content ------------------------ */
+.lxp-num{
+  font-family:var(--display-serif);font-size:clamp(38px,5vw,64px);line-height:1;
+  color:transparent;-webkit-text-stroke:1px var(--gold-600);
+  font-variant-numeric:tabular-nums;
+}
+
+/* --- glass: frosted panel ------------------------------------------------ */
+.lxp-glass{
+  background:linear-gradient(180deg,rgba(255,255,255,.055),rgba(255,255,255,.015));
+  backdrop-filter:saturate(150%) blur(14px);
+  border:1px solid rgba(255,255,255,.10);
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.10),0 22px 60px -30px rgba(0,0,0,.9);
+}
+
+/* --- marquee: seamless logo/credential ticker ---------------------------- */
+/* lux-plus.js duplicates the track's children once so the loop has no seam.
+   With JS off the row simply sits still and fully readable — the overflow is
+   hidden but the first copy is always the one in view. */
+.lxp-marquee{overflow:hidden;-webkit-mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent);
+  mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent)}
+.lxp-marquee__track{display:flex;gap:var(--s6,64px);width:max-content;align-items:center}
+.lxp-marquee.is-looping .lxp-marquee__track{animation:lxp-march 38s linear infinite}
+.lxp-marquee:hover .lxp-marquee__track{animation-play-state:paused}
+@keyframes lxp-march{to{transform:translateX(-50%)}}
+
+/* --- rule: a single lit hairline used as a section opener ---------------- */
+.lxp-rule{
+  height:1px;border:0;
+  background:linear-gradient(90deg,var(--gold-500),rgba(212,175,55,.05));
+  box-shadow:0 0 14px -2px var(--glow);
+}
+
+/* ============================================================================
+   §10  PAPER SCOPES — resume/invoice surfaces invert to light. The atmosphere
+   layers are viewport-fixed and sit behind those blocks, but the gold ink
+   alias must not follow the dark-surface stop into them. site.css already
+   re-points --gold-ink there; this just keeps the new dials sane so a paper
+   block never picks up a dark-surface sheen.
+   ========================================================================= */
+.page,.page-paper,.paper,.fd-doc{
+  --lxp-spot:rgba(212,175,55,.07);
+  --lxp-sheen:rgba(255,255,255,.65);
+}
+
+/* ============================================================================
+   §11  PRINT — every atmosphere layer is decorative and must not reach paper.
+   ========================================================================= */
+@media print{
+  html::before,html::after{display:none!important}
+  .lxp-aura::before,.lxp-frame::before,.lxp-frame::after{display:none!important}
+  .divider,hr{animation:none!important;background-image:none!important;background:#ccc!important}
+  .lxp-gilt{-webkit-text-fill-color:currentColor!important;color:#000!important;
+    background:none!important;animation:none!important}
+  .btn-gold{background-image:none!important;background:#d4af37!important}
+  /* .lxp-num is stroke-only text (color:transparent). A stroke is not guaranteed
+     to survive a print pipeline, and if it does not the glyph prints as blank
+     paper — so on paper it becomes ordinary solid ink. #3D3212 is the print gold
+     already measured at 12.10:1 in site.css's print scope. */
+  .lxp-num{-webkit-text-stroke:0!important;color:#3D3212!important}
+  .lxp-seal{background:none!important;box-shadow:none!important;
+    border-color:#999!important;color:#3D3212!important}
+  .lxp-glass{backdrop-filter:none!important;background:none!important;
+    border-color:#ccc!important;box-shadow:none!important}
+  .lxp-rule{background:#ccc!important;box-shadow:none!important}
+  .lxp-marquee{-webkit-mask-image:none!important;mask-image:none!important;
+    overflow:visible!important}
+  .lxp-marquee.is-looping .lxp-marquee__track{animation:none!important}
+}
+
+/* ============================================================================
+   §12  REDUCED MOTION — belt and suspenders.
+   site.css's global net already clamps every animation/transition to .01ms,
+   which neutralises the drifts above. These rules make the intent explicit and
+   keep this file correct if it is ever read without site.css: kill the moving
+   layers outright and settle every sweep at its resting position, so nothing
+   is left mid-gradient.
+   ========================================================================= */
+@media(prefers-reduced-motion:reduce){
+  html::before{animation:none!important;transform:none!important}
+  .divider,hr{animation:none!important;background-position:50% 0!important}
+  .lxp-gilt{animation:none!important;background-position:50% 0!important}
+  .lxp-aura::before{animation:none!important}
+  .lxp-marquee.is-looping .lxp-marquee__track{animation:none!important}
+  .lxp-spot::before{transition:none!important}
+  .btn-gold{transition:none!important;background-position:135% 0!important}
+  .btn-gold:hover,.btn-gold:focus-visible{background-position:135% 0!important}
+}
+
+/* Transparency-sensitive users lose the blur and the grain, not the layout. */
+@media(prefers-reduced-transparency:reduce){
+  html::after{display:none}
+  .lxp-glass{backdrop-filter:none;background:var(--surface-2,#17171a)}
+}
+
+/* Coarse pointers never receive a spotlight — there is no cursor to track, and
+   the effect would otherwise latch on after a tap. */
+@media(hover:none){
+  .lxp-spot::before{display:none}
+}
+
+/* Forced-colors users get the OS palette, not ours. Every decorative layer
+   here would otherwise fight it. */
+@media(forced-colors:active){
+  html::before,html::after,.lxp-spot::before,.lxp-aura::before{display:none}
+  .lxp-gilt{-webkit-text-fill-color:currentColor;background:none;animation:none}
+  .divider,hr{animation:none}
+  /* Same reasoning as the print block: a transparent fill carried by a stroke has
+     no defined behaviour under a forced palette, so hand the glyph back to the
+     OS colour rather than risk an invisible numeral. */
+  .lxp-num{-webkit-text-stroke:0;color:currentColor}
+  .lxp-seal,.lxp-glass{background:none;box-shadow:none;backdrop-filter:none}
+}

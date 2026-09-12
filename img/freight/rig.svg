@@ -1,0 +1,89 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 340" width="1200" height="340" role="img" aria-label="Line drawing of a Class 8 tractor pulling a dry van trailer">
+<defs>
+<linearGradient id="rgSkin" x1="0" y1="0" x2="0" y2="1">
+<stop offset="0" stop-color="#e9c96a" stop-opacity=".16"/>
+<stop offset="1" stop-color="#D4AF37" stop-opacity=".03"/>
+</linearGradient>
+<linearGradient id="rgLine" x1="0" y1="0" x2="1" y2="0">
+<stop offset="0" stop-color="#9E832E"/><stop offset=".42" stop-color="#e9c96a"/><stop offset="1" stop-color="#D4AF37"/>
+</linearGradient>
+<radialGradient id="rgLamp" cx=".5" cy=".5" r=".5">
+<stop offset="0" stop-color="#ffe9a8" stop-opacity=".95"/><stop offset="1" stop-color="#ffe9a8" stop-opacity="0"/>
+</radialGradient>
+</defs>
+
+<g fill="none" stroke="url(#rgLine)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+
+  <!-- trailer body -->
+  <path fill="url(#rgSkin)" d="M56 74 h700 v158 h-700 z"/>
+  <path d="M56 74 h700 v158 h-700 z"/>
+  <path d="M56 92 h700 M56 214 h700" stroke-opacity=".45"/>
+  <path d="M72 74 v158 M88 74 v158" stroke-opacity=".55"/>
+  <path d="M150 74 v158 M320 74 v158 M490 74 v158 M660 74 v158" stroke-opacity=".18"/>
+  <!-- pinstripe + house diamond, no type so the file needs no embedded font -->
+  <path d="M110 152 h560" stroke-opacity=".5"/>
+  <path d="M356 132 l22 20 -22 20 -22 -20 z" stroke-opacity=".9"/>
+  <path d="M400 152 h1 M412 152 h1 M424 152 h1" stroke-opacity=".7" stroke-width="4"/>
+  <!-- rear door hardware -->
+  <path d="M62 96 v114 M62 96 h10 M62 210 h10" stroke-opacity=".6"/>
+  <!-- skirt + underride -->
+  <path d="M96 232 h560 v16 h-560 z" stroke-opacity=".5"/>
+  <path d="M58 232 v26 h34" stroke-opacity=".7"/>
+  <!-- landing gear -->
+  <path d="M636 248 v40 M660 248 v40 M628 288 h16 M652 288 h16" stroke-opacity=".8"/>
+  <!-- kingpin / fifth wheel line -->
+  <path d="M700 248 h60" stroke-opacity=".45"/>
+
+  <!-- sleeper + cab -->
+  <path fill="url(#rgSkin)" d="M760 62 h176 a14 14 0 0 1 14 14 v156 h-190 z"/>
+  <path d="M760 62 h176 a14 14 0 0 1 14 14 v156 h-190 z"/>
+  <path d="M776 88 h96 v52 h-96 z" stroke-opacity=".55"/>
+  <path d="M760 168 h190" stroke-opacity=".35"/>
+  <!-- windshield + hood -->
+  <path fill="url(#rgSkin)" d="M950 76 l38 46 h74 a16 16 0 0 1 16 16 v94 h-128 z"/>
+  <path d="M950 76 l38 46 h74 a16 16 0 0 1 16 16 v94 h-128 z"/>
+  <path d="M956 84 l30 38 h-30 z" stroke-opacity=".65"/>
+  <path d="M988 122 h90" stroke-opacity=".4"/>
+  <!-- grille -->
+  <path d="M1064 140 h12 M1064 152 h12 M1064 164 h12 M1064 176 h12" stroke-opacity=".55"/>
+  <path d="M1058 132 h24 v56 h-24 z" stroke-opacity=".45"/>
+  <!-- bumper + step -->
+  <path d="M1096 196 h14 v38 h-14 z" stroke-opacity=".7"/>
+  <path d="M962 218 h30 v14 h-30 z" stroke-opacity=".5"/>
+  <!-- exhaust stack -->
+  <path d="M766 62 v-48 M782 62 v-48 M764 20 h20 M764 34 h20" stroke-opacity=".8"/>
+  <!-- mirror -->
+  <path d="M958 86 h-22 v34" stroke-opacity=".7"/>
+  <!-- air deflector -->
+  <path d="M760 62 q56 -22 100 -8" stroke-opacity=".5"/>
+
+  <!-- fenders -->
+  <path d="M786 232 a52 52 0 0 1 104 0" stroke-opacity=".5"/>
+  <path d="M998 232 a52 52 0 0 1 104 0" stroke-opacity=".5"/>
+
+  <!-- wheels: trailer tandem -->
+  <circle cx="168" cy="248" r="46"/><circle cx="168" cy="248" r="20" stroke-opacity=".6"/>
+  <circle cx="168" cy="248" r="7" stroke-opacity=".8"/>
+  <circle cx="258" cy="248" r="46"/><circle cx="258" cy="248" r="20" stroke-opacity=".6"/>
+  <circle cx="258" cy="248" r="7" stroke-opacity=".8"/>
+  <!-- drives -->
+  <circle cx="838" cy="248" r="46"/><circle cx="838" cy="248" r="20" stroke-opacity=".6"/>
+  <circle cx="838" cy="248" r="7" stroke-opacity=".8"/>
+  <circle cx="928" cy="248" r="46"/><circle cx="928" cy="248" r="20" stroke-opacity=".6"/>
+  <circle cx="928" cy="248" r="7" stroke-opacity=".8"/>
+  <!-- steer -->
+  <circle cx="1050" cy="248" r="46"/><circle cx="1050" cy="248" r="20" stroke-opacity=".6"/>
+  <circle cx="1050" cy="248" r="7" stroke-opacity=".8"/>
+
+  <!-- marker lamps -->
+  <path d="M770 68 h10 M800 68 h10 M830 68 h10 M860 68 h10" stroke-opacity=".9" stroke-width="3"/>
+</g>
+
+<!-- headlamp throw -->
+<ellipse cx="1112" cy="180" rx="70" ry="34" fill="url(#rgLamp)"/>
+<circle cx="1076" cy="196" r="9" fill="#ffe9a8" fill-opacity=".85"/>
+<circle cx="66" cy="212" r="5" fill="#E0685F" fill-opacity=".7"/>
+
+<!-- ground shadow -->
+<ellipse cx="620" cy="298" rx="560" ry="9" fill="#D4AF37" fill-opacity=".07"/>
+</svg>
